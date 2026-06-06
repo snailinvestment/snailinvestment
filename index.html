@@ -8,14 +8,18 @@
   :root {
     --bg:#f0f2f5;--surface:#fff;--text:#1a1a2e;--text2:#666;--accent:#1e3a5f;--accent2:#2563eb;
     --border:#e5e7eb;--tag-bg:#eef2f7;--tag-text:#334155;--shadow:0 1px 3px rgba(0,0,0,0.06);
-    --sidebar-w:220px;--header-h:0px;
+    --sidebar-w:230px;--header-h:0px;
   }
   [data-theme="dark"] {
     --bg:#0b0f19;--surface:#111827;--text:#e5e7eb;--text2:#9ca3af;--accent:#60a5fa;--accent2:#93c5fd;
     --border:#1f2937;--tag-bg:#1f2937;--tag-text:#d1d5db;--shadow:0 1px 3px rgba(0,0,0,0.3);
   }
   * {margin:0;padding:0;box-sizing:border-box;}
-  body {font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;transition:background .3s,color .3s;}
+  body {
+    font-family: "Inter", -apple-system, "SF Pro Text", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    background:var(--bg);color:var(--text);min-height:100vh;display:flex;
+    transition:background .3s,color .3s;font-size:14px;line-height:1.5;
+  }
 
   /* ── Sidebar ── */
   .sidebar {
@@ -26,70 +30,96 @@
   }
   .sidebar-logo {
     display:flex;align-items:center;gap:10px;padding:18px 18px 14px;
-    border-bottom:1px solid var(--border);font-weight:700;font-size:1rem;color:var(--text);text-decoration:none;
+    border-bottom:1px solid var(--border);font-weight:700;font-size:1.05rem;color:var(--text);text-decoration:none;letter-spacing:.2px;
   }
   .sidebar-logo .logo-mark {
-    width:32px;height:32px;border-radius:8px;
+    width:30px;height:30px;border-radius:6px;
     background:linear-gradient(135deg,#1e3a5f,#2563eb);
-    display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem;flex-shrink:0;font-weight:700;
   }
-  .sidebar-nav {flex:1;padding:10px 0;overflow-y:auto;}
-  .sidebar-nav a {
-    display:flex;align-items:center;gap:10px;padding:10px 18px;
-    text-decoration:none;color:var(--text2);font-size:.9rem;transition:all .15s;
-    border-left:3px solid transparent;
+  .sidebar-nav {flex:1;padding:8px 0;overflow-y:auto;}
+
+  /* nav items */
+  .nav-group {}
+  .nav-item {
+    display:flex;align-items:center;gap:9px;padding:9px 16px;
+    text-decoration:none;color:var(--text2);font-size:.86rem;
+    border-left:2px solid transparent;cursor:pointer;transition:all .12s;
+    user-select:none;
   }
-  .sidebar-nav a:hover {background:var(--tag-bg);color:var(--text);}
-  .sidebar-nav a.active {background:var(--tag-bg);color:var(--accent);font-weight:600;border-left-color:var(--accent);}
-  .sidebar-nav a .nav-icon {font-size:1.15rem;width:22px;text-align:center;flex-shrink:0;}
-  .sidebar-bottom {padding:12px 18px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-  .theme-btn {background:none;border:none;color:var(--text2);font-size:1.15rem;cursor:pointer;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+  .nav-item:hover {background:var(--tag-bg);color:var(--text);}
+  .nav-item.active {background:var(--tag-bg);color:var(--accent);font-weight:600;border-left-color:var(--accent);}
+  .nav-item .nav-icon {font-size:1.05rem;width:20px;text-align:center;flex-shrink:0;}
+  .nav-item .nav-arrow {margin-left:auto;font-size:.7rem;transition:transform .2s;color:var(--text2);}
+  .nav-item.expanded .nav-arrow {transform:rotate(90deg);}
+
+  /* subnav */
+  .nav-sub {display:none;flex-direction:column;}
+  .nav-sub.open {display:flex;}
+  .nav-sub a {
+    display:flex;align-items:center;gap:9px;padding:7px 16px 7px 36px;
+    text-decoration:none;color:var(--text2);font-size:.82rem;
+    border-left:2px solid transparent;transition:all .12s;
+  }
+  .nav-sub a:hover {background:var(--tag-bg);color:var(--text);}
+  .nav-sub a.active {color:var(--accent);font-weight:600;border-left-color:var(--accent);}
+
+  .sidebar-bottom {padding:12px 16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+  .theme-btn {background:none;border:none;color:var(--text2);font-size:1.1rem;cursor:pointer;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:background .15s;}
   .theme-btn:hover {background:var(--tag-bg);}
-  .sidebar-version {font-size:.7rem;color:var(--text2);}
+  .sidebar-version {font-size:.7rem;color:var(--text2);font-weight:500;}
 
   /* ── Mobile top bar ── */
   .mobile-header {
     display:none;position:sticky;top:0;z-index:150;
     background:var(--surface);border-bottom:1px solid var(--border);
-    padding:0 16px;height:52px;align-items:center;justify-content:space-between;
+    padding:0 16px;height:50px;align-items:center;justify-content:space-between;
   }
-  .mobile-header .logo {display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--text);font-weight:700;font-size:1rem;}
-  .mobile-header .logo .logo-mark {width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,#1e3a5f,#2563eb);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;}
-  .hamburger {background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--text);padding:4px;}
+  .mobile-header .logo {display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--text);font-weight:700;font-size:.95rem;}
+  .mobile-header .logo .logo-mark {width:26px;height:26px;border-radius:5px;background:linear-gradient(135deg,#1e3a5f,#2563eb);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.8rem;font-weight:700;}
+  .hamburger {background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--text);padding:4px;}
 
   /* ── Main content ── */
   .main-wrap {margin-left:var(--sidebar-w);flex:1;min-width:0;}
-  .subnav {background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
-  .subnav-inner {max-width:1200px;margin:0 auto;display:flex;gap:4px;padding:0 24px;height:44px;align-items:center;overflow-x:auto;}
-  .subnav a {text-decoration:none;color:var(--text2);font-size:.82rem;padding:5px 14px;border-radius:20px;transition:all .15s;white-space:nowrap;}
-  .subnav a:hover,.subnav a.active {background:var(--accent);color:#fff;}
 
-  .content {max-width:1200px;margin:0 auto;padding:24px 24px 60px;}
+  .content {max-width:1200px;margin:0 auto;padding:28px 28px 60px;}
 
-  .section-hd {display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:6px;}
-  .section-hd h2 {font-size:1.05rem;font-weight:700;}
-  .section-hd .muted {font-size:.8rem;color:var(--text2);}
+  .section-hd {display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:6px;}
+  .section-hd h2 {font-size:1.15rem;font-weight:700;letter-spacing:.1px;}
+  .section-hd .muted {font-size:.78rem;color:var(--text2);font-weight:400;}
 
   .grid {display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;}
-  .card {background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;transition:box-shadow .2s,transform .2s;display:flex;flex-direction:column;gap:10px;}
-  .card:hover {box-shadow:0 8px 24px rgba(0,0,0,0.08);transform:translateY(-2px);}
+  .card {
+    background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px;
+    transition:box-shadow .2s,transform .2s;display:flex;flex-direction:column;gap:10px;
+  }
+  .card:hover {box-shadow:0 6px 20px rgba(0,0,0,0.07);transform:translateY(-1px);}
   .card-top {display:flex;align-items:center;gap:10px;}
-  .card-icon {width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
-  .card-title {font-weight:700;font-size:.97rem;line-height:1.35;}
-  .card-sub {font-size:.78rem;color:var(--text2);}
-  .card-desc {font-size:.85rem;color:var(--text2);line-height:1.55;flex:1;}
+  .card-icon {
+    width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+    font-size:.95rem;flex-shrink:0;font-weight:600;
+  }
+  .card-title {font-weight:700;font-size:.93rem;line-height:1.35;letter-spacing:.1px;}
+  .card-sub {font-size:.77rem;color:var(--text2);font-weight:400;}
+  .card-desc {font-size:.83rem;color:var(--text2);line-height:1.55;flex:1;}
   .card-tags {display:flex;flex-wrap:wrap;gap:5px;}
-  .tag {font-size:.72rem;padding:2px 8px;border-radius:12px;background:var(--tag-bg);color:var(--tag-text);font-weight:500;}
-  .card-btn {display:inline-block;text-decoration:none;background:var(--accent);color:#fff;padding:7px 14px;border-radius:8px;font-size:.82rem;font-weight:600;text-align:center;transition:opacity .15s;margin-top:4px;border:none;cursor:pointer;}
+  .tag {font-size:.7rem;padding:2px 8px;border-radius:4px;background:var(--tag-bg);color:var(--tag-text);font-weight:500;}
+  .card-btn {
+    display:inline-block;text-decoration:none;background:var(--accent);color:#fff;padding:7px 14px;
+    border-radius:6px;font-size:.8rem;font-weight:600;text-align:center;transition:opacity .15s;margin-top:4px;border:none;cursor:pointer;
+  }
   .card-btn:hover {opacity:.88;}
 
-  .list-item {background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:14px;transition:box-shadow .2s;}
+  .list-item {
+    background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 18px;
+    display:flex;align-items:center;gap:14px;transition:box-shadow .2s;
+  }
   .list-item:hover {box-shadow:0 4px 16px rgba(0,0,0,0.06);}
-  .list-icon {width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+  .list-icon {width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;font-weight:600;}
   .list-body {flex:1;}
-  .list-title {font-weight:600;font-size:.92rem;}
-  .list-meta {font-size:.78rem;color:var(--text2);margin-top:2px;}
-  .list-btn {text-decoration:none;background:var(--accent);color:#fff;padding:5px 12px;border-radius:6px;font-size:.78rem;font-weight:600;white-space:nowrap;}
+  .list-title {font-weight:600;font-size:.9rem;letter-spacing:.1px;}
+  .list-meta {font-size:.76rem;color:var(--text2);margin-top:2px;}
+  .list-btn {text-decoration:none;background:var(--accent);color:#fff;padding:5px 12px;border-radius:6px;font-size:.77rem;font-weight:600;white-space:nowrap;}
 
   .panel {display:none;}
   .panel.active {display:block;animation:fade .25s ease;}
@@ -103,7 +133,6 @@
     .overlay.open {display:block;}
     .mobile-header {display:flex;}
     .main-wrap {margin-left:0;}
-    .subnav {top:52px;}
     .grid {grid-template-columns:1fr;}
   }
 </style>
@@ -113,7 +142,7 @@
 <!-- Mobile header -->
 <div class="mobile-header">
   <a href="#" class="logo">
-    <span class="logo-mark">🐌</span><span>Snail IR</span>
+    <span class="logo-mark">S</span><span>Snail IR</span>
   </a>
   <button class="hamburger" onclick="toggleSidebar()">☰</button>
 </div>
@@ -121,38 +150,51 @@
 
 <!-- Sidebar -->
 <aside class="sidebar" id="sidebar">
-  <a href="#" class="sidebar-logo">
-    <span class="logo-mark">🐌</span>
+  <a href="#" class="sidebar-logo" onclick="switchCat('china');return false;">
+    <span class="logo-mark">S</span>
     <span>Snail IR</span>
   </a>
   <nav class="sidebar-nav" id="sidebarNav">
-    <a href="#" data-cat="china" class="active" onclick="switchCat('china');return false;">
+    <!-- A股 -->
+    <a href="#" class="nav-item active" data-cat="china" onclick="switchCat('china');return false;">
       <span class="nav-icon">🏭</span><span>A 股</span>
     </a>
-    <a href="#" data-cat="hk" onclick="switchCat('hk');return false;">
+    <!-- 港股 -->
+    <a href="#" class="nav-item" data-cat="hk" onclick="switchCat('hk');return false;">
       <span class="nav-icon">🇭🇰</span><span>港 股</span>
     </a>
-    <a href="#" data-cat="us" onclick="switchCat('us');return false;">
+    <!-- 美股 -->
+    <a href="#" class="nav-item" data-cat="us" onclick="switchCat('us');return false;">
       <span class="nav-icon">🇺🇸</span><span>美 股</span>
     </a>
-    <a href="#" data-cat="semi" onclick="switchCat('semi');return false;">
-      <span class="nav-icon">💡</span><span>半导体泡沫指数</span>
-    </a>
-    <a href="#" data-cat="macro" onclick="switchCat('macro');return false;">
+    <!-- 半导体热度（可展开） -->
+    <div class="nav-group">
+      <div class="nav-item" id="semiToggle" onclick="toggleSemiSub();return false;">
+        <span class="nav-icon">💡</span><span>半导体热度</span>
+        <span class="nav-arrow">▸</span>
+      </div>
+      <div class="nav-sub" id="semiSub">
+        <a href="#" onclick="switchCat('china','semi-cn');return false;" id="semi-cn-link">
+          <span>🇨🇳</span><span>A股半导体热度</span>
+        </a>
+        <a href="#" onclick="switchCat('us','semi-us');return false;" id="semi-us-link">
+          <span>🇺🇸</span><span>美国半导体热度</span>
+        </a>
+      </div>
+    </div>
+    <!-- 宏观周记 -->
+    <a href="#" class="nav-item" data-cat="macro" onclick="switchCat('macro');return false;">
       <span class="nav-icon">🌍</span><span>宏观周记</span>
     </a>
   </nav>
   <div class="sidebar-bottom">
-    <span class="sidebar-version">v1.1</span>
+    <span class="sidebar-version">v1.2</span>
     <button class="theme-btn" onclick="toggleTheme()" title="切换主题">🌙</button>
   </div>
 </aside>
 
 <!-- Main content -->
 <div class="main-wrap">
-  <div class="subnav" id="subnavBox">
-    <div class="subnav-inner" id="subnavContent"></div>
-  </div>
   <div class="content">
 
 <!-- A股 -->
@@ -164,7 +206,7 @@
   <div class="grid">
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#eff6ff;color:#2563eb;">🧪</div>
+        <div class="card-icon" style="background:#eff6ff;color:#2563eb;">VA</div>
         <div>
           <div class="card-title">新和成 · 核心产品价格走势</div>
           <div class="card-sub">002001 · 浙江新和成</div>
@@ -172,11 +214,11 @@
       </div>
       <div class="card-desc">维生素A、维生素E、蛋氨酸、PPS四大核心产品2025 vs 2026同期价格走势对比。</div>
       <div class="card-tags"><span class="tag">维生素A</span><span class="tag">维生素E</span><span class="tag">蛋氨酸</span><span class="tag">PPS</span></div>
-      <a class="card-btn" href="nhu_price_trend.html">📊 查看图表</a>
+      <a class="card-btn" href="nhu_price_trend.html">查看图表</a>
     </div>
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#f0fdf4;color:#16a34a;">⛽</div>
+        <div class="card-icon" style="background:#f0fdf4;color:#16a34a;">BF</div>
         <div>
           <div class="card-title">宝丰能源 & 三江化工</div>
           <div class="card-sub">600989 · HK2198</div>
@@ -184,11 +226,11 @@
       </div>
       <div class="card-desc">甲醇、聚乙烯LLDPE、环氧乙烷EO、乙二醇MEG，对比煤制 vs 石脑油裂解路线价格弹性。</div>
       <div class="card-tags"><span class="tag">甲醇</span><span class="tag">聚乙烯</span><span class="tag">环氧乙烷</span><span class="tag">乙二醇</span></div>
-      <a class="card-btn" href="baofeng_sanjiang_price_trend.html">📊 查看图表</a>
+      <a class="card-btn" href="baofeng_sanjiang_price_trend.html">查看图表</a>
     </div>
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#fef3c7;color:#d97706;">🧫</div>
+        <div class="card-icon" style="background:#fef3c7;color:#d97706;">WX</div>
         <div>
           <div class="card-title">卫星化学 & 新和成 & 芭田股份</div>
           <div class="card-sub">002648 · 002170</div>
@@ -196,11 +238,11 @@
       </div>
       <div class="card-desc">丙烯酸、丙烯酸丁酯、VA、VE、复合肥、尿素，横跨C3烯烃/精细化工/农资化肥三条产业链。</div>
       <div class="card-tags"><span class="tag">丙烯酸</span><span class="tag">丙烯酸丁酯</span><span class="tag">复合肥</span><span class="tag">尿素</span></div>
-      <a class="card-btn" href="weixing_nhu_batian_price_trend.html">📊 查看图表</a>
+      <a class="card-btn" href="weixing_nhu_batian_price_trend.html">查看图表</a>
     </div>
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#fae8ff;color:#9333ea;">🌾</div>
+        <div class="card-icon" style="background:#fae8ff;color:#9333ea;">XL</div>
         <div>
           <div class="card-title">卫星化学 & 三江化工 & 心连心化肥</div>
           <div class="card-sub">002648 · HK2198 · HK1866</div>
@@ -208,7 +250,38 @@
       </div>
       <div class="card-desc">丙烯酸、丁酯、EO、MEG、尿素、复合肥，数据更新至2026年6月，含急跌分析。</div>
       <div class="card-tags"><span class="tag">丙烯酸</span><span class="tag">环氧乙烷</span><span class="tag">乙二醇</span><span class="tag">尿素</span><span class="tag">最新</span></div>
-      <a class="card-btn" href="weixing_sanjiang_xinlianxin_price_trend.html">📊 查看图表</a>
+      <a class="card-btn" href="weixing_sanjiang_xinlianxin_price_trend.html">查看图表</a>
+    </div>
+  </div>
+
+  <div class="section-hd" id="semi-cn-section" style="margin-top:36px;">
+    <h2>💡 A股半导体热度</h2>
+    <span class="muted">每日更新 · 覆盖设计/制造/设备/材料全产业链</span>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-top">
+        <div class="card-icon" style="background:#fef3c7;color:#d97706;">CN</div>
+        <div>
+          <div class="card-title">A股半导体热度指数</div>
+          <div class="card-sub">2026年6月6日 · 最新</div>
+        </div>
+      </div>
+      <div class="card-desc">A股半导体板块情绪热度指数，覆盖设计/制造/设备/材料全产业链，含ERP估值偏离度、机构持仓拥挤度等核心指标。</div>
+      <div class="card-tags"><span class="tag">A股</span><span class="tag">半导体</span><span class="tag">热度指数</span><span class="tag">最新</span></div>
+      <a class="card-btn" href="report-semiconductor-sbi-2026-06-06.html">阅读报告</a>
+    </div>
+    <div class="card">
+      <div class="card-top">
+        <div class="card-icon" style="background:#eff6ff;color:#2563eb;">CN</div>
+        <div>
+          <div class="card-title">A股半导体热度指数</div>
+          <div class="card-sub">2026年6月5日</div>
+        </div>
+      </div>
+      <div class="card-desc">2026年6月5日 A股半导体板块情绪热度指数日报，含细分赛道评分与风险提示。</div>
+      <div class="card-tags"><span class="tag">A股</span><span class="tag">半导体</span><span class="tag">热度指数</span></div>
+      <a class="card-btn" href="report-semiconductor-sbi-2026-06-05.html">阅读报告</a>
     </div>
   </div>
 </div>
@@ -222,7 +295,7 @@
   <div class="grid">
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#fff0f5;color:#e91e63;">🎯</div>
+        <div class="card-icon" style="background:#fff0f5;color:#e91e63;">PM</div>
         <div>
           <div class="card-title">泡泡玛特 (9992.HK)</div>
           <div class="card-sub">HKEX: 9992 · 潮流IP消费</div>
@@ -230,7 +303,7 @@
       </div>
       <div class="card-desc">中国潮流IP消费龙头，深度分析全球化扩张、IP矩阵运营、海外收入增长及估值逻辑。</div>
       <div class="card-tags"><span class="tag">潮流IP</span><span class="tag">全球化</span><span class="tag">消费品牌</span></div>
-      <a class="card-btn" href="popmart_research_9992HK.html">📄 阅读报告</a>
+      <a class="card-btn" href="popmart_research_9992HK.html">阅读报告</a>
     </div>
   </div>
 </div>
@@ -244,7 +317,7 @@
   <div class="grid">
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#e8f5f0;color:#1a7a45;">⚡</div>
+        <div class="card-icon" style="background:#e8f5f0;color:#1a7a45;">GV</div>
         <div>
           <div class="card-title">GE Vernova (GEV)</div>
           <div class="card-sub">NYSE: GEV · 能源转型</div>
@@ -252,11 +325,11 @@
       </div>
       <div class="card-desc">全球能源转型龙头，覆盖燃气轮机/风电/核电/电气化四大板块深度分析，含财务模型与估值。</div>
       <div class="card-tags"><span class="tag">能源转型</span><span class="tag">燃气轮机</span><span class="tag">核电</span></div>
-      <a class="card-btn" href="GEV_Research_Report_2026.html">📄 阅读报告</a>
+      <a class="card-btn" href="GEV_Research_Report_2026.html">阅读报告</a>
     </div>
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#0f2040;color:#c9a84c;">🛢️</div>
+        <div class="card-icon" style="background:#0f2040;color:#c9a84c;">CH</div>
         <div>
           <div class="card-title">Cheniere Energy (LNG)</div>
           <div class="card-sub">NYSE: LNG · LNG出口龙头</div>
@@ -264,11 +337,11 @@
       </div>
       <div class="card-desc">美国最大LNG出口商，深度分析全球LNG贸易格局、产能扩张及2026Q1业绩，含Chart.js可视化。</div>
       <div class="card-tags"><span class="tag">LNG</span><span class="tag">能源出口</span><span class="tag">产能扩张</span></div>
-      <a class="card-btn" href="cheniere_LNG_research_report_2026Q1.html">📄 阅读报告</a>
+      <a class="card-btn" href="cheniere_LNG_research_report_2026Q1.html">阅读报告</a>
     </div>
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#001E5C;color:#00B4FF;">💻</div>
+        <div class="card-icon" style="background:#001E5C;color:#00B4FF;">IBM</div>
         <div>
           <div class="card-title">IBM · 2026 Q1财报深度分析</div>
           <div class="card-sub">NYSE: IBM · 企业级AI</div>
@@ -276,11 +349,11 @@
       </div>
       <div class="card-desc">企业级AI领导者2026Q1深度财报分析，含Watsonx平台、咨询业务、基础设施三大板块增长数据。</div>
       <div class="card-tags"><span class="tag">企业AI</span><span class="tag">Watsonx</span><span class="tag">财报分析</span></div>
-      <a class="card-btn" href="IBM.html">📄 阅读报告</a>
+      <a class="card-btn" href="IBM.html">阅读报告</a>
     </div>
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#0B1C3F;color:#3B82F6;">🔴</div>
+        <div class="card-icon" style="background:#0B1C3F;color:#3B82F6;">AV</div>
         <div>
           <div class="card-title">博通 (AVGO)</div>
           <div class="card-sub">NASDAQ: AVGO · 半导体 · 2026Q2</div>
@@ -288,11 +361,11 @@
       </div>
       <div class="card-desc">全球AI算力基础设施核心供应商，深度分析Q2财报、AI芯片业务爆发逻辑、VMware整合进展及2026年估值重估空间。</div>
       <div class="card-tags"><span class="tag">AI算力</span><span class="tag">半导体</span><span class="tag">财报分析</span></div>
-      <a class="card-btn" href="AVGO_深度投研报告_2026Q2.html">📄 阅读报告</a>
+      <a class="card-btn" href="AVGO_深度投研报告_2026Q2.html">阅读报告</a>
     </div>
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#080c14;color:#00d4ff;">🔬</div>
+        <div class="card-icon" style="background:#080c14;color:#00d4ff;">LT</div>
         <div>
           <div class="card-title">Lumentum (LITE)</div>
           <div class="card-sub">NASDAQ: LITE · AI光通信</div>
@@ -300,11 +373,11 @@
       </div>
       <div class="card-desc">AI光通信基建核心标的，深度分析数据中心光模块需求爆发下的价值重估逻辑与技术壁垒。</div>
       <div class="card-tags"><span class="tag">光通信</span><span class="tag">AI基建</span><span class="tag">价值重估</span></div>
-      <a class="card-btn" href="LITE_深度投研报告_2026.html">📄 阅读报告</a>
+      <a class="card-btn" href="LITE_深度投研报告_2026.html">阅读报告</a>
     </div>
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#1a3a5e;color:#4da6ff;">🚢</div>
+        <div class="card-icon" style="background:#1a3a5e;color:#4da6ff;">DH</div>
         <div>
           <div class="card-title">DHT Holdings (DHT)</div>
           <div class="card-sub">NYSE: DHT · 油轮运输 · 2026Q1</div>
@@ -312,11 +385,11 @@
       </div>
       <div class="card-desc">全球油轮运输龙头，深度分析霍尔木兹海峡封锁对油轮运费的拉动逻辑、高盛研究部2026Q1深度报告。</div>
       <div class="card-tags"><span class="tag">油轮运输</span><span class="tag">霍尔木兹</span><span class="tag">高盛研究</span></div>
-      <a class="card-btn" href="DHT_Holdings_深度研究报告_2026Q1.html">📄 阅读报告</a>
+      <a class="card-btn" href="DHT_Holdings_深度研究报告_2026Q1.html">阅读报告</a>
     </div>
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#fef3c7;color:#b45309;">📚</div>
+        <div class="card-icon" style="background:#fef3c7;color:#b45309;">TL</div>
         <div>
           <div class="card-title">好未来 (TAL)</div>
           <div class="card-sub">NYSE: TAL · 教育科技 · 2026财年</div>
@@ -324,11 +397,11 @@
       </div>
       <div class="card-desc">好未来2026财年全年深度投研报告，覆盖教育科技转型、AI学习机业务、素质教育布局及估值分析。</div>
       <div class="card-tags"><span class="tag">教育科技</span><span class="tag">AI学习机</span><span class="tag">素质教育</span></div>
-      <a class="card-btn" href="TAL_Research_Report_2026.html">📄 阅读报告</a>
+      <a class="card-btn" href="TAL_Research_Report_2026.html">阅读报告</a>
     </div>
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#003366;color:#FF6B00;">🤖</div>
+        <div class="card-icon" style="background:#003366;color:#FF6B00;">SN</div>
         <div>
           <div class="card-title">ServiceNow (NOW)</div>
           <div class="card-sub">NYSE: NOW · AI控制塔</div>
@@ -336,65 +409,38 @@
       </div>
       <div class="card-desc">企业工作流AI控制塔领导者2026Q1财报深度分析，含订阅收入、AI产品渗透率等核心指标。</div>
       <div class="card-tags"><span class="tag">AI控制塔</span><span class="tag">SaaS</span><span class="tag">工作流</span></div>
-      <a class="card-btn" href="now.html">📄 阅读报告</a>
+      <a class="card-btn" href="now.html">阅读报告</a>
     </div>
   </div>
-</div>
 
-<!-- 半导体泡沫指数（新） -->
-<div class="panel" id="panel-semi">
-  <div class="section-hd">
-    <h2>💡 半导体泡沫指数</h2>
-    <span class="muted">A股 & 美股 · 每日更新</span>
+  <div class="section-hd" id="semi-us-section" style="margin-top:36px;">
+    <h2>💡 美国半导体热度</h2>
+    <span class="muted">每日更新 · 覆盖AI芯片/光通信/设备/EDA全产业链</span>
   </div>
   <div class="grid">
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#fef3c7;color:#d97706;">🇨🇳</div>
+        <div class="card-icon" style="background:#0f2040;color:#c9a84c;">US</div>
         <div>
-          <div class="card-title">A股半导体泡沫指数</div>
+          <div class="card-title">美股半导体硬件热度指数</div>
           <div class="card-sub">2026年6月6日 · 最新</div>
         </div>
       </div>
-      <div class="card-desc">A股半导体板块情绪泡沫指数，覆盖设计/制造/设备/材料全产业链，含ERP估值偏离度、机构持仓拥挤度等核心指标。</div>
-      <div class="card-tags"><span class="tag">A股</span><span class="tag">半导体</span><span class="tag">泡沫指数</span><span class="tag">最新</span></div>
-      <a class="card-btn" href="report-semiconductor-sbi-2026-06-06.html">📄 阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#eff6ff;color:#2563eb;">🇨🇳</div>
-        <div>
-          <div class="card-title">A股半导体泡沫指数</div>
-          <div class="card-sub">2026年6月5日</div>
-        </div>
-      </div>
-      <div class="card-desc">2026年6月5日 A股半导体板块情绪泡沫指数日报，含细分赛道评分与风险提示。</div>
-      <div class="card-tags"><span class="tag">A股</span><span class="tag">半导体</span><span class="tag">泡沫指数</span></div>
-      <a class="card-btn" href="report-semiconductor-sbi-2026-06-05.html">📄 阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#0f2040;color:#c9a84c;">🇺🇸</div>
-        <div>
-          <div class="card-title">美股半导体硬件泡沫指数</div>
-          <div class="card-sub">2026年6月6日 · 最新</div>
-        </div>
-      </div>
-      <div class="card-desc">美股半导体硬件板块泡沫指数，覆盖AI芯片/光通信/设备/EDA全产业链，含NVDA/AVGO/AMD/LITE等核心标的情绪监测。</div>
+      <div class="card-desc">美股半导体硬件板块热度指数，覆盖AI芯片/光通信/设备/EDA全产业链，含NVDA/AVGO/AMD/LITE等核心标的情绪监测。</div>
       <div class="card-tags"><span class="tag">美股</span><span class="tag">半导体</span><span class="tag">AI硬件</span><span class="tag">最新</span></div>
-      <a class="card-btn" href="report-us-hardware-sbi-2026-06-06.html">📄 阅读报告</a>
+      <a class="card-btn" href="report-us-hardware-sbi-2026-06-06.html">阅读报告</a>
     </div>
     <div class="card">
       <div class="card-top">
-        <div class="card-icon" style="background:#1a3a5e;color:#4da6ff;">🇺🇸</div>
+        <div class="card-icon" style="background:#1a3a5e;color:#4da6ff;">US</div>
         <div>
-          <div class="card-title">美股半导体硬件泡沫指数</div>
+          <div class="card-title">美股半导体硬件热度指数</div>
           <div class="card-sub">2026年6月5日</div>
         </div>
       </div>
-      <div class="card-desc">2026年6月5日美股半导体硬件板块泡沫指数日报，含细分赛道评分与AI算力产业链情绪监测。</div>
+      <div class="card-desc">2026年6月5日美股半导体硬件板块热度指数日报，含细分赛道评分与AI算力产业链情绪监测。</div>
       <div class="card-tags"><span class="tag">美股</span><span class="tag">半导体</span><span class="tag">AI硬件</span></div>
-      <a class="card-btn" href="report-us-hardware-sbi-2026-06-05.html">📄 阅读报告</a>
+      <a class="card-btn" href="report-us-hardware-sbi-2026-06-05.html">阅读报告</a>
     </div>
   </div>
 </div>
@@ -407,12 +453,12 @@
   </div>
   <div style="display:flex;flex-direction:column;gap:12px;">
     <div class="list-item">
-      <div class="list-icon" style="background:#fee2e2;color:#b91c1c;">📉</div>
+      <div class="list-icon" style="background:#fee2e2;color:#b91c1c;">W23</div>
       <div class="list-body">
         <div class="list-title">2026年6月第1周 · 全球宏观复盘与第2周展望</div>
         <div class="list-meta">美联储政策路径 · 中东局势演变 · 全球流动性观察 · 大类资产配置建议</div>
       </div>
-      <a class="list-btn" href="macro_2026W23.html">📄 阅读全文</a>
+      <a class="list-btn" href="macro_2026W23.html">阅读全文</a>
     </div>
   </div>
 </div>
@@ -421,53 +467,43 @@
 </div><!-- /main-wrap -->
 
 <script>
-const subData = {
-  china: [
-    {text:'综合', href:'#'},
-    {text:'维生素', href:'#'},
-    {text:'烯烃', href:'#'},
-    {text:'化肥', href:'#'},
-  ],
-  hk: [
-    {text:'消费品牌', href:'#'},
-    {text:'新经济', href:'#'},
-    {text:'深度投研', href:'#'},
-  ],
-  us: [
-    {text:'能源转型', href:'#'},
-    {text:'AI基建', href:'#'},
-    {text:'企业SaaS', href:'#'},
-    {text:'财报分析', href:'#'},
-  ],
-  semi: [
-    {text:'A股指数', href:'#'},
-    {text:'美股指数', href:'#'},
-    {text:'历史 archive', href:'#'},
-  ],
-  macro: [
-    {text:'总览', href:'#'},
-    {text:'流动性', href:'#'},
-    {text:'通胀与利率', href:'#'},
-    {text:'市场情绪', href:'#'},
-  ],
-};
-
-const sidebarLinks = document.querySelectorAll('#sidebarNav a');
 const panels = document.querySelectorAll('.panel');
-const subnavContent = document.getElementById('subnavContent');
+const sidebarNav = document.getElementById('sidebarNav');
+const semiToggle = document.getElementById('semiToggle');
+const semiSub = document.getElementById('semiSub');
+const semiCnLink = document.getElementById('semi-cn-link');
+const semiUsLink = document.getElementById('semi-us-link');
 
-function switchCat(cat){
-  sidebarLinks.forEach(a=>a.classList.toggle('active', a.dataset.cat===cat));
+function switchCat(cat, scrollTarget){
+  // update sidebar active states
+  sidebarNav.querySelectorAll('.nav-item[data-cat]').forEach(a=>a.classList.toggle('active', a.dataset.cat===cat));
+  // panels
   panels.forEach(p=>p.classList.toggle('active', p.id==='panel-'+cat));
-  const items = subData[cat]||[];
-  subnavContent.innerHTML = items.map((s,i)=>`<a href="#" onclick="return false;" class="${i===0?'active':''}">${s.text}</a>`).join('');
   // close sidebar on mobile
   if(window.innerWidth<=768) toggleSidebar(false);
+  // scroll to section if specified
+  if(scrollTarget){
+    setTimeout(()=>{
+      const el = document.getElementById(scrollTarget + '-section');
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }, 100);
+  }
 }
 
-sidebarLinks.forEach(a=>{
-  a.addEventListener('click',e=>{ e.preventDefault(); switchCat(a.dataset.cat); });
-});
+function toggleSemiSub(){
+  const isOpen = semiSub.classList.contains('open');
+  semiSub.classList.toggle('open', !isOpen);
+  semiToggle.classList.toggle('expanded', !isOpen);
+  // highlight the current sub-link based on active panel
+  syncSemiSubActive();
+}
+
+function syncSemiSubActive(){
+  const activePanel = document.querySelector('.panel.active');
+  const id = activePanel ? activePanel.id : '';
+  semiCnLink.classList.toggle('active', id==='panel-china');
+  semiUsLink.classList.toggle('active', id==='panel-us');
+}
 
 function toggleSidebar(forceClose){
   const sb = document.getElementById('sidebar');
@@ -487,12 +523,22 @@ function toggleTheme(){
   if(isDark){body.removeAttribute('data-theme');btn.textContent='🌙';localStorage.setItem('theme','light');}
   else{body.setAttribute('data-theme','dark');btn.textContent='☀️';localStorage.setItem('theme','dark');}
 }
+
+// restore theme
 if(localStorage.getItem('theme')==='dark'){
   document.body.setAttribute('data-theme','dark');
   document.querySelector('.theme-btn').textContent='☀️';
 }
 
-switchCat('china');
+// open semi sub by default if active panel is china or us
+(function init(){
+  const activePanel = document.querySelector('.panel.active');
+  if(activePanel && (activePanel.id==='panel-china' || activePanel.id==='panel-us')){
+    semiSub.classList.add('open');
+    semiToggle.classList.add('expanded');
+  }
+  syncSemiSubActive();
+})();
 </script>
 </body>
 </html>
