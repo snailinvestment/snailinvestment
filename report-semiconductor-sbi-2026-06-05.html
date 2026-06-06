@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股半导体SBI泡沫指数日报 2026-06-05</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0e17; color:#e0e6ed; padding:20px; }
+  .container { max-width:960px; margin:0 auto; }
+  h1 { text-align:center; font-size:1.6em; color:#fff; margin-bottom:4px; }
+  .subtitle { text-align:center; color:#8899aa; font-size:0.9em; margin-bottom:24px; }
+  .card { background:#131a2a; border:1px solid #1e2d44; border-radius:12px; padding:20px; margin-bottom:16px; }
+  .sbi-hero { text-align:center; padding:30px 20px; }
+  .sbi-score { font-size:4em; font-weight:800; color:#ffcc00; line-height:1; }
+  .sbi-zone { font-size:1.4em; color:#ffcc00; margin-top:8px; }
+  .sbi-label { color:#8899aa; margin-top:6px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+  .dim-card { background:#0d1220; border:1px solid #1e2d44; border-radius:8px; padding:14px; text-align:center; }
+  .dim-name { color:#8899aa; font-size:0.85em; }
+  .dim-score { font-size:2em; font-weight:700; margin:4px 0; }
+  .dim-weight { color:#667788; font-size:0.75em; }
+  .dim-bar { height:4px; border-radius:2px; background:#1e2d44; margin-top:8px; overflow:hidden; }
+  .dim-bar-fill { height:100%; border-radius:2px; }
+  .section-title { font-size:1.1em; color:#fff; margin-bottom:12px; border-left:3px solid #4a90d9; padding-left:10px; }
+  table { width:100%; border-collapse:collapse; margin:8px 0; }
+  th { background:#0d1220; color:#8899aa; padding:8px 10px; text-align:left; font-size:0.8em; border-bottom:1px solid #1e2d44; }
+  td { padding:8px 10px; border-bottom:1px solid #111827; font-size:0.85em; }
+  .red { color:#ff4d4f; } .green { color:#52c41a; }
+  .highlight { color:#ffd700; font-weight:600; }
+  .conclusion { background:#0d1220; border-left:3px solid #ff8800; padding:12px 16px; margin:8px 0; border-radius:0 8px 8px 0; }
+  .chart-wrap { position:relative; height:280px; margin-top:12px; }
+  @media(max-width:640px) { .grid2{grid-template-columns:1fr} .grid3{grid-template-columns:1fr 1fr} }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>A股半导体板块 SBI 泡沫指数日报</h1>
+<p class="subtitle">2026-06-05 · 申万半导体指数(01801081.PT)</p>
+
+<div class="card sbi-hero">
+  <div class="sbi-score">64.6</div>
+  <div class="sbi-zone">🟡 预警</div>
+  <div class="sbi-label">SBI &gt; 65 危险 · &gt; 80 极端危险 · &lt; 45 安全</div>
+</div>
+<div class="card"><div class="section-title">📊 六维度评分明细</div><div class="grid3"><div class="dim-card">
+      <div class="dim-name">估值</div>
+      <div class="dim-score" style="color:#ff6b6b">78</div>
+      <div class="dim-weight">权重 25%</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:78%;background:#ff6b6b"></div></div>
+    </div><div class="dim-card">
+      <div class="dim-name">拥挤度</div>
+      <div class="dim-score" style="color:#ffa940">68</div>
+      <div class="dim-weight">权重 25%</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:68%;background:#ffa940"></div></div>
+    </div><div class="dim-card">
+      <div class="dim-name">杠杆</div>
+      <div class="dim-score" style="color:#ffc53d">60</div>
+      <div class="dim-weight">权重 15%</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:60%;background:#ffc53d"></div></div>
+    </div><div class="dim-card">
+      <div class="dim-name">业绩兑现</div>
+      <div class="dim-score" style="color:#52c41a">46</div>
+      <div class="dim-weight">权重 15%</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:46%;background:#52c41a"></div></div>
+    </div><div class="dim-card">
+      <div class="dim-name">资金流向</div>
+      <div class="dim-score" style="color:#ffa940">69</div>
+      <div class="dim-weight">权重 10%</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:69%;background:#ffa940"></div></div>
+    </div><div class="dim-card">
+      <div class="dim-name">外部环境</div>
+      <div class="dim-score" style="color:#95de64">53</div>
+      <div class="dim-weight">权重 10%</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:53%;background:#95de64"></div></div>
+    </div></div></div>
+<div class="card">
+  <div class="grid2">
+    <div>
+      <div class="section-title">🎯 六维度雷达图</div>
+      <div class="chart-wrap"><canvas id="radarChart"></canvas></div>
+    </div>
+    <div>
+      <div class="section-title">📉 近5日资金流向(亿元)</div>
+      <div class="chart-wrap"><canvas id="fundChart"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="section-title">📈 申万半导体板块今日行情</div>
+  <table>
+    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+    <tr><td>最新点位</td><td class="highlight">10,450.30</td><td>半日数据（截至11:30）</td></tr>
+    <tr><td>涨跌幅</td><td class="red">-1.95%</td><td>今日调整</td></tr>
+    <tr><td>成交额</td><td>2,260.7亿元</td><td>放量</td></tr>
+    <tr><td>换手率</td><td>3.4%</td><td>活跃</td></tr>
+    <tr><td>PE(TTM)</td><td class="red">118.78</td><td>分位97.85%，高估值区</td></tr>
+    <tr><td>PB</td><td>9.45</td><td>显著偏高</td></tr>
+    <tr><td>5日涨跌幅</td><td class="red">-0.28%</td><td>短期震荡</td></tr>
+    <tr><td>20日涨跌幅</td><td class="green">+12.17%</td><td>中期强势</td></tr>
+    <tr><td>年初至今</td><td class="highlight">+50.36%</td><td>年内涨幅巨大</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <div class="section-title">💰 资金流向</div>
+  <table>
+    <tr><th>日期</th><th>主力净流入(亿)</th><th>散户净流入(亿)</th><th>主力流入占比</th></tr>
+    <tr><td>06-05(半日)</td><td class="red">-134.56</td><td class="green">+134.56</td><td>25%</td></tr>
+    <tr><td>06-04</td><td class="green">+23.28</td><td class="red">-23.28</td><td>55%</td></tr>
+    <tr><td>06-03</td><td class="green">+76.11</td><td class="red">-76.11</td><td>56%</td></tr>
+    <tr><td>06-02</td><td class="red">-35.02</td><td class="green">+35.02</td><td>52%</td></tr>
+    <tr><td>06-01</td><td class="red">-268.83</td><td class="green">+268.83</td><td>49%</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <div class="section-title">🔥 板块重点个股</div>
+  <table>
+    <tr><th>股票</th><th>代码</th><th>涨跌幅</th><th>主力资金(万)</th><th>换手率</th><th>PE(TTM)</th></tr>
+    <tr><td>汇成股份</td><td>688403</td><td class="green">+13.48%</td><td class="green">+56,653</td><td>7.87%</td><td>223.94</td></tr>
+    <tr><td>立昂微</td><td>605358</td><td class="green">+5.99%</td><td class="green">+15,587</td><td>10.45%</td><td>亏损</td></tr>
+    <tr><td>中船特气</td><td>688146</td><td class="green">+5.66%</td><td class="red">-14,155</td><td>12.31%</td><td>340.45</td></tr>
+    <tr><td>中芯国际</td><td>688981</td><td class="red">-2.29%</td><td class="red">-483,232</td><td>2.46%</td><td>209.31</td></tr>
+    <tr><td>兆易创新</td><td>603986</td><td class="red">-3.93%</td><td class="red">-140,949</td><td>4.43%</td><td>124.02</td></tr>
+    <tr><td>德明利</td><td>001309</td><td class="red">-5.27%</td><td class="red">-67,545</td><td>6.46%</td><td>35.66</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <div class="section-title">🎯 核心结论与操作建议</div>
+  <div class="conclusion">
+    <strong>1. 估值风险为最大隐患</strong>：PE分位97.85%处于历史极端高位，板块PE(TTM) 118.78远超合理区间，一旦业绩不及预期将面临戴维斯双杀。
+  </div>
+  <div class="conclusion">
+    <strong>2. 拥挤度接近危险线</strong>：成交额2260亿占全市场比例极高，ETF持续获得资金流入，但龙头（中芯国际）主力大幅流出48亿，呈现"龙头换手、散户接盘"特征。
+  </div>
+  <div class="conclusion">
+    <strong>3. 业绩兑现是唯一支撑</strong>：WSTS上调2026年全球半导体市场至1.5万亿美元（+90%），行业景气度极高，但当前估值已充分甚至过度反映预期。
+  </div>
+  <div class="conclusion">
+    <strong>4. 资金信号偏空</strong>：今日主力净流出134.56亿元，连续两日流入后转为流出，短期需警惕获利盘兑现。
+  </div>
+  <div class="conclusion">
+    <strong>5. 操作建议</strong>：SBI=64.6处于<strong>危险区间</strong>。建议维持半仓以下，短线可做高抛低吸，中线持仓需设好止损。避免追高，关注估值合理（PE&lt;80）且有业绩支撑的细分龙头。
+  </div>
+</div>
+
+</div>
+
+<script>
+// 雷达图
+new Chart(document.getElementById('radarChart'), {
+  type: 'radar',
+  data: {
+    labels: ['估值','拥挤度','杠杆','业绩兑现','资金流向','外部环境'],
+    datasets: [{
+      label: 'SBI得分',
+      data: [78,68,60,46,69,53],
+      borderColor: '#ff8800',
+      backgroundColor: 'rgba(255,136,0,0.15)',
+      pointBackgroundColor: '#ff8800',
+      pointBorderColor: '#fff',
+      borderWidth: 2
+    },{
+      label: '预警线(45)',
+      data: [45,45,45,45,45,45],
+      borderColor: 'rgba(255,204,0,0.5)',
+      backgroundColor: 'transparent',
+      borderDash: [4,4],
+      pointRadius: 0,
+      borderWidth: 1
+    },{
+      label: '危险线(70)',
+      data: [70,70,70,70,70,70],
+      borderColor: 'rgba(255,68,68,0.5)',
+      backgroundColor: 'transparent',
+      borderDash: [4,4],
+      pointRadius: 0,
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      r: {
+        min: 0, max: 100,
+        ticks: { stepSize: 20, color: '#667788', backdropColor: 'transparent' },
+        grid: { color: '#1e2d44' },
+        angleLines: { color: '#1e2d44' },
+        pointLabels: { color: '#ccddee', font: { size: 11 } }
+      }
+    },
+    plugins: { legend: { labels: { color: '#8899aa', font: { size: 10 } } } }
+  }
+});
+
+// 资金流向柱状图
+new Chart(document.getElementById('fundChart'), {
+  type: 'bar',
+  data: {
+    labels: ['06-01','06-02','06-03','06-04','06-05'],
+    datasets: [{
+      label: '主力净流入(亿)',
+      data: [-268.83, -35.02, 76.11, 23.28, -134.56],
+      backgroundColor: function(ctx) {
+        return ctx.raw >= 0 ? '#52c41a' : '#ff4d4f';
+      },
+      borderColor: 'transparent',
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      x: { ticks: { color: '#8899aa' }, grid: { color: '#1e2d44' } },
+      y: { ticks: { color: '#8899aa' }, grid: { color: '#1e2d44' } }
+    },
+    plugins: { legend: { labels: { color: '#8899aa' } } }
+  }
+});
+</script>
+</body>
+</html>

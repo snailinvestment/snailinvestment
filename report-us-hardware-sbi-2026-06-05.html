@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美国硬件/半导体SBI泡沫指数日报 2026-06-05</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0e17; color:#e0e6ed; padding:20px; }
+  .container { max-width:960px; margin:0 auto; }
+  h1 { text-align:center; font-size:1.6em; color:#fff; margin-bottom:4px; }
+  .subtitle { text-align:center; color:#8899aa; font-size:0.9em; margin-bottom:24px; }
+  .card { background:#131a2a; border:1px solid #1e2d44; border-radius:12px; padding:20px; margin-bottom:16px; }
+  .sbi-hero { text-align:center; padding:30px 20px; }
+  .sbi-score { font-size:4em; font-weight:800; color:#ffcc00; line-height:1; }
+  .sbi-zone { font-size:1.4em; color:#ffcc00; margin-top:8px; }
+  .sbi-label { color:#8899aa; margin-top:6px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+  .dim-card { background:#0d1220; border:1px solid #1e2d44; border-radius:8px; padding:14px; text-align:center; }
+  .dim-name { color:#8899aa; font-size:0.85em; }
+  .dim-score { font-size:2em; font-weight:700; margin:4px 0; }
+  .dim-weight { color:#667788; font-size:0.75em; }
+  .dim-bar { height:4px; border-radius:2px; background:#1e2d44; margin-top:8px; overflow:hidden; }
+  .dim-bar-fill { height:100%; border-radius:2px; }
+  .section-title { font-size:1.1em; color:#fff; margin-bottom:12px; border-left:3px solid #4a90d9; padding-left:10px; }
+  table { width:100%; border-collapse:collapse; margin:8px 0; }
+  th { background:#0d1220; color:#8899aa; padding:8px 10px; text-align:left; font-size:0.8em; border-bottom:1px solid #1e2d44; }
+  td { padding:8px 10px; border-bottom:1px solid #111827; font-size:0.85em; }
+  .red { color:#ff4d4f; } .green { color:#52c41a; }
+  .highlight { color:#ffd700; font-weight:600; }
+  .conclusion { background:#0d1220; border-left:3px solid #ff8800; padding:12px 16px; margin:8px 0; border-radius:0 8px 8px 0; }
+  .chart-wrap { position:relative; height:280px; margin-top:12px; }
+  @media(max-width:640px) { .grid2{grid-template-columns:1fr} .grid3{grid-template-columns:1fr 1fr} }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>美国硬件/半导体板块 SBI 泡沫指数日报</h1>
+<p class="subtitle">2026-06-05 · SOX费城半导体指数</p>
+
+<div class="card sbi-hero">
+  <div class="sbi-score">64.0</div>
+  <div class="sbi-zone">🟡 预警</div>
+  <div class="sbi-label">SBI &gt; 65 危险 · &gt; 80 极端危险 · &lt; 45 安全</div>
+</div>
+<div class="card"><div class="section-title">📊 六维度评分明细</div><div class="grid3"><div class="dim-card">
+      <div class="dim-name">估值</div>
+      <div class="dim-score" style="color:#ffa940">68</div>
+      <div class="dim-weight">权重 25%</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:68%;background:#ffa940"></div></div>
+    </div><div class="dim-card">
+      <div class="dim-name">拥挤度</div>
+      <div class="dim-score" style="color:#ffa940">73</div>
+      <div class="dim-weight">权重 25%</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:73%;background:#ffa940"></div></div>
+    </div><div class="dim-card">
+      <div class="dim-name">杠杆</div>
+      <div class="dim-score" style="color:#ff6b6b">72</div>
+      <div class="dim-weight">权重 15%</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:72%;background:#ff6b6b"></div></div>
+    </div><div class="dim-card">
+      <div class="dim-name">业绩兑现</div>
+      <div class="dim-score" style="color:#52c41a">36</div>
+      <div class="dim-weight">权重 15%</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:36%;background:#52c41a"></div></div>
+    </div><div class="dim-card">
+      <div class="dim-name">资金流向</div>
+      <div class="dim-score" style="color:#ffc53d">58</div>
+      <div class="dim-weight">权重 10%</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:58%;background:#ffc53d"></div></div>
+    </div><div class="dim-card">
+      <div class="dim-name">外部环境</div>
+      <div class="dim-score" style="color:#ffa940">68</div>
+      <div class="dim-weight">权重 10%</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:68%;background:#ffa940"></div></div>
+    </div></div></div>
+<div class="card">
+  <div class="grid2">
+    <div>
+      <div class="section-title">🎯 六维度雷达图</div>
+      <div class="chart-wrap"><canvas id="radarChart"></canvas></div>
+    </div>
+    <div>
+      <div class="section-title">📉 龙头估值对比(Forward PE vs TTM PE)</div>
+      <div class="chart-wrap"><canvas id="valuationChart"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="section-title">📈 SOX 费城半导体指数行情</div>
+  <table>
+    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+    <tr><td>最新点位</td><td class="highlight">13,617.50</td><td>6/4收盘</td></tr>
+    <tr><td>涨跌幅</td><td class="red">-2.15%</td><td>当日调整</td></tr>
+    <tr><td>年初至今</td><td class="green">+92.25%</td><td>年内涨幅极大</td></tr>
+    <tr><td>近一月</td><td class="green">+29.26%</td><td>短期强势</td></tr>
+    <tr><td>偏离200MA</td><td class="red">+27.22%</td><td>严重偏离均线</td></tr>
+    <tr><td>200MA</td><td>7,371.70</td><td>长期均线</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <div class="section-title">🏢 龙头股估值一览</div>
+  <table>
+    <tr><th>公司</th><th>股价</th><th>涨跌幅</th><th>市值(万亿$)</th><th>Forward PE</th><th>PEG</th><th>PE(TTM)</th></tr>
+    <tr><td>NVDA</td><td>$218.66</td><td class="green">+1.82%</td><td>5.25</td><td>17.68</td><td>0.40</td><td>35.4</td></tr>
+    <tr><td>AMD</td><td>—</td><td>—</td><td>0.85</td><td>39.53</td><td>0.63</td><td>171.72</td></tr>
+    <tr><td>AVGO</td><td>$418.91</td><td class="red">-12.59%</td><td>0.20</td><td>22.06</td><td>0.41</td><td>69.73</td></tr>
+    <tr><td>TSM</td><td>—</td><td>—</td><td>2.31</td><td>22.59</td><td>0.71</td><td>36.98</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <div class="section-title">🎯 S&P 500 集中度</div>
+  <table>
+    <tr><th>指标</th><th>数值</th><th>风险等级</th></tr>
+    <tr><td>Top 10 总权重</td><td class="highlight">35.59%</td><td>🔴 历史极端高位</td></tr>
+    <tr><td>Magnificent 7 权重</td><td class="highlight">30.44%</td><td>🔴 极度集中</td></tr>
+    <tr><td>NVDA 单票权重</td><td>6.24%</td><td>🟠 排名第3</td></tr>
+    <tr><td>HHI指数</td><td>185</td><td>🟠 高于5年均值30%</td></tr>
+    <tr><td>有效持股数(Eff.N)</td><td>54</td><td>🔴 极低</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <div class="section-title">⚠️ 杠杆与融资</div>
+  <table>
+    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+    <tr><td>FINRA融资余额</td><td class="red">$1.304万亿</td><td>历史最高，4月+6.83%</td></tr>
+    <tr><td>融资余额/GDP</td><td class="red">~4%</td><td>历史最高水平</td></tr>
+    <tr><td>10年期国债</td><td>4.48%</td><td>高位运行</td></tr>
+    <tr><td>美联储加息概率</td><td class="red">85%</td><td>年内加息25bp</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <div class="section-title">⚔️ 多空论点对比</div>
+  <div class="grid2">
+    <div style="padding:12px;background:rgba(82,196,26,0.1);border-radius:8px;border:1px solid rgba(82,196,26,0.3)">
+      <div style="color:#52c41a;font-weight:700;margin-bottom:8px">🐂 多头论点</div>
+      <ul style="list-style:none;padding:0;color:#ccddee;font-size:0.85em">
+        <li>• WSTS预测2026全球半导体市场+90%</li>
+        <li>• NVDA PEG=0.4，业绩增速远超估值</li>
+        <li>• AI capex持续增长，Hyperscaler开支强劲</li>
+        <li>• TSM 5年营收CAGR 21.86%</li>
+        <li>• 前瞻PE已从高位回落（NVDA 17.68x）</li>
+      </ul>
+    </div>
+    <div style="padding:12px;background:rgba(255,77,79,0.1);border-radius:8px;border:1px solid rgba(255,77,79,0.3)">
+      <div style="color:#ff4d4f;font-weight:700;margin-bottom:8px">🐻 空头论点</div>
+      <ul style="list-style:none;padding:0;color:#ccddee;font-size:0.85em">
+        <li>• SOX偏离200MA +27%，均值回归压力大</li>
+        <li>• FINRA融资余额1.3万亿，杠杆风险极高</li>
+        <li>• S&amp;P 500 Top 10集中度35.59%历史极端</li>
+        <li>• AVGO单日暴跌12.59%，波动加剧</li>
+        <li>• 美联储加息概率85%，流动性收紧</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="section-title">🎯 核心结论与操作建议</div>
+  <div class="conclusion">
+    <strong>1. 拥挤度为最大风险</strong>：S&amp;P 500 Top 10权重35.59%处于历史极端，NVDA单票6.24%权重意味着一旦龙头回调将引发指数连锁反应。AVGO单日暴跌12.59%已释放波动预警。
+  </div>
+  <div class="conclusion">
+    <strong>2. 杠杆风险接近历史极值</strong>：FINRA融资余额1.304万亿美元，占GDP约4%，为有史以来零售杠杆最紧张水平。历史上每次融资余额创新高后6-9个月内都伴随市场大幅回调。
+  </div>
+  <div class="conclusion">
+    <strong>3. 业绩是唯一安全垫</strong>：NVDA PEG=0.40、Forward PE=17.68x看似合理，但这是建立在AI capex持续高增长的假设上，一旦Hyperscaler缩减开支将面临估值重估。
+  </div>
+  <div class="conclusion">
+    <strong>4. 外部环境趋紧</strong>：10年期国债4.48%，美联储年内加息概率85%，高利率+高杠杆的组合历史上往往以剧烈去杠杆收场。
+  </div>
+  <div class="conclusion">
+    <strong>5. 操作建议</strong>：SBI=64.0处于<strong>危险区间</strong>。建议整体半导体仓位控制在3成以内，短线可持有NVDA（PEG最低），规避高PE中小票。中线等待SOX回归200MA附近再考虑加仓。AVGO暴跌后关注是否企稳，若继续下跌需警惕板块系统性回调。
+  </div>
+</div>
+
+</div>
+
+<script>
+// 雷达图
+new Chart(document.getElementById('radarChart'), {
+  type: 'radar',
+  data: {
+    labels: ['估值','拥挤度','杠杆','业绩兑现','资金流向','外部环境'],
+    datasets: [{
+      label: 'SBI得分',
+      data: [68,73,72,36,58,68],
+      borderColor: '#ff8800',
+      backgroundColor: 'rgba(255,136,0,0.15)',
+      pointBackgroundColor: '#ff8800',
+      pointBorderColor: '#fff',
+      borderWidth: 2
+    },{
+      label: '预警线(45)',
+      data: [45,45,45,45,45,45],
+      borderColor: 'rgba(255,204,0,0.5)',
+      backgroundColor: 'transparent',
+      borderDash: [4,4],
+      pointRadius: 0,
+      borderWidth: 1
+    },{
+      label: '危险线(70)',
+      data: [70,70,70,70,70,70],
+      borderColor: 'rgba(255,68,68,0.5)',
+      backgroundColor: 'transparent',
+      borderDash: [4,4],
+      pointRadius: 0,
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      r: {
+        min: 0, max: 100,
+        ticks: { stepSize: 20, color: '#667788', backdropColor: 'transparent' },
+        grid: { color: '#1e2d44' },
+        angleLines: { color: '#1e2d44' },
+        pointLabels: { color: '#ccddee', font: { size: 11 } }
+      }
+    },
+    plugins: { legend: { labels: { color: '#8899aa', font: { size: 10 } } } }
+  }
+});
+
+// 龙头估值对比
+new Chart(document.getElementById('valuationChart'), {
+  type: 'bar',
+  data: {
+    labels: ['NVDA','AMD','AVGO','TSM'],
+    datasets: [{
+      label: 'Forward PE',
+      data: [17.68, 39.53, 22.06, 22.59],
+      backgroundColor: ['#4a90d9','#ffa940','#ff6b6b','#52c41a'],
+      borderRadius: 4
+    },{
+      label: 'PE(TTM)',
+      data: [35.4, 171.72, 69.73, 36.98],
+      backgroundColor: ['rgba(74,144,217,0.4)','rgba(255,169,64,0.4)','rgba(255,107,107,0.4)','rgba(82,196,26,0.4)'],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      x: { ticks: { color: '#8899aa' }, grid: { color: '#1e2d44' } },
+      y: { type: 'logarithmic', ticks: { color: '#8899aa' }, grid: { color: '#1e2d44' } }
+    },
+    plugins: { legend: { labels: { color: '#8899aa' } } }
+  }
+});
+</script>
+</body>
+</html>
