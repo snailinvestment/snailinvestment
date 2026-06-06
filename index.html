@@ -8,7 +8,7 @@
   :root {
     --bg:#f0f2f5;--surface:#fff;--text:#1a1a2e;--text2:#666;--accent:#1e3a5f;--accent2:#2563eb;
     --border:#e5e7eb;--tag-bg:#eef2f7;--tag-text:#334155;--shadow:0 1px 3px rgba(0,0,0,0.06);
-    --sidebar-w:240px;
+    --sidebar-w:220px;--topbar-h:56px;
   }
   [data-theme="dark"] {
     --bg:#0b0f19;--surface:#111827;--text:#e5e7eb;--text2:#9ca3af;--accent:#60a5fa;--accent2:#93c5fd;
@@ -21,49 +21,76 @@
     transition:background .3s,color .3s;font-size:14px;line-height:1.5;
   }
 
+  /* ── Top bar ── */
+  .topbar {
+    position:fixed;top:0;left:0;right:0;height:var(--topbar-h);z-index:300;
+    background:var(--surface);border-bottom:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 20px 0 0;
+  }
+  .topbar-left {
+    display:flex;align-items:center;gap:0;height:100%;
+  }
+  .topbar-logo {
+    display:flex;align-items:center;gap:10px;padding:0 18px;height:100%;
+    text-decoration:none;color:var(--text);
+    border-right:1px solid var(--border);
+  }
+  .topbar-logo .logo-mark {
+    width:32px;height:32px;border-radius:7px;
+    background:linear-gradient(135deg,#1e3a5f,#2563eb);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;font-weight:700;flex-shrink:0;
+  }
+  .topbar-logo .logo-text {
+    font-weight:800;font-size:1.05rem;letter-spacing:.2px;line-height:1.2;
+  }
+  .topbar-logo .logo-text small {
+    display:block;font-size:.65rem;color:var(--text2);font-weight:500;letter-spacing:.6px;margin-top:1px;
+  }
+  .topbar-tabs {
+    display:flex;align-items:center;gap:2px;padding:0 8px;height:100%;
+  }
+  .topbar-tab {
+    padding:5px 14px;border-radius:6px;text-decoration:none;
+    color:var(--text2);font-size:.82rem;font-weight:500;
+    transition:all .12s;white-space:nowrap;
+  }
+  .topbar-tab:hover {background:var(--tag-bg);color:var(--text);}
+  .topbar-tab.active {background:var(--accent);color:#fff;}
+  .topbar-right {
+    display:flex;align-items:center;gap:10px;
+  }
+  .topbar-search {
+    position:relative;
+  }
+  .topbar-search input {
+    width:220px;padding:6px 10px 6px 30px;border:1px solid var(--border);border-radius:6px;
+    background:var(--bg);color:var(--text);font-size:.82rem;outline:none;
+    transition:border-color .15s,box-shadow .15s;font-family:inherit;
+  }
+  .topbar-search input:focus {border-color:var(--accent);box-shadow:0 0 0 2px rgba(30,58,95,0.08);}
+  .topbar-search::before {
+    content:"🔍";position:absolute;left:9px;top:50%;transform:translateY(-50%);
+    font-size:.78rem;opacity:.45;pointer-events:none;
+  }
+  .topbar-theme {
+    background:none;border:none;color:var(--text2);font-size:1.1rem;cursor:pointer;
+    width:34px;height:34px;border-radius:6px;display:flex;align-items:center;justify-content:center;
+    transition:background .15s;
+  }
+  .topbar-theme:hover {background:var(--tag-bg);}
+  .topbar-hamburger {
+    display:none;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--text);padding:4px;
+  }
+
   /* ── Sidebar ── */
   .sidebar {
-    position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);
+    position:fixed;left:0;top:var(--topbar-h);bottom:0;width:var(--sidebar-w);
     background:var(--surface);border-right:1px solid var(--border);
     display:flex;flex-direction:column;z-index:200;
     transition:transform .3s;
   }
-  /* Logo block: full-width, prominent */
-  .sidebar-brand {
-    display:flex;align-items:center;gap:12px;padding:22px 20px 18px;
-    border-bottom:1px solid var(--border);
-  }
-  .sidebar-brand .logo-mark {
-    width:34px;height:34px;border-radius:7px;
-    background:linear-gradient(135deg,#1e3a5f,#2563eb);
-    display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;flex-shrink:0;font-weight:700;
-  }
-  .sidebar-brand .logo-text {
-    font-weight:800;font-size:1.1rem;color:var(--text);letter-spacing:.3px;
-    line-height:1.2;
-  }
-  .sidebar-brand .logo-text small {
-    display:block;font-size:.68rem;color:var(--text2);font-weight:500;letter-spacing:.5px;margin-top:1px;
-  }
-  /* Search in sidebar */
-  .sidebar-search {
-    padding:12px 16px 8px;
-  }
-  .sidebar-search input {
-    width:100%;padding:7px 10px 7px 30px;border:1px solid var(--border);border-radius:6px;
-    background:var(--bg);color:var(--text);font-size:.82rem;outline:none;
-    transition:border-color .15s,box-shadow .15s;
-    font-family:inherit;
-  }
-  .sidebar-search input:focus {border-color:var(--accent);box-shadow:0 0 0 2px rgba(30,58,95,0.1);}
-  .sidebar-search {position:relative;}
-  .sidebar-search::before {
-    content:"🔍";position:absolute;left:24px;top:50%;transform:translateY(-50%);
-    font-size:.8rem;opacity:.5;pointer-events:none;
-  }
-  .sidebar-nav {flex:1;padding:4px 0 8px;overflow-y:auto;}
-
-  /* nav items */
+  .sidebar-nav {flex:1;padding:10px 0;overflow-y:auto;}
   .nav-item {
     display:flex;align-items:center;gap:9px;padding:9px 16px;
     text-decoration:none;color:var(--text2);font-size:.85rem;
@@ -75,7 +102,6 @@
   .nav-item .nav-icon {font-size:1.05rem;width:20px;text-align:center;flex-shrink:0;}
   .nav-item .nav-arrow {margin-left:auto;font-size:.7rem;transition:transform .2s;color:var(--text2);}
   .nav-item.expanded .nav-arrow {transform:rotate(90deg);}
-
   .nav-sub {display:none;flex-direction:column;}
   .nav-sub.open {display:flex;}
   .nav-sub a {
@@ -85,28 +111,13 @@
   }
   .nav-sub a:hover {background:var(--tag-bg);color:var(--text);}
   .nav-sub a.active {color:var(--accent);font-weight:600;border-left-color:var(--accent);}
-
   .sidebar-bottom {padding:12px 16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-  .theme-btn {background:none;border:none;color:var(--text2);font-size:1.1rem;cursor:pointer;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:background .15s;}
-  .theme-btn:hover {background:var(--tag-bg);}
   .sidebar-version {font-size:.7rem;color:var(--text2);font-weight:500;}
 
-  /* ── Mobile top bar ── */
-  .mobile-header {
-    display:none;position:sticky;top:0;z-index:150;
-    background:var(--surface);border-bottom:1px solid var(--border);
-    padding:0 16px;height:50px;align-items:center;justify-content:space-between;
-  }
-  .mobile-header .logo {display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--text);font-weight:700;font-size:.95rem;}
-  .mobile-header .logo .logo-mark {width:26px;height:26px;border-radius:5px;background:linear-gradient(135deg,#1e3a5f,#2563eb);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.8rem;font-weight:700;}
-  .hamburger {background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--text);padding:4px;}
-
   /* ── Main content ── */
-  .main-wrap {margin-left:var(--sidebar-w);flex:1;min-width:0;}
+  .main-wrap {margin-left:var(--sidebar-w);margin-top:var(--topbar-h);flex:1;min-width:0;}
+  .content {max-width:1200px;margin:0 auto;padding:28px 32px 60px;}
 
-  .content {max-width:1200px;margin:0 auto;padding:32px 32px 60px;}
-
-  /* Section header with more top space */
   .section-hd {display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:6px;}
   .section-hd h2 {font-size:1.15rem;font-weight:700;letter-spacing:.1px;}
   .section-hd .muted {font-size:.78rem;color:var(--text2);font-weight:400;}
@@ -148,17 +159,17 @@
   .panel.active {display:block;animation:fade .25s ease;}
   @keyframes fade {from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
 
-  /* search highlight */
   .card.hidden {display:none;}
-  .card.dim {opacity:.25;}
 
   .overlay {display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:190;}
 
   @media(max-width:768px){
-    .sidebar {transform:translateX(-100%);}
+    .topbar-search input {width:140px;}
+    .topbar-tabs {display:none;}
+    .sidebar {transform:translateX(-100%);top:var(--topbar-h);}
     .sidebar.open {transform:translateX(0);}
     .overlay.open {display:block;}
-    .mobile-header {display:flex;}
+    .topbar-hamburger {display:flex;}
     .main-wrap {margin-left:0;}
     .grid {grid-template-columns:1fr;}
     .content {padding:20px 20px 40px;}
@@ -167,31 +178,33 @@
 </head>
 <body>
 
-<!-- Mobile header -->
-<div class="mobile-header">
-  <a href="#" class="logo">
-    <span class="logo-mark">S</span><span>Snail IR</span>
-  </a>
-  <button class="hamburger" onclick="toggleSidebar()">☰</button>
-</div>
+<!-- Top bar -->
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-logo" onclick="switchCat('china');return false;">
+      <span class="logo-mark">S</span>
+      <div class="logo-text">
+        Snail IR
+        <small>INVESTMENT RESEARCH</small>
+      </div>
+    </a>
+    <nav class="topbar-tabs" id="topbarTabs">
+      <!-- tabs injected by JS -->
+    </nav>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-search">
+      <input type="text" id="searchInput" placeholder="搜索报告..." oninput="doSearch(this.value)">
+    </div>
+    <button class="topbar-theme" onclick="toggleTheme()" title="切换主题">🌙</button>
+    <button class="topbar-hamburger" onclick="toggleSidebar()">☰</button>
+  </div>
+</header>
+
 <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
 <!-- Sidebar -->
 <aside class="sidebar" id="sidebar">
-  <!-- Logo: full-width block -->
-  <div class="sidebar-brand">
-    <span class="logo-mark">S</span>
-    <div class="logo-text">
-      Snail IR
-      <small>INVESTMENT RESEARCH</small>
-    </div>
-  </div>
-
-  <!-- Search -->
-  <div class="sidebar-search">
-    <input type="text" id="searchInput" placeholder="搜索报告..." oninput="doSearch(this.value)">
-  </div>
-
   <nav class="sidebar-nav" id="sidebarNav">
     <a href="#" class="nav-item active" data-cat="china" onclick="switchCat('china');return false;">
       <span class="nav-icon">🏭</span><span>A 股</span>
@@ -221,8 +234,7 @@
     </a>
   </nav>
   <div class="sidebar-bottom">
-    <span class="sidebar-version">v1.3</span>
-    <button class="theme-btn" onclick="toggleTheme()" title="切换主题">🌙</button>
+    <span class="sidebar-version">v1.4</span>
   </div>
 </aside>
 
@@ -506,16 +518,55 @@ const semiToggle = document.getElementById('semiToggle');
 const semiSub = document.getElementById('semiSub');
 const semiCnLink = document.getElementById('semi-cn-link');
 const semiUsLink = document.getElementById('semi-us-link');
+const topbarTabs = document.getElementById('topbarTabs');
+
+const tabConfig = {
+  china: [
+    {text:'化工价格', target:'panel-china', active:true},
+    {text:'半导体热度', target:'semi-cn-section'},
+  ],
+  hk: [
+    {text:'深度投研', target:'panel-hk', active:true},
+  ],
+  us: [
+    {text:'深度投研', target:'panel-us', active:true},
+    {text:'半导体热度', target:'semi-us-section'},
+  ],
+  macro: [
+    {text:'宏观周记', target:'panel-macro', active:true},
+  ],
+};
+
+function renderTabs(cat){
+  const tabs = tabConfig[cat] || [];
+  topbarTabs.innerHTML = tabs.map((t,i) => {
+    const isFirst = i===0;
+    return `<a href="#" class="topbar-tab ${isFirst?'active':''}" onclick="scrollToSection('${t.target}');return false;">${t.text}</a>`;
+  }).join('');
+}
+
+function scrollToSection(id){
+  const el = document.getElementById(id);
+  if(el){
+    el.scrollIntoView({behavior:'smooth',block:'start'});
+    // update active tab
+    topbarTabs.querySelectorAll('.topbar-tab').forEach(tab=>tab.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+}
 
 function switchCat(cat, scrollTarget){
   sidebarNav.querySelectorAll('.nav-item[data-cat]').forEach(a=>a.classList.toggle('active', a.dataset.cat===cat));
   panels.forEach(p=>p.classList.toggle('active', p.id==='panel-'+cat));
+  renderTabs(cat);
   if(window.innerWidth<=768) toggleSidebar(false);
   if(scrollTarget){
     setTimeout(()=>{
       const el = document.getElementById(scrollTarget + '-section');
       if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
     }, 100);
+  } else {
+    window.scrollTo({top:0,behavior:'smooth'});
   }
 }
 
@@ -546,7 +597,7 @@ function toggleSidebar(forceClose){
 
 function toggleTheme(){
   const body = document.body;
-  const btn = document.querySelector('.theme-btn');
+  const btn = document.querySelector('.topbar-theme');
   const isDark = body.getAttribute('data-theme')==='dark';
   if(isDark){body.removeAttribute('data-theme');btn.textContent='🌙';localStorage.setItem('theme','light');}
   else{body.setAttribute('data-theme','dark');btn.textContent='☀️';localStorage.setItem('theme','dark');}
@@ -557,20 +608,15 @@ function doSearch(q){
   const term = q.trim().toLowerCase();
   const allCards = document.querySelectorAll('.card');
   if(!term){
-    allCards.forEach(c=>{c.classList.remove('hidden','dim');});
+    allCards.forEach(c=>{c.classList.remove('hidden');});
     document.querySelectorAll('.section-hd').forEach(h=>h.style.display='');
+    document.querySelectorAll('.grid').forEach(g=>g.style.display='');
     return;
   }
   allCards.forEach(card=>{
     const text = card.innerText.toLowerCase();
-    if(text.includes(term)){
-      card.classList.remove('hidden','dim');
-    } else {
-      card.classList.add('hidden');
-      card.classList.remove('dim');
-    }
+    card.classList.toggle('hidden', !text.includes(term));
   });
-  // hide empty section headers
   document.querySelectorAll('.panel.active .section-hd').forEach(hd=>{
     const grid = hd.nextElementSibling;
     if(grid && grid.classList.contains('grid')){
@@ -584,12 +630,13 @@ function doSearch(q){
 // restore theme
 if(localStorage.getItem('theme')==='dark'){
   document.body.setAttribute('data-theme','dark');
-  document.querySelector('.theme-btn').textContent='☀️';
+  document.querySelector('.topbar-theme').textContent='☀️';
 }
 
 // init
 (function init(){
   const activePanel = document.querySelector('.panel.active');
+  if(activePanel) renderTabs(activePanel.id.replace('panel-',''));
   if(activePanel && (activePanel.id==='panel-china' || activePanel.id==='panel-us')){
     semiSub.classList.add('open');
     semiToggle.classList.add('expanded');
