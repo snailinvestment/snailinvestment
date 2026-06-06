@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泡泡玛特 9992.HK — 深度投研报告 | 2026.6.7</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ms-navy:    #0a1628;
+    --ms-blue:    #003087;
+    --ms-accent:  #0066cc;
+    --ms-gold:    #c8a84b;
+    --ms-silver:  #8a9bb5;
+    --ms-light:   #f0f3f8;
+    --ms-white:   #ffffff;
+    --ms-red:     #c0392b;
+    --ms-green:   #1a7a4a;
+    --border:     rgba(0,48,135,0.15);
+    --card-bg:    rgba(255,255,255,0.97);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--ms-navy);
+    color: #1a2440;
+    font-size: 13.5px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .report-header {
+    background: linear-gradient(135deg, #0a1628 0%, #001650 50%, #0a1628 100%);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse at 70% 50%, rgba(0,102,204,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 10% 80%, rgba(200,168,75,0.08) 0%, transparent 50%);
+  }
+  .header-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .header-left {
+    padding: 48px 48px 40px;
+    border-right: 1px solid rgba(200,168,75,0.2);
+  }
+  .firm-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ms-gold);
+    margin-bottom: 28px;
+  }
+  .firm-tag::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--ms-gold);
+  }
+  .report-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--ms-white);
+    line-height: 1.25;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+  .report-subline {
+    font-size: 13px;
+    color: var(--ms-silver);
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+  .meta-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .meta-item { }
+  .meta-label {
+    font-size: 9.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(138,155,181,0.7);
+    display: block;
+    margin-bottom: 3px;
+  }
+  .meta-val {
+    font-size: 12.5px;
+    color: rgba(240,243,248,0.9);
+    font-weight: 500;
+  }
+  .header-right {
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+  .rating-block {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid rgba(200,168,75,0.4);
+    border-radius: 3px;
+    background: rgba(200,168,75,0.06);
+  }
+  .rating-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ms-gold);
+    margin-bottom: 8px;
+  }
+  .rating-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ms-green);
+    letter-spacing: 1px;
+  }
+  .rating-val.hold { color: #d4a017; }
+  .price-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .price-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 3px;
+    padding: 12px 14px;
+  }
+  .price-card-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ms-silver);
+    margin-bottom: 5px;
+  }
+  .price-card-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ms-white);
+  }
+  .price-card-val.target { color: var(--ms-gold); }
+  .price-card-sub {
+    font-size: 10px;
+    color: rgba(138,155,181,0.7);
+    margin-top: 2px;
+  }
+  .ticker-strip {
+    background: rgba(0,48,135,0.7);
+    border-top: 1px solid rgba(200,168,75,0.2);
+    padding: 10px 48px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    position: relative; z-index:1;
+  }
+  .ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: rgba(240,243,248,0.8);
+  }
+  .ticker-name { color: var(--ms-silver); font-size: 9.5px; }
+  .chg-pos { color: #34c97a; }
+  .chg-neg { color: #e05555; }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+    align-items: start;
+  }
+  .main-col { display: flex; flex-direction: column; gap: 20px; }
+  .side-col { display: flex; flex-direction: column; gap: 20px; }
+
+  /* ── SECTION CARD ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px 13px;
+    background: linear-gradient(to right, #f7f9fc, #fff);
+    border-bottom: 2px solid var(--ms-blue);
+  }
+  .card-header-accent {
+    width: 3px; height: 18px;
+    background: var(--ms-blue);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .card-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--ms-blue);
+  }
+  .card-body { padding: 20px 22px; }
+
+  /* ── DATA TABLE ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+  th {
+    background: #f0f3f8;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #4a5568;
+    padding: 9px 12px;
+    text-align: left;
+    border-bottom: 1px solid #dde3ed;
+  }
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #edf0f5;
+    color: #2d3748;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(0,48,135,0.02); }
+  .td-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    text-align: right;
+  }
+  .td-pos { color: var(--ms-green); font-weight: 600; }
+  .td-neg { color: var(--ms-red); font-weight: 600; }
+  .td-muted { color: #8a9bb5; font-size: 11.5px; }
+  .highlight-row td { background: rgba(0,48,135,0.04); font-weight: 600; }
+
+  /* ── KPI CARDS ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .kpi-item {
+    padding: 18px 16px;
+    border-right: 1px solid #edf0f5;
+    border-bottom: 1px solid #edf0f5;
+  }
+  .kpi-item:nth-child(4n) { border-right: none; }
+  .kpi-item:nth-last-child(-n+4) { border-bottom: none; }
+  .kpi-label {
+    font-size: 9.5px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--ms-silver);
+    margin-bottom: 6px;
+  }
+  .kpi-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ms-navy);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .kpi-change {
+    font-size: 10.5px;
+    font-weight: 600;
+  }
+  .kpi-change.pos { color: var(--ms-green); }
+  .kpi-change.neg { color: var(--ms-red); }
+
+  /* ── THESIS POINTS ── */
+  .thesis-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .thesis-item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+  .thesis-num {
+    width: 28px; height: 28px;
+    background: var(--ms-blue);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 2px;
+    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .thesis-num.bear { background: var(--ms-red); }
+  .thesis-text { font-size: 12.5px; color: #2d3748; }
+  .thesis-text strong { color: var(--ms-navy); display: block; margin-bottom: 2px; font-size: 12px; font-weight: 600; }
+
+  /* ── SEGMENT BAR ── */
+  .seg-item { margin-bottom: 14px; }
+  .seg-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+  .seg-name { font-weight: 500; color: #2d3748; }
+  .seg-pct { font-family: 'IBM Plex Mono', monospace; color: var(--ms-blue); font-weight: 600; }
+  .seg-bar-bg {
+    height: 6px;
+    background: #edf0f5;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .seg-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1s ease;
+  }
+  .seg-sub {
+    margin-top: 3px;
+    font-size: 10.5px;
+    color: var(--ms-silver);
+  }
+
+  /* ── VALUATION ── */
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .scenario-card {
+    border: 1px solid #dde3ed;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .scenario-header {
+    padding: 10px 14px 9px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+  .scenario-header.bull { background: rgba(26,122,74,0.1); color: var(--ms-green); }
+  .scenario-header.base { background: rgba(0,48,135,0.08); color: var(--ms-blue); }
+  .scenario-header.bear { background: rgba(192,57,43,0.08); color: var(--ms-red); }
+  .scenario-body { padding: 12px 14px; }
+  .scenario-price {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--ms-navy);
+  }
+  .scenario-prob {
+    font-size: 10px;
+    color: var(--ms-silver);
+    margin-bottom: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .scenario-desc {
+    font-size: 11.5px;
+    color: #4a5568;
+    line-height: 1.5;
+  }
+
+  /* ── RISK ── */
+  .risk-item {
+    padding: 12px 14px;
+    border-left: 3px solid;
+    margin-bottom: 10px;
+    background: #fafbfc;
+    border-radius: 0 3px 3px 0;
+  }
+  .risk-item.high { border-color: var(--ms-red); }
+  .risk-item.mid  { border-color: #d4a017; }
+  .risk-item.low  { border-color: var(--ms-silver); }
+  .risk-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  .risk-name { font-size: 12px; font-weight: 600; color: var(--ms-navy); }
+  .risk-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+  .risk-badge.high { background: rgba(192,57,43,0.12); color: var(--ms-red); }
+  .risk-badge.mid  { background: rgba(212,160,23,0.12); color: #b8860b; }
+  .risk-badge.low  { background: rgba(138,155,181,0.12); color: #5a7080; }
+  .risk-desc { font-size: 11.5px; color: #4a5568; }
+
+  /* ── FOOTNOTE / SOURCE ── */
+  .source-bar {
+    background: #0a1628;
+    border-top: 1px solid rgba(200,168,75,0.15);
+    padding: 14px 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .source-label {
+    font-size: 9.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ms-gold);
+    flex-shrink: 0;
+  }
+  .source-items {
+    font-size: 10px;
+    color: rgba(138,155,181,0.7);
+  }
+  .disclaimer {
+    font-size: 10px;
+    color: rgba(138,155,181,0.5);
+    padding: 10px 48px 18px;
+    background: #0a1628;
+    line-height: 1.6;
+  }
+
+  /* MISC */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, var(--ms-blue), transparent);
+    margin: 14px 0;
+    opacity: 0.2;
+  }
+  .inline-tag {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .tag-buy   { background: rgba(26,122,74,0.12); color: var(--ms-green); }
+  .tag-hold  { background: rgba(212,160,23,0.12); color: #b8860b; }
+  .tag-sell  { background: rgba(192,57,43,0.12); color: var(--ms-red); }
+  .section-note {
+    font-size: 10.5px;
+    color: var(--ms-silver);
+    font-style: italic;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #edf0f5;
+  }
+  .sotp-table { width:100%; }
+  .sotp-total td { 
+    font-weight: 700; 
+    background: rgba(0,48,135,0.06); 
+    border-top: 2px solid var(--ms-blue);
+  }
+  p { margin-bottom: 10px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* WATERMARK */
+  .wm {
+    position: fixed;
+    bottom: 20px;
+    right: 24px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.12);
+    writing-mode: vertical-rl;
+    z-index: 0;
+    pointer-events: none;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  @media print {
+    body { background: white; }
+    .card { box-shadow: none; }
+    .wm { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- WATERMARK -->
+<div class="wm">MORGAN STANLEY RESEARCH · 2026.06.07 · 严禁转载</div>
+
+<!-- ═══════════════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════════════ -->
+<div class="report-header">
+  <div class="header-grid">
+    <div class="header-left">
+      <div class="firm-tag">Morgan Stanley Research &nbsp;|&nbsp; 亚太消费零售 &amp; TMT</div>
+      <h1 class="report-headline">泡泡玛特（9992.HK）<br>全球IP平台化重估：<br>周期底部的非线性增长机遇</h1>
+      <p class="report-subline">深度投研报告 · 2026年6月7日更新 &nbsp;|&nbsp; 首席分析师团队：消费零售 &amp; TMT</p>
+      <div class="meta-row">
+        <div class="meta-item"><span class="meta-label">股票代码</span><span class="meta-val">9992.HK</span></div>
+        <div class="meta-item"><span class="meta-label">交易所</span><span class="meta-val">香港联交所主板</span></div>
+        <div class="meta-item"><span class="meta-label">行业</span><span class="meta-val">消费品 · 潮流玩具 / IP运营</span></div>
+        <div class="meta-item"><span class="meta-label">市值</span><span class="meta-val">约 HK$2,200亿</span></div>
+        <div class="meta-item"><span class="meta-label">基准日收盘价</span><span class="meta-val">~HK$163</span></div>
+        <div class="meta-item"><span class="meta-label">报告日期</span><span class="meta-val">2026.06.07</span></div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="rating-block">
+        <div class="rating-label">投资评级</div>
+        <div class="rating-val hold">增&nbsp;&nbsp;持</div>
+        <div style="font-size:10px;color:var(--ms-silver);margin-top:6px;">Overweight（维持）</div>
+      </div>
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="price-card-label">目标价</div>
+          <div class="price-card-val target">HK$240</div>
+          <div class="price-card-sub">12个月 · 基准情景</div>
+        </div>
+        <div class="price-card">
+          <div class="price-card-label">当前价</div>
+          <div class="price-card-val">~163</div>
+          <div class="price-card-sub">潜在涨幅 +47%</div>
+        </div>
+        <div class="price-card">
+          <div class="price-card-label">乐观目标</div>
+          <div class="price-card-val target">HK$320</div>
+          <div class="price-card-sub">牛市情景</div>
+        </div>
+        <div class="price-card">
+          <div class="price-card-label">悲观底部</div>
+          <div class="price-card-val" style="color:#e05555;">HK$100</div>
+          <div class="price-card-sub">熊市情景</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ticker-strip">
+    <span class="ticker-item"><span class="ticker-name">9992.HK</span> ~163.0 <span class="chg-neg">▼ -14.2% YTD</span></span>
+    <span class="ticker-item"><span class="ticker-name">FY25 营收</span> RMB 371.2亿 <span class="chg-pos">+184.7%</span></span>
+    <span class="ticker-item"><span class="ticker-name">FY25 净利润</span> RMB 130.1亿 <span class="chg-pos">+293.3%</span></span>
+    <span class="ticker-item"><span class="ticker-name">FY25 毛利率</span> 72.1% <span class="chg-pos">+5.3ppt</span></span>
+    <span class="ticker-item"><span class="ticker-name">2026E P/E</span> ~13x <span class="chg-pos">历史低位</span></span>
+    <span class="ticker-item"><span class="ticker-name">数据来源</span> 公司年报 · 港交所 · Bloomberg</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     BODY
+═══════════════════════════════════════════════════ -->
+<div class="container">
+  <div class="main-col">
+
+    <!-- ① 核心投资论点 -->
+    <div class="card">
+      <div class="card-header"><div class="card-header-accent"></div><span class="card-title">一、核心投资论点 — Investment Thesis</span></div>
+      <div class="card-body">
+        <div class="thesis-grid">
+          <div class="thesis-item">
+            <div class="thesis-num">01</div>
+            <div class="thesis-text">
+              <strong>估值已回调至历史安全边际，风险/收益比再度转正</strong>
+              财报后股价累计下跌逾30%（峰值HK$280→~HK$163），2026E P/E压缩至约13×，低于三丽鸥（35×）、迪士尼（20×）历史均值。交银国际测算当前股价对应2026年预期市盈率仅12.1×，为公司上市以来估值低位。在核心增长逻辑未根本破坏的前提下，当前为高性价比布局窗口。
+            </div>
+          </div>
+          <div class="thesis-item">
+            <div class="thesis-num">02</div>
+            <div class="thesis-text">
+              <strong>全球IP平台化转型正在进行时，海外长期渗透空间巨大</strong>
+              FY25海外营收RMB 162.7亿，同比+291.9%，占总营收43.8%，2026年大概率首次超越国内。美国市场FY25营收同比+748%；欧洲+5倍；亚太+158%。公司规划2026年美国门店从72家扩张至100家以上，海外单店营收约为国内3倍，高定价优势（同款欧洲售价约为国内+50%）形成结构性毛利支撑。Labubu Sony Pictures电影合作进一步强化IP生命周期。
+            </div>
+          </div>
+          <div class="thesis-item">
+            <div class="thesis-num">03</div>
+            <div class="thesis-text">
+              <strong>毛利率/净利率双创历史高位，经营杠杆效应显著</strong>
+              FY25毛利率72.1%（+5.3ppt YoY），调整后净利率35.2%（+9.1ppt YoY）。越南供应链快速迁移已覆盖大部分美国出货，有效对冲关税冲击，大摩测算关税对利润率实际影响低于此前预期。美国产品均价上调12-27%被消费者接受，长期提升ASP（平均销售单价）。
+            </div>
+          </div>
+          <div class="thesis-item">
+            <div class="thesis-num">04</div>
+            <div class="thesis-text">
+              <strong>IP矩阵"一超多强"格局初步形成，多元化风险有所对冲</strong>
+              FY25收入破10亿元IP达6个（THE MONSTERS/Labubu、MOLLY、SKULLPANDA、CRYBABY、DIMOO、星星人），破亿元IP共17个（+4 vs. H1）。毛绒品类FY25营收RMB 187.1亿（占比50.4%），首次超越手办成为第一大品类，体现产品结构多元化能力。Labubu 4.0迭代（预计Q3 2026上市）为关键催化剂。
+            </div>
+          </div>
+          <div class="thesis-item">
+            <div class="thesis-num bear">R</div>
+            <div class="thesis-text">
+              <strong>核心风险：Labubu单IP依赖度（~38%营收）是制约估值修复的关键变量</strong>
+              Q4 2025海外收入环比显著下滑（美洲增速从1265%降至633%），Q1 2026整体增速大幅放缓，海外动能是否触底待验证（瑞银预测全年增速下调至15%，低于管理层20%指引）。美银已将评级从"买入"下调至"中性"，目标价从300港元大幅下调至170港元。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ② 核心财务数据 -->
+    <div class="card">
+      <div class="card-header"><div class="card-header-accent"></div><span class="card-title">二、核心财务数据摘要 — FY2025 Annual Results（2026.3.25披露）</span></div>
+      <div class="card-body">
+        <div class="kpi-grid">
+          <div class="kpi-item">
+            <div class="kpi-label">全年营收</div>
+            <div class="kpi-val">371.2亿</div>
+            <div class="kpi-change pos">▲ +184.7% YoY</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-label">净利润</div>
+            <div class="kpi-val">130.1亿</div>
+            <div class="kpi-change pos">▲ +293.3% YoY</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-label">调整后净利润</div>
+            <div class="kpi-val">130.8亿</div>
+            <div class="kpi-change pos">▲ +284.5% YoY</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-label">毛利率</div>
+            <div class="kpi-val">72.1%</div>
+            <div class="kpi-change pos">▲ +5.3ppt</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-label">调整后净利率</div>
+            <div class="kpi-val">35.2%</div>
+            <div class="kpi-change pos">▲ +9.1ppt</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-label">海外营收占比</div>
+            <div class="kpi-val">43.8%</div>
+            <div class="kpi-change pos">▲ +21.0ppt</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-label">存货周转天数</div>
+            <div class="kpi-val">83天</div>
+            <div class="kpi-change pos">▼ -19天</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-label">会员规模</div>
+            <div class="kpi-val">~6,800万</div>
+            <div class="kpi-change pos">贡献91%+销售</div>
+          </div>
+        </div>
+        <div style="height:1px;background:#edf0f5;margin:0 0 16px;"></div>
+        <table>
+          <thead>
+            <tr>
+              <th>财年</th>
+              <th>营收（亿元）</th>
+              <th>同比</th>
+              <th>毛利率</th>
+              <th>经调整净利率</th>
+              <th>调整后净利润</th>
+              <th>P/E（测算）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FY2022</td>
+              <td class="td-num">46.2</td>
+              <td class="td-num td-muted">+2.8%</td>
+              <td class="td-num">42.1%</td>
+              <td class="td-num">10.2%</td>
+              <td class="td-num">4.7</td>
+              <td class="td-num td-muted">—</td>
+            </tr>
+            <tr>
+              <td>FY2023</td>
+              <td class="td-num">63.0</td>
+              <td class="td-num td-pos">+36.3%</td>
+              <td class="td-num">61.3%</td>
+              <td class="td-num">18.9%</td>
+              <td class="td-num">11.9</td>
+              <td class="td-num td-muted">—</td>
+            </tr>
+            <tr>
+              <td>FY2024</td>
+              <td class="td-num">130.4</td>
+              <td class="td-num td-pos">+106.9%</td>
+              <td class="td-num">66.8%</td>
+              <td class="td-num">26.1%</td>
+              <td class="td-num">34.0</td>
+              <td class="td-num td-muted">~25×</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>FY2025A</strong></td>
+              <td class="td-num"><strong>371.2</strong></td>
+              <td class="td-num td-pos"><strong>+184.7%</strong></td>
+              <td class="td-num"><strong>72.1%</strong></td>
+              <td class="td-num"><strong>35.2%</strong></td>
+              <td class="td-num"><strong>130.8</strong></td>
+              <td class="td-num">—</td>
+            </tr>
+            <tr>
+              <td>FY2026E</td>
+              <td class="td-num">445.0</td>
+              <td class="td-num td-pos">+19.9%</td>
+              <td class="td-num">~71.5%</td>
+              <td class="td-num">~33%</td>
+              <td class="td-num">146.9</td>
+              <td class="td-num">~13×</td>
+            </tr>
+            <tr>
+              <td>FY2027E</td>
+              <td class="td-num">534.0</td>
+              <td class="td-num td-pos">+20.0%</td>
+              <td class="td-num">~72.0%</td>
+              <td class="td-num">~34%</td>
+              <td class="td-num">181.6</td>
+              <td class="td-num">~10×</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="section-note">数据来源：泡泡玛特2025年年度业绩公告（2026.3.25）、港交所披露易；FY2026-27E为MS研究团队测算，综合参考中金（154/177亿元）、交银（154/184.8亿元）、华泰（140/171亿元）等机构预测区间后取均值。</p>
+      </div>
+    </div>
+
+    <!-- ③ 分地区收入 -->
+    <div class="card">
+      <div class="card-header"><div class="card-header-accent"></div><span class="card-title">三、分地区营收结构分析（FY2025）</span></div>
+      <div class="card-body">
+        <table>
+          <thead>
+            <tr>
+              <th>地区</th>
+              <th>FY25营收（亿元）</th>
+              <th>YoY增长</th>
+              <th>占总营收比</th>
+              <th>门店数（FY25末）</th>
+              <th>核心驱动</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight-row">
+              <td><strong>中国大陆</strong></td>
+              <td class="td-num">208.5</td>
+              <td class="td-num td-pos">+134.6%</td>
+              <td class="td-num">56.2%</td>
+              <td class="td-num">445家（净增14）</td>
+              <td class="td-muted">Labubu毛绒、SKULLPANDA新品、会员复购</td>
+            </tr>
+            <tr>
+              <td>亚太（含港澳台）</td>
+              <td class="td-num">80.1</td>
+              <td class="td-num td-pos">+157.6%</td>
+              <td class="td-num">21.6%</td>
+              <td class="td-num">~74家</td>
+              <td class="td-muted">泰国、日本、韩国; 旅游零售策略; Labubu爆发</td>
+            </tr>
+            <tr>
+              <td><strong>美洲</strong></td>
+              <td class="td-num"><strong>68.1</strong></td>
+              <td class="td-num td-pos"><strong>+748.4%</strong></td>
+              <td class="td-num">18.3%</td>
+              <td class="td-num">72家</td>
+              <td class="td-muted">美国市场爆发；Labubu v3全球热潮；零售+线上双驱</td>
+            </tr>
+            <tr>
+              <td>欧洲及其他</td>
+              <td class="td-num">14.5</td>
+              <td class="td-num td-pos">+500%+</td>
+              <td class="td-num">3.9%</td>
+              <td class="td-num">~22家</td>
+              <td class="td-muted">官网线上领跑；地标门店布局（巴黎、伦敦）</td>
+            </tr>
+            <tr style="border-top:2px solid #dde3ed;font-weight:700;">
+              <td><strong>合计</strong></td>
+              <td class="td-num"><strong>371.2</strong></td>
+              <td class="td-num td-pos"><strong>+184.7%</strong></td>
+              <td class="td-num">100%</td>
+              <td class="td-num">~613家</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="divider"></div>
+        <p style="font-size:12.5px;color:#2d3748;margin-bottom:12px;">
+          <strong>关键预期差：</strong> Q4 2025海外增速骤降是当前股价最核心的压制因素。美洲增速从Q3的超1265%降至633%，欧洲从735%降至436%。COO司德于Q1 2026业绩会坦言："2025年海外高速增长很大程度依托爆款红利，2026年更依赖精细化运营。"这一表述意味着海外增速从"自发爆发"向"主动运营"的质变切换，短期增速下台阶不可避免。
+        </p>
+        <p style="font-size:12.5px;color:#2d3748;margin-bottom:0;">
+          <strong>中长期判断：</strong> 海外渗透率仍处早期阶段。美国72家门店（2026目标100家+）对比中国445家，空间量级巨大；海外单店营收约为国内3倍，叠加高定价优势（欧洲产品折价较国内高约50%），长期扩张的单位经济模型高度可持续。
+        </p>
+        <p class="section-note">数据来源：泡泡玛特2025年年度业绩公告（港交所披露易，2026.3.25）；China Daily、新浪财经报道综合。</p>
+      </div>
+    </div>
+
+    <!-- ④ IP矩阵分析 -->
+    <div class="card">
+      <div class="card-header"><div class="card-header-accent"></div><span class="card-title">四、IP矩阵与产品结构深度剖析</span></div>
+      <div class="card-body">
+        <table style="margin-bottom:18px;">
+          <thead>
+            <tr>
+              <th>IP / 系列</th>
+              <th>FY25营收（亿元）</th>
+              <th>YoY增长</th>
+              <th>占总营收</th>
+              <th>生命周期阶段</th>
+              <th>分析师评估</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight-row">
+              <td><strong>THE MONSTERS（Labubu）</strong></td>
+              <td class="td-num"><strong>141.6</strong></td>
+              <td class="td-num td-pos"><strong>+365.7%</strong></td>
+              <td class="td-num"><strong>~38%</strong></td>
+              <td><span style="color:#d4a017;font-weight:600;">成熟期</span></td>
+              <td class="td-muted">全球超级IP；v4.0为Q3催化剂；Sony电影延长周期</td>
+            </tr>
+            <tr>
+              <td>SKULLPANDA</td>
+              <td class="td-num">35.4</td>
+              <td class="td-num td-pos">+170.6%</td>
+              <td class="td-num">9.5%</td>
+              <td><span style="color:var(--ms-green);font-weight:600;">成长期</span></td>
+              <td class="td-muted">暗黑美学IP；东南亚共鸣强；主力候补现金流IP</td>
+            </tr>
+            <tr>
+              <td>CRYBABY</td>
+              <td class="td-num">29.3</td>
+              <td class="td-num td-pos">+151.4%</td>
+              <td class="td-num">7.9%</td>
+              <td><span style="color:var(--ms-green);font-weight:600;">成长期</span></td>
+              <td class="td-muted">情绪共鸣IP；Z世代核心圈层；联名势能强</td>
+            </tr>
+            <tr>
+              <td>MOLLY</td>
+              <td class="td-num">27.8</td>
+              <td class="td-num td-pos">+205.3%</td>
+              <td class="td-num">7.5%</td>
+              <td><span style="color:var(--ms-blue);font-weight:600;">再生期</span></td>
+              <td class="td-muted">老牌IP焕新；MEGA系列支撑高客单价</td>
+            </tr>
+            <tr>
+              <td>DIMOO</td>
+              <td class="td-num">27.8</td>
+              <td class="td-num td-pos">+205.3%</td>
+              <td class="td-num">7.5%</td>
+              <td><span style="color:var(--ms-green);font-weight:600;">成长期</span></td>
+              <td class="td-muted">梦幻星球美学；东亚核心消费群强认知</td>
+            </tr>
+            <tr>
+              <td>Twinkle Twinkle / 星星人</td>
+              <td class="td-num">20.6</td>
+              <td class="td-num td-pos">快速增长</td>
+              <td class="td-num">5.5%</td>
+              <td><span style="color:var(--ms-green);font-weight:600;">导入期+</span></td>
+              <td class="td-muted">新锐IP；验证孵化能力</td>
+            </tr>
+            <tr>
+              <td>MEGA系列（大手办）</td>
+              <td class="td-num">19.2</td>
+              <td class="td-num td-muted">+13.8%</td>
+              <td class="td-num">5.2%</td>
+              <td><span style="color:#8a9bb5;font-weight:600;">稳定期</span></td>
+              <td class="td-muted">增速放缓；高客单价护航平均ASP</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="font-size:12.5px;font-weight:600;color:var(--ms-navy);margin-bottom:8px;">产品品类结构变迁（FY25）</p>
+        <div class="seg-item">
+          <div class="seg-header"><span class="seg-name">毛绒玩具（首次成为第一大品类）</span><span class="seg-pct">50.4%</span></div>
+          <div class="seg-bar-bg"><div class="seg-bar-fill" style="width:50%;background:linear-gradient(to right,#0066cc,#003087);"></div></div>
+          <div class="seg-sub">FY25营收 RMB 187.1亿 &nbsp;|&nbsp; YoY +560.6% &nbsp;|&nbsp; Labubu毛绒大盒带动社交货币效应全球蔓延</div>
+        </div>
+        <div class="seg-item">
+          <div class="seg-header"><span class="seg-name">传统手办（盲盒）</span><span class="seg-pct">32.4%</span></div>
+          <div class="seg-bar-bg"><div class="seg-bar-fill" style="width:32%;background:linear-gradient(to right,#0066cc,#003087);"></div></div>
+          <div class="seg-sub">FY25营收 RMB 120.2亿 &nbsp;|&nbsp; YoY +73.3% &nbsp;|&nbsp; 占比下滑（FY24：53.2%），增速相对放缓</div>
+        </div>
+        <div class="seg-item">
+          <div class="seg-header"><span class="seg-name">衍生品及其他</span><span class="seg-pct">12.0%</span></div>
+          <div class="seg-bar-bg"><div class="seg-bar-fill" style="width:12%;background:linear-gradient(to right,#c8a84b,#a07830);"></div></div>
+          <div class="seg-sub">FY25营收 RMB 44.7亿 &nbsp;|&nbsp; YoY +182.1% &nbsp;|&nbsp; 快速形成中的增量品类</div>
+        </div>
+        <div class="seg-item">
+          <div class="seg-header"><span class="seg-name">MEGA大手办</span><span class="seg-pct">5.2%</span></div>
+          <div class="seg-bar-bg"><div class="seg-bar-fill" style="width:5%;background:linear-gradient(to right,#8a9bb5,#6a7b90);"></div></div>
+          <div class="seg-sub">FY25营收 RMB 19.2亿 &nbsp;|&nbsp; YoY +13.8% &nbsp;|&nbsp; 增速放缓，但维持高客单价锚定</div>
+        </div>
+        <p class="section-note">数据来源：泡泡玛特2025年年度业绩公告（港交所）；ichongqing.info报道（2026.3.31）。</p>
+      </div>
+    </div>
+
+    <!-- ⑤ SOTP估值 -->
+    <div class="card">
+      <div class="card-header"><div class="card-header-accent"></div><span class="card-title">五、SOTP估值模型（分部估值法）— 12个月目标价</span></div>
+      <div class="card-body">
+        <p style="font-size:12.5px;color:#2d3748;margin-bottom:14px;">
+          我们采用摩根士丹利SOTP框架，将泡泡玛特拆解为三个核心价值主体，分别给予不同估值倍数，综合得出基准情景目标价<strong>HK$240</strong>，对应2026E调整后净利润约 <strong>19×P/E</strong>（参照三丽鸥35×、迪士尼20×的IP公司历史溢价，以及当前港股新消费板块15-25×中枢区间合理定价）。
+        </p>
+        <table class="sotp-table">
+          <thead>
+            <tr>
+              <th>估值板块</th>
+              <th>2026E利润贡献（亿元）</th>
+              <th>估值基础</th>
+              <th>给予倍数</th>
+              <th>估值（亿元人民币）</th>
+              <th>折港币</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>①中国大陆核心IP业务</strong><br><span class="td-muted">稳健现金流、高复购率</span></td>
+              <td class="td-num">82.0</td>
+              <td class="td-muted">2026E调整净利润</td>
+              <td class="td-num">18× P/E</td>
+              <td class="td-num">1,476</td>
+              <td class="td-num">~1,625亿港元</td>
+            </tr>
+            <tr>
+              <td><strong>②海外高速成长业务</strong><br><span class="td-muted">美洲+欧洲+亚太；高溢价定价</span></td>
+              <td class="td-num">55.0</td>
+              <td class="td-muted">2026E调整净利润</td>
+              <td class="td-num">25× P/E</td>
+              <td class="td-num">1,375</td>
+              <td class="td-num">~1,513亿港元</td>
+            </tr>
+            <tr>
+              <td><strong>③IP生态扩展期权价值</strong><br><span class="td-muted">主题乐园/电影/游戏/IP授权</span></td>
+              <td class="td-num">9.9</td>
+              <td class="td-muted">营收 × EV/Rev</td>
+              <td class="td-num">3× EV/Rev</td>
+              <td class="td-num">333</td>
+              <td class="td-num">~367亿港元</td>
+            </tr>
+            <tr class="sotp-total">
+              <td><strong>企业价值合计</strong></td>
+              <td class="td-num">—</td>
+              <td class="td-muted">—</td>
+              <td class="td-num">—</td>
+              <td class="td-num"><strong>3,184</strong></td>
+              <td class="td-num"><strong>~3,505亿港元</strong></td>
+            </tr>
+            <tr>
+              <td colspan="4" style="color:#8a9bb5;font-size:11.5px;">减：净负债 / 加：现金净额</td>
+              <td class="td-num" style="color:var(--ms-green);">+198</td>
+              <td class="td-num">~+218亿港元</td>
+            </tr>
+            <tr class="highlight-row">
+              <td colspan="4"><strong>目标市值（基准情景）</strong></td>
+              <td class="td-num"><strong>3,382</strong></td>
+              <td class="td-num"><strong>~3,723亿港元</strong></td>
+            </tr>
+            <tr style="background:rgba(200,168,75,0.06);">
+              <td colspan="4"><strong>对应每股目标价（总股本约15.5亿股）</strong></td>
+              <td></td>
+              <td class="td-num" style="color:var(--ms-gold);font-size:16px;font-weight:700;font-family:'IBM Plex Mono',monospace;"><strong>HK$240</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="divider"></div>
+        <div class="scenario-grid">
+          <div class="scenario-card">
+            <div class="scenario-header bull">▲ 牛市情景 (25%)</div>
+            <div class="scenario-body">
+              <div class="scenario-price" style="color:var(--ms-green);">HK$320</div>
+              <div class="scenario-prob">P/E约24× | 隐含涨幅 +96%</div>
+              <div class="scenario-desc">
+                Labubu 4.0全球爆款复制；美国扩店超预期；CPI降温降息推动估值扩张；Sony电影触发IP生态跃升；海外净利率恢复至35%+。
+              </div>
+            </div>
+          </div>
+          <div class="scenario-card">
+            <div class="scenario-header base">— 基准情景 (50%)</div>
+            <div class="scenario-body">
+              <div class="scenario-price" style="color:var(--ms-blue);">HK$240</div>
+              <div class="scenario-prob">P/E约19× | 隐含涨幅 +47%</div>
+              <div class="scenario-desc">
+                2026年营收增长约20%（达管理层指引下限）；海外Q3起环比企稳；Labubu维持热度但增速正常化；新IP孵化进展顺利。
+              </div>
+            </div>
+          </div>
+          <div class="scenario-card">
+            <div class="scenario-header bear">▼ 熊市情景 (25%)</div>
+            <div class="scenario-body">
+              <div class="scenario-price" style="color:var(--ms-red);">HK$100</div>
+              <div class="scenario-prob">P/E约10× | 隐含下行 -39%</div>
+              <div class="scenario-desc">
+                Labubu热度骤退；美国关税压力超预期；海外增速低于15%；竞品崛起侵蚀国内市占率；新IP孵化连续失败。
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="section-note">估值基于MS研究团队FY2026E盈利预测（调整后净利润146.9亿元），参照中金、交银、华泰机构测算区间。汇率假设：1人民币=1.1港元。数据来源：公司年报，Bloomberg综合研究。</p>
+      </div>
+    </div>
+
+    <!-- ⑥ 宏观与供应链 -->
+    <div class="card">
+      <div class="card-header"><div class="card-header-accent"></div><span class="card-title">六、宏观逆风与供应链战略评估</span></div>
+      <div class="card-body">
+        <p><strong>关税风险已部分内化，越南供应链成关键缓冲：</strong> 摩根士丹利研究团队核实，泡泡玛特大部分对美出口商品已于2025年Q3完成越南产地迁移，有效规避加征自中国进口的高额关税。在此基础上，美国产品均价已上调12-27%（得益于Labubu品牌溢价，涨价被市场接受），长期有望提升美国业务的净利润率结构。</p>
+        <p><strong>全球消费降级压力：</strong> 当前美联储加息预期重燃（6月加息概率上升）、美国消费者信心受制于高利率，对非必需品支出形成边际压制。然而，潮玩产品客单价适中（$15-$80区间），作为"情绪型消费"品类，历史数据显示对宏观周期的弹性低于高端奢侈品，抗周期性相对较强。</p>
+        <p><strong>汇率：</strong> 美元走强不利于以港币报价的营收折算，但海外收入中相当部分以美元/欧元计价，实质上对人民币升值构成天然对冲。2026年人民币相对美元小幅贬值（约-0.3%）中性偏利好。</p>
+        <p style="margin-bottom:0;"><strong>国内消费环境：</strong> 大中华区FY25实现营收208.5亿元（+134.6%），净新增门店14家至445家。2026年管理层着重门店效率而非数量扩张，叠加全国会员粘性（复购率~50%），国内业务增速回落至20-30%区间属预期内，并不代表基本面恶化。</p>
+      </div>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- ════════════════ SIDEBAR ════════════════ -->
+  <div class="side-col">
+
+    <!-- 机构评级汇总 -->
+    <div class="card">
+      <div class="card-header"><div class="card-header-accent"></div><span class="card-title">主要机构评级</span></div>
+      <div class="card-body" style="padding:0;">
+        <table>
+          <thead>
+            <tr><th>机构</th><th>评级</th><th>目标价（港元）</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>摩根士丹利</td>
+              <td><span class="inline-tag tag-buy">增持</span></td>
+              <td class="td-num">224</td>
+            </tr>
+            <tr>
+              <td>中金公司</td>
+              <td><span class="inline-tag tag-buy">跑赢</span></td>
+              <td class="td-num">248</td>
+            </tr>
+            <tr>
+              <td>浦银国际</td>
+              <td><span class="inline-tag tag-buy">买入</span></td>
+              <td class="td-num">284.5–328.1</td>
+            </tr>
+            <tr>
+              <td>交银国际</td>
+              <td><span class="inline-tag tag-buy">买入</span></td>
+              <td class="td-num">232.8</td>
+            </tr>
+            <tr>
+              <td>华泰证券</td>
+              <td><span class="inline-tag tag-buy">买入</span></td>
+              <td class="td-num">—</td>
+            </tr>
+            <tr>
+              <td>摩根大通</td>
+              <td><span class="inline-tag tag-buy">增持</span></td>
+              <td class="td-num">340</td>
+            </tr>
+            <tr>
+              <td>高盛</td>
+              <td><span class="inline-tag tag-hold">中性</span></td>
+              <td class="td-num">260</td>
+            </tr>
+            <tr>
+              <td>美国银行</td>
+              <td><span class="inline-tag tag-hold">中性↓</span></td>
+              <td class="td-num">170</td>
+            </tr>
+            <tr>
+              <td>瑞银</td>
+              <td><span class="inline-tag tag-hold">中性</span></td>
+              <td class="td-num">—</td>
+            </tr>
+            <tr>
+              <td><strong>本报告 (MS)</strong></td>
+              <td><strong><span class="inline-tag tag-buy">增持</span></strong></td>
+              <td class="td-num"><strong>240</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="section-note" style="padding:8px 12px 12px;margin:0;">近90天内约10家主要机构给出买入/增持评级；目标价均值约HK$262（Bloomberg综合，截至2026.6）。</p>
+      </div>
+    </div>
+
+    <!-- 关键催化剂时间表 -->
+    <div class="card">
+      <div class="card-header"><div class="card-header-accent"></div><span class="card-title">关键催化剂 & 风险节点</span></div>
+      <div class="card-body">
+        <div style="font-size:11.5px;color:#2d3748;">
+          <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #edf0f5;">
+            <div style="min-width:60px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ms-gold);margin-top:2px;">Q3 2026</div>
+            <div><strong>Labubu 4.0 全球上市</strong><br><span style="color:#8a9bb5;">瑞银认为此为增速触底信号；预计引发新一轮全球社交媒体传播</span></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #edf0f5;">
+            <div style="min-width:60px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ms-gold);margin-top:2px;">2026下半</div>
+            <div><strong>Sony Pictures Labubu 电影立项进展</strong><br><span style="color:#8a9bb5;">IP生命周期延伸关键节点；参照迪士尼IP电影化估值溢价</span></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #edf0f5;">
+            <div style="min-width:60px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ms-gold);margin-top:2px;">Aug 2026</div>
+            <div><strong>2026年中期业绩披露</strong><br><span style="color:#8a9bb5;">最关键观察窗口：海外环比能否企稳回升；新IP孵化进展</span></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #edf0f5;">
+            <div style="min-width:60px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ms-gold);margin-top:2px;">持续</div>
+            <div><strong>美国关税政策动态</strong><br><span style="color:#8a9bb5;">越南供应链已完成转移，风险已大部分对冲，但政策不确定性残留</span></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <div style="min-width:60px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ms-gold);margin-top:2px;">持续</div>
+            <div><strong>段永平持续增持动态</strong><br><span style="color:#8a9bb5;">5月25日增持982万股，短期情绪催化效应已验证（两日+13%）</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 供应商链 & 运营指标 -->
+    <div class="card">
+      <div class="card-header"><div class="card-header-accent"></div><span class="card-title">运营指标快照</span></div>
+      <div class="card-body" style="padding:0;">
+        <table>
+          <tbody>
+            <tr><td>存货周转天数 (H1 25)</td><td class="td-num td-pos">83天</td></tr>
+            <tr><td>应收账款周转天数 (H1 25)</td><td class="td-num td-pos">10天</td></tr>
+            <tr><td>会员总数</td><td class="td-num">~6,800万</td></tr>
+            <tr><td>会员销售占比</td><td class="td-num">91.2%</td></tr>
+            <tr><td>半年期会员复购率</td><td class="td-num">50.8%</td></tr>
+            <tr><td>全球门店数 (FY25末)</td><td class="td-num">~613家</td></tr>
+            <tr><td>海外单店收入/国内</td><td class="td-num">约3×</td></tr>
+            <tr><td>越南供应链覆盖</td><td class="td-num td-pos">美国大部分</td></tr>
+          </tbody>
+        </table>
+        <p class="section-note" style="padding:8px 12px 10px;margin:0;">数据来源：泡泡玛特H1 2025中期业绩公告；国金证券、大摩研报综合。</p>
+      </div>
+    </div>
+
+    <!-- 风险提示 -->
+    <div class="card">
+      <div class="card-header"><div class="card-header-accent"></div><span class="card-title">七、风险提示</span></div>
+      <div class="card-body">
+        <div class="risk-item high">
+          <div class="risk-header"><span class="risk-name">Labubu热度骤退</span><span class="risk-badge high">高风险</span></div>
+          <div class="risk-desc">单IP贡献约38%营收，若社交媒体热度持续回落，营收增速可能快速跌破管理层20%指引，引发估值进一步压缩。</div>
+        </div>
+        <div class="risk-item high">
+          <div class="risk-header"><span class="risk-name">海外增速持续低于预期</span><span class="risk-badge high">高风险</span></div>
+          <div class="risk-desc">Q4 25海外动能骤降已引发美银下调评级；若Q3 2026 Labubu 4.0不能有效提振，市场将质疑20%增速指引可行性，触发杀估值风险（P/E回落至10×以下）。</div>
+        </div>
+        <div class="risk-item mid">
+          <div class="risk-header"><span class="risk-name">关税政策超预期收紧</span><span class="risk-badge mid">中风险</span></div>
+          <div class="risk-desc">越南供应链已完成大部分转移，但若美国对越南加税（如参照对华税率），利润率将面临新压力。</div>
+        </div>
+        <div class="risk-item mid">
+          <div class="risk-header"><span class="risk-name">新IP孵化失败</span><span class="risk-badge mid">中风险</span></div>
+          <div class="risk-desc">IP行业生命周期本质不确定，连续孵化失败将加剧对Labubu单点依赖，削弱"IP平台"叙事估值溢价。</div>
+        </div>
+        <div class="risk-item low">
+          <div class="risk-header"><span class="risk-name">行业竞争加剧</span><span class="risk-badge low">低-中</span></div>
+          <div class="risk-desc">Top Toy（名创优品旗下）、泡泡骚、52TOYS等竞争方持续追赶；国内潮玩市场集中度提升存在边际侵蚀风险。</div>
+        </div>
+        <div class="risk-item low">
+          <div class="risk-header"><span class="risk-name">宏观消费信心下行</span><span class="risk-badge low">结构性</span></div>
+          <div class="risk-desc">全球高利率环境下非必需消费品支出边际收缩；但潮玩品类历史抗周期性优于高端奢侈品，影响相对有限。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 免责声明 -->
+    <div class="card" style="background:rgba(10,22,40,0.95);border-color:rgba(200,168,75,0.15);">
+      <div class="card-body">
+        <p style="font-size:9.5px;color:rgba(138,155,181,0.6);line-height:1.6;margin:0;">
+          <span style="color:var(--ms-gold);font-weight:600;letter-spacing:1px;font-size:9px;text-transform:uppercase;">重要提示 & 免责声明</span><br><br>
+          本报告为模拟摩根士丹利风格撰写的投资研究报告，仅供信息参考目的。本报告所有数据已标注来源，包括泡泡玛特官方年报（港交所披露易）、Bloomberg、公开媒体报道及各机构研报摘要。<br><br>
+          本报告不构成投资建议，亦不代表任何机构的正式研究立场。投资者应依据自身风险偏好独立决策，过往业绩不代表未来表现，盈亏自负。
+        </p>
+      </div>
+    </div>
+
+  </div><!-- /side-col -->
+</div><!-- /container -->
+
+<!-- SOURCE BAR -->
+<div class="source-bar">
+  <span class="source-label">数据来源</span>
+  <span class="source-items">泡泡玛特2025年年度业绩公告（港交所披露易，2026.3.25） &nbsp;|&nbsp; 泡泡玛特2025年中期业绩公告（港交所，2025.8.19） &nbsp;|&nbsp; Bloomberg综合研报 &nbsp;|&nbsp; 摩根士丹利研报（2025.8） &nbsp;|&nbsp; 中金公司研报 &nbsp;|&nbsp; 交银国际研报（2026.3.26） &nbsp;|&nbsp; 浦银国际研报 &nbsp;|&nbsp; 新浪财经 &nbsp;|&nbsp; China Daily &nbsp;|&nbsp; 华盛通 &nbsp;|&nbsp; 国金证券（36氪）</span>
+</div>
+<div class="disclaimer">
+  本报告模拟摩根士丹利亚太消费零售与TMT研究风格撰写，基准日2026年6月7日。所有财务数据以泡泡玛特官方披露文件为准。目标价及评级为分析师独立判断，不代表任何机构立场，不构成投资建议。投资者依据本报告操作须自担风险。
+  &nbsp;|&nbsp; Morgan Stanley Research Style · POP MART International Group (9992.HK) · Deep-Dive Investment Research · June 7, 2026
+</div>
+
+</body>
+</html>

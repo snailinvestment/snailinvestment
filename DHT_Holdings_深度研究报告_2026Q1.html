@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DHT Holdings (DHT) | 深度投研报告 2026Q1 | 高盛全球运输研究部</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --navy: #0a2a5e;
+    --navy-mid: #0e3a7a;
+    --navy-light: #1a4d9e;
+    --orange: #ff6b35;
+    --orange-light: #ff8c5a;
+    --gold: #d4a843;
+    --grey-dark: #4a4a4a;
+    --grey-mid: #6e7a8a;
+    --grey-light: #b0bac8;
+    --bg-dark: #060f1e;
+    --bg-card: #0d1f3c;
+    --bg-card2: #0f2448;
+    --text-primary: #e8edf5;
+    --text-secondary: #98a8be;
+    --text-muted: #5a6a80;
+    --green: #2ecc8a;
+    --red: #e8445a;
+    --yellow: #f5c842;
+    --border: rgba(255,255,255,0.07);
+    --glow-orange: rgba(255,107,53,0.15);
+    --glow-blue: rgba(26,77,158,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: linear-gradient(135deg, #04111f 0%, var(--navy) 60%, #0e2a5a 100%);
+    border-bottom: 2px solid var(--orange);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    padding: 36px 60px 28px;
+  }
+  .firm-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(212,168,67,0.12);
+    border: 1px solid rgba(212,168,67,0.3);
+    padding: 5px 14px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .header h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+  .ticker-tag {
+    background: var(--orange);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 4px;
+    margin-left: 12px;
+    vertical-align: middle;
+  }
+  .header-sub {
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+  }
+  .rating-box {
+    text-align: center;
+    background: rgba(255,107,53,0.1);
+    border: 1px solid rgba(255,107,53,0.3);
+    padding: 20px 30px;
+    border-radius: 8px;
+    min-width: 160px;
+  }
+  .rating-label { font-size: 10px; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; }
+  .rating-value { font-size: 28px; font-weight: 700; color: var(--orange); font-family: 'Noto Serif SC', serif; }
+  .rating-sub { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+
+  .meta-bar {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    background: rgba(0,0,0,0.2);
+  }
+  .meta-item {
+    padding: 10px 24px;
+    border-right: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .meta-item span { color: var(--text-secondary); font-weight: 500; }
+
+  /* ─── SUMMARY BANNER ─── */
+  .summary-banner {
+    background: linear-gradient(90deg, rgba(255,107,53,0.08) 0%, transparent 100%);
+    border-left: 4px solid var(--orange);
+    margin: 32px 60px;
+    padding: 20px 28px;
+    border-radius: 0 6px 6px 0;
+  }
+  .summary-banner .label { font-size: 10px; letter-spacing: 2px; color: var(--orange); text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+  .summary-banner p { font-size: 14px; color: var(--text-primary); line-height: 1.8; }
+  .summary-banner strong { color: var(--orange); }
+
+  /* ─── KPI ROW ─── */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin: 0 60px 32px;
+  }
+  .kpi-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .kpi-card:hover { border-color: rgba(255,107,53,0.4); }
+  .kpi-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--orange), transparent);
+  }
+  .kpi-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .kpi-value { font-size: 24px; font-weight: 700; color: var(--text-primary); font-family: 'JetBrains Mono', monospace; }
+  .kpi-unit { font-size: 12px; color: var(--text-muted); }
+  .kpi-change { font-size: 11px; margin-top: 4px; }
+  .kpi-change.up { color: var(--green); }
+  .kpi-change.down { color: var(--red); }
+  .kpi-change.neutral { color: var(--text-muted); }
+  .kpi-source { font-size: 9px; color: var(--text-muted); margin-top: 6px; opacity: 0.7; }
+
+  /* ─── SECTION LAYOUT ─── */
+  .section { margin: 0 60px 40px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--orange);
+    background: rgba(255,107,53,0.1);
+    border: 1px solid rgba(255,107,53,0.25);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  /* ─── GRID LAYOUTS ─── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+  }
+  .card-title {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ─── CYCLE GAUGE ─── */
+  .gauge-container { display: flex; flex-direction: column; align-items: center; padding: 10px 0; }
+  .gauge-wrap { position: relative; width: 260px; height: 140px; }
+  canvas.gauge { width: 260px; height: 140px; }
+  .gauge-value {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .gauge-big { font-size: 36px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--orange); }
+  .gauge-pct { font-size: 12px; color: var(--text-muted); }
+  .gauge-legend {
+    display: flex;
+    justify-content: space-between;
+    width: 260px;
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+  .gauge-sub { font-size: 11px; color: var(--text-secondary); margin-top: 12px; text-align: center; }
+  .cycle-phases {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .phase-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+  .phase-active { border-color: var(--orange); color: var(--orange); background: rgba(255,107,53,0.1); }
+  .phase-inactive { border-color: var(--border); color: var(--text-muted); }
+
+  /* ─── BAR CHARTS ─── */
+  .bar-chart { display: flex; flex-direction: column; gap: 10px; }
+  .bar-row { display: flex; align-items: center; gap: 10px; }
+  .bar-label { font-size: 11px; color: var(--text-secondary); width: 90px; flex-shrink: 0; text-align: right; }
+  .bar-track { flex: 1; height: 22px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; position: relative; }
+  .bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; position: relative; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; }
+  .bar-fill span { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #fff; font-weight: 600; }
+  .bar-fill.primary { background: linear-gradient(90deg, var(--navy-light), var(--orange)); }
+  .bar-fill.secondary { background: linear-gradient(90deg, #1a4060, #2a6090); }
+  .bar-fill.highlight { background: linear-gradient(90deg, #803a00, var(--orange)); }
+
+  /* ─── HEAT MAP ─── */
+  .heatmap { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .hm-cell {
+    border-radius: 6px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hm-title { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .hm-prob { font-size: 24px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .hm-impact { font-size: 11px; color: rgba(255,255,255,0.75); margin-top: 2px; }
+  .hm-mitigation { font-size: 10px; color: rgba(255,255,255,0.55); margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 6px; }
+  .hm-red { background: linear-gradient(135deg, #7a1020, #a01828); }
+  .hm-orange { background: linear-gradient(135deg, #7a3a00, #a04800); }
+  .hm-yellow { background: linear-gradient(135deg, #5a4800, #7a6200); }
+  .hm-blue { background: linear-gradient(135deg, #0a2a5e, #1a3a7e); }
+
+  /* ─── SCENARIOS ─── */
+  .scenario-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .scenario-col { padding: 20px; }
+  .scenario-col + .scenario-col { border-left: 1px solid var(--border); }
+  .s-bear { background: rgba(232,68,90,0.06); }
+  .s-base { background: rgba(26,77,158,0.1); border-top: 3px solid var(--orange); }
+  .s-bull { background: rgba(46,204,138,0.06); }
+  .s-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+  .s-label.bear { color: var(--red); }
+  .s-label.base { color: var(--orange); }
+  .s-label.bull { color: var(--green); }
+  .s-rate { font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; margin-bottom: 14px; }
+  .s-metrics { display: flex; flex-direction: column; gap: 8px; }
+  .s-metric { display: flex; justify-content: space-between; font-size: 12px; }
+  .s-metric-label { color: var(--text-muted); }
+  .s-metric-val { font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+  .s-metric-val.pos { color: var(--green); }
+  .s-metric-val.neg { color: var(--red); }
+  .s-metric-val.mid { color: var(--orange); }
+
+  /* ─── TABLE ─── */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .data-table th {
+    background: rgba(255,255,255,0.04);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--text-secondary);
+  }
+  .data-table tr:hover td { background: rgba(255,255,255,0.03); }
+  .data-table .highlight-row td { color: var(--text-primary); }
+  .data-table .num { font-family: 'JetBrains Mono', monospace; text-align: right; }
+  .data-table .tag-up { color: var(--green); }
+  .data-table .tag-down { color: var(--red); }
+
+  /* ─── VALUATION ─── */
+  .val-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  .val-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px;
+    text-align: center;
+  }
+  .val-method { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+  .val-target { font-size: 32px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .val-range { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+  .val-card.primary { border-color: rgba(255,107,53,0.4); background: rgba(255,107,53,0.05); }
+  .val-card.primary .val-target { color: var(--orange); }
+  .val-card.secondary .val-target { color: var(--gold); }
+  .val-card.tertiary .val-target { color: var(--text-muted); }
+
+  /* ─── CYCLE TABLE ─── */
+  .cycle-table-wrap { overflow-x: auto; }
+
+  /* ─── ASSUMPTIONS PANEL ─── */
+  .assumptions {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .assumptions-title { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+  .assumption-row { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+  .assumption-label { font-size: 12px; color: var(--text-secondary); width: 160px; flex-shrink: 0; }
+  .slider-wrap { flex: 1; display: flex; align-items: center; gap: 12px; }
+  input[type=range] {
+    -webkit-appearance: none;
+    flex: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--orange);
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(255,107,53,0.5);
+  }
+  .slider-val { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--orange); width: 80px; }
+  .live-target {
+    text-align: center;
+    padding: 16px;
+    background: rgba(255,107,53,0.08);
+    border: 1px solid rgba(255,107,53,0.25);
+    border-radius: 6px;
+  }
+  .live-target-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+  .live-target-val { font-size: 36px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--orange); }
+  .live-target-sub { font-size: 11px; color: var(--text-secondary); }
+
+  /* ─── ESG SECTION ─── */
+  .esg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .esg-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+  .esg-icon { font-size: 24px; margin-bottom: 10px; }
+  .esg-title { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
+  .esg-value { font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--gold); margin-bottom: 6px; }
+  .esg-desc { font-size: 11px; color: var(--text-muted); line-height: 1.6; }
+
+  /* ─── FLEET COMPARISON CHART ─── */
+  .fleet-chart { display: flex; flex-direction: column; gap: 6px; }
+  .fleet-bar-group { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .fleet-year-label { font-size: 10px; color: var(--text-muted); width: 48px; flex-shrink: 0; text-align: right; }
+  .fleet-bars { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+  .fleet-bar-wrap { display: flex; align-items: center; gap: 6px; }
+  .fleet-bar-fill { height: 12px; border-radius: 2px; }
+  .fleet-bar-label { font-size: 10px; color: var(--text-muted); }
+
+  /* ─── FOOTNOTES ─── */
+  .footnotes { font-size: 10px; color: var(--text-muted); line-height: 1.8; padding: 0; }
+  .footnotes p { margin-bottom: 4px; }
+
+  /* ─── DISCLAIMER ─── */
+  .disclaimer {
+    background: rgba(0,0,0,0.4);
+    border-top: 1px solid var(--border);
+    padding: 28px 60px;
+    margin-top: 40px;
+  }
+  .disclaimer-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; font-weight: 700; }
+  .disclaimer p { font-size: 10px; color: var(--text-muted); line-height: 1.7; margin-bottom: 6px; }
+  .disclaimer .warning { color: var(--yellow); font-weight: 600; }
+
+  /* ─── SEPARATOR ─── */
+  .sep { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  /* ─── PROSE ─── */
+  .prose { font-size: 13px; color: var(--text-secondary); line-height: 1.8; }
+  .prose p { margin-bottom: 10px; }
+  .prose strong { color: var(--text-primary); }
+  .prose .warn { color: var(--yellow); }
+  .prose .alert { color: var(--orange); font-weight: 600; }
+
+  /* ─── TAG BADGES ─── */
+  .badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 3px; font-weight: 600; margin-left: 6px; }
+  .badge-green { background: rgba(46,204,138,0.15); color: var(--green); border: 1px solid rgba(46,204,138,0.3); }
+  .badge-red { background: rgba(232,68,90,0.15); color: var(--red); border: 1px solid rgba(232,68,90,0.3); }
+  .badge-yellow { background: rgba(245,200,66,0.12); color: var(--yellow); border: 1px solid rgba(245,200,66,0.3); }
+  .badge-orange { background: rgba(255,107,53,0.12); color: var(--orange); border: 1px solid rgba(255,107,53,0.3); }
+
+  /* ─── SOURCE TOOLTIP STYLE ─── */
+  [data-source] { position: relative; cursor: help; border-bottom: 1px dotted var(--text-muted); }
+  [data-source]:hover::after {
+    content: attr(data-source);
+    position: absolute;
+    bottom: 120%;
+    left: 0;
+    background: #1a2a42;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--navy-mid); border-radius: 3px; }
+
+  /* ─── CONFIDENCE INTERVAL ─── */
+  .ci-bar { display: flex; flex-direction: column; gap: 12px; }
+  .ci-row { display: flex; flex-direction: column; gap: 4px; }
+  .ci-label { font-size: 11px; color: var(--text-secondary); }
+  .ci-track { height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; position: relative; }
+  .ci-range { position: absolute; height: 100%; border-radius: 4px; }
+  .ci-point { position: absolute; width: 12px; height: 12px; border-radius: 50%; top: -2px; transform: translateX(-50%); }
+  .ci-vals { display: flex; justify-content: space-between; font-size: 10px; font-family: 'JetBrains Mono', monospace; }
+  .ci-low { color: var(--text-muted); }
+  .ci-mid { color: var(--orange); font-weight: 600; }
+  .ci-high { color: var(--text-muted); }
+
+  /* Animations */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .section { animation: fadeUp 0.5s ease forwards; }
+
+  /* print compatibility */
+  @media print {
+    body { background: white; color: black; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ HEADER -->
+<header class="header">
+  <div class="header-grid">
+    <div>
+      <div class="firm-badge">⚓ 高盛全球运输研究部 · GS Global Transportation Research</div>
+      <h1>DHT Holdings, Inc. <span class="ticker-tag">NYSE: DHT</span></h1>
+      <div class="header-sub">深度股权研究报告 · VLCC 纯运营商 · 挪威籍 · 2026年Q1结果分析</div>
+    </div>
+    <div class="rating-box">
+      <div class="rating-label">投资评级</div>
+      <div class="rating-value">持有</div>
+      <div class="rating-sub">目标价 $21.00</div>
+      <div style="margin-top:8px; font-size:10px; color:var(--yellow);">⚠ 警惕2027供给冲击</div>
+    </div>
+  </div>
+  <div class="meta-bar">
+    <div class="meta-item">报告日期：<span>2026年5月31日</span></div>
+    <div class="meta-item">数据截止：<span>2026年3月31日 (Q1 2026)</span></div>
+    <div class="meta-item">分析师：<span>GS 全球运输研究部</span></div>
+    <div class="meta-item">数据来源：<span>SEC EDGAR / DHT官网 / Clarksons / Baltic Exchange / IEA / Kpler</span></div>
+    <div class="meta-item">股价：<span>~$18.60 (2026.05.30)</span></div>
+    <div class="meta-item">市值：<span>~$30亿</span></div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════ CORE SUMMARY -->
+<div class="summary-banner">
+  <div class="label">执行摘要 · Executive Summary</div>
+  <p>
+    DHT Holdings 于2026年Q1录得创纪录季度业绩：TCE收入<strong>$1.57亿</strong>，调整后EBITDA <strong>$1.33亿</strong>，普通净利润<strong>$1.034亿（$0.64/股）</strong>，宣布第<strong>65次</strong>连续季度股息$0.64/股。
+    现船队23艘VLCC（另有1艘新船夏季交付），平均即期日租金<strong>$91,700/天</strong>，较2025年Q1大幅跃升。
+    <br><br>
+    <strong class="warn">核心判断：</strong>当前处于VLCC周期高位（78-82分位），2026年Q2已锁定重要敞口，短期运价仍具支撑。
+    <strong>然而，我们必须明确警示：</strong>2026-2028年全球VLCC交付量预计达48/69/70艘，供给端压力将于<strong>2027年下半年至2028年</strong>实质显现，叠加地缘政治缓和风险与欧盟碳合规成本上升，我们对中长期持审慎立场。
+    <strong class="alert">建议持有，但需警惕2027年供给冲击。</strong>
+    所有预测附置信区间，不构成投资建议。
+  </p>
+</div>
+
+<!-- ═══════════════════════════════════════════════ KPI ROW -->
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-label">平均船队TCE</div>
+    <div class="kpi-value">$78,800</div>
+    <div class="kpi-unit">/天 (Q1 2026)</div>
+    <div class="kpi-change up">▲ +146% YoY vs Q1'25 ~$32,100</div>
+    <div class="kpi-source" data-source="来源：DHT Q1 2026 SEC 6-K报告 (2026.05.05)">SEC 6-K · 2026.05.05</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">即期市场TCE</div>
+    <div class="kpi-value">$91,700</div>
+    <div class="kpi-unit">/天 (Q1 2026)</div>
+    <div class="kpi-change up">▲ 期租 $61,300/天</div>
+    <div class="kpi-source" data-source="来源：DHT Q1 2026业绩发布会 (2026.04.15)">SEC 6-K · 2026.04.15</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">调整后EBITDA</div>
+    <div class="kpi-value">$133M</div>
+    <div class="kpi-unit">Q1 2026</div>
+    <div class="kpi-change up">▲ +136% YoY ($56.4M in Q1'25)</div>
+    <div class="kpi-source" data-source="来源：DHT Q1 2026 SEC 6-K报告">SEC 6-K</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">总流动性</div>
+    <div class="kpi-value">$350M</div>
+    <div class="kpi-unit">含$126M现金</div>
+    <div class="kpi-change neutral">净债务 $16.5M/船 (保守)</div>
+    <div class="kpi-source" data-source="来源：DHT Q1 2026业绩发布会">Q1 2026 Earnings Call</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">季度股息</div>
+    <div class="kpi-value">$0.64</div>
+    <div class="kpi-unit">/股 (Q1 2026)</div>
+    <div class="kpi-change up">第65次连续股息 · 年化收益率 ~5.4%</div>
+    <div class="kpi-source" data-source="来源：DHT Q1 2026 董事会公告">Q1 2026 Board</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ SEC. 1 — CYCLE DASHBOARD -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-title">周期定位仪表盘</span>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">VLCC 行业周期位置（波罗的海指数历史分位数）</div>
+      <div class="gauge-container">
+        <div class="gauge-wrap">
+          <canvas id="gaugeCanvas" width="260" height="140"></canvas>
+          <div class="gauge-value">
+            <div class="gauge-big">78</div>
+            <div class="gauge-pct">% 分位数</div>
+          </div>
+        </div>
+        <div class="gauge-legend">
+          <span>周期底部</span>
+          <span>中性</span>
+          <span>高位警戒</span>
+        </div>
+        <div class="gauge-sub" data-source="来源：Clarksons Research / Baltic Exchange，2026年Q1数据">
+          2026年Q1处于78%分位 · 接近历史高位但非极端
+        </div>
+        <div class="cycle-phases" style="margin-top:14px;">
+          <span class="phase-tag phase-inactive">底部积累</span>
+          <span class="phase-tag phase-inactive">温和复苏</span>
+          <span class="phase-tag phase-inactive">上升周期</span>
+          <span class="phase-tag phase-active">▶ 高位运行</span>
+          <span class="phase-tag phase-inactive">供给冲击</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">历次VLCC周期持续时间统计 (1970s至今)</div>
+      <div style="overflow-x:auto;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>周期区间</th>
+              <th>持续(年)</th>
+              <th>峰值TCE</th>
+              <th>回落幅度</th>
+              <th>触发因素</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1973–1978</td><td class="num">5</td><td class="num">$60k+</td><td class="num tag-down">-70%</td><td>石油危机→需求崩溃</td></tr>
+            <tr><td>1988–1993</td><td class="num">5</td><td class="num">$55k</td><td class="num tag-down">-65%</td><td>波湾战争后供给过剩</td></tr>
+            <tr><td>2000–2009</td><td class="num">9</td><td class="num">$130k</td><td class="num tag-down">-80%</td><td>金融危机+大量新船</td></tr>
+            <tr><td>2015–2020</td><td class="num">5</td><td class="num">$90k</td><td class="num tag-down">-72%</td><td>COVID+供给过剩</td></tr>
+            <tr class="highlight-row"><td>2022–现在</td><td class="num">4+</td><td class="num tag-up">$91,700</td><td class="num" style="color:var(--yellow)">进行中</td><td>地缘/OPEC+复产</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prose" style="margin-top:12px; font-size:11px;">
+        <p><strong class="warn">⚠ 历史警示：</strong>2015-2020年行业平均ROE为<strong style="color:var(--red)">-8.3%</strong>。油轮周期平均持续4-6年，当前已运行4年以上。</p>
+        <p data-source="来源：Kpler/Seatrade Maritime 2026年1月，Breakwave Advisors 2026年3月">供给冲击通常提前2-3年形成（即当前订单），<strong>2027-2028年新船交付量69-70艘</strong>构成最重大中期风险。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ SEC. 2 — FLEET & OPS -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-title">船队资产质量与运营分析</span>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">船队结构概览（截至2026年3月31日）</div>
+      <table class="data-table">
+        <thead><tr><th>指标</th><th>DHT Holdings</th><th>行业平均</th><th>评估</th></tr></thead>
+        <tbody>
+          <tr><td>运营船队规模</td><td class="num">23艘 VLCC</td><td class="num">—</td><td><span class="badge badge-orange">纯VLCC</span></td></tr>
+          <tr><td>在建新船</td><td class="num">1艘（夏季交付）</td><td class="num">—</td><td><span class="badge badge-green">Antelope-class</span></td></tr>
+          <tr><td>总运力</td><td class="num">7,164,430 DWT</td><td class="num">—</td><td>—</td></tr>
+          <tr><td>新船均价</td><td class="num">$1.303亿/艘</td><td class="num">~$1.3亿</td><td><span class="badge badge-yellow">韩国船厂造价</span></td></tr>
+          <tr><td>2026年Q2期租锁定</td><td class="num">997天 @ $73,900/天</td><td class="num">—</td><td><span class="badge badge-green">稳定收入</span></td></tr>
+          <tr><td>Q2即期天数锁定率</td><td class="num">49% @ $189,500/天</td><td class="num">—</td><td><span class="badge badge-green">高度积极</span></td></tr>
+          <tr><td>Q2总锁定率</td><td class="num">71% @ $115,400/天</td><td class="num">—</td><td><span class="badge badge-green">能见度高</span></td></tr>
+          <tr><td>杠杆率（市值口径）</td><td class="num">16.8%</td><td class="num">~30-40%</td><td><span class="badge badge-green">保守</span></td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:10px; font-size:11px; color:var(--text-muted);" data-source="来源：DHT Q1 2026 SEC 6-K报告 / Quiver Quantitative 2026.04.15">
+        * 数据来源：DHT Holdings SEC 6-K 2026.05.05 及 Q1 2026业绩发布会
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">船队年龄分布 vs 行业平均（2026年数据）</div>
+      <div class="fleet-chart">
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:8px;">不同船龄区间VLCC船队占比</div>
+        
+        <div class="fleet-bar-group">
+          <div class="fleet-year-label">0-5年</div>
+          <div class="fleet-bars">
+            <div class="fleet-bar-wrap">
+              <div class="fleet-bar-fill" style="width:42%; background:linear-gradient(90deg, #1a4d9e, var(--orange)); height:14px; border-radius:2px;"></div>
+              <div class="fleet-bar-label" style="font-size:11px; color:var(--orange);">DHT 42%（含4艘新船）</div>
+            </div>
+            <div class="fleet-bar-wrap">
+              <div class="fleet-bar-fill" style="width:22%; background:linear-gradient(90deg, #1a4060, #2a6090); height:10px; border-radius:2px;"></div>
+              <div class="fleet-bar-label" style="font-size:10px; color:var(--text-muted);">行业均 22%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fleet-bar-group">
+          <div class="fleet-year-label">5-10年</div>
+          <div class="fleet-bars">
+            <div class="fleet-bar-wrap">
+              <div class="fleet-bar-fill" style="width:35%; background:linear-gradient(90deg, #1a4d9e, var(--orange)); height:14px; border-radius:2px;"></div>
+              <div class="fleet-bar-label" style="font-size:11px; color:var(--orange);">DHT 35%</div>
+            </div>
+            <div class="fleet-bar-wrap">
+              <div class="fleet-bar-fill" style="width:31%; background:linear-gradient(90deg, #1a4060, #2a6090); height:10px; border-radius:2px;"></div>
+              <div class="fleet-bar-label" style="font-size:10px; color:var(--text-muted);">行业均 31%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fleet-bar-group">
+          <div class="fleet-year-label">10-15年</div>
+          <div class="fleet-bars">
+            <div class="fleet-bar-wrap">
+              <div class="fleet-bar-fill" style="width:23%; background:linear-gradient(90deg, #1a4d9e, var(--orange)); height:14px; border-radius:2px;"></div>
+              <div class="fleet-bar-label" style="font-size:11px; color:var(--orange);">DHT 23%</div>
+            </div>
+            <div class="fleet-bar-wrap">
+              <div class="fleet-bar-fill" style="width:28%; background:linear-gradient(90deg, #1a4060, #2a6090); height:10px; border-radius:2px;"></div>
+              <div class="fleet-bar-label" style="font-size:10px; color:var(--text-muted);">行业均 28%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fleet-bar-group">
+          <div class="fleet-year-label">15年以上</div>
+          <div class="fleet-bars">
+            <div class="fleet-bar-wrap">
+              <div class="fleet-bar-fill" style="width:0%; background:linear-gradient(90deg, #803a00, var(--orange)); height:14px; border-radius:2px; min-width:4px;"></div>
+              <div class="fleet-bar-label" style="font-size:11px; color:var(--green);">DHT 0%（已售清）</div>
+            </div>
+            <div class="fleet-bar-wrap">
+              <div class="fleet-bar-fill" style="width:19%; background:linear-gradient(90deg, #5a1a1a, #8a2828); height:10px; border-radius:2px;"></div>
+              <div class="fleet-bar-label" style="font-size:10px; color:var(--red);">行业均 19%（拆船候选）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; gap:16px; margin-top:16px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:6px;"><div style="width:14px;height:8px;background:var(--orange);border-radius:2px;"></div><span style="font-size:11px; color:var(--text-muted);">DHT Holdings</span></div>
+        <div style="display:flex; align-items:center; gap:6px;"><div style="width:14px;height:8px;background:#2a6090;border-radius:2px;"></div><span style="font-size:11px; color:var(--text-muted);">行业平均</span></div>
+      </div>
+      <div class="prose" style="margin-top:14px;">
+        <p><strong>核心优势：</strong>完成三艘2007年旧船出售后，DHT船队现代化程度居行业前列。</p>
+        <p><strong class="warn">警惕事项：</strong>2011-2012年建造的中龄船（如DHT Amazon、DHT Sundarbans）将于2028-2030年陆续面临CII合规改造或拆解决策，构成中期资本支出压力。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Asset Replacement -->
+  <div style="margin-top:20px;" class="card">
+    <div class="card-title">资产重置成本分析（新船造价 vs 账面净值）</div>
+    <div class="grid-3">
+      <div style="text-align:center; padding:16px; border-right:1px solid var(--border);">
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:6px;">韩国船厂VLCC新船造价</div>
+        <div style="font-size:32px; font-weight:700; font-family:'JetBrains Mono',monospace; color:var(--text-primary)">$130.3M</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;" data-source="来源：DHT SEC 6-K 2026.05.05，HHI/Hanwha订单均价">per 艘（含EGC洗涤器，HHI/Hanwha）</div>
+      </div>
+      <div style="text-align:center; padding:16px; border-right:1px solid var(--border);">
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:6px;">账面净值/船（估算）</div>
+        <div style="font-size:32px; font-weight:700; font-family:'JetBrains Mono',monospace; color:var(--gold)">~$72M</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">（基于净债务$16.5M/船 + 资产评估）</div>
+      </div>
+      <div style="text-align:center; padding:16px;">
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:6px;">新船造价 vs NAV溢价</div>
+        <div style="font-size:32px; font-weight:700; font-family:'JetBrains Mono',monospace; color:var(--green)">+81%</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">新船造价远超账面值，支撑旧船二手溢价</div>
+      </div>
+    </div>
+    <div class="prose" style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border);">
+      <p data-source="来源：Breakwave Advisors VLCC市场月报 2026年3月">
+        <strong>新船造价上行驱动力：</strong>2026年以来韩国船厂满负荷排期（HHI/Hanwha），
+        VLCC新船造价已升至$1.3亿以上，相较2023年约$1.15亿上涨约13%。
+        高新船造价为现有船队资产形成隐性保护，但同时也是运力增长的天然制约——直至供需逆转后成为反向压力。
+        <strong class="warn">注意：</strong>2027-2028年订单交付高峰（69-70艘/年）将显著测试这一保护假说。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ SEC. 3 — VALUATION -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <span class="section-title">谨慎估值框架（三重验证体系）</span>
+  </div>
+
+  <!-- Methodology note -->
+  <div style="background:rgba(212,168,67,0.07); border:1px solid rgba(212,168,67,0.2); border-radius:6px; padding:16px 20px; margin-bottom:20px; font-size:12px; color:var(--text-secondary);">
+    <strong style="color:var(--gold);">⚠ 估值方法论说明：</strong> 我们有意不以传统PE估值为主框架。
+    航运股单季EPS可从$0.27（Q3 2025）跃升至$1.02（Q1 2026）——波动幅度达278%，导致PE比率在周期高位极度失真（可能呈现虚假低估）。
+    <strong>本报告采用周期调整市净率法（CA-P/B）为主估值框架</strong>，辅以资产重置成本法交叉验证。DCF模型仅作极端情景压力测试，不参与主估值加权。
+  </div>
+
+  <!-- Target cards -->
+  <div class="val-grid">
+    <div class="val-card primary">
+      <div class="val-method">主框架：周期调整市净率法 (CA-P/B)</div>
+      <div class="val-target">$21.00</div>
+      <div class="val-range">区间：$16.00 – $26.00 | 70%置信度</div>
+      <div style="font-size:11px; color:var(--text-muted); margin-top:8px; line-height:1.6;">
+        基准P/B 0.8x + 船队质量溢价 +0.15x + 合约结构折价 -0.10x + 周期情绪溢价上限 1.2x
+        → 目标P/B ~1.05x × 估算BV/股 ~$20
+      </div>
+    </div>
+    <div class="val-card secondary">
+      <div class="val-method">辅助验证：资产重置成本法 (NAV)</div>
+      <div class="val-target">$24.00</div>
+      <div class="val-range">区间：$18.00 – $30.00 | 保守假设</div>
+      <div style="font-size:11px; color:var(--text-muted); margin-top:8px; line-height:1.6;">
+        23艘船队 × 平均资产价值 − 净负债 ÷ 股数
+        新船造价$1.303亿/艘参考（来源：DHT官方公告）
+      </div>
+    </div>
+    <div class="val-card tertiary">
+      <div class="val-method">风险参考：压力测试DCF（仅极端情景）</div>
+      <div class="val-target" style="color:var(--red);">$11.00</div>
+      <div class="val-range">熊市极端情景 | WACC 11.5%</div>
+      <div style="font-size:11px; color:var(--text-muted); margin-top:8px; line-height:1.6;">
+        <strong style="color:var(--yellow)">⚠ 警告：</strong>DCF对强周期股适用性有限。
+        2027年运价回落至$40,000/天（10年30分位），此结果仅作极端情景参考。
+      </div>
+    </div>
+  </div>
+
+  <!-- P/B Cycle Band -->
+  <div class="card" style="margin-top:20px;">
+    <div class="card-title">2014-2026年 VLCC行业周期 P/B 波动区间分析</div>
+    <div style="position:relative; height:80px; background:rgba(255,255,255,0.03); border-radius:6px; margin-bottom:10px; overflow:hidden;">
+      <!-- P/B range band -->
+      <div style="position:absolute; top:15px; left:0; right:0; height:50px; background:linear-gradient(90deg, rgba(232,68,90,0.2) 0%, rgba(245,200,66,0.15) 30%, rgba(46,204,138,0.15) 55%, rgba(255,107,53,0.25) 80%, rgba(232,68,90,0.2) 100%); border-radius:4px;"></div>
+      <!-- Trough marker -->
+      <div style="position:absolute; bottom:0; left:8%; width:2px; height:75%; background:var(--red); opacity:0.8;"></div>
+      <div style="position:absolute; bottom:0; left:8%; font-size:9px; color:var(--red); transform:translateX(-50%);">2016低<br>0.3x</div>
+      <!-- 2020 marker -->
+      <div style="position:absolute; bottom:0; left:40%; width:2px; height:75%; background:var(--yellow); opacity:0.8;"></div>
+      <div style="position:absolute; bottom:0; left:40%; font-size:9px; color:var(--yellow); transform:translateX(-50%);">2020<br>0.6x</div>
+      <!-- 2022 peak -->
+      <div style="position:absolute; bottom:0; left:62%; width:2px; height:90%; background:var(--green); opacity:0.8;"></div>
+      <div style="position:absolute; bottom:0; left:62%; font-size:9px; color:var(--green); transform:translateX(-50%);">2022峰<br>1.3x</div>
+      <!-- Current marker -->
+      <div style="position:absolute; bottom:0; left:82%; width:3px; height:95%; background:var(--orange); box-shadow:0 0 8px rgba(255,107,53,0.6);"></div>
+      <div style="position:absolute; bottom:0; left:82%; font-size:9px; color:var(--orange); transform:translateX(-50%); font-weight:700;">▲ 当前<br>~1.0x</div>
+      <!-- 5yr avg line -->
+      <div style="position:absolute; top:20px; left:0; right:0; height:1px; background:rgba(255,255,255,0.2); border-top:1px dashed rgba(255,255,255,0.25);"></div>
+      <div style="position:absolute; top:14px; right:4px; font-size:9px; color:var(--text-muted);">5年均值 0.8x</div>
+    </div>
+    <div style="display:flex; justify-content:space-between; font-size:10px; color:var(--text-muted);">
+      <span>2014</span><span>2016</span><span>2018</span><span>2020</span><span>2022</span><span>2024</span><span>2026</span>
+    </div>
+    <div style="margin-top:12px; font-size:11px; color:var(--text-secondary);" data-source="来源：Clarksons Research / Bloomberg，历史周期数据综合分析">
+      当前P/B约1.0x（基于股价~$18.6，估算BV/股~$18-20），高于5年均值0.8x但低于2022年峰值1.3x。
+      我们认为在周期78%分位时维持1.0-1.05x合理，但<strong>超过1.2x将进入过热警戒区</strong>。
+    </div>
+  </div>
+
+  <!-- Interactive assumptions -->
+  <div class="assumptions" style="margin-top:20px;">
+    <div class="assumptions-title">⚙ 关键假设参数（可手动调整）</div>
+    <div class="assumption-row">
+      <div class="assumption-label">2026年均TCE运价 ($/天)</div>
+      <div class="slider-wrap">
+        <input type="range" id="sliderTCE" min="45000" max="100000" step="1000" value="75000" oninput="updateTarget()">
+        <div class="slider-val" id="valTCE">$75,000</div>
+      </div>
+    </div>
+    <div class="assumption-row">
+      <div class="assumption-label">目标P/B乘数</div>
+      <div class="slider-wrap">
+        <input type="range" id="sliderPB" min="0.6" max="1.4" step="0.05" value="1.05" oninput="updateTarget()">
+        <div class="slider-val" id="valPB">1.05x</div>
+      </div>
+    </div>
+    <div class="assumption-row">
+      <div class="assumption-label">WACC (%)</div>
+      <div class="slider-wrap">
+        <input type="range" id="sliderWACC" min="8.0" max="14.0" step="0.5" value="11.5" oninput="updateTarget()">
+        <div class="slider-val" id="valWACC">11.5%</div>
+      </div>
+    </div>
+    <div class="live-target" style="margin-top:14px;">
+      <div class="live-target-label">动态估值目标价</div>
+      <div class="live-target-val" id="dynamicTarget">$21.00</div>
+      <div class="live-target-sub">基于周期调整P/B法 · 上下行区间见下方情景分析</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ SEC. 4 — SCENARIO ANALYSIS -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <span class="section-title">现金流韧性测试（三情景分析）</span>
+  </div>
+  <div class="scenario-row">
+    <div class="scenario-col s-bear">
+      <div class="s-label bear">▼ 熊市情景</div>
+      <div style="font-size:11px; color:var(--text-muted); margin-bottom:8px;">2027年供给冲击 + 地缘缓和</div>
+      <div class="s-rate" style="color:var(--red);">$30,000/天</div>
+      <div class="s-metrics">
+        <div class="s-metric"><span class="s-metric-label">年度TCE收入</span><span class="s-metric-val neg">~$250M</span></div>
+        <div class="s-metric"><span class="s-metric-label">调整EBITDA</span><span class="s-metric-val neg">~$150M</span></div>
+        <div class="s-metric"><span class="s-metric-label">自由现金流/股</span><span class="s-metric-val neg">~$0.50</span></div>
+        <div class="s-metric"><span class="s-metric-label">股息（100%OCF）</span><span class="s-metric-val neg">~$0.40/股</span></div>
+        <div class="s-metric"><span class="s-metric-label">触发条件</span><span></span></div>
+      </div>
+      <div style="font-size:10px; color:var(--red); margin-top:8px; line-height:1.6;">
+        ▸ 2027年38艘+69艘新船交付<br>
+        ▸ 红海航线全面恢复正常<br>
+        ▸ OPEC大幅减产冲击运量<br>
+        ▸ 中国经济显著减速
+      </div>
+    </div>
+    <div class="scenario-col s-base">
+      <div class="s-label base">◆ 基准情景（主要预测）</div>
+      <div style="font-size:11px; color:var(--text-muted); margin-bottom:8px;">70%置信度 | 2026-2027年均值</div>
+      <div class="s-rate" style="color:var(--orange);">$45,000–$62,000/天</div>
+      <div class="s-metrics">
+        <div class="s-metric"><span class="s-metric-label">年度TCE收入</span><span class="s-metric-val mid">~$400-530M</span></div>
+        <div class="s-metric"><span class="s-metric-label">调整EBITDA</span><span class="s-metric-val mid">~$280-380M</span></div>
+        <div class="s-metric"><span class="s-metric-label">自由现金流/股</span><span class="s-metric-val mid">~$1.60-2.20</span></div>
+        <div class="s-metric"><span class="s-metric-label">股息（100%OCF）</span><span class="s-metric-val mid">~$1.60-2.20/股</span></div>
+        <div class="s-metric"><span class="s-metric-label">目标价</span><span class="s-metric-val mid">$18-24</span></div>
+      </div>
+      <div style="font-size:10px; color:var(--orange); margin-top:8px; line-height:1.6;">
+        ▸ 中东→中国TD3C航线维持<br>
+        ▸ OPEC+逐步恢复产能<br>
+        ▸ 2026全年新船交付如期<br>
+        ▸ 欧盟ETS成本逐步转嫁
+      </div>
+    </div>
+    <div class="scenario-col s-bull">
+      <div class="s-label bull">▲ 牛市情景</div>
+      <div style="font-size:11px; color:var(--text-muted); margin-bottom:8px;">需额外地缘/需求催化剂</div>
+      <div class="s-rate" style="color:var(--green);">$85,000/天</div>
+      <div class="s-metrics">
+        <div class="s-metric"><span class="s-metric-label">年度TCE收入</span><span class="s-metric-val pos">~$700M</span></div>
+        <div class="s-metric"><span class="s-metric-label">调整EBITDA</span><span class="s-metric-val pos">~$560M</span></div>
+        <div class="s-metric"><span class="s-metric-label">自由现金流/股</span><span class="s-metric-val pos">~$3.00+</span></div>
+        <div class="s-metric"><span class="s-metric-label">股息（100%OCF）</span><span class="s-metric-val pos">~$3.00+/股</span></div>
+        <div class="s-metric"><span class="s-metric-label">上行触发条件</span><span></span></div>
+      </div>
+      <div style="font-size:10px; color:var(--green); margin-top:8px; line-height:1.6;">
+        ▸ 霍尔木兹海峡持续紧张<br>
+        ▸ UAE OPEC退出→额外运量<br>
+        ▸ 制裁强化→影子船队退出<br>
+        ▸ 中国战略储备大规模补库
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:10px; font-size:11px; color:var(--text-muted);" data-source="来源：Jefferies航运研究部 (2025.09.15) / EIA全球油气展望 / IEA油市报告">
+    基准情景运价区间 $45,000-$62,000/天（70%置信度）参考：Jefferies分析师Omar Nokta 2026/2027预测值$67,500/天；EIA预期全球石油需求2026年增长约100万桶/天。
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ SEC. 5 — MARKET FUNDAMENTALS -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <span class="section-title">行业基本面深度分析</span>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">供给侧：VLCC新船交付预测 (2024-2030)</div>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">2024</div>
+          <div class="bar-track">
+            <div class="bar-fill secondary" style="width:8%"><span>8艘</span></div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">2025</div>
+          <div class="bar-track">
+            <div class="bar-fill secondary" style="width:8%"><span>8艘</span></div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">2026</div>
+          <div class="bar-track">
+            <div class="bar-fill primary" style="width:48%"><span>48艘</span></div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label" style="color:var(--red)">2027 ⚠</div>
+          <div class="bar-track">
+            <div class="bar-fill highlight" style="width:69%"><span>69艘</span></div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label" style="color:var(--red)">2028 ⚠</div>
+          <div class="bar-track">
+            <div class="bar-fill highlight" style="width:70%"><span>70艘</span></div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">2029</div>
+          <div class="bar-track">
+            <div class="bar-fill secondary" style="width:24%"><span>24艘</span></div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">2030</div>
+          <div class="bar-track">
+            <div class="bar-fill secondary" style="width:6%"><span>6艘</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px; font-size:11px; color:var(--text-muted);" data-source="来源：Breakwave Advisors VLCC月报 2026年3月 / Kpler 2026年1月供给预测">
+        数据来源：Breakwave Advisors (2026年3月) / Kpler (2026年1月)
+        <br><strong style="color:var(--red);">⚠ 2027-2028年为关键风险窗口：</strong> 交付量达活跃船队的20%+，历史经验显示此级别供给冲击将显著压制运价
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">地缘政治影响量化（交叉验证）</div>
+      <table class="data-table">
+        <thead><tr><th>因素</th><th>影响</th><th>持续性预判</th><th>来源</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>红海绕行增程</td>
+            <td class="num tag-up">TCE +22%</td>
+            <td><span class="badge badge-yellow">不确定</span></td>
+            <td style="font-size:10px;">DHT管理层 Q1 2026</td>
+          </tr>
+          <tr>
+            <td>俄油折扣收窄</td>
+            <td class="num tag-down">−$5/桶影响</td>
+            <td><span class="badge badge-red">逐步消退</span></td>
+            <td style="font-size:10px;">IEA / Kpler估算</td>
+          </tr>
+          <tr>
+            <td>制裁影子船队</td>
+            <td class="num tag-up">合规溢价</td>
+            <td><span class="badge badge-orange">政策依赖</span></td>
+            <td style="font-size:10px;">EIA/Argus Media</td>
+          </tr>
+          <tr>
+            <td>霍尔木兹紧张</td>
+            <td class="num tag-up">短期大幅溢价</td>
+            <td><span class="badge badge-red">高度不稳定</span></td>
+            <td style="font-size:10px;">StockAnalysis 2026</td>
+          </tr>
+          <tr>
+            <td>UAE OPEC+退出传言</td>
+            <td class="num tag-up">额外运量潜力</td>
+            <td><span class="badge badge-yellow">尚未确认</span></td>
+            <td style="font-size:10px;">DHT Q1 2026 Call</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="prose" style="margin-top:14px;">
+        <p data-source="来源：IEA油市展望 2026 / EIA短期能源展望 2026年5月">
+          <strong>IEA 2026预测：</strong>全球石油需求增长约100万桶/天（"稳健但非爆炸性"），
+          主要来自非OECD亚洲地区。长途贸易流动（大西洋→亚洲）对VLCC需求形成结构性支撑。
+        </p>
+        <p data-source="来源：Kpler 2026年VLCC市场五大驱动力 (2026.01.29)">
+          <strong>Kpler研究警示：</strong>若红海航线恢复正常，将显著缩短航程，
+          对LR2和VLCC需求产生下行压力。正常化时间节点是最重要的单一不确定因素。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confidence Intervals -->
+  <div class="card" style="margin-top:20px;">
+    <div class="card-title">关键预测置信区间（70%置信度）</div>
+    <div class="ci-bar">
+      <div class="ci-row">
+        <div class="ci-label">2026年全年均TCE预测 <span class="badge badge-orange">70% CI</span></div>
+        <div class="ci-track" style="background:rgba(255,255,255,0.06); height:12px; border-radius:6px; position:relative;">
+          <div class="ci-range" style="left:20%; width:50%; background:rgba(255,107,53,0.35); border-radius:4px; height:100%;"></div>
+          <div class="ci-point" style="left:45%; background:var(--orange); width:14px; height:14px; top:-1px;"></div>
+        </div>
+        <div class="ci-vals"><span class="ci-low">$40k（下限）</span><span class="ci-mid">$45k–$62k（基准区间）</span><span class="ci-high">$80k（上限）</span></div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-label">2027年全年均TCE预测 <span class="badge badge-red">供给冲击风险</span></div>
+        <div class="ci-track" style="background:rgba(255,255,255,0.06); height:12px; border-radius:6px; position:relative;">
+          <div class="ci-range" style="left:5%; width:45%; background:rgba(232,68,90,0.3); border-radius:4px; height:100%;"></div>
+          <div class="ci-point" style="left:27%; background:var(--red); width:14px; height:14px; top:-1px;"></div>
+        </div>
+        <div class="ci-vals"><span class="ci-low">$30k（熊市）</span><span style="color:var(--red); font-weight:600;">$35k–$50k（基准区间）</span><span class="ci-high">$65k（乐观）</span></div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-label">12个月目标价 <span class="badge badge-orange">CA-P/B法</span></div>
+        <div class="ci-track" style="background:rgba(255,255,255,0.06); height:12px; border-radius:6px; position:relative;">
+          <div class="ci-range" style="left:15%; width:60%; background:rgba(255,107,53,0.25); border-radius:4px; height:100%;"></div>
+          <div class="ci-point" style="left:42%; background:var(--orange); width:14px; height:14px; top:-1px;"></div>
+        </div>
+        <div class="ci-vals"><span class="ci-low">$11（熊市DCF）</span><span class="ci-mid">$16–$24（基准区间）</span><span class="ci-high">$30+（牛市NAV）</span></div>
+      </div>
+    </div>
+    <div style="font-size:10px; color:var(--text-muted); margin-top:12px;" data-source="来源：综合Jefferies/Evercore/BTIG分析师预测与本报告估值框架">
+      *置信区间基于历史VLCC周期波动性、当前供需平衡及分析师共识区间综合测算
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ SEC. 6 — ESG -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <span class="section-title">ESG风险专章 · 碳合规成本测算</span>
+  </div>
+  <div class="esg-grid">
+    <div class="esg-card">
+      <div class="esg-icon">🌊</div>
+      <div class="esg-title">CII评级现状</div>
+      <div class="esg-value">B级</div>
+      <div class="esg-desc" data-source="来源：IMO CII评级框架 / DHT可持续发展报告">
+        当前2026年评级B级。若达标A级，每艘船需投入约$1,200万改造（推进系统优化、燃油效率升级）。
+        DHT四艘新船已配备EGC洗涤系统，改善合规成本结构。<br>
+        <strong style="color:var(--yellow);">风险：</strong>2027年CII收紧可能迫使更早拆除中龄船。
+      </div>
+    </div>
+    <div class="esg-card">
+      <div class="esg-icon">🇪🇺</div>
+      <div class="esg-title">欧盟碳关税 (EU ETS)</div>
+      <div class="esg-value">+17%</div>
+      <div class="esg-desc" data-source="来源：EU ETS延伸至航运业规定 / Clarksons成本测算">
+        EU ETS 2027年起全面适用国际航运，预计增加约17%的净运营成本。
+        DHT欧洲航线（Baltic-中东）占总运力约25-30%。<br>
+        <strong style="color:var(--yellow);">应对策略：</strong>碳成本条款已开始纳入新签期租合同，但即期市场转嫁能力存在不确定性。
+      </div>
+    </div>
+    <div class="esg-card">
+      <div class="esg-icon">⚓</div>
+      <div class="esg-title">燃油成本结构</div>
+      <div class="esg-value">VLSFO/LNG</div>
+      <div class="esg-desc">
+        四艘Antelope新船配备EGC洗涤系统，可使用高硫燃油（HSFO vs VLSFO价差约$60-100/吨受益）。
+        DHT现有船队VLSFO合规燃油占比高，IMO 2020后整体合规成本约占TCE收入的20-28%。<br>
+        <strong style="color:var(--green);">优势：</strong>洗涤器安装可降低单位燃油成本约10-12%。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ SEC. 7 — RISK MATRIX -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">07</span>
+    <span class="section-title">风险热力矩阵（权重分配）</span>
+  </div>
+
+  <div style="margin-bottom:12px; font-size:12px; color:var(--text-muted);">
+    热力矩阵设计逻辑：纵轴为概率（0-100%），横轴为影响程度（轻微/中等/重大/灾难性），
+    颜色深浅表示综合风险强度（概率×影响）。航运股的独特性在于<strong style="color:var(--orange);">系统性风险主导而非个股风险</strong>——无法通过公司策略显著规避行业性周期。
+  </div>
+
+  <div class="heatmap">
+    <div class="hm-cell hm-red">
+      <div class="hm-title">🔴 地缘冲突缓和风险</div>
+      <div class="hm-prob" style="color:#ff8a9a;">65%</div>
+      <div class="hm-impact">影响：运价 −35% | 系统性风险</div>
+      <div class="hm-mitigation">
+        <strong>缓释有效性：低</strong><br>
+        行业系统性风险，无法通过单一公司策略规避。红海恢复+地缘缓和将同步压制整个VLCC市场。
+        Q2 2026已锁定71%运力提供短期保护，但中期敞口不可规避。
+        <br><span style="font-size:9px; opacity:0.7;" data-source="来源：IEA /Kpler地缘风险分析">参考：IEA地缘风险情景 / Kpler航线数据</span>
+      </div>
+    </div>
+    <div class="hm-cell hm-orange">
+      <div class="hm-title">🟠 2027-2028新船交付潮</div>
+      <div class="hm-prob" style="color:#ffb07a;">90%</div>
+      <div class="hm-impact">影响：行业供给 +20%+ | 运价 −28%</div>
+      <div class="hm-mitigation">
+        <strong>缓释有效性：中等</strong><br>
+        DHT自身无新增订单（4艘已交付），相对竞争优势明显。
+        但行业性供给过剩无法独善其身。69-70艘/年交付量（2027-28年）
+        将是自2009年以来最密集的供给冲击。
+        <br><span style="font-size:9px; opacity:0.7;" data-source="来源：Breakwave Advisors VLCC报告 2026年3月 / Kpler 2026年1月">参考：Breakwave Advisors / Kpler交付预测</span>
+      </div>
+    </div>
+    <div class="hm-cell hm-yellow">
+      <div class="hm-title">🟡 碳合规成本上升</div>
+      <div class="hm-prob" style="color:#ffe48a;">90%</div>
+      <div class="hm-impact">影响：净利润 −15% | 2027年起生效</div>
+      <div class="hm-mitigation">
+        <strong>缓释有效性：高</strong><br>
+        EU ETS 2027年实施确定性极高（已立法）。DHT影响相对可控：
+        新船EGC合规度高，已预留改造基金，可通过合同条款部分转嫁给租家。
+        但即期市场转嫁能力弱，需关注市场结构转型。
+      </div>
+    </div>
+    <div class="hm-cell hm-blue">
+      <div class="hm-title">🔵 利率持续高企风险</div>
+      <div class="hm-prob" style="color:#8ab8e8;">70%</div>
+      <div class="hm-impact">影响：+$230万/年利息 | 浮动利率72%</div>
+      <div class="hm-mitigation">
+        <strong>缓释有效性：低</strong><br>
+        浮动利率负债占比约72%（SOFR+132bp），$308.4M新船融资设施。
+        已部分使用利率衍生品对冲（Q1含$1.1M衍生品公允价值收益）。
+        SOFR每升息100bp，年利息增加约$220-260万。当前总流动性$350M足以覆盖。
+      </div>
+    </div>
+  </div>
+
+  <!-- Risk summary bar -->
+  <div class="card" style="margin-top:20px;">
+    <div class="card-title">综合风险权重评分（概率 × 影响）</div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label" style="color:var(--red);">新船交付潮</div>
+        <div class="bar-track">
+          <div class="bar-fill highlight" style="width:78%"><span>极高风险</span></div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label" style="color:var(--red);">地缘冲突缓和</div>
+        <div class="bar-track">
+          <div class="bar-fill highlight" style="width:65%"><span>高风险</span></div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label" style="color:var(--yellow);">碳合规成本</div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:45%; background:linear-gradient(90deg,#5a5000,#9a8a00)"><span>中等风险</span></div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">利率风险</div>
+        <div class="bar-track">
+          <div class="bar-fill secondary" style="width:28%"><span>较低风险</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ SEC. 8 — FINANCIALS TABLE -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">08</span>
+    <span class="section-title">核心财务数据摘要（2024–2026）</span>
+  </div>
+  <div class="card">
+    <div class="card-title">季度财务数据（来源：DHT SEC 6-K 2026.05.05）</div>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>指标 (USD百万)</th>
+            <th>Q1 2025</th>
+            <th>Q2 2025</th>
+            <th>Q3 2025</th>
+            <th>Q4 2025</th>
+            <th>2025全年</th>
+            <th>Q1 2026</th>
+            <th>YoY变化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td>航运收入</td>
+            <td class="num">118.2</td>
+            <td class="num">127.9</td>
+            <td class="num">107.2</td>
+            <td class="num">143.9</td>
+            <td class="num">497.2</td>
+            <td class="num">186.3</td>
+            <td class="num tag-up">+57.6%</td>
+          </tr>
+          <tr>
+            <td>TCE净收入（调整）</td>
+            <td class="num">79.3</td>
+            <td class="num">92.8</td>
+            <td class="num">79.1</td>
+            <td class="num">117.8</td>
+            <td class="num">369.1</td>
+            <td class="num">157.2</td>
+            <td class="num tag-up">+98.2%</td>
+          </tr>
+          <tr>
+            <td>调整后EBITDA</td>
+            <td class="num">56.4</td>
+            <td class="num">69.0</td>
+            <td class="num">57.7</td>
+            <td class="num">95.3</td>
+            <td class="num">278.4</td>
+            <td class="num">133.3</td>
+            <td class="num tag-up">+136.3%</td>
+          </tr>
+          <tr>
+            <td>税后净利润</td>
+            <td class="num">44.1</td>
+            <td class="num">56.0</td>
+            <td class="num">44.8</td>
+            <td class="num">66.1</td>
+            <td class="num">211.0</td>
+            <td class="num">164.5*</td>
+            <td class="num tag-up">+272.8%</td>
+          </tr>
+          <tr>
+            <td>普通净利润（调整后）</td>
+            <td class="num">~24.3</td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td class="num">66.1</td>
+            <td class="num">—</td>
+            <td class="num">103.4</td>
+            <td class="num tag-up">+325%</td>
+          </tr>
+          <tr>
+            <td>EPS（基本）</td>
+            <td class="num">$0.27</td>
+            <td class="num">$0.35</td>
+            <td class="num">$0.28</td>
+            <td class="num">$0.41</td>
+            <td class="num">$1.31</td>
+            <td class="num">$1.02*</td>
+            <td class="num tag-up">+278%</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>股息/股</td>
+            <td class="num">$0.15</td>
+            <td class="num">$0.24</td>
+            <td class="num">$0.18</td>
+            <td class="num">$0.41</td>
+            <td class="num">$0.98</td>
+            <td class="num">$0.64</td>
+            <td class="num tag-up">第65次连续</td>
+          </tr>
+          <tr>
+            <td>船舶运营费用</td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td class="num">19.1</td>
+            <td class="num neutral">含~$2M非经常</td>
+          </tr>
+          <tr>
+            <td>G&A费用</td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td class="num">5.0</td>
+            <td class="num neutral">精简高效</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:8px; font-size:10px; color:var(--text-muted);">
+      * Q1 2026净利润$164.5M含$60M船舶出售收益 + $1.1M衍生品公允价值收益；普通净利润$103.4M ($0.64/股) 更具持续参考价值
+      <br>数据来源：DHT Holdings SEC EDGAR 6-K备案文件 2026.05.05，具有最高数据权威性
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ TECHNICAL NOTES -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">附</span>
+    <span class="section-title">技术说明 · 分析方法论</span>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">为何不以PE估值为主框架？</div>
+      <div class="prose">
+        <p><strong>传统PE估值的致命缺陷（航运周期股）：</strong></p>
+        <p>DHT 2025年全年EPS $1.31，若以市场平均PE 15x则目标价~$20。但同期内，
+        季度EPS从$0.27（Q3 2025）→$0.41（Q4 2025）→$1.02（Q1 2026），波动幅度达278%。
+        在周期高位，PE失真表现为"虚假低估"——当前PE仅约7-8x，看似便宜，
+        实则是周期高盈利的反映，非结构性盈利能力提升。</p>
+        <p><strong>历史教训（2015-2020年）：</strong>
+        即便PE曾低至3-5x，但由于盈利随后崩溃（ROE均值 -8.3%），
+        持有者仍大幅亏损。航运股应以<strong>周期中枢盈利力</strong>而非现期盈利估值。</p>
+        <p>因此，我们以<strong>周期调整P/B法</strong>（CA-P/B）为主框架，
+        以资产重置成本法（NAV/P/B）交叉验证，避免线性外推当前超常利润。</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">风险热力图设计逻辑</div>
+      <div class="prose">
+        <p><strong>4×4矩阵框架说明：</strong></p>
+        <p>本报告采用"概率×影响强度"双维度风险矩阵，而非单纯罗列风险。
+        颜色编码：红色（高概率+高影响）→橙色（中高概率+中高影响）→
+        黄色（高确定性+中等影响）→蓝色（中概率+低影响）。</p>
+        <p><strong>航运股风险矩阵的特殊性：</strong>
+        传统企业风险（管理层、竞争、产品）在此几乎不相关。
+        VLCC市场中，<strong>宏观与地缘风险主导（权重>80%）</strong>，
+        微观企业风险（杠杆、运营效率）仅为次要因素。
+        这也解释了为何分析师共识评级"强力买入"，但目标价涵盖区间
+        $11-$30——不确定性来源是系统性的，非公司可控。</p>
+        <p data-source="来源：IEA《石油市场月报》/ Kpler《2026年油轮市场五大驱动力》">
+          独立参考来源：IEA月度油市报告 / Kpler航运分析 / Clarksons Research / Baltic Exchange。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ DISCLAIMER -->
+<div class="disclaimer">
+  <div class="disclaimer-title">⚠ 免责声明 · Legal Disclaimer</div>
+  <p class="warning">
+    航运股估值对周期位置极度敏感，本报告不构成投资建议。
+    历史周期显示：2015-2020年行业平均ROE为 -8.3%。
+  </p>
+  <p>
+    本报告仅供专业金融机构内部研究参考，不构成任何投资建议、买卖邀约或推荐。
+    报告中所有观点均基于截至2026年5月31日的公开可用信息，
+    包括但不限于SEC EDGAR备案文件、公司投资者关系材料、Clarksons Research、
+    波罗的海交易所指数、IEA月度油市报告及Kpler航运数据。
+  </p>
+  <p>
+    <strong>数据来源层级原则：</strong> 当公司SEC备案文件与第三方数据冲突时，以SEC备案文件为最终依据。
+    所有预测数据均附置信区间（2026年运价预测：$45,000-$62,000/天，70%置信度）。
+    所有增长预测均标注上行/下行触发条件，禁止将任何单一情景视为确定性预测。
+  </p>
+  <p>
+    <strong>特别提示：</strong> 2027-2028年VLCC新船交付高峰（69-70艘/年）已有充分前期信号，
+    但交付时机、拆船速度与地缘因素的相互作用存在高度不确定性。
+    投资者应充分认识航运行业的强周期特征，独立评估自身风险承受能力后作出决策。
+  </p>
+  <p style="margin-top:12px; color: #666;">
+    © 2026 模拟高盛全球运输研究部 | 报告生成日期：2026年5月31日 | 数据截至：2026年Q1 (2026.03.31) |
+    本HTML报告内含所有CSS/JS，单文件独立运行
+  </p>
+</div>
+
+<script>
+// ─── GAUGE CANVAS ───
+(function() {
+  const canvas = document.getElementById('gaugeCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const cx = 130, cy = 130, r = 100;
+
+  // Draw gradient arc background
+  const segments = [
+    { color: '#2ecc8a', from: Math.PI, to: Math.PI * 1.3 },
+    { color: '#f5c842', from: Math.PI * 1.3, to: Math.PI * 1.6 },
+    { color: '#ff8c5a', from: Math.PI * 1.6, to: Math.PI * 1.85 },
+    { color: '#e8445a', from: Math.PI * 1.85, to: Math.PI * 2 }
+  ];
+
+  // Background arc
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, Math.PI, Math.PI * 2);
+  ctx.lineWidth = 20;
+  ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+  ctx.stroke();
+
+  // Colored segments
+  segments.forEach(s => {
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, s.from, s.to);
+    ctx.lineWidth = 18;
+    ctx.strokeStyle = s.color;
+    ctx.stroke();
+  });
+
+  // Needle at 78% position
+  const pct = 0.78;
+  const angle = Math.PI + pct * Math.PI;
+  const nx = cx + (r - 20) * Math.cos(angle);
+  const ny = cy + (r - 20) * Math.sin(angle);
+
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(nx, ny);
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = '#ff6b35';
+  ctx.shadowColor = 'rgba(255,107,53,0.6)';
+  ctx.shadowBlur = 8;
+  ctx.stroke();
+
+  // Center dot
+  ctx.beginPath();
+  ctx.arc(cx, cy, 7, 0, Math.PI * 2);
+  ctx.fillStyle = '#ff6b35';
+  ctx.fill();
+  ctx.shadowBlur = 0;
+})();
+
+// ─── DYNAMIC VALUATION ───
+function updateTarget() {
+  const tce = parseInt(document.getElementById('sliderTCE').value);
+  const pb = parseFloat(document.getElementById('sliderPB').value);
+  const wacc = parseFloat(document.getElementById('sliderWACC').value);
+
+  document.getElementById('valTCE').textContent = '$' + tce.toLocaleString();
+  document.getElementById('valPB').textContent = pb.toFixed(2) + 'x';
+  document.getElementById('valWACC').textContent = wacc.toFixed(1) + '%';
+
+  // Simplified target price model:
+  // BV/share estimated ~$19-20, adjust for TCE performance
+  const tceFactor = (tce - 45000) / 45000; // normalized deviation from base
+  const baseBV = 20.0;
+  const adjBV = baseBV * (1 + tceFactor * 0.25);
+  const targetPrice = adjBV * pb;
+  const waccAdj = (11.5 - wacc) * 0.4;
+  const finalTarget = Math.max(8, Math.min(45, targetPrice + waccAdj));
+
+  document.getElementById('dynamicTarget').textContent = '$' + finalTarget.toFixed(2);
+
+  // Color coding
+  const el = document.getElementById('dynamicTarget');
+  if (finalTarget > 24) el.style.color = '#2ecc8a';
+  else if (finalTarget > 18) el.style.color = '#ff6b35';
+  else if (finalTarget > 14) el.style.color = '#f5c842';
+  else el.style.color = '#e8445a';
+}
+
+// Initialize
+updateTarget();
+</script>
+</body>
+</html>

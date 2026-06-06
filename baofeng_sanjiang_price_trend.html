@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宝丰能源 & 三江化工 主要产品价格走势 | 2025 vs 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card-bg: #1a1f2e;
+    --border: #2a3040;
+    --text: #e0e4ea;
+    --text-secondary: #8899aa;
+    --red: #ef4444;
+    --green: #22c55e;
+    --orange: #f59e0b;
+    --blue: #3b82f6;
+    --purple: #a855f7;
+    --cyan: #06b6d4;
+    --teal: #14b8a6;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+    min-height: 100vh;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+  }
+  .header .subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+  .legend-row {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .legend-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .legend-dash {
+    width: 24px; height: 0;
+    border-top: 3px dashed;
+    display: inline-block;
+  }
+  .section-title {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin: 8px 0 16px 0;
+    padding-left: 4px;
+    border-left: 3px solid var(--blue);
+    padding: 4px 12px;
+  }
+  .section-title strong { color: var(--text); }
+  .chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 900px) {
+    .chart-grid { grid-template-columns: 1fr; }
+    body { padding: 12px; }
+  }
+  .chart-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .chart-card h2 {
+    font-size: 16px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .chart-card h2 .badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #1e293b;
+    color: #94a3b8;
+  }
+  .chart-card h2 .company-tag {
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .chart-card h2 .company-tag.bf { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .chart-card h2 .company-tag.sj { background: rgba(20,184,166,0.2); color: #2dd4bf; }
+  .chart-card .change-tag {
+    font-size: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .chart-card .change-tag span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .chart-card .change-tag .up { color: var(--red); }
+  .chart-card .change-tag .down { color: var(--green); }
+  .chart-container {
+    position: relative;
+    height: 370px;
+  }
+  .footnote {
+    margin-top: 24px;
+    padding: 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+  .footnote strong { color: var(--text); }
+  .yoy-tag {
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .yoy-tag.bearish { background: rgba(34,197,94,0.15); color: var(--green); }
+  .yoy-tag.bullish { background: rgba(239,68,68,0.15); color: var(--red); }
+  .yoy-tag.neutral { background: rgba(148,163,184,0.15); color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>宝丰能源 &amp; 中国三江化工 — 主要产品价格走势</h1>
+  <div class="subtitle">2025年1月–5月 vs 2026年1月–5月 同期对比 | 数据截至 2026-05-26</div>
+</div>
+
+<div class="legend-row">
+  <div class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span> 2025年同期</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#ef4444"></span> 2026年当前</div>
+  <div class="legend-item"><span class="legend-dash" style="border-color:#6b7280"></span> 趋势虚线（数据稀疏 / 插值估算）</div>
+</div>
+
+<div class="section-title"><strong>宝丰能源（600989）</strong> — 煤制烯烃龙头</div>
+
+<div class="chart-grid">
+
+  <!-- 甲醇 -->
+  <div class="chart-card">
+    <h2>🔵 甲醇 <span class="badge">华东市场价</span><span class="company-tag bf">宝丰·核心原料</span></h2>
+    <div class="change-tag">
+      <span>2025同期均价 <strong>~2,620 元/吨</strong></span>
+      <span>2026当前 <strong>3,163 元/吨</strong> <span class="up">▲ +20.7%</span></span>
+      <span>年初至今 <span class="up">▲ +45.1%</span></span>
+      <span class="yoy-tag bullish">同比走强</span>
+    </div>
+    <div class="chart-container"><canvas id="chartMeOH"></canvas></div>
+  </div>
+
+  <!-- 聚乙烯 LLDPE -->
+  <div class="chart-card">
+    <h2>🟠 聚乙烯 LLDPE <span class="badge">华东市场价</span><span class="company-tag bf">宝丰·核心产品</span></h2>
+    <div class="change-tag">
+      <span>2025同期均价 <strong>~7,860 元/吨</strong></span>
+      <span>2026当前 <strong>~8,400 元/吨</strong> <span class="up">▲ +6.9%</span></span>
+      <span>年初至今 <span class="up">▲ +10.5%</span></span>
+      <span class="yoy-tag bullish">同比微升</span>
+    </div>
+    <div class="chart-container"><canvas id="chartPE"></canvas></div>
+  </div>
+
+</div>
+
+<div class="section-title" style="margin-top: 24px;"><strong>中国三江化工（2198.HK）</strong> — 环氧乙烷/乙二醇一体化</div>
+
+<div class="chart-grid">
+
+  <!-- 环氧乙烷 -->
+  <div class="chart-card">
+    <h2>🟣 环氧乙烷 EO <span class="badge">华东出厂价</span><span class="company-tag sj">三江·核心产品</span></h2>
+    <div class="change-tag">
+      <span>2025同期均价 <strong>~6,695 元/吨</strong></span>
+      <span>2026当前 <strong>7,600 元/吨</strong> <span class="up">▲ +13.5%</span></span>
+      <span>年初至今 <span class="up">▲ +22.6%</span></span>
+      <span class="yoy-tag bullish">同比走强</span>
+    </div>
+    <div class="chart-container"><canvas id="chartEO"></canvas></div>
+  </div>
+
+  <!-- 乙二醇 -->
+  <div class="chart-card">
+    <h2>🟢 乙二醇 MEG <span class="badge">华东现货价</span><span class="company-tag sj">三江·最大收入来源</span></h2>
+    <div class="change-tag">
+      <span>2025同期均价 <strong>~4,047 元/吨</strong></span>
+      <span>2026当前 <strong>4,903 元/吨</strong> <span class="up">▲ +21.2%</span></span>
+      <span>年初至今 <span class="up">▲ +30.7%</span></span>
+      <span class="yoy-tag bullish">同比走强</span>
+    </div>
+    <div class="chart-container"><canvas id="chartMEG"></canvas></div>
+  </div>
+
+</div>
+
+<div class="footnote">
+  <strong>数据说明：</strong><br>
+  • <strong>甲醇</strong>：生意社基准价 + 同花顺 iFind 日频报价 + 华源证券 / 金联创季度复盘交叉验证；2025年月度数据依赖研报趋势描述结合关键节点价位插值估算<br>
+  • <strong>聚乙烯 LLDPE</strong>：宝丰能源2026Q1雪球用户测算月度出厂价 + 华鑫证券研报/同花顺行业数据；市场价较出厂价高~800-1000元/吨<br>
+  • <strong>环氧乙烷</strong>：生意社基准价 + 三江化工官方报价（100ppi.com）+ 同花顺生意社日频；2025年数据依赖全年均价（6,461元/吨）和研报趋势描述估算<br>
+  • <strong>乙二醇</strong>：生意社基准价/卫星化学报价 + 卓创资讯周报 + 同花顺生意社日频；2025年数据基于生意社年度复盘描述插值<br>
+  • 2025年精细化数据（月度均价）公开来源有限，部分月份为趋势插值估算，已用虚线标注<br>
+  • <strong>核心催化剂</strong>：2026年3月伊朗冲突→国际油价飙升→化工品全产业链暴涨；4月中旬后随地缘风险退潮+需求疲软持续回调<br>
+  • <strong>宝丰能源</strong>：宁夏煤制烯烃龙头，煤→甲醇→烯烃（PE/PP）全产业链，受益油价上行但原料煤炭成本相对固定<br>
+  • <strong>三江化工</strong>：轻烃裂解制乙烯→EO/MEG，成本端受石脑油/乙烷影响大，2025年EO利润承压、MEG贡献最大收入
+</div>
+
+<script>
+// ============ COMMON UTILS ============
+function dateIdx(m, d) {
+  const cumDays = [0, 31, 59, 90, 120];
+  return cumDays[m-1] + d - 1;
+}
+
+// Generate day labels: Jan 1 to May 25
+function getDayLabels() {
+  const labels = [];
+  const monthNames = ['1月', '2月', '3月', '4月', '5月'];
+  const daysInMonth = [31, 28, 31, 30, 31];
+  for (let m = 0; m < 5; m++) {
+    const last = (m === 4) ? 25 : daysInMonth[m];
+    for (let d = 1; d <= last; d++) {
+      labels.push(monthNames[m] + d + '日');
+    }
+  }
+  return labels;
+}
+const labels = getDayLabels(); // 31+28+31+30+25 = 145 days
+
+function makeData(keypoints, totalDays) {
+  const data = new Array(totalDays).fill(null);
+  for (const [idx, val] of keypoints) {
+    if (idx < totalDays) data[idx] = val;
+  }
+  let lastIdx = -1, lastVal = null;
+  for (let i = 0; i < totalDays; i++) {
+    if (data[i] !== null) {
+      if (lastVal !== null && lastIdx >= 0) {
+        const steps = i - lastIdx;
+        const step = (data[i] - lastVal) / steps;
+        for (let j = lastIdx + 1; j < i; j++) {
+          data[j] = Math.round((lastVal + step * (j - lastIdx)) * 100) / 100;
+        }
+      }
+      lastIdx = i;
+      lastVal = data[i];
+    }
+  }
+  if (lastIdx < totalDays - 1 && lastVal !== null) {
+    for (let j = lastIdx + 1; j < totalDays; j++) {
+      data[j] = lastVal;
+    }
+  }
+  return data;
+}
+
+function chartOptions(yUnit, yMax, yStep) {
+  return {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1e293b',
+        titleColor: '#e0e4ea',
+        bodyColor: '#cbd5e1',
+        borderColor: '#334155',
+        borderWidth: 1,
+        callbacks: {
+          label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() + ' ' + yUnit
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: { color: '#64748b', maxTicksLimit: 12, font: { size: 11 } },
+        grid: { color: 'rgba(100,116,139,0.08)' }
+      },
+      y: {
+        min: 0,
+        max: yMax,
+        ticks: {
+          color: '#94a3b8',
+          font: { size: 11 },
+          stepSize: yStep || undefined,
+          callback: v => v.toLocaleString() + ' ' + yUnit
+        },
+        grid: { color: 'rgba(100,116,139,0.1)' }
+      }
+    }
+  };
+}
+
+function ds25(label, data, color, dashed) {
+  return {
+    label: '2025 ' + label,
+    data: data,
+    borderColor: color,
+    backgroundColor: color + '18',
+    borderWidth: dashed ? 2 : 2.5,
+    borderDash: dashed ? [8, 4] : [],
+    pointRadius: 0,
+    pointHoverRadius: 5,
+    pointHoverBackgroundColor: color,
+    fill: false,
+    tension: 0.3
+  };
+}
+function ds26(label, data, color) {
+  return {
+    label: '2026 ' + label,
+    data: data,
+    borderColor: color,
+    backgroundColor: 'transparent',
+    borderWidth: 2.8,
+    pointRadius: 0,
+    pointHoverRadius: 6,
+    pointHoverBackgroundColor: color,
+    fill: false,
+    tension: 0.3
+  };
+}
+
+// ==================================================================
+// 1. 甲醇 — 宝丰能源核心原料
+// ==================================================================
+const meoh25 = [
+  [dateIdx(1,1), 2650], [dateIdx(1,15), 2620], [dateIdx(1,31), 2680],
+  [dateIdx(2,14), 2750], [dateIdx(2,28), 2700],
+  [dateIdx(3,14), 2780], [dateIdx(3,25), 2720],
+  [dateIdx(4,10), 2580], [dateIdx(4,25), 2500],
+  [dateIdx(5,10), 2450], [dateIdx(5,25), 2420]
+];
+const meoh26 = [
+  [dateIdx(1,1), 2180], [dateIdx(1,10), 2160], [dateIdx(1,25), 2250],
+  [dateIdx(2,5), 2350], [dateIdx(2,20), 2500],
+  [dateIdx(3,1), 2650], [dateIdx(3,8), 2950], [dateIdx(3,12), 3200],
+  [dateIdx(3,18), 3500], [dateIdx(3,24), 3680], [dateIdx(3,31), 3600],
+  [dateIdx(4,8), 3500], [dateIdx(4,18), 3400], [dateIdx(4,28), 3320],
+  [dateIdx(5,5), 3296], [dateIdx(5,12), 3250], [dateIdx(5,19), 3220],
+  [dateIdx(5,22), 3215], [dateIdx(5,25), 3163]
+];
+new Chart(document.getElementById('chartMeOH'), {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      ds25('甲醇', makeData(meoh25, 145), '#f59e0b', true),
+      ds26('甲醇', makeData(meoh26, 145), '#3b82f6')
+    ]
+  },
+  options: chartOptions('元/吨', 4000, 500)
+});
+
+// ==================================================================
+// 2. 聚乙烯 LLDPE — 宝丰能源核心产品
+// ==================================================================
+const pe25 = [
+  [dateIdx(1,1), 8400], [dateIdx(1,15), 8300], [dateIdx(1,31), 8200],
+  [dateIdx(2,14), 8080], [dateIdx(2,28), 7980],
+  [dateIdx(3,14), 7880], [dateIdx(3,28), 7750],
+  [dateIdx(4,10), 7650], [dateIdx(4,25), 7550],
+  [dateIdx(5,10), 7500], [dateIdx(5,25), 7480]
+];
+const pe26 = [
+  [dateIdx(1,1), 7600], [dateIdx(1,15), 7550], [dateIdx(1,31), 7700],
+  [dateIdx(2,14), 7800], [dateIdx(2,28), 7900],
+  [dateIdx(3,5), 8200], [dateIdx(3,10), 8800], [dateIdx(3,15), 9500],
+  [dateIdx(3,20), 10200], [dateIdx(3,27), 9900], [dateIdx(3,31), 9750],
+  [dateIdx(4,8), 9400], [dateIdx(4,18), 8900], [dateIdx(4,28), 8600],
+  [dateIdx(5,5), 8550], [dateIdx(5,12), 8500], [dateIdx(5,19), 8450],
+  [dateIdx(5,22), 8430], [dateIdx(5,25), 8400]
+];
+new Chart(document.getElementById('chartPE'), {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      ds25('LLDPE', makeData(pe25, 145), '#f59e0b', true),
+      ds26('LLDPE', makeData(pe26, 145), '#f97316')
+    ]
+  },
+  options: chartOptions('元/吨', 11000, 1000)
+});
+
+// ==================================================================
+// 3. 环氧乙烷 EO — 三江化工核心产品
+// ==================================================================
+const eo25 = [
+  [dateIdx(1,1), 7000], [dateIdx(1,15), 7000], [dateIdx(1,31), 6950],
+  [dateIdx(2,14), 6900], [dateIdx(2,28), 6850],
+  [dateIdx(3,14), 6750], [dateIdx(3,28), 6650],
+  [dateIdx(4,10), 6580], [dateIdx(4,25), 6480],
+  [dateIdx(5,10), 6400], [dateIdx(5,25), 6350]
+];
+const eo26 = [
+  [dateIdx(1,1), 6200], [dateIdx(1,15), 6250], [dateIdx(1,31), 6300],
+  [dateIdx(2,14), 6400], [dateIdx(2,28), 6500],
+  [dateIdx(3,5), 6800], [dateIdx(3,10), 7800], [dateIdx(3,15), 8500],
+  [dateIdx(3,20), 9000], [dateIdx(3,27), 9200], [dateIdx(3,31), 9100],
+  [dateIdx(4,5), 9050], [dateIdx(4,15), 9000], [dateIdx(4,27), 8950],
+  [dateIdx(5,4), 9000], [dateIdx(5,11), 8500], [dateIdx(5,16), 8200],
+  [dateIdx(5,20), 8000], [dateIdx(5,22), 7600], [dateIdx(5,25), 7600]
+];
+new Chart(document.getElementById('chartEO'), {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      ds25('EO', makeData(eo25, 145), '#f59e0b', true),
+      ds26('EO', makeData(eo26, 145), '#a855f7')
+    ]
+  },
+  options: chartOptions('元/吨', 10000, 1000)
+});
+
+// ==================================================================
+// 4. 乙二醇 MEG — 三江化工最大收入来源
+// ==================================================================
+const meg25 = [
+  [dateIdx(1,1), 4250], [dateIdx(1,15), 4200], [dateIdx(1,31), 4150],
+  [dateIdx(2,14), 4120], [dateIdx(2,28), 4100],
+  [dateIdx(3,14), 4050], [dateIdx(3,28), 4000],
+  [dateIdx(4,10), 3980], [dateIdx(4,25), 3950],
+  [dateIdx(5,10), 3920], [dateIdx(5,25), 3900]
+];
+const meg26 = [
+  [dateIdx(1,1), 3750], [dateIdx(1,15), 3720], [dateIdx(1,31), 3800],
+  [dateIdx(2,14), 3850], [dateIdx(2,28), 3900],
+  [dateIdx(3,5), 4000], [dateIdx(3,10), 4200], [dateIdx(3,18), 4400],
+  [dateIdx(3,25), 4550], [dateIdx(3,31), 4750],
+  [dateIdx(4,8), 4950], [dateIdx(4,18), 5150], [dateIdx(4,28), 5080],
+  [dateIdx(5,5), 5050], [dateIdx(5,12), 4980], [dateIdx(5,19), 4930],
+  [dateIdx(5,22), 4920], [dateIdx(5,25), 4903]
+];
+new Chart(document.getElementById('chartMEG'), {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      ds25('MEG', makeData(meg25, 145), '#f59e0b', true),
+      ds26('MEG', makeData(meg26, 145), '#22c55e')
+    ]
+  },
+  options: chartOptions('元/吨', 5500, 500)
+});
+</script>
+
+</body>
+</html>

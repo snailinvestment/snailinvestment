@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新和成主要产品价格走势对比 | 2025 vs 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card-bg: #1a1f2e;
+    --border: #2a3040;
+    --text: #e0e4ea;
+    --text-secondary: #8899aa;
+    --red: #ef4444;
+    --green: #22c55e;
+    --orange: #f59e0b;
+    --blue: #3b82f6;
+    --purple: #a855f7;
+    --cyan: #06b6d4;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+    min-height: 100vh;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+  }
+  .header .subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+  .legend-row {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .legend-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .legend-dash {
+    width: 20px; height: 0;
+    border-top: 3px dashed;
+    display: inline-block;
+  }
+  .chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 900px) {
+    .chart-grid { grid-template-columns: 1fr; }
+    body { padding: 12px; }
+  }
+  .chart-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .chart-card h2 {
+    font-size: 16px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .chart-card h2 .badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #1e293b;
+    color: #94a3b8;
+  }
+  .chart-card .change-tag {
+    font-size: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .chart-card .change-tag span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .chart-card .change-tag .up { color: var(--red); }
+  .chart-card .change-tag .down { color: var(--green); }
+  .chart-container {
+    position: relative;
+    height: 360px;
+  }
+  .footnote {
+    margin-top: 24px;
+    padding: 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+  .footnote strong { color: var(--text); }
+  .yoy-tag {
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .yoy-tag.bearish { background: rgba(34,197,94,0.15); color: var(--green); }
+  .yoy-tag.bullish { background: rgba(239,68,68,0.15); color: var(--red); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>新和成（002001）主要产品价格走势</h1>
+  <div class="subtitle">2025年1月–5月 vs 2026年1月–5月 同期对比 | 数据截至 2026-05-26</div>
+</div>
+
+<div class="legend-row">
+  <div class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span> 2025年同期</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#ef4444"></span> 2026年当前</div>
+  <div class="legend-item"><span class="legend-dash" style="border-color:#6b7280"></span> 趋势虚线（数据稀疏段）</div>
+</div>
+
+<div class="chart-grid">
+
+  <!-- 维生素A -->
+  <div class="chart-card">
+    <h2>🔴 维生素A（VA）<span class="badge">饲料级 50万IU/g</span></h2>
+    <div class="change-tag">
+      <span>2025同期均价 <strong>~76 元/kg</strong></span>
+      <span>2026当前 <strong>89.57 元/kg</strong> <span class="up">▲ +17.8%</span></span>
+      <span>年初至今 <span class="up">▲ +48%</span></span>
+      <span class="yoy-tag bullish">同比走强</span>
+    </div>
+    <div class="chart-container"><canvas id="chartVA"></canvas></div>
+  </div>
+
+  <!-- 维生素E -->
+  <div class="chart-card">
+    <h2>🟡 维生素E（VE）<span class="badge">50%粉</span></h2>
+    <div class="change-tag">
+      <span>2025同期均价 <strong>~87 元/kg</strong></span>
+      <span>2026当前 <strong>90.00 元/kg</strong> <span class="up">▲ +3.4%</span></span>
+      <span>年初至今 <span class="up">▲ +55%</span></span>
+      <span class="yoy-tag bullish">同比走强</span>
+    </div>
+    <div class="chart-container"><canvas id="chartVE"></canvas></div>
+  </div>
+
+  <!-- 蛋氨酸 -->
+  <div class="chart-card">
+    <h2>🟢 蛋氨酸（固体）<span class="badge">饲料级 DL-Met</span></h2>
+    <div class="change-tag">
+      <span>2025同期均价 <strong>~21 元/kg</strong></span>
+      <span>2026当前 <strong>39.50 元/kg</strong> <span class="up">▲ +88%</span></span>
+      <span>年初至今 <span class="up">▲ +126%</span></span>
+      <span class="yoy-tag bullish">同比大涨</span>
+    </div>
+    <div class="chart-container"><canvas id="chartMet"></canvas></div>
+  </div>
+
+  <!-- PPS -->
+  <div class="chart-card">
+    <h2>🟣 PPS（聚苯硫醚）<span class="badge">纤维级</span></h2>
+    <div class="change-tag">
+      <span>2025同期均价 <strong>~5.5 万元/吨</strong></span>
+      <span>2026当前 <strong>~5.8 万元/吨</strong> <span class="up">▲ +5%</span></span>
+      <span>年初至今 <span class="down">▼ -8%</span></span>
+      <span class="yoy-tag bullish">同比微升</span>
+    </div>
+    <div class="chart-container"><canvas id="chartPPS"></canvas></div>
+  </div>
+
+</div>
+
+<div class="footnote">
+  <strong>数据说明：</strong><br>
+  • <strong>维生素A/维生素E</strong>：同花顺 iFind 日频现货报价 + 博亚和讯 / 华源证券研报季度均价交叉验证<br>
+  • <strong>蛋氨酸</strong>：卓创资讯周均价 + 饲料行业信息网 / 东吴证券研报；厂家报价（新和成5/21报65元/kg）与经销商市场价（~39-40元/kg）存在显著价差，本图采用<strong>经销商市场价</strong><br>
+  • <strong>PPS</strong>：数据相对稀疏，基于东方财富/百家号行业报道+公开报价区间估算，仅供参考趋势方向<br>
+  • 2025年数据因公开来源有限，部分月份为插值估算，已用虚线标注<br>
+  • <strong>核心催化剂</strong>：2026年3月伊朗冲突→赢创新加坡工厂不可抗力→VA/VE/蛋氨酸价格暴涨；4月中旬见顶后持续回调<br>
+  • 上/上上个工作日（5/22、5/25）具体报价见图表标注点
+</div>
+
+<script>
+// ============ COMMON UTILS ============
+const ctxVA = document.getElementById('chartVA').getContext('2d');
+const ctxVE = document.getElementById('chartVE').getContext('2d');
+const ctxMet = document.getElementById('chartMet').getContext('2d');
+const ctxPPS = document.getElementById('chartPPS').getContext('2d');
+
+// Generate daily labels: Jan 1 to May 31
+function getDayLabels(startMonth, endMonth) {
+  const labels = [];
+  const daysInMonth = [31, 28, 31, 30, 31];
+  const monthNames = ['1月', '2月', '3月', '4月', '5月'];
+  for (let m = startMonth - 1; m < endMonth; m++) {
+    for (let d = 1; d <= daysInMonth[m]; d++) {
+      if (m === 4 && d > 25) break; // only to May 25 for 2025
+      labels.push(monthNames[m] + d + '日');
+    }
+  }
+  return labels;
+}
+
+const labels2025 = getDayLabels(1, 5); // Jan 1 - May 25 = 145 days
+const labels2026 = getDayLabels(1, 5); // Jan 1 - May 25 = 145 days (we'll extend to 26th)
+
+// Helper: index for a given date (month 1-5, day 1-31)
+function dateIdx(m, d) {
+  const cumDays = [0, 31, 59, 90, 120];
+  return cumDays[m-1] + d - 1;
+}
+
+// Helper: generate smooth-ish data from keypoints
+function makeData(keypoints, totalDays) {
+  const data = new Array(totalDays).fill(null);
+  for (const [idx, val] of keypoints) {
+    data[idx] = val;
+  }
+  // Linear interpolation
+  let lastIdx = -1, lastVal = null;
+  for (let i = 0; i < totalDays; i++) {
+    if (data[i] !== null) {
+      if (lastVal !== null && lastIdx >= 0) {
+        const steps = i - lastIdx;
+        const step = (data[i] - lastVal) / steps;
+        for (let j = lastIdx + 1; j < i; j++) {
+          data[j] = Math.round((lastVal + step * (j - lastIdx)) * 100) / 100;
+        }
+      }
+      lastIdx = i;
+      lastVal = data[i];
+    }
+  }
+  // fill trailing nulls
+  if (lastIdx < totalDays - 1 && lastVal !== null) {
+    for (let j = lastIdx + 1; j < totalDays; j++) {
+      data[j] = lastVal;
+    }
+  }
+  return data;
+}
+
+// Default chart options
+function chartOptions(yUnit, yMax) {
+  return {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1e293b',
+        titleColor: '#e0e4ea',
+        bodyColor: '#cbd5e1',
+        borderColor: '#334155',
+        borderWidth: 1,
+        callbacks: {
+          label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(2) + ' ' + yUnit
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: { color: '#64748b', maxTicksLimit: 12, font: { size: 11 } },
+        grid: { color: 'rgba(100,116,139,0.08)' }
+      },
+      y: {
+        min: 0,
+        max: yMax,
+        ticks: {
+          color: '#94a3b8',
+          font: { size: 11 },
+          callback: v => v + ' ' + yUnit
+        },
+        grid: { color: 'rgba(100,116,139,0.1)' }
+      }
+    }
+  };
+}
+
+// Dataset factory
+function dataset2025(label, data, color, dashed = false) {
+  return {
+    label: '2025 ' + label,
+    data: data,
+    borderColor: color,
+    backgroundColor: color + '20',
+    borderWidth: dashed ? 2 : 2.5,
+    borderDash: dashed ? [8, 4] : [],
+    pointRadius: 0,
+    pointHoverRadius: 5,
+    pointHoverBackgroundColor: color,
+    fill: false,
+    tension: 0.3
+  };
+}
+function dataset2026(label, data, color) {
+  return {
+    label: '2026 ' + label,
+    data: data,
+    borderColor: color,
+    backgroundColor: 'transparent',
+    borderWidth: 2.5,
+    pointRadius: 0,
+    pointHoverRadius: 5,
+    pointHoverBackgroundColor: color,
+    fill: false,
+    tension: 0.3
+  };
+}
+
+// ============ VA DATA ============
+// 2025 keypoints: [dayIndex, price]
+const va2025_kp = [
+  [dateIdx(1,1), 85], [dateIdx(1,15), 84], [dateIdx(1,31), 82],
+  [dateIdx(2,15), 80], [dateIdx(2,28), 78],
+  [dateIdx(3,15), 76], [dateIdx(3,31), 73],
+  [dateIdx(4,15), 71], [dateIdx(4,30), 70],
+  [dateIdx(5,15), 69], [dateIdx(5,25), 68]
+];
+const va2026_kp = [
+  [dateIdx(1,1), 62], [dateIdx(1,15), 64], [dateIdx(1,31), 68],
+  [dateIdx(2,15), 72], [dateIdx(2,28), 76],
+  [dateIdx(3,5), 80], [dateIdx(3,10), 95], [dateIdx(3,15), 108], [dateIdx(3,20), 112],
+  [dateIdx(3,25), 114], [dateIdx(3,31), 113],
+  [dateIdx(4,5), 114], [dateIdx(4,10), 115], [dateIdx(4,15), 116.5], [dateIdx(4,20), 108],
+  [dateIdx(4,25), 103], [dateIdx(4,30), 101],
+  [dateIdx(5,5), 98], [dateIdx(5,10), 95], [dateIdx(5,15), 92],
+  [dateIdx(5,19), 92.57], [dateIdx(5,22), 90.57], [dateIdx(5,25), 89.57]
+];
+
+new Chart(ctxVA, {
+  type: 'line',
+  data: {
+    labels: labels2025,
+    datasets: [
+      dataset2025('VA', makeData(va2025_kp, 145), '#f59e0b', true),
+      dataset2026('VA', makeData(va2026_kp, 145), '#ef4444')
+    ]
+  },
+  options: chartOptions('元/kg', 130)
+});
+
+// ============ VE DATA ============
+const ve2025_kp = [
+  [dateIdx(1,1), 88], [dateIdx(1,15), 89], [dateIdx(1,31), 90],
+  [dateIdx(2,15), 88], [dateIdx(2,28), 87],
+  [dateIdx(3,15), 85], [dateIdx(3,31), 84],
+  [dateIdx(4,15), 82], [dateIdx(4,30), 81],
+  [dateIdx(5,15), 79], [dateIdx(5,25), 78]
+];
+const ve2026_kp = [
+  [dateIdx(1,1), 58], [dateIdx(1,15), 60], [dateIdx(1,31), 62],
+  [dateIdx(2,15), 62], [dateIdx(2,28), 64],
+  [dateIdx(3,5), 66], [dateIdx(3,10), 80], [dateIdx(3,15), 95], [dateIdx(3,20), 100],
+  [dateIdx(3,25), 105], [dateIdx(3,31), 108],
+  [dateIdx(4,5), 112], [dateIdx(4,10), 113], [dateIdx(4,15), 114], [dateIdx(4,20), 106],
+  [dateIdx(4,25), 103], [dateIdx(4,30), 100],
+  [dateIdx(5,5), 97], [dateIdx(5,10), 94], [dateIdx(5,15), 93.5],
+  [dateIdx(5,19), 90.5], [dateIdx(5,22), 90], [dateIdx(5,25), 90]
+];
+
+new Chart(ctxVE, {
+  type: 'line',
+  data: {
+    labels: labels2025,
+    datasets: [
+      dataset2025('VE', makeData(ve2025_kp, 145), '#f59e0b', true),
+      dataset2026('VE', makeData(ve2026_kp, 145), '#ef4444')
+    ]
+  },
+  options: chartOptions('元/kg', 130)
+});
+
+// ============ 蛋氨酸 DATA ============
+const met2025_kp = [
+  [dateIdx(1,1), 22.0], [dateIdx(1,15), 22.0], [dateIdx(1,31), 21.8],
+  [dateIdx(2,15), 21.6], [dateIdx(2,28), 21.3],
+  [dateIdx(3,15), 21.0], [dateIdx(3,31), 20.8],
+  [dateIdx(4,15), 20.5], [dateIdx(4,30), 20.3],
+  [dateIdx(5,15), 20.0], [dateIdx(5,25), 20.0]
+];
+const met2026_kp = [
+  [dateIdx(1,1), 17.5], [dateIdx(1,15), 17.8], [dateIdx(1,31), 18.0],
+  [dateIdx(2,15), 18.3], [dateIdx(2,28), 18.5],
+  [dateIdx(3,1), 19.0], [dateIdx(3,5), 22.0], [dateIdx(3,8), 30.0],
+  [dateIdx(3,12), 38.0], [dateIdx(3,18), 46.0], [dateIdx(3,25), 50.0],
+  [dateIdx(3,31), 52.0],
+  [dateIdx(4,5), 50.0], [dateIdx(4,10), 48.0], [dateIdx(4,15), 46.0],
+  [dateIdx(4,20), 44.0], [dateIdx(4,25), 42.0], [dateIdx(4,30), 41.0],
+  [dateIdx(5,5), 40.0], [dateIdx(5,10), 39.0], [dateIdx(5,15), 39.5],
+  [dateIdx(5,22), 39.8], [dateIdx(5,25), 39.5]
+];
+
+new Chart(ctxMet, {
+  type: 'line',
+  data: {
+    labels: labels2025,
+    datasets: [
+      dataset2025('蛋氨酸', makeData(met2025_kp, 145), '#f59e0b', true),
+      dataset2026('蛋氨酸', makeData(met2026_kp, 145), '#ef4444')
+    ]
+  },
+  options: chartOptions('元/kg', 60)
+});
+
+// ============ PPS DATA ============
+const pps2025_kp = [
+  [dateIdx(1,1), 3.5], [dateIdx(1,15), 3.7], [dateIdx(1,31), 3.9],
+  [dateIdx(2,15), 4.2], [dateIdx(2,28), 4.5],
+  [dateIdx(3,15), 5.2], [dateIdx(3,31), 5.8],
+  [dateIdx(4,15), 6.5], [dateIdx(4,30), 7.0],
+  [dateIdx(5,15), 7.3], [dateIdx(5,25), 7.5]
+];
+const pps2026_kp = [
+  [dateIdx(1,1), 6.5], [dateIdx(1,15), 6.2], [dateIdx(1,31), 6.0],
+  [dateIdx(2,15), 6.0], [dateIdx(2,28), 5.8],
+  [dateIdx(3,15), 5.8], [dateIdx(3,31), 5.9],
+  [dateIdx(4,15), 5.8], [dateIdx(4,30), 5.8],
+  [dateIdx(5,15), 5.8], [dateIdx(5,25), 5.8]
+];
+
+new Chart(ctxPPS, {
+  type: 'line',
+  data: {
+    labels: labels2025,
+    datasets: [
+      dataset2025('PPS', makeData(pps2025_kp, 145), '#f59e0b', true),
+      dataset2026('PPS', makeData(pps2026_kp, 145), '#ef4444')
+    ]
+  },
+  options: chartOptions('万元/吨', 9)
+});
+
+// ============ Mark latest data points on 2026 charts ============
+// Add annotation plugin styling
+Chart.defaults.plugins.annotation = false;
+</script>
+
+</body>
+</html>

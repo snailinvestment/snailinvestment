@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年6月第1周宏观复盘与第2周展望 | Snail Investment Research</title>
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --card: #fff;
+    --text: #1a1a2e;
+    --sub: #555;
+    --border: #e8ecf1;
+    --accent: #1a3a5e;
+    --accent2: #c9a84c;
+    --tag-bg: #e8f5f0;
+    --tag-color: #1a7a45;
+    --red: #e74c3c;
+    --green: #27ae60;
+    --section-bg: #f0f4f8;
+  }
+  body.dark {
+    --bg: #0f1923;
+    --card: #1a2a3e;
+    --text: #e8edf2;
+    --sub: #8899aa;
+    --border: #2a3a4e;
+    --accent: #4da6ff;
+    --accent2: #f0c040;
+    --tag-bg: #0f3020;
+    --tag-color: #4da66f;
+    --red: #ff6b6b;
+    --green: #51cf66;
+    --section-bg: #15202b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--accent), #0f2040);
+    color: white;
+    border-radius: 16px;
+    padding: 40px 36px 32px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  body.dark .header { background: linear-gradient(135deg, #0f2040, #1a3a5e); }
+  .header::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+  .header h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+  .header p { opacity: 0.8; font-size: 14px; }
+  .header-meta {
+    display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap;
+  }
+  .header-meta span {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 13px;
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  /* Nav */
+  .nav-back {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--accent); text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    margin-bottom: 20px; padding: 6px 0;
+  }
+  .nav-back:hover { text-decoration: underline; }
+
+  /* TOC */
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 28px;
+  }
+  .toc-title { font-size: 15px; font-weight: 600; margin-bottom: 12px; color: var(--accent); }
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; }
+  .toc-item {
+    font-size: 13px; color: var(--sub);
+    padding: 4px 0;
+    cursor: pointer;
+    border-bottom: 1px dashed var(--border);
+  }
+  .toc-item:hover { color: var(--accent); }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+  }
+  .section-title {
+    font-size: 17px; font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent2);
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  /* Table */
+  .tbl-wrap { overflow-x: auto; margin: 14px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    background: var(--section-bg);
+    color: var(--accent);
+    font-weight: 600;
+    padding: 10px 14px;
+    text-align: left;
+    white-space: nowrap;
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--section-bg); }
+
+  /* Scenario cards */
+  .scenario-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 14px; }
+  .scenario-card {
+    border-radius: 12px; padding: 20px;
+    border: 1px solid var(--border);
+  }
+  .scenario-base { background: #e8f5f0; border-left: 4px solid var(--green); }
+  .scenario-opt  { background: #e8f0ff; border-left: 4px solid var(--accent); }
+  .scenario-pess { background: #fff0f0; border-left: 4px solid var(--red); }
+  body.dark .scenario-base { background: #0f3020; }
+  body.dark .scenario-opt  { background: #0f2040; }
+  body.dark .scenario-pess { background: #2a1015; }
+  .scenario-label { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+  .scenario-prob { font-size: 12px; color: var(--sub); margin-bottom: 10px; }
+  .scenario-assump { font-size: 12.5px; color: var(--sub); margin-bottom: 10px; line-height: 1.7; }
+  .scenario-assump strong { color: var(--text); }
+  .scenario-assump ul { padding-left: 16px; }
+  .scenario-assump li { margin-bottom: 3px; }
+
+  /* Risk list */
+  .risk-list { list-style: none; padding: 0; }
+  .risk-list li {
+    padding: 10px 14px;
+    border-left: 3px solid var(--red);
+    background: var(--section-bg);
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 8px;
+    font-size: 13.5px;
+  }
+  .risk-list li strong { color: var(--red); }
+
+  /* Disclaimer */
+  .disclaimer {
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    font-size: 12.5px;
+    color: var(--sub);
+    line-height: 1.8;
+    margin-top: 20px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 24px 0 12px;
+    font-size: 12px;
+    color: var(--sub);
+  }
+
+  /* Dark toggle */
+  .dark-toggle {
+    position: fixed; top: 16px; right: 16px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 50%; width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 18px; z-index: 999;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .updatetime { font-size: 12px; color: var(--sub); margin-top: 4px; }
+
+  @media (max-width: 700px) {
+    .scenario-grid { grid-template-columns: 1fr; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .header-meta { flex-direction: column; gap: 8px; }
+    .section { padding: 18px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<button class="dark-toggle" onclick="toggleDark()" title="切换深色模式">🌙</button>
+
+<div class="container">
+
+  <a class="nav-back" href="index.html">← 返回 Snail Investment Research 首页</a>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-badge">📅 宏观周记 · 2026年第23周</div>
+    <h1>2026年6月第1周宏观复盘与第2周展望</h1>
+    <p>📅 2026.6.1–6.7 复盘 ｜ 6.8–6.14 展望&emsp;·&emsp;📍 基准日：2026年6月7日（周日）</p>
+    <div class="header-meta">
+      <span>📊 大类资产全覆盖</span>
+      <span>🌍 全球宏观视角</span>
+      <span>⚡ 三大情景推演</span>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">📋 目录</div>
+    <div class="toc-grid">
+      <div class="toc-item" onclick="document.getElementById('s1').scrollIntoView({behavior:'smooth'})">一、本周核心驱动层复盘</div>
+      <div class="toc-item" onclick="document.getElementById('s2').scrollIntoView({behavior:'smooth'})">二、中间传导层复盘</div>
+      <div class="toc-item" onclick="document.getElementById('s3').scrollIntoView({behavior:'smooth'})">三、大类资产行情复盘</div>
+      <div class="toc-item" onclick="document.getElementById('s4').scrollIntoView({behavior:'smooth'})">四、次周关键事件日历</div>
+      <div class="toc-item" onclick="document.getElementById('s5').scrollIntoView({behavior:'smooth'})">五、次周三大情景推演</div>
+      <div class="toc-item" onclick="document.getElementById('s6').scrollIntoView({behavior:'smooth'})">六、资产关键点位预判</div>
+      <div class="toc-item" onclick="document.getElementById('s7').scrollIntoView({behavior:'smooth'})">七、风险提示与免责声明</div>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section" id="s1">
+    <div class="section-title">一、本周核心驱动复盘（6.1–6.7）</div>
+
+    <p style="font-size:13.5px;color:var(--sub);margin-bottom:16px;">📌 货币政策 · 地缘与能源 · 科技产业 · 债务周期</p>
+
+    <h3 style="font-size:14px;font-weight:600;margin:18px 0 10px;color:var(--accent);">1. 货币政策 💰</h3>
+    <div class="tbl-wrap">
+    <table>
+      <tr><th>主体</th><th>核心内容</th><th>出处</th></tr>
+      <tr>
+        <td><strong>🇺🇸 美联储</strong></td>
+        <td>
+          • 5月非农新增17.2万（大幅超预期）<br>
+          • 失业率维持4.3%<br>
+          • 前两月合计上修9.3万<br>
+          • CME FedWatch：12月加息25bp概率升至约51%<br>
+          • 全年降息预期实质清零
+        </td>
+        <td>BLS<br>CME FedWatch</td>
+      </tr>
+      <tr>
+        <td><strong>🇪🇺 欧央行</strong></td>
+        <td>
+          • 欧元区4月CPI同比跳升至3.0%<br>
+          • 市场完全定价6月11日加息25bp<br>
+          • 利率由2.0%→2.25%
+        </td>
+        <td>欧盟统计局<br>欧央行官网</td>
+      </tr>
+      <tr>
+        <td><strong>🇯🇵 日央行</strong></td>
+        <td>
+          • 植田和男延续鹰派吹风<br>
+          • 6月20日加息25bp至1.0%概率上升<br>
+          • 日元触及161-162关口
+        </td>
+        <td>日本央行<br>Bloomberg</td>
+      </tr>
+    </table>
+    </div>
+    <div style="background:var(--section-bg);border-radius:8px;padding:12px 16px;margin-top:12px;font-size:13px;">
+      <strong>💡 小结：</strong>强于预期的非农数据促使投资者加大对美联储年内加息的押注，全球货币政策"美欧日三鹰"格局强化，降息窗口关闭，跨资产风险溢价重估启动。
+    </div>
+
+    <h3 style="font-size:14px;font-weight:600;margin:22px 0 10px;color:var(--accent);">2. 地缘与能源 ⚡</h3>
+    <div style="font-size:13.5px;line-height:2;">
+      <p><strong>🛢️ OPEC+ 第41次全体部长级会议（6月7日）：</strong></p>
+      <ul style="padding-left:20px;color:var(--sub);">
+        <li>批准7月再度增产18.8万桶/日</li>
+        <li>延续自2023年4月自愿减产协议的分步退出路径</li>
+        <li>至7月起，七国尚余约56.7万桶/日的原始减产量待回归</li>
+        <li>全部解除预计在9月底完成</li>
+      </ul>
+      <p style="margin-top:12px;"><strong>🌍 霍尔木兹海峡：</strong>伊朗战争自2月28日开战以来造成中东供应大幅收缩。本周伊朗向巴基斯坦调停方递交新和平方案，但外长阿拉格奇声明谈判无实质进展，地缘风险保持高位。</p>
+    </div>
+
+    <h3 style="font-size:14px;font-weight:600;margin:22px 0 10px;color:var(--accent);">3. 科技产业 💻</h3>
+    <div style="font-size:13.5px;line-height:2;">
+      <p><strong>🔴 博通（AVGO）6月3日盘后财报：</strong></p>
+      <ul style="padding-left:20px;color:var(--sub);">
+        <li>Q2营收221.87亿美元（LSEG预期222.7亿，轻微未达）</li>
+        <li>AI半导体营收108亿美元，同比强劲增长</li>
+        <li>Q3营收指引294亿美元及EBITDA率68%指引未超预期</li>
+        <li>股价盘后大跌逾15%，次日交易日收跌约12%</li>
+      </ul>
+      <p style="margin-top:10px;padding:10px 14px;background:var(--section-bg);border-radius:8px;font-size:13px;">
+        <strong>⚠️ 影响：</strong>英特尔、AMD、Micron等半导体股连带受压，成为当周美股回调的核心导火索。博通业绩"利空预期差"揭示AI算力投资回报线性外推的风险。
+      </p>
+    </div>
+
+    <h3 style="font-size:14px;font-weight:600;margin:22px 0 10px;color:var(--accent);">4. 债务周期 📈</h3>
+    <div style="font-size:13.5px;line-height:2;">
+      <ul style="padding-left:20px;">
+        <li>10Y美债周五收盘<strong>4.55%</strong>，30Y <strong>4.98%</strong></li>
+        <li>非农发布当日单日上行约12bp，为年内最大单日涨幅之一</li>
+        <li>美元指数全周收于100附近，美债境外持仓占比维持下行趋势</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section" id="s2">
+    <div class="section-title">二、中间传导层复盘</div>
+
+    <h3 style="font-size:14px;font-weight:600;margin:14px 0 10px;color:var(--accent);">1. 通胀 🔥</h3>
+    <div style="font-size:13.5px;line-height:2;color:var(--sub);">
+      <ul style="padding-left:20px;">
+        <li>美国5月CPI计划<strong>6月12日</strong>公布（待官方数据）</li>
+        <li>欧央行最新预测：欧元区2026年全年CPI均值<strong>2.6%</strong>，核心CPI约<strong>2.3%</strong></li>
+        <li>中国5月CPI、PPI官方数据（待国家统计局公布）</li>
+      </ul>
+    </div>
+
+    <h3 style="font-size:14px;font-weight:600;margin:18px 0 10px;color:var(--accent);">2. 经济活动 📊</h3>
+    <div style="font-size:13.5px;line-height:2;color:var(--sub);">
+      <ul style="padding-left:20px;">
+        <li>美国Q1 GDP终值<strong>1.6%</strong>（已公布）</li>
+        <li>6月2日WTI一度触及<strong>96美元</strong>，供应端冲击显著</li>
+        <li>中国5月出口、进口数据及PMI（待统计局公布）</li>
+      </ul>
+    </div>
+
+    <h3 style="font-size:14px;font-weight:600;margin:18px 0 10px;color:var(--accent);">3. 汇率 💱</h3>
+    <div style="font-size:13.5px;line-height:2;color:var(--sub);">
+      <ul style="padding-left:20px;">
+        <li>美元指数全周强势收于约<strong>100关口</strong>附近（较前周上涨约0.6-1.0%）</li>
+        <li>日元受日美利差扩大预期压制，触及<strong>162区间</strong></li>
+        <li>在岸人民币小幅走贬</li>
+      </ul>
+    </div>
+
+    <h3 style="font-size:14px;font-weight:600;margin:18px 0 10px;color:var(--accent);">4. 流动性 🌊</h3>
+    <div style="font-size:13.5px;line-height:2;color:var(--sub);">
+      <ul style="padding-left:20px;">
+        <li>VIX波动率指数周五收盘跳升至<strong>18.20</strong></li>
+        <li>科技股抛售带动风险溢价重评</li>
+        <li>高收益债利差小幅走阔</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section" id="s3">
+    <div class="section-title">三、大类资产行情复盘（截至6.7）</div>
+
+    <div class="tbl-wrap">
+    <table>
+      <tr><th>品种</th><th>周收盘价</th><th>周涨跌幅</th><th>核心驱动</th></tr>
+      <tr>
+        <td><strong>🛢️ WTI原油</strong></td>
+        <td>~$90-92</td>
+        <td>震荡</td>
+        <td>OPEC+增产 vs 霍尔木兹风险</td>
+      </tr>
+      <tr>
+        <td><strong>🥇 伦敦金现</strong></td>
+        <td>~$4,366</td>
+        <td style="color:var(--red);">-约4%</td>
+        <td>美债+美元双强</td>
+      </tr>
+      <tr>
+        <td><strong>📉 道琼斯</strong></td>
+        <td>50,866.78</td>
+        <td style="color:var(--red);">周五 -1.35%</td>
+        <td>非农鹰派定价</td>
+      </tr>
+      <tr>
+        <td><strong>📉 标普500</strong></td>
+        <td>7,383.74</td>
+        <td style="color:var(--red);">周五 -2.64%</td>
+        <td>科技估值回调+收益率上行</td>
+      </tr>
+      <tr>
+        <td><strong>📉 纳斯达克</strong></td>
+        <td>25,709.43</td>
+        <td style="color:var(--red);">周五 -4.18%</td>
+        <td>博通业绩指引利空</td>
+      </tr>
+      <tr>
+        <td><strong>₿ BTC</strong></td>
+        <td>~$61,000</td>
+        <td style="color:var(--red);">周跌约14%</td>
+        <td>风险偏好收缩</td>
+      </tr>
+      <tr>
+        <td><strong>📈 10Y美债收益率</strong></td>
+        <td>4.55%</td>
+        <td style="color:var(--green);">周+约15bp</td>
+        <td>非农超预期</td>
+      </tr>
+      <tr>
+        <td><strong>💵 美元指数</strong></td>
+        <td>~100.0</td>
+        <td style="color:var(--green);">周+约0.6%</td>
+        <td>非农鹰派</td>
+      </tr>
+    </table>
+    </div>
+
+    <div style="background:#fff0f0;color:#8b0000;border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px;border-left:4px solid var(--red);">
+      <strong>⚠️ 关键事件：</strong>周五纳斯达克大跌4.18%，为2025年4月关税动荡以来最大单日跌幅，S&P500终结本轮自3月末启动的十连涨行情。
+    </div>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section" id="s4">
+    <div class="section-title">四、6.8–6.14 次周关键事件日历</div>
+
+    <div class="tbl-wrap">
+    <table>
+      <tr><th>日期</th><th>星期</th><th>事件</th><th>重要度</th></tr>
+      <tr style="background:#e8f5f0;">
+        <td><strong>6.11</strong></td>
+        <td>周四</td>
+        <td>🇪🇺 欧央行议息会议（大概率加息25bp）+ 拉加德新闻发布会</td>
+        <td style="color:var(--red);font-weight:700;">极高</td>
+      </tr>
+      <tr style="background:#e8f5f0;">
+        <td><strong>6.12</strong></td>
+        <td>周五</td>
+        <td>🇺🇸 美国5月CPI、核心CPI（年内最重要通胀数据节点）</td>
+        <td style="color:var(--red);font-weight:700;">极高</td>
+      </tr>
+      <tr>
+        <td>6.8</td>
+        <td>周一</td>
+        <td>🛢️ OPEC+ 七国月度合规与市场审查会议</td>
+        <td>中等</td>
+      </tr>
+      <tr>
+        <td>6.10</td>
+        <td>周二</td>
+        <td>📊 BLS发布5月实际收入数据</td>
+        <td>中等</td>
+      </tr>
+      <tr>
+        <td>6.13</td>
+        <td>周六</td>
+        <td>📊 美国5月PPI数据</td>
+        <td>中等</td>
+      </tr>
+      <tr>
+        <td>6.14</td>
+        <td>周日</td>
+        <td>🇨🇳 中国5月社会消费品零售总额、工业增加值</td>
+        <td>中等</td>
+      </tr>
+    </table>
+    </div>
+
+    <div style="background:var(--section-bg);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12.5px;color:var(--sub);">
+      <strong>📌 注：</strong>6月9日（周二）无全体OPEC部长级会议（已于6.7召开），亦无欧央行会议。周内核心变盘节点为<strong>6.11欧央行</strong>与<strong>6.12美CPI</strong>。
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section" id="s5">
+    <div class="section-title">五、次周三大情景推演</div>
+
+    <div class="scenario-grid">
+      <!-- Base -->
+      <div class="scenario-card scenario-base">
+        <div class="scenario-label">📊 基准情景（概率 65%）</div>
+        <div class="scenario-prob">概率权重最高</div>
+        <div class="scenario-assump">
+          <strong>核心假设：</strong>
+          <ul>
+            <li>欧央行如期加息25bp，拉加德措辞审慎</li>
+            <li>美国5月CPI同比落于3.5%-3.7%区间</li>
+            <li>OPEC+ 7月增产顺利落地</li>
+            <li>中东地缘维持低烈度僵局</li>
+          </ul>
+          <strong style="color:var(--green);">💼 资产含义：</strong>
+          <ul>
+            <li>原油 $88-$95 震荡；美元高位整固</li>
+            <li>黄金在 $4,300-$4,500 区间磨底</li>
+            <li>美债10Y在 4.4%-4.7% 区间震荡</li>
+            <li>全球股市低波动消化估值压缩</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Optimistic -->
+      <div class="scenario-card scenario-opt">
+        <div class="scenario-label">📈 乐观情景（概率 20%）</div>
+        <div class="scenario-prob">尾部上行风险</div>
+        <div class="scenario-assump">
+          <strong>核心假设：</strong>
+          <ul>
+            <li>美国5月CPI显著低于预期（≤3.3%）</li>
+            <li>欧央行释放紧缩周期接近尾声信号</li>
+            <li>伊朗和谈出现实质性突破</li>
+          </ul>
+          <strong style="color:var(--accent);">💼 资产含义：</strong>
+          <ul>
+            <li>美债大幅回落至4.2%以下；美元走弱</li>
+            <li>黄金反弹至 $4,600 上方</li>
+            <li>纳指反弹收复部分失地</li>
+            <li>BTC反弹至 $70,000 上方</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Pessimistic -->
+      <div class="scenario-card scenario-pess">
+        <div class="scenario-label">📉 悲观情景（概率 15%）</div>
+        <div class="scenario-prob">尾部下行风险</div>
+        <div class="scenario-assump">
+          <strong>核心假设：</strong>
+          <ul>
+            <li>美国5月CPI超预期（≥3.8%）</li>
+            <li>欧央行加息50bp或释放连续加息信号</li>
+            <li>伊朗与美国冲突升级导致霍尔木兹封锁</li>
+          </ul>
+          <strong style="color:var(--red);">💼 资产含义：</strong>
+          <ul>
+            <li>黄金下探 $4,200；美债10Y突破4.8%</li>
+            <li>纳指测试 $24,000 支撑</li>
+            <li>美元指数突破102</li>
+            <li>BTC跌破 $55,000</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="section" id="s6">
+    <div class="section-title">六、资产关键点位预判（次周参考）</div>
+
+    <div class="tbl-wrap">
+    <table>
+      <tr><th>品种</th><th>支撑位</th><th>阻力位</th><th>方向判断</th></tr>
+      <tr>
+        <td><strong>🛢️ WTI原油</strong></td>
+        <td>$85</td>
+        <td>$97</td>
+        <td>地缘溢价 vs 增产压制，高位震荡</td>
+      </tr>
+      <tr>
+        <td><strong>🥇 伦敦金</strong></td>
+        <td>$4,280</td>
+        <td>$4,550</td>
+        <td>先抑后扬，等待CPI数据</td>
+      </tr>
+      <tr>
+        <td><strong>📊 纳斯达克</strong></td>
+        <td>24,800</td>
+        <td>26,500</td>
+        <td>偏弱整理，技术反弹空间有限</td>
+      </tr>
+      <tr>
+        <td><strong>📊 标普500</strong></td>
+        <td>7,200</td>
+        <td>7,600</td>
+        <td>震荡消化</td>
+      </tr>
+      <tr>
+        <td><strong>₿ BTC</strong></td>
+        <td>$58,000</td>
+        <td>$68,000</td>
+        <td>弱势，技术结构偏空</td>
+      </tr>
+      <tr>
+        <td><strong>📈 10Y美债收益率</strong></td>
+        <td>4.35%</td>
+        <td>4.75%</td>
+        <td>震荡偏强（收益率上行方向）</td>
+      </tr>
+      <tr>
+        <td><strong>💵 美元指数</strong></td>
+        <td>98.8</td>
+        <td>101.5</td>
+        <td>高位震荡</td>
+      </tr>
+    </table>
+    </div>
+  </div>
+
+  <!-- Section 7 -->
+  <div class="section" id="s7">
+    <div class="section-title">七、风险提示 & 免责声明</div>
+
+    <h3 style="font-size:14px;font-weight:600;margin:14px 0 10px;color:var(--red);">⚠️ 主要风险</h3>
+    <ul class="risk-list">
+      <li><strong>通胀超预期：</strong>美国5月CPI大幅高于预期，9月加息概率飙升，美债收益率突破4.8%，权益市场二次探底</li>
+      <li><strong>地缘升级：</strong>伊朗-美国谈判破裂、霍尔木兹封锁加剧，油价重新冲破$110，能源通胀螺旋加速</li>
+      <li><strong>欧央行超预期紧缩：</strong>加息幅度超过25bp或释放连续加息前瞻指引，欧元区金融条件急剧收紧</li>
+      <li><strong>AI产业链预期差下修：</strong>若更多大型科技企业Q2业绩指引低于预期，AI算力板块面临系统性估值压缩</li>
+      <li><strong>中国经济数据不及预期：</strong>6月14日社零及工业增加值若低于市场预期，A股内需板块面临压力</li>
+    </ul>
+
+    <h3 style="font-size:14px;font-weight:600;margin:22px 0 10px;color:var(--accent);">📄 免责声明</h3>
+    <div class="disclaimer">
+      本报告仅供宏观研究与市场复盘参考，不构成任何形式的投资建议或要约。所有数据均来源于文中标注的官方渠道，市场表现受多重不可预测因素影响，历史数据不代表未来表现。投资者须依据自身风险承受能力独立决策，盈亏自负。
+    </div>
+
+    <h3 style="font-size:14px;font-weight:600;margin:22px 0 10px;color:var(--accent);">📊 核心官方数据源清单</h3>
+    <div style="font-size:13px;color:var(--sub);line-height:2;">
+      <ul style="padding-left:20px;">
+        <li><strong>U.S. Bureau of Labor Statistics（BLS）</strong> – 非农就业、失业率、CPI数据</li>
+        <li><strong>CME Group FedWatch Tool</strong> – 美联储利率路径市场定价概率</li>
+        <li><strong>OPEC官方网站</strong> – 部长级会议声明、产量决议</li>
+        <li><strong>European Central Bank（ECB）</strong> – 欧元区利率决定、通胀预测</li>
+        <li><strong>U.S. Treasury / FRED</strong> – 美国国债收益率曲线</li>
+        <li><strong>国家统计局（中国）</strong> – 中国CPI、PPI、社零、工增</li>
+        <li><strong>中国人民银行</strong> – MLF、逆回购利率、流动性操作</li>
+      </ul>
+    </div>
+    <div style="margin-top:14px;font-size:12.5px;color:var(--sub);font-style:italic;">
+      内容仅供参考，不构成投资建议
+    </div>
+  </div>
+
+  <div class="footer">
+    Snail Investment Research · 宏观周记<br>
+    数据来源：BLS · CME FedWatch · OPEC · ECB · 国家统计局 · 中国人民银行<br>
+    生成：WorkBuddy AI · 2026年6月7日
+  </div>
+
+</div>
+
+<script>
+  function toggleDark() {
+    document.body.classList.toggle('dark');
+    localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+  }
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark');
+  }
+</script>
+</body>
+</html>

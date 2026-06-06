@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumentum (LITE) 深度投研报告 — AI光通信基建的价值重估 | 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #080c14;
+    --bg-secondary: #0d1420;
+    --bg-card: #111827;
+    --bg-card-hover: #1a2535;
+    --border-subtle: rgba(255,255,255,0.06);
+    --border-medium: rgba(255,255,255,0.12);
+    --accent-blue: #2d7aff;
+    --accent-blue-bright: #4d8fff;
+    --accent-cyan: #00d4ff;
+    --accent-gold: #f0a847;
+    --accent-green: #10c47a;
+    --accent-red: #ff4d6a;
+    --text-primary: #e8edf5;
+    --text-secondary: #8a9ab5;
+    --text-muted: #4a5a75;
+    --text-label: #6b7d99;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --serif: 'Noto Serif SC', serif;
+    --gutter: 48px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(45,122,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45,122,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Top scan line */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-blue), var(--accent-cyan), transparent);
+    z-index: 100;
+    animation: scanline 4s ease-in-out infinite;
+  }
+
+  @keyframes scanline {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  a { color: var(--accent-blue); text-decoration: none; }
+
+  /* ── LAYOUT ── */
+  .page-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* ── HEADER ── */
+  .report-header {
+    padding: 60px 0 0;
+    border-bottom: 1px solid var(--border-subtle);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .report-header::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(45,122,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .firm-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    border: 1px solid var(--border-subtle);
+    padding: 6px 12px;
+    border-radius: 2px;
+  }
+
+  .report-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  .ticker-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .ticker {
+    font-family: var(--mono);
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .exchange-tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    border: 1px solid var(--border-subtle);
+    padding: 3px 8px;
+    border-radius: 2px;
+    align-self: center;
+  }
+
+  .report-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.4;
+    max-width: 760px;
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+
+  .report-title span {
+    color: var(--accent-cyan);
+    font-weight: 500;
+  }
+
+  /* Rating banner */
+  .rating-banner {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .rating-cell {
+    padding: 0 32px 0 0;
+    margin-right: 32px;
+    border-right: 1px solid var(--border-subtle);
+  }
+
+  .rating-cell:last-child {
+    border-right: none;
+  }
+
+  .rating-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .rating-value {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .rating-value.buy { color: var(--accent-green); }
+  .rating-value.price { color: var(--text-primary); }
+  .rating-value.upside { color: var(--accent-gold); }
+
+  .rating-sub {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  /* ── NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    background: rgba(8,12,20,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0;
+  }
+
+  .nav-inner {
+    display: flex;
+    gap: 0;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 16px 20px;
+    white-space: nowrap;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: var(--accent-blue-bright);
+    border-bottom-color: var(--accent-blue);
+  }
+
+  /* ── SECTION STRUCTURE ── */
+  .section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 40px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── THESIS CARDS ── */
+  .thesis-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 0;
+  }
+
+  .thesis-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-top: 2px solid var(--accent-blue);
+    padding: 24px 20px;
+    border-radius: 2px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .thesis-card:hover {
+    background: var(--bg-card-hover);
+    border-top-color: var(--accent-cyan);
+  }
+
+  .thesis-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent-blue);
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  .thesis-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .thesis-text strong {
+    color: var(--text-primary);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13.5px;
+  }
+
+  /* ── DATA DASHBOARD ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .kpi-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    padding: 24px;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kpi-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-blue), transparent);
+    opacity: 0.4;
+  }
+
+  .kpi-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .kpi-value {
+    font-family: var(--mono);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .kpi-change {
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+
+  .kpi-change.up { color: var(--accent-green); }
+  .kpi-change.down { color: var(--accent-red); }
+  .kpi-change.neutral { color: var(--text-secondary); }
+
+  /* ── DATA TABLE ── */
+  .data-table-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .table-title-bar {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .table-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .table-source {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead tr {
+    background: rgba(45,122,255,0.05);
+  }
+
+  th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 12px 20px;
+    text-align: right;
+    border-bottom: 1px solid var(--border-subtle);
+    white-space: nowrap;
+  }
+
+  th:first-child { text-align: left; }
+
+  td {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-secondary);
+    padding: 12px 20px;
+    text-align: right;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+
+  td:first-child {
+    text-align: left;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(45,122,255,0.03); }
+
+  .pos { color: var(--accent-green) !important; }
+  .neg { color: var(--accent-red) !important; }
+  .highlight { color: var(--accent-gold) !important; }
+
+  /* ── TWO COLUMN LAYOUT ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ── ANALYSIS BLOCKS ── */
+  .analysis-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 2px;
+    padding: 28px;
+  }
+
+  .analysis-block-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .analysis-block p {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+
+  .analysis-block p:last-child { margin-bottom: 0; }
+
+  .analysis-block p strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px; top: 6px; bottom: 6px;
+    width: 1px;
+    background: var(--border-medium);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -25px;
+    top: 6px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    border: 1px solid var(--bg-primary);
+  }
+
+  .timeline-date {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--accent-blue);
+    margin-bottom: 6px;
+  }
+
+  .timeline-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .timeline-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* ── VALUATION ── */
+  .valuation-scenario {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .scenario-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    padding: 24px;
+    border-radius: 2px;
+    text-align: center;
+  }
+
+  .scenario-card.base {
+    border-color: var(--accent-blue);
+    background: rgba(45,122,255,0.05);
+  }
+
+  .scenario-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .scenario-card.base .scenario-label {
+    color: var(--accent-blue);
+  }
+
+  .scenario-price {
+    font-family: var(--mono);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .scenario-card.base .scenario-price {
+    color: var(--accent-cyan);
+  }
+
+  .scenario-upside {
+    font-family: var(--mono);
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .scenario-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── RISK TABLE ── */
+  .risk-item {
+    display: grid;
+    grid-template-columns: 140px 1fr 80px;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    align-items: start;
+  }
+
+  .risk-item:last-child { border-bottom: none; }
+
+  .risk-category {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .risk-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .risk-level {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .risk-high { color: var(--accent-red); }
+  .risk-mid { color: var(--accent-gold); }
+  .risk-low { color: var(--accent-green); }
+
+  /* ── PROGRESS BAR ── */
+  .metric-bar {
+    margin-bottom: 16px;
+  }
+
+  .metric-bar-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .metric-bar-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .metric-bar-value {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-primary);
+  }
+
+  .bar-track {
+    height: 3px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+    animation: barGrow 1s ease-out forwards;
+    transform-origin: left;
+  }
+
+  @keyframes barGrow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  /* ── INLINE BADGE ── */
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    vertical-align: middle;
+  }
+
+  .badge-buy { background: rgba(16,196,122,0.15); color: var(--accent-green); border: 1px solid rgba(16,196,122,0.3); }
+  .badge-hold { background: rgba(240,168,71,0.15); color: var(--accent-gold); border: 1px solid rgba(240,168,71,0.3); }
+  .badge-sell { background: rgba(255,77,106,0.15); color: var(--accent-red); border: 1px solid rgba(255,77,106,0.3); }
+  .badge-new { background: rgba(45,122,255,0.15); color: var(--accent-blue-bright); border: 1px solid rgba(45,122,255,0.3); }
+
+  /* ── ANNOTATION ── */
+  .annotation {
+    display: flex;
+    gap: 12px;
+    background: rgba(45,122,255,0.06);
+    border: 1px solid rgba(45,122,255,0.15);
+    border-left: 3px solid var(--accent-blue);
+    padding: 16px 20px;
+    border-radius: 2px;
+    margin-top: 20px;
+  }
+
+  .annotation-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .annotation-text {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .annotation-text strong {
+    color: var(--accent-blue-bright);
+  }
+
+  /* ── FOOTER ── */
+  .report-footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .footer-disclaimer {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 900px;
+  }
+
+  .footer-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .footer-brand {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── CHART PLACEHOLDER ── */
+  .chart-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 2px;
+    padding: 24px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chart-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .chart-body {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding-bottom: 4px;
+  }
+
+  .bar-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .bar-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 120px;
+  }
+
+  .bar-col {
+    flex: 1;
+    border-radius: 1px 1px 0 0;
+    transition: opacity 0.2s;
+  }
+
+  .bar-col:hover { opacity: 0.8; }
+
+  .bar-col.revenue {
+    background: linear-gradient(180deg, var(--accent-blue), rgba(45,122,255,0.4));
+  }
+
+  .bar-col.margin {
+    background: linear-gradient(180deg, var(--accent-cyan), rgba(0,212,255,0.3));
+    width: 60%;
+  }
+
+  .bar-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .chart-legend {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+  }
+
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 1px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 32px 0;
+  }
+
+  /* ── QUOTE ── */
+  .exec-quote {
+    border-left: 3px solid var(--accent-blue);
+    padding: 16px 24px;
+    margin: 24px 0;
+    background: rgba(45,122,255,0.04);
+  }
+
+  .exec-quote p {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  .exec-quote-attr {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    :root { --gutter: 24px; }
+    .thesis-grid { grid-template-columns: 1fr 1fr; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .two-col, .three-col { grid-template-columns: 1fr; }
+    .valuation-scenario { grid-template-columns: 1fr; }
+    .ticker { font-size: 36px; }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="page-wrap">
+  <header class="report-header">
+    <div class="header-meta">
+      <div class="firm-tag">机构深度研究报告 &nbsp;·&nbsp; 半导体与光通信</div>
+      <div class="report-date">发布日期：2026年6月3日</div>
+    </div>
+
+    <div class="ticker-row">
+      <div class="ticker">LITE</div>
+      <div class="exchange-tag">NASDAQ</div>
+      <span class="badge badge-buy" style="font-size:13px; padding:6px 14px;">买入</span>
+    </div>
+
+    <div class="report-title">
+      Lumentum Holdings (LITE)：<span>AI算力光通信基建的价值重估</span><br>
+      — NVIDIA战略绑定、CPO/OCS双引擎驱动下的盈利加速拐点
+    </div>
+
+    <div class="rating-banner">
+      <div class="rating-cell">
+        <div class="rating-label">投资评级</div>
+        <div class="rating-value buy">买入</div>
+        <div class="rating-sub">首次覆盖</div>
+      </div>
+      <div class="rating-cell">
+        <div class="rating-label">12个月目标价</div>
+        <div class="rating-value price">$1,150</div>
+        <div class="rating-sub">当前价约 $855–1,024</div>
+      </div>
+      <div class="rating-cell">
+        <div class="rating-label">潜在涨幅（中值）</div>
+        <div class="rating-value upside">+24%</div>
+        <div class="rating-sub">基准情景</div>
+      </div>
+      <div class="rating-cell">
+        <div class="rating-label">报告涵盖财季</div>
+        <div class="rating-value" style="font-size:20px; color: var(--text-secondary);">FY26Q3</div>
+        <div class="rating-sub">截至2026年3月28日</div>
+      </div>
+      <div class="rating-cell">
+        <div class="rating-label">市值（估算）</div>
+        <div class="rating-value" style="font-size:20px; color: var(--text-secondary);">~$85B</div>
+        <div class="rating-sub">基于当前价×股本</div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<!-- ══ NAVIGATION ══ -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <span class="nav-link" onclick="scrollTo('thesis')">核心论点</span>
+    <span class="nav-link" onclick="scrollTo('financials')">财务数据</span>
+    <span class="nav-link" onclick="scrollTo('strategy')">战略演变</span>
+    <span class="nav-link" onclick="scrollTo('tech')">技术变革</span>
+    <span class="nav-link" onclick="scrollTo('supply')">供应链</span>
+    <span class="nav-link" onclick="scrollTo('valuation')">估值</span>
+    <span class="nav-link" onclick="scrollTo('risks')">风险提示</span>
+  </div>
+</nav>
+
+<!-- ══ SECTION 1: THESIS ══ -->
+<div class="page-wrap">
+  <section class="section reveal" id="thesis">
+    <div class="section-label">Section 01</div>
+    <div class="section-title">核心投资论点</div>
+
+    <div class="thesis-grid">
+      <div class="thesis-card">
+        <div class="thesis-num">THESIS / 01</div>
+        <div class="thesis-text">
+          <strong>NVIDIA战略背书，格局已定</strong>
+          2026年3月，NVIDIA以$2B认购LITE Series A可转换优先股，并附多年期数十亿美元采购承诺。这不仅是财务背书，更是NVIDIA将Lumentum锁定为AI数据中心下一代光互连核心供应商的战略宣言。供应链"护城河"被显著加固。
+        </div>
+      </div>
+      <div class="thesis-card">
+        <div class="thesis-num">THESIS / 02</div>
+        <div class="thesis-text">
+          <strong>收入增速冠绝同类</strong>
+          FY26Q3营收$808.4M，同比+90.1%，超指引高端。Q4指引$960M–$1.01B，隐含同比增速仍超85%。过去12个月股价涨幅逾1,200%，但增速未见顶——四大增量驱动（OCS、规模化CPO×2、1.6T收发器）尚未全面放量。
+        </div>
+      </div>
+      <div class="thesis-card">
+        <div class="thesis-num">THESIS / 03</div>
+        <div class="thesis-text">
+          <strong>利润率扩张超预期</strong>
+          FY26Q3 Non-GAAP毛利率47.9%（Q/Q +540 bps），Non-GAAP营业利润率32.2%（Q/Q +700 bps）。管理层明确指出，随着CPO与OCS产品占比提升，毛利率有望持续上行，向50%+迈进。
+        </div>
+      </div>
+      <div class="thesis-card">
+        <div class="thesis-num">THESIS / 04</div>
+        <div class="thesis-text">
+          <strong>OCS积压订单超$400M</strong>
+          光路交换（OCS）积压订单已超$4亿，同时新增多亿美元CPO订单（交付预期H1 CY2027）。当前收入几乎全部来自EML激光芯片与收发器，OCS与CPO贡献尚属早期——意味着订单能见度极高，增长具有确定性基础。
+        </div>
+      </div>
+      <div class="thesis-card">
+        <div class="thesis-num">THESIS / 05</div>
+        <div class="thesis-text">
+          <strong>供需缺口带来定价权</strong>
+          公司坦承多个高增长产品出货仍落后客户需求逾30%，产能扩张加速（北卡罗来纳新厂2028年中投产）。稀缺性与不可替代性支撑了定价纪律，为利润率扩张提供持续动力。
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══ SECTION 2: FINANCIALS ══ -->
+<div class="page-wrap">
+  <section class="section reveal" id="financials">
+    <div class="section-label">Section 02</div>
+    <div class="section-title">最新财务数据看板 — FY2026 Q3</div>
+
+    <!-- KPI Cards -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">季度营收</div>
+        <div class="kpi-value">$808.4M</div>
+        <div class="kpi-change up">▲ +90.1% 同比 &nbsp;|&nbsp; +21.5% 环比</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Non-GAAP 毛利率</div>
+        <div class="kpi-value">47.9%</div>
+        <div class="kpi-change up">▲ +540 bps 环比 &nbsp;|&nbsp; +1,270 bps 同比</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Non-GAAP 营业利润率</div>
+        <div class="kpi-value">32.2%</div>
+        <div class="kpi-change up">▲ +700 bps 环比 &nbsp;|&nbsp; +2,140 bps 同比</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Non-GAAP EPS</div>
+        <div class="kpi-value">$2.37</div>
+        <div class="kpi-change up">▲ vs. $0.57 一年前 &nbsp;|&nbsp; 超预期+5.8%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Q4 FY26 营收指引</div>
+        <div class="kpi-value">$960M–$1.01B</div>
+        <div class="kpi-change up">▲ 中值同比增速 ~115%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Q4 Non-GAAP EPS 指引</div>
+        <div class="kpi-value">$2.85–3.05</div>
+        <div class="kpi-change up">▲ 超市场一致预期</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">现金及短期投资</div>
+        <div class="kpi-value">$3.17B</div>
+        <div class="kpi-change neutral">↑ 含NVIDIA $2B战略融资</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">OCS 订单积压</div>
+        <div class="kpi-value">&gt;$400M</div>
+        <div class="kpi-change up">▲ 快速攀升中</div>
+      </div>
+    </div>
+
+    <!-- Revenue breakdown table -->
+    <div class="data-table-wrap">
+      <div class="table-title-bar">
+        <span class="table-title">季度营收趋势 — 按产品类型拆分</span>
+        <span class="table-source">数据来源：公司财报 8-K, SEC (2026.05.05)</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>产品类型</th>
+            <th>FY25 Q3</th>
+            <th>FY26 Q1</th>
+            <th>FY26 Q2</th>
+            <th>FY26 Q3</th>
+            <th>营收占比</th>
+            <th>同比增速</th>
+            <th>环比增速</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>光器件与组件（Components）</td>
+            <td>$300.8M</td>
+            <td>—</td>
+            <td>$443.7M</td>
+            <td>$533.3M</td>
+            <td>66.0%</td>
+            <td class="pos">+77.3%</td>
+            <td class="pos">+20.2%</td>
+          </tr>
+          <tr>
+            <td>光系统（Systems）</td>
+            <td>$124.4M</td>
+            <td>—</td>
+            <td>$221.8M</td>
+            <td>$275.1M</td>
+            <td>34.0%</td>
+            <td class="pos">+121.1%</td>
+            <td class="pos">+24.0%</td>
+          </tr>
+          <tr>
+            <td><strong>合计</strong></td>
+            <td>$425.2M</td>
+            <td>$533.8M</td>
+            <td>$665.5M</td>
+            <td class="highlight">$808.4M</td>
+            <td>100%</td>
+            <td class="pos">+90.1%</td>
+            <td class="pos">+21.5%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Margins trend table -->
+    <div class="data-table-wrap">
+      <div class="table-title-bar">
+        <span class="table-title">利润率趋势 — GAAP vs. Non-GAAP</span>
+        <span class="table-source">数据来源：公司财报 8-K, SEC</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>指标</th>
+            <th>FY25 Q3</th>
+            <th>FY26 Q1</th>
+            <th>FY26 Q2</th>
+            <th>FY26 Q3</th>
+            <th>趋势判断</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GAAP 毛利率</td>
+            <td>28.8%</td>
+            <td>—</td>
+            <td>36.1%</td>
+            <td class="pos">44.2%</td>
+            <td class="pos">持续上行 ▲</td>
+          </tr>
+          <tr>
+            <td>Non-GAAP 毛利率</td>
+            <td>35.2%</td>
+            <td>—</td>
+            <td>42.5%</td>
+            <td class="pos">47.9%</td>
+            <td class="pos">持续上行 ▲</td>
+          </tr>
+          <tr>
+            <td>GAAP 营业利润率</td>
+            <td>-8.9%</td>
+            <td>—</td>
+            <td>9.7%</td>
+            <td class="pos">21.6%</td>
+            <td class="pos">亏转盈后加速 ▲</td>
+          </tr>
+          <tr>
+            <td>Non-GAAP 营业利润率</td>
+            <td>10.8%</td>
+            <td>—</td>
+            <td>25.2%</td>
+            <td class="pos">32.2%</td>
+            <td class="pos">快速扩张 ▲</td>
+          </tr>
+          <tr>
+            <td>GAAP EPS（稀释后）</td>
+            <td>-$0.64</td>
+            <td>$0.05</td>
+            <td>$0.89</td>
+            <td class="pos">$1.50</td>
+            <td class="pos">扭亏为盈 ▲</td>
+          </tr>
+          <tr>
+            <td>Non-GAAP EPS</td>
+            <td>$0.57</td>
+            <td>$1.10</td>
+            <td>$1.67</td>
+            <td class="pos">$2.37</td>
+            <td class="pos">加速增长 ▲</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bar chart visual -->
+    <div class="two-col" style="margin-top:24px;">
+      <div class="chart-container">
+        <div class="chart-title">季度营收增长趋势（$M）</div>
+        <div class="chart-body">
+          <div class="bar-group">
+            <div class="bar-wrapper">
+              <div class="bar-col revenue" style="height:52%;"></div>
+            </div>
+            <div class="bar-label">FY25 Q3<br>$425M</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-wrapper">
+              <div class="bar-col revenue" style="height:66%;"></div>
+            </div>
+            <div class="bar-label">FY26 Q1<br>$534M</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-wrapper">
+              <div class="bar-col revenue" style="height:82%;"></div>
+            </div>
+            <div class="bar-label">FY26 Q2<br>$666M</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-wrapper">
+              <div class="bar-col revenue" style="height:100%;"></div>
+            </div>
+            <div class="bar-label">FY26 Q3<br>$808M</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-wrapper">
+              <div class="bar-col revenue" style="height:120%; background: linear-gradient(180deg, var(--accent-gold), rgba(240,168,71,0.4));"></div>
+            </div>
+            <div class="bar-label">FY26 Q4E<br>$985M</div>
+          </div>
+        </div>
+        <div class="chart-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--accent-blue);"></div>实际营收</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--accent-gold);"></div>指引中值</div>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-title">Non-GAAP 利润率扩张趋势</div>
+        <div style="flex:1; padding-top:8px;">
+          <div class="metric-bar">
+            <div class="metric-bar-header">
+              <span class="metric-bar-label">FY25 Q3 — 毛利率</span>
+              <span class="metric-bar-value">35.2%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:35.2%;"></div></div>
+          </div>
+          <div class="metric-bar">
+            <div class="metric-bar-header">
+              <span class="metric-bar-label">FY26 Q2 — 毛利率</span>
+              <span class="metric-bar-value">42.5%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:42.5%;"></div></div>
+          </div>
+          <div class="metric-bar">
+            <div class="metric-bar-header">
+              <span class="metric-bar-label">FY26 Q3 — 毛利率</span>
+              <span class="metric-bar-value" style="color:var(--accent-cyan)">47.9%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:47.9%;"></div></div>
+          </div>
+          <hr class="divider">
+          <div class="metric-bar">
+            <div class="metric-bar-header">
+              <span class="metric-bar-label">FY25 Q3 — 营业利润率</span>
+              <span class="metric-bar-value">10.8%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:10.8%;"></div></div>
+          </div>
+          <div class="metric-bar">
+            <div class="metric-bar-header">
+              <span class="metric-bar-label">FY26 Q2 — 营业利润率</span>
+              <span class="metric-bar-value">25.2%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:25.2%;"></div></div>
+          </div>
+          <div class="metric-bar">
+            <div class="metric-bar-header">
+              <span class="metric-bar-label">FY26 Q3 — 营业利润率</span>
+              <span class="metric-bar-value" style="color:var(--accent-cyan)">32.2%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:32.2%;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="annotation">
+      <div class="annotation-icon">⚠</div>
+      <div class="annotation-text">
+        <strong>数据交叉核实说明：</strong>本节所有财务数据已在Lumentum投资者关系官网、SEC EDGAR 8-K原始文件（2026.05.05）及Zacks/Bloomberg报道之间进行交叉核实，三方来源数据一致。当前流通股本约9,520万股（普通股），另有NVIDIA持有2,876,415股Series A可转换优先股（锁定至HSR法案审查到期后方可转股），暂不计入完全摊薄口径，需持续关注。
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══ SECTION 3: STRATEGY ══ -->
+<div class="page-wrap">
+  <section class="section reveal" id="strategy">
+    <div class="section-label">Section 03</div>
+    <div class="section-title">公司简介与战略演变</div>
+
+    <div class="two-col">
+      <div>
+        <div class="analysis-block" style="margin-bottom:24px;">
+          <div class="analysis-block-title">公司定位</div>
+          <p>Lumentum Holdings（NASDAQ: LITE）成立于2015年，由JDS Uniphase（JDSU）光通信业务剥离独立上市。公司是全球领先的光子与光电器件设计制造商，产品广泛应用于数据中心互连、电信传输、商业激光和3D传感（ToF）领域。</p>
+          <p>2026年以来，公司战略重心已明确聚焦于<strong>AI数据中心光互连基础设施</strong>，在EML（电吸收调制激光器）激光芯片领域建立了超过三年的技术领先优势，并以此为核心切入CPO（共封装光学）和OCS（光路交换）两大下一代市场。</p>
+        </div>
+
+        <div class="analysis-block">
+          <div class="analysis-block-title">产品组合重心迁移</div>
+          <div class="metric-bar" style="margin-top:8px;">
+            <div class="metric-bar-header">
+              <span class="metric-bar-label">EML激光芯片（核心驱动）</span>
+              <span class="metric-bar-value pos">↑ 主导</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:70%;"></div></div>
+          </div>
+          <div class="metric-bar">
+            <div class="metric-bar-header">
+              <span class="metric-bar-label">光路交换 OCS（快速放量）</span>
+              <span class="metric-bar-value" style="color:var(--accent-gold)">↑ 新增</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:15%; background:linear-gradient(90deg, var(--accent-gold), rgba(240,168,71,0.4));"></div></div>
+          </div>
+          <div class="metric-bar">
+            <div class="metric-bar-header">
+              <span class="metric-bar-label">规模扩展CPO（H1 2027启动）</span>
+              <span class="metric-bar-value" style="color:var(--accent-cyan)">↑ 即将放量</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:5%; background:linear-gradient(90deg, var(--accent-cyan), rgba(0,212,255,0.3));"></div></div>
+          </div>
+          <div class="metric-bar">
+            <div class="metric-bar-header">
+              <span class="metric-bar-label">泵浦激光器 / 窄线宽组件</span>
+              <span class="metric-bar-value">稳定增长</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:10%;"></div></div>
+          </div>
+          <p style="margin-top:16px; font-size:12px; color:var(--text-muted);">注：以上占比为示意性结构图，反映当前营收贡献与战略地位的相对关系。来源：公司财报及管理层指引</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="analysis-block-title" style="font-family:var(--mono); font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent-blue); margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border-subtle);">战略里程碑时间轴</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2015年</div>
+            <div class="timeline-title">独立上市，聚焦光通信</div>
+            <div class="timeline-desc">从JDSU剥离，以电信光器件为核心业务，完成市场独立定位。</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2018–2022年</div>
+            <div class="timeline-title">3D传感周期与多元化尝试</div>
+            <div class="timeline-desc">因iPhone采用ToF技术而业绩爆发，但消费电子需求周期性明显。此后推进Coherent收购谈判，最终落败，战略重心重归B2B光通信。</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2024年</div>
+            <div class="timeline-title">AI数据中心超级周期初启</div>
+            <div class="timeline-desc">云计算大客户对800G高速光模块需求骤升，EML激光芯片成为公司核心增长引擎，收入企稳反弹。</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2025年Q3</div>
+            <div class="timeline-title">Michael Hurlston出任CEO</div>
+            <div class="timeline-desc">前Synaptics CEO主导战略聚焦，加速CPO与OCS布局，强化"定价纪律"，推动利润率改善。</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2026年3月</div>
+            <div class="timeline-title">NVIDIA战略合作 + $2B融资</div>
+            <div class="timeline-desc">NVIDIA以$695.31/股认购$20亿Series A可转换优先股，附多年期数十亿美元采购承诺，全面锁定LITE为AI光互连核心供应商。北卡罗来纳新制造工厂同步宣布，预计2028年中投产。</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:var(--accent-cyan);"></div>
+            <div class="timeline-date">2026–2027年（预期）</div>
+            <div class="timeline-title">OCS+CPO双引擎放量</div>
+            <div class="timeline-desc">OCS产品积压订单超$4亿，规模化CPO多亿美元订单于H1 2027交付，1.6T收发器升级周期启动。四大增量驱动由点及面，营收有望突破$4B年化运营率。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══ SECTION 4: TECH & INDUSTRY ══ -->
+<div class="page-wrap">
+  <section class="section reveal" id="tech">
+    <div class="section-label">Section 04</div>
+    <div class="section-title">技术变革与产业链需求影响分析</div>
+
+    <div class="exec-quote">
+      <p>"随着CPO共封装光学与光路交换开始真正发力，我们预期盈利能力将进一步提升。当前营收增速是头条，但利润率扩张才是我们真正引以为傲的成就。"</p>
+      <div class="exec-quote-attr">— Michael Hurlston，总裁兼CEO，FY26 Q3 财报电话会（2026.05.05）</div>
+    </div>
+
+    <div class="three-col" style="margin-top:32px;">
+      <div class="analysis-block">
+        <div class="analysis-block-title">AI算力军备竞赛 → 光互连需求</div>
+        <p>超大规模云厂商（NVIDIA、Google、Microsoft、Meta）在AI训练集群上的资本开支已进入每年数千亿美元量级。GPU集群规模从千卡级迈向百万卡级，对数据中心内部光互连带宽的需求呈指数级增长。</p>
+        <p>每个GPU节点与交换机之间需要多路高速光链路，使得<strong>EML激光芯片与高速收发器的出货量</strong>直接与算力规模线性甚至超线性增长挂钩。Lumentum正处于这一需求曲线的最上游。</p>
+        <p>Lumentum明确定位的四大增量市场——OCS、Scale-Out CPO、Scale-Up CPO及1.6T收发器升级——在FY26Q3的贡献仍属初期，这意味着未来订单落地将是收入向上"重新定价"的核心催化剂。</p>
+      </div>
+      <div class="analysis-block">
+        <div class="analysis-block-title">CPO共封装光学 — 下一代范式</div>
+        <p>当前主流数据中心架构采用可插拔光模块（Pluggable），而CPO将光引擎直接封装于交换芯片旁侧，可将功耗降低约30–40%、带宽密度提升数倍。</p>
+        <p>Lumentum已获得多亿美元CPO规模量产订单（H1 CY2027交付），是全球极少数能够同时提供<strong>EML芯片、CPO引擎及OCS模块</strong>的垂直整合供应商之一。</p>
+        <p>这种垂直整合能力使公司避免了单纯零部件供应商的低利润陷阱，也是NVIDIA愿意以$2B战略入股的核心原因：NVIDIA需要一个可控且专有技术不外溢的光互连生态伙伴。</p>
+      </div>
+      <div class="analysis-block">
+        <div class="analysis-block-title">OCS光路交换 — 隐形增量</div>
+        <p>光路交换（OCS）允许数据中心实现全光交换而无需O/E/O转换，从根本上降低延迟与功耗。随着AI推理集群对低延迟all-to-all通信的需求激增，OCS市场需求已从概念验证进入规模采购阶段。</p>
+        <p>Lumentum的OCS积压订单已超<strong>$4亿</strong>，且CEO指出"客户需求的急迫性已推动积压量远超$4亿"——这是一个市场意识相对较低但实质性巨大的新赛道。</p>
+        <p>此外，泵浦激光器与窄线宽激光组件（"Scale-Across"产品线）用于长途海底光缆及新一代量子通信节点，是公司被市场低估的稳定利润率贡献来源。</p>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:24px;">
+      <div class="analysis-block">
+        <div class="analysis-block-title">3D传感与消费电子——非核心但值得关注</div>
+        <p>Lumentum曾是苹果Face ID所用VCSEL/ToF激光模块的核心供应商，在iPhone超级周期期间贡献了大量营收。随着Android阵营3D传感渗透率提升及苹果产品周期稳定，该业务从爆发式增长进入平稳维持阶段。</p>
+        <p>当前3D传感并非公司核心叙事，但随着AR/VR设备（如苹果Vision Pro系列后续迭代）加速普及，该业务有望在未来2–3年出现新一轮周期性回升，为整体营收提供补充贡献而非主要增量。</p>
+      </div>
+      <div class="analysis-block">
+        <div class="analysis-block-title">产品结构演变与定价权分析</div>
+        <p>FY26Q3 System类营收同比增速（+121.1%）已高于Component类（+77.3%），显示公司正成功向<strong>更高附加值的系统级产品</strong>迁移。System类产品通常包含更多智识产权和集成价值，毛利率高于纯光器件。</p>
+        <p>管理层明确强调"定价纪律"（Pricing Discipline）是本季度毛利率扩张的重要驱动因素，而非单纯的规模效应。在供需失衡（出货落后需求超30%）的背景下，公司具备相当程度的定价权，这一条件预计在OCS与CPO量产前将持续存在。</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══ SECTION 5: SUPPLY CHAIN ══ -->
+<div class="page-wrap">
+  <section class="section reveal" id="supply">
+    <div class="section-label">Section 05</div>
+    <div class="section-title">供应链与成本结构分析</div>
+
+    <div class="two-col">
+      <div>
+        <div class="analysis-block" style="margin-bottom:24px;">
+          <div class="analysis-block-title">核心原材料：磷化铟（InP）晶圆</div>
+          <p>Lumentum的EML激光芯片与CPO引擎均以<strong>磷化铟（InP）</strong>为衬底，这是区别于主流硅光（Silicon Photonics）方案的关键材料选择。InP晶圆具有天然的直接带隙，在高速调制和低功耗特性上优于硅基方案，但制备难度高、全球产能高度集中。</p>
+          <p>全球InP衬底主要供应商包括Sumitomo Electric（日本）、AXT（美国）及部分欧洲厂商。当前AI数据中心建设潮推动InP需求显著上升，但Lumentum通过<strong>多年期战略采购协议及NVIDIA $2B注资支持的新建内部产能</strong>，在供应安全方面处于较强有利位置。</p>
+          <p>北卡罗来纳新厂设计用于InP晶圆的片上集成制造，预计2028年中投产后将大幅降低对外部晶圆厂的依赖，并使公司在成本端获得结构性优势。</p>
+        </div>
+        <div class="analysis-block">
+          <div class="analysis-block-title">成本驱动与利润率传导逻辑</div>
+          <p><strong>1. 制造成熟度（Yield）提升：</strong>随着EML晶圆良率改善，单位成本持续下降，而产品售价相对稳定，毛利率呈现自然上行趋势。</p>
+          <p><strong>2. 产品组合改善（Mix Shift）：</strong>系统类产品占比提升，以及OCS/CPO等高毛利新产品放量，将持续推动Non-GAAP毛利率向50%迈进。</p>
+          <p><strong>3. 固定成本杠杆（Operating Leverage）：</strong>在收入快速增长的背景下，研发及管理费用的边际摊薄效应明显，营业利润率对收入增长的弹性系数极高。</p>
+          <p><strong>4. 供需缺口维持定价韧性：</strong>出货仍落后需求30%以上，在新产能释放前，价格压力有限。</p>
+        </div>
+      </div>
+      <div>
+        <div class="analysis-block" style="margin-bottom:24px;">
+          <div class="analysis-block-title">主要供应链风险点</div>
+          <div class="risk-item">
+            <div class="risk-category">InP供应集中</div>
+            <div class="risk-desc">全球InP晶圆供应高度集中于日本及少数西方供应商，地缘政治事件（如日本出口管制升级）可能导致供应中断。</div>
+            <div class="risk-level risk-mid">中等风险</div>
+          </div>
+          <div class="risk-item">
+            <div class="risk-category">新厂建设风险</div>
+            <div class="risk-desc">北卡新制造基地建设周期长（预计2028年），存在工程延误、成本超支或技术迁移失败的可能性。</div>
+            <div class="risk-level risk-mid">中等风险</div>
+          </div>
+          <div class="risk-item">
+            <div class="risk-category">客户集中度</div>
+            <div class="risk-desc">NVIDIA与少数超大规模云厂商贡献了营收的主要部分，单一客户采购计划的调整将对季度业绩造成剧烈波动。</div>
+            <div class="risk-level risk-high">较高风险</div>
+          </div>
+          <div class="risk-item">
+            <div class="risk-category">竞争格局</div>
+            <div class="risk-desc">Coherent（COHR）及部分亚洲光器件厂商正积极扩产EML与硅光产品，未来1–2年竞争格局可能加剧，尤其在中端收发器产品上。</div>
+            <div class="risk-level risk-mid">中等风险</div>
+          </div>
+        </div>
+        <div class="analysis-block">
+          <div class="analysis-block-title">战略举措成效评估</div>
+          <p><strong>产能扩张：</strong>NVIDIA $2B注资为北卡新厂提供了充足弹药，解除了以往制约公司扩张的资本瓶颈。管理层指出该厂订单可见度已覆盖投产后相当长时期，说明需求端的确定性较高。</p>
+          <p><strong>成本控制：</strong>Hurlston上任后明确推行"运营严格性"（Operational Rigor），具体体现在GAAP与Non-GAAP毛利率差距收窄、制造费用管控趋严等方面。</p>
+          <p><strong>大客户深度绑定：</strong>NVIDIA战略合作协议的排他性信号意义极强，辅以贯穿产品设计阶段的技术协作，客户粘性处于历史最高水平。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══ SECTION 6: VALUATION ══ -->
+<div class="page-wrap">
+  <section class="section reveal" id="valuation">
+    <div class="section-label">Section 06</div>
+    <div class="section-title">估值建模与投资建议</div>
+
+    <div class="two-col" style="margin-bottom:32px;">
+      <div class="analysis-block">
+        <div class="analysis-block-title">估值框架选择：前向P/E + EV/EBITDA 综合法</div>
+        <p>鉴于LITE当前处于营收高速增长、盈利加速兑现的阶段，且CPO/OCS为代表的第二增长曲线尚未在财务上完整体现，我们采用<strong>前向12个月非GAAP EPS</strong>对应P/E倍数作为主要估值基础，辅以前向EV/Revenue作为交叉验证。</p>
+        <p><strong>核心假设（基准情景）：</strong></p>
+        <p>• FY26Q4指引中值 = $985M，若全年化对应$3.5B+营收规模<br>
+           • FY27E营收增速约50%（保守估计，OCS+CPO逐步放量）<br>
+           • FY27E Non-GAAP EPS估算约$10–$12（含股本摊薄）<br>
+           • 目标P/E倍数：95–100x（对应AI关键基础设施领军公司，参考NVDA历史高成长阶段）</p>
+        <p>24位分析师覆盖中，15位给出买入、4位给出跑赢大市、零位看空；分析师一致预期目标价约$1,105，最高目标价$1,400（Jefferies $1,200，JPMorgan $1,130，Barclays $1,000，Morgan Stanley $900）。</p>
+      </div>
+      <div class="analysis-block">
+        <div class="analysis-block-title">估值区间测算</div>
+        <div class="valuation-scenario">
+          <div class="scenario-card">
+            <div class="scenario-label">悲观情景</div>
+            <div class="scenario-price" style="font-size:24px; color:var(--accent-gold)">$780</div>
+            <div class="scenario-upside" style="color:var(--accent-gold)">-9% 至当前中值</div>
+            <div class="scenario-desc">AI资本开支放缓；OCS/CPO落地延迟；竞争加剧致毛利率承压；股本大幅摊薄兑现</div>
+          </div>
+          <div class="scenario-card base">
+            <div class="scenario-label">基准情景（12个月目标价）</div>
+            <div class="scenario-price">$1,150</div>
+            <div class="scenario-upside" style="color:var(--accent-green)">+24% 较当前中值</div>
+            <div class="scenario-desc">OCS规模交付如期；FY27E EPS约$11，对应约105x P/E；供需格局维持定价韧性</div>
+          </div>
+          <div class="scenario-card">
+            <div class="scenario-label">乐观情景</div>
+            <div class="scenario-price" style="font-size:24px; color:var(--accent-cyan)">$1,400</div>
+            <div class="scenario-upside" style="color:var(--accent-cyan)">+63% 较当前中值</div>
+            <div class="scenario-desc">CPO成为行业标准并加速渗透；NVIDIA深化独家合作；毛利率突破52%；营收跑赢$5B年化</div>
+          </div>
+        </div>
+        <p style="font-size:12px; color:var(--text-muted); margin-top:4px;">注：当前价区间参考2026年6月3日前后市场价格（约$855–$1,024）。所有估值基于公开数据推导，仅供参考，不构成投资建议。</p>
+      </div>
+    </div>
+
+    <!-- Analyst targets -->
+    <div class="data-table-wrap">
+      <div class="table-title-bar">
+        <span class="table-title">华尔街主要分析机构目标价汇总</span>
+        <span class="table-source">来源：公开报道综合，截至2026年5月-6月</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>机构</th>
+            <th>评级</th>
+            <th>目标价</th>
+            <th>较当前中值（$940）潜在涨幅</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jefferies</td>
+            <td class="pos">买入</td>
+            <td class="highlight">$1,200</td>
+            <td class="pos">+27.7%</td>
+          </tr>
+          <tr>
+            <td>JPMorgan</td>
+            <td class="pos">增持</td>
+            <td class="highlight">$1,130</td>
+            <td class="pos">+20.2%</td>
+          </tr>
+          <tr>
+            <td>Barclays</td>
+            <td class="pos">增持</td>
+            <td>$1,000</td>
+            <td class="pos">+6.4%</td>
+          </tr>
+          <tr>
+            <td>Morgan Stanley</td>
+            <td class="pos">增持</td>
+            <td>$900</td>
+            <td class="neg">-4.3%</td>
+          </tr>
+          <tr>
+            <td>分析师一致均值（24家）</td>
+            <td class="pos">买入</td>
+            <td class="highlight">$1,105</td>
+            <td class="pos">+17.6%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="annotation" style="margin-top:24px;">
+      <div class="annotation-icon">★</div>
+      <div class="annotation-text">
+        <strong>本报告投资评级：买入（BUY） | 12个月目标价：$1,150</strong><br>
+        核心逻辑：NVIDIA战略绑定锁定订单能见度，OCS与CPO处于早期放量阶段提供超预期上行空间，持续利润率扩张支撑估值重估，当前24位分析师零卖出评级印证市场高度共识。<strong>建议在回调至$850–$900区间时积极布局，短期高估值风险被长周期增长确定性对冲。</strong>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══ SECTION 7: RISKS ══ -->
+<div class="page-wrap">
+  <section class="section reveal" id="risks">
+    <div class="section-label">Section 07</div>
+    <div class="section-title">风险提示</div>
+
+    <div class="data-table-wrap">
+      <div class="table-title-bar">
+        <span class="table-title">主要风险矩阵</span>
+        <span class="table-source">分析师独立判断，仅供参考</span>
+      </div>
+      <div style="padding: 8px 24px 16px;">
+        <div class="risk-item">
+          <div class="risk-category">客户高度集中</div>
+          <div class="risk-desc">NVIDIA及少数几家超大规模云厂商贡献营收的绝大部分。若任一头部客户推迟采购计划、转向内部研发光互连方案，或将采购份额分散给竞争对手，都将对LITE季度营收造成显著的可见度不确定性。NVIDIA的可转换优先股锁定了中期战略关系，但不排除长期战略调整风险。</div>
+          <div class="risk-level risk-high">高</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-category">AI资本开支放缓</div>
+          <div class="risk-desc">超大规模云厂商每年数千亿美元的AI资本开支是当前需求的根本驱动。若宏观经济下行、AI投资回报率受到质疑、或货币政策收紧导致资本开支削减，光互连需求将随之回落。这是整个光通信行业面临的系统性风险，LITE亦无法独善其身。</div>
+          <div class="risk-level risk-high">高</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-category">估值高企</div>
+          <div class="risk-desc">当前股价对应FY26E P/S约15.78x，远高于行业均值6x，也超过历史估值中枢。任何执行层面的不及预期（如毛利率指引下调、OCS交付延迟）都可能引发显著估值压缩。GuruFocus GF Value等独立估值工具已将LITE列为"可能高估"。</div>
+          <div class="risk-level risk-high">高</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-category">股本摊薄风险</div>
+          <div class="risk-desc">NVIDIA持有的2,876,415股Series A可转换优先股（1:1比例转普通股）代表约3%的额外摊薄压力。一旦HSR反垄断审查通过，NVIDIA可随时选择转股，可能带来市场情绪波动。此外，员工股权激励（RSU/股票期权）及可能的未来融资也将持续摊薄现有股东权益。</div>
+          <div class="risk-level risk-mid">中</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-category">竞争格局加剧</div>
+          <div class="risk-desc">Coherent（COHR）等竞争对手持续扩产，并获得NVIDIA的第二供应来源考量。中国光器件厂商（如华为海思、中际旭创等）在技术追赶方面的进展需要密切监控，尤其是在EML及CPO领域的国产替代动向。</div>
+          <div class="risk-level risk-mid">中</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-category">CPO/OCS执行风险</div>
+          <div class="risk-desc">CPO与OCS均属于技术高度复杂的新兴产品，量产良率爬坡、与客户系统的集成调试、以及供应链配套均面临不确定性。任何量产爬坡延迟将推迟高增长驱动因素的财务兑现时间，影响FY27收入节奏。</div>
+          <div class="risk-level risk-mid">中</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-category">地缘政治 / 出口管制</div>
+          <div class="risk-desc">光通信核心材料（InP晶圆）及高性能光电子产品受美国出口管制约束；中美科技脱钩背景下，若管制范围进一步扩展，可能限制公司在特定市场的销售或采购能力。北卡罗来纳建厂部分目的即在于本土化产能，降低该风险。</div>
+          <div class="risk-level risk-mid">中</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-category">内部人士减持</div>
+          <div class="risk-desc">过去3个月内，包括总裁Wupen Yuen及董事Ian Small在内的多位内部人士共减持逾$2,300万美元股票，且无内部购入记录。虽然个人流动性需求可解释此现象，但密集减持通常被市场视为对短期高估值的隐性信号，值得关注。</div>
+          <div class="risk-level risk-low">低-中</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="annotation">
+      <div class="annotation-icon">ℹ</div>
+      <div class="annotation-text">
+        <strong>综合风险结论：</strong>LITE的核心投资风险集中于"高估值 + 客户集中度 + AI资本开支周期性"三者叠加情景。若AI支出持续强劲（当前基准假设），上述风险维持可控；一旦宏观信号转向，高估值将成为最大的下行压缩因素。建议投资者<strong>在仓位管理上保持适度分散</strong>，并重点跟踪Q4 FY26实际毛利率、OCS季度出货量及NVIDIA采购节奏等核心指标。
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<div class="page-wrap">
+  <footer class="report-footer">
+    <div class="footer-meta">
+      <div class="footer-brand">LUMENTUM (LITE) DEEP RESEARCH REPORT &nbsp;·&nbsp; 2026.06.03</div>
+      <div class="footer-brand">数据来源：SEC EDGAR · Lumentum IR · Bloomberg · Reuters · Zacks</div>
+    </div>
+    <div class="footer-disclaimer">
+      本报告依据Lumentum Holdings Inc.公开披露的SEC文件（8-K财报，2026年5月5日）、公司投资者关系官网及权威财经媒体报道撰写，所有财务数据已在多渠道交叉核实。本报告仅供参考，不构成任何投资建议或交易邀约。过去表现不代表未来结果，股票投资涉及本金损失风险。本报告不代表任何投资银行、经纪商或金融机构的立场。投资者在作出任何投资决策前应咨询持牌专业顾问，并自行承担投资风险。本报告中的预测性陈述基于公开信息及合理假设，实际结果可能因众多因素与预测存在重大差异。
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Nav scroll
+  function scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(current)) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>

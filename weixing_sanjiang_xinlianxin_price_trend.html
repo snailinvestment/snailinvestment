@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>卫星化学 | 中国三江化工 | 中国心连心化肥 — 核心产品价格走势对比 | 2025 vs 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card-bg: #1a1f2e;
+    --border: #2a3040;
+    --text: #e0e4ea;
+    --text-secondary: #8899aa;
+    --red: #ef4444;
+    --green: #22c55e;
+    --orange: #f59e0b;
+    --blue: #3b82f6;
+    --purple: #a855f7;
+    --cyan: #06b6d4;
+    --teal: #14b8a6;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+    min-height: 100vh;
+  }
+  h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+  }
+  .subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    margin-bottom: 20px;
+  }
+  .company-tag {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  .tag-weixing { background: rgba(239,68,68,0.15); color: var(--red); }
+  .tag-sanjiang { background: rgba(59,130,246,0.15); color: var(--blue); }
+  .tag-xinlianxin { background: rgba(34,197,94,0.15); color: var(--green); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  @media (max-width: 1200px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+  }
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  .card-subtitle {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+  .chart-wrap { position: relative; height: 280px; }
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 0.72rem;
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+  .stat-item { text-align: center; flex: 1; min-width: 65px; }
+  .stat-val { font-weight: 700; font-size: 0.82rem; }
+  .stat-label { color: var(--text-secondary); font-size: 0.62rem; }
+  .up { color: var(--red); }
+  .down { color: var(--green); }
+  .neutral { color: var(--text-secondary); }
+  .legend-note {
+    text-align: center;
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    margin-top: 18px;
+    padding: 8px;
+    line-height: 1.5;
+  }
+  .legend-note span { color: var(--orange); }
+  .data-source {
+    text-align: center;
+    font-size: 0.6rem;
+    color: var(--text-secondary);
+    margin-top: 6px;
+    opacity: 0.5;
+  }
+  canvas { width: 100% !important; height: 100% !important; }
+</style>
+</head>
+<body>
+
+<h1>📈 卫星化学 · 中国三江化工 · 中国心连心化肥 — 核心产品价格走势对比</h1>
+<div class="subtitle">
+  2025年1–5月（虚线） vs 2026年1–6月（实线）| 数据更新至 2026-06-06 | ⚠️ 2025年数据为趋势估算，仅供参考
+</div>
+
+<div class="grid">
+
+  <!-- 1. 丙烯酸 (卫星化学) -->
+  <div class="card">
+    <div class="card-title">
+      <span class="company-tag tag-weixing">卫星化学</span> 丙烯酸 (华东/华北)
+    </div>
+    <div class="card-subtitle">元/吨 | 精制丙烯酸市场价</div>
+    <div class="chart-wrap"><canvas id="c1"></canvas></div>
+    <div class="stats">
+      <div class="stat-item"><div class="stat-val">8,617</div><div class="stat-label">2026.6 现价</div></div>
+      <div class="stat-item"><div class="stat-val up">+29.6%</div><div class="stat-label">vs 2025同期</div></div>
+      <div class="stat-item"><div class="stat-val up">+44.1%</div><div class="stat-label">2026 YTD</div></div>
+      <div class="stat-item"><div class="stat-val">13,100</div><div class="stat-label">2026.3 高点</div></div>
+    </div>
+  </div>
+
+  <!-- 2. 丙烯酸丁酯 (卫星化学) -->
+  <div class="card">
+    <div class="card-title">
+      <span class="company-tag tag-weixing">卫星化学</span> 丙烯酸丁酯
+    </div>
+    <div class="card-subtitle">元/吨 | 华东市场价 / 生意社基准价</div>
+    <div class="chart-wrap"><canvas id="c2"></canvas></div>
+    <div class="stats">
+      <div class="stat-item"><div class="stat-val">8,013</div><div class="stat-label">2026.6 现价</div></div>
+      <div class="stat-item"><div class="stat-val up">+1.4%</div><div class="stat-label">vs 2025同期</div></div>
+      <div class="stat-item"><div class="stat-val up">+5.4%</div><div class="stat-label">2026 YTD</div></div>
+      <div class="stat-item"><div class="stat-val">9,790</div><div class="stat-label">2025 H1 高点</div></div>
+    </div>
+  </div>
+
+  <!-- 3. 环氧乙烷 EO (三江化工) -->
+  <div class="card">
+    <div class="card-title">
+      <span class="company-tag tag-sanjiang">三江化工</span> 环氧乙烷 (EO)
+    </div>
+    <div class="card-subtitle">元/吨 | 华东出厂挂牌价 / 生意社基准价</div>
+    <div class="chart-wrap"><canvas id="c3"></canvas></div>
+    <div class="stats">
+      <div class="stat-item"><div class="stat-val">6,800</div><div class="stat-label">2026.6 现价</div></div>
+      <div class="stat-item"><div class="stat-val up">+0.7%</div><div class="stat-label">vs 2025同期</div></div>
+      <div class="stat-item"><div class="stat-val down">-12.8%</div><div class="stat-label">2026 高点回落</div></div>
+      <div class="stat-item"><div class="stat-val">9,200</div><div class="stat-label">2026.3 高点</div></div>
+    </div>
+  </div>
+
+  <!-- 4. 乙二醇 MEG (三江化工) -->
+  <div class="card">
+    <div class="card-title">
+      <span class="company-tag tag-sanjiang">三江化工</span> 乙二醇 (MEG)
+    </div>
+    <div class="card-subtitle">元/吨 | 华东市场价 / 生意社基准价</div>
+    <div class="chart-wrap"><canvas id="c4"></canvas></div>
+    <div class="stats">
+      <div class="stat-item"><div class="stat-val">4,640</div><div class="stat-label">2026.6 现价</div></div>
+      <div class="stat-item"><div class="stat-val up">+21.2%</div><div class="stat-label">vs 2025同期</div></div>
+      <div class="stat-item"><div class="stat-val up">+20.8%</div><div class="stat-label">2026 YTD</div></div>
+      <div class="stat-item"><div class="stat-val">5,150</div><div class="stat-label">2026.4 高点</div></div>
+    </div>
+  </div>
+
+  <!-- 5. 尿素 (心连心化肥) -->
+  <div class="card">
+    <div class="card-title">
+      <span class="company-tag tag-xinlianxin">心连心化肥</span> 尿素 (河南出厂)
+    </div>
+    <div class="card-subtitle">元/吨 | 心连心河南基地出厂价 / 生意社基准价</div>
+    <div class="chart-wrap"><canvas id="c5"></canvas></div>
+    <div class="stats">
+      <div class="stat-item"><div class="stat-val">1,810</div><div class="stat-label">2026.6 现价</div></div>
+      <div class="stat-item"><div class="stat-val down">-1.4%</div><div class="stat-label">vs 2025同期</div></div>
+      <div class="stat-item"><div class="stat-val up">+2.9%</div><div class="stat-label">2026 YTD</div></div>
+      <div class="stat-item"><div class="stat-val">1,997</div><div class="stat-label">2025.3 年内高点</div></div>
+    </div>
+  </div>
+
+  <!-- 6. 复合肥 45%硫基 (心连心化肥) -->
+  <div class="card">
+    <div class="card-title">
+      <span class="company-tag tag-xinlianxin">心连心化肥</span> 复合肥 45%硫基(15-15-15)
+    </div>
+    <div class="card-subtitle">元/吨 | 主流出厂报价</div>
+    <div class="chart-wrap"><canvas id="c6"></canvas></div>
+    <div class="stats">
+      <div class="stat-item"><div class="stat-val">3,600</div><div class="stat-label">2026.6 现价</div></div>
+      <div class="stat-item"><div class="stat-val up">+22.0%</div><div class="stat-label">vs 2025同期</div></div>
+      <div class="stat-item"><div class="stat-val up">+13.2%</div><div class="stat-label">2026 YTD</div></div>
+      <div class="stat-item"><div class="stat-val">3,175</div><div class="stat-label">2026 年初</div></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="legend-note">
+  <span style="color:var(--red);">━━━ 2026年</span> 实线 &nbsp;|&nbsp; <span style="color:var(--orange);">- - - 2025年</span> 虚线 &nbsp;|&nbsp;
+  数据来源：生意社基准价、同花顺iFind、卓创资讯、我的钢铁网、隆众资讯、百川盈孚 &nbsp;|&nbsp; ⚠️ 2025年1–5月数据依赖趋势推算，仅供参考
+</div>
+<div class="data-source">
+  生成时间：2026-06-06 | 数据更新至 2026-06-06 | 仅供研究参考，不构成投资建议
+</div>
+
+<script>
+Chart.defaults.color = '#8899aa';
+Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif";
+
+const MONTHS_5 = ['1月','2月','3月','4月','5月'];
+const MONTHS_6 = ['1月','2月','3月','4月','5月','6月'];
+
+function makeChart(canvasId, datasets, sixMonths) {
+  const ctx = document.getElementById(canvasId).getContext('2d');
+  const labels = sixMonths ? MONTHS_6 : MONTHS_5;
+  // Pad 2025 data to 6 months if needed
+  const paddedDatasets = datasets.map(ds => {
+    if (sixMonths && ds.data.length === 5) {
+      return {...ds, data: [...ds.data, null]};
+    }
+    return ds;
+  });
+  return new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets: paddedDatasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { position: 'top', labels: { boxWidth: 14, padding: 10, usePointStyle: true, font: { size: 10 } } },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const unit = ctx.dataset.unit || '吨';
+              const val = ctx.parsed.y;
+              if (val === null || val === undefined) return null;
+              return `${ctx.dataset.label}: ${val.toLocaleString()} 元/${unit}`;
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: { font: { size: 9 }, callback: v => v >= 1000 ? (v/1000).toFixed(1)+'k' : v }
+        },
+        x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+      }
+    }
+  });
+}
+
+// ===== 1. 丙烯酸 (卫星化学) =====
+// 2025: 全年单边下跌 8200→5900, 1-5月估算
+// 2026: 1月5980 → 3月暴涨至10500+ → 5月回落至9200 → 6月8617
+makeChart('c1', [
+  { label: '2025 丙烯酸', data: [8000, 7800, 7600, 7300, 7100], borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.08)', borderWidth: 2, borderDash: [6,3], tension: 0.3, pointRadius: 3, unit: '吨' },
+  { label: '2026 丙烯酸', data: [5980, 6100, 10500, 11000, 9200, 8617], borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.08)', borderWidth: 2.5, tension: 0.3, pointRadius: 4, fill: true, unit: '吨' }
+], true);
+
+// ===== 2. 丙烯酸丁酯 (卫星化学) =====
+// 2025 H1高点9790, 低点7800, 1-5月震荡下行
+// 2026: 相对温和, 3月后缓慢上行, 5-6月稳定在8000+
+makeChart('c2', [
+  { label: '2025 丙烯酸丁酯', data: [9200, 9790, 8300, 8500, 7900], borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.08)', borderWidth: 2, borderDash: [6,3], tension: 0.3, pointRadius: 3, unit: '吨' },
+  { label: '2026 丙烯酸丁酯', data: [7600, 7700, 8200, 8500, 8013, 8013], borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.08)', borderWidth: 2.5, tension: 0.3, pointRadius: 4, fill: true, unit: '吨' }
+], true);
+
+// ===== 3. 环氧乙烷 EO (三江化工) =====
+// 2025: 相对平稳, 7600-8000区间震荡
+// 2026: 3月冲高至9000+ → 6月初大幅下调至6800 (沙特装置恢复+需求弱)
+makeChart('c3', [
+  { label: '2025 EO', data: [7600, 7800, 8000, 7800, 7600], borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.08)', borderWidth: 2, borderDash: [6,3], tension: 0.3, pointRadius: 3, unit: '吨' },
+  { label: '2026 EO', data: [7200, 7500, 9000, 7600, 7600, 6800], borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.08)', borderWidth: 2.5, tension: 0.3, pointRadius: 4, fill: true, unit: '吨' }
+], true);
+
+// ===== 4. 乙二醇 MEG (三江化工) =====
+// 2025: 3800-4100区间, 3月高点4100
+// 2026: 明显上行, 3月后加速, 4月高点5150, 6月回落至4640
+makeChart('c4', [
+  { label: '2025 MEG', data: [3800, 3900, 4100, 4000, 3900], borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.08)', borderWidth: 2, borderDash: [6,3], tension: 0.3, pointRadius: 3, unit: '吨' },
+  { label: '2026 MEG', data: [4600, 4800, 5000, 5150, 4900, 4640], borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.08)', borderWidth: 2.5, tension: 0.3, pointRadius: 4, fill: true, unit: '吨' }
+], true);
+
+// ===== 5. 尿素 (心连心化肥) =====
+// 2025: 1月1798 → 3月高点1997 → 4-5月回落至1800
+// 2026: 1月1750 → 缓慢上行至1870 → 5月后回落至1791
+makeChart('c5', [
+  { label: '2025 尿素', data: [1798, 1950, 1997, 1850, 1800], borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.08)', borderWidth: 2, borderDash: [6,3], tension: 0.3, pointRadius: 3, unit: '吨' },
+  { label: '2026 尿素', data: [1750, 1800, 1850, 1870, 1775, 1791], borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.08)', borderWidth: 2.5, tension: 0.3, pointRadius: 4, fill: true, unit: '吨' }
+], true);
+
+// ===== 6. 复合肥 45%硫基 (心连心化肥) =====
+// 2025: 年初2728 → 3月高点2993 → 4-5月2950左右
+// 2026: 成本推动稳步上行, 年初3180 → 5月3600 → 6月维持高位
+makeChart('c6', [
+  { label: '2025 复合肥45%硫基', data: [2728, 2820, 2993, 3050, 2950], borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.08)', borderWidth: 2, borderDash: [6,3], tension: 0.3, pointRadius: 3, unit: '吨' },
+  { label: '2026 复合肥45%硫基', data: [3180, 3250, 3350, 3480, 3600, 3600], borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.08)', borderWidth: 2.5, tension: 0.3, pointRadius: 4, fill: true, unit: '吨' }
+], true);
+</script>
+</body>
+</html>

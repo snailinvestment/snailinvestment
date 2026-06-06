@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>好未来(TAL) · 2026财年全年深度投研报告</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0f1e;
+    --paper: #f8f6f0;
+    --accent: #1a3a6e;
+    --gold: #c8922a;
+    --red: #c0392b;
+    --green: #1a7a4a;
+    --muted: #6b7280;
+    --line: #d9d3c8;
+    --surface: #ffffff;
+    --tag-bg: #e8f0fb;
+    --tag-text: #1a3a6e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  /* ── HEADER ── */
+  .header-bar {
+    background: var(--accent);
+    color: white;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+  .header-bar .firm { font-weight: 700; font-size: 13px; letter-spacing: 0.15em; }
+  .header-bar .meta { opacity: 0.75; }
+
+  .hero {
+    background: var(--accent);
+    color: white;
+    padding: 56px 40px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -60px; top: -80px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: 80px; top: 40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(200,146,42,0.12);
+  }
+  .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+  .company-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 4px 12px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    margin-bottom: 18px;
+  }
+  .ticker { background: var(--gold); color: white; padding: 2px 7px; border-radius: 3px; font-weight: 700; font-size: 12px; }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(22px, 3.5vw, 34px);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    max-width: 700px;
+  }
+  .hero-sub { opacity: 0.7; font-size: 13px; margin-bottom: 32px; }
+  .rating-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: stretch; }
+  .rating-box {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 16px 24px;
+    min-width: 140px;
+  }
+  .rating-box .label { font-size: 10px; letter-spacing: 0.12em; opacity: 0.6; text-transform: uppercase; margin-bottom: 4px; }
+  .rating-box .value { font-size: 26px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .rating-box .value.buy { color: #4ade80; }
+  .rating-box .value.price { color: var(--gold); }
+  .rating-box .sub { font-size: 11px; opacity: 0.55; margin-top: 2px; }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media(max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media(max-width: 700px) { .three-col { grid-template-columns: 1fr; } }
+
+  /* ── SECTIONS ── */
+  .section { padding: 52px 0; border-bottom: 1px solid var(--line); }
+  .section:last-child { border-bottom: none; }
+  .section-label {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; letter-spacing: 0.15em; color: var(--accent);
+    text-transform: uppercase; font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+  h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+  h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; color: var(--accent); }
+  p { margin-bottom: 14px; color: #2a2a2a; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── KPI CARDS ── */
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin-top: 24px; }
+  .kpi {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent);
+  }
+  .kpi .kpi-label { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 6px; }
+  .kpi .kpi-value { font-size: 22px; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--ink); }
+  .kpi .kpi-delta {
+    display: inline-flex; align-items: center; gap: 3px;
+    font-size: 11px; margin-top: 4px;
+    padding: 2px 7px; border-radius: 20px;
+  }
+  .kpi .kpi-delta.up { background: #dcfce7; color: var(--green); }
+  .kpi .kpi-delta.dw { background: #fee2e2; color: var(--red); }
+  .kpi .kpi-source { font-size: 10px; color: var(--muted); margin-top: 8px; }
+
+  /* ── CHART (CSS-only bar chart) ── */
+  .bar-chart { margin-top: 24px; }
+  .bar-chart-title { font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 16px; }
+  .bar-group { display: flex; align-items: flex-end; gap: 20px; height: 180px; padding-bottom: 32px; position: relative; }
+  .bar-group::after {
+    content: ''; position: absolute; bottom: 32px; left: 0; right: 0; height: 1px; background: var(--line);
+  }
+  .bar-item { display: flex; flex-direction: column; align-items: center; flex: 1; gap: 0; }
+  .bar-wrap { flex: 1; display: flex; align-items: flex-end; width: 100%; }
+  .bar {
+    width: 100%; border-radius: 4px 4px 0 0;
+    background: var(--accent);
+    transition: opacity 0.2s;
+    position: relative;
+  }
+  .bar:hover { opacity: 0.8; }
+  .bar-val { font-size: 11px; font-weight: 600; position: absolute; top: -18px; left: 50%; transform: translateX(-50%); white-space: nowrap; color: var(--ink); }
+  .bar-label { font-size: 11px; color: var(--muted); margin-top: 8px; text-align: center; }
+  .bar.accent2 { background: var(--gold); }
+
+  /* ── LINE TREND ── */
+  .trend-row { display: flex; gap: 10px; align-items: flex-end; margin-top: 16px; }
+  .trend-bar-v { display: flex; flex-direction: column; align-items: center; flex: 1; }
+  .trend-seg { width: 100%; border-radius: 3px 3px 0 0; }
+  .trend-label { font-size: 10px; color: var(--muted); margin-top: 5px; }
+  .trend-val { font-size: 10px; font-weight: 600; margin-bottom: 3px; }
+
+  /* ── THESIS CARDS ── */
+  .thesis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 8px; }
+  .thesis-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 22px;
+  }
+  .thesis-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px; font-weight: 700;
+    color: var(--accent); opacity: 0.15;
+    line-height: 1; margin-bottom: 8px;
+  }
+  .thesis-title { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+  .thesis-body { font-size: 13px; color: #444; line-height: 1.6; }
+
+  /* ── BUSINESS SEG ── */
+  .seg-row { display: flex; gap: 0; margin-top: 16px; border-radius: 6px; overflow: hidden; height: 36px; }
+  .seg-part { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: white; transition: flex 0.4s; }
+  .seg-legend { display: flex; gap: 20px; margin-top: 12px; flex-wrap: wrap; }
+  .seg-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+  .seg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 28px; margin-top: 16px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+  .tl-item { position: relative; margin-bottom: 24px; }
+  .tl-dot {
+    position: absolute; left: -24px; top: 4px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--paper);
+  }
+  .tl-year { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 2px; }
+  .tl-text { font-size: 13px; color: #333; }
+
+  /* ── RISK TABLE ── */
+  .risk-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
+  .risk-table th { text-align: left; padding: 10px 14px; background: var(--accent); color: white; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; }
+  .risk-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .risk-table tr:last-child td { border-bottom: none; }
+  .risk-table tr:nth-child(even) td { background: #fafaf8; }
+  .risk-tag {
+    display: inline-block; padding: 2px 8px; border-radius: 20px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  }
+  .risk-h { background: #fee2e2; color: var(--red); }
+  .risk-m { background: #fef9c3; color: #854d0e; }
+  .risk-l { background: #dcfce7; color: var(--green); }
+
+  /* ── VALUATION ── */
+  .val-box {
+    background: var(--accent);
+    color: white;
+    border-radius: 10px;
+    padding: 28px;
+    margin-top: 16px;
+  }
+  .val-box h3 { color: var(--gold); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .val-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 14px; }
+  .val-row:last-child { border-bottom: none; }
+  .val-row .v { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--gold); }
+  .final-target {
+    background: var(--gold);
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 16px;
+  }
+  .final-target .big { font-size: 42px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .final-target .label { font-size: 11px; letter-spacing: 0.1em; opacity: 0.8; text-transform: uppercase; }
+
+  /* ── AI MODULE ── */
+  .ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 16px; }
+  @media(max-width:600px){ .ai-grid { grid-template-columns: 1fr; } }
+  .ai-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 22px;
+  }
+  .ai-icon { font-size: 22px; margin-bottom: 10px; }
+  .ai-card h3 { color: var(--accent); margin-bottom: 8px; }
+  .ai-card p { font-size: 13px; }
+
+  .highlight { background: linear-gradient(transparent 50%, #fde68a 50%); font-weight: 600; }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    background: var(--tag-bg); color: var(--tag-text);
+    margin-right: 4px; margin-bottom: 4px;
+  }
+  .badge.gold { background: #fef3c7; color: #92400e; }
+  .badge.green { background: #dcfce7; color: #166534; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    padding: 32px 40px;
+    font-size: 11px;
+    line-height: 1.8;
+    margin-top: 60px;
+  }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ── SCROLL NAV ── */
+  nav.side {
+    position: fixed; left: 16px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 8px;
+    z-index: 100;
+  }
+  @media(max-width: 1100px){ nav.side { display: none; } }
+  nav.side a {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(26,58,110,0.25);
+    text-decoration: none; display: block;
+    transition: all 0.2s;
+  }
+  nav.side a:hover, nav.side a.active { background: var(--accent); width: 8px; height: 8px; }
+
+  .divider { height: 1px; background: var(--line); margin: 24px 0; }
+  .note { font-size: 11px; color: var(--muted); font-style: italic; }
+
+  /* animations */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .section { animation: fadeUp 0.5s ease both; }
+  .section:nth-child(2) { animation-delay: 0.05s; }
+  .section:nth-child(3) { animation-delay: 0.1s; }
+  .section:nth-child(4) { animation-delay: 0.15s; }
+</style>
+</head>
+<body>
+
+<!-- Side nav dots -->
+<nav class="side">
+  <a href="#thesis"></a>
+  <a href="#company"></a>
+  <a href="#financials"></a>
+  <a href="#ai"></a>
+  <a href="#valuation"></a>
+  <a href="#risks"></a>
+</nav>
+
+<!-- Top bar -->
+<div class="header-bar">
+  <span class="firm">好未来深度投研 · EQUITY RESEARCH</span>
+  <span class="meta">报告日期：2026年5月31日 &nbsp;|&nbsp; 分析师：AI Research Desk &nbsp;|&nbsp; 数据来源：SEC 6-K、公司财报、Bloomberg</span>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="company-tag">
+      <span class="ticker">TAL</span>
+      好未来教育集团 &nbsp;·&nbsp; NYSE &nbsp;·&nbsp; 教育科技
+    </div>
+    <h1>2026财年全年深度分析<br>与AI教育革命展望</h1>
+    <p class="hero-sub">财年截止日：2026年2月28日 &nbsp;·&nbsp; 基于SEC最新6-K文件（发布：2026年4月23日）</p>
+    <div class="rating-row">
+      <div class="rating-box">
+        <div class="label">投资评级</div>
+        <div class="value buy">买入</div>
+        <div class="sub">BUY</div>
+      </div>
+      <div class="rating-box">
+        <div class="label">12个月目标价</div>
+        <div class="value price">$16.00</div>
+        <div class="sub">较当前约+45%上行空间</div>
+      </div>
+      <div class="rating-box">
+        <div class="label">FY2026全年营收</div>
+        <div class="value" style="font-size:20px;">$30.1亿</div>
+        <div class="sub">同比 +33.7%</div>
+      </div>
+      <div class="rating-box">
+        <div class="label">Non-GAAP净利润</div>
+        <div class="value" style="font-size:20px;">$5.74亿</div>
+        <div class="sub">同比 +283.8%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ──────── SECTION 1: 核心投资论点 ──────── -->
+<div class="section" id="thesis">
+  <div class="section-label">01 · Core Investment Thesis</div>
+  <h2>核心投资论点</h2>
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="thesis-num">01</div>
+      <div class="thesis-title">转型后财务爆发式修复</div>
+      <div class="thesis-body">FY2026全年营收达<strong>30.1亿美元</strong>，同比+33.7%；Non-GAAP净利润同比增长<strong>284%</strong>至5.74亿美元。学习服务强势复苏叠加硬件新业务双轮驱动，毛利率从53.3%提升至<strong>55.4%</strong>，盈利能力质变性跃升。</div>
+    </div>
+    <div class="thesis-card">
+      <div class="thesis-num">02</div>
+      <div class="thesis-title">AI硬件打开第二增长曲线</div>
+      <div class="thesis-body">学而思学习机（P/S/T系列）搭载自研<strong>九章大模型</strong>，在全科解题精度、个性化学习引擎上持续领先行业。硬件业务虽仍处战略亏损期，但用户基数快速扩张，为未来软件服务订阅和内容变现奠定护城河。</div>
+    </div>
+    <div class="thesis-card">
+      <div class="thesis-num">03</div>
+      <div class="thesis-title">素质教育赛道政策确定性高</div>
+      <div class="thesis-body">"双减"政策明确排除素质教育，好未来聚焦非学科类课程（艺术、编程、体育、STEM）及小班精品教学，监管友好度在教培行业中领先。线下学习中心持续扩张，延迟递延收入余额同比增长<strong>+31%</strong>至8.82亿美元，预示未来收入可见度强。</div>
+    </div>
+    <div class="thesis-card">
+      <div class="thesis-num">04</div>
+      <div class="thesis-title">充裕现金储备，股东回报有保障</div>
+      <div class="thesis-body">截至2026年2月，公司持有<strong>32.4亿美元</strong>现金及短期投资，已获批6亿美元股票回购计划，财务灵活性极强，具备持续投资AI研发与海外扩张（ThinkAcademy）的资本实力，同时为股东价值提供保护底线。</div>
+    </div>
+    <div class="thesis-card">
+      <div class="thesis-num">05</div>
+      <div class="thesis-title">海外业务：ThinkAcademy打开新空间</div>
+      <div class="thesis-body">好未来旗下ThinkAcademy面向海外华裔及国际学生市场，参加CES 2025展示其AI教育产品，获得全球市场认可。海外业务目前规模尚小，但作为长期增量，估值层面几乎未被计入，构成潜在的估值重估催化剂。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ──────── SECTION 2: 公司简介 ──────── -->
+<div class="section" id="company">
+  <div class="section-label">02 · Company Profile</div>
+  <h2>公司简介与转型历程</h2>
+  <div class="two-col">
+    <div>
+      <p>好未来（TAL Education Group，全称"北京世纪好未来教育科技有限公司"）成立于2003年，2010年在纽交所上市，一度是中国K12学科辅导领域最大的机构之一，旗下核心品牌"学而思"在数学教育领域享有盛誉。</p>
+      <p>2021年7月，中国"双减"政策重磅落地，严禁义务教育阶段学科类校外培训机构盈利，好未来被迫壮士断腕，大规模关闭学科培训业务，股价在数月内跌幅超90%。公司随即启动战略重组，转型为以<span class="highlight">素质教育+AI智能硬件</span>为核心的教育科技企业。</p>
+      <p>经过约三年的深度转型，公司于FY2026实现全面爆发：营收超30亿美元，恢复至政策前水平的逾六成，但业务结构、盈利质量和技术壁垒已发生根本性改变。</p>
+    </div>
+    <div>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2003</div><div class="tl-text">学而思成立，专注K12数学教育辅导</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2010</div><div class="tl-text">TAL Education NYSE上市，股票代码TAL</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2017</div><div class="tl-text">成立好未来AI Lab，布局AI技术研发</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2021</div><div class="tl-text">"双减"政策冲击，公司启动战略转型</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2022</div><div class="tl-text">陆续发布讲题机、学习机等智能硬件</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2023</div><div class="tl-text">正式推出九章大模型（MathGPT），获国内首批教育大模型牌照</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025</div><div class="tl-text">CES 2025亮相，学而思学练机上市，布局海外市场</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2026</div><div class="tl-text">FY2026营收30.1亿美元，全面盈利，Non-GAAP净利+284%</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <h3>当前核心业务布局</h3>
+  <div class="seg-row">
+    <div class="seg-part" style="flex:55; background:#1a3a6e;">学习服务 ~55%</div>
+    <div class="seg-part" style="flex:30; background:#c8922a;">内容解决方案 ~30%</div>
+    <div class="seg-part" style="flex:15; background:#3b82f6;">智能硬件 ~15%</div>
+  </div>
+  <div class="seg-legend">
+    <div class="seg-item"><div class="seg-dot" style="background:#1a3a6e"></div>学习服务（线下/线上素质教育、小班精品课）</div>
+    <div class="seg-item"><div class="seg-dot" style="background:#c8922a"></div>内容解决方案（数字内容、AI辅助工具）</div>
+    <div class="seg-item"><div class="seg-dot" style="background:#3b82f6"></div>智能学习设备（学而思学习机、学练机、摩比启蒙机）</div>
+  </div>
+  <p class="note" style="margin-top:10px;">注：各业务线收入占比为分析师根据公司披露信息估算，好未来未公开详细拆分数据。数据来源：公司SEC 6-K文件（2026年4月）、分析师估算。</p>
+</div>
+
+<!-- ──────── SECTION 3: 核心财务数据 ──────── -->
+<div class="section" id="financials">
+  <div class="section-label">03 · Financial Dashboard</div>
+  <h2>核心财务数据看板</h2>
+  <p class="note" style="margin-bottom:20px;">以下所有数据均来源于SEC官方6-K文件（发布日：2026年4月23日），为未经审计财务结果，财年截止日：2026年2月28日。</p>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-label">FY2026全年净营收</div>
+      <div class="kpi-value">$30.1亿</div>
+      <div class="kpi-delta up">▲ +33.7% YoY</div>
+      <div class="kpi-source">vs FY2025: $22.5亿</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Q4 FY2026净营收</div>
+      <div class="kpi-value">$8.02亿</div>
+      <div class="kpi-delta up">▲ +31.5% YoY</div>
+      <div class="kpi-source">vs Q4 FY2025: $6.10亿</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">FY2026毛利率</div>
+      <div class="kpi-value">55.4%</div>
+      <div class="kpi-delta up">▲ +210bps YoY</div>
+      <div class="kpi-source">vs FY2025: 53.3%</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Non-GAAP归母净利润</div>
+      <div class="kpi-value">$5.74亿</div>
+      <div class="kpi-delta up">▲ +283.8% YoY</div>
+      <div class="kpi-source">vs FY2025: $1.50亿</div>
+    </div>
+    <div class="kpi" style="--accent:#c8922a;">
+      <div class="kpi-label" style="--accent:#c8922a;">Non-GAAP稀释每股ADS盈利</div>
+      <div class="kpi-value">$0.99</div>
+      <div class="kpi-delta up">▲ +308.2% YoY</div>
+      <div class="kpi-source">vs FY2025: $0.24</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">递延收入余额（FY末）</div>
+      <div class="kpi-value">$8.82亿</div>
+      <div class="kpi-delta up">▲ +31.4% YoY</div>
+      <div class="kpi-source">vs FY2025: $6.71亿，收入可见度高</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">现金及短期投资</div>
+      <div class="kpi-value">$32.4亿</div>
+      <div class="kpi-delta dw">▼ -10.5% YoY</div>
+      <div class="kpi-source">vs FY2025: $36.2亿（投资于扩张）</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">营业利润（GAAP）</div>
+      <div class="kpi-value">$2.76亿</div>
+      <div class="kpi-delta up">▲ 扭亏为盈</div>
+      <div class="kpi-source">vs FY2025: 亏损$0.03亿</div>
+    </div>
+  </div>
+
+  <!-- Revenue bar chart -->
+  <div class="bar-chart" style="margin-top:36px;">
+    <div class="bar-chart-title">季度净营收趋势（百万美元）—— 数据来源：SEC 6-K, 好未来财报</div>
+    <div class="bar-group">
+      <div class="bar-item">
+        <div class="bar-wrap"><div class="bar" style="height:52%"><span class="bar-val">575</span></div></div>
+        <div class="bar-label">Q1 FY26</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-wrap"><div class="bar" style="height:58%"><span class="bar-val">661</span></div></div>
+        <div class="bar-label">Q2 FY26</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-wrap"><div class="bar" style="height:68%"><span class="bar-val">770</span></div></div>
+        <div class="bar-label">Q3 FY26</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-wrap"><div class="bar accent2" style="height:71%"><span class="bar-val">802</span></div></div>
+        <div class="bar-label">Q4 FY26</div>
+      </div>
+      <div class="bar-item" style="opacity:0.4">
+        <div class="bar-wrap"><div class="bar" style="height:40%"><span class="bar-val">414</span></div></div>
+        <div class="bar-label">Q1 FY25</div>
+      </div>
+      <div class="bar-item" style="opacity:0.4">
+        <div class="bar-wrap"><div class="bar" style="height:44%"><span class="bar-val">616</span></div></div>
+        <div class="bar-label">Q2 FY25</div>
+      </div>
+      <div class="bar-item" style="opacity:0.4">
+        <div class="bar-wrap"><div class="bar" style="height:54%"><span class="bar-val">606</span></div></div>
+        <div class="bar-label">Q3 FY25</div>
+      </div>
+      <div class="bar-item" style="opacity:0.4">
+        <div class="bar-wrap"><div class="bar" style="height:55%"><span class="bar-val">610</span></div></div>
+        <div class="bar-label">Q4 FY25</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:16px;margin-top:4px;font-size:11px;color:var(--muted);">
+      <span style="display:flex;align-items:center;gap:5px;"><span style="width:10px;height:10px;background:var(--accent);border-radius:2px;display:inline-block;"></span>FY2026（当期）</span>
+      <span style="display:flex;align-items:center;gap:5px;"><span style="width:10px;height:10px;background:var(--accent);border-radius:2px;display:inline-block;opacity:0.4;"></span>FY2025（对比）</span>
+      <span style="display:flex;align-items:center;gap:5px;"><span style="width:10px;height:10px;background:var(--gold);border-radius:2px;display:inline-block;"></span>最新季度（Q4 FY26创历史新高）</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="two-col" style="margin-top:16px;">
+    <div>
+      <h3>盈利能力分析</h3>
+      <p>毛利率从FY2025的53.3%提升至FY2026的<strong>55.4%</strong>，反映两大驱动力：其一，高毛利的内容解决方案与在线课程收入占比提升；其二，规模效应下成本摊薄。Non-GAAP营业利润率从FY2025的约2.7%大幅跃升至FY2026的<strong>10.6%</strong>，印证经营杠杆加速释放。</p>
+      <p>Q4 FY2026营收环比再创新高（8.02亿），但Q4营业利润率（9.0%）略低于Q3（12.1%），反映旺季营销及新学习中心开业的前期费用。</p>
+    </div>
+    <div>
+      <h3>费用结构健康性</h3>
+      <p>FY2026销售费用增速（+18.7%）明显低于营收增速（+33.7%），费用率从FY2025的33.3%改善至29.5%，体现营销效率提升。研发投入（计入G&A）同比温和增长约10%，在保持AI技术迭代的同时维持整体费用纪律。</p>
+      <p>股权激励费用同比下降34%至4,310万美元，表明转型期稀释性摊销减轻，对股东友好。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ──────── SECTION 4: AI技术变革 ──────── -->
+<div class="section" id="ai">
+  <div class="section-label">04 · AI &amp; Technology Disruption</div>
+  <h2>AI技术变革与行业影响分析</h2>
+
+  <p>好未来是中国教育科技领域AI投入最早、布局最深的企业之一。自2017年成立AI Lab至今，已构建起覆盖"教、学、测、练、评"全链条的AI能力矩阵，并以<strong>九章大模型（MathGPT）</strong>为核心技术底座，实现软硬件一体化的AI教育生态。</p>
+
+  <div class="ai-grid">
+    <div class="ai-card">
+      <div class="ai-icon">🤖</div>
+      <h3>九章大模型（MathGPT）</h3>
+      <p>2023年发布，是中国首个获批商业化牌照的教育专用大模型，在MathEval评测中排名国内外30个大模型首位。K12数学文字题正确率超97%，接近人类专家上限。</p>
+      <p>与DeepSeek组成双大模型架构：通识场景调用DeepSeek，深度教育场景（拍照搜题、精准学、分步骤讲题）依赖九章大模型，实现精准专业度与通用性的结合。</p>
+    </div>
+    <div class="ai-card">
+      <div class="ai-icon">📱</div>
+      <h3>学而思学习机系列</h3>
+      <p>推出P/S/T三大系列，针对不同学段和消费能力差异化定位。P系列定价3,000元以下，面向下沉市场，打开用户入口；S/T系列主打旗舰AI功能，构建高客单价产品矩阵。</p>
+      <p>内置九章随时问、精准学、AI批改等核心功能，并联合微软Azure AI服务将数据标注效率提升35%。CES 2025亮相，获国际市场认可。</p>
+    </div>
+    <div class="ai-card">
+      <div class="ai-icon">🏫</div>
+      <h3>线下AI赋能教学</h3>
+      <p>学而思培优线下课堂引入AI个性化教学系统，实现学情数据可视化与自适应练习推送。续班率指标（付费即读小班续班率约80%）远超行业均值，印证AI提升教学效果的正向循环。</p>
+      <p>"九章爱学"AI个性化学习系统入选国家"人工智能+应用场景"典型案例，获政策背书。</p>
+    </div>
+    <div class="ai-card">
+      <div class="ai-icon">🌐</div>
+      <h3>开放平台与生态布局</h3>
+      <p>九章大模型提供API和智能体接口，向第三方教育机构开放，形成平台型收入模式。好未来联合北京师范大学承接北京市教育大模型项目，深化政产学研合作。</p>
+      <p>2019年承建"智慧教育国家新一代人工智能开放创新平台"，获国家战略资源背书，构建行政壁垒护城河。</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <h3>政策环境：约束与机遇并存</h3>
+  <div class="two-col">
+    <div>
+      <p><strong>机遇：</strong>国家政策明确支持AI赋能教育，好未来的政府项目合作、国家平台建设背景使其在政策层面享有特殊地位。素质教育和AI硬件不在"双减"限制范畴，监管环境相对明朗。</p>
+    </div>
+    <div>
+      <p><strong>约束：</strong>AI教育产品面临未成年人数据隐私（COPPA类中国标准）和内容合规审核要求。算法推荐对未成年人的使用场景管控持续趋严，硬件内容资质审批周期拉长可能影响新品上市节奏。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ──────── SECTION 5: 估值 ──────── -->
+<div class="section" id="valuation">
+  <div class="section-label">05 · Valuation</div>
+  <h2>估值建模与投资建议</h2>
+
+  <p>我们采用分部加总估值法（SOTP），将好未来的核心业务拆分为学习服务（稳定现金流）与智能硬件（高增长潜力）两部分分别估值，参考可比公司倍数并给予一定折价反映政策和流动性风险。</p>
+
+  <div class="val-box">
+    <h3>SOTP 分部估值法</h3>
+    <div class="val-row"><span>学习服务业务（PS 3.0x，FY2026E营收~$16.6亿）</span><span class="v">$49.8亿</span></div>
+    <div class="val-row"><span>内容解决方案业务（PS 4.0x，FY2026E营收~$9.0亿）</span><span class="v">$36.0亿</span></div>
+    <div class="val-row"><span>智能硬件业务（PS 2.5x，FY2026E营收~$4.5亿）</span><span class="v">$11.3亿</span></div>
+    <div class="val-row"><span>净现金（现金及短投减去估算负债）</span><span class="v">+$28.0亿</span></div>
+    <div class="val-row"><span>政策/监管折价（-10%）</span><span class="v">-$9.7亿</span></div>
+    <div class="val-row" style="font-weight:700; font-size:15px;"><span>估算企业价值合计</span><span class="v">$115.4亿</span></div>
+    <div class="val-row"><span>总股本（约5.61亿ADS，按1ADS=1/3 Class A）</span><span class="v">~7.22亿ADS</span></div>
+    <div class="val-row" style="font-weight:700;"><span>每ADS估值</span><span class="v" style="font-size:18px;">~$16.0</span></div>
+  </div>
+
+  <div class="final-target">
+    <div class="label">12个月目标价</div>
+    <div class="big">$16.00</div>
+    <div style="font-size:13px;margin-top:6px;opacity:0.9;">评级：买入（BUY）&nbsp;·&nbsp; 较当前约 +45% 上行空间</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="two-col" style="margin-top:8px;">
+    <div>
+      <h3>催化剂：上行情景</h3>
+      <p>① 硬件业务盈亏平衡时间节点提前（最早FY2027）；② 九章大模型对外商业化变现超预期；③ ThinkAcademy海外用户增速加快；④ 递延收入加速确认推动营收预期上调；⑤ 宏观经济改善提升教育消费意愿。</p>
+    </div>
+    <div>
+      <h3>下行情景保护</h3>
+      <p>即使估值回归保守（PS 2x）、剔除硬件业务价值，仅核心学习服务+净现金的内在价值已达约$11–12/ADS，下行保护充分。加之6亿美元回购计划对股价形成有力托底。</p>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top:16px;">免责声明：本估值基于公开信息及分析师模型，不构成投资建议。业务比例及ADS数量为分析师估算，可能存在误差。数据来源：SEC 6-K文件（2026年4月），分析师模型。投资有风险，入市需谨慎。</p>
+</div>
+
+<!-- ──────── SECTION 6: 风险 ──────── -->
+<div class="section" id="risks">
+  <div class="section-label">06 · Risk Factors</div>
+  <h2>风险提示</h2>
+
+  <table class="risk-table">
+    <thead>
+      <tr>
+        <th width="18%">风险类别</th>
+        <th width="10%">等级</th>
+        <th width="45%">风险描述</th>
+        <th>应对与缓释</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>政策监管风险</strong></td>
+        <td><span class="risk-tag risk-h">高</span></td>
+        <td>教育监管持续演变，AI教育内容审核趋严，数据隐私法规（未成年人）可能约束硬件功能上线节奏。若政策边界扩展至素质教育或AI辅导，将直接冲击核心收入。</td>
+        <td>公司深度参与国家平台建设，与主管部门保持密切合作；产品合规团队扩张，合规成本已纳入预算。</td>
+      </tr>
+      <tr>
+        <td><strong>硬件竞争风险</strong></td>
+        <td><span class="risk-tag risk-h">高</span></td>
+        <td>学习机赛道竞争白热化：作业帮旗下小猿学练机、科大讯飞AI学习机、步步高均为强劲对手，价格战可能压缩毛利空间。学练机赛道此前仅猿辅导一家，好未来新入场面临先发劣势。</td>
+        <td>九章大模型在教育精度上保持技术差异化；P系列低价产品扩大用户规模，防止市场份额流失；软件订阅模式构建生态锁定效应。</td>
+      </tr>
+      <tr>
+        <td><strong>硬件盈利节奏风险</strong></td>
+        <td><span class="risk-tag risk-m">中</span></td>
+        <td>Q1 FY2026智能硬件业务Non-GAAP运营亏损，管理层表示将持续加大投入。若盈亏平衡节点延后，将拖累整体盈利预期并可能引发市场预期调整。</td>
+        <td>硬件业务由充裕现金（32亿美元）和主业现金流支撑，战略亏损可承受；用户规模为未来内容变现奠定基础。</td>
+      </tr>
+      <tr>
+        <td><strong>汇率与中概股风险</strong></td>
+        <td><span class="risk-tag risk-m">中</span></td>
+        <td>业务主体在中国，以人民币计价，但TAL以美元报告；汇率波动直接影响美元财报数据。此外，中美关系变化引发的中概股退市风险仍是系统性折价因素。</td>
+        <td>公司已在港交所双重上市；大量美元现金储备提供自然对冲；公司已积极评估潜在上市架构调整。</td>
+      </tr>
+      <tr>
+        <td><strong>宏观消费风险</strong></td>
+        <td><span class="risk-tag risk-l">低</span></td>
+        <td>中国居民消费意愿若持续低迷，教育支出弹性受压，可能影响学习机销量和课程报名人数。</td>
+        <td>教育支出具有强刚需属性，中国家庭教育投入意愿历史上相对稳定；P系列低价产品进一步降低支出门槛。</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ──────── SECTION 7: 分析师与机构观点 ──────── -->
+<div class="section">
+  <div class="section-label">07 · Analyst Coverage</div>
+  <h2>主要机构覆盖观点</h2>
+  <div class="three-col">
+    <div style="background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px;">
+      <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">麦格理 · Macquarie</div>
+      <div style="font-size:20px;font-weight:700;color:var(--green);">买入</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:var(--gold);margin:4px 0;">目标价 $18.00</div>
+      <div style="font-size:12px;color:var(--muted);">已从中性上调至跑赢大市。学习服务线上线下均录得同比增长，用户参与度强劲。</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px;">
+      <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">摩根大通 · JP Morgan</div>
+      <div style="font-size:20px;font-weight:700;color:#ca8a04;">持有</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:var(--gold);margin:4px 0;">目标价 $11.00</div>
+      <div style="font-size:12px;color:var(--muted);">2025年4月由超配下调，认为FY2027增长基数效应带来压力，估值相对合理。</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px;">
+      <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">花旗 · Citigroup</div>
+      <div style="font-size:20px;font-weight:700;color:#ca8a04;">中性</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:var(--gold);margin:4px 0;">目标价 $11.54</div>
+      <div style="font-size:12px;color:var(--muted);">2025年6月从买入下调，认为当前风险收益趋于平衡，需观察FY2027增长节奏。</div>
+    </div>
+  </div>
+  <p style="margin-top:16px;font-size:13px;color:var(--muted);">截至2026年5月，综合19家覆盖分析师，平均目标价约$14.48，其中18家买入/强力买入，仅3家持有，0家卖出。整体市场看法偏积极，分歧主要在于硬件盈利时间节点与FY2027增长可持续性。数据来源：Investing.com、stockanalysis.com（截至2026年5月）。</p>
+</div>
+
+</div><!-- end container -->
+
+<footer>
+  <div style="max-width:960px;margin:0 auto;">
+    <strong>重要免责声明</strong><br>
+    本报告仅供研究参考之用，不构成任何投资建议或要约。报告中的数据均来源于公开信息，包括好未来向SEC提交的6-K文件（发布日：2026年4月23日）、公司官网（tal.com）及公开市场数据。历史业绩不代表未来表现。投资美股存在汇率、市场、政策等多重风险，投资者应结合自身风险承受能力独立判断。<br><br>
+    <strong>数据来源：</strong>美国SEC EDGAR（好未来FY2026 6-K，2026年4月23日）· 好未来投资者关系官网 · Bloomberg / Investing.com（分析师评级）· 知乎 / 多知网（产品与技术信息）· IDC（行业估算参考）<br><br>
+    © 2026 AI Research Desk · 好未来(TAL) 深度投研报告 · 报告日期：2026年5月31日
+  </div>
+</footer>
+
+</body>
+</html>

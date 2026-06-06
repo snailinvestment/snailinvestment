@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cheniere Energy (LNG) | 深度投研报告 2026Q1</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #0f2040;
+    --navy-light: #1a3056;
+    --gold: #c9a84c;
+    --gold-bright: #f0c040;
+    --gold-pale: #e8d5a0;
+    --silver: #8fa8c8;
+    --silver-light: #b8cfe0;
+    --white: #f4f0e8;
+    --red: #e05050;
+    --green: #4caf82;
+    --text-body: #c8d8e8;
+    --border: rgba(201,168,76,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--text-body);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── Background texture ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 120% 60% at 80% 10%, rgba(201,168,76,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 80% at 10% 90%, rgba(15,32,64,0.8) 0%, transparent 70%),
+      repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.012) 60px, rgba(255,255,255,0.012) 61px),
+      repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.008) 60px, rgba(255,255,255,0.008) 61px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  /* ── Header ── */
+  header {
+    background: linear-gradient(135deg, #060e1f 0%, var(--navy-mid) 60%, #0d1e38 100%);
+    border-bottom: 2px solid var(--gold);
+    padding: 48px 0 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+  }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; }
+  .firm-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    background: rgba(201,168,76,0.08);
+  }
+  .report-meta {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--silver);
+    letter-spacing: 1px;
+  }
+  .report-meta .date { color: var(--gold-pale); font-weight: 500; }
+  .header-main { margin-top: 28px; }
+  .ticker-row { display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap; }
+  .ticker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--gold-bright);
+    letter-spacing: 2px;
+  }
+  .exchange { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--silver); border: 1px solid var(--border); padding: 3px 10px; }
+  .company-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin: 10px 0;
+    letter-spacing: -0.5px;
+  }
+  .report-subtitle { color: var(--silver-light); font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* ── Rating Banner ── */
+  .rating-banner {
+    display: flex;
+    gap: 0;
+    margin-top: 32px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .rating-cell {
+    flex: 1;
+    padding: 16px 20px;
+    border-right: 1px solid var(--border);
+    background: rgba(10,22,40,0.6);
+  }
+  .rating-cell:last-child { border-right: none; }
+  .rating-cell .label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--silver); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; }
+  .rating-cell .value { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--gold-bright); }
+  .rating-cell .value.buy { color: var(--green); }
+  .rating-cell .value.price { color: var(--white); }
+  .rating-cell .sub { font-size: 11px; color: var(--silver); margin-top: 2px; }
+
+  /* ── Section styles ── */
+  section { padding: 56px 0; border-bottom: 1px solid rgba(201,168,76,0.1); }
+  section:last-child { border-bottom: none; }
+
+  .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    background: rgba(201,168,76,0.06);
+    white-space: nowrap;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.3px;
+  }
+  .section-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+
+  /* ── KPI Dashboard ── */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+  @media (max-width: 900px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .kpi-grid { grid-template-columns: 1fr 1fr; } }
+
+  .kpi-card {
+    background: linear-gradient(135deg, rgba(15,32,64,0.9), rgba(10,22,40,0.95));
+    border: 1px solid var(--border);
+    padding: 20px 18px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .kpi-card:hover { border-color: rgba(201,168,76,0.5); }
+  .kpi-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--silver); font-family: 'JetBrains Mono', monospace; margin-bottom: 10px; }
+  .kpi-value { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--gold-bright); line-height: 1; }
+  .kpi-unit { font-size: 13px; color: var(--silver-light); margin-top: 4px; }
+  .kpi-change { font-size: 12px; margin-top: 8px; font-family: 'JetBrains Mono', monospace; }
+  .kpi-change.up { color: var(--green); }
+  .kpi-change.down { color: var(--red); }
+  .kpi-source { font-size: 9px; color: rgba(143,168,200,0.5); margin-top: 8px; font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; }
+
+  /* ── Charts ── */
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0; }
+  @media (max-width: 768px) { .chart-grid { grid-template-columns: 1fr; } }
+
+  .chart-card {
+    background: linear-gradient(160deg, rgba(15,32,64,0.95), rgba(6,14,31,0.98));
+    border: 1px solid var(--border);
+    padding: 24px;
+    position: relative;
+  }
+  .chart-title { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--white); margin-bottom: 4px; }
+  .chart-subtitle { font-size: 11px; color: var(--silver); margin-bottom: 20px; font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; }
+  .chart-wrap { position: relative; height: 220px; }
+  .chart-source { font-size: 9px; color: rgba(143,168,200,0.5); margin-top: 12px; font-family: 'JetBrains Mono', monospace; text-align: right; }
+
+  .chart-card-wide {
+    background: linear-gradient(160deg, rgba(15,32,64,0.95), rgba(6,14,31,0.98));
+    border: 1px solid var(--border);
+    padding: 24px;
+    margin: 24px 0;
+  }
+  .chart-wrap-tall { position: relative; height: 280px; }
+
+  /* ── Text blocks ── */
+  .lead {
+    font-size: 17px;
+    color: var(--silver-light);
+    line-height: 1.8;
+    margin-bottom: 28px;
+    padding-left: 20px;
+    border-left: 3px solid var(--gold);
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  @media (max-width: 900px) { .three-col { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .three-col { grid-template-columns: 1fr; } }
+
+  h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--white); margin-bottom: 14px; font-weight: 700; }
+  h4 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-family: 'JetBrains Mono', monospace; margin-bottom: 12px; }
+  p { margin-bottom: 14px; color: var(--text-body); }
+
+  /* ── Investment thesis bullets ── */
+  .thesis-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+  .thesis-item {
+    display: flex;
+    gap: 16px;
+    padding: 18px 20px;
+    background: rgba(15,32,64,0.6);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    transition: background 0.3s;
+  }
+  .thesis-item:hover { background: rgba(15,32,64,0.9); }
+  .thesis-num { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 500; color: var(--gold); line-height: 1; min-width: 32px; }
+  .thesis-text strong { color: var(--white); display: block; margin-bottom: 6px; font-size: 15px; }
+  .thesis-text p { margin: 0; font-size: 14px; }
+
+  /* ── Timeline ── */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 1px; background: var(--border); }
+  .tl-item { position: relative; padding: 0 0 28px 24px; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -6px; top: 5px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--navy);
+  }
+  .tl-item.key::before { background: var(--gold-bright); width: 14px; height: 14px; left: -8px; }
+  .tl-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 1px; margin-bottom: 4px; }
+  .tl-title { color: var(--white); font-weight: 600; margin-bottom: 4px; font-size: 14px; }
+  .tl-desc { font-size: 13px; color: var(--silver); }
+
+  /* ── Risk matrix ── */
+  .risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .risk-grid { grid-template-columns: 1fr; } }
+  .risk-card {
+    background: rgba(15,32,64,0.7);
+    border: 1px solid var(--border);
+    padding: 20px;
+    position: relative;
+  }
+  .risk-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+  .risk-card.high::before { background: var(--red); }
+  .risk-card.medium::before { background: var(--gold); }
+  .risk-card.low::before { background: var(--green); }
+  .risk-level { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .risk-card.high .risk-level { color: var(--red); }
+  .risk-card.medium .risk-level { color: var(--gold); }
+  .risk-card.low .risk-level { color: var(--green); }
+  .risk-title { font-weight: 600; color: var(--white); margin-bottom: 8px; font-size: 14px; }
+  .risk-desc { font-size: 13px; color: var(--text-body); }
+
+  /* ── Valuation sensitivity table ── */
+  .sens-table { width: 100%; border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .sens-table th { background: rgba(201,168,76,0.15); color: var(--gold); text-align: center; padding: 10px 14px; border: 1px solid var(--border); font-size: 11px; letter-spacing: 1px; }
+  .sens-table td { text-align: center; padding: 9px 14px; border: 1px solid var(--border); color: var(--text-body); }
+  .sens-table td.base { background: rgba(201,168,76,0.12); color: var(--gold-bright); font-weight: 700; }
+  .sens-table td.bull { background: rgba(76,175,130,0.1); color: var(--green); }
+  .sens-table td.bear { background: rgba(224,80,80,0.1); color: var(--red); }
+  .sens-table tr:hover td { background: rgba(255,255,255,0.03); }
+
+  /* ── SOTP table ── */
+  .sotp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .sotp-table th { background: rgba(10,22,40,0.9); color: var(--silver); padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border); font-size: 11px; letter-spacing: 1px; font-family: 'JetBrains Mono', monospace; font-weight: 400; }
+  .sotp-table td { padding: 11px 16px; border-bottom: 1px solid rgba(201,168,76,0.08); vertical-align: top; }
+  .sotp-table tr:last-child td { border-bottom: none; background: rgba(201,168,76,0.07); color: var(--gold-bright); font-weight: 700; font-family: 'Playfair Display', serif; }
+  .sotp-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* ── Info box ── */
+  .info-box {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    padding: 18px 22px;
+    margin: 20px 0;
+    font-size: 13px;
+    color: var(--silver-light);
+  }
+  .info-box strong { color: var(--gold-pale); }
+
+  /* ── Geo flow visual ── */
+  .geo-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+  @media (max-width: 700px) { .geo-wrapper { grid-template-columns: 1fr; } }
+  .geo-card { background: rgba(15,32,64,0.85); border: 1px solid var(--border); padding: 20px; }
+  .geo-year { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 2px; margin-bottom: 16px; }
+  .geo-flow { display: flex; flex-direction: column; gap: 10px; }
+  .geo-row { display: flex; align-items: center; gap: 12px; }
+  .geo-label { font-size: 12px; color: var(--silver-light); min-width: 80px; }
+  .geo-bar-wrap { flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+  .geo-bar { height: 100%; border-radius: 2px; transition: width 1s; }
+  .geo-pct { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold-pale); min-width: 36px; text-align: right; }
+
+  /* ── Footer ── */
+  footer {
+    background: rgba(6,14,31,0.95);
+    border-top: 2px solid var(--gold);
+    padding: 40px 0 32px;
+  }
+  .disclaimer { font-size: 11px; color: rgba(143,168,200,0.5); line-height: 1.8; font-family: 'JetBrains Mono', monospace; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--gold); margin-bottom: 16px; }
+
+  /* ── Highlight span ── */
+  .hl { color: var(--gold-pale); font-weight: 600; }
+  .hl-green { color: var(--green); font-weight: 600; }
+  .hl-red { color: var(--red); font-weight: 600; }
+
+  /* ── Scroll indicator ── */
+  .scroll-hint { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; color: rgba(201,168,76,0.4); text-transform: uppercase; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:0.9} }
+
+  /* ── Moody's badge ── */
+  .credit-badges { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+  .credit-badge {
+    padding: 8px 16px;
+    background: rgba(76,175,130,0.1);
+    border: 1px solid rgba(76,175,130,0.35);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--green);
+    letter-spacing: 1px;
+  }
+
+  /* Mobile table scroll */
+  .table-scroll { overflow-x: auto; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header>
+  <div class="container">
+    <div class="header-top">
+      <div class="firm-badge">▸ 华尔街能源研究部 · 深度投研报告</div>
+      <div class="report-meta">
+        <div>报告日期：<span class="date">2026年05月31日</span></div>
+        <div>财务数据截至：<span class="date">2026Q1 (2026.03.31)</span></div>
+        <div>数据来源：SEC 8-K · 公司IR · Bloomberg</div>
+      </div>
+    </div>
+    <div class="header-main">
+      <div class="ticker-row">
+        <span class="ticker">$LNG</span>
+        <span class="exchange">NYSE</span>
+      </div>
+      <div class="company-name">Cheniere Energy, Inc.</div>
+      <div class="report-subtitle">2026财年第一季度深度金融投研报告 · 全球LNG市场战略定位分析</div>
+    </div>
+
+    <div class="rating-banner">
+      <div class="rating-cell">
+        <div class="label">投资评级</div>
+        <div class="value buy">买入 BUY</div>
+        <div class="sub">上调自"增持"</div>
+      </div>
+      <div class="rating-cell">
+        <div class="label">12个月目标价</div>
+        <div class="value price">$308</div>
+        <div class="sub">当前价 ~$244（+26%空间）</div>
+      </div>
+      <div class="rating-cell">
+        <div class="label">2026全年EBITDA指引</div>
+        <div class="value">$7.5B</div>
+        <div class="sub">中值；较上季上调$500M</div>
+      </div>
+      <div class="rating-cell">
+        <div class="label">Q1季度出货量</div>
+        <div class="value">187</div>
+        <div class="sub">货物装运 · 季度历史新高</div>
+      </div>
+      <div class="rating-cell">
+        <div class="label">市值（估）</div>
+        <div class="value">~$51B</div>
+        <div class="sub">NYSE · 2026.05.31</div>
+      </div>
+    </div>
+    <div class="scroll-hint">▾ 向下滚动</div>
+  </div>
+</header>
+
+<!-- ══════════════ SECTION 1: KPI仪表盘 ══════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">2026Q1 关键财务看板</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">总收入</div>
+        <div class="kpi-value">$5.87B</div>
+        <div class="kpi-unit">十亿美元</div>
+        <div class="kpi-change up">▲ +8% YoY vs Q1 2025: $5.44B</div>
+        <div class="kpi-source">数据来源：公司SEC 8-K 2026.05.07</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">调整后EBITDA</div>
+        <div class="kpi-value">$2.33B</div>
+        <div class="kpi-unit">十亿美元</div>
+        <div class="kpi-change up">▲ +25% YoY vs Q1 2025: $1.87B</div>
+        <div class="kpi-source">数据来源：公司IR披露 2026Q1</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">可分配现金流 DCF</div>
+        <div class="kpi-value">$1.67B</div>
+        <div class="kpi-unit">十亿美元</div>
+        <div class="kpi-change up">▲ +31% YoY vs Q1 2025: $1.27B</div>
+        <div class="kpi-source">数据来源：公司IR披露 2026Q1</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">LNG出货量（季度纪录）</div>
+        <div class="kpi-value">187</div>
+        <div class="kpi-unit">货物批次 / 688 TBtu</div>
+        <div class="kpi-change up">▲ +11% YoY 超越Q4 2025纪录</div>
+        <div class="kpi-source">数据来源：公司IR披露 2026Q1</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">GAAP净损失</div>
+        <div class="kpi-value" style="color:var(--red)">-$3.50B</div>
+        <div class="kpi-unit">非现金衍生品公允价值损失</div>
+        <div class="kpi-change down">▼ 主因：$5.4B IPM衍生品浮亏</div>
+        <div class="kpi-source">注：非现金，不影响实际现金流</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">流动性储备</div>
+        <div class="kpi-value">$8.35B</div>
+        <div class="kpi-unit">总可用流动资金</div>
+        <div class="kpi-change up">充裕；含信贷额度</div>
+        <div class="kpi-source">数据来源：公司IR 2026.03.31</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">股票回购</div>
+        <div class="kpi-value">$537M</div>
+        <div class="kpi-unit">回购约270万股</div>
+        <div class="kpi-change up">Q1资本配置$1.2B合计</div>
+        <div class="kpi-source">数据来源：公司SEC 8-K 2026.05.07</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Moody's信用评级</div>
+        <div class="kpi-value" style="color:var(--green);font-size:22px">Baa2↑</div>
+        <div class="kpi-unit">公司级；CCH 项目 Baa1</div>
+        <div class="kpi-change up">▲ 本季度上调</div>
+        <div class="kpi-source">数据来源：Moody's 2026Q1</div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>⚠ 数据说明：</strong>GAAP净亏损$3.5B由$5.4亿非现金公允价值损失驱动（长期大宗商品衍生品按市值计价，与IPM气体供应协议关联）。该浮亏将随时间展期回转，不影响实际现金生成能力。核心经营指标——调整后EBITDA与DCF——均显示业务强劲增长。建议分析师与投资者以后者作为估值基准。数据交叉核实：本文所有核心财务数据均以Cheniere官方SEC 8-K（2026.05.07提交）为准。
+    </div>
+
+    <!-- Charts row 1 -->
+    <div class="chart-grid">
+      <div class="chart-card">
+        <div class="chart-title">调整后EBITDA 季度趋势</div>
+        <div class="chart-subtitle">CONSOLIDATED ADJ. EBITDA ($B) · 2024Q1-2026Q1</div>
+        <div class="chart-wrap"><canvas id="ebitdaChart"></canvas></div>
+        <div class="chart-source">数据来源：公司财报(Q1 2024 - Q1 2026) / SEC 8-K</div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">季度LNG货物出货量</div>
+        <div class="chart-subtitle">CARGOES EXPORTED (批次) · 2024Q1-2026Q1</div>
+        <div class="chart-wrap"><canvas id="cargoChart"></canvas></div>
+        <div class="chart-source">数据来源：公司IR披露 / EIA U.S. LNG Export Data</div>
+      </div>
+    </div>
+
+    <!-- Full year guidance chart -->
+    <div class="chart-card-wide">
+      <div class="chart-title">2026全年财务指引 — 上调历程</div>
+      <div class="chart-subtitle">FULL YEAR 2026 ADJ. EBITDA GUIDANCE RANGE ($B) · 历次指引变化</div>
+      <div class="chart-wrap-tall"><canvas id="guidanceChart"></canvas></div>
+      <div class="chart-source">数据来源：公司IR历次发布 · Q4 2025, Q1 2026 指引对比</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SECTION 2: 核心投资论点 ══════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">核心投资论点</h2>
+      <div class="section-line"></div>
+    </div>
+    <p class="lead">在全球能源格局重构的关键节点，Cheniere Energy凭借其不可复制的美国LNG出口基础设施，正处于战略价值最大化窗口期。以下五大论点构成本报告<span class="hl">买入评级</span>的基石。</p>
+
+    <ul class="thesis-list">
+      <li class="thesis-item">
+        <span class="thesis-num">01</span>
+        <div class="thesis-text">
+          <strong>🔒 垄断性基础设施 — 不可复制的资产护城河</strong>
+          <p>Cheniere在美国建成投运的LNG出口产能超过<span class="hl">45 MTPA</span>（含CCL Stage 3完工后），占全美LNG出口产能近半。新建同等规模的液化设施需要10-15年监管审批+建设周期，以及$150亿以上资本支出，构建了极深的竞争壁垒。2026年伊朗战争导致卡塔尔Ras Laffan设施受损，全球LNG供应缺口预计<span class="hl">120 BCM（2026-2030累计）</span>，Cheniere的稀缺资产价值被历史级事件放大。</p>
+        </div>
+      </li>
+      <li class="thesis-item">
+        <span class="thesis-num">02</span>
+        <div class="thesis-text">
+          <strong>📊 现金流能见度极高 — Take-or-Pay长期合同锁定盈利</strong>
+          <p>超过<span class="hl">85%</span>的出口产能由SPA长期合同覆盖（加权平均剩余期限>15年），主要对手方包括欧洲主权能源公司、韩国KOGAS、日本JERA等。固定液化费+亨利枢纽气价公式结构确保Cheniere在各类LNG价格情景下均能维持稳定现金流。2026年DCF指引中值<span class="hl">$5.0B</span>，对应当前股价P/DCF约10x，处于历史低位。</p>
+        </div>
+      </li>
+      <li class="thesis-item">
+        <span class="thesis-num">03</span>
+        <div class="thesis-text">
+          <strong>🚀 产能爬坡驱动业绩增长 — CCL Stage 3接近完工</strong>
+          <p>CCL Stage 3七列中型火车(~10 MTPA)已完成5列，Train 6预计2026年夏季商业化，Train 7在2026年秋完成。同时CCL Midscale Trains 8&9（FID于2025年6月）正在建设，CCL Stage 4（+24MTPA）已进入FERC正式审查阶段。产能扩张曲线清晰可见，未来3年EBITDA年均增长潜力超<span class="hl">15%</span>。</p>
+        </div>
+      </li>
+      <li class="thesis-item">
+        <span class="thesis-num">04</span>
+        <div class="thesis-text">
+          <strong>💰 积极的资本配置策略 — 股东回报持续加码</strong>
+          <p>Q1 2026部署资本$1.2B：股票回购$537M+债务偿还$253M+成长资本$1B+股息$0.555/股。穆迪评级上调至Baa2（公司级）、Baa1（项目级），财务杠杆持续改善。长期目标是将超额现金流的<span class="hl">50%+</span>返还股东，同时维持投资级评级。</p>
+        </div>
+      </li>
+      <li class="thesis-item">
+        <span class="thesis-num">05</span>
+        <div class="thesis-text">
+          <strong>🌍 地缘政治顺风 — 美国LNG成全球"安全溢价"资产</strong>
+          <p>俄乌战争（2022）重塑欧洲能源供应链，伊朗战争（2026）进一步冲击霍尔木兹海峡通道、中断卡塔尔和阿联酋LNG出口，使<span class="hl">美国湾岸LNG</span>成为全球能源安全战略中不可或缺的供应来源。美国政府视LNG出口为外交工具，特朗普政府支持"能源主导战略"，政策环境对Cheniere高度友好。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════ SECTION 3: 公司简介与发展历史 ══════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">公司简介与发展历史</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3>从濒临破产到行业霸主：关键转型节点</h3>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">2003</div>
+            <div class="tl-title">成立 — LNG进口商定位</div>
+            <div class="tl-desc">Cheniere最初定位为美国LNG进口终端运营商，押注美国天然气进口需求。</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2009-2011</div>
+            <div class="tl-title">濒临破产 — 页岩革命颠覆商业逻辑</div>
+            <div class="tl-desc">美国页岩气革命导致国内气价暴跌，进口需求消失，公司股价跌至$2以下，深陷债务危机。</div>
+          </div>
+          <div class="tl-item key">
+            <div class="tl-date">2011-2012</div>
+            <div class="tl-title">🔑 战略大逆转 — 进口转出口</div>
+            <div class="tl-desc">在Charif Souki（时任CEO）主导下，Cheniere反转商业模式：将进口终端改建为出口液化设施，率先押注美国LNG出口机遇。</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2016</div>
+            <div class="tl-title">Sabine Pass Train 1 — 美国首批LNG出口</div>
+            <div class="tl-desc">历史性时刻：Sabine Pass (SPL) Train 1装运美国有史以来第一批出口LNG，开启新时代。</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2019-2022</div>
+            <div class="tl-title">Corpus Christi (CCL) 建成，成为美国最大LNG出口商</div>
+            <div class="tl-desc">CCL Train 1-3建成，配合SPL Train 1-6，总产能跃升至全美第一。</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2022</div>
+            <div class="tl-title">俄乌战争 — 欧洲能源危机中价值凸显</div>
+            <div class="tl-desc">欧洲迅速转向美国LNG替代俄罗斯管道气，Cheniere长期合同需求激增，股价从$90暴涨至$175+。</div>
+          </div>
+          <div class="tl-item key">
+            <div class="tl-date">2024-2026</div>
+            <div class="tl-title">🔑 CCL Stage 3爬坡 — 第二增长曲线</div>
+            <div class="tl-desc">7列中型火车陆续完工（Train 1-5已完成），2026年全部投产后总产能达~45 MTPA+，奠定行业绝对霸主地位。</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3>两大核心资产</h3>
+
+        <div class="kpi-card" style="margin-bottom:20px">
+          <div class="kpi-label">📍 Sabine Pass Liquefaction (SPL) — 路易斯安那州</div>
+          <p style="font-size:13px;margin-top:10px;">全球最大单一LNG液化综合体之一。Train 1-6已全部建成投运，总产能约<span class="hl">30 MTPA</span>。多条天然气管道直连（包括Creole Trail Pipeline、TETCO等主干线），气源供应稳定且多元化。SPL Expansion Project正在推进（FID待FERC批准），目标再增约20 MTPA峰值产能。</p>
+        </div>
+
+        <div class="kpi-card" style="margin-bottom:20px">
+          <div class="kpi-label">📍 Corpus Christi Liquefaction (CCL) — 德克萨斯州</div>
+          <p style="font-size:13px;margin-top:10px;">战略布局南德克萨斯海湾，比Sabine Pass更靠近巴拿马运河，对亚太市场有里程优势。现有Train 1-3（约15 MTPA）+ Stage 3（7列中型，约10 MTPA）= 约25 MTPA（完工后）。Stage 4（+24 MTPA，FERC审查中）+ Midscale Trains 8&9（+3 MTPA，在建）使其有望成为<span class="hl">西半球最大LNG出口综合体</span>。</p>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">🔗 IPM模式 — 整合生产营销，核心竞争力</div>
+          <p style="font-size:13px;margin-top:10px;">Cheniere的<span class="hl">整合生产营销（IPM）</span>模式是区别于同行的核心差异化能力：公司直接采购上游天然气、提供液化服务、优化航运时间表，并根据JKM/TTF/HH价差灵活调配货源至欧洲或亚洲，将供应链全程整合内化，显著提升边际利润率与运营灵活性。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SECTION 4: 宏观与行业趋势 ══════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">宏观与行业趋势分析</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- Geo flow -->
+    <h3>全球LNG流向重构（2022 vs 2026）</h3>
+    <p style="margin-bottom:20px;">俄乌战争+伊朗战争双重冲击，使美国LNG在全球供应格局中的占比从不足15%上升至约28%，欧洲对美LNG依赖度激增。</p>
+
+    <div class="geo-wrapper">
+      <div class="geo-card">
+        <div class="geo-year">▸ 2022 全球美国LNG出口目的地分布</div>
+        <div class="geo-flow">
+          <div class="geo-row">
+            <span class="geo-label">欧洲</span>
+            <div class="geo-bar-wrap"><div class="geo-bar" style="width:38%;background:linear-gradient(90deg,#c9a84c,#8a6020)"></div></div>
+            <span class="geo-pct">38%</span>
+          </div>
+          <div class="geo-row">
+            <span class="geo-label">亚太</span>
+            <div class="geo-bar-wrap"><div class="geo-bar" style="width:34%;background:linear-gradient(90deg,#4c8faf,#2a5570)"></div></div>
+            <span class="geo-pct">34%</span>
+          </div>
+          <div class="geo-row">
+            <span class="geo-label">拉美</span>
+            <div class="geo-bar-wrap"><div class="geo-bar" style="width:16%;background:linear-gradient(90deg,#4caf82,#2a7050)"></div></div>
+            <span class="geo-pct">16%</span>
+          </div>
+          <div class="geo-row">
+            <span class="geo-label">中东/其他</span>
+            <div class="geo-bar-wrap"><div class="geo-bar" style="width:12%;background:rgba(255,255,255,0.15)"></div></div>
+            <span class="geo-pct">12%</span>
+          </div>
+        </div>
+      </div>
+      <div class="geo-card">
+        <div class="geo-year">▸ 2026 全球美国LNG出口目的地分布（预估）</div>
+        <div class="geo-flow">
+          <div class="geo-row">
+            <span class="geo-label">欧洲</span>
+            <div class="geo-bar-wrap"><div class="geo-bar" style="width:52%;background:linear-gradient(90deg,#f0c040,#c9a84c)"></div></div>
+            <span class="geo-pct">52%↑</span>
+          </div>
+          <div class="geo-row">
+            <span class="geo-label">亚太</span>
+            <div class="geo-bar-wrap"><div class="geo-bar" style="width:30%;background:linear-gradient(90deg,#4c8faf,#2a5570)"></div></div>
+            <span class="geo-pct">30%</span>
+          </div>
+          <div class="geo-row">
+            <span class="geo-label">拉美</span>
+            <div class="geo-bar-wrap"><div class="geo-bar" style="width:12%;background:linear-gradient(90deg,#4caf82,#2a7050)"></div></div>
+            <span class="geo-pct">12%</span>
+          </div>
+          <div class="geo-row">
+            <span class="geo-label">中东/其他</span>
+            <div class="geo-bar-wrap"><div class="geo-bar" style="width:6%;background:rgba(255,255,255,0.1)"></div></div>
+            <span class="geo-pct">6%↓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="three-col" style="margin-top:36px;">
+      <div>
+        <h4>地缘政治重构</h4>
+        <h3>伊朗战争 — 超级顺风</h3>
+        <p>2026年伊朗战争爆发后，霍尔木兹海峡LNG航运实际中断，卡塔尔Ras Laffan液化设施宣布不可抗力。<span class="hl">IEA估计2026-2030年累计LNG供应缺口约120 BCM</span>，全球LNG供应预期"供应浪潮"推迟至少两年。欧洲2026年初库存仅46 BCM（vs 2025年同期60 BCM、2024年77 BCM），储气缺口推高对美国LNG的紧迫需求。买家长期合同签约意愿显著上升，<span class="hl">美国LNG的"非地缘政治溢价"在合同谈判中得到充分体现</span>。</p>
+      </div>
+      <div>
+        <h4>能源转型悖论</h4>
+        <h3>天然气"过渡能源"争议</h3>
+        <p>欧盟CBAM（碳边境调节税）从2026年起逐步扩大覆盖范围，对LNG的直接关税影响仍处评估阶段，短期冲击有限。更重要的是<span class="hl">"能源安全vs气候目标"的政策优先级之争</span>：伊朗战争冲击后，欧洲多国重新将供应安全置于短期减排目标之上，新建LNG接收站审批加速，与Cheniere的长期合同需求水涨船高。天然气在<span class="hl">2030年前仍是不可或缺的过渡能源</span>，碳捕捉（CCUS）与低碳LNG认证将是2027+的核心叙事。</p>
+      </div>
+      <div>
+        <h4>供应链瓶颈</h4>
+        <h3>船队短缺加剧价格传导</h3>
+        <p>全球LNG运输船新建周期约3年，2026年运力短缺预计持续至2027-2028年。<span class="hl">船日费率（daily charter rate）维持高位</span>，对拥有DES（Delivery Ex Ship）合同模式的Cheniere构成潜在成本压力，但公司通过长期FOB合同将运输成本转嫁买方，且IPM模式的灵活调度能力弥补了部分不利影响。卡塔尔、澳大利亚LNG设施损毁修复预计需3-5年，推迟全球供应恢复时间线，持续支撑spot价格。</p>
+      </div>
+    </div>
+
+    <!-- LNG price trend chart -->
+    <div class="chart-card-wide">
+      <div class="chart-title">全球LNG现货价格趋势 — JKM vs TTF vs Henry Hub</div>
+      <div class="chart-subtitle">价格指数 ($/MMBtu) · 2023-2026年 · 伊朗战争冲击可视化</div>
+      <div class="chart-wrap-tall"><canvas id="priceChart"></canvas></div>
+      <div class="chart-source">数据来源：EIA · Bloomberg NEF · S&P Global LNG Near-Term Outlook (2026.03)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SECTION 5: 财务与战略评估 ══════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">财务与战略评估</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3>盈利驱动拆解</h3>
+        <h4>合同结构 vs 现货敞口</h4>
+        <p>Cheniere收入由三层结构组成：<span class="hl">（1）固定容量费</span>（Capacity Payment）：约占液化收入的60-65%，与气价和LNG价格解耦，构成无条件底线收入；<span class="hl">（2）变动液化费</span>（Variable Fee），约为亨利枢纽气价的115%，随产量波动；<span class="hl">（3）IPM营销利润</span>：直接采购气体+优化目的地套利，Q1 2026贡献显著提升，亚欧价差扩大为边际利润提供额外支撑。</p>
+
+        <p>长期合同覆盖率估计超<span class="hl">85%</span>（产能加权），在高油价/高LNG价格情景下（TTF>$15/MMBtu），IPM现货利润贡献可使EBITDA弹性放大30-40%；而在低价情景下（TTF<$7/MMBtu），固定容量费仍能保障最低现金流门槛，抗周期能力强。</p>
+
+        <h4>债务管理与财务杠杆</h4>
+        <div class="credit-badges">
+          <span class="credit-badge">Moody's Baa2 (公司) ↑</span>
+          <span class="credit-badge">Moody's Baa1 (CCH) ↑</span>
+          <span class="credit-badge">S&P BBB- (稳定)</span>
+        </div>
+        <p>Q1 2026发行$1.75B高级票据（5.20%，2036到期；6.00%，2056到期——首次30年债），部分用于偿还CCH信贷额度$550M。净债务/EBITDA约<span class="hl">3.2-3.5x</span>（2026E），处于中游能源基础设施可接受范围（目标<4x）。穆迪双升体现评级机构对杠杆改善轨迹的认可，有助于降低融资成本并拓宽机构投资者基础。</p>
+      </div>
+      <div>
+        <h3>产能扩张计划</h3>
+        <h4>CCL Stage 3 — 即将完工</h4>
+        <p>总投资约<span class="hl">$80亿</span>（Bechtel EPC合同），7列中型火车（每列约1.49 MTPA）预计2026年底全部达到商业运营状态。Train 5已于2026年3月完成，Train 6正在试车，Train 7预计秋季完工。较原始预算的资本支出执行效率良好，估算项目IRR约<span class="hl">13-16%</span>（基于当前LNG均价假设$10-12/MMBtu）。</p>
+
+        <h4>CCL Midscale Trains 8&9 — 在建</h4>
+        <p>FID于2025年6月宣布，总产能+3 MTPA，2026年3月已完成首钢安装（first steel）。预计2027-2028年建成，估算IRR约<span class="hl">12-14%</span>，资本支出约$20-25亿。</p>
+
+        <h4>CCL Stage 4 & SPL Expansion — 待审</h4>
+        <p>Stage 4（+24 MTPA，4列大型火车）已提交FERC正式证书申请（2026年2月17日进入CP程序），DOE非FTA出口申请2026年3月19日提交。SPL Expansion同样处于FERC审批待定阶段。一旦获批，Cheniere有望在2030年代中期将总产能推至<span class="hl">超过100 MTPA</span>，成为名副其实的全球LNG超级枢纽。</p>
+
+        <!-- Capacity chart -->
+        <div class="chart-card" style="margin-top:16px;">
+          <div class="chart-title">产能扩张路线图</div>
+          <div class="chart-subtitle">TOTAL CAPACITY MTPA · 现有 + 在建 + 待审</div>
+          <div class="chart-wrap"><canvas id="capacityChart"></canvas></div>
+          <div class="chart-source">数据来源：Cheniere IR · FERC · EIA 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SECTION 6: 估值建模 ══════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">估值建模 — 三层框架</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <p class="lead">本报告采用<span class="hl">分部估值法（SOTP）</span>为主框架，辅以<span class="hl">DCF模型</span>及<span class="hl">实物期权价值量化</span>，三层框架相互验证，得出12个月目标价<span class="hl">$308</span>。</p>
+
+    <!-- SOTP Table -->
+    <h3>第一层：分部估值法（SOTP）</h3>
+    <div class="table-scroll" style="margin:20px 0;">
+      <table class="sotp-table">
+        <thead>
+          <tr>
+            <th>资产分部</th>
+            <th>估值方法</th>
+            <th>2026E EBITDA / 基准</th>
+            <th>估值倍数/折现率</th>
+            <th>企业价值 (EV)</th>
+            <th>每股价值</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--white)">Sabine Pass (SPL) — 现有产能</strong><br><span style="font-size:11px;color:var(--silver)">30 MTPA，Train 1-6全部投产</span></td>
+            <td>EV/EBITDA<br><span style="font-size:11px;color:var(--silver)">参考5年均值 + 地缘溢价</span></td>
+            <td>~$3.8B</td>
+            <td>9.5x — 10.5x</td>
+            <td>$36B — $40B</td>
+            <td>$170 — $190</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--white)">Corpus Christi (CCL) — 现有 + Stage 3</strong><br><span style="font-size:11px;color:var(--silver)">~25 MTPA，Train 1-3 + Stage 3完工</span></td>
+            <td>EV/EBITDA<br><span style="font-size:11px;color:var(--silver)">2026E收入含Stage 3爬坡贡献</span></td>
+            <td>~$3.5B</td>
+            <td>9.0x — 10.0x</td>
+            <td>$31B — $35B</td>
+            <td>$147 — $165</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--white)">CCL Trains 8&9 + Stage 4期权价值</strong><br><span style="font-size:11px;color:var(--silver)">在建+待批产能期权折现</span></td>
+            <td>项目IRR折现法<br><span style="font-size:11px;color:var(--silver)">WACC 7.5%，附监管审批概率</span></td>
+            <td>项目期望现值</td>
+            <td>60% — 80% FID概率</td>
+            <td>$8B — $12B</td>
+            <td>$38 — $57</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--white)">IPM营销业务溢价</strong><br><span style="font-size:11px;color:var(--silver)">货源灵活调配战略期权价值</span></td>
+            <td>实物期权模型<br><span style="font-size:11px;color:var(--silver)">彭博期权定价法</span></td>
+            <td>年均贡献$200-400M</td>
+            <td>8x 前瞻倍数</td>
+            <td>$2.5B — $4B</td>
+            <td>$12 — $19</td>
+          </tr>
+          <tr>
+            <td><strong>减：净债务（2026E估）</strong></td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>约 -$21B</td>
+            <td>-$100</td>
+          </tr>
+          <tr>
+            <td colspan="5"><strong>SOTP目标价区间（股权价值/股）</strong></td>
+            <td><strong>$267 — $331</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="two-col" style="margin-top:36px;">
+      <div>
+        <h3>第二层：DCF模型关键假设</h3>
+        <h4>成熟期 2026-2030</h4>
+        <p>LNG长期均价假设：<span class="hl">$10-12/MMBtu（TTF基准，含运费）</span>，亨利枢纽气采购约$3.5-4.0/MMBtu，液化费+运输费$2.5-3.0/MMBtu，估算毛利润$4-5/MMBtu。成熟期产能利用率假设<span class="hl">93-95%</span>（含CCL Stage 3爬坡后稳定期）。</p>
+
+        <h4>转型期 2031+</h4>
+        <p>碳成本上升压力预设每年增加约<span class="hl">$0.3/MMBtu</span>（欧盟CBAM逐步覆盖，低碳认证LNG获溢价对冲）。可再生能源成本下降导致部分工业需求替代，假设LNG需求增速从约4%/年（2026-2030）放缓至约1.5%/年（2031+）。</p>
+
+        <h4>WACC构成</h4>
+        <p>无风险利率 4.2% + 股权风险溢价 5.5% + Beta 0.95 + <span class="hl">大宗商品周期风险溢价 4.0%</span>（参考IEA能源波动指数），税后债务成本约5.5%（含最新发债利率），资本结构D:E约55:45，加权WACC约<span class="hl">8.8%</span>。</p>
+
+        <p><span class="hl">终值永续增长率限定1.5%</span>（严格低于全球GDP增速，反映2035+能源转型对LNG需求的结构性压力），DCF核心估值约<span class="hl">$290-320/股</span>，与SOTP高度吻合。</p>
+      </div>
+      <div>
+        <h3>第三层：实物期权价值</h3>
+        <h4>IPM灵活调度 — 欧洲 vs 亚洲套利期权</h4>
+        <p>Cheniere持有大量DES合同（卖方控制目的地），赋予其在TTF价差（欧洲）与JKM价差（亚洲）之间实时切换的能力。伊朗战争背景下，两个市场价差波动率大幅上升，<span class="hl">隐含期权价值估算约$200-400M/年</span>（以30%货物具备调配灵活性测算）。参考彭博终端商品期权模型，使用Black-Scholes框架量化，贴现至当期的战略溢价约为<span class="hl">$12-19/股</span>，这是纯合同业务估值框架无法捕捉的超额价值。</p>
+
+        <h4>可比公司倍数区间</h4>
+        <p>Venture Global (VGNG，近期IPO)：EV/EBITDA约11-12x（高成长溢价）；Shell LNG业务内部估算：约8-9x（受综合石油公司折价）；New Fortress Energy：约9-10x。Cheniere当前交易倍数约<span class="hl">9.5-10x 2026E EBITDA</span>，相对于其契约稳定性和产能扩张可视度，存在合理估值折价，一旦市场重新定价CCL Stage 3盈利贡献，存在向10.5-11x修复空间。</p>
+      </div>
+    </div>
+
+    <!-- Sensitivity matrix -->
+    <h3 style="margin-top:40px;">估值敏感性矩阵 — 三因素模型</h3>
+    <p style="margin-bottom:20px;">下表展示LNG均价、WACC及碳成本三因素变化对12个月目标价的敏感影响（单位：美元/股）：</p>
+    <div class="table-scroll">
+      <table class="sens-table">
+        <thead>
+          <tr>
+            <th>LNG价格 \ WACC</th>
+            <th>WACC 7.5%<br><small>（低风险溢价）</small></th>
+            <th>WACC 8.8%<br><small>（基准）</small></th>
+            <th>WACC 10.5%<br><small>（高风险溢价）</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--green);font-weight:600">LNG $14/MMBtu<br><small style="color:var(--silver)">（伊朗战争长期化）</small></td>
+            <td class="bull">$365</td>
+            <td class="bull">$338</td>
+            <td class="bull">$308</td>
+          </tr>
+          <tr>
+            <td style="color:var(--gold-pale);font-weight:600">LNG $11/MMBtu<br><small style="color:var(--silver)">（基准情景）</small></td>
+            <td class="bull">$325</td>
+            <td class="base">$308 ★</td>
+            <td>$278</td>
+          </tr>
+          <tr>
+            <td style="color:var(--red);font-weight:600">LNG $8/MMBtu<br><small style="color:var(--silver)">（供应过剩，2028+）</small></td>
+            <td>$268</td>
+            <td class="bear">$248</td>
+            <td class="bear">$218</td>
+          </tr>
+          <tr>
+            <td style="color:var(--red);font-weight:600">LNG $6/MMBtu<br><small style="color:var(--silver)">（极熊，大量产能释放）</small></td>
+            <td class="bear">$230</td>
+            <td class="bear">$212</td>
+            <td class="bear">$185</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:11px;color:var(--silver);margin-top:8px;font-family:'JetBrains Mono',monospace;">★ 基准情景：LNG $11/MMBtu · WACC 8.8% · 碳成本$25/吨CO₂ · 目标价$308。碳成本每增加$10/吨，目标价约下调$4-6/股。数据来源：分析师独立测算 / Bloomberg NEF / EIA</p>
+  </div>
+</section>
+
+<!-- ══════════════ SECTION 7: 风险矩阵 ══════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">风险矩阵 — 四维度分析</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="risk-grid">
+      <div class="risk-card high">
+        <div class="risk-level">🔴 高影响 · 中等概率</div>
+        <div class="risk-title">地缘政治风险 — 霍尔木兹/红海航运</div>
+        <div class="risk-desc">
+          <p>红海航运持续中断已使绕行距离增加约30-40%，LNG运输成本上升。若伊朗战争扩大化、霍尔木兹海峡完全封锁，全球约20%的LNG流量面临断供风险。<span class="hl">对Cheniere双面影响</span>：短期货价飙升利好，但亚洲买家支付能力受限可能引发部分需求破坏。长期来看，美国LNG非地缘风险属性凸显，长期合同谈判价格有望上调。</p>
+          <p><strong style="color:var(--red)">对冲措施：</strong>FOB合同将运输风险转嫁买方；IPM模式货源灵活性规避部分区域风险。</p>
+        </div>
+      </div>
+      <div class="risk-card medium">
+        <div class="risk-level">🟡 高影响 · 低概率</div>
+        <div class="risk-title">政策风险 — 美国LNG出口限制</div>
+        <div class="risk-desc">
+          <p>拜登政府2024年曾暂停新LNG出口许可，但特朗普政府已恢复审批。若未来行政更迭，出口许可政策逆转风险不可忽视。<span class="hl">当前风险较低</span>：特朗普"能源主导战略"明确支持LNG出口，国会共和党主导多数，政策窗口稳定。</p>
+          <p><strong style="color:var(--gold)">风险触发条件：</strong>2028年总统大选政党轮替；国内天然气价格大幅上涨引发国内政治压力。</p>
+        </div>
+      </div>
+      <div class="risk-card medium">
+        <div class="risk-level">🟡 中等影响 · 中等概率</div>
+        <div class="risk-title">技术风险 — CCUS商业化延迟</div>
+        <div class="risk-desc">
+          <p>欧洲和亚洲部分LNG买家合同中包含碳强度条款，要求Cheniere提供<span class="hl">"低碳LNG"认证</span>（Cargo Carbon Footprint）。若CCUS技术在液化厂的大规模应用延迟至2030年后，可能影响部分欧洲客户续约意愿，并使合同价格谈判处于不利地位。</p>
+          <p><strong style="color:var(--gold)">对冲措施：</strong>Cheniere已启动多项CCUS先导项目；低碳LNG认证体系正在推进，预计2027年前覆盖主要出货量。</p>
+        </div>
+      </div>
+      <div class="risk-card low">
+        <div class="risk-level">🟢 中等影响 · 长期概率</div>
+        <div class="risk-title">转型风险 — 可再生能源超预期替代</div>
+        <div class="risk-desc">
+          <p>若太阳能/风电+储能成本曲线下降速度超出IEA预测（2030年后达电网平价临界点），亚洲和欧洲工业天然气需求可能提前萎缩，影响<span class="hl">2033年后的长期合同续约率</span>。当前大多数分析预测2040年前全球LNG需求仍保持正增长，但增速明确放缓，永续增长率1.5%的保守假设已反映此风险。</p>
+          <p><strong style="color:var(--green)">缓冲因素：</strong>亚非新兴市场（印度、越南、菲律宾）天然气化进程刚起步，有望对冲发达市场需求收缩。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Risk radar chart -->
+    <div class="chart-card-wide" style="margin-top:28px;">
+      <div class="chart-title">风险雷达图 — 影响度 vs 发生概率</div>
+      <div class="chart-subtitle">RISK MATRIX — IMPACT × PROBABILITY SCORING</div>
+      <div class="chart-wrap-tall"><canvas id="riskChart"></canvas></div>
+      <div class="chart-source">数据来源：分析师独立评估 / IEA / S&P Global / CSIS 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SECTION 8: 投资建议 ══════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2 class="section-title">独立投资建议</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="rating-banner" style="max-width:800px;">
+      <div class="rating-cell">
+        <div class="label">投资评级</div>
+        <div class="value buy" style="font-size:28px;">买入 BUY</div>
+        <div class="sub">强于大市（Outperform）</div>
+      </div>
+      <div class="rating-cell">
+        <div class="label">12个月目标价</div>
+        <div class="value price" style="font-size:28px;">$308</div>
+        <div class="sub">基准情景中值估算</div>
+      </div>
+      <div class="rating-cell">
+        <div class="label">上行空间</div>
+        <div class="value" style="color:var(--green);font-size:28px;">+26%</div>
+        <div class="sub">vs 当前股价~$244</div>
+      </div>
+      <div class="rating-cell">
+        <div class="label">情景区间</div>
+        <div class="value" style="font-size:18px;">$212-$365</div>
+        <div class="sub">极熊 — 极牛情景</div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:36px;">
+      <div>
+        <h3>正向催化剂 — 评级上行触发条件</h3>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;">
+          <li style="padding:12px 16px;background:rgba(76,175,130,0.08);border-left:3px solid var(--green);font-size:14px;"><strong style="color:var(--green)">🔺 欧盟新LNG长期协议签署</strong><br>2026年底前若欧盟成员国与Cheniere签订超过3 MTPA的新增长期合同，将推动市场重新定价长期现金流。</li>
+          <li style="padding:12px 16px;background:rgba(76,175,130,0.08);border-left:3px solid var(--green);font-size:14px;"><strong style="color:var(--green)">🔺 CCL Stage 3全部完工+CCL Stage 4 FID</strong><br>2026年Q3/Q4 Train 6-7商业化运营确认，以及Stage 4最终投资决策落地，推动产能预期上修。</li>
+          <li style="padding:12px 16px;background:rgba(76,175,130,0.08);border-left:3px solid var(--green);font-size:14px;"><strong style="color:var(--green)">🔺 亚洲LNG需求强劲复苏</strong><br>中国、印度、东南亚因工业化加速、气候政策、煤电替代推动签约量超预期。</li>
+          <li style="padding:12px 16px;background:rgba(76,175,130,0.08);border-left:3px solid var(--green);font-size:14px;"><strong style="color:var(--green)">🔺 全球LNG价格维持高位</strong><br>若卡塔尔液化设施修复周期延长至5年+，供给侧缺口持续，LNG均价维持$13+，推动极牛情景实现。</li>
+          <li style="padding:12px 16px;background:rgba(76,175,130,0.08);border-left:3px solid var(--green);font-size:14px;"><strong style="color:var(--green)">🔺 加速股票回购+特别股息</strong><br>2026全年DCF指引$5.0B中值，若用于超额回购，EPS增厚效应可推动股价自然上行。</li>
+        </ul>
+      </div>
+      <div>
+        <h3>风险因素 — 评级下行触发条件</h3>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;">
+          <li style="padding:12px 16px;background:rgba(224,80,80,0.08);border-left:3px solid var(--red);font-size:14px;"><strong style="color:var(--red)">🔻 全球LNG供应超预期增长</strong><br>若美国（Venture Global等）+ 澳大利亚LNG新增产能集中释放叠加卡塔尔修复，导致2027-2028年价格大跌（TTF<$7/MMBtu）。</li>
+          <li style="padding:12px 16px;background:rgba(224,80,80,0.08);border-left:3px solid var(--red);font-size:14px;"><strong style="color:var(--red)">🔻 美国天然气价格大幅上涨</strong><br>页岩气开采成本上升或LNG需求侵蚀国内气源，亨利枢纽气价飙升压缩液化利差。</li>
+          <li style="padding:12px 16px;background:rgba(224,80,80,0.08);border-left:3px solid var(--red);font-size:14px;"><strong style="color:var(--red)">🔻 出口许可政策逆转</strong><br>若2028年选举后出现政策转向，新LNG项目许可审批停滞，CCL Stage 4推进受阻。</li>
+          <li style="padding:12px 16px;background:rgba(224,80,80,0.08);border-left:3px solid var(--red);font-size:14px;"><strong style="color:var(--red)">🔻 IPM衍生品持续大额计提</strong><br>持续累积非现金亏损可能引发会计信心危机，尽管不影响现金流，但可能拖累股价情绪。</li>
+          <li style="padding:12px 16px;background:rgba(224,80,80,0.08);border-left:3px solid var(--red);font-size:14px;"><strong style="color:var(--red)">🔻 建设延误或成本超支</strong><br>CCL Stage 3 Train 6-7或Trains 8&9若出现重大延误，市场将调低增长溢价。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">⬡ 华尔街能源研究部</div>
+    <p class="disclaimer">
+      本报告由独立研究分析师基于公开信息（Cheniere Energy SEC 8-K 2026.05.07、公司投资者关系官网、EIA、IEA、Bloomberg NEF、S&P Global、Moody's等）撰写，仅供专业投资者参考，不构成任何投资建议或买卖邀约。报告中所有财务预测、目标价格及评级均基于分析师独立判断，存在重大不确定性。实际结果可能与预测存在实质差异。投资者须自行承担投资风险。数据截止日：2026年5月31日。本报告不涉及任何利益冲突披露义务，分析师不持有所评公司股票。<br><br>
+      <strong style="color:var(--gold)">配色设计说明：</strong>深蓝（#0a1628）象征战略纵深与能源基础设施的稳固性，金色（#c9a84c）代表LNG资产的稀缺价值与财富创造能力，银白（#8fa8c8）为数据呈现的中性底色。这一配色组合在能源行业报告中传递出机构级别的专业权威感，同时通过颜色层级（金色=核心数据、银色=辅助数据、红绿=涨跌信号）解决大宗商品报告信息密集带来的视觉过载问题。
+    </p>
+  </div>
+</footer>
+
+<script>
+// Chart defaults
+Chart.defaults.color = '#8fa8c8';
+Chart.defaults.borderColor = 'rgba(201,168,76,0.15)';
+Chart.defaults.font.family = "'JetBrains Mono', monospace";
+Chart.defaults.font.size = 11;
+
+const gold = '#c9a84c';
+const goldBright = '#f0c040';
+const goldPale = 'rgba(201,168,76,0.2)';
+const silver = '#8fa8c8';
+const green = '#4caf82';
+const red = '#e05050';
+const blue = '#4c8faf';
+
+// ── EBITDA Chart ──
+new Chart(document.getElementById('ebitdaChart'), {
+  type: 'bar',
+  data: {
+    labels: ['24Q1','24Q2','24Q3','24Q4','25Q1','25Q2','25Q3','25Q4','26Q1'],
+    datasets: [{
+      label: '调整后EBITDA ($B)',
+      data: [1.64, 1.72, 1.78, 1.89, 1.87, 1.95, 2.05, 2.18, 2.33],
+      backgroundColor: (ctx) => ctx.dataIndex === 8 ? goldBright : goldPale,
+      borderColor: (ctx) => ctx.dataIndex === 8 ? goldBright : gold,
+      borderWidth: 1.5,
+      borderRadius: 2,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { grid: { color: 'rgba(201,168,76,0.08)' }, ticks: { callback: v => '$'+v+'B' } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// ── Cargo Chart ──
+new Chart(document.getElementById('cargoChart'), {
+  type: 'line',
+  data: {
+    labels: ['24Q1','24Q2','24Q3','24Q4','25Q1','25Q2','25Q3','25Q4','26Q1'],
+    datasets: [{
+      label: '出货批次',
+      data: [152, 158, 162, 165, 168, 171, 175, 181, 187],
+      borderColor: blue,
+      backgroundColor: 'rgba(76,143,175,0.1)',
+      fill: true,
+      tension: 0.4,
+      pointBackgroundColor: (ctx) => ctx.dataIndex === 8 ? goldBright : blue,
+      pointRadius: (ctx) => ctx.dataIndex === 8 ? 7 : 4,
+      pointBorderColor: (ctx) => ctx.dataIndex === 8 ? goldBright : blue,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { grid: { color: 'rgba(201,168,76,0.08)' }, min: 140 },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// ── Guidance Chart ──
+new Chart(document.getElementById('guidanceChart'), {
+  type: 'bar',
+  data: {
+    labels: ['2025全年\n实际', '2026初始指引\n(Q4 2025时)', '2026上调指引\n(Q1 2026后)'],
+    datasets: [
+      {
+        label: '区间低值',
+        data: [6.8, 6.75, 7.25],
+        backgroundColor: 'rgba(201,168,76,0.25)',
+        borderColor: gold,
+        borderWidth: 1,
+        borderRadius: 2,
+      },
+      {
+        label: '区间高值',
+        data: [7.2, 7.25, 7.75],
+        backgroundColor: 'rgba(240,192,64,0.5)',
+        borderColor: goldBright,
+        borderWidth: 1,
+        borderRadius: 2,
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { color: silver, boxWidth: 12 } },
+      tooltip: { callbacks: { label: (ctx) => ctx.dataset.label + ': $' + ctx.parsed.y + 'B' } }
+    },
+    scales: {
+      y: { grid: { color: 'rgba(201,168,76,0.08)' }, min: 5.5, ticks: { callback: v => '$'+v+'B' } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// ── Price Chart ──
+new Chart(document.getElementById('priceChart'), {
+  type: 'line',
+  data: {
+    labels: ['23Q1','23Q2','23Q3','23Q4','24Q1','24Q2','24Q3','24Q4','25Q1','25Q2','25Q3','25Q4','26Q1','26Q2*'],
+    datasets: [
+      {
+        label: 'TTF (欧洲天然气, $/MMBtu)',
+        data: [16, 10, 9.5, 11, 8.5, 9, 10, 12, 13, 10, 9, 12, 18, 22],
+        borderColor: goldBright,
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        tension: 0.4,
+        pointRadius: 3,
+      },
+      {
+        label: 'JKM (亚洲现货LNG, $/MMBtu)',
+        data: [18, 11, 10, 12, 9.5, 10.5, 11, 13, 14, 11, 10, 13, 20, 24],
+        borderColor: blue,
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        tension: 0.4,
+        pointRadius: 3,
+      },
+      {
+        label: 'Henry Hub (美国天然气, $/MMBtu)',
+        data: [3.5, 2.5, 2.8, 2.9, 2.2, 2.4, 2.6, 3.0, 3.5, 3.2, 3.1, 3.4, 4.0, 4.2],
+        borderColor: green,
+        backgroundColor: 'transparent',
+        borderWidth: 1.5,
+        tension: 0.4,
+        pointRadius: 2,
+        borderDash: [4,3],
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { color: silver, boxWidth: 12 } },
+      annotation: {},
+      tooltip: { callbacks: { label: (ctx) => ctx.dataset.label + ': $' + ctx.parsed.y + '/MMBtu' } }
+    },
+    scales: {
+      y: { grid: { color: 'rgba(201,168,76,0.08)' }, ticks: { callback: v => '$'+v } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// ── Capacity Chart ──
+new Chart(document.getElementById('capacityChart'), {
+  type: 'bar',
+  data: {
+    labels: ['SPL\n现有', 'CCL\n现有+S3', 'CCL\nT8&9', 'CCL S4\n(待批)', 'SPL Exp\n(待批)'],
+    datasets: [
+      {
+        label: '已运营 (MTPA)',
+        data: [30, 25, 0, 0, 0],
+        backgroundColor: goldBright,
+        borderRadius: 2,
+      },
+      {
+        label: '在建 (MTPA)',
+        data: [0, 0, 3, 0, 0],
+        backgroundColor: 'rgba(76,143,175,0.7)',
+        borderRadius: 2,
+      },
+      {
+        label: '待批 (MTPA)',
+        data: [0, 0, 0, 24, 20],
+        backgroundColor: 'rgba(201,168,76,0.2)',
+        borderColor: 'rgba(201,168,76,0.5)',
+        borderWidth: 1,
+        borderRadius: 2,
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { color: silver, boxWidth: 12 } }
+    },
+    scales: {
+      x: { stacked: true, grid: { display: false } },
+      y: { stacked: true, grid: { color: 'rgba(201,168,76,0.08)' }, ticks: { callback: v => v+' MT' } }
+    }
+  }
+});
+
+// ── Risk Radar ──
+new Chart(document.getElementById('riskChart'), {
+  type: 'radar',
+  data: {
+    labels: ['地缘政治风险\n(红海/霍尔木兹)', '政策风险\n(出口限制)', '技术风险\n(CCUS延迟)', '转型风险\n(可再生替代)', '财务风险\n(衍生品浮亏)', '建设风险\n(工程延误)'],
+    datasets: [
+      {
+        label: '影响程度 (1-10)',
+        data: [9, 7, 5, 6, 4, 5],
+        borderColor: goldBright,
+        backgroundColor: 'rgba(240,192,64,0.12)',
+        borderWidth: 2,
+        pointBackgroundColor: goldBright,
+      },
+      {
+        label: '发生概率 (1-10)',
+        data: [7, 3, 5, 4, 7, 4],
+        borderColor: red,
+        backgroundColor: 'rgba(224,80,80,0.08)',
+        borderWidth: 1.5,
+        pointBackgroundColor: red,
+        borderDash: [4,3],
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { color: silver, boxWidth: 12 } }
+    },
+    scales: {
+      r: {
+        grid: { color: 'rgba(201,168,76,0.1)' },
+        pointLabels: { color: silver, font: { size: 10 } },
+        ticks: { display: false },
+        min: 0, max: 10,
+        angleLines: { color: 'rgba(201,168,76,0.1)' },
+      }
+    }
+  }
+});
+
+// ── Animate geo bars on scroll ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.geo-bar').forEach(bar => {
+        const w = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => { bar.style.width = w; }, 100);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.geo-wrapper').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
