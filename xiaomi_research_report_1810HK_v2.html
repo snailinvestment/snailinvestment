@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小米集团 (1810.HK) — 深度投研报告【更新版】2026年6月</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ms-navy:#003566;--ms-blue:#0057a8;--ms-accent:#00a0dc;
+    --ms-gold:#c8a84b;--ms-red:#c0392b;--ms-green:#1a7a4a;--ms-amber:#b45309;
+    --ms-gray-900:#0f1923;--ms-gray-800:#1c2636;--ms-gray-700:#2d3d52;
+    --ms-gray-600:#4a607a;--ms-gray-400:#8fa3b8;--ms-gray-200:#c8d6e2;
+    --ms-gray-100:#e8f0f6;--ms-gray-50:#f4f7fa;--ms-white:#ffffff;
+    --rule:1px solid #d0dce8;--rule-heavy:2px solid var(--ms-navy);
+    --font-display:'EB Garamond',Georgia,serif;
+    --font-body:'DM Sans',system-ui,sans-serif;
+    --font-mono:'DM Mono',monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body);background:var(--ms-gray-50);color:var(--ms-gray-900);font-size:14px;line-height:1.65}
+
+  /* HEADER */
+  .rh{background:linear-gradient(160deg,#0a0f1a 0%,#071830 55%,#0a2040 100%);color:#fff;position:relative;overflow:hidden}
+  .rh-noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none}
+  .rh-top-line{height:4px;background:linear-gradient(90deg,var(--ms-red) 0%,var(--ms-gold) 35%,var(--ms-accent) 75%,transparent 100%)}
+  .rh-inner{max-width:1100px;margin:0 auto;padding:34px 48px 38px;position:relative;z-index:1}
+  .rh-meta{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px}
+  .rh-firm{font-family:var(--font-display);font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--ms-accent)}
+  .rh-div{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ms-gray-400);font-weight:300;margin-top:3px}
+  .rh-right{text-align:right;font-size:11px;color:var(--ms-gray-400);line-height:2;font-family:var(--font-mono)}
+  .rh-id{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;margin-bottom:28px}
+  .rh-ticker{font-family:var(--font-mono);font-size:12px;color:var(--ms-accent);letter-spacing:2px;margin-bottom:6px}
+  .rh-title{font-family:var(--font-display);font-size:28px;font-weight:500;line-height:1.25;color:#fff;max-width:800px;margin-bottom:10px}
+  .rh-sub{font-size:13px;color:var(--ms-gray-400);max-width:700px;line-height:1.6}
+
+  /* ALERT */
+  .alert{background:rgba(192,57,43,.17);border:1px solid rgba(192,57,43,.4);border-radius:3px;padding:10px 16px;margin-bottom:20px;display:flex;gap:10px;align-items:flex-start}
+  .alert-icon{font-size:15px;flex-shrink:0;padding-top:1px}
+  .alert-text{font-size:12px;color:#f9c0bb;line-height:1.55}
+  .alert-text strong{color:#ffd4d0}
+
+  /* RATING STRIP */
+  .rs{display:grid;grid-template-columns:repeat(5,1fr);gap:11px}
+  .rc{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:13px 15px}
+  .rc.hold{background:rgba(200,168,75,.12);border-color:rgba(200,168,75,.4)}
+  .rl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ms-gray-400);margin-bottom:5px;font-weight:500}
+  .rv{font-family:var(--font-display);font-size:21px;font-weight:500;color:#fff;line-height:1}
+  .rv.hold{color:var(--ms-gold);font-size:25px}
+  .rv.red{color:#f87171}
+  .rs-sub{font-size:10.5px;color:var(--ms-gray-400);margin-top:4px}
+
+  /* LAYOUT */
+  .body{max-width:1100px;margin:0 auto;padding:34px 48px;display:grid;grid-template-columns:1fr 305px;gap:26px;align-items:start}
+  .mc{min-width:0} .sc{min-width:0}
+
+  /* SECTION */
+  .sec{background:#fff;border:var(--rule);margin-bottom:20px;border-radius:2px;overflow:hidden;animation:fu .4s ease both}
+  .sec:nth-child(1){animation-delay:.04s}.sec:nth-child(2){animation-delay:.08s}
+  .sec:nth-child(3){animation-delay:.12s}.sec:nth-child(4){animation-delay:.16s}
+  .sec:nth-child(5){animation-delay:.20s}.sec:nth-child(6){animation-delay:.24s}
+  .sec:nth-child(7){animation-delay:.28s}
+  .sh{background:var(--ms-gray-900);padding:9px 20px;display:flex;align-items:center;gap:10px}
+  .sn{font-family:var(--font-mono);font-size:10px;color:var(--ms-accent);letter-spacing:1px}
+  .st{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ms-gray-200);font-weight:500}
+  .sb-badge{margin-left:auto;font-size:9px;letter-spacing:1px;padding:2px 8px;border-radius:2px;background:rgba(200,168,75,.2);color:var(--ms-gold);font-weight:700;text-transform:uppercase}
+  .sb{padding:20px 22px}
+
+  /* VERDICT */
+  .verdict{background:linear-gradient(135deg,#fff8e1,#fffde7);border:2px solid var(--ms-gold);border-radius:3px;padding:17px 20px;margin-bottom:18px}
+  .vt{font-family:var(--font-display);font-size:15px;font-weight:600;color:#7c5c00;margin-bottom:8px}
+  .vb{font-size:13px;color:#5a4200;line-height:1.72}
+  .vb strong{color:#3d2d00}
+
+  /* BEAR BOX */
+  .bear{background:#fff5f5;border:2px solid var(--ms-red);border-radius:3px;padding:15px 18px;margin-bottom:14px}
+  .bt{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--ms-red);margin-bottom:7px}
+  .bb{font-size:13px;color:#6b1a1a;line-height:1.65}
+
+  /* ANALYSIS */
+  .ab{margin-bottom:17px}
+  .ab:last-child{margin-bottom:0}
+  .ab h3{font-family:var(--font-display);font-size:15.5px;font-weight:500;color:var(--ms-navy);margin-bottom:7px;padding-bottom:5px;border-bottom:2px solid var(--ms-accent);display:inline-block}
+  .ab h3.red{border-bottom-color:var(--ms-red);color:var(--ms-red)}
+  .ab h3.amber{border-bottom-color:var(--ms-gold);color:var(--ms-amber)}
+  .ab p{font-size:13px;color:var(--ms-gray-700);line-height:1.7;margin-bottom:10px}
+  .ab p:last-child{margin-bottom:0}
+
+  /* CALLOUT */
+  .co{background:#f0f7ff;border-left:3px solid var(--ms-blue);padding:11px 14px;margin:11px 0;border-radius:0 2px 2px 0}
+  .co.warn{background:#fffbeb;border-left-color:var(--ms-gold)}
+  .co.risk{background:#fff5f5;border-left-color:var(--ms-red)}
+  .co p{margin:0;font-size:12.5px;line-height:1.6;color:var(--ms-gray-800)}
+  .co strong{color:var(--ms-navy)}
+  .co.risk strong{color:var(--ms-red)}
+
+  /* TABLES */
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  thead tr{background:var(--ms-gray-100);border-bottom:var(--rule-heavy)}
+  th{padding:8px 11px;text-align:right;font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--ms-gray-600);font-weight:600}
+  th:first-child{text-align:left}
+  td{padding:8px 11px;text-align:right;border-bottom:1px solid #eef2f6;color:var(--ms-gray-800);font-family:var(--font-mono);font-size:12px}
+  td:first-child{text-align:left;font-family:var(--font-body);font-weight:500;font-size:12.5px;color:var(--ms-gray-900)}
+  tr:last-child td{border-bottom:none}
+  .pos{color:var(--ms-green);font-weight:500}
+  .neg{color:var(--ms-red);font-weight:500}
+  .warn-c{color:var(--ms-amber);font-weight:500}
+  .row-t td{font-weight:600;background:var(--ms-gray-100);border-top:var(--rule-heavy);color:var(--ms-navy);font-family:var(--font-mono)}
+  .row-t td:first-child{font-family:var(--font-body)}
+
+  /* SCENARIO */
+  .sc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:var(--rule);border-radius:2px;overflow:hidden}
+  .sc-col{padding:15px 14px;border-right:var(--rule)}
+  .sc-col:last-child{border-right:none}
+  .sc-col.base{background:var(--ms-gray-50);border-left:2px solid var(--ms-gold);border-right:2px solid var(--ms-gold)}
+  .sc-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-bottom:7px}
+  .sc-label.bear{color:var(--ms-red)}.sc-label.base{color:var(--ms-amber)}.sc-label.bull{color:var(--ms-green)}
+  .sc-tp{font-family:var(--font-display);font-size:27px;font-weight:500;line-height:1;margin-bottom:5px}
+  .sc-tp.bear{color:var(--ms-red)}.sc-tp.base{color:var(--ms-amber)}.sc-tp.bull{color:var(--ms-green)}
+  .sc-prob{font-family:var(--font-mono);font-size:11px;color:var(--ms-gray-600);margin-bottom:8px}
+  .sc-text{font-size:11.5px;color:var(--ms-gray-700);line-height:1.55}
+
+  /* RISK */
+  .ri{display:grid;grid-template-columns:25px 1fr auto;gap:11px;align-items:start;padding:11px 0;border-bottom:var(--rule)}
+  .ri:last-child{border-bottom:none}
+  .ri-icon{width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:1px}
+  .ri-icon.high{background:#fee2e2;color:var(--ms-red)}
+  .ri-icon.med{background:#fef3c7;color:#92400e}
+  .ri-content h4{font-size:12.5px;font-weight:600;color:var(--ms-navy);margin-bottom:3px}
+  .ri-content p{font-size:12px;color:var(--ms-gray-600);line-height:1.5;margin:0}
+  .ri-sev{font-family:var(--font-mono);font-size:10px;font-weight:600;padding:3px 7px;border-radius:2px;white-space:nowrap}
+  .ri-sev.high{background:#fee2e2;color:var(--ms-red)}
+  .ri-sev.med{background:#fef3c7;color:#92400e}
+
+  /* SIDEBAR */
+  .ss{background:#fff;border:var(--rule);margin-bottom:13px;border-radius:2px;overflow:hidden;animation:fu .4s ease .3s both}
+  .ssh{background:var(--ms-navy);padding:8px 14px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ms-gray-200);font-weight:600}
+  .ssh.red{background:var(--ms-red)}
+  .ssb{padding:13px 14px}
+  .mr{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid #f0f4f8;gap:8px}
+  .mr:last-child{border-bottom:none}
+  .mn{font-size:11.5px;color:var(--ms-gray-600);flex:1}
+  .mv{font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--ms-gray-900);text-align:right}
+  .mv.g{color:var(--ms-green)}.mv.r{color:var(--ms-red)}.mv.a{color:var(--ms-amber)}
+
+  /* HOLD DISPLAY */
+  .hb{background:rgba(200,168,75,.1);border:1.5px solid var(--ms-gold);border-radius:3px;padding:13px;text-align:center;margin-bottom:12px}
+  .hb-r{font-family:var(--font-display);font-size:32px;color:var(--ms-gold);font-weight:500;line-height:1}
+  .hb-s{font-size:11px;color:var(--ms-amber);margin-top:3px}
+  .tp-box{background:linear-gradient(135deg,#fff8e1,#fffde7);border:1.5px solid var(--ms-gold);border-radius:3px;padding:14px;text-align:center;margin-bottom:12px}
+  .tp-l{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ms-amber);font-weight:600;margin-bottom:4px}
+  .tp-v{font-family:var(--font-display);font-size:40px;font-weight:500;color:var(--ms-amber);line-height:1}
+  .tp-s{font-size:11px;color:var(--ms-gray-600);margin-top:3px}
+
+  /* ANALYST NOTE */
+  .an{background:var(--ms-gray-900);color:#fff;padding:12px 14px;border-radius:2px;margin-top:10px}
+  .an p{font-size:12px;line-height:1.65;color:var(--ms-gray-200);margin:0}
+  .an strong{color:var(--ms-gold)}
+
+  /* PEERS */
+  .pr{display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:6px 0;border-bottom:1px solid #f0f4f8;align-items:center}
+  .pr:last-child{border-bottom:none}
+  .pr.hdr{border-bottom:var(--rule-heavy);padding-bottom:4px}
+  .pn{font-size:12px;font-weight:500}
+  .pn.mi{color:var(--ms-navy);font-weight:700}
+  .pm{font-family:var(--font-mono);font-size:11px;color:var(--ms-gray-700);text-align:right}
+  .ph{font-size:10px;letter-spacing:.8px;color:var(--ms-gray-400);font-weight:600;text-align:right}
+
+  /* PROGRESS */
+  .pbw{margin-bottom:10px}
+  .pbl{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ms-gray-700);margin-bottom:4px;font-weight:500}
+  .pbt{height:5px;background:var(--ms-gray-100);border-radius:3px;overflow:hidden}
+  .pbf{height:100%;border-radius:3px}
+  .pbf.b{background:linear-gradient(90deg,var(--ms-blue),var(--ms-accent))}
+  .pbf.r{background:var(--ms-red)}
+  .pbf.a{background:var(--ms-gold)}
+
+  /* MISC */
+  .divider{height:1px;background:var(--rule);margin:17px 0}
+  .src{font-family:var(--font-mono);font-size:10px;color:var(--ms-gray-400);margin-top:13px;padding-top:10px;border-top:var(--rule)}
+  .disc{max-width:1100px;margin:0 auto;padding:14px 48px 34px;border-top:var(--rule)}
+  .disc-i{background:#fff;border:var(--rule);padding:14px 18px;border-radius:2px}
+  .disc-i p{font-size:10.5px;color:var(--ms-gray-400);line-height:1.6;margin-bottom:5px}
+  .disc-i p:last-child{margin-bottom:0}
+  @keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  @media(max-width:900px){
+    .rh-inner{padding:22px 20px 26px}
+    .body{grid-template-columns:1fr;padding:18px}
+    .rs{grid-template-columns:repeat(3,1fr)}
+    .disc{padding:14px 18px 26px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="rh">
+  <div class="rh-top-line"></div>
+  <div class="rh-noise"></div>
+  <div class="rh-inner">
+    <div class="rh-meta">
+      <div>
+        <div class="rh-firm">Morgan Stanley &nbsp;·&nbsp; Equity Research</div>
+        <div class="rh-div">Asia Pacific Technology Hardware &amp; Consumer Electronics</div>
+      </div>
+      <div class="rh-right">
+        报告更新：2026年6月7日<br>
+        数据截至：2026Q1财报 + 5月交付数据<br>
+        港股代码：1810.HK<br>
+        评级更新：买入 → <strong style="color:var(--ms-gold)">持有 ↓</strong>
+      </div>
+    </div>
+
+    <div class="alert">
+      <span class="alert-icon">⚠</span>
+      <div class="alert-text"><strong>评级下调通知（本版修订）：</strong>基于最新核实股价约HK$28（非前版HK$34，数据有误已更正）及修订后的盈利预测，本报告将评级由"买入"下调至<strong>"持有"</strong>，12个月目标价由HK$46下修至<strong>HK$32</strong>。当前股价距52周高点（HK$61.45）已回撤约54%，但存储涨价、汽车目标压力、研发费用扩张三重利空均属持续性压力，风险收益比趋于均衡而非明显偏多。</div>
+    </div>
+
+    <div class="rh-id">
+      <div class="rh-ticker">1810.HK &nbsp;|&nbsp; XIAOMI CORPORATION &nbsp;|&nbsp; 小米集团</div>
+      <h1 class="rh-title">存储涨价、汽车目标压力与AI烧钱周期的三重博弈：客观中立重估</h1>
+      <p class="rh-sub">股价从61港元腰斩至28港元，已消化大量悲观预期；但2026年利润大概率同比下滑，汽车55万辆目标完成难度偏高，三重利空均属持续性而非一次性扰动。估值底部区间有支撑，但上行催化剂尚不明朗。</p>
+    </div>
+
+    <div class="rs">
+      <div class="rc hold">
+        <div class="rl">投资评级（更新）</div>
+        <div class="rv hold">持 有</div>
+        <div class="rs-sub">前次：买入 ↓ 下调</div>
+      </div>
+      <div class="rc">
+        <div class="rl">12M 目标价（修订）</div>
+        <div class="rv" style="color:var(--ms-gold)">HK$32</div>
+        <div class="rs-sub">前次：HK$46 ↓ 下修31%</div>
+      </div>
+      <div class="rc">
+        <div class="rl">当前股价（核实）</div>
+        <div class="rv">HK$28</div>
+        <div class="rs-sub">前次报告错误引用HK$34</div>
+      </div>
+      <div class="rc">
+        <div class="rl">目标价潜在涨幅</div>
+        <div class="rv">+14%</div>
+        <div class="rs-sub">赔率收窄，均衡配置</div>
+      </div>
+      <div class="rc">
+        <div class="rl">52周最大回撤</div>
+        <div class="rv red">−54%</div>
+        <div class="rs-sub">高点HK$61.45→低点HK$27.5</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="body">
+<div class="mc">
+
+  <!-- 01 VERDICT -->
+  <div class="sec">
+    <div class="sh"><span class="sn">01</span><span class="st">分析师核心判断 — 客观中立评估</span><span class="sb-badge">评级下调</span></div>
+    <div class="sb">
+
+      <div class="verdict">
+        <div class="vt">⚖ 综合判断：估值进入底部区间，但尚无充足理由积极买入</div>
+        <div class="vb">
+          当前股价约HK$28对应约22-25倍2026E经调整PE（基于悲观/基准利润预测200-260亿元），并非绝对意义上的"便宜"——<strong>科技公司在利润下行周期中，PE倍数本身没有保护意义，"价值陷阱"风险真实存在</strong>。<br><br>
+          三重利空均属持续性压力，而非一次性扰动：<strong>① 存储芯片DRAM/NAND涨价由AI算力需求结构性拉动，非周期底部反弹；② 汽车2026年55万辆目标前5月仅完成25.5%，剩余7个月需月均5.7万辆但历史峰值仅约5万辆；③ 研发费用年化超400亿元，在营收下滑背景下经营杠杆反向发力</strong>。<br><br>
+          另一方面，股价54%的回撤已反映大量悲观预期，极端情绪下的超跌具有一定支撑（52周低点约HK$27.5）。综合权衡，我们给出<strong>持有（Neutral/Hold）</strong>评级，12个月目标价HK$32。下行看HK$19（悲观情景），上行看HK$48（乐观情景）。等待明确盈利修复信号（存储价格趋稳 或 汽车月销稳定突破5.5万辆）后再重新审视评级。
+        </div>
+      </div>
+
+      <div class="bear">
+        <div class="bt">▼ 决定持有而非买入的三个核心逻辑</div>
+        <div class="bb">
+          <strong>压力一（存储成本）：</strong>NAND/DRAM价格由AI算力的结构性需求驱动，HBM/先进制程产能挤占普通消费级存储供给，价格高位具有持续性。手机毛利率已从12%跌至10.1%，若跌破10%则成本转嫁能力将被市场重新定价。卢伟冰明确表示"目前是我们在扛"，暗示未来涨价几乎不可避免，但价格提升空间受华为/苹果竞争封堵。<br><br>
+          <strong>压力二（汽车目标）：</strong>前5月累计14万辆，完成率25.5%。剩余7个月需月均5.7万辆，但现有产品矩阵（新SU7+YU7+YU7 GT）月销平台约为3-4万辆，增程版"寻天"Q3才发布，还需爬坡。我们认为全年约42-48万辆（保守预测），若被迫下调指引将是股价重大催化剂（负面）。<br><br>
+          <strong>压力三（研发烧钱）：</strong>2026Q1研发90亿元（同比+33%），当季经营利润仅30亿元（同比-70%）。全年研发计划超400亿元，预计超过全年总利润的150-200%。这一资本配置方向长期正确，但短期对股价构成持续的估值压制，且商业化变现时间表极不明朗。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 02 FINANCIALS -->
+  <div class="sec">
+    <div class="sh"><span class="sn">02</span><span class="st">最新财务数据与2026年盈利预测修订</span></div>
+    <div class="sb">
+      <table>
+        <thead>
+          <tr><th>核心指标</th><th>2024A</th><th>2025A</th><th>2026Q1A</th><th>2026E（修订保守）</th><th>同比方向</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>总营收（亿元）</td><td>3,659</td><td>4,573</td><td>991</td><td>4,500–5,000</td><td class="warn-c">+1%~+9% 增速大幅放缓</td></tr>
+          <tr><td>智能手机收入（亿元）</td><td>1,918</td><td>1,864</td><td>443</td><td>1,650–1,800</td><td class="neg">▼ 出货量持续萎缩</td></tr>
+          <tr><td>手机毛利率</td><td>~12%</td><td>~10.9%</td><td class="neg">10.1%</td><td class="warn-c">10–12%（宽幅不确定）</td><td class="neg">▼ 存储持续压制</td></tr>
+          <tr><td>IoT收入（亿元）</td><td>1,041</td><td>1,232</td><td>247</td><td>1,150–1,300</td><td class="neg">▼ 国补退坡冲击</td></tr>
+          <tr><td>互联网服务收入（亿元）</td><td>341</td><td>374</td><td>95</td><td>370–400</td><td class="warn-c">增速回落至4–7%</td></tr>
+          <tr><td>汽车及AI创新收入（亿元）</td><td>328</td><td>1,061</td><td>199</td><td>1,150–1,500</td><td class="pos">增长主力（汽车交付量决定）</td></tr>
+          <tr><td>汽车年度交付量（万辆）</td><td>13.7</td><td>41.1</td><td>8.1（Q1）</td><td class="warn-c">42–48（保守） / 55（管理层）</td><td class="warn-c">目标完成高度不确定</td></tr>
+          <tr><td>研发投入（亿元）</td><td>240</td><td>331</td><td>90</td><td class="neg">400+（计划超支）</td><td class="neg">▲ +21%，逆势扩张</td></tr>
+          <tr class="row-t"><td>经调整净利润（亿元）</td><td>272</td><td>392</td><td>61</td><td class="neg">200–280（宽幅）</td><td class="neg">▼ -29%~-49%（悲观/基准）</td></tr>
+        </tbody>
+      </table>
+
+      <div class="co risk" style="margin-top:13px;">
+        <p><strong>盈利预测宽幅警示：</strong>2026E净利润宽幅区间（200-280亿元）本身说明不确定性极高——乐观与悲观假设之间相差80亿元，接近40%的利润弹性。在此背景下，精确的点位预测在方法论上是不诚实的。我们坚持以情景概率加权方式呈现估值，而非给出伪精确数字。</p>
+      </div>
+
+      <p class="src">数据来源：小米集团2025年年报（港交所，2026年3月24日）、2026Q1财报（2026年5月26日）、Investing.com实时报价（2026年6月4日收盘28.44港元）、虎嗅网、21经济网、盖世汽车综合。</p>
+    </div>
+  </div>
+
+  <!-- 03 PHONES -->
+  <div class="sec">
+    <div class="sh"><span class="sn">03</span><span class="st">手机业务 — 存储成本是结构性压力，转嫁能力受限</span></div>
+    <div class="sb">
+      <div class="ab">
+        <h3 class="red">存储涨价量化解析：每季度约10亿元的毛利被吃掉</h3>
+        <p>2026Q1手机毛利率10.1%，对应毛利约45亿元。若以2024年同期毛利率12.4%测算，应产生约55亿元毛利，差距约10亿元被存储成本上涨侵蚀，且这一侵蚀每季度都在重演。</p>
+        <p>公司采取了理性的"以量换价"策略：主动砍除负毛利低端SKU，出货量同比下降19.2%（国内降幅更达34.6%），换取全球ASP同比提升8.2%至历史新高约1,310元，国内高端机销量占比升至23.5%。策略方向正确，但效果被上游成本侵蚀所抵消。</p>
+        <div class="co warn">
+          <p><strong>竞争结构制约转嫁能力：</strong>华为在4,000-6,000元价位段强势复苏（Pura 80系列），苹果在欧洲等市场通过促销封堵价格上移通道，小米若主动提价面临被对手蚕食高端份额的风险。管理层"我们在扛"的表态，实质上承认了转嫁能力受限。一旦友商开始跟进涨价，局面才有实质性改善可能。</p>
+        </div>
+        <p>连锁反应不可忽视：手机出货量下滑19%直接拖累互联网服务增速——2026Q1互联网收入增速从此前10%以上骤降至4.3%。互联网服务毛利率高达76.5%，是集团最重要的"利润压舱石"，任何实质性增速放缓对整体盈利质量的影响被放大2-3倍。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 EV -->
+  <div class="sec">
+    <div class="sh"><span class="sn">04</span><span class="st">汽车业务 — 优质资产但2026年目标压力严峻</span></div>
+    <div class="sb">
+      <div class="ab">
+        <h3>汽车业务的长期质量不应否定</h3>
+        <p>需要公平指出：小米汽车的竞争质量在新势力中是领先的。2025年全年毛利率24.3%，SU7系列成为20万元以上纯电轿车销量冠军，YU7系列连续多月占据中大型SUV销量第一，产品力经市场验证。</p>
+
+        <div class="pbw" style="margin-top:12px">
+          <div class="pbl"><span>小米汽车毛利率（2025A）</span><span style="color:var(--ms-green)">24.3%</span></div>
+          <div class="pbt"><div class="pbf b" style="width:81%"></div></div>
+        </div>
+        <div class="pbw">
+          <div class="pbl"><span>理想汽车</span><span>18.7%</span></div>
+          <div class="pbt"><div class="pbf b" style="width:62%"></div></div>
+        </div>
+        <div class="pbw">
+          <div class="pbl"><span>小鹏汽车</span><span>18.9%</span></div>
+          <div class="pbt"><div class="pbf b" style="width:63%"></div></div>
+        </div>
+        <div class="pbw">
+          <div class="pbl"><span>蔚来汽车</span><span>13.6%</span></div>
+          <div class="pbt"><div class="pbf b" style="width:45%"></div></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="ab">
+        <h3 class="amber">但2026年55万辆目标：完成概率偏低，尾部风险不可忽视</h3>
+        <div class="co warn">
+          <p><strong>关键数据：</strong>前5个月（1-5月）累计交付约14万辆，完成率仅25.5%。剩余7个月（6-12月）需月均交付约5.7万辆，才能完成全年目标。但历史月销峰值约5万辆（2025年12月产品换代前冲量），当前月销平台约3-4万辆。增程车型"寻天"预计Q3才发布，新产能爬坡需要数月时间，今年后7个月月均5.7万辆的要求属于高强度挑战。</p>
+        </div>
+
+        <div class="pbw" style="margin-top:12px">
+          <div class="pbl"><span>2026年目标完成率（截至5月底）</span><span style="color:var(--ms-amber)">25.5% / 55万辆</span></div>
+          <div class="pbt"><div class="pbf a" style="width:25.5%"></div></div>
+        </div>
+        <div class="pbw">
+          <div class="pbl"><span>我们保守预测区间（42-48万辆）</span><span style="color:var(--ms-red)">约76-87%完成率</span></div>
+          <div class="pbt"><div class="pbf r" style="width:82%"></div></div>
+        </div>
+
+        <p>我们保守预测全年交付约42-48万辆。若低于此区间且管理层被迫公开下调指引，将构成重大负面催化剂。2026Q1汽车业务经营利润再度亏损约31亿元（换代过渡期叠加低价现车消化），尽管属于阶段性波动，但揭示出盈利能力仍具较高波动性，尚未进入"稳定盈利通道"。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 AI + MACRO -->
+  <div class="sec">
+    <div class="sh"><span class="sn">05</span><span class="st">AI战略与宏观逆风：期权价值真实，变现时间表不明朗</span></div>
+    <div class="sb">
+      <div class="ab">
+        <h3 class="amber">宏观：需客观承认持续性下行压力</h3>
+        <p>2026年宏观环境持续构成压制：新能源车购置税从全免改为半免（购车成本实质增加约2万元），家电国补退坡，消费信心指数低迷，出现系统性消费降级趋势。小米IoT业务2026Q1收入247亿元（同比-24%）直接体现了国补退坡的冲击力度。</p>
+        <p>海外市场是相对亮点（2026Q1海外收入396亿元，同比+3.5%，占比提升至40%），但海外互联网变现能力远弱于国内，实际对冲效果十分有限。</p>
+      </div>
+      <div class="divider"></div>
+      <div class="ab">
+        <h3>AI战略：技术能力真实，但"期权价值"被2025年高点股价过度计入</h3>
+        <p>小米AI进展具有实质内容——MiMo-V2.5-Pro在Artificial Analysis全球开源模型综合智能指数及Agent指数并列第一，技术能力经国际第三方认证；具身智能方面人形机器人已于2026年3月进入工厂实习，路径清晰。</p>
+        <div class="co">
+          <p><strong>需保持冷静的三点：</strong>①技术领先≠商业变现，目前AI对小米的直接收入贡献几乎为零，变现依赖于存量用户ARPU提升而非新增收入流；②竞争对手中华为、苹果、字节跳动研发规模更大，技术转化效率存在高度不确定性；③年化400亿元研发在利润仅200-280亿元背景下，研发/利润比达140-200%，这在短期内是利润的"黑洞"而非"发动机"。AI变现的实质性拐点，可能要等到2027年以后。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 VALUATION -->
+  <div class="sec">
+    <div class="sh"><span class="sn">06</span><span class="st">修订估值 — SOTP重建与目标价更新</span></div>
+    <div class="sb">
+      <div class="sotp-header" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:13px">
+        <h3 style="font-family:var(--font-display);font-size:15px;color:var(--ms-navy);font-weight:500">SOTP分部估值 — 12个月修订目标价：HK$32</h3>
+        <span style="background:var(--ms-amber);color:#fff;font-size:10px;letter-spacing:1px;padding:3px 10px;border-radius:2px;font-weight:600">持有 / Hold</span>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>业务分部</th><th>估值方法</th><th>2026E基准</th><th>乘数（保守）</th><th>估值（亿港元）</th><th>每股（港元）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>手机×AIoT（硬件）</td><td>EV/Sales</td><td>营收约3,400亿</td><td>1.0x（↓从1.5x）</td><td>3,696</td><td>~14.3</td></tr>
+          <tr><td>互联网服务</td><td>EV/EBITDA</td><td>EBITDA约270亿</td><td>15x（↓从20x）</td><td>4,402</td><td>~17.0</td></tr>
+          <tr><td>智能电动汽车（保守）</td><td>EV/Sales</td><td>营收约1,300亿</td><td>1.5x（↓从2.0x）</td><td>2,120</td><td>~8.2</td></tr>
+          <tr><td>AI/机器人期权价值</td><td>概率折现</td><td>定性估算</td><td>—</td><td>300</td><td>~1.2</td></tr>
+          <tr><td>净现金及投资</td><td>账面价值</td><td>净现金约700亿</td><td>1.0x</td><td>763</td><td>~2.9</td></tr>
+          <tr><td>研发超支折现调整</td><td>调整项</td><td>超额研发约100亿</td><td>−1.5x</td><td>−163</td><td>~−0.6</td></tr>
+          <tr class="row-t"><td>SOTP合计（HKD/CNY≈0.92）</td><td colspan="3">加总折算港元</td><td>约8,290亿港元</td><td><strong>~32 港元</strong></td></tr>
+        </tbody>
+      </table>
+
+      <div class="co" style="margin-top:13px">
+        <p><strong>乘数下调逻辑：</strong>手机/IoT硬件1.5x→1.0x反映毛利率持续承压；互联网服务20x→15x反映用户增长放缓（手机出货量萎缩的连带效应）；汽车2.0x→1.5x反映目标完成不确定性提升及ASP回落风险。整体保守，与多重利空持续的环境匹配。</p>
+      </div>
+
+      <div style="margin-top:17px">
+        <p style="font-family:var(--font-display);font-size:15px;color:var(--ms-navy);font-weight:500;margin-bottom:13px">情景分析 — 12个月股价目标区间</p>
+        <div class="sc-grid">
+          <div class="sc-col">
+            <div class="sc-label bear">▼ 悲观情景</div>
+            <div class="sc-tp bear">HK$19</div>
+            <div class="sc-prob">概率权重：30%</div>
+            <div class="sc-text">存储持续涨价至2027年；汽车年交付低于40万辆并下调指引；全年净利润低于180亿元；PE缩水+EPS下修双击，类似2022年熊市路径。</div>
+          </div>
+          <div class="sc-col base">
+            <div class="sc-label base">◼ 基准情景（持有）</div>
+            <div class="sc-tp base">HK$32</div>
+            <div class="sc-prob">概率权重：45%</div>
+            <div class="sc-text">存储Q4企稳；汽车完成42-48万辆，毛利率维持20%+；全年净利润220-260亿元；估值维持22-24x PE，市场情绪中性。</div>
+          </div>
+          <div class="sc-col">
+            <div class="sc-label bull">▲ 乐观情景</div>
+            <div class="sc-tp bull">HK$48</div>
+            <div class="sc-prob">概率权重：25%</div>
+            <div class="sc-text">存储Q3意外回落；汽车超额完成55万辆（增程爆款）；AI大模型推出企业付费服务；外资重新配置港股，估值修复28-30x。</div>
+          </div>
+        </div>
+        <p style="font-size:11.5px;color:var(--ms-gray-600);margin-top:9px">概率加权目标价 = 19×30% + 32×45% + 48×25% = <strong style="color:var(--ms-amber)">约HK$31.1，四舍五入至HK$32。</strong></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 07 RISKS -->
+  <div class="sec">
+    <div class="sh"><span class="sn">07</span><span class="st">风险矩阵</span></div>
+    <div class="sb">
+      <div class="ri">
+        <div class="ri-icon high">▲</div>
+        <div class="ri-content"><h4>存储芯片涨价延续至2027年</h4><p>AI算力需求结构性拉动HBM需求，普通消费级存储供给持续偏紧，手机毛利率跌破10%并触发大规模产品砍线及营收萎缩。</p></div>
+        <span class="ri-sev high">高 / 持续</span>
+      </div>
+      <div class="ri">
+        <div class="ri-icon high">▲</div>
+        <div class="ri-content"><h4>汽车年度目标被迫下调，引发信任危机</h4><p>若Q2/Q3交付月销无法突破5万辆，管理层下调55万辆指引，将重挫市场信心并引发估值锚点重设。</p></div>
+        <span class="ri-sev high">高 / 尾部</span>
+      </div>
+      <div class="ri">
+        <div class="ri-icon high">▲</div>
+        <div class="ri-content"><h4>新能源汽车价格战升级</h4><p>比亚迪、特斯拉、华为问界在20-30万价位段发动价格攻势，小米汽车被迫跟价，毛利率优势被削薄。</p></div>
+        <span class="ri-sev high">高</span>
+      </div>
+      <div class="ri">
+        <div class="ri-icon med">●</div>
+        <div class="ri-content"><h4>研发高投入无法及时转化商业价值</h4><p>年化400亿研发在利润仅200-280亿的背景下侵蚀性极强，若AI商业化进展低于预期，形成长期价值消耗。</p></div>
+        <span class="ri-sev med">中</span>
+      </div>
+      <div class="ri">
+        <div class="ri-icon med">●</div>
+        <div class="ri-content"><h4>宏观需求持续走弱</h4><p>消费信心低迷、购置税补贴退坡，消费电子换机周期延长、汽车购置决策推迟，两大核心业务同步承压。</p></div>
+        <span class="ri-sev med">中</span>
+      </div>
+      <div class="ri">
+        <div class="ri-icon med">●</div>
+        <div class="ri-content"><h4>地缘政治/监管风险</h4><p>中美科技博弈持续，欧洲、印度市场监管趋严，海外扩张战略存在不确定性干扰。</p></div>
+        <span class="ri-sev med">中</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end mc -->
+
+<!-- SIDEBAR -->
+<div class="sc">
+
+  <div class="ss">
+    <div class="ssh red">⚠ 评级更新摘要</div>
+    <div class="ssb">
+      <div class="hb">
+        <div class="hb-r">持 有</div>
+        <div class="hb-s">Neutral / Hold — 下调自买入</div>
+      </div>
+      <div class="tp-box">
+        <div class="tp-l">12M 修订目标价</div>
+        <div class="tp-v">HK$32</div>
+        <div class="tp-s">前次HK$46 ↓ 下修31%</div>
+      </div>
+      <div class="mr"><span class="mn">当前股价（核实）</span><span class="mv">HK$28</span></div>
+      <div class="mr"><span class="mn">目标价潜在涨幅</span><span class="mv a">+14.3%</span></div>
+      <div class="mr"><span class="mn">52周最高价</span><span class="mv">HK$61.45</span></div>
+      <div class="mr"><span class="mn">自高点回撤</span><span class="mv r">−54.5%</span></div>
+      <div class="mr"><span class="mn">52周最低价</span><span class="mv">HK$27.50</span></div>
+      <div class="mr"><span class="mn">市值（约）</span><span class="mv">约7,400亿港元</span></div>
+      <div class="an">
+        <p><strong>持有而非卖出：</strong>54%跌幅已消化大量悲观预期，绝对估值有底部支撑。<br><br><strong>持有而非买入：</strong>三重利空均持续，盈利下修周期未结束，无明确近期正面催化剂。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ss">
+    <div class="ssh">最新市场数据（核实）</div>
+    <div class="ssb">
+      <div class="mr"><span class="mn">最新收盘价（6/4）</span><span class="mv">HK$28.44</span></div>
+      <div class="mr"><span class="mn">当日区间</span><span class="mv">28.06–28.76</span></div>
+      <div class="mr"><span class="mn">52周区间</span><span class="mv">27.50–61.45</span></div>
+      <div class="mr"><span class="mn">年初至今</span><span class="mv r">约−40%</span></div>
+      <div class="mr"><span class="mn">年化波动率</span><span class="mv a">40.0%</span></div>
+      <div class="mr"><span class="mn">日均成交量</span><span class="mv">约1.1亿股</span></div>
+      <div class="mr"><span class="mn">2026E PE（悲观/基准）</span><span class="mv a">22–25x</span></div>
+      <div class="mr"><span class="mn">做空头寸变化</span><span class="mv r">+53%（高盛）</span></div>
+    </div>
+  </div>
+
+  <div class="ss">
+    <div class="ssh">主要机构评级一览</div>
+    <div class="ssb">
+      <div class="pr hdr">
+        <span class="ph">机构</span><span class="ph">评级</span><span class="ph">目标价</span>
+      </div>
+      <div class="pr"><span class="pn">摩根大通</span><span class="pm" style="color:var(--ms-amber)">中性</span><span class="pm">HK$35</span></div>
+      <div class="pr"><span class="pn">交银国际</span><span class="pm" style="color:var(--ms-amber)">中性</span><span class="pm">HK$37</span></div>
+      <div class="pr"><span class="pn">瑞银</span><span class="pm" style="color:var(--ms-amber)">中性</span><span class="pm">HK$36</span></div>
+      <div class="pr"><span class="pn">富瑞</span><span class="pm" style="color:var(--ms-red)">持有</span><span class="pm">HK$30</span></div>
+      <div class="pr"><span class="pn">花旗</span><span class="pm" style="color:var(--ms-green)">买入</span><span class="pm">HK$42</span></div>
+      <div class="pr"><span class="pn">华泰证券</span><span class="pm" style="color:var(--ms-green)">买入</span><span class="pm">HK$47</span></div>
+      <div class="pr mi"><span class="pn mi">本报告（更新）</span><span class="pm" style="color:var(--ms-amber)">持有↓</span><span class="pm" style="color:var(--ms-amber)">HK$32</span></div>
+      <p style="font-size:10.5px;color:var(--ms-gray-400);margin-top:9px">机构目标价区间HK$30-47，分歧显著，说明市场对估值框架仍无共识。</p>
+    </div>
+  </div>
+
+  <div class="ss">
+    <div class="ssh">2026年汽车交付追踪</div>
+    <div class="ssb">
+      <div class="mr"><span class="mn">全年目标</span><span class="mv">55万辆</span></div>
+      <div class="mr"><span class="mn">1月</span><span class="mv g">3.9万辆</span></div>
+      <div class="mr"><span class="mn">2月</span><span class="mv a">2.0万辆</span></div>
+      <div class="mr"><span class="mn">3月</span><span class="mv a">2.0万辆</span></div>
+      <div class="mr"><span class="mn">4月</span><span class="mv a">3.0万辆+</span></div>
+      <div class="mr"><span class="mn">5月</span><span class="mv a">3.0万辆+</span></div>
+      <div class="mr"><span class="mn">1–5月累计</span><span class="mv r">约14万辆</span></div>
+      <div class="mr"><span class="mn">目标完成率</span><span class="mv r">25.5%</span></div>
+      <div class="mr"><span class="mn">剩余7月需月均</span><span class="mv r">5.7万辆</span></div>
+      <div class="mr"><span class="mn">历史月销峰值</span><span class="mv">约5.0万辆</span></div>
+      <div style="background:#fff5f5;border-radius:2px;padding:8px 10px;margin-top:10px">
+        <p style="font-size:11px;color:var(--ms-red);line-height:1.5;margin:0"><strong>结论：</strong>保守预测42-48万辆，低于目标约13-24%。若下调指引将是重大利空。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ss">
+    <div class="ssh">核心运营指标（2025A）</div>
+    <div class="ssb">
+      <div class="mr"><span class="mn">总营收</span><span class="mv">4,573亿元</span></div>
+      <div class="mr"><span class="mn">经调整净利润</span><span class="mv">392亿元</span></div>
+      <div class="mr"><span class="mn">手机毛利率</span><span class="mv r">~10.9% ▼</span></div>
+      <div class="mr"><span class="mn">汽车毛利率</span><span class="mv g">24.3%</span></div>
+      <div class="mr"><span class="mn">互联网毛利率</span><span class="mv g">76.5%</span></div>
+      <div class="mr"><span class="mn">IoT毛利率</span><span class="mv g">23.1%</span></div>
+      <div class="mr"><span class="mn">研发投入</span><span class="mv">331亿元</span></div>
+      <div class="mr"><span class="mn">AIoT连接设备</span><span class="mv">10.79亿台</span></div>
+      <div class="mr"><span class="mn">全球MAU</span><span class="mv">7.54亿</span></div>
+      <div class="mr"><span class="mn">汽车全年交付</span><span class="mv">41.1万辆</span></div>
+      <div class="mr"><span class="mn">汽车ASP（2025A）</span><span class="mv">25.12万元/辆</span></div>
+    </div>
+  </div>
+
+</div><!-- end sc -->
+</div><!-- end body -->
+
+<div class="disc">
+  <div class="disc-i">
+    <p><strong>股价数据更正：</strong>前版本错误使用约HK$34的估算股价。经核实，Investing.com数据显示2026年6月4日收盘价为HK$28.44，52周低点HK$27.50，全部相关分析及目标价已据此更正。感谢用户指出此错误。</p>
+    <p><strong>重要声明：</strong>本报告为基于公开财务数据的模拟投研分析，不构成任何投资建议，亦不代表摩根士丹利官方立场。目标价及评级系独立分析判断，存在重大不确定性。投资者应自行评估风险，并咨询持牌财务顾问。股票投资存在亏损风险，过往业绩不代表未来表现。</p>
+    <p>数据来源：小米集团2025年年报（港交所，2026年3月24日）、2026Q1财报（2026年5月26日）、Investing.com实时报价、盖世汽车月度交付数据、21经济网、虎嗅网、新浪财经、Bloomberg汇编。</p>
+  </div>
+</div>
+
+</body>
+</html>
