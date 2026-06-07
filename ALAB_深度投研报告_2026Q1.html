@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astera Labs (ALAB) 深度投研报告 | Snail Investment</title>
+<style>
+  :root {
+    --primary: #0B1C3F;
+    --accent: #00D4FF;
+    --accent2: #1e3a5f;
+    --bg: #f8f9fb;
+    --surface: #fff;
+    --text: #1a1a2e;
+    --text2: #666;
+    --border: #e5e7eb;
+    --tag-bg: #eef2f7;
+    --tag-text: #334155;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+    --up: #e74c3c;
+    --down: #27ae60;
+  }
+  [data-theme="dark"] {
+    --bg: #0b0f19;
+    --surface: #111827;
+    --text: #e5e7eb;
+    --text2: #9ca3af;
+    --border: #1f2937;
+    --tag-bg: #1f2937;
+    --tag-text: #d1d5db;
+    --shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  * {margin:0;padding:0;box-sizing:border-box;}
+  body {
+    font-family: "Inter", -apple-system, "SF Pro Text", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7;
+    font-size: 14px;
+  }
+  .header {
+    background: linear-gradient(135deg, #0B1C3F 0%, #1a2a5f 100%);
+    color: #fff; padding: 48px 40px 40px; position: relative; overflow: hidden;
+  }
+  .header::after {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: rgba(0,212,255,0.08); pointer-events: none;
+  }
+  .header .firm-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    padding: 5px 14px; border-radius: 20px; font-size: 0.75rem;
+    color: rgba(255,255,255,0.8); margin-bottom: 24px;
+  }
+  .header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 6px; letter-spacing: -.5px; }
+  .header .subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.7); margin-bottom: 28px; }
+  .header-meta { display: flex; gap: 28px; flex-wrap: wrap; }
+  .meta-item { text-align: center; }
+  .meta-item .val { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+  .meta-item .lbl { font-size: 0.72rem; color: rgba(255,255,255,0.55); margin-top: 2px; }
+  .rating-badge {
+    position: absolute; top: 48px; right: 40px;
+    background: rgba(0,212,255,0.15); border: 1px solid rgba(0,212,255,0.4);
+    padding: 10px 24px; border-radius: 10px; text-align: center;
+  }
+  .rating-badge .rating { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+  .rating-badge .rating-lbl { font-size: 0.7rem; color: rgba(255,255,255,0.6); }
+  
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px 60px; }
+  .section { background: var(--surface); border-radius: 12px; padding: 28px; margin-bottom: 24px; border: 1px solid var(--border); }
+  .section-title {
+    font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title .icon { font-size: 1.1rem; }
+  
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+  
+  .metric-card {
+    background: var(--tag-bg); border-radius: 8px; padding: 16px; text-align: center;
+    border: 1px solid var(--border);
+  }
+  .metric-card .mc-val { font-size: 1.5rem; font-weight: 800; color: var(--accent2); }
+  .metric-card .mc-lbl { font-size: 0.75rem; color: var(--text2); margin-top: 4px; }
+  .metric-card .mc-sub { font-size: 0.7rem; color: var(--accent); margin-top: 4px; font-weight: 600; }
+  
+  .product-card {
+    background: var(--bg); border-radius: 10px; padding: 20px; border: 1px solid var(--border);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .product-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .product-card .pc-icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .product-card .pc-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .product-card .pc-pct { font-size: 0.78rem; color: var(--accent); font-weight: 600; margin-bottom: 8px; }
+  .product-card .pc-desc { font-size: 0.82rem; color: var(--text2); line-height: 1.6; }
+  .product-card .pc-trend { font-size: 0.75rem; color: var(--up); font-weight: 600; margin-top: 8px; }
+  
+  .risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .risk-item {
+    background: var(--bg); border-radius: 8px; padding: 14px 16px;
+    border-left: 3px solid var(--up); font-size: 0.83rem; color: var(--text2); line-height: 1.6;
+  }
+  .risk-item.low { border-left-color: var(--down); }
+  .risk-item .risk-title { font-weight: 700; color: var(--text); font-size: 0.85rem; margin-bottom: 4px; }
+  
+  .tbl { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  .tbl th { background: var(--tag-bg); padding: 10px 14px; text-align: left; font-weight: 600; color: var(--text); border-bottom: 1px solid var(--border); }
+  .tbl td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text2); }
+  .tbl tr:last-child td { border-bottom: none; }
+  
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(30,58,95,0.04));
+    border: 1px solid rgba(0,212,255,0.15); border-radius: 10px; padding: 20px; margin: 16px 0;
+  }
+  .highlight-box .hb-title { font-weight: 700; color: var(--accent2); margin-bottom: 8px; font-size: 0.95rem; }
+  .highlight-box .hb-text { font-size: 0.85rem; color: var(--text2); line-height: 1.7; }
+  
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before { content:''; position: absolute; left: 7px; top: 4px; bottom: 4px; width: 2px; background: var(--border); }
+  .tl-item { position: relative; margin-bottom: 16px; }
+  .tl-item::before { content:''; position: absolute; left: -20px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--surface); }
+  .tl-year { font-weight: 700; color: var(--accent2); font-size: 0.85rem; }
+  .tl-text { font-size: 0.83rem; color: var(--text2); margin-top: 3px; }
+  
+  .footer {
+    text-align: center; padding: 28px 20px; color: var(--text2); font-size: 0.75rem;
+    border-top: 1px solid var(--border); line-height: 1.8;
+  }
+  
+  .theme-toggle {
+    position: fixed; bottom: 20px; right: 20px; width: 40px; height: 40px;
+    border-radius: 50%; border: 1px solid var(--border); background: var(--surface);
+    color: var(--text); cursor: pointer; font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--shadow); z-index: 999;
+  }
+  
+  @media(max-width:768px){
+    .header { padding: 32px 20px; }
+    .header h1 { font-size: 1.5rem; }
+    .rating-badge { position: static; margin-top: 20px; display: inline-block; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .risk-grid { grid-template-columns: 1fr; }
+    .container { padding: 20px 14px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="firm-badge">Snail Investment · 半导体与AI基础设施研究部</div>
+  <h1>Astera Labs, Inc. (ALAB)</h1>
+  <div class="subtitle">NASDAQ: ALAB · AI互联基础设施龙头 · 2026财年Q1深度投研报告</div>
+  <div class="header-meta">
+    <div class="meta-item">
+      <div class="val">$308.4M</div>
+      <div class="lbl">Q1 FY2026 营收</div>
+    </div>
+    <div class="meta-item">
+      <div class="val" style="color:#4ade80;">+93%</div>
+      <div class="lbl">同比增长 (YoY)</div>
+    </div>
+    <div class="meta-item">
+      <div class="val">76.4%</div>
+      <div class="lbl">非GAAP毛利率</div>
+    </div>
+    <div class="meta-item">
+      <div class="val">$0.61</div>
+      <div class="lbl">非GAAP EPS</div>
+    </div>
+  </div>
+  <div class="rating-badge">
+    <div class="rating">买 入</div>
+    <div class="rating-lbl">12个月目标价 $270</div>
+  </div>
+</header>
+
+<button class="theme-toggle" onclick="toggleTheme()" title="切换主题">🌙</button>
+
+<div class="container">
+
+  <!-- 核心投资论点 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">▶</span> 核心投资论点</div>
+    <div class="grid-2">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="highlight-box" style="margin:0;">
+          <div class="hb-title">① AI互联基础设施的"连接之王"</div>
+          <div class="hb-text">Astera Labs是AI数据中心信号完整性芯片的绝对龙头，Aries PCIe Retimer在英伟达H/B系列GPU集群中占据核心地位，每台AI服务器需16-32颗Retimer芯片，量价齐升逻辑清晰。</div>
+        </div>
+        <div class="highlight-box" style="margin:0;">
+          <div class="hb-title">② Scorpio第二增长曲线启动</div>
+          <div class="hb-text">Scorpio智能交换机（PCIe/UALink AI Scale-Up Fabric）Q1 FY2026开始规模量产，对应千亿美元AI Fabric市场，NVLink Fusion互通方案为Astera带来增量机遇。</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="highlight-box" style="margin:0;">
+          <div class="hb-title">③ PCIe 6.0升级周期</div>
+          <div class="hb-text">PCIe 6.0 Retimer及Scorpio P/X系列在2026-2027年进入快速渗透期，单芯片价值量较5.0世代提升30-50%，营收增速持续超预期。</div>
+        </div>
+        <div class="highlight-box" style="margin:0;">
+          <div class="hb-title">④ 财务持续超预期</div>
+          <div class="hb-text">Q1 FY2026营收$308.4M（+93% YoY），非GAAP EPS $0.61（超预期$0.54），Q2指引$345-365M（+15-18% QoQ），业绩能见度持续向好。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 公司简介 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">▶</span> 01 公司简介与发展历程</div>
+    <div class="grid-2" style="margin-bottom:16px;">
+      <div>
+        <div style="font-size:0.85rem;color:var(--text2);line-height:1.8;">
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">公司名称：</strong>Astera Labs, Inc.</p>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">股票代码：</strong>NASDAQ: ALAB</p>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">成立时间：</strong>2017年10月</p>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">创始人：</strong>Jitendra Mohan、Casey Morrison、Sanjay Gajendra（均来自德州仪器TI资深信号完整性工程师）</p>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">总部：</strong>美国加利福尼亚州圣何塞</p>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:0.85rem;color:var(--text2);line-height:1.8;">
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">上市时间：</strong>2024年3月20日（IPO价$36）</p>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">商业模式：</strong>无厂半导体（Fabless），依托台积电等晶圆厂代工</p>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">核心使命：</strong>解决AI数据中心的内存墙与信号衰减两大根本瓶颈</p>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">主要客户：</strong>全球顶级超大规模云厂商（AWS、微软、谷歌、Meta等）及服务器OEM</p>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">当前市值：</strong>约$520亿（2026年5月）</p>
+        </div>
+      </div>
+    </div>
+    
+    <div style="margin-top:20px;">
+      <div style="font-weight:700;color:var(--text);font-size:0.9rem;margin-bottom:12px;">关键发展里程碑</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2017</div>
+          <div class="tl-text">由TI工程师团队创立，专注PCIe信号完整性芯片研发</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2019</div>
+          <div class="tl-text">推出首款Aries PCIe Retimer，率先解决AI服务器信号衰减难题</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2021</div>
+          <div class="tl-text">进军CXL内存控制器领域（Leo系列），布局下一代内存互联</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2023</div>
+          <div class="tl-text">Scorpio智能交换机发布，扩大AI Scale-Up Fabric产品矩阵</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2024.03</div>
+          <div class="tl-text">成功上市（NASDAQ: ALAB），IPO募资约7亿美元</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2024.H2</div>
+          <div class="tl-text">成为英伟达H/B系列AI服务器PCIe Retimer的核心独家供应商</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2025</div>
+          <div class="tl-text">推出PCIe 6.0 Retimer及Scorpio P/X系列，市占率持续扩大</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2026.Q1</div>
+          <div class="tl-text">营收突破$308M，推出Scorpio X 320通道AI Scale-Up交换机</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 财务摘要 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">▶</span> 02 Q1 FY2026 财务摘要</div>
+    <div class="grid-4" style="margin-bottom:20px;">
+      <div class="metric-card">
+        <div class="mc-val">$308.4M</div>
+        <div class="mc-lbl">总营收</div>
+        <div class="mc-sub">+93% YoY | +14% QoQ</div>
+      </div>
+      <div class="metric-card">
+        <div class="mc-val">76.3%</div>
+        <div class="mc-lbl">GAAP毛利率</div>
+        <div class="mc-sub">+150bps YoY</div>
+      </div>
+      <div class="metric-card">
+        <div class="mc-val">$80.3M</div>
+        <div class="mc-lbl">GAAP净利润</div>
+        <div class="mc-sub">+152% YoY</div>
+      </div>
+      <div class="metric-card">
+        <div class="mc-val">$0.61</div>
+        <div class="mc-lbl">非GAAP EPS（摊薄）</div>
+        <div class="mc-sub">+84.8% YoY（超预期$0.54）</div>
+      </div>
+      <div class="metric-card">
+        <div class="mc-val">36.2%</div>
+        <div class="mc-lbl">非GAAP营业利润率</div>
+        <div class="mc-sub">+250bps YoY</div>
+      </div>
+      <div class="metric-card">
+        <div class="mc-val">76.4%</div>
+        <div class="mc-lbl">非GAAP毛利率</div>
+        <div class="mc-sub">+150bps YoY</div>
+      </div>
+      <div class="metric-card">
+        <div class="mc-val">$74.6M</div>
+        <div class="mc-lbl">经营现金流</div>
+        <div class="mc-sub">资本支出约$0.6M</div>
+      </div>
+      <div class="metric-card">
+        <div class="mc-val">$350M</div>
+        <div class="mc-lbl">Q2指引营收中值</div>
+        <div class="mc-sub">+15%~18% QoQ（$345M-$365M）</div>
+      </div>
+    </div>
+    
+    <div class="highlight-box">
+      <div class="hb-title">📈 季度营收趋势（百万美元）</div>
+      <div class="hb-text">
+        Q1'25: $159.7M → Q2'25: $198.2M → Q3'25: $243.6M → Q4'25: $270.5M → <strong>Q1'26: $308.4M</strong><br>
+        <span style="color:var(--accent);font-weight:600;">连续5个季度加速增长，Q1'26同比增速高达93%，远超市场预期。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 业务板块 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">▶</span> 03 业务板块深度分析</div>
+    <div style="font-weight:700;color:var(--text);font-size:0.9rem;margin-bottom:16px;">核心产品矩阵：AI互联基础设施全栈覆盖</div>
+    
+    <div class="grid-2" style="margin-bottom:16px;">
+      <div class="product-card">
+        <div class="pc-icon">⚡</div>
+        <div class="pc-title">Aries PCIe/CXL Retimer</div>
+        <div class="pc-pct">营收占比（估）~55%</div>
+        <div class="pc-desc">AI服务器信号再生核心芯片。PCIe 6.0升级驱动量价齐升，为英伟达H/B系列GPU集群绝对主力供应商。每台AI服务器需16-32颗Retimer芯片。</div>
+        <div class="pc-trend">📈 量价齐升，PCIe 6.0渗透加速</div>
+      </div>
+      <div class="product-card">
+        <div class="pc-icon">🔀</div>
+        <div class="pc-title">Scorpio 智能交换机</div>
+        <div class="pc-pct">营收占比（估）>30%</div>
+        <div class="pc-desc">PCIe/UALink AI Scale-Up Fabric核心，X-Series最高支持320通道。Q1 FY2026开始规模量产，NVLink Fusion互联方案构成增量机遇。</div>
+        <div class="pc-trend">📈 快速放量，第二增长曲线已启动</div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="product-card">
+        <div class="pc-icon">🔌</div>
+        <div class="pc-title">Taurus Smart Cable Module</div>
+        <div class="pc-pct">营收占比（估）~10%</div>
+        <div class="pc-desc">以太网智能线缆模块，支持云网络Scale-Out应用。铜缆与光模块混合组网，接触面积不断扩大，稳健成长。</div>
+        <div class="pc-trend">📈 稳健成长，光连接整合机遇</div>
+      </div>
+      <div class="product-card">
+        <div class="pc-icon">💾</div>
+        <div class="pc-title">Leo CXL 内存控制器</div>
+        <div class="pc-pct">营收占比（估）<5%</div>
+        <div class="pc-desc">面向下一代AI推理/训练异构内存架构，解决"内存墙"问题。当前处于生态建设期，2026-2027年存在爆发潜力。</div>
+        <div class="pc-trend">📈 生态培育期，长期看好</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 宏观与情绪 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">▶</span> 04 宏观与板块情绪</div>
+    
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div>
+        <div style="font-weight:700;color:var(--up);font-size:0.9rem;margin-bottom:12px;">✅ 正面催化因素</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="font-size:0.83rem;color:var(--text2);padding:8px 12px;background:var(--tag-bg);border-radius:6px;border-left:3px solid var(--up);">NVIDIA Blackwell/Rubin GPU集群需求爆发，带动PCIe 6.0 Retimer需求量价双升</div>
+          <div style="font-size:0.83rem;color:var(--text2);padding:8px 12px;background:var(--tag-bg);border-radius:6px;border-left:3px solid var(--up);">全球超大规模云厂商（AWS、Azure、GCP）2026年资本开支预计超$3000亿</div>
+          <div style="font-size:0.83rem;color:var(--text2);padding:8px 12px;background:var(--tag-bg);border-radius:6px;border-left:3px solid var(--up);">Scorpio X-Series 320通道交换机Q1正式量产，对应千亿美元AI Fabric市场</div>
+          <div style="font-size:0.83rem;color:var(--text2);padding:8px 12px;background:var(--tag-bg);border-radius:6px;border-left:3px solid var(--up);">NVLink Fusion互通方案为非NVIDIA AI芯片提供PCIe Switch接口，ALAB直接受益</div>
+          <div style="font-size:0.83rem;color:var(--text2);padding:8px 12px;background:var(--tag-bg);border-radius:6px;border-left:3px solid var(--up);">Q2指引$345-365M，超市场预期，显示需求能见度持续向好</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:700;color:#e67e22;font-size:0.9rem;margin-bottom:12px;">⚠️ 关注风险因素</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="font-size:0.83rem;color:var(--text2);padding:8px 12px;background:var(--tag-bg);border-radius:6px;border-left:3px solid #e67e22;">大客户集中度高：五大客户各占比≥12%，且主要集中在台湾、新加坡、中国市场</div>
+          <div style="font-size:0.83rem;color:var(--text2);padding:8px 12px;background:var(--tag-bg);border-radius:6px;border-left:3px solid #e67e22;">NVLink Switch生态独立扩张或压缩PCIe Switch在GB200集群中的渗透率</div>
+          <div style="font-size:0.83rem;color:var(--text2);padding:8px 12px;background:var(--tag-bg);border-radius:6px;border-left:3px solid #e67e22;">Marvell（CRDO）等对手在PCIe Retimer及CXL Controller领域持续追赶</div>
+          <div style="font-size:0.83rem;color:var(--text2);padding:8px 12px;background:var(--tag-bg);border-radius:6px;border-left:3px solid #e67e22;">美国出口管制升级可能限制部分中国超算客户的供货</div>
+          <div style="font-size:0.83rem;color:var(--text2);padding:8px 12px;background:var(--tag-bg);border-radius:6px;border-left:3px solid #e67e22;">当前估值处于较高分位（P/E ~140x，P/S ~13x），需强劲业绩持续验证</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 估值与建议 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">▶</span> 05 估值与投资建议</div>
+    
+    <div style="display:flex;gap:24px;margin-bottom:24px;flex-wrap:wrap;align-items:stretch;">
+      <div style="flex:1;min-width:200px;text-align:center;background:linear-gradient(135deg,rgba(0,212,255,0.08),rgba(30,58,95,0.05));border:1px solid rgba(0,212,255,0.2);border-radius:12px;padding:24px;">
+        <div style="font-size:0.8rem;color:var(--text2);margin-bottom:6px;">投资评级</div>
+        <div style="font-size:2rem;font-weight:800;color:var(--accent);">买 入</div>
+        <div style="font-size:0.75rem;color:var(--text2);margin-top:6px;">中长期推荐</div>
+      </div>
+      <div style="flex:1;min-width:200px;text-align:center;background:linear-gradient(135deg,rgba(0,212,255,0.08),rgba(30,58,95,0.05));border:1px solid rgba(0,212,255,0.2);border-radius:12px;padding:24px;">
+        <div style="font-size:0.8rem;color:var(--text2);margin-bottom:6px;">12个月目标价</div>
+        <div style="font-size:2rem;font-weight:800;color:var(--accent);">$270</div>
+        <div style="font-size:0.75rem;color:var(--text2);margin-top:6px;">当前价约$305，隐含空间：中性偏谨慎</div>
+      </div>
+      <div style="flex:1;min-width:200px;text-align:center;background:linear-gradient(135deg,rgba(0,212,255,0.08),rgba(30,58,95,0.05));border:1px solid rgba(0,212,255,0.2);border-radius:12px;padding:24px;">
+        <div style="font-size:0.8rem;color:var(--text2);margin-bottom:6px;">估值方法</div>
+        <div style="font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:4px;">PS法 + PEG法交叉验证</div>
+        <div style="font-size:0.75rem;color:var(--text2);">牛市情景：$320 | 基准：$270 | 熊市：$180</div>
+      </div>
+    </div>
+    
+    <div style="font-weight:700;color:var(--text);font-size:0.9rem;margin-bottom:12px;">估值区间建模（FY2026E）</div>
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>估值方法</th>
+          <th>关键假设</th>
+          <th>隐含目标价</th>
+          <th>权重</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PS 市销率法</td>
+          <td>FY2026E收入~$1.35B，目标PS 13x</td>
+          <td style="color:var(--accent);font-weight:700;">$260-280</td>
+          <td>40%</td>
+        </tr>
+        <tr>
+          <td>PEG 增长调整PE</td>
+          <td>FY2026E EPS $2.3，增速~65%，PEG 1.8-2.0x</td>
+          <td style="color:var(--accent);font-weight:700;">$270-290</td>
+          <td>40%</td>
+        </tr>
+        <tr>
+          <td>DCF 现金流折现</td>
+          <td>未来5年收入CAGR 35%，WACC 10%，终止增长率 3%</td>
+          <td style="color:var(--accent);font-weight:700;">$240-260</td>
+          <td>20%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 风险提示 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">▶</span> 06 风险提示</div>
+    <div class="risk-grid">
+      <div class="risk-item">
+        <div class="risk-title">AI需求不及预期 ⚠️ 高风险</div>
+        若AI服务器投资周期出现阶段性放缓（宏观下行、LLM货币化遇阻），ALAB营收或面临20-30%的下修压力。
+      </div>
+      <div class="risk-item">
+        <div class="risk-title">大客户高度集中 ⚠️ 高风险</div>
+        五大客户各贡献≥12%营收，客户策略调整（自研Retimer或切换供应商）将产生重大影响。
+      </div>
+      <div class="risk-item">
+        <div class="risk-title">竞争加剧 ⚠️ 中风险</div>
+        Marvell、Montage及TI等厂商持续追赶PCIe/CXL Retimer市场。英伟达NVSwitch内化路线长期或侵蚀部分Scorpio份额。
+      </div>
+      <div class="risk-item">
+        <div class="risk-title">出口管制/地缘政治 ⚠️ 中风险</div>
+        美国对华半导体出口管制持续收紧，中国市场营收占比较高（台湾/新加坡中转），面临监管不确定性。
+      </div>
+      <div class="risk-item">
+        <div class="risk-title">估值高度 ⚠️ 中风险</div>
+        当前P/E约140x、P/S约13x，高于行业均值逾2倍，业绩兑现若低于预期将承受显著估值压缩风险。
+      </div>
+      <div class="risk-item low">
+        <div class="risk-title">供应链与产能 ⚠️ 低风险</div>
+        依赖台积电N5/N3节点代工，若台积电产能紧张或出现良率问题，将直接制约Scorpio/PCIe 6新品量产速度。
+      </div>
+    </div>
+  </div>
+
+  <!-- 核心投资结论 -->
+  <div class="section" style="background:linear-gradient(135deg,#0B1C3F,#1a2a5f);color:#fff;border-color:transparent;">
+    <div class="section-title" style="color:#fff;"><span class="icon">▶</span> 核心投资结论</div>
+    <div style="font-size:1.1rem;font-weight:800;color:var(--accent);margin-bottom:12px;text-align:center;">Astera Labs (ALAB) — AI互联基础设施核心受益标的，连接AI算力超周期的"黄金中间层"</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;">
+      <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:16px;">
+        <div style="font-weight:700;color:var(--accent);margin-bottom:8px;">✅ 投资亮点</div>
+        <div style="font-size:0.83rem;color:rgba(255,255,255,0.75);line-height:1.8;">
+          • PCIe 6.0量价齐升，Retimer业务持续超预期<br>
+          • Scorpio第二曲线启动，Q1 FY2026开始规模量产<br>
+          • 英伟达Blackwell/Rubin GPU集群需求爆发直接受益<br>
+          • 财务持续超预期，Q2指引$345-365M超预期<br>
+          • NVLink Fusion互通方案带来增量机遇
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:16px;">
+        <div style="font-weight:700;color:#f59e0b;margin-bottom:8px;">⚠️ 主要风险</div>
+        <div style="font-size:0.83rem;color:rgba(255,255,255,0.75);line-height:1.8;">
+          • AI需求周期下行风险（高）<br>
+          • 大客户高度集中风险（高）<br>
+          • 竞争加剧（中）<br>
+          • 出口管制/地缘政治（中）<br>
+          • 当前估值已反映较多利好（中）
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:24px;font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.7;">
+      <strong style="color:var(--accent);">评级：买入（中长期，短期近目标价须注意估值风险）</strong><br>
+      目标价：$270（未来12个月，基准情景）<br>
+      核心逻辑：PCIe 6.0量价齐升 + Scorpio第二曲线启动 + 财务持续超预期
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p>数据来源：Astera Labs SEC文件（10-Q、8-K）、Bloomberg、Reuters及公开市场数据</p>
+  <p style="margin-top:6px;">© 2026 Snail Investment Research. 本报告基于公开信息撰写，仅供参考，不构成任何投资建议。投资者应自行判断并承担投资风险。</p>
+</footer>
+
+<script>
+function toggleTheme(){
+  const body = document.body;
+  const isDark = body.getAttribute('data-theme') === 'dark';
+  body.setAttribute('data-theme', isDark ? '' : 'dark');
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  document.querySelector('.theme-toggle').textContent = isDark ? '🌙' : '☀️';
+}
+(function(){
+  const saved = localStorage.getItem('theme');
+  if(saved === 'dark'){
+    document.body.setAttribute('data-theme','dark');
+    document.querySelector('.theme-toggle').textContent = '☀️';
+  }
+})();
+</script>
+</body>
+</html>
