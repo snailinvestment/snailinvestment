@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marvell Technology (MRVL) — 深度投研报告 2027财年Q1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --nv-navy:#0B1C3F;--nv-blue:#1a3a6f;--nv-accent:#2563eb;--nv-gold:#c9a84c;--nv-red:#dc2626;--nv-green:#16a34a;
+    --nv-bg:#f0f2f5;--nv-surface:#fffffff;--nv-text:#1a1a2e;--nv-text2:#666;--nv-border:#e5e7eb;
+    --nv-card:#f8f9fb;--nv-shadow:0 1px 3px rgba(0,0,0,0.06);
+  }
+  [data-theme="dark"] {
+    --nv-bg:#0b0f19;--nv-surface:#111827;--nv-text:#e5e7eb;--nv-text2:#9ca3af;--nv-border:#1f2937;
+    --nv-card:#1a2236;--nv-shadow:0 1px 3px rgba(0,0,0,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Inter","Noto Sans SC",system-ui,sans-serif;background:var(--nv-bg);color:var(--nv-text);font-size:14px;line-height:1.65;}
+  a{color:var(--nv-accent);text-decoration:none;}
+  /* HEADER */
+  .rh{background:linear-gradient(160deg,#0a0f1a 0%,#071830 55%,#0a2040 100%);color:#fff;position:relative;overflow:hidden;padding:48px 0 42px;}
+  .rh-inner{max-width:1100px;margin:0 auto;padding:0 48px;position:relative;z-index:1;}
+  .rh-firm{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--nv-accent);margin-bottom:8px;font-weight:500;}
+  .rh-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:12px;max-width:800px;}
+  .rh-sub{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;max-width:700px;margin-bottom:20px;}
+  .rh-meta{display:flex;gap:24px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,0.5);}
+  .rh-rating{display:flex;gap:16px;margin-top:24px;}
+  .rh-rating .badge{background:rgba(22,163,74,0.2);border:1px solid rgba(22,163,74,0.4);color:#4ade80;padding:6px 14px;border-radius:6px;font-weight:700;font-size:13px;}
+  .rh-rating .price{background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);color:#f0d068;padding:6px 14px;border-radius:6px;font-weight:700;font-size:13px;}
+  /* NAV */
+  .nav{background:var(--nv-surface);border-bottom:1px solid var(--nv-border);position:sticky;top:0;z-index:100;box-shadow:var(--nv-shadow);}
+  .nav-inner{max-width:1100px;margin:0 auto;padding:0 48px;display:flex;gap:4px;overflow-x:auto;}
+  .nav a{display:inline-block;padding:13px 14px;font-size:13px;color:var(--nv-text2);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .15s;}
+  .nav a:hover{color:var(--nv-text);}
+  .nav a.active{color:var(--nv-accent);border-bottom-color:var(--nv-accent);font-weight:600;}
+  /* CONTENT */
+  .container{max-width:1100px;margin:0 auto;padding:32px 48px 60px;}
+  .section{margin-bottom:40px;}
+  .section-title{font-size:17px;font-weight:700;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--nv-accent);display:flex;align-items:center;gap:8px;}
+  .section-title .icon{color:var(--nv-accent);font-size:15px;}
+  .card{background:var(--nv-surface);border:1px solid var(--nv-border);border-radius:8px;padding:20px;margin-bottom:16px;box-shadow:var(--nv-shadow);}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+  .metric{background:var(--nv-card);border-radius:8px;padding:16px 18px;}
+  .metric .label{font-size:11px;color:var(--nv-text2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}
+  .metric .value{font-size:22px;font-weight:700;color:var(--nv-text);}
+  .metric .change{font-size:12px;margin-top:4px;font-weight:600;}
+  .up{color:var(--nv-green);}
+  .down{color:var(--nv-red);}
+  .tag{display:inline-block;padding:2px 8px;background:var(--nv-card);color:var(--nv-text2);font-size:11px;border-radius:4px;margin:2px;}
+  .thesis-item{background:var(--nv-card);border-left:3px solid var(--nv-accent);padding:14px 18px 14px 16px;margin-bottom:12px;border-radius:0 8px 8px 0;}
+  .thesis-item .num{font-size:11px;font-weight:700;color:var(--nv-accent);margin-bottom:6px;}
+  .thesis-item .title{font-size:14px;font-weight:600;margin-bottom:6px;}
+  .thesis-item .body{font-size:13px;color:var(--nv-text2);line-height:1.65;}
+  .tbl{width:100%;border-collapse:collapse;font-size:13px;}
+  .tbl th{background:var(--nv-card);padding:10px 12px;text-align:left;font-weight:600;color:var(--nv-text);border-bottom:2px solid var(--nv-border);}
+  .tbl td{padding:9px 12px;border-bottom:1px solid var(--nv-border);color:var(--nv-text2);}
+  .tbl tr:last-child td{border-bottom:none;}
+  .risk-box{background:rgba(220,38,38,0.06);border:1px solid rgba(220,38,38,0.2);border-radius:8px;padding:14px 18px;margin-bottom:10px;}
+  .risk-box .risk-title{font-size:13px;font-weight:600;margin-bottom:4px;}
+  .risk-box .risk-level{font-size:11px;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:8px;font-weight:600;}
+  .risk-high{background:rgba(220,38,38,0.12);color:var(--nv-red);}
+  .risk-mid{background:rgba(217,119,6,0.12);color:#d97706;}
+  .risk-low{background:rgba(22,163,74,0.12);color:var(--nv-green);}
+  .risk-box .risk-body{font-size:12.5px;color:var(--nv-text2);line-height:1.6;}
+  .source-note{font-size:11.5px;color:var(--nv-text2);padding:10px 0 0;border-top:1px solid var(--nv-border);margin-top:24px;line-height:1.6;}
+  .footer-bar{background:var(--nv-navy);color:rgba(255,255,255,0.5);text-align:center;padding:16px;font-size:11px;margin-top:40px;}
+  .highlight{color:var(--nv-accent);font-weight:600;}
+  @media(max-width:768px){
+    .rh-inner{padding:0 20px;}
+    .container{padding:24px 20px 60px;}
+    .nav-inner{padding:0 20px;}
+    .grid2,.grid3{grid-template-columns:1fr;}
+    .rh-title{font-size:20px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="rh">
+  <div class="rh-inner">
+    <div class="rh-firm">SNAIL INVESTMENT RESEARCH &nbsp;|&nbsp; 半导体 · 数据中心基础设施</div>
+    <div class="rh-title">Marvell Technology (MRVL)<br>2027财年Q1 深度投研报告</div>
+    <div class="rh-sub">深度分析AI数据中心"双引擎"驱动逻辑、英伟达战略合作、Celestial AI/XConn并购协同及2027-2029财年估值重估空间</div>
+    <div class="rh-meta">
+      <span>📅 报告日期：2026年5月27日</span>
+      <span>📊 数据截至：2027财年Q1（2026.4.30）</span>
+      <span>🏷️ NASDAQ: MRVL</span>
+    </div>
+    <div class="rh-rating">
+      <span class="badge">📈 买入 BUY</span>
+      <span class="price">🎯 目标价 $250</span>
+      <span class="price" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);">💰 当前股价 ~$196</span>
+    </div>
+  </div>
+</div>
+
+<!-- Nav -->
+<div class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="#thesis" class="active" onclick="setActive(this)">核心论点</a>
+    <a href="#company" onclick="setActive(this)">公司概况</a>
+    <a href="#financial" onclick="setActive(this)">财务数据</a>
+    <a href="#engine" onclick="setActive(this)">双引擎分析</a>
+    <a href="#macro" onclick="setActive(this)">宏观趋势</a>
+    <a href="#valuation" onclick="setActive(this)">估值建模</a>
+    <a href="#recommend" onclick="setActive(this)">投资建议</a>
+    <a href="#risk" onclick="setActive(this)">风险提示</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Section 1: Core Thesis -->
+  <div class="section" id="thesis">
+    <div class="section-title"><span class="icon">★</span> 核心投资论点</div>
+    <div class="thesis-item">
+      <div class="num">①</div>
+      <div class="title">AI数据中心"双引擎"爆发——光互联+定制芯片同步高速增长</div>
+      <div class="body">FY2027光互联（DCI）业务增速上调至70%+，800G/1.6T PAM4 DSP量价齐升；定制XPU业务FY2027增速>20%，FY2028有望翻倍，2029财年或突破$100亿。数据中心占总营收76%，成为绝对核心增长极。</div>
+    </div>
+    <div class="thesis-item">
+      <div class="num">②</div>
+      <div class="title">英伟达战略投资+NVLink Fusion合作，生态卡位价值极高</div>
+      <div class="body">英伟达以Series A可转优先股形式对Marvell进行战略投资，双方合作将Marvell定制硅与光互联融入NVIDIA的NVLink生态，有效建立高壁垒客户粘性，并大幅提升Marvell在AI算力栈中的不可或缺性。</div>
+    </div>
+    <div class="thesis-item">
+      <div class="num">③</div>
+      <div class="title">Celestial AI & XConn战略并购，抢占光子计算与CXL交换前沿赛道</div>
+      <div class="body">2026年2月完成两项关键收购：Celestial AI强化硅光子互联能力（预计FY2029年化营收达$10亿），XConn Technologies增强CXL Scale-Up交换实力，卡位下一代AI基础设施架构演进。</div>
+    </div>
+    <div class="thesis-item">
+      <div class="num">④</div>
+      <div class="title">业绩指引持续大幅上调，管理层信心与AI资本开支景气度高度共振</div>
+      <div class="body">FY2027全年营收指引上调至~$115亿（+40% YoY），FY2028指引上调至$165亿（+45% YoY）。Q2指引$27亿中点，环比+12%、同比+35%，显示订单能见度极强。</div>
+    </div>
+    <div class="thesis-item">
+      <div class="num">⑤</div>
+      <div class="title">估值仍具吸引力，FY2028 P/S约2.5x，高成长半导体溢价合理</div>
+      <div class="body">基于FY2028E营收$165亿、Non-GAAP净利率~33%，对应EPS约$6.0+。以35x远期PE计算，12个月目标价$250。相较AI基础设施同类资产（博通、台积电），成长性更具优势。</div>
+    </div>
+  </div>
+
+  <!-- Section 2: Company Profile -->
+  <div class="section" id="company">
+    <div class="section-title"><span class="icon">◉</span> 公司简介与发展历程</div>
+    <div class="grid2" style="margin-bottom:16px;">
+      <div class="card">
+        <div style="font-size:13px;font-weight:600;margin-bottom:12px;color:var(--nv-text);">公司概况</div>
+        <table class="tbl">
+          <tr><td style="width:120px;color:var(--nv-text2);">总部</td><td>美国加利福尼亚州圣克拉拉</td></tr>
+          <tr><td style="color:var(--nv-text2);">成立时间</td><td>1997年（纳斯达克: MRVL）</td></tr>
+          <tr><td style="color:var(--nv-text2);">员工人数</td><td>约 17,000+ 名工程师</td></tr>
+          <tr><td style="color:var(--nv-text2);">商业模式</td><td>无晶圆厂（Fabless）半导体</td></tr>
+          <tr><td style="color:var(--nv-text2);">制造合作</td><td>台积电（TSMC）3nm/4nm工艺</td></tr>
+          <tr><td style="color:var(--nv-text2);">FY2027 Q1营收</td><td><span class="highlight">$24.18亿</span>（同比+28%）</td></tr>
+          <tr><td style="color:var(--nv-text2);">市值（约）</td><td>~$2,000亿（2026年5月）</td></tr>
+          <tr><td style="color:var(--nv-text2);">主要客户</td><td>AWS、Google、Microsoft、Meta</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div style="font-size:13px;font-weight:600;margin-bottom:12px;color:var(--nv-text);">战略转型关键节点</div>
+        <div style="font-size:12.5px;color:var(--nv-text2);line-height:1.9;">
+          <div style="display:flex;gap:10px;margin-bottom:6px;"><span style="color:var(--nv-accent);font-weight:600;min-width:38px;">1997</span> 创立于硅谷，专注HDD/以太网控制器芯片</div>
+          <div style="display:flex;gap:10px;margin-bottom:6px;"><span style="color:var(--nv-accent);font-weight:600;min-width:38px;">2014</span> 剥离移动业务，聚焦数据基础设施</div>
+          <div style="display:flex;gap:10px;margin-bottom:6px;"><span style="color:var(--nv-accent);font-weight:600;min-width:38px;">2021</span> 收购Inphi — 奠定高速光互联（DCI）核心地位</div>
+          <div style="display:flex;gap:10px;margin-bottom:6px;"><span style="color:var(--nv-accent);font-weight:600;min-width:38px;">2021</span> 收购Innovium — 强化数据中心以太网交换</div>
+          <div style="display:flex;gap:10px;margin-bottom:6px;"><span style="color:var(--nv-accent);font-weight:600;min-width:38px;">2023</span> 定制ASIC（XPU）爆发，AWS/Google超大设计赢单</div>
+          <div style="display:flex;gap:10px;margin-bottom:6px;"><span style="color:var(--nv-accent);font-weight:600;min-width:38px;">2024</span> 800G PAM4 DSP规模量产，1.6T进入客户验证</div>
+          <div style="display:flex;gap:10px;margin-bottom:6px;"><span style="color:var(--nv-accent);font-weight:600;min-width:38px;">2026.2</span> 收购Celestial AI（光子互联）+ XConn（CXL交换）</div>
+          <div style="display:flex;gap:10px;margin-bottom:6px;"><span style="color:var(--nv-accent);font-weight:600;min-width:38px;">2026.3</span> NVIDIA战略投资 + NVLink Fusion合作宣布</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: Financial Data -->
+  <div class="section" id="financial">
+    <div class="section-title"><span class="icon">◉</span> 2027财年Q1 核心财务数据</div>
+    <div class="source-note" style="margin-top:0;margin-bottom:20px;border-top:none;padding:0;">截至2026年4月（最新季度）| 数据来源：Marvell公司财报、SEC 8-K文件（2026-05-27）</div>
+    <div class="grid4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;">
+      <div class="metric">
+        <div class="label">季度总营收</div>
+        <div class="value">$24.18亿</div>
+        <div class="change up">+28% YoY（创纪录）</div>
+      </div>
+      <div class="metric">
+        <div class="label">Non-GAAP 净利润</div>
+        <div class="value">$7.18亿</div>
+        <div class="change up">+29% YoY</div>
+      </div>
+      <div class="metric">
+        <div class="label">Non-GAAP EPS</div>
+        <div class="value">$0.80</div>
+        <div class="change up">+29% YoY</div>
+      </div>
+      <div class="metric">
+        <div class="label">Non-GAAP 毛利率</div>
+        <div class="value">58.9%</div>
+        <div class="change" style="color:var(--nv-text2);">GAAP: 52.1%</div>
+      </div>
+      <div class="metric">
+        <div class="label">Non-GAAP 营业利润率</div>
+        <div class="value">35.5%</div>
+        <div class="change" style="color:var(--nv-text2);">持续提升</div>
+      </div>
+      <div class="metric">
+        <div class="label">经营现金流</div>
+        <div class="value">$6.39亿</div>
+        <div class="change up">季度历史新高</div>
+      </div>
+      <div class="metric">
+        <div class="label">现金及等价物</div>
+        <div class="value">$38.4亿</div>
+        <div class="change" style="color:var(--nv-text2);">资产负债表稳健</div>
+      </div>
+      <div class="metric">
+        <div class="label">数据中心营收占比</div>
+        <div class="value">76%</div>
+        <div class="change up">AI持续驱动</div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-size:13px;font-weight:600;margin-bottom:14px;color:var(--nv-text);">业务板块营收拆解（Q1 FY2027）</div>
+      <table class="tbl">
+        <thead>
+          <tr><th>业务板块</th><th>Q1 FY2027</th><th>同比变化</th><th>占比</th><th>备注</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>数据中心（AI核心）</strong></td>
+            <td><span class="highlight">~$18.4亿</span></td>
+            <td class="up">+75%+ YoY</td>
+            <td>~76%</td>
+            <td>最大增长极</td>
+          </tr>
+          <tr>
+            <td>通信及其他市场</td>
+            <td>~$5.85亿</td>
+            <td class="up">+29% YoY</td>
+            <td>~24%</td>
+            <td>持续拉升</td>
+          </tr>
+          <tr style="background:var(--nv-card);">
+            <td><strong>合计</strong></td>
+            <td><strong>$24.18亿</strong></td>
+            <td class="up"><strong>+28% YoY</strong></td>
+            <td><strong>100%</strong></td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:14px;font-size:12px;color:var(--nv-text2);">高增长子业务：光互联（DCI）FY2027增速>70% | 定制XPU FY2027增速>20% | 以太网交换机 FY2027 >$6亿</div>
+    </div>
+  </div>
+
+  <!-- Section 4: Dual Engine -->
+  <div class="section" id="engine">
+    <div class="section-title"><span class="icon">⚡</span> "双引擎"驱动分析：光互联 × 定制AI芯片</div>
+    <div class="grid2">
+      <div class="card">
+        <div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--nv-accent);">引擎①  光互联（DCI / Interconnect）</div>
+        <div style="font-size:13px;color:var(--nv-text2);line-height:1.7;">
+          <div style="margin-bottom:10px;"><span class="highlight">FY2027 增速指引上调至 >70% YoY</span>（远超初始预测）</div>
+          <div style="margin-bottom:8px;">• 800G PAM4 DSP 持续放量，<span class="highlight">1.6T（200G/lane）本财年加速量产</span></div>
+          <div style="margin-bottom:8px;">• 5nm 51.2T / 即将推出 100T 以太网交换机获超大规模部署</div>
+          <div style="margin-bottom:8px;">• DCI模块（数据中心互联）FY2028年化营收目标 >$10亿（vs FY26翻倍）</div>
+          <div style="margin-bottom:8px;">• Scale-out交换 FY2027 >$6亿，FY2028年化 >$10亿</div>
+          <div style="margin-bottom:8px;">• <span class="highlight">收购 XConn</span>：布局 CXL Scale-Up 交换新兴市场</div>
+          <div style="margin-bottom:8px;">• <span class="highlight">收购 Celestial AI</span>：光子计算互联（Photonic Fabric）赛道先手棋</div>
+          <div style="margin-bottom:8px;">• AI推理时代MoE模型驱动All-to-All通信带宽需求指数级增长</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--nv-accent);">引擎②  定制AI芯片（XPU / ASIC）</div>
+        <div style="font-size:13px;color:var(--nv-text2);line-height:1.7;">
+          <div style="margin-bottom:10px;"><span class="highlight">FY2027 定制XPU营收增速 >20% YoY</span>（管理层上调预期）</div>
+          <div style="margin-bottom:8px;">• FY2028 有望翻倍（受现有客户扩展+新设计赢单双驱动）</div>
+          <div style="margin-bottom:8px;">• <span class="highlight">FY2029 目标营收 >$100亿</span>（含光互联协同）</div>
+          <div style="margin-bottom:8px;">• 已锁定 <span class="highlight">20+ 定制AI芯片设计赢单</span>，FY2028-29陆续量产</div>
+          <div style="margin-bottom:8px;">• 核心客户：<span class="highlight">AWS Trainium/Inferentia生态</span>、Google TPU附属芯片</div>
+          <div style="margin-bottom:8px;">• <span class="highlight">NVIDIA合作</span>：NVLink Fusion集成Marvell定制硅+光互联方案</div>
+          <div style="margin-bottom:8px;">• 台积电3nm工艺节点制造，算力效率与功耗领先竞品</div>
+          <div style="margin-bottom:8px;">• 与博通形成差异化竞争：<span class="highlight">更广客户群+光互联一体化方案</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5: Macro Trends -->
+  <div class="section" id="macro">
+    <div class="section-title"><span class="icon">🌍</span> 宏观与技术趋势：AI推理时代的网络带宽革命</div>
+    <div class="card" style="margin-bottom:16px;">
+      <div style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--nv-text);">训练→推理范式转换</div>
+      <div style="font-size:13px;color:var(--nv-text2);line-height:1.7;">
+        <div style="margin-bottom:8px;">• 2025-26年AI部署重心从大规模集群训练（A100/H100密集互联）逐步转向<span class="highlight">分布式推理</span></div>
+        <div style="margin-bottom:8px;">• 推理阶段对延迟（&lt;1ms）极度敏感，驱动对<span class="highlight">高速、低延迟光互联的刚性需求</span></div>
+        <div style="margin-bottom:8px;">• 混合专家模型（MoE）架构需要All-to-All专家路由，<span class="highlight">带宽需求指数级放大</span></div>
+        <div style="margin-bottom:8px;">• Marvell 800G/1.6T PAM4 DSP成为推理集群"<span class="highlight">必备基础设施</span>"，竞争壁垒极高</div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--nv-text);">超大规模算力集群扩张</div>
+        <div style="font-size:13px;color:var(--nv-text2);line-height:1.7;">
+          <div style="margin-bottom:6px;">• AWS、Google、Microsoft、Meta FY2026资本开支合计 <span class="highlight">>$2,500亿</span>，持续高速增长</div>
+          <div style="margin-bottom:6px;">• 单个AI数据中心规模达数万张GPU卡，光纤连接总长度以数万公里计</div>
+          <div style="margin-bottom:6px;">• TSMC 2026年AI芯片代工营收增速 >35%（资本开支历史最高$560亿）</div>
+          <div style="margin-bottom:6px;">• Google与Marvell洽谈联合开发MPU（内存处理单元）+ 推理优化TPU</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--nv-text);">下一代互联：CXL与光子计算</div>
+        <div style="font-size:13px;color:var(--nv-text2);line-height:1.7;">
+          <div style="margin-bottom:6px;">• <span class="highlight">CXL（Compute Express Link）</span>将成为下一代AI集群Scale-Up互联标准</div>
+          <div style="margin-bottom:6px;">• 收购XConn Technologies使Marvell成为<span class="highlight">CXL交换领域领先者</span>之一</div>
+          <div style="margin-bottom:6px;">• Celestial AI的光子计算互联（Photonic Fabric）：<span class="highlight">用光信号替代铜线，延迟降低10倍</span></div>
+          <div style="margin-bottom:6px;">• 光子互联FY2028年化$5亿 → FY2029年化<span class="highlight">$10亿</span>，成为新增长曲线</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 6: Valuation -->
+  <div class="section" id="valuation">
+    <div class="section-title"><span class="icon">📊</span> 估值建模与业绩指引展望</div>
+    <div class="source-note" style="margin-top:0;margin-bottom:20px;border-top:none;padding:0;">数据来源：Marvell公司官方指引（2026-05-27）、公开市场数据 | FY2027E/FY2028E为公司指引中值</div>
+    <div class="card" style="margin-bottom:16px;">
+      <div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--nv-text);">管理层业绩指引（持续上调）</div>
+      <table class="tbl">
+        <thead>
+          <tr><th>财年/季度</th><th>营收指引（中值）</th><th>同比增速</th><th>业务重点</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Q1 FY2027（实际）</td>
+            <td><strong>$24.18亿 ✓</strong></td>
+            <td class="up">+28% YoY</td>
+            <td>数据中心 +75%+</td>
+          </tr>
+          <tr>
+            <td>Q2 FY2027（指引）</td>
+            <td>$27.00亿 ±5%</td>
+            <td class="up">+35% YoY</td>
+            <td>持续加速</td>
+          </tr>
+          <tr style="background:var(--nv-card);">
+            <td><strong>FY2027（全年指引）</strong></td>
+            <td><strong>~$115亿</strong></td>
+            <td class="up"><strong>~+40% YoY</strong></td>
+            <td>光互联 >70%+</td>
+          </tr>
+          <tr style="background:var(--nv-card);">
+            <td><strong>FY2028（全年指引）</strong></td>
+            <td><strong>~$165亿</strong></td>
+            <td class="up"><strong>~+45% YoY</strong></td>
+            <td>定制XPU FY2028翻倍</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--nv-text);">估值框架（远期PE + SOTP）</div>
+        <div style="font-size:13px;color:var(--nv-text2);line-height:1.7;">
+          <div style="margin-bottom:10px;">FY2028E 营收 <span class="highlight">$165亿</span></div>
+          <div style="margin-bottom:10px;">× Non-GAAP 净利率 ~33% = <span class="highlight">Non-GAAP 净利润 ~$54亿</span></div>
+          <div style="margin-bottom:10px;">÷ 稀释股本 ~9亿股 → <span class="highlight">Non-GAAP EPS ~$6.0</span></div>
+          <div style="margin-bottom:14px;">目标估值：<span class="highlight">35x 远期 Non-GAAP PE</span>（对标高成长半导体同业均值，考虑Marvell增速溢价）</div>
+          <div style="border-top:1px solid var(--nv-border);padding-top:14px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span>保守情景</span><span style="color:var(--nv-text);font-weight:700;">$210</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="color:var(--nv-accent);font-weight:600;">基准情景（12个月目标）</span><span style="color:var(--nv-accent);font-weight:800;font-size:16px;">$250</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>乐观情景</span><span style="color:var(--nv-text);font-weight:700;">$290</span></div>
+          </div>
+          <div style="margin-top:14px;font-size:12px;color:var(--nv-text2);">当前股价 ~$196 → 目标价 $250 意味着 <span class="highlight">+27% 上行空间</span>（12个月）</div>
+          <div style="margin-top:6px;font-size:12px;color:var(--nv-text2);">情景分析：若FY2028营收超预期达$175亿+，目标价可上调至$280-$300</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--nv-text);">12个月核心催化剂</div>
+        <div style="font-size:13px;color:var(--nv-text2);line-height:1.8;">
+          <div style="margin-bottom:8px;">① Q2 FY2027营收是否达到/超越<span class="highlight">$27亿指引</span></div>
+          <div style="margin-bottom:8px;">② 1.6T光模块量产爬坡速度及<span class="highlight">客户验收进展</span></div>
+          <div style="margin-bottom:8px;">③ 定制XPU<span class="highlight">新设计赢单</span>（尤其Google MPU消息）</div>
+          <div style="margin-bottom:8px;">④ NVIDIA NVLink Fusion<span class="highlight">量产时间表明确化</span></div>
+          <div style="margin-bottom:8px;">⑤ Celestial AI光子互联<span class="highlight">首个商业客户落地</span></div>
+          <div style="margin-bottom:8px;">⑥ FY2028全年营收指引<span class="highlight">再度上调信号</span></div>
+        </div>
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--nv-border);">
+          <div style="font-size:13px;font-weight:600;margin-bottom:10px;color:var(--nv-text);">综合投资逻辑</div>
+          <div style="font-size:12.5px;color:var(--nv-text2);line-height:1.65;">
+            Marvell Technology正处于其历史上最重要的战略转型拐点：从传统网络/存储芯片供应商，成功蜕变为全球AI数据中心"<span class="highlight">隐形冠军</span>"。公司凭借光互联（DCI）与定制XPU的"<span class="highlight">双引擎</span>"驱动，叠加NVIDIA战略合作的生态卡位效应，以及Celestial AI、XConn的前瞻布局，已构建起竞争对手难以快速复制的技术与客户壁垒。管理层连续多季度上调指引，订单能见度极高，为FY2027-28的高速成长提供了充分保障。当前估值在35x远期PE下，相较其45%+的收入增长速度仍具备合理的安全边际。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 7: Investment Recommendation -->
+  <div class="section" id="recommend">
+    <div class="section-title"><span class="icon">📈</span> 投资建议</div>
+    <div class="card" style="text-align:center;padding:28px;">
+      <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:20px;">
+        <span class="badge" style="background:rgba(22,163,74,0.1);color:#16a34a;padding:8px 20px;border-radius:8px;font-weight:700;font-size:15px;">📈 买入 BUY</span>
+        <span class="price" style="background:rgba(201,168,76,0.1);color:#c9a84c;padding:8px 20px;border-radius:8px;font-weight:700;font-size:15px;">🎯 目标价 $250</span>
+        <span style="background:rgba(37,99,235,0.08);color:var(--nv-accent);padding:8px 20px;border-radius:8px;font-weight:700;font-size:15px;">💰 当前 ~$196（上行空间 +27%）</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 2fr 1fr;gap:14px;margin-top:16px;">
+        <div style="background:var(--nv-card);border-radius:8px;padding:14px;">
+          <div style="font-size:11px;color:var(--nv-text2);margin-bottom:6px;">保守情景</div>
+          <div style="font-size:20px;font-weight:700;color:var(--nv-text);">$210</div>
+          <div style="font-size:11px;color:var(--nv-text2);margin-top:6px;">AI资本开支增速放缓，XPU竞争加剧</div>
+        </div>
+        <div style="background:var(--nv-card);border-radius:8px;padding:14px;border:2px solid var(--nv-accent);">
+          <div style="font-size:11px;color:var(--nv-accent);margin-bottom:6px;font-weight:600;">基准情景（12个月目标）</div>
+          <div style="font-size:24px;font-weight:800;color:var(--nv-accent);">$250</div>
+          <div style="font-size:11px;color:var(--nv-text2);margin-top:6px;">指引兑现，光互联+XPU双驱动</div>
+        </div>
+        <div style="background:var(--nv-card);border-radius:8px;padding:14px;">
+          <div style="font-size:11px;color:var(--nv-text2);margin-bottom:6px;">乐观情景</div>
+          <div style="font-size:20px;font-weight:700;color:var(--nv-text);">$290</div>
+          <div style="font-size:11px;color:var(--nv-text2);margin-top:6px;">FY2028超预期，新客户+光子计算腾飞</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 8: Risk Factors -->
+  <div class="section" id="risk">
+    <div class="section-title"><span class="icon">⚠️</span> 风险提示</div>
+    <div class="risk-box">
+      <div class="risk-title">【高】 AI资本开支周期下行风险</div>
+      <div class="risk-level risk-high">高风险</div>
+      <div class="risk-body">若宏观环境恶化（衰退/通胀）或AI ROI争议导致超大规模客户削减资本开支，Marvell数据中心业务将面临直接压力。AWS/Google资本开支占公司营收比重极高，任何指引下调均可能引发股价剧烈调整。</div>
+    </div>
+    <div class="risk-box">
+      <div class="risk-title">【高】 大客户集中度风险</div>
+      <div class="risk-level risk-high">高风险</div>
+      <div class="risk-body">Marvell前5大客户（AWS、Google等）贡献营收可能超70%+。若单一客户决定转向内部自研芯片或更换供应商（如博通），对公司营收冲击可能显著。Google与Marvell合作谈判一旦受阻，将打击市场情绪。</div>
+    </div>
+    <div class="risk-box">
+      <div class="risk-title">【中】 晶圆产能与供应链限制</div>
+      <div class="risk-level risk-mid">中风险</div>
+      <div class="risk-body">Marvell依赖台积电3nm/4nm先进制程，而台积电产能高度竞争激烈。若台积电产能分配不及预期，或美国对华出口管制政策扩展影响代工合作，将制约公司出货量。公司已承诺FY2027预付$10亿供应链定金应对此风险。</div>
+    </div>
+    <div class="risk-box">
+      <div class="risk-title">【中】 竞争加剧风险</div>
+      <div class="risk-level risk-mid">中风险</div>
+      <div class="risk-body">博通（Broadcom）在定制ASIC领域深度绑定Google/Meta，与Marvell存在直接竞争。英特尔、联发科等也在加速进入AI连接芯片市场。此外，超大规模客户持续扩大自研芯片比例（Apple M系列、Google TPU等模式），长期可能压缩定制ASIC市场空间。</div>
+    </div>
+    <div class="risk-box">
+      <div class="risk-title">【中】 并购整合风险</div>
+      <div class="risk-level risk-mid">中风险</div>
+      <div class="risk-body">Celestial AI与XConn均为近期完成的收购，商业化时间表存在不确定性。光子计算互联技术尚在商业化早期，若产品进展迟于预期，可能影响市场信心及FY2028指引的实现。</div>
+    </div>
+    <div class="risk-box">
+      <div class="risk-title">【低】 地缘政治与贸易风险</div>
+      <div class="risk-level risk-low">低风险</div>
+      <div class="risk-body">中美贸易摩擦持续，若美国政府进一步扩大半导体出口限制（尤其针对先进AI芯片代工），可能间接影响台积电产能分配及中国市场潜在业务机会。目前Marvell中国市场营收占比有限，直接影响相对可控。</div>
+    </div>
+    <div class="source-note" style="margin-top:12px;">风险提示不构成完整的风险披露，投资者应仔细阅读公司官方SEC文件（10-K/10-Q）中的完整风险因素 | 本报告仅供参考</div>
+  </div>
+
+  <div class="source-note">
+    数据来源：Marvell公司财报、SEC 8-K文件（2026-05-27）、Bloomberg、Motley Fool Transcripts、台积电财报、公开市场数据<br>
+    本报告为 Snail Investment 独立研究分析，仅供参考，不构成投资建议。投资者依据本报告操作须自担风险。
+  </div>
+
+</div><!-- /container -->
+
+<!-- Footer -->
+<div class="footer-bar">
+  © 2026 Snail Investment Research &nbsp;|&nbsp; Marvell Technology (MRVL) 深度投研报告 &nbsp;|&nbsp; 报告日期：2026年5月27日 &nbsp;|&nbsp; 数据截至：2027财年Q1（2026.4.30）
+</div>
+
+<script>
+function setActive(el){
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));
+  el.classList.add('active');
+}
+// Smooth scroll for nav
+document.querySelectorAll('.nav a').forEach(a=>{
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    const id = this.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+// Update active nav on scroll
+window.addEventListener('scroll',function(){
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('.nav a');
+  let current = '';
+  sections.forEach(s=>{
+    const top = s.offsetTop - 60;
+    if(window.scrollY >= top) current = s.id;
+  });
+  navLinks.forEach(a=>{
+    a.classList.toggle('active', a.getAttribute('href')==='#'+current);
+  });
+});
+</script>
+</body>
+</html>
