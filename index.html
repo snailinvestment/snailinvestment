@@ -8,7 +8,7 @@
   :root {
     --bg:#f0f2f5;--surface:#fff;--text:#1a1a2e;--text2:#666;--accent:#1e3a5f;--accent2:#2563eb;
     --border:#e5e7eb;--tag-bg:#eef2f7;--tag-text:#334155;--shadow:0 1px 3px rgba(0,0,0,0.06);
-    --sidebar-w:220px;--topbar-h:56px;
+    --sidebar-w:220px;--topbar-mini-h:36px;--topbar-main-h:58px;--topbar-h:94px;
   }
   [data-theme="dark"] {
     --bg:#0b0f19;--surface:#111827;--text:#e5e7eb;--text2:#9ca3af;--accent:#60a5fa;--accent2:#93c5fd;
@@ -21,69 +21,69 @@
     transition:background .3s,color .3s;font-size:14px;line-height:1.5;
   }
 
-  /* ── Top bar (雪球风格) ── */
-  .topbar {
-    position:fixed;top:0;left:0;right:0;height:var(--topbar-h);z-index:300;
-    background:linear-gradient(90deg, #1a5fd6, #2a7af5);
-    display:flex;align-items:center;justify-content:space-between;
-    padding:0 24px;
-    box-shadow:0 2px 8px rgba(26,95,214,0.25);
+  /* ── Top bar mini (深色小条) ── */
+  .topbar-mini {
+    position:fixed;top:0;left:0;right:0;height:var(--topbar-mini-h);z-index:301;
+    background:#0f172a;
+    display:flex;align-items:center;justify-content:flex-end;
+    padding:0 24px;gap:12px;
   }
-  .topbar-left {
-    display:flex;align-items:center;gap:0;height:100%;
-  }
-  .topbar-logo {
-    display:flex;align-items:center;gap:10px;padding:0;height:100%;
-    text-decoration:none;color:#fff;
-  }
-  .topbar-logo .logo-mark {
-    width:32px;height:32px;border-radius:8px;
-    background:rgba(255,255,255,0.18);
-    display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;font-weight:700;flex-shrink:0;
-    border:1px solid rgba(255,255,255,0.25);
-  }
-  .topbar-logo .logo-text {
-    font-weight:700;font-size:1.05rem;letter-spacing:.3px;line-height:1.2;color:#fff;
-  }
-  .topbar-logo .logo-text small {
-    display:block;font-size:.6rem;color:rgba(255,255,255,0.65);font-weight:500;letter-spacing:.8px;margin-top:1px;
-  }
-  .topbar-tabs {
-    display:flex;align-items:center;gap:2px;padding:0 8px;height:100%;
-  }
-  .topbar-tab {
-    padding:5px 14px;border-radius:6px;text-decoration:none;
-    color:rgba(255,255,255,0.75);font-size:.82rem;font-weight:500;
-    transition:all .12s;white-space:nowrap;
-  }
-  .topbar-tab:hover {background:rgba(255,255,255,0.12);color:#fff;}
-  .topbar-tab.active {background:rgba(255,255,255,0.22);color:#fff;}
-  .topbar-right {
-    display:flex;align-items:center;gap:12px;
-  }
-  .topbar-search {
+  .topbar-mini .topbar-search {
     position:relative;
   }
-  .topbar-search input {
-    width:260px;padding:7px 12px 7px 34px;border:none;border-radius:20px;
-    background:rgba(255,255,255,0.18);color:#fff;font-size:.82rem;outline:none;
-    transition:background .15s,box-shadow .15s;font-family:inherit;
-    placeholder-color:rgba(255,255,255,0.55);
+  .topbar-mini .topbar-search input {
+    width:200px;padding:5px 10px 5px 28px;border:none;border-radius:4px;
+    background:#1e293b;color:#cbd5e1;font-size:.75rem;outline:none;
+    transition:background .15s;font-family:inherit;
   }
-  .topbar-search input::placeholder {color:rgba(255,255,255,0.55);}
-  .topbar-search input:focus {background:rgba(255,255,255,0.28);box-shadow:0 0 0 2px rgba(255,255,255,0.15);}
-  .topbar-search svg {
-    position:absolute;left:11px;top:50%;transform:translateY(-50%);
-    width:14px;height:14px;fill:rgba(255,255,255,0.6);pointer-events:none;
+  .topbar-mini .topbar-search input::placeholder {color:#64748b;}
+  .topbar-mini .topbar-search input:focus {background:#334155;}
+  .topbar-mini .topbar-search svg {
+    position:absolute;left:8px;top:50%;transform:translateY(-50%);
+    width:12px;height:12px;fill:#64748b;pointer-events:none;
   }
-  .topbar-theme {
-    background:rgba(255,255,255,0.12);border:none;color:#fff;font-size:1rem;cursor:pointer;
-    width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-    transition:background .15s;
+  .topbar-mini .topbar-theme {
+    background:none;border:none;color:#94a3b8;font-size:.85rem;cursor:pointer;
+    width:26px;height:26px;border-radius:4px;display:flex;align-items:center;justify-content:center;
+    transition:color .15s;
   }
-  .topbar-theme:hover {background:rgba(255,255,255,0.22);}
-  .topbar-hamburger {
-    display:none;background:none;border:none;font-size:1.3rem;cursor:pointer;color:#fff;padding:4px;
+  .topbar-mini .topbar-theme:hover {color:#e2e8f0;}
+
+  /* ── Top bar main (白色大区域) ── */
+  .topbar-main {
+    position:fixed;top:var(--topbar-mini-h);left:0;right:0;height:var(--topbar-main-h);z-index:300;
+    background:var(--surface);border-bottom:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 24px;
+    box-shadow:var(--shadow);
+  }
+  .topbar-main-left {
+    display:flex;align-items:center;gap:0;height:100%;
+  }
+  .topbar-main-logo {
+    display:flex;flex-direction:column;justify-content:center;padding:0;height:100%;
+    text-decoration:none;color:var(--text);
+  }
+  .topbar-main-logo .logo-text-main {
+    font-weight:800;font-size:1.35rem;letter-spacing:.5px;line-height:1.1;color:var(--text);
+    font-family: "Inter", -apple-system, "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+  .topbar-main-logo .logo-line {
+    width:100%;height:3px;background:linear-gradient(90deg,#c9a84c,#d4af37,#c9a84c);
+    margin-top:4px;border-radius:2px;
+  }
+  .topbar-main-tabs {
+    display:flex;align-items:center;gap:4px;height:100%;
+  }
+  .topbar-main-tab {
+    padding:6px 16px;border-radius:6px;text-decoration:none;
+    color:var(--text2);font-size:.85rem;font-weight:500;
+    transition:all .12s;white-space:nowrap;
+  }
+  .topbar-main-tab:hover {background:var(--tag-bg);color:var(--text);}
+  .topbar-main-tab.active {background:var(--accent);color:#fff;}
+  .topbar-main-hamburger {
+    display:none;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--text);padding:4px;
   }
 
   /* ── Sidebar ── */
@@ -167,14 +167,15 @@
   .overlay {display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:190;}
 
   @media(max-width:768px){
-    .topbar {padding:0 14px;}
-    .topbar-search input {width:150px;}
-    .topbar-logo .logo-text small {display:none;}
-    .topbar-tabs {display:none;}
+    .topbar-mini {padding:0 14px;}
+    .topbar-mini .topbar-search input {width:150px;}
+    .topbar-main {padding:0 14px;}
+    .topbar-main-logo .logo-text-main {font-size:1.1rem;}
+    .topbar-main-tabs {display:none;}
     .sidebar {transform:translateX(-100%);top:var(--topbar-h);}
     .sidebar.open {transform:translateX(0);}
     .overlay.open {display:block;}
-    .topbar-hamburger {display:flex;}
+    .topbar-main-hamburger {display:flex;}
     .main-wrap {margin-left:0;}
     .grid {grid-template-columns:1fr;}
     .content {padding:20px 20px 40px;}
@@ -183,28 +184,27 @@
 </head>
 <body>
 
-<!-- Top bar -->
-<header class="topbar">
-  <div class="topbar-left">
-    <a href="#" class="topbar-logo" onclick="switchCat('china');return false;">
-      <span class="logo-mark">S</span>
-      <div class="logo-text">
-        Snail IR
-        <small>INVESTMENT RESEARCH</small>
-      </div>
+<!-- Top bar mini (深色小条) -->
+<div class="topbar-mini">
+  <div class="topbar-search">
+    <svg viewBox="0 0 16 16"><path d="M11.7422 10.3439C12.5329 9.2673 13 7.9382 13 6.5C13 2.91015 10.0899 0 6.5 0C2.91015 0 0 2.91015 0 6.5C0 10.0899 2.91015 13 6.5 13C7.9382 13 9.2673 12.5329 10.3439 11.7422L14.1464 15.5446C14.3417 15.7399 14.6583 15.7399 14.8536 15.5446C15.0488 15.3493 15.0488 15.0328 14.8536 14.8375L11.7422 10.3439ZM6.5 11.5C3.73858 11.5 1.5 9.26142 1.5 6.5C1.5 3.73858 3.73858 1.5 6.5 1.5C9.26142 1.5 11.5 3.73858 11.5 6.5C11.5 9.26142 9.26142 11.5 6.5 11.5Z"/></svg>
+    <input type="text" id="searchInput" placeholder="搜索报告..." oninput="doSearch(this.value)">
+  </div>
+  <button class="topbar-theme" onclick="toggleTheme()" title="切换主题">🌙</button>
+</div>
+
+<!-- Top bar main (白色大区域) -->
+<header class="topbar-main">
+  <div class="topbar-main-left">
+    <a href="#" class="topbar-main-logo" onclick="switchCat('china');return false;">
+      <div class="logo-text-main">Snail Investment</div>
+      <div class="logo-line"></div>
     </a>
-    <nav class="topbar-tabs" id="topbarTabs">
-      <!-- tabs injected by JS -->
-    </nav>
   </div>
-  <div class="topbar-right">
-    <div class="topbar-search">
-      <svg viewBox="0 0 16 16"><path d="M11.7422 10.3439C12.5329 9.2673 13 7.9382 13 6.5C13 2.91015 10.0899 0 6.5 0C2.91015 0 0 2.91015 0 6.5C0 10.0899 2.91015 13 6.5 13C7.9382 13 9.2673 12.5329 10.3439 11.7422L14.1464 15.5446C14.3417 15.7399 14.6583 15.7399 14.8536 15.5446C15.0488 15.3493 15.0488 15.0328 14.8536 14.8375L11.7422 10.3439ZM6.5 11.5C3.73858 11.5 1.5 9.26142 1.5 6.5C1.5 3.73858 3.73858 1.5 6.5 1.5C9.26142 1.5 11.5 3.73858 11.5 6.5C11.5 9.26142 9.26142 11.5 6.5 11.5Z"/></svg>
-      <input type="text" id="searchInput" placeholder="搜索报告..." oninput="doSearch(this.value)">
-    </div>
-    <button class="topbar-theme" onclick="toggleTheme()" title="切换主题">🌙</button>
-    <button class="topbar-hamburger" onclick="toggleSidebar()">☰</button>
-  </div>
+  <nav class="topbar-main-tabs" id="topbarTabs">
+    <!-- tabs injected by JS -->
+  </nav>
+  <button class="topbar-main-hamburger" onclick="toggleSidebar()">☰</button>
 </header>
 
 <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
@@ -547,7 +547,7 @@ function renderTabs(cat){
   const tabs = tabConfig[cat] || [];
   topbarTabs.innerHTML = tabs.map((t,i) => {
     const isFirst = i===0;
-    return `<a href="#" class="topbar-tab ${isFirst?'active':''}" onclick="scrollToSection('${t.target}');return false;">${t.text}</a>`;
+    return `<a href="#" class="topbar-main-tab ${isFirst?'active':''}" onclick="scrollToSection('${t.target}');return false;">${t.text}</a>`;
   }).join('');
 }
 
@@ -556,7 +556,7 @@ function scrollToSection(id){
   if(el){
     el.scrollIntoView({behavior:'smooth',block:'start'});
     // update active tab
-    topbarTabs.querySelectorAll('.topbar-tab').forEach(tab=>tab.classList.remove('active'));
+    topbarTabs.querySelectorAll('.topbar-main-tab').forEach(tab=>tab.classList.remove('active'));
     event.target.classList.add('active');
   }
 }
