@@ -573,11 +573,15 @@ function scrollToSection(id){
   }
 }
 
-function switchCat(cat, scrollTarget){
+function switchCat(cat, scrollTarget, updateHash=true){
   sidebarNav.querySelectorAll('.nav-item[data-cat]').forEach(a=>a.classList.toggle('active', a.dataset.cat===cat));
   panels.forEach(p=>p.classList.toggle('active', p.id==='panel-'+cat));
   renderTabs(cat);
   if(window.innerWidth<=768) toggleSidebar(false);
+  if(updateHash){
+    const hash = scrollTarget ? '#' + cat + '-' + scrollTarget : '#' + cat;
+    history.replaceState(null, '', hash);
+  }
   if(scrollTarget){
     setTimeout(()=>{
       const el = document.getElementById(scrollTarget + '-section');
@@ -651,8 +655,29 @@ if(localStorage.getItem('theme')==='dark'){
   document.querySelector('.topbar-theme').textContent='☀️';
 }
 
-// init
+// init from URL hash
+function applyHash(){
+  const hash = window.location.hash.slice(1); // remove leading #
+  if(!hash) return;
+  const parts = hash.split('-');
+  const cat = parts[0];
+  let scrollTarget = null;
+  if(parts.length >= 3 && parts[1] === 'semi'){
+    scrollTarget = parts[1] + '-' + parts[2];
+  }
+  const validCats = ['china','hk','us','macro'];
+  if(validCats.includes(cat)){
+    switchCat(cat, scrollTarget, false);
+    if(cat==='china' || cat==='us'){
+      semiSub.classList.add('open');
+      semiToggle.classList.add('expanded');
+    }
+    syncSemiSubActive();
+  }
+}
+
 (function init(){
+  applyHash();
   const activePanel = document.querySelector('.panel.active');
   if(activePanel) renderTabs(activePanel.id.replace('panel-',''));
   if(activePanel && (activePanel.id==='panel-china' || activePanel.id==='panel-us')){
@@ -661,6 +686,11 @@ if(localStorage.getItem('theme')==='dark'){
   }
   syncSemiSubActive();
 })();
+
+// Listen for browser back/forward to restore panel
+window.addEventListener('hashchange', ()=>{
+  applyHash();
+});
 </script>
 </body>
 </html>
