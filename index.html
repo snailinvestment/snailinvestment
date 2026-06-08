@@ -2,7 +2,9 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="wechat-env" content="production">
 <title>Snail Investment Research</title>
 <style>
   :root {
@@ -167,18 +169,35 @@
   .overlay {display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:190;}
 
   @media(max-width:768px){
-    .topbar-mini {padding:0 14px;}
-    .topbar-mini .topbar-search input {width:150px;}
-    .topbar-main {padding:0 14px;}
-    .topbar-main-logo .logo-text-main {font-size:1.1rem;}
+    :root {--topbar-main-h:50px;--topbar-h:86px;}
+    .topbar-mini {padding:0 10px;}
+    .topbar-mini .topbar-search input {width:120px;font-size:.8rem;padding:4px 8px 4px 26px;}
+    .topbar-main {padding:0 12px;height:50px;}
+    .topbar-main-logo .logo-text-main {font-size:1.05rem;}
+    .topbar-main-logo .logo-line {margin-top:2px;height:2px;}
     .topbar-main-tabs {display:none;}
-    .sidebar {transform:translateX(-100%);top:var(--topbar-h);}
+    .topbar-main-hamburger {display:flex;font-size:1.1rem;}
+    .sidebar {transform:translateX(-100%);top:var(--topbar-h);width:260px;}
     .sidebar.open {transform:translateX(0);}
     .overlay.open {display:block;}
-    .topbar-main-hamburger {display:flex;}
     .main-wrap {margin-left:0;}
-    .grid {grid-template-columns:1fr;}
-    .content {padding:20px 20px 40px;}
+    .grid {grid-template-columns:1fr;gap:12px;}
+    .content {padding:16px 14px 40px;}
+    .section-hd {flex-direction:column;gap:4px;margin-bottom:14px;}
+    .section-hd h2 {font-size:1.05rem;}
+    .card {padding:14px;gap:8px;}
+    .card-icon {width:32px;height:32px;font-size:.85rem;border-radius:6px;}
+    .card-title {font-size:.88rem;line-height:1.4;}
+    .card-sub {font-size:.72rem;}
+    .card-desc {font-size:.8rem;line-height:1.6;}
+    .card-tags {gap:4px;}
+    .tag {font-size:.65rem;padding:2px 6px;}
+    .card-btn {padding:6px 12px;font-size:.78rem;}
+    .list-item {padding:12px 14px;gap:10px;}
+    .list-icon {width:32px;height:32px;font-size:.85rem;border-radius:6px;}
+    .list-title {font-size:.85rem;}
+    .list-meta {font-size:.72rem;}
+    .list-btn {padding:5px 10px;font-size:.75rem;}
   }
 </style>
 </head>
