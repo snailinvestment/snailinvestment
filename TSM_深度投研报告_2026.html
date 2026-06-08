@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台积电 (TSM) 深度研究报告 — Snail Investment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep:    #050d1a;
+    --navy-mid:     #0b1e38;
+    --navy-light:   #102a50;
+    --navy-card:    #0e2244;
+    --gold:         #c9a84c;
+    --gold-light:   #e8c96a;
+    --gold-dim:     #8a6d28;
+    --teal:         #2bbfa4;
+    --teal-dim:     #1a8472;
+    --red:          #e05252;
+    --green:        #3ec97a;
+    --text-primary: #e8edf5;
+    --text-secondary:#9aacbf;
+    --text-muted:   #5a7090;
+    --border:       rgba(201,168,76,0.18);
+    --border-dim:   rgba(255,255,255,0.06);
+    --serif:        'Noto Serif SC', serif;
+    --sans:         'Noto Sans SC', sans-serif;
+    --mono:         'IBM Plex Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy-deep);
+    color: var(--text-primary);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--navy-deep); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+  /* ── HEADER BAND ── */
+  .header-band {
+    background: linear-gradient(135deg, #030b18 0%, var(--navy-mid) 60%, #0a2040 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header-band::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 700px 300px at 80% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 400px at 10% 80%, rgba(43,191,164,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 40px 48px 36px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: start;
+    position: relative;
+  }
+
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .brand-snail {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    border: 1px solid var(--gold-dim);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+  .brand-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  .report-title {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+    max-width: 640px;
+  }
+  .report-subtitle {
+    margin-top: 8px;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── RATING BOX ── */
+  .rating-box {
+    background: linear-gradient(145deg, #0d2244 0%, #091a33 100%);
+    border: 1px solid var(--gold-dim);
+    border-radius: 4px;
+    padding: 24px 28px;
+    min-width: 200px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .rating-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .rating-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .rating-value {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 0.05em;
+  }
+  .rating-ticker {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--gold);
+    margin-top: 4px;
+    letter-spacing: 0.15em;
+  }
+  .rating-divider {
+    height: 1px;
+    background: var(--border-dim);
+    margin: 12px 0;
+  }
+  .target-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+  .target-value {
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--gold-light);
+    margin-top: 2px;
+  }
+  .current-price {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 6px;
+  }
+  .upside-badge {
+    display: inline-block;
+    background: rgba(62,201,122,0.12);
+    border: 1px solid rgba(62,201,122,0.3);
+    border-radius: 2px;
+    padding: 3px 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--green);
+    margin-top: 8px;
+  }
+
+  /* ── NAV ── */
+  .toc-bar {
+    background: var(--navy-mid);
+    border-bottom: 1px solid var(--border-dim);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .toc-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-link {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 18px;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .toc-link:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  /* ── LAYOUT ── */
+  .page-body {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 48px 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
+  }
+  .main-col { min-width: 0; }
+  .side-col { min-width: 0; }
+
+  /* ── SECTIONS ── */
+  .section { margin-bottom: 52px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    min-width: 30px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── KPI GRID ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .kpi-card {
+    background: var(--navy-card);
+    border: 1px solid var(--border-dim);
+    border-radius: 3px;
+    padding: 16px 18px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .kpi-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold-dim);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .kpi-card:hover { border-color: var(--border); }
+  .kpi-card:hover::after { transform: scaleX(1); }
+  .kpi-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .kpi-value {
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  .kpi-change {
+    font-family: var(--mono);
+    font-size: 10px;
+    margin-top: 4px;
+  }
+  .pos { color: var(--green); }
+  .neg { color: var(--red); }
+  .neu { color: var(--text-muted); }
+  .kpi-sub {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* ── THESIS POINTS ── */
+  .thesis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .thesis-card {
+    background: var(--navy-card);
+    border: 1px solid var(--border-dim);
+    border-left: 3px solid var(--gold-dim);
+    border-radius: 3px;
+    padding: 16px 18px;
+    transition: border-left-color 0.2s;
+  }
+  .thesis-card:hover { border-left-color: var(--gold); }
+  .thesis-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .thesis-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* ── TEXT BLOCKS ── */
+  .body-text {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .body-text strong { color: var(--text-primary); font-weight: 600; }
+  .cite {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.04);
+    border-radius: 2px;
+    padding: 1px 5px;
+    white-space: nowrap;
+  }
+  .highlight-box {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 3px;
+    padding: 14px 18px;
+    margin: 18px 0;
+  }
+  .highlight-box p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .highlight-box strong { color: var(--gold-light); }
+
+  /* ── REVENUE BREAKDOWN BAR ── */
+  .rev-bar-wrap { margin: 20px 0; }
+  .rev-bar-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .rev-bar-track {
+    background: rgba(255,255,255,0.05);
+    border-radius: 2px;
+    height: 10px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    display: flex;
+  }
+  .rev-bar-seg {
+    height: 100%;
+    position: relative;
+    transition: opacity 0.2s;
+  }
+  .rev-bar-seg:hover { opacity: 0.85; }
+  .bar-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin-top: 10px;
+  }
+  .bar-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-secondary);
+  }
+  .bar-dot {
+    width: 8px; height: 8px;
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+
+  /* ── DATA TABLE ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin: 16px 0;
+  }
+  .data-table th {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: right;
+  }
+  .data-table th:first-child { text-align: left; }
+  .data-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border-dim);
+    color: var(--text-secondary);
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  .data-table td:first-child {
+    text-align: left;
+    font-family: var(--sans);
+    color: var(--text-primary);
+    font-size: 13px;
+  }
+  .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .data-table .total-row td {
+    border-top: 1px solid var(--border);
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  /* ── VALUATION TABLE ── */
+  .val-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+  .val-table th {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    text-align: right;
+    background: rgba(201,168,76,0.04);
+  }
+  .val-table th:first-child { text-align: left; }
+  .val-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border-dim);
+    font-family: var(--mono);
+    color: var(--text-secondary);
+    text-align: right;
+  }
+  .val-table td:first-child {
+    font-family: var(--sans);
+    text-align: left;
+    color: var(--text-primary);
+  }
+  .val-table .subtotal td { color: var(--gold-light); border-top: 1px solid var(--border); }
+
+  /* ── RISK TABLE ── */
+  .risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .risk-item {
+    background: var(--navy-card);
+    border: 1px solid var(--border-dim);
+    border-radius: 3px;
+    padding: 14px 16px;
+  }
+  .risk-severity {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .sev-high { color: var(--red); }
+  .sev-med  { color: #e09552; }
+  .sev-low  { color: var(--teal); }
+  .risk-title {
+    font-size: 13px;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .risk-desc { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+  /* ── SIDE COL ── */
+  .side-section {
+    background: var(--navy-card);
+    border: 1px solid var(--border-dim);
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .side-title {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-dim);
+  }
+  .metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border-dim);
+  }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-key {
+    font-size: 11.5px;
+    color: var(--text-secondary);
+  }
+  .metric-val {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* ── GUIDANCE BOX ── */
+  .guidance-box {
+    background: linear-gradient(135deg, rgba(43,191,164,0.06) 0%, rgba(11,30,56,0) 100%);
+    border: 1px solid rgba(43,191,164,0.2);
+    border-radius: 3px;
+    padding: 16px 18px;
+    margin: 20px 0;
+  }
+  .guidance-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+  .guidance-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 12.5px;
+  }
+  .guidance-k { color: var(--text-muted); }
+  .guidance-v { font-family: var(--mono); color: var(--text-primary); }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    border-top: 1px solid var(--border-dim);
+    padding-top: 24px;
+    margin-top: 20px;
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ── TARGET PRICE VISUAL ── */
+  .tp-visual {
+    background: var(--navy-card);
+    border: 1px solid var(--border-dim);
+    border-radius: 3px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  .tp-track {
+    position: relative;
+    height: 6px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    margin: 24px 0 30px;
+  }
+  .tp-fill {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: linear-gradient(90deg, var(--teal-dim), var(--gold));
+    border-radius: 3px;
+  }
+  .tp-marker {
+    position: absolute;
+    top: -4px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    border: 2px solid var(--navy-deep);
+  }
+  .tp-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: -20px;
+  }
+  .tp-legend {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .tp-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-secondary);
+  }
+  .tp-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--navy-deep);
+  }
+
+  /* ── SCENARIO TABLE ── */
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .scenario-card {
+    border-radius: 3px;
+    padding: 16px;
+    text-align: center;
+  }
+  .sc-bull { background: rgba(62,201,122,0.07); border: 1px solid rgba(62,201,122,0.2); }
+  .sc-base { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.25); }
+  .sc-bear { background: rgba(224,82,82,0.07); border: 1px solid rgba(224,82,82,0.2); }
+  .sc-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; }
+  .sc-bull .sc-label { color: var(--green); }
+  .sc-base .sc-label { color: var(--gold); }
+  .sc-bear .sc-label { color: var(--red); }
+  .sc-price { font-family: var(--mono); font-size: 22px; font-weight: 500; color: var(--text-primary); }
+  .sc-prob { font-family: var(--mono); font-size: 10px; color: var(--text-muted); margin-top: 4px; }
+  .sc-desc { font-size: 11px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-mid);
+    border-top: 1px solid var(--border-dim);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand { font-family: var(--mono); font-size: 11px; color: var(--text-muted); letter-spacing: 0.15em; }
+  .footer-notice { font-size: 11px; color: var(--text-muted); max-width: 600px; text-align: right; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .section { animation: fadeUp 0.5s ease both; }
+  .section:nth-child(1) { animation-delay: 0.05s; }
+  .section:nth-child(2) { animation-delay: 0.1s; }
+  .section:nth-child(3) { animation-delay: 0.15s; }
+  .section:nth-child(4) { animation-delay: 0.2s; }
+  .section:nth-child(5) { animation-delay: 0.25s; }
+
+  @media (max-width: 900px) {
+    .page-body { grid-template-columns: 1fr; padding: 24px; }
+    .header-inner { grid-template-columns: 1fr; padding: 28px 24px; }
+    .kpi-grid { grid-template-columns: repeat(2,1fr); }
+    .thesis-grid { grid-template-columns: 1fr; }
+    .risk-grid { grid-template-columns: 1fr; }
+    .scenario-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="brand-row">
+        <span class="brand-snail">Snail Investment</span>
+        <span class="brand-date">研究部 · 2026年6月8日</span>
+      </div>
+      <h1 class="report-title">
+        台积电 (TSM)：AI算力系统性紧缺与全球化<br>成本博弈下的价值重估
+      </h1>
+      <p class="report-subtitle">Taiwan Semiconductor Manufacturing Company Ltd. &nbsp;|&nbsp; NYSE: TSM &nbsp;|&nbsp; 半导体制造 · AI基础设施</p>
+    </div>
+    <div class="rating-box">
+      <div class="rating-label">投资评级</div>
+      <div class="rating-value">买入</div>
+      <div class="rating-ticker">TSM · NYSE</div>
+      <div class="rating-divider"></div>
+      <div class="target-label">12个月目标价区间</div>
+      <div class="target-value">$480 – $540</div>
+      <div class="current-price">当前价格：$415.17（6月7日）</div>
+      <span class="upside-badge">▲ 潜在涨幅 +15.6% ~ +30.1%</span>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav class="toc-bar">
+  <div class="toc-inner">
+    <a href="#thesis"     class="toc-link">投资论点</a>
+    <a href="#financials" class="toc-link">财务摘要</a>
+    <a href="#supply"     class="toc-link">供应链分析</a>
+    <a href="#overseas"   class="toc-link">海外扩张</a>
+    <a href="#demand"     class="toc-link">需求与风险</a>
+    <a href="#valuation"  class="toc-link">估值模型</a>
+    <a href="#risks"      class="toc-link">风险提示</a>
+  </div>
+</nav>
+
+<!-- ══════════════ BODY ══════════════ -->
+<div class="page-body">
+
+  <!-- ── MAIN COLUMN ── -->
+  <main class="main-col">
+
+    <!-- §1 投资论点 -->
+    <section class="section" id="thesis">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-title">核心投资论点（Investment Thesis）</h2>
+      </div>
+
+      <div class="thesis-grid">
+        <div class="thesis-card">
+          <div class="thesis-tag">✦ 结构性垄断</div>
+          <p class="thesis-text">台积电在全球先进制程市场占有率逾 <strong>90%</strong>，2nm以下制程技术壁垒已构筑无可复制的护城河。AI算力军备竞赛使英伟达、博通、AMD等客户形成高度单向依赖，定价权持续强化。<span class="cite">来源：Morningstar, 2025年报告</span></p>
+        </div>
+        <div class="thesis-card">
+          <div class="thesis-tag">✦ AI需求共振</div>
+          <p class="thesis-text">2026年Q1先进制程（7nm及以下）占晶圆收入 <strong>74%</strong>，同比大幅提升。TSMC管理层明确表示先进制程需求约为可用产能的<strong>三倍</strong>，供不应求局面预计延续至2027年以后。<span class="cite">来源：台积电2026Q1财报</span></p>
+        </div>
+        <div class="thesis-card">
+          <div class="thesis-tag">✦ 利润率持续扩张</div>
+          <p class="thesis-text">毛利率创历史新高 <strong>66.2%</strong>（超出管理层引导上限），净利率突破50%，ROE达40.5%。高端产能持续满载叠加3nm/2nm产品组合升级，中期毛利率中枢有望维持65%~68%。<span class="cite">来源：台积电2026Q1 6-K SEC文件</span></p>
+        </div>
+        <div class="thesis-card">
+          <div class="thesis-tag">✦ CoWoS稀缺溢价</div>
+          <p class="thesis-text">先进封装CoWoS产能已成为全球AI芯片供应链最核心瓶颈，产能持续售罄。TSMC正将CoWoS月产能从2024年底约35,000片扩至2026年末约130,000片，并首次将CoWoS引入美国亚利桑那州。<span class="cite">来源：FinancialContent, 2026年1月</span></p>
+        </div>
+        <div class="thesis-card">
+          <div class="thesis-tag">⚠ 谨慎考量</div>
+          <p class="thesis-text">美国GigaFab超级晶圆厂建设（计划总投资$1,650亿）将在产能爬坡初期带来可量化的毛利率稀释压力，叠加单片晶圆折旧成本上升，短期内将对整体利润率造成1~3个百分点的下行压力。</p>
+        </div>
+        <div class="thesis-card">
+          <div class="thesis-tag">⚠ 客户集中度</div>
+          <p class="thesis-text">苹果、英伟达两家客户合计占收入比例估计超过45%。单一超大客户资本开支的周期性波动，以及潜在的英伟达出口管制收紧，是不可忽视的需求端尾部风险。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- §2 财务摘要 -->
+    <section class="section" id="financials">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 class="section-title">财务摘要：2026Q1核心数据看板</h2>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">总营收（美元）</div>
+          <div class="kpi-value">$35.9B</div>
+          <div class="kpi-change pos">▲ +40.6% YoY  &nbsp; +6.4% QoQ</div>
+          <div class="kpi-sub">超出Q1指引上限</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">净利润</div>
+          <div class="kpi-value">NT$572B</div>
+          <div class="kpi-change pos">▲ +58.3% YoY  &nbsp; +13.2% QoQ</div>
+          <div class="kpi-sub">≈ USD $18.2B，历史新高</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">稀释每股收益</div>
+          <div class="kpi-value">NT$22.08</div>
+          <div class="kpi-change pos">▲ +58.3% YoY，超预期</div>
+          <div class="kpi-sub">美元ADR：$3.49/股；一致预期 $3.12</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">毛利率</div>
+          <div class="kpi-value">66.2%</div>
+          <div class="kpi-change pos">▲ +3.9ppt QoQ  &nbsp; +7.4ppt YoY</div>
+          <div class="kpi-sub">超出引导上限65%，历史新高</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">营业利润率</div>
+          <div class="kpi-value">58.1%</div>
+          <div class="kpi-change pos">▲ +4.1ppt QoQ</div>
+          <div class="kpi-sub">经营杠杆效应显著</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">自由现金流</div>
+          <div class="kpi-value">NT$348B</div>
+          <div class="kpi-change pos">≈ USD $11.0B</div>
+          <div class="kpi-sub">手持现金 $106B（美元）</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">净利润率</div>
+          <div class="kpi-value">50.5%</div>
+          <div class="kpi-change pos">▲ +2.2ppt QoQ  &nbsp; +7.4ppt YoY</div>
+          <div class="kpi-sub">净利率首次突破50%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">ROE（年化）</div>
+          <div class="kpi-value">40.5%</div>
+          <div class="kpi-change pos">资本回报率持续强化</div>
+          <div class="kpi-sub">资产负债表极为健康</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">2026资本支出</div>
+          <div class="kpi-value">$52–56B</div>
+          <div class="kpi-change neu">偏向上限</div>
+          <div class="kpi-sub">管理层明确"偏向高端"</div>
+        </div>
+      </div>
+      <p style="font-size:11px; color: var(--text-muted); margin-top:-4px;">数据来源：台积电2026年Q1季报（6-K SEC文件，2026年4月16日）；汇率采用当期均价 NTD/USD≈31.6</p>
+
+      <!-- Node breakdown -->
+      <div style="margin-top: 28px;">
+        <p style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 12px;">制程节点收入结构（2026Q1晶圆营收占比）</p>
+        <div class="rev-bar-label">
+          <span></span><span>合计 100%</span>
+        </div>
+        <div class="rev-bar-track">
+          <div class="rev-bar-seg" style="width:25%; background:#c9a84c;" title="3nm 25%"></div>
+          <div class="rev-bar-seg" style="width:36%; background:#2bbfa4;" title="5nm 36%"></div>
+          <div class="rev-bar-seg" style="width:13%; background:#5a9fd4;" title="7nm 13%"></div>
+          <div class="rev-bar-seg" style="width:26%; background:#2d3f55;" title="成熟制程 26%"></div>
+        </div>
+        <div class="bar-legend">
+          <div class="bar-legend-item"><div class="bar-dot" style="background:#c9a84c;"></div>3nm: <strong>25%</strong></div>
+          <div class="bar-legend-item"><div class="bar-dot" style="background:#2bbfa4;"></div>5nm: <strong>36%</strong></div>
+          <div class="bar-legend-item"><div class="bar-dot" style="background:#5a9fd4;"></div>7nm: <strong>13%</strong></div>
+          <div class="bar-legend-item"><div class="bar-dot" style="background:#2d3f55;"></div>成熟制程（≥16nm）: <strong>26%</strong></div>
+        </div>
+        <p style="font-size:11px; color: var(--text-muted); margin-top: 8px;">先进制程（7nm及以下）合计占晶圆收入 <strong style="color:var(--gold-light);">74%</strong>，较2025Q1约59%大幅提升。&nbsp; <span class="cite">来源：台积电2026Q1财报</span></p>
+      </div>
+
+      <!-- Q2 Guidance -->
+      <div class="guidance-box" style="margin-top: 24px;">
+        <div class="guidance-title">Q2 2026 管理层业绩指引</div>
+        <div class="guidance-row"><span class="guidance-k">营收区间（美元）</span><span class="guidance-v">$39.0B – $40.2B &nbsp;（+8.6%~12.0% QoQ）</span></div>
+        <div class="guidance-row"><span class="guidance-k">毛利率区间</span><span class="guidance-v">65.5% – 67.5%</span></div>
+        <div class="guidance-row"><span class="guidance-k">营业利润率区间</span><span class="guidance-v">56.5% – 58.5%</span></div>
+        <div class="guidance-row"><span class="guidance-k">全年营收增速目标</span><span class="guidance-v">美元计 >30% YoY</span></div>
+        <div class="guidance-row"><span class="guidance-k">全年资本支出</span><span class="guidance-v">$52B – $56B（偏向上限）</span></div>
+        <p style="font-size:11px; color: var(--text-muted); margin-top: 10px;">数据来源：台积电Q1 2026业绩电话会议纪要，CEO C.C. Wei，2026年4月16日</p>
+      </div>
+    </section>
+
+    <!-- §3 供应链分析 -->
+    <section class="section" id="supply">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2 class="section-title">供应链全景：系统性紧缺深度剖析</h2>
+      </div>
+
+      <p class="body-text"><strong>先进制程供需剪刀差</strong> · TSMC CEO C.C. Wei在电话会议上罕见地直接表示，<strong>公司先进制程节点的需求约为可用供给的三倍</strong>。3nm（N3）节点已高度满负荷，2nm（N2）自2025Q4于台湾高雄开始量产以来同样迅速达到产能上限。即使在高达$52-56亿的年度资本支出下，新产能的建设与爬坡仍需3-4年周期，这一"结构性滞后"使供给紧缺格局有望延续至2027年以后。<span class="cite">来源：Inside the AI Bottleneck分析报告, Fusion Worldwide</span></p>
+
+      <div class="highlight-box">
+        <p><strong>CoWoS：全球AI芯片供应链的"最窄管道"</strong><br>
+        先进封装技术CoWoS（Chip on Wafer on Substrate）已成为制约AI加速器交付的第一瓶颈。TSMC CEO明确表示："我们的CoWoS产能非常紧张，持续售罄，贯穿2025年并延伸至2026年。"台积电正将CoWoS月产能从2024年底约<strong>35,000片</strong>扩张至2026年末约<strong>130,000片</strong>（CAGR约80%），以缓解英伟达Blackwell Ultra及Rubin等下一代AI加速器的封装瓶颈。英伟达据报预订了约50%以上的2026年CoWoS分配产能（约80-85万片年化）。<span class="cite">来源：FinancialContent 2026年1月1日；C.C. Wei公开声明</span></p>
+      </div>
+
+      <p class="body-text"><strong>2nm节点爬坡节奏</strong> · N2制程采用全新GAA（Gate-All-Around）纳米片晶体管架构，相较N3在同等功耗下性能提升10-15%，或在同等性能下功耗降低25-30%。台湾Fab 22（高雄）与Fab 20（新竹）已启动量产，当前产能爬坡速度符合预期。台积电于2026年5月北美技术研讨会上进一步发布N2U延伸节点、A13（1.3nm）与A12（1.2nm）路线图，展示出显著的长期技术代际领先优势。<span class="cite">来源：Data Center Dynamics, 2026年5月7日报道</span></p>
+
+      <p class="body-text"><strong>成熟制程竞争加剧</strong> · 在16nm及以上成熟制程领域，来自中国大陆（中芯国际）及东南亚扩张的竞争压力持续加大，成熟节点价格承压，毛利率相对偏低。该部分占TSMC晶圆收入约26%，是收入结构中相对的"薄弱环节"。公司正将成熟节点工具向新加坡等地转移，以释放台湾本岛产线空间用于先进节点扩产。<span class="cite">来源：TrendForce, 2026年1月9日</span></p>
+    </section>
+
+    <!-- §4 海外扩张 -->
+    <section class="section" id="overseas">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2 class="section-title">海外扩张：成本博弈与利润率稀释量化</h2>
+      </div>
+
+      <p class="body-text"><strong>亚利桑那GigaFab集群</strong> · 台积电已宣布在美国亚利桑那州累计投资$1,650亿，计划建设<strong>六座晶圆厂 + 两座先进封装厂 + 一座研发中心</strong>。Fab 1（4nm工艺）已于2025Q4开始量产，月产能达90,000-100,000片；Fab 2（3nm）正进行设备安装；Fab 3与Fab 4分别规划2nm与A16（1.6nm）制程。尤为关键的是，亚利桑那州首座CoWoS先进封装厂已于2026年5月破土动工，预计2028年投入运营。届时，"硅沙漠"将首次提供从裸片制造到完整AI加速器封装的全链路本土化能力。<span class="cite">来源：Tech-Insider.org & FinancialContent 2026年1月</span></p>
+
+      <div class="highlight-box">
+        <p><strong>利润率稀释量化分析</strong><br>
+        根据台积电管理层披露，美国工厂（尤其在产能爬坡初期）的单位晶圆生产成本约为台湾本土的<strong>1.5-2倍</strong>，主要驱动因素包括：①劳动力成本溢价（美国工人薪酬约为台湾的3-4倍）；②设备折旧加速（EUV及High-NA EUV设备单价均超$2亿/台）；③初期良率爬坡损耗；④基础设施配套成本（水、电、化学品供应体系）。综合测算，海外产能每增加10个百分点占比，将对整体毛利率造成约<strong>1.5-2.5个百分点</strong>的下行压力。管理层维持65%+毛利率引导，表明其相信可通过产品组合升级（更多3nm/2nm收入）和成本控制来抵消稀释效应。<strong>这是本报告的核心估值风险之一</strong>。</p>
+      </div>
+
+      <p class="body-text"><strong>日本熊本工厂</strong> · Fab 1（28nm/22nm，索尼合资）已于2024年Q1投入运营；Fab 2（16nm/12nm或直接跳至2nm）正在建设，有报道称内部方案倾向跳过中间节点直接上2nm，以吸引英伟达、AMD等AI客户。日本政府补贴力度约为总投资的30-40%，有效摊薄建厂成本。<span class="cite">来源：TrendForce, Mirror Media引述内部方案</span></p>
+
+      <p class="body-text"><strong>CHIPS法案补贴现状</strong> · 台积电已与美国商务部就《芯片法案》补贴完成初步协议，预计获得直接补贴约$66亿+贷款担保，总计约$110亿美国政府支持。然而，相较于$1,650亿的总投资，联邦补贴占比不足7%，市场力量而非政府补贴才是此次大规模资本投入的主要驱动因素。<span class="cite">来源：FinancialContent, 2026年1月</span></p>
+    </section>
+
+    <!-- §5 需求与地缘 -->
+    <section class="section" id="demand">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2 class="section-title">宏观需求共振与客户集中度风险</h2>
+      </div>
+
+      <p class="body-text"><strong>AI数据中心需求持续性</strong> · 英伟达（Blackwell Ultra/Rubin）、博通（ASIC定制芯片）、亚马逊（Trainium/Inferentia）、谷歌（TPU v6+）等超大规模云厂商的AI资本开支仍维持高强度扩张。CNBC分析师于2026年6月明确建议"将组合中心于AI资本开支受益者，因周期仍将持续12-18个月"。台积电管理层预期2026年全年营收增速超30%（美元计），核心驱动力正是上述需求。<span class="cite">来源：CNBC, 2026年6月3日</span></p>
+
+      <p class="body-text"><strong>消费电子低迷带来的传统制程拖累</strong> · 全球智能手机出货量复苏节奏弱于预期，PC端AI PC渗透率尚处早期（<5%）。成熟制程（16nm+）营收增长受此拖累，价格战风险持续存在。该部分约占总收入26%，虽非主体，但若出现超预期下滑（>10%），将对公司整体增速形成显著拖累。</p>
+
+      <p class="body-text"><strong>地缘政治：台海风险与供应链重构</strong> · 台积电90%以上的先进制程产能仍集中于台湾，构成主要的地缘政治敞口。美国亚利桑那GigaFab的核心战略价值之一，正是为苹果、英伟达等美国科技巨头构建"跨太平洋供应链冗余"。与此同时，美国出口管制持续收紧（尤其针对向中国大陆出口先进制程芯片与封装服务），中国大陆收入目前已降至个位数百分比（约3-5%），后续管制升级的直接财务影响相对可控，但舆论与政策的不确定性仍将对股票估值乘数形成持续性折价压力。</p>
+
+      <div class="highlight-box">
+        <p><strong>管理层战略执行评估</strong><br>
+        CC Wei自2024年接任董事长兼CEO以来，战略执行力度显著。在关键决策上：①坚持"先进制程优先"产能分配，抵制了短期扩产成熟节点的诱惑；②前瞻性地将CoWoS封装内部化，而非依赖外包，精准锁定了AI供应链最核心的利润汇聚点；③面对美国政府压力，以商业利益为主轴谈判补贴条款，维持了相对自主的资本配置主权。研发方面，N2 GAA架构的成功量产，以及A13/A12节点的提前披露，显示台积电在技术代际上至少领先三星两代，领先英特尔一代半，护城河深度位于历史最高水平。</p>
+      </div>
+    </section>
+
+    <!-- §6 估值 -->
+    <section class="section" id="valuation">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2 class="section-title">估值模型：SOTP × DCF 交叉验证</h2>
+      </div>
+
+      <p class="body-text" style="margin-bottom:20px;">我们采用<strong>分部加总估值（SOTP）</strong>为主、<strong>DCF现金流折现</strong>为辅的双轨框架。SOTP精准捕捉AI先进制程业务的结构性溢价与CoWoS封装的稀缺价值；DCF则提供绝对估值锚点，并量化未来资本开支与折旧对自由现金流的侵蚀。</p>
+
+      <!-- SOTP Table -->
+      <p style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px;">分部加总估值（SOTP）——基于2026E全年收入预测</p>
+      <table class="val-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">业务分部</th>
+            <th>2026E收入</th>
+            <th>EV/Sales 乘数</th>
+            <th>估值贡献</th>
+            <th>逻辑支撑</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AI/HPC先进制程（3nm/2nm）</td>
+            <td>~$73B</td>
+            <td>18–22×</td>
+            <td>$1,314–1,606B</td>
+            <td>垄断定价权+需求3倍于供给；AI基础设施不可替代性</td>
+          </tr>
+          <tr>
+            <td>移动端先进制程（5nm/7nm）</td>
+            <td>~$48B</td>
+            <td>10–13×</td>
+            <td>$480–624B</td>
+            <td>苹果/高通主导，需求较稳定，竞争格局优但弹性低于AI端</td>
+          </tr>
+          <tr>
+            <td>先进封装（CoWoS/SoIC）</td>
+            <td>~$15B</td>
+            <td>20–25×</td>
+            <td>$300–375B</td>
+            <td>单一紧缺资产；全球CoWoS产能80% CAGR扩张，结构性溢价显著</td>
+          </tr>
+          <tr>
+            <td>成熟制程（≥16nm）</td>
+            <td>~$26B</td>
+            <td>5–7×</td>
+            <td>$130–182B</td>
+            <td>受竞争与价格战压制，高端赋予相对低估值；仍提供稳定现金流</td>
+          </tr>
+          <tr class="subtotal">
+            <td><strong>企业价值合计（EV）</strong></td>
+            <td><strong>~$162B</strong></td>
+            <td>—</td>
+            <td><strong>$2,224–2,787B</strong></td>
+            <td>加:净现金 $106B；减:少数股东权益及债务</td>
+          </tr>
+          <tr class="subtotal">
+            <td><strong>隐含股权价值（每ADR）</strong></td>
+            <td colspan="3"><strong>$456 – $551</strong></td>
+            <td>稀释股本约51.9亿股</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px; color: var(--text-muted); margin-top: 6px;">* 2026E全年营收基于管理层"超30%增速"引导，取Q1实际值$35.9B×（1+预测季节性）推算约$148-162B。SOTP乘数参照AI半导体同类公司（NVDA、AVGO、ASML）溢价及台积电历史估值区间。</p>
+
+      <!-- DCF -->
+      <p style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin: 24px 0 10px;">DCF现金流折现——关键假设与敏感性</p>
+      <table class="data-table">
+        <thead><tr><th>参数</th><th>保守</th><th>基准</th><th>乐观</th></tr></thead>
+        <tbody>
+          <tr><td>2026-2028E 营收CAGR</td><td>18%</td><td>25%</td><td>32%</td></tr>
+          <tr><td>稳态自由现金流利润率</td><td>28%</td><td>33%</td><td>38%</td></tr>
+          <tr><td>加权平均资本成本（WACC）</td><td>9.5%</td><td>8.5%</td><td>7.5%</td></tr>
+          <tr><td>终端增长率</td><td>3.0%</td><td>4.0%</td><td>5.0%</td></tr>
+          <tr class="total-row"><td>隐含每ADR内在价值</td><td>$365</td><td>$487</td><td>$620</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px; color: var(--text-muted); margin-top: 6px;">DCF自由现金流稀释来源：①亚利桑那GigaFab建设期高折旧（预计2028-2032年高峰期每年额外折旧$15-25B）；②美国建厂期间高资本密度导致FCF/净利润比率短期收窄至约60-65%（vs 正常75-80%）。</p>
+
+      <!-- Scenario -->
+      <p style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin: 24px 0 10px;">综合目标价区间（12个月，SOTP×DCF加权）</p>
+      <div class="scenario-grid">
+        <div class="scenario-card sc-bear">
+          <div class="sc-label">熊市情景</div>
+          <div class="sc-price">$354</div>
+          <div class="sc-prob">概率权重：20%</div>
+          <div class="sc-desc">AI资本开支明显放缓；海外建厂成本失控；毛利率跌破62%；台海紧张加剧</div>
+        </div>
+        <div class="scenario-card sc-base">
+          <div class="sc-label">基准情景</div>
+          <div class="sc-price">$480–540</div>
+          <div class="sc-prob">概率权重：60%</div>
+          <div class="sc-desc">AI需求持续强劲；毛利率65-68%；CoWoS扩产顺利；GigaFab爬坡符合预期</div>
+        </div>
+        <div class="scenario-card sc-bull">
+          <div class="sc-label">牛市情景</div>
+          <div class="sc-price">$600</div>
+          <div class="sc-prob">概率权重：20%</div>
+          <div class="sc-desc">2nm超预期爬坡；CoWoS产能提前翻番；AI资本开支超预期；成熟制程复苏</div>
+        </div>
+      </div>
+
+      <!-- Target Price Visual -->
+      <div class="tp-visual" style="margin-top: 20px;">
+        <p style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;">目标价可视化（基于当前价格$415.17）</p>
+        <div class="tp-track">
+          <div class="tp-fill" style="width:72%;"></div>
+          <!-- Bear at ~37%, Current at ~52%, Target low at ~63%, Target high at ~75%, Bull at ~90% -->
+          <div class="tp-marker" style="left:36%; background:var(--red);" title="熊市 $354"></div>
+          <div class="tp-marker" style="left:51%; background:#fff;" title="当前价 $415"></div>
+          <div class="tp-marker" style="left:63%; background:var(--gold);" title="目标低 $480"></div>
+          <div class="tp-marker" style="left:74%; background:var(--gold-light);" title="目标高 $540"></div>
+          <div class="tp-marker" style="left:90%; background:var(--green);" title="牛市 $600"></div>
+        </div>
+        <div class="tp-labels">
+          <span>$300</span>
+          <span>$350</span>
+          <span>$400</span>
+          <span>$450</span>
+          <span>$500</span>
+          <span>$550</span>
+          <span>$600+</span>
+        </div>
+        <div class="tp-legend">
+          <div class="tp-legend-item"><div class="tp-dot" style="background:var(--red);"></div>熊市 $354</div>
+          <div class="tp-legend-item"><div class="tp-dot" style="background:#fff;"></div>现价 $415</div>
+          <div class="tp-legend-item"><div class="tp-dot" style="background:var(--gold);"></div>目标低 $480</div>
+          <div class="tp-legend-item"><div class="tp-dot" style="background:var(--gold-light);"></div>目标高 $540</div>
+          <div class="tp-legend-item"><div class="tp-dot" style="background:var(--green);"></div>牛市 $600</div>
+        </div>
+      </div>
+
+      <div class="highlight-box" style="margin-top: 20px;">
+        <p><strong>最终评级：买入（BUY）&nbsp;|&nbsp; 目标价：$480 – $540（12个月）&nbsp;|&nbsp; 核心逻辑</strong><br>
+        基准情景下，SOTP估值中枢约$500，较当前价格$415.17具备约20%的上行空间。台积电在AI算力基础设施领域的结构性垄断地位、持续扩大的技术领先优势（N2量产+A13/A12路线图）、以及CoWoS封装的独立稀缺价值，共同支撑了超越普通半导体公司的估值溢价。海外扩张的成本博弈是真实存在的对冲因素，但管理层的执行力与规模经济效应，使我们对毛利率维持65%+中枢具备合理信心。当前估值约26×2026E P/E，相较AI周期受益标的的历史溢价水平，仍处于合理甚至偏低区间。</p>
+      </div>
+    </section>
+
+    <!-- §7 风险 -->
+    <section class="section" id="risks">
+      <div class="section-header">
+        <span class="section-num">07</span>
+        <h2 class="section-title">风险提示</h2>
+      </div>
+
+      <div class="risk-grid">
+        <div class="risk-item">
+          <div class="risk-severity sev-high">■ 高风险</div>
+          <div class="risk-title">海外工厂成本失控</div>
+          <div class="risk-desc">若美国工厂建设成本超预期（超出$1,650亿预算）或良率爬坡时间线延误，将对毛利率造成超预期稀释，引发估值重新定价。敏感性分析：毛利率每下滑1ppt，EPS影响约-2.5%，估值影响约-3-4%。</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-severity sev-high">■ 高风险</div>
+          <div class="risk-title">台海地缘政治激化</div>
+          <div class="risk-desc">台海军事冲突或显著升温，将导致市场对台积电的地缘政治风险折价大幅扩大，与基于基本面的估值框架严重背离。此为尾部风险，难以量化但影响极大。</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-severity sev-high">■ 高风险</div>
+          <div class="risk-title">AI资本开支周期逆转</div>
+          <div class="risk-desc">若主要云服务商（微软、谷歌、亚马逊）AI基础设施投资出现实质性缩减（>20%），或英伟达出口管制进一步收紧，将对台积电先进制程需求造成直接冲击，目前市场对此定价不足。</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-severity sev-med">● 中风险</div>
+          <div class="risk-title">技术节点竞争风险</div>
+          <div class="risk-desc">英特尔18A节点若在商业良率上实现突破，或三星SF2获得英伟达之外的大客户背书，将打破台积电的技术垄断逻辑，引发对市场份额的重新评估。</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-severity sev-med">● 中风险</div>
+          <div class="risk-title">成熟制程价格战加剧</div>
+          <div class="risk-desc">中芯国际、联电等在成熟节点的激进定价策略，若蔓延至8nm-16nm区间，将压缩该部分业务利润率，并影响台积电的产品组合策略调整空间。</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-severity sev-med">● 中风险</div>
+          <div class="risk-title">关键人才流失与技术外泄</div>
+          <div class="risk-desc">美国工厂运营对台积电工程师文化的稀释风险，以及核心制程工艺外泄至竞争对手的潜在威胁，是维系长期技术护城河的隐性挑战。美国政府对台积电在美雇用台湾工程师存在政策关注。</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-severity sev-low">◆ 低风险</div>
+          <div class="risk-title">新台币汇率风险</div>
+          <div class="risk-desc">公司收入以美元为主（Q1占比超85%），而大量成本以台币计价。新台币升值将带来一定程度的成本上升，但台积电对汇率的自然对冲能力较强，管理层已表示Q1毛利率受汇率正向贡献。</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-severity sev-low">◆ 低风险</div>
+          <div class="risk-title">消费电子持续低迷</div>
+          <div class="risk-desc">智能手机市场若出现超预期下滑（全球出货量跌幅>8%），将进一步压缩5nm/7nm制程的移动端使用率。考虑AI端需求的强力对冲，单独影响尚在可控范围。</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <strong>免责声明</strong> · 本报告由Snail Investment研究部独立撰写，仅供信息参考，不构成任何投资建议或投资要约。所有财务数据均来源于公开披露文件，具体以台积电官方投资者关系网站及SEC存档文件为准。股票投资涉及风险，历史业绩不代表未来表现。投资者在做出任何投资决策前，应独立评估风险并咨询专业财务顾问。报告中任何对未来的预测均存在重大不确定性。<br>
+      报告生成日期：2026年6月8日 &nbsp;|&nbsp; 分析师：Snail Investment 研究部 &nbsp;|&nbsp; 下次更新：台积电2026Q2财报发布后（预计2026年7月16日）
+    </div>
+
+  </main>
+
+  <!-- ── SIDE COLUMN ── -->
+  <aside class="side-col">
+
+    <div class="side-section">
+      <div class="side-title">市场快照</div>
+      <div class="metric-row">
+        <span class="metric-key">当前价格（6/7）</span>
+        <span class="metric-val">$415.17</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">52周高点</span>
+        <span class="metric-val">$450.16</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">52周低点</span>
+        <span class="metric-val">$205.87</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">市值（美元）</span>
+        <span class="metric-val" style="color:var(--gold-light);">~$2.15T</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">市销率（TTM）</span>
+        <span class="metric-val">16.2×</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">市盈率（归一化）</span>
+        <span class="metric-val">34.9×</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">EPS TTM（ADR）</span>
+        <span class="metric-val">$73.61</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">股息收益率</span>
+        <span class="metric-val">0.85%</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">分析师一致评级</span>
+        <span class="metric-val" style="color:var(--green);">强烈买入</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">卖方平均目标价</span>
+        <span class="metric-val">$467.84</span>
+      </div>
+      <p style="font-size:10px; color:var(--text-muted); margin-top:10px;">数据来源：Investing.com / Morningstar<br>截至2026年6月7日收盘</p>
+    </div>
+
+    <div class="side-section">
+      <div class="side-title">Q1 2026 核心财务指标</div>
+      <div class="metric-row">
+        <span class="metric-key">营收（美元）</span>
+        <span class="metric-val">$35.9B</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">净利润（美元）</span>
+        <span class="metric-val">$18.2B</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">毛利率</span>
+        <span class="metric-val" style="color:var(--green);">66.2%</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">营业利润率</span>
+        <span class="metric-val">58.1%</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">净利润率</span>
+        <span class="metric-val">50.5%</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">自由现金流</span>
+        <span class="metric-val">~$11.0B</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">手持现金</span>
+        <span class="metric-val">$106B</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">ROE（年化）</span>
+        <span class="metric-val">40.5%</span>
+      </div>
+      <p style="font-size:10px; color:var(--text-muted); margin-top:10px;">来源：台积电Q1 2026 SEC 6-K文件，2026年4月16日</p>
+    </div>
+
+    <div class="side-section">
+      <div class="side-title">技术路线图</div>
+      <div class="metric-row">
+        <span class="metric-key">3nm (N3)</span>
+        <span class="metric-val" style="color:var(--green);">量产中</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">2nm (N2)</span>
+        <span class="metric-val" style="color:var(--green);">量产中 (25Q4↑)</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">N2U (延伸)</span>
+        <span class="metric-val" style="color:var(--teal);">已发布路线图</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">A16 (1.6nm)</span>
+        <span class="metric-val" style="color:var(--teal);">AZ Fab3目标</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">A14 (1.4nm)</span>
+        <span class="metric-val" style="color: var(--text-muted);">~2028预研</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">A13 (1.3nm)</span>
+        <span class="metric-val" style="color: var(--text-muted);">已宣布</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">A12 (1.2nm)</span>
+        <span class="metric-val" style="color: var(--text-muted);">已宣布</span>
+      </div>
+      <p style="font-size:10px; color:var(--text-muted); margin-top:10px;">来源：TSMC 2026北美技术研讨会，5月7日</p>
+    </div>
+
+    <div class="side-section">
+      <div class="side-title">卖方机构目标价对比</div>
+      <div class="metric-row">
+        <span class="metric-key">买入评级分析师数</span>
+        <span class="metric-val" style="color:var(--green);">17 / 17</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">卖出评级</span>
+        <span class="metric-val">0</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">最高目标价</span>
+        <span class="metric-val">$600</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">最低目标价</span>
+        <span class="metric-val">$354</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">一致均值目标价</span>
+        <span class="metric-val">$467.84</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">Snail目标价（基准）</span>
+        <span class="metric-val" style="color:var(--gold-light);">$480 – $540</span>
+      </div>
+      <p style="font-size:10px; color:var(--text-muted); margin-top:10px;">来源：Investing.com，截至2026年6月</p>
+    </div>
+
+    <div class="side-section">
+      <div class="side-title">下一催化剂</div>
+      <div class="metric-row">
+        <span class="metric-key">Q2财报发布</span>
+        <span class="metric-val" style="color:var(--gold);">2026年7月16日</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">AZ Fab2建设进度</span>
+        <span class="metric-val">持续追踪</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">AZ CoWoS厂破土</span>
+        <span class="metric-val">已开工（5月）</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-key">美台双重征税协议</span>
+        <span class="metric-key" style="color:var(--teal);">立法进展待观察</span>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-brand">SNAIL INVESTMENT RESEARCH &nbsp;·&nbsp; 独立精品投行 &nbsp;·&nbsp; 2026</div>
+  <div class="footer-notice">本报告仅供信息参考，不构成投资建议。所有预测存在不确定性，过往表现不代表未来结果。投资者须自担风险。</div>
+</footer>
+
+</body>
+</html>
