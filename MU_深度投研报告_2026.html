@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美光科技 (MU) 深度研究报告 — Snail Investment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #04080f;
+    --bg-mid:    #080f1c;
+    --bg-card:   #0a1529;
+    --bg-light:  #0e1e38;
+    --gold:      #b8972d;
+    --gold-lt:   #d4b24a;
+    --gold-dim:  #7a6218;
+    --teal:      #00c2a8;
+    --teal-dim:  #008f7a;
+    --red:       #e05555;
+    --green:     #2ec97a;
+    --violet:    #8b7cf8;
+    --txt:       #dce6f2;
+    --txt2:      #8ca0b8;
+    --txt3:      #4e6580;
+    --border:    rgba(184,151,45,0.18);
+    --border2:   rgba(255,255,255,0.06);
+    --serif:     'Noto Serif SC', serif;
+    --sans:      'Noto Sans SC', sans-serif;
+    --mono:      'IBM Plex Mono', monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  ::-webkit-scrollbar{width:4px}
+  ::-webkit-scrollbar-track{background:var(--bg)}
+  ::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px}
+
+  /* HEADER */
+  .hdr{background:linear-gradient(140deg,#020710 0%,var(--bg-mid) 55%,#091728 100%);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+  .hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 280px at 75% 50%,rgba(184,151,45,0.09) 0%,transparent 70%),radial-gradient(ellipse 350px 350px at 15% 85%,rgba(0,194,168,0.06) 0%,transparent 65%);pointer-events:none}
+  .hdr-inner{max-width:1140px;margin:0 auto;padding:42px 52px 38px;display:grid;grid-template-columns:1fr auto;gap:36px;align-items:start;position:relative}
+  .brand-row{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+  .brand-tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;border:1px solid var(--gold-dim);padding:4px 10px;border-radius:2px}
+  .brand-dt{font-family:var(--mono);font-size:10px;color:var(--txt3);letter-spacing:.1em}
+  .rpt-title{font-family:var(--serif);font-size:clamp(19px,2.3vw,27px);font-weight:600;line-height:1.35;color:var(--txt);max-width:620px}
+  .rpt-sub{margin-top:8px;font-size:12.5px;color:var(--txt2);letter-spacing:.04em}
+  .rating-box{background:linear-gradient(148deg,#0c1f3e 0%,#07111f 100%);border:1px solid var(--gold-dim);border-radius:4px;padding:24px 26px;min-width:196px;text-align:center;position:relative;overflow:hidden;flex-shrink:0}
+  .rating-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .rlbl{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--txt3);text-transform:uppercase;margin-bottom:5px}
+  .rval{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--green)}
+  .rtick{font-family:var(--mono);font-size:13px;color:var(--gold);margin-top:3px;letter-spacing:.15em}
+  .rdiv{height:1px;background:var(--border2);margin:11px 0}
+  .tlbl{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--txt3);text-transform:uppercase}
+  .tval{font-family:var(--mono);font-size:19px;font-weight:500;color:var(--gold-lt);margin-top:2px}
+  .curp{font-family:var(--mono);font-size:11px;color:var(--txt2);margin-top:5px}
+  .upbadge{display:inline-block;background:rgba(46,201,122,.1);border:1px solid rgba(46,201,122,.28);border-radius:2px;padding:3px 8px;font-family:var(--mono);font-size:10px;color:var(--green);margin-top:8px}
+
+  /* NAV */
+  .nav{background:var(--bg-mid);border-bottom:1px solid var(--border2);position:sticky;top:0;z-index:100}
+  .nav-inner{max-width:1140px;margin:0 auto;padding:0 52px;display:flex;overflow-x:auto;scrollbar-width:none}
+  .nav-inner::-webkit-scrollbar{display:none}
+  .nav-a{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--txt3);text-transform:uppercase;text-decoration:none;padding:13px 17px;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s}
+  .nav-a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+  /* LAYOUT */
+  .body{max-width:1140px;margin:0 auto;padding:50px 52px 80px;display:grid;grid-template-columns:1fr 298px;gap:42px}
+  .main{min-width:0}
+  .side{min-width:0}
+
+  /* SECTION */
+  .sec{margin-bottom:54px;animation:fadeUp .5s ease both}
+  .sec:nth-child(1){animation-delay:.05s}.sec:nth-child(2){animation-delay:.1s}.sec:nth-child(3){animation-delay:.15s}.sec:nth-child(4){animation-delay:.2s}.sec:nth-child(5){animation-delay:.25s}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  .sec-hdr{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-bottom:11px;border-bottom:1px solid var(--border)}
+  .sec-num{font-family:var(--mono);font-size:9.5px;color:var(--gold);letter-spacing:.22em;min-width:28px}
+  .sec-ttl{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--txt)}
+
+  /* KPI */
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+  .kpi{background:var(--bg-card);border:1px solid var(--border2);border-radius:3px;padding:15px 17px;position:relative;overflow:hidden;transition:border-color .2s}
+  .kpi::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold-dim);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+  .kpi:hover{border-color:var(--border)}.kpi:hover::after{transform:scaleX(1)}
+  .kl{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--txt3);text-transform:uppercase;margin-bottom:5px}
+  .kv{font-family:var(--mono);font-size:19px;font-weight:500;color:var(--txt)}
+  .kc{font-family:var(--mono);font-size:10px;margin-top:3px}
+  .ks{font-size:10px;color:var(--txt3);margin-top:2px}
+  .pos{color:var(--green)}.neg{color:var(--red)}.neu{color:var(--txt3)}
+
+  /* THESIS */
+  .th-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .th{background:var(--bg-card);border:1px solid var(--border2);border-left:3px solid var(--gold-dim);border-radius:3px;padding:16px 17px;transition:border-left-color .2s}
+  .th:hover{border-left-color:var(--gold)}
+  .th-tag{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+  .th-txt{font-size:13px;color:var(--txt2);line-height:1.65}
+
+  /* BODY TEXT */
+  .bt{font-size:13.5px;color:var(--txt2);line-height:1.8;margin-bottom:15px}
+  .bt strong{color:var(--txt);font-weight:600}
+  .cite{font-family:var(--mono);font-size:10px;color:var(--txt3);background:rgba(255,255,255,.04);border-radius:2px;padding:1px 5px}
+  .hl{background:rgba(184,151,45,.055);border:1px solid rgba(184,151,45,.2);border-radius:3px;padding:14px 18px;margin:17px 0}
+  .hl p{font-size:13px;color:var(--txt2);line-height:1.7}
+  .hl strong{color:var(--gold-lt)}
+  .hl-teal{background:rgba(0,194,168,.05);border:1px solid rgba(0,194,168,.18);border-radius:3px;padding:14px 18px;margin:17px 0}
+  .hl-teal p{font-size:13px;color:var(--txt2);line-height:1.7}
+  .hl-teal strong{color:var(--teal)}
+
+  /* REV BAR */
+  .rb-track{background:rgba(255,255,255,.05);border-radius:2px;height:10px;overflow:hidden;margin-bottom:7px;display:flex}
+  .rb-seg{height:100%;transition:opacity .2s}.rb-seg:hover{opacity:.82}
+  .rb-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:9px}
+  .rb-li{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--txt2)}
+  .rb-dot{width:8px;height:8px;border-radius:1px;flex-shrink:0}
+
+  /* GUIDANCE */
+  .gbox{background:linear-gradient(135deg,rgba(0,194,168,.055) 0%,rgba(8,15,28,0) 100%);border:1px solid rgba(0,194,168,.2);border-radius:3px;padding:15px 18px;margin:20px 0}
+  .gttl{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+  .grow{display:flex;justify-content:space-between;padding:4px 0;font-size:12.5px}
+  .gk{color:var(--txt3)}.gv{font-family:var(--mono);color:var(--txt)}
+
+  /* TABLE */
+  .dt{width:100%;border-collapse:collapse;font-size:12px;margin:15px 0}
+  .dt th{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt3);padding:9px 13px;border-bottom:1px solid var(--border);text-align:right}
+  .dt th:first-child{text-align:left}
+  .dt td{padding:9px 13px;border-bottom:1px solid var(--border2);color:var(--txt2);text-align:right;font-family:var(--mono);font-size:12px}
+  .dt td:first-child{text-align:left;font-family:var(--sans);color:var(--txt);font-size:13px}
+  .dt tr:hover td{background:rgba(255,255,255,.02)}
+  .dt .tot td{border-top:1px solid var(--border);color:var(--gold-lt);font-weight:600}
+
+  /* SOTP */
+  .vt{width:100%;border-collapse:collapse;font-size:12.5px}
+  .vt th{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dim);padding:8px 12px;border-bottom:1px solid var(--border);text-align:right;background:rgba(184,151,45,.04)}
+  .vt th:first-child{text-align:left}
+  .vt td{padding:9px 12px;border-bottom:1px solid var(--border2);font-family:var(--mono);color:var(--txt2);text-align:right}
+  .vt td:first-child{font-family:var(--sans);text-align:left;color:var(--txt)}
+  .vt .sub td{color:var(--gold-lt);border-top:1px solid var(--border)}
+
+  /* RISKS */
+  .rg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .ri{background:var(--bg-card);border:1px solid var(--border2);border-radius:3px;padding:14px 15px}
+  .rs{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:4px}
+  .sh{color:var(--red)}.sm{color:#e09552}.sl{color:var(--teal)}
+  .rtt{font-size:13px;color:var(--txt);font-weight:500;margin-bottom:4px}
+  .rd{font-size:12px;color:var(--txt3);line-height:1.6}
+
+  /* SCENARIO */
+  .sc-g{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:15px 0}
+  .sc{border-radius:3px;padding:16px;text-align:center}
+  .sc-bull{background:rgba(46,201,122,.065);border:1px solid rgba(46,201,122,.2)}
+  .sc-base{background:rgba(184,151,45,.065);border:1px solid rgba(184,151,45,.24)}
+  .sc-bear{background:rgba(224,85,85,.065);border:1px solid rgba(224,85,85,.2)}
+  .sclbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:7px}
+  .sc-bull .sclbl{color:var(--green)}.sc-base .sclbl{color:var(--gold)}.sc-bear .sclbl{color:var(--red)}
+  .scp{font-family:var(--mono);font-size:21px;font-weight:500;color:var(--txt)}
+  .scpr{font-family:var(--mono);font-size:10px;color:var(--txt3);margin-top:3px}
+  .scd{font-size:11px;color:var(--txt3);margin-top:7px;line-height:1.5}
+
+  /* TP VISUAL */
+  .tpv{background:var(--bg-card);border:1px solid var(--border2);border-radius:3px;padding:20px;margin:18px 0}
+  .tp-trk{position:relative;height:6px;background:rgba(255,255,255,.05);border-radius:3px;margin:24px 0 28px}
+  .tp-fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--teal-dim),var(--gold));border-radius:3px}
+  .tp-mk{position:absolute;top:-4px;width:14px;height:14px;border-radius:50%;transform:translateX(-50%);border:2px solid var(--bg)}
+  .tp-lbs{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9.5px;color:var(--txt3);margin-top:-18px}
+  .tp-leg{display:flex;gap:18px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+  .tp-li{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9.5px;color:var(--txt2)}
+  .tp-d{width:10px;height:10px;border-radius:50%;border:2px solid var(--bg)}
+
+  /* SIDE */
+  .ss{background:var(--bg-card);border:1px solid var(--border2);border-radius:3px;padding:19px;margin-bottom:18px}
+  .st{font-family:var(--mono);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border2)}
+  .mr{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border2)}
+  .mr:last-child{border-bottom:none}
+  .mk{font-size:11.5px;color:var(--txt2)}
+  .mv{font-family:var(--mono);font-size:12px;color:var(--txt);font-weight:500}
+
+  /* DISC */
+  .disc{border-top:1px solid var(--border2);padding-top:22px;margin-top:18px;font-size:11px;color:var(--txt3);line-height:1.7}
+
+  /* DATA NOTE */
+  .data-note{background:rgba(139,124,248,.06);border:1px solid rgba(139,124,248,.2);border-radius:3px;padding:12px 16px;margin:14px 0}
+  .data-note p{font-size:12px;color:var(--txt2);line-height:1.65}
+  .data-note strong{color:var(--violet)}
+
+  /* FOOTER */
+  footer{background:var(--bg-mid);border-top:1px solid var(--border2);padding:22px 52px;display:flex;justify-content:space-between;align-items:center}
+  .fb{font-family:var(--mono);font-size:10px;color:var(--txt3);letter-spacing:.15em}
+  .fn{font-size:11px;color:var(--txt3);max-width:580px;text-align:right}
+
+  @media(max-width:900px){
+    .body{grid-template-columns:1fr;padding:24px}
+    .hdr-inner{grid-template-columns:1fr;padding:28px 24px}
+    .kpi-grid{grid-template-columns:repeat(2,1fr)}
+    .th-grid{grid-template-columns:1fr}
+    .rg{grid-template-columns:1fr}
+    .sc-g{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-inner">
+    <div>
+      <div class="brand-row">
+        <span class="brand-tag">Snail Investment</span>
+        <span class="brand-dt">研究部 · 2026年6月8日</span>
+      </div>
+      <h1 class="rpt-title">美光科技 (MU)：HBM结构性紧缺、SCA<br>商业模式重塑与AI超级周期下的价值重估</h1>
+      <p class="rpt-sub">Micron Technology, Inc. &nbsp;|&nbsp; NASDAQ: MU &nbsp;|&nbsp; 存储半导体 · AI基础设施 · HBM/DRAM/NAND</p>
+    </div>
+    <div class="rating-box">
+      <div class="rlbl">投资评级</div>
+      <div class="rval">买入</div>
+      <div class="rtick">MU · NASDAQ</div>
+      <div class="rdiv"></div>
+      <div class="tlbl">12个月目标价区间</div>
+      <div class="tval">$1,050 – $1,250</div>
+      <div class="curp">当前价格：~$940（6月8日早盘）</div>
+      <span class="upbadge">▲ 潜在涨幅 +11.7% ~ +33.0%</span>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#thesis"     class="nav-a">投资论点</a>
+    <a href="#financials" class="nav-a">财务摘要</a>
+    <a href="#hbm"        class="nav-a">HBM分析</a>
+    <a href="#cycle"      class="nav-a">周期博弈</a>
+    <a href="#sca"        class="nav-a">SCA重塑</a>
+    <a href="#capex"      class="nav-a">资本开支</a>
+    <a href="#valuation"  class="nav-a">估值模型</a>
+    <a href="#risks"      class="nav-a">风险提示</a>
+  </div>
+</nav>
+
+<!-- BODY -->
+<div class="body">
+<main class="main">
+
+<!-- §1 投资论点 -->
+<section class="sec" id="thesis">
+  <div class="sec-hdr"><span class="sec-num">01</span><h2 class="sec-ttl">核心投资论点（Investment Thesis）</h2></div>
+
+  <div class="th-grid">
+    <div class="th">
+      <div class="th-tag">✦ AI超级周期确认</div>
+      <p class="th-txt">FY2026 Q2（截至2026年2月）营收<strong>$23.86B</strong>，同比+196%，环比+75%，创公司史上最大单季环比增幅。管理层明确表示"供给仍无法满足需求的50-66%"，AI算力基础设施对存储的结构性需求已不可逆。<span class="cite">来源：美光FY26 Q2财报，2026年3月18日</span></p>
+    </div>
+    <div class="th">
+      <div class="th-tag">✦ HBM垄断定价权</div>
+      <p class="th-txt">2026年全年HBM供给已通过价量协议<strong>100%售罄</strong>，含HBM4及HBM3E。HBM ASP远高于标准DRAM，成为拉动公司整体毛利率的核心引擎。美光HBM4已通过NVIDIA Vera Rubin平台认证。<span class="cite">来源：CEO Sanjay Mehrotra，电话会议，TrendForce 2025年12月</span></p>
+    </div>
+    <div class="th">
+      <div class="th-tag">✦ 利润率历史性突破</div>
+      <p class="th-txt">FY26 Q2 GAAP毛利率达<strong>75%</strong>，环比大幅提升18个百分点；FY26 Q3指引毛利率约<strong>81%</strong>（非GAAP），此乃存储行业有史以来最高季度毛利率目标之一。净利率首次超过50%。<span class="cite">来源：美光FY26 Q2财报；Q3指引，2026年3月18日</span></p>
+    </div>
+    <div class="th">
+      <div class="th-tag">✦ SCA重塑盈利能见度</div>
+      <p class="th-txt">首份<strong>五年期战略客户协议（SCA）</strong>已签署，相较此前一年期LTA，提供了多年期价格与供货量承诺，从根本上改变了"强周期股"的估值逻辑，存储公司首次具备接近软件公司的盈利可预期性。<span class="cite">来源：美光FY26 Q2电话会议，Sanjay Mehrotra，2026年3月18日</span></p>
+    </div>
+    <div class="th">
+      <div class="th-tag">⚠ 谨慎考量：资本开支飙升</div>
+      <p class="th-txt">FY26资本开支已从原计划$18B上调至<strong>超$25B</strong>，FY27还将进一步增加，建设相关成本可能同比再+$10B以上。巨额折旧将在2027-2030年高峰期对自由现金流形成可量化侵蚀，是本报告核心风险变量。<span class="cite">来源：TrendForce，2026年3月19日；美光CFO Mark Murphy</span></p>
+    </div>
+    <div class="th">
+      <div class="th-tag">⚠ 谨慎考量：周期性尾部风险</div>
+      <p class="th-txt">当前估值（FY27E P/E约9×，FY26E P/E约16×）已相当便宜，但存储行业在历史上有过最快6-9个月的周期逆转案例。若AI资本开支增速出现"软着陆"，标准DRAM/NAND的价格压力可能在2027年重新抬头。</p>
+    </div>
+  </div>
+</section>
+
+<!-- §2 财务摘要 -->
+<section class="sec" id="financials">
+  <div class="sec-hdr"><span class="sec-num">02</span><h2 class="sec-ttl">财务摘要：FY2026 Q2核心数据看板</h2></div>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kl">总营收</div>
+      <div class="kv">$23.86B</div>
+      <div class="kc pos">▲ +196% YoY  ▲ +75% QoQ</div>
+      <div class="ks">公司史上最大季度环比增幅</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">GAAP净利润</div>
+      <div class="kv">$13.79B</div>
+      <div class="kc pos">▲ +782% YoY（GAAP）</div>
+      <div class="ks">GAAP每股 $12.07；Non-GAAP $12.20</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">Non-GAAP EPS</div>
+      <div class="kv">$12.20</div>
+      <div class="kc pos">▲ +155% QoQ  ▲ +682% YoY</div>
+      <div class="ks">彭博一致预期 $8.79；超预期39%</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">GAAP 毛利率</div>
+      <div class="kv">75.0%</div>
+      <div class="kc pos">▲ +18ppt QoQ  历史新高</div>
+      <div class="ks">Q3指引Non-GAAP约81%</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">营业利润率</div>
+      <div class="kv">69.0%</div>
+      <div class="kc pos">营业利润 $16.5B</div>
+      <div class="ks">经营杠杆效应极为显著</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">自由现金流</div>
+      <div class="kv">$6.9B</div>
+      <div class="kc pos">季度历史纪录</div>
+      <div class="ks">Q3 FCF预计"环比约翻倍"</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">运营现金流</div>
+      <div class="kv">$11.9B</div>
+      <div class="kc pos">▲ vs Q1 $8.41B</div>
+      <div class="ks">资本开支 $5.0B（本季）</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">净现金头寸</div>
+      <div class="kv">$6.5B</div>
+      <div class="kc pos">公司历史最强净现金</div>
+      <div class="ks">过去三季度累计还债 $5B+</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">存货天数（DSI）</div>
+      <div class="kv">123天</div>
+      <div class="kc neu">存货$8.3B</div>
+      <div class="ks">AI需求下可接受；后续将优化</div>
+    </div>
+  </div>
+  <p style="font-size:11px;color:var(--txt3);margin-top:-4px;">数据来源：美光科技FY2026 Q2财报（NASDAQ：MU），2026年3月18日发布</p>
+
+  <!-- Business Mix -->
+  <div style="margin-top:28px;">
+    <p style="font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--txt3);text-transform:uppercase;margin-bottom:11px;">FY2026 Q2 业务分部收入结构</p>
+    <div class="rb-track">
+      <div class="rb-seg" style="width:79%;background:#b8972d;" title="DRAM 79%"></div>
+      <div class="rb-seg" style="width:21%;background:#00c2a8;" title="NAND 21%"></div>
+    </div>
+    <div class="rb-legend">
+      <div class="rb-li"><div class="rb-dot" style="background:#b8972d;"></div>DRAM（含HBM）: <strong>79%（$18.8B，YoY +207%）</strong></div>
+      <div class="rb-li"><div class="rb-dot" style="background:#00c2a8;"></div>NAND: <strong>21%（$5.0B，YoY +169%）</strong></div>
+    </div>
+    <p style="font-size:11px;color:var(--txt3);margin-top:8px;">DRAM为绝对主体，HBM是其中增速最快的子品类，管理层未单独披露HBM营收，但据行业估算已占DRAM营收约25-35%（$5-6.5B）。&nbsp;<span class="cite">来源：美光FY26 Q2财报；行业研究估算</span></p>
+  </div>
+
+  <!-- Q3 Guidance -->
+  <div class="gbox" style="margin-top:22px;">
+    <div class="gttl">FQ3 2026 管理层业绩指引（截至2026年5月底）</div>
+    <div class="grow"><span class="gk">营收区间</span><span class="gv">$33.5B ± $0.75B &nbsp;（+40% QoQ，超任何FY24全年营收）</span></div>
+    <div class="grow"><span class="gk">Non-GAAP毛利率</span><span class="gv">约 81.0%</span></div>
+    <div class="grow"><span class="gk">营业费用（OpEx）</span><span class="gv">约 $1.40B</span></div>
+    <div class="grow"><span class="gk">Non-GAAP EPS</span><span class="gv">$19.15 ± $0.40</span></div>
+    <div class="grow"><span class="gk">自由现金流</span><span class="gv">预计环比"大约翻倍"（约$13-14B）</span></div>
+    <div class="grow"><span class="gk">FY26资本开支</span><span class="gv">超 $25B（较此前 $18B 大幅上修）</span></div>
+    <p style="font-size:11px;color:var(--txt3);margin-top:10px;">来源：美光FY26 Q2业绩电话会议；CFO Mark Murphy；CEO Sanjay Mehrotra，2026年3月18日</p>
+  </div>
+
+  <!-- Data note -->
+  <div class="data-note">
+    <p><strong>⚠ 数据交叉核实说明：</strong>本报告财务数据以美光投资者关系官网官方发布的Q2财报新闻稿（2026年3月18日）及电话会议纪要为基准。关于Q3 EPS一致预期，部分早期来源显示约$8.50（发布前预期），而管理层在Q2财报中给出的Q3 EPS指引为$19.15，大幅超出市场预期。两组数据均正确，分属"事前预期"与"官方指引"，本报告采用官方指引。FY26全年资本开支数字：TrendForce（3月19日）引用为$25B+，早期Medium文章（12月）引用$20B，差异源于Q2财报时再次上调，以Q2财报为准。</p>
+  </div>
+</section>
+
+<!-- §3 HBM -->
+<section class="sec" id="hbm">
+  <div class="sec-hdr"><span class="sec-num">03</span><h2 class="sec-ttl">HBM结构性紧缺：AI芯片的"燃料管道"瓶颈</h2></div>
+
+  <p class="bt"><strong>HBM供需剪刀差</strong> · 高带宽内存（HBM）已成为继先进制程芯片（如TSMC CoWoS）之后，AI加速器供应链中的第二大硬瓶颈。CEO Sanjay Mehrotra明确表示：<strong>美光整个2026日历年的HBM供给（包含HBM4）已100%以锁价锁量协议售出</strong>，公司仍仅能满足核心客户约50-66%的实际需求。HBM ASP远高于传统DDR5 DRAM（估算高出约3-5倍），是拉动公司整体ASP与毛利率跃升的核心变量。<span class="cite">来源：TrendForce，2025年12月18日；CEO Sanjay Mehrotra声明</span></p>
+
+  <div class="hl">
+    <p><strong>HBM4：速度领先，NVIDIA背书确认</strong><br>
+    美光HBM4（12-Hi，36GB）已于2026年初开始量产出货，速度超<strong>11 Gbps</strong>，据公司称属于业内最快。CEO于2026年5月8日表示"<strong>NVIDIA CEO Jensen Huang认可美光HBM4芯片</strong>"，消除了此前市场对美光能否获得Vera Rubin平台份额的疑虑。美光还已对HBM4 16-Hi（48GB）进行客户采样，代表下一轮容量升级。此外，HBM4E路线图已明确，将基于美光1-gamma（1γ）DRAM工艺节点，进一步提升能效与带宽。<span class="cite">来源：TipRanks，2025年12月18日；美光FY26 Q2电话会议；CNN Markets，2026年6月5日</span></p>
+  </div>
+
+  <p class="bt"><strong>1-gamma节点：最快量产爬坡纪录</strong> · 美光1γ DRAM工艺节点爬坡速度"为公司历史上最快"，管理层预期1γ将于<strong>2026年中期成为DRAM位出货量最大的节点</strong>。1γ相较前代具有显著的能效优势（约15-20%功耗下降）与面积缩减，是支撑HBM4及下一代数据中心DRAM的核心底层技术。<span class="cite">来源：美光FY26 Q2财报电话会议，2026年3月18日</span></p>
+
+  <p class="bt"><strong>HBM市场格局</strong> · 当前HBM市场由三家供应商主导：SK Hynix（约50%+份额）、三星（约25-30%）、美光（约15-20%，正快速爬坡）。美光凭借1γ工艺的性能优势，正积极从三星处夺取市场份额。HBM TAM管理层最新预测为<strong>2028年达$1,000亿</strong>，相较此前预期提前两年。<span class="cite">来源：24/7 Wall St.，2026年5月</span></p>
+
+  <p class="bt"><strong>G9 NAND与数据中心SSD</strong> · 存储端，美光G9 NAND节点已开始量产，支持基于PCIe Gen6的数据中心SSD产品线。旗舰产品<strong>245TB Micron 6600 ION数据中心SSD</strong>已于2026年4月29日正式出货，创行业单盘容量纪录，是公司在企业存储市场持续提升份额的重要抓手。<span class="cite">来源：美光GlobeNewswire，2026年4月29日</span></p>
+</section>
+
+<!-- §4 传统周期 -->
+<section class="sec" id="cycle">
+  <div class="sec-hdr"><span class="sec-num">04</span><h2 class="sec-ttl">传统DRAM/NAND：周期博弈与结构性分化</h2></div>
+
+  <p class="bt"><strong>"高端紧缺 + 低端受压"的结构性分化</strong> · 当前存储市场呈现清晰的两级分化：数据中心DRAM（含HBM）与企业SSD处于极度供不应求状态；而消费端DRAM（手机/PC）和消费级NAND（U盘/消费SSD）则受全球宏观疲弱拖累，价格承压但因整体供给管控，价格战烈度远低于2022-2023年周期底部。</p>
+
+  <div class="hl-teal">
+    <p><strong>积极信号：消费端AI推动新需求</strong><br>
+    CEO Sanjay Mehrotra于电话会议中特别指出：搭载12GB以上DRAM的旗舰智能手机占比，在<strong>一年内从不足20%跳升至近80%</strong>，折射出AI功能（端侧推理、多模态处理）对移动端内存容量的结构性拉动。PC端也观察到Agentic AI采用加速趋势，支撑下一代AI PC对LPDDR6的需求预期。这一趋势使2027年消费端需求的韧性好于传统周期预期。<span class="cite">来源：美光FY26 Q2电话会议纪要，2026年3月18日</span></p>
+  </div>
+
+  <p class="bt"><strong>行业供需平衡维持较好</strong> · 美光管理层预测2026日历年DRAM位出货量行业增速在低二十几个百分比区间，NAND约20%，美光自身增速与行业大体同步。相较2021-2022年供给过剩周期，当前各厂商扩产节奏明显更为克制，叠加HBM将大量DRAM产能从传统品类转移，传统DRAM出现"技术性短缺"的概率正在上升而非下降。<span class="cite">来源：美光FY26 Q2电话会议；TipRanks季报摘要</span></p>
+
+  <p class="bt"><strong>存货天数评估</strong> · FY26 Q2期末存货约$8.3B，对应123天DSI，高于标准库存水平，但管理层表示此为AI客户"战略备货"所推动，而非需求疲软所致。在HBM全年售罄的前提下，123天DSI中相当大比例系已有具名客户对应的预付库存，与2022年"过量囤积"情形有本质区别。</p>
+</section>
+
+<!-- §5 SCA -->
+<section class="sec" id="sca">
+  <div class="sec-hdr"><span class="sec-num">05</span><h2 class="sec-ttl">SCA商业模式重塑：从周期股到AI核心资产</h2></div>
+
+  <p class="bt"><strong>五年SCA：行业游戏规则改变者</strong> · 美光于FY26 Q2宣布签署公司<strong>首份五年期战略客户协议（SCA）</strong>，这与过去普遍采用的一年期长期协议（LTA）存在本质性差异。SCA提供多年期的价格与供货量双重承诺，有效将客户的规划确定性与美光的盈利能见度进行了深度捆绑。<span class="cite">来源：美光FY26 Q2电话会议，CFO Mark Murphy；TrendForce，2026年3月19日</span></p>
+
+  <div class="hl">
+    <p><strong>SCA vs LTA：深度差异解析</strong><br>
+    · <strong>时间跨度</strong>：SCA为5年，LTA通常为1年，能见度扩大5倍<br>
+    · <strong>承诺性质</strong>：SCA含具体供货量与价格承诺（细节保密），LTA通常仅锁量不锁价<br>
+    · <strong>战略意义</strong>：SCA使超大规模云厂商（NVIDIA、超大规模云服务商）与美光形成类供应链深度互锁，大幅提高客户切换成本<br>
+    · <strong>估值意义</strong>：若未来SCA覆盖30-50%收入，存储公司的盈利周期性波动幅度将被实质性压缩，支撑更高的估值乘数（EV/EBITDA提升1-2倍）<br>
+    · <strong>局限性</strong>：SCA通常含循环周期条款，若行业出现2022年式深度周期逆转，客户仍有可能协商调整，SCA并非"永久免疫周期"的护身符。<span class="cite">来源：Sanjay Mehrotra，Q2电话会议；Globe and Mail记录稿</span></p>
+  </div>
+
+  <p class="bt"><strong>LTA to SCA：转型量化评估</strong> · 以当前FY26E全年营收约$80-85B（基于Q1-Q2实际值+Q3指引+Q4合理推算）为基础，若SCA逐步覆盖30%收入（约$24-26B为5年期承诺收入），相较此前0%的多年可见度，对公司估值的支撑效应理论上可将市场给予的EV/EBITDA乘数从历史均值的5-7×提升至7-10×。这一"商业模式升价"是美光突破历史估值天花板的核心逻辑支撑。</p>
+</section>
+
+<!-- §6 资本开支 -->
+<section class="sec" id="capex">
+  <div class="sec-hdr"><span class="sec-num">06</span><h2 class="sec-ttl">资本开支飞轮：扩产节奏与FCF侵蚀量化</h2></div>
+
+  <p class="bt"><strong>FY26资本开支 >$25B</strong> · 相较FY25实际资本开支$13.8B，美光FY26资本开支飙升至超$25B（环比增约82%），主要驱动因素：①台湾铜锣（Tongluo）新建DRAM晶圆厂设施相关支出（最大单项）；②美国弗吉尼亚州新厂建设进度加速；③以$18亿收购台湾力晶积嵩（PSMC）晶圆厂并启动改造。FY27资本开支预计进一步增加，建设相关成本可能较FY26再增$10B以上。<span class="cite">来源：TrendForce，2026年3月19日；美光CFO Mark Murphy Q2电话会议</span></p>
+
+  <div class="hl">
+    <p><strong>自由现金流侵蚀量化分析</strong><br>
+    以$25B资本开支、平均25年折旧年限（设施为主）、加速折旧系数1.5测算：新增折旧峰值约<strong>$2.5-4.0B/年</strong>（2028-2032年高峰期），将对GAAP净利润形成直接侵蚀。然而，关键的反向论点是：美光FQ3 FCF已预计环比"约翻倍"至约$13-14B，全年FCF有望超$30B。在$80B+营收规模下，即便承受$4B折旧上升，FCF利润率仍可维持在30%+。因此，资本开支对FCF的侵蚀是真实存在的，但相对于收入规模的飙升，属于可吸收范围。<strong>核心风险不在当下，在于2027-2028年需求若出现周期性回调时，高折旧负担的放大效应。</strong></p>
+  </div>
+
+  <p class="bt"><strong>美国本土制造扩张</strong> · 美光于2026年5月宣布在弗吉尼亚州继续推进"Made in America Memory"战略，弗吉尼亚Fab预计成为美国本土最大存储芯片制造基地之一。美国CHIPS法案支持力度方面，美光已与商务部达成补贴协议，可获约$61亿直接补贴+约$75亿贷款支持，总计约$136亿。相较$25B+年度资本开支，联邦支持约可覆盖半年资本开支，有实质性但非决定性的财务支撑效果。<span class="cite">来源：美光GlobeNewswire，2026年5月12日；CHIPS法案补贴协议</span></p>
+</section>
+
+<!-- §7 估值 -->
+<section class="sec" id="valuation">
+  <div class="sec-hdr"><span class="sec-num">07</span><h2 class="sec-ttl">估值模型：SOTP × DCF 双轨交叉验证</h2></div>
+
+  <p class="bt" style="margin-bottom:18px;">我们采用<strong>分部加总估值（SOTP）</strong>为主、<strong>DCF现金流折现</strong>为辅。SOTP精准赋予HBM业务独立的AI基础设施稀缺溢价；DCF量化高资本开支周期对未来FCF的绝对侵蚀，并捕捉SCA模式对长期现金流确定性的提升。</p>
+
+  <p style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;">SOTP分部估值——基于FY2026E全年业绩预测（约$80-88B营收）</p>
+  <table class="vt">
+    <thead><tr>
+      <th style="text-align:left">业务分部</th>
+      <th>FY26E收入估算</th>
+      <th>估值乘数</th>
+      <th>估值贡献</th>
+      <th>逻辑依据</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td>HBM业务（HBM3E+HBM4）</td>
+        <td>~$22-28B</td>
+        <td>18–22× Rev</td>
+        <td>$396–616B</td>
+        <td>100%售罄+SCA锁定；类AI基础设施资产定价；结构性稀缺溢价</td>
+      </tr>
+      <tr>
+        <td>数据中心标准DRAM（DDR5/CXL）</td>
+        <td>~$28-32B</td>
+        <td>10–13× Rev</td>
+        <td>$280–416B</td>
+        <td>超大规模云厂商持续扩张驱动；数据中心服务器单元增速低十几%</td>
+      </tr>
+      <tr>
+        <td>移动/客户端DRAM（LPDDR/GDDR）</td>
+        <td>~$12-16B</td>
+        <td>5–7× Rev</td>
+        <td>$60–112B</td>
+        <td>消费周期承压但AI手机单DRAM含量提升对冲；相对低估值</td>
+      </tr>
+      <tr>
+        <td>NAND（数据中心SSD+消费）</td>
+        <td>~$18-22B</td>
+        <td>4–6× Rev</td>
+        <td>$72–132B</td>
+        <td>G9+PCIe Gen6 SSD提升数据中心份额；消费端价格竞争持续</td>
+      </tr>
+      <tr class="sub">
+        <td><strong>企业价值合计（EV）</strong></td>
+        <td><strong>~$80-88B</strong></td>
+        <td>—</td>
+        <td><strong>$808B – $1,276B</strong></td>
+        <td>加:净现金 $6.5B；稀释股本约11.5亿股</td>
+      </tr>
+      <tr class="sub">
+        <td><strong>隐含每股价值区间</strong></td>
+        <td colspan="3"><strong>$707 – $1,115</strong></td>
+        <td>SOTP中枢约 $900</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:var(--txt3);margin-top:6px;">*FY26E全年营收基于Q1实际$13.64B+Q2实际$23.86B+Q3指引$33.5B+Q4合理推算约$13-17B，全年合计约$84-88B。SOTP乘数参照SK Hynix（HBM业务）、三星（DRAM分部）及AI基础设施溢价。</p>
+
+  <p style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin:24px 0 10px;">DCF现金流折现——关键假设敏感性分析</p>
+  <table class="dt">
+    <thead><tr><th>参数</th><th>保守</th><th>基准</th><th>乐观</th></tr></thead>
+    <tbody>
+      <tr><td>FY26-28E 营收CAGR</td><td>15%</td><td>22%</td><td>30%</td></tr>
+      <tr><td>稳态FCF利润率（扣除折旧后）</td><td>22%</td><td>28%</td><td>34%</td></tr>
+      <tr><td>WACC</td><td>10%</td><td>9%</td><td>8%</td></tr>
+      <tr><td>终端增长率</td><td>2.5%</td><td>3.5%</td><td>4.5%</td></tr>
+      <tr class="tot"><td>隐含每股内在价值</td><td>$580</td><td>$940</td><td>$1,380</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:var(--txt3);margin-top:6px;">DCF主要FCF侵蚀因子：①FY26-27资本开支合计预计超$60B；②新厂折旧高峰期（2028-2032）约$3-5B额外折旧/年；③SCA利好：提高现金流能见度，支持使用较低折现率。</p>
+
+  <!-- Scenario -->
+  <p style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin:24px 0 10px;">综合目标价区间（12个月，SOTP×DCF加权，权重6:4）</p>
+  <div class="sc-g">
+    <div class="sc sc-bear">
+      <div class="sclbl">熊市情景</div>
+      <div class="scp">$580 – $700</div>
+      <div class="scpr">概率权重：20%</div>
+      <div class="scd">AI资本开支超预期放缓；DRAM/NAND价格Q4 2026-Q1 2027出现周期性下行；高资本开支与FCF萎缩形成"估值戴维斯双杀"</div>
+    </div>
+    <div class="sc sc-base">
+      <div class="sclbl">基准情景</div>
+      <div class="scp">$1,050 – $1,250</div>
+      <div class="scpr">概率权重：55%</div>
+      <div class="scd">AI需求持续强劲至2027H1；HBM4顺利爬坡；SCA模式扩展；FQ3 81%毛利率兑现并维持；资本开支可控</div>
+    </div>
+    <div class="sc sc-bull">
+      <div class="sclbl">牛市情景</div>
+      <div class="scp">$1,500 – $1,800</div>
+      <div class="scpr">概率权重：25%</div>
+      <div class="scd">HBM4E比预期提前量产；SCA覆盖率超40%收入；FY27 EPS远超目前$65-75E预期；存储从周期股完成向成长股估值体系切换</div>
+    </div>
+  </div>
+
+  <!-- TP Visual -->
+  <div class="tpv" style="margin-top:18px;">
+    <p style="font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--txt3);text-transform:uppercase;margin-bottom:8px;">目标价可视化（基于当前价格~$940，6月8日早盘反弹后）</p>
+    <div class="tp-trk">
+      <div class="tp-fill" style="width:68%;"></div>
+      <div class="tp-mk" style="left:28%;background:var(--red);" title="熊市下限 $580"></div>
+      <div class="tp-mk" style="left:47%;background:#fff;" title="现价 $940"></div>
+      <div class="tp-mk" style="left:57%;background:var(--gold);" title="目标低 $1,050"></div>
+      <div class="tp-mk" style="left:68%;background:var(--gold-lt);" title="目标高 $1,250"></div>
+      <div class="tp-mk" style="left:90%;background:var(--green);" title="牛市上限 $1,800"></div>
+    </div>
+    <div class="tp-lbs">
+      <span>$500</span><span>$700</span><span>$900</span><span>$1,100</span><span>$1,300</span><span>$1,500</span><span>$1,800+</span>
+    </div>
+    <div class="tp-leg">
+      <div class="tp-li"><div class="tp-d" style="background:var(--red);"></div>熊市低 $580</div>
+      <div class="tp-li"><div class="tp-d" style="background:#fff;"></div>现价 ~$940</div>
+      <div class="tp-li"><div class="tp-d" style="background:var(--gold);"></div>目标低 $1,050</div>
+      <div class="tp-li"><div class="tp-d" style="background:var(--gold-lt);"></div>目标高 $1,250</div>
+      <div class="tp-li"><div class="tp-d" style="background:var(--green);"></div>牛市 $1,800</div>
+    </div>
+  </div>
+
+  <div class="hl" style="margin-top:18px;">
+    <p><strong>最终评级：买入（BUY）&nbsp;|&nbsp; 目标价：$1,050 – $1,250（12个月）&nbsp;|&nbsp; 核心逻辑</strong><br>
+    当前股价~$940（6月8日，上周大幅回调后早盘反弹+8%），较我们基准目标价中枢$1,150仍有约22%上行空间。FQ3 81%毛利率、FCF约翻倍、Q3 EPS $19.15的强劲指引构成短期最重要催化剂（财报日：<strong>2026年6月24日</strong>）。中期看，HBM4产能爬坡质量与SCA覆盖率提升将持续支撑估值扩张。当前FY27E P/E约9×，极具吸引力。主要风险：大规模资本开支飞轮在需求周期逆转时的双杀效应，以及NVIDIA对HBM供应商的集中度管控风险。</p>
+  </div>
+</section>
+
+<!-- §8 风险 -->
+<section class="sec" id="risks">
+  <div class="sec-hdr"><span class="sec-num">08</span><h2 class="sec-ttl">风险提示</h2></div>
+
+  <div class="rg">
+    <div class="ri">
+      <div class="rs sh">■ 高风险</div>
+      <div class="rtt">AI资本开支周期逆转</div>
+      <div class="rd">若微软、谷歌、亚马逊等云厂商2026H2-2027出现AI基础设施投资增速明显放缓（>20%），将直接打击HBM需求，100%的HBM售罄状态可能在2027年转为过剩。这是本报告最重要的系统性风险。</div>
+    </div>
+    <div class="ri">
+      <div class="rs sh">■ 高风险</div>
+      <div class="rtt">巨额资本开支+周期逆转"戴维斯双杀"</div>
+      <div class="rd">若2027年需求下行叠加高折旧峰值，FCF可能出现超预期萎缩。历史上存储周期底部，高杠杆扩产后的公司股价跌幅可达70-80%。SCA在严重下行周期中的实际约束力尚未得到实战检验。</div>
+    </div>
+    <div class="ri">
+      <div class="rs sh">■ 高风险</div>
+      <div class="rtt">SK Hynix/三星HBM份额竞争</div>
+      <div class="rd">SK Hynix在HBM3E市场占据主导地位（约50%以上），若在HBM4代际切换中维持或扩大领先，美光的HBM份额扩张预期可能落空，影响公司整体毛利率预测。三星若良率突破也构成类似威胁。</div>
+    </div>
+    <div class="ri">
+      <div class="rs sm">● 中风险</div>
+      <div class="rtt">SCA条款保护力度存疑</div>
+      <div class="rd">首份五年SCA的具体取消条款未公开披露。若行业深度下行，客户是否能以违约金形式实质取消合同，是SCA"商业模式重塑"论断成立的关键不确定性。市场目前可能过度定价SCA的保护效果。</div>
+    </div>
+    <div class="ri">
+      <div class="rs sm">● 中风险</div>
+      <div class="rtt">地缘政治与出口管制</div>
+      <div class="rd">中国大陆仍是美光存储芯片的重要市场。2023年中国禁止关键基础设施采购美光产品的影响尚未完全消退。若出口管制进一步收紧（如限制美光对中国NAND出货），将对营收构成直接冲击。</div>
+    </div>
+    <div class="ri">
+      <div class="rs sm">● 中风险</div>
+      <div class="rtt">内部人士大量减持</div>
+      <div class="rd">多家分析报告指出美光内部人士持续大规模卖出股票（"insider activity has turned heavily bearish"）。内部人士减持通常被视为管理层对短期股价高估或业务前景不确定性的隐性信号，值得持续关注。<span class="cite">来源：24/7 Wall St., 2026年5月</span></div>
+    </div>
+    <div class="ri">
+      <div class="rs sl">◆ 低风险</div>
+      <div class="rtt">消费电子需求持续低迷</div>
+      <div class="rd">标准NAND与消费端DRAM若出现超预期价格下滑，将冲击约占收入20-25%的消费/移动端业务。AI手机内存升级趋势是主要的需求缓冲，但全球宏观环境若恶化，消费者换机意愿仍可能走弱。</div>
+    </div>
+    <div class="ri">
+      <div class="rs sl">◆ 低风险</div>
+      <div class="rtt">技术节点良率风险</div>
+      <div class="rd">1γ DRAM爬坡速度虽为历史最快，但任何良率问题的出现都可能推迟HBM4的规模出货节点，影响FY26Q4及FY27的营收进度。生产相对集中（爱达荷州Boise、台湾、新加坡为主）也带来一定集中度风险。</div>
+    </div>
+  </div>
+</section>
+
+<div class="disc">
+  <strong>免责声明</strong> · 本报告由Snail Investment研究部独立撰写，仅供信息参考，不构成任何投资建议或投资要约。所有财务数据均来源于公开披露文件，以美光科技官方投资者关系网站（investors.micron.com）及SEC存档文件为准。股票投资涉及风险，历史业绩不代表未来表现，任何对未来的预测均存在重大不确定性。<br>
+  报告生成日期：2026年6月8日 &nbsp;|&nbsp; 下次更新：美光FY2026 Q3财报发布后（<strong>预计2026年6月24日</strong>）&nbsp;|&nbsp; Snail Investment 研究部
+</div>
+
+</main>
+
+<!-- SIDE -->
+<aside class="side">
+
+  <div class="ss">
+    <div class="st">市场快照（6/8/2026）</div>
+    <div class="mr"><span class="mk">当前价格（早盘）</span><span class="mv">~$940</span></div>
+    <div class="mr"><span class="mk">6/7收盘价</span><span class="mv">$857.20</span></div>
+    <div class="mr"><span class="mk">52周高点</span><span class="mv">$1,089.29</span></div>
+    <div class="mr"><span class="mk">52周低点</span><span class="mv">$103.38</span></div>
+    <div class="mr"><span class="mk">年初至今涨幅</span><span class="mv" style="color:var(--green)">+740%+</span></div>
+    <div class="mr"><span class="mk">市值（约）</span><span class="mv" style="color:var(--gold-lt)">~$970B – $1.0T</span></div>
+    <div class="mr"><span class="mk">FY26E P/E</span><span class="mv">~16×</span></div>
+    <div class="mr"><span class="mk">FY27E P/E</span><span class="mv">~9×</span></div>
+    <div class="mr"><span class="mk">Q3财报日期</span><span class="mv" style="color:var(--gold)">2026年6月24日</span></div>
+    <p style="font-size:10px;color:var(--txt3);margin-top:9px;">来源：Robinhood、INDmoney、MacroTrends<br>截至2026年6月8日早盘数据</p>
+  </div>
+
+  <div class="ss">
+    <div class="st">FY2026 Q2 核心财务</div>
+    <div class="mr"><span class="mk">营收</span><span class="mv">$23.86B</span></div>
+    <div class="mr"><span class="mk">GAAP净利润</span><span class="mv">$13.79B</span></div>
+    <div class="mr"><span class="mk">Non-GAAP EPS</span><span class="mv">$12.20</span></div>
+    <div class="mr"><span class="mk">GAAP毛利率</span><span class="mv" style="color:var(--green)">75.0%</span></div>
+    <div class="mr"><span class="mk">营业利润率</span><span class="mv">69.0%</span></div>
+    <div class="mr"><span class="mk">自由现金流</span><span class="mv">$6.9B（季度纪录）</span></div>
+    <div class="mr"><span class="mk">净现金头寸</span><span class="mv">$6.5B（历史最强）</span></div>
+    <div class="mr"><span class="mk">DRAM营收占比</span><span class="mv">79%（$18.8B）</span></div>
+    <div class="mr"><span class="mk">NAND营收占比</span><span class="mv">21%（$5.0B）</span></div>
+    <p style="font-size:10px;color:var(--txt3);margin-top:9px;">来源：美光FY26 Q2官方财报，2026年3月18日</p>
+  </div>
+
+  <div class="ss">
+    <div class="st">FQ3 2026 管理层指引</div>
+    <div class="mr"><span class="mk">营收</span><span class="mv">$33.5B ±$0.75B</span></div>
+    <div class="mr"><span class="mk">Non-GAAP毛利率</span><span class="mv" style="color:var(--green)">~81%</span></div>
+    <div class="mr"><span class="mk">Non-GAAP EPS</span><span class="mv">$19.15 ±$0.40</span></div>
+    <div class="mr"><span class="mk">FCF环比变化</span><span class="mv" style="color:var(--green)">约翻倍（~$13-14B）</span></div>
+    <div class="mr"><span class="mk">FY26资本开支</span><span class="mv">>$25B</span></div>
+    <div class="mr"><span class="mk">季度股息</span><span class="mv">$0.15/股（+30%）</span></div>
+  </div>
+
+  <div class="ss">
+    <div class="st">技术产品路线图</div>
+    <div class="mr"><span class="mk">HBM3E</span><span class="mv" style="color:var(--green)">量产中，供给满销</span></div>
+    <div class="mr"><span class="mk">HBM4 (36GB 12Hi)</span><span class="mv" style="color:var(--green)">已开始量产出货</span></div>
+    <div class="mr"><span class="mk">HBM4 (48GB 16Hi)</span><span class="mv" style="color:var(--teal)">客户样品已送出</span></div>
+    <div class="mr"><span class="mk">HBM4E</span><span class="mv" style="color:var(--txt3)">基于1γ，路线图确认</span></div>
+    <div class="mr"><span class="mk">1γ DRAM节点</span><span class="mv" style="color:var(--green)">爬坡中（历史最快）</span></div>
+    <div class="mr"><span class="mk">G9 NAND</span><span class="mv" style="color:var(--green)">量产中</span></div>
+    <div class="mr"><span class="mk">245TB 6600 ION SSD</span><span class="mv" style="color:var(--green)">已出货（4月29日）</span></div>
+    <p style="font-size:10px;color:var(--txt3);margin-top:9px;">来源：美光官方发布；FY26 Q2电话会议</p>
+  </div>
+
+  <div class="ss">
+    <div class="st">卖方机构评级汇总</div>
+    <div class="mr"><span class="mk">一致评级</span><span class="mv" style="color:var(--green)">强烈买入</span></div>
+    <div class="mr"><span class="mk">买入评级数</span><span class="mv">44 / 46</span></div>
+    <div class="mr"><span class="mk">一致均值目标价</span><span class="mv">$739（StockAnalysis）</span></div>
+    <div class="mr"><span class="mk">Morgan Stanley目标价</span><span class="mv">$1,050（6月3日上调）</span></div>
+    <div class="mr"><span class="mk">UBS目标价</span><span class="mv">$1,650（近期上调）</span></div>
+    <div class="mr"><span class="mk">Snail目标价（基准）</span><span class="mv" style="color:var(--gold-lt)">$1,050 – $1,250</span></div>
+    <p style="font-size:10px;color:var(--txt3);margin-top:9px;">注：卖方目标价差异极大（$86至$1,650），反映市场对周期性vs成长性定价分歧仍大。来源：LSEG，Capital.com，TipRanks</p>
+  </div>
+
+</aside>
+</div>
+
+<footer>
+  <div class="fb">SNAIL INVESTMENT RESEARCH &nbsp;·&nbsp; 独立精品投行 &nbsp;·&nbsp; 2026</div>
+  <div class="fn">本报告仅供信息参考，不构成投资建议。所有预测存在不确定性，过往表现不代表未来结果。投资者须自担风险。</div>
+</footer>
+
+</body>
+</html>
