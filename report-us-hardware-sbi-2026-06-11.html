@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美国硬件/半导体板块SBI泡沫指数日报 - 2026-06-11</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6;padding:20px}
+  .container{max-width:1200px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);overflow:hidden}
+  .header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);color:#fff;padding:40px 30px;text-align:center}
+  .header h1{font-size:28px;margin-bottom:8px;font-weight:700}
+  .header .subtitle{font-size:14px;opacity:.8;margin-bottom:20px}
+  .sbi-dashboard{display:flex;justify-content:center;align-items:center;gap:40px;padding:40px 30px;flex-wrap:wrap;background:#fafbfc}
+  .gauge-box{text-align:center}
+  .gauge-box .value{font-size:56px;font-weight:800;line-height:1}
+  .gauge-box .label{font-size:14px;color:#666;margin-top:8px}
+  .gauge-box .risk-badge{display:inline-block;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-top:12px;color:#fff;background:#e74c3c}
+  .gauge-box .change{font-size:16px;margin-top:8px}
+  .change-down{color:#2ecc71}
+  .change-up{color:#e74c3c}
+  .metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;padding:30px;background:#fff}
+  .metric-card{background:#f8f9fa;border-radius:12px;padding:20px;text-align:center;border-left:4px solid #3498db}
+  .metric-card.danger{border-left-color:#e74c3c}
+  .metric-card.warning{border-left-color:#f39c12}
+  .metric-card.safe{border-left-color:#2ecc71}
+  .metric-card .name{font-size:12px;color:#666;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+  .metric-card .score{font-size:32px;font-weight:700}
+  .metric-card .weight{font-size:11px;color:#999;margin-top:4px}
+  .chart-section{padding:30px;background:#fafbfc}
+  .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:768px){.chart-row{grid-template-columns:1fr}}
+  .chart-box{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .chart-box h3{font-size:15px;margin-bottom:16px;color:#333}
+  .data-table{width:100%;border-collapse:collapse;margin:20px 30px;font-size:13px}
+  .data-table th,.data-table td{padding:10px 14px;text-align:left;border-bottom:1px solid #eee}
+  .data-table th{background:#f8f9fa;font-weight:600;color:#555}
+  .data-table tr:hover{background:#f8f9fa}
+  .conclusions{padding:30px;background:#fff}
+  .conclusions h2{font-size:18px;margin-bottom:16px;color:#1a1a2e}
+  .conclusions ul{list-style:none;padding:0}
+  .conclusions li{padding:12px 0;border-bottom:1px solid #f0f0f0;display:flex;gap:12px;align-items:flex-start}
+  .conclusions li:last-child{border-bottom:none}
+  .conclusions .num{width:24px;height:24px;border-radius:50%;background:#1a1a2e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+  .footer{padding:20px 30px;background:#f8f9fa;font-size:11px;color:#999;text-align:center}
+  .sox-trend{padding:30px;background:#fff}
+  .sox-trend h2{font-size:18px;margin-bottom:16px}
+  .sox-days{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
+  .sox-day{background:#f8f9fa;border-radius:8px;padding:14px;text-align:center}
+  .sox-day .date{font-size:11px;color:#999}
+  .sox-day .close{font-size:18px;font-weight:700;margin:4px 0}
+  .sox-day .chg{font-size:13px;font-weight:600}
+  .sox-day .chg.neg{color:#e74c3c}
+  .sox-day .chg.pos{color:#2ecc71}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>美国硬件/半导体板块 SBI 泡沫指数日报</h1>
+    <div class="subtitle">分析日期: 2026年6月11日 | 数据截至: 2026年6月10日美股收盘</div>
+  </div>
+
+  <div class="sbi-dashboard">
+    <div class="gauge-box">
+      <div class="value" style="color:#e74c3c">73.3</div>
+      <div class="label">SBI 总分 / 100</div>
+      <div class="risk-badge">危险区间 (65-80)</div>
+      <div class="change change-down">▼ -8.5分 (前次: 81.8)</div>
+    </div>
+    <div style="max-width:400px">
+      <canvas id="gaugeChart" height="180"></canvas>
+    </div>
+  </div>
+
+  <div class="sox-trend">
+    <h2>SOX 费城半导体指数近5日走势</h2>
+    <div class="sox-days">
+      <div class="sox-day"><div class="date">6月4日</div><div class="close">13,617.49</div><div class="chg">--</div></div>
+      <div class="sox-day"><div class="date">6月5日</div><div class="close">12,220.76</div><div class="chg neg">-10.26%</div></div>
+      <div class="sox-day"><div class="date">6月8日</div><div class="close">12,906.69</div><div class="chg pos">+5.61%</div></div>
+      <div class="sox-day"><div class="date">6月9日</div><div class="close">12,657.81</div><div class="chg neg">-1.93%</div></div>
+      <div class="sox-day" style="background:#fff3f3;border:2px solid #e74c3c"><div class="date">6月10日</div><div class="close">12,206.46</div><div class="chg neg">-3.57%</div></div>
+    </div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card warning"><div class="name">估值 (25%)</div><div class="score" style="color:#f39c12">75.1</div><div class="weight">权重 25%</div></div>
+    <div class="metric-card danger"><div class="name">拥挤度 (25%)</div><div class="score" style="color:#e74c3c">88.9</div><div class="weight">权重 25%</div></div>
+    <div class="metric-card danger"><div class="name">杠杆 (15%)</div><div class="score" style="color:#e74c3c">90.4</div><div class="weight">权重 15%</div></div>
+    <div class="metric-card safe"><div class="name">业绩兑现 (15%)</div><div class="score" style="color:#2ecc71">24.4</div><div class="weight">权重 15%</div></div>
+    <div class="metric-card danger"><div class="name">资金流向 (10%)</div><div class="score" style="color:#e74c3c">80.0</div><div class="weight">权重 10%</div></div>
+    <div class="metric-card warning"><div class="name">外部环境 (10%)</div><div class="score" style="color:#f39c12">70.4</div><div class="weight">权重 10%</div></div>
+  </div>
+
+  <div class="chart-section">
+    <div class="chart-row">
+      <div class="chart-box">
+        <h3>SBI 六维度雷达图</h3>
+        <canvas id="radarChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>SOX 近30日走势 (示意)</h3>
+        <canvas id="trendChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusions">
+    <h2>核心结论与操作建议</h2>
+    <ul>
+      <li><div class="num">1</div><div><strong>SBI评分从81.8分回落至73.3分，下降8.5分，从极端危险区间回落至危险区间。</strong>连续三日大跌（6/5 -10.26%，6/9 -1.93%，6/10 -3.57%）释放了部分泡沫压力，但风险仍然显著。</div></li>
+      <li><div class="num">2</div><div><strong>估值风险有所缓解但仍高：</strong>NVIDIA PE仅30.7倍（合理），AMD PE从178降至169.4（仍极端），SOX偏离200MA从20.6%降至16.2%。估值维度得分从92.5降至75.1。</div></li>
+      <li><div class="num">3</div><div><strong>拥挤度和杠杆仍为极端危险：</strong>S&P 500 Top 7集中度33.8%、NVIDIA权重7.5%；FINRA融资余额$1.304T创历史新高，占GDP 4%，YoY +53.3%。</div></li>
+      <li><div class="num">4</div><div><strong>业绩兑现维度优异（24.4分=安全）：</strong>半导体销售+93.9% YoY，Hyperscaler 2026年Capex合计超$320B，基本面支撑强劲。</div></li>
+      <li><div class="num">5</div><div><strong>资金流向仍偏危险：</strong>5月SOXX流出$907.5M、SMH流出$2.3B，虽6月4日有$646M流入，但整体机构态度谨慎。</div></li>
+    </ul>
+    <div style="margin-top:20px;padding:16px;background:#fff3f3;border-radius:8px;border-left:4px solid #e74c3c">
+      <strong>操作建议：</strong> SBI 73.3分仍处于危险区间，禁止追高。SOX三日暴跌后或有技术性反弹，但高杠杆+高拥挤度环境下反弹空间有限。建议继续减仓高估值标的（AMD），保留NVIDIA/TSM等估值合理龙头。等待SBI回落至45分以下再大举建仓。6月17日FOMC会议为关键催化剂。
+    </div>
+  </div>
+
+  <table class="data-table">
+    <thead><tr><th>数据项</th><th>数值</th><th>日期/来源</th><th>危险度评估</th></tr></thead>
+    <tbody>
+      <tr><td>SOX收盘</td><td>12,206.46 (-3.57%)</td><td>2026-06-10 / FRED</td><td>偏离200MA 16.2%</td></tr>
+      <tr><td>NVIDIA PE (TTM)</td><td>30.7</td><td>2026-06-10 / financecharts.com</td><td>合理</td></tr>
+      <tr><td>AMD PE (TTM)</td><td>169.4</td><td>2026-06 / companiesmarketcap.com</td><td>极端高估</td></tr>
+      <tr><td>Broadcom PE (TTM)</td><td>65.28</td><td>2026-06-09 / public.com</td><td>偏高</td></tr>
+      <tr><td>TSM PE (TTM)</td><td>30.32</td><td>2026-06 / marketcapof.com</td><td>合理</td></tr>
+      <tr><td>S&P 500 Top 7集中度</td><td>33.8%</td><td>2026-06 / simianx.ai</td><td>极端</td></tr>
+      <tr><td>NVIDIA S&P权重</td><td>7.5%</td><td>2026-06 / simianx.ai</td><td>极端</td></tr>
+      <tr><td>FINRA融资余额</td><td>$1.304T (GDP 4%, YoY +53.3%)</td><td>2026-04-30 / FINRA</td><td>历史新高</td></tr>
+      <tr><td>10年期美债收益率</td><td>4.49%</td><td>2026-06 / 美联储</td><td>高位</td></tr>
+      <tr><td>美联储利率目标</td><td>3.50%-3.75%</td><td>2026-06 / FOMC</td><td>限制性</td></tr>
+      <tr><td>Hyperscaler AI Capex</td><td>>$320B (2026年)</td><td>2026-03 / nextwavesinsight.com</td><td>支撑基本面</td></tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    报告生成时间: 2026-06-11 12:30 CST | 数据来源: FRED, FINRA, financecharts.com, public.com, companiesmarketcap.com, simianx.ai, nextwavesinsight.com, sofrrate.com, AdvisorPerspectives, 东方财富等<br>
+    SBI (Semiconductor Bubble Index) 为自定义分析框架，仅供参考，不构成投资建议。
+  </div>
+</div>
+
+<script>
+// 仪表盘
+new Chart(document.getElementById('gaugeChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['已用风险额度', '剩余安全空间'],
+    datasets: [{
+      data: [73.3, 26.7],
+      backgroundColor: ['#e74c3c', '#ecf0f1'],
+      borderWidth: 0,
+      cutout: '75%'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { enabled: false } }
+  }
+});
+
+// 雷达图
+new Chart(document.getElementById('radarChart'), {
+  type: 'radar',
+  data: {
+    labels: ['估值', '拥挤度', '杠杆', '业绩兑现', '资金流向', '外部环境'],
+    datasets: [{
+      label: '2026-06-11',
+      data: [75.1, 88.9, 90.4, 24.4, 80.0, 70.4],
+      backgroundColor: 'rgba(231,76,60,0.2)',
+      borderColor: '#e74c3c',
+      pointBackgroundColor: '#e74c3c',
+      borderWidth: 2
+    }, {
+      label: '2026-06-10',
+      data: [92.5, 92.0, 92.0, 40.0, 100.0, 59.0],
+      backgroundColor: 'rgba(149,165,166,0.1)',
+      borderColor: '#95a5a6',
+      pointBackgroundColor: '#95a5a6',
+      borderWidth: 1,
+      borderDash: [5,5]
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      r: {
+        min: 0, max: 100,
+        ticks: { stepSize: 20, color: '#999', font: {size:10} },
+        grid: { color: '#eee' },
+        angleLines: { color: '#eee' },
+        pointLabels: { font: {size:12,weight:'600'}, color: '#333' }
+      }
+    },
+    plugins: { legend: { position: 'bottom', labels: { font: {size:11} } } }
+  }
+});
+
+// 趋势线
+new Chart(document.getElementById('trendChart'), {
+  type: 'line',
+  data: {
+    labels: ['5/12','5/15','5/20','5/23','5/28','6/2','6/4','6/5','6/8','6/9','6/10'],
+    datasets: [{
+      label: 'SOX收盘',
+      data: [11500,11800,12500,12800,13200,13500,13617,12221,12907,12658,12206],
+      borderColor: '#3498db',
+      backgroundColor: 'rgba(52,152,219,0.1)',
+      fill: true,
+      tension: 0.3,
+      pointRadius: 4,
+      pointBackgroundColor: function(ctx) {
+        const v = ctx.raw;
+        return v > 13000 ? '#e74c3c' : (v < 12250 ? '#e74c3c' : '#3498db');
+      }
+    }, {
+      label: '200日均线(估)',
+      data: [9800,9900,10000,10100,10200,10300,10400,10500,10500,10500,10500],
+      borderColor: '#95a5a6',
+      borderDash: [5,5],
+      pointRadius: 0,
+      fill: false
+    }]
+  },
+  options: {
+    responsive: true,
+    interaction: { intersect: false, mode: 'index' },
+    plugins: { legend: { position: 'bottom', labels: { font: {size:11} } } },
+    scales: {
+      y: { grid: { color: '#f0f0f0' }, ticks: { color: '#999', font: {size:10} } },
+      x: { grid: { display: false }, ticks: { color: '#999', font: {size:10} } }
+    }
+  }
+});
+</script>
+</body>
+</html>
