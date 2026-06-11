@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股半导体板块SBI泡沫指数日报 - 2026-06-11</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6;padding:20px}
+  .container{max-width:1200px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);overflow:hidden}
+  .header{background:linear-gradient(135deg,#0f3460 0%,#1a1a2e 100%);color:#fff;padding:40px 30px;text-align:center}
+  .header h1{font-size:28px;margin-bottom:8px;font-weight:700}
+  .header .subtitle{font-size:14px;opacity:.8;margin-bottom:20px}
+  .sbi-dashboard{display:flex;justify-content:center;align-items:center;gap:40px;padding:40px 30px;flex-wrap:wrap;background:#fafbfc}
+  .gauge-box{text-align:center}
+  .gauge-box .value{font-size:56px;font-weight:800;line-height:1}
+  .gauge-box .label{font-size:14px;color:#666;margin-top:8px}
+  .gauge-box .risk-badge{display:inline-block;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-top:12px;color:#fff;background:#f39c12}
+  .gauge-box .change{font-size:16px;margin-top:8px}
+  .change-down{color:#2ecc71}
+  .change-up{color:#e74c3c}
+  .metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;padding:30px;background:#fff}
+  .metric-card{background:#f8f9fa;border-radius:12px;padding:20px;text-align:center;border-left:4px solid #3498db}
+  .metric-card.danger{border-left-color:#e74c3c}
+  .metric-card.warning{border-left-color:#f39c12}
+  .metric-card.safe{border-left-color:#2ecc71}
+  .metric-card .name{font-size:12px;color:#666;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+  .metric-card .score{font-size:32px;font-weight:700}
+  .metric-card .weight{font-size:11px;color:#999;margin-top:4px}
+  .chart-section{padding:30px;background:#fafbfc}
+  .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:768px){.chart-row{grid-template-columns:1fr}}
+  .chart-box{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .chart-box h3{font-size:15px;margin-bottom:16px;color:#333}
+  .data-table{width:100%;border-collapse:collapse;margin:20px 30px;font-size:13px}
+  .data-table th,.data-table td{padding:10px 14px;text-align:left;border-bottom:1px solid #eee}
+  .data-table th{background:#f8f9fa;font-weight:600;color:#555}
+  .data-table tr:hover{background:#f8f9fa}
+  .conclusions{padding:30px;background:#fff}
+  .conclusions h2{font-size:18px;margin-bottom:16px;color:#1a1a2e}
+  .conclusions ul{list-style:none;padding:0}
+  .conclusions li{padding:12px 0;border-bottom:1px solid #f0f0f0;display:flex;gap:12px;align-items:flex-start}
+  .conclusions li:last-child{border-bottom:none}
+  .conclusions .num{width:24px;height:24px;border-radius:50%;background:#0f3460;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+  .footer{padding:20px 30px;background:#f8f9fa;font-size:11px;color:#999;text-align:center}
+  .highlight-box{margin:20px 30px;padding:16px;background:#fff9e6;border-radius:8px;border-left:4px solid #f39c12;font-size:13px}
+  .news-list{padding:20px 30px;background:#fafbfc}
+  .news-list h2{font-size:16px;margin-bottom:12px}
+  .news-item{padding:8px 0;font-size:13px;color:#444;border-bottom:1px solid #eee}
+  .news-item:last-child{border-bottom:none}
+  .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;margin-right:6px}
+  .tag-red{background:#ffeaea;color:#c0392b}
+  .tag-green{background:#eafff0;color:#27ae60}
+  .tag-yellow{background:#fff9e6;color:#d35400}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>A股半导体板块 SBI 泡沫指数日报</h1>
+    <div class="subtitle">分析日期: 2026年6月11日 | 数据截至: 2026年6月11日A股盘中/近期可得数据</div>
+  </div>
+
+  <div class="sbi-dashboard">
+    <div class="gauge-box">
+      <div class="value" style="color:#f39c12">62.5</div>
+      <div class="label">SBI 总分 / 100</div>
+      <div class="risk-badge">预警区间 (45-65)</div>
+      <div class="change change-down">▼ -1.5分 (前次: 64.0)</div>
+    </div>
+    <div style="max-width:400px">
+      <canvas id="gaugeChart" height="180"></canvas>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <strong>今日盘面速览：</strong>6月11日A股三大股指低开低走，沪指跌0.73%，深成指跌1.32%，创业板指跌1.79%。但半导体材料板块逆势持续走高，靶材、光刻胶、电子特气方向表现亮眼，康强电子(002119)涨停(+10.01%)。美股隔夜大跌（纳指跌近2%，SOX跌3.57%）压制市场整体情绪。
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card danger"><div class="name">估值 (25%)</div><div class="score" style="color:#e74c3c">82.0</div><div class="weight">权重 25%</div></div>
+    <div class="metric-card warning"><div class="name">拥挤度 (25%)</div><div class="score" style="color:#f39c12">62.0</div><div class="weight">权重 25%</div></div>
+    <div class="metric-card warning"><div class="name">杠杆 (15%)</div><div class="score" style="color:#f39c12">72.0</div><div class="weight">权重 15%</div></div>
+    <div class="metric-card safe"><div class="name">业绩兑现 (15%)</div><div class="score" style="color:#2ecc71">38.0</div><div class="weight">权重 15%</div></div>
+    <div class="metric-card safe"><div class="name">资金流向 (10%)</div><div class="score" style="color:#2ecc71">50.0</div><div class="weight">权重 10%</div></div>
+    <div class="metric-card warning"><div class="name">外部环境 (10%)</div><div class="score" style="color:#f39c12">52.0</div><div class="weight">权重 10%</div></div>
+  </div>
+
+  <div class="chart-section">
+    <div class="chart-row">
+      <div class="chart-box">
+        <h3>SBI 六维度雷达图</h3>
+        <canvas id="radarChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>SBI 近10日趋势</h3>
+        <canvas id="trendChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusions">
+    <h2>核心结论与操作建议</h2>
+    <ul>
+      <li><div class="num">1</div><div><strong>SBI评分62.5分，较前次64.0分微降1.5分，仍处于预警区间（45-65分）上沿，距危险线65分仅2.5分。</strong>估值风险持续高企是主要矛盾。</div></li>
+      <li><div class="num">2</div><div><strong>估值维度82.0分（极高风险）：</strong>申万半导体PE(TTM)107.28倍，PB 9.57倍，PE处于近5年99.26%分位、近10年94.60%分位，板块整体估值处于历史极端高位。</div></li>
+      <li><div class="num">3</div><div><strong>业绩兑现强劲支撑市场（38.0分=安全）：</strong>2026年Q1半导体板块归母净利润同比增长178.59%，营收同比+24.71%，基本面景气度确认。</div></li>
+      <li><div class="num">4</div><div><strong>杠杆风险不可忽视（72.0分）：</strong>半导体行业年内融资净买入813.41亿元，居全行业第一；A股整体融资余额2.90万亿，杠杆资金对板块参与度高。</div></li>
+      <li><div class="num">5</div><div><strong>资金流向出现分化：</strong>北向资金6月初大幅流入半导体（2日+15.68亿、3日+32.17亿），但近期ETF资金分歧加大，部分芯片ETF出现净流出。</div></li>
+    </ul>
+    <div style="margin-top:20px;padding:16px;background:#fff9e6;border-radius:8px;border-left:4px solid #f39c12">
+      <strong>操作建议：</strong> SBI 62.5分处于预警区间上沿，需高度警惕。虽然业绩基本面强劲（Q1净利+178%），但估值处于历史99%分位，泡沫风险客观存在。建议控制仓位，不追高，重点关注估值相对合理的半导体设备和材料龙头。若SBI突破65分危险线，建议进一步减仓。美股科技股大跌可能通过情绪和估值锚定效应拖累A股半导体。
+    </div>
+  </div>
+
+  <div class="news-list">
+    <h2>近期半导体行业重大事件</h2>
+    <div class="news-item"><span class="tag tag-yellow">政策</span>华为发布「韬(τ)定律」，提出芯片性能提升新路径，引领国产替代技术路线</div>
+    <div class="news-item"><span class="tag tag-red">美股</span>6月5日费城半导体指数暴跌-10.26%，6月10日再跌-3.57%，美股科技股进入技术性回调</div>
+    <div class="news-item"><span class="tag tag-green">业绩</span>2026年Q1科创板半导体企业归母净利润同比增长83%，板块整体Q1净利+178.59%</div>
+    <div class="news-item"><span class="tag tag-yellow">资金</span>半导体行业年内融资净买入813.41亿元，居A股全行业第一</div>
+    <div class="news-item"><span class="tag tag-green">产业</span>WSTS预测2026年全球半导体市场规模达1.5112万亿美元，同比增长89.9%</div>
+    <div class="news-item"><span class="tag tag-red">海外</span>博通6月3日财报后盘后跌超13%，AI芯片指引偏谨慎引发市场担忧</div>
+  </div>
+
+  <table class="data-table">
+    <thead><tr><th>数据项</th><th>数值</th><th>日期/来源</th><th>评估</th></tr></thead>
+    <tbody>
+      <tr><td>申万半导体PE(TTM)</td><td>107.28倍</td><td>2026-06-05 / 乐咕乐股</td><td>近5年99.26%分位</td></tr>
+      <tr><td>申万半导体PB</td><td>9.57倍</td><td>2026-06-05 / 乐咕乐股</td><td>历史高位</td></tr>
+      <tr><td>板块Q1归母净利增速</td><td>+178.59%</td><td>2026Q1 / 东方财富</td><td>业绩强劲</td></tr>
+      <tr><td>板块Q1营收增速</td><td>+24.71%</td><td>2026Q1 / 东方财富</td><td>景气上行</td></tr>
+      <tr><td>北向资金-半导体(6/2)</td><td>+15.68亿元</td><td>2026-06-02</td><td>大幅流入</td></tr>
+      <tr><td>北向资金-半导体(6/3)</td><td>+32.17亿元</td><td>2026-06-03</td><td>大幅流入</td></tr>
+      <tr><td>半导体行业融资净买入(年内)</td><td>813.41亿元</td><td>截至2026-06-04</td><td>全行业第一</td></tr>
+      <tr><td>A股整体融资余额</td><td>2.90万亿元</td><td>2026-06-04</td><td>高位</td></tr>
+      <tr><td>科创芯片ETF国泰净流入</td><td>+1,326.66万元</td><td>2026-06-05</td><td>小幅流入</td></tr>
+      <tr><td>美联储利率目标</td><td>3.50%-3.75%</td><td>2026-06</td><td>限制性</td></tr>
+      <tr><td>美国10年期国债收益率</td><td>4.49%</td><td>2026-06</td><td>高位</td></tr>
+      <tr><td>全球半导体市场规模预测</td><td>1.5112万亿美元</td><td>2026年 / WSTS</td><td>同比+89.9%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    报告生成时间: 2026-06-11 12:30 CST | 数据来源: 乐咕乐股、东方财富、同花顺、雪球、新浪财经、WSTS、美联储、Trading Economics等<br>
+    SBI (Semiconductor Bubble Index) 为自定义分析框架，仅供参考，不构成投资建议。
+  </div>
+</div>
+
+<script>
+// 仪表盘
+new Chart(document.getElementById('gaugeChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['已用风险额度', '剩余安全空间'],
+    datasets: [{
+      data: [62.5, 37.5],
+      backgroundColor: ['#f39c12', '#ecf0f1'],
+      borderWidth: 0,
+      cutout: '75%'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { enabled: false } }
+  }
+});
+
+// 雷达图
+new Chart(document.getElementById('radarChart'), {
+  type: 'radar',
+  data: {
+    labels: ['估值', '拥挤度', '杠杆', '业绩兑现', '资金流向', '外部环境'],
+    datasets: [{
+      label: '2026-06-11',
+      data: [82.0, 62.0, 72.0, 38.0, 50.0, 52.0],
+      backgroundColor: 'rgba(243,156,18,0.2)',
+      borderColor: '#f39c12',
+      pointBackgroundColor: '#f39c12',
+      borderWidth: 2
+    }, {
+      label: '2026-06-10',
+      data: [82.0, 62.0, 72.0, 42.0, 56.0, 48.0],
+      backgroundColor: 'rgba(149,165,166,0.1)',
+      borderColor: '#95a5a6',
+      pointBackgroundColor: '#95a5a6',
+      borderWidth: 1,
+      borderDash: [5,5]
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      r: {
+        min: 0, max: 100,
+        ticks: { stepSize: 20, color: '#999', font: {size:10} },
+        grid: { color: '#eee' },
+        angleLines: { color: '#eee' },
+        pointLabels: { font: {size:12,weight:'600'}, color: '#333' }
+      }
+    },
+    plugins: { legend: { position: 'bottom', labels: { font: {size:11} } } }
+  }
+});
+
+// SBI趋势
+new Chart(document.getElementById('trendChart'), {
+  type: 'line',
+  data: {
+    labels: ['6/2','6/3','6/4','6/5','6/6','6/8','6/9','6/10','6/11'],
+    datasets: [{
+      label: 'SBI总分',
+      data: [58,60,62,65,63,66,62,64,62.5],
+      borderColor: '#f39c12',
+      backgroundColor: 'rgba(243,156,18,0.1)',
+      fill: true,
+      tension: 0.3,
+      pointRadius: 5,
+      pointBackgroundColor: '#f39c12'
+    }, {
+      label: '危险线',
+      data: [65,65,65,65,65,65,65,65,65],
+      borderColor: '#e74c3c',
+      borderDash: [5,5],
+      pointRadius: 0,
+      fill: false
+    }, {
+      label: '预警线',
+      data: [45,45,45,45,45,45,45,45,45],
+      borderColor: '#3498db',
+      borderDash: [3,3],
+      pointRadius: 0,
+      fill: false
+    }]
+  },
+  options: {
+    responsive: true,
+    interaction: { intersect: false, mode: 'index' },
+    plugins: { legend: { position: 'bottom', labels: { font: {size:11} } } },
+    scales: {
+      y: { min: 30, max: 80, grid: { color: '#f0f0f0' }, ticks: { color: '#999', font: {size:10} } },
+      x: { grid: { display: false }, ticks: { color: '#999', font: {size:10} } }
+    }
+  }
+});
+</script>
+</body>
+</html>
