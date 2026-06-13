@@ -133,6 +133,22 @@
   .section-hd h2 {font-size:1.15rem;font-weight:700;letter-spacing:.1px;}
   .section-hd .muted {font-size:.78rem;color:var(--text2);font-weight:400;}
 
+  /* 行业分组标题 */
+  .sector-group {margin-top:28px;margin-bottom:0;}
+  .sector-group:first-of-type {margin-top:0;}
+  .sector-hd {
+    display:flex;align-items:center;gap:8px;margin-bottom:12px;padding-left:4px;
+    border-left:3px solid var(--accent, #1a56db);
+  }
+  .sector-hd .sector-icon {font-size:.95rem;line-height:1;}
+  .sector-hd h3 {
+    font-size:.88rem;font-weight:600;letter-spacing:.02em;
+    color:var(--text);line-height:1.3;
+  }
+  .sector-hd .sector-count {
+    font-size:.7rem;background:var(--bg2);color:var(--text2);
+    padding:1px 8px;border-radius:10px;font-weight:500;}
+
   .grid {display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;}
   .card {
     background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px;
@@ -208,6 +224,9 @@
     .list-title {font-size:.85rem;}
     .list-meta {font-size:.72rem;}
     .list-btn {padding:5px 10px;font-size:.75rem;}
+    .sector-group {margin-top:20px;}
+    .sector-hd h3 {font-size:.82rem;}
+    .sector-count {font-size:.65rem;}
   }
 </style>
 </head>
@@ -396,30 +415,38 @@
     <h2>港股深度投研</h2>
     <span class="muted">2026年6月更新</span>
   </div>
-  <div class="grid">
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#fff0f5;color:#e91e63;">PM</div>
-        <div>
-          <div class="card-title">泡泡玛特 (9992.HK)</div>
-          <div class="card-sub">HKEX: 9992 · 潮流IP消费</div>
-        </div>
-      </div>
-      <div class="card-desc">中国潮流IP消费龙头，深度分析全球化扩张、IP矩阵运营、海外收入增长及估值逻辑。</div>
-      <div class="card-tags"><span class="tag">潮流IP</span><span class="tag">全球化</span><span class="tag">消费品牌</span></div>
-      <a class="card-btn" href="popmart_research_9992HK.html">阅读报告</a>
+
+  <!-- 消费电子与品牌 -->
+  <div class="sector-group">
+    <div class="sector-hd" style="--accent:#e91e63;">
+      <span class="sector-icon">🛍️</span><h3>消费电子与品牌</h3>
+      <span class="sector-count">2份报告</span>
     </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#ff6700;color:#fff;">MI</div>
-        <div>
-          <div class="card-title">小米集团 (1810.HK)</div>
-          <div class="card-sub">HKEX: 1810 · 消费电子/智能汽车</div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#fff0f5;color:#e91e63;">PM</div>
+          <div>
+            <div class="card-title">泡泡玛特 (9992.HK)</div>
+            <div class="card-sub">HKEX: 9992 · 潮流IP消费</div>
+          </div>
         </div>
+        <div class="card-desc">中国潮流IP消费龙头，深度分析全球化扩张、IP矩阵运营、海外收入增长及估值逻辑。</div>
+        <div class="card-tags"><span class="tag">潮流IP</span><span class="tag">全球化</span><span class="tag">消费品牌</span></div>
+        <a class="card-btn" href="popmart_research_9992HK.html">阅读报告</a>
       </div>
-      <div class="card-desc">小米集团2026年6月深度投研报告，覆盖智能手机、AIoT、智能汽车三大核心业务及估值分析。</div>
-      <div class="card-tags"><span class="tag">消费电子</span><span class="tag">智能汽车</span><span class="tag">AIoT</span></div>
-      <a class="card-btn" href="xiaomi_research_report_1810HK_v2.html">阅读报告</a>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#ff6700;color:#fff;">MI</div>
+          <div>
+            <div class="card-title">小米集团 (1810.HK)</div>
+            <div class="card-sub">HKEX: 1810 · 消费电子/智能汽车</div>
+          </div>
+        </div>
+        <div class="card-desc">小米集团2026年6月深度投研报告，覆盖智能手机、AIoT、智能汽车三大核心业务及估值分析。</div>
+        <div class="card-tags"><span class="tag">消费电子</span><span class="tag">智能汽车</span><span class="tag">AIoT</span></div>
+        <a class="card-btn" href="xiaomi_research_report_1810HK_v2.html">阅读报告</a>
+      </div>
     </div>
   </div>
 </div>
@@ -430,188 +457,227 @@
     <h2>美股深度投研</h2>
     <span class="muted">2026年Q1/Q2财报季</span>
   </div>
-  <div class="grid">
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#e8f5f0;color:#1a7a45;">GV</div>
-        <div>
-          <div class="card-title">GE Vernova (GEV)</div>
-          <div class="card-sub">NYSE: GEV · 能源转型</div>
-        </div>
-      </div>
-      <div class="card-desc">全球能源转型龙头，覆盖燃气轮机/风电/核电/电气化四大板块深度分析，含财务模型与估值。</div>
-      <div class="card-tags"><span class="tag">能源转型</span><span class="tag">燃气轮机</span><span class="tag">核电</span></div>
-      <a class="card-btn" href="GEV_Research_Report_2026.html">阅读报告</a>
+
+  <!-- 能源与大宗商品 -->
+  <div class="sector-group">
+    <div class="sector-hd" style="--accent:#1a7a45;">
+      <span class="sector-icon">🟢</span><h3>能源与大宗商品</h3>
+      <span class="sector-count">4份报告</span>
     </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#0f2040;color:#c9a84c;">CH</div>
-        <div>
-          <div class="card-title">Cheniere Energy (LNG)</div>
-          <div class="card-sub">NYSE: LNG · LNG出口龙头</div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#e8f5f0;color:#1a7a45;">GV</div>
+          <div>
+            <div class="card-title">GE Vernova (GEV)</div>
+            <div class="card-sub">NYSE: GEV · 能源转型</div>
+          </div>
         </div>
+        <div class="card-desc">全球能源转型龙头，覆盖燃气轮机/风电/核电/电气化四大板块深度分析，含财务模型与估值。</div>
+        <div class="card-tags"><span class="tag">能源转型</span><span class="tag">燃气轮机</span><span class="tag">核电</span></div>
+        <a class="card-btn" href="GEV_Research_Report_2026.html">阅读报告</a>
       </div>
-      <div class="card-desc">美国最大LNG出口商，深度分析全球LNG贸易格局、产能扩张及2026Q1业绩，含Chart.js可视化。</div>
-      <div class="card-tags"><span class="tag">LNG</span><span class="tag">能源出口</span><span class="tag">产能扩张</span></div>
-      <a class="card-btn" href="cheniere_LNG_research_report_2026Q1.html">阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#001E5C;color:#00B4FF;">IBM</div>
-        <div>
-          <div class="card-title">IBM · 2026 Q1财报深度分析</div>
-          <div class="card-sub">NYSE: IBM · 企业级AI</div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#0f2040;color:#c9a84c;">CH</div>
+          <div>
+            <div class="card-title">Cheniere Energy (LNG)</div>
+            <div class="card-sub">NYSE: LNG · LNG出口龙头</div>
+          </div>
         </div>
+        <div class="card-desc">美国最大LNG出口商，深度分析全球LNG贸易格局、产能扩张及2026Q1业绩，含Chart.js可视化。</div>
+        <div class="card-tags"><span class="tag">LNG</span><span class="tag">能源出口</span><span class="tag">产能扩张</span></div>
+        <a class="card-btn" href="cheniere_LNG_research_report_2026Q1.html">阅读报告</a>
       </div>
-      <div class="card-desc">企业级AI领导者2026Q1深度财报分析，含Watsonx平台、咨询业务、基础设施三大板块增长数据。</div>
-      <div class="card-tags"><span class="tag">企业AI</span><span class="tag">Watsonx</span><span class="tag">财报分析</span></div>
-      <a class="card-btn" href="IBM.html">阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#0B1C3F;color:#3B82F6;">AV</div>
-        <div>
-          <div class="card-title">博通 (AVGO)</div>
-          <div class="card-sub">NASDAQ: AVGO · 半导体 · 2026Q2</div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#1a3a5e;color:#4da6ff;">DH</div>
+          <div>
+            <div class="card-title">DHT Holdings (DHT)</div>
+            <div class="card-sub">NYSE: DHT · 油轮运输 · 2026Q1</div>
+          </div>
         </div>
+        <div class="card-desc">全球油轮运输龙头，深度分析霍尔木兹海峡封锁对油轮运费的拉动逻辑、Snail Investment 2026Q1深度研究。</div>
+        <div class="card-tags"><span class="tag">油轮运输</span><span class="tag">霍尔木兹</span><span class="tag">深度研究</span></div>
+        <a class="card-btn" href="DHT_Holdings_深度研究报告_2026Q1.html">阅读报告</a>
       </div>
-      <div class="card-desc">全球AI算力基础设施核心供应商，深度分析Q2财报、AI芯片业务爆发逻辑、VMware整合进展及2026年估值重估空间。</div>
-      <div class="card-tags"><span class="tag">AI算力</span><span class="tag">半导体</span><span class="tag">财报分析</span></div>
-      <a class="card-btn" href="AVGO_深度投研报告_2026Q2.html">阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#080c14;color:#00d4ff;">LT</div>
-        <div>
-          <div class="card-title">Lumentum (LITE)</div>
-          <div class="card-sub">NASDAQ: LITE · AI光通信</div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#0a1628;color:#60a5fa;">NT</div>
+          <div>
+            <div class="card-title">Nutrien (NTR)</div>
+            <div class="card-sub">NYSE: NTR · 化肥农业 · 2026</div>
+          </div>
         </div>
+        <div class="card-desc">全球最大钾肥生产商深度投研，覆盖肥料价格周期、全球粮食安全主题、成本优势及2026-2028年估值分析。</div>
+        <div class="card-tags"><span class="tag">化肥</span><span class="tag">粮食安全</span><span class="tag">钾肥</span><span class="tag">大宗商品</span></div>
+        <a class="card-btn" href="NTR_深度投研报告_2026.html">阅读报告</a>
       </div>
-      <div class="card-desc">AI光通信基建核心标的，深度分析数据中心光模块需求爆发下的价值重估逻辑与技术壁垒。</div>
-      <div class="card-tags"><span class="tag">光通信</span><span class="tag">AI基建</span><span class="tag">价值重估</span></div>
-      <a class="card-btn" href="LITE_深度投研报告_2026.html">阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#1a3a5e;color:#4da6ff;">DH</div>
-        <div>
-          <div class="card-title">DHT Holdings (DHT)</div>
-          <div class="card-sub">NYSE: DHT · 油轮运输 · 2026Q1</div>
-        </div>
-      </div>
-      <div class="card-desc">全球油轮运输龙头，深度分析霍尔木兹海峡封锁对油轮运费的拉动逻辑、Snail Investment 2026Q1深度研究。</div>
-      <div class="card-tags"><span class="tag">油轮运输</span><span class="tag">霍尔木兹</span><span class="tag">深度研究</span></div>
-      <a class="card-btn" href="DHT_Holdings_深度研究报告_2026Q1.html">阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#fef3c7;color:#b45309;">TL</div>
-        <div>
-          <div class="card-title">好未来 (TAL)</div>
-          <div class="card-sub">NYSE: TAL · 教育科技 · 2026财年</div>
-        </div>
-      </div>
-      <div class="card-desc">好未来2026财年全年深度投研报告，覆盖教育科技转型、AI学习机业务、素质教育布局及估值分析。</div>
-      <div class="card-tags"><span class="tag">教育科技</span><span class="tag">AI学习机</span><span class="tag">素质教育</span></div>
-      <a class="card-btn" href="TAL_Research_Report_2026.html">阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#003366;color:#FF6B00;">SN</div>
-        <div>
-          <div class="card-title">ServiceNow (NOW)</div>
-          <div class="card-sub">NYSE: NOW · AI控制塔</div>
-        </div>
-      </div>
-      <div class="card-desc">企业工作流AI控制塔领导者2026Q1财报深度分析，含订阅收入、AI产品渗透率等核心指标。</div>
-      <div class="card-tags"><span class="tag">AI控制塔</span><span class="tag">SaaS</span><span class="tag">工作流</span></div>
-      <a class="card-btn" href="now.html">阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#0B1C3F;color:#00D4FF;">MR</div>
-        <div>
-          <div class="card-title">Marvell Technology (MRVL)</div>
-          <div class="card-sub">NASDAQ: MRVL · 半导体 · 2027财年Q1</div>
-        </div>
-      </div>
-      <div class="card-desc">AI数据中心"双引擎"（光互联+定制ASIC）驱动，深度分析2027财年Q1财报、英伟达战略合作及2027-2029财年估值重估空间。</div>
-      <div class="card-tags"><span class="tag">AI算力</span><span class="tag">光互联</span><span class="tag">定制ASIC</span><span class="tag">半导体</span></div>
-      <a class="card-btn" href="MRVL_深度投研报告_2027Q1.html">阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#0B1C3F;color:#00D4FF;">AL</div>
-        <div>
-          <div class="card-title">Astera Labs (ALAB)</div>
-          <div class="card-sub">NASDAQ: ALAB · 半导体 · 2026财年Q1</div>
-        </div>
-      </div>
-      <div class="card-desc">AI互联基础设施"连接之王"，深度分析Q1财报、PCIe 6.0量价齐升、Scorpio交换机第二曲线及2026-2027年估值空间。</div>
-        <div class="card-tags"><span class="tag">AI互联</span><span class="tag">PCIe Retimer</span><span class="tag">半导体</span><span class="tag">财报分析</span></div>
-        <a class="card-btn" href="ALAB_深度投研报告_2026Q1.html">阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#0a1628;color:#f59e0b;">MU</div>
-        <div>
-          <div class="card-title">村田制作所 (MRAAY)</div>
-          <div class="card-sub">OTC: MRAAY · 高端被动元器件 · 2026</div>
-        </div>
-      </div>
-      <div class="card-desc">AI服务器MLCC供需缺口爆发，村田主导行业提价15-35%，FY2026指引经营利润跳增34.8%，高端被动元器件龙头价值重估。</div>
-      <div class="card-tags"><span class="tag">MLCC</span><span class="tag">被动元器件</span><span class="tag">AI服务器</span><span class="tag">涨价周期</span><span class="tag">日本半导体</span></div>
-      <a class="card-btn" href="murata_MRAAY_research_report.html">阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#0a1628;color:#f59e0b;">TS</div>
-        <div>
-          <div class="card-title">台积电 (TSM)</div>
-          <div class="card-sub">NYSE: TSM · 半导体制造 · 2026Q1</div>
-        </div>
-      </div>
-      <div class="card-desc">AI算力系统性紧缺与全球化成本博弈下的价值重估，覆盖先进制程供需、CoWoS封装瓶颈、美国GigaFab及SOTP/DCF双轨估值。</div>
-      <div class="card-tags"><span class="tag">先进制程</span><span class="tag">CoWoS封装</span><span class="tag">AI算力</span><span class="tag">海外扩产</span><span class="tag">SOTP估值</span></div>
-      <a class="card-btn" href="TSM_深度投研报告_2026.html">阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#0a1628;color:#60a5fa;">MU</div>
-        <div>
-          <div class="card-title">美光科技 (MU)</div>
-          <div class="card-sub">NASDAQ: MU · 存储芯片 · 2026Q3</div>
-        </div>
-      </div>
-      <div class="card-desc">HBM3E垄断全球90%产能，AI存储超级周期深度投研，覆盖Q3财报、HBM供需缺口及2026-2028年估值重估空间。</div>
-      <div class="card-tags"><span class="tag">HBM</span><span class="tag">AI存储</span><span class="tag">DRAM</span><span class="tag">财报分析</span><span class="tag">半导体</span></div>
-      <a class="card-btn" href="MU_深度投研报告_2026.html">阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#0a1628;color:#f59e0b;">OS</div>
-        <div>
-          <div class="card-title">Oscar Health (OSCR)</div>
-          <div class="card-sub">NYSE: OSCR · 医疗保险科技 · 2026Q1</div>
-        </div>
-      </div>
-      <div class="card-desc">数字医疗保险科技深度研究，覆盖Medicare Advantage扩张、AI核保技术、单位经济模型及2026-2028年估值重估空间。</div>
-      <div class="card-tags"><span class="tag">医疗保险</span><span class="tag">数字医疗</span><span class="tag">AI核保</span><span class="tag">成长股</span></div>
-      <a class="card-btn" href="OSCR_深度投研报告_2026.html">阅读报告</a>
-    </div>
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#0a1628;color:#60a5fa;">NT</div>
-        <div>
-          <div class="card-title">Nutrien (NTR)</div>
-          <div class="card-sub">NYSE: NTR · 化肥农业 · 2026</div>
-        </div>
-      </div>
-      <div class="card-desc">全球最大钾肥生产商深度投研，覆盖肥料价格周期、全球粮食安全主题、成本优势及2026-2028年估值分析。</div>
-      <div class="card-tags"><span class="tag">化肥</span><span class="tag">粮食安全</span><span class="tag">钾肥</span><span class="tag">大宗商品</span></div>
-      <a class="card-btn" href="NTR_深度投研报告_2026.html">阅读报告</a>
     </div>
   </div>
+
+  <!-- 半导体与硬科技 -->
+  <div class="sector-group">
+    <div class="sector-hd" style="--accent:#1a56db;">
+      <span class="sector-icon">🔵</span><h3>半导体与硬科技</h3>
+      <span class="sector-count">7份报告</span>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#0B1C3F;color:#3B82F6;">AV</div>
+          <div>
+            <div class="card-title">博通 (AVGO)</div>
+            <div class="card-sub">NASDAQ: AVGO · 半导体 · 2026Q2</div>
+          </div>
+        </div>
+        <div class="card-desc">全球AI算力基础设施核心供应商，深度分析Q2财报、AI芯片业务爆发逻辑、VMware整合进展及2026年估值重估空间。</div>
+        <div class="card-tags"><span class="tag">AI算力</span><span class="tag">半导体</span><span class="tag">财报分析</span></div>
+        <a class="card-btn" href="AVGO_深度投研报告_2026Q2.html">阅读报告</a>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#0B1C3F;color:#00D4FF;">MR</div>
+          <div>
+            <div class="card-title">Marvell Technology (MRVL)</div>
+            <div class="card-sub">NASDAQ: MRVL · 半导体 · 2027财年Q1</div>
+          </div>
+        </div>
+        <div class="card-desc">AI数据中心"双引擎"（光互联+定制ASIC）驱动，深度分析2027财年Q1财报、英伟达战略合作及2027-2029财年估值重估空间。</div>
+        <div class="card-tags"><span class="tag">AI算力</span><span class="tag">光互联</span><span class="tag">定制ASIC</span><span class="tag">半导体</span></div>
+        <a class="card-btn" href="MRVL_深度投研报告_2027Q1.html">阅读报告</a>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#0B1C3F;color:#00D4FF;">AL</div>
+          <div>
+            <div class="card-title">Astera Labs (ALAB)</div>
+            <div class="card-sub">NASDAQ: ALAB · 半导体 · 2026财年Q1</div>
+          </div>
+        </div>
+        <div class="card-desc">AI互联基础设施"连接之王"，深度分析Q1财报、PCIe 6.0量价齐升、Scorpio交换机第二曲线及2026-2027年估值空间。</div>
+        <div class="card-tags"><span class="tag">AI互联</span><span class="tag">PCIe Retimer</span><span class="tag">半导体</span><span class="tag">财报分析</span></div>
+        <a class="card-btn" href="ALAB_深度投研报告_2026Q1.html">阅读报告</a>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#0a1628;color:#f59e0b;">TS</div>
+          <div>
+            <div class="card-title">台积电 (TSM)</div>
+            <div class="card-sub">NYSE: TSM · 半导体制造 · 2026Q1</div>
+          </div>
+        </div>
+        <div class="card-desc">AI算力系统性紧缺与全球化成本博弈下的价值重估，覆盖先进制程供需、CoWoS封装瓶颈、美国GigaFab及SOTP/DCF双轨估值。</div>
+        <div class="card-tags"><span class="tag">先进制程</span><span class="tag">CoWoS封装</span><span class="tag">AI算力</span><span class="tag">海外扩产</span><span class="tag">SOTP估值</span></div>
+        <a class="card-btn" href="TSM_深度投研报告_2026.html">阅读报告</a>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#0a1628;color:#60a5fa;">MU</div>
+          <div>
+            <div class="card-title">美光科技 (MU)</div>
+            <div class="card-sub">NASDAQ: MU · 存储芯片 · 2026Q3</div>
+          </div>
+        </div>
+        <div class="card-desc">HBM3E垄断全球90%产能，AI存储超级周期深度投研，覆盖Q3财报、HBM供需缺口及2026-2028年估值重估空间。</div>
+        <div class="card-tags"><span class="tag">HBM</span><span class="tag">AI存储</span><span class="tag">DRAM</span><span class="tag">财报分析</span><span class="tag">半导体</span></div>
+        <a class="card-btn" href="MU_深度投研报告_2026.html">阅读报告</a>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#0a1628;color:#f59e0b;">MU</div>
+          <div>
+            <div class="card-title">村田制作所 (MRAAY)</div>
+            <div class="card-sub">OTC: MRAAY · 高端被动元器件 · 2026</div>
+          </div>
+        </div>
+        <div class="card-desc">AI服务器MLCC供需缺口爆发，村田主导行业提价15-35%，FY2026指引经营利润跳增34.8%，高端被动元器件龙头价值重估。</div>
+        <div class="card-tags"><span class="tag">MLCC</span><span class="tag">被动元器件</span><span class="tag">AI服务器</span><span class="tag">涨价周期</span><span class="tag">日本半导体</span></div>
+        <a class="card-btn" href="murata_MRAAY_research_report.html">阅读报告</a>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#080c14;color:#00d4ff;">LT</div>
+          <div>
+            <div class="card-title">Lumentum (LITE)</div>
+            <div class="card-sub">NASDAQ: LITE · AI光通信</div>
+          </div>
+        </div>
+        <div class="card-desc">AI光通信基建核心标的，深度分析数据中心光模块需求爆发下的价值重估逻辑与技术壁垒。</div>
+        <div class="card-tags"><span class="tag">光通信</span><span class="tag">AI基建</span><span class="tag">价值重估</span></div>
+        <a class="card-btn" href="LITE_深度投研报告_2026.html">阅读报告</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 企业AI与SaaS -->
+  <div class="sector-group">
+    <div class="sector-hd" style="--accent:#6366f1;">
+      <span class="sector-icon">💻</span><h3>企业AI与SaaS</h3>
+      <span class="sector-count">2份报告</span>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#001E5C;color:#00B4FF;">IBM</div>
+          <div>
+            <div class="card-title">IBM · 2026 Q1财报深度分析</div>
+            <div class="card-sub">NYSE: IBM · 企业级AI</div>
+          </div>
+        </div>
+        <div class="card-desc">企业级AI领导者2026Q1深度财报分析，含Watsonx平台、咨询业务、基础设施三大板块增长数据。</div>
+        <div class="card-tags"><span class="tag">企业AI</span><span class="tag">Watsonx</span><span class="tag">财报分析</span></div>
+        <a class="card-btn" href="IBM.html">阅读报告</a>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#003366;color:#FF6B00;">SN</div>
+          <div>
+            <div class="card-title">ServiceNow (NOW)</div>
+            <div class="card-sub">NYSE: NOW · AI控制塔</div>
+          </div>
+        </div>
+        <div class="card-desc">企业工作流AI控制塔领导者2026Q1财报深度分析，含订阅收入、AI产品渗透率等核心指标。</div>
+        <div class="card-tags"><span class="tag">AI控制塔</span><span class="tag">SaaS</span><span class="tag">工作流</span></div>
+        <a class="card-btn" href="now.html">阅读报告</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 消费与医疗 -->
+  <div class="sector-group">
+    <div class="sector-hd" style="--accent:#ea580c;">
+      <span class="sector-icon">🟠</span><h3>消费与医疗</h3>
+      <span class="sector-count">2份报告</span>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#fef3c7;color:#b45309;">TL</div>
+          <div>
+            <div class="card-title">好未来 (TAL)</div>
+            <div class="card-sub">NYSE: TAL · 教育科技 · 2026财年</div>
+          </div>
+        </div>
+        <div class="card-desc">好未来2026财年全年深度投研报告，覆盖教育科技转型、AI学习机业务、素质教育布局及估值分析。</div>
+        <div class="card-tags"><span class="tag">教育科技</span><span class="tag">AI学习机</span><span class="tag">素质教育</span></div>
+        <a class="card-btn" href="TAL_Research_Report_2026.html">阅读报告</a>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#0a1628;color:#f59e0b;">OS</div>
+          <div>
+            <div class="card-title">Oscar Health (OSCR)</div>
+            <div class="card-sub">NYSE: OSCR · 医疗保险科技 · 2026Q1</div>
+          </div>
+        </div>
+        <div class="card-desc">数字医疗保险科技深度研究，覆盖Medicare Advantage扩张、AI核保技术、单位经济模型及2026-2028年估值重估空间。</div>
+        <div class="card-tags"><span class="tag">医疗保险</span><span class="tag">数字医疗</span><span class="tag">AI核保</span><span class="tag">成长股</span></div>
+        <a class="card-btn" href="OSCR_深度投研报告_2026.html">阅读报告</a>
+      </div>
+    </div>
+  </div>
+</div>
 
   <div class="section-hd" id="semi-us-section" style="margin-top:36px;">
     <h2>美国半导体热度</h2>
