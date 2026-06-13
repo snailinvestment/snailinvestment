@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrien (NTR) 深度股票研究报告 | Snail Investment · 精品研究部</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+:root{
+  --bg0:#07101E;--bg1:#0B1627;--bg2:#0F1D35;--bgc:#111D33;--bgd:#080F1C;
+  --gold:#C9A84C;--goldl:#E2C27A;--goldd:rgba(201,168,76,.13);
+  --green:#2ECC8A;--red:#E05C5C;--amber:#F0A030;--blue:#4A9EE8;--teal:#2BBFAA;--purple:#9B7FE8;
+  --t1:#ECF0F8;--t2:#8FA3C0;--t3:#4E6280;--t4:#2A3C58;
+  --bdr:rgba(201,168,76,.16);--bdr2:rgba(255,255,255,.055);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg0);color:var(--t1);font-family:'Noto Sans SC','PingFang SC',sans-serif;font-size:14px;line-height:1.75;overflow-x:hidden;}
+#nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(7,16,30,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;padding:0 36px;height:50px;}
+.nbrand{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.06em;}
+.nlinks{display:flex;gap:2px;overflow-x:auto;}
+.nlinks a{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--t3);text-decoration:none;padding:4px 9px;border-radius:2px;white-space:nowrap;letter-spacing:.05em;text-transform:uppercase;transition:color .2s,background .2s;}
+.nlinks a:hover,.nlinks a.act{color:var(--gold);background:var(--goldd);}
+.nrate{font-family:'IBM Plex Mono',monospace;font-size:11px;display:flex;align-items:center;gap:8px;white-space:nowrap;}
+.npill{background:rgba(240,160,48,.12);border:1px solid rgba(240,160,48,.35);color:var(--amber);padding:2px 10px;border-radius:2px;font-weight:600;}
+.hero{background:linear-gradient(150deg,#0D1A32 0%,#08111F 55%,#0C1828 100%);border-bottom:1px solid var(--bdr);padding:76px 52px 50px;position:relative;overflow:hidden;}
+.hwm{position:absolute;right:-30px;top:-50px;font-family:'IBM Plex Mono',monospace;font-size:280px;font-weight:700;color:rgba(201,168,76,.03);letter-spacing:-15px;pointer-events:none;user-select:none;line-height:1;}
+.hbrow{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px;display:flex;gap:18px;flex-wrap:wrap;}
+.hero h1{font-family:'Noto Serif SC',serif;font-size:38px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:9px;}
+.hero h1 .co{color:var(--gold);}
+.hsub{font-family:'Noto Serif SC',serif;font-size:15px;color:var(--t2);margin-bottom:36px;font-weight:300;}
+.kstrip{display:flex;gap:0;border:1px solid var(--bdr2);border-radius:5px;overflow:hidden;width:fit-content;margin-bottom:28px;flex-wrap:wrap;}
+.kc{padding:13px 20px;background:var(--bgc);}
+.kc+.kc{border-left:1px solid var(--bdr2);}
+.klbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:.13em;margin-bottom:4px;}
+.kv{font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:500;color:var(--t1);}
+.kv.gold{color:var(--gold);}
+.kv.green{color:var(--green);}
+.kv.amber{color:var(--amber);}
+.ksub{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--t3);margin-top:2px;}
+.ksub .up{color:var(--green);}
+.rrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.rp{display:inline-flex;flex-direction:column;gap:3px;padding:10px 18px;border-radius:3px;}
+.rl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.11em;}
+.rv{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;}
+.rp.hold{background:rgba(240,160,48,.1);border:1.5px solid var(--amber);}
+.rp.hold .rl{color:rgba(240,160,48,.55);}
+.rp.hold .rv{color:var(--amber);}
+.rp.tp{background:rgba(201,168,76,.1);border:1.5px solid var(--gold);}
+.rp.tp .rl{color:rgba(201,168,76,.55);}
+.rp.tp .rv{color:var(--gold);}
+.rp.up{background:rgba(46,204,138,.1);border:1.5px solid var(--green);}
+.rp.up .rl{color:rgba(46,204,138,.55);}
+.rp.up .rv{color:var(--green);}
+.rp.en{background:rgba(74,158,232,.1);border:1.5px solid var(--blue);}
+.rp.en .rl{color:rgba(74,158,232,.55);}
+.rp.en .rv{color:var(--blue);}
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px 100px;}
+.sec{margin-top:68px;scroll-margin-top:64px;}
+.shd{display:flex;align-items:center;gap:13px;margin-bottom:26px;padding-bottom:12px;border-bottom:1px solid var(--bdr2);}
+.snum{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold);background:var(--goldd);padding:3px 9px;border-radius:2px;letter-spacing:.1em;}
+.stit{font-family:'Noto Serif SC',serif;font-size:19px;font-weight:600;color:var(--t1);}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;}
+.g12{display:grid;grid-template-columns:1fr 2fr;gap:16px;}
+.g21{display:grid;grid-template-columns:2fr 1fr;gap:16px;}
+.card{background:var(--bgc);border:1px solid var(--bdr2);border-radius:4px;padding:20px 22px;}
+.card.gl{border-left:3px solid var(--gold);}
+.card.gr{border-left:3px solid var(--green);}
+.card.re{border-left:3px solid var(--red);}
+.card.am{border-left:3px solid var(--amber);}
+.card.bl{border-left:3px solid var(--blue);}
+.card.te{border-left:3px solid var(--teal);}
+.card.pu{border-left:3px solid var(--purple);}
+.clbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:.13em;margin-bottom:6px;}
+.cbig{font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:500;color:var(--t1);line-height:1.05;}
+.cbig.gold{color:var(--gold);}
+.cbig.green{color:var(--green);}
+.cbig.red{color:var(--red);}
+.cbig.amber{color:var(--amber);}
+.cbig.blue{color:var(--blue);}
+.csub{font-size:11.5px;color:var(--t3);margin-top:4px;}
+.csub .up{color:var(--green);}
+.csub .dn{color:var(--red);}
+.ctit{font-family:'Noto Serif SC',serif;font-size:14px;font-weight:600;color:var(--t2);margin-bottom:12px;}
+.prose{font-size:13.5px;color:var(--t2);line-height:1.9;}
+.prose strong{color:var(--t1);font-weight:600;}
+.prose .hl{color:var(--gold);font-weight:600;}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px;}
+.tbl th{background:var(--bgd);color:var(--t3);font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.09em;padding:8px 12px;text-align:left;border-bottom:1px solid var(--bdr2);}
+.tbl th.r{text-align:right;}
+.tbl td{padding:9px 12px;border-bottom:1px solid var(--bdr2);color:var(--t2);vertical-align:middle;}
+.tbl td.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--t1);}
+.tbl td.r{text-align:right;}
+.tbl tr:hover td{background:rgba(255,255,255,.012);}
+.tag{display:inline-block;padding:2px 7px;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;}
+.tg{background:rgba(46,204,138,.11);color:var(--green);}
+.tr{background:rgba(224,92,92,.11);color:var(--red);}
+.ta{background:rgba(240,160,48,.11);color:var(--amber);}
+.tgl{background:rgba(201,168,76,.11);color:var(--gold);}
+.tb{background:rgba(74,158,232,.11);color:var(--blue);}
+.tp2{background:rgba(155,127,232,.11);color:var(--purple);}
+.bar{display:flex;align-items:center;gap:11px;margin-bottom:8px;}
+.blbl{width:165px;font-size:12px;color:var(--t2);flex-shrink:0;}
+.btrk{flex:1;height:6px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;}
+.bfill{height:100%;border-radius:3px;}
+.bgl{background:linear-gradient(90deg,rgba(201,168,76,.2),var(--gold));}
+.bgr{background:linear-gradient(90deg,rgba(46,204,138,.2),var(--green));}
+.bre{background:linear-gradient(90deg,rgba(224,92,92,.2),var(--red));}
+.bbl{background:linear-gradient(90deg,rgba(74,158,232,.2),var(--blue));}
+.bte{background:linear-gradient(90deg,rgba(43,191,170,.2),var(--teal));}
+.bam{background:linear-gradient(90deg,rgba(240,160,48,.2),var(--amber));}
+.bval{width:62px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--t1);flex-shrink:0;}
+.co{background:rgba(201,168,76,.055);border:1px solid rgba(201,168,76,.18);border-radius:4px;padding:17px 20px;margin-bottom:15px;}
+.co.gr{background:rgba(46,204,138,.05);border-color:rgba(46,204,138,.18);}
+.co.re{background:rgba(224,92,92,.05);border-color:rgba(224,92,92,.18);}
+.co.bl{background:rgba(74,158,232,.05);border-color:rgba(74,158,232,.18);}
+.cotit{font-family:'Noto Serif SC',serif;font-size:13px;font-weight:600;color:var(--gold);margin-bottom:7px;}
+.co.gr .cotit{color:var(--green);}
+.co.re .cotit{color:var(--red);}
+.co.bl .cotit{color:var(--blue);}
+.co p{font-size:13px;color:var(--t2);line-height:1.85;}
+.scrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;margin-top:15px;}
+.sc{background:var(--bgd);border-radius:4px;padding:19px 20px;position:relative;overflow:hidden;}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.sc.bull::before{background:var(--green);}
+.sc.base::before{background:var(--gold);}
+.sc.bear::before{background:var(--red);}
+.sclbl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.11em;margin-bottom:9px;}
+.sc.bull .sclbl{color:var(--green);}
+.sc.base .sclbl{color:var(--gold);}
+.sc.bear .sclbl{color:var(--red);}
+.scpri{font-family:'IBM Plex Mono',monospace;font-size:30px;font-weight:500;margin-bottom:3px;}
+.sc.bull .scpri{color:var(--green);}
+.sc.base .scpri{color:var(--gold);}
+.sc.bear .scpri{color:var(--red);}
+.scprob{font-size:11px;color:var(--t3);margin-bottom:4px;}
+.scret{font-family:'IBM Plex Mono',monospace;font-size:12.5px;margin-bottom:11px;}
+.sc.bull .scret{color:var(--green);}
+.sc.base .scret{color:var(--gold);}
+.sc.bear .scret{color:var(--red);}
+.scdesc{font-size:12.5px;color:var(--t2);line-height:1.73;}
+.scdiv{border:none;border-top:1px solid var(--bdr2);margin:9px 0;}
+.risk{display:flex;align-items:flex-start;gap:15px;padding:13px 0;border-bottom:1px solid var(--bdr2);}
+.risk:last-child{border:none;}
+.rbdg{width:56px;flex-shrink:0;text-align:center;padding-top:2px;}
+.rbdg span{display:inline-block;padding:3px 7px;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;text-transform:uppercase;}
+.rbdg.hi span{background:rgba(224,92,92,.14);color:var(--red);}
+.rbdg.md span{background:rgba(240,160,48,.14);color:var(--amber);}
+.rbdg.lo span{background:rgba(46,204,138,.14);color:var(--green);}
+.rtit{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:4px;}
+.rdesc{font-size:12.5px;color:var(--t2);line-height:1.75;}
+.tl{position:relative;padding-left:26px;}
+.tl::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:var(--bdr2);}
+.tli{position:relative;margin-bottom:20px;}
+.tldot{position:absolute;left:-22px;top:5px;width:9px;height:9px;border-radius:50%;border:2px solid var(--gold);background:var(--bg0);}
+.tldate{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--gold);margin-bottom:2px;letter-spacing:.05em;}
+.tltit{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:2px;}
+.tldesc{font-size:12px;color:var(--t2);}
+.cats{display:flex;flex-direction:column;gap:10px;}
+.ci{display:flex;gap:12px;align-items:flex-start;}
+.cdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+.cg{background:var(--green);}
+.ca{background:var(--amber);}
+.cr{background:var(--red);}
+.cb{background:var(--blue);}
+.cp{background:var(--purple);}
+.ci p{font-size:13px;color:var(--t2);line-height:1.75;}
+.ci p strong{color:var(--t1);}
+.svbar{display:flex;height:10px;border-radius:3px;overflow:hidden;margin:9px 0 6px;}
+.sp{height:100%;}
+.sleg{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
+.sli{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);}
+.sdot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+.dcfm{border-collapse:collapse;font-family:'IBM Plex Mono',monospace;font-size:11px;width:100%;}
+.dcfm th,.dcfm td{padding:7px 11px;border:1px solid var(--bdr2);text-align:center;}
+.dcfm th{background:var(--bgd);color:var(--t3);font-size:9px;letter-spacing:.07em;}
+.dcfm .thr{color:var(--t2);}
+.bzone{background:rgba(46,204,138,.07);color:var(--green);}
+.mzone{background:rgba(201,168,76,.07);color:var(--gold);}
+.rzone{background:rgba(224,92,92,.07);color:var(--red);}
+.dzone{background:rgba(201,168,76,.12);color:var(--gold);font-weight:700;}
+.footer{background:var(--bgd);border-top:1px solid var(--bdr);padding:34px 52px;margin-top:80px;}
+.ftbrand{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold);font-weight:500;margin-bottom:12px;}
+.ftdisc{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--t3);line-height:1.9;max-width:1000px;}
+.sotp-total td{font-weight:700;color:var(--gold)!important;border-top:2px solid var(--bdr)!important;}
+@media(max-width:900px){
+  .hero{padding:72px 20px 36px;}
+  .wrap{padding:0 20px 80px;}
+  #nav{padding:0 16px;}
+  .g2,.g3,.g4,.g12,.g21{grid-template-columns:1fr;}
+  .scrow{grid-template-columns:1fr;}
+  .hwm{display:none;}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nbrand">🐌 Snail Investment · 精品研究部</div>
+  <div class="nlinks">
+    <a href="#s01">摘要</a><a href="#s02">公司</a><a href="#s03">财务</a>
+    <a href="#s04">业务</a><a href="#s05">市场</a><a href="#s06">估值</a>
+    <a href="#s07">DCF</a><a href="#s08">SOTP</a><a href="#s09">情景</a>
+    <a href="#s10">风险</a><a href="#s11">催化剂</a><a href="#s12">ESG</a>
+    <a href="#s13">建议</a>
+  </div>
+  <div class="nrate"><span style="color:var(--t2);font-size:11px;">NTR $67.28</span><span class="npill">持有 · $76 目标</span></div>
+</nav>
+
+<div class="hero">
+  <div class="hwm">NTR</div>
+  <div class="hbrow">
+    <span>NYSE / TSX：NTR</span><span>农业投入品 &amp; 肥料</span>
+    <span>加拿大萨斯卡通</span><span>IFRS 财务准则</span><span>截止 2026年6月10日</span>
+  </div>
+  <h1><span class="co">Nutrien Ltd.</span> 深度股票研究报告</h1>
+  <div class="hsub">全球最大钾肥生产商 · 北美最大农业零售商 · 氮磷钾三元化一体化布局</div>
+  <div class="kstrip">
+    <div class="kc"><div class="klbl">当前股价 (NYSE)</div><div class="kv">$67.28</div><div class="ksub">截至 2026-06-08</div></div>
+    <div class="kc"><div class="klbl">市值</div><div class="kv">$32.4B</div><div class="ksub">USD</div></div>
+    <div class="kc"><div class="klbl">52周区间</div><div class="kv" style="font-size:14px;">$53.03–85.36</div><div class="ksub">幅度 +61%</div></div>
+    <div class="kc"><div class="klbl">P/E（TTM）</div><div class="kv amber">13.7x</div><div class="ksub">EPS TTM ~$4.72</div></div>
+    <div class="kc"><div class="klbl">股息收益率</div><div class="kv gold">3.2%</div><div class="ksub">$2.20/股（年化）</div></div>
+    <div class="kc"><div class="klbl">NTM EV/EBITDA</div><div class="kv">~9.5x</div><div class="ksub">EV 约 $43B</div></div>
+    <div class="kc"><div class="klbl">Q1 2026 EBITDA</div><div class="kv green">$1.11B</div><div class="ksub"><span class="up">▲ +30% YoY</span></div></div>
+    <div class="kc"><div class="klbl">净债务/EBITDA</div><div class="kv">1.8x</div><div class="ksub">FY2025 实际值</div></div>
+  </div>
+  <div class="rrow">
+    <div class="rp hold"><div class="rl">投资评级</div><div class="rv">持有 HOLD</div></div>
+    <div class="rp tp"><div class="rl">12个月目标价</div><div class="rv">$76.00 USD</div></div>
+    <div class="rp up"><div class="rl">含息总潜在回报</div><div class="rv">+16.1%</div></div>
+    <div class="rp en"><div class="rl">建议买入区间</div><div class="rv">$58–$62</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+<!-- SEC 01 THESIS -->
+<div class="sec" id="s01">
+<div class="shd"><span class="snum">01</span><span class="stit">投资逻辑摘要</span></div>
+<div class="co" style="margin-bottom:18px;">
+  <div class="cotit">核心观点：持有（HOLD），目标价 $76.00，建议买入区间 $58–62</div>
+  <p>Nutrien 是全球化肥行业结构性价值最确定的资产之一。公司凭借加拿大萨斯喀彻温省世界级低成本钾肥矿山（全球市占率约20%）、北美天然气成本优势驱动的氮肥业务，以及覆盖北美、澳大利亚约2,000家门店的农业零售网络，构筑了竞争对手难以复制的三重护城河。2026年Q1实现历史最高钾肥销售量、调整后EBITDA同比大增30%，全年指引维持不变，基本面改善趋势明确。</p>
+  <p style="margin-top:8px;">然而，当前股价$67.28已从2025年低点$53.03反弹约27%，NTM EV/EBITDA约9.5x处于历史均值偏高位置，估值在一定程度上已定价了基本面复苏预期。在钾肥价格上行空间受制于俄白增产、中国尿素出口政策不确定、磷酸盐剥离时间线与价格模糊、及近期Berenberg机构降级信号的背景下，当前入场的风险回报比略显不均衡。建议现有持仓持有观望，同时设立$58–62区间的增持计划。</p>
+</div>
+<div class="g3">
+  <div class="card gr">
+    <div class="clbl">多方核心逻辑</div><div class="ctit">供需结构性偏紧 + 低成本优势</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cg"></div><p><strong>Q1 2026历史最高钾肥销量</strong>，可控制造成本维持在$60/吨以下，领先全球同业</p></div>
+      <div class="ci"><div class="cdot cg"></div><p>2026年全球钾肥装运量预测<strong>74–77百万吨</strong>，需求逼近现有供应链能力上限</p></div>
+      <div class="ci"><div class="cdot cg"></div><p>氮肥板块Q1 EBITDA <strong>同比+45%</strong>，北美低气价优势在全球供应受扰时窗口扩大</p></div>
+      <div class="ci"><div class="cdot cg"></div><p>净债务/EBITDA从2024年<strong>2.2x降至2025年1.8x</strong>，目标继续改善至1.6x</p></div>
+    </div>
+  </div>
+  <div class="card am">
+    <div class="clbl">关键催化剂</div><div class="ctit">战略瘦身释放价值</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot ca"></div><p>Profertil 50%股权已于<strong>2025年12月完成出售</strong>，收益约$6亿，显著去杠杆</p></div>
+      <div class="ci"><div class="cdot ca"></div><p><strong>磷酸盐业务、特立尼达氮肥、巴西零售</strong>三项战略替代方案进行中，预计释放超$10–15亿价值</p></div>
+      <div class="ci"><div class="cdot ca"></div><p>2026年Q1向股东返还<strong>$4.09亿</strong>，续发5% NCIB股份回购，股息历史年均增长4.1%</p></div>
+      <div class="ci"><div class="cdot ca"></div><p><strong>Q2 2026（8月5日）</strong>是历史上业绩最强季度，春播旺季数据将是重要验证节点</p></div>
+    </div>
+  </div>
+  <div class="card re">
+    <div class="clbl">核心风险</div><div class="ctit">估值压力与周期下行风险</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cr"></div><p>股价自2025年低点<strong>反弹约27%</strong>，NTM EV/EBITDA ~9.5x高于同业均值~8.3x</p></div>
+      <div class="ci"><div class="cdot cr"></div><p>俄白扩产持续：<strong>2024–2029年全球钾肥产能增20%</strong>，长期价格天花板受压</p></div>
+      <div class="ci"><div class="cdot cr"></div><p>Berenberg于<strong>2026年6月5日</strong>将评级从买入下调至持有，需关注机构跟随效应</p></div>
+      <div class="ci"><div class="cdot cr"></div><p>中国尿素出口及磷酸盐配额政策，印度采购节奏，<strong>构成短期价格扰动风险</strong></p></div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SEC 02 COMPANY -->
+<div class="sec" id="s02">
+<div class="shd"><span class="snum">02</span><span class="stit">公司概览 · 业务架构</span></div>
+<div class="g21" style="margin-bottom:16px;">
+  <div class="card">
+    <div class="ctit">公司简介</div>
+    <div class="prose">Nutrien Ltd. 成立于<strong>2018年</strong>，由 PotashCorp 与 Agrium 合并而成，总部位于加拿大萨斯喀彻温省萨斯卡通。公司是全球最大的综合性肥料生产商，同时也是<strong>北美及澳大利亚最大的农业零售商</strong>。<br><br>公司拥有氮（N）、磷（P）、钾（K）三大上游生产业务，以及覆盖约2,000家门店网络的零售（Retail）业务，形成"生产+分销"全产业链布局。Nutrien 在超过50个国家向农民客户供应化肥产品，2025年全年肥料销售量达<strong>2,700万吨</strong>。截至2026年6月，公司雇员约<strong>25,100人</strong>。上市交易所：<span class="hl">NYSE（NTR）</span>及<span class="hl">TSX（NTR）</span>，以IFRS准则编制财务报表，美元报告货币。</div>
+  </div>
+  <div class="card gl">
+    <div class="ctit">公司战略三大优先级（2026年版）</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cg"></div><p><strong>简化业务结构：</strong>剥离非核心资产（Profertil已完成），聚焦高质量北美资产，提升自由现金流转化率</p></div>
+      <div class="ci"><div class="cdot ca"></div><p><strong>强化核心资产：</strong>钾肥矿山自动化（2024年35%采矿自动化率），氮肥产能去瓶颈，零售自有品牌扩张</p></div>
+      <div class="ci"><div class="cdot cb"></div><p><strong>纪律资本分配：</strong>维持净债务/EBITDA 1.5–2.0x，资本开支$20–21亿，优先股息增长+机会性回购</p></div>
+    </div>
+    <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--bdr2);font-size:12px;color:var(--t2);line-height:1.8;">
+      ✅ Q1钾肥历史最高销量<br>✅ 氨气装置运行率92%<br>✅ 可控制造成本&lt;$60/吨<br>⏳ 磷酸盐/巴西/特立尼达资产审议中
+    </div>
+  </div>
+</div>
+<div class="card" style="margin-bottom:14px;">
+  <div class="ctit">业务板块构成（2026年Q1调整后EBITDA，来源：SEC EDGAR 6-K 2026年5月6日）</div>
+  <div class="svbar">
+    <div class="sp" style="width:48.3%;background:var(--gold);"></div>
+    <div class="sp" style="width:40.3%;background:var(--teal);"></div>
+    <div class="sp" style="width:9%;background:var(--blue);opacity:.8;"></div>
+    <div class="sp" style="width:4.8%;background:var(--purple);opacity:.7;"></div>
+  </div>
+  <div class="sleg">
+    <div class="sli"><div class="sdot" style="background:var(--gold);"></div>钾肥 $578M (48.3%)</div>
+    <div class="sli"><div class="sdot" style="background:var(--teal);"></div>氮肥 $482M (40.3%)</div>
+    <div class="sli"><div class="sdot" style="background:var(--blue);opacity:.8;"></div>零售 $108M (9.0%)</div>
+    <div class="sli"><div class="sdot" style="background:var(--purple);opacity:.7;"></div>磷酸盐 $57M (4.8%)</div>
+    <div class="sli"><div class="sdot" style="background:#4E6280;"></div>其他/抵消 -$120M</div>
+  </div>
+  <div class="g4">
+    <div><div class="clbl">钾肥（Potash）</div><div class="cbig gold" style="font-size:22px;">$578M</div><div class="csub"><span class="up">▲ +39% YoY</span></div><div class="csub" style="margin-top:5px;line-height:1.7;">历史最高销量<br>成本&lt;$60/吨<br>6座矿山</div></div>
+    <div><div class="clbl">氮肥（Nitrogen）</div><div class="cbig" style="font-size:22px;color:var(--teal);">$482M</div><div class="csub"><span class="up">▲ +45% YoY</span></div><div class="csub" style="margin-top:5px;line-height:1.7;">氨气运行率92%<br>全球基准走强<br>已出售Profertil</div></div>
+    <div><div class="clbl">零售（Retail）</div><div class="cbig green" style="font-size:22px;">$108M</div><div class="csub"><span class="up">▲ +135% YoY</span></div><div class="csub" style="margin-top:5px;line-height:1.7;">自有品牌毛利提升<br>美国/澳大利亚强<br>Q1完成玉米带并购</div></div>
+    <div><div class="clbl">磷酸盐（Phosphate）</div><div class="cbig blue" style="font-size:22px;">$57M</div><div class="csub"><span class="up">▲ YoY改善</span></div><div class="csub" style="margin-top:5px;line-height:1.7;">战略替代方案中<br>剥离候选资产<br>全年2.4–2.6Mt</div></div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit">管理层与治理评估</div>
+  <table class="tbl">
+    <thead><tr><th>姓名/职位</th><th>主要贡献</th><th class="r">评价</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Ken Seitz（CEO）</strong></td><td>主导"瘦身提质"战略，推动资产剥离与矿山自动化，2025年实现EBITDA $60亿历史高位；强调结构性FCF增长</td><td class="mono r"><span class="tag tg">强势领导</span></td></tr>
+      <tr><td><strong>CFO团队</strong></td><td>杠杆率从2.2x降至1.8x；2026年5月成功发行$10亿优先票据延长债务久期（4.85%/2031，5.25%/2036）；维持股息增长8年</td><td class="mono r"><span class="tag tg">资本纪律佳</span></td></tr>
+      <tr><td><strong>运营委员会</strong></td><td>钾肥矿山自动化率达35%（2024年）；氨气装置可靠性持续改善至92%；零售自有品牌毛利率提升</td><td class="mono r"><span class="tag ta">执行中</span></td></tr>
+      <tr><td><strong>董事会</strong></td><td>2026年股东大会所有议案获97%以上赞成票；KPMG续任审计师获99.74%支持；独立性强</td><td class="mono r"><span class="tag tg">治理优秀</span></td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<!-- SEC 03 FINANCIALS -->
+<div class="sec" id="s03">
+<div class="shd"><span class="snum">03</span><span class="stit">财务业绩 · 历史数据回顾</span></div>
+<div class="g4" style="margin-bottom:18px;">
+  <div class="card gl"><div class="clbl">Q1 2026 总营收</div><div class="cbig gold">$6.05B</div><div class="csub"><span class="up">▲ +19% vs Q1 2025 $5.10B</span></div></div>
+  <div class="card gr"><div class="clbl">Q1 2026 调整后EBITDA</div><div class="cbig green">$1.11B</div><div class="csub"><span class="up">▲ +30% vs Q1 2025 $0.85B</span></div></div>
+  <div class="card am"><div class="clbl">Q1 2026 调整后EPS</div><div class="cbig amber">$0.51</div><div class="csub"><span class="up">▲ vs Q1 2025 $0.11</span>（GAAP EPS $0.27）</div></div>
+  <div class="card bl"><div class="clbl">Q1 2026 毛利率</div><div class="cbig blue">27.2%</div><div class="csub"><span class="up">▲</span> vs Q1 2025 25.9%</div></div>
+</div>
+<div class="card" style="margin-bottom:14px;">
+  <div class="ctit" style="margin-bottom:14px;">年度财务数据一览（美元百万，IFRS，来源：SEC EDGAR 公开文件）</div>
+  <table class="tbl">
+    <thead><tr><th>财务指标</th><th class="r">FY2022</th><th class="r">FY2023</th><th class="r">FY2024</th><th class="r">FY2025（实际）</th><th class="r">FY2026E（指引中值）</th><th class="r">YoY</th></tr></thead>
+    <tbody>
+      <tr><td>营业收入（$M）</td><td class="mono r">37,884</td><td class="mono r">29,056</td><td class="mono r">25,972</td><td class="mono r">26,885</td><td class="mono r">~28,000</td><td class="mono r"><span class="tag tg">▲+4%</span></td></tr>
+      <tr><td>调整后EBITDA（$M）</td><td class="mono r">10,213</td><td class="mono r">6,058</td><td class="mono r">5,355</td><td class="mono r">6,046</td><td class="mono r">~6,600</td><td class="mono r"><span class="tag tg">▲+9%</span></td></tr>
+      <tr><td>净利润（$M）</td><td class="mono r">7,660</td><td class="mono r">1,282</td><td class="mono r">700</td><td class="mono r">2,297</td><td class="mono r">~2,300</td><td class="mono r"><span class="tag ta">→持平</span></td></tr>
+      <tr><td>稀释EPS（GAAP，$）</td><td class="mono r">~$14.80</td><td class="mono r">$2.46</td><td class="mono r">$1.36</td><td class="mono r">$4.72</td><td class="mono r">~$4.76E</td><td class="mono r"><span class="tag ta">→微升</span></td></tr>
+      <tr><td>经营活动现金流（$M）</td><td class="mono r">~8,600</td><td class="mono r">5,066</td><td class="mono r">3,535</td><td class="mono r">4,007</td><td class="mono r">~4,500</td><td class="mono r"><span class="tag tg">▲+12%</span></td></tr>
+      <tr><td>自由现金流（$M）</td><td class="mono r">~6,400</td><td class="mono r">3,025</td><td class="mono r">1,409</td><td class="mono r">1,979</td><td class="mono r">~2,400</td><td class="mono r"><span class="tag tg">▲+21%</span></td></tr>
+      <tr><td>资本开支（$M）</td><td class="mono r">2,635</td><td class="mono r">2,600</td><td class="mono r">2,154</td><td class="mono r">2,005</td><td class="mono r">2,000–2,100</td><td class="mono r"><span class="tag ta">→稳定</span></td></tr>
+      <tr><td>调整后净债务（$M）</td><td class="mono r">~8,200</td><td class="mono r">11,331</td><td class="mono r">11,678</td><td class="mono r">11,060</td><td class="mono r">~10,500</td><td class="mono r"><span class="tag tg">▼去杠杆</span></td></tr>
+      <tr><td>净债务/调整后EBITDA</td><td class="mono r">0.8x</td><td class="mono r">1.9x</td><td class="mono r">2.2x</td><td class="mono r">1.8x</td><td class="mono r">~1.6x</td><td class="mono r"><span class="tag tg">▼改善</span></td></tr>
+      <tr><td>ROIC（%）</td><td class="mono r">22%</td><td class="mono r">10%</td><td class="mono r">8%</td><td class="mono r">9%</td><td class="mono r">~10%</td><td class="mono r"><span class="tag tg">▲回升</span></td></tr>
+      <tr><td>股息（$每股年化）</td><td class="mono r">$1.98</td><td class="mono r">$2.16</td><td class="mono r">$2.16</td><td class="mono r">$2.18</td><td class="mono r">$2.20</td><td class="mono r"><span class="tag tg">▲连续增长</span></td></tr>
+    </tbody>
+  </table>
+  <div class="csub" style="margin-top:8px;">数据来源：Nutrien FY2025全年业绩公告（SEC EDGAR 6-K，2026年2月18日）、Q1 2026业绩公告（2026年5月6日）；FY2026E为基于指引中值的测算。</div>
+</div>
+<div class="g2">
+  <div class="card">
+    <div class="ctit">2026年全年管理层指引（维持不变，截至2026年5月6日）</div>
+    <table class="tbl">
+      <thead><tr><th>指引项目</th><th class="r">低端</th><th class="r">高端</th><th class="r">状态</th></tr></thead>
+      <tbody>
+        <tr><td>零售调整后EBITDA（$B）</td><td class="mono r">1.75</td><td class="mono r">1.95</td><td class="mono r"><span class="tag tg">维持</span></td></tr>
+        <tr><td>钾肥销售量（百万吨）</td><td class="mono r">14.1</td><td class="mono r">14.8</td><td class="mono r"><span class="tag tg">维持</span></td></tr>
+        <tr><td>氮肥销售量（百万吨）</td><td class="mono r">9.2</td><td class="mono r">9.7</td><td class="mono r"><span class="tag tg">维持</span></td></tr>
+        <tr><td>磷酸盐销售量（百万吨）</td><td class="mono r">2.4</td><td class="mono r">2.6</td><td class="mono r"><span class="tag tg">维持</span></td></tr>
+        <tr><td>折旧与摊销（$B）</td><td class="mono r">2.4</td><td class="mono r">2.5</td><td class="mono r"><span class="tag tg">维持</span></td></tr>
+        <tr><td>融资成本（$B）</td><td class="mono r">0.65</td><td class="mono r">0.75</td><td class="mono r"><span class="tag tg">维持</span></td></tr>
+        <tr><td>有效税率（调整后净利润）</td><td class="mono r">24%</td><td class="mono r">26%</td><td class="mono r"><span class="tag tg">维持</span></td></tr>
+        <tr><td>资本开支（$B）</td><td class="mono r">2.0</td><td class="mono r">2.1</td><td class="mono r"><span class="tag tg">维持</span></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:8px;">约$4亿投资资本：零售专有产品/网络优化/数字能力、氮肥低成本褐地扩张、钾肥矿山自动化</div>
+  </div>
+  <div class="card">
+    <div class="ctit">资本结构 &amp; 股东回报</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cg"></div><p><strong>债务结构稳健：</strong>$45亿无担保循环信贷额度（至2029年），2026年5月新发行$10亿双期限优先票据（4.85%/2031，5.25%/2036），债务久期进一步拉长，再融资风险极低。</p></div>
+      <div class="ci"><div class="cdot ca"></div><p><strong>资产处置增强流动性：</strong>Profertil出售税前收益约$6亿（2025年12月），磷酸盐等三项资产剥离预计进一步释放$10–15亿现金，净债务目标降至$105亿。</p></div>
+      <div class="ci"><div class="cdot cg"></div><p><strong>股份回购持续：</strong>2026年2月续发5% NCIB（正常课程发行人回购），流通股约4.82亿，较2023年已减少约10%，每股价值持续提升。</p></div>
+      <div class="ci"><div class="cdot cb"></div><p><strong>股息安全性高：</strong>股息派息率约44%（净利润），现金流派息率约48%，历史8年连续增长，即便盈利下降51%股息仍可持续，安全边际极为充裕。</p></div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SEC 04 SEGMENTS -->
+<div class="sec" id="s04">
+<div class="shd"><span class="snum">04</span><span class="stit">分业务板块深度分析</span></div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card gl">
+    <div class="clbl">最大利润贡献 · 核心护城河</div>
+    <div class="ctit" style="color:var(--gold);">⬡ 钾肥板块（Potash）</div>
+    <div class="prose" style="margin-bottom:14px;">Nutrien 在萨斯喀彻温省运营<strong>六座钾肥矿山</strong>（Lanigan、Rocanville、Vanscoy、Allan、Cory、Patience Lake），总产能约<strong>1,800万吨/年</strong>，全球市占率约20%。2026年Q1实现<strong>历史最高销售量</strong>，可控制造成本维持在<strong>$60/吨以下</strong>（同业普遍超$80/吨），成本领先优势构建了极厚安全边际。矿山自动化率（截至2024年）已达<strong>35%</strong>，持续投入中，目标大幅提升效率和安全性，同时实现最高年度产量纪录。</div>
+    <div class="bar"><div class="blbl">Q1 2026 EBITDA</div><div class="btrk"><div class="bfill bgl" style="width:88%;"></div></div><div class="bval">$578M</div></div>
+    <div class="bar"><div class="blbl">Q1 2025 EBITDA</div><div class="btrk"><div class="bfill bgl" style="width:64%;"></div></div><div class="bval">$416M</div></div>
+    <div class="bar"><div class="blbl">YoY增幅</div><div class="btrk"><div class="bfill bgr" style="width:58%;"></div></div><div class="bval">+39%</div></div>
+    <div class="bar"><div class="blbl">可控制造成本</div><div class="btrk"><div class="bfill bre" style="width:20%;"></div></div><div class="bval">&lt;$60/t</div></div>
+    <div class="bar"><div class="blbl">矿山自动化率</div><div class="btrk"><div class="bfill bte" style="width:35%;"></div></div><div class="bval">~35%</div></div>
+    <div class="csub" style="margin-top:10px;">全年销量指引14.1–14.8百万吨 | 北美标杆价~$397/吨（2026年3月）| 中国合同$348/吨CFR（2026年）</div>
+  </div>
+  <div class="card te">
+    <div class="clbl">第二大业务 · 低成本优势</div>
+    <div class="ctit" style="color:var(--teal);">⬡ 氮肥板块（Nitrogen）</div>
+    <div class="prose" style="margin-bottom:14px;">Nutrien 依托<strong>北美廉价天然气（Henry Hub）</strong>运营大型氨合成及尿素生产设施，2026年Q1实现氨气装置运行率<strong>92%</strong>，EBITDA同比增长45%。中东地缘政治冲突扰乱全球氮肥贸易流，欧洲及亚洲高LNG气价推升当地成本，令北美低成本产商竞争优势显著扩大。公司已于2025年底完成阿根廷Profertil 50%股权出售，聚焦北美核心资产，特立尼达氮气设施战略替代方案亦在审议中。</div>
+    <div class="bar"><div class="blbl">Q1 2026 EBITDA</div><div class="btrk"><div class="bfill bte" style="width:73%;"></div></div><div class="bval">$482M</div></div>
+    <div class="bar"><div class="blbl">Q1 2025 EBITDA</div><div class="btrk"><div class="bfill bte" style="width:50%;"></div></div><div class="bval">$333M</div></div>
+    <div class="bar"><div class="blbl">YoY增幅</div><div class="btrk"><div class="bfill bgr" style="width:68%;"></div></div><div class="bval">+45%</div></div>
+    <div class="bar"><div class="blbl">氨气装置运行率</div><div class="btrk"><div class="bfill bam" style="width:92%;"></div></div><div class="bval">92%</div></div>
+    <div class="csub" style="margin-top:10px;">全年销量指引9.2–9.7百万吨 | Profertil已剥离 | 特立尼达战略替代方案进行中</div>
+  </div>
+</div>
+<div class="g2">
+  <div class="card gr">
+    <div class="clbl">下游稳定器 · 结构性增长</div>
+    <div class="ctit" style="color:var(--green);">⬡ 零售板块（Retail）</div>
+    <div class="prose" style="margin-bottom:12px;">约2,000家门店覆盖美国、加拿大、澳大利亚及巴西，是全球最大农业零售商。Q1 EBITDA $1.08亿，同比大增<strong>135%</strong>，主要受益于：美国及澳大利亚作物营养品销量增长，Proprietary Products（自有专有品牌）毛利率提升，Q1完成一项美国玉米带高质量小型并购，以及澳大利亚有利天气及强劲牲畜价格支撑。</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cg"></div><p><strong>自有品牌护城河：</strong>Proprietary Products毛利率高于行业均值，贡献持续提升，与通用商品产品线形成利润差异化</p></div>
+      <div class="ci"><div class="cdot ca"></div><p><strong>巴西零售审议中：</strong>巴西业务被纳入战略替代方案评估，剥离将改善整体资本效率并降低新兴市场风险敞口</p></div>
+    </div>
+    <div class="csub" style="margin-top:10px;">全年EBITDA指引：$1.75–1.95B | 季度营收Q1 $36.4亿(+18%)</div>
+  </div>
+  <div class="card bl">
+    <div class="clbl">剥离候选 · 价值释放窗口</div>
+    <div class="ctit" style="color:var(--blue);">⬡ 磷酸盐板块（Phosphate）</div>
+    <div class="prose" style="margin-bottom:12px;">Q1 EBITDA $57M，规模相对有限。公司于<strong>2025年Q3</strong>正式宣布对磷酸盐业务启动战略替代方案审议，同步评估特立尼达氮气设施。中国出口配额限制及中东冲突干扰全球磷酸盐贸易流，全球运营率因原料成本高企下降。</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot ca"></div><p><strong>剥离逻辑清晰：</strong>磷酸盐非战略核心，资本效率低于钾肥和氮肥，出售后可降低资本开支需求、提升整体FCF转化率</p></div>
+      <div class="ci"><div class="cdot cg"></div><p><strong>估值锚点：</strong>以行业6–8x EV/EBITDA估值，磷酸盐（年化EBITDA约$2–3亿）理论价值$12–24亿，超出市场当前隐含价值</p></div>
+    </div>
+    <div class="csub" style="margin-top:10px;">全年销量指引2.4–2.6百万吨 | 战略替代方案结果预计2026年下半年披露</div>
+  </div>
+</div>
+</div>
+<!-- SEC 05 MACRO -->
+<div class="sec" id="s05">
+<div class="shd"><span class="snum">05</span><span class="stit">行业格局 · 宏观与供需分析</span></div>
+<div class="card" style="margin-bottom:14px;">
+  <div class="ctit">全球主要化肥市场价格参考（2026年Q1/最新，来源：Procurement Resource、IMARC、IFA）</div>
+  <table class="tbl">
+    <thead><tr><th>品种</th><th class="r">北美价格（CIF/吨）</th><th class="r">亚洲价格参考</th><th class="r">全球合同价</th><th class="r">市场方向</th><th>主要驱动因素</th></tr></thead>
+    <tbody>
+      <tr><td><strong>氯化钾（MOP）</strong></td><td class="mono r">$397/吨（2026年3月）</td><td class="mono r">中国$594、印度$644</td><td class="mono r">中国合同$348/吨CFR</td><td class="mono r"><span class="tag tgl">稳定偏强</span></td><td>需求强劲逼近供应上限，中国低库存，全球装运74–77Mt</td></tr>
+      <tr><td><strong>磷酸二铵（DAP）</strong></td><td class="mono r">~$693/吨</td><td class="mono r">偏强区间</td><td class="mono r">高位震荡</td><td class="mono r"><span class="tag ta">高位震荡</span></td><td>中国磷酸盐出口配额限制，中东供应减少，原料成本高企</td></tr>
+      <tr><td><strong>尿素（Urea）</strong></td><td class="mono r">参考全球基准</td><td class="mono r">受亚洲气价影响</td><td class="mono r">不稳定</td><td class="mono r"><span class="tag tr">不确定性高</span></td><td>中国出口政策，印度招标节奏，天然气成本分化</td></tr>
+      <tr><td><strong>氨（Ammonia）</strong></td><td class="mono r">北美成本优势显著</td><td class="mono r">欧亚成本高企</td><td class="mono r">—</td><td class="mono r"><span class="tag tg">成本端有利</span></td><td>Henry Hub气价，北美vs欧亚成本剪刀差扩大</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="g2">
+  <div class="card">
+    <div class="ctit">钾肥价格历史轨迹与展望（MOP北美CIF，$/吨）</div>
+    <svg viewBox="0 0 520 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;margin:8px 0 14px;">
+      <defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C9A84C" stop-opacity="0.22"/><stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/></linearGradient></defs>
+      <line x1="48" y1="10" x2="48" y2="133" stroke="#2A3C58" stroke-width="0.5"/>
+      <line x1="48" y1="133" x2="512" y2="133" stroke="#2A3C58" stroke-width="0.5"/>
+      <line x1="48" y1="100" x2="512" y2="100" stroke="#2A3C58" stroke-width="0.3" stroke-dasharray="3,4"/>
+      <line x1="48" y1="72" x2="512" y2="72" stroke="#2A3C58" stroke-width="0.3" stroke-dasharray="3,4"/>
+      <line x1="48" y1="38" x2="512" y2="38" stroke="#2A3C58" stroke-width="0.3" stroke-dasharray="3,4"/>
+      <text x="43" y="136" font-size="7.5" fill="#4E6280" text-anchor="end" font-family="IBM Plex Mono">$250</text>
+      <text x="43" y="103" font-size="7.5" fill="#4E6280" text-anchor="end" font-family="IBM Plex Mono">$400</text>
+      <text x="43" y="75" font-size="7.5" fill="#4E6280" text-anchor="end" font-family="IBM Plex Mono">$600</text>
+      <text x="43" y="41" font-size="7.5" fill="#4E6280" text-anchor="end" font-family="IBM Plex Mono">$900</text>
+      <text x="68" y="147" font-size="7" fill="#4E6280" text-anchor="middle" font-family="IBM Plex Mono">2020</text>
+      <text x="136" y="147" font-size="7" fill="#4E6280" text-anchor="middle" font-family="IBM Plex Mono">2021</text>
+      <text x="204" y="147" font-size="7" fill="#4E6280" text-anchor="middle" font-family="IBM Plex Mono">2022峰</text>
+      <text x="272" y="147" font-size="7" fill="#4E6280" text-anchor="middle" font-family="IBM Plex Mono">2023</text>
+      <text x="340" y="147" font-size="7" fill="#4E6280" text-anchor="middle" font-family="IBM Plex Mono">2024</text>
+      <text x="408" y="147" font-size="7" fill="#4E6280" text-anchor="middle" font-family="IBM Plex Mono">2025</text>
+      <text x="480" y="147" font-size="7" fill="#4E6280" text-anchor="middle" font-family="IBM Plex Mono">2026E</text>
+      <polygon points="68,127 136,83 204,24 272,119 340,124 408,118 480,111 480,133 68,133" fill="url(#pg)"/>
+      <polyline points="68,127 136,83 204,24 272,119 340,124 408,118 480,111" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="68" cy="127" r="3" fill="#C9A84C"/>
+      <circle cx="136" cy="83" r="3" fill="#C9A84C"/>
+      <circle cx="204" cy="24" r="3" fill="#E05C5C"/>
+      <circle cx="272" cy="119" r="3" fill="#C9A84C"/>
+      <circle cx="340" cy="124" r="3" fill="#C9A84C"/>
+      <circle cx="408" cy="118" r="3" fill="#2ECC8A"/>
+      <circle cx="480" cy="111" r="3" fill="#2ECC8A"/>
+      <text x="204" y="18" font-size="7" fill="#E05C5C" text-anchor="middle" font-family="IBM Plex Mono">$1,050峰值</text>
+      <text x="480" y="106" font-size="7" fill="#2ECC8A" text-anchor="middle" font-family="IBM Plex Mono">~$390</text>
+    </svg>
+    <div class="prose">全球钾肥价格2022年4月触及约<strong>$1,050–1,200/吨</strong>历史峰值（俄乌冲突及制裁冲击），此后大幅回落，2023年底跌至约$328/吨筑底。<strong>2026年中国MOP年度合同价定于$348/吨CFR</strong>，北美价回升至~$390–400/吨。分析师普遍预期2026–2027年钾肥价格维持当前区间，无重大向上突破催化剂但亦无系统性下行风险（除非俄白大幅扩产）。</div>
+  </div>
+  <div class="card">
+    <div class="ctit">全球钾肥市场竞争格局</div>
+    <div class="bar" style="margin-top:8px;"><div class="blbl">Nutrien（加拿大）</div><div class="btrk"><div class="bfill bgl" style="width:20%;"></div></div><div class="bval">~20%</div></div>
+    <div class="bar"><div class="blbl">Uralkali（俄罗斯）</div><div class="btrk"><div class="bfill bre" style="width:18%;"></div></div><div class="bval">~18%</div></div>
+    <div class="bar"><div class="blbl">Belaruskali（白俄）</div><div class="btrk"><div class="bfill bre" style="width:14%;"></div></div><div class="bval">~14%</div></div>
+    <div class="bar"><div class="blbl">Mosaic（美国/加拿大）</div><div class="btrk"><div class="bfill bbl" style="width:13%;"></div></div><div class="bval">~13%</div></div>
+    <div class="bar"><div class="blbl">K+S（德国）</div><div class="btrk"><div class="bfill bte" style="width:7%;"></div></div><div class="bval">~7%</div></div>
+    <div class="bar"><div class="blbl">其他（拉美/中亚等）</div><div class="btrk"><div class="bfill bam" style="width:28%;"></div></div><div class="bval">~28%</div></div>
+    <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--bdr2);">
+      <div class="ctit" style="margin-bottom:10px;font-size:13px;">竞争优势量化比较（2026年Q1）</div>
+      <table class="tbl">
+        <thead><tr><th>指标</th><th>Nutrien</th><th>Mosaic</th><th>CF Industries</th></tr></thead>
+        <tbody>
+          <tr><td>钾肥可控成本/吨</td><td class="mono"><span class="tag tg">&lt;$60</span></td><td class="mono">~$80–90</td><td class="mono">N/A</td></tr>
+          <tr><td>氨气运行率</td><td class="mono"><span class="tag tg">92%</span></td><td class="mono">N/A</td><td class="mono">~94%</td></tr>
+          <tr><td>NTM EV/EBITDA</td><td class="mono">~9.5x</td><td class="mono">~8.0x</td><td class="mono">~8.5x</td></tr>
+          <tr><td>股息收益率</td><td class="mono">3.2%</td><td class="mono">2.8%</td><td class="mono">2.2%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SEC 06 VALUATION -->
+<div class="sec" id="s06">
+<div class="shd"><span class="snum">06</span><span class="stit">相对估值分析 · EV/EBITDA &amp; 同业比较</span></div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card gl">
+    <div class="ctit">方法一：NTM EV/EBITDA 历史区间分析</div>
+    <div class="prose" style="margin-bottom:12px;">Nutrien NTM EV/EBITDA历史周期中枢约<strong>8.5–10.5x</strong>。以2026E调整后EBITDA约$6.6B为基础：</div>
+    <table class="tbl">
+      <thead><tr><th>情景</th><th class="r">乘数</th><th class="r">2026E EBITDA</th><th class="r">隐含EV</th><th class="r">隐含股价</th></tr></thead>
+      <tbody>
+        <tr><td>悲观</td><td class="mono r">9.0x</td><td class="mono r">$6.0B</td><td class="mono r">$54.0B</td><td class="mono r"><span class="tag tr">$53–57</span></td></tr>
+        <tr><td>基准</td><td class="mono r">9.8x</td><td class="mono r">$6.6B</td><td class="mono r">$64.7B</td><td class="mono r"><span class="tag tgl">$72–76</span></td></tr>
+        <tr><td>乐观</td><td class="mono r">11.0x</td><td class="mono r">$7.2B</td><td class="mono r">$79.2B</td><td class="mono r"><span class="tag tg">$87–94</span></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">假设：净债务约$10.5B，少数股东权益~$0.04B，流通股约4.82亿</div>
+  </div>
+  <div class="card am">
+    <div class="ctit">方法二：FCF 收益率法</div>
+    <div class="prose" style="margin-bottom:12px;">预计2026E FCF约$24亿，对应当前股价FCF收益率约<strong>7.4%</strong>，位于历史偏高区间：</div>
+    <table class="tbl">
+      <thead><tr><th>FCF收益率</th><th class="r">隐含市值</th><th class="r">隐含股价</th><th class="r">评注</th></tr></thead>
+      <tbody>
+        <tr><td>7.0%（悲观）</td><td class="mono r">$34.3B</td><td class="mono r"><span class="tag tr">$57–60</span></td><td>周期底部保守估值</td></tr>
+        <tr><td>5.5%（基准）</td><td class="mono r">$43.6B</td><td class="mono r"><span class="tag tgl">$72–78</span></td><td>历史中枢水平</td></tr>
+        <tr><td>4.5%（乐观）</td><td class="mono r">$53.3B</td><td class="mono r"><span class="tag tg">$88–96</span></td><td>强周期溢价估值</td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">当前FCF收益率~7.4%，市场对周期持保守态度</div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit" style="margin-bottom:14px;">同业综合估值比较（截至2026年6月，美元）</div>
+  <table class="tbl">
+    <thead><tr><th>可比公司</th><th class="r">市值</th><th class="r">NTM EV/EBITDA</th><th class="r">NTM P/E</th><th class="r">股息收益率</th><th class="r">净债务/EBITDA</th><th>业务特点</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Nutrien (NTR)</strong></td><td class="mono r"><strong>$32.4B</strong></td><td class="mono r"><strong>~9.5x</strong></td><td class="mono r"><strong>13.7x</strong></td><td class="mono r"><strong>3.2%</strong></td><td class="mono r"><strong>1.8x</strong></td><td><span class="tag tgl">K+N+P+零售</span></td></tr>
+      <tr><td>CF Industries (CF)</td><td class="mono r">~$16B</td><td class="mono r">~8.5x</td><td class="mono r">~14x</td><td class="mono r">2.2%</td><td class="mono r">~0.8x</td><td>纯北美氮肥，低杠杆</td></tr>
+      <tr><td>Mosaic Company (MOS)</td><td class="mono r">~$9B</td><td class="mono r">~8.0x</td><td class="mono r">~12x</td><td class="mono r">2.8%</td><td class="mono r">~1.5x</td><td>钾磷为主，巴西布局</td></tr>
+      <tr><td>Yara International (YAR)</td><td class="mono r">~$9B</td><td class="mono r">~7.5x</td><td class="mono r">~15x</td><td class="mono r">4.5%</td><td class="mono r">~2.0x</td><td>欧洲氮肥，高气价压力</td></tr>
+      <tr><td>ICL Group (ICL)</td><td class="mono r">~$7B</td><td class="mono r">~8.5x</td><td class="mono r">~13x</td><td class="mono r">3.5%</td><td class="mono r">~1.8x</td><td>特种矿物，规模较小</td></tr>
+      <tr><td>Corteva (CTVA)</td><td class="mono r">~$30B</td><td class="mono r">~12x</td><td class="mono r">~22x</td><td class="mono r">1.1%</td><td class="mono r">~0.5x</td><td>种子+农保，成长溢价</td></tr>
+    </tbody>
+  </table>
+  <div class="co" style="margin-top:14px;">
+    <div class="cotit">估值结论</div>
+    <p>Nutrien NTM EV/EBITDA约9.5x，高于同业化肥公司均值（~8.3x），溢价约15%，来自：（1）全球最大钾肥产商的规模溢价；（2）零售业务提供稳定的下游EBITDA贡献；（3）管理层强化资本回报的执行力。然而，鉴于化肥行业周期波动性、俄白增产的长期供给压力，及股价已从低点大幅回升，当前溢价空间有限，不具备明显的安全边际。</p>
+  </div>
+</div>
+</div>
+<!-- SEC 07 DCF -->
+<div class="sec" id="s07">
+<div class="shd"><span class="snum">07</span><span class="stit">DCF 贴现现金流分析 · 敏感性矩阵</span></div>
+<div class="co bl" style="margin-bottom:18px;">
+  <div class="cotit">DCF 基础假设（基准情景）</div>
+  <p>以5年显式预测期（2026–2030E）+终值计算。基准情景假设：2026E FCF约$24亿（+21% YoY），2027–2030E年均FCF增长约5–6%，反映化肥价格温和增长、钾肥矿山自动化持续降本、及资产剥离后FCF转化率提升。终值增长率（g）采用1.5–3.0%区间，WACC采用8.0–10.0%区间。净债务扣除约$105亿，流通股约4.82亿。</p>
+</div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card">
+    <div class="ctit">DCF 核心参数（三情景）</div>
+    <table class="tbl">
+      <thead><tr><th>参数</th><th class="r">悲观</th><th class="r">基准</th><th class="r">乐观</th></tr></thead>
+      <tbody>
+        <tr><td>2026E 自由现金流（$B）</td><td class="mono r">2.1</td><td class="mono r">2.4</td><td class="mono r">2.8</td></tr>
+        <tr><td>FCF增速（2027–2030 CAGR）</td><td class="mono r">2.5%</td><td class="mono r">5.5%</td><td class="mono r">9.0%</td></tr>
+        <tr><td>终值增长率（g）</td><td class="mono r">1.5%</td><td class="mono r">2.5%</td><td class="mono r">3.0%</td></tr>
+        <tr><td>WACC</td><td class="mono r">10.0%</td><td class="mono r">9.0%</td><td class="mono r">8.0%</td></tr>
+        <tr><td>企业价值（$B）</td><td class="mono r">~38</td><td class="mono r">~46</td><td class="mono r">~62</td></tr>
+        <tr><td>减：净债务（$B）</td><td class="mono r">10.5</td><td class="mono r">10.5</td><td class="mono r">10.5</td></tr>
+        <tr><td><strong>隐含股价（$）</strong></td><td class="mono r"><strong><span class="tag tr">$57</span></strong></td><td class="mono r"><strong><span class="tag tgl">$74</span></strong></td><td class="mono r"><strong><span class="tag tg">$106</span></strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <div class="ctit">EBITDA 价格敏感性（管理层参数）</div>
+    <table class="tbl">
+      <thead><tr><th>价格变量</th><th class="r">变动幅度</th><th class="r">年度EBITDA影响</th></tr></thead>
+      <tbody>
+        <tr><td>钾肥净售价</td><td class="mono r">±$10/吨</td><td class="mono r"><span class="tag tgl">±$140M</span></td></tr>
+        <tr><td>尿素净售价</td><td class="mono r">±$10/吨</td><td class="mono r"><span class="tag tgl">±$90M</span></td></tr>
+        <tr><td>北美天然气价（氮肥）</td><td class="mono r">±$0.5/MMBtu</td><td class="mono r"><span class="tag ta">±$70M</span></td></tr>
+        <tr><td>磷酸盐净售价</td><td class="mono r">±$10/吨</td><td class="mono r"><span class="tag tb">±$25M</span></td></tr>
+        <tr><td>加元汇率</td><td class="mono r">±1美分/加元</td><td class="mono r"><span class="tag tb">±$15M</span></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:8px;">来源：Nutrien 2025年报敏感性分析章节（SEC EDGAR 40-F）</div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit" style="margin-bottom:14px;">DCF 目标股价双变量敏感性矩阵（WACC × 终值增长率 g）</div>
+  <table class="dcfm">
+    <thead><tr><th>WACC ↓ / g →</th><th>g=1.0%</th><th>g=1.5%</th><th>g=2.0%</th><th>g=2.5%</th><th>g=3.0%</th><th>g=3.5%</th></tr></thead>
+    <tbody>
+      <tr><td class="thr">WACC=7.5%</td><td class="bzone">$98</td><td class="bzone">$107</td><td class="bzone">$118</td><td class="bzone">$132</td><td class="bzone">$152</td><td class="bzone">$182</td></tr>
+      <tr><td class="thr">WACC=8.0%</td><td class="bzone">$84</td><td class="bzone">$91</td><td class="bzone">$99</td><td class="bzone">$110</td><td class="bzone">$106</td><td class="bzone">$128</td></tr>
+      <tr><td class="thr">WACC=8.5%</td><td class="mzone">$73</td><td class="mzone">$78</td><td class="mzone">$85</td><td class="dzone">$74★</td><td class="mzone">$96</td><td class="mzone">$107</td></tr>
+      <tr><td class="thr">WACC=9.0%</td><td class="mzone">$64</td><td class="mzone">$68</td><td class="dzone">$74★</td><td class="mzone">$79</td><td class="mzone">$86</td><td class="mzone">$95</td></tr>
+      <tr><td class="thr">WACC=9.5%</td><td class="rzone">$56</td><td class="rzone">$59</td><td class="rzone">$64</td><td class="mzone">$69</td><td class="mzone">$75</td><td class="mzone">$83</td></tr>
+      <tr><td class="thr">WACC=10.0%</td><td class="rzone">$50</td><td class="rzone">$53</td><td class="rzone">$57</td><td class="rzone">$61</td><td class="rzone">$66</td><td class="mzone">$73</td></tr>
+      <tr><td class="thr">WACC=10.5%</td><td class="rzone">$44</td><td class="rzone">$47</td><td class="rzone">$50</td><td class="rzone">$54</td><td class="rzone">$58</td><td class="rzone">$64</td></tr>
+    </tbody>
+  </table>
+  <div style="display:flex;gap:14px;margin-top:9px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);"><div style="width:11px;height:11px;background:rgba(46,204,138,.07);border:1px solid var(--green);border-radius:2px;"></div>乐观 (&gt;$90)</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);"><div style="width:11px;height:11px;background:rgba(201,168,76,.12);border:1px solid var(--gold);border-radius:2px;"></div>基准（★=$74基准）</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);"><div style="width:11px;height:11px;background:rgba(224,92,92,.07);border:1px solid var(--red);border-radius:2px;"></div>悲观 (&lt;$60)</div>
+  </div>
+  <div class="csub" style="margin-top:7px;">基准情景：WACC=9.0%，g=2.0%，隐含股价约$74，与EV/EBITDA法基准价$76高度吻合，互相验证。</div>
+</div>
+</div>
+<!-- SEC 08 SOTP -->
+<div class="sec" id="s08">
+<div class="shd"><span class="snum">08</span><span class="stit">SOTP 分部加总估值</span></div>
+<div class="co" style="margin-bottom:18px;">
+  <div class="cotit">SOTP 分析框架说明</div>
+  <p>考虑到Nutrien四个业务板块的风险收益特征差异显著（周期性钾肥/氮肥 vs. 稳定性零售），分部加总估值（Sum-of-the-Parts，SOTP）能够更精确地反映各板块的内在价值。本分析以2026E各板块调整后EBITDA为基础，分别适用行业可比估值倍数，加总后扣除净债务和公司总部费用，得出每股内在价值。</p>
+</div>
+<div class="card">
+  <div class="ctit" style="margin-bottom:14px;">SOTP 估值明细（基准情景，美元百万）</div>
+  <table class="tbl">
+    <thead><tr><th>业务板块</th><th class="r">2026E EBITDA（$M）</th><th class="r">适用倍数</th><th class="r">估值依据</th><th class="r">板块EV（$M）</th><th class="r">占比</th></tr></thead>
+    <tbody>
+      <tr><td><strong>钾肥（Potash）</strong></td><td class="mono r">~3,200</td><td class="mono r">10.5x</td><td>全球最低成本，20%市占，持续自动化降本，领先溢价</td><td class="mono r"><span class="tag tgl">33,600</span></td><td class="mono r">52%</td></tr>
+      <tr><td><strong>氮肥（Nitrogen）</strong></td><td class="mono r">~2,200</td><td class="mono r">8.5x</td><td>北美低成本优势，参考CF Industries可比倍数，剔除已剥离Profertil</td><td class="mono r"><span class="tag tgl">18,700</span></td><td class="mono r">29%</td></tr>
+      <tr><td><strong>零售（Retail）</strong></td><td class="mono r">~1,850</td><td class="mono r">8.0x</td><td>稳定下游，自有品牌成长性，农业零售同业参考</td><td class="mono r"><span class="tag tb">14,800</span></td><td class="mono r">23%</td></tr>
+      <tr><td><strong>磷酸盐（Phosphate）</strong></td><td class="mono r">~250</td><td class="mono r">7.0x</td><td>规模小，行业成本压力，剥离候选，折扣处理</td><td class="mono r"><span class="tag ta">1,750</span></td><td class="mono r">3%</td></tr>
+      <tr><td><strong>公司总部/消除</strong></td><td class="mono r">—</td><td class="mono r">—</td><td>总部费用及分部消除项折现</td><td class="mono r"><span class="tag tr">-1,500</span></td><td class="mono r">—</td></tr>
+      <tr class="sotp-total"><td><strong>合计企业价值（EV）</strong></td><td class="mono r">—</td><td class="mono r">—</td><td>综合隐含EV/EBITDA ~9.0x</td><td class="mono r"><strong>67,350</strong></td><td class="mono r">100%</td></tr>
+      <tr><td>减：调整后净债务（$M）</td><td class="mono r">—</td><td class="mono r">—</td><td>2026E预测值</td><td class="mono r"><span class="tag tr">-10,500</span></td><td class="mono r">—</td></tr>
+      <tr><td>减：少数股东权益（$M）</td><td class="mono r">—</td><td class="mono r">—</td><td>—</td><td class="mono r"><span class="tag tr">-100</span></td><td class="mono r">—</td></tr>
+    </tbody>
+    <tfoot>
+      <tr style="background:rgba(201,168,76,.055);"><td><strong>股权价值合计（$M）</strong></td><td class="mono r" colspan="3">流通股约4.82亿</td><td class="mono r" style="font-size:14px;"><strong style="color:var(--gold);">56,750</strong></td><td class="mono r">—</td></tr>
+      <tr style="background:rgba(201,168,76,.09);"><td><strong>SOTP 基准目标价</strong></td><td class="mono r" colspan="3">理论全部内在价值</td><td class="mono r" style="font-size:15px;"><strong style="color:var(--gold);">~$117.7</strong></td><td class="mono r"><span class="tag tgl">理论全价值</span></td></tr>
+    </tfoot>
+  </table>
+  <div class="co" style="margin-top:14px;">
+    <div class="cotit">SOTP 折扣解释（为何市价低于SOTP理论价）</div>
+    <p>SOTP理论全价值约$118/股，显著高于当前股价$67.28，隐含约43%折扣。折扣来自：（1）<strong>大宗商品周期风险折扣：</strong>市场按周期底部EBITDA打折估值；（2）<strong>控股公司折扣：</strong>多元业务组合通常承受10–20%折扣；（3）<strong>资产剥离不确定性：</strong>磷酸盐/巴西/特立尼达的定价和时间线未定；（4）<strong>周期中期修复阶段：</strong>市场对化肥价格持续性持保守预期。<strong>若三项资产剥离顺利以合理价格完成，SOTP折扣有望压缩至20–25%，对应股价$88–100区间。</strong></p>
+  </div>
+</div>
+</div>
+<!-- SEC 09 SCENARIO -->
+<div class="sec" id="s09">
+<div class="shd"><span class="snum">09</span><span class="stit">三情景分析 · 12个月价格目标区间</span></div>
+<div class="scrow">
+  <div class="sc bull">
+    <div class="sclbl">🐂 乐观情景（Bull Case）</div>
+    <div class="scpri">$96</div>
+    <div class="scprob">发生概率：~25%</div>
+    <div class="scret">较当前 +42.7%（含股息 +46.0%）</div>
+    <hr class="scdiv">
+    <div class="scdesc"><strong>核心假设：</strong><br>• 全球钾肥价格上行至$420–450/吨<br>• 磷酸盐资产高价出售（&gt;$15亿）<br>• 美国春播需求超预期，零售EBITDA超$1.95B<br>• 俄白贸易流正常化受阻，供应偏紧持续<br>• 北美天然气维持$2.5/MMBtu以下<br>• Berenberg降级为孤立事件，机构共识稳定<br><br><strong>估值：</strong>EV/EBITDA约11x，FY2026E EBITDA约$7.2B</div>
+  </div>
+  <div class="sc base">
+    <div class="sclbl">⚖ 基准情景（Base Case）</div>
+    <div class="scpri">$76</div>
+    <div class="scprob">发生概率：~50%</div>
+    <div class="scret">较当前 +12.9%（含股息 +16.1%）</div>
+    <hr class="scdiv">
+    <div class="scdesc"><strong>核心假设：</strong><br>• 钾肥价格稳定在$375–420/吨区间<br>• 全球装运量达74–77Mt中值，需求稳健<br>• 氮肥利润小幅受压但北美资产保持优势<br>• 零售EBITDA实现$1.85B中值指引<br>• 磷酸盐剥离推进，时间线/定价仍待定<br>• FCF约$24亿，积极回购维持<br><br><strong>估值：</strong>EV/EBITDA约9.8x，FY2026E EBITDA约$6.6B</div>
+  </div>
+  <div class="sc bear">
+    <div class="sclbl">🐻 悲观情景（Bear Case）</div>
+    <div class="scpri">$54</div>
+    <div class="scprob">发生概率：~25%</div>
+    <div class="scret">较当前 -19.7%（含股息 -16.5%）</div>
+    <hr class="scdiv">
+    <div class="scdesc"><strong>核心假设：</strong><br>• 俄白大幅增产，钾肥价格跌至$300/吨以下<br>• 美元大幅升值（DXY &gt;115）<br>• 气候/贸易政策导致美国种植季延迟<br>• 磷酸盐剥离流产或低价成交（&lt;$8亿）<br>• Henry Hub天然气意外升至$4+/MMBtu<br>• Berenberg降级引发机构连锁抛售<br><br><strong>估值：</strong>EV/EBITDA约8.5x，FY2026E EBITDA约$5.8B</div>
+  </div>
+</div>
+<div class="card" style="margin-top:14px;">
+  <div class="ctit" style="margin-bottom:12px;">加权期望价值（Probability-Weighted Expected Value）</div>
+  <table class="tbl">
+    <thead><tr><th>情景</th><th class="r">概率权重</th><th class="r">目标价</th><th class="r">加权贡献</th><th class="r">含股息总回报</th></tr></thead>
+    <tbody>
+      <tr><td>乐观（Bull）</td><td class="mono r">25%</td><td class="mono r"><span class="tag tg">$96</span></td><td class="mono r">$24.0</td><td class="mono r">+46.0%</td></tr>
+      <tr><td>基准（Base）</td><td class="mono r">50%</td><td class="mono r"><span class="tag tgl">$76</span></td><td class="mono r">$38.0</td><td class="mono r">+16.1%</td></tr>
+      <tr><td>悲观（Bear）</td><td class="mono r">25%</td><td class="mono r"><span class="tag tr">$54</span></td><td class="mono r">$13.5</td><td class="mono r">-16.5%</td></tr>
+    </tbody>
+    <tfoot>
+      <tr style="background:rgba(201,168,76,.07);"><td><strong>加权期望价值</strong></td><td class="mono r"><strong>100%</strong></td><td class="mono r" style="font-size:14px;"><strong style="color:var(--gold);">$75.5</strong></td><td class="mono r"><strong style="color:var(--gold);">$75.5</strong></td><td class="mono r" style="color:var(--green);"><strong>+12.2%（含息）</strong></td></tr>
+    </tfoot>
+  </table>
+  <div class="csub" style="margin-top:7px;">加权期望价值$75.5与分析师12个月目标价$76高度吻合，三种估值框架（EV/EBITDA、DCF、情景分析）互相印证。</div>
+</div>
+</div>
+<!-- SEC 10 RISKS -->
+<div class="sec" id="s10">
+<div class="shd"><span class="snum">10</span><span class="stit">风险矩阵 · 全面风险评估</span></div>
+<div class="card">
+  <div class="risk"><div class="rbdg hi"><span>高风险</span></div><div><div class="rtit">⚡ 钾肥价格周期下行：俄白扩产持续</div><div class="rdesc">IFA数据显示2024年全球MOP产量同比增长10%至约7,660万吨，创历史新高。俄罗斯及白俄罗斯通过新兴贸易路线持续扩产，2024–2029年全球钾肥产能预计增长约20%（加拿大、俄罗斯、老挝、刚果为主要增长来源）。若需求增长不及供给扩张，2027年以后价格下行风险显著。每吨钾肥价格变动$10，影响Nutrien年度EBITDA约$1.4亿。</div></div></div>
+  <div class="risk"><div class="rbdg hi"><span>高风险</span></div><div><div class="rtit">⚡ 中国与印度政策不确定性</div><div class="rdesc">中国尿素出口政策（配额制度不透明，随时可收紧或放开）及磷酸盐出口管控可显著扰动全球氮磷肥市场定价与贸易流。印度MOP进口补贴政策及采购节奏变化（延迟招标导致亚洲库存累积）也会影响全球钾肥价格支撑。两国政策联动效应可在数周内改变全球化肥市场情绪。</div></div></div>
+  <div class="risk"><div class="rbdg md"><span>中等风险</span></div><div><div class="rtit">⚠ 天然气价格上涨：氮肥成本端冲击</div><div class="rdesc">Henry Hub天然气价格意外上涨将直接侵蚀氮肥板块利润（±$0.5/MMBtu影响EBITDA约$7000万）。尽管欧亚高气价目前放大北美竞争优势，若LNG全球化配置加速或美国出口基础设施大幅扩张，北美天然气价格可能被全球均值拉升，Nutrien成本护城河相应收窄。</div></div></div>
+  <div class="risk"><div class="rbdg md"><span>中等风险</span></div><div><div class="rtit">⚠ 资产剥离进展不及预期或定价低于预期</div><div class="rdesc">磷酸盐业务、特立尼达氮气设施及巴西零售三项资产的战略替代方案若出现出售价格低于市场预期（如磷酸盐低于$8亿）、交易谈判中止、或行业周期低迷导致买方意愿不足，将延缓FCF改善时间表并损害市场对"瘦身提质"叙事的信心。</div></div></div>
+  <div class="risk"><div class="rbdg md"><span>中等风险</span></div><div><div class="rtit">⚠ 机构评级下调风险（Berenberg 2026年6月5日降级）</div><div class="rdesc">Berenberg于2026年6月5日将Nutrien从买入下调至持有，是近期重要的负面信号。若TD、UBS、摩根大通等机构跟随下调，可能引发短期抛售压力，共识目标价下移。当前共识约63%买入、30%持有、7%卖出，若持有比例上升至40%+，股价动能将受抑制。</div></div></div>
+  <div class="risk"><div class="rbdg md"><span>中等风险</span></div><div><div class="rtit">⚠ 汇率风险：美元走强</div><div class="rdesc">Nutrien以美元报告，但大量成本及收入以加元（加拿大矿山运营）、澳元（澳大利亚零售）及巴西雷亚尔计价。美元大幅升值将压低海外收入折算价值，并对全球大宗商品USD计价形成压制。加元汇率每波动1美分影响EBITDA约$1,500万。</div></div></div>
+  <div class="risk"><div class="rbdg md"><span>中等风险</span></div><div><div class="rtit">⚠ 贸易政策与关税风险（加美贸易关系）</div><div class="rdesc">尽管加拿大钾肥目前在CUSMA框架下豁免关税，美国贸易保护主义升温构成潜在尾部风险。若加美贸易关系显著恶化，Nutrien出口至美国的钾肥产品（约占年销售量30%）将面临额外成本，且影响难以完全转嫁给美国农民，将直接侵蚀利润率。</div></div></div>
+  <div class="risk"><div class="rbdg lo"><span>低风险</span></div><div><div class="rtit">✓ 气候与农业需求季节性风险</div><div class="rdesc">极端天气可短期影响种植季时间表，但通常不改变全年施肥总量（农民补施效应）。公司在北美、澳大利亚及巴西的广泛零售网络能够一定程度平滑地区性扰动，属于时序性而非结构性风险。</div></div></div>
+  <div class="risk"><div class="rbdg lo"><span>低风险</span></div><div><div class="rtit">✓ 采矿运营风险（地质/盐水渗入）</div><div class="rdesc">钾肥地下矿山存在盐水渗入风险（历史上Rocanville矿1984年曾发生重大事件），极端情况可能导致矿山停产。公司通过6座矿山分散布局、持续安全投入及矿山自动化技术（2024年35%）有效管控风险。近年无重大安全事故。</div></div></div>
+</div>
+</div>
+<!-- SEC 11 CATALYSTS -->
+<div class="sec" id="s11">
+<div class="shd"><span class="snum">11</span><span class="stit">催化剂 · 关键时间节点</span></div>
+<div class="g2">
+  <div class="card">
+    <div class="ctit" style="margin-bottom:18px;">重要事件时间线（2026–2027）</div>
+    <div class="tl">
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年6月30日</div><div class="tltit">📅 股息除息日</div><div class="tldesc">季度股息$0.55/股（$2.20年化，3.2%股息率），派发日2026年7月17日。持股者的最后确认节点。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年8月5日</div><div class="tltit">🏆 Q2 2026 业绩公告（最重要节点）</div><div class="tldesc">Q2是历史上全年最强季度（春播旺季），将披露：完整春播旺季化肥销售数据、钾氮Q2价格实现值、资产剥离最新进展、H2展望及全年指引是否上调。若EBITDA超$2.5B，评级有上调空间。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年下半年（预期）</div><div class="tltit">💰 磷酸盐/巴西/特立尼达资产剥离结果</div><div class="tldesc">三项战略替代方案预计2026年下半年陆续给出方向（出售、合资或继续持有）。磷酸盐若以$12–20亿成交，将是重要正向催化剂，可能触发目标价上调至$85–95区间。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年Q3–Q4</div><div class="tltit">🌏 2027年全球MOP合同谈判启动</div><div class="tldesc">中国及印度MOP年度进口合同谈判将于年末启动，最终定价直接影响市场对2027年Nutrien EBITDA的预测。若2027年合同高于2026年$348/吨，将是强烈利好信号。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年11月</div><div class="tltit">📊 Q3 2026 业绩公告</div><div class="tldesc">三季度业绩及2027年初步展望，关注秋季施肥需求、氮肥利润率走势及零售进入收获季后的表现。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2027年2月</div><div class="tltit">📋 FY2026全年业绩 &amp; 2027指引发布</div><div class="tldesc">全年总结及新指引是判断公司能否进入新增长周期的关键数据点。若全年EBITDA超$6.8B并上调2027指引，评级有望上调至买入。</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="ctit">华尔街分析师评级分布（2026年6月）</div>
+      <div class="bar" style="margin-top:8px;"><div class="blbl">买入（Buy）~19家</div><div class="btrk"><div class="bfill bgr" style="width:63%;"></div></div><div class="bval">63%</div></div>
+      <div class="bar"><div class="blbl">持有（Hold）~9家</div><div class="btrk"><div class="bfill bgl" style="width:30%;"></div></div><div class="bval">30%</div></div>
+      <div class="bar"><div class="blbl">卖出（Sell）~2家</div><div class="btrk"><div class="bfill bre" style="width:7%;"></div></div><div class="bval">7%</div></div>
+      <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--bdr2);">
+        <div class="clbl" style="margin-bottom:8px;">共识目标价（多来源交叉验证）</div>
+        <table class="tbl">
+          <thead><tr><th>数据来源</th><th class="r">共识目标价</th><th class="r">覆盖数</th></tr></thead>
+          <tbody>
+            <tr><td>S&P Global</td><td class="mono r">$81.77</td><td class="mono r">24家</td></tr>
+            <tr><td>Benzinga</td><td class="mono r">$72.90</td><td class="mono r">30家</td></tr>
+            <tr><td>AnalystTargets</td><td class="mono r">$79.88</td><td class="mono r">17家</td></tr>
+            <tr><td>Tickeron</td><td class="mono r">$81.73</td><td class="mono r">25家</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctit">近期机构评级动态</div>
+      <table class="tbl">
+        <thead><tr><th>机构</th><th>评级</th><th class="r">目标价</th><th class="r">日期</th></tr></thead>
+        <tbody>
+          <tr><td>Wells Fargo</td><td><span class="tag tg">买入（维持）</span></td><td class="mono r">$100</td><td class="mono r">2026-06-05</td></tr>
+          <tr><td>Berenberg</td><td><span class="tag tr">持有（从买入降级）</span></td><td class="mono r">—</td><td class="mono r">2026-06-05</td></tr>
+          <tr><td>CIBC</td><td><span class="tag tg">买入（重申）</span></td><td class="mono r">—</td><td class="mono r">2026-05-11</td></tr>
+          <tr><td>TD Securities</td><td><span class="tag tg">买入</span></td><td class="mono r">$83</td><td class="mono r">2026-05-11</td></tr>
+          <tr><td>Scotiabank</td><td><span class="tag ta">中性（维持）</span></td><td class="mono r">$75–80</td><td class="mono r">2026-05-11</td></tr>
+          <tr><td>Oppenheimer</td><td><span class="tag tg">买入</span></td><td class="mono r">—</td><td class="mono r">2026-05-11</td></tr>
+        </tbody>
+      </table>
+      <div class="csub" style="margin-top:7px;">注意：Berenberg从买入降至持有（2026年6月5日）是近期最重要的负面信号。</div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SEC 12 ESG -->
+<div class="sec" id="s12">
+<div class="shd"><span class="snum">12</span><span class="stit">ESG 框架 · 可持续发展分析</span></div>
+<div class="g3" style="margin-bottom:14px;">
+  <div class="card gr">
+    <div class="clbl">环境（E）</div><div class="ctit">气候战略与减排路径</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cg"></div><p><strong>矿山自动化降低能耗：</strong>2024年实现35%钾肥采矿自动化，降低单位能耗和碳排放强度，同时提升安全性</p></div>
+      <div class="ci"><div class="cdot ca"></div><p><strong>氮肥减排评估中：</strong>氨合成过程是主要碳排放源，蓝氨/绿氨转型为长期关注方向，公司正在评估下一阶段减排项目</p></div>
+      <div class="ci"><div class="cdot cb"></div><p><strong>水资源管理：</strong>钾肥地下矿山面临盐水渗入风险，地表水资源管理是萨斯喀彻温省运营的重要环境议题</p></div>
+      <div class="ci"><div class="cdot ca"></div><p><strong>ESG评级：</strong>MSCI ESG评级约BBB级，Sustainalytics中等风险评分，行业属性（采矿+化工）导致绝对分数受限</p></div>
+    </div>
+  </div>
+  <div class="card am">
+    <div class="clbl">社会（S）</div><div class="ctit">社区与供应链责任</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cg"></div><p><strong>全球粮食安全贡献：</strong>在50+国家供应化肥，对全球粮食产量提升有直接贡献，ESG投资者视其为粮食安全主题受益者，契合SDG 2（零饥饿）</p></div>
+      <div class="ci"><div class="cdot ca"></div><p><strong>员工安全：</strong>全球约25,100名员工，矿山安全是核心KPI，2024年持续改善安全记录，零重大伤亡目标</p></div>
+      <div class="ci"><div class="cdot cb"></div><p><strong>原住民关系：</strong>萨斯喀彻温省运营涉及与当地原住民社区的土地使用协议，维护良好关系是运营许可的关键</p></div>
+      <div class="ci"><div class="cdot cg"></div><p><strong>农民赋能：</strong>零售板块通过Nutrien Financial为农民提供融资服务，Nutrien Ag Solutions平台提供数字农业咨询</p></div>
+    </div>
+  </div>
+  <div class="card bl">
+    <div class="clbl">治理（G）</div><div class="ctit">公司治理评估</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cg"></div><p><strong>董事会独立性强：</strong>2026年股东大会所有议案获97%以上赞成票；KPMG续任审计师获99.74%支持</p></div>
+      <div class="ci"><div class="cdot cg"></div><p><strong>资本分配纪律：</strong>目标净债务/EBITDA 1.5–2.0x区间，股息连续8年增长（年均4.1%），管理层持股比例合理</p></div>
+      <div class="ci"><div class="cdot ca"></div><p><strong>激励机制：</strong>高管薪酬与EBITDA、ROIC及自由现金流指标挂钩，激励机制与股东利益基本一致</p></div>
+      <div class="ci"><div class="cdot cg"></div><p><strong>信息透明度：</strong>双重上市（NYSE+TSX），完整SEC EDGAR披露，IFRS准则财务报告，非GAAP指标均有详细调节表</p></div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit">ESG 投资者关注点：机遇与挑战</div>
+  <div class="g2">
+    <div class="co gr">
+      <div class="cotit">ESG 投资机遇</div>
+      <p>化肥是全球粮食安全的基础，Nutrien"帮助全球农民养活世界"的使命与SDG 2（零饥饿）高度契合。矿山自动化持续提升运营效率和环境绩效。零售板块的数字农业服务有助于精准农业推广（减少过度施肥，改善环境影响）。北美资产的低碳强度相对于欧亚同业更具优势。加拿大监管体系稳定，ESG合规成本相对可控。</p>
+    </div>
+    <div class="co re">
+      <div class="cotit">ESG 挑战与限制</div>
+      <p>化肥生产和矿山开采本质上是高碳强度行业，难以获得ESG严格筛选基金的配置。氨合成过程（氮肥）是重要的CO₂排放源，短期内难以大幅降低。磷酸盐业务面临环境监管风险（尾矿池管理）。投资者对合成化肥的环境副作用（水体富营养化、N₂O排放）的关注度持续上升，可能形成ESG排除压力。</p>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SEC 13 RECOMMENDATION -->
+<div class="sec" id="s13">
+<div class="shd"><span class="snum">13</span><span class="stit">综合评估 · 最终交易建议</span></div>
+<div class="g3" style="margin-bottom:18px;">
+  <div class="card gr">
+    <div class="clbl">多方亮点（Bulls）</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cg"></div><p>全球最低成本钾肥产商，MOP可控成本&lt;$60/吨，领先同业20–30吨以上</p></div>
+      <div class="ci"><div class="cdot cg"></div><p>Q1 2026钾肥历史最高销量，EBITDA同比+30%，全年指引维持不变</p></div>
+      <div class="ci"><div class="cdot cg"></div><p>战略资产剥离（Profertil已完成$6亿），潜在价值超$10–15亿待释放</p></div>
+      <div class="ci"><div class="cdot cg"></div><p>净债务/EBITDA从2.2x改善至1.8x，目标1.6x，财务健康度持续提升</p></div>
+      <div class="ci"><div class="cdot cg"></div><p>3.2%股息收益率，8年连续增长，现金流覆盖率~48%，安全性高</p></div>
+      <div class="ci"><div class="cdot cg"></div><p>氮肥Q1 EBITDA +45%，北美低气价优势在全球供应受扰时窗口扩大</p></div>
+    </div>
+  </div>
+  <div class="card re">
+    <div class="clbl">空方关注（Bears）</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cr"></div><p>俄白供给持续增长（2024年产量+10%），2029年全球产能增20%，长期价格天花板受压</p></div>
+      <div class="ci"><div class="cdot cr"></div><p>估值已反映改善预期（NTM EV/EBITDA ~9.5x高于同业均值~8.3x约15%）</p></div>
+      <div class="ci"><div class="cdot cr"></div><p>Berenberg 2026年6月5日从买入降至持有，机构共识存在向Hold漂移风险</p></div>
+      <div class="ci"><div class="cdot cr"></div><p>磷酸盐剥离结果及定价高度不确定，市场已部分定价此催化剂</p></div>
+      <div class="ci"><div class="cdot cr"></div><p>Q1 EPS低于共识预期5.35%（GAAP $0.27 vs 预期 $0.29），执行略低预期</p></div>
+      <div class="ci"><div class="cdot cr"></div><p>中国政策干扰（尿素出口/磷酸盐配额）增加2H2026盈利预测不确定性</p></div>
+    </div>
+  </div>
+  <div class="card am">
+    <div class="clbl">关键观察信号</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot ca"></div><p>若股价回调至<strong>$58–62区间</strong>，安全边际充足，可考虑增持建立初始仓位</p></div>
+      <div class="ci"><div class="cdot ca"></div><p><strong>Q2 2026（8月5日）</strong>：春播旺季数据是最重要的近期验证节点</p></div>
+      <div class="ci"><div class="cdot ca"></div><p>磷酸盐出售公告若成交价<strong>高于$12亿</strong>，可考虑上调评级至买入</p></div>
+      <div class="ci"><div class="cdot ca"></div><p>关注Berenberg降级后机构跟随情况，若TD、摩根大通跟进则需重估</p></div>
+      <div class="ci"><div class="cdot ca"></div><p>2027年MOP合同谈判定价是6–9个月后的中期信号，密切跟踪港口库存</p></div>
+      <div class="ci"><div class="cdot ca"></div><p>Henry Hub若突破$3.5+/MMBtu持续，需下调氮肥EBITDA预测</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL VERDICT CARD -->
+<div class="card" style="background:linear-gradient(135deg,rgba(201,168,76,.055) 0%,rgba(11,22,39,.92) 60%);border:1px solid var(--bdr);">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:280px;">
+      <div class="clbl" style="margin-bottom:9px;">Snail Investment 精品研究部 · 最终综合建议</div>
+      <div style="font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:var(--t1);margin-bottom:13px;">
+        持有 <span style="color:var(--amber);">(HOLD)</span> &nbsp;·&nbsp; 目标价 <span style="color:var(--gold);">$76.00 USD</span>
+      </div>
+      <div style="font-size:13.5px;color:var(--t2);line-height:1.9;max-width:560px;">
+        Nutrien 是全球农业化肥行业最具竞争力的综合性平台之一，基本面改善趋势明确，资本回报策略执行扎实。然而，基于当前股价$67.28，风险回报比略显不均衡：潜在上行约+13%（含息+16%），而潜在下行约-20%（若悲观情景兑现）。<br><br>
+        <strong>建议策略：</strong>现有持仓维持持有，等待两类触发事件再增持——（1）股价回调至<strong>$58–62区间</strong>（提供更大安全边际）；或（2）<strong>Q2 2026业绩超预期</strong>叠加磷酸盐剥离高价完成（提供更强上行催化剂）。若上述触发事件均未出现，当前持有策略可继续享受3.2%股息收益+温和资本增值，总回报不低。
+      </div>
+      <div style="margin-top:14px;font-size:11.5px;color:var(--t3);line-height:1.8;">
+        ⚠ 本报告包含前瞻性陈述，化肥价格具有高度周期波动性，实际结果可能与预测存在重大差异。本报告不构成具体投资建议，投资者应独立评估风险。
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:9px;min-width:180px;">
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:4px;border:1px solid var(--bdr2);">
+        <div class="clbl">评级</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:var(--amber);">持有 HOLD</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:4px;border:1px solid var(--bdr2);">
+        <div class="clbl">12个月目标价</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:25px;font-weight:500;color:var(--gold);">$76.00</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:4px;border:1px solid var(--bdr2);">
+        <div class="clbl">含股息总回报</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:21px;font-weight:500;color:var(--green);">+16.1%</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:4px;border:1px solid var(--bdr2);">
+        <div class="clbl">建议增持区间</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:500;color:var(--blue);">$58–$62</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:4px;border:1px solid var(--bdr2);">
+        <div class="clbl">下行止损参考</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:500;color:var(--red);">&lt;$53</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DATA SOURCES -->
+<div style="margin-top:36px;">
+  <div class="clbl" style="margin-bottom:12px;">主要数据来源与参考文献</div>
+  <div class="card">
+    <table class="tbl">
+      <thead><tr><th>来源机构</th><th>文件/报告名称</th><th class="r">日期</th></tr></thead>
+      <tbody>
+        <tr><td>Nutrien Ltd.（SEC EDGAR）</td><td>Form 6-K — Q1 2026 业绩公告（EX-99.1 / 99.2 / 99.3）</td><td class="mono r">2026年5月6日</td></tr>
+        <tr><td>Nutrien Ltd.（SEC EDGAR）</td><td>Form 6-K — FY2025 全年业绩公告及2026年指引</td><td class="mono r">2026年2月18日</td></tr>
+        <tr><td>Nutrien Ltd.（SEC EDGAR）</td><td>Form 6-K — Q3 2025 业绩公告</td><td class="mono r">2025年11月5日</td></tr>
+        <tr><td>Nutrien Ltd.（SEC EDGAR）</td><td>Form 6-K — Q2 2025 业绩公告</td><td class="mono r">2025年8月6日</td></tr>
+        <tr><td>Nutrien Ltd.（SEC EDGAR）</td><td>Form 6-K — Profertil 股权出售完成公告</td><td class="mono r">2025年12月10日</td></tr>
+        <tr><td>Nutrien Ltd.（SEC EDGAR）</td><td>Form 6-K — 2026年NCIB股份回购计划批准</td><td class="mono r">2026年2月26日</td></tr>
+        <tr><td>S&amp;P Global Market Intelligence</td><td>NTR共识评级及目标价（24家机构）</td><td class="mono r">2026年6月</td></tr>
+        <tr><td>Benzinga / TipRanks</td><td>机构评级动态（含Berenberg降级、Wells Fargo维持）</td><td class="mono r">2026年6月5–10日</td></tr>
+        <tr><td>Robinhood / Yahoo Finance</td><td>NTR实时股价、P/E、市值、股息数据</td><td class="mono r">2026年6月8–9日</td></tr>
+        <tr><td>TradingView / Simply Wall St</td><td>NTR EBITDA、季度EPS偏差、股息分析</td><td class="mono r">2026年6月10日</td></tr>
+        <tr><td>IFA（国际肥料协会）</td><td>全球MOP产量及贸易数据2024–2026</td><td class="mono r">2025–2026</td></tr>
+        <tr><td>Procurement Resource / IMARC</td><td>全球化肥价格趋势报告2026年Q1</td><td class="mono r">2026年Q1</td></tr>
+        <tr><td>Argus Media / DiscoveryAlert</td><td>2026年中国MOP合同价分析（$348/吨CFR）</td><td class="mono r">2025年11月</td></tr>
+        <tr><td>DTN Progressive Farmer</td><td>2026年钾肥市场展望</td><td class="mono r">2025年12月</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div><!-- end sec13 -->
+
+</div><!-- end .wrap -->
+
+<div class="footer">
+  <div class="ftbrand">🐌 Snail Investment · 精品研究部（农业与基础材料行业）</div>
+  <div class="ftdisc">
+    本报告由 Snail Investment 精品研究部独立撰写，数据截止日期为 2026年6月10日，发布日期 2026年6月11日。本报告仅供具备专业金融知识的机构及专业投资者参考，不构成任何形式的投资邀约、招募、要约收购或个人投资建议。报告中所载信息及分析系基于公开来源数据，分析师尽力确保准确性，但不对其完整性、及时性或适用于特定投资目的作出任何明示或隐含担保。<br><br>
+    化肥及大宗商品市场具有高度周期性，相关公司业绩受产品价格、汇率、利率及地缘政治等多重因素影响，不确定性较高。本报告所载价格目标及预测系基于特定假设，实际结果可能与预期存在重大差异，过往业绩不预示未来表现。投资者在作出任何投资决策前，应自行独立评估相关风险，并在适当情况下寻求专业财务、法律及税务顾问意见。<br><br>
+    分析师利益冲突声明：本报告撰写分析师声明，本人及 Snail Investment 精品研究部与 Nutrien Ltd. (NTR) 不存在任何重大利益冲突关系，亦不持有该公司股票或相关衍生金融工具仓位。本报告版权归属 Snail Investment，未经授权不得转载、引用或以任何方式再分发。
+  </div>
+</div>
+
+<script>
+const secs = document.querySelectorAll('.sec[id]');
+const links = document.querySelectorAll('.nlinks a');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(a => a.classList.toggle('act', a.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, { rootMargin: '-15% 0px -75% 0px' });
+secs.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>

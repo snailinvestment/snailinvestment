@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oscar Health (OSCR) 深度研究报告 — Snail Investment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #03080e;
+    --bg-mid:   #06111f;
+    --bg-card:  #08162a;
+    --bg-lt:    #0c1e38;
+    --slate:    #1a3a5c;
+    --gold:     #b07d1e;
+    --gold-lt:  #cfa040;
+    --gold-dim: #7a5510;
+    --teal:     #1fb5a0;
+    --teal-dim: #147a6c;
+    --coral:    #e07050;
+    --coral-dim:#9a4030;
+    --red:      #d94f4f;
+    --green:    #29bb72;
+    --amber:    #e09a3a;
+    --violet:   #8a7cf5;
+    --txt:      #d8e6f4;
+    --txt2:     #86a0bc;
+    --txt3:     #4a6480;
+    --border:   rgba(176,125,30,0.17);
+    --border2:  rgba(255,255,255,0.055);
+    --serif:    'Noto Serif SC', serif;
+    --sans:     'Noto Sans SC', sans-serif;
+    --mono:     'IBM Plex Mono', monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:14px;line-height:1.72;-webkit-font-smoothing:antialiased}
+  ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px}
+
+  /* ═══ HEADER ═══ */
+  .hdr{background:linear-gradient(138deg,#020710 0%,#06101e 55%,#091825 100%);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+  .hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 580px 260px at 78% 45%,rgba(176,125,30,0.09) 0%,transparent 68%),radial-gradient(ellipse 320px 320px at 12% 82%,rgba(31,181,160,0.06) 0%,transparent 62%);pointer-events:none}
+  .hdr-inner{max-width:1120px;margin:0 auto;padding:40px 50px 36px;display:grid;grid-template-columns:1fr auto;gap:34px;align-items:start;position:relative}
+  .brand-row{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+  .brand-tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;border:1px solid var(--gold-dim);padding:4px 10px;border-radius:2px}
+  .brand-dt{font-family:var(--mono);font-size:10px;color:var(--txt3);letter-spacing:.1em}
+  .rpt-title{font-family:var(--serif);font-size:clamp(19px,2.3vw,27px);font-weight:600;line-height:1.35;color:var(--txt);max-width:610px}
+  .rpt-sub{margin-top:8px;font-size:12.5px;color:var(--txt2);letter-spacing:.04em}
+
+  /* RATING BOX — 持有偏谨慎 */
+  .rbox{background:linear-gradient(148deg,#0b1e3c 0%,#060f1c 100%);border:1px solid rgba(176,125,30,0.4);border-radius:4px;padding:22px 26px;min-width:192px;text-align:center;position:relative;overflow:hidden;flex-shrink:0}
+  .rbox::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+  .rlbl{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--txt3);text-transform:uppercase;margin-bottom:5px}
+  .rval{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--amber)}
+  .rtick{font-family:var(--mono);font-size:12.5px;color:var(--gold);margin-top:3px;letter-spacing:.15em}
+  .rdiv{height:1px;background:var(--border2);margin:10px 0}
+  .tlbl{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--txt3);text-transform:uppercase}
+  .tval{font-family:var(--mono);font-size:18px;font-weight:500;color:var(--gold-lt);margin-top:2px}
+  .curp{font-family:var(--mono);font-size:11px;color:var(--txt2);margin-top:5px}
+  .upbadge{display:inline-block;background:rgba(224,154,58,0.1);border:1px solid rgba(224,154,58,0.28);border-radius:2px;padding:3px 8px;font-family:var(--mono);font-size:10px;color:var(--amber);margin-top:8px}
+
+  /* ═══ NAV ═══ */
+  .nav{background:var(--bg-mid);border-bottom:1px solid var(--border2);position:sticky;top:0;z-index:100}
+  .nav-inner{max-width:1120px;margin:0 auto;padding:0 50px;display:flex;overflow-x:auto;scrollbar-width:none}
+  .nav-inner::-webkit-scrollbar{display:none}
+  .nav-a{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--txt3);text-transform:uppercase;text-decoration:none;padding:13px 16px;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s}
+  .nav-a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+  /* ═══ LAYOUT ═══ */
+  .body{max-width:1120px;margin:0 auto;padding:48px 50px 80px;display:grid;grid-template-columns:1fr 292px;gap:40px}
+  .main{min-width:0}.side{min-width:0}
+
+  /* ═══ SECTION ═══ */
+  .sec{margin-bottom:52px;animation:fadeUp .5s ease both}
+  .sec:nth-child(1){animation-delay:.05s}.sec:nth-child(2){animation-delay:.1s}.sec:nth-child(3){animation-delay:.15s}.sec:nth-child(4){animation-delay:.2s}.sec:nth-child(5){animation-delay:.24s}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  .sec-hdr{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-bottom:11px;border-bottom:1px solid var(--border)}
+  .sec-num{font-family:var(--mono);font-size:9.5px;color:var(--gold);letter-spacing:.22em;min-width:28px}
+  .sec-ttl{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--txt)}
+
+  /* ═══ ALERT BANNER ═══ */
+  .alert-banner{background:rgba(224,112,80,0.08);border:1px solid rgba(224,112,80,0.28);border-left:3px solid var(--coral);border-radius:3px;padding:14px 18px;margin-bottom:28px}
+  .alert-banner p{font-size:13px;color:var(--txt2);line-height:1.7}
+  .alert-banner strong{color:var(--coral)}
+
+  /* ═══ KPI ═══ */
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:18px}
+  .kpi{background:var(--bg-card);border:1px solid var(--border2);border-radius:3px;padding:15px 17px;position:relative;overflow:hidden;transition:border-color .2s}
+  .kpi::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold-dim);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+  .kpi:hover{border-color:var(--border)}.kpi:hover::after{transform:scaleX(1)}
+  .kl{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--txt3);text-transform:uppercase;margin-bottom:5px}
+  .kv{font-family:var(--mono);font-size:19px;font-weight:500;color:var(--txt)}
+  .kc{font-family:var(--mono);font-size:10px;margin-top:3px}
+  .ks{font-size:10px;color:var(--txt3);margin-top:2px}
+  .pos{color:var(--green)}.neg{color:var(--red)}.neu{color:var(--txt3)}.warn{color:var(--amber)}
+
+  /* ═══ THESIS ═══ */
+  .th-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+  .th{background:var(--bg-card);border:1px solid var(--border2);border-left:3px solid var(--gold-dim);border-radius:3px;padding:15px 17px;transition:border-left-color .2s}
+  .th:hover{border-left-color:var(--gold)}
+  .th-tag{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+  .th-txt{font-size:13px;color:var(--txt2);line-height:1.65}
+
+  /* ═══ TEXT ═══ */
+  .bt{font-size:13.5px;color:var(--txt2);line-height:1.8;margin-bottom:15px}
+  .bt strong{color:var(--txt);font-weight:600}
+  .cite{font-family:var(--mono);font-size:10px;color:var(--txt3);background:rgba(255,255,255,.04);border-radius:2px;padding:1px 5px}
+  .hl{background:rgba(176,125,30,.055);border:1px solid rgba(176,125,30,.2);border-radius:3px;padding:14px 18px;margin:16px 0}
+  .hl p{font-size:13px;color:var(--txt2);line-height:1.72}
+  .hl strong{color:var(--gold-lt)}
+  .hl-teal{background:rgba(31,181,160,.05);border:1px solid rgba(31,181,160,.18);border-radius:3px;padding:14px 18px;margin:16px 0}
+  .hl-teal p{font-size:13px;color:var(--txt2);line-height:1.72}
+  .hl-teal strong{color:var(--teal)}
+  .hl-red{background:rgba(217,79,79,.06);border:1px solid rgba(217,79,79,.2);border-radius:3px;padding:14px 18px;margin:16px 0}
+  .hl-red p{font-size:13px;color:var(--txt2);line-height:1.72}
+  .hl-red strong{color:#e07070}
+
+  /* ═══ GUIDANCE ═══ */
+  .gbox{background:linear-gradient(135deg,rgba(31,181,160,.05) 0%,rgba(6,17,31,0) 100%);border:1px solid rgba(31,181,160,.18);border-radius:3px;padding:15px 18px;margin:20px 0}
+  .gttl{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+  .grow{display:flex;justify-content:space-between;padding:4px 0;font-size:12.5px}
+  .gk{color:var(--txt3)}.gv{font-family:var(--mono);color:var(--txt)}
+
+  /* ═══ MLR PROGRESS ═══ */
+  .mlr-row{margin:6px 0}
+  .mlr-label{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--txt3);margin-bottom:3px}
+  .mlr-track{background:rgba(255,255,255,.05);border-radius:2px;height:8px;overflow:hidden}
+  .mlr-fill{height:100%;border-radius:2px;transition:width .6s ease}
+
+  /* ═══ TABLES ═══ */
+  .dt{width:100%;border-collapse:collapse;font-size:12px;margin:15px 0}
+  .dt th{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt3);padding:9px 13px;border-bottom:1px solid var(--border);text-align:right}
+  .dt th:first-child{text-align:left}
+  .dt td{padding:9px 13px;border-bottom:1px solid var(--border2);color:var(--txt2);text-align:right;font-family:var(--mono);font-size:12px}
+  .dt td:first-child{text-align:left;font-family:var(--sans);color:var(--txt);font-size:13px}
+  .dt tr:hover td{background:rgba(255,255,255,.02)}
+  .dt .tot td{border-top:1px solid var(--border);color:var(--gold-lt);font-weight:600}
+  .vt{width:100%;border-collapse:collapse;font-size:12.5px}
+  .vt th{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dim);padding:8px 12px;border-bottom:1px solid var(--border);text-align:right;background:rgba(176,125,30,.04)}
+  .vt th:first-child{text-align:left}
+  .vt td{padding:9px 12px;border-bottom:1px solid var(--border2);font-family:var(--mono);color:var(--txt2);text-align:right}
+  .vt td:first-child{font-family:var(--sans);text-align:left;color:var(--txt)}
+  .vt .sub td{color:var(--gold-lt);border-top:1px solid var(--border)}
+
+  /* ═══ RISKS ═══ */
+  .rg{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+  .ri{background:var(--bg-card);border:1px solid var(--border2);border-radius:3px;padding:14px 15px}
+  .rs{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:4px}
+  .sh{color:var(--red)}.sm{color:var(--amber)}.sl{color:var(--teal)}
+  .rtt{font-size:13px;color:var(--txt);font-weight:500;margin-bottom:4px}
+  .rd{font-size:12px;color:var(--txt3);line-height:1.6}
+
+  /* ═══ SCENARIO ═══ */
+  .sc-g{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:14px 0}
+  .sc{border-radius:3px;padding:16px;text-align:center}
+  .sc-bull{background:rgba(41,187,114,.06);border:1px solid rgba(41,187,114,.2)}
+  .sc-base{background:rgba(176,125,30,.06);border:1px solid rgba(176,125,30,.24)}
+  .sc-bear{background:rgba(217,79,79,.06);border:1px solid rgba(217,79,79,.2)}
+  .sclbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:7px}
+  .sc-bull .sclbl{color:var(--green)}.sc-base .sclbl{color:var(--gold)}.sc-bear .sclbl{color:var(--red)}
+  .scp{font-family:var(--mono);font-size:21px;font-weight:500;color:var(--txt)}
+  .scpr{font-family:var(--mono);font-size:10px;color:var(--txt3);margin-top:3px}
+  .scd{font-size:11px;color:var(--txt3);margin-top:7px;line-height:1.5}
+
+  /* ═══ TP VISUAL ═══ */
+  .tpv{background:var(--bg-card);border:1px solid var(--border2);border-radius:3px;padding:20px;margin:17px 0}
+  .tp-trk{position:relative;height:6px;background:rgba(255,255,255,.05);border-radius:3px;margin:24px 0 28px}
+  .tp-fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--teal-dim),var(--gold));border-radius:3px}
+  .tp-mk{position:absolute;top:-4px;width:14px;height:14px;border-radius:50%;transform:translateX(-50%);border:2px solid var(--bg)}
+  .tp-lbs{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9.5px;color:var(--txt3);margin-top:-18px}
+  .tp-leg{display:flex;gap:16px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+  .tp-li{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9.5px;color:var(--txt2)}
+  .tp-d{width:10px;height:10px;border-radius:50%;border:2px solid var(--bg)}
+
+  /* ═══ DATA NOTE ═══ */
+  .dnote{background:rgba(138,124,245,.06);border:1px solid rgba(138,124,245,.2);border-radius:3px;padding:12px 16px;margin:14px 0}
+  .dnote p{font-size:12px;color:var(--txt2);line-height:1.65}
+  .dnote strong{color:var(--violet)}
+
+  /* ═══ SIDE ═══ */
+  .ss{background:var(--bg-card);border:1px solid var(--border2);border-radius:3px;padding:18px;margin-bottom:16px}
+  .st{font-family:var(--mono);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:13px;padding-bottom:8px;border-bottom:1px solid var(--border2)}
+  .mr{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border2)}
+  .mr:last-child{border-bottom:none}
+  .mk{font-size:11.5px;color:var(--txt2)}.mv{font-family:var(--mono);font-size:12px;color:var(--txt);font-weight:500}
+
+  /* ═══ DISC ═══ */
+  .disc{border-top:1px solid var(--border2);padding-top:22px;margin-top:18px;font-size:11px;color:var(--txt3);line-height:1.7}
+
+  footer{background:var(--bg-mid);border-top:1px solid var(--border2);padding:22px 50px;display:flex;justify-content:space-between;align-items:center}
+  .fb{font-family:var(--mono);font-size:10px;color:var(--txt3);letter-spacing:.15em}
+  .fn{font-size:11px;color:var(--txt3);max-width:560px;text-align:right}
+
+  @media(max-width:880px){
+    .body{grid-template-columns:1fr;padding:22px}
+    .hdr-inner{grid-template-columns:1fr;padding:26px 22px}
+    .kpi-grid{grid-template-columns:repeat(2,1fr)}
+    .th-grid{grid-template-columns:1fr}
+    .rg{grid-template-columns:1fr}
+    .sc-g{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="hdr">
+  <div class="hdr-inner">
+    <div>
+      <div class="brand-row">
+        <span class="brand-tag">Snail Investment</span>
+        <span class="brand-dt">医疗健康 · 保险科技组 &nbsp;·&nbsp; 2026年6月8日</span>
+      </div>
+      <h1 class="rpt-title">Oscar Health (OSCR)：AI技术飞轮与ACA政策<br>红利下的价值重估——估值已先行</h1>
+      <p class="rpt-sub">Oscar Health, Inc. &nbsp;|&nbsp; NYSE: OSCR &nbsp;|&nbsp; HealthTech · ACA个险 · +Oscar技术平台 · 保险科技</p>
+    </div>
+    <div class="rbox">
+      <div class="rlbl">投资评级</div>
+      <div class="rval">持有</div>
+      <div class="rtick">OSCR · NYSE</div>
+      <div class="rdiv"></div>
+      <div class="tlbl">12个月目标价区间</div>
+      <div class="tval">$18 – $26</div>
+      <div class="curp">当前价格：~$23.58（6月8日）</div>
+      <span class="upbadge">估值已接近公允区间上沿</span>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#thesis"     class="nav-a">投资论点</a>
+    <a href="#financials" class="nav-a">财务摘要</a>
+    <a href="#aca"        class="nav-a">ACA政策博弈</a>
+    <a href="#tech"       class="nav-a">技术飞轮</a>
+    <a href="#reinsurance" class="nav-a">再保险机制</a>
+    <a href="#mgmt"       class="nav-a">管理层评估</a>
+    <a href="#valuation"  class="nav-a">估值模型</a>
+    <a href="#risks"      class="nav-a">风险提示</a>
+  </div>
+</nav>
+
+<!-- ══════════ BODY ══════════ -->
+<div class="body">
+<main class="main">
+
+<!-- §0 估值警示 -->
+<div class="alert-banner" style="margin-top:0;">
+  <p><strong>⚠ 分析师估值警示</strong> &nbsp;·&nbsp; OSCR当前股价约$23.58，年初至今已上涨约+80%，<strong>明显高于卖方一致均值目标价$16.88–$21.20</strong>（MarketBeat：$16.88；StockAnalysis：$21.20；Simply Wall St模型：$15.40）。Q1基本面极强，但股价已在相当程度上提前定价了全年乐观预期。本报告在充分肯定基本面改善的同时，将客观评估当前估值的合理性与下行风险。持有评级反映"质地优秀，但当前安全边际有限"的判断。<span class="cite">来源：EBC Financial Group分析，2026年6月8日；MarketBeat；StockAnalysis</span></p>
+</div>
+
+<!-- §1 投资论点 -->
+<section class="sec" id="thesis">
+  <div class="sec-hdr"><span class="sec-num">01</span><h2 class="sec-ttl">核心投资论点（Investment Thesis）</h2></div>
+
+  <div class="th-grid">
+    <div class="th">
+      <div class="th-tag">✦ AI技术飞轮初步验证</div>
+      <p class="th-txt">Q1 2026 MLR仅<strong>70.5%</strong>，同比改善490bps；SG&A率降至<strong>15.2%</strong>，同比改善60bps。AI驱动的运营效率（Campaign Builder精准分层、双语语音代理、实时药价工具）已产生可量化的成本节约效果，不再只是战略叙事。<span class="cite">来源：Oscar Health Q1 2026财报，2026年5月6日</span></p>
+    </div>
+    <div class="th">
+      <div class="th-tag">✦ 会员规模超预期扩张</div>
+      <p class="th-txt">Q1末会员人数<strong>320万</strong>，同比增长<strong>56%</strong>，是全美个险市场最大的专属运营商。即便ACA增强保费税收抵免（APTC）补贴已于2025年底落日，付款率仍与往年持平，会员韧性超市场预期。<span class="cite">来源：Oscar Health Q1 2026财报；Q1电话会议纪要，2026年5月6日</span></p>
+    </div>
+    <div class="th">
+      <div class="th-tag">✦ 历史性盈利跨越</div>
+      <p class="th-txt">净利润<strong>$6.79亿</strong>，为公司历史最高单季净利，稀释EPS $2.07（超一致预期$1.11的87%）。营业利润率同比提升540bps至15.2%，从"持续亏损的成长股"正式跨入"规模化盈利"阶段，是估值体系切换的关键里程碑。<span class="cite">来源：Oscar Health Q1 2026财报；Quartr.com</span></p>
+    </div>
+    <div class="th">
+      <div class="th-tag">✦ 全年指引保守可信</div>
+      <p class="th-txt">全年营收指引<strong>$187–190亿</strong>，营业利润$2.5–4.5亿，管理层在Q1大幅超预期后选择维持原有指引而非上调，此举反映对H2医疗成本季节性上升的审慎预判，指引结构（全年MLR 82.4%–83.4%）提示Q1 MLR的70.5%为全年低点。<span class="cite">来源：Oscar Health Q1 2026电话会议；CFO团队，2026年5月6日</span></p>
+    </div>
+    <div class="th">
+      <div class="th-tag">⚠ 核心谨慎：估值透支风险</div>
+      <p class="th-txt">当前股价$23.58已超出10家主要卖方分析师中9家的目标价。Q1盈利受益于$6,800万有利理赔展期（vs上年同期-$3,100万不利展期），存在一次性因素。全年指引下调意味着Q2–Q4盈利将明显弱于Q1，当前市场定价或部分透支了全年乐观预期。</p>
+    </div>
+    <div class="th">
+      <div class="th-tag">⚠ 核心谨慎：ACA政策依赖</div>
+      <p class="th-txt">公司<strong>100%收入来自ACA个险市场</strong>，对医保补贴政策高度依赖。风险调整（Risk Adjustment）应付账款已达当季直接保费收入约24%，是潜在的现金流逆风。国会对ACA的政策调整（如大病保险条款修改）是不可忽视的尾部风险。<span class="cite">来源：EBC Financial Group，2026年6月8日；SEC Form ARS 2025</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- §2 财务摘要 -->
+<section class="sec" id="financials">
+  <div class="sec-hdr"><span class="sec-num">02</span><h2 class="sec-ttl">财务摘要：Q1 2026核心数据看板</h2></div>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kl">总营收</div>
+      <div class="kv">$4.65B</div>
+      <div class="kc pos">▲ +53% YoY</div>
+      <div class="ks">高于一致预期$4.92B约-5.7%</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">净利润（GAAP）</div>
+      <div class="kv">$679M</div>
+      <div class="kc pos">公司史上最高单季净利</div>
+      <div class="ks">稀释EPS $2.07，超预期 +87%</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">营业利润</div>
+      <div class="kv">$704M</div>
+      <div class="kc pos">▲ +2.5× YoY</div>
+      <div class="ks">调整后EBITDA $727M，YoY +$398M</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">医疗损失率（MLR）</div>
+      <div class="kv">70.5%</div>
+      <div class="kc pos">▲ 改善 490bps YoY</div>
+      <div class="ks">含$68M有利理赔展期；Q1为全年低点</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">SG&A费用率</div>
+      <div class="kv">15.2%</div>
+      <div class="kc pos">▲ 改善 60bps YoY</div>
+      <div class="ks">AI降本成效可量化；Q1为全年低点</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">营业利润率</div>
+      <div class="kv">15.2%</div>
+      <div class="kc pos">▲ +540bps YoY</div>
+      <div class="ks">盈利质量实质性跨越</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">有效会员数（期末）</div>
+      <div class="kv">320万</div>
+      <div class="kc pos">▲ +56% YoY</div>
+      <div class="ks">全美个险市场最大专属运营商</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">风险调整应付</div>
+      <div class="kv">~24%</div>
+      <div class="kc warn">直接保费收入占比</div>
+      <div class="ks">现金流隐性压力；需动态跟踪</div>
+    </div>
+    <div class="kpi">
+      <div class="kl">2025全年营收</div>
+      <div class="kv">$11.7B</div>
+      <div class="kc pos">市场份额近翻倍至约30%</div>
+      <div class="ks">来源：2025年度股东大会</div>
+    </div>
+  </div>
+  <p style="font-size:11px;color:var(--txt3);margin-top:-4px;">数据来源：Oscar Health Q1 2026官方新闻稿及电话会议纪要（2026年5月6日）；SEC 8-K文件</p>
+
+  <!-- MLR趋势 -->
+  <div style="margin-top:26px;">
+    <p style="font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--txt3);text-transform:uppercase;margin-bottom:14px;">医疗损失率（MLR）趋势与全年指引分布</p>
+    <div class="mlr-row">
+      <div class="mlr-label"><span>Q1 2026（实际）</span><span style="color:var(--green)">70.5%</span></div>
+      <div class="mlr-track"><div class="mlr-fill" style="width:70.5%;background:linear-gradient(90deg,var(--teal),var(--green))"></div></div>
+    </div>
+    <div class="mlr-row">
+      <div class="mlr-label"><span>Q1 2025（实际）</span><span>75.4%</span></div>
+      <div class="mlr-track"><div class="mlr-fill" style="width:75.4%;background:#3a5070"></div></div>
+    </div>
+    <div class="mlr-row">
+      <div class="mlr-label"><span>FY2026 全年指引（中枢）</span><span style="color:var(--amber)">82.9%</span></div>
+      <div class="mlr-track"><div class="mlr-fill" style="width:82.9%;background:linear-gradient(90deg,var(--gold-dim),var(--amber))"></div></div>
+    </div>
+    <div class="mlr-row">
+      <div class="mlr-label"><span>Q4通常为全年高点（历史参考）</span><span style="color:var(--red)">~87–89%</span></div>
+      <div class="mlr-track"><div class="mlr-fill" style="width:88%;background:linear-gradient(90deg,var(--coral-dim),var(--coral))"></div></div>
+    </div>
+    <p style="font-size:11px;color:var(--txt3);margin-top:8px;">⚠ 关键洞察：Q1 MLR 70.5%是全年最低点。全年指引82.4%–83.4%意味着Q2–Q4 MLR将回升至约85%–89%区间，这是评估全年盈利可持续性的核心变量。H2医疗利用率季节性上升（手术、慢病管理集中）将显著收窄利润率。&nbsp;<span class="cite">来源：TipRanks OSCR分析，2026年5月7日</span></p>
+  </div>
+
+  <!-- FY2026 Guidance -->
+  <div class="gbox" style="margin-top:22px;">
+    <div class="gttl">FY2026 全年管理层指引（Q1财报后重申）</div>
+    <div class="grow"><span class="gk">全年总营收</span><span class="gv">$18.7B – $19.0B</span></div>
+    <div class="grow"><span class="gk">全年MLR指引</span><span class="gv">82.4% – 83.4%（Q1最低，Q4最高）</span></div>
+    <div class="grow"><span class="gk">全年SG&A率</span><span class="gv">15.8% – 16.3%</span></div>
+    <div class="grow"><span class="gk">营业利润</span><span class="gv">$2.5亿 – $4.5亿</span></div>
+    <div class="grow"><span class="gk">调整后EBITDA</span><span class="gv">指引营业利润 + 约$1.15亿</span></div>
+    <div class="grow"><span class="gk">下次财报日期</span><span class="gv">2026年8月6日（Q2财报）</span></div>
+    <p style="font-size:11px;color:var(--txt3);margin-top:10px;">重要提示：Q1营业利润$7.04亿已接近全年指引区间中枢$3.5亿，表明Q2–Q4合计预计呈现亏损或微利，全年盈利高度集中于Q1的季节性特征需充分消化。来源：Oscar Health Q1 2026电话会议，2026年5月6日</p>
+  </div>
+
+  <div class="dnote">
+    <p><strong>⚠ 数据交叉核实说明：</strong>关于Q1营收，管理层新闻稿与电话会议纪要均报告$4.65B；而TipRanks等引用的一致预期为$4.92B（营收微低于预期约5.7%），但EPS大幅超预期87%。两项数据均准确，反映了保费收入略低但医疗成本控制极佳的实际情况。MLR一次性有利因素（$6,800万理赔展期）已在正文中单独标注，不影响全年指引的可信度判断，但需从Q1净利中剔除以评估可持续盈利能力。剔除后可持续营业利润约$636M，仍为历史最高水平。</p>
+  </div>
+</section>
+
+<!-- §3 ACA政策博弈 -->
+<section class="sec" id="aca">
+  <div class="sec-hdr"><span class="sec-num">03</span><h2 class="sec-ttl">ACA政策红利与医疗成本博弈</h2></div>
+
+  <p class="bt"><strong>ACA市场：Oscar的绝对主场</strong> · Oscar Health是全美<strong>唯一一家100%专注于ACA个人市场</strong>的上市保险公司。这使其在ACA政策利好时（如补贴扩充、特别注册期延长）能获得超额受益，但也意味着其在政策逆风时缺乏多元化缓冲。2026年Q1末会员320万，同比+56%，市场份额扩张至约30%，是全美个险市场增速最快的运营商。<span class="cite">来源：Oscar Health Q1 2026财报；2025年度股东大会</span></p>
+
+  <div class="hl-red">
+    <p><strong>最大风险：ACA增强补贴落日（ARPA）</strong><br>
+    《美国救援计划法》（ARPA）扩大的保费税收抵免（APTC）已于2025年底到期，管理层表示付款率与往年持平，但也明确预期全年将经历"与ARPA前水平一致的典型流失率"。Oscar的80%+新会员依赖ACA补贴入组，若国会进一步削减补贴（如"大而美法案"中的Medicaid削减条款），可能引发会员大规模退保。<strong>此为公司最高优先级政策风险，当前股价对此定价存疑。</strong><span class="cite">来源：Oscar Health Q1 2026电话会议纪要；EBC Financial Group，2026年6月8日</span></p>
+  </div>
+
+  <p class="bt"><strong>风险调整机制（Risk Adjustment）：双刃剑</strong> · ACA风险调整体系要求健康风险低于市场平均水平的保险公司向高风险保险公司转移资金。Oscar Q1风险调整应付约占直接保费收入24%，这意味着：①公司会员群体整体健康状况优于市场平均（反映精准核保能力）；②同时构成约$10-12亿/年的现金流转出，在现金流量表层面造成压力；③极端情况下，若风险调整结算结果超预期不利，可能在单季度内形成$2-3亿的超额支出冲击。<span class="cite">来源：EBC Financial Group分析，2026年6月8日；Oscar SEC Form ARS 2025</span></p>
+
+  <p class="bt"><strong>定价能力与会员韧性</strong> · 管理层表示，公司在2026计划年度的费率制定已充分内化了ACA补贴变化的影响，当前付款率与历史前ARPA水平一致。Oscar在佛罗里达州（最大单一市场）、德克萨斯州、加利福尼亚州等州的市场份额仍在持续扩大，证明其差异化的数字体验（移动App、AI客服）确实产生了高于行业平均的会员留存率。</p>
+</section>
+
+<!-- §4 技术飞轮 -->
+<section class="sec" id="tech">
+  <div class="sec-hdr"><span class="sec-num">04</span><h2 class="sec-ttl">技术飞轮：+Oscar平台与Campaign Builder AI</h2></div>
+
+  <p class="bt"><strong>全栈技术平台的三层架构</strong> · Oscar将自身定位为"健康科技公司"而非传统保险公司，这一叙事正逐渐获得财务数据支撑。其技术优势体现在三个层面：①<strong>会员侧</strong>：移动App作为主要交互入口，AI驱动的个性化健康推荐、实时药价比价工具、双语（英西）语音代理；②<strong>运营侧</strong>：Campaign Builder平台实现精准分层与主动健康管理，将高风险会员的医疗成本前移管控；③<strong>B2B赋能侧</strong>：+Oscar平台对外向其他支付方和医疗提供者提供相同的技术能力，签约客户包括Sanford Health Plan等中型健康计划。<span class="cite">来源：Oscar Health SEC Form ARS 2025；Q1 2026财报；8-K文件</span></p>
+
+  <div class="hl-teal">
+    <p><strong>Campaign Builder AI：可量化的降本飞轮</strong><br>
+    Campaign Builder是Oscar技术护城河的核心，也是最难被外部复制的竞争优势。其工作原理：基于13年以上的ACA个险数据（约1,100亿次数字交互），通过机器学习对会员进行健康风险分层，并精准触达高风险会员进行预防性干预（如督促糖尿病患者按时就医、慢病管理课程推送）。直接财务效果：①降低高成本急诊/住院使用率；②将部分医疗支出从高价急症端转移至低价预防端；③减少客服人员需求（AI语音代理），压缩SG&A。2026Q1 SG&A率15.2%（同比-60bps）是其最新量化成果，管理层预计AI降本效应将持续复利增强。</p>
+  </div>
+
+  <p class="bt"><strong>Lucie Health Marketplace：下一个商业化入口</strong> · 2026年Q1，Oscar发布了<strong>Lucie Health Marketplace</strong>，一个CMS批准的"运营商中立"健康计划搜索与注册平台，同时支持ACA计划和辅助健康产品。Lucie的战略意义：①将Oscar的技术能力B2C商业化，从单纯的保险公司演化为健康计划分销枢纽；②运营商中立设计使其可以推荐竞争对手产品，从而吸引更广泛的用户流量；③为+Oscar的B2B赋能业务提供了零售端案例验证。这是Oscar迈向"平台化"的最新战略举措，其规模化潜力值得持续关注。<span class="cite">来源：Oscar Health Q1 2026电话会议，2026年5月6日；BusinessWire官方公告</span></p>
+
+  <p class="bt"><strong>ICHRA X：打开雇主端市场</strong> · 个人健康报销协议（ICHRA）是美国雇主向员工提供健康福利的最新机制，允许员工用雇主补贴自行购买ACA计划。Oscar推出的ICHRA X平台专为这一市场设计，若ICHRA快速渗透（预计2028年TAM超$200亿），Oscar将获得额外的会员增长来源，部分对冲ACA补贴缩减风险。</p>
+</section>
+
+<!-- §5 再保险 -->
+<section class="sec" id="reinsurance">
+  <div class="sec-hdr"><span class="sec-num">05</span><h2 class="sec-ttl">配额分保（Quota Share）：风险对冲的双面性</h2></div>
+
+  <p class="bt"><strong>再保险机制概述</strong> · Oscar大量使用<strong>配额分保（Quota Share Reinsurance）</strong>协议，将约50%的保险风险（保费收入与理赔支出）转移给第三方再保险公司。其主要目的是：①满足监管资本充足率要求（降低法定盈余需求）；②为医疗理赔高于预期提供缓冲；③使公司在快速会员增长期间能在不大规模补充资本的情况下维持偿付能力。<span class="cite">来源：Oscar Health SEC Form ARS 2025；历史8-K文件</span></p>
+
+  <div class="hl">
+    <p><strong>配额分保的财务影响量化</strong><br>
+    由于配额分保，Oscar的"保费收入"在财报中按"存款会计（Deposit Accounting）"处理，导致：①净保费收入数字被压低（与毛保费之间存在差额）；②当公司MLR表现良好时，再保险公司实际受益（反之亦然）；③理赔超预期时，再保险公司承担约50%损失，提供了有效的盈利保护下限。负面影响：当公司表现极好时（如Q1 2026），大量利润须分享给再保险合作方，限制了潜在盈利空间的上限。这一机制使Oscar的盈利曲线更平滑，但同时也压缩了牛市情景下的盈利弹性，对估值倍数形成天然制约。<span class="cite">来源：Oscar Health历史8-K文件；SEC Form ARS 2025</span></p>
+  </div>
+
+  <p class="bt"><strong>政策变化下的抗风险能力评估</strong> · 若ACA补贴大幅削减，导致高健康风险人群加速退保（健康风险分层逆选择），MLR可能出现超预期上升。此情形下，配额分保协议将充当"自动稳定器"——约50%的超额理赔由再保险方承担，有效保护公司在极端情形下的偿付能力。这是Oscar模式相对于UnitedHealth等大型综合险企的核心防御优势，也是评级中维持"持有"而非"卖出"的重要支撑。</p>
+</section>
+
+<!-- §6 管理层评估 -->
+<section class="sec" id="mgmt">
+  <div class="sec-hdr"><span class="sec-num">06</span><h2 class="sec-ttl">管理层战略评估：执行力与监管应对</h2></div>
+
+  <p class="bt"><strong>CEO Mark Bertolini：执行力显著提升</strong> · Bertolini（前Aetna CEO）于2023年接任后大幅强化了成本纪律与技术商业化节奏。在其领导下，Oscar从"永久亏损的HealthTech创业公司"转型为"已实现规模化盈利的个险市场领导者"，这一跨越的时间线明显快于市场预期。其核心战略举措：①拒绝以补贴驱动的激进定价换取会员数量，转而追求风险调整后的盈利会员增长；②将AI部署从"战略宣传"推进到可量化的运营效率提升；③通过ICHRA X和Lucie建立政策依赖度更低的多元化收入管道。</p>
+
+  <div class="hl-teal">
+    <p><strong>监管风险应对策略</strong><br>
+    管理层对监管风险的应对体现在：①费率制定已提前反映ARPA补贴落日影响（Q1付款率正常印证了这一判断）；②ICHRA X战略旨在减少对ACA补贴的依赖；③佛罗里达等核心市场的多县布局分散了单一政策风险；④Lucie"运营商中立"设计使Oscar在ACA市场格局改变时具备快速调整产品组合的弹性。<strong>未完全应对的风险</strong>：若Medicaid资格审查加严（"大而美法案"中的相关条款），大量前Medicaid受益人可能流入ACA个险市场，短期会推高Oscar会员数但同时抬升MLR——这是当前最值得关注的潜在超预期（上下两方向均有）变量。<span class="cite">来源：Oscar Health Q1 2026电话会议；EBC Financial Group，2026年6月8日</span></p>
+  </div>
+</section>
+
+<!-- §7 估值 -->
+<section class="sec" id="valuation">
+  <div class="sec-hdr"><span class="sec-num">07</span><h2 class="sec-ttl">估值模型：SOTP × DCF 交叉验证</h2></div>
+
+  <p class="bt" style="margin-bottom:18px;">核心估值挑战：Oscar是<strong>保险公司还是科技公司？</strong>——这一身份认定直接决定了适用的估值乘数体系。若按传统保险公司（P/E 10-15×）定价，当前股价已接近高估；若按HealthTech成长股（EV/Revenue 2-4×）定价，则仍有空间。我们采用SOTP分部拆解这一根本性分歧。</p>
+
+  <p style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;">SOTP分部估值——基于2026E全年业绩预测</p>
+  <table class="vt">
+    <thead><tr>
+      <th style="text-align:left">业务分部</th>
+      <th>FY26E价值基础</th>
+      <th>估值方法/乘数</th>
+      <th>估值区间</th>
+      <th>关键假设</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td>ACA保险核心业务</td>
+        <td>FY26E营业利润 $3.5亿</td>
+        <td>P/E 15–20×（成熟险企+成长溢价）</td>
+        <td>$52–70亿</td>
+        <td>会员增速+20%；全年MLR 82.9%（指引中枢）；配额分保维持</td>
+      </tr>
+      <tr>
+        <td>+Oscar技术平台（B2B）</td>
+        <td>估算独立营收$1.5–2.5亿；TAM快速扩张</td>
+        <td>EV/Sales 8–15×（SaaS健康科技参照）</td>
+        <td>$12–37亿</td>
+        <td>Campaign Builder B2B商业化加速；Lucie Marketplace用户增长</td>
+      </tr>
+      <tr>
+        <td>再保险摊薄折扣</td>
+        <td>利润共享摊薄约20-25%</td>
+        <td>–20%折价调整</td>
+        <td>–$13–21亿</td>
+        <td>配额分保限制牛市盈利空间上限</td>
+      </tr>
+      <tr>
+        <td>ACA政策风险折价</td>
+        <td>补贴落日+风险调整不确定性</td>
+        <td>–10–20%监管风险折扣</td>
+        <td>–$6–14亿</td>
+        <td>ARPA落日会员流失5-10%情景</td>
+      </tr>
+      <tr class="sub">
+        <td><strong>股权价值合计（净现金~$5亿）</strong></td>
+        <td colspan="2">—</td>
+        <td><strong>$45–72亿</strong></td>
+        <td>稀释股本约2.72亿股</td>
+      </tr>
+      <tr class="sub">
+        <td><strong>隐含每股价值</strong></td>
+        <td colspan="3"><strong>$16.5 – $26.5（中枢约$21.5）</strong></td>
+        <td>当前价$23.58处于区间上沿</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:var(--txt3);margin-top:6px;">*+Oscar B2B平台独立估值较难精确量化，目前体量有限（未单独披露收入），本模型给予"期权价值"性质的乐观弹性区间。<br>*若按纯ACA保险P/E框架，公允价值约$15–20；若成功实现科技平台估值切换，理论天花板约$30+。</p>
+
+  <p style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin:24px 0 10px;">DCF现金流折现——关键假设</p>
+  <table class="dt">
+    <thead><tr><th>参数</th><th>保守</th><th>基准</th><th>乐观</th></tr></thead>
+    <tbody>
+      <tr><td>2026–2029E 营收CAGR</td><td>10%</td><td>18%</td><td>28%</td></tr>
+      <tr><td>稳态FCF利润率</td><td>3%</td><td>6%</td><td>10%</td></tr>
+      <tr><td>WACC</td><td>11%</td><td>9.5%</td><td>8%</td></tr>
+      <tr><td>终端增长率</td><td>2%</td><td>3%</td><td>4.5%</td></tr>
+      <tr class="tot"><td>隐含每股内在价值</td><td>$8</td><td>$19</td><td>$38</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:var(--txt3);margin-top:6px;">注：医疗保险公司FCF受风险调整现金流出、再保险结算时点影响较大，DCF估值存在较高不确定性。乐观情景需要公司实现"HealthTech平台估值切换"，当前阶段概率约20-25%。</p>
+
+  <!-- Scenario -->
+  <p style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin:24px 0 10px;">综合目标价区间（12个月）</p>
+  <div class="sc-g">
+    <div class="sc sc-bear">
+      <div class="sclbl">熊市情景</div>
+      <div class="scp">$8 – $12</div>
+      <div class="scpr">概率权重：20%</div>
+      <div class="scd">ACA补贴重大削减；H2 MLR超预期恶化至88%+；风险调整超预期不利冲击；会员流失>15%</div>
+    </div>
+    <div class="sc sc-base">
+      <div class="sclbl">基准情景</div>
+      <div class="scp">$18 – $26</div>
+      <div class="scpr">概率权重：55%</div>
+      <div class="scd">全年MLR 82-84%；会员增速+20–25%；AI降本成效持续；ACA补贴政策基本稳定；Q2财报平稳</div>
+    </div>
+    <div class="sc sc-bull">
+      <div class="sclbl">牛市情景</div>
+      <div class="scp">$30 – $38</div>
+      <div class="scpr">概率权重：25%</div>
+      <div class="scd">H2 MLR超预期良好；+Oscar B2B规模突破；ICHRA X快速渗透；市场完成科技公司估值重定价；ACA利好政策出台</div>
+    </div>
+  </div>
+
+  <!-- TP Visual -->
+  <div class="tpv" style="margin-top:16px;">
+    <p style="font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--txt3);text-transform:uppercase;margin-bottom:8px;">目标价可视化（基于当前价格~$23.58）</p>
+    <div class="tp-trk">
+      <div class="tp-fill" style="width:65%;"></div>
+      <div class="tp-mk" style="left:14%;background:var(--red);"></div>
+      <div class="tp-mk" style="left:30%;background:var(--amber);"></div>
+      <div class="tp-mk" style="left:56%;background:#fff;"></div>
+      <div class="tp-mk" style="left:61%;background:var(--gold);"></div>
+      <div class="tp-mk" style="left:75%;background:var(--gold-lt);"></div>
+      <div class="tp-mk" style="left:93%;background:var(--green);"></div>
+    </div>
+    <div class="tp-lbs">
+      <span>$5</span><span>$10</span><span>$15</span><span>$20</span><span>$25</span><span>$30</span><span>$38+</span>
+    </div>
+    <div class="tp-leg">
+      <div class="tp-li"><div class="tp-d" style="background:var(--red);"></div>熊市低 $8</div>
+      <div class="tp-li"><div class="tp-d" style="background:var(--amber);"></div>卖方均值 $17-21</div>
+      <div class="tp-li"><div class="tp-d" style="background:#fff;"></div>现价 $23.58</div>
+      <div class="tp-li"><div class="tp-d" style="background:var(--gold);"></div>目标低 $18</div>
+      <div class="tp-li"><div class="tp-d" style="background:var(--gold-lt);"></div>目标高 $26</div>
+      <div class="tp-li"><div class="tp-d" style="background:var(--green);"></div>牛市 $38</div>
+    </div>
+  </div>
+
+  <div class="hl" style="margin-top:18px;">
+    <p><strong>最终评级：持有（HOLD）&nbsp;|&nbsp; 目标价：$18 – $26（12个月）&nbsp;|&nbsp; 核心逻辑</strong><br>
+    Oscar Q1基本面毋庸置疑地优秀——历史最高净利、MLR同比改善490bps、会员+56%、AI降本可量化——均代表公司基本面质地的实质性跨越。然而，当前股价$23.58已处于我们SOTP基准估值区间（$16.5–$26.5）的上沿，并明显超出多数卖方目标价。<strong>安全边际已相当有限</strong>。给予持有评级而非卖出，核心原因是：①牛市情景（概率25%）目标价$30–38提供了向上期权价值；②基本面改善趋势明确；③下一催化剂（8月6日Q2财报）若H2 MLR好于全年指引，可能引发新一轮目标价上修浪潮。建议当前持仓者<strong>持股等待Q2财报验证</strong>，新资金<strong>等待回调至$17–19区间再行建仓</strong>。</p>
+  </div>
+</section>
+
+<!-- §8 风险 -->
+<section class="sec" id="risks">
+  <div class="sec-hdr"><span class="sec-num">08</span><h2 class="sec-ttl">风险提示</h2></div>
+
+  <div class="rg">
+    <div class="ri">
+      <div class="rs sh">■ 高风险</div>
+      <div class="rtt">ACA补贴政策重大削减</div>
+      <div class="rd">若"大而美法案"或类似立法大幅削减ACA保费补贴或放开健身计划豁免条款，可能引发大规模健康人群退保，导致Oscar会员风险池恶化，MLR超预期上升。公司100%收入集中于ACA市场，无任何对冲。</div>
+    </div>
+    <div class="ri">
+      <div class="rs sh">■ 高风险</div>
+      <div class="rtt">H2医疗成本超预期（MLR逆转）</div>
+      <div class="rd">Q1 MLR 70.5%包含$6,800万一次性有利理赔展期。若Q3-Q4医疗利用率（尤其是手术、慢病管理、GLP-1药物使用率上升）超预期，全年MLR可能突破83.4%上限，直接导致全年指引下调和股价大幅回调。</div>
+    </div>
+    <div class="ri">
+      <div class="rs sh">■ 高风险</div>
+      <div class="rtt">估值透支与Q2财报失望风险</div>
+      <div class="rd">当前股价$23.58已超出多数卖方目标价。若Q2财报（8月6日）MLR开始回升至预期区间（约83-85%），盈利较Q1大幅收窄，可能引发"卖方已经预期Q2较差但市场仍失望"的超预期负面反应。</div>
+    </div>
+    <div class="ri">
+      <div class="rs sm">● 中风险</div>
+      <div class="rtt">风险调整超预期不利结算</div>
+      <div class="rd">Q1风险调整应付已达直接保费24%，若年度风险调整结算（通常在次年发布）结果超预期不利，将在特定季度形成较大的一次性现金流出，对财报造成冲击。</div>
+    </div>
+    <div class="ri">
+      <div class="rs sm">● 中风险</div>
+      <div class="rtt">AI降本效果不及预期或可复制</div>
+      <div class="rd">Campaign Builder的降本效果若被证明是宏观医疗环境改善（非技术驱动），或被竞争对手快速复制（如HIMS、Clover Health等同类技术险企），则Oscar的估值溢价基础将受到质疑。</div>
+    </div>
+    <div class="ri">
+      <div class="rs sm">● 中风险</div>
+      <div class="rtt">逆向选择与会员质量恶化</div>
+      <div class="rd">Oscar激进的会员增长策略存在吸引高风险人群的潜在偏差。若新增会员的健康状况持续差于历史会员基础，MLR改善趋势将难以持续，并可能在2027年出现超预期反弹。</div>
+    </div>
+    <div class="ri">
+      <div class="rs sl">◆ 低风险</div>
+      <div class="rtt">竞争加剧（Medicaid扩张溢出）</div>
+      <div class="rd">若Medicaid资格审查收紧导致大量Medicaid人群转入ACA市场，Oscar虽短期受益（会员增量），但也将面临更高风险的会员组合。UnitedHealth、Elevance等大型险企若加大ACA市场投入，也将强化价格竞争。</div>
+    </div>
+    <div class="ri">
+      <div class="rs sl">◆ 低风险</div>
+      <div class="rtt">House Judiciary传票风险</div>
+      <div class="rd">Simply Wall St报告提及House Judiciary传票可能涉及Oscar，具体细节尚不明朗。若相关法律程序带来超预期监管成本或声誉风险，将对股价造成短期冲击。当前信息不足以量化此风险。<span class="cite">来源：Simply Wall St，2026年5月</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="disc">
+  <strong>免责声明</strong> · 本报告由Snail Investment研究部独立撰写，仅供信息参考，不构成任何投资建议或要约。所有财务数据以Oscar Health官方投资者关系网站（ir.hioscar.com）及SEC存档文件为准。医疗保险行业具有高度监管依赖性与周期波动性，报告中的任何预测均存在重大不确定性。投资者须自担风险，并在做出投资决策前咨询专业顾问。<br>
+  报告生成日期：2026年6月8日 &nbsp;|&nbsp; 下次更新：Oscar Health Q2 2026财报发布后（<strong>预计2026年8月6日</strong>）&nbsp;|&nbsp; Snail Investment 医疗健康与保险科技组
+</div>
+
+</main>
+
+<!-- ══════ SIDE ══════ -->
+<aside class="side">
+
+  <div class="ss">
+    <div class="st">市场快照（6/8/2026）</div>
+    <div class="mr"><span class="mk">当前价格</span><span class="mv">~$23.58</span></div>
+    <div class="mr"><span class="mk">52周高点</span><span class="mv">$27.39（近期）</span></div>
+    <div class="mr"><span class="mk">52周低点</span><span class="mv">$10.69</span></div>
+    <div class="mr"><span class="mk">年初至今涨幅</span><span class="mv" style="color:var(--green)">约 +80%</span></div>
+    <div class="mr"><span class="mk">市值</span><span class="mv">~$6.42B</span></div>
+    <div class="mr"><span class="mk">卖方均值目标价</span><span class="mv" style="color:var(--amber)">$16.88–$21.20</span></div>
+    <div class="mr"><span class="mk">Barclays目标价</span><span class="mv">$21（中性）</span></div>
+    <div class="mr"><span class="mk">UBS目标价</span><span class="mv">$20（中性）</span></div>
+    <div class="mr"><span class="mk">Wells Fargo目标价</span><span class="mv">$20（升至中性）</span></div>
+    <div class="mr"><span class="mk">Q2财报日期</span><span class="mv" style="color:var(--gold)">2026年8月6日</span></div>
+    <p style="font-size:10px;color:var(--txt3);margin-top:9px;">来源：StockAnalysis，MarketBeat，TipRanks，EBC Financial Group；截至2026年6月8日</p>
+  </div>
+
+  <div class="ss">
+    <div class="st">Q1 2026 核心财务</div>
+    <div class="mr"><span class="mk">总营收</span><span class="mv">$4.65B</span></div>
+    <div class="mr"><span class="mk">净利润（GAAP）</span><span class="mv">$679M</span></div>
+    <div class="mr"><span class="mk">稀释EPS</span><span class="mv">$2.07</span></div>
+    <div class="mr"><span class="mk">医疗损失率（MLR）</span><span class="mv" style="color:var(--green)">70.5%</span></div>
+    <div class="mr"><span class="mk">SG&A率</span><span class="mv">15.2%</span></div>
+    <div class="mr"><span class="mk">营业利润率</span><span class="mv" style="color:var(--green)">15.2%</span></div>
+    <div class="mr"><span class="mk">调整后EBITDA</span><span class="mv">$727M</span></div>
+    <div class="mr"><span class="mk">有效会员数</span><span class="mv">320万</span></div>
+    <p style="font-size:10px;color:var(--txt3);margin-top:9px;">来源：Oscar Health Q1 2026官方新闻稿；2026年5月6日</p>
+  </div>
+
+  <div class="ss">
+    <div class="st">FY2026 全年指引</div>
+    <div class="mr"><span class="mk">总营收</span><span class="mv">$18.7 – $19.0B</span></div>
+    <div class="mr"><span class="mk">全年MLR</span><span class="mv" style="color:var(--amber)">82.4% – 83.4%</span></div>
+    <div class="mr"><span class="mk">SG&A率</span><span class="mv">15.8% – 16.3%</span></div>
+    <div class="mr"><span class="mk">营业利润</span><span class="mv">$2.5 – $4.5亿</span></div>
+    <div class="mr"><span class="mk">指引状态</span><span class="mv" style="color:var(--green)">Q1后重申</span></div>
+  </div>
+
+  <div class="ss">
+    <div class="st">关键指标信号灯</div>
+    <div class="mr"><span class="mk">会员增长趋势</span><span class="mv" style="color:var(--green)">● 积极</span></div>
+    <div class="mr"><span class="mk">Q1 MLR改善</span><span class="mv" style="color:var(--green)">● 积极</span></div>
+    <div class="mr"><span class="mk">H2 MLR回升压力</span><span class="mv" style="color:var(--amber)">● 中性警示</span></div>
+    <div class="mr"><span class="mk">ACA补贴政策风险</span><span class="mv" style="color:var(--red)">● 高风险</span></div>
+    <div class="mr"><span class="mk">风险调整应付</span><span class="mv" style="color:var(--amber)">● 需持续跟踪</span></div>
+    <div class="mr"><span class="mk">估值安全边际</span><span class="mv" style="color:var(--red)">● 有限</span></div>
+    <div class="mr"><span class="mk">技术平台商业化</span><span class="mv" style="color:var(--teal)">● 早期但积极</span></div>
+  </div>
+
+  <div class="ss">
+    <div class="st">竞争格局对比</div>
+    <div class="mr"><span class="mk">Oscar定位</span><span class="mv">ACA专属 HealthTech</span></div>
+    <div class="mr"><span class="mk">最大竞争对手</span><span class="mv">BCBS各州分支</span></div>
+    <div class="mr"><span class="mk">同类对手</span><span class="mv">Clover Health，HIMS</span></div>
+    <div class="mr"><span class="mk">ACA市场份额</span><span class="mv" style="color:var(--green)">约30%（近翻倍）</span></div>
+    <div class="mr"><span class="mk">技术差异化护城河</span><span class="mv">Campaign Builder（独有）</span></div>
+  </div>
+
+</aside>
+</div>
+
+<footer>
+  <div class="fb">SNAIL INVESTMENT RESEARCH &nbsp;·&nbsp; 医疗健康 · 保险科技组 &nbsp;·&nbsp; 2026</div>
+  <div class="fn">本报告仅供信息参考，不构成投资建议。医疗保险受严格监管，预测存在重大不确定性，过往表现不代表未来结果。</div>
+</footer>
+
+</body>
+</html>
