@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>宏观复盘 2026.6.8–6.14（第2周）｜Snail Investment</title>
+<meta name="description" content="2026年6月第2周宏观复盘及第3周展望，覆盖美联储、欧央行、美伊和谈、SpaceX IPO等关键事件">
+<style>
+/* ===== 基础样式 ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg: #0a0e17;
+  --bg2: #111827;
+  --bg3: #1a2235;
+  --text: #e2e8f0;
+  --text2: #8892a4;
+  --accent: #c9a84c;
+  --accent2: #f59e0b;
+  --red: #ef4444;
+  --green: #22c55e;
+  --blue: #3b82f6;
+  --orange: #f59e0b;
+  --border: #1e293b;
+  --shadow: 0 4px 24px rgba(0,0,0,.4);
+}
+html { scroll-behavior:smooth; }
+body {
+  font-family: "Inter", "SF Pro Text", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+/* ===== 顶部导航 ===== */
+.topbar {
+  position: sticky; top:0; z-index:100;
+  background: linear-gradient(180deg, #0d1117 0%, #111827 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.topbar-logo { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); }
+.topbar-logo .logo-icon {
+  width:32px; height:32px; border-radius:8px;
+  background: linear-gradient(135deg, var(--accent) 0%, #eab308 100%);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:.85rem; color:#0a0e17;
+}
+.topbar-logo .logo-text { font-size:1.05rem; font-weight:700; letter-spacing:.02em; }
+.topbar-logo .logo-sub { font-size:.65rem; color:var(--text2); margin-top:-2px; }
+.topbar-nav { display:flex; gap:6px; }
+.topbar-nav a {
+  padding: 6px 14px; border-radius:6px; font-size:.8rem; font-weight:500;
+  color:var(--text2); text-decoration:none; transition: all .2s;
+}
+.topbar-nav a:hover { background:var(--bg3); color:var(--text); }
+.topbar-nav a.active { background:rgba(201,168,76,.12); color:var(--accent); }
+/* ===== 主容器 ===== */
+.container { max-width:960px; margin:0 auto; padding:40px 24px 80px; }
+/* ===== 报告头部 ===== */
+.report-header {
+  text-align:center; margin-bottom:48px; padding-bottom:36px;
+  border-bottom:1px solid var(--border);
+}
+.report-header .badge {
+  display:inline-block; padding:4px 14px; border-radius:20px;
+  background:rgba(201,168,76,.12); color:var(--accent);
+  font-size:.75rem; font-weight:600; letter-spacing:.04em; margin-bottom:16px;
+}
+.report-header h1 {
+  font-size:1.65rem; font-weight:800; line-height:1.4;
+  background: linear-gradient(135deg, var(--accent) 0%, #fbbf24 50%, var(--accent2) 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text; margin-bottom:12px;
+}
+.report-header .meta {
+  display:flex; justify-content:center; gap:20px;
+  font-size:.78rem; color:var(--text2); flex-wrap:wrap;
+}
+.report-header .meta span { display:flex; align-items:center; gap:4px; }
+/* ===== 叙事横线 ===== */
+.narrative-bar {
+  background: linear-gradient(135deg, rgba(201,168,76,.08) 0%, rgba(245,158,11,.06) 100%);
+  border:1px solid rgba(201,168,76,.18);
+  border-radius:12px; padding:20px 24px; margin-bottom:40px;
+  font-size:.88rem; line-height:1.8; color:var(--text2);
+}
+.narrative-bar .label {
+  font-weight:700; color:var(--accent); font-size:.78rem;
+  text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px;
+}
+/* ===== 章节 ===== */
+.section { margin-bottom:40px; }
+.section-title {
+  display:flex; align-items:center; gap:10px;
+  font-size:1.15rem; font-weight:700; margin-bottom:20px;
+  padding-bottom:12px; border-bottom:1px solid var(--border);
+}
+.section-title .num {
+  width:28px; height:28px; border-radius:6px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  color:#0a0e17; display:flex; align-items:center; justify-content:center;
+  font-size:.8rem; font-weight:800;
+}
+/* ===== 子章节 ===== */
+.sub-title {
+  font-size:.95rem; font-weight:600; color:var(--accent);
+  margin:20px 0 12px; padding-left:12px;
+  border-left:3px solid var(--accent);
+}
+/* ===== 表格 ===== */
+.table-wrap { overflow-x:auto; margin:16px 0; }
+table {
+  width:100%; border-collapse:collapse; font-size:.82rem;
+  background:var(--bg2); border-radius:10px; overflow:hidden;
+}
+th {
+  background:var(--bg3); color:var(--accent); font-weight:600;
+  padding:10px 14px; text-align:left; white-space:nowrap;
+  border-bottom:1px solid var(--border);
+}
+td { padding:9px 14px; border-bottom:1px solid rgba(255,255,255,.04); }
+tr:last-child td { border-bottom:none; }
+tr:hover td { background:rgba(201,168,76,.04); }
+.up { color:var(--green); font-weight:600; }
+.down { color:var(--red); font-weight:600; }
+/* ===== 信息卡片 ===== */
+.info-card {
+  background:var(--bg2); border:1px solid var(--border);
+  border-radius:10px; padding:18px 20px; margin:14px 0;
+}
+.info-card .card-title {
+  font-size:.85rem; font-weight:700; color:var(--accent);
+  margin-bottom:8px; display:flex; align-items:center; gap:6px;
+}
+.info-card p { font-size:.82rem; line-height:1.75; color:var(--text2); }
+/* ===== 情景推演 ===== */
+.scenario-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:16px 0; }
+.scenario-card {
+  border-radius:12px; padding:18px 16px;
+  border:1px solid var(--border);
+}
+.scenario-card.baseline {
+  background: linear-gradient(160deg, rgba(59,130,246,.08) 0%, transparent 60%);
+  border-color:rgba(59,130,246,.25);
+}
+.scenario-card.optimistic {
+  background: linear-gradient(160deg, rgba(34,197,94,.08) 0%, transparent 60%);
+  border-color:rgba(34,197,94,.25);
+}
+.scenario-card.pessimistic {
+  background: linear-gradient(160deg, rgba(239,68,68,.08) 0%, transparent 60%);
+  border-color:rgba(239,68,68,.25);
+}
+.scenario-card .s-title {
+  font-size:.88rem; font-weight:700; margin-bottom:4px;
+}
+.baseline .s-title { color:var(--blue); }
+.optimistic .s-title { color:var(--green); }
+.pessimistic .s-title { color:var(--red); }
+.scenario-card .s-pct {
+  font-size:.72rem; font-weight:600; margin-bottom:10px;
+}
+.baseline .s-pct { color:rgba(59,130,246,.7); }
+.optimistic .s-pct { color:rgba(34,197,94,.7); }
+.pessimistic .s-pct { color:rgba(239,68,68,.7); }
+.scenario-card ul { list-style:none; padding:0; }
+.scenario-card li {
+  font-size:.78rem; color:var(--text2); line-height:1.7;
+  padding-left:14px; position:relative;
+}
+.scenario-card li::before {
+  content:''; position:absolute; left:0; top:10px;
+  width:5px; height:5px; border-radius:50%; background:var(--text2);
+}
+/* ===== 关键点位表 ===== */
+.level-table td:nth-child(2) { color:var(--green); font-weight:600; }
+.level-table td:nth-child(3) { color:var(--red); font-weight:600; }
+/* ===== 配置建议 ===== */
+.alloc-table { margin:16px 0; }
+.alloc-table th { background:rgba(201,168,76,.1); color:var(--accent); }
+.alloc-table td:nth-child(2) { font-weight:700; color:var(--accent2); }
+/* ===== 风险提示 ===== */
+.risk-box {
+  background: linear-gradient(160deg, rgba(239,68,68,.06) 0%, transparent 60%);
+  border:1px solid rgba(239,68,68,.2);
+  border-radius:12px; padding:20px; margin:20px 0;
+}
+.risk-box .risk-title {
+  font-size:.9rem; font-weight:700; color:var(--red); margin-bottom:12px;
+  display:flex; align-items:center; gap:6px;
+}
+.risk-box ol { padding-left:18px; }
+.risk-box li { font-size:.82rem; color:var(--text2); line-height:1.8; }
+/* ===== 免责声明 ===== */
+.disclaimer {
+  background:var(--bg2); border:1px dashed var(--border);
+  border-radius:10px; padding:16px 20px; margin-top:32px;
+  font-size:.75rem; color:var(--text2); line-height:1.7; text-align:center;
+}
+/* ===== 数据源 ===== */
+.source-table th { background:rgba(201,168,76,.08); }
+/* ===== 分隔线 ===== */
+.divider {
+  height:1px; background:linear-gradient(90deg, transparent, var(--border), transparent);
+  margin:36px 0;
+}
+/* ===== 返回链接 ===== */
+.back-link {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:8px 16px; border-radius:8px;
+  background:var(--bg2); color:var(--accent);
+  text-decoration:none; font-size:.82rem; font-weight:500;
+  border:1px solid var(--border); transition:all .2s; margin-bottom:28px;
+}
+.back-link:hover { background:var(--bg3); border-color:rgba(201,168,76,.3); }
+/* ===== 高亮引用 ===== */
+.highlight {
+  background:rgba(201,168,76,.06); border-left:3px solid var(--accent);
+  padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0;
+  font-size:.84rem; color:var(--text2); line-height:1.75;
+}
+/* ===== 响应式 ===== */
+@media(max-width:768px){
+  .container { padding:24px 14px 60px; }
+  .report-header h1 { font-size:1.25rem; }
+  .scenario-grid { grid-template-columns:1fr; }
+  .topbar-nav { display:none; }
+  table { font-size:.76rem; }
+  th, td { padding:8px 10px; }
+}
+/* ===== 打印 ===== */
+@media print{
+  body { background:#fff; color:#111; }
+  .topbar { display:none; }
+  .back-link { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<div class="topbar">
+  <a class="topbar-logo" href="index.html">
+    <div class="logo-icon">S</div>
+    <div>
+      <div class="logo-text">Snail Investment</div>
+      <div class="logo-sub">宏观研究中心</div>
+    </div>
+  </a>
+  <div class="topbar-nav">
+    <a href="index.html">首页</a>
+    <a href="index.html#panel-china">A股</a>
+    <a href="index.html#panel-hk">港股</a>
+    <a href="index.html#panel-us">美股</a>
+    <a href="index.html#panel-macro" class="active">宏观周记</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 返回链接 -->
+  <a class="back-link" href="index.html#panel-macro">← 返回宏观周记</a>
+
+  <!-- 报告头部 -->
+  <div class="report-header">
+    <div class="badge">📊 宏观周记 · 2026年第2周</div>
+    <h1>2026.6.8–6.14（第2周）宏观复盘终版<br>｜ 6.15–6.21（第3周）展望</h1>
+    <div class="meta">
+      <span>📅 基准日：2026年6月14日（周日）</span>
+      <span>🏷️ 框架：四维驱动 - 三层传导</span>
+      <span>📡 数据源：BLS、CME FedWatch、美联储、欧央行、OPEC</span>
+    </div>
+  </div>
+
+  <!-- 本周叙事主线 -->
+  <div class="narrative-bar">
+    <div class="label">【本周叙事主线】</div>
+    第二周最终以"<strong style="color:var(--accent);">三轮齐鸣</strong>"收官：美伊和谈实质突破（6.11-6.12）触发油价单周大幅下挫，抵消了CPI通胀超预期的鹰派冲击；SpaceX史上最大IPO（6.12，募资750亿美元）提振科技股情绪；欧央行三年来首次加息（6.11）确认全球"央行同步收紧"格局。三大事件相互叠加、部分对冲，最终令全球股市以小幅上涨收周，与第一周暴跌形成强烈反转。
+  </div>
+
+  <!-- 关键日期校准 -->
+  <div class="info-card">
+    <div class="card-title">📅 关键日期校准（2026公历）</div>
+    <p><strong>本周：</strong>6.8（一）、6.9（二）、6.10（三）、6.11（四）、6.12（五）、6.13（六）、6.14（日）<br>
+    <strong>次周：</strong>6.15（一）、6.16（二）、6.17（三·FOMC）、6.18（四·鲍威尔发布会）、6.19（五·Juneteenth休市）、6.20（六·日本央行）、6.21（日）</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 一、本周核心驱动复盘 -->
+  <div class="section">
+    <div class="section-title"><div class="num">一</div>本周核心驱动复盘（6.8–6.14）</div>
+
+    <!-- 1. 货币政策 -->
+    <div class="sub-title">1. 货币政策</div>
+    <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>主体</th><th>核心内容</th><th>出处</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>美联储</strong></td>
+          <td>本周无议息会议（6.17-18为下次FOMC）。5月CPI（6.12发布）：同比<strong>+4.2%</strong>（较4月3.8%大幅跳升，为2022年11月以来最高），环比+0.5%，能源分项月涨<strong>+3.9%</strong>（同比+23.5%），核心CPI同比<strong>+2.9%</strong>（环比+0.2%，低于预期+0.3%）。CME FedWatch：市场对6.17-18 FOMC按兵不动已完全定价（概率~95%），但12月加息25bp概率从第一周的63%进一步上升至~70%，首次降息被推迟至2027年。</td>
+          <td>BLS（6.10）、CME FedWatch</td>
+        </tr>
+        <tr>
+          <td><strong>欧央行</strong></td>
+          <td><strong>6月11日加息25bp</strong>，存款便利利率由2.0%升至<strong>2.25%</strong>，为2023年以来<strong>首次加息</strong>。拉加德发布会措辞偏鹰："中东战争引发的能源冲击持续性超预期，通胀上行风险显著。"同步上调2026年欧元区通胀预测至<strong>3.0%</strong>（前值2.6%），下调GDP预测至<strong>0.8%</strong>（前值0.9%）。ING分析：第二次加息概率已显著上升。</td>
+          <td>欧央行官网、路透社、ING Think</td>
+        </tr>
+        <tr>
+          <td><strong>日央行</strong></td>
+          <td>本周无行动，6.20议息会议加息25bp至1.0%预期不变，日元全周受美伊和谈带动的美元走软而小幅回升。</td>
+          <td>日本央行</td>
+        </tr>
+        <tr>
+          <td><strong>中国央行</strong></td>
+          <td>人行维持中性操作，无政策变动。</td>
+          <td>人行官网</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="highlight">
+      <strong>小结：</strong>本周货币政策的核心"意外"是欧央行加息释放出的"防通胀优先于保增长"信号，叠加美国核心CPI环比读数低于预期的"鸽派尾巴"，形成了复杂的多重解读：能源通胀高企、但核心通胀仍可控，给美联储维持按兵不动提供了空间。
+    </div>
+
+    <!-- 2. 地缘政治 -->
+    <div class="sub-title">2. 地缘政治：美伊和谈核心推动周</div>
+    <div class="info-card">
+      <div class="card-title">🌐 美伊和谈进程（6.8–6.12）</div>
+      <p>本周最大黑天鹅同时是最重要的"白天鹅"——美伊和谈在6月11-12日出现实质性突破：</p>
+      <ul style="padding-left:18px; margin-top:8px;">
+        <li style="margin-bottom:6px;"><strong>6.8（周一）：</strong>伊朗冲突紧张局势突然降温，WTI跌至约90美元关口，伊朗停止袭击但警告如以色列延续黎巴嫩行动将恢复打击。</li>
+        <li style="margin-bottom:6px;"><strong>6.9（周二）：</strong>美国驳斥伊朗国家电视台发布的开放霍尔木兹草案为"完全捏造"，油价单日反弹+3.4%至107美元（布伦特）。</li>
+        <li style="margin-bottom:6px;"><strong>6.11（周四）：</strong>特朗普发出"今晚将重击伊朗"警告，美股午盘一度转跌，随后特朗普确认已暂停袭击计划、谈判达到"最高层级"，美股大涨：纳指+2.54%、道指+1.86%、标普+1.75%，罗素2000跳涨+3.02%。</li>
+        <li style="margin-bottom:6px;"><strong>6.12（周五）：</strong>WTI暴跌3.2%至84.88美元，布伦特跌3.4%至87.33美元，单周合计下挫约6%，两价格仍较2月28日开战前高出逾20%。</li>
+        <li><strong>6.12（协议草案）：</strong>美伊谈判代表在巴基斯坦斡旋下就停火框架草案达成基本一致，涉及结束敌对行动、制裁解除路径及霍尔木兹海峡航运恢复。特朗普称协议"计划明天签署"，并宣布"霍尔木兹海峡将对所有船只开放"。</li>
+      </ul>
+    </div>
+
+    <!-- 3. SpaceX IPO -->
+    <div class="sub-title">3. SpaceX IPO（6.12）：史上最大IPO创纪录</div>
+    <div class="info-card">
+      <div class="card-title">🚀 SpaceX（SPCX）IPO数据</div>
+      <div class="table-wrap">
+      <table>
+        <tr><td>发行价</td><td>$135</td><td>首日收盘价</td><td><strong>$160.95</strong>（首日+19.34%）</td></tr>
+        <tr><td>开盘价</td><td>$150（高于发行价）</td><td>盘中最高</td><td>$176.52</td></tr>
+        <tr><td>募资总额</td><td><strong>$750亿美元</strong></td><td>首日市值</td><td><strong>突破$2万亿</strong>（超越沙特阿美，史上最大IPO）</td></tr>
+        <tr><td>2025年营收</td><td>$187亿美元</td><td>2025年初至2026年3月末净亏损</td><td>$87亿美元</td></tr>
+      </table>
+      </div>
+      <p style="margin-top:12px;">SpaceX于2026年初完成对xAI的并购，已将其纳入AI业务部门。分析师指出其与苹果、谷歌、英伟达百亿级净利润相比盈利能力悬殊，估值逻辑以"未来期权"为核心。</p>
+      <div class="highlight" style="margin-top:12px;">
+        <strong>市场影响评估：</strong>SpaceX上市当日，S&P500涨0.5%、纳指涨0.3%、道指涨0.7%。此前预判的"资金虹吸"效应未实质显现；反而如预期，资本市场将SPCX首日大涨解读为"AI时代最大科技独角兽兑现"的情绪催化剂。
+      </div>
+    </div>
+
+    <!-- 4. 债务周期 -->
+    <div class="sub-title">4. 债务周期</div>
+    <div class="info-card">
+      <div class="card-title">💰 美债收益率曲线（截至6.12收盘）</div>
+      <div class="table-wrap">
+      <table>
+        <tr><td>10Y美债收益率</td><td><strong>4.49%</strong>（较第一周末4.55%小幅回落6bp）</td></tr>
+        <tr><td>30Y美债收益率</td><td><strong>4.97%</strong></td></tr>
+        <tr><td>2Y美债收益率</td><td><strong>4.09%</strong></td></tr>
+        <tr><td>10Y-2Y利差</td><td><strong>+40bp</strong>（曲线正常化延续）</td></tr>
+        <tr><td>美元指数</td><td><strong>99.81</strong>（较上周100附近小幅走弱，受美伊和谈乐观情绪压制）</td></tr>
+      </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 二、中间传导层复盘 -->
+  <div class="section">
+    <div class="section-title"><div class="num">二</div>中间传导层复盘</div>
+
+    <div class="sub-title">1. 通胀</div>
+    <div class="info-card">
+      <div class="card-title">📈 5月CPI关键结构</div>
+      <p>通胀飙升主因为<strong>能源价格单月大涨3.9%</strong>（同比+23.5%），能源分项贡献超过60%的月环比涨幅；而核心商品价格实际环比下降0.1%，显示关税传导至消费端的压力远低于此前预期。</p>
+      <p style="margin-top:8px;">核心CPI年率上升至<strong>2.9%</strong>，创2025年9月以来新高，但环比仅+0.2%，低于预期的0.3%，较4月0.4%明显收窄。</p>
+      <div class="highlight" style="margin-top:12px;">
+        <strong>关键解读：</strong>本次CPI报告呈现"两分法"——能源（战争驱动、外生冲击）带动标题通胀超预期，但核心通胀（尤其核心商品）表现优于预期。这给市场提供了"通胀高企但不扩散"的叙事基础，支撑美联储6月按兵不动。
+      </div>
+      <p style="margin-top:12px;"><strong>6月13日（周六）PPI数据：</strong>5月PPI年率+6.5%，核心PPI月率+0.4%（低于+0.5%预期），一项剔除食品、能源及贸易服务的更广泛指标月涨+0.8%，为2022年3月以来最大单月涨幅，年率+5.1%为2022年10月以来最高。</p>
+    </div>
+
+    <div class="sub-title">2. 经济</div>
+    <div class="info-card">
+      <p>美国：美联储6月FOMC（6.17-18）被市场完全定价为按兵不动，关注点转向声明措辞及经济预测摘要（SEP）点阵图。</p>
+      <p style="margin-top:8px;">中国：5月社零、工业增加值（待6.14国家统计局发布，本报告截止时尚未公布）。</p>
+    </div>
+
+    <div class="sub-title">3. 汇率</div>
+    <div class="info-card">
+      <p>美伊和谈乐观情绪带动美元指数走弱至99.58附近，黄金周五反弹至4,246美元，银价回升至67.96美元。日元受益于美元走软小幅升值。</p>
+    </div>
+
+    <div class="sub-title">4. 流动性</div>
+    <div class="info-card">
+      <div class="card-title">💧 流动性指标（截至6.14）</div>
+      <div class="table-wrap">
+      <table>
+        <tr><td>VIX指数</td><td><strong>17.68</strong>（-9.05%，从上周高点回落）</td></tr>
+        <tr><td>黄金（周五）</td><td>涨3.03%至$4,238</td></tr>
+        <tr><td>比特币</td><td><strong>~$63,954</strong></td></tr>
+        <tr><td>原油（7月合约）</td><td>收$84.88，跌3.23%</td></tr>
+      </table>
+      </div>
+      <p style="margin-top:12px;">整体风险偏好从第一周的"去风险"模式切换为本周"选择性风险回归"。</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 三、大类资产行情复盘 -->
+  <div class="section">
+    <div class="section-title"><div class="num">三</div>大类资产行情复盘（6.12美股收盘、截至6.14）</div>
+    <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>品种</th><th>周收盘价</th><th>周涨跌幅</th><th>核心驱动</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>WTI原油</strong></td><td>$84.88</td><td class="down">-约6%</td><td>美伊和谈突破→供应恢复预期，为2月开战以来最大单周跌幅</td></tr>
+        <tr><td><strong>布伦特</strong></td><td>$87.33</td><td class="down">-约6%</td><td>同上；仍较战前高约20%</td></tr>
+        <tr><td><strong>伦敦金现</strong></td><td>~$4,219</td><td class="down">-约2.5%（连续第二周下跌）</td><td>美债、欧央行加息双重压制；周四受和谈反弹+3.4%</td></tr>
+        <tr><td><strong>伦敦银现</strong></td><td>~$66.97</td><td>小幅承压</td><td>跟随黄金震荡；工业需求预期随和谈改善</td></tr>
+        <tr><td><strong>道琼斯</strong></td><td>51,202</td><td class="up">+0.66%（周五+0.70%）</td><td>SpaceX IPO情绪提振+美伊乐观</td></tr>
+        <tr><td><strong>标普500</strong></td><td>7,431</td><td class="up">+0.64%</td><td>反弹修复第一周跌幅；科技股回暖</td></tr>
+        <tr><td><strong>纳斯达克综合</strong></td><td>25,889</td><td class="up">+0.70%</td><td>SpaceX+AI情绪修复；但周内高度波动</td></tr>
+        <tr><td><strong>SPCX（SpaceX）</strong></td><td>$160.95</td><td class="up">首日+19.34%</td><td>史上最大IPO，开盘$150→高点$176.52→收$161</td></tr>
+        <tr><td><strong>上证综指</strong></td><td>待Wind数据</td><td>小幅正向</td><td>外围改善传导，内需数据待公布</td></tr>
+        <tr><td><strong>BTC</strong></td><td>~$63,954</td><td class="up">+5.0%（周内剧烈波动）</td><td>美伊乐观+SpaceX情绪溢出，但高位仍承压</td></tr>
+        <tr><td><strong>10Y美债收益率</strong></td><td>4.49%</td><td class="up">周降约6bp</td><td>CPI核心分项低于预期+和谈乐观双重支撑</td></tr>
+        <tr><td><strong>美元指数</strong></td><td>~99.58–99.81</td><td class="down">周跌约0.2-0.4%</td><td>美伊和谈压制避险美元需求</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="highlight" style="margin-top:16px;">
+      <strong>关键：</strong>与第一周"全面风险出清"截然相反，本周呈现高度分化格局——能源资产（原油-6%、黄金连跌）遭和谈预期重挫，权益市场（尤其科技股）在SpaceX首日大涨19%和美伊乐观情绪双重提振下全面反弹，标普500收复上周大部分失地。
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 四、次周关键事件日历 -->
+  <div class="section">
+    <div class="section-title"><div class="num">四</div>6.15–6.21 第三周关键事件日历</div>
+    <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>日期</th><th>星期</th><th>事件</th><th>重要度</th><th>数据源</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>6.15</strong></td><td>周一</td><td>美国5月工业生产指数；中国5月社零、工业增加值正式发布（若6.14未发）</td><td>中等</td><td>美联储、国家统计局</td></tr>
+        <tr><td><strong>6.16</strong></td><td>周二</td><td>美国5月零售销售数据；美联储理事会FOMC准备期静默解除</td><td>中等-高</td><td>美商务部</td></tr>
+        <tr style="background:rgba(239,68,68,.06);"><td><strong>6.17</strong></td><td>周三</td><td><strong>FOMC议息决策日：利率决议+经济预测摘要（SEP）点阵图</strong></td><td><strong>极高</strong></td><td>美联储官网</td></tr>
+        <tr style="background:rgba(239,68,68,.06);"><td><strong>6.18</strong></td><td>周四</td><td><strong>鲍威尔（Warsh）新闻发布会；美国5月住宅开工数据</strong></td><td><strong>极高</strong></td><td>美联储官网、美商务部</td></tr>
+        <tr><td><strong>6.19</strong></td><td>周五</td><td>美国Juneteenth节假日（股市休市）</td><td>—</td><td>—</td></tr>
+        <tr style="background:rgba(59,130,246,.06);"><td><strong>6.20</strong></td><td>周六</td><td><strong>日本央行议息会议（大概率加息25bp至1.0%）</strong></td><td>高</td><td>日本央行官网</td></tr>
+        <tr style="background:rgba(34,197,94,.06);"><td><strong>本周持续</strong></td><td>全周</td><td><strong>美伊正式停火协议签署与落地进展</strong>（特朗普称"本周末签署"）</td><td><strong>极高</strong></td><td>白宫、路透社、OPEC官网</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 五、次周三大情景推演 -->
+  <div class="section">
+    <div class="section-title"><div class="num">五</div>次周三大情景推演（基准60% / 乐观25% / 悲观15%）</div>
+    <div class="scenario-grid">
+      <!-- 基准情景 -->
+      <div class="scenario-card baseline">
+        <div class="s-title">⚖️ 基准情景</div>
+        <div class="s-pct">概率：60%</div>
+        <p style="font-size:.78rem;color:var(--text2);margin-bottom:12px;line-height:1.6;">美伊协议6.14-15日签署，霍尔木兹在30天内逐步恢复，油价在$80-$88区间获得支撑；6.17 FOMC按兵不动，Warsh措辞"数据依赖、不排除年内加息"，点阵图显示2026年加息1-2次；日本央行6.20加息25bp落地。</p>
+        <div style="font-size:.75rem;font-weight:600;color:var(--blue);margin-bottom:6px;">资产含义：</div>
+        <ul>
+          <li>原油跌破$85后获支撑</li>
+          <li>美债10Y区间4.35%-4.55%</li>
+          <li>美元指数轻微走弱（99-101）</li>
+          <li>纳指高位震荡</li>
+          <li>黄金低位磨底（$4,100-$4,300）</li>
+        </ul>
+      </div>
+      <!-- 乐观情景 -->
+      <div class="scenario-card optimistic">
+        <div class="s-title">🟢 乐观情景</div>
+        <div class="s-pct">概率：25%</div>
+        <p style="font-size:.78rem;color:var(--text2);margin-bottom:12px;line-height:1.6;">美伊协议全面签署，霍尔木兹立即重开承诺获双方确认，油价大幅下跌至$75-$80，全球通胀预期骤降；Warsh鸽派措辞暗示年内加息概率下降，美债大跌（收益率下行）。</p>
+        <div style="font-size:.75rem;font-weight:600;color:var(--green);margin-bottom:6px;">资产含义：</div>
+        <ul>
+          <li>黄金反弹至$4,400-$4,500</li>
+          <li>标普500突破7,600</li>
+          <li>纳指收复5月高点</li>
+          <li>BTC反弹至$70,000上方</li>
+          <li>美元走弱至98.5以下</li>
+        </ul>
+      </div>
+      <!-- 悲观情景 -->
+      <div class="scenario-card pessimistic">
+        <div class="s-title">🔴 悲观情景</div>
+        <div class="s-pct">概率：15%</div>
+        <p style="font-size:.78rem;color:var(--text2);margin-bottom:12px;line-height:1.6;">美伊谈判因伊朗核项目条款再度破裂，特朗普恢复空袭威胁，油价反弹至$95+；Warsh发布会释放"9月加息"明确信号，点阵图上移；CPI+PPI双热叠加能源反弹，十年期美债突破4.75%。</p>
+        <div style="font-size:.75rem;font-weight:600;color:var(--red);margin-bottom:6px;">资产含义：</div>
+        <ul>
+          <li>黄金可能因"通胀避险"逻辑上涨至$4,500+</li>
+          <li>纳指测试$24,000</li>
+          <li>BTC跌破$58,000</li>
+          <li>新兴市场汇率全面承压</li>
+          <li>美债10Y突破4.75%</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 六、资产关键点位预判 -->
+  <div class="section">
+    <div class="section-title"><div class="num">六</div>资产关键点位预判（第3周参考）</div>
+    <div class="table-wrap">
+    <table class="level-table">
+      <thead>
+        <tr><th>品种</th><th>支撑位</th><th>阻力位</th><th>方向判断</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>WTI原油</strong></td><td>$80</td><td>$92</td><td>震荡偏弱；和谈落地→供应预期改善压制反弹</td></tr>
+        <tr><td><strong>布伦特</strong></td><td>$83</td><td>$95</td><td>同上</td></tr>
+        <tr><td><strong>伦敦金</strong></td><td>$4,050</td><td>$4,400</td><td>先抑后扬；FOMC为关键拐点</td></tr>
+        <tr><td><strong>伦敦银</strong></td><td>$64</td><td>$70</td><td>弱势震荡，等待方向</td></tr>
+        <tr><td><strong>道琼斯</strong></td><td>50,500</td><td>52,000</td><td>区间震荡偏多</td></tr>
+        <tr><td><strong>纳指</strong></td><td>25,200</td><td>27,000</td><td>震荡修复，SPCX情绪窗口存在</td></tr>
+        <tr><td><strong>标普500</strong></td><td>7,300</td><td>7,700</td><td>震荡偏多</td></tr>
+        <tr><td><strong>SPCX</strong></td><td>$140</td><td>$185</td><td>上市后首周高波动；关注锁定期及机构定向配置节奏</td></tr>
+        <tr><td><strong>上证综指</strong></td><td>3,980</td><td>4,150</td><td>美联储+中国数据双向驱动</td></tr>
+        <tr><td><strong>10Y美债收益率</strong></td><td>4.30%</td><td>4.65%</td><td>震荡；FOMC点阵图决定方向</td></tr>
+        <tr><td><strong>美元指数</strong></td><td>98.5</td><td>101.0</td><td>和谈落地偏弱，FOMC鹰派则反弹</td></tr>
+        <tr><td><strong>BTC</strong></td><td>$59,000</td><td>$70,000</td><td>震荡偏多，SPCX科技情绪溢出</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 七、资产配置调整建议 -->
+  <div class="section">
+    <div class="section-title"><div class="num">七</div>资产配置调整建议</div>
+    <div class="table-wrap">
+    <table class="alloc-table">
+      <thead>
+        <tr><th>品类</th><th>建议仓位</th><th>变动方向</th><th>逻辑</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>原油及能源</strong></td>
+          <td>8%</td>
+          <td style="color:var(--red);font-weight:600;">-4%</td>
+          <td>美伊和谈若签署→霍尔木兹渐进重开，油价中期回落路径明确；能源股短期空间有限，大幅减仓</td>
+        </tr>
+        <tr>
+          <td><strong>黄金</strong></td>
+          <td>26%</td>
+          <td style="color:var(--red);font-weight:600;">-1%</td>
+          <td>短期欧央行加息+实际利率上行形成双重压制；等待美联储FOMC后再评估；维持中性偏低仓位</td>
+        </tr>
+        <tr>
+          <td><strong>AI算力/科技</strong></td>
+          <td><strong>26%</strong></td>
+          <td style="color:var(--green);font-weight:600;">+4%</td>
+          <td>SpaceX上市重燃"AI科技溢价"叙事；博通业绩利空已充分消化，第二周已明显反弹；择机增仓</td>
+        </tr>
+        <tr>
+          <td><strong>电力设备/国内基础设施</strong></td>
+          <td>20%</td>
+          <td>不变</td>
+          <td>独立逻辑，继续持有</td>
+        </tr>
+        <tr>
+          <td><strong>现金+短期国债</strong></td>
+          <td><strong>20%</strong></td>
+          <td style="color:var(--green);font-weight:600;">+1%</td>
+          <td>FOMC（6.17）前保留弹药，点阵图若鹰派则迅速切换至短债</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="highlight" style="margin-top:16px;">
+      <strong>操作要点：</strong>第3周最关键变量是<strong>6.17 FOMC点阵图</strong>——若2026年加息次数从1次上调至2次，则整个估值体系需重新定价；若维持1次或强调"数据依赖"，则科技股有望延续反弹。<strong>美伊协议是否在本周末正式落地</strong>是油价方向的决定性事件，若落地，建议立即减仓能源板块至5%以下。
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 八、本周三大事件复盘总结 -->
+  <div class="section">
+    <div class="section-title"><div class="num">八</div>本周三大事件复盘总结</div>
+    
+    <div class="info-card" style="margin-top:16px;">
+      <div class="card-title">⚡ 事件一：欧央行加息（6.11）</div>
+      <p>ECB加息25bp至2.25%，为三年来首次，ING分析认为此次加息本质上是一次"信号式"行动，旨在表明ECB不会在中东能源冲击面前重蹈2021-22年"通胀暂时论"的覆辙。第二次加息概率已显著提升。</p>
+    </div>
+
+    <div class="info-card">
+      <div class="card-title">🚀 事件二：SpaceX IPO（6.12）</div>
+      <p>SpaceX首日开盘150美元，盘中最高176.52美元，收盘161.11美元，较IPO价格135美元上涨19.34%。SpaceX于2026年初收购xAI并将其并入AI部门。部分分析师认为成功的大型IPO是更多科技公司谋求上市的正向信号。</p>
+    </div>
+
+    <div class="info-card">
+      <div class="card-title">📊 事件三：美国5月CPI（6.12）</div>
+      <p>CPI年率4.2%，为2023年4月以来最高；但能源分项贡献超过60%的月度涨幅，核心商品环比实为负值，显示关税对消费端的传导有限。核心CPI年率升至2.9%（新高），但月率仅0.2%，低于预期，表明基础通胀压力尚在可控范围。</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 九、风险提示 -->
+  <div class="section">
+    <div class="section-title"><div class="num">九</div>风险提示 & 免责声明</div>
+    
+    <div class="risk-box">
+      <div class="risk-title">⚠️ 主要风险</div>
+      <ol>
+        <li><strong>美伊协议落地后的"买预期卖事实"：</strong>若和平协议签署后实际执行细节（霍尔木兹解封时间表、核项目拆除验证）低于市场预期，油价可能重新反弹至$95+；</li>
+        <li><strong>FOMC点阵图超预期鹰派：</strong>若Warsh释放明确9月加息信号，美债10Y突破4.75%，科技股可能再次急跌；</li>
+        <li><strong>日本央行加息触发全球套利交易平仓：</strong>日元若快速升值至155以下，将引发日元套利资金回流，新兴市场资产普跌；</li>
+        <li><strong>SpaceX上市后估值回撤：</strong>SPCX现亏损、高估值，短期锁定期解除后机构减持压力可能引发首周后显著回调；</li>
+        <li><strong>CPI+PPI双热传导至核心通胀：</strong>若7月CPI（7.14发布）核心读数超2.9%，市场将重新定价年内双次加息。</li>
+      </ol>
+    </div>
+
+    <div class="disclaimer">
+      <strong>免责声明：</strong>本内容仅供宏观研究复盘参考，不构成任何形式投资建议。所有数据均来自文中标注的官方及权威渠道，市场受多重不可预测因素影响，投资者须自行判断，盈亏自负。<br><br>
+      <strong>编制：</strong>全球宏观投资研究 ｜ <strong>日期：</strong>2026.6.14 ｜ <strong>Snail Investment Research</strong>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 核心官方数据源清单 -->
+  <div class="section">
+    <div class="section-title"><div class="num">📡</div>核心官方数据源清单</div>
+    <div class="table-wrap">
+    <table class="source-table">
+      <thead>
+        <tr><th>机构/来源</th><th>数据类型</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>U.S. Bureau of Labor Statistics (BLS)</strong></td><td>5月CPI（6.10）、5月PPI（6.13）、实际收入数据</td></tr>
+        <tr><td><strong>CME Group FedWatch</strong></td><td>美联储利率路径概率</td></tr>
+        <tr><td><strong>European Central Bank (ECB)</strong></td><td>6.11议息决议、拉加德发布会声明、最新员工预测</td></tr>
+        <tr><td><strong>StreetStats / U.S. Treasury</strong></td><td>美债收益率曲线（截至6.12）</td></tr>
+        <tr><td><strong>CNBC / Reuters</strong></td><td>美伊谈判进程、油价实时报道</td></tr>
+        <tr><td><strong>NPR / CBS / CNN</strong></td><td>SpaceX IPO首日交易数据</td></tr>
+        <tr><td><strong>Trading Economics</strong></td><td>黄金、原油、欧元区利率历史数据</td></tr>
+        <tr><td><strong>Yahoo Finance / Investing.com</strong></td><td>美股收盘数据、SPCX股价</td></tr>
+        <tr><td><strong>Polymarket</strong></td><td>美伊和谈概率市场定价参考</td></tr>
+        <tr><td><strong>ING Think / FXEmpire</strong></td><td>欧央行决议深度分析</td></tr>
+        <tr><td><strong>国家统计局</strong></td><td>中国5月经济数据（部分待公布）</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+</body>
+</html>
