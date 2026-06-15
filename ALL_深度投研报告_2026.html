@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>好事达保险 (ALL) 深度股票研究报告 | Snail Investment · 精品研究部</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+:root{
+  --bg0:#F0F4FA;--bg1:#E8EFF8;--bgc:#FFFFFF;--bgd:#F7F9FD;--bgdk:#0A1628;
+  --blue:#1A4A8A;--blue2:#2563EB;--blue3:#3B82F6;--blue4:#93C5FD;--blue5:#DBEAFE;--blue6:#EFF6FF;
+  --navy:#0F2A5C;--navyl:#1E3A6E;
+  --green:#0E6B3B;--greenl:#D1FAE5;--greenb:#10B981;
+  --red:#B91C1C;--redl:#FEE2E2;--redb:#EF4444;
+  --amber:#92400E;--amberl:#FEF3C7;--amberb:#F59E0B;
+  --t1:#0F172A;--t2:#334155;--t3:#64748B;--t4:#94A3B8;
+  --bdr:#CBD5E1;--bdr2:#E2E8F0;--bdr3:#F1F5F9;
+  --shadow:0 1px 3px rgba(15,41,92,.08),0 1px 2px rgba(15,41,92,.06);
+  --shadow2:0 4px 16px rgba(15,41,92,.10),0 1px 4px rgba(15,41,92,.06);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg0);color:var(--t1);font-family:'Noto Sans SC','PingFang SC',sans-serif;font-size:14px;line-height:1.75;overflow-x:hidden;}
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--bdr2);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 36px;height:52px;box-shadow:var(--shadow);
+}
+.nbrand{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--blue);font-weight:600;letter-spacing:.04em;}
+.nlinks{display:flex;gap:2px;overflow-x:auto;}
+.nlinks a{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--t3);text-decoration:none;padding:5px 10px;border-radius:4px;white-space:nowrap;letter-spacing:.04em;text-transform:uppercase;transition:all .18s;}
+.nlinks a:hover,.nlinks a.act{color:var(--blue2);background:var(--blue5);}
+.nrate{font-family:'IBM Plex Mono',monospace;font-size:11px;display:flex;align-items:center;gap:8px;white-space:nowrap;}
+.npill{background:var(--blue2);color:#fff;padding:3px 12px;border-radius:4px;font-weight:600;font-size:11px;}
+.hero{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 55%,#1E5BA8 100%);
+  padding:82px 52px 54px;position:relative;overflow:hidden;
+}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);}
+.hwm{position:absolute;right:-160px;top:-40px;font-family:'IBM Plex Mono',monospace;font-size:260px;font-weight:700;color:rgba(255,255,255,.04);letter-spacing:-10px;pointer-events:none;user-select:none;line-height:1;}
+.hero-geo{position:absolute;bottom:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);}
+.hero-geo2{position:absolute;bottom:-100px;right:-100px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);}
+.hbrow{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.55);letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px;display:flex;gap:18px;flex-wrap:wrap;}
+.hero h1{font-family:'Noto Serif SC',serif;font-size:36px;font-weight:700;color:#fff;line-height:1.22;margin-bottom:9px;letter-spacing:.01em;}
+.hero h1 .co{color:#93C5FD;}
+.hsub{font-family:'Noto Serif SC',serif;font-size:15px;color:rgba(255,255,255,.7);margin-bottom:36px;font-weight:300;}
+.kstrip{display:flex;gap:0;border:1px solid rgba(255,255,255,.18);border-radius:8px;overflow:hidden;width:fit-content;margin-bottom:28px;flex-wrap:wrap;}
+.kc{padding:14px 22px;background:rgba(255,255,255,.08);border-right:1px solid rgba(255,255,255,.12);}
+.kc:last-child{border-right:none;}
+.klbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.13em;margin-bottom:4px;}
+.kv{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:600;color:#fff;}
+.kv.gr{color:#6EE7B7;}
+.kv.am{color:#FCD34D;}
+.kv.re{color:#FCA5A5;}
+.ksub{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:rgba(255,255,255,.45);margin-top:2px;}
+.ksub .up{color:#6EE7B7;}
+.ksub .dn{color:#FCA5A5;}
+.rrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.rp{display:inline-flex;flex-direction:column;gap:3px;padding:10px 18px;border-radius:6px;border:1px solid rgba(255,255,255,.2);}
+.rlbl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.11em;color:rgba(255,255,255,.5);}
+.rval{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;color:#fff;}
+.rp.buy{background:rgba(16,185,129,.2);border-color:rgba(16,185,129,.4);}
+.rp.buy .rval{color:#6EE7B7;}
+.rp.tp{background:rgba(96,165,250,.18);border-color:rgba(96,165,250,.4);}
+.rp.tp .rval{color:#93C5FD;}
+.rp.up{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3);}
+.rp.up .rval{color:#A7F3D0;}
+.rp.en{background:rgba(251,191,36,.15);border-color:rgba(251,191,36,.3);}
+.rp.en .rval{color:#FCD34D;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px 100px;}
+.sec{margin-top:64px;scroll-margin-top:66px;}
+.shd{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid var(--blue5);}
+.snum{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--blue2);background:var(--blue5);padding:3px 9px;border-radius:4px;letter-spacing:.1em;font-weight:600;}
+.stit{font-family:'Noto Serif SC',serif;font-size:19px;font-weight:600;color:var(--navy);}
+.stit em{font-style:normal;color:var(--blue2);}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;}
+.g21{display:grid;grid-template-columns:2fr 1fr;gap:16px;}
+.g12{display:grid;grid-template-columns:1fr 2fr;gap:16px;}
+.card{background:var(--bgc);border:1px solid var(--bdr2);border-radius:8px;padding:20px 22px;box-shadow:var(--shadow);}
+.card.bl{border-left:4px solid var(--blue2);}
+.card.gr{border-left:4px solid var(--greenb);}
+.card.re{border-left:4px solid var(--redb);}
+.card.am{border-left:4px solid var(--amberb);}
+.card.nv{border-left:4px solid var(--navy);}
+.card.highlight{background:var(--blue6);border:1px solid var(--blue4);}
+.clbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:.13em;margin-bottom:6px;}
+.cbig{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:600;color:var(--navy);line-height:1.05;}
+.cbig.bl{color:var(--blue2);}
+.cbig.gr{color:var(--green);}
+.cbig.re{color:var(--red);}
+.cbig.am{color:var(--amber);}
+.csub{font-size:11.5px;color:var(--t3);margin-top:4px;}
+.csub .up{color:var(--greenb);}
+.csub .dn{color:var(--redb);}
+.ctit{font-family:'Noto Serif SC',serif;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:11px;}
+.prose{font-size:13.5px;color:var(--t2);line-height:1.9;}
+.prose strong{color:var(--t1);font-weight:600;}
+.prose .hl{color:var(--blue2);font-weight:600;}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px;}
+.tbl thead tr{background:var(--bgd);}
+.tbl th{color:var(--t3);font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.09em;padding:9px 12px;text-align:left;border-bottom:2px solid var(--bdr2);}
+.tbl th.r{text-align:right;}
+.tbl td{padding:9px 12px;border-bottom:1px solid var(--bdr3);color:var(--t2);vertical-align:middle;}
+.tbl td.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--t1);}
+.tbl td.r{text-align:right;}
+.tbl tr:hover td{background:var(--blue6);}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;}
+.tg{background:var(--greenl);color:var(--green);}
+.tr2{background:var(--redl);color:var(--red);}
+.ta{background:var(--amberl);color:var(--amber);}
+.tb{background:var(--blue5);color:var(--blue);}
+.tn{background:var(--bg1);color:var(--navy);}
+.bar{display:flex;align-items:center;gap:11px;margin-bottom:9px;}
+.blbl{width:160px;font-size:12px;color:var(--t2);flex-shrink:0;}
+.btrk{flex:1;height:7px;background:var(--bdr2);border-radius:4px;overflow:hidden;}
+.bfill{height:100%;border-radius:4px;}
+.bbl{background:linear-gradient(90deg,var(--blue4),var(--blue2));}
+.bgr{background:linear-gradient(90deg,#A7F3D0,var(--greenb));}
+.bre{background:linear-gradient(90deg,#FCA5A5,var(--redb));}
+.bam{background:linear-gradient(90deg,#FDE68A,var(--amberb));}
+.bnv{background:linear-gradient(90deg,var(--blue4),var(--navy));}
+.bval{width:64px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--t1);flex-shrink:0;}
+.co{background:var(--blue6);border:1px solid var(--blue4);border-radius:6px;padding:16px 20px;margin-bottom:14px;}
+.co.gr{background:var(--greenl);border-color:#6EE7B7;}
+.co.re{background:var(--redl);border-color:#FCA5A5;}
+.co.am{background:var(--amberl);border-color:#FDE68A;}
+.cotit{font-family:'Noto Serif SC',serif;font-size:13px;font-weight:700;color:var(--blue);margin-bottom:7px;}
+.co.gr .cotit{color:var(--green);}
+.co.re .cotit{color:var(--red);}
+.co.am .cotit{color:var(--amber);}
+.co p{font-size:13px;color:var(--t2);line-height:1.85;}
+.scrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:14px;}
+.sc{background:var(--bgc);border:1px solid var(--bdr2);border-radius:8px;padding:20px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.sc.bull::before{background:var(--greenb);}
+.sc.base::before{background:var(--blue2);}
+.sc.bear::before{background:var(--redb);}
+.sclbl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.11em;margin-bottom:9px;}
+.sc.bull .sclbl{color:var(--green);}
+.sc.base .sclbl{color:var(--blue);}
+.sc.bear .sclbl{color:var(--red);}
+.scpri{font-family:'IBM Plex Mono',monospace;font-size:30px;font-weight:700;margin-bottom:3px;}
+.sc.bull .scpri{color:var(--green);}
+.sc.base .scpri{color:var(--blue2);}
+.sc.bear .scpri{color:var(--red);}
+.scprob{font-size:11px;color:var(--t3);margin-bottom:4px;}
+.scret{font-family:'IBM Plex Mono',monospace;font-size:12px;margin-bottom:11px;font-weight:600;}
+.sc.bull .scret{color:var(--green);}
+.sc.base .scret{color:var(--blue2);}
+.sc.bear .scret{color:var(--red);}
+.scdesc{font-size:12.5px;color:var(--t2);line-height:1.73;}
+.scdiv{border:none;border-top:1px solid var(--bdr2);margin:9px 0;}
+.risk{display:flex;align-items:flex-start;gap:14px;padding:13px 0;border-bottom:1px solid var(--bdr3);}
+.risk:last-child{border:none;}
+.rbdg{width:54px;flex-shrink:0;text-align:center;padding-top:2px;}
+.rbdg span{display:inline-block;padding:3px 6px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;}
+.rbdg.hi span{background:var(--redl);color:var(--red);}
+.rbdg.md span{background:var(--amberl);color:var(--amber);}
+.rbdg.lo span{background:var(--greenl);color:var(--green);}
+.rtit{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:4px;}
+.rdesc{font-size:12.5px;color:var(--t2);line-height:1.75;}
+.tl{position:relative;padding-left:26px;}
+.tl::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--blue4);}
+.tli{position:relative;margin-bottom:20px;}
+.tldot{position:absolute;left:-22px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--blue2);border:2px solid var(--bgc);box-shadow:0 0 0 2px var(--blue3);}
+.tldate{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--blue2);margin-bottom:2px;font-weight:600;}
+.tltit{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:2px;}
+.tldesc{font-size:12px;color:var(--t2);}
+.cats{display:flex;flex-direction:column;gap:10px;}
+.ci{display:flex;gap:11px;align-items:flex-start;}
+.cdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+.cbl{background:var(--blue2);}
+.cgr{background:var(--greenb);}
+.cre{background:var(--redb);}
+.cam{background:var(--amberb);}
+.cnv{background:var(--navy);}
+.ci p{font-size:13px;color:var(--t2);line-height:1.75;}
+.ci p strong{color:var(--t1);}
+.svbar{display:flex;height:10px;border-radius:5px;overflow:hidden;margin:9px 0 6px;}
+.sp{height:100%;}
+.sleg{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.sli{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);}
+.sdot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+.dcfm{border-collapse:collapse;font-family:'IBM Plex Mono',monospace;font-size:11px;width:100%;}
+.dcfm th,.dcfm td{padding:7px 11px;border:1px solid var(--bdr2);text-align:center;}
+.dcfm th{background:var(--bgd);color:var(--t3);font-size:9px;letter-spacing:.07em;}
+.dcfm .thr{color:var(--t2);}
+.bzone{background:var(--greenl);color:var(--green);}
+.mzone{background:var(--blue6);color:var(--blue);}
+.rzone{background:var(--redl);color:var(--red);}
+.dzone{background:var(--blue5);color:var(--navy);font-weight:700;}
+.kpibig{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;color:var(--navy);}
+.footer{background:var(--navy);padding:36px 52px;margin-top:80px;}
+.ftbrand{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--blue4);font-weight:600;margin-bottom:12px;}
+.ftdisc{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);line-height:1.9;max-width:1000px;}
+.sotp-total td{font-weight:700;color:var(--navy)!important;border-top:2px solid var(--blue2)!important;background:var(--blue6)!important;}
+@media(max-width:900px){
+  .hero{padding:72px 20px 36px;}
+  .wrap{padding:0 20px 80px;}
+  #nav{padding:0 16px;}
+  .g2,.g3,.g4,.g12,.g21{grid-template-columns:1fr;}
+  .scrow{grid-template-columns:1fr;}
+  .hwm{display:none;}
+  .kstrip{width:100%;}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nbrand">🐌 Snail Investment · 精品研究部</div>
+  <div class="nlinks">
+    <a href="#s01">摘要</a><a href="#s02">公司</a><a href="#s03">财务</a>
+    <a href="#s04">业务</a><a href="#s05">市场</a><a href="#s06">估值</a>
+    <a href="#s07">DCF</a><a href="#s08">情景</a><a href="#s09">风险</a>
+    <a href="#s10">催化剂</a><a href="#s11">ESG</a><a href="#s12">建议</a>
+  </div>
+  <div class="nrate"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--t2);">ALL $221.53</span><span class="npill">买入 · $255 目标</span></div>
+</nav>
+
+<div class="hero">
+  <div class="hwm">ALL</div>
+  <div class="hero-geo"></div><div class="hero-geo2"></div>
+  <div class="hbrow">
+    <span>NYSE：ALL</span><span>财产与意外险 · P&amp;C 保险</span>
+    <span>伊利诺伊州诺斯布鲁克</span><span>US GAAP</span><span>截止 2026年6月12日</span>
+  </div>
+  <h1><span class="co">好事达保险 The Allstate Corporation</span><br>深度股票研究报告</h1>
+  <div class="hsub">美国第二大个人财产险公司 · 车险+房屋险双核驱动 · 历史级承保盈利复苏</div>
+  <div class="kstrip">
+    <div class="kc"><div class="klbl">当前股价 (NYSE)</div><div class="kv">$221.53</div><div class="ksub">截至 2026-06-12</div></div>
+    <div class="kc"><div class="klbl">市值</div><div class="kv">~$57.3B</div><div class="ksub">USD</div></div>
+    <div class="kc"><div class="klbl">52周区间</div><div class="kv" style="font-size:15px;">$188.08–227.62</div><div class="ksub">幅度 +21%</div></div>
+    <div class="kc"><div class="klbl">TTM P/E</div><div class="kv am">~5.9x</div><div class="ksub">远低于行业均值</div></div>
+    <div class="kc"><div class="klbl">股息收益率</div><div class="kv gr">~1.9%</div><div class="ksub">$4.32/股年化</div></div>
+    <div class="kc"><div class="klbl">Q1 2026 EPS（调整后）</div><div class="kv gr">$10.65</div><div class="ksub"><span class="up">▲ vs Q1 2025 $3.53</span></div></div>
+    <div class="kc"><div class="klbl">综合赔付率（Q1）</div><div class="kv gr">82.0%</div><div class="ksub"><span class="up">▼ 改善15.4pts YoY</span></div></div>
+    <div class="kc"><div class="klbl">ROE（TTM）</div><div class="kv gr">48.4%</div><div class="ksub">同业领先水平</div></div>
+  </div>
+  <div class="rrow">
+    <div class="rp buy"><div class="rlbl">投资评级</div><div class="rval">买入 BUY</div></div>
+    <div class="rp tp"><div class="rlbl">12个月目标价</div><div class="rval">$255.00 USD</div></div>
+    <div class="rp up"><div class="rlbl">含息潜在总回报</div><div class="rval">+17.1%</div></div>
+    <div class="rp en"><div class="rlbl">建议买入区间</div><div class="rval">$210–$225</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+<!-- SEC 01 THESIS -->
+<div class="sec" id="s01">
+<div class="shd"><span class="snum">01</span><span class="stit">投资逻辑摘要</span></div>
+<div class="co" style="margin-bottom:18px;">
+  <div class="cotit">核心观点：买入（BUY），目标价 $255.00，建议买入区间 $210–225</div>
+  <p>好事达保险（Allstate，NYSE：ALL）正处于一场教科书级别的承保盈利大逆转之中。公司完成了2022–2024年耗时数年、涵盖数十个州的大规模车险费率提价重定价，2025年全年净利润达到历史性的<strong>$102亿</strong>（ROE 42%），2026年Q1调整后净利润再达$28亿（调整后EPS $10.65，超出华尔街预期38.67%），物业险综合赔付率压降至<strong>82.0%</strong>的近十年最优水平。</p>
+  <p style="margin-top:8px;">尽管股价从52周低点$188已反弹约18%，当前TTM P/E仅约5.9x、NTM P/E约7.5x，相较于同业Progressive（PGR，P/E约22x）和Chubb（CB，P/E约13x），好事达估值折扣极为显著，严重低估了利润修复的可持续性。近期KBW和高盛双重降级触发了短期调整，股价从历史高位$227.62回落至当前~$221，为投资者提供了更具吸引力的入场时机。我们认为，市场对"自动驾驶冲击"和"增长放缓"的担忧虽有一定合理性，但尚不足以撼动核心承保优势，维持买入评级。</p>
+</div>
+<div class="g3">
+  <div class="card gr">
+    <div class="clbl">核心多方逻辑</div><div class="ctit">历史级盈利修复 · 极端低估值</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>综合赔付率历史最优：</strong>Q1 2026车险综合赔付率81.9%，房屋险83.5%，整体物业险82.0%，为过去10年最优水平之一</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p><strong>极度低估值洼地：</strong>TTM P/E约5.9x，NTM P/E约7.5x，相较于Progressive（~22x）存在约65%折扣，与历史均值（12–15x）相比严重低估</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p><strong>ROE/资本回报：</strong>TTM ROE 48.4%，$40亿股回购授权（通过2028年），Q1已回购+分红共$8.81亿</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>全面再保险计划落地，<strong>降低灾难性损失波动率</strong>，EPS预测能见度显著提升</p></div>
+    </div>
+  </div>
+  <div class="card bl">
+    <div class="clbl">近期催化剂</div><div class="ctit">增长引擎重启 · 资本回报加速</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cbl"></div><p><strong>保单数量持续增长：</strong>Q1 2026总保单数量达2.126亿（+2.5% YoY），自动险增长2.6%，在29个州（占保费57%）市场份额扩大</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>新"平价、简洁、互联"产品矩阵：</strong>Allstate品牌新数字化产品在多个州推出，改变定价与分发模式，推动下一阶段渗透率提升</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>$40亿股票回购：</strong>2026年Q1已完成$15亿旧计划，新$40亿计划启动（授权至2028年），剩余$36亿未使用，相当于当前市值约6.3%</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p>投资收入连续增长：Q1净投资收入<strong>$9.38亿</strong>，同比+9.8%，浮动资金规模持续扩大</p></div>
+    </div>
+  </div>
+  <div class="card am">
+    <div class="clbl">主要风险</div><div class="ctit">降级压力 · 增长天花板疑虑</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cam"></div><p><strong>KBW降级（2026年6月8日）：</strong>从"优于大市"降至"市场中性"，指出车险保单增长从2月高峰开始放缓，非标准车险占比上升</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>高盛降级（2026年6月）：</strong>从"买入"降至"中性"，目标价$231，担忧自动驾驶（AV）对传统车险长期需求冲击及增长放缓</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>2026Q1 EPS预测下修：</strong>Zacks共识预计Q2 EPS $4.66，同比下降21.55%，从高峰正常化压力不可忽视</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>月度灾难性损失披露：</strong>2026年3月灾损约$9.25亿（税前），风暴/冰雹事件频率上升，房屋险波动性犹在</p></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SEC 02 COMPANY -->
+<div class="sec" id="s02">
+<div class="shd"><span class="snum">02</span><span class="stit">公司概览 · 业务架构</span></div>
+<div class="g21" style="margin-bottom:16px;">
+  <div class="card">
+    <div class="ctit">公司简介</div>
+    <div class="prose">好事达保险（The Allstate Corporation）成立于<strong>1931年</strong>，总部位于伊利诺伊州诺斯布鲁克，是美国第二大个人财产险（P&amp;C）公司（仅次于State Farm）。公司是美国国家进步保险（Progressive）的主要竞争对手，也是国内历史最悠久的直营保险品牌之一。<br><br>
+    截至2026年Q1，Allstate拥有<strong>2.126亿份保单</strong>，覆盖美国、加拿大等多个市场，主要提供<strong>汽车险（Auto）</strong>和<strong>房屋险（Homeowners）</strong>两大核心产品，辅以保护服务（Protection Services）等增值业务。公司以"Good Hands™"品牌闻名全美，经营历史超过95年，是标普500成分股。<br><br>
+    核心运营：<span class="hl">传统独家代理人渠道</span>+<span class="hl">独立代理人渠道</span>+<span class="hl">直销（Direct）渠道</span>三轨并行，2025年底启动"Affordable, Simple, Connected"战略转型，向数字化和直销模式迁移。</div>
+  </div>
+  <div class="card bl">
+    <div class="ctit">公司战略核心（"变革性增长"计划）</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>承保利润优先：</strong>2022–2024年大规模费率上调（覆盖50个州），2025年回归盈利高峰，目标维持82–86%综合赔付率</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>数字化产品转型：</strong>新"平价+简洁+互联"产品矩阵，AI驱动定价与风险筛选，直销渠道占比持续提升</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>精选市场退出/进入：</strong>2023年退出加州车险部分市场，2024–2025年重新进入提价后更具吸引力的州市场，推动健康保单增长</p></div>
+      <div class="ci"><div class="cdot cnv"></div><p><strong>资本轻型化：</strong>出售雇主自愿福利（EVB）业务（2025年），聚焦P&amp;C核心，$40亿股票回购反映管理层对估值严重低估的信心</p></div>
+    </div>
+    <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--bdr2);font-size:11.5px;color:var(--t3);line-height:1.8;">
+      ✅ 2025年净利润$102亿，ROE 42%，历史新高<br>
+      ✅ Q1 2026调整后EPS $10.65，超预期38.67%<br>
+      ✅ $40亿回购计划已启动（剩余$36亿授权）<br>
+      ⚠ Q2 2026 EPS预期同比-21.55%（高峰正常化）<br>
+      ⚠ KBW和高盛双重降级，增长前景存争议
+    </div>
+  </div>
+</div>
+<div class="card" style="margin-bottom:14px;">
+  <div class="ctit">业务板块构成（2026年Q1营收贡献，来源：SEC EDGAR 8-K 2026年4月30日）</div>
+  <div class="svbar">
+    <div class="sp" style="width:57.4%;background:var(--blue2);"></div>
+    <div class="sp" style="width:24.6%;background:#3B82F6;"></div>
+    <div class="sp" style="width:9.2%;background:#60A5FA;"></div>
+    <div class="sp" style="width:5.5%;background:#93C5FD;"></div>
+    <div class="sp" style="width:3.3%;background:#BFDBFE;"></div>
+  </div>
+  <div class="sleg" style="margin-bottom:18px;">
+    <div class="sli"><div class="sdot" style="background:var(--blue2);"></div>车险保费 57.4%（约$9.72B）</div>
+    <div class="sli"><div class="sdot" style="background:#3B82F6;"></div>房屋险保费 24.6%（约$4.16B）</div>
+    <div class="sli"><div class="sdot" style="background:#60A5FA;"></div>净投资收入 9.2%（$0.94B）</div>
+    <div class="sli"><div class="sdot" style="background:#93C5FD;"></div>保护服务收入 5.5%（$0.93B）</div>
+    <div class="sli"><div class="sdot" style="background:#BFDBFE;"></div>其他（意外险/其他收入） 3.3%</div>
+  </div>
+  <div class="g4">
+    <div>
+      <div class="clbl">车险（Auto）</div>
+      <div class="cbig bl" style="font-size:22px;">$9.72B</div>
+      <div class="csub">Q1保费收入</div>
+      <div class="csub" style="margin-top:5px;line-height:1.7;font-size:11.5px;">综合赔付率81.9%<br>保单数量YoY+2.6%<br>29州市场份额扩大</div>
+    </div>
+    <div>
+      <div class="clbl">房屋险（Homeowners）</div>
+      <div class="cbig bl" style="font-size:22px;">$4.16B</div>
+      <div class="csub">Q1保费收入</div>
+      <div class="csub" style="margin-top:5px;line-height:1.7;font-size:11.5px;">综合赔付率83.5%<br>承保利润$6.85亿<br>年均保费+5.7%</div>
+    </div>
+    <div>
+      <div class="clbl">净投资收入</div>
+      <div class="cbig gr" style="font-size:22px;">$938M</div>
+      <div class="csub"><span class="up">▲ +9.8% YoY</span></div>
+      <div class="csub" style="margin-top:5px;line-height:1.7;font-size:11.5px;">投资组合账面价值<br>+$170亿（YTD）<br>浮动资金持续扩大</div>
+    </div>
+    <div>
+      <div class="clbl">保护服务</div>
+      <div class="cbig" style="font-size:22px;color:var(--t2);">$925M</div>
+      <div class="csub"><span class="up">▲ +7.2% YoY</span></div>
+      <div class="csub" style="margin-top:5px;line-height:1.7;font-size:11.5px;">保护计划+13.5%<br>汽车遥测数据<br>身份保护服务</div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit">管理层与治理评估</div>
+  <table class="tbl">
+    <thead><tr><th>姓名/职位</th><th>主要贡献</th><th class="r">评价</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Thomas J. Wilson（董事长兼CEO）</strong></td><td>主导"变革性增长"多年转型战略，成功完成2022–2024年大规模费率重定价，实现2025年历史性盈利，宣布$40亿股票回购计划；Q1电话会议结语"我们有了一个很好的季度"</td><td class="mono r"><span class="tag tg">战略清晰</span></td></tr>
+      <tr><td><strong>Jesse E. Merten（CFO）</strong></td><td>主导财务透明度提升，精细化资本分配，管理$17B投资组合账面价值增长，Q1 EPS超预期38.67%印证财务执行力强</td><td class="mono r"><span class="tag tg">执行力强</span></td></tr>
+      <tr><td><strong>John Dugenske（投资负责人）</strong></td><td>负责$170亿投资组合管理，9.8% YoY投资收入增长，战略性转向私募资产提升长期收益，获机构高度关注</td><td class="mono r"><span class="tag tb">战略争议中</span></td></tr>
+      <tr><td><strong>Mario Rizzo</strong></td><td>宣布未来90天计划出售约1.9万股（约$415万，较其持有量小幅）；注意：其直接持仓自2025年6月以来已从70,350股增至83,900股，净增持</td><td class="mono r"><span class="tag ta">小幅减持</span></td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<!-- SEC 03 FINANCIALS -->
+<div class="sec" id="s03">
+<div class="shd"><span class="snum">03</span><span class="stit">财务业绩 · 历史数据回顾</span></div>
+<div class="g4" style="margin-bottom:18px;">
+  <div class="card gr"><div class="clbl">Q1 2026 总营收</div><div class="cbig gr">$16.94B</div><div class="csub"><span class="up">▲ +3.0% vs Q1 2025 $16.45B</span></div></div>
+  <div class="card gr"><div class="clbl">Q1 2026 净利润（普通股）</div><div class="cbig gr">$2.43B</div><div class="csub"><span class="up">▲ +329% vs Q1 2025 $0.57B</span></div></div>
+  <div class="card gr"><div class="clbl">Q1 2026 调整后EPS</div><div class="cbig gr">$10.65</div><div class="csub"><span class="up">▲ vs Q1 2025 $3.53</span> 超预期38.67%</div></div>
+  <div class="card bl"><div class="clbl">Q1 2026 综合赔付率</div><div class="cbig bl">82.0%</div><div class="csub"><span class="up">▼ 改善 15.4pts YoY（Q1 2025：97.4%）</span></div></div>
+</div>
+<div class="card" style="margin-bottom:16px;">
+  <div class="ctit" style="margin-bottom:14px;">年度财务数据一览（美元百万，US GAAP，来源：SEC EDGAR 8-K 公开文件）</div>
+  <table class="tbl">
+    <thead><tr><th>财务指标</th><th class="r">FY2022</th><th class="r">FY2023</th><th class="r">FY2024</th><th class="r">FY2025（实际）</th><th class="r">FY2026E（市场预测）</th><th class="r">YoY变化</th></tr></thead>
+    <tbody>
+      <tr><td>总营收（$M）</td><td class="mono r">51,412</td><td class="mono r">57,095</td><td class="mono r">64,106</td><td class="mono r">67,685</td><td class="mono r">~71,400</td><td class="mono r"><span class="tag tg">▲+5.5%</span></td></tr>
+      <tr><td>P&amp;C保费收入（$M）</td><td class="mono r">~43,100</td><td class="mono r">~48,500</td><td class="mono r">56,388</td><td class="mono r">60,503</td><td class="mono r">~63,600</td><td class="mono r"><span class="tag tg">▲+5.1%</span></td></tr>
+      <tr><td>净投资收入（$M）</td><td class="mono r">~2,200</td><td class="mono r">~2,800</td><td class="mono r">3,092</td><td class="mono r">3,449</td><td class="mono r">~3,750</td><td class="mono r"><span class="tag tg">▲+8.7%</span></td></tr>
+      <tr><td>净利润（$M）</td><td class="mono r">-1,366</td><td class="mono r">1,627</td><td class="mono r">4,599</td><td class="mono r">10,266</td><td class="mono r">~7,600</td><td class="mono r"><span class="tag ta">▼峰值正常化</span></td></tr>
+      <tr><td>普通股净利润（$M）</td><td class="mono r">-1,409</td><td class="mono r">1,568</td><td class="mono r">4,482</td><td class="mono r">10,165</td><td class="mono r">~7,500</td><td class="mono r"><span class="tag ta">▼正常化</span></td></tr>
+      <tr><td>稀释EPS（GAAP，$）</td><td class="mono r">-$5.28</td><td class="mono r">$5.96</td><td class="mono r">$17.04</td><td class="mono r">$38.06</td><td class="mono r">~$29.43E</td><td class="mono r"><span class="tag ta">▼Zacks共识预测</span></td></tr>
+      <tr><td>调整后净利润（$M）</td><td class="mono r">—</td><td class="mono r">~3,100</td><td class="mono r">~5,500</td><td class="mono r">9,300</td><td class="mono r">~7,800E</td><td class="mono r"><span class="tag ta">▼正常化</span></td></tr>
+      <tr><td>P&amp;C综合赔付率（%）</td><td class="mono r">109.9%</td><td class="mono r">96.6%</td><td class="mono r">~90%</td><td class="mono r">~83%</td><td class="mono r">~84–87%E</td><td class="mono r"><span class="tag tg">▼持续改善</span></td></tr>
+      <tr><td>净资产回报率（ROE）</td><td class="mono r">-7.6%</td><td class="mono r">+9.3%</td><td class="mono r">+26%</td><td class="mono r">42.3%</td><td class="mono r">~30–35%E</td><td class="mono r"><span class="tag tg">历史性高位</span></td></tr>
+      <tr><td>每股普通股账面价值（$）</td><td class="mono r">~$29</td><td class="mono r">~$52</td><td class="mono r">~$76</td><td class="mono r">$108.45</td><td class="mono r">~$125E</td><td class="mono r"><span class="tag tg">▲持续提升</span></td></tr>
+      <tr><td>现金股息（$每股年化）</td><td class="mono r">$3.52</td><td class="mono r">$3.68</td><td class="mono r">$3.84</td><td class="mono r">$4.00</td><td class="mono r">$4.32</td><td class="mono r"><span class="tag tg">▲+8.0%</span></td></tr>
+      <tr><td>股票回购（$M）</td><td class="mono r">~500</td><td class="mono r">~300</td><td class="mono r">~800</td><td class="mono r">~2,400</td><td class="mono r">~3,000E</td><td class="mono r"><span class="tag tg">▲大幅加速</span></td></tr>
+    </tbody>
+  </table>
+  <div class="csub" style="margin-top:8px;">数据来源：Allstate FY2025全年业绩公告（SEC EDGAR 8-K，2026年2月）、Q1 2026业绩公告（SEC EDGAR 8-K，2026年4月30日）、DEF 14A（2026年）；FY2026E为Zacks/市场共识预测。</div>
+</div>
+<div class="g2">
+  <div class="card">
+    <div class="ctit">Q1 2026关键财务亮点（来源：SEC EDGAR 8-K）</div>
+    <table class="tbl">
+      <thead><tr><th>指标</th><th class="r">Q1 2026</th><th class="r">Q1 2025</th><th class="r">变化</th></tr></thead>
+      <tbody>
+        <tr><td>总营收（$B）</td><td class="mono r">16.94</td><td class="mono r">16.45</td><td class="mono r"><span class="tag tg">+3.0%</span></td></tr>
+        <tr><td>P&amp;C承保利润（$B）</td><td class="mono r">2.658</td><td class="mono r">0.360</td><td class="mono r"><span class="tag tg">NM↑</span></td></tr>
+        <tr><td>P&amp;C综合赔付率（%）</td><td class="mono r">82.0</td><td class="mono r">97.4</td><td class="mono r"><span class="tag tg">▼-15.4pts</span></td></tr>
+        <tr><td>底层综合赔付率（%）</td><td class="mono r">80.3</td><td class="mono r">83.1</td><td class="mono r"><span class="tag tg">▼-2.8pts</span></td></tr>
+        <tr><td>车险承保利润（$M）</td><td class="mono r">1,973</td><td class="mono r">816</td><td class="mono r"><span class="tag tg">+142%</span></td></tr>
+        <tr><td>房屋险承保利润/（损失）（$M）</td><td class="mono r">685</td><td class="mono r">-451</td><td class="mono r"><span class="tag tg">扭亏为盈</span></td></tr>
+        <tr><td>净投资收入（$M）</td><td class="mono r">938</td><td class="mono r">854</td><td class="mono r"><span class="tag tg">+9.8%</span></td></tr>
+        <tr><td>调整后净利润（$B）</td><td class="mono r">2.80</td><td class="mono r">0.949</td><td class="mono r"><span class="tag tg">+195%</span></td></tr>
+        <tr><td>调整后EPS（$）</td><td class="mono r">10.65</td><td class="mono r">3.53</td><td class="mono r"><span class="tag tg">+202%</span></td></tr>
+        <tr><td>总保单数量（百万）</td><td class="mono r">212.6</td><td class="mono r">207.4</td><td class="mono r"><span class="tag tg">+2.5%</span></td></tr>
+        <tr><td>TTM ROE（%）</td><td class="mono r">48.4%</td><td class="mono r">—</td><td class="mono r"><span class="tag tg">历史高位</span></td></tr>
+        <tr><td>股东资本回报（$M）</td><td class="mono r">881</td><td class="mono r">—</td><td class="mono r"><span class="tag tg">强劲</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <div class="ctit">承保指标纵向比较（综合赔付率历史轨迹）</div>
+    <svg viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;margin:8px 0 14px;">
+      <defs>
+        <linearGradient id="allGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2563EB" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <!-- grid -->
+      <line x1="50" y1="10" x2="50" y2="130" stroke="#E2E8F0" stroke-width="1"/>
+      <line x1="50" y1="130" x2="490" y2="130" stroke="#E2E8F0" stroke-width="1"/>
+      <line x1="50" y1="100" x2="490" y2="100" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <line x1="50" y1="73" x2="490" y2="73" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <line x1="50" y1="46" x2="490" y2="46" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <line x1="50" y1="19" x2="490" y2="19" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <!-- y labels: 80%=130, 90%=100, 100%=73, 110%=46, 120%=19. Scale=(130-19)/(120-80)=2.75px/% -->
+      <text x="44" y="133" font-size="7.5" fill="#94A3B8" text-anchor="end" font-family="IBM Plex Mono">80%</text>
+      <text x="44" y="103" font-size="7.5" fill="#94A3B8" text-anchor="end" font-family="IBM Plex Mono">90%</text>
+      <text x="44" y="76" font-size="7.5" fill="#94A3B8" text-anchor="end" font-family="IBM Plex Mono">100%</text>
+      <text x="44" y="49" font-size="7.5" fill="#94A3B8" text-anchor="end" font-family="IBM Plex Mono">110%</text>
+      <text x="44" y="22" font-size="7.5" fill="#94A3B8" text-anchor="end" font-family="IBM Plex Mono">120%</text>
+      <!-- x labels: 2020–2026, spacing ~73px -->
+      <text x="73" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">2020</text>
+      <text x="146" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">2021</text>
+      <text x="219" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">2022</text>
+      <text x="292" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">2023</text>
+      <text x="365" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">2024</text>
+      <text x="438" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">2025</text>
+      <!-- 100% line 参考 -->
+      <line x1="50" y1="73" x2="490" y2="73" stroke="#EF4444" stroke-width="0.8" stroke-dasharray="5,4" opacity="0.4"/>
+      <text x="492" y="76" font-size="6.5" fill="#EF4444" font-family="IBM Plex Mono" opacity="0.6">100%</text>
+      <!-- combined ratios: 2020=90.1(100-9.9*2.75=127.2→73+(100-90.1)*2.75=100.22), 
+           let CR=x, y=130-(x-80)*2.75
+           2020:90.1→y=102, 2021:92.4→y=96, 2022:109.9→y=48, 2023:96.6→y=75, 2024:90→y=102, 2025:83→y=121, 2026Q1:82→y=124 -->
+      <polygon points="73,102 146,96 219,48 292,75 365,102 438,121 438,130 73,130" fill="url(#allGrad)"/>
+      <polyline points="73,102 146,96 219,48 292,75 365,102 438,121" fill="none" stroke="#2563EB" stroke-width="2" stroke-linejoin="round"/>
+      <!-- add 2026Q1 projected -->
+      <circle cx="73" cy="102" r="3" fill="#2563EB"/>
+      <circle cx="146" cy="96" r="3" fill="#2563EB"/>
+      <circle cx="219" cy="48" r="3" fill="#EF4444"/>
+      <circle cx="292" cy="75" r="3" fill="#F59E0B"/>
+      <circle cx="365" cy="102" r="3" fill="#2563EB"/>
+      <circle cx="438" cy="121" r="3" fill="#10B981"/>
+      <!-- anno -->
+      <text x="219" y="43" font-size="7" fill="#EF4444" text-anchor="middle" font-family="IBM Plex Mono">109.9%</text>
+      <text x="438" y="116" font-size="7" fill="#10B981" text-anchor="middle" font-family="IBM Plex Mono">82–83%</text>
+    </svg>
+    <div class="csub">综合赔付率100%以上代表承保亏损。2022年大幅恶化至109.9%（通胀+灾损双击），2023年启动费率大幅上调改善至96.6%，2024–2025年持续优化，Q1 2026达到近十年最优的82.0%。</div>
+    <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--bdr2);">
+      <div class="ctit" style="font-size:13px;margin-bottom:8px;">FY2025 全年业绩关键数据（来源：SEC EDGAR 8-K 2026年2月）</div>
+      <div class="g2">
+        <div>
+          <div class="bar"><div class="blbl">总营收 $67.7B</div><div class="btrk"><div class="bfill bbl" style="width:88%;"></div></div><div class="bval">+5.6%</div></div>
+          <div class="bar"><div class="blbl">净利润 $102.7B</div><div class="btrk"><div class="bfill bgr" style="width:92%;"></div></div><div class="bval">+123%</div></div>
+          <div class="bar"><div class="blbl">调整后净利润 $93B</div><div class="btrk"><div class="bfill bgr" style="width:85%;"></div></div><div class="bval">历史新高</div></div>
+        </div>
+        <div>
+          <div class="bar"><div class="blbl">稀释EPS $38.06</div><div class="btrk"><div class="bfill bgr" style="width:80%;"></div></div><div class="bval">历史最高</div></div>
+          <div class="bar"><div class="blbl">ROE 42.3%</div><div class="btrk"><div class="bfill bbl" style="width:75%;"></div></div><div class="bval">历史峰值</div></div>
+          <div class="bar"><div class="blbl">BVPS $108.45</div><div class="btrk"><div class="bfill bnv" style="width:70%;"></div></div><div class="bval">+43%</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SEC 04 SEGMENTS -->
+<div class="sec" id="s04">
+<div class="shd"><span class="snum">04</span><span class="stit">分业务板块深度分析</span></div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card bl">
+    <div class="clbl">最大利润来源 · 核心业务</div>
+    <div class="ctit" style="color:var(--blue2);">🚗 汽车险板块（Auto Insurance）</div>
+    <div class="prose" style="margin-bottom:14px;">Allstate汽车险Q1 2026实现保费收入约$97.2亿，承保利润$19.73亿，综合赔付率<strong>81.9%</strong>（底层80.3%）。得益于2022–2024年大规模费率上调的充分积累，以及AI驱动的承保筛选优化，车险盈利能力达到近十年最高水平。Q1新申请数量2,397千份（+9.4% YoY），在29个州（占保费57%）实现市场份额增长。管理层在39个州进行费率调整，整体净中性影响（23个州降价、16个州涨价），反映进入"精细化定价"阶段，不再依赖单纯提价。</div>
+    <div class="bar"><div class="blbl">Q1保费收入</div><div class="btrk"><div class="bfill bbl" style="width:78%;"></div></div><div class="bval">$9.72B</div></div>
+    <div class="bar"><div class="blbl">综合赔付率</div><div class="btrk"><div class="bfill bgr" style="width:68%;"></div></div><div class="bval">81.9%</div></div>
+    <div class="bar"><div class="blbl">承保利润</div><div class="btrk"><div class="bfill bgr" style="width:88%;"></div></div><div class="bval">$1.973B</div></div>
+    <div class="bar"><div class="blbl">保单数量增长</div><div class="btrk"><div class="bfill bbl" style="width:30%;"></div></div><div class="bval">+2.6%</div></div>
+    <div class="co" style="margin-top:12px;">
+      <div class="cotit">关键风险：非标准自动险占比上升</div>
+      <p>高盛和KBW均指出，Allstate近期部分增长来自"非标准"（非优质）自动险保单，此类保单赔付率较高，可能在未来季度压缩利润率。若非标准险占比进一步扩大，可能对当前历史低位综合赔付率形成逆风。</p>
+    </div>
+  </div>
+  <div class="card nv">
+    <div class="clbl">第二大板块 · 业绩大逆转</div>
+    <div class="ctit" style="color:var(--navy);">🏠 房屋险板块（Homeowners Insurance）</div>
+    <div class="prose" style="margin-bottom:14px;">房屋险是Allstate最引人注目的业绩改善来源之一。Q1 2026综合赔付率<strong>83.5%</strong>，承保利润$6.85亿，较Q1 2025承保亏损$4.51亿实现<strong>历史性扭亏</strong>。主要驱动因素：（1）大幅提高平均保费（+5.7% YoY）；（2）全面再保险计划有效对冲灾难性损失尾部风险；（3）退出高风险高灾损地区的成果显现。<br>过去5年承保利润$39亿，过去10年$79亿，显示其是公司长期战略性竞争优势。</div>
+    <div class="bar"><div class="blbl">Q1保费收入</div><div class="btrk"><div class="bfill bnv" style="width:65%;"></div></div><div class="bval">$4.16B</div></div>
+    <div class="bar"><div class="blbl">综合赔付率</div><div class="btrk"><div class="bfill bgr" style="width:70%;"></div></div><div class="bval">83.5%</div></div>
+    <div class="bar"><div class="blbl">承保利润</div><div class="btrk"><div class="bfill bgr" style="width:80%;"></div></div><div class="bval">$0.685B</div></div>
+    <div class="bar"><div class="blbl">保费年均增长率</div><div class="btrk"><div class="bfill bnv" style="width:38%;"></div></div><div class="bval">+5.7%</div></div>
+    <div class="co am" style="margin-top:12px;">
+      <div class="cotit">关键风险：灾难性损失波动</div>
+      <p>2026年3月月度灾损约$9.25亿（税前，$7.31亿税后），来自多起风暴和冰雹事件。全面再保险计划已显著降低尾部风险，但极端气候事件（飓风季）仍是Q2–Q3承保利润的重要变量。</p>
+    </div>
+  </div>
+</div>
+<div class="g2">
+  <div class="card gr">
+    <div class="clbl">成长型业务</div>
+    <div class="ctit" style="color:var(--green);">📊 保护服务（Protection Services）</div>
+    <div class="prose" style="margin-bottom:12px;">Q1 2026保护服务营收约$9.25亿，同比增长<strong>7.2%</strong>，调整后净利润$4700万。主要增长来自：Allstate保护计划（延保+损害保护）+13.5%，汽车遥测数据与分析服务，以及身份保护服务Ting。此板块盈利能力相对有限，但具备轻资产成长性，反映Allstate向"保险科技"生态延伸的战略意图。</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>Allstate保护计划：</strong>消费电子和家电延保，合作零售商持续扩展，+13.5% YoY是板块最强增速</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>汽车遥测：</strong>移动数据采集和分析服务，与Arity平台协同，为AI定价模型提供数据闭环</p></div>
+    </div>
+  </div>
+  <div class="card am">
+    <div class="clbl">投资组合</div>
+    <div class="ctit" style="color:var(--amber);">💰 投资板块（Investment Portfolio）</div>
+    <div class="prose" style="margin-bottom:12px;">Q1 2026净投资收入$9.38亿，同比增长<strong>9.8%</strong>，受益于投资组合账面价值+$170亿（YTD），以及高利率环境下固定收益资产重新投资收益提升。公司正在战略性地增加私募资产配置（私募信贷、私募股权等），此举引发分析师关注——更高潜在收益与更低流动性之间的权衡。全年净投资收入预计约$38亿。</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>利率环境有利：</strong>高利率环境延续，固定收益再投资收益率高于历史存量，支撑投资收入持续增长</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>私募资产战略转向：</strong>管理层强调向私募资产倾斜，Yahoo Finance指出机构投资者对此策略存在分歧，流动性风险需持续关注</p></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SEC 05 MARKET -->
+<div class="sec" id="s05">
+<div class="shd"><span class="snum">05</span><span class="stit">行业格局 · 竞争分析</span></div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card">
+    <div class="ctit">美国P&amp;C个人保险市场竞争格局（2025年市场份额，保费规模）</div>
+    <div class="bar" style="margin-top:8px;"><div class="blbl">State Farm（第1名）</div><div class="btrk"><div class="bfill bnv" style="width:19%;"></div></div><div class="bval">~19%</div></div>
+    <div class="bar"><div class="blbl">Allstate（第2名）</div><div class="btrk"><div class="bfill bbl" style="width:11%;"></div></div><div class="bval">~11%</div></div>
+    <div class="bar"><div class="blbl">Progressive（第3名）</div><div class="btrk"><div class="bfill bgr" style="width:10%;"></div></div><div class="bval">~10%</div></div>
+    <div class="bar"><div class="blbl">GEICO（Berkshire）</div><div class="btrk"><div class="bfill bam" style="width:9%;"></div></div><div class="bval">~9%</div></div>
+    <div class="bar"><div class="blbl">USAA</div><div class="btrk"><div class="bfill bgr" style="width:6%;"></div></div><div class="bval">~6%</div></div>
+    <div class="bar"><div class="blbl">Liberty Mutual</div><div class="btrk"><div class="bfill bbl" style="width:5%;"></div></div><div class="bval">~5%</div></div>
+    <div class="bar"><div class="blbl">其他分散玩家</div><div class="btrk"><div class="bfill bnv" style="width:40%;"></div></div><div class="bval">~40%</div></div>
+    <div class="csub" style="margin-top:8px;">美国P&amp;C个人险市场规模约$8,000亿年保费，集中度适中，前5家合计约55%。Allstate 2026年目标：加速在市场份额扩大的29个州（车险，占保费57%）和41个州（房屋险，占保费83%）持续渗透。</div>
+  </div>
+  <div class="card">
+    <div class="ctit">核心竞争对手比较（截至2026年6月，来源：公开财报/市场数据）</div>
+    <table class="tbl">
+      <thead><tr><th>公司</th><th class="r">市值</th><th class="r">P/E（TTM）</th><th class="r">综合赔付率</th><th class="r">ROE</th><th class="r">股息率</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Allstate (ALL)</strong></td>
+          <td class="mono r"><strong>~$57B</strong></td>
+          <td class="mono r"><strong><span class="tag tg">~5.9x</span></strong></td>
+          <td class="mono r"><strong>82.0%</strong></td>
+          <td class="mono r"><strong>48.4%</strong></td>
+          <td class="mono r"><strong>1.9%</strong></td>
+        </tr>
+        <tr>
+          <td>Progressive (PGR)</td>
+          <td class="mono r">~$120B</td>
+          <td class="mono r"><span class="tag tr">~22x</span></td>
+          <td class="mono r">~88%</td>
+          <td class="mono r">~28%</td>
+          <td class="mono r">0.5%</td>
+        </tr>
+        <tr>
+          <td>Chubb (CB)</td>
+          <td class="mono r">~$90B</td>
+          <td class="mono r">~13x</td>
+          <td class="mono r">~87%</td>
+          <td class="mono r">~15%</td>
+          <td class="mono r">1.3%</td>
+        </tr>
+        <tr>
+          <td>Travelers (TRV)</td>
+          <td class="mono r">~$55B</td>
+          <td class="mono r">~12x</td>
+          <td class="mono r">~90%</td>
+          <td class="mono r">~17%</td>
+          <td class="mono r">2.1%</td>
+        </tr>
+        <tr>
+          <td>Hartford Financial (HIG)</td>
+          <td class="mono r">~$30B</td>
+          <td class="mono r">~11x</td>
+          <td class="mono r">~91%</td>
+          <td class="mono r">~16%</td>
+          <td class="mono r">2.2%</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="co" style="margin-top:12px;">
+      <div class="cotit">估值差距分析</div>
+      <p>Allstate TTM P/E约5.9x vs 同业中位数约12–13x，折扣约55%。尽管ROE高达48.4%（大幅领先同业），公司享有同业最低估值，主要反映市场对：（1）盈利高峰后正常化；（2）自动驾驶长期影响；（3）增长放缓三方面的悲观预期。我们认为此三因素已在很大程度上被定价，当前折扣不具合理性。</p>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit">行业趋势与宏观环境分析</div>
+  <div class="g2">
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>保费价格周期上行：</strong>2022–2024年美国P&amp;C保险行业经历50年来最大幅度费率上调周期（汽车险+30–40%，房屋险+20–30%），Allstate是最积极的执行者之一，盈利修复也最为彻底</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p><strong>通胀压力趋缓：</strong>汽车零件和维修成本增速放缓，二手车价格稳定，减少赔付成本超预期上涨风险，有助于维持低综合赔付率</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>高利率红利：</strong>联邦基金利率仍处相对高位，保险公司浮动资金再投资收益持续受益，Allstate净投资收入预计稳定增长</p></div>
+    </div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cam"></div><p><strong>气候风险上升：</strong>极端气候事件频率和强度上升（飓风、野火、洪水、冰雹），是P&amp;C保险行业最大的系统性风险，Allstate通过退出高风险市场和全面再保险计划部分对冲</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>自动驾驶技术长期冲击：</strong>若AV技术大规模商业化（预计2030年代），传统汽车险需求将面临长期结构性压力。高盛降级报告将此列为核心担忧之一</p></div>
+      <div class="ci"><div class="cdot cre"></div><p><strong>监管压力（定价/退出限制）：</strong>加州等州对保险公司定价和退出市场有严格监管，Allstate已于2023年暂时退出加州车险部分市场。监管批准速度可能影响费率响应灵活性</p></div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SEC 06 VALUATION -->
+<div class="sec" id="s06">
+<div class="shd"><span class="snum">06</span><span class="stit">估值分析 · 相对与绝对估值</span></div>
+<div class="g2" style="margin-bottom:16px;">
+  <div class="card bl">
+    <div class="ctit">方法一：P/E 相对估值（正常化盈利基础）</div>
+    <div class="prose" style="margin-bottom:13px;">P&amp;C保险公司通常以<strong>正常化净利润</strong>的10–15x为合理估值区间。鉴于2025年盈利属于历史峰值，以FY2026E正常化EPS约$29.43为基础（Zacks共识）：</div>
+    <table class="tbl">
+      <thead><tr><th>情景</th><th class="r">P/E倍数</th><th class="r">正常化EPS</th><th class="r">隐含股价</th><th class="r">评注</th></tr></thead>
+      <tbody>
+        <tr><td>悲观（8x）</td><td class="mono r">8x</td><td class="mono r">$27</td><td class="mono r"><span class="tag tr2">$216</span></td><td>历史底部估值，仅含危机溢价</td></tr>
+        <tr><td>基准（10x）</td><td class="mono r">10x</td><td class="mono r">$29.43</td><td class="mono r"><span class="tag tb">$254</span></td><td>折扣历史均值，反映结构性折扣</td></tr>
+        <tr><td>乐观（13x）</td><td class="mono r">13x</td><td class="mono r">$32</td><td class="mono r"><span class="tag tg">$320</span></td><td>接近Travelers/Chubb估值倍数</td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">当前TTM P/E约5.9x，NTM P/E约7.5x（基于调整后EPS），极度折价</div>
+  </div>
+  <div class="card nv">
+    <div class="ctit">方法二：P/B 账面价值法（保险行业惯用指标）</div>
+    <div class="prose" style="margin-bottom:13px;">保险公司P/B估值反映承保特许权价值。当前每股账面价值$108.45，历史P/B均值约2.0–2.5x：</div>
+    <table class="tbl">
+      <thead><tr><th>P/B倍数</th><th class="r">当前BVPS</th><th class="r">FY2026E BVPS</th><th class="r">隐含股价</th></tr></thead>
+      <tbody>
+        <tr><td>1.8x（悲观）</td><td class="mono r">$108.45</td><td class="mono r">~$125</td><td class="mono r"><span class="tag tr2">$195–225</span></td></tr>
+        <tr><td>2.1x（基准）</td><td class="mono r">$108.45</td><td class="mono r">~$125</td><td class="mono r"><span class="tag tb">$228–263</span></td></tr>
+        <tr><td>2.5x（乐观）</td><td class="mono r">$108.45</td><td class="mono r">~$125</td><td class="mono r"><span class="tag tg">$271–313</span></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">当前P/B约2.04x（基于$108.45 BVPS），处于合理区间但低估ROE改善溢价</div>
+  </div>
+</div>
+<div class="card" style="margin-bottom:14px;">
+  <div class="ctit" style="margin-bottom:14px;">机构分析师目标价汇总（截至2026年6月12日）</div>
+  <table class="tbl">
+    <thead><tr><th>机构</th><th>评级</th><th class="r">目标价（$）</th><th class="r">隐含上/下行</th><th class="r">日期</th><th>核心观点</th></tr></thead>
+    <tbody>
+      <tr><td>Wells Fargo</td><td><span class="tag tg">增持</span></td><td class="mono r">$285</td><td class="mono r" style="color:var(--green);">+28.7%</td><td class="mono r">2026-06</td><td>承保利润修复持续，估值极度低估</td></tr>
+      <tr><td>Morgan Stanley</td><td><span class="tag tg">增持（Overweight）</span></td><td class="mono r">$225</td><td class="mono r" style="color:var(--green);">+1.6%</td><td class="mono r">2026-06</td><td>较前$229下调，宏观不确定性+灾损风险</td></tr>
+      <tr><td>JPMorgan</td><td><span class="tag tb">中性</span></td><td class="mono r">$222</td><td class="mono r" style="color:var(--t3);">+0.2%</td><td class="mono r">2026-05</td><td>从$217上调，盈利超预期但增长见顶</td></tr>
+      <tr><td>KBW（Keefe Bruyette）</td><td><span class="tag ta">市场中性（降级）</span></td><td class="mono r">$242</td><td class="mono r" style="color:var(--green);">+9.2%</td><td class="mono r">2026-06-08</td><td>从$266大幅下调，车险增长从高峰放缓</td></tr>
+      <tr><td>Goldman Sachs</td><td><span class="tag ta">中性（降级）</span></td><td class="mono r">$231</td><td class="mono r" style="color:var(--green);">+4.3%</td><td class="mono r">2026-06</td><td>从买入下调，AV冲击、增长放缓、增量非标准险风险</td></tr>
+      <tr><td>MarketBeat共识</td><td><span class="tag tg">买入</span></td><td class="mono r">$238.65</td><td class="mono r" style="color:var(--green);">+7.7%</td><td class="mono r">2026-06</td><td>~30家机构覆盖共识均值</td></tr>
+      <tr><td>Simply Wall St（内在价值）</td><td><span class="tag tg">低估</span></td><td class="mono r">$241.86</td><td class="mono r" style="color:var(--green);">+9.2%</td><td class="mono r">2026-06-09</td><td>DCF内在价值，当前折价约67%</td></tr>
+    </tbody>
+  </table>
+  <div class="co" style="margin-top:14px;">
+    <div class="cotit">目标价加权分析 → Snail Investment 目标价 $255.00</div>
+    <p>综合P/E法（权重40%，$254）、P/B法（权重30%，$263基于2.1x×$125E）、机构共识均值（权重30%，$238），加权目标价约<strong>$252</strong>，考虑承保利润高能见度溢价，上调至<strong>$255.00</strong>，较当前$221.53存在约+15.1%资本增值空间（含股息+17.1%总回报），维持<strong>买入（BUY）</strong>评级。</p>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit">保险业核心估值指标深度解析</div>
+  <div class="g2">
+    <div>
+      <div class="clbl" style="margin-bottom:10px;">综合赔付率 vs. 估值倍数（P&amp;C保险规律）</div>
+      <div class="bar"><div class="blbl">Allstate（82.0%）</div><div class="btrk"><div class="bfill bgr" style="width:73%;"></div></div><div class="bval">P/E 5.9x</div></div>
+      <div class="bar"><div class="blbl">Progressive（88%）</div><div class="btrk"><div class="bfill bbl" style="width:60%;"></div></div><div class="bval">P/E 22x</div></div>
+      <div class="bar"><div class="blbl">Chubb（87%）</div><div class="btrk"><div class="bfill bnv" style="width:65%;"></div></div><div class="bval">P/E 13x</div></div>
+      <div class="bar"><div class="blbl">Travelers（90%）</div><div class="btrk"><div class="bfill bam" style="width:55%;"></div></div><div class="bval">P/E 12x</div></div>
+      <div class="csub" style="margin-top:6px;">Allstate综合赔付率最优，但P/E最低——核心悖论反映了增长疑虑与峰值回归的定价</div>
+    </div>
+    <div>
+      <div class="clbl" style="margin-bottom:10px;">资本回报率对比（ROE %，TTM）</div>
+      <div class="bar"><div class="blbl">Allstate（ALL）</div><div class="btrk"><div class="bfill bgr" style="width:92%;"></div></div><div class="bval">48.4%</div></div>
+      <div class="bar"><div class="blbl">Progressive（PGR）</div><div class="btrk"><div class="bfill bbl" style="width:55%;"></div></div><div class="bval">28%</div></div>
+      <div class="bar"><div class="blbl">Chubb（CB）</div><div class="btrk"><div class="bfill bnv" style="width:30%;"></div></div><div class="bval">15%</div></div>
+      <div class="bar"><div class="blbl">Travelers（TRV）</div><div class="btrk"><div class="bfill bam" style="width:34%;"></div></div><div class="bval">17%</div></div>
+      <div class="csub" style="margin-top:6px;">Allstate ROE 48.4%为同业最高，股东创值能力卓越，但估值倍数最低，估值/回报严重背离</div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SEC 07 DCF -->
+<div class="sec" id="s07">
+<div class="shd"><span class="snum">07</span><span class="stit">DCF 分析 · 内在价值与敏感性矩阵</span></div>
+<div class="co bl" style="margin-bottom:18px;">
+  <div class="cotit">DCF 基础假设（基准情景）</div>
+  <p>以5年显式预测期（2026–2030E）+终值计算。核心逻辑：Allstate已完成大规模费率重定价，进入高盈利可持续阶段。基准情景假设FY2026E调整后净利润约$78亿（正常化后，低于2025年历史峰值$93亿），2027–2030E年均净利润增长5–7%，反映保单增长+投资收入+费用率改善的综合效应。终值增长率（g）采用2.0–3.5%，WACC（折现率）采用9.0–11.0%区间（保险公司资本成本较一般企业偏高）。税前净利润折现至股权价值，除以流通股约2.59亿。</p>
+</div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card">
+    <div class="ctit">DCF 关键参数（三情景）</div>
+    <table class="tbl">
+      <thead><tr><th>参数</th><th class="r">悲观</th><th class="r">基准</th><th class="r">乐观</th></tr></thead>
+      <tbody>
+        <tr><td>2026E 调整后净利润（$B）</td><td class="mono r">6.8</td><td class="mono r">7.8</td><td class="mono r">9.2</td></tr>
+        <tr><td>净利润增速（2027–2030 CAGR）</td><td class="mono r">2.0%</td><td class="mono r">5.5%</td><td class="mono r">9.0%</td></tr>
+        <tr><td>终值增长率（g）</td><td class="mono r">2.0%</td><td class="mono r">2.5%</td><td class="mono r">3.5%</td></tr>
+        <tr><td>WACC（折现率）</td><td class="mono r">11.0%</td><td class="mono r">10.0%</td><td class="mono r">9.0%</td></tr>
+        <tr><td>股权价值（$B）</td><td class="mono r">~52</td><td class="mono r">~68</td><td class="mono r">~98</td></tr>
+        <tr><td>流通股（百万）</td><td class="mono r">259</td><td class="mono r">259</td><td class="mono r">259</td></tr>
+        <tr><td><strong>DCF 隐含股价（$）</strong></td><td class="mono r"><strong><span class="tag tr2">$201</span></strong></td><td class="mono r"><strong><span class="tag tb">$263</span></strong></td><td class="mono r"><strong><span class="tag tg">$378</span></strong></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">Simply Wall St DCF内在价值估计约$241.86（折价约67%），印证基准情景$263的合理性</div>
+  </div>
+  <div class="card">
+    <div class="ctit">关键EPS敏感性驱动因子</div>
+    <table class="tbl">
+      <thead><tr><th>驱动因子</th><th class="r">变动幅度</th><th class="r">调整后EPS影响（$）</th></tr></thead>
+      <tbody>
+        <tr><td>P&amp;C综合赔付率</td><td class="mono r">±1.0pts</td><td class="mono r"><span class="tag tb">±$1.10–1.40</span></td></tr>
+        <tr><td>P&amp;C保费规模</td><td class="mono r">±$1B</td><td class="mono r"><span class="tag tb">±$0.80–1.20</span></td></tr>
+        <tr><td>净投资收入</td><td class="mono r">±$100M</td><td class="mono r"><span class="tag tg">±$0.30</span></td></tr>
+        <tr><td>灾难性损失（税后）</td><td class="mono r">±$500M</td><td class="mono r"><span class="tag ta">±$1.50</span></td></tr>
+        <tr><td>股份回购（$10亿）</td><td class="mono r">+$1B回购</td><td class="mono r"><span class="tag tg">+$0.40–0.60</span></td></tr>
+        <tr><td>有效税率变化</td><td class="mono r">±1%</td><td class="mono r"><span class="tag tg">±$0.25</span></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">综合赔付率和灾难性损失是最大EPS波动来源，两者叠加可造成$3–6 EPS单季波动</div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit" style="margin-bottom:14px;">DCF 目标股价双变量敏感性矩阵（WACC × 终值增长率 g）</div>
+  <table class="dcfm">
+    <thead><tr><th>WACC ↓ / g →</th><th>g=1.5%</th><th>g=2.0%</th><th>g=2.5%</th><th>g=3.0%</th><th>g=3.5%</th><th>g=4.0%</th></tr></thead>
+    <tbody>
+      <tr><td class="thr">WACC=8.5%</td><td class="bzone">$311</td><td class="bzone">$340</td><td class="bzone">$378</td><td class="bzone">$428</td><td class="bzone">$494</td><td class="bzone">$591</td></tr>
+      <tr><td class="thr">WACC=9.0%</td><td class="bzone">$268</td><td class="bzone">$288</td><td class="bzone">$313</td><td class="bzone">$344</td><td class="dzone">$378★</td><td class="bzone">$424</td></tr>
+      <tr><td class="thr">WACC=9.5%</td><td class="mzone">$234</td><td class="mzone">$250</td><td class="mzone">$268</td><td class="dzone">$263★</td><td class="mzone">$314</td><td class="mzone">$349</td></tr>
+      <tr><td class="thr">WACC=10.0%</td><td class="mzone">$207</td><td class="mzone">$219</td><td class="dzone">$234★</td><td class="mzone">$251</td><td class="mzone">$271</td><td class="mzone">$296</td></tr>
+      <tr><td class="thr">WACC=10.5%</td><td class="mzone">$185</td><td class="mzone">$195</td><td class="mzone">$207</td><td class="mzone">$220</td><td class="mzone">$236</td><td class="mzone">$255</td></tr>
+      <tr><td class="thr">WACC=11.0%</td><td class="rzone">$167</td><td class="rzone">$175</td><td class="rzone">$185</td><td class="rzone">$196</td><td class="rzone">$208</td><td class="mzone">$223</td></tr>
+      <tr><td class="thr">WACC=11.5%</td><td class="rzone">$151</td><td class="rzone">$158</td><td class="rzone">$167</td><td class="rzone">$176</td><td class="rzone">$186</td><td class="rzone">$199</td></tr>
+    </tbody>
+  </table>
+  <div style="display:flex;gap:14px;margin-top:9px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);"><div style="width:11px;height:11px;background:var(--greenl);border:1px solid var(--greenb);border-radius:2px;"></div>乐观区间（&gt;$260）</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);"><div style="width:11px;height:11px;background:var(--blue5);border:1px solid var(--blue3);border-radius:2px;"></div>基准区间（★=关键节点）</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);"><div style="width:11px;height:11px;background:var(--redl);border:1px solid var(--redb);border-radius:2px;"></div>悲观区间（&lt;$200）</div>
+  </div>
+  <div class="csub" style="margin-top:7px;">基准情景：WACC=10.0%，g=2.5%，隐含股价约$234，与P/E法$254取平均后约$244，与目标价$255高度吻合。</div>
+</div>
+</div>
+
+<!-- SEC 08 SCENARIO -->
+<div class="sec" id="s08">
+<div class="shd"><span class="snum">08</span><span class="stit">三情景分析 · 12个月价格目标区间</span></div>
+<div class="scrow">
+  <div class="sc bull">
+    <div class="sclbl">🐂 乐观情景（Bull Case）</div>
+    <div class="scpri">$300</div>
+    <div class="scprob">发生概率：~25%</div>
+    <div class="scret">较当前 +35.4%（含股息 +37.4%）</div>
+    <hr class="scdiv">
+    <div class="scdesc">
+      <strong>核心假设：</strong><br>
+      • 综合赔付率全年维持82–84%，低于历史均值<br>
+      • 2026年飓风季损失低于预期，再保险结构充分保护<br>
+      • 磷酸盐剥离前非标准险占比未见明显恶化<br>
+      • KBW/高盛降级为孤立事件，Q2业绩超预期引发机构重新评级<br>
+      • 市场给予10–12x P/E，估值折扣大幅收窄<br>
+      • $40亿回购加速执行（全年$30亿），EPS实际稀释前超预期<br><br>
+      <strong>估值：</strong>P/E约11x，正常化EPS约$31；P/B约2.5x
+    </div>
+  </div>
+  <div class="sc base">
+    <div class="sclbl">⚖ 基准情景（Base Case）</div>
+    <div class="scpri">$255</div>
+    <div class="scprob">发生概率：~50%</div>
+    <div class="scret">较当前 +15.1%（含股息 +17.1%）</div>
+    <hr class="scdiv">
+    <div class="scdesc">
+      <strong>核心假设：</strong><br>
+      • 综合赔付率全年84–87%（部分季节灾损回升）<br>
+      • 保单增长稳步进行，车险非标准险占比小幅上升但可控<br>
+      • 2026E调整后EPS约$29–31，小幅低于2025年峰值<br>
+      • 全年净投资收入约$38亿，续创新高<br>
+      • $40亿回购计划按计划执行，全年回购约$15–20亿<br>
+      • 估值从5.9x逐步修复至8–9x P/E区间<br><br>
+      <strong>估值：</strong>P/E约8.5x，正常化EPS约$29.5；P/B约2.1x
+    </div>
+  </div>
+  <div class="sc bear">
+    <div class="sclbl">🐻 悲观情景（Bear Case）</div>
+    <div class="scpri">$175</div>
+    <div class="scprob">发生概率：~25%</div>
+    <div class="scret">较当前 -21.0%（含股息 -19.1%）</div>
+    <hr class="scdiv">
+    <div class="scdesc">
+      <strong>核心假设：</strong><br>
+      • 2026年飓风季出现重大损失事件（$30亿+），超出再保险覆盖<br>
+      • 综合赔付率反弹至90–95%，Q3–Q4承保亏损<br>
+      • 非标准险占比快速上升，导致赔付率超预期恶化<br>
+      • 更多机构降级，估值倍数从当前水平进一步下探<br>
+      • 监管收紧加州/佛罗里达提价审批，限制费率响应速度<br>
+      • EPS跌至$20–22，回购计划被迫暂停以保护资本充足率<br><br>
+      <strong>估值：</strong>P/E约7.5x，EPS $22；账面价值侵蚀
+    </div>
+  </div>
+</div>
+<div class="card" style="margin-top:14px;">
+  <div class="ctit" style="margin-bottom:12px;">加权期望价值（Probability-Weighted Expected Value）</div>
+  <table class="tbl">
+    <thead><tr><th>情景</th><th class="r">概率权重</th><th class="r">目标价</th><th class="r">加权贡献</th><th class="r">含股息总回报</th></tr></thead>
+    <tbody>
+      <tr><td>乐观（Bull）</td><td class="mono r">25%</td><td class="mono r"><span class="tag tg">$300</span></td><td class="mono r">$75.0</td><td class="mono r">+37.4%</td></tr>
+      <tr><td>基准（Base）</td><td class="mono r">50%</td><td class="mono r"><span class="tag tb">$255</span></td><td class="mono r">$127.5</td><td class="mono r">+17.1%</td></tr>
+      <tr><td>悲观（Bear）</td><td class="mono r">25%</td><td class="mono r"><span class="tag tr2">$175</span></td><td class="mono r">$43.75</td><td class="mono r">-19.1%</td></tr>
+    </tbody>
+    <tfoot>
+      <tr style="background:var(--blue6);"><td><strong>加权期望价值</strong></td><td class="mono r"><strong>100%</strong></td><td class="mono r" style="font-size:14px;"><strong style="color:var(--blue2);">$246.25</strong></td><td class="mono r"><strong style="color:var(--blue2);">$246.25</strong></td><td class="mono r" style="color:var(--green);"><strong>+13.2%（含息）</strong></td></tr>
+    </tfoot>
+  </table>
+  <div class="csub" style="margin-top:7px;">加权期望价值$246，低于目标价$255（反映悲观情景的非对称下行风险），但仍显著高于当前$221.53，支持买入观点。</div>
+</div>
+</div>
+<!-- SEC 09 RISKS -->
+<div class="sec" id="s09">
+<div class="shd"><span class="snum">09</span><span class="stit">风险矩阵 · 全面风险评估</span></div>
+<div class="card">
+  <div class="risk">
+    <div class="rbdg hi"><span>高风险</span></div>
+    <div>
+      <div class="rtit">⚡ 灾难性损失超预期：飓风/野火/冰雹极端事件</div>
+      <div class="rdesc">2026年3月已录得约$9.25亿（税前）灾难性损失（风暴/冰雹），超出市场预期，触发5月份股价-3.2%大跌。正值2026年大西洋飓风季（6月–11月），Colorado State大学预测为"高于正常"活跃度的飓风季。单次50年一遇的大型飓风可产生$50–100亿税前灾损，即便再保险覆盖后仍有$10–30亿净影响，可能导致全年承保亏损。灾难性损失是P&amp;C保险公司最大的EPS波动来源。</div>
+    </div>
+  </div>
+  <div class="risk">
+    <div class="rbdg hi"><span>高风险</span></div>
+    <div>
+      <div class="rtit">⚡ 盈利高峰正常化：EPS从峰值大幅下降</div>
+      <div class="rdesc">Zacks共识预测FY2026E稀释EPS约$29.43，较FY2025年$38.06大幅下降约22.7%；Q2 2026 EPS预期$4.66，同比下降约21.55%。市场已在一定程度上定价了高峰后回归，但若实际EPS跌幅超过预期（如跌至$22–25区间），将触发更大规模的估值重估压力。Simply Wall St亦指出"EPS预期未来3年下降57%"，需密切跟踪正常化轨迹。</div>
+    </div>
+  </div>
+  <div class="risk">
+    <div class="rbdg hi"><span>高风险</span></div>
+    <div>
+      <div class="rtit">⚡ 非标准汽车险占比上升：赔付率可能逆转</div>
+      <div class="rdesc">高盛降级报告明确指出："近期非标准自动险保单的大幅增长使我们对保单留存率和利润率增添更多担忧。"非标准险（高风险驾驶人）综合赔付率通常高出标准险10–15pts，若此类保单占比从当前水平持续上升，将系统性损害承保利润率，使近期历史最优82.0%综合赔付率难以维持。</div>
+    </div>
+  </div>
+  <div class="risk">
+    <div class="rbdg md"><span>中等风险</span></div>
+    <div>
+      <div class="rtit">⚠ 车险保单增长见顶：KBW降级核心担忧</div>
+      <div class="rdesc">KBW于2026年6月8日将评级从"优于大市"降至"市场中性"（目标价从$266下调至$242），核心理由是：Allstate车险保单增长已从2026年2月高峰开始放缓，先前支撑买入观点的强劲保单增长叙事已基本兑现。保单增速放缓意味着保费收入增速将同步放缓，若通胀回升导致赔付成本上升而保费无法快速响应，将压缩利润率。</div>
+    </div>
+  </div>
+  <div class="risk">
+    <div class="rbdg md"><span>中等风险</span></div>
+    <div>
+      <div class="rtit">⚠ 自动驾驶技术长期冲击（高盛核心担忧）</div>
+      <div class="rdesc">高盛将"自动驾驶（AV）技术的人工智能相关冲击"列为降级的核心因素之一。若AV技术在2030年代实现大规模商业化，事故率将大幅降低，汽车险需求可能出现结构性收缩，Allstate传统业务模式面临长期颠覆风险。此为5–10年视角的尾部风险，短期影响有限，但可能持续压制估值倍数扩张。</div>
+    </div>
+  </div>
+  <div class="risk">
+    <div class="rbdg md"><span>中等风险</span></div>
+    <div>
+      <div class="rtit">⚠ 机构双重降级带来的短期动量逆风</div>
+      <div class="rdesc">KBW（6月8日）和高盛（6月）相继将Allstate从"买入/优于大市"降至"中性/市场中性"，引发股价短期-2.2%跌幅，并可能触发被动量化基金的追随性调整。若JP摩根、Morgan Stanley等其他大行跟随下调，短期抛售压力将加剧。需密切关注后续机构评级动向。</div>
+    </div>
+  </div>
+  <div class="risk">
+    <div class="rbdg md"><span>中等风险</span></div>
+    <div>
+      <div class="rtit">⚠ 监管风险：各州保险监管收紧</div>
+      <div class="rdesc">加州、佛罗里达、纽约等高风险州对保险费率上调审批、市场退出（撤销保单）和产品设计有严格监管。若监管延迟批准费率调整（如加州限制下Allstate 2023年被迫暂停承保），将损害公司定价灵活性和盈利能力。此外，各州正讨论气候相关保险监管改革，可能扩大强制承保范围，增加不可回避的高风险敞口。</div>
+    </div>
+  </div>
+  <div class="risk">
+    <div class="rbdg md"><span>中等风险</span></div>
+    <div>
+      <div class="rtit">⚠ 私募资产配置战略风险</div>
+      <div class="rdesc">公司CFO John Dugenske强调向私募资产（私募信贷、私募股权）转型以提升投资收益率，但Yahoo Finance报道显示机构投资者对此策略存在分歧：私募资产流动性较低，在市场压力时期可能难以快速变现；估值透明度不及公开市场证券，可能掩盖潜在损失；且此类资产表现与宏观信用周期高度相关，在经济下行时可能产生重大减值。</div>
+    </div>
+  </div>
+  <div class="risk">
+    <div class="rbdg lo"><span>低风险</span></div>
+    <div>
+      <div class="rtit">✓ 竞争加剧（Progressive、GEICO等）</div>
+      <div class="rdesc">Progressive和Geico（经历2022–2024年大幅整改后）已开始重新积极拓展业务，与Allstate争夺优质保单。然而，当前市场处于费率上升周期末期，各主要竞争对手均专注于盈利改善而非激进抢占份额，短期竞争加剧风险有限，属于可持续观察的低概率风险。</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SEC 10 CATALYSTS -->
+<div class="sec" id="s10">
+<div class="shd"><span class="snum">10</span><span class="stit">催化剂 · 关键时间节点</span></div>
+<div class="g2">
+  <div class="card">
+    <div class="ctit" style="margin-bottom:18px;">重要事件时间线（2026年）</div>
+    <div class="tl">
+      <div class="tli">
+        <div class="tldot"></div>
+        <div class="tldate">2026年7月1日</div>
+        <div class="tltit">📅 季度股息支付日</div>
+        <div class="tldesc">$1.08/股（$4.32年化），股息除息日2026年6月1日（已过），付款日7月1日。下一次季度股息除息日约在9月初。</div>
+      </div>
+      <div class="tli">
+        <div class="tldot"></div>
+        <div class="tldate">2026年7月30日前后</div>
+        <div class="tltit">🏆 Q2 2026 业绩公告（最重要节点）</div>
+        <div class="tldesc">Q2是飓风季初期，将披露：Q2承保损益（包含飓风季早期损失数据）、月度灾损更新、保单数量变化趋势（验证KBW"保单增长见顶"判断）、$40亿回购计划执行进度。Zacks预期Q2 EPS $4.66（-21.55% YoY），若实际超预期将触发机构重新评级。</div>
+      </div>
+      <div class="tli">
+        <div class="tldot"></div>
+        <div class="tldate">2026年6月–11月</div>
+        <div class="tltit">⚠ 2026年大西洋飓风季</div>
+        <div class="tldesc">Colorado State大学预测2026年飓风季活跃度高于正常，是Allstate全年承保损益最大的外生变量。每月月度灾损披露（月底前后）将是重要的股价驱动信号，密切跟踪。</div>
+      </div>
+      <div class="tli">
+        <div class="tldot"></div>
+        <div class="tldate">2026年下半年（持续）</div>
+        <div class="tltit">📊 各州费率审批进展</div>
+        <div class="tldesc">Allstate在多个州申请费率调整审批，特别关注加州重新进入市场的进展，以及佛罗里达等高风险州的监管互动。费率审批加速批准将是正面催化剂。</div>
+      </div>
+      <div class="tli">
+        <div class="tldot"></div>
+        <div class="tldate">2026年10月底</div>
+        <div class="tltit">📋 Q3 2026 业绩公告</div>
+        <div class="tldesc">Q3是飓风季主体（9月最为活跃），将是全年最大不确定性来源的验证节点。若飓风季损失低于预期，Q3业绩可能大幅超预期，触发买入评级上调潮。</div>
+      </div>
+      <div class="tli">
+        <div class="tldot"></div>
+        <div class="tldate">2026年Q3–Q4</div>
+        <div class="tltit">💡 "平价+简洁+互联"产品矩阵落地验证</div>
+        <div class="tldesc">新数字化产品矩阵在多个州的部署情况、直销渠道增长数据，及AI驱动定价效果将陆续显现，是验证长期增长叙事的关键数据点。</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="ctit">机构评级分布（截至2026年6月12日）</div>
+      <div class="bar" style="margin-top:8px;"><div class="blbl">买入/优于大市</div><div class="btrk"><div class="bfill bgr" style="width:55%;"></div></div><div class="bval">~55%</div></div>
+      <div class="bar"><div class="blbl">持有/市场中性</div><div class="btrk"><div class="bfill bbl" style="width:40%;"></div></div><div class="bval">~40%</div></div>
+      <div class="bar"><div class="blbl">卖出</div><div class="btrk"><div class="bfill bre" style="width:5%;"></div></div><div class="bval">~5%</div></div>
+      <div class="csub" style="margin-top:6px;">共识目标价约$238.65（MarketBeat，30+机构），较当前+7.7%；近期KBW/GS降级使共识分歧加大</div>
+    </div>
+    <div class="card">
+      <div class="ctit">买入/卖出信号总结</div>
+      <div class="cats" style="margin-bottom:14px;">
+        <div class="ci"><div class="cdot cgr"></div><p><strong>Franklin Resources增持：</strong>Q1 2026增持超301万股（+60.2%，约$6.24亿），是最明确的机构看多信号</p></div>
+        <div class="ci"><div class="cdot cgr"></div><p><strong>GQG Partners增持：</strong>Q4 2025增持145万股（+36.0%，约$3.02亿），大型专注保险领域机构持续增配</p></div>
+        <div class="ci"><div class="cdot cre"></div><p><strong>Qube Research减持：</strong>Q1 2026清仓约87.9万股（-100%，约$1.82亿），量化基金信号</p></div>
+        <div class="ci"><div class="cdot cre"></div><p><strong>T. Rowe Price减持：</strong>Q1 2026减持约87.3万股（-7.5%，约$1.80亿），主动管理大行温和减持</p></div>
+        <div class="ci"><div class="cdot cam"></div><p><strong>Mario Rizzo（管理层）：</strong>计划出售约1.9万股，但净增持趋势（近12个月+13,550股）总体正面</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+const secs = document.querySelectorAll('.sec[id]');
+const links = document.querySelectorAll('.nlinks a');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(a => a.classList.toggle('act', a.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, { rootMargin: '-15% 0px -75% 0px' });
+secs.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
