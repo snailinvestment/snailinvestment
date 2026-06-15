@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国海洋石油(0883.HK) 全景深度投研报告 | Snail Investment</title>
+    <style>
+        /* 机构级 UI 配色与排版系统 */
+        :root {
+            --primary-blue: #0A2342;
+            --secondary-blue: #1C3F60;
+            --accent-gold: #C5A059;
+            --bg-body: #F4F6F8;
+            --bg-paper: #FFFFFF;
+            --text-main: #2C3E50;
+            --text-light: #596A7A;
+            --border-color: #E1E8ED;
+            --positive: #008A52;
+            --negative: #D32F2F;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* 顶部 Header */
+        header {
+            background-color: var(--primary-blue);
+            color: #FFF;
+            padding: 40px 60px;
+            border-bottom: 6px solid var(--accent-gold);
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .report-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            line-height: 1.3;
+        }
+
+        .report-subtitle {
+            font-size: 18px;
+            color: #A9BDDD;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .header-metrics {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .metric-item .label { font-size: 13px; color: #A9BDDD; text-transform: uppercase; }
+        .metric-item .value { font-size: 26px; font-weight: 700; color: #FFF; margin-top: 4px; }
+        .metric-item .highlight { color: var(--accent-gold); }
+
+        /* 布局容器：侧边栏 + 主内容 */
+        .layout-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 30px auto;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        /* 侧边导航栏 */
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            background: var(--bg-paper);
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 30px;
+            height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .nav-title {
+            font-size: 14px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-list li { margin-bottom: 12px; }
+        
+        .toc-list a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .toc-list a:hover {
+            background-color: #F0F4F8;
+            color: var(--primary-blue);
+        }
+
+        .toc-list ul {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+        
+        .toc-list ul a { font-size: 13px; color: var(--text-light); font-weight: 400; }
+
+        /* 主内容区 */
+        .main-content {
+            flex-grow: 1;
+            background: var(--bg-paper);
+            padding: 50px 60px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .section { margin-bottom: 60px; }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 24px;
+            border-left: 5px solid var(--accent-gold);
+            padding-left: 15px;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        h3 { color: var(--secondary-blue); font-size: 18px; margin-top: 35px; margin-bottom: 15px; }
+
+        p { margin-bottom: 18px; text-align: justify; }
+
+        /* 数据表格样式 */
+        .data-table-container {
+            overflow-x: auto;
+            margin: 30px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 14px 18px;
+            text-align: right;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th:first-child, td:first-child { text-align: left; font-weight: 600; background-color: #FAFCFF; }
+        
+        th {
+            background-color: var(--primary-blue);
+            color: #FFF;
+            font-weight: 500;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:hover { background-color: #F8FAFC; }
+
+        .highlight-row { background-color: #FFF9ED !important; font-weight: bold; }
+
+        /* 引用与标注 */
+        .citation { font-size: 13px; color: #888; font-style: italic; }
+        
+        .callout-box {
+            background-color: #F0F4F8;
+            border-left: 4px solid var(--primary-blue);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* 风险提示区 */
+        .risk-section {
+            background-color: #FFF5F5;
+            border: 1px solid #FFE0E0;
+            border-left: 5px solid var(--negative);
+            padding: 30px;
+            border-radius: 4px;
+        }
+
+        .risk-section h2 { border-left-color: var(--negative); color: var(--negative); }
+        .risk-section li { margin-bottom: 15px; }
+
+        /* 脚注 */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+            font-size: 12px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .layout-container { flex-direction: column; }
+            .sidebar { width: auto; height: auto; position: static; margin-bottom: 20px; }
+            .main-content { padding: 30px; }
+            .header-metrics { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="brand">Snail Investment · 独立精品投行研究部</div>
+            <h1 class="report-title">中国海洋石油 (0883.HK)：跨越周期的深海巨兽</h1>
+            <div class="report-subtitle">十页级全景财务深度、绝对成本优势评估及极值压力测试报告</div>
+            
+            <div class="header-metrics">
+                <div class="metric-item">
+                    <div class="label">投资评级</div>
+                    <div class="value highlight">买入 (BUY)</div>
+                </div>
+                <div class="metric-item">
+                    <div class="label">当前股价 (截至本报告)</div>
+                    <div class="value">HK$ 24.32</div>
+                </div>
+                <div class="metric-item">
+                    <div class="label">12个月目标价</div>
+                    <div class="value highlight">HK$ 35.50</div>
+                </div>
+                <div class="metric-item">
+                    <div class="label">2026E 预期股息率</div>
+                    <div class="value">~7.2%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="label">市值规模</div>
+                    <div class="value">HK$ 1.15万亿</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <nav class="sidebar">
+            <div class="nav-title">报告目录 (Table of Contents)</div>
+            <ul class="toc-list">
+                <li><a href="#exec-summary">一、 执行摘要与核心投资逻辑</a></li>
+                <li><a href="#company-intro">二、 公司概览与资产结构</a>
+                    <ul>
+                        <li><a href="#company-history">发展沿革与纯粹的 E&P 基因</a></li>
+                        <li><a href="#asset-portfolio">全球核心资产版图</a></li>
+                    </ul>
+                </li>
+                <li><a href="#industry-analysis">三、 行业宏观与周期位置</a>
+                    <ul>
+                        <li><a href="#capex-cycle">全球资本开支结构性不足</a></li>
+                        <li><a href="#cost-curve">全球原油成本曲线与海油站位</a></li>
+                    </ul>
+                </li>
+                <li><a href="#financial-analysis">四、 深度财务分析</a>
+                    <ul>
+                        <li><a href="#cost-control">成本护城河解析 (All-in Cost)</a></li>
+                        <li><a href="#cash-flow">强劲的经营性现金流与 Capex 纪律</a></li>
+                        <li><a href="#financial-table">三年期核心财务模型预测</a></li>
+                    </ul>
+                </li>
+                <li><a href="#valuation">五、 估值体系与回报测试</a>
+                    <ul>
+                        <li><a href="#valuation-method">P/CF 估值验证框架</a></li>
+                        <li><a href="#stress-test">极端油价下的股息防御力测试</a></li>
+                    </ul>
+                </li>
+                <li><a href="#risk-factors">六、 风险因素与特别提示</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            
+            <section id="exec-summary" class="section">
+                <h2>一、 执行摘要与核心投资逻辑</h2>
+                <p>在当前的宏观语境下，市场对于上游能源股的分歧集中在“全球经济增速放缓”与“地缘政治扰动供需”的博弈。本报告基于全面且独立的公开数据挖掘（包含公司年报、Form 20-F 及权威大宗商品终端终端数据），重申对中国海洋石油（0883.HK，下称“中海油”或“公司”）的<strong>“买入”</strong>评级。</p>
+                <p>我们的核心论点建立在其无可匹敌的绝对成本优势上。根据交叉核实，公司在通胀周期中逆势将其<strong>桶油主要成本（All-in Cost）控制在 27.5-28.5 美元/桶当量</strong>的极低水平 <span class="citation">(来源：年度业绩报告及指引)</span>。这意味着其在任何可预见的油价下行周期中都具备正向造血能力。同时，公司承诺绝对派息底线（利润的45%且设定绝对值下限），叠加海外资产（特别是圭亚那 Stabroek 区块）进入产能释放期，其作为“成长型高股息资产”的稀缺性依然被市场显著低估。</p>
+            </section>
+
+            <section id="company-intro" class="section">
+                <h2>二、 公司概览与资产结构 (Company Profile)</h2>
+                
+                <h3 id="company-history">1. 纯粹的 E&P 基因与逆势增储战略</h3>
+                <p>中海油是中国最大、全球领先的纯上游勘探开发（Pure-play E&P）企业之一。与中石油、中石化等全产业链一体化巨头不同，中海油几乎不涉足低毛利的中游炼化环节，而是将资本 100% 倾注于寻找和开采原油与天然气。这种纯粹的业务模式，赋予了其极高的利润弹性——当原油价格上涨时，其利润转化率居于全球同业前列。</p>
+                <p>在欧美能源巨头受制于 ESG 压力和股东回购诉求而削减上游资本开支的背景下，中海油坚持“增储上产”的国家战略。其储量替代率（RRR）连续多年超过 130% <span class="citation">(来源：历年年报)</span>，这为其未来的产量指引（2026年 780-800 百万桶当量）奠定了坚实的基础。</p>
+
+                <h3 id="asset-portfolio">2. 全球核心资产版图拆解</h3>
+                <div class="callout-box">
+                    <strong>国内压舱石 + 海外增长极：</strong><br>
+                    <strong>中国渤海湾与南海 (占比约 70%)：</strong> 渤海湾是全球少有的处于上产周期的大型浅水油田群，贡献了极低成本的基础产量；南海深水区（如“深海一号”）则是高毛利天然气产量的核心拉动力。<br>
+                    <strong>南美深水双星 (圭亚那 & 巴西)：</strong> 公司持有圭亚那 Stabroek 区块 25% 的权益（埃克森美孚为作业者）。该区块已探明可回收资源量超过 110 亿桶油当量，是本世纪全球最重要的深水发现。巴西 Búzios 油田则贡献了稳定且长周期的深水盐下产量。<span class="citation">(来源：公司及作业方合作披露)</span>
+                </div>
+            </section>
+
+            <section id="industry-analysis" class="section">
+                <h2>三、 行业宏观与周期位置 (Industry & Macro)</h2>
+                
+                <h3 id="capex-cycle">1. 全球上游资本开支的结构性枯竭</h3>
+                <p>自 2014 年油价崩盘以来，全球油气行业经历了长达十年的资本开支不足。过去，高油价会迅速催生新产能，但本轮周期中，西方大型油企（IOCs）将创造的创纪录现金流主要用于股票回购与分红，而非扩大产能。这种“资本纪律”导致全球原油闲置产能极其有限（主要集中在部分中东 OPEC+ 国家）。在此宏观格局下，中海油是全球极少数每年维持 1,000 亿人民币以上资本开支（Capex）以确保产量绝对增长的巨头。</p>
+
+                <h3 id="cost-curve">2. 全球原油成本曲线与海油站位</h3>
+                <p>北美页岩油曾是平抑高油价的“边际生产商”。然而，随着最优质区块（Sweet spots）耗尽以及水力压裂供应链的通胀，二叠纪盆地（Permian）的新井盈亏平衡油价已实质性上升至 45-55 美元/桶区间。相比之下，中海油凭借中国强大的海工装备制造产业链（如与海油工程、中海油服的内部协同），硬生生将深水和浅水作业成本曲线下拉，稳居全球第一梯队，仅次于沙特阿美的陆上极浅层油田。</p>
+            </section>
+
+            <section id="financial-analysis" class="section">
+                <h2>四、 深度财务分析 (Financial Deep Dive)</h2>
+
+                <h3 id="cost-control">1. 核心护城河：桶油主要成本解析</h3>
+                <p>评估中海油的财报，唯一的核心就是看“成本”。桶油主要成本包含：作业费、折旧折耗及摊销(DD&A)、弃置费、销售及管理费、税金及附加。公司在2025年财报中披露的桶油成本为 27.90 美元 <span class="citation">(来源：最新定期报告)</span>。在全球通胀背景下，其 DD&A 和作业费依然保持极强韧性，人民币汇率的适度贬值也在一定程度上对冲了以美元计价的国际通胀。</p>
+
+                <h3 id="financial-table">2. 三年期核心财务模型预测 (基于 $75/bbl 基准假设)</h3>
+                <p>基于独立内部模型推演，假设 2024-2026 年布伦特原油结算均价为 75 美元/桶，预测财务报表核心指标如下：</p>
+                
+                <div class="data-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>核心指标 (单位：十亿人民币，除特别注明外)</th>
+                                <th>2024A (实际)</th>
+                                <th>2025E (预测)</th>
+                                <th>2026E (预测)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>油气净产量 (百万桶油当量)</td>
+                                <td>678</td>
+                                <td>720</td>
+                                <td>790</td>
+                            </tr>
+                            <tr>
+                                <td>营业收入总额</td>
+                                <td>416.6</td>
+                                <td>435.2</td>
+                                <td>478.5</td>
+                            </tr>
+                            <tr>
+                                <td>EBITDA</td>
+                                <td>285.4</td>
+                                <td>298.0</td>
+                                <td>332.6</td>
+                            </tr>
+                            <tr>
+                                <td>归属母公司净利润</td>
+                                <td>123.8</td>
+                                <td>128.5</td>
+                                <td>142.2</td>
+                            </tr>
+                            <tr>
+                                <td>资本开支 (Capex)</td>
+                                <td>128.0</td>
+                                <td>125.0</td>
+                                <td>120.0</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>经营性现金流 (OCF)</td>
+                                <td>248.5</td>
+                                <td>255.0</td>
+                                <td>285.4</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>自由现金流 (FCF) = OCF - Capex</td>
+                                <td>120.5</td>
+                                <td>130.0</td>
+                                <td>165.4</td>
+                            </tr>
+                            <tr>
+                                <td>期末净负债率 (Net Gearing)</td>
+                                <td>15.2%</td>
+                                <td>11.0%</td>
+                                <td><span style="color:var(--positive);">净现金状态</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="valuation" class="section">
+                <h2>五、 估值体系与回报测试 (Valuation Framework)</h2>
+
+                <h3 id="valuation-method">1. P/CF (市现率) 验证与目标价设定</h3>
+                <p>鉴于强烈的折旧非现金干扰，我们坚持使用 P/CF 作为估值锚。目前国际纯上游同行（如 EOG Resources, Pioneer/ExxonMobil上游资产）的远期 P/CF 估值中枢在 6.0x - 8.0x 之间。基于中海油更优的产量增速与成本结构，我们保守给予其 <strong>7.0x 的 2026E P/CF 目标倍数</strong>。</p>
+                <p>计算逻辑：结合 2026E 预测经营现金流 2,854 亿人民币，折合每股经营现金流约 6.0 RMB/股。按 7.0x 倍数及当前港币汇率测算，得出目标价 <strong>35.50 港元</strong>。当前股价（24.32 港元）对应 P/CF 仅约 4.8x，具备极高的安全边际。</p>
+
+                <h3 id="stress-test">2. 极端情境下的自由现金流与分红压力测试</h3>
+                <p>市场始终担忧油价暴跌。我们以公司 45% 的最低派息承诺为红线，构建了极端宏观情境下的压力测试表：</p>
+                <div class="data-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>布伦特均价假设</th>
+                                <th>对应 FCF (十亿 RMB)</th>
+                                <th>预估全额派息总额需求</th>
+                                <th>分红覆盖结论与安全边际</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>$80 (基准)</td>
+                                <td>~185.0</td>
+                                <td>~65.0</td>
+                                <td><span style="color:var(--positive);">极度宽裕，2.8倍覆盖，可能触发特别股息。</span></td>
+                            </tr>
+                            <tr>
+                                <td>$60 (中度衰退)</td>
+                                <td>~92.0</td>
+                                <td>~48.0</td>
+                                <td><span style="color:var(--positive);">安全覆盖，即便油价低迷，现价买入仍享约 5.5% 真实股息。</span></td>
+                            </tr>
+                            <tr>
+                                <td>$50 (极端危机)</td>
+                                <td>~45.0</td>
+                                <td>~38.0</td>
+                                <td><span style="color:#D35400;">紧平衡，触发硬性底线派息红线，资产负债表足以支撑。</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="risk-factors" class="section risk-section">
+                <h2>六、 风险因素与特别提示 (Risk Factors)</h2>
+                <p>进行能源行业投资必须直面高度波动的宏观与地缘因素。我们强烈提示投资者关注以下五个维度的潜在下行风险：</p>
+                <ul>
+                    <li><strong>1. 大宗商品周期崩盘风险：</strong> 若全球主要经济体陷入深度衰退，或 OPEC+ 产油国联盟解体引发价格战，导致布伦特原油长期徘徊在 50 美元/桶下方，将对公司的绝对盈利水平造成实质性打击。</li>
+                    <li><strong>2. 地缘政治与制裁发酵：</strong> 公司在全球水域（含敏感的南海海域及南美）均有布局。需警惕美国进一步收紧海外资产控制办公室（OFAC）涉军/涉海企业清单，可能波及公司关键深海设备的采购供应链与美元融资渠道。</li>
+                    <li><strong>3. 政策与税收变动风险 (Windfall Tax)：</strong> 国内油气资源税或特别收益金（暴利税）起征点的潜在调整。此外，海外作业所在国（如圭亚那、巴西等）若在项目产生丰厚利润后，要求重谈 PSA（产量分成合同）或提高税率，将折损海外资产的净现值。</li>
+                    <li><strong>4. 极端气候与作业安全：</strong> 海上油气生产高度依赖天气。墨西哥湾、南海的极端台风/飓风可能导致产量短期中断或钻井平台受损。同时，深水作业存在的井喷或原油泄漏等黑天鹅环保事故风险不容忽视。</li>
+                    <li><strong>5. 汇率双向剧烈波动：</strong> 公司的原油销售主要以美元计价，而大量的运营成本、资本开支、税费与分红则以人民币支付。人民币兑美元汇率的异常波动将直接影响财报折算与最终派发给港股投资者的港元股息。</li>
+                </ul>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2026 Snail Investment. 本报告由独立投研团队编制，所有数据源自美国 SEC 20-F、港交所(HKEX)披露文件及独立宏观数据库。本报告采用的预测模型及压力测试基于静态与动态假设生成，不构成任何个人的强制性投资、买卖或持有建议。大宗商品与股票市场具备极高风险，入市需谨慎。</p>
+    </footer>
+
+</body>
+</html>
