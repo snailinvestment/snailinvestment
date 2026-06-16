@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股半导体板块SBI泡沫指数日报 - 2026-06-16</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6;padding:20px;max-width:1200px;margin:0 auto}
+.container{background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);overflow:hidden}
+.header{background:linear-gradient(135deg,#c0392b 0%,#8e44ad 100%);color:#fff;padding:40px 30px;text-align:center}
+.header h1{font-size:28px;font-weight:700;margin-bottom:8px}
+.header .sub{font-size:14px;opacity:.85}
+.sbi-dash{display:flex;justify-content:center;align-items:center;gap:50px;padding:40px 30px;flex-wrap:wrap;background:#fafbfc}
+.gauge{text-align:center}
+.gauge .val{font-size:60px;font-weight:800;color:#e74c3c}
+.gauge .lbl{font-size:14px;color:#666;margin-top:6px}
+.badge{display:inline-block;padding:8px 20px;border-radius:24px;font-size:14px;font-weight:700;margin-top:14px;color:#fff;background:linear-gradient(135deg,#f39c12,#e67e22)}
+.chg{font-size:18px;margin-top:10px}
+.chg-up{color:#e74c3c}.chg-down{color:#27ae60}.chg-flat{color:#95a5a6}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;padding:30px}
+.m-card{background:#f8f9fa;border-radius:12px;padding:22px;text-align:center;border-left:4px solid #3498db}
+.m-card.dan{border-left-color:#e74c3c}.m-card.war{border-left-color:#f39c12}.m-card.safe{border-left-color:#2ecc71}
+.m-card .n{font-size:12px;color:#888;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
+.m-card .s{font-size:36px;font-weight:700}
+.m-card .w{font-size:11px;color:#aaa;margin-top:4px}
+.chart-sec{padding:30px;background:#fafbfc}
+.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:768px){.chart-row{grid-template-columns:1fr}}
+.cbox{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.cbox h3{font-size:15px;margin-bottom:16px;color:#333}
+.concl{padding:30px}
+.concl h2{font-size:18px;margin-bottom:16px;color:#1a1a2e}
+.concl ul{list-style:none;padding:0}
+.concl li{padding:12px 0;border-bottom:1px solid #f0f0f0;display:flex;gap:12px;align-items:flex-start}
+.concl li:last-child{border-bottom:none}
+.num{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#c0392b,#8e44ad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.alert-box{margin:20px 30px;padding:18px 20px;background:#fef9e7;border-radius:10px;border-left:5px solid #f39c12;font-size:14px;line-height:1.8}
+.news-sec{padding:20px 30px;background:#fafbfc}
+.news-sec h2{font-size:16px;margin-bottom:12px}
+.ni{padding:8px 0;font-size:13px;color:#444;border-bottom:1px solid #eee}
+.ni:last-child{border:none}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;margin-right:6px}
+.tag-r{background:#ffeaea;color:#c0392b}.tag-g{background:#eafff0;color:#27ae60}.tag-y{background:#fff9e6;color:#d35400}.tag-b{background:#eaf2ff;color:#2980b9}
+table.data-tbl{width:100%;border-collapse:collapse;margin:20px 30px;font-size:13px}
+.data-tbl th,.data-tbl td{padding:10px 14px;text-align:left;border-bottom:1px solid #eee}
+.data-tbl th{background:#f8f9fa;font-weight:600;color:#555}
+.data-tbl tr:hover{background:#f8f9fa}
+.footer{padding:20px 30px;background:#f8f9fa;font-size:11px;color:#999;text-align:center;line-height:1.8}
+.sox-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;padding:20px 30px}
+.sox-day{background:#f8f9fa;border-radius:8px;padding:12px;text-align:center}
+.sox-day .dt{font-size:11px;color:#999}
+.sox-day .cv{font-size:17px;font-weight:700;margin:3px 0}
+.sox-day .ch{font-size:13px;font-weight:600}
+.sox-day .ch.neg{color:#e74c3c}.sox-day .ch.pos{color:#27ae60}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>A股半导体板块 SBI 泡沫指数日报</h1>
+<div class="sub">分析日期: 2026年6月16日（周一） | 数据截至: 2026年6月16日A股收盘</div>
+</div>
+
+<div class="sbi-dash">
+<div class="gauge">
+<div class="val">67.8</div>
+<div class="lbl">SBI 总分 / 100</div>
+<div class="badge">危险区间 (65-80)</div>
+<div class="chg chg-up">▲ +5.3分 (前次: 62.5)</div>
+</div>
+<div style="max-width:380px"><canvas id="gaugeChart" height="180"></canvas></div>
+</div>
+
+<div class="alert-box" style="margin:0 30px 20px;background:#fdedec;border-left-color:#e74c3c">
+<strong>今日盘面速览：</strong>沪指收4096.47点(+1.61%)，创业板大涨+5.30%，科创50涨+4.89%，科技主线全面爆发！半导体板块领涨全场——PCB覆铜板、芯片设计、半导体设备材料全线大涨，细分板块平均涨幅超4%。北向资金全天逆势净买入超120亿，两市成交突破2.6万亿。但需警惕：<strong>SBI从预警区间上沿跃入危险区间，估值泡沫进一步加剧。</strong>
+</div>
+
+<div class="metrics">
+<div class="m-card dan"><div class="n">估值 (25%)</div><div class="s" style="color:#e74c3c">86.0</div><div class="w">权重 25%</div></div>
+<div class="m-card war"><div class="n">拥挤度 (25%)</div><div class="s" style="color:#f39c12">68.0</div><div class="w">权重 25%</div></div>
+<div class="m-card war"><div class="n">杠杆 (15%)</div><div class="s" style="color:#f39c12">73.0</div><div class="w">权重 15%</div></div>
+<div class="m-card safe"><div class="n">业绩兑现 (15%)</div><div class="s" style="color:#2ecc71">35.0</div><div class="w">权重 15%</div></div>
+<div class="m-card safe"><div class="n">资金流向 (10%)</div><div class="s" style="color:#27ae60">42.0</div><div class="w">权重 10%</div></div>
+<div class="m-card war"><div class="n">外部环境 (10%)</div><div class="s" style="color:#f39c12">54.0</div><div class="w">权重 10%</div></div>
+</div>
+
+<div class="chart-sec">
+<div class="chart-row">
+<div class="cbox"><h3>SBI 六维度雷达图</h3><canvas id="radarChart"></canvas></div>
+<div class="cbox"><h3>SBI 近10日趋势</h3><canvas id="trendChart"></canvas></div>
+</div>
+</div>
+
+<div class="concl">
+<h2>核心结论与操作建议</h2>
+<ul>
+<li><div class="num">1</div><div><strong>SBI评分62.5分升至67.8分，上升5.3分，正式跨入危险区间（≥65分）。</strong>今日半导体板块全面暴涨，市场情绪极度亢奋。创业板+5.30%、科创50+4.89%，科技主线彻底领跑。但估值泡沫同步加剧——这是典型的"上涨即加风险"格局。</div></li>
+<li><div class="num">2</div><div><strong>估值维度飙至86.0分（极高风险）：</strong>SW半导体PE(TTM)约116-194倍，处于近5年99%以上历史分位；板块平均PE 544倍、PB 9.52倍，远超2021年周期高点（80倍）。今日暴涨后估值压力进一步加大，透支至少3年业绩预期。</div></li>
+<li><div class="num">3</div><div><strong>资金面呈现"量价齐升"但需警惕：</strong>北向资金今日净买入超120亿（大幅流入），两融余额28736亿占流通市值2.82%。半导体行业年内融资净买入813亿居全行业第一。但成交额突破2.6万亿、换手率走高意味着多空分歧正在加大。</div></li>
+<li><div class="num">4</div><div><strong>业绩基本面依然强劲（35.0分=安全）：</strong>Q1半导体板块营收+24.71%、归母净利+178.59%；AI服务器需求爆发带动PCB/光模块/MLCC涨价；国产替代政策持续落地。中长期逻辑扎实，但短期估值已严重透支。</div></li>
+<li><div class="num">5</div><div><strong>拥挤度温和上升至68.0分：</strong>今日半导体ETF大概率获得大额净申购，板块内多只标的封板。但需注意：行情初期机构低位布局→确认后增量入场→当前可能已进入"机构内部分歧加大"阶段。</div></li>
+</ul>
+<div class="alert-box" style="background:#fdedec;border-left-color:#e74c3c;margin-top:20px">
+<strong>操作建议：SBI 67.8分进入危险区间，建议减仓而非追高。</strong>今日科技股暴涨是情绪释放的极致表现，但估值已处历史极端高位。建议：(1) 高估值标的逢高减仓，保留业绩确定性强的设备/材料龙头；(2) 控制单一赛道仓位不超过20%；(3) 等待SBI回落至45分以下再大举建仓；(4) 密切关注美股SOX走势（上周反弹+9.55%）是否持续。
+</div>
+</div>
+
+<div class="news-sec">
+<h2>近期半导体行业重大事件</h2>
+<div class="ni"><span class="tag tag-b">政策</span>工信部推动AI算力基础设施国产化，头部企业加大本土采购力度</div>
+<div class="ni"><span class="tag tag-g">产业</span>AI服务器需求持续爆发，PCB覆铜板/光模块/MLCC年内多次涨价，供需缺口延续至2027年末</div>
+<div class="ni"><span class="tag tag-y">行情</span>6月16日A股半导体全线领涨，PCB、芯片设计、半导体设备细分均涨超4%</div>
+<div class="ni"><span class="tag tag-r">估值</span>SW半导体PE(TTM)116-194倍，近5年99%+分位，远超2021年周期高点80倍</div>
+<div class="ni"><span class="tag tag-g">资金</span>北向资金6月16日净买入超120亿，重点加仓半导体全产业链</div>
+<div class="ni"><span class="tag tag-r">海外</span>美股SOX上周强势反弹：6/11 +7.90%、6/12 +1.52%，两周累计收复大部分跌幅</div>
+<div class="ni"><span class="tag tag-b">替代</span>华为发布「韬定律」，提出芯片性能提升新路径，引领国产替代技术路线</div>
+</div>
+
+<table class="data-tbl">
+<thead><tr><th>数据项</th><th>数值</th><th>日期/来源</th><th>评估</th></tr></thead>
+<tbody>
+<tr><td>沪指收盘</td><td>4096.47 (+1.61%)</td><td>2026-06-16 / 东方财富</td><td>站稳4000点</td></tr>
+<tr><td>创业板指</td><td>+5.30%</td><td>2026-06-16 / 东方财富</td><td>成长股全面反弹</td></tr>
+<tr><td>科创50指数</td><td>+4.89%</td><td>2026-06-16 / 东方财富</td><td>半导体核心标的集中</td></tr>
+<tr><td>SW半导体PE(TTM)</td><td>116.74~194倍</td><td>2026-05-29至06-10 / 东方财富</td><td>近5年99%+分位</td></tr>
+<tr><td>申万半导体PB</td><td>9.52倍</td><td>2026-06-05 / 雪球</td><td>历史高位</td></tr>
+<tr><td>板块Q1归母净利增速</td><td>+178.59%</td><td>2026Q1 / 东方财富</td><td>强劲增长</td></tr>
+<tr><td>板块Q1营收增速</td><td>+24.71%</td><td>2026Q1 / 东方财富</td><td>景气上行</td></tr>
+<tr><td>北向资金-今日净买入</td><td>>120亿元</td><td>2026-06-16 / 东方财富</td><td>大幅加仓半导体</td></tr>
+<tr><td>两融余额</td><td>28,736亿元 (流通市值2.82%)</td><td>2026-06-11 / 证券时报</td><td>高位略降</td></tr>
+<tr><td>半导体融资净买入(年内)</td><td>813.41亿元</td><td>截至2026-06-04</td><td>全行业第一</td></tr>
+<tr><td>两市成交额</td><td>>2.6万亿元</td><td>2026-06-16</td><td>放量明显</td></tr>
+<tr><td>美联储利率目标</td><td>3.50%-3.75%</td><td>2026-06 / FOMC</td><td>限制性</td></tr>
+<tr><td>美国10年期国债收益率</td><td>4.45%</td><td>2026-06-12 / sofrrate.com</td><td>高位</td></tr>
+</tbody>
+</table>
+
+<div class="footer">
+报告生成时间: 2026-06-16 09:32 CST | 数据来源: 东方财富、证券时报、雪球、FRED、美联储、sofrrate.com 等<br>
+SBI (Semiconductor Bubble Index) 为自定义分析框架，仅供参考，不构成投资建议。
+</div>
+</div>
+
+<script>
+new Chart(document.getElementById('gaugeChart'),{type:'doughnut',data:{labels:['已用风险额度','剩余安全空间'],datasets:[{data:[67.8,32.2],backgroundColor:['#e74c3c','#ecf0f1'],borderWidth:0,cutout:'75%'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:false}}}});
+new Chart(document.getElementById('radarChart'),{type:'radar',data:{labels:['估值','拥挤度','杠杆','业绩兑现','资金流向','外部环境'],datasets:[{label:'2026-06-16',data:[86.0,68.0,73.0,35.0,42.0,54.0],backgroundColor:'rgba(231,76,60,0.2)',borderColor:'#e74c3c',pointBackgroundColor:'#e74c3c',borderWidth:2},{label:'2026-06-11',data:[82.0,62.0,72.0,38.0,50.0,52.0],backgroundColor:'rgba(149,165,166,0.08)',borderColor:'#95a5a6',pointBackgroundColor:'#95a5a6',borderWidth:1,borderDash:[5,5]}]},options:{responsive:true,scales:{r:{min:0,max:100,ticks:{stepSize:20,color:'#999',font:{size:10}},grid:{color:'#eee'},angleLines:{color:'#eee'},pointLabels:{font:{size:12,weight:'600'},color:'#333'}}},plugins:{legend:{position:'bottom',labels:{font:{size:11}}}}}});
+new Chart(document.getElementById('trendChart'),{type:'line',data:{labels:['6/5','6/6','6/8','6/9','6/10','6/11','6/12','6/13','6/16'],datasets:[{label:'SBI总分',data:[63,65,66,62,64,62.5,65,66.5,67.8],borderColor:'#e74c3c',backgroundColor:'rgba(231,76,60,0.08)',fill:true,tension:.3,pointRadius:5,pointBackgroundColor:function(ctx){return ctx.raw>=65?'#e74c3c':'#f39c12'}},{label:'危险线65',data:[65,65,65,65,65,65,65,65,65],borderColor:'#e74c3c',borderDash:[5,5],pointRadius:0,fill:false},{label:'预警线45',data:[45,45,45,45,45,45,45,45,45],borderColor:'#3498db',borderDash:[3,3],pointRadius:0,fill:false}]},options:{responsive:true,interaction:{intersect:false,mode:'index'},plugins:{legend:{position:'bottom',labels:{font:{size:11}}}},scales:{y:{min:30,max:80,grid:{color:'#f0f0f0'},ticks:{color:'#999',font:{size:10}}},x:{grid:{display:false},ticks:{color:'#999',font:{size:10}}}}}});
+</script>
+</body>
+</html>
