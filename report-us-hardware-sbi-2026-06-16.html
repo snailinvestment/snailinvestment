@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美国硬件/半导体板块SBI泡沫指数日报 - 2026-06-16</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6;padding:20px;max-width:1200px;margin:0 auto}
+.container{background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);overflow:hidden}
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);color:#fff;padding:40px 30px;text-align:center}
+.header h1{font-size:28px;font-weight:700;margin-bottom:8px}
+.header .sub{font-size:14px;opacity:.85}
+.sbi-dash{display:flex;justify-content:center;align-items:center;gap:50px;padding:40px 30px;flex-wrap:wrap;background:#fafbfc}
+.gauge{text-align:center}
+.gauge .val{font-size:60px;font-weight:800;color:#e67e22}
+.gauge .lbl{font-size:14px;color:#666;margin-top:6px}
+.badge{display:inline-block;padding:8px 20px;border-radius:24px;font-size:14px;font-weight:700;margin-top:14px;color:#fff;background:#e74c3c}
+.chg{font-size:18px;margin-top:10px}.chg-up{color:#e74c3c}.chg-down{color:#27ae60}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;padding:30px}
+.m-card{background:#f8f9fa;border-radius:12px;padding:22px;text-align:center;border-left:4px solid #3498db}
+.m-card.dan{border-left-color:#e74c3c}.m-card.war{border-left-color:#f39c12}.m-card.safe{border-left-color:#2ecc71}
+.m-card .n{font-size:12px;color:#888;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
+.m-card .s{font-size:36px;font-weight:700}
+.m-card .w{font-size:11px;color:#aaa;margin-top:4px}
+.chart-sec{padding:30px;background:#fafbfc}
+.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:768px){.chart-row{grid-template-columns:1fr}}
+.cbox{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.cbox h3{font-size:15px;margin-bottom:16px;color:#333}
+.concl{padding:30px}
+.concl h2{font-size:18px;margin-bottom:16px;color:#1a1a2e}
+.concl ul{list-style:none;padding:0}
+.concl li{padding:12px 0;border-bottom:1px solid #f0f0f0;display:flex;gap:12px;align-items:flex-start}
+.concl li:last-child{border-bottom:none}
+.num{width:26px;height:26px;border-radius:50%;background:#1a1a2e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.alert-box{margin:20px 30px;padding:18px 20px;border-radius:10px;font-size:14px;line-height:1.8}
+.news-sec{padding:20px 30px;background:#fafbfc}
+.news-sec h2{font-size:16px;margin-bottom:12px}
+.ni{padding:8px 0;font-size:13px;color:#444;border-bottom:1px solid #eee}
+.ni:last-child{border:none}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;margin-right:6px}
+.tag-r{background:#ffeaea;color:#c0392b}.tag-g{background:#eafff0;color:#27ae60}.tag-y{background:#fff9e6;color:#d35400}.tag-b{background:#eaf2ff;color:#2980b9}
+table.data-tbl{width:100%;border-collapse:collapse;margin:20px 30px;font-size:13px}
+.data-tbl th,.data-tbl td{padding:10px 14px;text-align:left;border-bottom:1px solid #eee}
+.data-tbl th{background:#f8f9fa;font-weight:600;color:#555}
+.data-tbl tr:hover{background:#f8f9fa}
+.footer{padding:20px 30px;background:#f8f9fa;font-size:11px;color:#999;text-align:center;line-height:1.8}
+.sox-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;padding:20px 30px}
+.sox-day{background:#f8f9fa;border-radius:8px;padding:12px;text-align:center}
+.sox-day .dt{font-size:11px;color:#999}
+.sox-day .cv{font-size:17px;font-weight:700;margin:3px 0}
+.sox-day .ch{font-size:13px;font-weight:600}
+.sox-day .ch.neg{color:#e74c3c}.sox-day .ch.pos{color:#27ae60}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>美国硬件/半导体板块 SBI 泡沫指数日报</h1>
+<div class="sub">分析日期: 2026年6月16日（周一） | 数据截至: 2026年6月13日美股收盘（上周五）</div>
+</div>
+
+<div class="sbi-dash">
+<div class="gauge">
+<div class="val">76.5</div>
+<div class="lbl">SBI 总分 / 100</div>
+<div class="badge">危险区间 (65-80)</div>
+<div class="chg chg-up">▲ +3.2分 (前次: 73.3)</div>
+</div>
+<div style="max-width:380px"><canvas id="gaugeChart" height="180"></canvas></div>
+</div>
+
+<div class="alert-box" style="margin:0 30px 20px;background:#eaf2ff;border-left-color:#2980b9">
+<strong>上周SOX强势反弹：</strong>费城半导体指数(SOX)连续两日大涨——6/11收13,171.44(+7.90%)、6/12收13,371.47(+1.52%)，从6/10低点12,206.46累计反弹+9.55%，几乎完全收复此前三连跌（6/5 -10.26%、6/9 -1.93%、6/10 -3.57%）的失地。市场情绪从恐慌快速转向乐观，但SBI评分不降反升——<strong>反弹本身正在重新积累泡沫压力。</strong>
+</div>
+
+<div class="metrics">
+<div class="m-card war"><div class="n">估值 (25%)</div><div class="s" style="color:#f39c12">78.5</div><div class="w">权重 25%</div></div>
+<div class="m-card dan"><div class="n">拥挤度 (25%)</div><div class="s" style="color:#e74c3c">89.5</div><div class="w">权重 25%</div></div>
+<div class="m-card dan"><div class="n">杠杆 (15%)</div><div class="s" style="color:#e74c3c">91.0</div><div class="w">权重 15%</div></div>
+<div class="m-card safe"><div class="n">业绩兑现 (15%)</div><div class="s" style="color:#2ecc71">26.0</div><div class="w">权重 15%</div></div>
+<div class="m-card war"><div class="n">资金流向 (10%)</div><div class="s" style="color:#f39c12">72.0</div><div class="w">权重 10%</div></div>
+<div class="m-card war"><div class="n">外部环境 (10%)</div><div class="s" style="color:#f39c12">68.0</div><div class="w">权重 10%</div></div>
+</div>
+
+<div class="chart-sec">
+<div class="chart-row">
+<div class="cbox"><h3>SBI 六维度雷达图</h3><canvas id="radarChart"></canvas></div>
+<div class="cbox"><h3>SOX 近期走势</h3><canvas id="trendChart"></canvas></div>
+</div>
+</div>
+
+<div class="sox-row">
+<div class="sox-day"><div class="dt">6月4日</div><div class="cv">13,617</div><div class="ch">--</div></div>
+<div class="sox-day" style="background:#ffeaea;border:2px solid #e74c3c"><div class="dt">6月5日</div><div class="cv">12,221</div><div class="ch neg">-10.26%</div></div>
+<div class="sox-day"><div class="dt">6月8日</div><div class="cv">12,907</div><div class="ch pos">+5.61%</div></div>
+<div class="sox-day"><div class="dt">6月9日</div><div class="cv">12,658</div><div class="ch neg">-1.93%</div></div>
+<div class="sox-day" style="background:#ffeaea;border:2px solid #e74c3c"><div class="dt">6月10日</div><div class="cv">12,206</div><div class="ch neg">-3.57%</div></div>
+<div class="sox-day" style="background:#eafff0;border:2px solid #27ae60"><div class="dt">6月11日</div><div class="cv">13,171</div><div class="ch pos">+7.90%</div></div>
+<div class="sox-day" style="background:#eafff0;border:2px solid #27ae60"><div class="dt">6月12日</div><div class="cv">13,371</div><div class="ch pos">+1.52%</div></div>
+</div>
+
+<div class="concl">
+<h2>核心结论与操作建议</h2>
+<ul>
+<li><div class="num">1</div><div><strong>SBI评分73.3升至76.5，上升3.2分，仍处危险区间。</strong>SOX虽从低点反弹近10%收复失地，但反弹并未消除根本性泡沫风险。相反，快速V型反转本身就是拥挤市场的典型特征——情绪波动极大、缺乏基本面锚定。</div></li>
+<li><div class="num">2</div><div><strong>估值维度从75.1升至78.5：</strong>NVIDIA PE仅31.42倍（合理），但AMD PE高达166.53倍（极端）、Broadcom PE 63.60倍（偏高）。龙头分化严重：NVIDIA是"估值安全岛"，而AMD等二线标的估值泡沫依旧。</div></li>
+<li><div class="num">3</div><div><strong>拥挤度和杠杆维持极端危险水平（89.5 / 91.0）：</strong>S&P 500 Top 7集中度33.8%、NVIDIA单票权重7.5%；FINRA融资余额$1.304T创历史新高（GDP占比4%、YoY+53.3%）。这些结构性问题不会因短期反弹而改变。</div></li>
+<li><div class="num">4</div><div><strong>业绩兑现维度最优（26.0分=非常安全）：</strong>Hyperscaler 2026年AI Capex超$320B，半导体销售YoY+93.9%。基本面支撑强劲是当前最大的"安全垫"，也是反弹的底层逻辑。</div></li>
+<li><div class="num">5</div><div><strong>资金流向从80.0降至72.0但仍偏危险：</strong>5月ETF大幅流出后，6月中旬可能出现了抄底资金回流。但机构态度整体谨慎，博通财报指引偏谨慎的影响仍在消化中。</div></li>
+<li><div class="num">6</div><div><strong>外部环境略有恶化（68.0）：</strong>10年期国债收益率4.45%（较前次4.49%微降），美联储利率3.50%-3.75%。6月FOMC会议已过，下一次关键节点在7月底。地缘政治风险持续。</div></li>
+</ul>
+<div class="alert-box" style="background:#fdedec;border-left-color:#e74c3c;margin-top:20px">
+<strong>操作建议：SBI 76.5分处于危险区间上沿，距离极端危险线（80分）仅3.5分。</strong>SOX V型反弹提供了短期减仓窗口：(1) AMD等高估值标的继续减仓；(2) NVIDIA/TSM等合理估值龙头可保留核心仓位；(3) 耐心等待SBI回落至50分以下再大举建仓；(4) 关注本周A股科技股暴涨是否会传导至美股半导体（联动效应）。<em>记住：暴跌后的快速反弹 ≠ 泡沫破裂，但也 ≠ 风险解除。</em>
+</div>
+</div>
+
+<table class="data-tbl">
+<thead><tr><th>数据项</th><th>数值</th><th>日期/来源</th><th>评估</th></tr></thead>
+<tbody>
+<tr><td>SOX收盘(6/12)</td><td>13,371.47 (+1.52%)</td><td>2026-06-12 / FRED</td><td>V型反弹中</td></tr>
+<tr><td>SOX收盘(6/11)</td><td>13,171.44 (+7.90%)</td><td>2026-06-11 / FRED</td><td>单日暴涨</td></tr>
+<tr><td>SOX阶段低点(6/10)</td><td>12,206.46 (-3.57%)</td><td>2026-06-10 / FRED</td><td>三连跌终点</td></tr>
+<tr><td>SOX本轮振幅</td><td>+9.55%（6/10→6/12）</td><td>--</td><td>极端波动</td></tr>
+<tr><td>NVIDIA PE(TTM)</td><td>31.42</td><td>2026-06-12 / public.com</td><td>合理偏低</td></tr>
+<tr><td>AMD PE(TTM)</td><td>166.53</td><td>2026-06-12 / 理杏仁</td><td>极端高估</td></tr>
+<tr><td>Broadcom PE(TTM)</td><td>63.60</td><td>2026-06-12 / public.com</td><td>偏高</td></tr>
+<tr><td>S&P 500 Top 7集中度</td><td>33.8%</td><td>2026-06 / simianx.ai</td><td>极端</td></tr>
+<tr><td>NVIDIA S&P权重</td><td>7.5%</td><td>2026-06 / simianx.ai</td><td>极端</td></tr>
+<tr><td>FINRA融资余额</td><td>$1.304T (GDP 4%, YoY+53.3%)</td><td>2026-04-30 / FINRA</td><td>历史新高</td></tr>
+<tr><td>10年期美债收益率</td><td>4.45%</td><td>2026-06-12 / sofrrate.com</td><td>高位</td></tr>
+<tr><td>美联储利率目标</td><td>3.50%-3.75%</td><td>2026-06 / FOMC</td><td>限制性</td></tr>
+<tr><td>Hyperscaler AI Capex</td><td>>$320B (2026年)</td><td>2026-03 / nextwavesinsight.com</td><td>支撑基本面</td></tr>
+</tbody>
+</div>
+
+<div class="footer">
+报告生成时间: 2026-06-16 09:32 CST | 数据来源: FRED, FINRA, public.com, companiesmarketcap.com, simianx.ai, nextwavesinsight.com, sofrrate.com 等<br>
+SBI (Semiconductor Bubble Index) 为自定义分析框架，仅供参考，不构成投资建议。
+</div>
+</div>
+
+<script>
+new Chart(document.getElementById('gaugeChart'),{type:'doughnut',data:{labels:['已用风险额度','剩余安全空间'],datasets:[{data:[76.5,23.5],backgroundColor:['#e74c3c','#ecf0f1'],borderWidth:0,cutout:'75%'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:false}}}});
+new Chart(document.getElementById('radarChart'),{type:'radar',data:{labels:['估值','拥挤度','杠杆','业绩兑现','资金流向','外部环境'],datasets:[{label:'2026-06-16',data:[78.5,89.5,91.0,26.0,72.0,68.0],backgroundColor:'rgba(231,76,60,0.2)',borderColor:'#e74c3c',pointBackgroundColor:'#e74c3c',borderWidth:2},{label:'2026-06-11',data:[75.1,88.9,90.4,24.4,80.0,70.4],backgroundColor:'rgba(149,165,166,0.08)',borderColor:'#95a5a6',pointBackgroundColor:'#95a5a6',borderWidth:1,borderDash:[5,5]}]},options:{responsive:true,scales:{r:{min:0,max:100,ticks:{stepSize:20,color:'#999',font:{size:10}},grid:{color:'#eee'},angleLines:{color:'#eee'},pointLabels:{font:{size:12,weight:'600'},color:'#333'}}},plugins:{legend:{position:'bottom',labels:{font:{size:11}}}}}});
+new Chart(document.getElementById('trendChart'),{type:'line',data:{labels:['6/4','6/5','6/8','6/9','6/10','6/11','6/12'],datasets:[{label:'SOX收盘',data:[13617,12221,12907,12658,12206,13171,13371],borderColor:'#2980b9',backgroundColor:'rgba(41,128,185,0.08)',fill:true,tension:.3,pointRadius:5,pointBackgroundColor:function(ctx){var v=ctx.raw;return v>=13000?'#27ae60':(v<=12250?'#e74c3c':'#f39c12')}},{label:'200MA(估)',data:[10500,10500,10500,10500,10500,10500,10500],borderColor:'#95a5a6',borderDash:[5,5],pointRadius:0,fill:false}]},options:{responsive:true,interaction:{intersect:false,mode:'index'},plugins:{legend:{position:'bottom',labels:{font:{size:11}}}},scales:{y:{grid:{color:'#f0f0f0'},ticks:{color:'#999',font:{size:10}}},x:{grid:{display:false},ticks:{color:'#999',font:{size:10}}}}}});
+</script>
+</body>
+</html>
