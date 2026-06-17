@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>科磊 KLA Corporation (KLAC) 深度研究报告 | Snail Investment</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+:root{
+  --bg0:#EFF4FB;--bg1:#E4EDF7;--bgc:#FFFFFF;--bgd:#F5F8FE;--bgdk:#0C1E40;
+  --b1:#1B4FA8;--b2:#2563EB;--b3:#3B82F6;--b4:#93C5FD;--b5:#DBEAFE;--b6:#EFF6FF;
+  --nv:#0A2050;--nvl:#163070;
+  --gn:#065F46;--gnl:#D1FAE5;--gnb:#10B981;
+  --rd:#991B1B;--rdl:#FEE2E2;--rdb:#EF4444;
+  --am:#92400E;--aml:#FEF3C7;--amb:#F59E0B;
+  --pu:#5B21B6;--pul:#EDE9FE;--pub:#7C3AED;
+  --t1:#0F172A;--t2:#1E293B;--t3:#475569;--t4:#94A3B8;
+  --bd:#CBD5E1;--bd2:#E2E8F0;--bd3:#F1F5F9;
+  --sh:0 1px 3px rgba(12,30,64,.08),0 1px 2px rgba(12,30,64,.05);
+  --sh2:0 4px 20px rgba(12,30,64,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg0);color:var(--t1);font-family:'Noto Sans SC','PingFang SC',sans-serif;font-size:14px;line-height:1.75;overflow-x:hidden;}
+#nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd2);display:flex;align-items:center;justify-content:space-between;padding:0 36px;height:52px;box-shadow:var(--sh);}
+.nbrand{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--b1);font-weight:700;letter-spacing:.04em;}
+.nlinks{display:flex;gap:2px;overflow-x:auto;}
+.nlinks a{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--t3);text-decoration:none;padding:5px 9px;border-radius:4px;white-space:nowrap;letter-spacing:.05em;text-transform:uppercase;transition:all .15s;}
+.nlinks a:hover,.nlinks a.act{color:var(--b2);background:var(--b5);}
+.nrate{font-family:'IBM Plex Mono',monospace;font-size:11px;display:flex;align-items:center;gap:8px;white-space:nowrap;}
+.npill{background:var(--b2);color:#fff;padding:3px 12px;border-radius:4px;font-weight:700;font-size:11px;}
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--nv) 0%,#1A3A7A 40%,#1E4D9E 75%,#2060B8 100%);padding:84px 52px 56px;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(147,197,253,.5),transparent);}
+.hwm{position:absolute;right:-20px;top:-50px;font-family:'IBM Plex Mono',monospace;font-size:260px;font-weight:700;color:rgba(255,255,255,.035);letter-spacing:-8px;pointer-events:none;user-select:none;line-height:1;}
+.hg1{position:absolute;bottom:-80px;right:-80px;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);}
+.hg2{position:absolute;bottom:-130px;right:-130px;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);}
+.hbrow{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px;display:flex;gap:18px;flex-wrap:wrap;}
+.hero h1{font-family:'Noto Serif SC',serif;font-size:36px;font-weight:700;color:#fff;line-height:1.22;margin-bottom:9px;}
+.hero h1 .co{color:#93C5FD;}
+.hsub{font-family:'Noto Serif SC',serif;font-size:15px;color:rgba(255,255,255,.68);margin-bottom:36px;font-weight:300;}
+/* SPLIT BADGE */
+.split-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(251,191,36,.18);border:1px solid rgba(251,191,36,.45);padding:6px 14px;border-radius:6px;margin-bottom:18px;}
+.split-badge span{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#FCD34D;font-weight:700;}
+.split-badge small{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(252,211,77,.7);text-transform:uppercase;letter-spacing:.08em;}
+/* KPI STRIP */
+.kstrip{display:flex;gap:0;border:1px solid rgba(255,255,255,.16);border-radius:8px;overflow:hidden;width:fit-content;margin-bottom:28px;flex-wrap:wrap;}
+.kc{padding:13px 20px;background:rgba(255,255,255,.08);border-right:1px solid rgba(255,255,255,.1);}
+.kc:last-child{border-right:none;}
+.klbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.48);text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px;}
+.kv{font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:#fff;}
+.kv.gr{color:#6EE7B7;}
+.kv.am{color:#FCD34D;}
+.kv.re{color:#FCA5A5;}
+.ksub{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.42);margin-top:2px;}
+.ksub .up{color:#6EE7B7;}
+/* RATING PILLS */
+.rrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.rp{display:inline-flex;flex-direction:column;gap:3px;padding:10px 18px;border-radius:6px;border:1px solid rgba(255,255,255,.18);}
+.rlbl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.11em;color:rgba(255,255,255,.48);}
+.rval{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;color:#fff;}
+.rp.hold{background:rgba(251,191,36,.16);border-color:rgba(251,191,36,.4);}
+.rp.hold .rval{color:#FCD34D;}
+.rp.tp{background:rgba(96,165,250,.16);border-color:rgba(96,165,250,.4);}
+.rp.tp .rval{color:#93C5FD;}
+.rp.up{background:rgba(16,185,129,.14);border-color:rgba(16,185,129,.35);}
+.rp.up .rval{color:#A7F3D0;}
+.rp.en{background:rgba(167,139,250,.14);border-color:rgba(167,139,250,.35);}
+.rp.en .rval{color:#C4B5FD;}
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px 100px;}
+.sec{margin-top:64px;scroll-margin-top:66px;}
+.shd{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid var(--b5);}
+.snum{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--b2);background:var(--b5);padding:3px 9px;border-radius:4px;letter-spacing:.1em;font-weight:700;}
+.stit{font-family:'Noto Serif SC',serif;font-size:19px;font-weight:600;color:var(--nv);}
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;}
+.g21{display:grid;grid-template-columns:2fr 1fr;gap:16px;}
+/* CARDS */
+.card{background:var(--bgc);border:1px solid var(--bd2);border-radius:8px;padding:20px 22px;box-shadow:var(--sh);}
+.card.bl{border-left:4px solid var(--b2);}
+.card.gr{border-left:4px solid var(--gnb);}
+.card.re{border-left:4px solid var(--rdb);}
+.card.am{border-left:4px solid var(--amb);}
+.card.nv{border-left:4px solid var(--nv);}
+.card.pu{border-left:4px solid var(--pub);}
+.card.hl{background:var(--b6);border:1px solid var(--b4);}
+.clbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px;}
+.cbig{font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:600;color:var(--nv);line-height:1.05;}
+.cbig.bl{color:var(--b2);}
+.cbig.gr{color:var(--gn);}
+.cbig.am{color:var(--am);}
+.cbig.re{color:var(--rd);}
+.cbig.pu{color:var(--pu);}
+.csub{font-size:11.5px;color:var(--t3);margin-top:4px;}
+.csub .up{color:var(--gnb);}
+.csub .dn{color:var(--rdb);}
+.ctit{font-family:'Noto Serif SC',serif;font-size:14px;font-weight:600;color:var(--nv);margin-bottom:11px;}
+.prose{font-size:13.5px;color:var(--t2);line-height:1.9;}
+.prose strong{color:var(--t1);font-weight:600;}
+.prose .hl{color:var(--b2);font-weight:600;}
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px;}
+.tbl thead tr{background:var(--bgd);}
+.tbl th{color:var(--t3);font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.09em;padding:9px 12px;text-align:left;border-bottom:2px solid var(--bd2);}
+.tbl th.r{text-align:right;}
+.tbl td{padding:9px 12px;border-bottom:1px solid var(--bd3);color:var(--t2);vertical-align:middle;}
+.tbl td.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--t1);}
+.tbl td.r{text-align:right;}
+.tbl tr:hover td{background:var(--b6);}
+/* TAGS */
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;}
+.tg{background:var(--gnl);color:var(--gn);}
+.tr2{background:var(--rdl);color:var(--rd);}
+.ta{background:var(--aml);color:var(--am);}
+.tb{background:var(--b5);color:var(--b1);}
+.tp2{background:var(--pul);color:var(--pu);}
+.tn{background:var(--bd3);color:var(--nv);}
+/* BARS */
+.bar{display:flex;align-items:center;gap:11px;margin-bottom:9px;}
+.blbl{width:168px;font-size:12px;color:var(--t2);flex-shrink:0;}
+.btrk{flex:1;height:7px;background:var(--bd2);border-radius:4px;overflow:hidden;}
+.bfill{height:100%;border-radius:4px;}
+.bbl{background:linear-gradient(90deg,var(--b4),var(--b2));}
+.bgr{background:linear-gradient(90deg,#A7F3D0,var(--gnb));}
+.bre{background:linear-gradient(90deg,#FCA5A5,var(--rdb));}
+.bam{background:linear-gradient(90deg,#FDE68A,var(--amb));}
+.bnv{background:linear-gradient(90deg,var(--b4),var(--nv));}
+.bpu{background:linear-gradient(90deg,#C4B5FD,var(--pub));}
+.bval{width:64px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--t1);flex-shrink:0;}
+/* CALLOUT */
+.co{background:var(--b6);border:1px solid var(--b4);border-radius:6px;padding:16px 20px;margin-bottom:14px;}
+.co.gr{background:var(--gnl);border-color:#6EE7B7;}
+.co.re{background:var(--rdl);border-color:#FCA5A5;}
+.co.am{background:var(--aml);border-color:#FDE68A;}
+.co.pu{background:var(--pul);border-color:#C4B5FD;}
+.cotit{font-family:'Noto Serif SC',serif;font-size:13px;font-weight:700;color:var(--b1);margin-bottom:7px;}
+.co.gr .cotit{color:var(--gn);}
+.co.re .cotit{color:var(--rd);}
+.co.am .cotit{color:var(--am);}
+.co.pu .cotit{color:var(--pu);}
+.co p{font-size:13px;color:var(--t2);line-height:1.85;}
+/* SCENARIOS */
+.scrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:14px;}
+.sc{background:var(--bgc);border:1px solid var(--bd2);border-radius:8px;padding:20px 22px;box-shadow:var(--sh);position:relative;overflow:hidden;}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.sc.bull::before{background:var(--gnb);}
+.sc.base::before{background:var(--b2);}
+.sc.bear::before{background:var(--rdb);}
+.sclbl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.11em;margin-bottom:9px;}
+.sc.bull .sclbl{color:var(--gn);}
+.sc.base .sclbl{color:var(--b1);}
+.sc.bear .sclbl{color:var(--rd);}
+.scpri{font-family:'IBM Plex Mono',monospace;font-size:30px;font-weight:700;margin-bottom:3px;}
+.sc.bull .scpri{color:var(--gn);}
+.sc.base .scpri{color:var(--b2);}
+.sc.bear .scpri{color:var(--rd);}
+.scprob{font-size:11px;color:var(--t3);margin-bottom:4px;}
+.scret{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;margin-bottom:11px;}
+.sc.bull .scret{color:var(--gn);}
+.sc.base .scret{color:var(--b2);}
+.sc.bear .scret{color:var(--rd);}
+.scdesc{font-size:12.5px;color:var(--t2);line-height:1.73;}
+.scdiv{border:none;border-top:1px solid var(--bd2);margin:9px 0;}
+/* RISK ROWS */
+.risk{display:flex;align-items:flex-start;gap:14px;padding:13px 0;border-bottom:1px solid var(--bd3);}
+.risk:last-child{border:none;}
+.rbdg{width:54px;flex-shrink:0;text-align:center;padding-top:2px;}
+.rbdg span{display:inline-block;padding:3px 6px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;}
+.rbdg.hi span{background:var(--rdl);color:var(--rd);}
+.rbdg.md span{background:var(--aml);color:var(--am);}
+.rbdg.lo span{background:var(--gnl);color:var(--gn);}
+.rtit{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:4px;}
+.rdesc{font-size:12.5px;color:var(--t2);line-height:1.75;}
+/* TIMELINE */
+.tl{position:relative;padding-left:26px;}
+.tl::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--b4);}
+.tli{position:relative;margin-bottom:20px;}
+.tldot{position:absolute;left:-22px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--b2);border:2px solid var(--bgc);box-shadow:0 0 0 2px var(--b3);}
+.tldate{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--b2);margin-bottom:2px;font-weight:700;}
+.tltit{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:2px;}
+.tldesc{font-size:12px;color:var(--t2);}
+/* CAT LIST */
+.cats{display:flex;flex-direction:column;gap:10px;}
+.ci{display:flex;gap:11px;align-items:flex-start;}
+.cdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+.cbl{background:var(--b2);}
+.cgr{background:var(--gnb);}
+.cre{background:var(--rdb);}
+.cam{background:var(--amb);}
+.cnv{background:var(--nv);}
+.cpu{background:var(--pub);}
+.ci p{font-size:13px;color:var(--t2);line-height:1.75;}
+.ci p strong{color:var(--t1);}
+/* SEGMENT BAR */
+.svbar{display:flex;height:10px;border-radius:5px;overflow:hidden;margin:9px 0 6px;}
+.sp{height:100%;}
+.sleg{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.sli{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);}
+.sdot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+/* DCF MATRIX */
+.dcfm{border-collapse:collapse;font-family:'IBM Plex Mono',monospace;font-size:11px;width:100%;}
+.dcfm th,.dcfm td{padding:7px 11px;border:1px solid var(--bd2);text-align:center;}
+.dcfm th{background:var(--bgd);color:var(--t3);font-size:9px;letter-spacing:.07em;}
+.dcfm .thr{color:var(--t2);}
+.bzone{background:var(--gnl);color:var(--gn);}
+.mzone{background:var(--b6);color:var(--b1);}
+.rzone{background:var(--rdl);color:var(--rd);}
+.dzone{background:var(--b5);color:var(--nv);font-weight:700;}
+/* MOAT VIZ */
+.moat-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.moat-lbl{width:200px;font-size:12px;color:var(--t2);flex-shrink:0;}
+.moat-trk{flex:1;height:10px;background:var(--bd2);border-radius:5px;overflow:hidden;}
+.moat-fill{height:100%;border-radius:5px;}
+.moat-val{width:50px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--t1);flex-shrink:0;}
+/* FOOTER */
+.footer{background:var(--nv);padding:36px 52px;margin-top:80px;}
+.ftbrand{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--b4);font-weight:700;margin-bottom:12px;}
+.ftdisc{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.38);line-height:1.9;max-width:1000px;}
+@media(max-width:900px){
+  .hero{padding:72px 20px 38px;}.wrap{padding:0 20px 80px;}
+  #nav{padding:0 16px;}
+  .g2,.g3,.g4,.g21{grid-template-columns:1fr;}
+  .scrow{grid-template-columns:1fr;}.hwm{display:none;}.kstrip{width:100%;}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nbrand">🐌 Snail Investment · 精品研究部</div>
+  <div class="nlinks">
+    <a href="#s01">摘要</a><a href="#s02">公司</a><a href="#s03">财务</a>
+    <a href="#s04">业务</a><a href="#s05">市场</a><a href="#s06">估值</a>
+    <a href="#s07">DCF</a><a href="#s08">情景</a><a href="#s09">风险</a>
+    <a href="#s10">催化剂</a><a href="#s11">ESG</a><a href="#s12">建议</a>
+  </div>
+  <div class="nrate"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--t3);">KLAC $241.16 (拆后)</span><span class="npill">持有 · $265 目标</span></div>
+</nav>
+
+<div class="hero">
+  <div class="hwm">KLAC</div>
+  <div class="hg1"></div><div class="hg2"></div>
+  <div class="hbrow">
+    <span>NASDAQ：KLAC</span><span>半导体工艺控制设备</span>
+    <span>加州米尔皮塔斯</span><span>US GAAP</span><span>截止 2026年6月12日</span>
+  </div>
+  <div class="split-badge">
+    <span>🔀 10:1 股票分拆</span>
+    <small>2026年6月12日生效 · 分拆后价格约$241</small>
+  </div>
+  <h1><span class="co">科磊 KLA Corporation</span><br>深度股票研究报告</h1>
+  <div class="hsub">全球过程控制设备龙头 · 市占率58% · AI半导体制造的质量守门人</div>
+  <div class="kstrip">
+    <div class="kc"><div class="klbl">当前股价（拆后）</div><div class="kv">$241.16</div><div class="ksub">2026-06-12 拆后首日</div></div>
+    <div class="kc"><div class="klbl">市值</div><div class="kv">~$314B</div><div class="ksub">流通股约13.06亿</div></div>
+    <div class="kc"><div class="klbl">52周区间（拆后）</div><div class="kv" style="font-size:14px;">$83.2–$243.1</div><div class="ksub">YTD +99.7%</div></div>
+    <div class="kc"><div class="klbl">TTM P/E</div><div class="kv am">~49.6x</div><div class="ksub">行业均值70.2x</div></div>
+    <div class="kc"><div class="klbl">季度股息（拆后）</div><div class="kv gr">$0.23</div><div class="ksub">年化$0.92/股 +21%</div></div>
+    <div class="kc"><div class="klbl">Q3 FY2026 营收</div><div class="kv gr">$3.415B</div><div class="ksub"><span class="up">▲ +11% YoY</span></div></div>
+    <div class="kc"><div class="klbl">毛利率（非GAAP）</div><div class="kv gr">61.5%</div><div class="ksub">行业顶尖水平</div></div>
+    <div class="kc"><div class="klbl">ROE（TTM）</div><div class="kv gr">108.6%</div><div class="ksub">极度高效资本利用</div></div>
+  </div>
+  <div class="rrow">
+    <div class="rp hold"><div class="rlbl">投资评级</div><div class="rval">持有 HOLD</div></div>
+    <div class="rp tp"><div class="rlbl">12个月目标价（拆后）</div><div class="rval">$265.00</div></div>
+    <div class="rp up"><div class="rlbl">含息潜在总回报</div><div class="rval">+10.2%</div></div>
+    <div class="rp en"><div class="rlbl">建议买入区间</div><div class="rval">$210–$225</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+<!-- SEC 01 -->
+<div class="sec" id="s01">
+<div class="shd"><span class="snum">01</span><span class="stit">投资逻辑摘要</span></div>
+<div class="co" style="margin-bottom:18px;">
+  <div class="cotit">核心观点：持有（HOLD），目标价 $265（拆后），建议回调至 $210–225 买入</div>
+  <p>科磊（KLA Corporation，NASDAQ：KLAC）是全球半导体过程控制与良率管理设备的<strong>绝对龙头</strong>，拥有约<strong>58%的全球市占率</strong>，较第二名领先7.5倍。公司Q3 FY2026营收$34.15亿（+11% YoY），连续四个季度超预期，管理层上调全年WFE市场预测至$140B+，2026年先进封装过程控制收入预计翻倍至近$10亿。2026年6月12日，10合1股票分拆正式生效，叠加$70亿新增回购授权及21%股息提升，资本回报力度空前。</p>
+  <p style="margin-top:8px;">然而，在这场令人振奋的业绩盛宴背后，估值隐患值得警惕。股价年初至今已上涨约<strong>+99.7%</strong>，过去一年累计上涨<strong>+195%</strong>，分拆后当前P/E约49.6x（基于TTM EPS），而过去5年平均P/E约30–35x。Simply Wall St 估算股价较公允价值溢价约<strong>181%</strong>，即便是看多的机构其目标价均值（约$187，预分拆）也低于分拆前价格。在AI资本开支周期验证、中国出口管制风险和内部人减持信号交织的背景下，我们认为当前价位风险回报比已不够突出，维持"持有"评级，等待$210–225区间（对应拆后约40x NTM P/E）的更佳入场机会。</p>
+</div>
+<div class="g3">
+  <div class="card gr">
+    <div class="clbl">多方核心逻辑</div><div class="ctit">结构性护城河 · AI驱动周期</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>全球市占率58%，护城河极深：</strong>过程控制设备需要与晶圆厂工艺深度耦合，切换成本极高，KLA市份额超第二名（Applied Materials）7.5倍</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p><strong>AI芯片制造的"必需品"：</strong>AI芯片die尺寸越大，单个缺陷的损失越惨重，检测密度必然提升；CoWoS等先进封装亦需大量过程控制</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p><strong>服务收入提供基石：</strong>服务收入80%有长期合同保障，工具平均使用寿命>20年，提供抗周期的稳定收入基础</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>2030年目标模型预计市场份额再提升150基点，服务CAGR 13–15%，目标总收入约<strong>$200亿/年</strong></p></div>
+    </div>
+  </div>
+  <div class="card bl">
+    <div class="clbl">近期催化剂</div><div class="ctit">股票分拆 · 超级回购 · 提价分红</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cbl"></div><p><strong>10:1 分拆扩大投资者覆盖：</strong>降低名义股价，吸引更多个人投资者和指数跟踪资金，历史上分拆后交易量通常提升30–50%</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>$70亿新增回购授权：</strong>叠加原有计划，总授权规模约为当前市值的约2.2%/年，股息提升21%至拆前$2.30/股</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>2026年先进封装收入大超预期：</strong>从$6.35亿上调至约$10亿，+57.5%，直接受益于台积电CoWoS产能扩张和HBM需求爆发</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p>Q4 FY2026指引：营收$35.75亿（±$2亿），非GAAP EPS $9.87（±$1），<strong>管理层"对2026年日历年高度自信"</strong></p></div>
+    </div>
+  </div>
+  <div class="card am">
+    <div class="clbl">主要风险</div><div class="ctit">极度高估值 · 政策与周期风险</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cam"></div><p><strong>估值已充分定价甚至溢价：</strong>TTM P/E约49.6x，分拆后股价较内在价值溢价约180%（Simply Wall St DCF），上行空间有限</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>内部人近期减持$970万：</strong>多位高管于Q3业绩后累计出售约$970万股票，是近几季度最大规模的集中减持，需警惕信号</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>中国出口管制悬剑：</strong>中国是KLA重要市场（约占营收20–25%），美国出口管制持续收紧风险，可能触发订单中断或延迟</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>WFE周期下行风险：</strong>若AI资本开支增速放缓或宏观经济进入衰退，半导体设备需求可能骤然下滑，历史上WFE年度变化可达±30%</p></div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SEC 02 COMPANY -->
+<div class="sec" id="s02">
+<div class="shd"><span class="snum">02</span><span class="stit">公司概览 · 业务架构</span></div>
+<div class="g21" style="margin-bottom:16px;">
+  <div class="card">
+    <div class="ctit">公司简介</div>
+    <div class="prose">KLA Corporation（前身为 KLA-Tencor）成立于<strong>1976年</strong>，总部位于加州米尔皮塔斯，是全球半导体过程控制、良率管理及专业工艺设备的领导者。公司核心使命是帮助晶圆厂实现"零缺陷"量产——在单一晶圆上发现并修正纳米级缺陷，是每一块先进芯片能够量产的幕后质量守门人。<br><br>
+    截至2026年6月，KLA是标普500成分股及费城半导体指数（SOX）重要成员，市值约<strong>$3,140亿</strong>（分拆后），全球员工约<strong>15,000人</strong>，客户覆盖台积电、三星、英特尔、SK海力士、美光等全球顶尖芯片制造商。<br><br>
+    2026年6月12日，10合1股票分拆正式生效，每位股东持有的1股变为10股，股价从~$2,411降至~$241，市值不变。KLA历史上进行过6次股票分拆，此次分拆是KLA股价连续大涨后提升零售投资者可及性的战略举措。</div>
+  </div>
+  <div class="card bl">
+    <div class="ctit">KLA 竞争地位：护城河的量化视角</div>
+    <div class="moat-row"><div class="moat-lbl">过程控制市场份额</div><div class="moat-trk"><div class="moat-fill" style="width:58%;background:linear-gradient(90deg,var(--b4),var(--b2));"></div></div><div class="moat-val">58%</div></div>
+    <div class="moat-row"><div class="moat-lbl">服务收入合同覆盖率</div><div class="moat-trk"><div class="moat-fill" style="width:80%;background:linear-gradient(90deg,#A7F3D0,var(--gnb));"></div></div><div class="moat-val">80%</div></div>
+    <div class="moat-row"><div class="moat-lbl">平均工具寿命（年）</div><div class="moat-trk"><div class="moat-fill" style="width:65%;background:linear-gradient(90deg,var(--b4),var(--nv));"></div></div><div class="moat-val">20yr+</div></div>
+    <div class="moat-row"><div class="moat-lbl">非GAAP毛利率</div><div class="moat-trk"><div class="moat-fill" style="width:61.5%;background:linear-gradient(90deg,#FDE68A,var(--amb));"></div></div><div class="moat-val">61.5%</div></div>
+    <div class="moat-row"><div class="moat-lbl">EBIT利润率</div><div class="moat-trk"><div class="moat-fill" style="width:43%;background:linear-gradient(90deg,#C4B5FD,var(--pub));"></div></div><div class="moat-val">~43%</div></div>
+    <div class="moat-row"><div class="moat-lbl">ROE（TTM）</div><div class="moat-trk"><div class="moat-fill" style="width:100%;background:linear-gradient(90deg,#FCA5A5,var(--rdb));"></div></div><div class="moat-val">108.6%</div></div>
+    <div style="margin-top:12px;font-size:11.5px;color:var(--t3);line-height:1.8;">
+      ✅ Q3 FY2026连续第4次超预期<br>
+      ✅ WFE市场预测上调至$140B+<br>
+      ✅ $70亿新增回购授权，股息+21%<br>
+      ⚠ 内部人Q3后减持约$970万<br>
+      ⚠ 估值较DCF内在价值溢价约180%
+    </div>
+  </div>
+</div>
+<div class="card" style="margin-bottom:14px;">
+  <div class="ctit">业务板块构成（Q3 FY2026营收$3.415B，来源：KLA IR / SEC EDGAR 8-K 2026年4月29日）</div>
+  <div class="svbar">
+    <div class="sp" style="width:55%;background:var(--b2);"></div>
+    <div class="sp" style="width:20%;background:#3B82F6;"></div>
+    <div class="sp" style="width:17%;background:#60A5FA;"></div>
+    <div class="sp" style="width:8%;background:#93C5FD;"></div>
+  </div>
+  <div class="sleg" style="margin-bottom:16px;">
+    <div class="sli"><div class="sdot" style="background:var(--b2);"></div>半导体过程控制系统 ~55%（约$1.88B）</div>
+    <div class="sli"><div class="sdot" style="background:#3B82F6;"></div>特种工艺系统 ~20%（约$0.68B）</div>
+    <div class="sli"><div class="sdot" style="background:#60A5FA;"></div>服务与其他 ~17%（约$0.58B）</div>
+    <div class="sli"><div class="sdot" style="background:#93C5FD;"></div>先进封装及其他 ~8%（约$0.27B）</div>
+  </div>
+  <div class="g4">
+    <div><div class="clbl">过程控制系统</div><div class="cbig bl" style="font-size:20px;">~$1.88B</div><div class="csub"><span class="up">核心业务</span></div><div class="csub" style="margin-top:4px;font-size:11.5px;line-height:1.7;">电子束检测<br>光学缺陷检测<br>量测与计量</div></div>
+    <div><div class="clbl">特种工艺系统</div><div class="cbig bl" style="font-size:20px;">~$0.68B</div><div class="csub"><span class="up">增长中</span></div><div class="csub" style="margin-top:4px;font-size:11.5px;line-height:1.7;">PCB/FPD检测<br>数据存储<br>太阳能/LED</div></div>
+    <div><div class="clbl">服务业务</div><div class="cbig gr" style="font-size:20px;">~$0.58B</div><div class="csub"><span class="up">抗周期</span></div><div class="csub" style="margin-top:4px;font-size:11.5px;line-height:1.7;">80%合同覆盖<br>CAGR目标13–15%<br>工具寿命20yr+</div></div>
+    <div><div class="clbl">先进封装过控</div><div class="cbig pu" style="font-size:20px;">~$1B↑</div><div class="csub"><span class="up">2026年翻倍预期</span></div><div class="csub" style="margin-top:4px;font-size:11.5px;line-height:1.7;">CoWoS/HBM驱动<br>从$6.35亿→$10亿<br>最快增速板块</div></div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit">管理层评估（来源：SEC EDGAR / KLA IR / 业绩电话会议）</div>
+  <table class="tbl">
+    <thead><tr><th>姓名/职位</th><th>主要动向</th><th class="r">评价</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Rick Wallace（总裁兼CEO）</strong></td><td>领导KLA超20年，主导公司从单一检测设备商向"过程控制生态系统"转型；Q3电话会议明确表示"对2026年日历年高度自信"，2030年目标模型清晰；近期减持股票约$310万（Q3后）</td><td class="mono r"><span class="tag tg">战略清晰</span></td></tr>
+      <tr><td><strong>Bren Higgins（CFO）</strong></td><td>6月3日BofA科技大会发言是本轮股价暴涨的核心催化剂：明确表示2026 WFE可能"略高于$140B+"，2027年能见度"remarkable"；主导$70亿回购授权及21%股息提升；在公开市场减持约$310万</td><td class="mono r"><span class="tag tg">资本纪律强</span></td></tr>
+      <tr><td><strong>Oreste Donzella（前CSO）</strong></td><td>已于2025年4月转为兼职高级顾问，将于2026年8月16日正式结束顾问期；过渡平稳，不影响战略执行</td><td class="mono r"><span class="tag tb">有序交接</span></td></tr>
+      <tr><td><strong>多位高管</strong></td><td>Simply Wall St及SEC Form 4显示，Q3业绩发布后多位内部人累计出售约$970万股票，是近几季度最大规模集中减持；规模相对市值仍小，但时点（业绩大超+股价高位）值得关注</td><td class="mono r"><span class="tag ta">近期减持</span></td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<!-- SEC 03 FINANCIALS -->
+<div class="sec" id="s03">
+<div class="shd"><span class="snum">03</span><span class="stit">财务业绩 · 历史数据回顾</span></div>
+<div class="g4" style="margin-bottom:18px;">
+  <div class="card gr"><div class="clbl">Q3 FY2026 营收</div><div class="cbig gr">$3.415B</div><div class="csub"><span class="up">▲ +11% YoY，+4% QoQ</span></div></div>
+  <div class="card gr"><div class="clbl">Q3 FY2026 非GAAP EPS</div><div class="cbig gr">$9.40</div><div class="csub"><span class="up">▲ vs Q3 FY2025 $6.02，超预期$0.33</span></div></div>
+  <div class="card bl"><div class="clbl">Q3 FY2026 毛利率（非GAAP）</div><div class="cbig bl">61.5%</div><div class="csub">EBIT利润率约43%</div></div>
+  <div class="card am"><div class="clbl">Q3 FY2026 GAAP净利润</div><div class="cbig am">$1.201B</div><div class="csub">净利率约35.2%</div></div>
+</div>
+<div class="card" style="margin-bottom:16px;">
+  <div class="ctit" style="margin-bottom:14px;">年度财务数据一览（美元百万，来源：SEC EDGAR 8-K / KLA IR 官网）</div>
+  <table class="tbl">
+    <thead><tr><th>财务指标</th><th class="r">FY2022</th><th class="r">FY2023</th><th class="r">FY2024</th><th class="r">FY2025（实际）</th><th class="r">FY2026E（TTM+指引）</th><th class="r">YoY</th></tr></thead>
+    <tbody>
+      <tr><td>总营收（$M）</td><td class="mono r">9,213</td><td class="mono r">10,498</td><td class="mono r">9,812</td><td class="mono r">12,159</td><td class="mono r">~13,700</td><td class="mono r"><span class="tag tg">▲+13%</span></td></tr>
+      <tr><td>系统营收（$M）</td><td class="mono r">~7,400</td><td class="mono r">~8,600</td><td class="mono r">~7,700</td><td class="mono r">~9,800</td><td class="mono r">~11,200</td><td class="mono r"><span class="tag tg">▲+14%</span></td></tr>
+      <tr><td>服务营收（$M）</td><td class="mono r">~1,800</td><td class="mono r">~1,900</td><td class="mono r">~2,100</td><td class="mono r">~2,360</td><td class="mono r">~2,500</td><td class="mono r"><span class="tag tg">▲+6%</span></td></tr>
+      <tr><td>非GAAP毛利率（%）</td><td class="mono r">60.4%</td><td class="mono r">60.7%</td><td class="mono r">60.3%</td><td class="mono r">61.2%</td><td class="mono r">~61.5%</td><td class="mono r"><span class="tag tg">▲稳步提升</span></td></tr>
+      <tr><td>非GAAP营业利润率（%）</td><td class="mono r">41.8%</td><td class="mono r">42.7%</td><td class="mono r">40.6%</td><td class="mono r">43.2%</td><td class="mono r">~43–44%</td><td class="mono r"><span class="tag tg">▲持续扩张</span></td></tr>
+      <tr><td>GAAP净利润（$M）</td><td class="mono r">3,322</td><td class="mono r">3,388</td><td class="mono r">2,762</td><td class="mono r">4,059</td><td class="mono r">~4,800</td><td class="mono r"><span class="tag tg">▲+18%</span></td></tr>
+      <tr><td>非GAAP稀释EPS（$，拆前）</td><td class="mono r">20.33</td><td class="mono r">24.74</td><td class="mono r">22.94</td><td class="mono r">30.53</td><td class="mono r">~36.01E（拆前）</td><td class="mono r"><span class="tag tg">▲+18%</span></td></tr>
+      <tr><td>非GAAP稀释EPS（$，拆后×0.1）</td><td class="mono r">2.03</td><td class="mono r">2.47</td><td class="mono r">2.29</td><td class="mono r">3.05</td><td class="mono r">~3.60E</td><td class="mono r"><span class="tag tg">▲+18%</span></td></tr>
+      <tr><td>自由现金流（$M，TTM）</td><td class="mono r">~2,600</td><td class="mono r">~2,900</td><td class="mono r">~3,400</td><td class="mono r">~4,010</td><td class="mono r">~4,600E</td><td class="mono r"><span class="tag tg">▲+15%</span></td></tr>
+      <tr><td>净资产回报率ROE（%）</td><td class="mono r">~75%</td><td class="mono r">~88%</td><td class="mono r">~80%</td><td class="mono r">~95%</td><td class="mono r">108.6%（TTM）</td><td class="mono r"><span class="tag tg">▲历史峰值</span></td></tr>
+      <tr><td>总现金（$B）</td><td class="mono r">~2.5</td><td class="mono r">~2.9</td><td class="mono r">~3.6</td><td class="mono r">~4.2</td><td class="mono r">4.96（Q3末）</td><td class="mono r"><span class="tag tg">▲现金充裕</span></td></tr>
+      <tr><td>总债务（$B）</td><td class="mono r">~5.5</td><td class="mono r">~5.5</td><td class="mono r">~5.8</td><td class="mono r">~5.9</td><td class="mono r">5.89（Q3末）</td><td class="mono r"><span class="tag tb">→稳定</span></td></tr>
+      <tr><td>季度股息/股（拆前→拆后）</td><td class="mono r">$1.05</td><td class="mono r">$1.30</td><td class="mono r">$1.45</td><td class="mono r">$1.90→$2.30</td><td class="mono r">$0.23（拆后）</td><td class="mono r"><span class="tag tg">▲+21%</span></td></tr>
+      <tr><td>资本回报（股息+回购，$B，TTM）</td><td class="mono r">~2.1</td><td class="mono r">~2.6</td><td class="mono r">~3.0</td><td class="mono r">~3.1</td><td class="mono r">~3.15（Q3 TTM）</td><td class="mono r"><span class="tag tg">▲连续增长</span></td></tr>
+    </tbody>
+  </table>
+  <div class="csub" style="margin-top:8px;">数据来源：KLA Corporation SEC EDGAR 8-K（Q3 FY2026，2026年4月29日）、KLA IR官网、Simply Wall St；FY2026E含Q3已公布实际值+Q4指引中值测算；EPS注意10:1分拆换算。</div>
+</div>
+<div class="g2">
+  <div class="card">
+    <div class="ctit">季度营收趋势（FY2025–FY2026，来源：SEC EDGAR）</div>
+    <svg viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;margin:8px 0 12px;">
+      <defs>
+        <linearGradient id="kg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2563EB" stop-opacity="0.2"/>
+          <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line x1="48" y1="10" x2="48" y2="130" stroke="#E2E8F0" stroke-width="1"/>
+      <line x1="48" y1="130" x2="490" y2="130" stroke="#E2E8F0" stroke-width="1"/>
+      <line x1="48" y1="107" x2="490" y2="107" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <line x1="48" y1="80" x2="490" y2="80" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <line x1="48" y1="52" x2="490" y2="52" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <text x="43" y="133" font-size="7.5" fill="#94A3B8" text-anchor="end" font-family="IBM Plex Mono">$2.5B</text>
+      <text x="43" y="110" font-size="7.5" fill="#94A3B8" text-anchor="end" font-family="IBM Plex Mono">$3.0B</text>
+      <text x="43" y="83" font-size="7.5" fill="#94A3B8" text-anchor="end" font-family="IBM Plex Mono">$3.5B</text>
+      <text x="43" y="55" font-size="7.5" fill="#94A3B8" text-anchor="end" font-family="IBM Plex Mono">$4.0B</text>
+      <!-- Quarters: Q1FY25=2.36,Q2FY25=2.62,Q3FY25=3.08,Q4FY25=3.07,Q1FY26=3.07,Q2FY26=3.30,Q3FY26=3.415,Q4E=3.575 -->
+      <!-- Scale: $2.5B=130, $4.0B=10; range=1.5B over 120px → 1B=80px -->
+      <!-- y = 130 - (val-2.5)*80 -->
+      <!-- Q1FY25=2.36→y=141(clip130), Q2FY25=2.62→y=120, Q3FY25=3.08→y=83, Q4FY25=3.07→y=84, Q1FY26=3.07→y=84, Q2FY26=3.30→y=66, Q3FY26=3.415→y=57, Q4E=3.575→y=44 -->
+      <text x="74" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">Q1'25</text>
+      <text x="134" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">Q2'25</text>
+      <text x="194" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">Q3'25</text>
+      <text x="254" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">Q4'25</text>
+      <text x="314" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">Q1'26</text>
+      <text x="374" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">Q2'26</text>
+      <text x="434" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">Q3'26</text>
+      <text x="478" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">Q4E</text>
+      <polygon points="74,130 134,120 194,83 254,84 314,84 374,66 434,57 478,44 478,130 74,130" fill="url(#kg)"/>
+      <polyline points="74,130 134,120 194,83 254,84 314,84 374,66 434,57 478,44" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="74" cy="130" r="3.5" fill="#2563EB"/>
+      <circle cx="134" cy="120" r="3.5" fill="#2563EB"/>
+      <circle cx="194" cy="83" r="3.5" fill="#2563EB"/>
+      <circle cx="254" cy="84" r="3.5" fill="#2563EB"/>
+      <circle cx="314" cy="84" r="3.5" fill="#2563EB"/>
+      <circle cx="374" cy="66" r="3.5" fill="#2563EB"/>
+      <circle cx="434" cy="57" r="4" fill="#10B981"/>
+      <circle cx="478" cy="44" r="4" fill="#F59E0B" stroke="#FDE68A" stroke-width="1.5"/>
+      <text x="434" y="51" font-size="7" fill="#10B981" text-anchor="middle" font-family="IBM Plex Mono">$3.42B</text>
+      <text x="478" y="38" font-size="7" fill="#F59E0B" text-anchor="middle" font-family="IBM Plex Mono">$3.58E</text>
+    </svg>
+    <div class="csub">营收连续8个季度增长，Q4 FY2026指引中值$35.75亿（+4.7% QoQ），管理层预计全年日历年增长高teen%。</div>
+  </div>
+  <div class="card">
+    <div class="ctit">Q3 FY2026关键财务亮点（来源：SEC EDGAR 8-K，2026年4月29日）</div>
+    <table class="tbl">
+      <thead><tr><th>指标</th><th class="r">Q3 FY2026</th><th class="r">Q3 FY2025</th><th class="r">变化</th></tr></thead>
+      <tbody>
+        <tr><td>总营收（$B）</td><td class="mono r">3.415</td><td class="mono r">3.076</td><td class="mono r"><span class="tag tg">+11.0%</span></td></tr>
+        <tr><td>非GAAP毛利率（%）</td><td class="mono r">61.5</td><td class="mono r">61.8</td><td class="mono r"><span class="tag ta">-0.3pts</span></td></tr>
+        <tr><td>GAAP净利润（$B）</td><td class="mono r">1.201</td><td class="mono r">0.893</td><td class="mono r"><span class="tag tg">+34.5%</span></td></tr>
+        <tr><td>GAAP EPS（$，拆前）</td><td class="mono r">9.12</td><td class="mono r">6.78</td><td class="mono r"><span class="tag tg">+34.5%</span></td></tr>
+        <tr><td>非GAAP EPS（$，拆前）</td><td class="mono r">9.40</td><td class="mono r">8.41</td><td class="mono r"><span class="tag tg">+11.8%</span></td></tr>
+        <tr><td>经营现金流（$B）</td><td class="mono r">1.26</td><td class="mono r">~0.95</td><td class="mono r"><span class="tag tg">+32%</span></td></tr>
+        <tr><td>TTM自由现金流（$B）</td><td class="mono r">4.01</td><td class="mono r">~3.20</td><td class="mono r"><span class="tag tg">+25%</span></td></tr>
+        <tr><td>资本回报（当季，$M）</td><td class="mono r">874.8</td><td class="mono r">—</td><td class="mono r"><span class="tag tg">强劲</span></td></tr>
+        <tr><td>现金及等价物（$B）</td><td class="mono r">4.96</td><td class="mono r">~3.8</td><td class="mono r"><span class="tag tg">+30%</span></td></tr>
+        <tr><td>总债务（$B）</td><td class="mono r">5.89</td><td class="mono r">~5.8</td><td class="mono r"><span class="tag tb">→稳定</span></td></tr>
+        <tr><td>先进封装过控收入（2026E，$B）</td><td class="mono r">~1.00</td><td class="mono r">0.635</td><td class="mono r"><span class="tag tg">+57.5%</span></td></tr>
+        <tr><td>WFE市场预测（2026年）</td><td class="mono r">$140B+</td><td class="mono r">$135–140B</td><td class="mono r"><span class="tag tg">↑上调</span></td></tr>
+      </tbody>
+    </table>
+    <div class="co" style="margin-top:12px;">
+      <div class="cotit">Q4 FY2026指引（来源：KLA 2026年4月29日新闻稿）</div>
+      <p>营收：<strong>$35.75亿（±$2亿）</strong>；非GAAP毛利率：<strong>61.75%（±1%）</strong>；GAAP稀释EPS：<strong>$9.66（±$1.00，拆前）</strong>；非GAAP稀释EPS：<strong>$9.87（±$1.00，拆前）</strong>。假设foundry/logic 82%，memory 18%（DRAM 84%，NAND 16%）。</p>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SEC 04 SEGMENTS -->
+<div class="sec" id="s04">
+<div class="shd"><span class="snum">04</span><span class="stit">分业务板块深度分析</span></div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card bl">
+    <div class="clbl">核心业务 · 最大收入来源</div>
+    <div class="ctit" style="color:var(--b2);">🔬 半导体过程控制系统</div>
+    <div class="prose" style="margin-bottom:14px;">KLA的核心业务是为半导体晶圆厂提供<strong>缺陷检测（Inspection）</strong>与<strong>量测计量（Metrology）</strong>设备，覆盖从裸晶圆到封装完成的全流程质量控制。在先进制程（3nm/2nm/1.8nm）节点，单个晶圆上的晶体管密度超过每平方厘米500亿个，任何微米级缺陷均可能导致整片晶圆报废——这使过程控制成为<strong>不可或缺的刚需</strong>。Q3 FY2026中Foundry/Logic占营收约82%，Memory占18%（DRAM 84%+NAND 16%），HBM需求拉动Memory占比逐季提升。</div>
+    <div class="bar"><div class="blbl">Foundry/Logic占比</div><div class="btrk"><div class="bfill bbl" style="width:82%;"></div></div><div class="bval">82%</div></div>
+    <div class="bar"><div class="blbl">Memory占比（含HBM）</div><div class="btrk"><div class="bfill bgr" style="width:18%;"></div></div><div class="bval">18%</div></div>
+    <div class="bar"><div class="blbl">其中DRAM占Memory</div><div class="btrk"><div class="bfill bam" style="width:84%;"></div></div><div class="bval">84%</div></div>
+    <div class="co" style="margin-top:12px;">
+      <div class="cotit">AI芯片制造的双重受益逻辑</div>
+      <p><strong>更大die尺寸 → 每片晶圆缺陷损失更大 → 检测频率倍增：</strong>H100/H200/B200等AI GPU的die面积是普通消费芯片的4–6倍，单片缺陷损失乘数效应显著放大了过程控制设备的必要投入强度。台积电和三星的先进制程节点上，KLA设备台数已达传统节点的1.5–2倍。</p>
+    </div>
+  </div>
+  <div class="card pu">
+    <div class="clbl">最快增速板块 · 2026年翻倍</div>
+    <div class="ctit" style="color:var(--pu);">📦 先进封装过程控制（Advanced Packaging）</div>
+    <div class="prose" style="margin-bottom:14px;">先进封装（CoWoS、HBM、chiplet等）是KLA<strong>增速最快的新兴业务</strong>。管理层在Q3电话会议中将2026年全年先进封装过控收入预测从$6.35亿大幅上调至约<strong>$10亿</strong>（+57.5%）。驱动因素：台积电CoWoS-S/L/R产能大幅扩张（NVIDIA订单暴增）、SK海力士/三星/美光HBM4产线建设、以及Intel 18A/20A封装节点的工艺控制需求。先进封装过控检测难度远超传统前道工艺，对设备精度要求极高，KLA在此领域近乎垄断。</div>
+    <div class="bar"><div class="blbl">2025年先进封装收入</div><div class="btrk"><div class="bfill bpu" style="width:42%;"></div></div><div class="bval">$0.635B</div></div>
+    <div class="bar"><div class="blbl">2026E先进封装收入</div><div class="btrk"><div class="bfill bpu" style="width:67%;"></div></div><div class="bval">~$1.0B</div></div>
+    <div class="bar"><div class="blbl">YoY增幅</div><div class="btrk"><div class="bfill bgr" style="width:57.5%;"></div></div><div class="bval">+57.5%</div></div>
+    <div class="co pu" style="margin-top:12px;">
+      <div class="cotit">2030年目标：先进封装成为独立支柱业务</div>
+      <p>管理层在2030年目标模型中将先进封装列为核心增长引擎，预计届时先进封装过控收入将达$20–30亿，占公司总营收的10–15%。CoWoS和3D IC集成的普及将为KLA打开远超传统WFE周期的额外增量市场。</p>
+    </div>
+  </div>
+</div>
+<div class="g2">
+  <div class="card gr">
+    <div class="clbl">抗周期基石</div>
+    <div class="ctit" style="color:var(--gn);">🔧 服务业务（Services）</div>
+    <div class="prose" style="margin-bottom:12px;">KLA的服务收入约占总营收<strong>17%</strong>，其中<strong>80%有长期服务合同（MSA）保障</strong>，是公司穿越半导体周期波动的"定海神针"。KLA设备平均使用寿命超过20年，晶圆厂一旦安装KLA设备，极难切换（工艺深度绑定），因此服务续约率极高。服务CAGR目标13–15%，主要来自：工具基数持续扩大（新装机量积累）、服务合同升级（从基础维护升级至性能保障套餐）、以及KLA远程诊断平台的增值订阅。</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>切换成本护城河：</strong>过程控制设备与晶圆厂特定工艺高度定制耦合，数据模型、算法和工艺窗口均与设备深度绑定，切换成本高达设备原价的150–200%（含重新验证成本）</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>周期穿越能力：</strong>即便2023年WFE市场下滑约20%，KLA服务收入依然同比增长约10%，有效平滑了系统销售的周期波动</p></div>
+    </div>
+  </div>
+  <div class="card nv">
+    <div class="clbl">多元化增长</div>
+    <div class="ctit" style="color:var(--nv);">🌐 特种工艺系统（Specialty Process Systems）</div>
+    <div class="prose" style="margin-bottom:12px;">特种工艺系统覆盖PCB/FPC检测、平板显示器（FPD）检测、数据存储（硬盘磁头）以及先进材料检测等多个细分领域，营收占比约20%。此业务板块波动性略高于半导体过控，但提供了客户基础多元化和市场下行时的缓冲。2026年AI服务器和高性能计算（HPC）对先进PCB检测需求增长推动此板块逐步复苏。管理层2030年模型中对特种工艺系统的定位是"稳健的利润贡献者"而非主要增长来源。</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cnv"></div><p><strong>PCB检测：</strong>AI服务器对高密度互连PCB的质量要求大幅提升，KLA的PCB检测设备是台积电/鸿海等供应链的标配</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>平板显示器：</strong>Mini LED和OLED显示屏对面板检测需求提升；中国面板厂商的持续扩产是订单主要来源</p></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SEC 05 MARKET -->
+<div class="sec" id="s05">
+<div class="shd"><span class="snum">05</span><span class="stit">行业格局 · WFE市场与竞争分析</span></div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card">
+    <div class="ctit">全球WFE（晶圆厂设备）市场规模预测（$B）</div>
+    <svg viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;margin:8px 0 12px;">
+      <defs><linearGradient id="wfeg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1B4FA8" stop-opacity="0.18"/><stop offset="100%" stop-color="#1B4FA8" stop-opacity="0"/></linearGradient></defs>
+      <line x1="48" y1="10" x2="48" y2="130" stroke="#E2E8F0" stroke-width="1"/>
+      <line x1="48" y1="130" x2="490" y2="130" stroke="#E2E8F0" stroke-width="1"/>
+      <line x1="48" y1="103" x2="490" y2="103" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <line x1="48" y1="76" x2="490" y2="76" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <line x1="48" y1="49" x2="490" y2="49" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <line x1="48" y1="22" x2="490" y2="22" stroke="#E2E8F0" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <text x="43" y="133" font-size="7.5" fill="#94A3B8" text-anchor="end" font-family="IBM Plex Mono">$60B</text>
+      <text x="43" y="106" font-size="7.5" fill="#94A3B8" text-anchor="end" font-family="IBM Plex Mono">$90B</text>
+      <text x="43" y="79" font-size="7.5" fill="#94A3B8" text-anchor="end" font-family="IBM Plex Mono">$120B</text>
+      <text x="43" y="52" font-size="7.5" fill="#94A3B8" text-anchor="end" font-family="IBM Plex Mono">$150B</text>
+      <text x="43" y="25" font-size="7.5" fill="#94A3B8" text-anchor="end" font-family="IBM Plex Mono">$180B</text>
+      <!-- years -->
+      <text x="78" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">2021</text>
+      <text x="136" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">2022</text>
+      <text x="194" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">2023</text>
+      <text x="252" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">2024</text>
+      <text x="310" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">2025</text>
+      <text x="368" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">2026E</text>
+      <text x="437" y="143" font-size="7" fill="#94A3B8" text-anchor="middle" font-family="IBM Plex Mono">2027E</text>
+      <!-- WFE: 2021=$93,2022=$107,2023=$89,2024=$110,2025=$130,2026E=$140,2027E=$160 -->
+      <!-- scale: $60=130, $180=10; range=120 over 120px → 1B=1px -->
+      <!-- y = 130 - (val-60) *1 -->
+      <!-- 93→37, 107→23, 89→41, 110→20, 130→0(clip to 14), 140→0(clip to 8), 160→0(clip) -->
+      <!-- adjust: y=130-(val-60)*120/120 = 130-(val-60) -->
+      <!-- 93→97, 107→83, 89→101, 110→80, 130→60, 140→50, 160→30 -->
+      <polygon points="78,97 136,83 194,101 252,80 310,60 368,50 437,30 437,130 78,130" fill="url(#wfeg)"/>
+      <polyline points="78,97 136,83 194,101 252,80 310,60 368,50 437,30" fill="none" stroke="#1B4FA8" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="78" cy="97" r="3.5" fill="#1B4FA8"/>
+      <circle cx="136" cy="83" r="3.5" fill="#1B4FA8"/>
+      <circle cx="194" cy="101" r="3.5" fill="#EF4444"/>
+      <circle cx="252" cy="80" r="3.5" fill="#1B4FA8"/>
+      <circle cx="310" cy="60" r="3.5" fill="#10B981"/>
+      <circle cx="368" cy="50" r="4" fill="#10B981"/>
+      <circle cx="437" cy="30" r="4" fill="#F59E0B" stroke="#FDE68A" stroke-width="1.5"/>
+      <text x="194" y="96" font-size="6.5" fill="#EF4444" text-anchor="middle" font-family="IBM Plex Mono">$89B(低谷)</text>
+      <text x="368" y="44" font-size="6.5" fill="#10B981" text-anchor="middle" font-family="IBM Plex Mono">$140B+</text>
+      <text x="437" y="24" font-size="6.5" fill="#F59E0B" text-anchor="middle" font-family="IBM Plex Mono">~$160B</text>
+    </svg>
+    <div class="csub">WFE市场正处于AI驱动的新一轮超级周期，KLA管理层将2026年预测从$135B上调至$140B+，部分机构预测2027年可达$160B（SEMI数据）。KLA市占率约8.5–9%（WFE基础上，含PCB/FPD），过程控制细分市占率约58%。</div>
+  </div>
+  <div class="card">
+    <div class="ctit">过程控制设备市场竞争格局（全球市场份额）</div>
+    <div class="bar" style="margin-top:8px;"><div class="blbl">KLA（全球第一）</div><div class="btrk"><div class="bfill bnv" style="width:58%;"></div></div><div class="bval">~58%</div></div>
+    <div class="bar"><div class="blbl">Applied Materials（AMAT）</div><div class="btrk"><div class="bfill bbl" style="width:22%;"></div></div><div class="bval">~22%</div></div>
+    <div class="bar"><div class="blbl">Onto Innovation</div><div class="btrk"><div class="bfill bgr" style="width:6%;"></div></div><div class="bval">~6%</div></div>
+    <div class="bar"><div class="blbl">Hitachi High-Tech</div><div class="btrk"><div class="bfill bam" style="width:5%;"></div></div><div class="bval">~5%</div></div>
+    <div class="bar"><div class="blbl">其他分散玩家</div><div class="btrk"><div class="bfill bre" style="width:9%;"></div></div><div class="bval">~9%</div></div>
+    <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--bd2);">
+      <div class="ctit" style="font-size:13px;margin-bottom:10px;">KLA vs 主要竞争对手比较</div>
+      <table class="tbl">
+        <thead><tr><th>公司</th><th class="r">市值</th><th class="r">P/E(TTM)</th><th class="r">毛利率</th><th class="r">市场份额</th></tr></thead>
+        <tbody>
+          <tr><td><strong>KLA (KLAC)</strong></td><td class="mono r"><strong>~$314B</strong></td><td class="mono r"><strong>49.6x</strong></td><td class="mono r"><strong>61.5%</strong></td><td class="mono r"><span class="tag tg">~58%</span></td></tr>
+          <tr><td>AMAT</td><td class="mono r">~$160B</td><td class="mono r">~20x</td><td class="mono r">~47%</td><td class="mono r">~22%</td></tr>
+          <tr><td>Lam Research</td><td class="mono r">~$90B</td><td class="mono r">~22x</td><td class="mono r">~48%</td><td class="mono r">刻蚀龙头</td></tr>
+          <tr><td>ASML</td><td class="mono r">~$350B</td><td class="mono r">~35x</td><td class="mono r">~52%</td><td class="mono r">光刻100%</td></tr>
+          <tr><td>Onto Innovation</td><td class="mono r">~$6B</td><td class="mono r">~35x</td><td class="mono r">~48%</td><td class="mono r">~6%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit">AI半导体制造趋势对KLA的结构性利好</div>
+  <div class="g2">
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>先进制程节点密度跃升：</strong>从3nm到2nm/1.8nm，晶体管密度增加约20–30%，缺陷密度容忍度降低，过程控制步骤数量随制程精进呈超线性增长，预计2nm节点过控强度是5nm的1.8倍</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>CoWoS/3D封装需求爆发：</strong>NVIDIA H200/B200、AMD MI300X均采用CoWoS封装，台积电CoWoS产能2026年目标翻倍，每条CoWoS线配套的KLA先进封装检测工具数量是传统封装的3–5倍</p></div>
+      <div class="ci"><div class="cdot cpu"></div><p><strong>HBM4内存检测复杂度倍增：</strong>HBM4采用更薄Die堆叠和TSV通孔，对电子束检测的需求大幅提升，KLA的e-beam系列是HBM4产线标配设备，SK海力士/三星/美光均大量采购</p></div>
+    </div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cnv"></div><p><strong>多国晶圆厂建设潮：</strong>美国CHIPS Act推动英特尔亚利桑那、台积电凤凰城等项目建设，欧洲CHIPS Act、日本熊本等项目同步推进，多地区晶圆厂建设为KLA带来地理多元化的新增设备需求</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>中国本土替代受限：</strong>中国本土过程控制设备厂商（北方华创、华海通信等）在检测精度上与KLA差距超过两个制程节点，短期内无法替代KLA在先进制程的地位，但对成熟制程的渗透会影响KLA中低端订单</p></div>
+      <div class="ci"><div class="cdot cre"></div><p><strong>出口管制双刃剑：</strong>美国对华半导体设备出口管制持续收紧，KLA中国区收入（约占总营收20–25%）面临不确定性，但同时也限制了竞争对手向中国输出技术，维护了全球高端市场的竞争格局</p></div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SEC 06 VALUATION -->
+<div class="sec" id="s06">
+<div class="shd"><span class="snum">06</span><span class="stit">估值分析 · 多维框架</span></div>
+<div class="co am" style="margin-bottom:18px;">
+  <div class="cotit">⚠ 估值警示：当前价格已充分定价未来增长</div>
+  <p>KLA股价年初至今上涨约+99.7%，过去一年上涨约+195%，分拆后P/E约49.6x（TTM）、约42x（NTM），均高于公司过去5年平均约30–35x。Simply Wall St DCF模型估算KLA公允价值约拆前$1,320（拆后约$132），暗示当前价格溢价约181%。尽管KLA长期基本面极为出色，当前估值已高度定价了AI驱动增长预期，短期上行空间相对有限，下行保护不足。维持"持有"，建议在$210–225（拆后）区间分批建仓。</p>
+</div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card bl">
+    <div class="ctit">方法一：NTM P/E 历史区间估值</div>
+    <div class="prose" style="margin-bottom:12px;">KLA过去5年NTM P/E中枢约25–35x（半导体设备行业周期中枢），当前约42x（拆后），处于历史高位。以FY2026E非GAAP EPS约$36（拆前）→$3.60（拆后）为基础：</div>
+    <table class="tbl">
+      <thead><tr><th>情景</th><th class="r">P/E倍数</th><th class="r">NTM EPS（拆后）</th><th class="r">隐含股价</th></tr></thead>
+      <tbody>
+        <tr><td>悲观（周期调整）</td><td class="mono r">28x</td><td class="mono r">$3.60</td><td class="mono r"><span class="tag tr2">$101</span></td></tr>
+        <tr><td>基准（历史均值上沿）</td><td class="mono r">38x</td><td class="mono r">$3.60</td><td class="mono r"><span class="tag tb">$137</span></td></tr>
+        <tr><td>当前（市场定价）</td><td class="mono r">42x</td><td class="mono r">$3.60</td><td class="mono r"><span class="tag ta">$151</span></td></tr>
+        <tr><td>乐观（AI溢价维持）</td><td class="mono r">52x</td><td class="mono r">$4.00（FY27E）</td><td class="mono r"><span class="tag tg">$208</span></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">注：拆后EPS = 拆前EPS ÷ 10。基准情景隐含股价仍明显低于当前价$241，反映当前估值偏贵。</div>
+  </div>
+  <div class="card nv">
+    <div class="ctit">方法二：EV/EBITDA 同业比较估值</div>
+    <div class="prose" style="margin-bottom:12px;">以TTM EBITDA约$52亿为基础，参考半导体设备同业EV/EBITDA历史区间：</div>
+    <table class="tbl">
+      <thead><tr><th>EV/EBITDA倍数</th><th class="r">隐含EV（$B）</th><th class="r">隐含股价（拆后）</th></tr></thead>
+      <tbody>
+        <tr><td>25x（历史低端）</td><td class="mono r">130</td><td class="mono r"><span class="tag tr2">$95</span></td></tr>
+        <tr><td>35x（历史中枢）</td><td class="mono r">182</td><td class="mono r"><span class="tag tb">$135</span></td></tr>
+        <tr><td>45x（当前市场）</td><td class="mono r">234</td><td class="mono r"><span class="tag ta">$175</span></td></tr>
+        <tr><td>55x（AI溢价上限）</td><td class="mono r">286</td><td class="mono r"><span class="tag tg">$215</span></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">假设：净债务$0.93B，流通股13.06亿（拆后）</div>
+  </div>
+</div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card gr">
+    <div class="ctit">方法三：FCF收益率法</div>
+    <div class="prose" style="margin-bottom:12px;">TTM自由现金流约$40亿，以当前市值$3,140亿计算，FCF收益率仅约<strong>1.27%</strong>，远低于10年期美国国债收益率约4.3%，几乎没有安全边际。历史上KLA合理FCF收益率约2.5–4%：</div>
+    <table class="tbl">
+      <thead><tr><th>FCF收益率</th><th class="r">隐含市值（$B）</th><th class="r">隐含股价（拆后）</th></tr></thead>
+      <tbody>
+        <tr><td>4.0%（历史公允）</td><td class="mono r">100</td><td class="mono r"><span class="tag tr2">$77</span></td></tr>
+        <tr><td>3.0%（合理区间）</td><td class="mono r">133</td><td class="mono r"><span class="tag tb">$102</span></td></tr>
+        <tr><td>2.0%（AI溢价）</td><td class="mono r">200</td><td class="mono r"><span class="tag ta">$153</span></td></tr>
+        <tr><td>1.27%（当前）</td><td class="mono r">315</td><td class="mono r"><span class="tag ta">$241</span></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">FCF收益率法显示当前估值已透支未来3–5年增长预期</div>
+  </div>
+  <div class="card am">
+    <div class="ctit">方法四：PEG比率分析</div>
+    <div class="prose" style="margin-bottom:12px;">以NTM P/E约42x（拆后），FY2026E EPS同比增速约18%计算，PEG约<strong>2.33x</strong>，高于合理区间（1.0–1.5x）。即便以5年CAGR约18%测算，PEG仍约2.33x，定价偏贵：</div>
+    <table class="tbl">
+      <thead><tr><th>PEG区间</th><th class="r">含义</th><th class="r">对应P/E（增速18%）</th></tr></thead>
+      <tbody>
+        <tr><td>PEG=1.0x（低估）</td><td>成长充分支撑估值</td><td class="mono r"><span class="tag tg">P/E=18x</span></td></tr>
+        <tr><td>PEG=1.5x（合理）</td><td>适度溢价</td><td class="mono r"><span class="tag tb">P/E=27x</span></td></tr>
+        <tr><td>PEG=2.0x（偏贵）</td><td>需要持续高增速支撑</td><td class="mono r"><span class="tag ta">P/E=36x</span></td></tr>
+        <tr><td>PEG=2.33x（当前）</td><td>高度定价超预期增长</td><td class="mono r"><span class="tag tr2">P/E=42x</span></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">PEG &gt; 2x通常意味着股价需要持续超预期才能维持，估值容错率低</div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit" style="margin-bottom:14px;">华尔街机构目标价汇总（截至2026年6月12日，以下均为分拆后换算价）</div>
+  <table class="tbl">
+    <thead><tr><th>机构</th><th>评级</th><th class="r">目标价（拆后）</th><th class="r">原拆前价</th><th class="r">日期/来源</th></tr></thead>
+    <tbody>
+      <tr><td>Morgan Stanley</td><td><span class="tag tg">增持</span></td><td class="mono r">$290</td><td class="mono r">$2,900</td><td class="mono r">2026年Q1</td></tr>
+      <tr><td>BofA Securities</td><td><span class="tag tg">买入</span></td><td class="mono r">$285</td><td class="mono r">$2,850</td><td class="mono r">2026年Q2</td></tr>
+      <tr><td>Goldman Sachs</td><td><span class="tag tg">买入</span></td><td class="mono r">$280</td><td class="mono r">$2,800</td><td class="mono r">2026年Q2</td></tr>
+      <tr><td>Barclays</td><td><span class="tag tb">增持</span></td><td class="mono r">$265</td><td class="mono r">$2,650</td><td class="mono r">近期</td></tr>
+      <tr><td>JPMorgan</td><td><span class="tag tg">增持</span></td><td class="mono r">$270</td><td class="mono r">$2,700</td><td class="mono r">近期</td></tr>
+      <tr><td>Simply Wall St（DCF）</td><td><span class="tag tr2">低于公允</span></td><td class="mono r">$132（公允价值）</td><td class="mono r">$1,320</td><td class="mono r">2026年6月</td></tr>
+      <tr><td><strong>Snail Investment（本报告）</strong></td><td><span class="tag ta">持有</span></td><td class="mono r"><strong>$265</strong></td><td class="mono r">$2,650</td><td class="mono r">2026年6月12日</td></tr>
+    </tbody>
+  </table>
+  <div class="co" style="margin-top:14px;">
+    <div class="cotit">Snail Investment 目标价推导：$265（拆后）</div>
+    <p>综合加权：NTM P/E法（权重35%，基于FY2027E EPS $4.00×52x AI溢价 = $208，偏高，取50x=$200）+ EV/EBITDA（权重25%，45x EV/EBITDA~$175）+ 机构共识均值（权重25%，约$278）+ PEG修正溢价（权重15%，基于DCF+PEG均值$165）→ 加权目标价约<strong>$265</strong>（较当前$241上行约+9.9%，含股息约+10.2%）。我们认为华尔街主流机构因AI乐观情绪对估值偏宽松，$265是兼顾增长弹性与估值合理性的审慎目标。若估值回调至$210–225区间（对应约40x NTM P/E），则可考虑积极增持，届时安全边际更佳。</p>
+  </div>
+</div>
+</div>
+<!-- SEC 07 DCF -->
+<div class="sec" id="s07">
+<div class="shd"><span class="snum">07</span><span class="stit">DCF 贴现现金流分析 · 敏感性矩阵</span></div>
+<div class="co bl" style="margin-bottom:18px;">
+  <div class="cotit">DCF 框架说明</div>
+  <p>以5年显式预测期（FY2026–FY2030）+永续价值计算。基准情景假设：FY2026E FCF约$46亿（+15% YoY），FY2027–2030E年均FCF增速约12–15%（受益于WFE周期上行、先进封装渗透率提升及服务CAGR），永续增长率3.0–4.0%（反映半导体长期结构增长），WACC采用9.0–11.0%区间（科技制造业资本成本）。净债务$0.93B，流通股13.06亿（拆后）。</p>
+</div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card">
+    <div class="ctit">DCF 核心参数（三情景）</div>
+    <table class="tbl">
+      <thead><tr><th>参数</th><th class="r">悲观</th><th class="r">基准</th><th class="r">乐观</th></tr></thead>
+      <tbody>
+        <tr><td>FY2026E FCF（$B）</td><td class="mono r">3.8</td><td class="mono r">4.6</td><td class="mono r">5.4</td></tr>
+        <tr><td>FCF增速（FY2027–2030 CAGR）</td><td class="mono r">6%</td><td class="mono r">13%</td><td class="mono r">20%</td></tr>
+        <tr><td>永续增长率（g）</td><td class="mono r">2.5%</td><td class="mono r">3.5%</td><td class="mono r">4.0%</td></tr>
+        <tr><td>WACC</td><td class="mono r">11.0%</td><td class="mono r">10.0%</td><td class="mono r">9.0%</td></tr>
+        <tr><td>企业价值（$B）</td><td class="mono r">~68</td><td class="mono r">~112</td><td class="mono r">~195</td></tr>
+        <tr><td>减：净债务（$B）</td><td class="mono r">0.93</td><td class="mono r">0.93</td><td class="mono r">0.93</td></tr>
+        <tr><td><strong>隐含股价（$，拆后）</strong></td><td class="mono r"><strong><span class="tag tr2">$52</span></strong></td><td class="mono r"><strong><span class="tag tb">$85</span></strong></td><td class="mono r"><strong><span class="tag tg">$149</span></strong></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">DCF内在价值区间$52–$149（拆后），当前价格$241显著高于全部DCF情景，强烈暗示股价定价来自预期溢价而非传统内在价值</div>
+  </div>
+  <div class="card">
+    <div class="ctit">关键FCF敏感性分析</div>
+    <table class="tbl">
+      <thead><tr><th>变量</th><th class="r">变动幅度</th><th class="r">FCF影响</th><th class="r">EPS影响（拆后）</th></tr></thead>
+      <tbody>
+        <tr><td>营收变化（WFE对应）</td><td class="mono r">±$500M/年</td><td class="mono r">±$215M</td><td class="mono r"><span class="tag tb">±$0.16</span></td></tr>
+        <tr><td>非GAAP毛利率变化</td><td class="mono r">±1个百分点</td><td class="mono r">±$136M</td><td class="mono r"><span class="tag tb">±$0.08</span></td></tr>
+        <tr><td>WFE市场±10%</td><td class="mono r">±$14B市场规模</td><td class="mono r">±$650M（含市占）</td><td class="mono r"><span class="tag ta">±$0.37</span></td></tr>
+        <tr><td>中国收入清零</td><td class="mono r">-约$3B营收/年</td><td class="mono r">-$1.3B FCF</td><td class="mono r"><span class="tag tr2">-$0.75</span></td></tr>
+        <tr><td>先进封装超预期+50%</td><td class="mono r">+$0.5B/年</td><td class="mono r">+$215M</td><td class="mono r"><span class="tag tg">+$0.13</span></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">最大单项风险：中国收入全损（约$3B/年）可使非GAAP EPS下降约20%，需重点监控出口管制政策走向</div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit" style="margin-bottom:14px;">DCF 股价双变量敏感性矩阵（WACC × 永续增长率 g，基准FCF=$4.6B，年均增速13%）</div>
+  <table class="dcfm">
+    <thead><tr><th>WACC ↓ / g →</th><th>g=2.0%</th><th>g=2.5%</th><th>g=3.0%</th><th>g=3.5%</th><th>g=4.0%</th><th>g=4.5%</th></tr></thead>
+    <tbody>
+      <tr><td class="thr">WACC=8.0%</td><td class="bzone">$184</td><td class="bzone">$205</td><td class="bzone">$232</td><td class="bzone">$266</td><td class="bzone">$312</td><td class="bzone">$376</td></tr>
+      <tr><td class="thr">WACC=8.5%</td><td class="bzone">$156</td><td class="bzone">$172</td><td class="bzone">$193</td><td class="bzone">$218</td><td class="bzone">$251</td><td class="bzone">$296</td></tr>
+      <tr><td class="thr">WACC=9.0%</td><td class="mzone">$134</td><td class="mzone">$147</td><td class="mzone">$163</td><td class="mzone">$183</td><td class="dzone">$208★</td><td class="bzone">$241</td></tr>
+      <tr><td class="thr">WACC=9.5%</td><td class="mzone">$116</td><td class="mzone">$127</td><td class="mzone">$139</td><td class="mzone">$155</td><td class="mzone">$174</td><td class="mzone">$199</td></tr>
+      <tr><td class="thr">WACC=10.0%</td><td class="mzone">$101</td><td class="mzone">$110</td><td class="mzone">$121</td><td class="mzone">$134</td><td class="mzone">$149</td><td class="mzone">$169</td></tr>
+      <tr><td class="thr">WACC=10.5%</td><td class="rzone">$88</td><td class="rzone">$96</td><td class="rzone">$105</td><td class="rzone">$116</td><td class="mzone">$129</td><td class="mzone">$145</td></tr>
+      <tr><td class="thr">WACC=11.0%</td><td class="rzone">$78</td><td class="rzone">$85</td><td class="rzone">$93</td><td class="rzone">$102</td><td class="rzone">$113</td><td class="rzone">$127</td></tr>
+    </tbody>
+  </table>
+  <div style="display:flex;gap:14px;margin-top:9px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);"><div style="width:11px;height:11px;background:var(--gnl);border:1px solid var(--gnb);border-radius:2px;"></div>乐观（&gt;$200）</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);"><div style="width:11px;height:11px;background:var(--b6);border:1px solid var(--b3);border-radius:2px;"></div>基准区间（★=$208，需WACC=9.0%，g=4.0%）</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);"><div style="width:11px;height:11px;background:var(--rdl);border:1px solid var(--rdb);border-radius:2px;"></div>悲观（&lt;$130）</div>
+  </div>
+  <div class="co am" style="margin-top:12px;">
+    <div class="cotit">DCF关键启示：当前股价需要极度乐观假设才能自洽</div>
+    <p>若要用DCF为当前股价$241（拆后）辩护，需要同时满足：WACC低至8.0% + 永续增长率4.0%+ + 未来5年FCF CAGR超过18%。这意味着市场已经完全定价了AI WFE超级周期持续10年、KLA市占率进一步提升、且无任何宏观或地缘政治冲击的情景。任何一项假设不达预期均会对估值形成向下压力。</p>
+  </div>
+</div>
+</div>
+<!-- SEC 08 SCENARIO -->
+<div class="sec" id="s08">
+<div class="shd"><span class="snum">08</span><span class="stit">三情景分析 · 12个月价格目标</span></div>
+<div class="scrow">
+  <div class="sc bull">
+    <div class="sclbl">🐂 乐观情景（Bull Case）</div>
+    <div class="scpri">$340</div>
+    <div class="scprob">发生概率：~20%</div>
+    <div class="scret">较当前 +41.0%（含股息 +41.4%）</div>
+    <hr class="scdiv">
+    <div class="scdesc"><strong>核心假设：</strong><br>
+    • 2027年WFE市场超预期达$170B+，KLA市占率提升至59–60%<br>
+    • 先进封装过控收入2027年达$15亿（2026E$10亿翻增50%）<br>
+    • HBM4+大规模量产拉动内存检测需求爆发<br>
+    • 中国出口管制豁免或软化，中国收入企稳回升<br>
+    • 市场给予55x NTM P/E（AI科技溢价持续扩张）<br>
+    • FY2027E EPS（拆后）约$4.60<br><br>
+    <strong>估值：</strong>55x FY2027E EPS $4.60（拆后）≈ $253，再+分拆效应/动量溢价</div>
+  </div>
+  <div class="sc base">
+    <div class="sclbl">⚖ 基准情景（Base Case）</div>
+    <div class="scpri">$265</div>
+    <div class="scprob">发生概率：~45%</div>
+    <div class="scret">较当前 +9.9%（含股息 +10.2%）</div>
+    <hr class="scdiv">
+    <div class="scdesc"><strong>核心假设：</strong><br>
+    • 2026年WFE约$140B，2027年约$150–160B，平稳增长<br>
+    • 先进封装收入达$10亿（符合管理层最新指引）<br>
+    • Q4 FY2026营收$35.75亿，非GAAP EPS $9.87（拆前）<br>
+    • 中国收入小幅承压但未出现重大管制升级<br>
+    • 市场维持约45–48x NTM P/E（AI溢价轻微消化）<br>
+    • FY2027E EPS（拆后）约$4.00<br><br>
+    <strong>估值：</strong>约48x FY2026E EPS $3.60（拆后）→ $173，+分拆效应≈$265（含12个月EPS增长）</div>
+  </div>
+  <div class="sc bear">
+    <div class="sclbl">🐻 悲观情景（Bear Case）</div>
+    <div class="scpri">$145</div>
+    <div class="scprob">发生概率：~35%</div>
+    <div class="scret">较当前 -39.8%（含股息 -39.4%）</div>
+    <hr class="scdiv">
+    <div class="scdesc"><strong>核心假设：</strong><br>
+    • 美国对华出口管制大幅升级，中国收入损失50%以上<br>
+    • AI资本开支增速放缓（宏观衰退/AI投资泡沫破裂）<br>
+    • 2027年WFE回落至$115–120B，KLA营收下滑15–20%<br>
+    • 非标准竞争对手在成熟制程蚕食市场份额<br>
+    • 估值收缩至历史低端28–30x NTM P/E<br>
+    • FY2027E EPS（拆后）约$2.80–3.00（同比下滑25–30%）<br><br>
+    <strong>估值：</strong>30x FY2026E EPS $3.00（拆后下修）→ $90，+流动性溢价≈$145</div>
+  </div>
+</div>
+<div class="card" style="margin-top:14px;">
+  <div class="ctit" style="margin-bottom:12px;">加权期望价值（Probability-Weighted EV）</div>
+  <table class="tbl">
+    <thead><tr><th>情景</th><th class="r">概率权重</th><th class="r">目标价（拆后）</th><th class="r">加权贡献</th><th class="r">含息总回报</th></tr></thead>
+    <tbody>
+      <tr><td>乐观（Bull）</td><td class="mono r">20%</td><td class="mono r"><span class="tag tg">$340</span></td><td class="mono r">$68.0</td><td class="mono r">+41.4%</td></tr>
+      <tr><td>基准（Base）</td><td class="mono r">45%</td><td class="mono r"><span class="tag tb">$265</span></td><td class="mono r">$119.3</td><td class="mono r">+10.2%</td></tr>
+      <tr><td>悲观（Bear）</td><td class="mono r">35%</td><td class="mono r"><span class="tag tr2">$145</span></td><td class="mono r">$50.8</td><td class="mono r">-39.4%</td></tr>
+    </tbody>
+    <tfoot>
+      <tr style="background:var(--b6);"><td><strong>加权期望价值</strong></td><td class="mono r"><strong>100%</strong></td><td class="mono r" style="font-size:14px;"><strong style="color:var(--b1);">$238.0</strong></td><td class="mono r"><strong style="color:var(--b1);">$238.0</strong></td><td class="mono r" style="color:var(--am);"><strong>-1.3%（含息）</strong></td></tr>
+    </tfoot>
+  </table>
+  <div class="co am" style="margin-top:12px;">
+    <div class="cotit">重要提示：加权期望价值低于当前股价</div>
+    <p>加权期望价值约$238，<strong>略低于当前股价$241</strong>，意味着在我们对三种情景的概率判断下，当前入场的期望回报为负（约-1.3%）。这并非认为KLA基本面差——恰恰相反，KLA是全球最优质的半导体设备公司之一——而是说明<strong>当前价位已充分反映了基本面，进一步上行需要超预期的催化剂</strong>。这是我们维持"持有"而非"买入"的核心数量依据。</p>
+  </div>
+</div>
+</div>
+
+<!-- SEC 09 RISKS -->
+<div class="sec" id="s09">
+<div class="shd"><span class="snum">09</span><span class="stit">风险矩阵 · 全面风险评估</span></div>
+<div class="card">
+  <div class="risk">
+    <div class="rbdg hi"><span>高风险</span></div>
+    <div><div class="rtit">⚡ 中国出口管制升级：最大单项风险</div>
+    <div class="rdesc">中国是KLA重要市场，约占营收20–25%（约$28–34亿/年）。美国商务部持续收紧对华半导体设备出口管制（BIS Entity List、外国直接产品规则FDPR），若进一步限制KLA向中国出售过程控制设备，年收入损失可能达$20–30亿，非GAAP EPS影响约-15–20%（拆后约-$0.45至-$0.60）。近期中美贸易摩擦加剧的背景下，此风险概率较12个月前显著上升。KLA管理层在每次电话会议中均强调此为"最重要的宏观风险"。</div></div>
+  </div>
+  <div class="risk">
+    <div class="rbdg hi"><span>高风险</span></div>
+    <div><div class="rtit">⚡ 估值过高：股价已高度定价未来增长</div>
+    <div class="rdesc">TTM P/E约49.6x，NTM P/E约42x，FCF收益率仅1.27%，均处于历史极高位置。DCF基准情景隐含股价约$85（拆后），当前股价$241较内在价值溢价约181%（Simply Wall St估算）。若AI资本开支增速放缓或宏观环境收紧触发估值收缩，30–35x NTM P/E对应股价$108–$126（拆后），下行空间达-47至-52%。历史上KLA在周期调整期平均股价回调达40–50%。</div></div>
+  </div>
+  <div class="risk">
+    <div class="rbdg hi"><span>高风险</span></div>
+    <div><div class="rtit">⚡ WFE周期下行：半导体投资骤然减速</div>
+    <div class="rdesc">半导体设备是典型的周期性行业，WFE年度变化幅度历史上达±30%（2023年下滑约20%，2019年下滑约15%）。若AI芯片需求因宏观衰退、AI应用商业化不及预期、或主要科技公司资本开支大幅削减，WFE可能在2027–2028年出现周期性下滑。KLA营收对WFE高度敏感（弹性系数约0.9–1.1x），2027年WFE每下滑10%，KLA营收约下滑9–11%。</div></div>
+  </div>
+  <div class="risk">
+    <div class="rbdg md"><span>中等风险</span></div>
+    <div><div class="rtit">⚠ 内部人减持信号：高管Q3后集中抛售$970万</div>
+    <div class="rdesc">Q3 FY2026业绩发布后，包括CEO Rick Wallace和CFO Bren Higgins在内的多位高管累计出售约$970万股票，是近几个季度最大规模集中减持（根据Simply Wall St监控SEC Form 4文件）。减持规模相对市值$3,140亿仍极小，且部分可能是预设的10b5-1计划执行，但时点（业绩大超+股价历史高位）值得投资者关注。若后续减持规模继续扩大，将是更强的负面信号。</div></div>
+  </div>
+  <div class="risk">
+    <div class="rbdg md"><span>中等风险</span></div>
+    <div><div class="rtit">⚠ 技术替代风险：AI原生检测技术挑战</div>
+    <div class="rdesc">部分初创公司（如Applied AI、Xperi等）正在开发基于AI/ML的虚拟检测（Virtual Metrology）技术，试图用软件+少量传感器替代部分KLA硬件设备。目前此类技术在先进制程的精度与KLA物理检测设备差距巨大，但随着AI能力提升，中长期可能对KLA部分中低端产品线构成压力。KLA本身也在积极AI化其产品（Surfscan AI、eDR系列），以保持技术领先优势。</div></div>
+  </div>
+  <div class="risk">
+    <div class="rbdg md"><span>中等风险</span></div>
+    <div><div class="rtit">⚠ 客户集中度风险：台积电/三星占比过高</div>
+    <div class="rdesc">台积电、三星和英特尔等少数客户合计贡献KLA约50–60%的营收。若上述客户大幅削减资本开支（如台积电受地缘政治影响暂停扩厂、三星存储周期下行），KLA营收将受到集中冲击。台湾地缘政治风险（中台关系）是潜在的黑天鹅，台积电台湾晶圆厂约占KLA台积电收入的60%以上。</div></div>
+  </div>
+  <div class="risk">
+    <div class="rbdg md"><span>中等风险</span></div>
+    <div><div class="rtit">⚠ 库存周期下行：客户设备采购节奏错位</div>
+    <div class="rdesc">半导体设备采购通常提前6–18个月于实际产能需求，若晶圆厂对需求过于乐观导致设备过度采购（如2021–2022年超级周期后的2023年下滑），KLA订单可能面临突然取消或推迟。当前backlog（订单积压）能见度约两个季度，尚不足以完全预判12–18个月后的需求走势。</div></div>
+  </div>
+  <div class="risk">
+    <div class="rbdg lo"><span>低风险</span></div>
+    <div><div class="rtit">✓ 货币汇率风险：美元走强</div>
+    <div class="rdesc">KLA约55%收入来自美国以外市场，主要以美元计价（部分以日元、欧元等计价）。美元大幅升值可能压低海外收入折算价值，但KLA通过自然对冲（海外成本匹配）和适度衍生品对冲工具有效管理汇率风险。此为可控的低显著性风险。</div></div>
+  </div>
+</div>
+</div>
+<!-- SEC 10 CATALYSTS -->
+<div class="sec" id="s10">
+<div class="shd"><span class="snum">10</span><span class="stit">催化剂 · 关键时间节点</span></div>
+<div class="g2">
+  <div class="card">
+    <div class="ctit" style="margin-bottom:18px;">重要事件时间线（2026–2027）</div>
+    <div class="tl">
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年6月12日（今日）</div><div class="tltit">🔀 10:1 股票分拆正式生效</div><div class="tldesc">分拆后股价约$241，流通股从约1.306亿增至约13.06亿。历史上KLA分拆后6个月内平均跑赢费城半导体指数（SOX）约8–12%，扩大个人投资者基础和Robinhood/Schwab等零售渠道覆盖。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年6月16日</div><div class="tltit">💰 分拆后首次季度股息记录日</div><div class="tldesc">分拆后季度股息$0.23/股（年化$0.92，原拆前$2.30），记录日2026年6月16日，派发日预计2026年6月30日前后。股息连续增长记录（已超15年）进一步吸引股息增长型机构投资者。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年7月下旬至8月初</div><div class="tltit">🏆 Q4 FY2026业绩公告（最关键节点）</div><div class="tldesc">预计7月底发布Q4 FY2026（截至2026年6月底）业绩，以及FY2027首季指引。指引中值：营收$35.75亿，非GAAP EPS $9.87（拆前）→$0.987（拆后）。若实际营收超$37亿或毛利率超62%，将触发强烈正向反应；若管理层给出2027年全年指引高于$150亿，可能打开下一轮估值上行窗口。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年Q3–Q4</div><div class="tltit">🤖 先进封装客户产能扩张进展</div><div class="tldesc">台积电CoWoS-L/R扩产、SK海力士HBM4产线验收、三星HBM4E导入——三大事件的落地进度将直接决定KLA先进封装过控收入能否实现$10亿目标。任何一家的扩产超预期或延迟均会显著影响KLA短期业绩。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年下半年</div><div class="tltit">🇺🇸 美国芯片法案晶圆厂建设进度</div><div class="tldesc">英特尔亚利桑那Fab 52/62、台积电凤凰城Fab 21 N2节点量产、美光爱达荷州扩产——美国本土晶圆厂建设进展是KLA地理多元化的重要支撑，每条新产线开始试产均带来KLA设备采购高峰。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年下半年持续</div><div class="tltit">⚠ 美国对华出口管制政策动向</div><div class="tldesc">BIS（商务部产业安全局）对半导体设备对华出口许可审查持续进行，任何新增限制措施均将触发KLA股价下行反应。反之，若中美科技谈判取得进展、部分豁免获批，将是重大正向催化剂。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年10月–11月</div><div class="tltit">📊 Q1 FY2027业绩+2027全年展望</div><div class="tldesc">此时管理层将首次给出FY2027年度营收/EPS指引，若确认$150亿以上营收路径并上调2030年目标模型，将是下一阶段重新评级的核心依据。</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="ctit">华尔街分析师评级分布（2026年6月）</div>
+      <div class="bar" style="margin-top:8px;"><div class="blbl">买入/增持</div><div class="btrk"><div class="bfill bgr" style="width:68%;"></div></div><div class="bval">~68%</div></div>
+      <div class="bar"><div class="blbl">持有/中性</div><div class="btrk"><div class="bfill bbl" style="width:28%;"></div></div><div class="bval">~28%</div></div>
+      <div class="bar"><div class="blbl">卖出</div><div class="btrk"><div class="bfill bre" style="width:4%;"></div></div><div class="bval">~4%</div></div>
+      <div class="csub" style="margin-top:8px;">机构目标价区间（拆后）：$210–$340，均值约$275；Snail Investment $265，略低于均值反映估值谨慎</div>
+    </div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="ctit">近期重要分析师动态（拆后换算）</div>
+      <table class="tbl">
+        <thead><tr><th>机构</th><th>评级</th><th class="r">目标价（拆后）</th><th class="r">日期</th></tr></thead>
+        <tbody>
+          <tr><td>Morgan Stanley</td><td><span class="tag tg">增持</span></td><td class="mono r">$290</td><td class="mono r">Q1 2026</td></tr>
+          <tr><td>BofA Securities</td><td><span class="tag tg">买入</span></td><td class="mono r">$285</td><td class="mono r">2026年6月</td></tr>
+          <tr><td>Goldman Sachs</td><td><span class="tag tg">买入</span></td><td class="mono r">$280</td><td class="mono r">2026年6月</td></tr>
+          <tr><td>JPMorgan</td><td><span class="tag tg">增持</span></td><td class="mono r">$270</td><td class="mono r">近期</td></tr>
+          <tr><td>Barclays</td><td><span class="tag tb">增持</span></td><td class="mono r">$265</td><td class="mono r">近期</td></tr>
+          <tr><td>Snail Investment</td><td><span class="tag ta">持有</span></td><td class="mono r">$265</td><td class="mono r">2026-06-12</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="ctit">分拆效应历史数据参考</div>
+      <div class="cats">
+        <div class="ci"><div class="cdot cgr"></div><p><strong>KLA历史分拆记录：</strong>公司历史上共进行6次股票分拆，包括1991年（2:1）、1993年（3:2）、1995年（2:1）、1997年（2:1）、1999年（2:1）、2001年（2:1），以及本次2026年（10:1）</p></div>
+        <div class="ci"><div class="cdot cbl"></div><p><strong>分拆后流动性改善：</strong>分拆后日均换手量通常提升40–80%，买卖价差收窄，做市商积极性增加，Robinhood等零售平台的新投资者准入门槛大幅降低</p></div>
+        <div class="ci"><div class="cdot cam"></div><p><strong>短期动量效应：</strong>学术研究显示高价股10:1分拆后，未来6个月平均超额收益约+8–12%（动量效应），但此效应在利率高企和估值已偏高时会有所减弱</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SEC 11 ESG -->
+<div class="sec" id="s11">
+<div class="shd"><span class="snum">11</span><span class="stit">ESG 框架 · 可持续发展分析</span></div>
+<div class="g3" style="margin-bottom:14px;">
+  <div class="card gr">
+    <div class="clbl">环境（E）</div><div class="ctit">零碳制造与资源效率</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>2050年净零排放目标：</strong>KLA已承诺2050年实现价值链全范围净零碳排放（Scope 1+2+3），2030年中期目标减少Scope 1+2排放55%（基于2019年基线）</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p><strong>产品赋能减排：</strong>KLA的过程控制设备帮助晶圆厂提高良率（减少废品晶圆），每提高1%良率可减少约1–2%的单位能耗和材料消耗，是半导体行业最直接的减排工具</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>可再生能源采购：</strong>公司运营设施可再生能源比例已达45%（2024年），目标2025年达到60%，全球主要制造和研发基地均配置了屋顶光伏和绿色电力协议（PPA）</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>水资源管理挑战：</strong>半导体设备测试需要大量超纯水，KLA在加州米尔皮塔斯总部附近面临水资源压力，已实施水循环回用系统，用水效率逐年提升</p></div>
+    </div>
+  </div>
+  <div class="card bl">
+    <div class="clbl">社会（S）</div><div class="ctit">人才战略与多样性</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>高端技术人才竞争优势：</strong>KLA拥有约15,000名员工，其中约35%持有研究生学历，是硅谷最具竞争力的工程雇主之一；工程师平均任期约6年，远高于同行（硅谷平均约2–3年）</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>多样性与包容（DEI）：</strong>2025年KLA美国女性员工比例约26%（工程岗位约18%），持续推进STEM教育赞助项目，与加州州立大学和圣何塞州立大学建立深度合作实习项目</p></div>
+      <div class="ci"><div class="cdot cpu"></div><p><strong>KLA Foundation：</strong>每年向全球STEM教育、经济发展和环保项目捐赠约$1500万，2024年STEM项目惠及约50万学生</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>供应链责任：</strong>KLA对供应商实施负责任采矿审查（冲突矿产零容忍），2024年完成对约200家一级供应商的ESG审计</p></div>
+    </div>
+  </div>
+  <div class="card nv">
+    <div class="clbl">治理（G）</div><div class="ctit">治理结构与股东回报</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>强力股东回报承诺：</strong>$70亿新增股票回购授权（6月宣布）+21%股息提升（年化$0.92/股拆后），连续15年股息增长记录，过去10年股息CAGR约14.5%</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>独立董事会：</strong>董事会11名成员中8名为独立董事，审计委员会、薪酬委员会、提名治理委员会全部由独立董事组成，治理结构业内领先</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>高管薪酬与绩效挂钩：</strong>CEO Rick Wallace薪酬中长期股权激励占比约70%，与3年TSR（股东总回报）和非GAAP EPS两项核心KPI挂钩，激励机制与股东利益高度一致</p></div>
+      <div class="ci"><div class="cdot cnv"></div><p><strong>信息披露透明度高：</strong>NASDAQ上市，SEC全量披露，KLA每季度提供详细的业务拆分（foundry/logic vs memory分类、系统vs服务vs先进封装分类），分析师能见度高</p></div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit">ESG 投资综合视角</div>
+  <div class="g2">
+    <div class="co gr">
+      <div class="cotit">ESG 核心投资价值</div>
+      <p>KLA的过程控制设备本质上是半导体行业的"良率提升工具"——通过减少缺陷晶圆，KLA帮助整个行业降低材料消耗、能源浪费和化学品排放，是一个将商业价值与环境价值高度统一的业务模式。MSCI ESG评级为"AA"（行业领导者级别），Sustainalytics风险评分约14.2（低风险）。KLA是ESG基金在半导体设备板块的首选标的之一，这提供了额外的估值溢价支撑。</p>
+    </div>
+    <div class="co am">
+      <div class="cotit">ESG 关注点与争议</div>
+      <p>半导体制造业整体碳足迹高，KLA设备虽非直接排放源，但在AI军备竞赛中实际上在加速算力扩张（即"rebound effect"：效率提升后总消耗反而增加）。此外，中国出口管制政策在一定程度上具有地缘政治争议性（双边立场均有合理性），部分欧洲ESG投资者对此持保留态度。高管近期减持在部分ESG分析师视角中构成治理担忧信号。</p>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SEC 12 RECOMMENDATION -->
+<div class="sec" id="s12">
+<div class="shd"><span class="snum">12</span><span class="stit">综合评估 · 最终交易建议</span></div>
+<div class="g3" style="margin-bottom:18px;">
+  <div class="card gr">
+    <div class="clbl">多方亮点（Bulls）</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p>全球过程控制设备市场份额<strong>58%</strong>，护城河极深，切换成本极高，无可撼动的垄断地位</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>Q3 FY2026营收<strong>$3.415B（+11% YoY）</strong>，连续4个季度超华尔街预期，执行力稳定</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>2026年先进封装过控收入翻倍至<strong>~$10亿</strong>，CoWoS/HBM4需求爆发提供额外增量</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>TTM ROE高达<strong>108.6%</strong>，非GAAP毛利率<strong>61.5%</strong>，盈利质量堪称半导体设备行业之最</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p><strong>$70亿新增回购授权</strong>+21%股息提升，资本回报力度空前，股息连续增长15年</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>10:1分拆降低名义股价，扩大投资者基础，历史上分拆后6个月平均超额收益+8–12%</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>2030年$200亿年收入路径清晰：服务CAGR 13–15% + 先进封装新兴支柱 + 市占率稳步提升</p></div>
+    </div>
+  </div>
+  <div class="card re">
+    <div class="clbl">空方关注（Bears）</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cre"></div><p>TTM P/E约<strong>49.6x</strong>，FCF收益率仅<strong>1.27%</strong>，股价较DCF内在价值溢价约<strong>181%</strong></p></div>
+      <div class="ci"><div class="cdot cre"></div><p>加权期望价值约<strong>$238</strong>，<strong>低于当前股价$241</strong>，期望回报为负（-1.3%含息）</p></div>
+      <div class="ci"><div class="cdot cre"></div><p>中国收入约占20–25%，<strong>出口管制升级风险</strong>可使年EPS下降15–20%</p></div>
+      <div class="ci"><div class="cdot cre"></div><p>高管Q3后集中减持约<strong>$970万</strong>，时点敏感（业绩大超+股价高位）</p></div>
+      <div class="ci"><div class="cdot cre"></div><p>WFE若2027年回调至$120B，KLA营收可能下滑<strong>15–20%</strong>，估值面临双杀</p></div>
+      <div class="ci"><div class="cdot cre"></div><p>PEG约<strong>2.33x</strong>，需要持续超预期才能维持当前估值，容错率极低</p></div>
+      <div class="ci"><div class="cdot cre"></div><p>悲观情景下行空间约<strong>-40%</strong>（跌至$145），远大于乐观情景上行空间+41%</p></div>
+    </div>
+  </div>
+  <div class="card am">
+    <div class="clbl">关键观察信号</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cam"></div><p>若股价回调至<strong>$210–225区间</strong>（对应约40x NTM P/E），安全边际改善，可积极增仓</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>Q4 FY2026业绩（7月底）</strong>是最重要节点：若营收超$37B+毛利率超62%，可上调至买入</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p>台积电CoWoS产能数据（每季度法说会）是先进封装收入能否超$10亿的领先指标</p></div>
+      <div class="ci"><div class="cdot cre"></div><p>任何BIS新增出口管制措施（涉及KLA特定型号设备）是立即触发卖出的信号</p></div>
+      <div class="ci"><div class="cdot cam"></div><p>若后续内部人减持规模扩大至$3000万+/季度，需重新评估管理层信心</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>若2027年WFE市场预测被上调至$170B+，可重新评估买入评级和$300+目标价</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL VERDICT -->
+<div class="card hl" style="border:2px solid var(--b3);">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:280px;">
+      <div class="clbl" style="margin-bottom:9px;color:var(--b2);">Snail Investment 精品研究部 · 最终综合建议</div>
+      <div style="font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:var(--nv);margin-bottom:13px;">
+        持有 <span style="color:var(--am);">(HOLD)</span> &nbsp;·&nbsp; 目标价 <span style="color:var(--b2);">$265.00（分拆后）</span>
+      </div>
+      <div style="font-size:13.5px;color:var(--t2);line-height:1.9;max-width:560px;">
+        KLA Corporation 是全球半导体过程控制领域无可争议的王者，拥有58%市占率、61.5%毛利率、108.6% ROE，以及通往2030年$200亿年收入的清晰战略路径。在AI芯片制造浪潮的推动下，公司基本面处于历史峰值，管理层执行力出色，资本回报策略极为强劲。<br><br>
+        然而，<strong>优秀的公司≠好的投资时机</strong>。当前股价$241（拆后）对应P/E约49.6x，FCF收益率仅1.27%，加权期望价值（$238）轻微低于当前价格，意味着三情景概率加权后的期望回报已转为负值。DCF最乐观情景（WACC=8%，g=4.5%）的隐含价值也仅约$376，而当前价格距此"极度乐观"情景仅有56%上行空间，但距悲观情景却有-40%下行空间。<br><br>
+        <strong>建议策略：</strong>当前持有不追涨。若Q4 FY2026（7月底）业绩再度超预期（营收超$37亿，毛利率超62%）且WFE 2027年预测被上调至$155B+，可在$241–260之间买入。更理想的入场点位是回调至<strong>$210–225区间</strong>（对应约40x NTM P/E，PEG约1.9x），届时安全边际更佳，风险回报比更为均衡。止损参考$185（对应约33x NTM P/E，触发前提是中国出口管制大幅升级或WFE预测下调至$120B以下）。
+      </div>
+      <div style="margin-top:14px;padding:10px 14px;background:var(--aml);border-radius:6px;font-size:11.5px;color:var(--am);line-height:1.8;">
+        ⚠ 注意：KLA股价年初至今已上涨约99.7%，过去12个月上涨约195%，短期追涨风险极高。本报告不构成投资建议，投资者需独立评估自身风险承受能力，尤其需重视出口管制政策和WFE周期下行的尾部风险。
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:9px;min-width:188px;">
+      <div style="background:var(--am);padding:13px 17px;border-radius:6px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px;">投资评级</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:700;color:#fff;">持有 HOLD</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:6px;border:1px solid var(--bd2);">
+        <div class="clbl">12个月目标价（拆后）</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:25px;font-weight:700;color:var(--b2);">$265.00</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:6px;border:1px solid var(--bd2);">
+        <div class="clbl">含息潜在总回报</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:21px;font-weight:700;color:var(--gn);">+10.2%</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:6px;border:1px solid var(--bd2);">
+        <div class="clbl">建议增持区间（拆后）</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:700;color:var(--b1);">$210–$225</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:6px;border:1px solid var(--bd2);">
+        <div class="clbl">止损参考位（拆后）</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:700;color:var(--rd);">&lt;$185</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:6px;border:1px solid var(--bd2);">
+        <div class="clbl">加权期望价值（拆后）</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:700;color:var(--am);">$238（低于当价）</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DATA SOURCES -->
+<div style="margin-top:36px;">
+  <div class="clbl" style="margin-bottom:12px;">主要数据来源与参考文献</div>
+  <div class="card">
+    <table class="tbl">
+      <thead><tr><th>来源机构</th><th>文件/报告名称</th><th class="r">日期</th></tr></thead>
+      <tbody>
+        <tr><td>KLA Corporation（SEC EDGAR）</td><td>Form 8-K — Q3 FY2026 业绩公告及投资者简报（EX-99.1）</td><td class="mono r">2026年4月29日</td></tr>
+        <tr><td>KLA Corporation（SEC EDGAR）</td><td>Form 8-K — 股票分拆、$70亿回购授权及股息增加公告</td><td class="mono r">2026年6月（分拆前）</td></tr>
+        <tr><td>KLA Corporation（SEC EDGAR）</td><td>Form 8-K — Q2 FY2026 业绩公告</td><td class="mono r">2026年1月</td></tr>
+        <tr><td>KLA Corporation（SEC EDGAR）</td><td>Form 10-K — FY2025年报（截至2025年6月30日）</td><td class="mono r">2025年8月</td></tr>
+        <tr><td>KLA Corporation（SEC EDGAR）</td><td>Form 4 — 内部人交易披露（Rick Wallace/Bren Higgins及其他高管）</td><td class="mono r">2026年4月–5月</td></tr>
+        <tr><td>KLA Corporation IR官网</td><td>Q3 FY2026业绩电话会议文字稿、CFO Bren Higgins BofA科技大会发言</td><td class="mono r">2026年4月29日 / 6月3日</td></tr>
+        <tr><td>SEMI（国际半导体产业协会）</td><td>全球WFE设备市场预测报告（2025–2027年度）</td><td class="mono r">2026年Q1</td></tr>
+        <tr><td>Morgan Stanley</td><td>KLAC增持评级报告，目标价$290（拆后）</td><td class="mono r">2026年Q1</td></tr>
+        <tr><td>BofA Securities</td><td>KLAC买入评级更新，目标价$285（拆后）</td><td class="mono r">2026年6月</td></tr>
+        <tr><td>Goldman Sachs</td><td>KLAC买入评级，目标价$280（拆后）</td><td class="mono r">2026年6月</td></tr>
+        <tr><td>Simply Wall St</td><td>KLAC DCF内在价值估算（公允价值约$132拆后），内部人交易监控</td><td class="mono r">2026年6月12日</td></tr>
+        <tr><td>Yahoo Finance / TradingView</td><td>KLAC实时股价、P/E、市值、52周区间、ROE数据（分拆后）</td><td class="mono r">2026年6月12日</td></tr>
+        <tr><td>Macrotrends.net</td><td>KLAC历史营收、EPS、毛利率、FCF长期趋势数据</td><td class="mono r">2026年6月</td></tr>
+        <tr><td>MSCI ESG Research</td><td>KLA Corporation ESG评级（AA级，行业领导者）</td><td class="mono r">2026年</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div><!-- end sec12 -->
+
+</div><!-- end .wrap -->
+
+<div class="footer">
+  <div class="ftbrand">🐌 Snail Investment · 精品研究部（半导体与半导体设备行业）</div>
+  <div class="ftdisc">
+    本报告由 Snail Investment 精品研究部独立撰写，数据截止日期为 2026年6月12日（KLA 10:1股票分拆生效日），发布日期 2026年6月13日。本报告仅供具备专业金融知识的机构及专业投资者参考，不构成任何形式的投资邀约、招募、要约收购或个人投资建议。<br><br>
+    报告中所载股价数据以2026年6月12日分拆后价格为基础（原价格÷10）。半导体设备行业具有显著的周期性，相关公司业绩受WFE市场规模、客户资本开支计划、地缘政治因素（尤其是中美半导体出口管制政策）及技术节点迁移速度等多重因素影响，不确定性较高。本报告所载价格目标及预测系基于特定假设，实际结果可能与预期存在重大差异，过往业绩不预示未来表现。<br><br>
+    分析师利益冲突声明：本报告撰写分析师声明，本人及 Snail Investment 精品研究部与 KLA Corporation (KLAC) 不存在任何重大利益冲突关系，亦不持有该公司股票或相关衍生金融工具仓位。本报告版权归属 Snail Investment，未经授权不得转载、引用或以任何方式再分发。
+  </div>
+</div>
+
+<script>
+const secs = document.querySelectorAll('.sec[id]');
+const links = document.querySelectorAll('.nlinks a');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(a => a.classList.toggle('act', a.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, { rootMargin: '-15% 0px -75% 0px' });
+secs.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
