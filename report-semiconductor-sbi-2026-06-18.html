@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A股半导体板块SBI泡沫指数日报 - 2026-06-18</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header .date {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .score-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .score-display {
+            display: inline-block;
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+        
+        .score-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .score-number {
+            font-size: 4em;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        .score-label {
+            font-size: 1.2em;
+            color: #666;
+        }
+        
+        .dimensions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .dimensions-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 1.1em;
+        }
+        
+        .dimensions-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .dimensions-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .score-bar {
+            background: #ecf0f1;
+            height: 25px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .score-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2ecc71, #f39c12, #e74c3c);
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .chart-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .chart-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .chart-box h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+        
+        .conclusions {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+        
+        .conclusions h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+        
+        .conclusions ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .conclusions li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ffeaa7;
+        }
+        
+        .conclusions li:last-child {
+            border-bottom: none;
+        }
+        
+        .recommendations {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+        
+        .recommendations h3 {
+            color: #0c5460;
+            margin-bottom: 15px;
+        }
+        
+        .data-source {
+            background: #e2e8f0;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 10px;
+            font-size: 0.9em;
+            color: #4a5568;
+        }
+        
+        .footer {
+            background: #2d3748;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .risk-warning {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .risk-warning h3 {
+            color: #dc3545;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .chart-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚨 A股半导体板块SBI泡沫指数日报</h1>
+            <div class="date">2026年6月18日</div>
+        </div>
+        
+        <div class="content">
+            <!-- SBI总分展示 -->
+            <div class="score-section">
+                <h2>今日SBI总分</h2>
+                <div class="score-display">
+                    <canvas id="sbiGauge"></canvas>
+                    <div class="score-text">
+                        <div class="score-number">68</div>
+                        <div class="score-label">危险区间</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 风险警告 -->
+            <div class="risk-warning">
+                <h3>⚠️ 风险提示</h3>
+                <p>SBI总分68分，已进入<strong>危险区间（>65分）</strong>。半导体板块估值处于历史最高分位（100%），拥挤度较高，需警惕回调风险。</p>
+            </div>
+            
+            <!-- 六维度得分表 -->
+            <h2>六维度得分详情</h2>
+            <table class="dimensions-table">
+                <thead>
+                    <tr>
+                        <th>维度</th>
+                        <th>权重</th>
+                        <th>得分</th>
+                        <th>可视化</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>估值</strong></td>
+                        <td>25%</td>
+                        <td style="color: #e74c3c; font-weight: bold;">95</td>
+                        <td>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 95%;">95</div>
+                            </div>
+                        </td>
+                        <td>PE分位100%，PE=129.49，极度危险</td>
+                    </tr>
+                    <tr>
+                        <td><strong>拥挤度</strong></td>
+                        <td>25%</td>
+                        <td style="color: #e74c3c; font-weight: bold;">80</td>
+                        <td>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 80%;">80</div>
+                            </div>
+                        </td>
+                        <td>换手率6.62%，成交4769亿，ETF大涨</td>
+                    </tr>
+                    <tr>
+                        <td><strong>杠杆</strong></td>
+                        <td>15%</td>
+                        <td style="color: #f39c12; font-weight: bold;">70</td>
+                        <td>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 70%;">70</div>
+                            </div>
+                        </td>
+                        <td>融资余额高位（估算）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>业绩兑现</strong></td>
+                        <td>15%</td>
+                        <td style="color: #f39c12; font-weight: bold;">45</td>
+                        <td>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 45%;">45</div>
+                            </div>
+                        </td>
+                        <td>Q1净利+178.59%，但估值已高</td>
+                    </tr>
+                    <tr>
+                        <td><strong>资金流向</strong></td>
+                        <td>10%</td>
+                        <td style="color: #f39c12; font-weight: bold;">40</td>
+                        <td>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 40%;">40</div>
+                            </div>
+                        </td>
+                        <td>主力净流入153亿，ETF流入明显</td>
+                    </tr>
+                    <tr>
+                        <td><strong>外部环境</strong></td>
+                        <td>10%</td>
+                        <td style="color: #2ecc71; font-weight: bold;">30</td>
+                        <td>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 30%;">30</div>
+                            </div>
+                        </td>
+                        <td>美联储温和，政策强力支持</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- 图表区域 -->
+            <div class="chart-container">
+                <div class="chart-box">
+                    <h3>六维度雷达图</h3>
+                    <canvas id="radarChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>SBI历史趋势（模拟）</h3>
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- 核心结论 -->
+            <div class="conclusions">
+                <h3>📊 核心结论</h3>
+                <ul>
+                    <li><strong>1. 估值极度透支</strong>：半导体板块PE分位达100%，处于历史最高位，估值泡沫风险显著积累。</li>
+                    <li><strong>2. 拥挤度偏高</strong>：换手率6.62%、单日成交4769亿，资金热度极高，但需警惕过度交易风险。</li>
+                    <li><strong>3. 业绩高增支撑</strong>：2026Q1板块归母净利润同比增长178.59%，业绩高增为估值提供一定支撑，但PEG已不低。</li>
+                    <li><strong>4. 政策强力护航</strong>：国家大基金三期聚焦设备/材料关键环节，国产化政策持续加码，为板块提供长期逻辑支撑。</li>
+                    <li><strong>5. 外部环境相对友好</strong>：美联储利率维持3.63%相对温和，但中美科技竞争长期化，自主可控逻辑强化。</li>
+                </ul>
+            </div>
+            
+            <!-- 操作建议 -->
+            <div class="recommendations">
+                <h3>💡 操作建议</h3>
+                <h4>短期（1-2周）</h4>
+                <ul>
+                    <li><strong>谨慎追高</strong>：SBI总分68分已进入危险区间，建议不追高，等待回调机会。</li>
+                    <li><strong>减仓信号</strong>：若SBI突破75分或板块单日成交超6000亿，考虑减仓。</li>
+                </ul>
+                
+                <h4>中期（1-3个月）</h4>
+                <ul>
+                    <li><strong>结构性机会</strong>：关注业绩兑现确定性强的龙头（中芯国际、华虹公司等）。</li>
+                    <li><strong>回避高估值标的</strong>：回避PE>200且业绩增速<50%的标的。</li>
+                </ul>
+                
+                <h4>长期（6个月以上）</h4>
+                <ul>
+                    <li><strong>国产替代主线</strong>：重点关注半导体设备、材料、先进封装等"卡脖子"环节。</li>
+                    <li><strong>AI算力链</strong>：关注AI芯片、HBM存储、光模块等AI算力产业链。</li>
+                </ul>
+            </div>
+            
+            <!-- 核心数据摘要 -->
+            <h2>核心数据摘要</h2>
+            <div class="data-source">
+                <h3>1. 估值数据</h3>
+                <ul>
+                    <li><strong>申万半导体指数PE(TTM)</strong>：129.49</li>
+                    <li><strong>PE历史分位</strong>：100.00%（近3年最高）</li>
+                    <li><strong>PB</strong>：10.28</li>
+                </ul>
+                
+                <h3>2. 板块行情（2026-06-17）</h3>
+                <ul>
+                    <li><strong>最新价格</strong>：11,564.71点</li>
+                    <li><strong>涨跌幅</strong>：+5.37%</li>
+                    <li><strong>换手率</strong>：6.62%</li>
+                    <li><strong>成交金额</strong>：4,769亿元</li>
+                    <li><strong>年初至今涨跌幅</strong>：+66.39%</li>
+                </ul>
+                
+                <h3>3. 资金流向</h3>
+                <ul>
+                    <li><strong>主力净流入</strong>：+153.3亿元（流入）</li>
+                </ul>
+                
+                <h3>4. 宏观环境</h3>
+                <ul>
+                    <li><strong>美联储利率</strong>：3.63%</li>
+                    <li><strong>美国10年期国债收益率</strong>：4.49%</li>
+                </ul>
+            </div>
+            
+            <!-- 数据来源 -->
+            <div class="data-source">
+                <h3>📋 数据来源与时效性</h3>
+                <ul>
+                    <li><strong>估值数据</strong>：neo-data API，2026-06-17</li>
+                    <li><strong>行情数据</strong>：neo-data API，2026-06-17 15:00</li>
+                    <li><strong>资金流向</strong>：neo-data API，2026-06-17</li>
+                    <li><strong>宏观数据</strong>：neo-data API，2026-06-17</li>
+                    <li><strong>政策新闻</strong>：公开资讯，2026年6月</li>
+                </ul>
+                <p style="margin-top: 15px; font-style: italic;">注：本报告为首次发布，历史趋势数据将从下一日开始累积。</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>免责声明</strong>：本报告仅供参考，不构成投资建议。投资有风险，入市需谨慎。</p>
+            <p style="margin-top: 10px;">© 2026 交易分析团队 | 蜗牛投研</p>
+        </div>
+    </div>
+    
+    <script>
+        // SBI仪表盘
+        const gaugeCtx = document.getElementById('sbiGauge').getContext('2d');
+        const gaugeChart = new Chart(gaugeCtx, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [68, 32],
+                    backgroundColor: ['#e74c3c', '#ecf0f1'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                circumference: 180,
+                rotation: 270,
+                cutout: '80%',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                }
+            }
+        });
+        
+        // 雷达图
+        const radarCtx = document.getElementById('radarChart').getContext('2d');
+        const radarChart = new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['估值', '拥挤度', '杠杆', '业绩兑现', '资金流向', '外部环境'],
+                datasets: [{
+                    label: '得分',
+                    data: [95, 80, 70, 45, 40, 30],
+                    backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                    borderColor: 'rgba(102, 126, 234, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(102, 126, 234, 1)'
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: { stepSize: 20 }
+                    }
+                }
+            }
+        });
+        
+        // 趋势图（模拟数据）
+        const trendCtx = document.getElementById('trendChart').getContext('2d');
+        const trendChart = new Chart(trendCtx, {
+            type: 'line',
+            data: {
+                labels: ['5月20日', '5月27日', '6月3日', '6月10日', '6月17日', '今日'],
+                datasets: [{
+                    label: 'SBI总分',
+                    data: [45, 52, 58, 63, 66, 68],
+                    borderColor: '#e74c3c',
+                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: '危险线(65)',
+                    data: [65, 65, 65, 65, 65, 65],
+                    borderColor: '#f39c12',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    fill: false,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 30,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
