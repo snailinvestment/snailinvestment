@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>慧与科技 HPE 深度研究报告 | Snail Investment · 精品研究部</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+:root{
+  --bg0:#F2F3F5;--bg1:#EAEBED;--bgc:#FFFFFF;--bgd:#F8F9FA;--bgdark:#1C2231;
+  --gy1:#374151;--gy2:#4B5563;--gy3:#6B7280;--gy4:#9CA3AF;--gy5:#D1D5DB;--gy6:#E5E7EB;
+  --acc:#0EA5E9;--acc2:#0284C7;--acc3:#38BDF8;--acc4:#BAE6FD;--acc5:#E0F2FE;
+  --grn:#059669;--grnl:#D1FAE5;--grnb:#10B981;
+  --red:#DC2626;--redl:#FEE2E2;--redb:#EF4444;
+  --amb:#D97706;--ambl:#FEF3C7;--ambb:#F59E0B;
+  --pur:#7C3AED;--purl:#EDE9FE;--purb:#8B5CF6;
+  --t1:#111827;--t2:#1F2937;--t3:#6B7280;--t4:#9CA3AF;
+  --bd:#D1D5DB;--bd2:#E5E7EB;--bd3:#F3F4F6;
+  --sh:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.05);
+  --sh2:0 4px 16px rgba(0,0,0,.09);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg0);color:var(--t1);font-family:'Noto Sans SC','PingFang SC',sans-serif;font-size:14px;line-height:1.75;overflow-x:hidden;}
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd2);display:flex;align-items:center;justify-content:space-between;padding:0 36px;height:52px;box-shadow:var(--sh);}
+.nbrand{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--acc2);font-weight:700;letter-spacing:.04em;}
+.nlinks{display:flex;gap:2px;overflow-x:auto;}
+.nlinks a{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--gy3);text-decoration:none;padding:5px 9px;border-radius:4px;white-space:nowrap;letter-spacing:.05em;text-transform:uppercase;transition:all .15s;}
+.nlinks a:hover,.nlinks a.act{color:var(--acc2);background:var(--acc5);}
+.nrate{display:flex;align-items:center;gap:8px;white-space:nowrap;}
+.npill{background:var(--acc2);color:#fff;padding:3px 12px;border-radius:4px;font-weight:700;font-size:11px;font-family:'IBM Plex Mono',monospace;}
+/* HERO */
+.hero{background:linear-gradient(150deg,#1C2231 0%,#243044 45%,#1E3A5F 80%,#1A3357 100%);padding:84px 52px 56px;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(14,165,233,.5),transparent);}
+.hwm{position:absolute;right:-20px;top:-50px;font-family:'IBM Plex Mono',monospace;font-size:240px;font-weight:700;color:rgba(255,255,255,.04);letter-spacing:-6px;pointer-events:none;user-select:none;line-height:1;}
+.hg1{position:absolute;bottom:-60px;right:-60px;width:280px;height:280px;border-radius:50%;background:rgba(14,165,233,.05);border:1px solid rgba(14,165,233,.1);}
+.hg2{position:absolute;bottom:-110px;right:-110px;width:420px;height:420px;border-radius:50%;background:rgba(14,165,233,.02);border:1px solid rgba(14,165,233,.06);}
+/* Dividend badge */
+.div-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.35);padding:6px 14px;border-radius:6px;margin-bottom:16px;}
+.div-badge span{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6EE7B7;font-weight:700;}
+.div-badge small{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(110,231,183,.65);text-transform:uppercase;letter-spacing:.08em;}
+.hbrow{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px;display:flex;gap:18px;flex-wrap:wrap;}
+.hero h1{font-family:'Noto Serif SC',serif;font-size:36px;font-weight:700;color:#fff;line-height:1.22;margin-bottom:9px;}
+.hero h1 .co{color:#7DD3FC;}
+.hsub{font-family:'Noto Serif SC',serif;font-size:15px;color:rgba(255,255,255,.65);margin-bottom:36px;font-weight:300;}
+.kstrip{display:flex;gap:0;border:1px solid rgba(255,255,255,.13);border-radius:8px;overflow:hidden;width:fit-content;margin-bottom:28px;flex-wrap:wrap;}
+.kc{padding:13px 20px;background:rgba(255,255,255,.07);border-right:1px solid rgba(255,255,255,.09);}
+.kc:last-child{border-right:none;}
+.klbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.42);text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px;}
+.kv{font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:#fff;}
+.kv.gr{color:#6EE7B7;}
+.kv.am{color:#FCD34D;}
+.kv.re{color:#FCA5A5;}
+.ksub{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.38);margin-top:2px;}
+.ksub .up{color:#6EE7B7;}
+.rrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.rp{display:inline-flex;flex-direction:column;gap:3px;padding:10px 18px;border-radius:6px;border:1px solid rgba(255,255,255,.15);}
+.rlbl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.11em;color:rgba(255,255,255,.42);}
+.rval{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;color:#fff;}
+.rp.buy{background:rgba(16,185,129,.18);border-color:rgba(16,185,129,.38);}
+.rp.buy .rval{color:#6EE7B7;}
+.rp.tp{background:rgba(56,189,248,.15);border-color:rgba(56,189,248,.35);}
+.rp.tp .rval{color:#7DD3FC;}
+.rp.up{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.28);}
+.rp.up .rval{color:#A7F3D0;}
+.rp.en{background:rgba(251,191,36,.13);border-color:rgba(251,191,36,.28);}
+.rp.en .rval{color:#FCD34D;}
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px 100px;}
+.sec{margin-top:64px;scroll-margin-top:66px;}
+.shd{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid var(--gy5);}
+.snum{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--acc2);background:var(--acc5);padding:3px 9px;border-radius:4px;letter-spacing:.1em;font-weight:700;}
+.stit{font-family:'Noto Serif SC',serif;font-size:19px;font-weight:600;color:var(--gy1);}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;}
+.g21{display:grid;grid-template-columns:2fr 1fr;gap:16px;}
+/* CARDS */
+.card{background:var(--bgc);border:1px solid var(--bd2);border-radius:8px;padding:20px 22px;box-shadow:var(--sh);}
+.card.bl{border-left:4px solid var(--acc2);}
+.card.gr{border-left:4px solid var(--grnb);}
+.card.re{border-left:4px solid var(--redb);}
+.card.am{border-left:4px solid var(--ambb);}
+.card.gy{border-left:4px solid var(--gy2);}
+.card.pu{border-left:4px solid var(--purb);}
+.card.hl{background:var(--acc5);border:1px solid var(--acc4);}
+.clbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--gy3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px;}
+.cbig{font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:600;color:var(--gy1);line-height:1.05;}
+.cbig.bl{color:var(--acc2);}
+.cbig.gr{color:var(--grn);}
+.cbig.am{color:var(--amb);}
+.cbig.re{color:var(--red);}
+.cbig.pu{color:var(--pur);}
+.csub{font-size:11.5px;color:var(--gy3);margin-top:4px;}
+.csub .up{color:var(--grnb);}
+.csub .dn{color:var(--redb);}
+.ctit{font-family:'Noto Serif SC',serif;font-size:14px;font-weight:600;color:var(--gy1);margin-bottom:11px;}
+.prose{font-size:13.5px;color:var(--gy2);line-height:1.9;}
+.prose strong{color:var(--t1);font-weight:600;}
+.prose .hl{color:var(--acc2);font-weight:600;}
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px;}
+.tbl thead tr{background:var(--bgd);}
+.tbl th{color:var(--gy3);font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.09em;padding:9px 12px;text-align:left;border-bottom:2px solid var(--bd2);}
+.tbl th.r{text-align:right;}
+.tbl td{padding:9px 12px;border-bottom:1px solid var(--bd3);color:var(--gy2);vertical-align:middle;}
+.tbl td.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--t1);}
+.tbl td.r{text-align:right;}
+.tbl tr:hover td{background:var(--acc5);}
+/* TAGS */
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;}
+.tg{background:var(--grnl);color:var(--grn);}
+.tr2{background:var(--redl);color:var(--red);}
+.ta{background:var(--ambl);color:var(--amb);}
+.tb{background:var(--acc5);color:var(--acc2);}
+.tp2{background:var(--purl);color:var(--pur);}
+.tgy{background:var(--bd3);color:var(--gy2);}
+/* BARS */
+.bar{display:flex;align-items:center;gap:11px;margin-bottom:9px;}
+.blbl{width:170px;font-size:12px;color:var(--gy2);flex-shrink:0;}
+.btrk{flex:1;height:7px;background:var(--bd2);border-radius:4px;overflow:hidden;}
+.bfill{height:100%;border-radius:4px;}
+.bbl{background:linear-gradient(90deg,var(--acc4),var(--acc2));}
+.bgr{background:linear-gradient(90deg,#A7F3D0,var(--grnb));}
+.bre{background:linear-gradient(90deg,#FCA5A5,var(--redb));}
+.bam{background:linear-gradient(90deg,#FDE68A,var(--ambb));}
+.bgy{background:linear-gradient(90deg,var(--gy5),var(--gy2));}
+.bpu{background:linear-gradient(90deg,#C4B5FD,var(--purb));}
+.bval{width:64px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--t1);flex-shrink:0;}
+/* CALLOUT */
+.co{background:var(--acc5);border:1px solid var(--acc4);border-radius:6px;padding:16px 20px;margin-bottom:14px;}
+.co.gr{background:var(--grnl);border-color:#6EE7B7;}
+.co.re{background:var(--redl);border-color:#FCA5A5;}
+.co.am{background:var(--ambl);border-color:#FDE68A;}
+.co.gy{background:var(--bgd);border-color:var(--bd);}
+.cotit{font-family:'Noto Serif SC',serif;font-size:13px;font-weight:700;color:var(--acc2);margin-bottom:7px;}
+.co.gr .cotit{color:var(--grn);}
+.co.re .cotit{color:var(--red);}
+.co.am .cotit{color:var(--amb);}
+.co.gy .cotit{color:var(--gy1);}
+.co p{font-size:13px;color:var(--gy2);line-height:1.85;}
+/* SCENARIOS */
+.scrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:14px;}
+.sc{background:var(--bgc);border:1px solid var(--bd2);border-radius:8px;padding:20px 22px;box-shadow:var(--sh);position:relative;overflow:hidden;}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.sc.bull::before{background:var(--grnb);}
+.sc.base::before{background:var(--acc2);}
+.sc.bear::before{background:var(--redb);}
+.sclbl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.11em;margin-bottom:9px;}
+.sc.bull .sclbl{color:var(--grn);}
+.sc.base .sclbl{color:var(--acc2);}
+.sc.bear .sclbl{color:var(--red);}
+.scpri{font-family:'IBM Plex Mono',monospace;font-size:30px;font-weight:700;margin-bottom:3px;}
+.sc.bull .scpri{color:var(--grn);}
+.sc.base .scpri{color:var(--acc2);}
+.sc.bear .scpri{color:var(--red);}
+.scprob{font-size:11px;color:var(--gy3);margin-bottom:4px;}
+.scret{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;margin-bottom:11px;}
+.sc.bull .scret{color:var(--grn);}
+.sc.base .scret{color:var(--acc2);}
+.sc.bear .scret{color:var(--red);}
+.scdesc{font-size:12.5px;color:var(--gy2);line-height:1.73;}
+.scdiv{border:none;border-top:1px solid var(--bd2);margin:9px 0;}
+/* RISK ROWS */
+.risk{display:flex;align-items:flex-start;gap:14px;padding:13px 0;border-bottom:1px solid var(--bd3);}
+.risk:last-child{border:none;}
+.rbdg{width:54px;flex-shrink:0;text-align:center;padding-top:2px;}
+.rbdg span{display:inline-block;padding:3px 6px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;}
+.rbdg.hi span{background:var(--redl);color:var(--red);}
+.rbdg.md span{background:var(--ambl);color:var(--amb);}
+.rbdg.lo span{background:var(--grnl);color:var(--grn);}
+.rtit{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:4px;}
+.rdesc{font-size:12.5px;color:var(--gy2);line-height:1.75;}
+/* TIMELINE */
+.tl{position:relative;padding-left:26px;}
+.tl::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--gy5);}
+.tli{position:relative;margin-bottom:20px;}
+.tldot{position:absolute;left:-22px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--acc2);border:2px solid var(--bgc);box-shadow:0 0 0 2px var(--acc3);}
+.tldate{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--acc2);margin-bottom:2px;font-weight:700;}
+.tltit{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:2px;}
+.tldesc{font-size:12px;color:var(--gy2);}
+/* CAT LIST */
+.cats{display:flex;flex-direction:column;gap:10px;}
+.ci{display:flex;gap:11px;align-items:flex-start;}
+.cdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+.cbl{background:var(--acc2);}
+.cgr{background:var(--grnb);}
+.cre{background:var(--redb);}
+.cam{background:var(--ambb);}
+.cgy{background:var(--gy2);}
+.cpu{background:var(--purb);}
+.ci p{font-size:13px;color:var(--gy2);line-height:1.75;}
+.ci p strong{color:var(--t1);}
+/* SEGMENT BAR */
+.svbar{display:flex;height:10px;border-radius:5px;overflow:hidden;margin:9px 0 6px;}
+.sp{height:100%;}
+.sleg{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.sli{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gy2);}
+.sdot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+/* DCF MATRIX */
+.dcfm{border-collapse:collapse;font-family:'IBM Plex Mono',monospace;font-size:11px;width:100%;}
+.dcfm th,.dcfm td{padding:7px 11px;border:1px solid var(--bd2);text-align:center;}
+.dcfm th{background:var(--bgd);color:var(--gy3);font-size:9px;letter-spacing:.07em;}
+.dcfm .thr{color:var(--gy2);}
+.bzone{background:var(--grnl);color:var(--grn);}
+.mzone{background:var(--acc5);color:var(--acc2);}
+.rzone{background:var(--redl);color:var(--red);}
+.dzone{background:var(--acc4);color:var(--bgdark);font-weight:700;}
+/* FOOTER */
+.footer{background:var(--bgdark);padding:36px 52px;margin-top:80px;}
+.ftbrand{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--acc3);font-weight:700;margin-bottom:12px;}
+.ftdisc{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.35);line-height:1.9;max-width:1000px;}
+@media(max-width:900px){
+  .hero{padding:72px 20px 38px;}.wrap{padding:0 20px 80px;}
+  #nav{padding:0 16px;}
+  .g2,.g3,.g4,.g21{grid-template-columns:1fr;}
+  .scrow{grid-template-columns:1fr;}.hwm{display:none;}.kstrip{width:100%;}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nbrand">🐌 Snail Investment · 精品研究部</div>
+  <div class="nlinks">
+    <a href="#s01">摘要</a><a href="#s02">公司</a><a href="#s03">财务</a>
+    <a href="#s04">业务</a><a href="#s05">市场</a><a href="#s06">估值</a>
+    <a href="#s07">DCF</a><a href="#s08">情景</a><a href="#s09">风险</a>
+    <a href="#s10">催化剂</a><a href="#s11">ESG</a><a href="#s12">建议</a>
+  </div>
+  <div class="nrate"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gy3);">HPE $48.31</span><span class="npill">买入 · $68 目标</span></div>
+</nav>
+<div class="hero">
+  <div class="hwm">HPE</div>
+  <div class="hg1"></div><div class="hg2"></div>
+  <div class="hbrow">
+    <span>NYSE：HPE</span><span>企业IT基础设施 / AI服务器 / 网络</span>
+    <span>德克萨斯州休斯顿</span><span>US GAAP</span><span>截止 2026年6月16日</span>
+  </div>
+  <div class="div-badge">
+    <span>💰 今日除息日</span>
+    <small>$0.1425/股 · 记录日 2026-06-16 · 派发 2026-07-15</small>
+  </div>
+  <h1><span class="co">慧与科技 Hewlett Packard Enterprise</span><br>深度股票研究报告</h1>
+  <div class="hsub">AI服务器与企业网络双核引擎 · $59亿AI积压订单 · Juniper整合两年超前完成目标</div>
+  <div class="kstrip">
+    <div class="kc"><div class="klbl">当前股价（NYSE）</div><div class="kv">$48.31</div><div class="ksub">2026-06-16 除息日</div></div>
+    <div class="kc"><div class="klbl">市值</div><div class="kv">~$63.0B</div><div class="ksub">流通股约13.05亿</div></div>
+    <div class="kc"><div class="klbl">52周区间</div><div class="kv" style="font-size:14px;">$24.46–$64.99</div><div class="ksub">YTD +127%</div></div>
+    <div class="kc"><div class="klbl">TTM P/E</div><div class="kv am">~26x</div><div class="ksub">NTM约14x</div></div>
+    <div class="kc"><div class="klbl">股息收益率（年化）</div><div class="kv gr">1.18%</div><div class="ksub">$0.57/股年化</div></div>
+    <div class="kc"><div class="klbl">Q2 FY2026 营收</div><div class="kv gr">$10.68B</div><div class="ksub"><span class="up">▲ +40% YoY</span></div></div>
+    <div class="kc"><div class="klbl">非GAAP EPS（Q2）</div><div class="kv gr">$0.79</div><div class="ksub"><span class="up">超预期+46%</span></div></div>
+    <div class="kc"><div class="klbl">AI Systems 积压订单</div><div class="kv gr">$5.9B</div><div class="ksub"><span class="up">订单同比翻倍以上</span></div></div>
+  </div>
+  <div class="rrow">
+    <div class="rp buy"><div class="rlbl">投资评级</div><div class="rval">买入 BUY</div></div>
+    <div class="rp tp"><div class="rlbl">12个月目标价</div><div class="rval">$68.00</div></div>
+    <div class="rp up"><div class="rlbl">含息潜在总回报</div><div class="rval">+42.0%</div></div>
+    <div class="rp en"><div class="rlbl">建议买入区间</div><div class="rval">$45–$52</div></div>
+  </div>
+</div>
+<div class="wrap">
+<!-- SEC 01 THESIS -->
+<div class="sec" id="s01">
+<div class="shd"><span class="snum">01</span><span class="stit">投资逻辑摘要</span></div>
+<div class="co" style="margin-bottom:18px;">
+  <div class="cotit">核心观点：买入（BUY），目标价 $68.00，建议买入区间 $45–52</div>
+  <p>慧与科技（HPE）刚刚完成了一次令华尔街大跌眼镜的季度业绩——Q2 FY2026营收$106.78亿（+40% YoY），非GAAP EPS $0.79（超预期46%），进入Q3时AI Systems积压订单高达<strong>$59亿</strong>，订单管道是积压订单的"数倍"。最令人震撼的不是数字本身，而是管理层的定性声明：<strong>"我们已比承诺的长期计划提前两年完成目标"</strong>——这句话来自一家以保守设定多年目标著称的硬件公司，含金量极高。</p>
+  <p style="margin-top:8px;">然而，股价从$37（除息前六月初）飙升至$59（6月2日盘后），再回落至当前$48.31，这次中间波动为投资者创造了一个<strong>次级买入机会</strong>。在$48估值下，NTM P/E约14x，显著低于AI服务器同业（Dell ~18x，Super Micro ~25x），同时享有$59亿积压订单的强确定性收入保障、Juniper整合超前完成的协同效益加速兑现、以及刚刚上调至29–33%的全年营收增长指引。我们认为AI基础设施建设周期远未结束，HPE凭借企业和主权客户（占AI积压的64%）的结构性优势，将持续受益。</p>
+</div>
+<div class="g3">
+  <div class="card gr">
+    <div class="clbl">多方核心逻辑</div><div class="ctit">AI积压订单 + 超预期执行</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>$59亿AI积压订单进Q3：</strong>Q2 AI系统订单同比翻倍，积压订单管道为积压量"数倍"，提供未来3–4个季度的强收入可见性</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p><strong>Juniper整合超预期：</strong>已完成第一阶段整合，协同效益和Catalyst成本节约均超前兑现；网络业务Q2营收$27亿，正常化增长10%（剔除Juniper并表影响）</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p><strong>全年指引大幅上调：</strong>FY2026营收增长29–33%（前指引17–22%），非GAAP EPS $3.35–3.45（前$2.30–2.50），FCF ≥$35亿（前≥$20亿），全面超越2028年原定长期计划</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>Q3指引营收$115–121亿（+29.2% YoY中值），管理层预计Q3为"全年最大AI收入季"</p></div>
+    </div>
+  </div>
+  <div class="card bl">
+    <div class="clbl">估值催化剂</div><div class="ctit">NTM P/E仅14x · 严重低估</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cbl"></div><p><strong>估值同业大幅折价：</strong>HPE NTM P/E约14x vs Dell ~18x、Cisco ~17x、Super Micro ~25x，考虑Juniper整合完成后的网络业务溢价，当前折扣不合理</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>回调提供买入窗口：</strong>股价从$59盘后高点回落至$48（-18%），主要来自利润兑现抛压而非基本面变化，创造了补充的买入机会</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>FCF急速提升：</strong>FY2026 FCF指引≥$35亿（前指引≥$20亿），FCF yield约5.6%，在当前利率环境下极具吸引力</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p>H3C股权出售为资产负债表减轻负担，净债务持续下降，为更激进的资本回报创造条件</p></div>
+    </div>
+  </div>
+  <div class="card am">
+    <div class="clbl">主要风险</div><div class="ctit">毛利率压力 · 供应链约束</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cam"></div><p><strong>毛利率仅18.8%（GAAP）：</strong>AI服务器毛利率结构性偏低（约6–8%），与Juniper高利润网络业务混合后整体毛利率仍存在改善空间，但需警惕持续压力</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>供应链约束：</strong>AI系统积压转化受到GPU/定制ASIC供应限制，实际收入确认节奏可能不稳定；Q2网络积压增长40%+亦反映了部分供应约束</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>内部人大规模减持：</strong>过去6个月22次内部人交易全为卖出，CEO Antonio Neri出售44.1万股约$1,128万；需关注未来减持动向</p></div>
+      <div class="ci"><div class="cdot cam"></div><p>存储（Hybrid Cloud）业务表现疲软（Q2 -13.6% YoY），拖累整体组合质量</p></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SEC 02 COMPANY -->
+<div class="sec" id="s02">
+<div class="shd"><span class="snum">02</span><span class="stit">公司概览 · 业务架构</span></div>
+<div class="g21" style="margin-bottom:16px;">
+  <div class="card">
+    <div class="ctit">公司简介</div>
+    <div class="prose">慧与科技（Hewlett Packard Enterprise，NYSE：HPE）于<strong>2015年</strong>由惠普公司分拆成立，专注于企业级IT基础设施业务，总部位于德克萨斯州休斯顿。公司是全球最大的企业服务器制造商之一，同时凭借2024年完成的<strong>$140亿收购Juniper Networks</strong>，成为企业网络设备的重要参与者。<br><br>
+    HPE主要服务于大型企业、政府机构及主权客户，提供从AI服务器、HPC超算、企业网络到混合云管理的完整解决方案栈。公司Q2 FY2026营收创历史新高$106.78亿，AI Systems积压订单$59亿，以"企业和主权AI"为核心市场定位，与Super Micro（超大规模云厂商聚焦）形成差异化。截至2026年6月，公司员工约<strong>62,000人</strong>，服务超过100个国家和地区。</div>
+  </div>
+  <div class="card bl">
+    <div class="ctit">核心战略主轴</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>AI基础设施聚焦：</strong>ProLiant Gen12服务器、Cray超算、HPE SuperDome专注企业和主权AI，HPE私有云AI占比64%来自非超大规模客户</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>Juniper整合加速：</strong>网络业务整合进入第二阶段（战略产品+软件+收入协同），WiFi7 AP出货量同比增长10倍，AI网络订单累计增长强劲</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>Catalyst成本计划：</strong>成本削减超前于计划，2026年目标节约$5亿，协同效益正推动运营利润率向目标13–15%区间持续迈进</p></div>
+      <div class="ci"><div class="cdot cgy"></div><p><strong>2027年财务框架：</strong>营收增长高teen%–20%以上，非GAAP EPS $4.20–4.50，FCF ≥$45亿；FY2026已提前达成2028年原承诺目标</p></div>
+    </div>
+    <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--bd2);font-size:11.5px;color:var(--gy3);line-height:1.8;">
+      ✅ Q2 FY2026营收记录新高$10.68B，+40% YoY<br>
+      ✅ AI积压订单$59亿，订单管道"数倍于积压"<br>
+      ✅ FY2026指引大幅上调，超越2028年原定目标<br>
+      ⚠ GAAP毛利率18.8%，AI服务器低利润结构<br>
+      ⚠ 过去6个月22次内部人交易全为卖出
+    </div>
+  </div>
+</div>
+<div class="card" style="margin-bottom:14px;">
+  <div class="ctit">业务板块构成（Q2 FY2026营收$10.68B，来源：SEC EDGAR 8-K，2026年6月1日）</div>
+  <div class="svbar">
+    <div class="sp" style="width:72.2%;background:var(--acc2);"></div>
+    <div class="sp" style="width:25.2%;background:#38BDF8;"></div>
+    <div class="sp" style="width:2.6%;background:#7DD3FC;"></div>
+  </div>
+  <div class="sleg" style="margin-bottom:16px;">
+    <div class="sli"><div class="sdot" style="background:var(--acc2);"></div>云与AI（服务器）$7.71B 72.2% (+22.9% YoY)</div>
+    <div class="sli"><div class="sdot" style="background:#38BDF8;"></div>网络（Juniper） $2.69B 25.2% (+148.2% YoY)</div>
+    <div class="sli"><div class="sdot" style="background:#7DD3FC;"></div>金融服务+其他 $0.28B 2.6%</div>
+  </div>
+  <div class="g4">
+    <div>
+      <div class="clbl">云与AI（服务器）</div>
+      <div class="cbig bl" style="font-size:20px;">$7.71B</div>
+      <div class="csub"><span class="up">▲ +22.9% YoY</span></div>
+      <div class="csub" style="margin-top:4px;font-size:11.5px;line-height:1.7;">AI Systems积压$59亿<br>Gen12 ProLiant增长<br>传统服务器订单↑3位数</div>
+    </div>
+    <div>
+      <div class="clbl">网络（Networking）</div>
+      <div class="cbig bl" style="font-size:20px;">$2.69B</div>
+      <div class="csub"><span class="up">▲ +148.2% YoY（含Juniper）</span></div>
+      <div class="csub" style="margin-top:4px;font-size:11.5px;line-height:1.7;">正常化+10% YoY<br>数据中心网络+233.3%<br>WiFi7 AP量增10x</div>
+    </div>
+    <div>
+      <div class="clbl">混合云（存储）</div>
+      <div class="cbig am" style="font-size:20px;">含于AI段</div>
+      <div class="csub"><span class="dn">▼ 存储收入-13.6% YoY</span></div>
+      <div class="csub" style="margin-top:4px;font-size:11.5px;line-height:1.7;">HPE GreenLake延迟<br>VM Essentials+43%<br>存储订单偏软</div>
+    </div>
+    <div>
+      <div class="clbl">运营利润率（非GAAP）</div>
+      <div class="cbig gr" style="font-size:20px;">13.3%</div>
+      <div class="csub"><span class="up">▲ vs Q2 FY25 8.0%</span></div>
+      <div class="csub" style="margin-top:4px;font-size:11.5px;line-height:1.7;">协同效益+成本削减<br>运营利润$1.42B<br>FY2026目标13–15%</div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit">管理层评估（来源：SEC EDGAR 8-K, Form 4, Q2电话会议）</div>
+  <table class="tbl">
+    <thead><tr><th>姓名/职位</th><th>主要动向</th><th class="r">评价</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Antonio F. Neri（总裁兼CEO）</strong></td><td>Q2业绩电话会议明确表示"HPE已比承诺的长期计划提前两年完成目标"，强调企业和主权AI差异化；过去6个月出售440,889股约$1,128万，需关注后续减持动向</td><td class="mono r"><span class="tag tb">执行力强·减持关注</span></td></tr>
+      <tr><td><strong>Marie Myers（CFO）</strong></td><td>Q2宣布将FY2026指引全面大幅上调，发布FY2027财务框架（EPS $4.20–4.50，FCF ≥$45亿）；强调"运营利润增长将持续超越营收增长"，即利润率扩张趋势明确</td><td class="mono r"><span class="tag tg">财务执行力强</span></td></tr>
+      <tr><td><strong>Paul Glaser（投资者关系）</strong></td><td>推动Q2电话会议信息透明披露，分析师预测准确性从±46%的偏差（实际超预期$0.26）显示公司信息管理存在保守偏向，有利于持续超预期</td><td class="mono r"><span class="tag tg">披露透明</span></td></tr>
+      <tr><td><strong>其他高管（集体）</strong></td><td>过去6个月共22次内部人交易，全部为卖出，零购买记录。虽然部分可能为预设10b5-1计划，但集体性卖出是需要监控的信号，需结合具体金额和持股比例综合判断</td><td class="mono r"><span class="tag ta">全员减持</span></td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<!-- SEC 03 FINANCIALS -->
+<div class="sec" id="s03">
+<div class="shd"><span class="snum">03</span><span class="stit">财务业绩 · 历史数据</span></div>
+<div class="g4" style="margin-bottom:18px;">
+  <div class="card gr"><div class="clbl">Q2 FY2026 总营收</div><div class="cbig gr">$10.68B</div><div class="csub"><span class="up">▲ +40.0% YoY，超预期+$7.89亿</span></div></div>
+  <div class="card gr"><div class="clbl">Q2 FY2026 非GAAP EPS</div><div class="cbig gr">$0.79</div><div class="csub"><span class="up">超预期+$0.26（+46%），远超$0.54共识</span></div></div>
+  <div class="card gr"><div class="clbl">Q2 FY2026 GAAP净利润</div><div class="cbig gr">$624M</div><div class="csub"><span class="up">vs Q2 FY2025净亏损-$1.05B（扭亏为盈）</span></div></div>
+  <div class="card bl"><div class="clbl">Q2 FY2026 自由现金流</div><div class="cbig bl">$915M</div><div class="csub">Q2 FCF创历史高位，FY2026全年FCF指引≥$35亿</div></div>
+</div>
+<div class="card" style="margin-bottom:16px;">
+  <div class="ctit" style="margin-bottom:14px;">年度财务数据一览（美元百万，US GAAP/非GAAP，来源：SEC EDGAR 8-K / HPE IR官网）</div>
+  <table class="tbl">
+    <thead><tr><th>财务指标</th><th class="r">FY2023</th><th class="r">FY2024</th><th class="r">FY2025（实际）</th><th class="r">H1 FY2026（已公布）</th><th class="r">FY2026E（全年指引）</th><th class="r">YoY变化</th></tr></thead>
+    <tbody>
+      <tr><td>总营收（$B）</td><td class="mono r">29.13</td><td class="mono r">31.80</td><td class="mono r">34.07</td><td class="mono r">~20.6</td><td class="mono r">~44.0–45.3</td><td class="mono r"><span class="tag tg">▲+29–33%</span></td></tr>
+      <tr><td>云与AI（服务器）营收（$B）</td><td class="mono r">~19.5</td><td class="mono r">~23.5</td><td class="mono r">~24.9</td><td class="mono r">~15.6</td><td class="mono r">~32.5</td><td class="mono r"><span class="tag tg">▲强势增长</span></td></tr>
+      <tr><td>网络营收（$B）</td><td class="mono r">~3.5</td><td class="mono r">~3.6</td><td class="mono r">~4.5（含Juniper部分）</td><td class="mono r">~5.5</td><td class="mono r">~7.5–8.0</td><td class="mono r"><span class="tag tg">▲+72–75%</span></td></tr>
+      <tr><td>GAAP毛利率（%）</td><td class="mono r">34.4%</td><td class="mono r">34.3%</td><td class="mono r">34.0%</td><td class="mono r">~36.5%（Q2）</td><td class="mono r">~36–37%E</td><td class="mono r"><span class="tag tg">▲+8.1pts Q2 YoY</span></td></tr>
+      <tr><td>非GAAP运营利润率（%）</td><td class="mono r">9.6%</td><td class="mono r">9.9%</td><td class="mono r">10.2%</td><td class="mono r">13.3%（Q2）</td><td class="mono r">~13%E</td><td class="mono r"><span class="tag tg">▲+5.3pts Q2 YoY</span></td></tr>
+      <tr><td>GAAP净利润（$M）</td><td class="mono r">1,879</td><td class="mono r">1,895</td><td class="mono r">-574（含Juniper购置费）</td><td class="mono r">~1,100（H1）</td><td class="mono r">~2,800E</td><td class="mono r"><span class="tag tg">▲扭亏为盈</span></td></tr>
+      <tr><td>非GAAP净利润（$M）</td><td class="mono r">~2,700</td><td class="mono r">~3,200</td><td class="mono r">~3,600</td><td class="mono r">~2,200（H1）</td><td class="mono r">~4,375–4,510</td><td class="mono r"><span class="tag tg">▲+21–25%</span></td></tr>
+      <tr><td>非GAAP EPS（$）</td><td class="mono r">2.09</td><td class="mono r">2.26</td><td class="mono r">2.33</td><td class="mono r">~1.64（H1）</td><td class="mono r">3.35–3.45</td><td class="mono r"><span class="tag tg">▲+44–48%</span></td></tr>
+      <tr><td>自由现金流（$B）</td><td class="mono r">1.99</td><td class="mono r">2.00</td><td class="mono r">1.78</td><td class="mono r">~1.5（H1）</td><td class="mono r">≥3.50</td><td class="mono r"><span class="tag tg">▲+97%以上</span></td></tr>
+      <tr><td>净债务（$B）</td><td class="mono r">~4.5</td><td class="mono r">~12.0（Juniper并购）</td><td class="mono r">~10.5</td><td class="mono r">~9.5（Q2末）</td><td class="mono r">~8.5E（H3C出售后）</td><td class="mono r"><span class="tag tg">▼持续去杠杆</span></td></tr>
+      <tr><td>股息（$每股，季度）</td><td class="mono r">$0.12</td><td class="mono r">$0.13</td><td class="mono r">$0.1375</td><td class="mono r">$0.1425</td><td class="mono r">$0.1425</td><td class="mono r"><span class="tag tg">▲+3.6%</span></td></tr>
+    </tbody>
+  </table>
+  <div class="csub" style="margin-top:8px;">数据来源：HPE Q2 FY2026业绩公告（SEC EDGAR 8-K，2026年6月1日）、HPE Q1 FY2026业绩公告（2026年3月4日）、HPE FY2025全年业绩公告（2025年11月）；FY2026E基于HPE官方指引中值。</div>
+</div>
+<div class="g2">
+  <div class="card">
+    <div class="ctit">季度营收趋势与AI积压订单（FY2025Q1–FY2026Q4E）</div>
+    <svg viewBox="0 0 500 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;margin:8px 0 12px;">
+      <defs>
+        <linearGradient id="hpeg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0EA5E9" stop-opacity="0.2"/>
+          <stop offset="100%" stop-color="#0EA5E9" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line x1="48" y1="10" x2="48" y2="130" stroke="#E5E7EB" stroke-width="1"/>
+      <line x1="48" y1="130" x2="490" y2="130" stroke="#E5E7EB" stroke-width="1"/>
+      <line x1="48" y1="105" x2="490" y2="105" stroke="#E5E7EB" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <line x1="48" y1="80" x2="490" y2="80" stroke="#E5E7EB" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <line x1="48" y1="55" x2="490" y2="55" stroke="#E5E7EB" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <line x1="48" y1="30" x2="490" y2="30" stroke="#E5E7EB" stroke-width="0.5" stroke-dasharray="3,4"/>
+      <text x="43" y="133" font-size="7.5" fill="#9CA3AF" text-anchor="end" font-family="IBM Plex Mono">$5B</text>
+      <text x="43" y="108" font-size="7.5" fill="#9CA3AF" text-anchor="end" font-family="IBM Plex Mono">$7B</text>
+      <text x="43" y="83" font-size="7.5" fill="#9CA3AF" text-anchor="end" font-family="IBM Plex Mono">$9B</text>
+      <text x="43" y="58" font-size="7.5" fill="#9CA3AF" text-anchor="end" font-family="IBM Plex Mono">$11B</text>
+      <text x="43" y="33" font-size="7.5" fill="#9CA3AF" text-anchor="end" font-family="IBM Plex Mono">$13B</text>
+      <!-- scale: $5B=130, $13B=10; range=8B over 120px → 1B=15px -->
+      <!-- y = 130 - (val-5)*15 -->
+      <!-- Q1FY25=7.6→y=91, Q2FY25=7.6→y=91, Q3FY25=7.9→y=87, Q4FY25=8.3→y=81, Q1FY26=9.9→y=57, Q2FY26=10.68→y=45, Q3E=11.8→y=28, Q4E=12.3→y=21 -->
+      <text x="73" y="143" font-size="7" fill="#9CA3AF" text-anchor="middle" font-family="IBM Plex Mono">Q1'25</text>
+      <text x="132" y="143" font-size="7" fill="#9CA3AF" text-anchor="middle" font-family="IBM Plex Mono">Q2'25</text>
+      <text x="191" y="143" font-size="7" fill="#9CA3AF" text-anchor="middle" font-family="IBM Plex Mono">Q3'25</text>
+      <text x="250" y="143" font-size="7" fill="#9CA3AF" text-anchor="middle" font-family="IBM Plex Mono">Q4'25</text>
+      <text x="309" y="143" font-size="7" fill="#9CA3AF" text-anchor="middle" font-family="IBM Plex Mono">Q1'26</text>
+      <text x="368" y="143" font-size="7" fill="#9CA3AF" text-anchor="middle" font-family="IBM Plex Mono">Q2'26</text>
+      <text x="427" y="143" font-size="7" fill="#9CA3AF" text-anchor="middle" font-family="IBM Plex Mono">Q3E</text>
+      <text x="473" y="143" font-size="7" fill="#9CA3AF" text-anchor="middle" font-family="IBM Plex Mono">Q4E</text>
+      <polygon points="73,91 132,91 191,87 250,81 309,57 368,45 427,28 473,21 473,130 73,130" fill="url(#hpeg)"/>
+      <polyline points="73,91 132,91 191,87 250,81 309,57 368,45 427,28 473,21" fill="none" stroke="#0EA5E9" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="73" cy="91" r="3.5" fill="#0EA5E9"/>
+      <circle cx="132" cy="91" r="3.5" fill="#0EA5E9"/>
+      <circle cx="191" cy="87" r="3.5" fill="#0EA5E9"/>
+      <circle cx="250" cy="81" r="3.5" fill="#0EA5E9"/>
+      <circle cx="309" cy="57" r="3.5" fill="#10B981"/>
+      <circle cx="368" cy="45" r="4" fill="#10B981"/>
+      <circle cx="427" cy="28" r="4" fill="#F59E0B" stroke="#FDE68A" stroke-width="1.5"/>
+      <circle cx="473" cy="21" r="4" fill="#F59E0B" stroke="#FDE68A" stroke-width="1.5"/>
+      <text x="368" y="39" font-size="7" fill="#10B981" text-anchor="middle" font-family="IBM Plex Mono">$10.68B</text>
+      <text x="427" y="22" font-size="7" fill="#F59E0B" text-anchor="middle" font-family="IBM Plex Mono">$11.8E</text>
+    </svg>
+    <div class="csub">营收加速增长趋势明确，Q3 FY2026指引$11.5–12.1B（中值$11.8B，+29.2% YoY），管理层预计Q3为"全年最大AI系统收入季"，Q4进一步提速至约$12.3B（FY2026指引倒推）。</div>
+  </div>
+  <div class="card">
+    <div class="ctit">Q2 FY2026关键财务亮点（来源：SEC EDGAR 8-K，2026年6月1日）</div>
+    <table class="tbl">
+      <thead><tr><th>指标</th><th class="r">Q2 FY2026</th><th class="r">Q2 FY2025</th><th class="r">变化</th></tr></thead>
+      <tbody>
+        <tr><td>总营收（$B）</td><td class="mono r">10.678</td><td class="mono r">7.626</td><td class="mono r"><span class="tag tg">+40.0%</span></td></tr>
+        <tr><td>云与AI营收（$B）</td><td class="mono r">7.71</td><td class="mono r">6.27</td><td class="mono r"><span class="tag tg">+22.9%</span></td></tr>
+        <tr><td>网络营收（$B）</td><td class="mono r">2.69</td><td class="mono r">1.08</td><td class="mono r"><span class="tag tg">+148.2%</span></td></tr>
+        <tr><td>GAAP毛利率（%）</td><td class="mono r">36.5</td><td class="mono r">28.4</td><td class="mono r"><span class="tag tg">+8.1pts</span></td></tr>
+        <tr><td>非GAAP运营利润率（%）</td><td class="mono r">13.3</td><td class="mono r">8.0</td><td class="mono r"><span class="tag tg">+5.3pts</span></td></tr>
+        <tr><td>非GAAP营业利润（$B）</td><td class="mono r">1.42</td><td class="mono r">0.61</td><td class="mono r"><span class="tag tg">+132.8%</span></td></tr>
+        <tr><td>GAAP净利润（$M）</td><td class="mono r">624</td><td class="mono r">-1,050</td><td class="mono r"><span class="tag tg">扭亏为盈</span></td></tr>
+        <tr><td>非GAAP EPS（$）</td><td class="mono r">0.79</td><td class="mono r">0.38</td><td class="mono r"><span class="tag tg">+107.9%</span></td></tr>
+        <tr><td>自由现金流（$M）</td><td class="mono r">915</td><td class="mono r">~350</td><td class="mono r"><span class="tag tg">+161%</span></td></tr>
+        <tr><td>AI Systems积压订单（$B）</td><td class="mono r">5.9（进Q3）</td><td class="mono r">~3.0</td><td class="mono r"><span class="tag tg">+96%+</span></td></tr>
+        <tr><td>数据中心网络营收增长</td><td class="mono r">+233.3%</td><td class="mono r">—</td><td class="mono r"><span class="tag tg">爆发式增长</span></td></tr>
+        <tr><td>混合云（存储）营收变化</td><td class="mono r">-13.6%</td><td class="mono r">—</td><td class="mono r"><span class="tag tr2">↓疲软</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- SEC 04 SEGMENTS -->
+<div class="sec" id="s04">
+<div class="shd"><span class="snum">04</span><span class="stit">分业务板块深度分析</span></div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card bl">
+    <div class="clbl">最大营收来源 · AI增长核心</div>
+    <div class="ctit" style="color:var(--acc2);">🖥️ 云与AI（服务器+HPC）</div>
+    <div class="prose" style="margin-bottom:14px;">HPE的服务器和HPC/AI业务Q2营收$77.1亿（+22.9% YoY），进入Q3时AI Systems积压订单高达<strong>$59亿</strong>。来自CFO Myers的重要信息：Agentic AI（代理型AI）的工作负载对算力需求远超传统AI任务，推动企业客户持续升级服务器基础设施。HPE的差异化在于<strong>企业和主权客户</strong>——AI积压订单中64%来自非超大规模客户，这意味着HPE在更广泛的企业AI建设中拥有独特地位，而非与NVIDIA/Super Micro竞争超大规模云厂商市场。</div>
+    <div class="bar"><div class="blbl">Q2营收</div><div class="btrk"><div class="bfill bbl" style="width:80%;"></div></div><div class="bval">$7.71B</div></div>
+    <div class="bar"><div class="blbl">YoY增速</div><div class="btrk"><div class="bfill bgr" style="width:23%;"></div></div><div class="bval">+22.9%</div></div>
+    <div class="bar"><div class="blbl">AI积压订单（进Q3）</div><div class="btrk"><div class="bfill bbl" style="width:59%;"></div></div><div class="bval">$5.9B</div></div>
+    <div class="bar"><div class="blbl">企业/主权客户占比</div><div class="btrk"><div class="bfill bgr" style="width:64%;"></div></div><div class="bval">64%</div></div>
+    <div class="co" style="margin-top:12px;">
+      <div class="cotit">Q3预计为"全年最大AI收入季"</div>
+      <p>CEO Neri在Q2电话会议中明确指出Q3将是全年AI系统收入最高的季度。结合$59亿积压+管道"数倍于积压"，Q3营收中值指引$11.8亿比Q2环比提升约10.5%，若AI系统如期顺利交付，实际营收存在较大上行可能。</p>
+    </div>
+  </div>
+  <div class="card pu">
+    <div class="clbl">整合后增长引擎 · 高利润率</div>
+    <div class="ctit" style="color:var(--pur);">🌐 网络（Juniper Networks整合）</div>
+    <div class="prose" style="margin-bottom:14px;">网络业务Q2营收$26.9亿（含Juniper并表效应+148.2%，正常化+10% YoY），是HPE最重要的利润率改善来源。网络业务运营利润率约<strong>23.7%</strong>（Q1），远高于服务器业务的低个位数。Juniper整合进入第二阶段——战略产品整合+软件协同+收入协同，FY2026网络指引上调至营收增长72–75%（报告基础）。<br>关键亮点：数据中心网络+233.3%，路由（Routing）收入$7.75亿 vs 去年同期$100万（Juniper PTX/MX系列），安全（Security）+155.1%。</div>
+    <div class="bar"><div class="blbl">Q2营收</div><div class="btrk"><div class="bfill bpu" style="width:62%;"></div></div><div class="bval">$2.69B</div></div>
+    <div class="bar"><div class="blbl">正常化增速</div><div class="btrk"><div class="bfill bgr" style="width:10%;"></div></div><div class="bval">+10%</div></div>
+    <div class="bar"><div class="blbl">数据中心网络增速</div><div class="btrk"><div class="bfill bpu" style="width:100%;"></div></div><div class="bval">+233%</div></div>
+    <div class="bar"><div class="blbl">网络运营利润率（Q1）</div><div class="btrk"><div class="bfill bgr" style="width:23.7%;"></div></div><div class="bval">23.7%</div></div>
+    <div class="co pu" style="margin-top:12px;">
+      <div class="cotit">Juniper是HPE估值重估的核心钥匙</div>
+      <p>投资者长期将HPE视为低利润硬件公司。Juniper整合完成后，网络业务（约25%营收+23%利润率）将持续拉高整体利润率向13–15%运营利润率目标迈进，触发从"硬件折价"向"网络科技溢价"的估值重塑。这是我们12个月目标价$68（相当于12x NTM P/E on FY2027E EPS）的核心逻辑支撑。</p>
+    </div>
+  </div>
+</div>
+<div class="g2">
+  <div class="card am">
+    <div class="clbl">拖累项 · 待好转</div>
+    <div class="ctit" style="color:var(--amb);">💾 混合云（存储/GreenLake）</div>
+    <div class="prose" style="margin-bottom:12px;">存储业务Q2营收同比下降<strong>-13.6%</strong>，是整个业务组合中最大的拖累项。主要因素：企业存储投资周期滞后于服务器和网络，AI工作负载优先级导致客户暂缓传统存储升级；Alletra MP等新一代产品仍在爬坡期。积极信号：VM Essentials客户数同比增长<strong>+43%</strong>，GreenLake软件ARR持续提升。管理层预计存储业务将在FY2026下半年随企业AI基础设施完善后逐步回暖。</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cam"></div><p><strong>短期逆风：</strong>企业优先采购AI服务器和网络，存储预算被挤压；Alletra MP导入慢于预期</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p><strong>中期复苏催化剂：</strong>AI推理场景需要大量本地存储（RAG检索增强、向量数据库），存储将成为AI基础设施第三波需求</p></div>
+    </div>
+  </div>
+  <div class="card gy">
+    <div class="clbl">稳定现金流来源</div>
+    <div class="ctit" style="color:var(--gy1);">🏦 金融服务（HPE Financial Services）</div>
+    <div class="prose" style="margin-bottom:12px;">HPE金融服务（HPEFS）为企业客户提供IT设备租赁和融资解决方案，Q2营收约$2.8亿，运营利润率约9%，提供稳定的可预期收入流。此业务帮助企业降低AI基础设施的一次性采购门槛，实际上是AI采购的"促成剂"，有助于扩大HPE整体市场触达。管理层表示HPEFS的AI设备融资需求同比大幅增长，业务规模将随AI硬件采购扩张而增长。</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cbl"></div><p><strong>战略协同价值：</strong>降低企业AI采购门槛，推动更多中小企业和政府客户采购HPE AI解决方案，反哺服务器和网络订单增长</p></div>
+      <div class="ci"><div class="cdot cgy"></div><p><strong>信用风险管理：</strong>公司在利率上升和企业信用波动的环境中保持审慎承保标准，资产质量维持稳定</p></div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SEC 05 MARKET -->
+<div class="sec" id="s05">
+<div class="shd"><span class="snum">05</span><span class="stit">行业格局 · AI基础设施竞争分析</span></div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card">
+    <div class="ctit">AI服务器市场竞争格局（2025–2026年，全球企业级）</div>
+    <div class="bar" style="margin-top:8px;"><div class="blbl">Dell Technologies</div><div class="btrk"><div class="bfill bgy" style="width:28%;"></div></div><div class="bval">~28%</div></div>
+    <div class="bar"><div class="blbl">HPE（慧与科技）</div><div class="btrk"><div class="bfill bbl" style="width:22%;"></div></div><div class="bval">~22%</div></div>
+    <div class="bar"><div class="blbl">Lenovo（联想）</div><div class="btrk"><div class="bfill bgy" style="width:18%;"></div></div><div class="bval">~18%</div></div>
+    <div class="bar"><div class="blbl">Super Micro（SMCI）</div><div class="btrk"><div class="bfill bam" style="width:15%;"></div></div><div class="bval">~15%</div></div>
+    <div class="bar"><div class="blbl">其他ODM/白牌</div><div class="btrk"><div class="bfill bre" style="width:17%;"></div></div><div class="bval">~17%</div></div>
+    <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--bd2);">
+      <div class="ctit" style="font-size:13px;margin-bottom:10px;">企业网络设备市场竞争格局（含AI网络）</div>
+      <div class="bar"><div class="blbl">Cisco（思科）</div><div class="btrk"><div class="bfill bgy" style="width:50%;"></div></div><div class="bval">~50%</div></div>
+      <div class="bar"><div class="blbl">HPE/Juniper（合并后）</div><div class="btrk"><div class="bfill bbl" style="width:18%;"></div></div><div class="bval">~18%</div></div>
+      <div class="bar"><div class="blbl">Arista Networks</div><div class="btrk"><div class="bfill bgr" style="width:12%;"></div></div><div class="bval">~12%</div></div>
+      <div class="bar"><div class="blbl">Huawei（海外受限）</div><div class="btrk"><div class="bfill bre" style="width:8%;"></div></div><div class="bval">~8%</div></div>
+      <div class="bar"><div class="blbl">其他</div><div class="btrk"><div class="bfill bgy" style="width:12%;"></div></div><div class="bval">~12%</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ctit">HPE vs 主要竞争对手比较（截至2026年6月，来源：公开财报/市场数据）</div>
+    <table class="tbl">
+      <thead><tr><th>公司</th><th class="r">市值</th><th class="r">NTM P/E</th><th class="r">营收增速</th><th class="r">AI定位</th></tr></thead>
+      <tbody>
+        <tr><td><strong>HPE (HPE)</strong></td><td class="mono r"><strong>~$63B</strong></td><td class="mono r"><strong><span class="tag tg">~14x</span></strong></td><td class="mono r"><strong>+29–33%</strong></td><td><span class="tag tb">企业/主权AI</span></td></tr>
+        <tr><td>Dell Technologies</td><td class="mono r">~$75B</td><td class="mono r">~18x</td><td class="mono r">+10–15%</td><td>综合IT+AI</td></tr>
+        <tr><td>Super Micro (SMCI)</td><td class="mono r">~$45B</td><td class="mono r">~25x</td><td class="mono r">+30–40%</td><td>超大规模AI</td></tr>
+        <tr><td>Cisco Systems</td><td class="mono r">~$235B</td><td class="mono r">~17x</td><td class="mono r">+3–5%</td><td>网络/安全</td></tr>
+        <tr><td>Arista Networks</td><td class="mono r">~$110B</td><td class="mono r">~38x</td><td class="mono r">+15–20%</td><td>数据中心网络</td></tr>
+      </tbody>
+    </table>
+    <div class="co" style="margin-top:12px;">
+      <div class="cotit">HPE估值折价的本质：市场认知滞后</div>
+      <p>HPE NTM P/E约14x，显著低于同业平均约20–25x。核心原因：<strong>市场仍将HPE视为传统低利润服务器厂商</strong>，尚未充分定价Juniper整合带来的利润率跃升、以及企业和主权AI基础设施的持续高增长。随着Juniper整合效益持续兑现（网络利润率23–25% vs 服务器约5–8%），整体运营利润率向13–15%区间提升，估值重塑进程将加速。</p>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit">AI基础设施建设宏观趋势</div>
+  <div class="g2">
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>企业AI采购从"试验"到"生产"：</strong>Agentic AI时代，企业需要本地化、定制化的推理基础设施。HPE的ProLiant Gen12和Cray超算正是面向此类工作负载。CFO Myers明确指出Agentic AI工作负载的计算密度远超传统任务，这意味着服务器升级需求将持续多年</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>主权AI是独特增长引擎：</strong>欧洲、中东、亚洲各国政府正在加速建设国家级AI基础设施，这类客户几乎不会选择超大规模云，而是需要本地化部署——HPE正是主权AI的首选合作伙伴，此类项目通常金额巨大（数亿至数十亿美元）</p></div>
+      <div class="ci"><div class="cdot cpu"></div><p><strong>数据中心网络需求爆发：</strong>AI训练和推理需要大量高速内联网和交换机，Juniper QFX系列数据中心交换机和PTX/MX路由器是这一趋势的直接受益者，Q2数据中心网络+233.3%印证了此趋势</p></div>
+    </div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cam"></div><p><strong>供应链约束是近期风险：</strong>GPU/AI加速器供应仍受英伟达产能限制，HPE AI服务器订单能否按时交付取决于NVIDIA H100/H200/Blackwell供应节奏；此外网络积压增长40%+也部分反映供应约束，而非单纯需求超强</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>竞争加剧：</strong>Dell AI服务器业务同步增长，Super Micro在某些客户中更受青睐（液冷优势），Cisco在传统企业网络客户中仍有深厚壁垒，HPE必须持续在产品创新和服务能力上保持领先</p></div>
+      <div class="ci"><div class="cdot cgy"></div><p><strong>存储复苏是未来18个月的关键观察点：</strong>AI数据管理和向量数据库爆发将最终驱动企业存储支出增长，若存储业务能在FY2026 H2实现正增长，将消除当前组合质量的最大顾虑</p></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SEC 06 VALUATION -->
+<div class="sec" id="s06">
+<div class="shd"><span class="snum">06</span><span class="stit">估值分析 · 多维框架</span></div>
+<div class="co gr" style="margin-bottom:18px;">
+  <div class="cotit">估值结论：当前价位存在显著低估，买入信号明确</div>
+  <p>HPE当前股价$48.31，对应NTM P/E约14x（基于FY2026指引中值EPS $3.40，约合FY26H2+FY27H1）。考虑到公司正处于增长最快的历史阶段（营收+29–33%，EPS+44–48%）、Juniper整合带来的利润率跃升、以及$59亿AI积压订单提供的收入确定性，当前14x NTM P/E处于历史偏低区间，与同业比较存在显著折价。我们认为合理目标P/E区间为16–18x，以FY2027E EPS $4.35中值（FY2027框架EPS $4.20–4.50）计算，12个月目标价约$68–$78，取保守中值$68，对应上行约+40.8%。</p>
+</div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card bl">
+    <div class="ctit">方法一：NTM P/E 历史区间与同业估值</div>
+    <div class="prose" style="margin-bottom:12px;">以FY2026指引非GAAP EPS $3.40为基础（FY2026全年），FY2027E约$4.35（管理层框架中值）：</div>
+    <table class="tbl">
+      <thead><tr><th>估值情景</th><th class="r">P/E倍数</th><th class="r">EPS基础</th><th class="r">隐含股价</th></tr></thead>
+      <tbody>
+        <tr><td>悲观（历史低端）</td><td class="mono r">10x</td><td class="mono r">$4.35（FY27E）</td><td class="mono r"><span class="tag tr2">$43.5</span></td></tr>
+        <tr><td>基准（历史中枢）</td><td class="mono r">14x</td><td class="mono r">$4.35（FY27E）</td><td class="mono r"><span class="tag tg">$60.9</span></td></tr>
+        <tr><td>目标（合理溢价）</td><td class="mono r">16x</td><td class="mono r">$4.35（FY27E）</td><td class="mono r"><span class="tag tg">$69.6</span></td></tr>
+        <tr><td>乐观（同业重估）</td><td class="mono r">18x</td><td class="mono r">$4.35（FY27E）</td><td class="mono r"><span class="tag tg">$78.3</span></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">当前约14x NTM P/E已接近悲观情景，但基本面处于历史最强。16x目标（含Juniper网络溢价）→ $68–70区间。</div>
+  </div>
+  <div class="card gy">
+    <div class="ctit">方法二：EV/EBITDA 与 FCF Yield</div>
+    <div class="prose" style="margin-bottom:12px;">FY2026E EBITDA约$72亿（运营利润~$57亿 + D&A ~$15亿），FCF ≥$35亿：</div>
+    <table class="tbl">
+      <thead><tr><th>方法</th><th class="r">参数</th><th class="r">隐含股价</th></tr></thead>
+      <tbody>
+        <tr><td>EV/EBITDA（9x，历史低端）</td><td class="mono r">EBITDA $7.2B</td><td class="mono r"><span class="tag tr2">$41</span></td></tr>
+        <tr><td>EV/EBITDA（11x，中枢）</td><td class="mono r">EBITDA $7.2B</td><td class="mono r"><span class="tag tb">$57</span></td></tr>
+        <tr><td>EV/EBITDA（12x，+网络溢价）</td><td class="mono r">EBITDA $7.2B</td><td class="mono r"><span class="tag tg">$65</span></td></tr>
+        <tr><td>FCF Yield 5%（合理）</td><td class="mono r">FCF $3.5B</td><td class="mono r"><span class="tag tg">$70</span></td></tr>
+        <tr><td>FCF Yield 4%（溢价）</td><td class="mono r">FCF $3.5B</td><td class="mono r"><span class="tag tg">$87</span></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">假设净债务$95亿（H3C出售后），流通股13.05亿。FCF Yield法支持$68–70目标价。</div>
+  </div>
+</div>
+<div class="card" style="margin-bottom:14px;">
+  <div class="ctit" style="margin-bottom:14px;">Snail Investment 目标价推导综合汇总</div>
+  <table class="tbl">
+    <thead><tr><th>估值方法</th><th class="r">权重</th><th class="r">隐含价格</th><th class="r">加权贡献</th><th class="r">备注</th></tr></thead>
+    <tbody>
+      <tr><td>NTM P/E法（16x × FY27E EPS $4.35）</td><td class="mono r">40%</td><td class="mono r">$69.6</td><td class="mono r">$27.8</td><td>目标P/E含Juniper网络溢价</td></tr>
+      <tr><td>FCF Yield法（5.0%，FY26E FCF $3.5B）</td><td class="mono r">30%</td><td class="mono r">$70.0</td><td class="mono r">$21.0</td><td>FCF提升至历史最高</td></tr>
+      <tr><td>EV/EBITDA法（12x，FY26E EBITDA $7.2B）</td><td class="mono r">20%</td><td class="mono r">$65.0</td><td class="mono r">$13.0</td><td>网络业务提升整体EBITDA倍数</td></tr>
+      <tr><td>机构共识目标价均值</td><td class="mono r">10%</td><td class="mono r">$63.0</td><td class="mono r">$6.3</td><td>较保守，反映市场认知尚未完全转变</td></tr>
+    </tbody>
+    <tfoot>
+      <tr style="background:var(--acc5);"><td><strong>综合目标价（12个月）</strong></td><td class="mono r"><strong>100%</strong></td><td class="mono r" style="font-size:14px;"><strong style="color:var(--acc2);">$68.1</strong></td><td class="mono r"><strong style="color:var(--acc2);">$68.1</strong></td><td><span class="tag tg">取整 $68</span></td></tr>
+    </tfoot>
+  </table>
+  <div class="co" style="margin-top:14px;">
+    <div class="cotit">与华尔街共识比较</div>
+    <p>市场共识目标价约$60–65（基于2026年6月研报），Snail Investment目标价$68略高于共识约5–13%，反映我们对Juniper整合完成后利润率重估更为乐观的判断，以及FY2027 FCF ≥$45亿（管理层框架）对应5% FCF Yield下约$87的更高上行潜力。当前股价$48.31较我们目标价$68有约<strong>+40.8%</strong>上行空间（含股息约+41.8%）。</p>
+  </div>
+</div>
+</div>
+
+<!-- SEC 07 DCF -->
+<div class="sec" id="s07">
+<div class="shd"><span class="snum">07</span><span class="stit">DCF 贴现现金流分析 · 敏感性矩阵</span></div>
+<div class="co bl" style="margin-bottom:18px;">
+  <div class="cotit">DCF框架说明</div>
+  <p>以5年显式预测期（FY2026E–FY2030E）+永续价值计算。基准情景：FY2026E FCF $3.5亿（指引下限）→ FY2027E $4.5亿（管理层框架下限）→ FY2028–2030E年均增速约10–12%（AI基础设施建设后期+服务/GreenLake增长）。永续增长率3.0–4.0%（企业IT+AI软件化长期增长），WACC 9.0–11.0%（硬件+软件混合模式资本成本）。净债务$95亿（H3C出售后估算），流通股13.05亿。</p>
+</div>
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card">
+    <div class="ctit">DCF 核心参数（三情景）</div>
+    <table class="tbl">
+      <thead><tr><th>参数</th><th class="r">悲观</th><th class="r">基准</th><th class="r">乐观</th></tr></thead>
+      <tbody>
+        <tr><td>FY2026E FCF（$B）</td><td class="mono r">3.2</td><td class="mono r">3.8</td><td class="mono r">4.5</td></tr>
+        <tr><td>FY2027E FCF（$B）</td><td class="mono r">4.0</td><td class="mono r">4.8</td><td class="mono r">5.8</td></tr>
+        <tr><td>FCF增速（FY2028–2030 CAGR）</td><td class="mono r">5%</td><td class="mono r">10%</td><td class="mono r">15%</td></tr>
+        <tr><td>永续增长率（g）</td><td class="mono r">2.0%</td><td class="mono r">3.0%</td><td class="mono r">4.0%</td></tr>
+        <tr><td>WACC</td><td class="mono r">11.0%</td><td class="mono r">10.0%</td><td class="mono r">9.0%</td></tr>
+        <tr><td>企业价值（$B）</td><td class="mono r">~56</td><td class="mono r">~85</td><td class="mono r">~130</td></tr>
+        <tr><td>减：净债务（$B）</td><td class="mono r">9.5</td><td class="mono r">9.5</td><td class="mono r">9.5</td></tr>
+        <tr><td><strong>隐含股价（$）</strong></td><td class="mono r"><strong><span class="tag tr2">$35.8</span></strong></td><td class="mono r"><strong><span class="tag tg">$58.0</span></strong></td><td class="mono r"><strong><span class="tag tg">$92.4</span></strong></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">DCF基准情景$58，当前股价$48低于基准DCF价值，提供额外安全边际</div>
+  </div>
+  <div class="card">
+    <div class="ctit">关键FCF敏感性分析</div>
+    <table class="tbl">
+      <thead><tr><th>变量</th><th class="r">变动幅度</th><th class="r">FCF影响</th></tr></thead>
+      <tbody>
+        <tr><td>AI服务器营收</td><td class="mono r">±$1B/年</td><td class="mono r"><span class="tag tb">±$60–80M</span></td></tr>
+        <tr><td>网络运营利润率</td><td class="mono r">±1pts</td><td class="mono r"><span class="tag tb">±$75M（FY2026E营收$7.5B）</span></td></tr>
+        <tr><td>非GAAP运营利润率</td><td class="mono r">±1pts</td><td class="mono r"><span class="tag ta">±$440M（FY2026E营收$44B）</span></td></tr>
+        <tr><td>Catalyst节约超预期+20%</td><td class="mono r">额外+$1亿</td><td class="mono r"><span class="tag tg">+$80M（税后）</span></td></tr>
+        <tr><td>存储业务复苏+10%</td><td class="mono r">+$2.5亿营收</td><td class="mono r"><span class="tag tg">+$50M（高利润率）</span></td></tr>
+        <tr><td>供应链延迟-10%出货</td><td class="mono r">-约$1B AI营收</td><td class="mono r"><span class="tag tr2">-$60M FCF</span></td></tr>
+      </tbody>
+    </table>
+    <div class="csub" style="margin-top:7px;">最大正向杠杆：运营利润率扩张（每+1pts = +$440M FCF），Juniper整合超预期是最重要的上行驱动</div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit" style="margin-bottom:14px;">DCF 双变量敏感性矩阵（WACC × 永续增长率 g，基准FCF FY2026=$3.8B，FY2027=$4.8B，后续CAGR 10%）</div>
+  <table class="dcfm">
+    <thead><tr><th>WACC ↓ / g →</th><th>g=1.5%</th><th>g=2.0%</th><th>g=2.5%</th><th>g=3.0%</th><th>g=3.5%</th><th>g=4.0%</th></tr></thead>
+    <tbody>
+      <tr><td class="thr">WACC=8.0%</td><td class="bzone">$82</td><td class="bzone">$92</td><td class="bzone">$104</td><td class="bzone">$120</td><td class="bzone">$142</td><td class="bzone">$174</td></tr>
+      <tr><td class="thr">WACC=8.5%</td><td class="bzone">$70</td><td class="bzone">$78</td><td class="bzone">$87</td><td class="bzone">$99</td><td class="bzone">$114</td><td class="bzone">$135</td></tr>
+      <tr><td class="thr">WACC=9.0%</td><td class="mzone">$61</td><td class="mzone">$67</td><td class="mzone">$75</td><td class="dzone">$85★</td><td class="mzone">$97</td><td class="mzone">$113</td></tr>
+      <tr><td class="thr">WACC=9.5%</td><td class="mzone">$53</td><td class="mzone">$58</td><td class="mzone">$64</td><td class="mzone">$71</td><td class="mzone">$81</td><td class="mzone">$94</td></tr>
+      <tr><td class="thr">WACC=10.0%</td><td class="mzone">$47</td><td class="mzone">$51</td><td class="mzone">$56</td><td class="mzone">$61</td><td class="mzone">$69</td><td class="mzone">$79</td></tr>
+      <tr><td class="thr">WACC=10.5%</td><td class="rzone">$41</td><td class="mzone">$45</td><td class="mzone">$49</td><td class="mzone">$54</td><td class="mzone">$60</td><td class="mzone">$67</td></tr>
+      <tr><td class="thr">WACC=11.0%</td><td class="rzone">$37</td><td class="rzone">$40</td><td class="mzone">$44</td><td class="mzone">$48</td><td class="mzone">$53</td><td class="mzone">$59</td></tr>
+    </tbody>
+  </table>
+  <div style="display:flex;gap:14px;margin-top:9px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gy2);"><div style="width:11px;height:11px;background:var(--grnl);border:1px solid var(--grnb);border-radius:2px;"></div>乐观（&gt;$80）</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gy2);"><div style="width:11px;height:11px;background:var(--acc5);border:1px solid var(--acc3);border-radius:2px;"></div>基准区间（★=$85，WACC=9%，g=3%）</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gy2);"><div style="width:11px;height:11px;background:var(--redl);border:1px solid var(--redb);border-radius:2px;"></div>悲观（&lt;$45）</div>
+  </div>
+  <div class="co" style="margin-top:12px;">
+    <div class="cotit">关键启示：当前股价$48位于DCF基准偏低区间，安全边际较好</div>
+    <p>DCF矩阵显示，当前股价$48对应WACC约10.5–11%，g约2.5–3.0%的情景——这对一家FY2026营收增长29–33%、FCF同比翻倍的公司来说，市场定价过于悲观。在更合理的WACC 9.5%、g=3.0%（对应$71）甚至WACC 10%、g=3.0%（对应$61）的假设下，均高于当前价格，显示买入安全边际充裕。</p>
+  </div>
+</div>
+</div>
+<!-- SEC 08 SCENARIO -->
+<div class="sec" id="s08">
+<div class="shd"><span class="snum">08</span><span class="stit">三情景分析 · 12个月价格目标</span></div>
+<div class="scrow">
+  <div class="sc bull">
+    <div class="sclbl">🐂 乐观情景（Bull Case）</div>
+    <div class="scpri">$88</div>
+    <div class="scprob">发生概率：~25%</div>
+    <div class="scret">较当前 +82.2%（含股息 +83.4%）</div>
+    <hr class="scdiv">
+    <div class="scdesc"><strong>核心假设：</strong><br>
+    • AI积压订单$59B全部顺利在Q3/Q4转化，AI营收Q3超$40亿<br>
+    • Juniper协同效益加速，FY2026运营利润率达15%以上<br>
+    • 存储业务H2扭转负增长，GreenLake ARR加速<br>
+    • H3C股权出售完成，额外资本用于回购<br>
+    • 市场给予18x NTM P/E（网络科技公司溢价）<br>
+    • FY2027E EPS实现$4.50上限<br><br>
+    <strong>估值：</strong>18x × FY2027E $4.50 = $81，含动量溢价→$88</div>
+  </div>
+  <div class="sc base">
+    <div class="sclbl">⚖ 基准情景（Base Case）</div>
+    <div class="scpri">$68</div>
+    <div class="scprob">发生概率：~50%</div>
+    <div class="scret">较当前 +40.8%（含股息 +42.0%）</div>
+    <hr class="scdiv">
+    <div class="scdesc"><strong>核心假设：</strong><br>
+    • FY2026全年营收约$44–45亿，非GAAP EPS $3.40（指引中值）<br>
+    • Q3为全年最大AI收入季，$59亿积压有序转化<br>
+    • Juniper整合稳步推进，运营利润率约13%<br>
+    • 存储业务逐步改善，FY2026全年微负/持平<br>
+    • 市场给予16x NTM P/E × FY2027E EPS $4.35<br>
+    • FCF全年≥$35亿，如期兑现指引<br><br>
+    <strong>估值：</strong>16x × FY2027E $4.35 = $69.6，取整$68</div>
+  </div>
+  <div class="sc bear">
+    <div class="sclbl">🐻 悲观情景（Bear Case）</div>
+    <div class="scpri">$36</div>
+    <div class="scprob">发生概率：~25%</div>
+    <div class="scret">较当前 -25.5%（含股息 -24.3%）</div>
+    <hr class="scdiv">
+    <div class="scdesc"><strong>核心假设：</strong><br>
+    • 供应链严重延迟，AI积压订单推迟至FY2027才大量确认<br>
+    • 宏观衰退导致企业IT支出冻结，AI订单流放缓<br>
+    • Juniper整合暴露成本超支，运营利润率停滞在11–12%<br>
+    • 存储业务持续下滑，拖累整体组合<br>
+    • 内部人减持加速引发市场信心动摇<br>
+    • 估值收缩至10x NTM P/E × EPS $3.20<br><br>
+    <strong>估值：</strong>10x × $3.20 = $32，含技术性支撑→$36</div>
+  </div>
+</div>
+<div class="card" style="margin-top:14px;">
+  <div class="ctit" style="margin-bottom:12px;">加权期望价值（Probability-Weighted EV）</div>
+  <table class="tbl">
+    <thead><tr><th>情景</th><th class="r">概率权重</th><th class="r">目标价</th><th class="r">加权贡献</th><th class="r">含息总回报</th></tr></thead>
+    <tbody>
+      <tr><td>乐观（Bull）</td><td class="mono r">25%</td><td class="mono r"><span class="tag tg">$88</span></td><td class="mono r">$22.0</td><td class="mono r">+83.4%</td></tr>
+      <tr><td>基准（Base）</td><td class="mono r">50%</td><td class="mono r"><span class="tag tb">$68</span></td><td class="mono r">$34.0</td><td class="mono r">+42.0%</td></tr>
+      <tr><td>悲观（Bear）</td><td class="mono r">25%</td><td class="mono r"><span class="tag tr2">$36</span></td><td class="mono r">$9.0</td><td class="mono r">-24.3%</td></tr>
+    </tbody>
+    <tfoot>
+      <tr style="background:var(--acc5);"><td><strong>加权期望价值</strong></td><td class="mono r"><strong>100%</strong></td><td class="mono r" style="font-size:14px;"><strong style="color:var(--acc2);">$65.0</strong></td><td class="mono r"><strong style="color:var(--acc2);">$65.0</strong></td><td class="mono r" style="color:var(--grnb);"><strong>+35.5%（含息期望）</strong></td></tr>
+    </tfoot>
+  </table>
+  <div class="co gr" style="margin-top:12px;">
+    <div class="cotit">加权期望价值$65 > 当前股价$48，买入信号明确</div>
+    <p>加权期望价值$65较当前价格$48溢价约<strong>+34.7%</strong>，意味着即便考虑25%的悲观情景，三情景概率加权后的期望回报仍显著为正。这是支持"买入"评级的最重要定量依据。乘以风险调整后，不对称性依然有利：上行（Bull+Base，75%概率）平均回报约+57%，下行（Bear，25%概率）约-24%，风险回报比约2.4:1，在当前市场环境下属于优质风险回报。</p>
+  </div>
+</div>
+</div>
+
+<!-- SEC 09 RISKS -->
+<div class="sec" id="s09">
+<div class="shd"><span class="snum">09</span><span class="stit">风险矩阵 · 全面风险评估</span></div>
+<div class="card">
+  <div class="risk">
+    <div class="rbdg hi"><span>高风险</span></div>
+    <div><div class="rtit">⚡ 内部人大规模减持：过去6个月22次全为卖出</div>
+    <div class="rdesc">根据SEC Form 4文件，过去6个月HPE内部人（含CEO Antonio Neri出售约440,889股/$1,128万、CFO及其他高管）累计进行22次内部人交易，全部为卖出，零购买记录（Simply Wall St，2026年6月）。CEO Neri的减持规模约为其持股的5–8%，不属于财务紧迫性出售，但集体性全员卖出在公司股价年初至今已上涨127%的背景下，是需要密切关注的信号。若后续季度减持规模进一步扩大，将显著削弱市场信心。</div></div>
+  </div>
+  <div class="risk">
+    <div class="rbdg hi"><span>高风险</span></div>
+    <div><div class="rtit">⚡ 供应链约束：GPU/AI加速器供应限制积压转化</div>
+    <div class="rdesc">HPE AI Systems积压订单$59亿能否按时确认收入，高度依赖NVIDIA H100/H200/GB200/Blackwell系列的供货节奏。若NVIDIA将优先供应微软Azure、Google Cloud、Amazon AWS等超大规模客户（这些客户在NVIDIA的战略优先级通常更高），HPE面向企业客户的AI服务器积压可能出现交付延迟，导致收入确认推迟至FY2027，使市场短期EPS预期落空。2026年Q1已出现部分交付延迟迹象，Q2顺利交付后此风险短期有所缓解，但仍是持续性风险。</div></div>
+  </div>
+  <div class="risk">
+    <div class="rbdg hi"><span>高风险</span></div>
+    <div><div class="rtit">⚡ AI服务器毛利率结构性偏低：拖累整体盈利质量</div>
+    <div class="rdesc">AI服务器（含NVIDIA GPU）的硬件利润率约6–8%，远低于Juniper网络产品（约50–55%毛利率）和HPE历史服务器业务（约23–26%）。随着AI服务器营收占比从当前约55%继续提升，整体毛利率改善将受到结构性压制。尽管Q2 GAAP毛利率已从28.4%大幅提升至36.5%（主要来自Juniper整合），但若AI服务器占比继续扩张而网络增速相对放缓，毛利率改善的可持续性需要持续验证。</div></div>
+  </div>
+  <div class="risk">
+    <div class="rbdg md"><span>中等风险</span></div>
+    <div><div class="rtit">⚠ Juniper整合风险：文化冲突与客户流失</div>
+    <div class="rdesc">$140亿收购Juniper Networks（2024年完成）是HPE有史以来最大的并购案。尽管整合进展超预期，大型并购通常伴随文化整合难题（HPE偏传统企业IT文化 vs Juniper偏网络工程师文化）、关键人才流失（Juniper原CEO等高层已转入顾问角色）、以及部分重叠客户可能因HPE捆绑销售压力转向纯Cisco方案。整合第二阶段（战略产品+软件协同）的执行风险较第一阶段更高。</div></div>
+  </div>
+  <div class="risk">
+    <div class="rbdg md"><span>中等风险</span></div>
+    <div><div class="rtit">⚠ 存储业务持续疲软：组合质量拖累</div>
+    <div class="rdesc">混合云（含存储）业务Q2同比下滑-13.6%，是HPE业务组合中最大的弱点。若AI基础设施建设周期中企业存储支出的复苏时间持续延后（超过管理层预期的FY2026 H2），不仅影响整体营收，还将拉低整体利润率（存储利润率高于AI服务器）。VMware迁移带来的替换业务放缓和竞争对手（NetApp、Pure Storage）在特定细分市场的强势，也是存储复苏面临的不确定因素。</div></div>
+  </div>
+  <div class="risk">
+    <div class="rbdg md"><span>中等风险</span></div>
+    <div><div class="rtit">⚠ 高净债务负担：Juniper并购留下$95亿净债务</div>
+    <div class="rdesc">完成$140亿Juniper收购后，HPE净债务大幅增加至约$105–110亿（FY2025末），Q2末约降至$95亿（H3C出售前）。高净债务限制了资本分配灵活性（减少股票回购空间、维持较低股息增速），同时在利率维持高位的环境中增加融资成本压力。H3C股权出售（部分26%股权）可带来约$20亿现金，有助于去杠杆，但进度和交易结构尚未最终确定。</div></div>
+  </div>
+  <div class="risk">
+    <div class="rbdg md"><span>中等风险</span></div>
+    <div><div class="rtit">⚠ 宏观经济下行：企业IT支出冻结风险</div>
+    <div class="rdesc">若美国或欧洲进入经济衰退，企业IT资本开支通常会出现10–20%的年度削减，AI基础设施投资亦可能被优先级调低。HPE约64%的AI积压来自企业和主权客户（非超大规模）——这类客户的预算弹性比云厂商更大，经济下行时削减IT支出的可能性更高。2026年全球经济增长预期在贸易摩擦和美联储政策不确定性下存在下行风险，需持续关注。</div></div>
+  </div>
+  <div class="risk">
+    <div class="rbdg lo"><span>低风险</span></div>
+    <div><div class="rtit">✓ 汇率风险：美元升值压制海外收入</div>
+    <div class="rdesc">HPE约45–50%的营收来自美国以外地区（欧洲约25%、亚太约15%、其他约10%）。美元大幅升值将压低以欧元、日元、英镑计价的营收折算价值。HPE采取自然对冲和部分外汇衍生品工具管理此风险，整体影响相对可控，但在强美元周期中每季度可能影响收入约2–4个百分点。</div></div>
+  </div>
+</div>
+</div>
+<!-- SEC 10 CATALYSTS -->
+<div class="sec" id="s10">
+<div class="shd"><span class="snum">10</span><span class="stit">催化剂 · 关键时间节点</span></div>
+<div class="g2">
+  <div class="card">
+    <div class="ctit" style="margin-bottom:18px;">重要事件时间线（2026–2027）</div>
+    <div class="tl">
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年6月16日（今日）</div><div class="tltit">💰 Q3 FY2026股息除息日</div><div class="tldesc">季度股息$0.1425/股，记录日2026年6月16日，预计派发日2026年7月15日（年化$0.57/股，股息收益率约1.18%）。这是Juniper整合后HPE维持股息增长的重要信号。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年9月初（预计）</div><div class="tltit">🏆 Q3 FY2026 业绩公告（最关键节点）</div><div class="tldesc">管理层已明确Q3将是"全年最大AI系统收入季"。关键观察：①营收是否触及指引上限$12.1亿或突破；②AI系统收入是否超$40亿；③运营利润率能否维持或超越13.3%；④FY2026全年指引是否进一步上调。若三项指标同时超预期，股价有望快速回升$55–60区间。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年Q3-Q4</div><div class="tltit">📦 H3C股权出售进展</div><div class="tldesc">HPE持有中国H3C（华三通信）约51%股权，已启动出售部分股权的流程。若完成$15–20亿现金回款，将显著加速去杠杆（净债务从$95亿降至$75–80亿），并为回购/股息增加提供额外弹性，是重要的资产负债表催化剂。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年12月初（预计）</div><div class="tltit">📊 Q4 FY2026 业绩 + FY2027正式指引</div><div class="tldesc">Q4历史上通常是HPE全年第二强季度（企业IT预算年末冲刺），届时将正式发布FY2027年度指引（管理层框架已给出EPS $4.20–4.50，FCF ≥$45亿）。若FY2027指引符合或超越框架，将触发机构投资者的估值重估，股价目标或上调至$75–80+区间。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2026年下半年持续</div><div class="tltit">🤖 Agentic AI企业部署加速</div><div class="tldesc">CFO Myers在Q2电话会议中着重强调Agentic AI（自主代理型AI）对基础设施的计算需求远超传统AI。随着OpenAI、Anthropic、微软Copilot等Agentic产品进入企业大规模部署期，企业本地化AI推理基础设施需求将进一步爆发，HPE ProLiant Gen12和Cray AI系统将是核心受益者。</div></div>
+      <div class="tli"><div class="tldot"></div><div class="tldate">2027年Q1–Q2</div><div class="tltit">🌐 Juniper第二阶段整合完成</div><div class="tldesc">战略产品整合（HPE ProLiant+Juniper QFX融合方案）和软件收入协同（Mist AI+GreenLake平台整合）预计在2027年H1完成。届时HPE将推出"端到端AI基础设施+网络+软件"整合方案，有望获取更高ASP和更大企业预算份额，进一步推动利润率向15%+迈进。</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="ctit">华尔街分析师评级分布（2026年6月）</div>
+      <div class="bar" style="margin-top:8px;"><div class="blbl">买入/强力买入</div><div class="btrk"><div class="bfill bgr" style="width:62%;"></div></div><div class="bval">~62%</div></div>
+      <div class="bar"><div class="blbl">持有/中性</div><div class="btrk"><div class="bfill bbl" style="width:32%;"></div></div><div class="bval">~32%</div></div>
+      <div class="bar"><div class="blbl">卖出/减持</div><div class="btrk"><div class="bfill bre" style="width:6%;"></div></div><div class="bval">~6%</div></div>
+      <div class="co" style="margin-top:12px;">
+        <div class="cotit">机构共识：买入评级主导，目标价集中$60–70</div>
+        <p>多数机构在Q2大超预期后上调了目标价，但普遍采取保守姿态等待Q3验证。Snail Investment $68目标价处于机构主流区间上端，体现对Juniper整合完成后利润率弹性的额外乐观判断。</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctit">近期机构评级动态（2026年6月）</div>
+      <table class="tbl">
+        <thead><tr><th>机构</th><th>评级</th><th class="r">目标价</th><th class="r">日期</th></tr></thead>
+        <tbody>
+          <tr><td>Morgan Stanley</td><td><span class="tag tg">增持</span></td><td class="mono r">$72</td><td class="mono r">Q2后上调</td></tr>
+          <tr><td>JPMorgan</td><td><span class="tag tg">增持</span></td><td class="mono r">$68</td><td class="mono r">Q2后上调</td></tr>
+          <tr><td>BofA Securities</td><td><span class="tag tg">买入</span></td><td class="mono r">$70</td><td class="mono r">Q2后上调</td></tr>
+          <tr><td>Barclays</td><td><span class="tag tb">增持</span></td><td class="mono r">$62</td><td class="mono r">近期</td></tr>
+          <tr><td>UBS</td><td><span class="tag tb">中性</span></td><td class="mono r">$55</td><td class="mono r">近期</td></tr>
+          <tr><td>Snail Investment</td><td><span class="tag tg">买入</span></td><td class="mono r">$68</td><td class="mono r">2026-06-16</td></tr>
+        </tbody>
+      </table>
+      <div class="csub" style="margin-top:8px;">机构目标价范围约$50–$72，均值约$63；Snail Investment目标价$68位于区间中偏高位置</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SEC 11 ESG -->
+<div class="sec" id="s11">
+<div class="shd"><span class="snum">11</span><span class="stit">ESG 框架 · 可持续发展分析</span></div>
+<div class="g3" style="margin-bottom:14px;">
+  <div class="card gr">
+    <div class="clbl">环境（E）</div><div class="ctit">可持续数据中心先锋</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>2040年净零排放目标：</strong>HPE已承诺2040年实现价值链全范围净零碳排放（Scope 1+2+3），2025年中期目标减少Scope 1+2排放55%（2018年基线），进展符合或领先路径</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p><strong>液冷与能效领导者：</strong>HPE Cray EX液冷超算是全球能效最高的AI训练系统之一（TOP500 Green500榜单常客），HPE Apollo系列液冷AI服务器PUE可达1.05–1.15，远优于传统风冷约1.4</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>GreenLake即服务模式减少硬件浪费：</strong>通过云服务化部署，客户按需付费避免过度购置，HPE回收旧设备翻新再用，循环经济贡献显著</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>AI算力碳排放悖论：</strong>HPE在推动AI基础设施采购的同时，实际上加速了全球数据中心能源消耗增长（AI工作负载能耗约为传统云的10–100倍），绿色ESG叙事与业务增长存在张力</p></div>
+    </div>
+  </div>
+  <div class="card bl">
+    <div class="clbl">社会（S）</div><div class="ctit">数字包容与人才战略</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p><strong>HPE Accelerating Impact：</strong>公司2030年愿景覆盖数字包容（为50亿人提供技术赋能）、气候行动（达到净零路径）和人力发展（培训100万技术人才）三大主题</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>员工多样性：</strong>约62,000名全球员工，女性管理层比例约35%，亚裔及少数族裔在技术岗位比例高于行业平均。DEI指数持续改善，连续多年获评"最佳多元化雇主"</p></div>
+      <div class="ci"><div class="cdot cam"></div><p><strong>Juniper整合人才保留挑战：</strong>大并购期间Juniper核心网络工程师和产品人才流失风险较高，HPE通过留任激励（RSU加速、绩效奖金保障）努力减少人才损耗，但效果仍在验证中</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p><strong>主权AI的社会责任维度：</strong>帮助各国政府建设本国AI基础设施，在数据主权保护和AI治理方面契合全球监管趋势，具有长期正外部性</p></div>
+    </div>
+  </div>
+  <div class="card gy">
+    <div class="clbl">治理（G）</div><div class="ctit">公司治理评估</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cre"></div><p><strong>⚠ 内部人减持是最大治理关注：</strong>过去6个月22次内部人交易全为卖出（SEC Form 4），CEO Antonio Neri出售约440,889股/$1,128万，集体减持行为需要持续监控，若FY2027指引发布前加速减持将是重大负面信号</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p><strong>独立董事会结构：</strong>董事会11名成员中9名为独立董事，董事长独立于CEO（Antonio Neri仅任总裁兼CEO，董事长由独立人选担任），治理结构健全</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p><strong>薪酬激励结构合理：</strong>CEO薪酬中长期股权激励占比约65%，与3年TSR、非GAAP EPS增长和FCF转化率三项指标挂钩，激励机制与长期股东利益基本一致</p></div>
+      <div class="ci"><div class="cdot cgy"></div><p><strong>信息披露透明度良好：</strong>NYSE上市，完整SEC EDGAR披露（10-K、10-Q、8-K），季度业绩电话会议信息详尽，分别披露AI系统、网络、存储的独立运营指标，分析师能见度高</p></div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="ctit">ESG 综合评估</div>
+  <div class="g2">
+    <div class="co gr">
+      <div class="cotit">ESG投资机遇</div>
+      <p>HPE的业务模式在ESG维度具有独特价值：液冷高效AI服务器帮助企业降低数据中心能耗；GreenLake即服务模式减少过度采购和电子废弃物；主权AI基础设施支持各国数据本地化和AI治理，符合全球监管趋势。MSCI ESG评级约"BB"级（行业中等偏上），可持续金融框架兼容性良好。Juniper Wi-Fi 6E/7网络设备支持智慧城市和智慧医院建设，具有较强社会正外部性。</p>
+    </div>
+    <div class="co am">
+      <div class="cotit">ESG关注与挑战</div>
+      <p>最大的ESG争议点：AI基础设施建设加速了全球能源消耗增长（反弹效应）。尽管HPE单台设备能效领先，但AI算力需求总量爆炸式增长使绝对碳排放难以降低。内部人大规模减持是治理层面的重大关注。Juniper整合带来的大量员工安置和文化冲突也构成社会责任挑战。此外，H3C（华三）的中国关联关系在地缘政治敏感环境中对ESG评级存在潜在负面影响。</p>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SEC 12 RECOMMENDATION -->
+<div class="sec" id="s12">
+<div class="shd"><span class="snum">12</span><span class="stit">综合评估 · 最终交易建议</span></div>
+<div class="g3" style="margin-bottom:18px;">
+  <div class="card gr">
+    <div class="clbl">多方亮点（Bulls）</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cgr"></div><p>Q2 FY2026营收<strong>$10.68B（+40% YoY）</strong>，非GAAP EPS $0.79超预期46%，历史最强季度</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>AI积压订单<strong>$59亿</strong>进Q3，订单管道"数倍于积压"，Q3为"全年最大AI收入季"</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>FY2026全年指引大幅上调：营收+29–33%、EPS $3.35–3.45、FCF <strong>≥$35亿</strong>（原$20亿）</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>已提前两年完成2028年长期计划，FY2027框架EPS<strong>$4.20–4.50</strong>、FCF ≥$45亿</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>NTM P/E仅<strong>约14x</strong>，相较Dell（18x）、Cisco（17x）、Arista（38x）严重折价</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>Juniper网络整合超前完成，数据中心网络<strong>+233%</strong>、WiFi7 AP出货量+10倍</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>加权期望价值<strong>$65</strong>，较当前价格$48有约+35%隐含上行空间</p></div>
+    </div>
+  </div>
+  <div class="card am">
+    <div class="clbl">空方关注（Bears）</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cam"></div><p>过去6个月<strong>22次内部人交易全为卖出</strong>，CEO减持$1,128万，无任何购买记录</p></div>
+      <div class="ci"><div class="cdot cam"></div><p>AI服务器GAAP毛利率约6–8%，结构性拖累整体盈利质量，利润率改善主要依赖Juniper</p></div>
+      <div class="ci"><div class="cdot cam"></div><p>混合云（存储）Q2<strong>-13.6% YoY</strong>，组合中最大的弱链，复苏时间不确定</p></div>
+      <div class="ci"><div class="cdot cam"></div><p>净债务约<strong>$95亿</strong>，限制资本分配弹性；H3C出售进展和定价有不确定性</p></div>
+      <div class="ci"><div class="cdot cam"></div><p>供应链约束（GPU供货节奏）可能导致AI积压订单确认延迟，EPS落空风险</p></div>
+      <div class="ci"><div class="cdot cam"></div><p>股价年初至今已上涨<strong>+127%</strong>，短期追涨风险不容忽视，$48当前价位下方$36有较大支撑缺口</p></div>
+    </div>
+  </div>
+  <div class="card bl">
+    <div class="clbl">关键观察信号</div>
+    <div class="cats">
+      <div class="ci"><div class="cdot cbl"></div><p><strong>Q3 FY2026业绩（9月初）</strong>：AI营收是否超$40亿、运营利润率能否超13%是最关键验证节点</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p>若股价回调至<strong>$43–46区间</strong>（对应13x NTM P/E），提供更大安全边际，可积极增仓</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>H3C股权出售完成+资金用于回购，将是重要正向股价催化剂</p></div>
+      <div class="ci"><div class="cdot cre"></div><p>若内部人减持在Q3业绩前加速扩大规模（&gt;$3000万/季度），需重新评估评级</p></div>
+      <div class="ci"><div class="cdot cbl"></div><p>存储业务是否在FY2026 H2转正——若复苏兑现，将消除估值折价的最后顾虑</p></div>
+      <div class="ci"><div class="cdot cgr"></div><p>FY2027指引（12月）是否确认EPS ≥$4.20——若超$4.50，将触发机构大规模上调目标价至$80+</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL VERDICT -->
+<div class="card hl" style="border:2px solid var(--acc3);">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:280px;">
+      <div class="clbl" style="margin-bottom:9px;color:var(--acc2);">Snail Investment 精品研究部 · 最终综合建议</div>
+      <div style="font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:var(--gy1);margin-bottom:13px;">
+        买入 <span style="color:var(--grnb);">(BUY)</span> &nbsp;·&nbsp; 目标价 <span style="color:var(--acc2);">$68.00 USD</span>
+      </div>
+      <div style="font-size:13.5px;color:var(--gy2);line-height:1.9;max-width:560px;">
+        HPE正处于一个"基本面大幅跃升+估值严重滞后"的罕见错配窗口。公司AI积压$59亿、Q3预计为"全年最大AI收入季"、FY2026指引全面大幅上调、Juniper整合提前完成，任何一项单独拿出来都足以支撑一个买入论点——四者叠加，使得当前NTM P/E 14x的估值更显不合理。<br><br>
+        从加权期望价值（$65）看，以75%概率的上行情景（乐观+基准）平均回报约+57%，对比25%概率的下行情景（-24%），风险回报比约2.4:1。DCF基准情景（WACC 9%，g=3%）隐含价值$85，亦显著高于当前股价。<br><br>
+        <strong>建议策略：</strong>当前价位$48.31可建立基础仓位（占目标仓位约50–60%）。若Q3业绩前因市场整体调整或供应链担忧回调至<strong>$43–46区间</strong>，可将仓位加至100%。止损参考设于$36（悲观情景支撑位），不应因短期波动随意止损。关注9月初Q3业绩作为首次重要验证节点。今日为除息日，持股者确认享有$0.1425/股股息。
+      </div>
+      <div style="margin-top:14px;padding:10px 14px;background:var(--ambl);border-radius:6px;font-size:11.5px;color:var(--amb);line-height:1.8;">
+        ⚠ 本报告不构成投资建议。AI基础设施市场高度动态，供应链约束、内部人减持及宏观经济下行均构成实质性风险。投资者应独立评估风险，尤其关注内部人减持动向与Q3业绩兑现情况。
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:9px;min-width:188px;">
+      <div style="background:var(--grnb);padding:13px 17px;border-radius:6px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px;">投资评级</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:700;color:#fff;">买入 BUY</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:6px;border:1px solid var(--bd2);">
+        <div class="clbl">12个月目标价</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:25px;font-weight:700;color:var(--acc2);">$68.00</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:6px;border:1px solid var(--bd2);">
+        <div class="clbl">含息潜在总回报</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:21px;font-weight:700;color:var(--grnb);">+42.0%</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:6px;border:1px solid var(--bd2);">
+        <div class="clbl">建议买入区间</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:700;color:var(--acc2);">$45–$52</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:6px;border:1px solid var(--bd2);">
+        <div class="clbl">最佳加仓区间</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:700;color:var(--grn);">$43–$46</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:6px;border:1px solid var(--bd2);">
+        <div class="clbl">止损参考位</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:700;color:var(--red);">&lt;$36</div>
+      </div>
+      <div style="background:var(--bgd);padding:13px 17px;border-radius:6px;border:1px solid var(--bd2);">
+        <div class="clbl">加权期望价值</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:700;color:var(--acc2);">$65（+34.7%隐含）</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SOURCES -->
+<div style="margin-top:36px;">
+  <div class="clbl" style="margin-bottom:12px;">主要数据来源与参考文献</div>
+  <div class="card">
+    <table class="tbl">
+      <thead><tr><th>来源机构</th><th>文件/报告名称</th><th class="r">日期</th></tr></thead>
+      <tbody>
+        <tr><td>Hewlett Packard Enterprise（SEC EDGAR）</td><td>Form 8-K — Q2 FY2026 业绩公告及投资者简报（EX-99.1）</td><td class="mono r">2026年6月1日</td></tr>
+        <tr><td>Hewlett Packard Enterprise（SEC EDGAR）</td><td>Form 8-K — Q1 FY2026 业绩公告及投资者简报</td><td class="mono r">2026年3月4日</td></tr>
+        <tr><td>Hewlett Packard Enterprise（SEC EDGAR）</td><td>Form 8-K — FY2025全年业绩公告</td><td class="mono r">2025年11月</td></tr>
+        <tr><td>Hewlett Packard Enterprise（SEC EDGAR）</td><td>Form 10-K — FY2025年报（截至2025年10月31日）</td><td class="mono r">2025年12月</td></tr>
+        <tr><td>Hewlett Packard Enterprise（SEC EDGAR）</td><td>Form 4 — 内部人交易披露（CEO Antonio Neri及其他高管）</td><td class="mono r">2026年5–6月</td></tr>
+        <tr><td>Hewlett Packard Enterprise IR官网</td><td>Q2 FY2026业绩电话会议文字稿（CEO Neri、CFO Myers发言）</td><td class="mono r">2026年6月1日</td></tr>
+        <tr><td>Hewlett Packard Enterprise</td><td>Q2 FY2026投资者简报、FY2027财务框架发布</td><td class="mono r">2026年6月1日</td></tr>
+        <tr><td>Morgan Stanley</td><td>HPE增持评级，目标价$72（Q2后上调）</td><td class="mono r">2026年6月</td></tr>
+        <tr><td>JPMorgan</td><td>HPE增持评级，目标价$68（Q2后上调）</td><td class="mono r">2026年6月</td></tr>
+        <tr><td>BofA Securities</td><td>HPE买入评级，目标价$70</td><td class="mono r">2026年6月</td></tr>
+        <tr><td>Simply Wall St</td><td>HPE内部人交易监控（22次卖出）、DCF估值分析</td><td class="mono r">2026年6月16日</td></tr>
+        <tr><td>Yahoo Finance / TradingView</td><td>HPE实时股价、P/E、市值、52周区间、股息数据</td><td class="mono r">2026年6月16日</td></tr>
+        <tr><td>IDC / Gartner</td><td>全球AI服务器及企业网络设备市场份额报告</td><td class="mono r">2026年Q1</td></tr>
+        <tr><td>Macrotrends.net</td><td>HPE历史营收、EPS、毛利率、FCF长期趋势数据</td><td class="mono r">2026年6月</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div><!-- end sec12 -->
+</div><!-- end .wrap -->
+
+<div class="footer">
+  <div class="ftbrand">🐌 Snail Investment · 精品研究部（企业IT基础设施与AI半导体行业）</div>
+  <div class="ftdisc">
+    本报告由 Snail Investment 精品研究部独立撰写，数据截止日期为 2026年6月16日（HPE Q3 FY2026股息除息日）。本报告仅供具备专业金融知识的机构及专业投资者参考，不构成任何形式的投资邀约、招募、要约收购或个人投资建议。报告中所载信息及分析系基于公开来源数据，分析师尽力确保准确性，但不对其完整性、及时性或适用于特定投资目的作出任何明示或隐含担保。<br><br>
+    AI基础设施市场具有高度动态性，HPE业绩受AI服务器供应链节奏、企业IT支出周期、Juniper整合执行情况及宏观经济环境等多重因素影响，不确定性较高。本报告所载价格目标及预测系基于特定假设，实际结果可能与预期存在重大差异，过往业绩不预示未来表现。投资者在作出任何投资决策前，应自行独立评估相关风险，尤其需重视内部人减持动向与供应链约束对收入确认时序的影响，并在适当情况下寻求专业财务、法律及税务顾问意见。<br><br>
+    分析师利益冲突声明：本报告撰写分析师声明，本人及 Snail Investment 精品研究部与 Hewlett Packard Enterprise (HPE) 不存在任何重大利益冲突关系，亦不持有该公司股票或相关衍生金融工具仓位。本报告版权归属 Snail Investment，未经授权不得转载、引用或以任何方式再分发。
+  </div>
+</div>
+
+<script>
+const secs=document.querySelectorAll('.sec[id]');
+const links=document.querySelectorAll('.nlinks a');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)links.forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+e.target.id));
+  });
+},{rootMargin:'-15% 0px -75% 0px'});
+secs.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
