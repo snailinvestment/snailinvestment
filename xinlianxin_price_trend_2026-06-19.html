@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国心连心化肥（HK1866）主要产品价格走势 | Snail Investment</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#f5f6fa;--card:#fff;--t1:#1a1a2e;--t2:#4a5568;--t3:#718096;
+  --accent:#9333ea;--accent2:#7c3aed;
+  --green:#059669;--green-bg:#ecfdf5;
+  --red:#dc2626;--red-bg:#fef2f2;
+  --orange:#ea580c;--orange-bg:#fff7ed;
+  --border:#e2e8f0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;}
+
+.nav{background:#fff;border-bottom:1px solid var(--border);padding:0 36px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+.nav-brand{font-weight:800;font-size:15px;color:var(--accent);}
+.nav-links a{font-size:13px;color:var(--t3);text-decoration:none;padding:6px 14px;border-radius:6px;transition:all .15s;}
+.nav-links a:hover{color:var(--accent);background:#f5f3ff;}
+
+.container{max-width:1280px;margin:0 auto;padding:32px 24px;}
+.header{margin-bottom:36px;}
+.header-row{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.title-section h1{font-size:28px;font-weight:800;color:var(--t1);margin-bottom:8px;}
+.title-section .subtitle{font-size:14px;color:var(--t3);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.title-section .subtitle span{background:#f5f3ff;color:var(--accent);padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;}
+.meta-badges{display:flex;gap:10px;flex-wrap:wrap;}
+.meta-badge{background:#fff;border:1px solid var(--border);padding:8px 16px;border-radius:8px;font-size:13px;color:var(--t2);}
+.meta-badge strong{color:var(--t1);margin-right:4px;}
+
+.summary-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px;}
+.summary-card{background:var(--card);border-radius:12px;padding:16px 18px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.sc-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.sc-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;}
+.sc-icon.urea{background:linear-gradient(135deg,#059669,#10b981);}
+.sc-icon.cf{background:linear-gradient(135deg,#2563eb,#3b82f6);}
+.sc-icon.meoh{background:linear-gradient(135deg,#ea580c,#f97316);}
+.sc-icon.nh3{background:linear-gradient(135deg,#7c3aed,#8b5cf6);}
+.sc-icon.mel{background:linear-gradient(135deg,#dc2626,#ef4444);}
+.sc-icon.dmf{background:linear-gradient(135deg,#0891b2,#06b6d4);}
+.sc-icon.pom{background:linear-gradient(135deg,#78716c,#a8a29e);}
+.sc-name{font-size:14px;font-weight:700;color:var(--t1);}
+.sc-spec{font-size:10px;color:var(--t3);}
+.sc-price{font-size:24px;font-weight:800;color:var(--t1);margin:4px 0;}
+.sc-price .unit{font-size:11px;font-weight:400;color:var(--t3);margin-left:2px;}
+.sc-change{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:600;padding:2px 8px;border-radius:5px;}
+.sc-change.up{color:var(--green);background:var(--green-bg);}
+.sc-change.down{color:var(--red);background:var(--red-bg);}
+.sc-change.mild{color:var(--orange);background:var(--orange-bg);}
+.sc-comparison{font-size:11px;color:var(--t3);margin-top:6px;padding-top:6px;border-top:1px solid #f1f5f9;}
+.sc-comparison strong{color:var(--t1);}
+
+.alert-row{background:linear-gradient(135deg,#fef3c7,#fef9c3);border:1px solid #fcd34d;border-radius:10px;padding:14px 20px;margin-bottom:32px;display:flex;align-items:center;gap:10px;font-size:13px;color:#92400e;font-weight:600;}
+
+.chart-section{margin-bottom:32px;}
+.chart-section h2{font-size:20px;font-weight:700;color:var(--t1);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.chart-section h2::before{content:'';width:4px;height:20px;background:var(--accent);border-radius:2px;}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.chart-card{background:var(--card);border-radius:12px;padding:22px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.chart-card h3{font-size:14px;font-weight:700;margin-bottom:4px;color:var(--t1);}
+.chart-card .chart-meta{font-size:11px;color:var(--t3);margin-bottom:14px;}
+.chart-container{position:relative;height:260px;}
+.chart-container canvas{width:100%!important;}
+
+.bar-section{margin-bottom:32px;}
+.bar-section h2{font-size:20px;font-weight:700;color:var(--t1);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.bar-section h2::before{content:'';width:4px;height:20px;background:var(--accent);border-radius:2px;}
+.bar-card{background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);}
+.bar-container{position:relative;height:360px;}
+.bar-container canvas{width:100%!important;}
+
+.table-section{margin-bottom:32px;}
+.table-section h2{font-size:20px;font-weight:700;color:var(--t1);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.table-section h2::before{content:'';width:4px;height:20px;background:var(--accent);border-radius:2px;}
+.data-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.data-table thead{background:linear-gradient(135deg,#4c1d95,#5b21b6);}
+.data-table th{color:#fff;padding:12px 14px;text-align:center;font-size:12px;font-weight:600;}
+.data-table th:first-child{text-align:left;padding-left:20px;}
+.data-table td{padding:12px 14px;text-align:center;font-size:13px;border-bottom:1px solid var(--border);}
+.data-table td:first-child{text-align:left;padding-left:20px;font-weight:600;color:var(--t1);}
+.data-table tbody tr:hover{background:#f8fafc;}
+.highlight-up{color:var(--green);font-weight:700;}
+.highlight-down{color:var(--red);font-weight:700;}
+.highlight-mild{color:var(--orange);font-weight:700;}
+
+.footer{text-align:center;padding:20px;color:var(--t3);font-size:12px;border-top:1px solid var(--border);margin-top:40px;}
+
+@media(max-width:1024px){.summary-row{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:768px){
+  .nav{padding:0 16px;}.summary-row{grid-template-columns:1fr 1fr;}
+  .chart-grid{grid-template-columns:1fr;}
+  .title-section h1{font-size:22px;}.sc-price{font-size:20px;}
+  .container{padding:16px 12px;}
+  .data-table{font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">心连心化肥 (XLX) 产品价格监控</div>
+  <div class="nav-links"><a href="index.html">← 返回首页</a></div>
+</nav>
+
+<div class="container">
+
+<div class="header">
+  <div class="header-row">
+    <div class="title-section">
+      <h1>中国心连心化肥（HK1866）主要产品价格走势</h1>
+      <div class="subtitle">2025年1月-6月 vs 2026年1月-6月 同期对比 <span>数据截至 2026-06-19</span></div>
+    </div>
+    <div class="meta-badges">
+      <div class="meta-badge"><strong>代码</strong> 01866.HK</div>
+      <div class="meta-badge"><strong>行业</strong> 煤化工/化肥</div>
+      <div class="meta-badge"><strong>数据源</strong> 生意社/我的钢铁网</div>
+    </div>
+  </div>
+</div>
+
+<div class="alert-row">⚠️ 尿素供给持续处于历史高位（日产量21-22万吨），同比增9.3%，下游需求偏弱，价格承压运行。</div>
+
+<div class="summary-row">
+  <div class="summary-card">
+    <div class="sc-header"><div class="sc-icon urea">U</div><div><div class="sc-name">尿素</div><div class="sc-spec">小颗粒</div></div></div>
+    <div class="sc-price">1,844<span class="unit">元/吨</span></div>
+    <div class="sc-change down">同比 ↓-18.4%</div>
+    <div class="sc-comparison">2025同期 <strong>~2,260</strong></div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-header"><div class="sc-icon cf">CF</div><div><div class="sc-name">复合肥</div><div class="sc-spec">45%CL</div></div></div>
+    <div class="sc-price">2,910<span class="unit">元/吨</span></div>
+    <div class="sc-change mild">同比 ↓-2.3%</div>
+    <div class="sc-comparison">2025同期 <strong>~2,980</strong></div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-header"><div class="sc-icon meoh">ME</div><div><div class="sc-name">甲醇</div><div class="sc-spec">99%</div></div></div>
+    <div class="sc-price">3,012<span class="unit">元/吨</span></div>
+    <div class="sc-change up">同比 ↑+17.2%</div>
+    <div class="sc-comparison">2025同期 <strong>~2,570</strong></div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-header"><div class="sc-icon nh3">NH₃</div><div><div class="sc-name">液氨</div><div class="sc-spec">99.8%</div></div></div>
+    <div class="sc-price">2,250<span class="unit">元/吨</span></div>
+    <div class="sc-change down">同比 ↓-13.1%</div>
+    <div class="sc-comparison">2025同期 <strong>~2,590</strong></div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-header"><div class="sc-icon mel">ML</div><div><div class="sc-name">三聚氰胺</div><div class="sc-spec">99.8%</div></div></div>
+    <div class="sc-price">6,080<span class="unit">元/吨</span></div>
+    <div class="sc-change down">同比 ↓-10.9%</div>
+    <div class="sc-comparison">2025同期 <strong>~6,820</strong></div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-header"><div class="sc-icon dmf">DM</div><div><div class="sc-name">DMF</div><div class="sc-spec">99.9%</div></div></div>
+    <div class="sc-price">4,200<span class="unit">元/吨</span></div>
+    <div class="sc-change down">同比 ↓-31.7%</div>
+    <div class="sc-comparison">2025同期 <strong>~6,150</strong></div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-header"><div class="sc-icon pom">PO</div><div><div class="sc-name">聚甲醛 POM</div><div class="sc-spec">注塑级</div></div></div>
+    <div class="sc-price">12,500<span class="unit">元/吨</span></div>
+    <div class="sc-change down">同比 ↓-10.7%</div>
+    <div class="sc-comparison">2025同期 <strong>~14,000</strong></div>
+  </div>
+</div>
+
+<div class="chart-section">
+  <h2>尿素 / 复合肥 / 甲醇 价格走势（元/吨）</h2>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>尿素 · 小颗粒</h3>
+      <div class="chart-meta">6/18 生意社基准价 1,844元/吨 | 供给高位，价格承压</div>
+      <div class="chart-container"><canvas id="chartUrea"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>复合肥 · 45%CL (3*15)</h3>
+      <div class="chart-meta">6/18 山东市场价 2,910元/吨 | 需求平稳，价格窄幅震荡</div>
+      <div class="chart-container"><canvas id="chartCF"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<div class="chart-section">
+  <h2>甲醇 / 液氨 价格走势（元/吨）</h2>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>甲醇 · 99%</h3>
+      <div class="chart-meta">6/18 生意社基准价 3,012元/吨 | 中位运行，成本支撑</div>
+      <div class="chart-container"><canvas id="chartMeOH"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>液氨 · 99.8%</h3>
+      <div class="chart-meta">6/18 生意社基准价 2,250元/吨 | 一年低位，需求不足</div>
+      <div class="chart-container"><canvas id="chartNH3"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<div class="chart-section">
+  <h2>三聚氰胺 / DMF 价格走势（元/吨）</h2>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>三聚氰胺 · 99.8%</h3>
+      <div class="chart-meta">6/18 生意社基准价 6,080元/吨 | 震荡偏弱</div>
+      <div class="chart-container"><canvas id="chartMel"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>DMF · 二甲基甲酰胺</h3>
+      <div class="chart-meta">6月ChemicalBook 4,200元/吨 | 年内趋势下行</div>
+      <div class="chart-container"><canvas id="chartDMF"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<div class="bar-section">
+  <h2>七产品同比涨跌幅对比</h2>
+  <div class="bar-card"><div class="bar-container"><canvas id="chartBar"></canvas></div></div>
+</div>
+
+<div class="table-section">
+  <h2>产品价格数据明细表</h2>
+  <table class="data-table">
+    <thead><tr><th>产品</th><th>规格</th><th>2025同期均价</th><th>2026当前价格</th><th>同比变化</th><th>趋势判断</th><th>数据日期</th></tr></thead>
+    <tbody>
+      <tr><td>尿素</td><td>小颗粒</td><td>~2,260</td><td>1,844</td><td class="highlight-down">↓-18.4%</td><td>供给高位持续承压</td><td>6/18</td></tr>
+      <tr><td>复合肥</td><td>45%CL(3*15)</td><td>~2,980</td><td>2,910</td><td class="highlight-mild">↓-2.3%</td><td>需求平稳窄幅震荡</td><td>6/18</td></tr>
+      <tr><td>甲醇</td><td>99%</td><td>~2,570</td><td>3,012</td><td class="highlight-up">↑+17.2%</td><td>成本支撑中位运行</td><td>6/18</td></tr>
+      <tr><td>液氨</td><td>99.8%</td><td>~2,590</td><td>2,250</td><td class="highlight-down">↓-13.1%</td><td>需求不足低位整理</td><td>6/18</td></tr>
+      <tr><td>三聚氰胺</td><td>99.8%</td><td>~6,820</td><td>6,080</td><td class="highlight-down">↓-10.9%</td><td>供需偏弱震荡下行</td><td>6/18</td></tr>
+      <tr><td>DMF</td><td>99.9%</td><td>~6,150</td><td>4,200</td><td class="highlight-down">↓-31.7%</td><td>大幅下行弱势未改</td><td>6/18</td></tr>
+      <tr><td>聚甲醛 POM</td><td>注塑级</td><td>~14,000</td><td>12,500</td><td class="highlight-down">↓-10.7%</td><td>窄幅震荡需求平稳</td><td>6/18</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  <p>数据来源：生意社、我的钢铁网(Mysteel)、ChemicalBook | 仅供研究参考，不构成投资建议</p>
+  <p style="margin-top:4px;">© 2026 Snail Investment · 心连心化肥(XLX)产品价格监控</p>
+</div>
+</div>
+
+<script>
+Chart.defaults.font.family='-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif';
+function mkChart(id,l25,l26,unit,ymin,ymax,step,stepFmt){
+  new Chart(document.getElementById(id),{
+    type:'line',
+    data:{
+      labels:['1月','2月','3月','4月','5月','6月'],
+      datasets:[{
+        label:'2025',data:l25,borderColor:'#94a3b8',backgroundColor:'rgba(148,163,184,.06)',
+        borderWidth:2,borderDash:[6,3],tension:0.3,fill:false,pointRadius:3,pointBackgroundColor:'#94a3b8',
+      },{
+        label:'2026',data:l26,borderColor:'#7c3aed',backgroundColor:'rgba(124,58,237,.06)',
+        borderWidth:2.5,tension:0.3,fill:true,pointRadius:4,pointBackgroundColor:'#7c3aed',pointBorderColor:'#fff',pointBorderWidth:2,
+      }]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{usePointStyle:true,padding:16,font:{size:11}}},
+        tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.parsed.y.toLocaleString()+unit}}},
+      scales:{y:{min:ymin,max:ymax,ticks:{stepSize:step,callback:v=>stepFmt(v)},grid:{color:'#f1f5f9'}},x:{grid:{display:false}}}
+    }
+  });
+}
+mkChart('chartUrea',[2180,2150,2100,2060,2030,2020],[1820,1800,1860,1850,1860,1844],' 元/吨',1600,2400,100,v=>v.toLocaleString());
+mkChart('chartCF',[3020,2930,2890,2870,2860,2850],[3000,2890,2880,2880,2890,2910],' 元/吨',2600,3200,100,v=>v.toLocaleString());
+mkChart('chartMeOH',[2290,2340,2410,2520,2570,2650],[2700,2680,2900,3050,3150,3012],' 元/吨',2000,3500,200,v=>(v/1000).toFixed(1)+'k');
+mkChart('chartNH3',[2440,2530,2500,2400,2360,2330],[2280,2300,2380,2360,2280,2250],' 元/吨',2000,2800,100,v=>v.toLocaleString());
+mkChart('chartMel',[6540,6480,6420,6360,6400,6380],[6320,6280,6200,6150,6120,6080],' 元/吨',5500,7200,200,v=>(v/1000).toFixed(1)+'k');
+mkChart('chartDMF',[6850,6550,6280,6020,5850,5700],[5200,4900,4660,4450,4360,4200],' 元/吨',3500,7500,500,v=>(v/1000).toFixed(1)+'k');
+
+// BAR
+new Chart(document.getElementById('chartBar'),{
+  type:'bar',
+  data:{
+    labels:['尿素','复合肥','甲醇','液氨','三聚氰胺','DMF','聚甲醛'],
+    datasets:[{
+      label:'同比变化 %',data:[-18.4,-2.3,17.2,-13.1,-10.9,-31.7,-10.7],
+      backgroundColor:['#ef4444','#f59e0b','#10b981','#ef4444','#ef4444','#ef4444','#ef4444'],
+      borderRadius:6,borderSkipped:false,
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>ctx.parsed.y+'%'}}},
+    scales:{y:{grid:{color:'#f1f5f9'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}
+  }
+});
+</script>
+</body>
+</html>
