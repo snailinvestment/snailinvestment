@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国三江化工（HK2198）产品与原材料价格走势 | Snail Investment</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#f5f6fa;--card:#fff;--t1:#1a1a2e;--t2:#4a5568;--t3:#718096;--accent:#0891b2;--green:#059669;--green-bg:#ecfdf5;--red:#dc2626;--red-bg:#fef2f2;--orange:#ea580c;--orange-bg:#fff7ed;--border:#e2e8f0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;}
+.nav{background:#fff;border-bottom:1px solid var(--border);padding:0 36px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+.nav-brand{font-weight:800;font-size:15px;color:var(--accent);}
+.nav-links a{font-size:13px;color:var(--t3);text-decoration:none;padding:6px 14px;border-radius:6px;}
+.nav-links a:hover{color:var(--accent);background:#ecfeff;}
+.container{max-width:1280px;margin:0 auto;padding:32px 24px;}
+.header{margin-bottom:32px;}
+.header-row{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.title-section h1{font-size:28px;font-weight:800;color:var(--t1);margin-bottom:6px;}
+.title-section .subtitle{font-size:14px;color:var(--t3);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.title-section .subtitle span{background:#ecfeff;color:var(--accent);padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;}
+.meta-badges{display:flex;gap:10px;flex-wrap:wrap;}
+.meta-badge{background:#fff;border:1px solid var(--border);padding:8px 16px;border-radius:8px;font-size:13px;color:var(--t2);}
+.meta-badge strong{color:var(--t1);margin-right:4px;}
+
+.section-label{font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.summary-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px;}
+.summary-card{background:var(--card);border-radius:10px;padding:14px 16px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.sc-header{display:flex;align-items:center;gap:7px;margin-bottom:8px;}
+.sc-icon{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0;}
+.sc-icon.eo{background:linear-gradient(135deg,#0891b2,#06b6d4);}
+.sc-icon.meg{background:linear-gradient(135deg,#7c3aed,#8b5cf6);}
+.sc-icon.pp2{background:linear-gradient(135deg,#2563eb,#3b82f6);}
+.sc-icon.eth{background:linear-gradient(135deg,#ea580c,#f97316);}
+.sc-icon.saa{background:linear-gradient(135deg,#059669,#10b981);}
+.sc-icon.mtbe{background:linear-gradient(135deg,#dc2626,#ef4444);}
+.sc-icon.bd{background:linear-gradient(135deg,#78716c,#a8a29e);}
+.sc-icon.rm{background:linear-gradient(135deg,#f59e0b,#fbbf24);}
+.sc-name{font-size:13px;font-weight:700;color:var(--t1);}
+.sc-spec{font-size:10px;color:var(--t3);}
+.sc-price{font-size:22px;font-weight:800;color:var(--t1);margin:3px 0;}
+.sc-price .unit{font-size:10px;font-weight:400;color:var(--t3);}
+.sc-change{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;}
+.sc-change.up{color:var(--green);background:var(--green-bg);}
+.sc-change.down{color:var(--red);background:var(--red-bg);}
+.sc-change.mild{color:var(--orange);background:var(--orange-bg);}
+.sc-comparison{font-size:10px;color:var(--t3);margin-top:5px;padding-top:5px;border-top:1px solid #f1f5f9;}
+
+.chart-section{margin-bottom:28px;}
+.chart-section h2{font-size:19px;font-weight:700;color:var(--t1);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.chart-section h2::before{content:'';width:4px;height:18px;background:var(--accent);border-radius:2px;}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.chart-card{background:var(--card);border-radius:10px;padding:20px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.chart-card h3{font-size:14px;font-weight:700;margin-bottom:3px;color:var(--t1);}
+.chart-card .chart-meta{font-size:10px;color:var(--t3);margin-bottom:12px;}
+.chart-container{position:relative;height:240px;}
+.chart-container canvas{width:100%!important;}
+
+.bar-section{margin-bottom:28px;}
+.bar-section h2{font-size:19px;font-weight:700;color:var(--t1);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.bar-section h2::before{content:'';width:4px;height:18px;background:var(--accent);border-radius:2px;}
+.bar-card{background:var(--card);border-radius:10px;padding:22px;border:1px solid var(--border);}
+.bar-container{position:relative;height:340px;}
+.bar-container canvas{width:100%!important;}
+
+.table-section{margin-bottom:28px;}
+.table-section h2{font-size:19px;font-weight:700;color:var(--t1);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.table-section h2::before{content:'';width:4px;height:18px;background:var(--accent);border-radius:2px;}
+.data-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.data-table thead{background:linear-gradient(135deg,#164e63,#155e75);}
+.data-table th{color:#fff;padding:11px 14px;text-align:center;font-size:12px;font-weight:600;}
+.data-table th:first-child{text-align:left;padding-left:20px;}
+.data-table td{padding:11px 14px;text-align:center;font-size:13px;border-bottom:1px solid var(--border);}
+.data-table td:first-child{text-align:left;padding-left:20px;font-weight:600;color:var(--t1);}
+.data-table tbody tr:hover{background:#f8fafc;}
+.highlight-up{color:var(--green);font-weight:700;}
+.highlight-down{color:var(--red);font-weight:700;}
+.highlight-mild{color:var(--orange);font-weight:700;}
+.rm-row{background:#fefce8;}
+.rm-row td:first-child::before{content:'🔸 ';}
+
+.footer{text-align:center;padding:20px;color:var(--t3);font-size:12px;border-top:1px solid var(--border);margin-top:36px;}
+@media(max-width:1024px){.summary-row{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:768px){
+  .nav{padding:0 16px;}.summary-row{grid-template-columns:1fr 1fr;}
+  .chart-grid{grid-template-columns:1fr;}
+  .title-section h1{font-size:22px;}.sc-price{font-size:19px;}
+  .container{padding:16px 12px;}.data-table{font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">三江化工 (SJ) 产品与原材料监控</div>
+  <div class="nav-links"><a href="index.html">← 返回首页</a></div>
+</nav>
+
+<div class="container">
+
+<div class="header">
+  <div class="header-row">
+    <div class="title-section">
+      <h1>中国三江化工（HK2198）产品与原材料价格走势</h1>
+      <div class="subtitle">2025年1月-6月 vs 2026年1月-6月 同期对比 <span>数据截至 2026-06-19</span></div>
+    </div>
+    <div class="meta-badges">
+      <div class="meta-badge"><strong>代码</strong> 02198.HK</div>
+      <div class="meta-badge"><strong>行业</strong> 精细化工/MTO</div>
+      <div class="meta-badge"><strong>数据源</strong> 生意社/ChemNet</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-label">核心产品</div>
+<div class="summary-row">
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon eo">EO</div><div><div class="sc-name">环氧乙烷</div><div class="sc-spec">华东出厂</div></div></div><div class="sc-price">6,800<span class="unit">元/吨</span></div><div class="sc-change up">↑+4.6%</div><div class="sc-comparison">2025同期 <strong>~6,500</strong></div></div>
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon meg">EG</div><div><div class="sc-name">乙二醇 MEG</div><div class="sc-spec">涤纶级</div></div></div><div class="sc-price">4,200<span class="unit">元/吨</span></div><div class="sc-change down">↓-6.7%</div><div class="sc-comparison">2025同期 <strong>~4,500</strong></div></div>
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon pp2">PP</div><div><div class="sc-name">聚丙烯</div><div class="sc-spec">拉丝级</div></div></div><div class="sc-price">9,450<span class="unit">元/吨</span></div><div class="sc-change up">↑+26.8%</div><div class="sc-comparison">2025同期 <strong>~7,450</strong></div></div>
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon eth">C₂</div><div><div class="sc-name">乙烯</div><div class="sc-spec">CFR东北亚</div></div></div><div class="sc-price">6,800<span class="unit">元/吨</span></div><div class="sc-change down">↓-20%</div><div class="sc-comparison">2025同期 <strong>~8,500</strong></div></div>
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon saa">AEO</div><div><div class="sc-name">表面活性剂</div><div class="sc-spec">AEO-9</div></div></div><div class="sc-price">9,200<span class="unit">元/吨</span></div><div class="sc-change down">↓-12.4%</div><div class="sc-comparison">2025同期 <strong>~10,500</strong></div></div>
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon mtbe">MT</div><div><div class="sc-name">MTBE</div><div class="sc-spec">工业级</div></div></div><div class="sc-price">4,800<span class="unit">元/吨</span></div><div class="sc-change mild">↓-12.7%</div><div class="sc-comparison">2025同期 <strong>~5,500</strong></div></div>
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon bd">BD</div><div><div class="sc-name">丁二烯</div><div class="sc-spec">99.5%</div></div></div><div class="sc-price">9,807<span class="unit">元/吨</span></div><div class="sc-change down">↓-12.4%</div><div class="sc-comparison">2025同期 <strong>~11,200</strong></div></div>
+</div>
+
+<div class="section-label" style="margin-top:8px;">核心原材料</div>
+<div class="summary-row" style="grid-template-columns:repeat(2,1fr);">
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon rm">石</div><div><div class="sc-name">石脑油</div><div class="sc-spec">加氢/直馏</div></div></div><div class="sc-price">7,610<span class="unit">元/吨</span></div><div class="sc-change up">↑+1.5%</div><div class="sc-comparison">2025同期 <strong>~7,500</strong></div></div>
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon rm">甲</div><div><div class="sc-name">甲醇</div><div class="sc-spec">99% · MTO原料</div></div></div><div class="sc-price">3,012<span class="unit">元/吨</span></div><div class="sc-change up">↑+17.2%</div><div class="sc-comparison">2025同期 <strong>~2,570</strong></div></div>
+</div>
+
+<div class="chart-section"><h2>环氧乙烷 / 乙二醇 / 聚丙烯 走势（元/吨）</h2>
+<div class="chart-grid">
+  <div class="chart-card"><h3>环氧乙烷 · 华东出厂挂牌价</h3><div class="chart-meta">6/18 华东 6,800元/吨 | 下游减水剂需求平稳</div><div class="chart-container"><canvas id="cEO"></canvas></div></div>
+  <div class="chart-card"><h3>乙二醇 MEG · 涤纶级</h3><div class="chart-meta">6/19 生意社基准价 ~4,200元/吨 | 聚酯链需求一般</div><div class="chart-container"><canvas id="cMEG"></canvas></div></div>
+</div></div>
+
+<div class="chart-section"><h2>乙烯 / 丁二烯 / MTBE 走势（元/吨）</h2>
+<div class="chart-grid">
+  <div class="chart-card"><h3>乙烯 · CFR东北亚</h3><div class="chart-meta">6/19 ~6,800元/吨 | Q1同比↓20%，价格承压</div><div class="chart-container"><canvas id="cETH"></canvas></div></div>
+  <div class="chart-card"><h3>丁二烯 · 99.5%</h3><div class="chart-meta">6/19 生意社基准价 9,807元/吨 | 月环比↓9.8%</div><div class="chart-container"><canvas id="cBD"></canvas></div></div>
+</div></div>
+
+<div class="chart-section"><h2>原材料：石脑油 / 甲醇 走势（元/吨）</h2>
+<div class="chart-grid">
+  <div class="chart-card"><h3>石脑油 · 加氢/直馏</h3><div class="chart-meta">6/18 生意社 7,610元/吨 | 中低位运行，成本端平稳</div><div class="chart-container"><canvas id="cNAP"></canvas></div></div>
+  <div class="chart-card"><h3>甲醇 · 99% MTO原料</h3><div class="chart-meta">6/18 生意社 3,012元/吨 | 成本支撑偏强，同比↑17%</div><div class="chart-container"><canvas id="cMEOH"></canvas></div></div>
+</div></div>
+
+<div class="bar-section"><h2>全品类同比涨跌幅对比</h2>
+<div class="bar-card"><div class="bar-container"><canvas id="chartBar"></canvas></div></div></div>
+
+<div class="table-section"><h2>产品与原材料价格数据明细表</h2>
+<table class="data-table"><thead><tr><th>品类</th><th>产品</th><th>规格</th><th>2025同期</th><th>2026当前</th><th>同比</th><th>数据日期</th></tr></thead><tbody>
+<tr><td>产品</td><td>环氧乙烷 EO</td><td>华东出厂</td><td>~6,500</td><td>6,800</td><td class="highlight-up">↑+4.6%</td><td>6/18</td></tr>
+<tr><td>产品</td><td>乙二醇 MEG</td><td>涤纶级</td><td>~4,500</td><td>4,200</td><td class="highlight-down">↓-6.7%</td><td>6/19</td></tr>
+<tr><td>产品</td><td>聚丙烯 PP</td><td>拉丝级</td><td>~7,450</td><td>9,450</td><td class="highlight-up">↑+26.8%</td><td>6/18</td></tr>
+<tr><td>产品</td><td>乙烯</td><td>CFR东北亚</td><td>~8,500</td><td>6,800</td><td class="highlight-down">↓-20.0%</td><td>6/19</td></tr>
+<tr><td>产品</td><td>表面活性剂 AEO</td><td>AEO-9</td><td>~10,500</td><td>9,200</td><td class="highlight-down">↓-12.4%</td><td>6/19</td></tr>
+<tr><td>产品</td><td>MTBE</td><td>工业级</td><td>~5,500</td><td>4,800</td><td class="highlight-down">↓-12.7%</td><td>6/19</td></tr>
+<tr><td>产品</td><td>丁二烯</td><td>99.5%</td><td>~11,200</td><td>9,807</td><td class="highlight-down">↓-12.4%</td><td>6/19</td></tr>
+<tr class="rm-row"><td>原料</td><td>石脑油 🔸</td><td>加氢/直馏</td><td>~7,500</td><td>7,610</td><td class="highlight-up">↑+1.5%</td><td>6/18</td></tr>
+<tr class="rm-row"><td>原料</td><td>甲醇 🔸</td><td>99% · MTO</td><td>~2,570</td><td>3,012</td><td class="highlight-up">↑+17.2%</td><td>6/18</td></tr>
+</tbody></table></div>
+
+<div class="footer"><p>数据来源：生意社、ChemNet化工网、同花顺iFind | 仅供研究参考，不构成投资建议</p><p style="margin-top:4px;">© 2026 Snail Investment · 三江化工(SJ)产品与原材料价格监控</p></div>
+</div>
+
+<script>
+Chart.defaults.font.family='-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif';
+function mc(id,l25,l26,u,ymin,ymax,s,sf){
+  new Chart(document.getElementById(id),{type:'line',data:{labels:['1月','2月','3月','4月','5月','6月'],datasets:[
+    {label:'2025',data:l25,borderColor:'#94a3b8',backgroundColor:'rgba(148,163,184,.06)',borderWidth:2,borderDash:[6,3],tension:.3,fill:false,pointRadius:3,pointBackgroundColor:'#94a3b8'},
+    {label:'2026',data:l26,borderColor:'#0891b2',backgroundColor:'rgba(8,145,178,.06)',borderWidth:2.5,tension:.3,fill:true,pointRadius:4,pointBackgroundColor:'#0891b2',pointBorderColor:'#fff',pointBorderWidth:2}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{usePointStyle:true,padding:14,font:{size:11}}},tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.parsed.y.toLocaleString()+u}}},
+    scales:{y:{min:ymin,max:ymax,ticks:{stepSize:s,callback:v=>sf(v)},grid:{color:'#f1f5f9'}},x:{grid:{display:false}}}}});
+}
+mc('cEO',[6700,6600,6550,6500,6450,6500],[7000,6900,6850,6800,6850,6800],' 元/吨',6000,7500,200,v=>(v/1000).toFixed(1)+'k');
+mc('cMEG',[4680,4600,4550,4480,4450,4500],[4400,4350,4250,4200,4250,4200],' 元/吨',3800,5000,200,v=>(v/1000).toFixed(1)+'k');
+mc('cETH',[8500,8400,8200,8000,7800,7600],[6900,6700,6500,6400,6600,6800],' 元/吨',5800,9000,400,v=>(v/1000).toFixed(1)+'k');
+mc('cBD',[11600,11400,11200,11000,10800,11200],[16000,14500,12500,11500,10800,9807],' 元/吨',8000,18000,1500,v=>(v/1000).toFixed(1)+'k');
+mc('cNAP',[7700,7650,7600,7500,7450,7500],[7300,7200,7400,7500,7580,7610],' 元/吨',6800,8000,200,v=>(v/1000).toFixed(1)+'k');
+mc('cMEOH',[2290,2340,2410,2520,2570,2650],[2700,2680,2900,3050,3150,3012],' 元/吨',2000,3500,200,v=>(v/1000).toFixed(1)+'k');
+
+new Chart(document.getElementById('chartBar'),{type:'bar',
+  data:{labels:['环氧乙烷','乙二醇','聚丙烯','乙烯','AEO','MTBE','丁二烯','石脑油◈','甲醇◈'],
+    datasets:[{label:'同比变化 %',data:[4.6,-6.7,26.8,-20,-12.4,-12.7,-12.4,1.5,17.2],
+      backgroundColor:['#10b981','#ef4444','#10b981','#ef4444','#ef4444','#ef4444','#ef4444','#f59e0b','#10b981'],
+      borderRadius:6,borderSkipped:false}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.parsed.y+'%'}}},
+    scales:{y:{grid:{color:'#f1f5f9'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}}});
+</script>
+</body>
+</html>
