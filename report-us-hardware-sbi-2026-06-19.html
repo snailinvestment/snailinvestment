@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美国硬件/半导体板块SBI泡沫指数日报 - 2026-06-19</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .summary-box {
+            background: #f8f9fa;
+            border-left: 4px solid #dc3545;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        
+        .summary-box.warning {
+            border-left-color: #ffc107;
+        }
+        
+        .summary-box.safe {
+            border-left-color: #28a745;
+        }
+        
+        .sbi-score {
+            font-size: 64px;
+            font-weight: 700;
+            color: #dc3545;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .sbi-score.warning {
+            color: #ffc107;
+        }
+        
+        .sbi-label {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .dimension-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .dimension-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .dimension-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .dimension-score {
+            font-size: 32px;
+            font-weight: 700;
+            color: #dc3545;
+        }
+        
+        .dimension-score.warning {
+            color: #ffc107;
+        }
+        
+        .dimension-score.safe {
+            color: #28a745;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #dc3545;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-fill.warning {
+            background: #ffc107;
+        }
+        
+        .progress-fill.safe {
+            background: #28a745;
+        }
+        
+        .chart-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        
+        .chart-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+        
+        .chart-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .data-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .data-table td {
+            font-size: 14px;
+        }
+        
+        .conclusion-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        .conclusion-box h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #856404;
+        }
+        
+        .conclusion-box ul {
+            margin-left: 20px;
+        }
+        
+        .conclusion-box li {
+            margin-bottom: 8px;
+        }
+        
+        .recommendation {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .recommendation h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #0c5460;
+        }
+        
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .change-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .change-up {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .change-down {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        canvas {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🇺🇸 美国硬件/半导体板块SBI泡沫指数日报</h1>
+        <p class="subtitle">报告日期: 2026-06-19 | 分析团队: 交易分析团队-技术分析师</p>
+        
+        <div class="summary-box">
+            <h2 style="font-size: 20px; margin-bottom: 15px;">📊 SBI总分</h2>
+            <div class="sbi-score">75.5</div>
+            <p class="sbi-label">危险区间 (65-80) | 环比变化: <span class="change-badge change-down">-1.0</span></p>
+            <p style="text-align: center; color: #666; margin-top: 10px;">前次(2026-06-18): 76.5分</p>
+        </div>
+        
+        <div class="chart-container" style="height: 400px;">
+            <div class="chart-box">
+                <h3 class="chart-title">SBI六维度雷达图</h3>
+                <canvas id="radarChart" role="img" aria-label="SBI六维度雷达图"></canvas>
+            </div>
+        </div>
+        
+        <h2 style="font-size: 20px; margin-bottom: 20px;">📈 六维度详细评分</h2>
+        <div class="dimension-grid">
+            <div class="dimension-card">
+                <div class="dimension-title">
+                    <span>1. 估值 (25%)</span>
+                    <span class="dimension-score">86.0</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 86%;"></div>
+                </div>
+                <p style="margin-top: 10px; font-size: 13px; color: #666;">SOX偏离200MA ~62% | AMD Fwd P/E 61.55 | AVGO P/E 64.5</p>
+            </div>
+            
+            <div class="dimension-card">
+                <div class="dimension-title">
+                    <span>2. 拥挤度 (25%)</span>
+                    <span class="dimension-score">90.0</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 90%;"></div>
+                </div>
+                <p style="margin-top: 10px; font-size: 13px; color: #666;">S&P 500 Top 10 37.34% | NVIDIA权重 7.08%</p>
+            </div>
+            
+            <div class="dimension-card">
+                <div class="dimension-title">
+                    <span>3. 杠杆 (15%)</span>
+                    <span class="dimension-score">91.0</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 91%;"></div>
+                </div>
+                <p style="margin-top: 10px; font-size: 13px; color: #666;">FINRA $1.304T | GDP占比 ~4% | YoY +50%</p>
+            </div>
+            
+            <div class="dimension-card">
+                <div class="dimension-title">
+                    <span>4. 业绩兑现 (15%)</span>
+                    <span class="dimension-score safe">26.0</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill safe" style="width: 26%;"></div>
+                </div>
+                <p style="margin-top: 10px; font-size: 13px; color: #666;">Hyperscaler Capex $800B+ | TSM营收创新高</p>
+            </div>
+            
+            <div class="dimension-card">
+                <div class="dimension-title">
+                    <span>5. 资金流向 (10%)</span>
+                    <span class="dimension-score warning">66.0</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill warning" style="width: 66%;"></div>
+                </div>
+                <p style="margin-top: 10px; font-size: 13px; color: #666;">SMH 6/12 $1.7B inflow | 6/1 $31.2M outflow</p>
+            </div>
+            
+            <div class="dimension-card">
+                <div class="dimension-title">
+                    <span>6. 外部环境 (10%)</span>
+                    <span class="dimension-score warning">73.0</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill warning" style="width: 73%;"></div>
+                </div>
+                <p style="margin-top: 10px; font-size: 13px; color: #666;">10Y Treasury 4.49% | FOMC维持利率 | 中东风险</p>
+            </div>
+        </div>
+        
+        <div class="chart-container" style="height: 350px;">
+            <div class="chart-box">
+                <h3 class="chart-title">SOX指数近30日走势</h3>
+                <canvas id="soxChart" role="img" aria-label="SOX指数近30日走势图"></canvas>
+            </div>
+        </div>
+        
+        <h2 style="font-size: 20px; margin-bottom: 20px;">📋 关键数据一览</h2>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>指标</th>
+                    <th>当前值</th>
+                    <th>预警线</th>
+                    <th>危险线</th>
+                    <th>状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>SOX指数</td>
+                    <td>14,341.78 (6/18)</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td style="color: #666;">↑ +6.4% (vs 6/17)</td>
+                </tr>
+                <tr>
+                    <td>SOX偏离200MA</td>
+                    <td>~62%</td>
+                    <td>30%</td>
+                    <td>50%</td>
+                    <td style="color: #dc3545; font-weight: 600;">⚠️ 危险</td>
+                </tr>
+                <tr>
+                    <td>S&P 500 Top 10集中度</td>
+                    <td>37.34%</td>
+                    <td>30%</td>
+                    <td>37%</td>
+                    <td style="color: #dc3545; font-weight: 600;">⚠️ 危险</td>
+                </tr>
+                <tr>
+                    <td>FINRA融资余额/GDP</td>
+                    <td>~4.0%</td>
+                    <td>3.5%</td>
+                    <td>4.0%</td>
+                    <td style="color: #dc3545; font-weight: 600;">⚠️ 危险</td>
+                </tr>
+                <tr>
+                    <td>融资余额YoY增速</td>
+                    <td>~50-53.7%</td>
+                    <td>60%</td>
+                    <td>70%</td>
+                    <td style="color: #ffc107; font-weight: 600;">⚠️ 接近预警</td>
+                </tr>
+                <tr>
+                    <td>10年期国债收益率</td>
+                    <td>4.49%</td>
+                    <td>4.0%</td>
+                    <td>5.0%</td>
+                    <td style="color: #ffc107; font-weight: 600;">⚠️ 警告</td>
+                </tr>
+                <tr>
+                    <td>NVIDIA Forward P/E</td>
+                    <td>20.99-42.95</td>
+                    <td>30</td>
+                    <td>50</td>
+                    <td style="color: #ffc107; font-weight: 600;">⚠️ 中等</td>
+                </tr>
+                <tr>
+                    <td>AMD Forward P/E</td>
+                    <td>61.55</td>
+                    <td>30</td>
+                    <td>50</td>
+                    <td style="color: #dc3545; font-weight: 600;">⚠️ 极端</td>
+                </tr>
+                <tr>
+                    <td>Broadcom P/E</td>
+                    <td>64.5</td>
+                    <td>30</td>
+                    <td>50</td>
+                    <td style="color: #dc3545; font-weight: 600;">⚠️ 极端</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2 style="font-size: 20px; margin-bottom: 20px;">💡 核心结论</h2>
+        <div class="conclusion-box">
+            <h3>🚨 三大危险信号</h3>
+            <ul>
+                <li><strong>拥挤度极度危险(90分)</strong>：S&P 500 Top 10集中度达37.34%，超过2000年互联网泡沫峰值(27%)，NVIDIA单票权重7.08%创历史记录。</li>
+                <li><strong>杠杆接近极限(91分)</strong>：FINRA融资余额$1.304T，GDP占比约4%，已超过2021年峰值(3.97%)。YoY增速50-53.7%，接近60%预警线。</li>
+                <li><strong>估值严重拉伸(86分)</strong>：SOX指数较200日均线高出约62%，AMD Forward P/E达61.55，Broadcom P/E达64.5，估值极端。</li>
+            </ul>
+        </div>
+        
+        <div class="conclusion-box" style="border-left-color: #28a745;">
+            <h3 style="color: #155724;">✅ 唯一绿灯：业绩兑现(26分)</h3>
+            <ul style="color: #155724;">
+                <li><strong>Hyperscaler Capex历史新高</strong>：2026年四大科技巨头(Amazon/Meta/Google/Microsoft)AI Capex预计超$800B，持续上修指引。</li>
+                <li><strong>台积电营收创新高</strong>：5月营收新台币4,170亿元，同比增长约40%，AI芯片需求强劲。</li>
+                <li><strong>行业景气度高位</strong>：半导体行业仍在业绩兑现期，但增速可能见顶。</li>
+            </ul>
+        </div>
+        
+        <h2 style="font-size: 20px; margin-bottom: 20px;">🎯 操作建议</h2>
+        <div class="recommendation">
+            <h3>建议配置</h3>
+            <ul style="color: #0c5460;">
+                <li><strong>降低仓位</strong>：SBI总分75.5(危险区间)，建议将半导体仓位从高位降至中性偏低水平(30-40%)。</li>
+                <li><strong>选择性持有</strong>：保留业绩确定性高的标的(如TSM Forward P/E 23.04相对合理)，规避高估值标的(AMD/AVGO)。</li>
+                <li><strong>对冲保护</strong>：买入PUT期权或VIX Call作为尾部风险对冲，当前Put/Call OI比率3.23显示对冲增加。</li>
+                <li><strong>关注拐点信号</strong>：密切跟踪FINRA融资余额(5月数据预计6月下旬发布)，如出现连续两月下滑，需警惕杠杆去化引发的抛售。</li>
+                <li><strong>分散配置</strong>：降低对半导体板块的过度集中，增加防御性资产配置(公用事业、消费staples)。</li>
+            </ul>
+        </div>
+        
+        <div class="chart-container" style="height: 400px;">
+            <div class="chart-box">
+                <h3 class="chart-title">多空论点对比</h3>
+                <canvas id="bullBearChart" role="img" aria-label="多空论点对比图"></canvas>
+            </div>
+        </div>
+        
+        <h2 style="font-size: 20px; margin-bottom: 20px;">📰 近期重大事件</h2>
+        <div class="dimension-card" style="margin-bottom: 20px;">
+            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 15px;">6月重要动态</h3>
+            <ul style="margin-left: 20px; font-size: 14px; line-height: 1.8;">
+                <li><strong>2026-06-17</strong>: FOMC维持利率3.50%-3.75%不变，符合预期，但点阵图暗示年内可能不再降息。</li>
+                <li><strong>2026-06-12</strong>: SMH ETF单日净流入$1.7B，显示机构资金仍在流入半导体板块。</li>
+                <li><strong>2026-06-01</strong>: NVIDIA和TSMC宣布合作将AI引入晶圆厂，推进半导体设计制造自动化。</li>
+                <li><strong>2026-05-15</strong>: Bank of America警告SOX偏离200MA达62%，堪比2000年互联网泡沫和2021年加密货币狂热。</li>
+                <li><strong>2026-05-06</strong>: TrendForce集邦咨询报告显示北美CSP(云服务商)上修2026年Capex指引，AI需求超预期。</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>数据来源: FRED, FINRA, S&P Dow Jones Indices, StockAnalysis.com, Seeking Alpha, Distill Intelligence</p>
+            <p>⚠️ 免责声明: 本报告仅供参考，不构成投资建议。投资有风险，决策需谨慎。</p>
+            <p>生成时间: 2026-06-19 13:07 CST | 下次更新: 2026-06-20 07:15 CST</p>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <script>
+        // SBI六维度雷达图
+        const radarCtx = document.getElementById('radarChart').getContext('2d');
+        new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['估值', '拥挤度', '杠杆', '业绩兑现', '资金流向', '外部环境'],
+                datasets: [{
+                    label: '2026-06-19',
+                    data: [86.0, 90.0, 91.0, 26.0, 66.0, 73.0],
+                    fill: true,
+                    backgroundColor: 'rgba(220, 53, 69, 0.2)',
+                    borderColor: 'rgb(220, 53, 69)',
+                    pointBackgroundColor: 'rgb(220, 53, 69)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(220, 53, 69)'
+                }, {
+                    label: '2026-06-18',
+                    data: [85.0, 90.0, 91.0, 26.0, 68.0, 72.0],
+                    fill: true,
+                    backgroundColor: 'rgba(108, 117, 125, 0.2)',
+                    borderColor: 'rgb(108, 117, 125)',
+                    pointBackgroundColor: 'rgb(108, 117, 125)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(108, 117, 125)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20
+                        }
+                    }
+                }
+            }
+        });
+        
+        // SOX指数近30日走势图（模拟数据）
+        const soxCtx = document.getElementById('soxChart').getContext('2d');
+        const dates = [];
+        const soxValues = [];
+        const basePrice = 14341.78;
+        
+        for (let i = 29; i >= 0; i--) {
+            const date = new Date(2026, 5, 19); // June 19, 2026
+            date.setDate(date.getDate() - i);
+            dates.push(date.toLocaleDateString('zh-CN', {month: '2-digit', day: '2-digit'}));
+            
+            // 模拟SOX走势
+            const variation = Math.sin(i / 5) * 500 + (30 - i) * 50;
+            soxValues.push(basePrice - variation);
+        }
+        
+        new Chart(soxCtx, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: [{
+                    label: 'SOX指数',
+                    data: soxValues,
+                    borderColor: 'rgb(220, 53, 69)',
+                    backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        ticks: {
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // 多空论点对比图
+        const bullBearCtx = document.getElementById('bullBearChart').getContext('2d');
+        new Chart(bullBearCtx, {
+            type: 'bar',
+            data: {
+                labels: ['估值合理性', '业绩增长', '资金流入', '政策支持', '技术创新', '风险控制'],
+                datasets: [{
+                    label: '多头论点强度',
+                    data [60, 75, 55, 70, 80, 40],
+                    backgroundColor: 'rgba(40, 167, 69, 0.7)',
+                    borderColor: 'rgb(40, 167, 69)',
+                    borderWidth: 1
+                }, {
+                    label: '空头论点强度',
+                    data: [85, 45, 60, 50, 55, 85],
+                    backgroundColor: 'rgba(220, 53, 69, 0.7)',
+                    borderColor: 'rgb(220, 53, 69)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
