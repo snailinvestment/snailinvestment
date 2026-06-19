@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宝丰能源（600989）主要产品价格走势 | Snail Investment</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#f5f6fa;--card:#fff;--t1:#1a1a2e;--t2:#4a5568;--t3:#718096;
+  --accent:#059669;--accent2:#047857;
+  --green:#059669;--green-bg:#ecfdf5;--green-border:#a7f3d0;
+  --red:#dc2626;--red-bg:#fef2f2;--red-border:#fecaca;
+  --orange:#ea580c;--orange-bg:#fff7ed;--orange-border:#fed7aa;
+  --blue:#2563eb;--blue-bg:#eff6ff;--blue-border:#bfdbfe;
+  --border:#e2e8f0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;}
+
+.nav{background:#fff;border-bottom:1px solid var(--border);padding:0 36px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+.nav-brand{font-weight:800;font-size:15px;color:var(--accent);}
+.nav-links{display:flex;gap:4px;}
+.nav-links a{font-size:13px;color:var(--t3);text-decoration:none;padding:6px 14px;border-radius:6px;transition:all .15s;}
+.nav-links a:hover{color:var(--accent);background:#ecfdf5;}
+
+.container{max-width:1280px;margin:0 auto;padding:32px 24px;}
+.header{margin-bottom:36px;}
+.header-row{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.title-section h1{font-size:28px;font-weight:800;color:var(--t1);margin-bottom:8px;}
+.title-section .subtitle{font-size:14px;color:var(--t3);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.title-section .subtitle span{background:var(--green-bg);color:var(--green);padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;}
+.meta-badges{display:flex;gap:10px;flex-wrap:wrap;}
+.meta-badge{background:#fff;border:1px solid var(--border);padding:8px 16px;border-radius:8px;font-size:13px;color:var(--t2);}
+.meta-badge strong{color:var(--t1);margin-right:4px;}
+
+.summary-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px;}
+.summary-card{background:var(--card);border-radius:12px;padding:20px 22px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.04);transition:box-shadow .2s;}
+.summary-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);}
+.sc-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.sc-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff;}
+.sc-icon.pe{background:linear-gradient(135deg,#2563eb,#3b82f6);}
+.sc-icon.pp{background:linear-gradient(135deg,#7c3aed,#8b5cf6);}
+.sc-icon.eva{background:linear-gradient(135deg,#ea580c,#f97316);}
+.sc-icon.coke{background:linear-gradient(135deg,#78716c,#a8a29e);}
+.sc-name{font-size:15px;font-weight:700;color:var(--t1);}
+.sc-spec{font-size:11px;color:var(--t3);}
+.sc-price{font-size:28px;font-weight:800;color:var(--t1);margin:6px 0;}
+.sc-price .unit{font-size:12px;font-weight:400;color:var(--t3);margin-left:2px;}
+.sc-change{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;padding:3px 10px;border-radius:6px;}
+.sc-change.up{color:var(--green);background:var(--green-bg);}
+.sc-change.down{color:var(--red);background:var(--red-bg);}
+.sc-change.mild{color:var(--orange);background:var(--orange-bg);}
+.sc-ytd{font-size:12px;color:var(--t3);margin-top:4px;}
+.sc-ytd span{font-weight:700;}
+.sc-ytd .up{color:var(--green);}
+.sc-ytd .down{color:var(--red);}
+.sc-comparison{font-size:12px;color:var(--t3);margin-top:8px;padding-top:8px;border-top:1px solid #f1f5f9;}
+.sc-comparison strong{color:var(--t1);}
+
+.chart-section{margin-bottom:36px;}
+.chart-section h2{font-size:20px;font-weight:700;color:var(--t1);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.chart-section h2::before{content:'';width:4px;height:20px;background:var(--accent);border-radius:2px;}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.chart-card{background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.chart-card h3{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--t1);}
+.chart-card .chart-meta{font-size:12px;color:var(--t3);margin-bottom:16px;}
+.chart-container{position:relative;height:280px;}
+.chart-container canvas{width:100%!important;}
+
+.bar-section{margin-bottom:36px;}
+.bar-section h2{font-size:20px;font-weight:700;color:var(--t1);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.bar-section h2::before{content:'';width:4px;height:20px;background:var(--accent);border-radius:2px;}
+.bar-card{background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.bar-container{position:relative;height:320px;}
+.bar-container canvas{width:100%!important;}
+
+.pulse-badge{display:inline-flex;align-items:center;gap:6px;background:#fef3c7;color:#92400e;padding:6px 14px;border-radius:6px;font-size:13px;font-weight:600;margin-top:16px;border:1px solid #fcd34d;}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:#f59e0b;animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.table-section{margin-bottom:36px;}
+.table-section h2{font-size:20px;font-weight:700;color:var(--t1);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.table-section h2::before{content:'';width:4px;height:20px;background:var(--accent);border-radius:2px;}
+.data-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.data-table thead{background:linear-gradient(135deg,#064e3b,#065f46);}
+.data-table th{color:#fff;padding:14px 16px;text-align:center;font-size:13px;font-weight:600;}
+.data-table th:first-child{text-align:left;padding-left:24px;}
+.data-table td{padding:14px 16px;text-align:center;font-size:14px;border-bottom:1px solid var(--border);}
+.data-table td:first-child{text-align:left;padding-left:24px;font-weight:600;color:var(--t1);}
+.data-table tbody tr:hover{background:#f8fafc;}
+.highlight-up{color:var(--green);font-weight:700;}
+.highlight-down{color:var(--red);font-weight:700;}
+
+.footer{text-align:center;padding:20px;color:var(--t3);font-size:12px;border-top:1px solid var(--border);margin-top:40px;}
+
+@media(max-width:1024px){.summary-row{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){
+  .nav{padding:0 16px;}.summary-row{grid-template-columns:1fr;}
+  .chart-grid{grid-template-columns:1fr;}
+  .title-section h1{font-size:22px;}.sc-price{font-size:22px;}
+  .container{padding:16px 12px;}
+  .data-table{font-size:12px;}.data-table th,.data-table td{padding:10px 8px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">宝丰能源(BF) 产品价格监控</div>
+  <div class="nav-links"><a href="index.html">← 返回首页</a></div>
+</nav>
+
+<div class="container">
+
+<div class="header">
+  <div class="header-row">
+    <div class="title-section">
+      <h1>宝丰能源（600989）主要产品价格走势</h1>
+      <div class="subtitle">2025年1月-6月 vs 2026年1月-6月 同期对比 <span>数据截至 2026-06-19</span></div>
+      <div class="pulse-badge"><div class="pulse-dot"></div>焦炭第8轮提涨进行中（+50~55元/吨）</div>
+    </div>
+    <div class="meta-badges">
+      <div class="meta-badge"><strong>代码</strong> 600989.SH</div>
+      <div class="meta-badge"><strong>行业</strong> 煤化工/聚烯烃</div>
+      <div class="meta-badge"><strong>数据源</strong> 生意社/我的钢铁网/ChemicalBook</div>
+    </div>
+  </div>
+</div>
+
+<div class="summary-row">
+  <!-- PE -->
+  <div class="summary-card">
+    <div class="sc-header">
+      <div class="sc-icon pe">PE</div>
+      <div><div class="sc-name">聚乙烯 LLDPE</div><div class="sc-spec">7042 · 线性低密度</div></div>
+    </div>
+    <div class="sc-price">7,807<span class="unit">元/吨</span></div>
+    <div class="sc-change down">同比 ↓ -3.6%</div>
+    <div class="sc-ytd">年初至今 <span class="up">↑ +22%</span></div>
+    <div class="sc-comparison">2025同期均价 <strong>~8,100 元/吨</strong></div>
+  </div>
+  <!-- PP -->
+  <div class="summary-card">
+    <div class="sc-header">
+      <div class="sc-icon pp">PP</div>
+      <div><div class="sc-name">聚丙烯 PP</div><div class="sc-spec">拉丝级</div></div>
+    </div>
+    <div class="sc-price">9,450<span class="unit">元/吨</span></div>
+    <div class="sc-change up">同比 ↑ +26.8%</div>
+    <div class="sc-ytd">年初至今 <span class="up">↑ +33%</span></div>
+    <div class="sc-comparison">2025同期均价 <strong>~7,450 元/吨</strong></div>
+  </div>
+  <!-- EVA -->
+  <div class="summary-card">
+    <div class="sc-header">
+      <div class="sc-icon eva">EVA</div>
+      <div><div class="sc-name">EVA</div><div class="sc-spec">1803C · 宝丰出厂价</div></div>
+    </div>
+    <div class="sc-price">8,900<span class="unit">元/吨</span></div>
+    <div class="sc-change down">同比 ↓ -15.2%</div>
+    <div class="sc-ytd">年初至今 <span class="down">↓ -8%</span></div>
+    <div class="sc-comparison">2025同期均价 <strong>~10,500 元/吨</strong></div>
+  </div>
+  <!-- 焦炭 -->
+  <div class="summary-card">
+    <div class="sc-header">
+      <div class="sc-icon coke">COK</div>
+      <div><div class="sc-name">焦炭</div><div class="sc-spec">准一级冶金焦</div></div>
+    </div>
+    <div class="sc-price">1,900<span class="unit">元/吨</span></div>
+    <div class="sc-change up">同比 ↑ +15.2%</div>
+    <div class="sc-ytd">年初至今 <span class="up">↑ +21%</span></div>
+    <div class="sc-comparison">2025同期均价 <strong>~1,650 元/吨</strong></div>
+  </div>
+</div>
+
+<!-- PE + PP Charts -->
+<div class="chart-section">
+  <h2>聚乙烯 / 聚丙烯 价格走势对比（元/吨）</h2>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>聚乙烯 LLDPE · 7042</h3>
+      <div class="chart-meta">2026年6月19日生意社基准价 7,807元/吨 | 三个月高点9,217后持续回落</div>
+      <div class="chart-container"><canvas id="chartPE"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>聚丙烯 PP · 拉丝级</h3>
+      <div class="chart-meta">2026年6月18日生意社基准价 9,450元/吨 | 高位回调但仍显著强于2025同期</div>
+      <div class="chart-container"><canvas id="chartPP"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- EVA + 焦炭 Charts -->
+<div class="chart-section">
+  <h2>EVA / 焦炭 价格走势对比</h2>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>EVA · 1803C 发泡级</h3>
+      <div class="chart-meta">2026年6月15日宝丰出厂价 8,900元/吨（周环比-300） | 成本支撑偏弱</div>
+      <div class="chart-container"><canvas id="chartEVA"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>焦炭 · 准一级冶金焦</h3>
+      <div class="chart-meta">2026年6月18日市场价 ~1,900元/吨 | 7轮提涨累计+350，第8轮进行中</div>
+      <div class="chart-container"><canvas id="chartCoke"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- Bar chart -->
+<div class="bar-section">
+  <h2>四产品同比涨跌幅对比</h2>
+  <div class="bar-card">
+    <div class="bar-container"><canvas id="chartBar"></canvas></div>
+  </div>
+</div>
+
+<!-- Table -->
+<div class="table-section">
+  <h2>产品价格数据明细表</h2>
+  <table class="data-table">
+    <thead><tr><th>产品</th><th>规格</th><th>2025同期均价</th><th>2026当前价格</th><th>同比变化</th><th>年初至今</th><th>趋势判断</th><th>数据日期</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>聚乙烯 (PE)</td><td>LLDPE 7042</td><td>~8,100 元/吨</td><td>7,807 元/吨</td><td class="highlight-down">↓ -3.6%</td><td class="highlight-up">↑ +22%</td><td>冲高回落后低位整理</td><td>2026-06-19</td>
+      </tr>
+      <tr>
+        <td>聚丙烯 (PP)</td><td>拉丝级</td><td>~7,450 元/吨</td><td>9,450 元/吨</td><td class="highlight-up">↑ +26.8%</td><td class="highlight-up">↑ +33%</td><td>强势上涨后高位震荡</td><td>2026-06-18</td>
+      </tr>
+      <tr>
+        <td>EVA</td><td>1803C 发泡级</td><td>~10,500 元/吨</td><td>8,900 元/吨</td><td class="highlight-down">↓ -15.2%</td><td class="highlight-down">↓ -8%</td><td>供需偏弱持续下行</td><td>2026-06-15</td>
+      </tr>
+      <tr>
+        <td>焦炭</td><td>准一级冶金焦</td><td>~1,650 元/吨</td><td>1,900 元/吨</td><td class="highlight-up">↑ +15.2%</td><td class="highlight-up">↑ +21%</td><td>多轮提涨，趋势偏强</td><td>2026-06-18</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  <p>数据来源：生意社、我的钢铁网(Mysteel)、ChemicalBook | 仅供研究参考，不构成投资建议</p>
+  <p style="margin-top:4px;">© 2026 Snail Investment · 宝丰能源(BF)产品价格监控</p>
+</div>
+</div>
+
+<script>
+Chart.defaults.font.family='-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif';
+
+// === PE Chart ===
+new Chart(document.getElementById('chartPE'),{
+  type:'line',
+  data:{
+    labels:['1月','2月','3月','4月','5月','6月'],
+    datasets:[{
+      label:'2025年 PE',data:[8150,8120,8080,8050,8020,8000],
+      borderColor:'#94a3b8',backgroundColor:'rgba(148,163,184,0.08)',
+      borderWidth:2,borderDash:[6,3],tension:0.3,fill:false,
+      pointRadius:4,pointBackgroundColor:'#94a3b8',
+    },{
+      label:'2026年 PE',data:[6420,6880,7380,7920,8250,7810],
+      borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,0.08)',
+      borderWidth:2.5,tension:0.3,fill:true,
+      pointRadius:5,pointBackgroundColor:'#2563eb',pointBorderColor:'#fff',pointBorderWidth:2,
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{usePointStyle:true,padding:20,font:{size:12}}},
+      tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.parsed.y.toLocaleString()+' 元/吨'}}},
+    scales:{y:{min:5000,max:9500,ticks:{stepSize:500,callback:v=>(v/1000).toFixed(1)+'k'},grid:{color:'#f1f5f9'}},x:{grid:{display:false}}}
+  }
+});
+
+// === PP Chart ===
+new Chart(document.getElementById('chartPP'),{
+  type:'line',
+  data:{
+    labels:['1月','2月','3月','4月','5月','6月'],
+    datasets:[{
+      label:'2025年 PP',data:[7450,7430,7400,7380,7420,7450],
+      borderColor:'#94a3b8',backgroundColor:'rgba(148,163,184,0.08)',
+      borderWidth:2,borderDash:[6,3],tension:0.3,fill:false,
+      pointRadius:4,pointBackgroundColor:'#94a3b8',
+    },{
+      label:'2026年 PP',data:[7150,7450,7900,8600,9550,9450],
+      borderColor:'#7c3aed',backgroundColor:'rgba(124,58,237,0.08)',
+      borderWidth:2.5,tension:0.3,fill:true,
+      pointRadius:5,pointBackgroundColor:'#7c3aed',pointBorderColor:'#fff',pointBorderWidth:2,
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{usePointStyle:true,padding:20,font:{size:12}}},
+      tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.parsed.y.toLocaleString()+' 元/吨'}}},
+    scales:{y:{min:6000,max:11000,ticks:{stepSize:500,callback:v=>(v/1000).toFixed(1)+'k'},grid:{color:'#f1f5f9'}},x:{grid:{display:false}}}
+  }
+});
+
+// === EVA Chart ===
+new Chart(document.getElementById('chartEVA'),{
+  type:'line',
+  data:{
+    labels:['1月','2月','3月','4月','5月','6月'],
+    datasets:[{
+      label:'2025年 EVA',data:[10600,10550,10500,10450,10500,10500],
+      borderColor:'#94a3b8',backgroundColor:'rgba(148,163,184,0.08)',
+      borderWidth:2,borderDash:[6,3],tension:0.3,fill:false,
+      pointRadius:4,pointBackgroundColor:'#94a3b8',
+    },{
+      label:'2026年 EVA',data:[9800,9550,9320,9150,9200,8900],
+      borderColor:'#ea580c',backgroundColor:'rgba(234,88,12,0.08)',
+      borderWidth:2.5,tension:0.3,fill:true,
+      pointRadius:5,pointBackgroundColor:'#ea580c',pointBorderColor:'#fff',pointBorderWidth:2,
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{usePointStyle:true,padding:20,font:{size:12}}},
+      tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.parsed.y.toLocaleString()+' 元/吨'}}},
+    scales:{y:{min:7500,max:12000,ticks:{stepSize:500,callback:v=>(v/1000).toFixed(1)+'k'},grid:{color:'#f1f5f9'}},x:{grid:{display:false}}}
+  }
+});
+
+// === 焦炭 Chart ===
+new Chart(document.getElementById('chartCoke'),{
+  type:'line',
+  data:{
+    labels:['1月','2月','3月','4月','5月','6月'],
+    datasets:[{
+      label:'2025年 焦炭',data:[1680,1670,1660,1650,1640,1650],
+      borderColor:'#94a3b8',backgroundColor:'rgba(148,163,184,0.08)',
+      borderWidth:2,borderDash:[6,3],tension:0.3,fill:false,
+      pointRadius:4,pointBackgroundColor:'#94a3b8',
+    },{
+      label:'2026年 焦炭',data:[1570,1560,1630,1680,1820,1900],
+      borderColor:'#78716c',backgroundColor:'rgba(120,113,108,0.08)',
+      borderWidth:2.5,tension:0.3,fill:true,
+      pointRadius:5,pointBackgroundColor:'#78716c',pointBorderColor:'#fff',pointBorderWidth:2,
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{usePointStyle:true,padding:20,font:{size:12}}},
+      tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.parsed.y.toLocaleString()+' 元/吨'}}},
+    scales:{y:{min:1300,max:2200,ticks:{stepSize:100,callback:v=>v.toLocaleString()},grid:{color:'#f1f5f9'}},x:{grid:{display:false}}}
+  }
+});
+
+// === BAR Chart ===
+new Chart(document.getElementById('chartBar'),{
+  type:'bar',
+  data:{
+    labels:['聚乙烯\nPE','聚丙烯\nPP','EVA\n1803C','焦炭\n冶金焦'],
+    datasets:[{
+      label:'同比变化 %',data:[-3.6,26.8,-15.2,15.2],
+      backgroundColor:['#ef4444','#10b981','#ef4444','#10b981'],
+      borderRadius:8,borderSkipped:false,
+    },{
+      label:'年初至今 %',data:[22,33,-8,21],
+      backgroundColor:['#93c5fd','#c4b5fd','#fca5a5','#d6d3d1'],
+      borderRadius:8,borderSkipped:false,
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{usePointStyle:true,padding:20,font:{size:13}}},
+      tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.parsed.y+'%'}}},
+    scales:{y:{grid:{color:'#f1f5f9'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}
+  }
+});
+</script>
+</body>
+</html>
