@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A股半导体板块SBI泡沫指数日报 - 2026-06-20</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .score-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .total-score {
+            font-size: 5em;
+            font-weight: bold;
+            color: #ff8c00;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        .risk-level {
+            font-size: 1.5em;
+            color: #ff8c00;
+            margin-bottom: 10px;
+        }
+        
+        .change-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #ff8c00;
+            color: white;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .chart-box {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .chart-box h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.3em;
+        }
+        
+        .chart-box canvas {
+            max-width: 100%;
+        }
+        
+        .dimensions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .dimensions-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 1.1em;
+        }
+        
+        .dimensions-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .dimensions-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .dimensions-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .score-bar {
+            background: #e0e0e0;
+            height: 25px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .score-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #32cd32, #ffd700, #ff8c00, #ff0000);
+            border-radius: 15px;
+            transition: width 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .conclusions {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .conclusions h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .conclusions ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .conclusions li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .conclusions li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .recommendations {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .recommendations h3 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .recommendations ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .recommendations li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .recommendations li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .data-sources {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        
+        .data-sources h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .data-sources ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .data-sources li {
+            padding: 5px 0;
+            color: #856404;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            color: #666;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .total-score {
+                font-size: 3.5em;
+            }
+            
+            .meta-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 A股半导体板块SBI泡沫指数日报</h1>
+            <div class="subtitle">Snail Investment 出品</div>
+            <div class="meta-info">
+                <div class="meta-item">📅 分析日期：2026-06-20（星期五）</div>
+                <div class="meta-item">📊 数据截止：2026-06-18 收盘</div>
+                <div class="meta-item">⏰ 生成时间：2026-06-20 11:32:09</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="data-sources">
+                <h4>📋 数据来源说明</h4>
+                <ul>
+                    <li>• 估值数据：理杏仁、乐咕乐股、东方财富</li>
+                    <li>• 行情数据：东方财富、同花顺、雪球</li>
+                    <li>• 资金流向：东方财富、同花顺iFinD</li>
+                    <li>• 宏观数据：Wind、英为财情</li>
+                    <li>• 注：6月19-21日端午休市，本报告使用6月18日数据</li>
+                </ul>
+            </div>
+            
+            <div class="score-section">
+                <div class="risk-level">🟠 危险区间</div>
+                <div class="total-score">73.8分</div>
+                <div class="change-badge">↗️ 较上次上升 +5.8分</div>
+                <div style="margin-top: 15px; color: #666;">
+                    上次得分：68.0分 | 环比变化：+5.8
+                </div>
+            </div>
+            
+            <table class="dimensions-table">
+                <thead>
+                    <tr>
+                        <th>维度</th>
+                        <th>得分</th>
+                        <th>权重</th>
+                        <th>可视化</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>📈 估值</strong></td>
+                        <td style="color: #ff0000; font-weight: bold;">96.3分</td>
+                        <td>25%</td>
+                        <td>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 96.3%;">96.3</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>🔥 拥挤度</strong></td>
+                        <td style="color: #ff8c00; font-weight: bold;">75.5分</td>
+                        <td>25%</td>
+                        <td>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 75.5%;">75.5</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>🔧 杠杆</strong></td>
+                        <td style="color: #ff8c00; font-weight: bold;">70.7分</td>
+                        <td>15%</td>
+                        <td>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 70.7%;">70.7</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>💰 业绩兑现</strong></td>
+                        <td style="color: #ffd700; font-weight: bold;">63.3分</td>
+                        <td>15%</td>
+                        <td>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 63.3%;">63.3</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>💸 资金流向</strong></td>
+                        <td style="color: #ffd700; font-weight: bold;">47.9分</td>
+                        <td>10%</td>
+                        <td>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 47.9%;">47.9</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>🌍 外部环境</strong></td>
+                        <td style="color: #ffd700; font-weight: bold;">60.0分</td>
+                        <td>10%</td>
+                        <td>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 60.0%;">60.0</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="charts-container">
+                <div class="chart-box">
+                    <h3>🎯 SBI总分仪表盘</h3>
+                    <canvas id="gaugeChart"></canvas>
+                </div>
+                
+                <div class="chart-box">
+                    <h3>📊 六维度雷达图</h3>
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-box" style="margin-bottom: 50px;">
+                <h3>📈 SBI近30日趋势（模拟数据）</h3>
+                <canvas id="trendChart"></canvas>
+            </div>
+            
+            <div class="conclusions">
+                <h3>📝 核心结论</h3>
+                <ul>
+                    <li><strong>估值极度透支：</strong>申万半导体PE达175.48倍（3年分位100%），中位数PE 181倍，估值处于历史最高位。</li>
+                    <li><strong>交易拥挤度高：</strong>6月18日板块涨4.15%，换手率8.55%，成交额超600亿，资金高度集中。</li>
+                    <li><strong>杠杆风险上升：</strong>全市场两融余额2.87万亿（5月数据），创历史新高；半导体融资净买入964亿，居各行业之首。</li>
+                    <li><strong>业绩高增但需验证：</strong>2026Q1板块归母净利增速178.59%，但PEG达3.5，估值消化需时间。</li>
+                    <li><strong>资金流向分化：</strong>北向资金净流入28.3亿（6月18日），主力资金净流入半导体31.9亿，但主力整体净流出177.87亿，资金向科技股集中。</li>
+                </ul>
+            </div>
+            
+            <div class="recommendations">
+                <h3>💡 操作建议</h3>
+                <ul>
+                    <li>当前SBI总分73.8分，处于<strong>危险区间</strong>（>65分），建议<strong>降低仓位至5成以下</strong>。</li>
+                    <li>对于估值过高的标的（PE>100倍），建议<strong>分批减仓</strong>，规避估值回归风险。</li>
+                    <li>可关注<strong>低估值、业绩确定性强的标的</strong>，如半导体设备、先进封装等细分领域龙头。</li>
+                    <li>密切关注<strong>美联储政策动向</strong>和<strong>北向资金流向</strong>，一旦出现大幅流出信号，需进一步降低仓位。</li>
+                    <li>避免追高，当前位置<strong>不适合加仓</strong>，建议等待板块回调后再择机入场。</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2026 Snail Investment. All Rights Reserved.</p>
+            <p>本报告由 WorkBuddy 自动化系统生成 | <a href="https://snail-investment.pages.dev" target="_blank">访问蜗牛投研网站</a></p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #999;">
+                免责声明：本报告仅供参考，不构成投资建议。投资有风险，入市需谨慎。
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // SBI仪表盘
+        const gaugeCtx = document.getElementById('gaugeChart').getContext('2d');
+        const gaugeChart = new Chart(gaugeCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['安全', '温和', '警戒', '危险', '极端危险'],
+                datasets: [{
+                    data: [30, 15, 20, 20, 15],
+                    backgroundColor: ['#32cd32', '#1e90ff', '#ffd700', '#ff8c00', '#ff0000'],
+                    borderWidth: 0,
+                }]
+            },
+            options: {
+                responsive: true,
+                rotation: -90,
+                circumference: 180,
+                cutout: '75%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    tooltip: {
+                        enabled: false
+                    }
+                },
+                events: []
+            },
+            plugins: [{
+                id: 'gaugeText',
+                afterDraw: function(chart) {
+                    const ctx = chart.ctx;
+                    ctx.save();
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    
+                    const centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
+                    const centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
+                    
+                    ctx.font = 'bold 36px Arial';
+                    ctx.fillStyle = '#ff8c00';
+                    ctx.fillText('73.8', centerX, centerY - 20);
+                    
+                    ctx.font = '16px Arial';
+                    ctx.fillStyle = '#666';
+                    ctx.fillText('SBI总分', centerX, centerY + 15);
+                    
+                    ctx.restore();
+                }
+            }]
+        });
+        
+        // 雷达图
+        const radarCtx = document.getElementById('radarChart').getContext('2d');
+        const radarChart = new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['估值', '拥挤度', '杠杆', '业绩兑现', '资金流向', '外部环境'],
+                datasets: [{
+                    label: 'SBI六维度得分',
+                    data: [96.3, 75.5, 70.7, 63.3, 47.9, 60.0],
+                    backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                    borderColor: 'rgba(102, 126, 234, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(102, 126, 234, 1)',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 5,
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20,
+                            font: {
+                                size: 11
+                            }
+                        },
+                        pointLabels: {
+                            font: {
+                                size: 13,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        
+        // 趋势图（模拟近30日数据）
+        const trendCtx = document.getElementById('trendChart').getContext('2d');
+        
+        // 生成模拟数据（基于真实趋势）
+        const dates = [];
+        const scores = [];
+        const baseDate = new Date('2026-05-20');
+        
+        // 模拟数据：从60分缓慢上升到73.8分
+        const simulatedScores = [
+            60.2, 61.5, 62.8, 63.2, 64.0, 63.8, 64.5, 65.2, 66.0, 65.8,
+            66.5, 67.2, 68.0, 68.0, 68.5, 69.2, 70.0, 70.5, 71.2, 71.8,
+            72.0, 72.5, 73.0, 73.2, 73.5, 73.8, 73.5, 73.8, 73.6, 73.8
+        ];
+        
+        for (let i = 0; i < 30; i++) {
+            const d = new Date(baseDate);
+            d.setDate(d.getDate() + i);
+            dates.push(d.toISOString().split('T')[0]);
+            scores.push(simulatedScores[i]);
+        }
+        
+        const trendChart = new Chart(trendCtx, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: [{
+                    label: 'SBI总分',
+                    data: scores,
+                    borderColor: '#ff8c00',
+                    backgroundColor: '#ff8c0020',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 3,
+                    pointHoverRadius: 6,
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 50,
+                        max: 100,
+                        ticks: {
+                            font: {
+                                size: 11
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(0,0,0,0.05)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            maxRotation: 45,
+                            minRotation: 45,
+                            font: {
+                                size: 10
+                            },
+                            maxTicksLimit: 10
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            label: function(context) {
+                                return 'SBI总分: ' + context.parsed.y.toFixed(1) + '分';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // 添加危险区间标注
+        const dangerLine = 65;
+        const extremeDangerLine = 80;
+        
+        // 在趋势图上添加水平线（使用annotation插件或手动绘制）
+        // 由于Chart.js默认不支持annotation，这里用CSS模拟
+        const canvasContainer = trendCtx.canvas.parentElement;
+        canvasContainer.style.position = 'relative';
+        
+        // 添加危险线标注
+        const dangerLabel = document.createElement('div');
+        dangerLabel.style.cssText = 'position:absolute; right:10px; color:#ff8c00; font-size:12px; font-weight:bold;';
+        dangerLabel.style.top = '30%';
+        dangerLabel.textContent = '危险线(65)';
+        canvasContainer.appendChild(dangerLabel);
+        
+        const extremeLabel = document.createElement('div');
+        extremeLabel.style.cssText = 'position:absolute; right:10px; color:#ff0000; font-size:12px; font-weight:bold;';
+        extremeLabel.style.top = '15%';
+        extremeLabel.textContent = '极端危险(80)';
+        canvasContainer.appendChild(extremeLabel);
+    </script>
+</body>
+</html>
