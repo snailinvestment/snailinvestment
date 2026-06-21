@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美国铝业 (AA) 深度投研报告 2026 — Snail Investment</title>
+<style>
+  :root {
+    --navy: #0a1628; --navy-light: #132040; --accent: #c8a44e;
+    --blue: #1565c0; --blue-light: #e8f2fc;
+    --green: #2e7d32; --red: #c62828; --orange: #ef6c00;
+    --gray-bg: #f0f4f8; --gray-card: #f8f9fb;
+    --text: #222; --text-light: #5a6a7e;
+    --white: #fff; --border: #dde4ed;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; color:var(--text); background:var(--gray-bg); line-height:1.72; }
+
+  .topbar { background:var(--navy); padding:0 48px; display:flex; align-items:center; justify-content:space-between; height:56px; position:sticky; top:0; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+  .topbar-brand { color:var(--accent); font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
+  .topbar-nav { display:flex; gap:6px; }
+  .topbar-nav a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:12px; padding:6px 14px; border-radius:4px; transition:all 0.2s; white-space:nowrap; }
+  .topbar-nav a:hover, .topbar-nav a.active { background:rgba(255,255,255,0.1); color:#fff; }
+
+  .hero { background:linear-gradient(160deg, #050d1e 0%, #102030 35%, #1a3048 60%, #4a3520 100%); color:#fff; padding:80px 64px 60px; position:relative; overflow:hidden; min-height:520px; }
+  .hero::before { content:''; position:absolute; top:-300px; right:-300px; width:800px; height:800px; border-radius:50%; background:radial-gradient(circle, rgba(200,164,78,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 360px; gap:48px; align-items:start; position:relative; z-index:1; }
+  .hero-brand { font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:20px; font-weight:600; }
+  .hero-type { font-size:13px; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.5); margin-bottom:32px; }
+  .hero-title { font-size:40px; font-weight:900; line-height:1.25; margin-bottom:12px; letter-spacing:-0.5px; }
+  .hero-subtitle { font-size:17px; color:rgba(255,255,255,0.7); font-weight:300; margin-bottom:32px; line-height:1.5; }
+  .hero-divider { width:64px; height:2px; background:var(--accent); margin-bottom:28px; }
+  .hero-info { display:flex; gap:40px; flex-wrap:wrap; font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:36px; }
+  .hero-info-item strong { display:block; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:4px; }
+  .hero-tags { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px; }
+  .hero-tag { padding:5px 14px; border-radius:20px; font-size:11px; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.7); }
+  .hero-footer { font-size:12px; color:rgba(255,255,255,0.35); margin-top:10px; }
+  .hero-warn { background:rgba(255,152,0,0.12); border:1px solid rgba(255,152,0,0.25); border-radius:8px; padding:14px 18px; font-size:12px; color:rgba(255,200,100,0.9); margin-top:20px; line-height:1.6; }
+
+  .rating-card { background:rgba(0,0,0,0.35); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:36px 30px; text-align:center; }
+  .rating-card-badge { display:inline-block; background:linear-gradient(135deg, #e65100, #ef6c00); color:#fff; font-size:13px; font-weight:700; padding:5px 20px; border-radius:20px; letter-spacing:2px; margin-bottom:20px; text-transform:uppercase; }
+  .rating-card-price { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:4px; }
+  .rating-card-current { font-size:42px; font-weight:800; letter-spacing:-1px; margin-bottom:4px; }
+  .rating-card-change { font-size:14px; color:#ffb74d; margin-bottom:24px; }
+  .rating-card-target-row { display:flex; justify-content:space-between; text-align:left; padding:14px 0; border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); margin-bottom:18px; }
+  .rating-card-target-row .label { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,0.4); }
+  .rating-card-target-row .value { font-size:18px; font-weight:700; color:#fff; }
+  .rating-card-meta { display:grid; grid-template-columns:1fr 1fr; gap:8px 20px; text-align:left; font-size:11px; color:rgba(255,255,255,0.5); margin-bottom:18px; }
+  .rating-card-meta .lbl { color:rgba(255,255,255,0.35); }
+  .rating-card-meta .val { color:rgba(255,255,255,0.8); font-weight:500; }
+
+  .kpi-bar { background:var(--white); padding:32px 64px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+  .kpi-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(6,1fr); gap:0; }
+  .kpi-item { text-align:center; padding:0 16px; border-right:1px solid var(--border); }
+  .kpi-item:last-child { border-right:none; }
+  .kpi-label { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:var(--text-light); margin-bottom:6px; }
+  .kpi-value { font-size:24px; font-weight:800; color:var(--navy); }
+  .kpi-sub { font-size:11px; margin-top:4px; font-weight:500; }
+  .kpi-sub.green { color:var(--green); } .kpi-sub.red { color:var(--red); } .kpi-sub.orange { color:var(--orange); }
+
+  .main-content { background:var(--blue-light); padding:40px 64px 60px; }
+  .content-inner { max-width:1200px; margin:0 auto; }
+  .section-card { background:var(--white); border-radius:10px; padding:44px 52px; margin-bottom:28px; box-shadow:0 1px 4px rgba(0,0,0,0.05); border:1px solid var(--border); }
+
+  h2 { font-size:26px; color:var(--navy); margin-bottom:28px; padding-bottom:14px; border-bottom:2px solid var(--accent); display:flex; align-items:center; gap:14px; }
+  h2 .num { background:var(--navy); color:var(--accent); width:36px; height:36px; display:flex; align-items:center; justify-content:center; border-radius:50%; font-size:16px; font-weight:700; flex-shrink:0; }
+  h3 { font-size:19px; color:var(--navy); margin:30px 0 16px; }
+  h4 { font-size:15px; color:var(--text-light); margin:22px 0 12px; letter-spacing:0.5px; font-weight:600; }
+  p { margin-bottom:15px; text-align:justify; }
+  ul, ol { padding-left:22px; margin-bottom:15px; }
+  li { margin-bottom:5px; }
+
+  .table-wrap { overflow-x:auto; margin:18px 0 28px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  thead th { background:var(--navy); color:#fff; padding:11px 16px; text-align:left; font-weight:600; font-size:11px; letter-spacing:0.5px; white-space:nowrap; }
+  thead th:last-child { text-align:right; }
+  thead th:first-child { border-radius:6px 0 0 0; } thead th:last-child { border-radius:0 6px 0 0; }
+  tbody td { padding:10px 16px; border-bottom:1px solid var(--border); }
+  tbody td:last-child { text-align:right; font-weight:600; }
+  tbody tr:hover { background:var(--gray-card); }
+  .hl-row { background:#fffef0; } .hl-row:hover { background:#fffbc8; }
+  .green { color:var(--green); } .red { color:var(--red); } .orange { color:var(--orange); }
+
+  .box { padding:18px 24px; border-radius:6px; margin:18px 0; font-size:13px; line-height:1.7; }
+  .box.warn { background:#fff8e1; border-left:4px solid var(--orange); } .box.warn strong { color:#e65100; }
+  .box.danger { background:#ffebee; border-left:4px solid var(--red); } .box.danger strong { color:var(--red); }
+  .box.info { background:#e3f2fd; border-left:4px solid var(--blue); } .box.info strong { color:var(--blue); }
+
+  .case-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:20px 0; }
+  .case-card { padding:26px 28px; border-radius:10px; }
+  .case-card.bull { background:linear-gradient(135deg, #e8f5e9, #f1f8e9); border:1px solid #a5d6a7; }
+  .case-card.bear { background:linear-gradient(135deg, #ffebee, #fce4ec); border:1px solid #ef9a9a; }
+  .case-card h4 { font-size:17px; margin-bottom:10px; } .case-card.bull h4 { color:var(--green); } .case-card.bear h4 { color:var(--red); }
+  .case-card ul { padding-left:18px; font-size:13px; } .case-card li { margin-bottom:5px; }
+
+  .rating-inline { display:flex; align-items:center; gap:24px; padding:22px 28px; border-radius:8px; margin-bottom:20px; }
+  .rating-inline.hold { background:linear-gradient(135deg, #fff8e1, #ffecb3); border-left:5px solid var(--orange); }
+  .rating-badge-lg { font-size:38px; font-weight:900; }
+
+  .div-line { height:1px; background:linear-gradient(to right, transparent, var(--accent), transparent); margin:12px 0 32px; }
+
+  .disc-section { background:var(--white); border-radius:10px; padding:32px 52px; margin-bottom:28px; box-shadow:0 1px 4px rgba(0,0,0,0.05); border:1px solid var(--border); font-size:11px; color:#888; line-height:1.9; }
+  .disc-section h4 { color:var(--navy); font-size:13px; margin-bottom:8px; }
+  .footer-line { text-align:center; padding:20px; font-size:12px; color:#aaa; }
+  .footer-line strong { color:var(--accent); }
+
+  @media (max-width:960px) {
+    .hero-inner { grid-template-columns:1fr; }
+    .kpi-inner { grid-template-columns:repeat(3,1fr); }
+    .kpi-item:nth-child(3) { border-right:none; }
+    .topbar { padding:0 24px; }
+    .hero { padding:48px 24px 40px; }
+    .hero-title { font-size:30px; }
+    .main-content { padding:24px 16px 40px; }
+    .section-card { padding:24px 20px; }
+    .case-grid { grid-template-columns:1fr; }
+    .kpi-bar { padding:24px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-brand">Snail Investment</div>
+  <div class="topbar-nav">
+    <a href="#thesis">核心论点</a>
+    <a href="#company">公司概况</a>
+    <a href="#industry">铝业周期</a>
+    <a href="#financials">财务分析</a>
+    <a href="#peer">同业对比</a>
+    <a href="#valuation">估值分析</a>
+    <a href="#risk">风险管理</a>
+    <a href="#rating">操作建议</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-brand">Snail Investment &mdash; Equity Research</div>
+      <div class="hero-type">深度投研报告 &bull; Initiating Coverage</div>
+      <div class="hero-title">美国铝业：站在铝超级周期的高点</div>
+      <div class="hero-subtitle">全球最大的垂直一体化铝业巨头。52周暴涨 107%，铝价逼近 $4,200/吨——但 Q1 自由现金流转负、ROIC-WACC 利差缩至 2%、Altman Z-Score 仅 1.76。核心命题：铝价还能在高位多久？</div>
+      <div class="hero-divider"></div>
+      <div class="hero-info">
+        <div class="hero-info-item"><strong>Ticker</strong>AA</div>
+        <div class="hero-info-item"><strong>交易所</strong>NYSE</div>
+        <div class="hero-info-item"><strong>行业</strong>基础材料 — 铝</div>
+        <div class="hero-info-item"><strong>报告日期</strong>2026 年 6 月 21 日</div>
+      </div>
+      <div class="hero-tags">
+        <span class="hero-tag">大宗商品</span><span class="hero-tag">周期股</span><span class="hero-tag">铝超级周期</span><span class="hero-tag">高波动</span><span class="hero-tag">上游资源</span><span class="hero-tag">去碳化受益</span>
+      </div>
+      <div class="hero-warn">
+        <strong>⚠️ 周期位置警示：</strong>美国铝业 52 周涨幅 +106.72%，当前 P/E 15.16x（TTM），Forward P/E 6.97x。股价从 MA50（$68.29）回落 13.1%。Q1 2026 经营性现金流 -$1.79 亿，隐含自由现金流约 -$2.98 亿——收入增长但现金在燃烧。Altman Z-Score 1.76（财务困境区）。<strong>这不是一家坏公司，但可能是一个坏时机。</strong>
+      </div>
+      <div class="hero-footer" style="margin-top:16px;">基于 Q1 2026 财报（2026年4月16日发布） &nbsp;|&nbsp; 数据来源：SEC / Alcoa IR / StockAnalysis.com &nbsp;|&nbsp; 本报告仅供参考，不构成个人投资建议</div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-card-badge">HOLD 持有</div>
+      <div class="rating-card-price">当前股价</div>
+      <div class="rating-card-current">$59.37</div>
+      <div class="rating-card-change">目标价 $65.00 · +9.5% 上行</div>
+      <div class="rating-card-target-row">
+        <div><div class="label">目标价</div><div class="value">$65.00</div></div>
+        <div><div class="label">时间维度</div><div class="value">12 个月</div></div>
+      </div>
+      <div class="rating-card-meta">
+        <div class="lbl">Trailing P/E</div><div class="val">15.16x</div>
+        <div class="lbl">Forward P/E</div><div class="val">6.97x</div>
+        <div class="lbl">EV/EBITDA</div><div class="val">9.07x</div>
+        <div class="lbl">P/B</div><div class="val">2.30x</div>
+        <div class="lbl">股息率</div><div class="val">0.67%</div>
+        <div class="lbl">ROIC</div><div class="val">13.72%</div>
+        <div class="lbl">WACC</div><div class="val">11.69%</div>
+        <div class="lbl">ROIC-WACC 利差</div><div class="val" style="color:#ffb74d;">2.03%</div>
+        <div class="lbl">Altman Z-Score</div><div class="val" style="color:#c62828;">1.76</div>
+        <div class="lbl">52周涨跌</div><div class="val" style="color:#2e7d32;">+106.72%</div>
+        <div class="lbl">铝实现价格 Q1</div><div class="val">$4,209/t</div>
+        <div class="lbl">分析师共识</div><div class="val" style="color:#2e7d32;">$82.25 BUY</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="kpi-bar">
+  <div class="kpi-inner">
+    <div class="kpi-item"><div class="kpi-label">市值</div><div class="kpi-value">$15.67B</div><div class="kpi-sub">EV $15.38B</div></div>
+    <div class="kpi-item"><div class="kpi-label">TTM 营收</div><div class="kpi-value">$12.66B</div><div class="kpi-sub green">FY2025 +8% YoY</div></div>
+    <div class="kpi-item"><div class="kpi-label">TTM 净利润</div><div class="kpi-value">$1.03B</div><div class="kpi-sub">净利率 8.17%</div></div>
+    <div class="kpi-item"><div class="kpi-label">铝产量 (FY2025)</div><div class="kpi-value">2.32M</div><div class="kpi-sub green">吨 · +5% YoY</div></div>
+    <div class="kpi-item"><div class="kpi-label">Q1 铝实现价格</div><div class="kpi-value">$4,209</div><div class="kpi-sub green">/吨 · +12.3% QoQ</div></div>
+    <div class="kpi-item"><div class="kpi-label">Q1 FCF</div><div class="kpi-value" style="color:var(--red);">-$298M</div><div class="kpi-sub red">经营现金流 -$179M</div></div>
+  </div>
+</div>
+
+<div class="main-content">
+<div class="content-inner">
+
+<!-- 1. EXECUTIVE SUMMARY -->
+<div class="section-card" id="thesis">
+  <h2><span class="num">1</span> 执行摘要 &amp; 投资论点</h2>
+
+  <div class="rating-inline hold">
+    <div class="rating-badge-lg" style="color:var(--orange);">HOLD</div>
+    <div style="font-size:14px; color:#555;">
+      <strong>12个月目标价 $65.00</strong> &nbsp;|&nbsp; 上行空间 +9.5% &nbsp;|&nbsp; 股息率 0.67%<br>
+      当前 $59.37 交易于 15.16x TTM P/E、6.97x Forward P/E、9.07x EV/EBITDA<br>
+      铝价支撑估值，但周期位置 + 现金流失 + Z-Score 1.76 构成风险三角
+    </div>
+  </div>
+
+  <p><strong>核心投资论点：</strong>美国铝业（Alcoa Corporation）是全球最大的垂直一体化铝业公司之一，拥有铝土矿开采→氧化铝精炼→原铝冶炼→铸造加工的完整产业链。2025年受益于铝价强势（实现价格 $3,376/吨，同比显著上涨），收入增长 8% 至 $128.3 亿，调整后 EBITDA 增长 25% 至 $19.84 亿。然而 ——<strong>周期股的核心问题永远是"我们在哪里"</strong>——美国铝业已连续 52 周暴涨 107%，Q1 2026 经营性现金流转负（-$1.79 亿），ROIC-WACC 利差仅 2%，Altman Z-Score 1.76 处于财务困境区。<strong>评级 HOLD：当前价格已充分反映铝价强势，上行空间有限，下行风险不对称。</strong></p>
+
+  <p><strong>变异认知（Variant Perception）：</strong>市场的 Forward P/E 6.97x 看似极度便宜——但这恰恰是周期股在顶部的经典特征：当盈利处于峰值时，低 PE 不是买入信号，而是"周期性盈利不可持续"的市场判断。真正的买点出现在铝价低迷、PE 极高（甚至亏损）时。当前 Al 实现价格 $4,209/吨已为历史高位区间——而 $3,000/吨的中周期价格对应的 EPS 仅约 $4.00（PE 将飙升至 15x），这才是 AA 的"正常估值"。</p>
+
+  <p><strong>为什么是现在？</strong>（1）铝价处于结构性牛市（EV 轻量化 + 光伏/电网 + 中国产能上限），但短期已充分定价；（2）Q1 负 FCF 是一个需要认真对待的警示——资本开支 $1.19 亿/季 + San Ciprián 重启成本挤压现金；（3）7月16日 Q2 财报是关键检验点——若铝价维持高位但 FCF 仍为负，将是强烈卖出信号；（4）当前 $59.37 处于 MA50（$68.29）和 MA200（$53.90）之间——技术面中性偏弱。</p>
+</div>
+
+<!-- 2. COMPANY OVERVIEW -->
+<div class="section-card" id="company">
+  <h2><span class="num">2</span> 公司概况与产业链布局</h2>
+
+  <p>美国铝业（Alcoa Corporation）前身为 Aluminum Company of America，1888年创立于匹兹堡。2016年从母公司 Arconic 分拆独立上市。公司是全球唯一一家在铝土矿、氧化铝和原铝三大环节均具有全球领先地位的西方铝业公司（中国铝业/宏桥是东方对标）。</p>
+
+  <h3>三大业务板块</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>业务板块</th><th>FY2025 产量</th><th>全球地位</th><th>竞争壁垒</th></tr></thead>
+    <tbody>
+      <tr><td><strong>铝土矿 (Bauxite)</strong></td><td>3,750万干吨</td><td>全球前三</td><td>澳大利亚、巴西、几内亚优质矿区长期采矿权；30+年储量</td></tr>
+      <tr><td><strong>氧化铝 (Alumina)</strong></td><td>964万吨</td><td>全球前三（不含中国）</td><td>与 Alumina Limited 合资 AWAC；低成本精炼厂</td></tr>
+      <tr><td><strong>原铝 (Aluminum)</strong></td><td>231.9万吨</td><td>全球前五（不含中国）</td><td>加拿大水电冶炼厂（全球成本曲线低端）；增值铸造产能</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>全球资产分布</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>地区</th><th>主要资产</th><th>竞争优势</th></tr></thead>
+    <tbody>
+      <tr><td>🇨🇦 加拿大</td><td>Baie-Comeau、Bécancour、Deschambault 冶炼厂</td><td>100% 水电供电——全球最低碳铝（Ecolum™）；不受碳边境税冲击</td></tr>
+      <tr><td>🇦🇺 澳大利亚</td><td>Kwinana、Pinjarra、Wagerup 氧化铝精炼厂；Portland 冶炼厂</td><td>全球最大氧化铝精炼基地之一；与 AWAC 合资</td></tr>
+      <tr><td>🇧🇷 巴西</td><td>Poços de Caldas、São Luís 精炼厂和冶炼厂</td><td>水电优势；本地铝土矿自给</td></tr>
+      <tr><td>🇪🇸 西班牙</td><td>San Ciprián 冶炼厂（2026年4月重启完成）</td><td>供应欧洲本地市场；重启后产能~22.8万吨/年</td></tr>
+      <tr><td>🇳🇴 挪威</td><td>Mosjøen、Lista 冶炼厂</td><td>水电供电；低碳铝溢价</td></tr>
+      <tr><td>🇺🇸 美国</td><td>Warrick、Massena 冶炼厂</td><td>受益于 Section 232 关税保护（10%铝进口关税）</td></tr>
+      <tr><td>🇸🇦 沙特</td><td>Ma'aden 合资（持股 25.1%）</td><td>全球成本最低的铝业综合项目之一；$1.58亿公允价值收益</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box info">
+    <strong>📌 核心竞争力——低碳铝：</strong>美国铝业约 70% 的原铝产能由可再生能源（水电）供电，碳足迹约为全球平均的 1/3。其 Ecolum™ 品牌低碳铝获得溢价。在欧盟 CBAM（碳边境调节机制）和美国通胀削减法案背景下，这一优势正在转化为结构性定价能力。
+  </div>
+</div>
+
+<!-- 3. INDUSTRY CYCLE ANALYSIS -->
+<div class="section-card" id="industry">
+  <h2><span class="num">3</span> 铝行业周期分析——我们在哪里？</h2>
+
+  <h3>铝价走势 (2021-2026)</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>时期</th><th>LME 铝价（$/吨）</th><th>AA 实现价格（$/吨）</th><th>核心驱动</th></tr></thead>
+    <tbody>
+      <tr><td>2021</td><td>~$2,500</td><td>—</td><td>疫后复苏 + 供应链瓶颈</td></tr>
+      <tr><td>2022</td><td>~$2,700 → $3,800（3月峰值）</td><td>—</td><td>俄乌冲突——俄铝制裁恐慌</td></tr>
+      <tr><td>2023</td><td>~$2,200</td><td>—</td><td>中国地产下行 + 全球加息</td></tr>
+      <tr><td>2024</td><td>~$2,400</td><td>—</td><td>温和复苏</td></tr>
+      <tr><td>FY2025</td><td>~$2,800</td><td><strong>$3,376</strong></td><td>AI 数据中心电力需求 + 中国产能上限 + 光伏装机</td></tr>
+      <tr><td>Q1 2026</td><td>~$3,200</td><td><strong>$4,209</strong></td><td>结构需求爆发 + 供应约束 + 中东冲突溢价</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:12px;color:var(--text-light)">数据来源：LME、Alcoa 财报、公开市场数据。FY2025 前为近似值。</p>
+
+  <div class="box info">
+    <strong>📌 关键澄清：AA 实现价格 vs LME 基准价——为什么差了 $1,000？</strong>
+    <p style="margin:8px 0 0 0;">LME（伦敦金属交易所）铝价只是"标准铝锭在 LME 仓库的裸价"——这不是任何铝厂实际收到的价格。真实成交价 = <strong>LME 基准价 + 三层溢价</strong>：</p>
+    <div class="table-wrap" style="margin:12px 0 0 0;">
+    <table>
+      <thead><tr><th>溢价层级</th><th>当前水平（估算）</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>① 区域交付溢价</td><td>$400-500/吨</td><td>美国中西部溢价（Midwest Premium）——将铝从 LME 仓库运到客户工厂的成本和便利性</td></tr>
+        <tr><td>② 增值产品溢价</td><td>$200-300/吨</td><td>铝坯（billet）、铝板锭（slab）、铸造合金等——AA 90%+ 产品以增值形式直销，不卖标准锭</td></tr>
+        <tr><td>③ 低碳铝溢价</td><td>$50-100/吨</td><td>AA Ecolum™ 品牌（70% 水电，碳足迹 ~4t CO₂/t Al vs 全球平均 ~12t）——欧盟 CBAM 和客户 ESG 需求驱动</td></tr>
+        <tr class="hl-row"><td><strong>合计溢价</strong></td><td><strong>$650-900/吨</strong></td><td><strong>LME ~$3,200-3,500 + 溢价 $650-900 = 实现价 $3,850-4,400 → Q1 实际 $4,209 完全合理</strong></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="margin:8px 0 0 0;">这也解释了为什么中国宏桥（01378.HK）的实现价格（约 ¥17,000-18,000/吨 ≈ $2,350-2,500/吨）远低于 AA——宏桥主要生产标准铝锭并销往中国市场（上海期货交易所定价），区域溢价和增值产品溢价均远低于 AA 享受的美国中西部市场。这是两家公司商业模式的结构性差异，而非产品质量差异。</p>
+  </div>
+
+  <h3>供需格局判断</h3>
+  <p><strong>需求侧——三大结构增长引擎：</strong></p>
+  <ul>
+    <li><strong>EV 轻量化：</strong>电动车单车用铝量（~250 kg）约为燃油车（~150 kg）的 1.7 倍。全球 EV 渗透率持续提升构成长期需求驱动力</li>
+    <li><strong>光伏与可再生能源：</strong>太阳能面板框架和支架是铝的密集型应用。全球光伏装机量维持年均 15-20% 增长</li>
+    <li><strong>电网现代化：</strong>AI 数据中心驱动电力基础设施投资——铝电缆、变压器壳体需求激增</li>
+  </ul>
+  <p><strong>供给侧——结构性约束：</strong></p>
+  <ul>
+    <li>中国实施 4,500 万吨电解铝产能上限——2025年已接近天花板</li>
+    <li>云南水电季节性限制——中国铝产量波动性加大</li>
+    <li>欧洲能源成本高企——多家冶炼厂永久关闭（2021-2023 年间约 150 万吨产能退出）</li>
+    <li>全球新增冶炼产能受 ESG 审批和资本强度约束——新建冶炼厂至少需要 3-5 年</li>
+  </ul>
+
+  <div class="div-line"></div>
+
+  <h3>周期位置评估</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>周期信号</th><th>当前状态</th><th>周期含义</th></tr></thead>
+    <tbody>
+      <tr><td>铝价绝对水平</td><td>$4,209/吨（历史高位区间）</td><td class="orange">中后期</td></tr>
+      <tr><td>AA 利润率</td><td>净利率 8.17%、EBITDA 13.4%</td><td class="orange">高于中周期，低于峰值</td></tr>
+      <tr><td>企业资本行为</td><td>San Ciprián 重启（扩产信号）+ 股份回购暂停（股份+12%）</td><td class="orange">扩产通常出现在中后期</td></tr>
+      <tr><td>分析师情绪</td><td>14位一致 BUY，目标 $82.25（+38.5%）</td><td class="red">一致性预期极高——逆向信号</td></tr>
+      <tr><td>AA 股价走势</td><td>52周 +107% 后开始回调（MA50 下方）</td><td class="orange">动量衰减</td></tr>
+      <tr><td>新兴供应</td><td>印度、印尼新建冶炼产能；中东扩产计划</td><td class="red">供给响应正在路上</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><strong>结论：</strong>美国铝业处于本次铝周期的中后期——铝价仍在高位但动量减弱，供给响应正在酝酿，利润率高但边际下滑。这并不意味着"立即卖出"，但意味着<strong>当前价位已不是买入的最佳时机</strong>。</p>
+</div>
+
+<!-- 4. FINANCIAL DEEP DIVE -->
+<div class="section-card" id="financials">
+  <h2><span class="num">4</span> 财务深度分析</h2>
+
+  <h3>收入与利润趋势</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>指标 (USD)</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>Q1 2026</th></tr></thead>
+    <tbody>
+      <tr><td>营收</td><td>$10.6B</td><td>$11.9B</td><td>$12.83B</td><td>$3.19B</td></tr>
+      <tr><td>YoY 增速</td><td>—</td><td class="green">+12%</td><td class="green">+8%</td><td class="red">-5.3%</td></tr>
+      <tr><td>净利润</td><td>-$651M</td><td>$60M</td><td>$1,170M</td><td>$425M</td></tr>
+      <tr><td>调整后 EBITDA</td><td>$820M</td><td>$1,590M</td><td>$1,984M</td><td>$595M</td></tr>
+      <tr><td>EPS (GAAP)</td><td>-$2.84</td><td>$0.26</td><td>$4.42</td><td>$1.60</td></tr>
+      <tr><td>经营现金流</td><td>$270M</td><td>$820M</td><td>$1,185M</td><td>-$179M</td></tr>
+      <tr><td>自由现金流</td><td>-$250M</td><td>$230M</td><td>$567M</td><td>~-$298M</td></tr>
+      <tr><td>CapEx</td><td>$520M</td><td>$590M</td><td>$618M</td><td>$119M</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box danger">
+    <strong>🔴 Q1 2026 FCF 转负的关键原因：</strong>（1）氧化铝出货延迟导致库存积压，占用了约 $1.5 亿营运资金；（2）铝价上涨导致应收账款同步增加；（3）San Ciprián 重启的启动成本。管理层预计这些影响将在 Q2 逆转——但 <strong>如果 Q2 FCF 仍然为负，将是一个严重的危险信号。</strong>
+  </div>
+
+  <div class="div-line"></div>
+
+  <h3>资产负债表与财务健康度</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>指标</th><th>数值</th><th>评价</th></tr></thead>
+    <tbody>
+      <tr><td>现金</td><td>$1.35B</td><td>Q1 末余额；较 Q4 下降 $0.25B</td></tr>
+      <tr><td>总债务</td><td>$2.55B</td><td>5月15日赎回 $2.19亿 6.125% 票据后进一步降低</td></tr>
+      <tr><td>净债务</td><td>$1.20B</td><td>债务/EBITDA 1.41x——杠杆可控</td></tr>
+      <tr><td>账面价值/股</td><td>$25.87</td><td>P/B 2.30x</td></tr>
+      <tr><td>Debt/Equity</td><td>0.37</td><td>杠杆合理</td></tr>
+      <tr><td>流动比率</td><td>1.48</td><td>流动性充裕</td></tr>
+      <tr class="hl-row"><td><strong>Altman Z-Score</strong></td><td><strong class="red">1.76</strong></td><td><strong>⚠️ 低于 1.81 的困境阈值——需要关注</strong></td></tr>
+      <tr><td><strong>ROIC</strong></td><td><strong>13.72%</strong></td><td>勉强覆盖 WACC 11.69%（利差仅 2.03%）</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box warn">
+    <strong>⚠️ 关于 Altman Z-Score 1.76 的说明：</strong>Z-Score 低于 1.81 通常意味着公司处于财务困境区。但需要注意：（1）Z-Score 对制造业和重资产企业的适用性需要结合行业周期判断；（2）AA 的债务/EBITDA 仅 1.41x，流动性充裕，短期不存在破产风险；（3）低分主要源于资产周转率和留存收益指标——这反映的是铝价低迷期的历史亏损，而非当前。但<strong>这确实是一个需要密切监测的指标。</strong>
+  </div>
+
+  <h3>股东回报与稀释</h3>
+  <p>股息率 0.67%（$0.40/股/年）在资源股中偏保守。派息率仅 10.21%——公司优先将现金用于债务削减和 CapEx。但值得注意的是<strong>股份数量在过去一年增加了 12.06%</strong>——主要源于股票薪酬和可转换证券稀释。在资本密集的周期行业中，这种稀释速度值得警惕。</p>
+</div>
+
+<!-- 5. PEER COMPARISON — AA vs China Hongqiao -->
+<div class="section-card" id="peer">
+  <h2><span class="num">5</span> 同业对比 — 美国铝业 vs 中国宏桥</h2>
+  <p>在覆盖美国铝业的同时，我们已对中国宏桥（01378.HK）出具 BUY 评级（目标价 HK$35）。为什么对同一行业的两家公司给出截然不同的评级？以下是系统性的对比分析。</p>
+
+  <h3>核心指标对比</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>对比维度</th><th>美国铝业 (AA)</th><th>中国宏桥 (01378.HK)</th><th>胜出者</th></tr></thead>
+    <tbody>
+      <tr><td><strong>当前股价</strong></td><td>$59.37</td><td>HK$27.08（≈$3.47）</td><td>—</td></tr>
+      <tr><td><strong>市值</strong></td><td>$15.67B</td><td>HK$257B（≈$33B）</td><td>—</td></tr>
+      <tr><td><strong>铝产能（2025）</strong></td><td>231.9万吨</td><td>~650万吨</td><td>🏆 宏桥</td></tr>
+      <tr><td><strong>吨铝现金成本</strong></td><td>~$2,100-2,300/吨（~¥15,000-16,500）</td><td>~¥14,000-15,000/吨（~$1,950-2,100）——行业¥16,000-18,000</td><td class="green">🏆 宏桥（低 15-20%）</td></tr>
+      <tr><td><strong>成本优势来源</strong></td><td>加拿大水电（部分产能）；澳洲氧化铝自给</td><td>几内亚铝土矿→氧化铝→自备电厂→电解铝全产业链；山东低成本煤电</td><td class="green">🏆 宏桥</td></tr>
+      <tr><td><strong>实现铝价（当前）</strong></td><td>$4,209/吨（含美中西部溢价+增值+低碳溢价~$700-900）</td><td>~¥23,500/吨 ≈ $3,260/吨（SHFE 沪铝 ~¥24,000，行业折扣~¥500）</td><td>🏆 AA（溢价更高：美国中西部市场+低碳）</td></tr>
+      <tr><td><strong>吨铝利润（估算）</strong></td><td>$4,209 - $2,200 = ~$2,009/吨</td><td>¥23,500 - ¥14,500 = ~¥9,000/吨 ≈ $1,250/吨</td><td>🏆 AA（单吨利润更高，受益于美国溢价）</td></tr>
+      <tr><td><strong>Trailing P/E</strong></td><td>15.16x</td><td>~8-9x（FY2026E）</td><td class="green">🏆 宏桥</td></tr>
+      <tr><td><strong>Forward P/E</strong></td><td>6.97x</td><td>~8-9x（但宏桥为周期性低点，AA为周期高点）</td><td>持平</td></tr>
+      <tr><td><strong>ROIC</strong></td><td>13.72%（WACC 11.69%→利差 2%）</td><td>~20%+（WACC ~6%→利差 14%+）</td><td class="green">🏆 宏桥</td></tr>
+      <tr><td><strong>股息率</strong></td><td>0.67%</td><td>~8%</td><td class="green">🏆 宏桥</td></tr>
+      <tr><td><strong>52周股价变化</strong></td><td class="green">+106.72%</td><td>相对平稳</td><td>🏆 宏桥（未透支）</td></tr>
+      <tr><td><strong>Altman Z-Score</strong></td><td class="red">1.76（困境区）</td><td>>2.5（安全区，估算）</td><td class="green">🏆 宏桥</td></tr>
+      <tr><td><strong>FCF 趋势</strong></td><td class="red">Q1 2026 负 FCF（-$298M）</td><td>正向自由现金流</td><td class="green">🏆 宏桥</td></tr>
+      <tr><td><strong>Snail 评级</strong></td><td>HOLD $65（+9.5%）</td><td>BUY HK$35（+29.2%）</td><td class="green">🏆 宏桥</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="div-line"></div>
+
+  <h3>判断逻辑：为什么宏桥是 BUY、AA 是 HOLD？</h3>
+
+  <p>两者的评级差异并非"一个看好、一个看空"的简单二元对立，而是基于<strong>三个层级的系统性差异</strong>：</p>
+
+  <h4>第一层级：成本结构——决定"活下去"的概率</h4>
+  <p>在任何大宗商品行业中，<strong>最低成本生产商 = 最后倒下的人</strong>。宏桥的吨铝现金成本约 ¥14,000-15,000/吨（~$1,950-2,100），比中国行业均值（¥16,000-18,000）低 15-20%，处于全球成本曲线的前 25%。AA 约 $2,100-2,300/吨，处于全球成本中段（西方生产商中的优秀水平，但无绝对优势）。这意味着：</p>
+  <ul>
+    <li>若 SHFE 铝价从当前 ¥24,000 跌至 ¥17,000：宏桥仍有 ¥2,500+/吨利润；AA 的 LME 铝价对应 ~$2,350 + 溢价~$700 = $3,050，成本 $2,200 → 利润 $850/吨，显著压缩但仍为正</li>
+    <li>若铝价进一步跌至 ¥15,000（SHFE）/ $2,000（LME）：宏桥接近盈亏平衡（¥14,500 成本），AA 将深度亏损（$2,000 + $700 - $2,200 = $500/吨 毛利，但不足以覆盖 SG&A）</li>
+    <li><strong>核心结论：宏桥的成本安全垫更厚——需要铝价跌 35% 才触及盈亏线，而 AA 约 25% 跌幅即承压。</strong></li>
+  </ul>
+
+  <h4>第二层级：估值位置——决定"赚多少钱"的上限</h4>
+  <p>AA 股价已在 52 周内暴涨 107%，大量乐观预期已被定价。宏桥的股价并未出现同等幅度的上涨——P/E 8-9x 仍处于历史低位区间。这会带来完全不同的风险收益比：</p>
+  <ul>
+    <li>AA："铝价继续涨"已经被定价——上行空间来自<strong>超预期的铝价</strong>（可能性递减）</li>
+    <li>宏桥："成本优势 + 高股息"尚未被充分定价——上行空间来自<strong>估值修复本身</strong>（不依赖铝价继续上涨）</li>
+  </ul>
+
+  <h4>第三层级：股东回报——决定"等待的价值"</h4>
+  <p>宏桥 8% 的股息率提供了强大的"被支付等待"机制。即使铝价横盘一年，投资者仍可获得接近两位数的现金回报。AA 的 0.67% 股息率则无法提供等效保护——持有 AA 的唯一回报来源是股价上涨，而股价已大幅上涨。</p>
+
+  <div class="box warn">
+    <strong>⚠️ 评级对称性检验：</strong>如果铝价在未来 12 个月下跌 20%（SHFE ¥24,000→¥19,200，LME $3,200→$2,560）——宏桥吨铝利润从 ¥9,000 压缩至 ¥4,700，股价可能回调至 HK$25（-8%），但因 8% 股息率支撑，下跌有限。AA 吨铝利润从 $2,009 压缩至 ~$900，叠加 ROIC-WACC 利差消失和 Z-Score 压力，股价可能跌至 $38-42（-30-35%）。如果铝价继续上涨 10%（SHFE ¥26,400，LME $3,500+）——宏桥目标可上调至 HK$42+（+55%），AA 可能回升至 $75-80（+30%）。<strong>无论上行还是下行，宏桥的风险收益比均优于 AA。</strong>这不是偏见，是成本结构决定的数学。
+  </div>
+
+  <h4>是否应该"配对交易"（Long 宏桥 / Short AA）？</h4>
+  <p>理论上有吸引力，但实际操作存在障碍：（1）宏桥是港股、AA 是美股——跨境配对增加执行复杂度；（2）两者的铝价暴露并不对称（上海 vs 美国中西部定价）；（3）做空周期股在供需偏紧的环境中风险较高。建议：<strong>单独做多宏桥，单独持有/回避 AA，不必刻意配对。</strong></p>
+
+  <h3>估值交叉验证</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>估值指标</th><th>美国铝业 (AA)</th><th>中国宏桥 (01378)</th><th>差异分析</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Snail 目标价</strong></td><td>$65.00</td><td>HK$35.00</td><td>—</td></tr>
+      <tr><td><strong>Upside</strong></td><td>+9.5%</td><td class="green">+29.2%</td><td>宏桥显著更高</td></tr>
+      <tr><td><strong>核心估值方法</strong></td><td>中周期 P/E 情景加权（Al $3,500 基准）</td><td>FY2026E P/E 10.5x（低于3年均值12x）</td><td>AA 用中周期、宏桥用当前——AA 的铝价假设实际上更保守</td></tr>
+      <tr><td><strong>最大上行风险</strong></td><td>铝价持续 $4,000+ → $75-85</td><td>铝价持续 ¥26,000+ + 西芒杜铁矿投产 → HK$45+</td><td>宏桥有额外的催化剂（铁矿期权）</td></tr>
+      <tr><td><strong>最大下行风险</strong></td><td class="red">铝价 <$2,800 → $38-42（-30%）</td><td>铝价 <¥17,000 → HK$22（-19%）</td><td>宏桥下行幅度更小</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- 6. VALUATION -->
+<div class="section-card" id="valuation">
+  <h2><span class="num">6</span> 估值分析 — 周期框架下的三法验证</h2>
+
+  <div class="box info">
+    <strong>📐 周期股估值原则：</strong>对于大宗商品公司，使用"中周期盈利"而非"峰值盈利"进行估值至关重要。铝价的均值回归是必然的——关键问题是回归到哪里。我们采用铝价 $3,000-3,500/吨 作为中周期假设（vs 当前 $4,209）。
+  </div>
+
+  <h3>方法一：中周期 P/E 法（权重 40%）</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>情景</th><th>假设铝价 ($/t)</th><th>隐含 EPS</th><th>P/E</th><th>推导值</th><th>概率</th></tr></thead>
+    <tbody>
+      <tr><td>深度衰退</td><td>$2,500</td><td>$2.00</td><td>10x</td><td>$20.00</td><td>15%</td></tr>
+      <tr><td>中周期（低端）</td><td>$3,000</td><td>$4.00</td><td>9x</td><td>$36.00</td><td>30%</td></tr>
+      <tr><td>中周期（基准）</td><td>$3,500</td><td>$6.50</td><td>10x</td><td>$65.00</td><td>35%</td></tr>
+      <tr><td>高景气延续</td><td>$4,200</td><td>$8.50</td><td>8x</td><td>$68.00</td><td>20%</td></tr>
+      <tr class="hl-row"><td><strong>加权目标价</strong></td><td colspan="2"></td><td></td><td><strong>$52.35</strong></td><td>100%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:12px;color:var(--text-light)">中周期 EPS 估算：EBITDA $2,500M（FY2025 $1,984M，但含 $600M+ D&A），利息 ~$100M，税 ~$500M，净利润 ~$1,900M ÷ 264M 股 = ~$7.20。但我们用更保守的 $6.50 反映潜在成本通胀。</p>
+
+  <h3>方法二：EV/EBITDA 法（权重 35%）</h3>
+  <p>中周期调整后 EBITDA 估计：~$2.3B（FY2025 实际 $1.984B，铝价 $3,376；假设中周期 $3,500 对应小幅提升）。目标 EV/EBITDA：7.0x（AA 历史中位数约 6-8x，当前 9.07x 已偏高）。</p>
+  <p>目标 EV = $2,300M × 7.0x = $16,100M。权益价值 = $16,100M - 净债务 $1,200M = $14,900M ÷ 264M 股 = <strong>$56.44</strong></p>
+
+  <h3>方法三：P/B-ROE 法（权重 25%）</h3>
+  <p>铝周期中 ROE 高度波动：FY2023 -7.8%、FY2024 0.7%、FY2025 17.0%、TTM 15.43%。中周期 ROE 估计 ~12%。</p>
+  <p>合理 P/B = ROE / Cost of Equity。假设 CoE = 10%，ROE 12% → P/B 1.2x。BV $25.87 × 1.2x = <strong>$31.04</strong>。这显著低于当前 P/B 2.30x——说明 <strong>当前估值已经计入大量周期溢价。</strong></p>
+
+  <div class="div-line"></div>
+
+  <h3>目标价推导汇总</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>估值方法</th><th>推导值</th><th>权重</th><th>加权</th><th>关键假设</th></tr></thead>
+    <tbody>
+      <tr><td>中周期 P/E 法（情景加权）</td><td>$52.35</td><td>40%</td><td>$20.94</td><td>4种情景，中周期 Al $3,500</td></tr>
+      <tr><td>EV/EBITDA 法</td><td>$56.44</td><td>35%</td><td>$19.75</td><td>中周期 EBITDA $2,300M × 7.0x</td></tr>
+      <tr><td>P/B-ROE 法</td><td>$31.04</td><td>25%</td><td>$7.76</td><td>中周期 ROE 12% × P/B 1.2x</td></tr>
+      <tr class="hl-row"><td><strong>加权目标价</strong></td><td></td><td></td><td><strong>$48.45</strong></td><td><strong>→ 调整至 $65.00</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box warn">
+    <strong>⚠️ 目标价调整说明：</strong>三法加权得出 $48.45，低于当前股价——这反映了对周期回归的审慎预期。但我们取 $65 作为 12 个月目标价，原因：（1）铝的供需基本面在未来 12-18 个月仍将偏紧（供给响应需要时间）；（2）AI 数据中心和电网投资带来的需求增量尚未完全释放；（3）加拿大/挪威低碳铝的结构性溢价将持续扩大。$65 对应中周期高端情景——这已经比分析师共识 $82.25 低了 21%。<strong>若铝价在未来 12 个月内均值回归至 $3,000 以下，目标价应果断下调至 $35-40。</strong>
+  </div>
+</div>
+
+<!-- 7. RISK -->
+<div class="section-card" id="risk">
+  <h2><span class="num">7</span> 风险因素 — 分层评估</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>#</th><th>风险</th><th>严重度</th><th>概率</th><th>缓释/说明</th></tr></thead>
+    <tbody>
+      <tr style="background:#ffebee;"><td>1</td><td><strong>铝价下行</strong> — 全球经济衰退或中国需求放缓导致铝价跌至 $2,500 以下</td><td class="red">极高</td><td>中</td><td>AA 盈亏平衡约 $2,200-2,500/吨（加拿大水电冶炼厂成本优势）；$2,500 以下将大幅亏损</td></tr>
+      <tr style="background:#ffebee;"><td>2</td><td><strong>Q1 负 FCF 持续</strong> — 若 Q2-Q3 经营现金流仍无法覆盖 CapEx</td><td class="red">极高</td><td>中低</td><td>管理层承诺 Q2 反转；San Ciprián 重启完成后现金消耗减少</td></tr>
+      <tr style="background:#fff8e1;"><td>3</td><td><strong>成本通胀</strong> — 能源、劳工、原材料成本上升侵蚀利润</td><td>高</td><td>中高</td><td>加拿大水电提供天然对冲（固定成本）；但氧化铝原料成本受澳洲天然气价格影响</td></tr>
+      <tr style="background:#fff8e1;"><td>4</td><td><strong>贸易政策风险</strong> — 美国关税政策变化、欧盟 CBAM 实施细节</td><td>中高</td><td>中</td><td>Section 232（10% 铝关税）若取消将冲击北美溢价；CBAM 反而有利 AA 的低碳铝</td></tr>
+      <tr style="background:#fff8e1;"><td>5</td><td><strong>新兴供给</strong> — 印度、印尼、中东新增产能打破供需平衡</td><td>中</td><td>中低</td><td>新建冶炼厂至少 3-5 年——12个月维度影响有限</td></tr>
+      <tr><td>6</td><td><strong>San Ciprián 持续亏损</strong> — 西班牙冶炼厂能源成本高，重启后可能持续亏损</td><td>中</td><td>中</td><td>欧洲铝溢价部分对冲；但仍为成本曲线高端</td></tr>
+      <tr><td>7</td><td><strong>Altman Z-Score 1.76</strong> — 信贷指标偏弱</td><td>中低</td><td>已发生</td><td>债务/EBITDA 仅 1.41x，实际违约风险低</td></tr>
+      <tr><td>8</td><td><strong>股份稀释</strong> — 12% YoY 稀释速度侵蚀每股价值</td><td>中低</td><td>持续中</td><td>股票薪酬 + 可转债转换；管理层需更克制的股权激励政策</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- 7. SCENARIO ANALYSIS -->
+<div class="section-card">
+  <h2><span class="num">8</span> 多空情景分析</h2>
+  <div class="case-grid">
+    <div class="case-card bull"><h4>🐂 多头情景 — $95 (+60%)</h4><ul><li>铝价维持 $4,000+ 至 2027 年（AI/电网需求持续爆发 + 供给瓶颈）</li><li>FY2026E EPS $8.50-9.00</li><li>市场给予周期中后期 10-11x P/E</li><li>San Ciprián 实现正现金流</li><li>低碳铝溢价扩大至 $100-150/吨</li><li>$8.50 × 11x = $93.50 → 取整 $95</li><li>概率：25%</li></ul></div>
+    <div class="case-card bear"><h4>🐻 空头情景 — $28 (-53%)</h4><ul><li>全球经济衰退 → 铝价跌至 $2,300-2,500</li><li>中国地产进一步恶化 + 贸易战升级</li><li>FY2026E EPS $1.50-2.00</li><li>P/E 被压缩至 8x（周期底部估值）</li><li>FCF 持续为负，被迫削减股息</li><li>$1.75 × 8x = $14 → 但 BV $25 提供地板</li><li>目标 $28（1.1x P/B 周期底部）</li><li>概率：20%</li></ul></div>
+  </div>
+
+  <div class="div-line"></div>
+
+  <h3>铝价敏感性矩阵：P/E × 铝价情景</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>铝价 →<br>↓ P/E</th><th>$2,500<br>（衰退）</th><th>$3,000<br>（中周期低）</th><th>$3,500<br>（基准）</th><th>$4,000<br>（高景气）</th><th>$4,500<br>（极度景气）</th></tr></thead>
+    <tbody>
+      <tr><td><strong>6x</strong>（底部）</td><td class="red">$12</td><td class="red">$24</td><td class="red">$39</td><td>$51</td><td>$60</td></tr>
+      <tr><td><strong>8x</strong>（保守）</td><td class="red">$16</td><td class="red">$32</td><td class="red">$52</td><td style="background:#fff8e1">$68</td><td>$80</td></tr>
+      <tr><td><strong>10x</strong>（中周期）</td><td class="red">$20</td><td class="red">$40</td><td style="background:#fff8e1;font-weight:700">$65</td><td class="green">$85</td><td>$100</td></tr>
+      <tr><td><strong>12x</strong>（乐观）</td><td class="red">$24</td><td class="red">$48</td><td class="green">$78</td><td class="green">$102</td><td class="green">$120</td></tr>
+      <tr><td><strong>15x</strong>（亢奋）</td><td class="red">$30</td><td class="red">$60</td><td class="green">$98</td><td class="green">$128</td><td class="green">$150</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:12px;color:var(--text-light)">假设基础：每 $500/吨铝价变化 → EPS 变化约 $2.50；EPS估算：$2,500→$2.00, $3,000→$4.00, $3,500→$6.50, $4,000→$8.50, $4,500→$10.00。当前股价 $59.37 处于"$3,500 铝价 + 9x P/E"或"$4,000 铝价 + 7x P/E"的交叉点。</p>
+</div>
+
+<!-- 8. RATING -->
+<div class="section-card" id="rating">
+  <h2><span class="num">9</span> 评级与操作建议</h2>
+
+  <div class="rating-inline hold" style="margin-bottom:24px;">
+    <div class="rating-badge-lg" style="color:var(--orange);">HOLD</div>
+    <div style="font-size:14px; color:#555;">
+      <strong>评级：持有</strong> &nbsp;|&nbsp; 目标价：<strong>$65.00</strong> &nbsp;|&nbsp; 上行空间：<strong>+9.5%</strong> &nbsp;|&nbsp; 时间维度：<strong>12个月</strong><br>
+      当前价格：$59.37 &nbsp;|&nbsp; TTM P/E 15.16x &nbsp;|&nbsp; Forward P/E 6.97x &nbsp;|&nbsp; EV/EBITDA 9.07x
+    </div>
+  </div>
+
+  <h3>PM 七问框架检验</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>#</th><th>问题</th><th>回答</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>什么被错误定价了？</strong></td><td>市场可能过度乐观了——Forward P/E 6.97x 看似便宜，但这是以峰值盈利为分母的"伪便宜"。用中周期 EPS $6.50 计算，真实 P/E 为 9.1x——对于周期股来说并不便宜。分析师 $82.25 的一致目标（+38.5%）可能是"线性外推当前铝价"的偏见。</td></tr>
+      <tr><td>2</td><td><strong>当前价格已经反映了什么？</strong></td><td>反映了铝价 $3,800-4,000/吨 持续至 2027 年的预期。任何低于此的铝价都将导致盈利不及预期。</td></tr>
+      <tr><td>3</td><td><strong>什么能证明论点？</strong></td><td>Q1 负 FCF 在 Q2 强劲反转（>$3 亿正向）；铝价维持 $3,500+；ROIC-WACC 利差扩大至 5%+。</td></tr>
+      <tr><td>4</td><td><strong>什么能推翻论点？</strong></td><td>铝价跌破 $3,000；Q2 连续第二个季度 FCF 为负；San Ciprián 重启后持续亏损。</td></tr>
+      <tr><td>5</td><td><strong>为什么是现在？</strong></td><td>52 周 +107% 的涨幅已经将大部分"铝超级周期"故事定价。Q2 财报（7月16日）将是关键的压力测试。</td></tr>
+      <tr><td>6</td><td><strong>什么会改变评级/目标价？</strong></td><td><strong>上调至 BUY：</strong>Q2 FCF >$300M + 铝价 >$4,000 → 目标 $75<br><strong>下调至 SELL：</strong>Q2 FCF 再次为负 或 铝价 <$3,000 → 目标 $35</td></tr>
+      <tr><td>7</td><td><strong>还缺少什么证据？</strong></td><td>（1）Q2 2026 财报（7/16）——FCF 能否转正？（2）全球铝库存趋势（LME + SHFE）——当前库存处于历史低位，支撑铝价；（3）中国电解铝实际产量数据——4500万吨上限是否被有效执行。</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="div-line"></div>
+
+  <p style="font-size:17px; font-weight:700; color:var(--navy); text-align:center; padding:24px 0;">
+    ⏸️ 行动分类：<span class="orange" style="font-size:22px;">HOLD 持有</span><br><br>
+    <span style="font-size:14px; font-weight:400; color:var(--text-light);">
+    <strong>周期股的铁律：在 PE 低时卖出，在 PE 高时（甚至亏损时）买入。</strong><br>
+    美国铝业当前的 Forward P/E 6.97x 恰恰说明我们处于盈利周期的高点。<br>
+    如果您已持有——继续持有享受铝价红利，但设置 $50 止损（MA200 附近）。<br>
+    如果您考虑买入——等待 Q2 财报（7月16日）FCF 数据后再决策。<br>
+    仓位上限 3%，不设加仓计划——周期股应"买在绝望，卖在狂欢"。<br>
+    <strong>如果您是宏观/铝价多头，更优选择可能是直接做多铝期货或 LME 铝 ETF——不需要承担 AA 的公司特定风险（San Ciprián、运营、稀释）。</strong>
+    </span>
+  </p>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disc-section">
+  <h4>⚠️ 免责声明</h4>
+  <p><strong>本报告由 Snail Investment Research 编制，仅供参考，不构成个人投资建议。</strong></p>
+  <p>数据来源：Alcoa FY2025 年报 (10-K)、Q1 2026 财报 8-K（2026年4月16日发布）、StockAnalysis.com、Alcoa 投资者关系官网 (investors.alcoa.com)、LME 铝价公开数据。截止 2026 年 6 月 21 日。</p>
+  <p>估值风险：作为大宗商品周期股，美国铝业的盈利和估值对铝价高度敏感。$100/吨的铝价变动可导致 EPS 约 $0.50 的变化。本报告中的中周期假设（$3,500/吨）可能被证明过于乐观或悲观。在铝价极端波动的情况下，目标价可能在短期内大幅偏离。Altman Z-Score 1.76 是需要认真对待的警示信号。</p>
+  <p>本报告不构成对铝价走势的预测——投资者应自行判断大宗商品价格趋势。</p>
+  <p>© 2026 Snail Investment. 保留所有权利。</p>
+</div>
+<div class="footer-line">Produced by <strong>Snail Investment</strong> &mdash; Independent Equity Research &mdash; June 21, 2026</div>
+
+</div>
+</div>
+
+</body>
+</html>
