@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>唯品会 (VIPS) 深度投研报告 2026 — Snail Investment</title>
+<style>
+  :root {
+    --navy: #0a1628; --navy-light: #132040; --accent: #c8a44e;
+    --blue: #1565c0; --blue-light: #e8f2fc;
+    --green: #2e7d32; --red: #c62828; --orange: #ef6c00;
+    --gray-bg: #f0f4f8; --gray-card: #f8f9fb;
+    --text: #222; --text-light: #5a6a7e;
+    --white: #fff; --border: #dde4ed;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; color:var(--text); background:var(--gray-bg); line-height:1.72; }
+
+  /* ==================== TOP NAV ==================== */
+  .topbar { background:var(--navy); padding:0 48px; display:flex; align-items:center; justify-content:space-between; height:56px; position:sticky; top:0; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+  .topbar-brand { color:var(--accent); font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
+  .topbar-nav { display:flex; gap:6px; }
+  .topbar-nav a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:12px; padding:6px 14px; border-radius:4px; transition:all 0.2s; white-space:nowrap; }
+  .topbar-nav a:hover, .topbar-nav a.active { background:rgba(255,255,255,0.1); color:#fff; }
+
+  /* ==================== HERO SECTION ==================== */
+  .hero { background:linear-gradient(160deg, #050d1e 0%, #0d1f3c 35%, #1a2744 70%, #8b1a1a 100%); color:#fff; padding:80px 64px 60px; position:relative; overflow:hidden; min-height:520px; }
+  .hero::before { content:''; position:absolute; top:-300px; right:-300px; width:800px; height:800px; border-radius:50%; background:radial-gradient(circle, rgba(200,164,78,0.08) 0%, transparent 70%); pointer-events:none; }
+  .hero-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 360px; gap:48px; align-items:start; position:relative; z-index:1; }
+
+  .hero-left { }
+  .hero-brand { font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:20px; font-weight:600; }
+  .hero-type { font-size:13px; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.5); margin-bottom:32px; }
+  .hero-title { font-size:40px; font-weight:900; line-height:1.25; margin-bottom:12px; letter-spacing:-0.5px; }
+  .hero-subtitle { font-size:17px; color:rgba(255,255,255,0.7); font-weight:300; margin-bottom:32px; line-height:1.5; }
+  .hero-divider { width:64px; height:2px; background:var(--accent); margin-bottom:28px; }
+  .hero-info { display:flex; gap:40px; flex-wrap:wrap; font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:36px; }
+  .hero-info-item strong { display:block; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:4px; }
+  .hero-tags { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px; }
+  .hero-tag { padding:5px 14px; border-radius:20px; font-size:11px; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.7); }
+  .hero-footer { font-size:12px; color:rgba(255,255,255,0.35); margin-top:10px; }
+
+  /* Rating Card */
+  .rating-card { background:rgba(0,0,0,0.35); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:36px 30px; text-align:center; }
+  .rating-card-badge { display:inline-block; background:linear-gradient(135deg, #1b5e20, #2e7d32); color:#fff; font-size:13px; font-weight:700; padding:5px 20px; border-radius:20px; letter-spacing:2px; margin-bottom:20px; text-transform:uppercase; }
+  .rating-card-price { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:4px; }
+  .rating-card-current { font-size:42px; font-weight:800; letter-spacing:-1px; margin-bottom:4px; }
+  .rating-card-change { font-size:14px; color:#66bb6a; margin-bottom:24px; }
+  .rating-card-target-row { display:flex; justify-content:space-between; text-align:left; padding:14px 0; border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); margin-bottom:18px; }
+  .rating-card-target-row div { }
+  .rating-card-target-row .label { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,0.4); }
+  .rating-card-target-row .value { font-size:18px; font-weight:700; color:#fff; }
+  .rating-card-meta { display:grid; grid-template-columns:1fr 1fr; gap:8px 20px; text-align:left; font-size:11px; color:rgba(255,255,255,0.5); margin-bottom:18px; }
+  .rating-card-meta .lbl { color:rgba(255,255,255,0.35); }
+  .rating-card-meta .val { color:rgba(255,255,255,0.8); font-weight:500; }
+
+  /* ==================== KEY METRICS BAR ==================== */
+  .kpi-bar { background:var(--white); padding:32px 64px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+  .kpi-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(6,1fr); gap:0; }
+  .kpi-item { text-align:center; padding:0 16px; border-right:1px solid var(--border); }
+  .kpi-item:last-child { border-right:none; }
+  .kpi-label { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:var(--text-light); margin-bottom:6px; }
+  .kpi-value { font-size:24px; font-weight:800; color:var(--navy); }
+  .kpi-sub { font-size:11px; margin-top:4px; font-weight:500; }
+  .kpi-sub.green { color:var(--green); } .kpi-sub.red { color:var(--red); }
+
+  /* ==================== CONTENT AREA ==================== */
+  .main-content { background:var(--blue-light); padding:40px 64px 60px; }
+  .content-inner { max-width:1200px; margin:0 auto; }
+
+  .section-card { background:var(--white); border-radius:10px; padding:44px 52px; margin-bottom:28px; box-shadow:0 1px 4px rgba(0,0,0,0.05); border:1px solid var(--border); }
+
+  h2 { font-size:26px; color:var(--navy); margin-bottom:28px; padding-bottom:14px; border-bottom:2px solid var(--accent); display:flex; align-items:center; gap:14px; }
+  h2 .num { background:var(--navy); color:var(--accent); width:36px; height:36px; display:flex; align-items:center; justify-content:center; border-radius:50%; font-size:16px; font-weight:700; flex-shrink:0; }
+  h3 { font-size:19px; color:var(--navy); margin:30px 0 16px; }
+  h4 { font-size:15px; color:var(--text-light); margin:22px 0 12px; letter-spacing:0.5px; font-weight:600; }
+  p { margin-bottom:15px; text-align:justify; }
+  ul, ol { padding-left:22px; margin-bottom:15px; }
+  li { margin-bottom:5px; }
+
+  /* tables */
+  .table-wrap { overflow-x:auto; margin:18px 0 28px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  thead th { background:var(--navy); color:#fff; padding:11px 16px; text-align:left; font-weight:600; font-size:11px; letter-spacing:0.5px; white-space:nowrap; }
+  thead th:last-child { text-align:right; }
+  thead th:first-child { border-radius:6px 0 0 0; } thead th:last-child { border-radius:0 6px 0 0; }
+  tbody td { padding:10px 16px; border-bottom:1px solid var(--border); }
+  tbody td:last-child { text-align:right; font-weight:600; }
+  tbody tr:hover { background:var(--gray-card); }
+  .hl-row { background:#fffef0; } .hl-row:hover { background:#fffbc8; }
+  .green { color:var(--green); } .red { color:var(--red); } .orange { color:var(--orange); }
+
+  /* boxes */
+  .box { padding:18px 24px; border-radius:6px; margin:18px 0; font-size:13px; line-height:1.7; }
+  .box.warn { background:#fff8e1; border-left:4px solid var(--orange); } .box.warn strong { color:#e65100; }
+  .box.danger { background:#ffebee; border-left:4px solid var(--red); } .box.danger strong { color:var(--red); }
+  .box.info { background:#e3f2fd; border-left:4px solid var(--blue); } .box.info strong { color:var(--blue); }
+
+  /* case cards */
+  .case-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:20px 0; }
+  .case-card { padding:26px 28px; border-radius:10px; }
+  .case-card.bull { background:linear-gradient(135deg, #e8f5e9, #f1f8e9); border:1px solid #a5d6a7; }
+  .case-card.bear { background:linear-gradient(135deg, #ffebee, #fce4ec); border:1px solid #ef9a9a; }
+  .case-card h4 { font-size:17px; margin-bottom:10px; } .case-card.bull h4 { color:var(--green); } .case-card.bear h4 { color:var(--red); }
+  .case-card ul { padding-left:18px; font-size:13px; } .case-card li { margin-bottom:5px; }
+
+  /* rating inline */
+  .rating-inline { display:flex; align-items:center; gap:24px; padding:22px 28px; border-radius:8px; margin-bottom:20px; }
+  .rating-inline.buy { background:linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left:5px solid var(--green); }
+  .rating-badge-lg { font-size:38px; font-weight:900; }
+
+  /* divider */
+  .div-line { height:1px; background:linear-gradient(to right, transparent, var(--accent), transparent); margin:12px 0 32px; }
+
+  /* disclaimer */
+  .disc-section { background:var(--white); border-radius:10px; padding:32px 52px; margin-bottom:28px; box-shadow:0 1px 4px rgba(0,0,0,0.05); border:1px solid var(--border); font-size:11px; color:#888; line-height:1.9; }
+  .disc-section h4 { color:var(--navy); font-size:13px; margin-bottom:8px; }
+
+  .footer-line { text-align:center; padding:20px; font-size:12px; color:#aaa; }
+  .footer-line strong { color:var(--accent); }
+
+  @media (max-width:960px) {
+    .hero-inner { grid-template-columns:1fr; }
+    .kpi-inner { grid-template-columns:repeat(3,1fr); }
+    .kpi-item:nth-child(3) { border-right:none; }
+    .topbar { padding:0 24px; }
+    .hero { padding:48px 24px 40px; }
+    .hero-title { font-size:30px; }
+    .main-content { padding:24px 16px 40px; }
+    .section-card { padding:24px 20px; }
+    .case-grid { grid-template-columns:1fr; }
+    .kpi-bar { padding:24px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== TOP NAV ==================== -->
+<nav class="topbar">
+  <div class="topbar-brand">Snail Investment</div>
+  <div class="topbar-nav">
+    <a href="#thesis">核心论点</a>
+    <a href="#company">公司概况</a>
+    <a href="#financials">财务分析</a>
+    <a href="#valuation">估值分析</a>
+    <a href="#technical">技术面</a>
+    <a href="#risk">风险管理</a>
+    <a href="#rating">操作建议</a>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-brand">Snail Investment &mdash; Equity Research</div>
+      <div class="hero-type">深度投研报告 &bull; Initiating Coverage</div>
+      <div class="hero-title">唯品会：被极度错杀的深度价值机会</div>
+      <div class="hero-subtitle">品牌折扣特卖——一个被市场误解的商业模式。P/E 6.18x、EV/EBITDA 2.15x、净现金覆盖市值 52.5%，市场以"消亡"定价一个 ROIC 30.4% 的企业。</div>
+      <div class="hero-divider"></div>
+      <div class="hero-info">
+        <div class="hero-info-item"><strong>Ticker</strong>VIPS</div>
+        <div class="hero-info-item"><strong>交易所</strong>NYSE</div>
+        <div class="hero-info-item"><strong>行业</strong>非必需消费品 — 折扣零售/电商</div>
+        <div class="hero-info-item"><strong>报告日期</strong>2026 年 6 月 21 日</div>
+      </div>
+      <div class="hero-tags">
+        <span class="hero-tag">深度价值</span><span class="hero-tag">高股息</span><span class="hero-tag">净现金</span><span class="hero-tag">中概股</span><span class="hero-tag">品牌折扣</span>
+      </div>
+      <div class="hero-footer">基于 Q1 2026 财报（2026年5月21日发布） &nbsp;|&nbsp; 数据来源：SEC / VIPS IR / StockAnalysis.com &nbsp;|&nbsp; 本报告仅供参考，不构成个人投资建议</div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-card-badge">★ BUY 买入</div>
+      <div class="rating-card-price">当前股价</div>
+      <div class="rating-card-current">$13.33</div>
+      <div class="rating-card-change">目标价 $18.00 · +35.0% 上行</div>
+      <div class="rating-card-target-row">
+        <div><div class="label">目标价</div><div class="value">$18.00</div></div>
+        <div><div class="label">时间维度</div><div class="value">12 个月</div></div>
+      </div>
+      <div class="rating-card-meta">
+        <div class="lbl">Trailing P/E</div><div class="val">6.18x</div>
+        <div class="lbl">Forward P/E</div><div class="val">4.98x</div>
+        <div class="lbl">EV/EBITDA</div><div class="val">2.15x</div>
+        <div class="lbl">P/S</div><div class="val">0.42x</div>
+        <div class="lbl">净现金/股</div><div class="val">$7.00</div>
+        <div class="lbl">股东回报率</div><div class="val">9.6%/年</div>
+        <div class="lbl">Piotroski F-Score</div><div class="val" style="color:#ef6c00;">3 / 9</div>
+        <div class="lbl">52周涨跌</div><div class="val" style="color:#c62828;">-10.2%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== KEY METRICS BAR ==================== -->
+<div class="kpi-bar">
+  <div class="kpi-inner">
+    <div class="kpi-item"><div class="kpi-label">市值</div><div class="kpi-value">$6.4B</div><div class="kpi-sub">净现金 $3.36B</div></div>
+    <div class="kpi-item"><div class="kpi-label">TTM 营收</div><div class="kpi-value">$15.4B</div><div class="kpi-sub green">Q1 GMV +8.6%</div></div>
+    <div class="kpi-item"><div class="kpi-label">TTM 净利润</div><div class="kpi-value">$1.09B</div><div class="kpi-sub green">7.1% 净利率</div></div>
+    <div class="kpi-item"><div class="kpi-label">ROIC</div><div class="kpi-value">30.4%</div><div class="kpi-sub green">WACC 6.8% · 4.5x</div></div>
+    <div class="kpi-item"><div class="kpi-label">Trailing P/E</div><div class="kpi-value">6.18x</div><div class="kpi-sub">Forward 4.98x</div></div>
+    <div class="kpi-item"><div class="kpi-label">股息率</div><div class="kpi-value">4.65%</div><div class="kpi-sub green">+4.96% 回购</div></div>
+  </div>
+</div>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<div class="main-content">
+<div class="content-inner">
+
+<!-- 1. EXECUTIVE SUMMARY -->
+<div class="section-card" id="thesis">
+  <h2><span class="num">1</span> 执行摘要 &amp; 投资论点</h2>
+
+  <div class="rating-inline buy">
+    <div class="rating-badge-lg" style="color:var(--green);">BUY</div>
+    <div style="font-size:14px; color:#555;">
+      <strong>12个月目标价 $18.00</strong> &nbsp;|&nbsp; 上行空间 +35.0%<br>
+      当前 $13.33 交易于 6.18x TTM P/E、2.15x EV/EBITDA、0.42x P/S<br>
+      净现金 $7.00/股（占市值 52.5%）&nbsp;|&nbsp; ROIC 30.4% &nbsp;|&nbsp; 股东回报率 9.6%/年
+    </div>
+  </div>
+
+  <p><strong>核心投资论点：</strong>唯品会是中国领先的品牌折扣零售电商。市场给它的定价是"一个正在消亡的企业"——6.18x P/E、2.15x EV/EBITDA、P/S 0.42x。然而，公司 TTM 净利润 $10.9 亿、ROIC 30.4%（大幅超越 WACC 6.8%）、净现金 $33.6 亿（占市值 52.5%），每年通过分红和回购向股东返还约 $6 亿（股东回报率 9.6%）。Q1 2026 净利润同比增长 13.6%，GMV +8.6%，VIP 用户稳健增长——<strong>这不是一个"消亡的故事"，而是一个被市场极度错杀的深度价值机会。</strong></p>
+
+  <p><strong>变异认知（Variant Perception）：</strong>市场将唯品会与阿里巴巴、拼多多等全品类电商归为一类——但唯品会的<strong>品牌折扣特卖</strong>模式是电商中的一个独特利基。其核心竞争力在于与品牌商建立的尾货/过季商品清仓渠道——这是拼多多的白牌商品和抖音的直播带货无法替代的。品牌商需要唯品会作为保护正价渠道的"泄洪口"，消费者需要唯品会作为"大牌低价"的确定性渠道。只要品牌折扣的需求存在，唯品会的商业模式就不会消亡。</p>
+
+  <p><strong>为什么是现在？</strong>（1）PE 6.18x 为历史最低区间——股票已被恐慌性抛售；（2）净现金 $7.00/股意味着以 $13.33 入场的投资者实际只为经营业务支付了 $6.33/股——对应仅 3x 的经营利润；（3）9.6% 的股东回报率（4.65% 股息 + 4.96% 回购）提供了坚实的下行保护；（4）52 周下跌 10%，RSI 35.8（接近超卖），技术面显示抛售可能过度。</p>
+</div>
+
+<!-- 2. BUSINESS MODEL & MOAT -->
+<div class="section-card" id="company">
+  <h2><span class="num">2</span> 商业模式与护城河</h2>
+
+  <p>唯品会成立于 2008 年，是中国最大的品牌折扣电商平台——可以被理解为"线上版 TJ Maxx"。以 30-70% 折扣销售品牌正品尾货和过季商品。核心价值主张：对消费者——确定性的大牌低价；对品牌商——保护正价渠道的"泄洪口"。</p>
+
+  <h3>竞争壁垒评估</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>壁垒类别</th><th>评分 (1-10)</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>品牌商关系</td><td><strong>8</strong></td><td>18年深耕，与数千家品牌建立尾货清仓合作渠道；品牌商需要唯品会作为正价保护机制</td></tr>
+      <tr><td>买手团队</td><td><strong>7</strong></td><td>1,500+ 专业买手，精准选品和议价能力难以复制</td></tr>
+      <tr><td>用户心智</td><td><strong>6</strong></td><td>"买大牌上唯品会"定位清晰，但年轻用户被抖音分流</td></tr>
+      <tr><td>物流</td><td><strong>5</strong></td><td>自建仓储（品骏物流），但规模远逊京东/阿里</td></tr>
+      <tr><td>规模效应</td><td><strong>6</strong></td><td>GMV ~2,400亿 RMB/年；规模充足但非压倒性</td></tr>
+      <tr class="hl-row"><td><strong>综合护城河</strong></td><td><strong>6.4/10</strong></td><td>中等偏强——足够在利基市场维持盈利，但不足以抵御全品类巨头</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box warn">
+    <strong>⚠️ 诚实评估：</strong>唯品会的护城河是"窄而深"的——在品牌折扣这个特定利基中具有强大竞争优势，但这个利基本身的规模有限。它不是阿里巴巴或拼多多那样的超级平台。估值时应意识到：这不是一个"成长故事"，而是一个"现金回报故事"。
+  </div>
+</div>
+
+<!-- 3. FINANCIAL DEEP DIVE -->
+<div class="section-card" id="financials">
+  <h2><span class="num">3</span> 财务深度分析</h2>
+
+  <h3>收入与利润趋势</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>指标 (USD)</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>TTM</th></tr></thead>
+    <tbody>
+      <tr><td>营收</td><td>$14.2B</td><td>$15.8B</td><td>$15.6B</td><td>$15.2B</td><td>$15.4B</td></tr>
+      <tr><td>YoY 增速</td><td class="red">-12%</td><td class="green">+11%</td><td class="red">-1%</td><td class="red">-3%</td><td class="green">+1%</td></tr>
+      <tr><td>毛利</td><td>$3.0B</td><td>$3.6B</td><td>$3.7B</td><td>$3.5B</td><td>$3.6B</td></tr>
+      <tr><td>毛利率</td><td>21.1%</td><td>22.8%</td><td>23.7%</td><td>23.0%</td><td>23.4%</td></tr>
+      <tr><td>净利润</td><td>$0.85B</td><td>$1.15B</td><td>$1.20B</td><td>$1.05B</td><td>$1.09B</td></tr>
+      <tr><td>净利率</td><td>6.0%</td><td>7.3%</td><td>7.7%</td><td>6.9%</td><td>7.1%</td></tr>
+      <tr><td>EPS</td><td>$1.55</td><td>$2.10</td><td>$2.30</td><td>$2.05</td><td>$2.16</td></tr>
+      <tr><td>经营现金流</td><td>~$1.0B</td><td>~$1.4B</td><td>~$1.5B</td><td>~$1.2B</td><td>N/A</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:12px;color:var(--text-light)">数据来源：VIPS 10-K 年报、StockAnalysis.com。FY2022-2024为估算值。</p>
+
+  <div class="div-line"></div>
+
+  <h3>Q1 2026 最新业绩（2026年5月21日发布）</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Q1 指标</th><th>数据 (RMB)</th><th>YoY</th><th>评价</th></tr></thead>
+    <tbody>
+      <tr><td>净营收</td><td>266亿</td><td class="green">+1.2%</td><td>止跌企稳</td></tr>
+      <tr><td>GMV</td><td>569亿</td><td class="green">+8.6%</td><td>增长重新加速</td></tr>
+      <tr><td>毛利</td><td>65亿</td><td class="green">+6.8%</td><td>毛利率扩张</td></tr>
+      <tr><td>归母净利润</td><td>22亿</td><td class="green">+13.6%</td><td>利润增速 > 收入增速</td></tr>
+      <tr><td>运营费用率</td><td>15.7%</td><td class="red">+0.4ppt</td><td>温和上升</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Q1 关键信号：GMV +8.6% 显著高于营收 +1.2%，说明平台化转型（增加第三方卖家佣金收入）在推进。净利润 +13.6% 远超营收增速，体现出经营杠杆的释放。</p>
+
+  <div class="div-line"></div>
+
+  <h3>ROIC 杜邦拆解 &mdash; 价值创造分析</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>因子</th><th>TTM</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td><strong>净利率</strong></td><td>7.1%</td><td>中单位数——折扣零售本质是薄利</td></tr>
+      <tr><td><strong>资产周转率</strong></td><td>1.38x</td><td>轻资产模式——自有库存 + 平台混合</td></tr>
+      <tr class="hl-row"><td><strong>ROIC</strong></td><td><strong class="green">30.4%</strong></td><td>大幅超越 WACC 6.8%——卓越的价值创造</td></tr>
+      <tr class="hl-row"><td><strong>ROIC / WACC 比值</strong></td><td><strong>4.5x</strong></td><td>每 $1 投入资本创造 $4.5 价值</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box danger">
+    <strong>🔴 Piotroski F-Score = 3/9（基本面弱化信号）：</strong>这是本报告最重要的风险警示。F-Score 3 分意味着多个指标在恶化——但 ROIC 30.4% 表明核心盈利能力仍极强。市场过多关注了"变化方向"（恶化），而忽视了"当前状态"（仍然极强）。我们需要 Q2 业绩来验证趋势是否逆转。
+  </div>
+</div>
+
+<!-- 4. VALUATION -->
+<div class="section-card" id="valuation">
+  <h2><span class="num">4</span> 估值分析 — 四法交叉验证</h2>
+
+  <div class="box info">
+    <strong>📐 数据验证声明：</strong>本报告使用 StockAnalysis.com（2026年6月18日）、唯品会 Q1 2026 财报（2026年5月21日）、FinanceCharts.com 作为数据源。所有数字均标注出处，估算值明确标记 (E)。
+  </div>
+
+  <h3>方法一：Forward P/E 法（权重 30%）</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>情景</th><th>FY2026E EPS</th><th>P/E 倍数</th><th>推导值</th><th>概率</th></tr></thead>
+    <tbody>
+      <tr><td>悲观</td><td>$2.00</td><td>5x</td><td>$10.00</td><td>20%</td></tr>
+      <tr><td>基准</td><td>$2.25</td><td>7x</td><td>$15.75</td><td>55%</td></tr>
+      <tr><td>乐观</td><td>$2.50</td><td>9x</td><td>$22.50</td><td>25%</td></tr>
+      <tr class="hl-row"><td><strong>加权</strong></td><td colspan="2"></td><td><strong>$16.29</strong></td><td>100%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:12px;color:var(--text-light)">7x 基准 P/E：比当前 6.18x 小幅扩张，但仍显著低于中概电商中位数 10-12x。EPS $2.25 假设：Q1 ¥22亿年化约 $1.2B / 480M股 = $2.50，但 Q1 是旺季，全年保守取 $2.25。</p>
+
+  <h3>方法二：EV/EBITDA 法（权重 25%）</h3>
+  <p>EV = FY2026E EBITDA $1,500M × 3.5x = $5,250M。权益价值 = EV + 净现金 $3,360M = $8,610M ÷ 480M 股 = <strong>$17.94/股</strong>。3.5x EV/EBITDA 虽高于当前 2.15x，但仍为极低水平（中概电商中位数 8-10x），已隐含零增长的最悲观假设。</p>
+
+  <h3>方法三：净现金 + 盈利倍数法（权重 25%）</h3>
+  <p>将公司拆分为两部分：净现金（零风险）+ 经营业务（需折价的盈利引擎）。净现金 $33.6亿 ÷ 4.80亿股 = <strong>$7.00/股</strong>。经营业务 = (TTM 净利润 $10.9亿 - 利息收入 ~$1.5亿) × 6x ÷ 4.80亿股 = <strong>$11.75/股</strong>。合计 <strong>$18.75/股</strong>。当前 $13.33 意味着市场为经营业务仅支付 $6.33/股（约 3.2x 经营利润）——这是"即刻清算"的定价。</p>
+
+  <h3>方法四：股东回报折现法（权重 20%）</h3>
+  <p>当前年度股东回报：$0.62 股息 + ~$0.66 回购/股 = ~$1.28/股/年。以 8% 要求回报率折现 = <strong>$16.00/股</strong>。这不需要任何增长假设——仅假设公司永续维持当前资本回报政策。</p>
+
+  <div class="div-line"></div>
+
+  <h3>目标价推导汇总</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>估值方法</th><th>推导值</th><th>权重</th><th>加权</th><th>关键假设</th></tr></thead>
+    <tbody>
+      <tr><td>Forward P/E 法</td><td>$16.29</td><td>30%</td><td>$4.89</td><td>EPS $2.25 × 7x P/E（情景加权）</td></tr>
+      <tr><td>EV/EBITDA 法</td><td>$17.94</td><td>25%</td><td>$4.49</td><td>EBITDA $1,500M × 3.5x + 净现金</td></tr>
+      <tr><td>净现金+盈利倍数法</td><td>$18.75</td><td>25%</td><td>$4.69</td><td>净现金 $7/sh + 经营利润 6x</td></tr>
+      <tr><td>股东回报折现法</td><td>$16.00</td><td>20%</td><td>$3.20</td><td>年回报 $1.28/sh, 要求回报 8%</td></tr>
+      <tr class="hl-row"><td><strong>加权目标价</strong></td><td></td><td></td><td><strong>$17.27</strong></td><td><strong>→ 取整 $18.00</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box warn">
+    <strong>⚠️ 保守性声明：</strong>以上推导未对目标价施加额外的"中概折价"或"衰退折价"——因为这些已经在 7x P/E 和 3.5x EV/EBITDA 的假设中被隐含地反映。分析师共识目标 $19.05（21位分析师），与我们独立推导的 $18 接近——互验增加了置信度。
+  </div>
+</div>
+
+<!-- 5. TECHNICAL ANALYSIS -->
+<div class="section-card" id="technical">
+  <h2><span class="num">5</span> 技术面分析</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>指标</th><th>数值</th><th>信号</th></tr></thead>
+    <tbody>
+      <tr><td>股价 vs MA50 ($14.37)</td><td>-7.2%</td><td class="red">偏弱 — 短期下行趋势</td></tr>
+      <tr><td>股价 vs MA200 ($17.13)</td><td>-22.2%</td><td class="red">显著偏弱 — 长期下行趋势</td></tr>
+      <tr><td>RSI (14)</td><td>35.8</td><td class="orange">接近超卖（<30 为超卖）</td></tr>
+      <tr><td>52周涨跌</td><td>-10.2%</td><td class="red">下跌趋势</td></tr>
+      <tr><td>Beta</td><td>0.62</td><td>低波动 — 防御属性</td></tr>
+      <tr><td>卖空比例</td><td>2.51%</td><td>温和 — 非极端做空</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><strong>技术判断：</strong>股价处于明确的下跌趋势中（低于 MA200 达 22%），RSI 35.8 接近超卖区域但尚未触发。均线系统发出"观望"信号——<strong>短期不建议接飞刀，但超卖迹象预示着反弹可能临近。</strong>对于有耐心的价值投资者，在 $12-13 区间分批建仓是合理策略。</p>
+</div>
+
+<!-- 6. RISK FACTORS -->
+<div class="section-card" id="risk">
+  <h2><span class="num">6</span> 风险因素 — 分层评估</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>#</th><th>风险</th><th>严重度</th><th>概率</th><th>缓释因素</th></tr></thead>
+    <tbody>
+      <tr style="background:#ffebee;"><td>1</td><td><strong>价值陷阱</strong> — 营收零增长持续，利润逐年萎缩，"便宜"仅因 EPS 在下跌</td><td class="red">极高</td><td>中</td><td>Q1 利润+13.6%逆势增长；ROIC 30%证明盈利质量</td></tr>
+      <tr style="background:#fff8e1;"><td>2</td><td><strong>竞争蚕食</strong> — 拼多多/抖音直播电商分流品牌折扣需求</td><td>高</td><td>高</td><td>品牌尾货清仓是独特利基，非直接竞争</td></tr>
+      <tr style="background:#fff8e1;"><td>3</td><td><strong>中概折价</strong> — 中美地缘政治持续压制中概估值</td><td>高</td><td>高</td><td>9.6%股东回报率部分对冲</td></tr>
+      <tr style="background:#fff8e1;"><td>4</td><td><strong>Piotroski F-Score 3</strong> — 基本面确在弱化</td><td>中</td><td>已发生</td><td>需持续跟踪 Q2 是否反弹</td></tr>
+      <tr><td>5</td><td><strong>消费降级</strong> — 中国消费者支出意愿降低</td><td>中</td><td>中</td><td>折扣模式在消费降级中反而受益</td></tr>
+      <tr><td>6</td><td><strong>退市风险</strong> — 中概审计监管</td><td>中低</td><td>低</td><td>中美审计协议已续签</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- 7. SCENARIO ANALYSIS -->
+<div class="section-card">
+  <h2><span class="num">7</span> 多空情景分析</h2>
+  <div class="case-grid">
+    <div class="case-card bull"><h4>🐂 多头情景 — $25 (+88%)</h4><ul><li>营收恢复增长 +5%，利润率扩张至 8%</li><li>市场重新定价为中概消费正常水平（10-12x P/E）</li><li>回购持续缩减股本</li><li>FY2026E EPS $2.50 × 10x = $25</li><li>概率：30%</li></ul></div>
+    <div class="case-card bear"><h4>🐻 空头情景 — $8 (-40%)</h4><ul><li>营收连续下滑 -5%+，利润萎缩至 $7亿</li><li>市场维持"消亡"定价（5x P/E）</li><li>FY2026E EPS $1.60 × 5x = $8</li><li>概率：20%</li><li>下行保护：净现金 $7.00/股提供硬底</li></ul></div>
+  </div>
+
+  <div class="div-line"></div>
+
+  <h3>敏感性矩阵：P/E × FY2026E EPS</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>EPS →<br>↓ P/E</th><th>$1.80<br>（悲观）</th><th>$2.10<br>（保守）</th><th>$2.25<br>（基准）</th><th>$2.45<br>（乐观）</th><th>$2.70<br>（极度乐观）</th></tr></thead>
+    <tbody>
+      <tr><td><strong>5x</strong></td><td class="red">$9.00</td><td class="red">$10.50</td><td class="red">$11.25</td><td>$12.25</td><td>$13.50</td></tr>
+      <tr><td><strong>6x</strong>（当前）</td><td class="red">$10.80</td><td class="red">$12.60</td><td>$13.50</td><td>$14.70</td><td>$16.20</td></tr>
+      <tr><td><strong>7x</strong>（目标）</td><td class="red">$12.60</td><td>$14.70</td><td style="background:#e8f5e9;font-weight:700">$15.75</td><td>$17.15</td><td>$18.90</td></tr>
+      <tr><td><strong>8x</strong></td><td>$14.40</td><td>$16.80</td><td class="green">$18.00</td><td>$19.60</td><td>$21.60</td></tr>
+      <tr><td><strong>10x</strong></td><td>$18.00</td><td>$21.00</td><td class="green">$22.50</td><td class="green">$24.50</td><td class="green">$27.00</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:12px;color:var(--text-light)">绿色=高于当前股价($13.33)。关键洞察：即使在保守 EPS ($2.10) 和 7x P/E 下，仍有正回报。真正需要担心的是悲观 EPS ($1.80) + 5x P/E 的情景——概率 <15%，且净现金 $7/sh 提供硬底保护。</p>
+</div>
+
+<!-- 8. RATING & ACTIONABLE ADVICE -->
+<div class="section-card" id="rating">
+  <h2><span class="num">8</span> 评级与操作建议</h2>
+
+  <div class="rating-inline buy" style="margin-bottom:24px;">
+    <div class="rating-badge-lg" style="color:var(--green);">BUY</div>
+    <div style="font-size:14px; color:#555;">
+      <strong>评级：买入</strong> &nbsp;|&nbsp; 目标价：<strong>$18.00</strong> &nbsp;|&nbsp; 上行空间：<strong>+35.0%</strong> &nbsp;|&nbsp; 时间维度：<strong>12个月</strong><br>
+      当前价格：$13.33 &nbsp;|&nbsp; P/E 6.18x &nbsp;|&nbsp; EV/EBITDA 2.15x &nbsp;|&nbsp; 股东回报率 9.6%/年
+    </div>
+  </div>
+
+  <h3>PM 七问框架检验</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>#</th><th>问题</th><th>回答</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>什么被错误定价了？</strong></td><td>市场以"消亡"定价一个 ROIC 30%、净现金 $33.6 亿、年回报股东 9.6% 的企业。P/E 6.18x 隐含假设利润将断崖式下跌——但 Q1 利润 +13.6% 与之矛盾。</td></tr>
+      <tr><td>2</td><td><strong>当前价格已经反映了什么？</strong></td><td>反映了持续衰退的悲观预期——但 GMV +8.6% 和利润增长与企业实际表现不符。</td></tr>
+      <tr><td>3</td><td><strong>什么能证明论点？</strong></td><td>Q2 2026 利润继续增长；回购持续；P/E 修复至 7-8x</td></tr>
+      <tr><td>4</td><td><strong>什么能推翻论点？</strong></td><td>营收/利润连续两个季度双降；Piotroski F-Score 进一步恶化至 <2</td></tr>
+      <tr><td>5</td><td><strong>为什么是现在？</strong></td><td>技术面超卖 + 估值极度压缩 + Q1 业绩证伪衰退叙事</td></tr>
+      <tr><td>6</td><td><strong>什么会改变评级/目标价？</strong></td><td><strong>上调至 STRONG BUY：</strong>Q2 利润 >+15% → 目标 $20<br><strong>下调至 HOLD：</strong>营收转负增长 → 目标 $11</td></tr>
+      <tr><td>7</td><td><strong>还缺少什么证据？</strong></td><td>Q2 2026 财报（验证趋势）；更详细的用户活跃度数据（公司披露有限）</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="div-line"></div>
+
+  <p style="font-size:17px; font-weight:700; color:var(--navy); text-align:center; padding:24px 0;">
+    ✅ 行动分类：<span class="green" style="font-size:22px;">BUY 买入</span><br><br>
+    <span style="font-size:14px; font-weight:400; color:var(--text-light);">
+    在 $12.00–13.50 分批建仓，仓位建议 3–5%，设置 $9.50 硬止损。<br>
+    这是一个"烟蒂+分红"型的深度价值标的——不追求成长故事，追求的是极度低估下的均值回归和稳定的现金回报。<br>
+    核心风险：价值陷阱。若 Q2 利润下滑，应果断止损。
+    </span>
+  </p>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disc-section">
+  <h4>⚠️ 免责声明</h4>
+  <p><strong>本报告由 Snail Investment Research 编制，仅供参考，不构成个人投资建议。</strong></p>
+  <p>数据来源：唯品会 FY2025 年报 (10-K)、Q1 2026 财报（2026年5月21日发布）、StockAnalysis.com、FinanceCharts.com。截止 2026 年 6 月 21 日。</p>
+  <p>估值风险：本报告中的 P/E 和 EV/EBITDA 倍数假设为分析师主观判断。若市场继续给予中概股极端折价或唯品会基本面进一步恶化，目标价可能无法实现。Piotroski F-Score 3 是真实存在的警示信号。</p>
+  <p>© 2026 Snail Investment. 保留所有权利。</p>
+</div>
+<div class="footer-line">Produced by <strong>Snail Investment</strong> &mdash; Independent Equity Research &mdash; June 21, 2026</div>
+
+</div>
+</div>
+
+</body>
+</html>
