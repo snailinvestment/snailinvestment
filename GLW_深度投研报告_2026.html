@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>康宁 GLW 深度投研报告 | Snail Investment | 截至 2026-06-18</title>
+  <style>
+    :root {
+      --page: #EFF4FB;
+      --paper: #ffffff;
+      --ink: #0F172A;
+      --muted: #475569;
+      --line: #CBD5E1;
+      --soft: #E4EDF7;
+      --soft-2: #DBEAFE;
+      --accent: #1B4FA8;
+      --accent-2: #3B82F6;
+      --good: #236f4a;
+      --warn: #8a5a00;
+      --bad: #9b2f2f;
+      --bluegray: #1E3A5F;
+      --shadow: 0 18px 45px rgba(12, 30, 64, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page);
+      font-family: "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.68;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: #1B4FA8;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(27, 79, 168, 0.35);
+    }
+
+    a:hover {
+      color: #0A2050;
+      border-bottom-color: #0A2050;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 58px;
+      flex-wrap: wrap;
+      padding: 10px 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .brand {
+      font-weight: 800;
+      color: var(--ink);
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--muted);
+      border: 0;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0A2050 0%, #1E3A5F 50%, #1B4FA8 100%);
+      border-bottom: 1px solid rgba(147, 197, 253, 0.3);
+      padding: 52px 0 34px;
+      color: #fff;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 18px;
+      color: rgba(255,255,255,0.8);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      padding: 4px 9px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .hero h1 { color: #fff; }
+    .hero .subtitle { color: rgba(255,255,255,0.75); }
+    .hero .tag { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.08); }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.12;
+      letter-spacing: 0;
+      max-width: 920px;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 820px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .rating {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #F5F8FE;
+      padding: 14px;
+      min-height: 92px;
+    }
+
+    .metric .label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+      margin-bottom: 7px;
+    }
+
+    .metric .value {
+      display: block;
+      font-weight: 850;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .metric .note {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    main {
+      padding: 30px 0 56px;
+    }
+
+    section {
+      margin: 24px 0;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 26px;
+      box-shadow: 0 10px 28px rgba(31, 35, 40, 0.045);
+    }
+
+    section.plain {
+      box-shadow: none;
+      background: transparent;
+      border: 0;
+      padding: 0;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 22px 0 10px;
+      font-size: 17px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    .lead {
+      font-size: 18px;
+      color: #0F172A;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      background: #F5F8FE;
+    }
+
+    .panel strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .callout {
+      border-left: 4px solid var(--accent);
+      background: #EFF6FF;
+      padding: 16px 18px;
+      margin: 18px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      margin: 14px 0 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 11px 12px;
+      text-align: right;
+      border-bottom: 1px solid var(--line);
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    th:first-child, td:first-child {
+      text-align: left;
+      font-weight: 700;
+      color: #0F172A;
+    }
+
+    thead th {
+      background: var(--soft);
+      color: #1E3A5F;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .positive {
+      color: var(--good);
+      font-weight: 800;
+    }
+
+    .negative {
+      color: var(--bad);
+      font-weight: 800;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 190px 1fr 88px;
+      gap: 12px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .bar {
+      min-height: 12px;
+      background: var(--soft-2);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 12px;
+      background: var(--bluegray);
+      border-radius: 999px;
+    }
+
+    .scenario {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 14px;
+      align-items: start;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      margin-top: 16px;
+    }
+
+    .scenario:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .scenario .price {
+      font-size: 28px;
+      line-height: 1.1;
+      font-weight: 850;
+    }
+
+    .scenario .case {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .risk-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .risk-list li {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #F5F8FE;
+      padding: 14px;
+    }
+
+    .risk-list strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .source-list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .source-list li {
+      margin: 8px 0;
+    }
+
+    .footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3,
+      .risk-list {
+        grid-template-columns: 1fr;
+      }
+
+      .rating {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .wrap {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .hero {
+        padding: 38px 0 28px;
+      }
+
+      section {
+        padding: 20px;
+      }
+
+      .rating {
+        grid-template-columns: 1fr;
+      }
+
+      .bar-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .scenario {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">Snail Investment | 独立科技股票研究</div>
+      <nav class="nav" aria-label="页面导航">
+        <a href="#thesis">投资结论</a>
+        <a href="#financials">财务</a>
+        <a href="#valuation">估值</a>
+        <a href="#risks">风险</a>
+        <a href="#sources">来源</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">
+          <span class="tag">NYSE: GLW</span>
+          <span class="tag">材料科学 / 光通信 / AI 数据中心供应链</span>
+          <span class="tag">报告基准日: 2026-06-18</span>
+        </div>
+        <h1>康宁 Corning 深度金融投研报告</h1>
+        <p class="subtitle">AI 光互连把康宁从传统玻璃与显示材料公司重新定价为数据中心关键基础设施供应商，但截至 2026 年 6 月 18 日，股价已经显著前置长期成长预期。</p>
+      </div>
+      <aside class="hero-card" aria-label="投资摘要">
+        <strong>核心评级</strong>
+        <div class="rating">
+          <div class="metric">
+            <span class="label">12 个月评级</span>
+            <span class="value">中性 / 持有</span>
+            <span class="note">强基本面，估值已高</span>
+          </div>
+          <div class="metric">
+            <span class="label">目标价</span>
+            <span class="value">$210</span>
+            <span class="note">含约 8% 总回报潜力</span>
+          </div>
+          <div class="metric">
+            <span class="label">2026-06-18 收盘</span>
+            <span class="value">$194.92</span>
+            <span class="note">Yahoo Finance 图表接口</span>
+          </div>
+          <div class="metric">
+            <span class="label">风险等级</span>
+            <span class="value">高</span>
+            <span class="note">AI 订单与估值弹性并存</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section id="thesis">
+      <h2>投资结论</h2>
+      <p class="lead">康宁的基本面拐点是真实的：Q1 2026 core sales 同比增长 18% 至 43.45 亿美元，core EPS 同比增长 30% 至 0.70 美元；光通信分部净销售同比增长 36%，主要由 Gen AI 产品和数据中心互连需求驱动。问题不在公司，而在价格。</p>
+      <div class="callout">
+        <strong>交易建议：</strong> 对已有仓位建议继续持有并部分锁定收益；新资金不建议在 195 美元附近追高。我们更愿意在 165-175 美元区间分批建仓，或等待 Q2/Q3 业绩再次上修后确认突破 212 美元再顺势参与。战术止损参考 158 美元收盘下破。
+      </div>
+      <div class="grid-3">
+        <div class="panel">
+          <strong>多头理由</strong>
+          AI 数据中心从 GPU 规模化进入光互连瓶颈期，康宁在光纤、线缆、连接器与玻璃材料上的垂直能力稀缺，且已绑定 Meta、NVIDIA、Amazon 等大型客户。
+        </div>
+        <div class="panel">
+          <strong>空头理由</strong>
+          截至 6 月 18 日，股价较 2025 年 12 月 30 日收盘价上涨约 119.4%，估值已从传统材料股转向高成长 AI 基础设施股，容错率下降。
+        </div>
+        <div class="panel">
+          <strong>我们的判断</strong>
+          康宁值得从“周期材料”重估为“AI 光基础设施平台”，但当前价格已计入相当一部分 2027-2028 年增长，短期风险回报更接近中性。
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>最新事实与催化</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <strong>1. Q1 2026 业绩继续兑现</strong>
+          GAAP 销售 41.44 亿美元，同比增长 20%；GAAP EPS 0.43 美元，同比增长 139%。core sales 43.45 亿美元，同比增长 18%；core EPS 0.70 美元，同比增长 30%。公司给出 Q2 core sales 约 46 亿美元、core EPS 0.73-0.77 美元的指引。
+        </div>
+        <div class="panel">
+          <strong>2. 光通信成为主引擎</strong>
+          Q1 光通信分部净销售 18.46 亿美元，同比增长 36%，分部净利润 3.87 亿美元，同比增长 93%。公司称增长来自企业端 Gen AI 产品、数据中心互连以及 FTTH 需求。
+        </div>
+        <div class="panel">
+          <strong>3. NVIDIA 资本与产能绑定</strong>
+          2026 年 5 月 6 日，公司披露与 NVIDIA 扩大合作，NVIDIA 以 5 亿美元购买优先股与预融资认股权证，并取得最高 1,500 万股普通股认股权证；产能计划包括美国光连接制造能力提升 10 倍、美国光纤产能提升超过 50%。
+        </div>
+        <div class="panel">
+          <strong>4. 超大客户订单验证需求</strong>
+          2025 全年新闻稿披露与 Meta 达成多年、最高 60 亿美元协议；Q1 2026 新闻稿披露又有两个类似规模和期限的 hyperscale 客户长期协议。外部报道显示 Amazon 也与康宁签署了数据中心光纤相关多年协议。
+        </div>
+      </div>
+    </section>
+
+    <section id="financials">
+      <h2>财务质量与经营杠杆</h2>
+      <p>三年 GAAP 口径显示，康宁收入在 2025 年显著加速，营业利润率从 2024 年 8.7% 提升至 2025 年 14.6%。公司管理层更强调 core 口径，原因是外汇、重组、收购摊销与非经常项目对 GAAP 波动较大；本报告估值主要以 core EPS 和现金流为基础，但保留 GAAP 表用于审计。</p>
+      <div class="table-wrap">
+        <table aria-label="年度财务表">
+          <thead>
+            <tr>
+              <th>GAAP 年度指标</th>
+              <th>2023</th>
+              <th>2024</th>
+              <th>2025</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>净销售额</td><td>$12.59B</td><td>$13.12B</td><td>$15.63B</td></tr>
+            <tr><td>同比增速</td><td>-11.3%</td><td>4.2%</td><td>19.1%</td></tr>
+            <tr><td>毛利率</td><td>31.2%</td><td>32.6%</td><td>36.0%</td></tr>
+            <tr><td>营业利润率</td><td>7.1%</td><td>8.7%</td><td>14.6%</td></tr>
+            <tr><td>归母净利润</td><td>$0.58B</td><td>$0.51B</td><td>$1.60B</td></tr>
+            <tr><td>摊薄 EPS</td><td>$0.68</td><td>$0.58</td><td>$1.83</td></tr>
+            <tr><td>经营现金流</td><td>$2.01B</td><td>$1.94B</td><td>$2.70B</td></tr>
+            <tr><td>资本开支</td><td>$1.39B</td><td>$0.97B</td><td>$1.28B</td></tr>
+            <tr><td>自由现金流</td><td>$0.62B</td><td>$0.97B</td><td>$1.41B</td></tr>
+            <tr><td>研发支出</td><td>$0.90B</td><td>$0.80B</td><td>$0.80B</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Q1 2026 同比快照</h3>
+      <div class="table-wrap">
+        <table aria-label="季度财务表">
+          <thead>
+            <tr>
+              <th>指标</th>
+              <th>Q1 2025</th>
+              <th>Q1 2026</th>
+              <th>同比</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>GAAP 净销售额</td><td>$3.45B</td><td>$4.14B</td><td class="positive">+20%</td></tr>
+            <tr><td>GAAP 毛利率</td><td>35.2%</td><td>36.9%</td><td class="positive">+170 bps</td></tr>
+            <tr><td>GAAP 营业利润率</td><td>12.9%</td><td>15.4%</td><td class="positive">+250 bps</td></tr>
+            <tr><td>GAAP 归母净利润</td><td>$157M</td><td>$371M</td><td class="positive">+136%</td></tr>
+            <tr><td>GAAP 摊薄 EPS</td><td>$0.18</td><td>$0.43</td><td class="positive">+139%</td></tr>
+            <tr><td>Core sales</td><td>$3.68B</td><td>$4.35B</td><td class="positive">+18%</td></tr>
+            <tr><td>Core EPS</td><td>$0.54</td><td>$0.70</td><td class="positive">+30%</td></tr>
+            <tr><td>经营现金流</td><td>$151M</td><td>$362M</td><td class="positive">+140%</td></tr>
+            <tr><td>资本开支</td><td>$208M</td><td>$332M</td><td class="negative">+60%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Q1 2026 分部动能</h3>
+      <div class="bar-list" aria-label="分部销售占比">
+        <div class="bar-row"><strong>Optical Communications</strong><div class="bar"><span style="width:42.5%"></span></div><span>$1.85B / +36%</span></div>
+        <div class="bar-row"><strong>Glass Innovations</strong><div class="bar"><span style="width:32.7%"></span></div><span>$1.42B / +1%</span></div>
+        <div class="bar-row"><strong>Automotive</strong><div class="bar"><span style="width:10.1%"></span></div><span>$0.44B / -1%</span></div>
+        <div class="bar-row"><strong>Solar</strong><div class="bar"><span style="width:8.5%"></span></div><span>$0.37B / +80%</span></div>
+        <div class="bar-row"><strong>Life Sciences & EGB</strong><div class="bar"><span style="width:6.3%"></span></div><span>$0.27B / 0%</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>资产负债表与现金流</h2>
+      <div class="grid-3">
+        <div class="metric">
+          <span class="label">2026-03-31 现金</span>
+          <span class="value">$1.76B</span>
+          <span class="note">不含 5 月 NVIDIA 资金</span>
+        </div>
+        <div class="metric">
+          <span class="label">2026-03-31 总债务</span>
+          <span class="value">$8.97B</span>
+          <span class="note">债务 / 总资本 42%</span>
+        </div>
+        <div class="metric">
+          <span class="label">Q1 2026 Core ROIC</span>
+          <span class="value">13.5%</span>
+          <span class="note">同比提升 190 bps</span>
+        </div>
+      </div>
+      <p>康宁仍是重资产制造公司，AI 订单带来更高收入能见度，也要求更高资本开支、营运资本和产能执行能力。Q1 2026 库存 32.79 亿美元、应收账款 26.76 亿美元；资本开支 3.32 亿美元。公司披露 Q1 调整后自由现金流为 1.88 亿美元，明显优于去年同期约 -100 万美元。</p>
+    </section>
+
+    <section id="valuation">
+      <h2>估值与目标价</h2>
+      <p>基于 2026 年 6 月 18 日 194.92 美元收盘价与 2026 年 4 月 24 日 8.606 亿股普通股流通股，市值约 1,678 亿美元。加入 Q1 总债务 89.73 亿美元，并将 NVIDIA 5 亿美元初始资金按现金处理，企业价值约 1,745 亿美元。若最高 1,800 万股 NVIDIA 相关认股权证/预融资认股权证全部稀释，股份数增加约 2.1%，但公司也将获得额外行权现金，EV 影响相对可控。</p>
+      <div class="table-wrap">
+        <table aria-label="模型假设">
+          <thead>
+            <tr>
+              <th>Snail Investment 模型</th>
+              <th>2025A</th>
+              <th>2026E</th>
+              <th>2027E</th>
+              <th>2028E</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Core sales</td><td>$16.41B</td><td>$19.0B</td><td>$23.0B</td><td>$27.5B</td></tr>
+            <tr><td>Core EPS</td><td>$2.52</td><td>$3.35</td><td>$4.80</td><td>$6.30</td></tr>
+            <tr><td>调整后 FCF</td><td>$1.72B</td><td>$2.2B</td><td>$3.0B</td><td>$4.0B</td></tr>
+            <tr><td>隐含 P/E，按 $194.92</td><td>77.3x</td><td>58.2x</td><td>40.6x</td><td>30.9x</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted">以上为本报告独立预测，不是公司指引。核心假设包括：光通信收入持续受 AI 数据中心拉动、core operating margin 维持 20% 以上并逐步扩张、Solar 产能爬坡成本在 2026 年后改善、有效税率维持在约 18.5%-20.0% 区间。</p>
+
+      <div class="scenario">
+        <div>
+          <div class="price">$125</div>
+          <div class="case">悲观情景</div>
+        </div>
+        <p>AI 客户订单节奏降温、光纤/连接器供给过剩或 Solar 爬坡亏损扩大，市场把康宁重新按周期性材料/硬件供应商定价，2027E P/E 压缩至约 26x。</p>
+      </div>
+      <div class="scenario">
+        <div>
+          <div class="price">$210</div>
+          <div class="case">基准目标价</div>
+        </div>
+        <p>2026-2027 年业绩按当前趋势兑现，2027E core EPS 约 4.80 美元，给予约 44x P/E。目标价较 6 月 18 日收盘价上涨约 7.7%，加上约 0.6% 股息收益率，总回报约 8.3%。</p>
+      </div>
+      <div class="scenario">
+        <div>
+          <div class="price">$265</div>
+          <div class="case">乐观情景</div>
+        </div>
+        <p>Photonics 平台和 hyperscaler 订单继续扩张，2028E core EPS 接近或高于 6.30 美元，市场相信 2030 年更大收入框架并给予 42x 以上 P/E。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>投资框架：为什么不是直接买入</h2>
+      <p>我们认同公司战略质量。康宁的优势不是单一产品，而是材料科学、熔融成型、光物理、精密制造与客户共同开发形成的组合能力。在 AI 数据中心中，随着集群规模从数万颗 GPU 向数十万颗 GPU 扩展，铜互连在距离、热、信号完整性和功耗上的约束变强，光互连的战略价值提升。</p>
+      <p>但股价已经把这种叙事充分资本化。以 2026E core EPS 计算，GLW 的 P/E 仍在约 58x；以 2027E 计算也在约 41x。对重资产制造商而言，这要求订单、毛利率、资本开支效率和客户集中度都持续优秀。我们愿意为优质稀缺性付高倍数，却不愿在极端动量后忽视回撤风险。</p>
+    </section>
+
+    <section id="risks">
+      <h2>主要风险</h2>
+      <ul class="risk-list">
+        <li><strong>AI 资本开支周期</strong> 若 hyperscaler 降低或延后数据中心资本开支，光通信订单增速可能快速回落。</li>
+        <li><strong>客户集中与议价</strong> Meta、NVIDIA、Amazon 等大客户提升能见度，也可能带来价格、专用产能和交付约束。</li>
+        <li><strong>产能执行</strong> 三座新美国工厂、10 倍光连接产能扩张和超过 50% 光纤产能扩张需要设备、人员、良率和供应链同步。</li>
+        <li><strong>估值压缩</strong> 股价在 2026 年大幅上涨后，任何指引未上修或订单低于预期都可能触发多重收缩。</li>
+        <li><strong>非 GAAP 差异</strong> 康宁 core 指标剔除外汇、重组、收购摊销等项目；若这些项目持续发生，GAAP 与 core 的差距会影响股东回报质量。</li>
+        <li><strong>外汇与商品</strong> 日元、韩元、人民币、新台币、墨西哥比索、欧元以及能源、贵金属等成本会影响利润率。</li>
+        <li><strong>传统业务周期</strong> Display、Gorilla Glass、汽车和生命科学仍受消费电子、显示面板和汽车周期影响。</li>
+        <li><strong>政策与贸易</strong> 关税、出口管制、补贴变化、CHIPS Act 激励兑现和跨境供应链风险均可能改变回报率。</li>
+      </ul>
+    </section>
+
+    <section id="sources">
+      <h2>数据来源与口径说明</h2>
+      <p>财务数据优先使用 SEC 文件和公司 8-K 附件；行情使用 Yahoo Finance 图表接口；外部新闻仅用于补充市场背景。所有美元单位除特别说明外均为美元。</p>
+      <ol class="source-list">
+        <li>Corning 2026 Q1 业绩新闻稿，SEC Exhibit 99.1，2026-04-28：<a href="https://www.sec.gov/Archives/edgar/data/24741/000002474126000198/glw-20260328xex991xq12026.htm">SEC 链接</a></li>
+        <li>Corning 2026 Q1 Form 10-Q，2026-05-01：<a href="https://www.sec.gov/Archives/edgar/data/24741/000002474126000205/glw-20260331.htm">SEC 链接</a></li>
+        <li>Corning 2025 Q4 / 全年业绩新闻稿，SEC Exhibit 99，2026-01-28：<a href="https://www.sec.gov/Archives/edgar/data/24741/000002474126000034/glw-20251231xex99xq42025.htm">SEC 链接</a></li>
+        <li>Corning 与 NVIDIA 扩大合作的 Form 8-K，2026-05-06：<a href="https://www.sec.gov/Archives/edgar/data/24741/000120677426000273/glw4631061-8k.htm">SEC 链接</a></li>
+        <li>SEC XBRL Company Facts API，CIK 0000024741，用于年度 GAAP 表、股份数与资产负债表交叉核对：<a href="https://data.sec.gov/api/xbrl/companyfacts/CIK0000024741.json">SEC API</a></li>
+        <li>Yahoo Finance chart API，GLW 2025-12-30 至 2026-06-18 日线，用于收盘价、成交量、52 周区间和 YTD 涨幅：<a href="https://query1.finance.yahoo.com/v8/finance/chart/GLW?period1=1767070800&period2=1782000000&interval=1d&events=history&includeAdjustedClose=true">Yahoo Finance API</a></li>
+        <li>Investors Business Daily，2026-06-15，关于 AI 数据中心、Springboard 长期框架与市场表现的二级报道：<a href="https://www.investors.com/research/ibd-stock-of-the-day/corning-stock-artificial-intelligence-data-centers-photonics/">IBD 链接</a></li>
+        <li>Wall Street Journal，2026-06-08，关于 Amazon 与 Corning 数据中心光纤协议的报道：<a href="https://www.wsj.com/tech/amazon-enters-agreement-with-corning-for-optical-fiber-for-data-centers-352c7fa7">WSJ 链接</a></li>
+        <li>MarketWatch，2026-06-15，关于 GLW 收盘价、52 周高点和成交量的市场报道：<a href="https://www.marketwatch.com/data-news/corning-inc-stock-outperforms-competitors-on-strong-trading-day-48a415a6-c34342c2ee14">MarketWatch 链接</a></li>
+      </ol>
+      <div class="footer">
+        免责声明：本报告为独立研究与教育用途，不构成个性化投资建议、招揽或承诺收益。股票投资存在本金损失风险；读者应结合自身风险承受能力、税务状况和投资期限作出决策。
+      </div>
+    </section>
+  </main>
+</body>
+</html>
