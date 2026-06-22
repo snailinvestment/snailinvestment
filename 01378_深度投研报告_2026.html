@@ -3,828 +3,377 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>中国宏桥 (01378.HK) 投资研究报告 — Snail Investment</title>
+<title>中国宏桥 (01378.HK) 深度投研报告 2026 — Snail Investment</title>
 <style>
   :root {
-    --navy: #1a2744;
-    --accent: #c8a44e;
-    --blue: #1565c0;
-    --green: #2e7d32;
-    --red: #c62828;
-    --gray-light: #f5f5f5;
-    --gray-mid: #e0e0e0;
-    --text: #333;
-    --text-light: #666;
+    --navy: #0a1628; --navy-light: #132040; --accent: #c8a44e;
+    --blue: #1565c0; --blue-light: #e8f2fc;
+    --green: #2e7d32; --red: #c62828; --orange: #ef6c00;
+    --gray-bg: #f0f4f8; --gray-card: #f8f9fb;
+    --text: #222; --text-light: #5a6a7e;
+    --white: #fff; --border: #dde4ed;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; color:var(--text); background:var(--gray-bg); line-height:1.72; }
 
-  body {
-    font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-    color: var(--text);
-    background: #eef1f5;
-    line-height: 1.7;
-  }
+  .topbar { background:var(--navy); padding:0 48px; display:flex; align-items:center; justify-content:space-between; height:56px; position:sticky; top:0; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+  .topbar-brand { color:var(--accent); font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
+  .topbar-nav { display:flex; gap:6px; }
+  .topbar-nav a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:12px; padding:6px 14px; border-radius:4px; transition:all 0.2s; white-space:nowrap; }
+  .topbar-nav a:hover, .topbar-nav a.active { background:rgba(255,255,255,0.1); color:#fff; }
 
-  .cover {
-    background: linear-gradient(135deg, #1a1a2e 0%, #2d3436 40%, #636e72 100%);
-    color: #fff;
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 80px 100px;
-    position: relative;
-    overflow: hidden;
-  }
-  .cover::before {
-    content: '';
-    position: absolute;
-    top: -200px; right: -200px;
-    width: 700px; height: 700px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(200,164,78,0.12) 0%, transparent 70%);
-  }
-  .cover * { position: relative; z-index: 1; }
+  .hero { background:linear-gradient(160deg, #050d1e 0%, #102030 35%, #1a3048 60%, #4a3520 100%); color:#fff; padding:80px 64px 60px; position:relative; overflow:hidden; min-height:520px; }
+  .hero::before { content:''; position:absolute; top:-300px; right:-300px; width:800px; height:800px; border-radius:50%; background:radial-gradient(circle, rgba(200,164,78,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 360px; gap:48px; align-items:start; position:relative; z-index:1; }
+  .hero-brand { font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:20px; font-weight:600; }
+  .hero-type { font-size:13px; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.5); margin-bottom:32px; }
+  .hero-title { font-size:40px; font-weight:900; line-height:1.25; margin-bottom:12px; letter-spacing:-0.5px; }
+  .hero-subtitle { font-size:17px; color:rgba(255,255,255,0.7); font-weight:300; margin-bottom:32px; line-height:1.5; }
+  .hero-divider { width:64px; height:2px; background:var(--accent); margin-bottom:28px; }
+  .hero-info { display:flex; gap:40px; flex-wrap:wrap; font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:36px; }
+  .hero-info-item strong { display:block; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:4px; }
+  .hero-tags { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px; }
+  .hero-tag { padding:5px 14px; border-radius:20px; font-size:11px; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.7); }
+  .hero-footer { font-size:12px; color:rgba(255,255,255,0.35); margin-top:10px; }
+  .hero-warn { background:rgba(255,152,0,0.12); border:1px solid rgba(255,152,0,0.25); border-radius:8px; padding:14px 18px; font-size:12px; color:rgba(255,200,100,0.9); margin-top:20px; line-height:1.6; }
 
-  .cover-brand {
-    font-size: 14px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 30px;
-    font-weight: 600;
-  }
-  .cover-ticker {
-    font-size: 72px;
-    font-weight: 900;
-    letter-spacing: -2px;
-    margin-bottom: 8px;
-  }
-  .cover-company {
-    font-size: 28px;
-    font-weight: 300;
-    margin-bottom: 12px;
-    opacity: 0.9;
-  }
-  .cover-exchange {
-    font-size: 16px;
-    opacity: 0.6;
-    margin-bottom: 50px;
-  }
-  .cover-meta {
-    display: flex; gap: 60px;
-    font-size: 15px;
-    opacity: 0.85;
-    flex-wrap: wrap;
-  }
-  .cover-meta-item strong {
-    display: block;
-    font-size: 12px;
-    letter-spacing: 2px;
-    opacity: 0.5;
-    margin-bottom: 4px;
-  }
-  .cover-divider {
-    width: 80px; height: 3px;
-    background: var(--accent);
-    margin: 40px 0;
-  }
-  .cover-type {
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-  }
-  .cover-date {
-    font-size: 14px;
-    opacity: 0.5;
-    margin-top: 60px;
-  }
-  .cover-disclaimer-tag {
-    font-size: 11px;
-    opacity: 0.4;
-    margin-top: 20px;
-  }
+  .rating-card { background:rgba(0,0,0,0.35); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:36px 30px; text-align:center; }
+  .rating-card-badge { display:inline-block; background:linear-gradient(135deg, #2e7d32, #4caf50); color:#fff; font-size:13px; font-weight:700; padding:5px 20px; border-radius:20px; letter-spacing:2px; margin-bottom:20px; text-transform:uppercase; }
+  .rating-card-price { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:4px; }
+  .rating-card-current { font-size:42px; font-weight:800; letter-spacing:-1px; margin-bottom:4px; }
+  .rating-card-change { font-size:14px; color:#69f0ae; margin-bottom:24px; }
+  .rating-card-target-row { display:flex; justify-content:space-between; text-align:left; padding:14px 0; border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); margin-bottom:18px; }
+  .rating-card-target-row .label { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,0.4); }
+  .rating-card-target-row .value { font-size:18px; font-weight:700; color:#fff; }
+  .rating-card-meta { display:grid; grid-template-columns:1fr 1fr; gap:8px 20px; text-align:left; font-size:11px; color:rgba(255,255,255,0.5); margin-bottom:18px; }
+  .rating-card-meta .lbl { color:rgba(255,255,255,0.35); }
+  .rating-card-meta .val { color:rgba(255,255,255,0.8); font-weight:500; }
 
-  .content {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 50px 40px;
-  }
+  .kpi-bar { background:var(--white); padding:32px 64px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+  .kpi-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(6,1fr); gap:0; }
+  .kpi-item { text-align:center; padding:0 16px; border-right:1px solid var(--border); }
+  .kpi-item:last-child { border-right:none; }
+  .kpi-label { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:var(--text-light); margin-bottom:6px; }
+  .kpi-value { font-size:24px; font-weight:800; color:var(--navy); }
+  .kpi-sub { font-size:11px; margin-top:4px; font-weight:500; }
+  .kpi-sub.green { color:var(--green); } .kpi-sub.red { color:var(--red); } .kpi-sub.orange { color:var(--orange); }
 
-  .section {
-    background: #fff;
-    border-radius: 8px;
-    padding: 40px 48px;
-    margin-bottom: 28px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  }
+  .main-content { background:var(--blue-light); padding:40px 64px 60px; }
+  .content-inner { max-width:1200px; margin:0 auto; }
+  .section-card { background:var(--white); border-radius:10px; padding:44px 52px; margin-bottom:28px; box-shadow:0 1px 4px rgba(0,0,0,0.05); border:1px solid var(--border); }
 
-  h2 {
-    font-size: 24px;
-    color: var(--navy);
-    margin-bottom: 24px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid var(--accent);
-    display: flex; align-items: center; gap: 12px;
-  }
-  h2 .num {
-    background: var(--navy);
-    color: var(--accent);
-    width: 32px; height: 32px;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 50%;
-    font-size: 15px; font-weight: 700;
-    flex-shrink: 0;
-  }
-  h3 {
-    font-size: 18px;
-    color: var(--navy);
-    margin: 28px 0 14px;
-  }
-  h4 {
-    font-size: 15px;
-    color: var(--text-light);
-    margin: 20px 0 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-  p { margin-bottom: 14px; text-align: justify; }
-  ul, ol { padding-left: 20px; margin-bottom: 14px; }
+  h2 { font-size:26px; color:var(--navy); margin-bottom:28px; padding-bottom:14px; border-bottom:2px solid var(--accent); display:flex; align-items:center; gap:14px; }
+  h2 .num { background:var(--navy); color:var(--accent); width:36px; height:36px; display:flex; align-items:center; justify-content:center; border-radius:50%; font-size:16px; font-weight:700; flex-shrink:0; }
+  h3 { font-size:19px; color:var(--navy); margin:30px 0 16px; }
+  h4 { font-size:15px; color:var(--text-light); margin:22px 0 12px; letter-spacing:0.5px; font-weight:600; }
+  p { margin-bottom:15px; text-align:justify; }
+  ul, ol { padding-left:22px; margin-bottom:15px; }
+  li { margin-bottom:5px; }
 
-  .metrics-bar {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 0;
-    background: #fff;
-    border-radius: 8px;
-    margin-bottom: 28px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    overflow: hidden;
-  }
-  .metric-card {
-    padding: 22px 20px;
-    text-align: center;
-    border-right: 1px solid var(--gray-mid);
-  }
-  .metric-card:last-child { border-right: none; }
-  .metric-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--text-light);
-    margin-bottom: 6px;
-  }
-  .metric-value {
-    font-size: 26px;
-    font-weight: 800;
-    color: var(--navy);
-  }
-  .metric-change {
-    font-size: 12px;
-    margin-top: 4px;
-    font-weight: 600;
-  }
-  .metric-change.up { color: var(--green); }
-  .metric-change.down { color: var(--red); }
+  .table-wrap { overflow-x:auto; margin:18px 0 28px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  thead th { background:var(--navy); color:#fff; padding:11px 16px; text-align:left; font-weight:600; font-size:11px; letter-spacing:0.5px; white-space:nowrap; }
+  thead th:last-child { text-align:right; }
+  thead th:first-child { border-radius:6px 0 0 0; } thead th:last-child { border-radius:0 6px 0 0; }
+  tbody td { padding:10px 16px; border-bottom:1px solid var(--border); }
+  tbody td:last-child { text-align:right; font-weight:600; }
+  tbody tr:hover { background:var(--gray-card); }
+  .hl-row { background:#fffef0; } .hl-row:hover { background:#fffbc8; }
+  .green { color:var(--green); } .red { color:var(--red); } .orange { color:var(--orange); }
 
-  .rating-box {
-    display: flex; align-items: center; gap: 30px;
-    padding: 28px 32px;
-    border-radius: 8px;
-    margin-bottom: 24px;
-  }
-  .rating-box.buy {
-    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-    border-left: 5px solid var(--green);
-  }
-  .rating-badge {
-    font-size: 42px; font-weight: 900;
-    color: var(--green);
-    letter-spacing: -1px;
-  }
-  .rating-detail { font-size: 14px; color: #555; }
-  .rating-detail strong { color: var(--navy); }
+  .box { padding:18px 24px; border-radius:6px; margin:18px 0; font-size:13px; line-height:1.7; }
+  .box.warn { background:#fff8e1; border-left:4px solid var(--orange); } .box.warn strong { color:#e65100; }
+  .box.danger { background:#ffebee; border-left:4px solid var(--red); } .box.danger strong { color:var(--red); }
+  .box.info { background:#e3f2fd; border-left:4px solid var(--blue); } .box.info strong { color:var(--blue); }
+  .box.buy { background:#e8f5e9; border-left:4px solid var(--green); } .box.buy strong { color:var(--green); }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 16px 0 24px;
-    font-size: 13px;
-  }
-  thead th {
-    background: var(--navy);
-    color: #fff;
-    padding: 10px 14px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 12px;
-    letter-spacing: 0.5px;
-  }
-  thead th:last-child { text-align: right; }
-  thead th:first-child { border-radius: 6px 0 0 0; }
-  thead th:last-child { border-radius: 0 6px 0 0; }
-  tbody td {
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--gray-mid);
-  }
-  tbody td:last-child { text-align: right; font-weight: 600; }
-  tbody tr:hover { background: #f8f9fb; }
-  .highlight-row { background: #fffde7; }
-  .highlight-row:hover { background: #fff9c4; }
+  .case-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:20px 0; }
+  .case-card { padding:26px 28px; border-radius:10px; }
+  .case-card.bull { background:linear-gradient(135deg, #e8f5e9, #f1f8e9); border:1px solid #a5d6a7; }
+  .case-card.bear { background:linear-gradient(135deg, #ffebee, #fce4ec); border:1px solid #ef9a9a; }
+  .case-card h4 { font-size:17px; margin-bottom:10px; } .case-card.bull h4 { color:var(--green); } .case-card.bear h4 { color:var(--red); }
+  .case-card ul { padding-left:18px; font-size:13px; } .case-card li { margin-bottom:5px; }
 
-  .warning-box {
-    background: #fff3e0;
-    border-left: 5px solid #ef6c00;
-    padding: 16px 20px;
-    border-radius: 4px;
-    margin: 16px 0;
-    font-size: 13px;
-  }
-  .warning-box strong { color: #e65100; }
+  .swot-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:20px 0; }
+  .swot-item { padding:20px; border-radius:6px; font-size:13px; }
+  .swot-item.str { background:#e8f5e9; border-top:3px solid var(--green); }
+  .swot-item.wkn { background:#ffebee; border-top:3px solid var(--red); }
+  .swot-item.opp { background:#e3f2fd; border-top:3px solid var(--blue); }
+  .swot-item.thr { background:#fff3e0; border-top:3px solid var(--orange); }
+  .swot-item h4 { margin:0 0 8px; font-size:14px; }
+  .swot-item ul { padding-left:18px; } .swot-item li { margin-bottom:4px; }
 
-  .case-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin: 20px 0;
-  }
-  .case-card {
-    padding: 24px;
-    border-radius: 8px;
-  }
-  .case-card.bull {
-    background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
-    border: 1px solid #a5d6a7;
-  }
-  .case-card.bear {
-    background: linear-gradient(135deg, #ffebee, #fce4ec);
-    border: 1px solid #ef9a9a;
-  }
-  .case-card h4 { font-size: 18px; margin-bottom: 12px; }
-  .case-card.bull h4 { color: var(--green); }
-  .case-card.bear h4 { color: var(--red); }
-  .case-card ul { padding-left: 18px; font-size: 13px; }
-  .case-card li { margin-bottom: 6px; }
+  .div-line { height:1px; background:linear-gradient(to right, transparent, var(--accent), transparent); margin:12px 0 32px; }
+  .disc-section { background:var(--white); border-radius:10px; padding:32px 52px; margin-bottom:28px; box-shadow:0 1px 4px rgba(0,0,0,0.05); border:1px solid var(--border); font-size:11px; color:#888; line-height:1.9; }
+  .disc-section h4 { color:var(--navy); font-size:13px; margin-bottom:8px; }
+  .footer-line { text-align:center; padding:20px; font-size:12px; color:#aaa; }
+  .footer-line strong { color:var(--accent); }
 
-  .swot-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 20px 0;
-  }
-  .swot-item {
-    padding: 20px;
-    border-radius: 6px;
-    font-size: 13px;
-  }
-  .swot-item.strengths { background: #e8f5e9; border-top: 3px solid var(--green); }
-  .swot-item.weaknesses { background: #ffebee; border-top: 3px solid var(--red); }
-  .swot-item.opportunities { background: #e3f2fd; border-top: 3px solid var(--blue); }
-  .swot-item.threats { background: #fff3e0; border-top: 3px solid #ef6c00; }
-  .swot-item h4 { margin: 0 0 8px; font-size: 14px; }
-  .swot-item ul { padding-left: 18px; }
-  .swot-item li { margin-bottom: 4px; }
-
-  .disclaimer {
-    background: #fff;
-    border-radius: 8px;
-    padding: 30px 48px;
-    margin-bottom: 28px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    font-size: 11px;
-    color: #888;
-    line-height: 1.8;
-  }
-  .disclaimer h4 { color: var(--navy); font-size: 13px; margin-bottom: 10px; }
-  .footer-brand {
-    text-align: center;
-    padding: 20px;
-    font-size: 12px;
-    color: #aaa;
-  }
-  .footer-brand strong { color: var(--accent); }
-
-  .section-divider {
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--accent), transparent);
-    margin: 10px 0 30px;
-  }
-
-  @media print {
-    .cover { page-break-after: always; }
-    .section { page-break-inside: avoid; }
+  @media (max-width:960px) {
+    .hero-inner { grid-template-columns:1fr; }
+    .kpi-inner { grid-template-columns:repeat(3,1fr); }
+    .kpi-item:nth-child(3) { border-right:none; }
+    .topbar { padding:0 24px; } .hero { padding:48px 24px 40px; } .hero-title { font-size:30px; }
+    .main-content { padding:24px 16px 40px; } .section-card { padding:24px 20px; }
+    .case-grid { grid-template-columns:1fr; } .swot-grid { grid-template-columns:1fr; }
+    .kpi-bar { padding:24px 16px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ==================== COVER PAGE ==================== -->
-<div class="cover">
-  <div class="cover-brand">Snail Investment &mdash; Equity Research</div>
-  <div class="cover-type">首次覆盖报告 &bull; Initiating Coverage</div>
-  <div class="cover-divider"></div>
-  <div class="cover-ticker">01378</div>
-  <div class="cover-company">中国宏桥集团有限公司 &middot; China Hongqiao Group Limited</div>
-  <div class="cover-exchange">香港交易所 &middot; 恒生综合指数成份股 &middot; 原材料 — 铝</div>
-  <div class="cover-meta">
-    <div class="cover-meta-item">
-      <strong>评级</strong>
-      <span style="color:#4caf50; font-size:24px; font-weight:800;">BUY 买入</span>
+<nav class="topbar">
+  <div class="topbar-brand">Snail Investment</div>
+  <div class="topbar-nav">
+    <a href="#thesis">核心论点</a>
+    <a href="#company">公司概况</a>
+    <a href="#industry">铝业周期</a>
+    <a href="#financials">财务分析</a>
+    <a href="#valuation">估值分析</a>
+    <a href="#peer">同业对比</a>
+    <a href="#risk">风险管理</a>
+    <a href="#rating">操作建议</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-brand">Snail Investment &mdash; Equity Research</div>
+      <div class="hero-type">深度投研报告 &bull; Initiating Coverage</div>
+      <div class="hero-title">中国宏桥：全球成本最低的铝业巨头</div>
+      <div class="hero-subtitle">全球最大一体化电解铝生产商，FY2025净利润&yen;226亿蝉联全球铝企第一。全产业链垂直整合+几内亚铝土矿自给+自备电厂，吨铝现金成本仅14,000-15,000元，为行业最低。当前P/E仅8-9x、股息率约8%——市场严重低估了这一成本护城河的价值。</div>
+      <div class="hero-divider"></div>
+      <div class="hero-info">
+        <div class="hero-info-item"><strong>Ticker</strong>01378.HK</div>
+        <div class="hero-info-item"><strong>交易所</strong>香港联交所</div>
+        <div class="hero-info-item"><strong>行业</strong>基础材料 — 铝</div>
+        <div class="hero-info-item"><strong>报告日期</strong>2026年6月19日</div>
+      </div>
+      <div class="hero-tags">
+        <span class="hero-tag">大宗商品</span><span class="hero-tag">周期股</span><span class="hero-tag">电解铝</span><span class="hero-tag">全产业链</span><span class="hero-tag">高股息</span><span class="hero-tag">成本护城河</span>
+      </div>
+      <div class="hero-warn">
+        <strong>⚠️ 周期位置提醒：</strong>中国宏桥当前交易于P/E 8-9x（2026E）的历史估值底部，股息率约8%。FY2025净利润&yen;226亿（+1.2% YoY），Q1 2026子公司利润再增30%+。吨铝成本行业最低（14,000-15,000元），盈亏平衡点远低于同业。西芒杜铁矿2026年投产将打开第二增长曲线。<strong>这不是一家普通的周期股——这是一家拥有深厚护城河的全球成本冠军。</strong>
+      </div>
+      <div class="hero-footer" style="margin-top:16px;">基于FY2025年报及Q1 2026先行指标 &nbsp;|&nbsp; 数据来源：公司财报/富途牛牛/花旗研报 &nbsp;|&nbsp; 本报告仅供参考，不构成个人投资建议</div>
     </div>
-    <div class="cover-meta-item">
-      <strong>目标价</strong>
-      <span style="font-size:24px;">HK$35.00</span>
-    </div>
-    <div class="cover-meta-item">
-      <strong>当前价格</strong>
-      HK$27.08 <span style="color:#4caf50;">(+29.2% upside)</span>
-    </div>
-    <div class="cover-meta-item">
-      <strong>时间维度</strong>
-      12 个月
+    <div class="rating-card">
+      <div class="rating-card-badge" style="background:linear-gradient(135deg, #2e7d32, #4caf50);">BUY 买入</div>
+      <div class="rating-card-price">当前股价</div>
+      <div class="rating-card-current">HK$27.08</div>
+      <div class="rating-card-change">目标价 HK$35.00 · +29.2%</div>
+      <div class="rating-card-target-row">
+        <div><div class="label">目标价</div><div class="value">HK$35.00</div></div>
+        <div><div class="label">时间维度</div><div class="value">12 个月</div></div>
+      </div>
+      <div class="rating-card-meta">
+        <div class="lbl">Trailing P/E</div><div class="val">~10.5x</div>
+        <div class="lbl">Forward P/E (2026E)</div><div class="val">~8-9x</div>
+        <div class="lbl">P/B</div><div class="val">~0.85x</div>
+        <div class="lbl">股息率 (FY25)</div><div class="val" style="color:#69f0ae;">~8.0%</div>
+        <div class="lbl">ROE (估算)</div><div class="val">~18%</div>
+        <div class="lbl">净利率 (FY25)</div><div class="val">13.9%</div>
+        <div class="lbl">吨铝现金成本</div><div class="val" style="color:#69f0ae;">14-15k元</div>
+        <div class="lbl">盈亏平衡点</div><div class="val">~12-13k元/t</div>
+        <div class="lbl">花旗目标价</div><div class="val" style="color:#69f0ae;">HK$48</div>
+        <div class="lbl">隐含上行</div><div class="val" style="color:#69f0ae;">+29.2%</div>
+      </div>
     </div>
   </div>
-  <div class="cover-date">报告日期：2026 年 6 月 19 日 &nbsp;|&nbsp; 分析师：Snail Investment Research Team</div>
-  <div class="cover-disclaimer-tag">本报告仅供参考，不构成个人投资建议。详见文末免责声明。</div>
+</section>
+
+<div class="kpi-bar">
+  <div class="kpi-inner">
+    <div class="kpi-item"><div class="kpi-label">市值</div><div class="kpi-value">HK$2,570亿</div><div class="kpi-sub">~$330亿 USD</div></div>
+    <div class="kpi-item"><div class="kpi-label">FY2025 营收</div><div class="kpi-value">&yen;1,624亿</div><div class="kpi-sub green">+4.0% YoY</div></div>
+    <div class="kpi-item"><div class="kpi-label">FY2025 净利润</div><div class="kpi-value">&yen;226.4亿</div><div class="kpi-sub green">全球铝企第一</div></div>
+    <div class="kpi-item"><div class="kpi-label">电解铝产能</div><div class="kpi-value">~650万吨</div><div class="kpi-sub green">中国占比~14%</div></div>
+    <div class="kpi-item"><div class="kpi-label">Q1 2026 利润增速</div><div class="kpi-value" style="color:var(--green);">+30%</div><div class="kpi-sub green">子公司先行指标</div></div>
+    <div class="kpi-item"><div class="kpi-label">吨铝现金成本</div><div class="kpi-value" style="color:var(--green);">14-15k</div><div class="kpi-sub green">行业最低 · 低20%</div></div>
+  </div>
 </div>
 
-<!-- ==================== KEY METRICS ==================== -->
-<div class="content">
+<div class="main-content"><div class="content-inner">
 
-<div class="metrics-bar">
-  <div class="metric-card">
-    <div class="metric-label">市值</div>
-    <div class="metric-value">~HK$2,570亿</div>
-    <div class="metric-change">~$330亿 USD</div>
-  </div>
-  <div class="metric-card">
-    <div class="metric-label">FY2025 营收</div>
-    <div class="metric-value">¥1,624亿</div>
-    <div class="metric-change up">+4.0% YoY</div>
-  </div>
-  <div class="metric-card">
-    <div class="metric-label">FY2025 净利润</div>
-    <div class="metric-value">¥226.4亿</div>
-    <div class="metric-change up">+1.2% YoY</div>
-  </div>
-  <div class="metric-card">
-    <div class="metric-label">P/E (2026E)</div>
-    <div class="metric-value">~8-9x</div>
-    <div class="metric-change">历史低位</div>
-  </div>
-  <div class="metric-card">
-    <div class="metric-label">股息率 (FY25)</div>
-    <div class="metric-value">~8.0%</div>
-    <div class="metric-change up">高分红传统</div>
-  </div>
-</div>
-
-<!-- ==================== 1. EXECUTIVE SUMMARY ==================== -->
-<div class="section">
+<div class="section-card" id="thesis">
   <h2><span class="num">1</span> 执行摘要 &amp; 投资论点</h2>
-
-  <div class="rating-box buy">
-    <div class="rating-badge">BUY</div>
-    <div class="rating-detail">
-      <strong>12个月目标价 HK$35.00</strong> &nbsp;|&nbsp; 上行空间 +29.2%<br>
-      当前 HK$27.08 交易于 ~8-9x 2026E P/E，股息率约 8%<br>
-      催化剂：铝价高位运行 &middot; 全产业链成本优势持续兑现 &middot; 西芒杜铁矿期权价值释放
-    </div>
-  </div>
-
-  <p><strong>核心投资论点：</strong>中国宏桥是全球最大的电解铝生产商（以利润计），拥有约 650 万吨电解铝产能（占中国总产能约 14%），是铝行业中成本最低、产业链最完整的一体化龙头。公司 FY2025 实现归母净利润 226.4 亿元（+1.2%），在全球上市铝企中利润规模排名第一。然而，由于资金从大宗商品板块流向 AI 科技板块，叠加市场对能源成本和铝需求走弱的担忧，公司股价明显跑输铝价走势，当前仅交易于 2026E P/E 约 8-9x 和约 8% 的股息率——对于一个拥有深厚护城河的全球行业龙头而言，这一估值极度不合理。</p>
-
-  <p><strong>变异认知（Variant Perception）：</strong>市场将中国宏桥视为普通的大宗商品周期股——随铝价涨跌而波动。但我们认为，<strong>宏桥的"成本护城河"被严重低估了</strong>。公司通过（1）几内亚铝土矿自给（锁定上游资源）、（2）自备电厂（煤电+云南水电混合）、（3）氧化铝—电解铝一体化生产，将吨铝现金成本压低至 14,000-15,000 元——远低于行业平均的 16,000-18,000 元。这意味着在铝价下行周期中，竞争对手亏损时宏桥仍能保持盈利；在铝价上行周期中，宏桥享有最大的盈利弹性。这种结构性的成本优势不是简单的"铝价贝塔"——它是一个具有持续超额利润创造能力的<strong>复合护城河</strong>。</p>
-
-  <p><strong>为什么是现在？</strong>（1）股价从高位回落，P/E 仅 8-9x，处于历史估值底部，而 Q1 2026 子公司净利润在高基数上再增 30%——基本面与股价严重背离；（2）约 8% 的股息率为股价提供了坚实底部（即使铝价下跌 15%，公司的自由现金流仍足以覆盖分红）；（3）西芒杜铁矿项目（持股 21.36%）即将投产，为公司打开第二增长曲线——从纯铝业向"铝+铁"双资源巨头转型；（4）花旗最新研报重申"买入"评级，目标价 48 港元，认为当前抛售过度。</p>
+  <div class="box buy" style="margin-bottom:20px;"><strong>BUY 买入 &nbsp;|&nbsp; 12个月目标价 HK$35.00 &nbsp;|&nbsp; 上行空间 +29.2%</strong><br>当前 HK$27.08 交易于 ~8-9x 2026E P/E，股息率约 8%。催化剂：铝价高位运行 · 全产业链成本优势 · 西芒杜铁矿期权价值释放</div>
+  <p><strong>核心投资论点：</strong>中国宏桥是全球最大的电解铝生产商（以利润计），拥有约650万吨电解铝产能（占中国总产能约14%），是铝行业中成本最低、产业链最完整的一体化龙头。FY2025实现归母净利润226.4亿元（+1.2%），在全球上市铝企中利润规模排名第一。当前仅交易于2026E P/E约8-9x和约8%的股息率——对于一个拥有深厚护城河的全球行业龙头而言，这一估值极度不合理。</p>
+  <p><strong>变异认知：</strong>市场将中国宏桥视为普通的大宗商品周期股。但我们认为，<strong>宏桥的"成本护城河"被严重低估了</strong>。公司通过（1）几内亚铝土矿自给、（2）自备电厂、（3）氧化铝—电解铝一体化，将吨铝现金成本压低至14,000-15,000元——远低于行业平均的16,000-18,000元。在铝价下行周期中，竞争对手亏损时宏桥仍能保持盈利；上行周期中宏桥享有最大盈利弹性。</p>
+  <p><strong>为什么是现在？</strong>（1）P/E仅8-9x处于历史底部，Q1 2026子公司利润在高基数上再增30%；（2）约8%股息率为股价提供坚实底部；（3）西芒杜铁矿（持股21.36%）即将投产，打开"铝+铁"第二增长曲线；（4）花旗重申"买入"，目标价48港元。</p>
 </div>
 
-<!-- ==================== 2. COMPANY OVERVIEW ==================== -->
-<div class="section">
+<div class="section-card" id="company">
   <h2><span class="num">2</span> 公司概况 &amp; 全产业链一体化模式</h2>
-
-  <p>中国宏桥集团有限公司成立于 1994 年，总部位于中国山东邹平，是全球最大的电解铝生产商之一。集团通过"铝土矿—氧化铝—电解铝—铝加工"的全产业链垂直整合，实现了从矿山到成品的无缝衔接。实际控制人为张士平家族（张波任董事会主席）。</p>
-
+  <p>中国宏桥集团有限公司成立于1994年，总部位于山东邹平，是集"铝土矿—氧化铝—电解铝—铝加工"全产业链垂直整合的全球最大电解铝生产商之一。实际控制人为张士平家族。</p>
   <h3>全产业链布局</h3>
-  <table>
+  <div class="table-wrap"><table>
     <thead><tr><th>产业链环节</th><th>产能/资源</th><th>自给率</th><th>战略意义</th></tr></thead>
     <tbody>
-      <tr><td><strong>铝土矿</strong></td><td>几内亚矿区（赢联盟）>5,000万吨/年</td><td style="color:var(--green)">>100%</td><td>锁定上游资源，摆脱对澳洲/印尼进口依赖</td></tr>
-      <tr><td><strong>氧化铝</strong></td><td>~2,000万吨/年</td><td style="color:var(--green)">>100%</td><td>FY2025销量1,339.7万吨（+22.7%），自用+外销</td></tr>
-      <tr><td><strong>电解铝</strong></td><td>~650万吨/年（山东+云南）</td><td>—</td><td>占中国总产能~14%，全球最大单体产能</td></tr>
-      <tr><td><strong>自备电力</strong></td><td>煤电+云南水电混合</td><td>~80%</td><td>吨铝现金成本14,000-15,000元（行业最低）</td></tr>
-      <tr><td><strong>铝加工</strong></td><td>铝杆、铝板带箔等</td><td>—</td><td>向下游延伸，提升产品附加值</td></tr>
-      <tr><td><strong>铁矿（新）</strong></td><td>西芒杜北段 21.36%权益</td><td>—</td><td>预计2026年投产，第二增长曲线</td></tr>
+      <tr><td><strong>铝土矿</strong></td><td>几内亚矿区 >5,000万吨/年</td><td class="green">>100%</td><td>锁定上游，摆脱进口依赖</td></tr>
+      <tr><td><strong>氧化铝</strong></td><td>~2,000万吨/年</td><td class="green">>100%</td><td>FY25销量1,339.7万吨(+22.7%)</td></tr>
+      <tr><td><strong>电解铝</strong></td><td>~650万吨/年（山东+云南）</td><td>—</td><td>占中国总产能~14%</td></tr>
+      <tr><td><strong>自备电力</strong></td><td>煤电+云南水电混合</td><td>~80%</td><td>吨铝现金成本14,000-15,000元</td></tr>
+      <tr><td><strong>铝加工</strong></td><td>铝杆、铝板带箔等</td><td>—</td><td>向下游延伸提升附加值</td></tr>
+      <tr class="hl-row"><td><strong>铁矿（新）</strong></td><td>西芒杜北段 21.36%权益</td><td>—</td><td>2026年投产·第二增长曲线</td></tr>
     </tbody>
-  </table>
-
-  <div class="section-divider"></div>
-
+  </table></div>
+  <div class="div-line"></div>
   <h3>核心竞争优势：吨铝成本行业最低</h3>
-  <table>
+  <div class="table-wrap"><table>
     <thead><tr><th>成本项</th><th>中国宏桥</th><th>行业平均</th><th>成本优势</th></tr></thead>
     <tbody>
-      <tr><td>电力成本（占电解铝成本~35%）</td><td>0.25-0.30元/kWh</td><td>0.35-0.45元/kWh</td><td style="color:var(--green)">低30-40%</td></tr>
-      <tr><td>氧化铝（占电解铝成本~40%）</td><td>完全自给</td><td>外购为主</td><td style="color:var(--green)">省去加工利润</td></tr>
-      <tr><td>铝土矿</td><td>几内亚自采</td><td>进口/外购</td><td style="color:var(--green)">锁定长协低价</td></tr>
-      <tr class="highlight-row"><td><strong>吨铝现金成本合计</strong></td><td><strong>~14,000-15,000元</strong></td><td><strong>~16,000-18,000元</strong></td><td style="color:var(--green)"><strong>低15-20%</strong></td></tr>
+      <tr><td>电力成本（~35%）</td><td>0.25-0.30元/kWh</td><td>0.35-0.45元/kWh</td><td class="green">低30-40%</td></tr>
+      <tr><td>氧化铝（~40%）</td><td>完全自给</td><td>外购为主</td><td class="green">省去加工利润</td></tr>
+      <tr><td>铝土矿</td><td>几内亚自采</td><td>进口/外购</td><td class="green">锁定长协低价</td></tr>
+      <tr class="hl-row"><td><strong>吨铝现金成本合计</strong></td><td><strong>~14,000-15,000元</strong></td><td><strong>~16,000-18,000元</strong></td><td class="green"><strong>低15-20%</strong></td></tr>
     </tbody>
-  </table>
-
-  <p>以铝价约 24,000 元/吨（沪铝当前价格）计算，宏桥的吨铝利润约 8,000-10,000 元（含增值税影响后的经营利润），而高成本竞争对手可能仅有 4,000-6,000 元甚至更低。在 FY2025 铝价均值约 18,216 元/吨（不含税）的环境下，宏桥仍实现了 226 亿净利润——这证明了其成本优势带来的穿越周期的盈利能力。</p>
-
-  <div class="warning-box">
-    <strong>⚠️ 周期性风险提示：</strong>尽管宏桥拥有行业最低的成本结构，但其盈利仍高度依赖于铝价。如果全球经济衰退导致铝价大幅下跌（如跌破 17,000 元/吨），宏桥的利润将显著压缩。我们估计宏桥的盈亏平衡铝价约在 14,000-15,000 元/吨，低于行业平均的 16,000-18,000 元/吨。
-  </div>
+  </table></div>
+  <p>以铝价约20,000元/吨计算，宏桥吨铝利润约8,000-10,000元，而高成本竞争对手可能仅有4,000-6,000元。在FY2025铝价均值约18,216元/吨（不含税）的环境下，宏桥仍实现了226亿净利润——证明了成本优势带来的穿越周期能力。</p>
+  <div class="box warn"><strong>⚠️ 周期性风险：</strong>尽管宏桥拥有行业最低成本结构，盈利仍高度依赖铝价。预亏平衡铝价约14,000-15,000元/吨，低于行业平均的16,000-18,000元/吨。</div>
 </div>
 
-<!-- ==================== 3. INDUSTRY ANALYSIS ==================== -->
-<div class="section">
+<div class="section-card" id="industry">
   <h2><span class="num">3</span> 铝行业格局 &amp; 供需展望</h2>
-
   <h3>全球铝供需格局</h3>
-  <table>
+  <div class="table-wrap"><table>
     <thead><tr><th>供需因素</th><th>现状</th><th>对铝价影响</th></tr></thead>
     <tbody>
-      <tr><td><strong>中国产能天花板</strong></td><td>电解铝产能上限 4,500 万吨（供给侧改革政策）</td><td style="color:var(--green)">利好 — 供给刚性约束</td></tr>
-      <tr><td><strong>新能源需求</strong></td><td>光伏边框、电动车轻量化、特高压电网用铝持续增长</td><td style="color:var(--green)">利好 — 结构性需求增量</td></tr>
-      <tr><td><strong>传统需求</strong></td><td>房地产竣工下行拖累建筑用铝；但基建和汽车对冲部分压力</td><td>中性偏空</td></tr>
-      <tr><td><strong>海外供给</strong></td><td>印尼新建产能（但进展慢于预期）；欧洲能源成本高企致减产</td><td style="color:var(--green)">利好 — 海外增量有限</td></tr>
-      <tr><td><strong>能源成本</strong></td><td>煤价中枢下移利好国内火电铝；但碳成本上升是长期逆风</td><td>中性</td></tr>
-      <tr><td><strong>库存水平</strong></td><td>全球显性库存处于历史低位（LME+SHFE < 100万吨）</td><td style="color:var(--green)">利好 — 价格支撑强</td></tr>
+      <tr><td><strong>中国产能天花板</strong></td><td>电解铝产能上限4,500万吨（供给侧改革）</td><td class="green">利好—供给刚性约束</td></tr>
+      <tr><td><strong>新能源需求</strong></td><td>光伏、电动车轻量化、特高压持续增长</td><td class="green">利好—结构性增量</td></tr>
+      <tr><td><strong>传统需求</strong></td><td>房地产竣工下行拖累建筑用铝；基建/汽车对冲</td><td>中性偏空</td></tr>
+      <tr><td><strong>海外供给</strong></td><td>印尼新建进度慢；欧洲能源成本高致减产</td><td class="green">利好—增量有限</td></tr>
+      <tr><td><strong>全球库存</strong></td><td>LME+SHFE显性库存 < 100万吨，历史低位</td><td class="green">利好—价格支撑强</td></tr>
     </tbody>
-  </table>
-
-  <p><strong>关键判断：</strong>中国 4,500 万吨电解铝产能天花板是铝行业最重要的供给侧约束。在新能源（光伏+电动车+特高压）持续拉动铝消费的背景下，供需紧平衡格局有望维持。当前全球铝显性库存处于历史低位，一旦需求出现边际改善，铝价弹性将向上释放。我们假设 2026-2027 年铝价中枢维持在 18,000-20,000 元/吨（不含税），对宏桥的盈利预测构成合理支撑。</p>
-
-  <div class="section-divider"></div>
-
-  <h3>与主要竞争对手对比</h3>
-  <table>
-    <thead><tr><th>指标</th><th>中国宏桥</th><th>中国铝业</th><th>俄铝 (Rusal)</th><th>美铝 (Alcoa)</th></tr></thead>
+  </table></div>
+  <p><strong>关键判断：</strong>中国4,500万吨产能天花板是铝行业最重要的供给侧约束。在新能源持续拉动铝消费的背景下，供需紧平衡格局有望维持。</p>
+  <div class="div-line"></div>
+  <h3>同业对比：宏桥 vs 全球主要铝企</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>指标</th><th>中国宏桥</th><th>中国铝业</th><th>俄铝</th><th>美国铝业</th></tr></thead>
     <tbody>
-      <tr class="highlight-row"><td><strong>2025 净利润</strong></td><td><strong>¥226亿</strong></td><td>¥120亿+</td><td>$12亿</td><td>$4亿</td></tr>
-      <tr><td><strong>电解铝产能</strong></td><td>~650万吨</td><td>~500万吨</td><td>~380万吨</td><td>~250万吨</td></tr>
-      <tr><td><strong>净利率</strong></td><td>~14%</td><td>~9.8%</td><td>~8%</td><td>~3%</td></tr>
-      <tr><td><strong>电力自给率</strong></td><td>~80%</td><td><30%</td><td>~90%（水电）</td><td>~50%</td></tr>
-      <tr><td><strong>氧化铝自给率</strong></td><td>>100%</td><td>~60%</td><td>~70%</td><td>~80%</td></tr>
-      <tr><td><strong>P/E (2026E)</strong></td><td>~8-9x</td><td>~12x</td><td>~8x</td><td>~15x</td></tr>
-      <tr><td><strong>股息率</strong></td><td>~8%</td><td>~2-3%</td><td>~0%</td><td>~1%</td></tr>
+      <tr class="hl-row"><td><strong>2025 净利润</strong></td><td><strong>&yen;226亿</strong></td><td>&yen;120亿+</td><td>$12亿</td><td>$4亿</td></tr>
+      <tr><td>电解铝产能</td><td>~650万吨</td><td>~500万吨</td><td>~380万吨</td><td>~250万吨</td></tr>
+      <tr><td>净利率</td><td class="green">~14%</td><td>~9.8%</td><td>~8%</td><td>~3%</td></tr>
+      <tr><td>P/E (2026E)</td><td class="green">~8-9x</td><td>~12x</td><td>~8x</td><td>~15x</td></tr>
+      <tr><td>股息率</td><td class="green">~8%</td><td>~2-3%</td><td>~0%</td><td>~1%</td></tr>
     </tbody>
-  </table>
-
-  <p><strong>核心结论：</strong>在可比铝企中，宏桥以最大的产能、最低的成本、最高的利润率和最高的股息率，却获得了最低或次低的 P/E 估值——这是典型的市场定价错误。中国铝业以更高的 P/E 交易，主要因为其央企身份和更低的股价波动率——但宏桥在基本面质量上明显占优。</p>
+  </table></div>
+  <p><strong>核心结论：</strong>在可比铝企中，宏桥以最大的产能、最低的成本、最高的利润率和最高的股息率，却获得了最低或次低的P/E估值——这是典型的市场定价错误。</p>
 </div>
 
-<!-- ==================== 4. FINANCIAL ANALYSIS ==================== -->
-<div class="section">
+<div class="section-card" id="financials">
   <h2><span class="num">4</span> 财务深度分析</h2>
-
   <h3>收入与利润趋势</h3>
-  <table>
-    <thead><tr><th>指标（亿元人民币）</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead>
+  <div class="table-wrap"><table>
+    <thead><tr><th>指标（亿元）</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead>
     <tbody>
       <tr><td>营业收入</td><td>1,317</td><td>1,336</td><td>1,561</td><td>1,624</td></tr>
-      <tr><td>营收增速</td><td>+9.5%</td><td>+1.4%</td><td>+16.9%</td><td>+4.0%</td></tr>
       <tr><td>归母净利润</td><td>87.0</td><td>115.7</td><td>223.7</td><td>226.4</td></tr>
-      <tr><td>净利润增速</td><td>-46%</td><td>+33%</td><td>+93%</td><td>+1.2%</td></tr>
+      <tr><td>净利润增速</td><td class="red">-46%</td><td class="green">+33%</td><td class="green">+93%</td><td>+1.2%</td></tr>
       <tr><td>净利率</td><td>6.6%</td><td>8.7%</td><td>14.3%</td><td>13.9%</td></tr>
-      <tr><td>每股收益 (RMB)</td><td>~0.92</td><td>~1.22</td><td>~2.36</td><td>2.38</td></tr>
+      <tr><td>EPS (RMB)</td><td>~0.92</td><td>~1.22</td><td>~2.36</td><td>2.38</td></tr>
       <tr><td>每股分红 (HKD)</td><td>~0.60</td><td>~1.00</td><td>~1.80</td><td>~2.10+</td></tr>
-      <tr><td>分红率</td><td>~40%</td><td>~45%</td><td>~45%</td><td>~45%</td></tr>
     </tbody>
-  </table>
-  <p style="font-size:12px; color:var(--text-light);">数据来源：中国宏桥历年财报。FY2022-2023 为部分估算值。FY2022 利润受铝价下行周期影响基数较低。</p>
-
-  <div class="section-divider"></div>
-
+  </table></div>
+  <p style="font-size:12px;color:var(--text-light);">数据来源：中国宏桥历年财报。FY2022-2023部分为估算值。</p>
+  <div class="div-line"></div>
   <h3>Q1 2026 先行指标：子公司利润再增三成</h3>
-  <p>虽然中国宏桥不强制披露季度报告，但其境内核心子公司<strong>宏桥控股（山东宏桥）</strong>的 Q1 数据可作为先行指标。据公开信息，2026 年 Q1 宏桥控股在 FY2025 Q1 高基数的基础上，<strong>净利润同比再增 30%+</strong>，收入微增但利润弹性大幅释放——这完美验证了铝价上行时宏桥成本优势放大的"盈利弹性"逻辑。按此趋势线性外推（注意：这是简化假设），FY2026 全年净利润有望达到 280-300 亿元，对应 EPS 约 2.95-3.16 元人民币。</p>
-
-  <div class="section-divider"></div>
-
+  <p>中国宏桥不强制披露季度报告，但其境内核心子公司<strong>宏桥控股</strong>Q1数据可作为先行指标。2026年Q1宏桥控股在FY2025 Q1高基数基础上，<strong>净利润同比再增30%+</strong>——完美验证了铝价上行时宏桥成本优势放大的"盈利弹性"逻辑。</p>
+  <div class="div-line"></div>
   <h3>盈利能力指标</h3>
-  <table>
-    <thead><tr><th>盈利质量指标</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>评价</th></tr></thead>
+  <div class="table-wrap"><table>
+    <thead><tr><th>盈利质量</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>评价</th></tr></thead>
     <tbody>
-      <tr><td>毛利率</td><td>~15%</td><td>~22%</td><td>~21%</td><td>随铝价波动，高于同业</td></tr>
-      <tr><td>净利率</td><td>8.7%</td><td>14.3%</td><td>13.9%</td><td>全球铝企中最高</td></tr>
-      <tr><td>ROE (估算)</td><td>~12%</td><td>~20%</td><td>~18%</td><td>优秀，但低于科技股</td></tr>
-      <tr><td>经营现金流 (估算)</td><td>~150亿</td><td>~250亿</td><td>~260亿</td><td>现金流充沛</td></tr>
-      <tr><td>自由现金流 (估算)</td><td>~50亿</td><td>~120亿</td><td>~100亿</td><td>CapEx 强度较高</td></tr>
+      <tr><td>毛利率</td><td>~15%</td><td>~22%</td><td>~21%</td><td>领先同业</td></tr>
+      <tr><td>净利率</td><td>8.7%</td><td>14.3%</td><td>13.9%</td><td class="green">全球最高</td></tr>
+      <tr><td>ROE</td><td>~12%</td><td>~20%</td><td>~18%</td><td>优秀</td></tr>
+      <tr><td>经营现金流</td><td>~150亿</td><td>~250亿</td><td>~260亿</td><td class="green">充沛</td></tr>
     </tbody>
-  </table>
-
-  <p><strong>关键发现：</strong>宏桥的盈利能力核心驱动是铝价，但<strong>利润率的绝对水平和稳定性显著优于纯商品公司</strong>——这就是全产业链一体化的价值。即使 FY2025 铝价仅温和上涨 3.8%（不含税均价），公司仍保持了 226 亿的利润规模。FY2026 年若铝价维持当前高位，利润弹性将进一步释放。</p>
+  </table></div>
 </div>
 
-<!-- ==================== 5. VALUATION ==================== -->
-<div class="section">
+<div class="section-card" id="valuation">
   <h2><span class="num">5</span> 估值分析</h2>
-
   <h3>历史估值区间</h3>
-  <table>
-    <thead><tr><th>估值指标</th><th>当前值</th><th>3年均值</th><th>3年高分位</th><th>3年低分位</th><th>当前分位</th></tr></thead>
+  <div class="table-wrap"><table>
+    <thead><tr><th>估值指标</th><th>当前值</th><th>3年均值</th><th>高/低位</th><th>当前分位</th></tr></thead>
     <tbody>
-      <tr><td>Trailing P/E</td><td>~10.5x</td><td>~12x</td><td>~18x</td><td>~6x</td><td style="color:var(--green)">~30%</td></tr>
-      <tr><td>Forward P/E (2026E)</td><td>~8-9x</td><td>~10x</td><td>~15x</td><td>~5x</td><td style="color:var(--green)">~25%</td></tr>
-      <tr><td>P/B</td><td>~0.8-0.9x</td><td>~1.0x</td><td>~1.5x</td><td>~0.5x</td><td style="color:var(--green)">~25%</td></tr>
-      <tr><td>EV/EBITDA (估算)</td><td>~5-6x</td><td>~7x</td><td>~10x</td><td>~3x</td><td>~30%</td></tr>
-      <tr><td>股息率</td><td>~8.0%</td><td>~6.5%</td><td>~11%</td><td>~3%</td><td>~70%</td></tr>
+      <tr><td>Trailing P/E</td><td>~10.5x</td><td>~12x</td><td>18x / 6x</td><td class="green">~30%</td></tr>
+      <tr><td>Forward P/E (2026E)</td><td>~8-9x</td><td>~10x</td><td>15x / 5x</td><td class="green">~25%</td></tr>
+      <tr><td>P/B</td><td>~0.85x</td><td>~1.0x</td><td>1.5x / 0.5x</td><td class="green">~25%</td></tr>
+      <tr><td>EV/EBITDA</td><td>~5-6x</td><td>~7x</td><td>10x / 3x</td><td>~30%</td></tr>
+      <tr><td>股息率</td><td class="green">~8.0%</td><td>~6.5%</td><td>11% / 3%</td><td class="green">~70%</td></tr>
     </tbody>
-  </table>
-  <p style="font-size:12px; color:var(--text-light);">数据来源：富途牛牛（futunn.com）、雪球（xueqiu.com）综合估算，截至2026年6月</p>
-
-  <div class="section-divider"></div>
-
-  <h3>目标价推导</h3>
-  <div class="warning-box">
-    <strong>⚠️ 估值方法说明：</strong>对于周期性大宗商品企业，P/E 估值有其局限性（利润随商品价格大幅波动）。我们采用三重方法交叉验证——Forward P/E、EV/EBITDA 和股息贴现模型——并给予 Forward P/E 最低权重以体现对利润周期性的审慎。
-  </div>
-  <table>
-    <thead><tr><th>估值方法</th><th>关键假设</th><th>推导目标价</th><th>权重</th></tr></thead>
+  </table></div>
+  <div class="div-line"></div>
+  <h3>目标价推导（三重交叉验证）</h3>
+  <div class="box warn"><strong>⚠️ 估值方法说明：</strong>对于周期性商品企业，P/E估值有局限性。采用三重方法交叉验证——Forward P/E、EV/EBITDA和股息贴现模型。</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>估值方法</th><th>关键假设</th><th>目标价</th><th>权重</th></tr></thead>
     <tbody>
-      <tr><td><strong>Forward P/E 法</strong></td><td>FY2026E EPS ¥3.05 × 10.5x P/E → ¥32.0/HK$34.7</td><td>HK$34.7</td><td>35%</td></tr>
-      <tr><td><strong>EV/EBITDA 法</strong></td><td>FY2026E EBITDA ¥420亿 × 7.0x</td><td>HK$35.5</td><td>35%</td></tr>
-      <tr><td><strong>股息贴现 (DDM)</strong></td><td>DPS HK$2.30, 永续增长 2%, 要求回报 10%</td><td>HK$33.8</td><td>30%</td></tr>
-      <tr class="highlight-row"><td><strong>加权目标价</strong></td><td colspan="2"></td><td><strong>HK$35.00</strong></td></tr>
+      <tr><td>Forward P/E法</td><td>FY2026E EPS &yen;3.05 &times;10.5x</td><td>HK$34.7</td><td>35%</td></tr>
+      <tr><td>EV/EBITDA法</td><td>FY2026E EBITDA &yen;420亿 &times;7.0x</td><td>HK$35.5</td><td>35%</td></tr>
+      <tr><td>股息贴现(DDM)</td><td>DPS HK$2.30, 永续增长2%, 要求回报10%</td><td>HK$33.8</td><td>30%</td></tr>
+      <tr class="hl-row"><td><strong>加权目标价</strong></td><td colspan="2"></td><td><strong>HK$35.00</strong></td></tr>
     </tbody>
-  </table>
-
-  <p><strong>估值关键假设：</strong></p>
-  <ol style="padding-left:20px; margin-bottom:14px;">
-    <li><strong>P/E 法：</strong>10.5x 是保守倍数——低于宏桥 3 年均值（12x），反映大宗商品周期性和市场资金从周期股流出的结构性逆风。即使如此，较当前 8-9x 仍有显著修复空间。</li>
-    <li><strong>EV/EBITDA 法：</strong>7.0x 为全球铝企中低分位水平（美铝 ~8x、俄铝 ~6x），反映了宏桥的成本优势和一体化溢价。</li>
-    <li><strong>DDM 法：</strong>股息是估值底线的核心支撑。假设宏桥维持约 45% 的分红率，FY2026E 每股分红约 HK$2.30，在当前股价下提供约 8.5% 的股息率——这本身已构成有吸引力的回报。</li>
-  </ol>
-
-  <p><strong>为什么不用更高倍数？</strong>虽然花旗给出 48 港元目标价（隐含约 13-14x P/E），我们认为 10.5x P/E 更具纪律性。宏桥虽为全球成本最低的铝企，但仍受铝价周期波动、能源成本、政策风险等多重因素影响。35 港元的目标价意味着 ~29% 的合理上行空间——不需要铝价大幅上涨，仅需估值从极度低估小幅修复。</p>
+  </table></div>
+  <p>35港元目标价意味着~29%的合理上行空间——不需要铝价大幅上涨，仅需估值从极度低估小幅修复。</p>
 </div>
 
-<!-- ==================== 6. SWOT ==================== -->
-<div class="section">
+<div class="section-card" id="peer">
   <h2><span class="num">6</span> SWOT 分析</h2>
-
   <div class="swot-grid">
-    <div class="swot-item strengths">
-      <h4>💪 优势 (Strengths)</h4>
-      <ul>
-        <li>全球成本最低的电解铝生产商之一（吨铝现金成本 14,000-15,000 元 vs 行业 16,000-18,000 元）</li>
-        <li>全产业链垂直整合：铝土矿→氧化铝→电解铝→加工，锁定利润全链条</li>
-        <li>几内亚铝土矿资源自给率 >100%，摆脱对第三方矿源的依赖</li>
-        <li>自备电厂（煤电+云南水电），电力自给率约 80%</li>
-        <li>全球铝企最高净利润（226 亿），规模效应显著</li>
-        <li>高分红传统（~45% 分红率），股息率约 8%</li>
-        <li>电解铝产能 650 万吨，享受中国产能天花板带来的供给刚性红利</li>
-      </ul>
-    </div>
-    <div class="swot-item weaknesses">
-      <h4>⚠️ 劣势 (Weaknesses)</h4>
-      <ul>
-        <li>盈利高度依赖铝价，本质仍为周期性商品企业</li>
-        <li>火电占比较高（山东基地），面临碳达峰/碳中和政策的长期约束</li>
-        <li>资产负债率偏高（大宗商品行业通病，但较同业可控）</li>
-        <li>公司治理为家族企业模式（张士平家族），透明度低于央企中国铝业</li>
-        <li>印尼项目建设存在地缘政治和执行风险</li>
-        <li>非港股通标的（或存在流动性限制）</li>
-      </ul>
-    </div>
-    <div class="swot-item opportunities">
-      <h4>🚀 机遇 (Opportunities)</h4>
-      <ul>
-        <li>西芒杜铁矿 2026 年投产——持股 21.36%，打开铁矿石第二增长曲线</li>
-        <li>新能源（光伏、电动车、特高压）拉动铝结构性需求增长</li>
-        <li>中国 4,500 万吨产能天花板——供给端硬约束，利好存量龙头</li>
-        <li>云南水电铝基地扩张——低碳铝享受绿色溢价</li>
-        <li>全球铝库存历史低位——价格弹性向上</li>
-        <li>印尼产业链延伸（氧化铝+电解铝）——规避欧美关税壁垒</li>
-        <li>估值修复空间大——当前 8-9x P/E 存在显著重估潜力</li>
-      </ul>
-    </div>
-    <div class="swot-item threats">
-      <h4>🔴 威胁 (Threats)</h4>
-      <ul>
-        <li>全球经济衰退 → 铝价大幅下跌 → 利润断崖式下滑</li>
-        <li>中国房地产竣工持续萎缩 → 建筑用铝需求减弱</li>
-        <li>印尼/印度新建电解铝产能释放 → 打破中国产能天花板的全球供给平衡</li>
-        <li>碳边境调节机制（CBAM）→ 火电铝出口成本上升</li>
-        <li>几内亚政治风险 → 铝土矿供应中断</li>
-        <li>能源价格（煤炭/电力）大幅上涨 → 侵蚀成本优势</li>
-        <li>资金持续从周期股流向 AI/科技板块 → 估值长期低迷</li>
-      </ul>
-    </div>
+    <div class="swot-item str"><h4>💪 优势</h4><ul><li>全球成本最低的电解铝生产商</li><li>全产业链垂直整合：铝土矿→氧化铝→电解铝→加工</li><li>几内亚铝土矿资源自给率>100%</li><li>自备电厂，电力自给率约80%</li><li>全球铝企最高净利润（226亿）</li><li>高分红传统（~45%分红率），股息率约8%</li></ul></div>
+    <div class="swot-item wkn"><h4>⚠️ 劣势</h4><ul><li>盈利高度依赖铝价，本质仍为周期性商品企业</li><li>火电占比较高，面临碳达峰/碳中和长期约束</li><li>资产负债率偏高</li><li>家族企业模式，透明度低于央企</li></ul></div>
+    <div class="swot-item opp"><h4>🚀 机遇</h4><ul><li>西芒杜铁矿2026年投产——第二增长曲线</li><li>新能源（光伏、电动车、特高压）拉动铝需求</li><li>中国4,500万吨产能天花板——供给硬约束</li><li>云南水电铝基地扩张——低碳铝绿色溢价</li><li>全球铝库存历史低位</li><li>8-9x P/E存在显著重估潜力</li></ul></div>
+    <div class="swot-item thr"><h4>🔴 威胁</h4><ul><li>全球经济衰退→铝价大幅下跌</li><li>房地产竣工持续萎缩</li><li>印尼/印度新建产能释放</li><li>碳边境调节机制→火电铝成本上升</li><li>几内亚政治风险</li><li>资金持续从周期股流向AI/科技板块</li></ul></div>
   </div>
 </div>
 
-<!-- ==================== 7. RISK FACTORS ==================== -->
-<div class="section">
+<div class="section-card" id="risk">
   <h2><span class="num">7</span> 风险因素</h2>
-
-  <table>
-    <thead><tr><th>风险类别</th><th>具体风险</th><th>影响</th><th>概率</th><th>缓释因素</th></tr></thead>
+  <div class="table-wrap"><table>
+    <thead><tr><th>风险类别</th><th>具体风险</th><th>影响</th><th>概率</th></tr></thead>
     <tbody>
-      <tr style="background:#ffebee;">
-        <td><strong>铝价下跌</strong></td>
-        <td>全球衰退或中国需求骤降导致铝价大幅回落（如从 20,000 跌至 15,000 元/吨）</td>
-        <td style="color:var(--red)">非常高</td>
-        <td>中低</td>
-        <td>宏桥盈亏平衡点 ~12,000-13,000元/吨（行业最低）；高分红提供部分保护</td>
-      </tr>
-      <tr style="background:#fff3e0;">
-        <td><strong>能源成本上升</strong></td>
-        <td>煤价反弹或电力市场化改革推高自备电厂成本</td>
-        <td style="color:var(--red)">高</td>
-        <td>中</td>
-        <td>云南水电占比提升（低碳+低成本）；煤价当前处于下行通道</td>
-      </tr>
-      <tr style="background:#fff3e0;">
-        <td><strong>碳政策风险</strong></td>
-        <td>碳达峰/碳中和政策收紧，火电铝面临碳成本内部化和产能限制</td>
-        <td>中高</td>
-        <td>中高</td>
-        <td>云南水电铝扩张对冲；山东基地可购买绿电/碳配额</td>
-      </tr>
-      <tr style="background:#fffde7;">
-        <td><strong>供给端增量</strong></td>
-        <td>印尼、印度新建产能超预期释放，打破中国产能天花板形成的全球供需紧平衡</td>
-        <td>中</td>
-        <td>中低</td>
-        <td>海外项目建设进度持续低于预期（电力/基建瓶颈）</td>
-      </tr>
-      <tr style="background:#fffde7;">
-        <td><strong>几内亚地缘风险</strong></td>
-        <td>几内亚政局动荡或资源民族主义导致铝土矿供应中断</td>
-        <td>中高</td>
-        <td>低中</td>
-        <td>"赢联盟"多方利益绑定降低风险；可转向澳洲/印尼替代矿源</td>
-      </tr>
-      <tr style="background:#f5f5f5;">
-        <td><strong>公司治理</strong></td>
-        <td>家族企业模式下的关联交易、资本配置决策缺乏小股东制衡</td>
-        <td>中低</td>
-        <td>中</td>
-        <td>历史上分红记录良好；港股市场监管框架提供底线保护</td>
-      </tr>
-      <tr style="background:#f5f5f5;">
-        <td><strong>西芒杜执行风险</strong></td>
-        <td>铁矿项目投产延期或成本超支；铁矿石价格下跌压缩回报</td>
-        <td>中</td>
-        <td>中</td>
-        <td>西芒杜为期权价值而非核心估值支撑；即使失败不影响铝业估值</td>
-      </tr>
+      <tr style="background:#ffebee;"><td><strong>铝价下跌</strong></td><td>全球衰退或需求骤降致铝价大跌</td><td class="red">非常高</td><td>中低</td></tr>
+      <tr style="background:#fff3e0;"><td><strong>能源成本</strong></td><td>煤价反弹推高自备电厂成本</td><td class="red">高</td><td>中</td></tr>
+      <tr style="background:#fff3e0;"><td><strong>碳政策</strong></td><td>碳达峰政策收紧，火电铝面临碳成本</td><td>中高</td><td>中高</td></tr>
+      <tr><td><strong>印度/印尼增量</strong></td><td>海外产能超预期释放</td><td>中</td><td>中低</td></tr>
+      <tr style="background:#fff3e0;"><td><strong>几内亚地缘</strong></td><td>政局动荡致铝土矿供应中断</td><td>中高</td><td>低中</td></tr>
     </tbody>
-  </table>
+  </table></div>
 </div>
 
-<!-- ==================== 8. BULL / BEAR CASE ==================== -->
-<div class="section">
-  <h2><span class="num">8</span> 多空情景分析</h2>
-
+<div class="section-card" id="rating">
+  <h2><span class="num">8</span> 多空情景分析 &amp; 操作建议</h2>
   <div class="case-grid">
-    <div class="case-card bull">
-      <h4>🐂 多头情景（Bull Case）— 目标价 HK$48</h4>
-      <ul>
-        <li><strong>催化剂：</strong>铝价维持 20,000 元/吨以上 + 西芒杜铁矿顺利投产 + 估值修复至 12x P/E</li>
-        <li><strong>假设：</strong>FY2026E EPS ¥3.50 × 12x P/E → ¥42/HK$45.5 → 加权 HK$48</li>
-        <li><strong>概率：</strong>25%</li>
-        <li><strong>触发条件：</strong>中国加大基建/新能源投资 + 铝库存进一步去化 + 资金回流周期板块</li>
-        <li><strong>上行风险：</strong>铝价突破 22,000 元/吨（供给冲击）→ EPS 可达 ¥4.50+ → 目标价 HK$55+</li>
-      </ul>
-    </div>
-    <div class="case-card bear">
-      <h4>🐻 空头情景（Bear Case）— 目标价 HK$18</h4>
-      <ul>
-        <li><strong>催化剂：</strong>全球经济硬着陆 + 铝价暴跌至 15,000 元/吨以下 + 房地产崩溃 + 印尼产能集中释放</li>
-        <li><strong>假设：</strong>FY2026E EPS ¥2.00 × 8x P/E = ¥16/HK$17.3 → 加权 HK$18</li>
-        <li><strong>概率：</strong>15%</li>
-        <li><strong>触发条件：</strong>美欧同时衰退 + 中国房地产二次探底</li>
-        <li><strong>下行保护：</strong>约 8% 股息率 + 净现金/低负债提供底部支撑</li>
-      </ul>
-    </div>
+    <div class="case-card bull"><h4>🐂 多头情景 — 目标价 HK$48</h4><ul><li><strong>催化剂：</strong>铝价维持20,000元/吨以上 + 西芒杜投产 + 估值修复至12x P/E</li><li><strong>假设：</strong>FY2026E EPS &yen;3.50 &times;12x → 加权 HK$48</li><li><strong>概率：</strong>25%</li></ul></div>
+    <div class="case-card bear"><h4>🐻 空头情景 — 目标价 HK$18</h4><ul><li><strong>催化剂：</strong>硬着陆 + 铝价暴跌至15,000元/吨以下 + 印尼产能集中释放</li><li><strong>假设：</strong>FY2026E EPS &yen;2.00 &times;8x → 加权 HK$18</li><li><strong>概率：</strong>15%</li></ul></div>
   </div>
-
-  <div class="section-divider"></div>
-
-  <h3>敏感性分析：铝价与 EPS</h3>
-  <table>
-    <thead><tr><th>铝价情景 (元/吨, 不含税)</th><th>15,000</th><th>17,000</th><th>18,500</th><th>20,000</th><th>22,000</th></tr></thead>
+  <div class="div-line"></div>
+  <h3>敏感性：铝价 vs 目标价 (HKD)</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>铝价(元/吨)</th><th>15,000</th><th>17,000</th><th>18,500★</th><th>20,000</th><th>22,000</th></tr></thead>
     <tbody>
-      <tr><td><strong>FY2026E EPS (RMB)</strong></td><td style="color:var(--red)">~1.60</td><td style="color:var(--red)">~2.30</td><td>~2.80</td><td style="color:var(--green)">~3.40</td><td style="color:var(--green)">~4.50</td></tr>
-      <tr><td><strong>对应 EPS (HKD)</strong></td><td>~1.73</td><td>~2.49</td><td>~3.03</td><td>~3.68</td><td>~4.87</td></tr>
-      <tr><td><strong>8x P/E</strong></td><td style="color:var(--red)">13.9</td><td style="color:var(--red)">19.9</td><td>24.3</td><td>29.5</td><td>39.0</td></tr>
-      <tr><td><strong>10x P/E</strong></td><td style="color:var(--red)">17.3</td><td style="color:var(--red)">24.9</td><td>30.3</td><td>36.8</td><td>48.7</td></tr>
-      <tr><td><strong>12x P/E</strong></td><td style="color:var(--red)">20.8</td><td>29.9</td><td>36.4</td><td>44.2</td><td>58.5</td></tr>
+      <tr><td><strong>8x P/E</strong></td><td class="red">13.9</td><td class="red">19.9</td><td>24.3</td><td class="green">29.5</td><td class="green">39.0</td></tr>
+      <tr><td><strong>10x P/E</strong></td><td class="red">17.3</td><td class="red">24.9</td><td>30.3</td><td class="green">36.8</td><td class="green">48.7</td></tr>
+      <tr><td><strong>12x P/E</strong></td><td class="red">20.8</td><td>29.9</td><td>36.4</td><td class="green">44.2</td><td class="green">58.5</td></tr>
     </tbody>
-  </table>
-  <p style="font-size:12px; color:var(--text-light);">绿色=高于当前价(HK$27)，红色=低于当前价。此表清晰地展示了铝价是宏桥估值的核心变量。在当前铝价 ~18,500 元/吨的基准情景下，10x P/E 即可支撑 30 港元以上的股价。即使铝价下跌至 17,000 元/吨，在当前 P/E 下仍接近盈亏平衡。</p>
+  </table></div>
+  <p style="font-size:12px;color:var(--text-light);">★=基准情景。绿色高于当前价HK$27。</p>
+  <div class="box buy" style="margin-top:28px;"><strong>BUY 买入 &nbsp;|&nbsp; 12个月目标价 HK$35.00 &nbsp;|&nbsp; 止损参考 HK$22</strong><br>当前 HK$27.08 处于合理建仓区间。建议分2-3批建仓。西芒杜铁矿投产是2026年最重要的催化剂。</div>
 </div>
 
-<!-- ==================== 9. CATALYST CALENDAR ==================== -->
-<div class="section">
-  <h2><span class="num">9</span> 催化剂日历</h2>
-
-  <table>
-    <thead><tr><th>时间</th><th>事件</th><th>重要性</th><th>预期影响</th></tr></thead>
-    <tbody>
-      <tr class="highlight-row">
-        <td><strong>2026年8月 (预期)</strong></td>
-        <td>FY2026 中期业绩发布</td>
-        <td style="color:var(--green)">★★★★★</td>
-        <td>Q1 子公司利润 +30% 趋势是否延续？H1 利润指引及全年展望</td>
-      </tr>
-      <tr>
-        <td><strong>2026年H2</strong></td>
-        <td>西芒杜铁矿首次出矿</td>
-        <td>★★★★</td>
-        <td>打开铁矿石第二增长曲线——市场可能给予估值重估</td>
-      </tr>
-      <tr>
-        <td><strong>2026年Q3-Q4</strong></td>
-        <td>铝价走势（LME/SHFE）</td>
-        <td style="color:var(--green)">★★★★★</td>
-        <td>核心变量：库存去化、中国新能源需求、全球经济走向</td>
-      </tr>
-      <tr>
-        <td><strong>2026年H2</strong></td>
-        <td>云南水电铝新产能投产进展</td>
-        <td>★★★</td>
-        <td>提升低碳铝占比，对冲山东火电铝的碳政策风险</td>
-      </tr>
-      <tr>
-        <td><strong>2026年10月</strong></td>
-        <td>中国"金九银十"需求旺季</td>
-        <td>★★★</td>
-        <td>季节性铝消费高峰，验证下游需求健康度</td>
-      </tr>
-      <tr>
-        <td><strong>2026年H2</strong></td>
-        <td>印尼项目进展更新</td>
-        <td>★★★</td>
-        <td>产能扩张步伐——是否如期推进？</td>
-      </tr>
-      <tr>
-        <td><strong>2026全年</strong></td>
-        <td>中国宏观经济政策（地产/基建刺激）</td>
-        <td>★★★★</td>
-        <td>若政策超预期宽松，铝需求将显著受益</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="disc-section">
+  <h4>免责声明 / Disclaimer</h4>
+  <p>本报告由Snail Investment独立编制，仅供信息参考目的，不构成任何投资邀约、要约、招募或建议。</p>
+  <p><strong>核心数据来源：</strong>中国宏桥FY2025年报、子公司宏桥控股Q1 2026数据、富途牛牛、雪球、花旗最新研报。</p>
+  <p>© 2026 Snail Investment · 保留所有权利 · 未经授权不得转载</p>
 </div>
+<div class="footer-line">🐌 <strong>Snail Investment</strong> &mdash; Equity Research &nbsp;|&nbsp; 中国宏桥 01378.HK</div>
 
-<!-- ==================== 10. RATING & CONCLUSION ==================== -->
-<div class="section">
-  <h2><span class="num">10</span> 评级与结论</h2>
-
-  <div class="rating-box buy" style="margin-bottom:20px;">
-    <div class="rating-badge">BUY</div>
-    <div class="rating-detail">
-      <strong>评级：买入</strong> &nbsp;|&nbsp; 目标价：<strong>HK$35.00</strong> &nbsp;|&nbsp; 上行空间：<strong>+29.2%</strong> &nbsp;|&nbsp; 时间维度：<strong>12个月</strong><br>
-      当前价格：HK$27.08（2026年6月18日参考价）&nbsp;|&nbsp; 2026E P/E ~8-9x &nbsp;|&nbsp; 股息率 ~8%
-    </div>
-  </div>
-
-  <h3>PM 七问框架检验</h3>
-  <table>
-    <thead><tr><th>#</th><th>问题</th><th>回答</th></tr></thead>
-    <tbody>
-      <tr><td>1</td><td><strong>什么被错误定价了？</strong></td><td>市场将宏桥视为普通的铝价贝塔——随铝价涨跌。但宏桥的"成本护城河"——全产业链一体化 + 自备电厂 + 几内亚矿源自给——赋予其穿越周期的超额利润能力。全球铝企最高利润率 + 最低估值 = 定价错误。</td></tr>
-      <tr><td>2</td><td><strong>当前价格已经反映了什么？</strong></td><td>8-9x P/E 反映了市场对铝价崩盘、中国需求崩溃、以及资金永久性流出周期板块的三重悲观假设。但铝价仍处高位、Q1 利润再增 30%、8% 股息率提供底部——现实远好于定价隐含的预期。</td></tr>
-      <tr><td>3</td><td><strong>什么能证明论点？</strong></td><td>H1 2026 中期业绩印证利润增长趋势 + 铝价维持 18,000 元/吨以上 + 西芒杜如期投产 + 股息维持在 8% 以上</td></tr>
-      <tr><td>4</td><td><strong>什么能推翻论点？</strong></td><td>全球经济硬着陆 → 铝价暴跌至 15,000 元/吨以下；中国房地产二次探底；印尼产能集中释放打破供需平衡；几内亚矿源中断</td></tr>
-      <tr><td>5</td><td><strong>为什么是现在？</strong></td><td>资金从周期股流向 AI 板块造成了非理性的超卖——宏桥的基本面（Q1 利润 +30%、铝价高位、库存低位）不仅没有恶化，反而在改善。这是典型的"市场情绪与基本面背离"时刻</td></tr>
-      <tr><td>6</td><td><strong>什么会改变评级/目标价？</strong></td><td><strong>上调：</strong>铝价突破 22,000 元/吨 + 西芒杜产量超预期 → 目标价上调至 HK$42<br><strong>下调：</strong>铝价跌破 15,000 元/吨持续两个季度 + 股息削减 → 评级下调至 HOLD，目标价 HK$20</td></tr>
-      <tr><td>7</td><td><strong>还缺少什么证据？</strong></td><td>需要 H1 2026 中期业绩确认利润增长趋势；需要更精确的吨铝成本拆分数据（公司信披有限）；需要西芒杜项目的正式投产公告和产量指引。</td></tr>
-    </tbody>
-  </table>
-
-  <div class="section-divider"></div>
-
-  <p style="font-size:16px; font-weight:600; color:var(--navy); text-align:center; padding:20px;">
-    ✅ 行动分类：<span style="color:var(--green); font-size:20px;">买入 / 建仓</span><br>
-    在 HK$25-28 区间分批建仓，占组合权重 3-5%（周期股仓位应低于科技股），设置 HK$21 硬止损。<br>
-    <span style="font-size:13px; font-weight:400; color:var(--text-light);">注意：宏桥为周期性大宗商品企业，铝价波动是最大的单一风险因素。建议与科技/消费股搭配配置，用于获取高股息收益和周期底部估值修复的双重回报。<br>该标的不是"买入并持有 3 年"的类型——需持续跟踪铝价和全球宏观，在周期下行时果断减仓。</span>
-  </p>
-</div>
-
-<!-- ==================== DISCLAIMER ==================== -->
-<div class="disclaimer">
-  <h4>⚠️ 免责声明</h4>
-  <p><strong>本报告由 Snail Investment Research 编制，仅供参考，不构成个人投资建议。</strong></p>
-  <p>本报告中的信息和分析基于公开可获得的资料，包括但不限于：中国宏桥集团有限公司向香港交易所提交的年度及中期财务报告、公司公告、花旗银行研究部研报、富途牛牛（futunn.com）、雪球（xueqiu.com）、智通财经（zhitongcaijing.com）、东方财富（eastmoney.com）、新浪财经等公开来源。数据截取日期为 2026 年 6 月 19 日。</p>
-  <p>本报告中的任何内容均不应被解释为购买或出售任何证券的要约或邀请。投资涉及风险，过往表现不代表未来收益。在作出任何投资决策前，投资者应自行进行尽职调查或咨询合格的财务顾问。</p>
-  <p>Snail Investment 的分析师可能持有或不持有本报告所涵盖的证券头寸。本报告中的评级、目标价和财务预测仅代表分析师基于截至报告日期的可用信息所作出的判断，可能随时更改而无需另行通知。</p>
-  <p><strong>周期性风险特别提示：</strong>中国宏桥为大宗商品（铝、铁矿石）生产企业，其盈利能力和股价表现与全球大宗商品价格周期高度相关。铝价的任何显著下跌将对公司利润和股价产生重大负面影响。投资者在作出投资决策前，应充分了解大宗商品投资的高波动性和周期性特征。</p>
-  <p><strong>汇率风险提示：</strong>本报告以港元（HKD）给出目标价。中国宏桥的财务报告以人民币（CNY）编制。人民币兑港元的汇率波动可能影响目标价的实现。</p>
-  <p><strong>数据时效性：</strong>本报告中的 FY2026 预测数据部分基于子公司先行指标和管理层公开表述的线性外推，具有不确定性。部分财务数据（ROE、FCF 等）为基于公开信息的分析师估算值。对于第三方数据的准确性和完整性，Snail Investment 不作任何明示或暗示的保证。</p>
-  <p>© 2026 Snail Investment. 保留所有权利。</p>
-</div>
-
-<div class="footer-brand">
-  Produced by <strong>Snail Investment</strong> &mdash; Independent Equity Research &mdash; June 19, 2026
-</div>
-
-</div><!-- end content -->
-
+</div></div>
 </body>
 </html>
