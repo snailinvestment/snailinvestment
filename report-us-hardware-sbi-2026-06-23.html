@@ -14,44 +14,30 @@
   .section { background: #111827; border-radius:12px; padding:24px; margin-bottom:24px;
                border:1px solid #1e293b; }
   .section h2 { font-size:1.2rem; margin-bottom:16px; color:#60a5fa; }
-  /* SBI总分 */
   .sbi-hero { text-align:center; padding:30px 20px; }
   .sbi-score { font-size:5rem; font-weight:800; margin:10px 0;
                 background: linear-gradient(135deg, #ef4444, #f97316); -webkit-background-clip:text;
                 -webkit-text-fill-color:transparent; }
-  .sbi-score.safe { background: linear-gradient(135deg, #22c55e, #16a34a);
-                     -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-  .sbi-score.warn { background: linear-gradient(135deg, #eab308, #f97316);
-                     -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
   .sbi-label { font-size:1rem; color:#7a8ba5; }
   .sbi-change { font-size:1.1rem; margin-top:8px; color:#f97316; font-weight:600; }
-  .sbi-change.up { color:#22c55e; }
-  .sbi-change.down { color:#ef4444; }
   .risk-badge { display:inline-block; padding:4px 14px; border-radius:20px; font-size:0.85rem;
                   margin-top:10px; font-weight:600; }
   .risk-badge.danger { background:#450a0a; color:#ef4444; border:1px solid #7f1d1d; }
-  .risk-badge.warn { background:#451a03; color:#f97316; border:1px solid #7c2d12; }
-  /* 维度评分表 */
   .dim-table { width:100%; border-collapse:collapse; margin-top:12px; }
   .dim-table th { text-align:left; padding:10px 12px; background:#0f172a; color:#7a8ba5;
-                  font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; }
+                  font-size:0.8rem; text-transform:uppercase; }
   .dim-table td { padding:10px 12px; border-bottom:1px solid #1e293b; font-size:0.9rem; }
-  .dim-table tr:last-child td { border-bottom:none; }
   .score-bar { height:8px; background:#1e293b; border-radius:4px; overflow:hidden; min-width:100px; }
-  .score-bar-fill { height:100%; border-radius:4px; transition: width 0.5s; }
+  .score-bar-fill { height:100%; border-radius:4px; }
   .score-high { background:#ef4444; }
   .score-mid { background:#f97316; }
   .score-low { background:#22c55e; }
-  .change-arrow { font-size:0.85rem; margin-left:6px; }
   .change-up { color:#22c55e; }
   .change-down { color:#ef4444; }
   .change-flat { color:#7a8ba5; }
-  /* 图表网格 */
   .chart-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:16px; }
   .chart-box { background:#0f172a; border-radius:8px; padding:16px; }
   .chart-box h3 { font-size:0.95rem; margin-bottom:12px; color:#cbd5e1; }
-  .chart-box canvas { width:100% !important; }
-  /* 多空对比 */
   .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:12px; }
   .compare-box { padding:16px; border-radius:8px; }
   .compare-box.bullish { background:#052e16; border:1px solid #166534; }
@@ -63,7 +49,6 @@
   .compare-box li { padding:6px 0; font-size:0.88rem; color:#d1d5db;
                        border-bottom:1px solid rgba(255,255,255,0.05); }
   .compare-box li:last-child { border-bottom:none; }
-  /* 数据卡片 */
   .data-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
                   gap:14px; margin-top:14px; }
   .data-card { background:#0f172a; border-radius:8px; padding:14px;
@@ -71,7 +56,6 @@
   .data-card label { font-size:0.75rem; color:#7a8ba5; text-transform:uppercase; }
   .data-card .value { font-size:1.3rem; font-weight:700; margin:4px 0; color:#f0f4ff; }
   .data-card .sub { font-size:0.8rem; color:#7a8ba5; }
-  /* 个股估值表 */
   .stock-table { width:100%; border-collapse:collapse; margin-top:12px; font-size:0.88rem; }
   .stock-table th { text-align:left; padding:8px 10px; background:#0f172a; color:#7a8ba5;
                   font-size:0.75rem; text-transform:uppercase; }
@@ -79,19 +63,18 @@
   .pe-high { color:#ef4444; font-weight:600; }
   .pe-mid { color:#f97316; }
   .pe-low { color:#22c55e; }
-  /* 操作建议 */
   .advice-box { background:#1e1b4b; border:1px solid #3730a3; border-radius:8px;
                   padding:16px; margin-top:16px; }
   .advice-box h3 { color:#818cf8; margin-bottom:10px; }
   .advice-box ul { padding-left:18px; font-size:0.9rem; color:#c7d2fe; }
   .advice-box li { margin-bottom:6px; }
-  /* 页脚 */
   .footer { text-align:center; color:#4a5568; font-size:0.78rem; margin-top:30px; padding-top:16px;
                 border-top:1px solid #1e293b; }
   @media(max-width:768px) {
     .chart-grid, .compare-grid { grid-template-columns:1fr; }
     .sbi-score { font-size:3.5rem; }
   }
+
 </style>
 </head>
 <body>
@@ -120,6 +103,7 @@
         <tr><th>维度</th><th>权重</th><th>得分(0-100)</th><th>历史分位</th><th>环比</th><th>核心判断依据</th></tr>
       </thead>
       <tbody>
+
         <tr>
           <td><strong>估值</strong></td>
           <td>25%</td>
@@ -127,7 +111,7 @@
             <div class="score-bar"><div class="score-bar-fill score-high" style="width:93.0%"></div></div>
           </td>
           <td>SOX偏离200MA达+74.9%，远超...</td>
-          <td><span class="change-arrow change-up">↑</span></td>
+          <td><span class="change-up">↑</span></td>
           <td style="font-size:0.8rem;color:#7a8ba5;">SOX偏离200MA达+74.9%，远超50%危险线；龙头前瞻PE均值34.05x</td>
         </tr>
         <tr>
@@ -137,7 +121,7 @@
             <div class="score-bar"><div class="score-bar-fill score-high" style="width:89.0%"></div></div>
           </td>
           <td>S&P500 Top10集中度37.34...</td>
-          <td><span class="change-arrow change-up">↑</span></td>
+          <td><span class="change-up">↑</span></td>
           <td style="font-size:0.8rem;color:#7a8ba5;">S&P500 Top10集中度37.34%，NVIDIA权重~7.08%，SMH单日+$6.9B流入</td>
         </tr>
         <tr>
@@ -147,7 +131,7 @@
             <div class="score-bar"><div class="score-bar-fill score-high" style="width:95.0%"></div></div>
           </td>
           <td>FINRA融资余额$1.42T创历史新高...</td>
-          <td><span class="change-arrow change-flat">—</span></td>
+          <td><span class="change-flat">—</span></td>
           <td style="font-size:0.8rem;color:#7a8ba5;">FINRA融资余额$1.42T创历史新高，占GDP约4.46%，突破4.0%危险线</td>
         </tr>
         <tr>
@@ -157,7 +141,7 @@
             <div class="score-bar"><div class="score-bar-fill score-low" style="width:25.0%"></div></div>
           </td>
           <td>Hyperscaler Capex指引$...</td>
-          <td><span class="change-arrow change-down">↓</span></td>
+          <td><span class="change-down">↓</span></td>
           <td style="font-size:0.8rem;color:#7a8ba5;">Hyperscaler Capex指引$300-400B历史新高，但业绩兑现压力持续增大</td>
         </tr>
         <tr>
@@ -167,7 +151,7 @@
             <div class="score-bar"><div class="score-bar-fill score-high" style="width:70.0%"></div></div>
           </td>
           <td>SMH单日+$6.9B创历史级流入，表明...</td>
-          <td><span class="change-arrow change-flat">—</span></td>
+          <td><span class="change-flat">—</span></td>
           <td style="font-size:0.8rem;color:#7a8ba5;">SMH单日+$6.9B创历史级流入，表明半导体板块需求仍极强</td>
         </tr>
         <tr>
@@ -177,9 +161,10 @@
             <div class="score-bar"><div class="score-bar-fill score-high" style="width:70.0%"></div></div>
           </td>
           <td>美联储维持利率3.75%不变，10Y美债...</td>
-          <td><span class="change-arrow change-flat">—</span></td>
+          <td><span class="change-flat">—</span></td>
           <td style="font-size:0.8rem;color:#7a8ba5;">美联储维持利率3.75%不变，10Y美债4.46%，地缘风险温和</td>
         </tr>
+
       </tbody>
     </table>
   </div>
@@ -209,12 +194,24 @@
     <div class="compare-grid">
       <div class="compare-box bullish">
         <h3>🐂 多头论点（支撑泡沫延续的因素）</h3>
-        <ul><li>SOX年初至今涨幅达+106.61%，技术面极度强劲</li><li>Hyperscaler Capex指引$300-400B，AI基础设施投资持续加速</li><li>SMH单日流入$6.9B，机构资金持续涌入半导体板块</li><li>NVIDIA前瞻PE 24.04x，PEG 0.29，估值相对AI增速仍合理</li><li>TSM/AVGO前瞻PE均低于25x，代工/设备龙头估值未极端化</li><li>Fed维持利率不变，流动性环境维持宽松</li>
+        <ul>
+        <li>SOX年初至今涨幅达+106.61%，技术面极度强劲</li>
+        <li>Hyperscaler Capex指引$300-400B，AI基础设施投资持续加速</li>
+        <li>SMH单日流入$6.9B，机构资金持续涌入半导体板块</li>
+        <li>NVIDIA前瞻PE 24.04x，PEG 0.29，估值相对AI增速仍合理</li>
+        <li>TSM/AVGO前瞻PE均低于25x，代工/设备龙头估值未极端化</li>
+        <li>Fed维持利率不变，流动性环境维持宽松</li>
         </ul>
       </div>
       <div class="compare-box bearish">
         <h3>🐻 空头论点（泡沫破裂的触发因素）</h3>
-        <ul><li>SOX偏离200MA达+74.9%，远超50%历史危险线（互联网泡沫以来最高）</li><li>FINRA融资余额$1.42T/GDP=4.46%，已超过2021年10月前高（3.97%）</li><li>S&P500 Top10集中度37.34%，NVIDIA单票权重7.08%，拥挤度历史最高</li><li>AMD前瞻PE 63.27x、PE-TTM 183.95x，估值极端</li><li>Hyperscaler Capex $300-400B若AI ROI不及预期，将引发剧烈去杠杆</li><li> semiconductor板块年初以来涨幅翻倍，技术面严重超买，RSI个别成分股>70</li>
+        <ul>
+        <li>SOX偏离200MA达+74.9%，远超50%历史危险线（互联网泡沫以来最高）</li>
+        <li>FINRA融资余额$1.42T/GDP=4.46%，已超过2021年10月前高（3.97%）</li>
+        <li>S&P500 Top10集中度37.34%，NVIDIA单票权重7.08%，拥挤度历史最高</li>
+        <li>AMD前瞻PE 63.27x、PE-TTM 183.95x，估值极端</li>
+        <li>Hyperscaler Capex $300-400B若AI ROI不及预期，将引发剧烈去杠杆</li>
+        <li>半导体板块年初以来涨幅翻倍，技术面严重超买，RSI个别成分股>70</li>
         </ul>
       </div>
     </div>
@@ -269,7 +266,7 @@
 
   <!-- 龙头个股估值 -->
   <div class="section">
-    <h2>🏢 龙头个股估值矩阵（截至6/22收盘）</</h2>
+    <h2>🏢 龙头个股估值矩阵（截至6/22收盘）</h2>
     <table class="stock-table">
       <thead>
         <tr><th>标的</th><th>收盘价($)</th><th>市值</th><th>PE-TTM</th><th>前瞻PE</th><th>PEG</th><th>评估</th></tr>
@@ -380,8 +377,8 @@
 <!-- Chart.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <script>
-// ── 1. SBI 仪表盘（半圆环）───
-(function(){{
+
+(function(){
   const ctx = document.getElementById('gaugeChart').getContext('2d');
   const score = 78.0;
   let color;
@@ -390,29 +387,28 @@
   else if(score >= 45) color = '#eab308';
   else color = '#22c55e';
   
-  new Chart(ctx, {{
+  new Chart(ctx, {
     type:'doughnut',
-    data:{{
+    data:{
       labels:['SBI得分','剩余'],
-      datasets:[{{
+      datasets:[{
         data:[score, 100-score],
         backgroundColor:[color, '#1e293b'],
         borderWidth:0,
         circumference:180, rotation:270
-      }}]
-    }},
-    options:{{
+      }]
+    },
+    options:{
       responsive:true, maintainAspectRatio:false,
       cutout:'70%',
-      plugins:{{
+      plugins:{
         legend:{ display:false },
         tooltip:{ enabled:false }
-      }},
-      layout:{ padding:{{ top:20, bottom:0 }} }
-    }}
-  }});
+      },
+      layout:{ padding:{ top:20, bottom:0 } }
+    }
+  });
   
-  // 中心文字
   const canvas = document.getElementById('gaugeChart');
   const container = canvas.parentNode;
   const badge = document.createElement('div');
@@ -420,28 +416,26 @@
   badge.textContent = score.toFixed(1);
   container.style.position = 'relative';
   container.appendChild(badge);
-}})();
+})();
 
-// ── 2. 六维度雷达图 ─────────────────────
-(function(){{
+(function(){
   const ctx = document.getElementById('radarChart').getContext('2d');
-  const dims = [];
-  const scores = [];
-  const colors = [];
   const labels = ['估值','拥挤度','杠杆','业绩兑现','资金流向','外部环境'];
   const vals = [93.0, 89.0, 95.0, 25.0, 70.0, 70.0];
-  vals.forEach(v => {{
+  const scores = [];
+  const colors = [];
+  vals.forEach(v => {
     scores.push(v);
     if(v >= 70) colors.push('rgba(239,68,68,0.6)');
     else if(v >= 45) colors.push('rgba(249,115,22,0.6)');
     else colors.push('rgba(34,197,94,0.6)');
-  }});
+  });
   
-  new Chart(ctx, {{
+  new Chart(ctx, {
     type:'radar',
-    data:{{
+    data:{
       labels: labels,
-      datasets:[{{
+      datasets:[{
         label:'得分',
         data: scores,
         backgroundColor:'rgba(99,102,241,0.25)',
@@ -450,42 +444,39 @@
         pointBackgroundColor: colors.map(c => c.replace('0.6','1')),
         pointBorderColor:'#1e293b',
         pointRadius:5
-      }}]
-    }},
-    options:{{
+      }]
+    },
+    options:{
       responsive:true, maintainAspectRatio:false,
-      scales:{{
-        r:{{
+      scales:{
+        r:{
           min:0, max:100,
-          ticks:{{ display:true, stepSize:20, backdropColor:'transparent', color:'#64748b', font:{{size:10}} }},
+          ticks:{ display:true, stepSize:20, backdropColor:'transparent', color:'#64748b', font:{size:10} },
           grid:{ color:'rgba(255,255,255,0.08)' },
-          angleLines:{{ color:'rgba(255,255,255,0.08)' }},
-          pointLabels:{{ color:'#cbd5e1', font:{{size:12}} }}
-        }}
-      }},
-      plugins:{{
+          angleLines:{ color:'rgba(255,255,255,0.08)' },
+          pointLabels:{ color:'#cbd5e1', font:{size:12} }
+        }
+      },
+      plugins:{
         legend:{ display:false }
-      }}
-    }}
-  }});
-}})();
+      }
+    }
+  });
+})();
 
-// ── 3. SOX 60日走势图 ───────────────────
-(function(){{
+(function(){
   const ctx = document.getElementById('soxChart').getContext('2d');
   const raw = [{"date":"2026-04-24","value":10200},{"date":"2026-04-30","value":10800},{"date":"2026-05-07","value":10500},{"date":"2026-05-14","value":11200},{"date":"2026-05-21","value":12500},{"date":"2026-05-28","value":13100},{"date":"2026-06-04","value":11800},{"date":"2026-06-11","value":12900},{"date":"2026-06-18","value":14341.78},{"date":"2026-06-20","value":14634.72}];
-  const labels = raw.map(d => d.date.slice(5));  // MM-DD
+  const labels = raw.map(d => d.date.slice(5));
   const values = raw.map(d => d.value);
-  
-  // 200MA线（近似水平）
   const ma200 = 8367;
   const ma200Line = new Array(labels.length).fill(ma200);
   
-  new Chart(ctx, {{
+  new Chart(ctx, {
     type:'line',
-    data:{{
+    data:{
       labels: labels,
-      datasets:[{{
+      datasets:[{
         label:'SOX',
         data: values,
         borderColor:'#60a5fa',
@@ -495,7 +486,7 @@
         pointRadius:3,
         pointBackgroundColor:'#60a5fa',
         borderWidth:2
-      }},{{
+      },{
         label:'200MA',
         data: ma200Line,
         borderColor:'#f97316',
@@ -503,24 +494,25 @@
         borderWidth:1.5,
         pointRadius:0,
         fill:false
-      }}]
-    }},
-    options:{{
+      }]
+    },
+    options:{
       responsive:true, maintainAspectRatio:false,
-      interaction:{{ mode:'index', intersect:false }},
-      scales:{{
-        x:{{ ticks:{{ color:'#64748b', font:{{size:10}} }}, grid:{{ color:'rgba(255,255,255,0.05)' }} }},
-        y:{{ ticks:{{ color:'#64748b', font:{{size:10}}, callback:v=>v.toLocaleString() }}, grid:{{ color:'rgba(255,255,255,0.08)' }} }}
-      }},
-      plugins:{{
-        legend:{{
-          labels:{{ color:'#cbd5e1', font:{{size:11}} }},
+      interaction:{ mode:'index', intersect:false },
+      scales:{
+        x:{ ticks:{ color:'#64748b', font:{size:10} }, grid:{ color:'rgba(255,255,255,0.05)' } },
+        y:{ ticks:{ color:'#64748b', font:{size:10}, callback:v=>v.toLocaleString() }, grid:{ color:'rgba(255,255,255,0.08)' } }
+      },
+      plugins:{
+        legend:{
+          labels:{ color:'#cbd5e1', font:{size:11} },
           position:'top'
-        }}
-      }}
-    }}
-  }});
-}})();
+        }
+      }
+    }
+  });
+})();
+
 </script>
 </body>
 </html>
