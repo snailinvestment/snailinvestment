@@ -167,21 +167,134 @@
     </table>
   </div>
 
-  <!-- 图表区 -->
+  <!-- 图表区（纯SVG，无外部依赖） -->
   <div class="section">
     <h2>📈 可视化图表</h2>
     <div class="chart-grid">
+      <!-- SBI仪表盘 -->
       <div class="chart-box">
         <h3>🎯 SBI 仪表盘</h3>
-        <canvas id="gaugeChart" height="220"></canvas>
+        <svg viewBox="0 0 260 170" style="width:100%;height:auto;display:block;" aria-label="SBI泡沫指数仪表盘">
+          <!-- 背景弧（灰色） -->
+          <path d="M 30 150 A 100 100 0 0 1 230 150" fill="none" stroke="#1e293b" stroke-width="22" stroke-linecap="round"/>
+          <!-- 得分弧 -->
+          <path d="M 30 150 A 100 100 0 0 1 230 150" fill="none" stroke="#f97316" stroke-width="22" stroke-linecap="round"
+                stroke-dasharray="314.16 314.16" stroke-dashoffset="69.12"
+                transform="rotate(0 130 150)"/>
+          <!-- 刻度线 -->
+          <line x1="30" y1="150" x2="30" y2="142" stroke="#475569" stroke-width="1.5"/>
+          <line x1="82" y1="63" x2="87" y2="69" stroke="#475569" stroke-width="1.5"/>
+          <line x1="130" y1="50" x2="130" y2="58" stroke="#475569" stroke-width="1.5"/>
+          <line x1="178" y1="63" x2="173" y2="69" stroke="#475569" stroke-width="1.5"/>
+          <line x1="230" y1="150" x2="230" y2="142" stroke="#475569" stroke-width="1.5"/>
+          <!-- 刻度文字 -->
+          <text x="18" y="165" fill="#64748b" font-size="11" font-family="sans-serif">0</text>
+          <text x="122" y="42" fill="#64748b" font-size="11" font-family="sans-serif">50</text>
+          <text x="225" y="165" fill="#64748b" font-size="11" font-family="sans-serif">100</text>
+          <!-- 预警/危险标记 -->
+          <text x="66" y="80" fill="#eab308" font-size="9" font-family="sans-serif" opacity="0.8">⚠45</text>
+          <text x="188" y="80" fill="#ef4444" font-size="9" font-family="sans-serif" opacity="0.8">☠70</text>
+          <!-- 分数显示 -->
+          <text x="130" y="135" text-anchor="middle" fill="#f97316" font-size="36" font-weight="800" font-family="sans-serif">78.0</text>
+          <text x="130" y="155" text-anchor="middle" fill="#7a8ba5" font-size="11" font-family="sans-serif">危险区间</text>
+        </svg>
       </div>
+      <!-- 六维度雷达图 -->
       <div class="chart-box">
         <h3>📡 六维度雷达图</h3>
-        <canvas id="radarChart" height="220"></canvas>
+        <svg viewBox="0 0 280 250" style="width:100%;height:auto;display:block;" aria-label="SBI六维度雷达图">
+          <!-- 背景网格 - 5环 -->
+          <polygon points="140,20 232,58 232,142 140,180 48,142 48,58" fill="none" stroke="#1e293b" stroke-width="1"/>
+          <polygon points="140,40 212,68 212,132 140,160 68,132 68,68" fill="none" stroke="#1e293b" stroke-width="1"/>
+          <polygon points="140,60 192,78 192,122 140,140 88,122 88,78" fill="none" stroke="#1e293b" stroke-width="1"/>
+          <polygon points="140,80 172,88 172,112 140,120 108,112 108,88" fill="none" stroke="#1e293b" stroke-width="1"/>
+          <polygon points="140,100 152,98 152,102 140,104 128,102 128,98" fill="none" stroke="#1e293b" stroke-width="1"/>
+          <!-- 轴线 -->
+          <line x1="140" y1="20" x2="140" y2="180" stroke="#1e293b" stroke-width="0.8"/>
+          <line x1="48" y1="58" x2="232" y2="142" stroke="#1e293b" stroke-width="0.8"/>
+          <line x1="48" y1="142" x2="232" y2="58" stroke="#1e293b" stroke-width="0.8"/>
+          <!-- 数据多边形: 估值93, 拥挤度89, 杠杆95, 业绩兑现25, 资金流向70, 外部环境70 -->
+          <!-- 中心=140,100 半径=80. 估值(top)=140,20+? -->
+          <polygon points="140,21.6 228.8,61.6 231.6,139.2 140,160 86,129.6 86,72.8"
+                   fill="rgba(99,102,241,0.25)" stroke="rgba(99,102,241,0.9)" stroke-width="2"/>
+          <!-- 数据点 -->
+          <circle cx="140" cy="21.6" r="4.5" fill="#ef4444" stroke="#0f172a" stroke-width="1.5"/>
+          <circle cx="228.8" cy="61.6" r="4.5" fill="#ef4444" stroke="#0f172a" stroke-width="1.5"/>
+          <circle cx="231.6" cy="139.2" r="4.5" fill="#ef4444" stroke="#0f172a" stroke-width="1.5"/>
+          <circle cx="140" cy="160" r="4.5" fill="#22c55e" stroke="#0f172a" stroke-width="1.5"/>
+          <circle cx="86" cy="129.6" r="4.5" fill="#f97316" stroke="#0f172a" stroke-width="1.5"/>
+          <circle cx="86" cy="72.8" r="4.5" fill="#f97316" stroke="#0f172a" stroke-width="1.5"/>
+          <!-- 标签 -->
+          <text x="140" y="13" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="600" font-family="sans-serif">估值 93</text>
+          <text x="245" y="58" text-anchor="start" fill="#cbd5e1" font-size="11" font-weight="600" font-family="sans-serif">拥挤度 89</text>
+          <text x="245" y="148" text-anchor="start" fill="#cbd5e1" font-size="11" font-weight="600" font-family="sans-serif">杠杆 95</text>
+          <text x="140" y="198" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="600" font-family="sans-serif">业绩兑现 25</text>
+          <text x="35" y="148" text-anchor="end" fill="#cbd5e1" font-size="11" font-weight="600" font-family="sans-serif">资金流 70</text>
+          <text x="35" y="58" text-anchor="end" fill="#cbd5e1" font-size="11" font-weight="600" font-family="sans-serif">外部 70</text>
+        </svg>
       </div>
+      <!-- SOX走势图 -->
       <div class="chart-box" style="grid-column:1/-1;">
         <h3>📉 SOX 费城半导体指数 —— 60日走势</h3>
-        <canvas id="soxChart" height="200"></canvas>
+        <svg viewBox="0 0 700 260" style="width:100%;height:auto;display:block;" aria-label="SOX 60日走势图">
+          <!-- 背景网格 -->
+          <g stroke="#1e293b" stroke-width="0.7">
+            <line x1="55" y1="30" x2="55" y2="220"/><line x1="55" y1="220" x2="680" y2="220"/>
+            <line x1="55" y1="67.5" x2="680" y2="67.5"/><line x1="55" y1="105" x2="680" y2="105"/>
+            <line x1="55" y1="142.5" x2="680" y2="142.5"/><line x1="55" y1="180" x2="680" y2="180"/>
+            <line x1="118" y1="30" x2="118" y2="220"/><line x1="181" y1="30" x2="181" y2="220"/>
+            <line x1="244" y1="30" x2="244" y2="220"/><line x1="307" y1="30" x2="307" y2="220"/>
+            <line x1="370" y1="30" x2="370" y2="220"/><line x1="433" y1="30" x2="433" y2="220"/>
+            <line x1="496" y1="30" x2="496" y2="220"/><line x1="559" y1="30" x2="559" y2="220"/>
+            <line x1="622" y1="30" x2="622" y2="220"/>
+          </g>
+          <!-- Y轴标签 -->
+          <g fill="#64748b" font-size="10" font-family="sans-serif" text-anchor="end">
+            <text x="50" y="224">8,000</text>
+            <text x="50" y="184">10,000</text>
+            <text x="50" y="147">12,000</text>
+            <text x="50" y="109">14,000</text>
+            <text x="50" y="71">16,000</text>
+            <text x="50" y="34">18,000</text>
+          </g>
+          <!-- X轴标签 -->
+          <g fill="#64748b" font-size="10" font-family="sans-serif" text-anchor="middle">
+            <text x="55" y="238">04-24</text><text x="118" y="238">04-30</text><text x="181" y="238">05-07</text>
+            <text x="244" y="238">05-14</text><text x="307" y="238">05-21</text><text x="370" y="238">05-28</text>
+            <text x="433" y="238">06-04</text><text x="496" y="238">06-11</text><text x="559" y="238">06-18</text>
+            <text x="622" y="238">06-20</text>
+          </g>
+          <!-- 200MA参考线 (8367) -->
+          <line x1="55" y1="207.3" x2="680" y2="207.3" stroke="#f97316" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <text x="635" y="202" fill="#f97316" font-size="9" font-family="sans-serif">200MA=8,367</text>
+          <!-- 面积填充 -->
+          <polygon points="55,175.5 118,163.5 181,168.75 244,156.75 307,131.25 370,120.15 433,148.95 496,134.78 559,99.46 622,90.77 622,220 55,220"
+                   fill="rgba(96,165,250,0.12)"/>
+          <!-- SOX折线: 10200,10800,10500,11200,12500,13100,11800,12900,14341.78,14634.72 -->
+          <polyline points="55,175.5 118,163.5 181,168.75 244,156.75 307,131.25 370,120.15 433,148.95 496,134.78 559,99.46 622,90.77"
+                    fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <!-- 数据点 -->
+          <g fill="#60a5fa">
+            <circle cx="55" cy="175.5" r="3.5"/><circle cx="118" cy="163.5" r="3.5"/>
+            <circle cx="181" cy="168.75" r="3.5"/><circle cx="244" cy="156.75" r="3.5"/>
+            <circle cx="307" cy="131.25" r="3.5"/><circle cx="370" cy="120.15" r="3.5"/>
+            <circle cx="433" cy="148.95" r="3.5"/><circle cx="496" cy="134.78" r="3.5"/>
+            <circle cx="559" cy="99.46" r="4.5" stroke="#0f172a" stroke-width="1.5"/>
+            <circle cx="622" cy="90.77" r="4.5" stroke="#0f172a" stroke-width="1.5"/>
+          </g>
+          <!-- 最新数据标注 -->
+          <g font-family="sans-serif">
+            <rect x="573" y="62" width="92" height="24" rx="4" fill="#1e3a5f" stroke="#60a5fa" stroke-width="0.8"/>
+            <text x="619" y="79" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">14,634.72</text>
+          </g>
+          <!-- 图例 -->
+          <g transform="translate(55, 12)" font-size="10" font-family="sans-serif">
+            <line x1="0" y1="5" x2="18" y2="5" stroke="#60a5fa" stroke-width="2.5"/>
+            <text x="23" y="9" fill="#94a3b8">SOX指数</text>
+            <line x1="85" y1="5" x2="103" y2="5" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <text x="108" y="9" fill="#94a3b8">200日均线</text>
+          </g>
+        </svg>
       </div>
     </div>
   </div>
@@ -371,146 +484,5 @@
   </div>
 
 </div>
-
-<!-- Chart.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-<script>
-(function(){
-  const ctx = document.getElementById('gaugeChart').getContext('2d');
-  const score = 78.0;
-  let color;
-  if(score >= 80) color = '#ef4444';
-  else if(score >= 65) color = '#f97316';
-  else if(score >= 45) color = '#eab308';
-  else color = '#22c55e';
-
-  new Chart(ctx, {
-    type:'doughnut',
-    data:{
-      labels:['SBI得分','剩余'],
-      datasets:[{
-        data:[score, 100-score],
-        backgroundColor:[color, '#1e293b'],
-        borderWidth:0,
-        circumference:180, rotation:270
-      }]
-    },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      cutout:'70%',
-      plugins:{
-        legend:{ display:false },
-        tooltip:{ enabled:false }
-      },
-      layout:{ padding:{ top:20, bottom:0 } }
-    }
-  });
-
-  const canvas = document.getElementById('gaugeChart');
-  const container = canvas.parentNode;
-  const badge = document.createElement('div');
-  badge.style.cssText = 'position:absolute;bottom:30px;left:0;right:0;text-align:center;font-size:2rem;font-weight:800;color:'+color;
-  badge.textContent = score.toFixed(1);
-  container.style.position = 'relative';
-  container.appendChild(badge);
-})();
-
-(function(){
-  const ctx = document.getElementById('radarChart').getContext('2d');
-  const labels = ['估值','拥挤度','杠杆','业绩兑现','资金流向','外部环境'];
-  const vals = [93.0, 89.0, 95.0, 25.0, 70.0, 70.0];
-  const scores = [];
-  const colors = [];
-  vals.forEach(v => {
-    scores.push(v);
-    if(v >= 70) colors.push('rgba(239,68,68,0.6)');
-    else if(v >= 45) colors.push('rgba(249,115,22,0.6)');
-    else colors.push('rgba(34,197,94,0.6)');
-  });
-
-  new Chart(ctx, {
-    type:'radar',
-    data:{
-      labels: labels,
-      datasets:[{
-        label:'得分',
-        data: scores,
-        backgroundColor:'rgba(99,102,241,0.25)',
-        borderColor:'rgba(99,102,241,0.9)',
-        borderWidth:2,
-        pointBackgroundColor: colors.map(c => c.replace('0.6','1')),
-        pointBorderColor:'#1e293b',
-        pointRadius:5
-      }]
-    },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      scales:{
-        r:{
-          min:0, max:100,
-          ticks:{ display:true, stepSize:20, backdropColor:'transparent', color:'#64748b', font:{size:10} },
-          grid:{ color:'rgba(255,255,255,0.08)' },
-          angleLines:{ color:'rgba(255,255,255,0.08)' },
-          pointLabels:{ color:'#cbd5e1', font:{size:12} }
-        }
-      },
-      plugins:{
-        legend:{ display:false }
-      }
-    }
-  });
-})();
-
-(function(){
-  const ctx = document.getElementById('soxChart').getContext('2d');
-  const raw = [{"date": "2026-04-24", "value": 10200}, {"date": "2026-04-30", "value": 10800}, {"date": "2026-05-07", "value": 10500}, {"date": "2026-05-14", "value": 11200}, {"date": "2026-05-21", "value": 12500}, {"date": "2026-05-28", "value": 13100}, {"date": "2026-06-04", "value": 11800}, {"date": "2026-06-11", "value": 12900}, {"date": "2026-06-18", "value": 14341.78}, {"date": "2026-06-20", "value": 14634.72}];
-  const labels = raw.map(d => d.date.slice(5));
-  const values = raw.map(d => d.value);
-
-  const ma200 = 8367;
-  const ma200Line = new Array(labels.length).fill(ma200);
-
-  new Chart(ctx, {
-    type:'line',
-    data:{
-      labels: labels,
-      datasets:[{
-        label:'SOX',
-        data: values,
-        borderColor:'#60a5fa',
-        backgroundColor:'rgba(96,165,250,0.1)',
-        fill:true,
-        tension:0.3,
-        pointRadius:3,
-        pointBackgroundColor:'#60a5fa',
-        borderWidth:2
-      },{
-        label:'200MA',
-        data: ma200Line,
-        borderColor:'#f97316',
-        borderDash:[6,4],
-        borderWidth:1.5,
-        pointRadius:0,
-        fill:false
-      }]
-    },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      interaction:{ mode:'index', intersect:false },
-      scales:{
-        x:{ ticks:{ color:'#64748b', font:{size:10} }, grid:{ color:'rgba(255,255,255,0.05)' } },
-        y:{ ticks:{ color:'#64748b', font:{size:10}, callback:v=>v.toLocaleString() }, grid:{ color:'rgba(255,255,255,0.08)' } }
-      },
-      plugins:{
-        legend:{
-          labels:{ color:'#cbd5e1', font:{size:11} },
-          position:'top'
-        }
-      }
-    }
-  });
-})();
-
-</script>
 </body>
 </html>
