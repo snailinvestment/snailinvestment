@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CME Group (NASDAQ: CME) 深度研究报告 — Snail Investment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-base:#F3F4F6; --bg-section:#FFFFFF; --bg-card:#F8F9FA; --bg-dark:#0F1C2E;
+  --border:#DDE1E8; --border-strong:#B8BEC9;
+  --text-primary:#111827; --text-body:#374151; --text-muted:#6B7280; --text-faint:#9CA3AF; --text-invert:#FFFFFF;
+  --accent:#1A3A5C; --accent-mid:#2E6DA4; --accent-light:#EBF4FB;
+  --gold:#C9901A; --gold-light:#FBF5E6;
+  --red-warn:#B91C1C; --red-bg:#FEF2F2;
+  --green-pos:#15803D; --green-bg:#F0FDF4;
+  --amber:#B45309; --amber-bg:#FFFBEB;
+  --radius:4px; --radius-md:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg-base);color:var(--text-body);font-family:'Noto Sans SC',sans-serif;font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+
+/* COVER */
+.cover{background:var(--bg-dark);color:var(--text-invert);position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,58,92,.7) 0%,transparent 55%),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.02) 80px);pointer-events:none;}
+.cover-inner{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:56px 48px 48px;}
+.brand-row{display:flex;align-items:center;gap:12px;margin-bottom:40px;}
+.brand-snail{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+.brand-dept{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.06em;}
+.brand-sep{color:rgba(255,255,255,.2);}
+.cover-ticker{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.12em;margin-bottom:10px;}
+.cover-name{font-family:'Noto Serif SC',serif;font-size:34px;font-weight:700;line-height:1.25;color:#fff;margin-bottom:4px;}
+.cover-name-en{font-family:'IBM Plex Mono',monospace;font-size:13px;color:rgba(255,255,255,.42);letter-spacing:.05em;margin-bottom:30px;}
+.cover-stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-md);overflow:hidden;margin-bottom:32px;}
+.cover-stat{background:rgba(0,0,0,.32);padding:18px 14px;}
+.csl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+.csv{font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:500;color:#fff;line-height:1;margin-bottom:3px;}
+.css{font-size:10px;color:rgba(255,255,255,.35);}
+.cover-verdict-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.verdict-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(26,58,92,.6);border:1px solid rgba(46,109,164,.5);border-radius:var(--radius);padding:10px 20px;}
+.vbl{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.1em;text-transform:uppercase;}
+.vbr{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:700;color:var(--gold);}
+.vt{font-family:'IBM Plex Mono',monospace;font-size:13px;color:rgba(255,255,255,.65);}
+.vt strong{color:#fff;font-size:17px;}
+.cover-meta{margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.cmi{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.32);letter-spacing:.05em;}
+
+/* LAYOUT */
+.page-body{max-width:960px;margin:0 auto;padding:0 24px 60px;}
+
+/* TOC */
+.toc-bar{background:var(--bg-section);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+.toc-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;overflow-x:auto;scrollbar-width:none;}
+.toc-inner::-webkit-scrollbar{display:none;}
+.toc-link{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--text-muted);text-decoration:none;padding:13px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;}
+.toc-link:hover{color:var(--accent-mid);border-bottom-color:var(--accent-mid);}
+
+/* SECTIONS */
+.section{background:var(--bg-section);border:1px solid var(--border);border-radius:var(--radius-md);margin-top:20px;overflow:hidden;}
+.section-head{display:flex;align-items:center;gap:14px;padding:22px 28px 20px;border-bottom:1px solid var(--border);}
+.section-num{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-faint);letter-spacing:.08em;min-width:26px;}
+.section-title{font-family:'Noto Serif SC',serif;font-size:15px;font-weight:700;color:var(--text-primary);}
+.section-body{padding:24px 28px;}
+
+/* TYPOGRAPHY */
+h3.sub{font-family:'Noto Serif SC',serif;font-size:13.5px;font-weight:700;color:var(--text-primary);margin:22px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+h3.sub:first-child{margin-top:0;}
+p{margin-bottom:12px;font-size:13.5px;color:var(--text-body);}
+p:last-child{margin-bottom:0;}
+strong{color:var(--text-primary);}
+
+/* CALLOUT */
+.callout{border-left:3px solid;border-radius:0 var(--radius) var(--radius) 0;padding:14px 18px;margin:16px 0;font-size:13px;}
+.callout.buy    {border-color:var(--green-pos);background:var(--green-bg);}
+.callout.hold   {border-color:var(--amber);background:var(--amber-bg);}
+.callout.warn   {border-color:var(--red-warn);background:var(--red-bg);}
+.callout.neutral{border-color:var(--accent-mid);background:var(--accent-light);}
+.cl{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;opacity:.6;}
+
+/* TABLES */
+.dtw{overflow-x:auto;margin:14px 0;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+thead tr{background:var(--bg-base);border-bottom:1px solid var(--border-strong);}
+th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);padding:9px 14px;text-align:left;font-weight:500;}
+th.r,td.r{text-align:right;}
+td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-body);font-size:13px;}
+tr:last-child td{border-bottom:none;}
+tr:nth-child(even) td{background:var(--bg-card);}
+td.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;}
+td.pos{color:var(--green-pos);font-family:'IBM Plex Mono',monospace;font-weight:600;}
+td.neg{color:var(--red-warn);font-family:'IBM Plex Mono',monospace;font-weight:600;}
+td.bold{font-weight:600;color:var(--text-primary);}
+td.hl{background:var(--accent-light)!important;font-weight:600;}
+
+/* METRICS */
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0;}
+.mc{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;}
+.ml{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+.mv{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:500;color:var(--text-primary);line-height:1;margin-bottom:4px;}
+.ms{font-size:11px;color:var(--text-muted);}
+.mv.pos{color:var(--green-pos);}
+.mv.neg{color:var(--red-warn);}
+.mv.acc{color:var(--accent-mid);}
+.mv.gold{color:var(--gold);}
+
+/* SEG BAR */
+.sbw{margin:14px 0;}
+.sbr{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+.sbl{font-size:12px;color:var(--text-body);width:160px;flex-shrink:0;}
+.sbt{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.sbf{height:100%;border-radius:4px;}
+.sbv{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--text-body);width:100px;text-align:right;}
+
+/* SCENARIO */
+.sg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0;}
+.sc{border-radius:var(--radius-md);padding:20px;border:1px solid;}
+.sc.bull{border-color:#86EFAC;background:#F0FDF4;}
+.sc.base{border-color:#93C5FD;background:#EFF6FF;}
+.sc.bear{border-color:#FCA5A5;background:#FFF5F5;}
+.scl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px;opacity:.55;}
+.sct{font-family:'Noto Serif SC',serif;font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:10px;}
+.scp{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:500;color:var(--text-primary);margin-bottom:4px;}
+.scu{font-family:'IBM Plex Mono',monospace;font-size:12px;margin-bottom:8px;}
+.scu.pos{color:var(--green-pos);}
+.scu.neg{color:var(--red-warn);}
+.scpr{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;background:rgba(0,0,0,.06);border-radius:2px;padding:2px 8px;margin-bottom:10px;color:var(--text-muted);}
+.scd{font-size:12px;color:var(--text-body);line-height:1.6;}
+
+/* RISK */
+.rl{list-style:none;}
+.ri{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.ri:last-child{border-bottom:none;}
+.rs{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;border-radius:2px;padding:3px 8px;white-space:nowrap;text-transform:uppercase;letter-spacing:.07em;margin-top:2px;min-width:54px;text-align:center;}
+.sh{background:#FECACA;color:#991B1B;}
+.sm{background:#FDE68A;color:#92400E;}
+.sl{background:#BBF7D0;color:#166534;}
+.rt{font-weight:600;font-size:13px;color:var(--text-primary);margin-bottom:3px;}
+.rd{font-size:12.5px;color:var(--text-muted);}
+
+/* VAL CARDS */
+.vg{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+.vc{flex:1;min-width:150px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;}
+.vcn{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);margin-bottom:8px;}
+.vcp{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:500;color:var(--accent-mid);line-height:1;margin-bottom:4px;}
+.vcw{font-size:11px;color:var(--text-muted);}
+.vcd{font-size:11.5px;color:var(--text-muted);margin-top:8px;border-top:1px solid var(--border);padding-top:8px;}
+
+/* TAGS */
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;border-radius:2px;padding:2px 7px;margin-right:4px;vertical-align:middle;}
+.tb{background:var(--accent-light);color:var(--accent-mid);}
+.tg{background:var(--gold-light);color:var(--gold);}
+.tr{background:var(--red-bg);color:var(--red-warn);}
+.ta{background:var(--amber-bg);color:var(--amber);}
+.tgn{background:var(--green-bg);color:var(--green-pos);}
+
+/* TECH LEVELS */
+.tl{display:flex;flex-direction:column;gap:8px;margin:14px 0;}
+.tlr{display:flex;align-items:center;gap:12px;}
+.tlp{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;width:75px;text-align:right;flex-shrink:0;}
+.tlo{flex:1;position:relative;height:6px;background:var(--border);border-radius:3px;}
+.tli{position:absolute;top:0;left:0;height:100%;border-radius:3px;}
+.tll{font-size:11.5px;color:var(--text-muted);width:190px;flex-shrink:0;}
+.tlt{font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 6px;border-radius:2px;width:60px;text-align:center;flex-shrink:0;}
+.t-sup{background:#DCFCE7;color:#166534;}
+.t-cur{background:#DBEAFE;color:#1E40AF;font-weight:700;}
+.t-res{background:#FEE2E2;color:#991B1B;}
+.t-tar{background:var(--gold-light);color:var(--gold);}
+
+/* DISCLAIMER / FOOTER */
+.disc{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);margin-top:20px;padding:20px 28px;}
+.disc p{font-size:11px;color:var(--text-faint);line-height:1.65;margin-bottom:6px;}
+.disc-hd{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;}
+.pf{max-width:960px;margin:16px auto 0;padding:0 24px 32px;display:flex;justify-content:space-between;align-items:center;}
+.pfb{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-faint);letter-spacing:.08em;}
+
+@media(max-width:720px){
+  .cover-stats-grid{grid-template-columns:repeat(3,1fr);}
+  .mg{grid-template-columns:repeat(2,1fr);}
+  .sg{grid-template-columns:1fr;}
+  .cover-inner{padding:36px 20px 32px;}
+  .section-body{padding:18px;}
+  .cover-name{font-size:24px;}
+}
+@media(max-width:480px){.cover-stats-grid{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="brand-row">
+      <span class="brand-snail">🐌 Snail Investment</span>
+      <span class="brand-sep">·</span>
+      <span class="brand-dept">精品研究部 · Equity Research</span>
+    </div>
+    <div class="cover-ticker">CME &nbsp;·&nbsp; NASDAQ &nbsp;·&nbsp; 金融基础设施 / 衍生品交易所运营商</div>
+    <div class="cover-name">芝加哥商业交易所集团</div>
+    <div class="cover-name-en">CME Group Inc. &nbsp;·&nbsp; 深度研究报告 &nbsp;·&nbsp; 截至 2026年6月18日</div>
+    <div class="cover-stats-grid">
+      <div class="cover-stat"><div class="csl">最新收盘价</div><div class="csv">$246.38</div><div class="css">USD（2026-06-18）</div></div>
+      <div class="cover-stat"><div class="csl">市值</div><div class="csv">$91.5B</div><div class="css">美元（Robinhood）</div></div>
+      <div class="cover-stat"><div class="csl">P/E（TTM）</div><div class="csv">21.6x</div><div class="css">低于同类均值25.5x</div></div>
+      <div class="cover-stat"><div class="csl">股息收益率</div><div class="csv">4.43%</div><div class="css">含年度特别股息</div></div>
+      <div class="cover-stat"><div class="csl">52周区间</div><div class="csv">$244–$329</div><div class="css">低：$244.56 / 高：$329.16</div></div>
+    </div>
+    <div class="cover-verdict-row">
+      <div class="verdict-badge"><div><div class="vbl">评级</div><div class="vbr">审慎买入</div></div></div>
+      <div class="vt">12个月目标价 &nbsp;<strong>$295</strong>&nbsp;·&nbsp; 资本利得上行 <strong>+19.7%</strong> &nbsp;·&nbsp; 含股息合计回报约 <strong>+24%</strong></div>
+    </div>
+    <div class="cover-meta">
+      <span class="cmi">分析师：Snail Investment 精品研究部</span>
+      <span class="cmi">报告日期：2026-06-18</span>
+      <span class="cmi">下次财报：2026-07-22（Q2 2026）</span>
+      <span class="cmi">数据来源：CME官方新闻稿 / SEC 10-Q / Robinhood / Stockinvest / TipRanks</span>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<nav class="toc-bar">
+  <div class="toc-inner">
+    <a href="#s01" class="toc-link">01 · 核心摘要</a>
+    <a href="#s02" class="toc-link">02 · 公司概况</a>
+    <a href="#s03" class="toc-link">03 · 财务分析</a>
+    <a href="#s04" class="toc-link">04 · 关键催化剂</a>
+    <a href="#s05" class="toc-link">05 · 估值</a>
+    <a href="#s06" class="toc-link">06 · 情景分析</a>
+    <a href="#s07" class="toc-link">07 · 技术面</a>
+    <a href="#s08" class="toc-link">08 · 风险</a>
+    <a href="#s09" class="toc-link">09 · 投资建议</a>
+  </div>
+</nav>
+
+<div class="page-body">
+
+<!-- ── 01 EXEC SUMMARY ── -->
+<div class="section" id="s01">
+  <div class="section-head"><span class="section-num">01</span><span class="section-title">核心摘要 · Executive Summary</span></div>
+  <div class="section-body">
+    <div class="callout neutral">
+      <div class="cl">本报告核心观点</div>
+      CME Group 是<strong>全球规模最大、护城河最深的衍生品交易所运营商</strong>，拥有不可复制的基准产品许可证矩阵（利率、股指、外汇、能源、农业、金属/加密）和行业领先的70%经营利润率。Q1 2026 录得创纪录营收（+14%）、ADV（+22%）和净利润（+21%），基本面无可挑剔。然而股价从52周高点$329.16 跌至 $246.38（-25.2%），距52周低点$244.56 仅0.7%，市场已将两项负面事件过度定价：①CEO Terry Duffy 接班（2027年3月，内部晋升）；②CFTC批准加密永续期货，CME已提起诉讼。我们认为上述担忧均被高估，当前P/E 21.6x、股息率4.43% 为理性入场提供了难得窗口。评级：<strong>审慎买入</strong>，12个月目标价 <strong>$295</strong>，含股息合计预期回报约 <strong>+24%</strong>。
+    </div>
+    <div class="mg">
+      <div class="mc"><div class="ml">Q1 2026 营收同比</div><div class="mv pos">+14.5%</div><div class="ms">$18.80亿，历史记录</div></div>
+      <div class="mc"><div class="ml">Q1 ADV（日均成交量）</div><div class="mv pos">+22.3%</div><div class="ms">3,623万张，历史记录</div></div>
+      <div class="mc"><div class="ml">Q1 调整后EPS</div><div class="mv pos">$3.36</div><div class="ms">同比+20%；超预期</div></div>
+      <div class="mc"><div class="ml">GAAP经营利润率</div><div class="mv gold">69.7%</div><div class="ms">同比+2.2ppt；行业领先</div></div>
+      <div class="mc"><div class="ml">调整后经营利润率</div><div class="mv pos">72.8%</div><div class="ms">Q1历史最高</div></div>
+      <div class="mc"><div class="ml">市场数据收入（Q1）</div><div class="mv acc">$2.24亿</div><div class="ms">历史记录；同比+15%</div></div>
+      <div class="mc"><div class="ml">股价较高位回撤</div><div class="mv neg">-25.2%</div><div class="ms">$329.16→$246.38</div></div>
+      <div class="mc"><div class="ml">距52周低位</div><div class="mv neg">-0.7%</div><div class="ms">极度弱势，底部区域</div></div>
+    </div>
+    <h3 class="sub">核心投资逻辑：三重驱动 vs 两大市场担忧</h3>
+    <p><strong>三重长期驱动力：</strong>①<strong>波动率即收入</strong>——地缘政治不确定性常态化推动全球机构大规模对冲需求，CME直接受益；②<strong>非美市场高速扩张</strong>——Q1非美ADV同比增长30%（亚洲+30%、EMEA+29%），国际化红利持续；③<strong>市场数据与非交易收入稳增</strong>——Q1市场数据收入$2.24亿（+15%），Morningstar指数合作、24/7交易产品拓展提供高利润率经常性收入。</p>
+    <p><strong>两大市场担忧（均被高估）：</strong>①<strong>CEO交班</strong>——Fitzpatrick 系内部晋升的CFO，CME经营高度制度化，管理层风险被夸大；②<strong>永续期货（Perps）竞争</strong>——Kalshi首两周交易量仅$55亿，CME加密期货单日数十亿，量级差异悬殊；CME握有独家指数许可证，竞争威胁有限。</p>
+  </div>
+</div>
+
+<!-- ── 02 COMPANY ── -->
+<div class="section" id="s02">
+  <div class="section-head"><span class="section-num">02</span><span class="section-title">公司概况 · Company Profile</span></div>
+  <div class="section-body">
+    <h3 class="sub">基本信息</h3>
+    <div class="dtw"><table><tbody>
+      <tr><td style="width:160px;color:var(--text-muted)">公司全称</td><td class="bold">CME Group Inc.</td><td style="width:160px;color:var(--text-muted)">股票代码</td><td class="bold mono">CME · NASDAQ</td></tr>
+      <tr><td style="color:var(--text-muted)">历史沿革</td><td colspan="3">1898年芝加哥商业交易所创立；2007年并购CBOT；2008年收购NYMEX/COMEX；2018年收购NEX（固收/外汇）</td></tr>
+      <tr><td style="color:var(--text-muted)">总部</td><td>美国伊利诺伊州芝加哥</td><td style="color:var(--text-muted)">员工人数</td><td class="mono">约4,500人</td></tr>
+      <tr><td style="color:var(--text-muted)">稀释股本</td><td class="mono bold">约3.62亿股</td><td style="color:var(--text-muted)">市值</td><td class="mono">$91.5B</td></tr>
+      <tr><td style="color:var(--text-muted)">现任CEO（至2027-03）</td><td class="bold">Terry Duffy（任职约25年）</td><td style="color:var(--text-muted)">继任CEO</td><td class="bold">Lynne Fitzpatrick（首位女性CEO）</td></tr>
+      <tr><td style="color:var(--text-muted)">S&P道琼斯持股</td><td>合资持股27%</td><td style="color:var(--text-muted)">清算中心</td><td>CME Clearing（全球最大之一）</td></tr>
+      <tr><td style="color:var(--text-muted)">品牌</td><td colspan="3">Brand Finance连续第11年评选为全球最有价值交易所品牌</td></tr>
+    </tbody></table></div>
+
+    <h3 class="sub">收入结构（Q1 2026）</h3>
+    <div class="sbw">
+      <div class="sbr"><span class="sbl">清算与交易手续费</span><div class="sbt"><div class="sbf" style="width:82%;background:#1A3A5C"></div></div><span class="sbv">$15.43亿 · 82%</span></div>
+      <div class="sbr"><span class="sbl">市场数据服务</span><div class="sbt"><div class="sbf" style="width:12%;background:#2E6DA4"></div></div><span class="sbv">$2.24亿 · 12%</span></div>
+      <div class="sbr"><span class="sbl">其他（BrokerTec/EBS等）</span><div class="sbt"><div class="sbf" style="width:6%;background:#9CA3AF"></div></div><span class="sbv">$1.13亿 · 6%</span></div>
+    </div>
+
+    <h3 class="sub">六大资产类别 ADV（Q1 2026，均创历史记录）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>资产类别</th><th class="r">ADV（万张）</th><th class="r">同比</th><th>核心产品</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">利率（Interest Rates）</td><td class="mono r">1,710</td><td class="pos r">+25%</td><td>SOFR期货/期权、国债期货、30日联邦基金期货</td></tr>
+        <tr><td class="bold">股权指数（Equity Index）</td><td class="mono r">745</td><td class="pos r">+18%</td><td>E-mini S&P 500、Micro E-mini Nasdaq-100</td></tr>
+        <tr><td class="bold">外汇（FX）</td><td class="mono r">116</td><td class="pos r">+22%</td><td>G10货币期货，EBS现货外汇平台</td></tr>
+        <tr><td class="bold">能源（Energy）</td><td class="mono r">360</td><td class="pos r">+19%</td><td>WTI原油、天然气期货；新24/7小型合约</td></tr>
+        <tr><td class="bold">农业（Agricultural）</td><td class="mono r">160</td><td class="pos r">+21%</td><td>玉米、大豆、小麦期货</td></tr>
+        <tr><td class="bold">金属及加密（Metals/Crypto）</td><td class="mono r">132</td><td class="pos r">+30%</td><td>黄金/白银；比特币、以太币期货；Nasdaq CME加密指数期货</td></tr>
+        <tr><td class="bold hl">全资产类别合计</td><td class="mono r hl">3,623</td><td class="pos r hl">+22%（历史记录）</td><td class="hl">六大类别全部创历史同期记录</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">竞争格局与护城河</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>维度</th><th>CME Group</th><th>ICE（洲际交易所）</th><th>Cboe Global</th><th>Kalshi（新兴）</th></tr></thead>
+      <tbody>
+        <tr><td>市值</td><td class="bold" style="color:var(--accent-mid)">$91.5B</td><td>~$88B</td><td>~$22B</td><td>未上市</td></tr>
+        <tr><td>季度ADV</td><td class="pos bold">3,623万张（Q1记录）</td><td>债券/股票现货为主</td><td>期权为主</td><td>极小（&lt;1%）</td></tr>
+        <tr><td>独家许可证</td><td class="pos bold">S&P/Nasdaq/SOFR/主要商品基准</td><td>ICE Brent原油等</td><td>VIX/CBOE专属</td><td>无传统基准</td></tr>
+        <tr><td>GAAP经营利润率</td><td class="pos bold">69.7%</td><td>~40-45%</td><td>~55%</td><td>N/A</td></tr>
+        <tr><td>加密永续期货</td><td class="neg">无（已起诉阻止）</td><td>无</td><td>无</td><td class="pos">已上线</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout neutral">
+      <div class="cl">护城河核心判断</div>
+      CME最深的护城河是<strong>独家基准许可证矩阵</strong>：S&P 500期货唯一授权交易场所、SOFR利率衍生品核心清算平台、黄金/原油全球定价基准合约标准来源。这些许可证是数十年商务谈判的积累，竞争对手无法绕过。高达70%的经营利润率是这一结构性优势的财务体现——交易所模式固定成本几乎不随交易量增长而增加，增量交易量几乎全部转化为利润。
+    </div>
+  </div>
+</div>
+
+<!-- ── 03 FINANCIALS ── -->
+<div class="section" id="s03">
+  <div class="section-head"><span class="section-num">03</span><span class="section-title">财务分析 · Financial Analysis</span></div>
+  <div class="section-body">
+    <h3 class="sub">历史年度及季度财务数据（来源：CME官方新闻稿 / SEC 10-Q）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标</th><th class="r">FY2022</th><th class="r">FY2023</th><th class="r">FY2024</th><th class="r">FY2025</th><th class="r">Q1 2026</th><th class="r">Q1 2025</th><th class="r">同比</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">总营收（$亿）</td><td class="mono r">47.99</td><td class="mono r">55.97</td><td class="mono r">61.23</td><td class="mono r">65.10</td><td class="mono r">18.80</td><td class="mono r">16.42</td><td class="pos r">+14.5%</td></tr>
+        <tr><td class="bold">清算及交易费（$亿）</td><td class="mono r">38.20</td><td class="mono r">45.03</td><td class="mono r">49.40</td><td class="mono r">53.30</td><td class="mono r">15.43</td><td class="mono r">13.42</td><td class="pos r">+15.0%</td></tr>
+        <tr><td class="bold">市场数据收入（$亿）</td><td class="mono r">5.36</td><td class="mono r">6.08</td><td class="mono r">6.88</td><td class="mono r">7.90</td><td class="mono r">2.24</td><td class="mono r">1.95</td><td class="pos r">+14.9%</td></tr>
+        <tr><td class="bold">经营费用（$亿）</td><td class="mono r">17.10</td><td class="mono r">18.80</td><td class="mono r">20.19</td><td class="mono r">21.30</td><td class="mono r">5.70</td><td class="mono r">5.34</td><td class="neg r">+6.7%</td></tr>
+        <tr><td class="bold">GAAP经营利润（$亿）</td><td class="mono r">30.89</td><td class="mono r">37.17</td><td class="mono r">41.04</td><td class="mono r">43.80</td><td class="mono r">13.10</td><td class="mono r">11.08</td><td class="pos r">+18.2%</td></tr>
+        <tr><td class="bold hl">GAAP经营利润率</td><td class="mono r hl">64.4%</td><td class="mono r hl">66.4%</td><td class="mono r hl">67.0%</td><td class="mono r hl">67.3%</td><td class="mono r bold hl">69.7%</td><td class="mono r hl">67.5%</td><td class="pos r bold hl">+2.2ppt</td></tr>
+        <tr><td class="bold">调整后经营利润率</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r bold" style="color:var(--green-pos)">72.8%</td><td class="mono r">70.1%</td><td class="pos r">+2.7ppt</td></tr>
+        <tr><td class="bold">GAAP净利润（$亿）</td><td class="mono r">26.06</td><td class="mono r">30.70</td><td class="mono r">34.80</td><td class="mono r">40.20</td><td class="mono r">11.54</td><td class="mono r">9.55</td><td class="pos r">+20.8%</td></tr>
+        <tr><td class="bold hl">调整后EPS（$）</td><td class="mono r hl">8.09</td><td class="mono r hl">9.23</td><td class="mono r hl">10.41</td><td class="mono r hl">~11.50E</td><td class="mono r bold hl">3.36</td><td class="mono r hl">2.80</td><td class="pos r bold hl">+20.0%</td></tr>
+        <tr><td class="bold">GAAP稀释EPS（$）</td><td class="mono r">7.24</td><td class="mono r">8.45</td><td class="mono r">9.58</td><td class="mono r">11.10</td><td class="mono r">3.18</td><td class="mono r">2.62</td><td class="pos r">+21.4%</td></tr>
+        <tr><td class="bold">年度ADV（百万张/日）</td><td class="mono r">24.5</td><td class="mono r">25.9</td><td class="mono r">26.5</td><td class="mono r">28.1</td><td class="mono r bold" style="color:var(--green-pos)">36.2</td><td class="mono r">29.6</td><td class="pos r">+22.3%</td></tr>
+        <tr><td class="bold">Q1股东回报（$亿）</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r bold" style="color:var(--accent-mid)">32.0+</td><td class="mono r">—</td><td class="r">—</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:11.5px;color:var(--text-muted)">注：FY2025全年数据来源于CME 2026-02-04年报新闻稿；Q1 2026数据来源于2026-04-22 Q1财报新闻稿及2026-04-24 SEC 10-Q。FY2025年报注明为CME连续第四年创历史记录营收。Q1 2026股东回报含普通股息$27亿+股份回购$5.4亿。</p>
+
+    <h3 class="sub">关键财务比率（截至2026年6月18日）</h3>
+    <div class="mg">
+      <div class="mc"><div class="ml">P/E（TTM）</div><div class="mv">21.6x</div><div class="ms">低于同类均值25.5x；历史均值28-30x</div></div>
+      <div class="mc"><div class="ml">GAAP经营利润率</div><div class="mv pos">69.7%</div><div class="ms">同比+2.2ppt；行业遥遥领先</div></div>
+      <div class="mc"><div class="ml">调整后经营利润率</div><div class="mv pos">72.8%</div><div class="ms">Q1历史最高；规模效应驱动</div></div>
+      <div class="mc"><div class="ml">股息收益率</div><div class="mv gold">4.43%</div><div class="ms">基础季度+年度特别股息</div></div>
+      <div class="mc"><div class="ml">Q1经营现金流</div><div class="mv acc">$12.6亿</div><div class="ms">FCF转化率接近100%净利润</div></div>
+      <div class="mc"><div class="ml">平均合约费率</div><div class="mv">$0.707</div><div class="ms">每张合约（Q4 2025参考值）</div></div>
+      <div class="mc"><div class="ml">净债务</div><div class="mv">$8亿</div><div class="ms">债务$34亿-现金$26亿；极低杠杆</div></div>
+      <div class="mc"><div class="ml">历史累计分红</div><div class="mv acc">$300亿+</div><div class="ms">自2012年起持续高额回报</div></div>
+    </div>
+    <div class="callout buy">
+      <div class="cl">财务质量综合判断</div>
+      CME Q1 2026财务质量为近年最优：营收、经营利润、净利润、EPS全部创历史单季记录，且质量提升体现在利润率扩张而非一次性项目。经营费用仅增6.7%（远低于收入增速14.5%），体现出典型的交易所规模经济效应——固定成本（Globex平台、清算中心）几乎不随交易量增长，额外交易量几乎全部转化为利润。Q1向股东返还现金超$32亿（年化约$130亿），资本分配纪律卓越，4.43%股息率为大市值成长股中极高水平。
+    </div>
+
+    <h3 class="sub">资产负债表分析（Balance Sheet，来源：SEC 10-Q，2026-03-31）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>科目</th><th class="r">2026-03-31</th><th class="r">2025-12-31</th><th class="r">变动</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">现金及现金等价物</td><td class="mono r">$26.0亿</td><td class="mono r">$17.5亿</td><td class="pos r">+$8.5亿</td><td>Q1强劲经营现金流净积累；流动性充裕</td></tr>
+        <tr><td class="bold">应收账款及其他流动资产</td><td class="mono r">$6.8亿</td><td class="mono r">$6.2亿</td><td class="pos r">+$0.6亿</td><td>随营收增长小幅上升，周转健康</td></tr>
+        <tr><td class="bold">无形资产及商誉</td><td class="mono r">$185.4亿</td><td class="mono r">$185.9亿</td><td class="r">-$0.5亿</td><td>主要来自CBOT/NYMEX/NEX历次并购；占总资产约50%；每年摊销约$5亿</td></tr>
+        <tr><td class="bold">总资产</td><td class="mono r">$372.5亿</td><td class="mono r">$363.8亿</td><td class="pos r">+$8.7亿</td><td>资产基础稳定；商誉/无形资产占比高是交易所行业共性</td></tr>
+        <tr><td class="bold">短期借款及当期长债</td><td class="mono r">$7.5亿</td><td class="mono r">$7.5亿</td><td class="r">持平</td><td>2026年到期债务，已有充足现金覆盖</td></tr>
+        <tr><td class="bold">长期债务</td><td class="mono r">$26.5亿</td><td class="mono r">$26.5亿</td><td class="r">持平</td><td>固定利率债券；无再融资压力；债务结构稳健</td></tr>
+        <tr><td class="bold highlight">净债务</td><td class="mono r bold hl">$8.0亿</td><td class="mono r hl">$16.5亿</td><td class="pos r bold hl">-$8.5亿（改善）</td><td>净债务/EBITDA仅约0.2x；杠杆极低</td></tr>
+        <tr><td class="bold">股东权益</td><td class="mono r">$228.3亿</td><td class="mono r">$234.5亿</td><td class="neg r">-$6.2亿</td><td>因高额股息支付（超过当期净利润）导致权益小幅下降，属于股东友好型主动消耗，非经营恶化</td></tr>
+        <tr><td class="bold">保证金存款（表外参考）</td><td class="mono r">$1,600亿+</td><td class="mono r">$1,500亿+</td><td class="pos r">+$100亿</td><td>清算会员保证金，CME以受托人身份管理；不计入资产负债表，但反映清算规模扩张</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:11.5px;color:var(--text-muted)">注：CME资产负债表的核心特征是<strong>高商誉/无形资产占比（约50%总资产）</strong>，这是交易所通过并购获取许可证的行业惯例，需结合商誉减值风险审慎看待。但CME历史上未发生重大商誉减值，核心并购资产（CBOT、NYMEX许可证）持续贡献盈利，减值风险可控。</p>
+
+    <h3 class="sub">资本回报率分析：ROE / ROIC / ROA（来源：SEC年报 / Snail 估算）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标</th><th class="r">FY2022</th><th class="r">FY2023</th><th class="r">FY2024</th><th class="r">TTM（Q1 2026）</th><th>行业对比</th></tr></thead>
+      <tbody>
+        <tr><td class="bold highlight">ROE（净资产收益率）</td><td class="mono r hl">~11.5%</td><td class="mono r hl">~13.5%</td><td class="mono r hl">~15.2%</td><td class="mono r bold hl" style="color:var(--green-pos)">~18.8%</td><td>ICE约14%；Cboe约20%；CME呈逐年提升趋势</td></tr>
+        <tr><td class="bold highlight">ROIC（投入资本回报率）</td><td class="mono r hl">~8.2%</td><td class="mono r hl">~9.8%</td><td class="mono r hl">~11.4%</td><td class="mono r bold hl" style="color:var(--green-pos)">~13.5%</td><td>WACC约8.5%；ROIC持续超越WACC，价值创造明确</td></tr>
+        <tr><td class="bold">ROA（总资产收益率）</td><td class="mono r">7.2%</td><td class="mono r">8.6%</td><td class="mono r">9.7%</td><td class="mono r bold" style="color:var(--green-pos)">~12.4%</td><td>商誉占总资产约50%，ROA相对偏低但持续改善</td></tr>
+        <tr><td class="bold">FCF收益率（FCF/市值）</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r bold" style="color:var(--accent-mid)">~4.8%</td><td>Q1年化FCF约$48亿÷市值$91.5B；具备吸引力</td></tr>
+        <tr><td class="bold">经济增加值（EVA）</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r pos bold">正且扩张</td><td>ROIC（13.5%）持续高于WACC（8.5%）约500bps，每年创造约$22亿经济增加值</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout neutral">
+      <div class="cl">ROE / ROIC 深度解读</div>
+      <p><strong>ROE的特殊性：</strong>CME的ROE（~18.8% TTM）受两个因素影响需谨慎解读。其一，CME历年股息支付金额显著超过当期净利润（尤其含特别股息年份），导致留存收益持续为负，股东权益被主动压缩，使ROE分母偏小、数值被人为抬高——这是<strong>管理层主动对股东友好的结果</strong>，而非财务杠杆风险的信号。其二，高额商誉（约$170亿）虽占总资产50%，但并非计算ROE的分母，故ROE对资产质量问题不敏感。</p>
+      <p><strong>ROIC更具参考价值：</strong>ROIC（~13.5%）使用投入资本（含商誉）作为分母，更完整地反映CME并购资产的回报效率。ROIC持续超越WACC（8.5%）约500个基点，EVA每年正向扩张，是CME长期股东价值创造能力的核心量化证明。相较于ROE，ROIC是我们估值框架中更倚重的资本回报指标。</p>
+      <p><strong>资产负债表的主要风险点：</strong>①商誉/无形资产$185亿若发生减值（虽概率低），将对净资产和利润产生一次性重大冲击；②短期债务$7.5亿2026年到期，以现金$26亿覆盖无压力；③股东权益偏低（$228亿），权益杠杆倍数（总资产/权益）约1.6x，在大型金融机构中属低位，整体财务结构稳健。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── 04 CATALYSTS ── -->
+<div class="section" id="s04">
+  <div class="section-head"><span class="section-num">04</span><span class="section-title">关键催化剂与近期事件 · Key Catalysts</span></div>
+  <div class="section-body">
+    <h3 class="sub">一、CEO接班（2026-06-17公告）：管理层切换风险被高估</h3>
+    <p>CME宣布 Terry Duffy 将于<strong>2027年3月1日</strong>卸任CEO，转任执行董事长；现任总裁兼CFO <strong>Lynne Fitzpatrick</strong> 接任CEO，成为CME历史上首位女性CEO。消息公告当日股价下跌约3.5%。</p>
+    <div class="dtw"><table>
+      <thead><tr><th>维度</th><th>市场担忧</th><th>Snail Investment 评估</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">接班人资质</td><td>Duffy任期25年，是CME现代化的核心推手</td><td>Fitzpatrick 深耕CME多年、以CFO身份主导财务战略；内部晋升是高确定性平稳过渡，非外来空降</td></tr>
+        <tr><td class="bold">业务连续性</td><td>高度个人化领导风格能否传承</td><td>CME核心竞争力是许可证矩阵、清算基础设施和Globex平台，均为制度性护城河，不依赖单一领导者</td></tr>
+        <tr><td class="bold">过渡时间</td><td>突然宣布，短期情绪冲击</td><td>正式交班2027年3月，有逾8个月过渡期；Duffy 以执行董事长身份参与重大决策（含CFTC诉讼）</td></tr>
+        <tr><td class="bold">历史先例</td><td>无同等大型交易所可参考</td><td>ICE CEO Sprecher 亦多次平稳过渡；Nasdaq CEO多次更迭未影响基本面；交易所商业模式的制度化特征决定了低管理层依赖</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">二、CFTC诉讼·永续期货之战（2026-06-17公告）</h3>
+    <p>CME宣布将对<strong>美国商品期货交易委员会（CFTC）</strong>提起诉讼，挑战CFTC批准Kalshi和Coinbase提供加密永续期货（Perpetual Futures）的决定。CME法律论点：永续期货在Dodd-Frank框架下属于"互换合约（Swap）"而非"期货合约（Futures）"，须适用不同的监管框架（清算、报告和交易场所要求）。</p>
+    <div class="callout hold">
+      <div class="cl">永续期货竞争威胁评估：被严重高估</div>
+      <p>• Kalshi首两周交易量约 <strong>$55亿</strong>名义价值</p>
+      <p>• CME加密类ADV（Q1）：132万张/日，单日名义价值 <strong>数十亿美元</strong></p>
+      <p>• CME持有S&P、Nasdaq、SOFR等核心基准<strong>独家许可证</strong>——任何对标CME主力产品的永续期货都须绕过这些许可证，法律上几乎不可能</p>
+      <p>• CME核心利率+股指产品占ADV约50%+，与加密永续期货<strong>毫无重叠</strong></p>
+    </div>
+    <div class="dtw"><table>
+      <thead><tr><th>情景</th><th class="r">概率估算</th><th>对CME的影响</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">CME诉讼胜诉，永续期货须重新归类为Swap</td><td class="mono r">30–35%</td><td class="pos">加密永续竞争暂停或延迟；CME加密期货份额回升；股价正向催化剂</td></tr>
+        <tr><td class="bold">法院驳回，永续期货维持现状</td><td class="mono r">40–45%</td><td>市场已部分定价；CME核心业务不受实质影响；短期利空落地反而可能反弹</td></tr>
+        <tr><td class="bold">监管妥协/和解，CME获合规参与路径</td><td class="mono r">20–30%</td><td class="pos">CME或可推出合规永续期货产品；中性偏正</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">三、产品创新：三项重磅新产品（2026年6月集中公告）</h3>
+    <p><strong>① 24/7原油与黄金小型合约（2026-06-11）：</strong>推出面向个人投资者的小型原油（1/10标准合约）和黄金全天候交易合约，覆盖全球所有时区。地缘政治事件常发生于非交易时段，24/7合约实现连续风险对冲，进一步扩大CME的总可寻址市场（TAM）。</p>
+    <p><strong>② Morningstar指数合作（2026-06-10）：</strong>CME与晨星签署多年授权协议，基于 Morningstar US Total Market Index（覆盖约99.7%美股市值）推出衍生品。丰富产品矩阵，与晨星机构客户群形成协同，亦是在预测市场领域布局的战略前期动作。</p>
+    <p><strong>③ Nasdaq CME加密指数期货（2026-06-09）：</strong>与Nasdaq合作推出合规加密指数期货，在受监管框架内主动切入加密市场，是应对永续期货竞争的积极防御举措，也展现了CME在加密领域的战略进取姿态。</p>
+
+    <h3 class="sub">四、股东回报：变动股息政策是价值亮点</h3>
+    <p>CME自2012年实施"变动股息政策"：基础季度股息 + 年度特别股息（与当年利润挂钩，每年12月宣布）。累计向股东返还超 <strong>$300亿</strong>，是CME最重要的价值创造渠道。当前$246股价对应股息率约4.43%，在标普500大市值股中属高水平。若FY2026盈利继续强劲增长，年度特别股息可能再度超预期，12月宣布时将形成正向催化。</p>
+  </div>
+</div>
+
+<!-- ── 05 VALUATION ── -->
+<div class="section" id="s05">
+  <div class="section-head"><span class="section-num">05</span><span class="section-title">估值分析 · Valuation</span></div>
+  <div class="section-body">
+    <h3 class="sub">多方法估值框架</h3>
+    <div class="vg">
+      <div class="vc"><div class="vcn">DCF 自由现金流折现</div><div class="vcp">$300</div><div class="vcw">权重 40%</div><div class="vcd">WACC 8.5%；FY26E FCF $44亿、FY27E $50亿；永续增长率 3.0%；10年显式期。CME轻资本模式FCF转化率&gt;95%净利润</div></div>
+      <div class="vc"><div class="vcn">P/E 相对估值</div><div class="vcp">$292</div><div class="vcw">权重 35%</div><div class="vcd">目标25x调整后EPS FY26E（$13.68）；25x为同类均值；CME历史均值28-30x，给予向均值部分回归</div></div>
+      <div class="vc"><div class="vcn">EV/EBITDA</div><div class="vcp">$285</div><div class="vcw">权重 20%</div><div class="vcd">目标17x TTM EBITDA（当前约14.5x；历史区间16-22x）。调整后EBITDA率72.8%，支持高倍数定价</div></div>
+      <div class="vc"><div class="vcn">股息收益率法</div><div class="vcp">$280</div><div class="vcw">权重 5%</div><div class="vcd">目标收益率3.8%；FY26E总股息$10.65含特别股息；当前4.43%提供估值下行保护</div></div>
+    </div>
+    <div class="callout neutral">
+      <div class="cl">加权综合目标价</div>
+      四法加权：$300×40% + $292×35% + $285×20% + $280×5% = <strong>$293.7</strong>，取整为 <strong>$295</strong>（±8%区间：$271–$319）。较当前价$246.38 隐含资本利得上行空间 <strong>+19.7%</strong>；加上4.43%股息率，12个月预期总回报约 <strong>+24%</strong>。
+    </div>
+
+    <h3 class="sub">EPS与ADV预测（基准情景，Snail Investment）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标</th><th class="r">FY2025A</th><th class="r">FY2026E</th><th class="r">FY2027E</th><th>关键假设</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">ADV（百万张/日）</td><td class="mono r">28.1</td><td class="mono r">33.5</td><td class="mono r">35.0</td><td>Q1已达36.2M；H2假设略有回落但仍高于2025全年水平</td></tr>
+        <tr><td class="bold">平均费率（$/张）</td><td class="mono r">$0.707</td><td class="mono r">$0.715</td><td class="mono r">$0.720</td><td>产品组合向高价值合约（国际、加密）迁移带来费率小幅提升</td></tr>
+        <tr><td class="bold">总营收（$亿）</td><td class="mono r">65.1</td><td class="mono r">74.2</td><td class="mono r">79.5</td><td>清算费+市场数据双轮驱动，市场数据收入稳健增长</td></tr>
+        <tr><td class="bold">营收增速</td><td class="mono r">+6.3%</td><td class="pos r">+13.9%</td><td class="pos r">+7.1%</td><td>2026年受波动率红利与产品扩张双重驱动</td></tr>
+        <tr><td class="bold">调整后经营利润率</td><td class="mono r">~67%</td><td class="mono r">72.0%</td><td class="mono r">73.0%</td><td>规模效应持续，费用增速低于收入增速</td></tr>
+        <tr><td class="bold hl">调整后EPS（$）</td><td class="mono r hl">~$11.50E</td><td class="mono r bold hl">$13.68</td><td class="mono r bold hl">$14.90</td><td>基于Q1已实现$3.36，全年外推+季节性调整</td></tr>
+        <tr><td class="bold">总股息（$，含特别）</td><td class="mono r">~$10.50</td><td class="mono r">$10.65</td><td class="mono r">$11.50</td><td>与利润增长同步；特别股息12月宣布</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">卖方一致预期（来源：TipRanks / stockanalysis.com，截至2026年6月）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>机构</th><th>评级</th><th class="r">目标价（USD）</th><th>日期</th><th>核心观点</th></tr></thead>
+      <tbody>
+        <tr><td>Rothschild Redburn</td><td class="tag tgn">Buy（升级）</td><td class="mono r bold pos">$323</td><td class="mono">2026-06月</td><td>目标价从$316上调至$323，上行空间+31%</td></tr>
+        <tr><td>Keefe Bruyette（KBW）</td><td class="tag tgn">Outperform（升级）</td><td class="mono r bold pos">$305</td><td class="mono">2026-06-18</td><td>"永续期货恐慌被夸大，抛售是买点"</td></tr>
+        <tr><td>Goldman Sachs</td><td class="tag tr">Sell（维持）</td><td class="mono r neg">$267</td><td class="mono">2026-06-17</td><td>CEO交班+监管不确定性，下调目标价</td></tr>
+        <tr><td>Morningstar</td><td class="tag tr">高估</td><td class="mono r neg">$148（内在价值）</td><td class="mono">2026-04-20</td><td>保守DCF；少数派极端意见（详见说明）</td></tr>
+        <tr><td class="bold hl">卖方一致预期（16家）</td><td class="bold hl">Buy</td><td class="mono r bold hl">$305.93</td><td class="mono hl">综合</td><td class="hl">隐含+24.2%上行空间</td></tr>
+        <tr><td class="bold" style="color:var(--accent-mid)">🐌 Snail Investment</td><td class="bold" style="color:var(--accent-mid)">审慎买入</td><td class="mono r bold" style="color:var(--accent-mid)">$295</td><td class="mono">2026-06-18</td><td>较卖方均值折扣3.6%；客观中性立场</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout hold">
+      <div class="cl">关于Morningstar极端低估值的说明</div>
+      Morningstar给出内在价值$148（认为CME溢价约66%），主要因该模型采用极保守的DCF假设，且严重低估了CME独家许可证矩阵的再定价难度和网络效应价值。值得注意的是，Morningstar本身已与CME签署指数合作协议（2026年6月公告），存在潜在利益关联，其"高估"结论需结合背景审慎解读。我们明确不认同Morningstar的内在价值估算。
+    </div>
+  </div>
+</div>
+
+<!-- ── 06 SCENARIOS ── -->
+<div class="section" id="s06">
+  <div class="section-head"><span class="section-num">06</span><span class="section-title">情景分析 · Scenario Analysis（基于$246.38）</span></div>
+  <div class="section-body">
+    <div class="sg">
+      <div class="sc bull">
+        <div class="scl">牛市情景 Bull Case</div>
+        <div class="sct">诉讼胜诉 + 高波动率延续 + 新管理层超预期</div>
+        <div class="scp">$340</div>
+        <div class="scu pos">+38.0% 资本利得</div>
+        <div class="scpr">概率 20%</div>
+        <div class="scd">CFTC诉讼胜诉，加密永续期货须重新合规，竞争压力消除；全球宏观不确定性维持高位，ADV全年稳定在35M+；Fitzpatrick新领导层获市场认可；市场数据收入超预期；FY26E调整EPS达$14.5+；P/E修复至25-26x；特别股息超预期触发年底上涨。</div>
+      </div>
+      <div class="sc base">
+        <div class="scl">基准情景 Base Case</div>
+        <div class="sct">诉讼拖延 + 稳健增长 + 平稳交班</div>
+        <div class="scp">$295</div>
+        <div class="scu pos">+19.7% 资本利得</div>
+        <div class="scpr">概率 55%</div>
+        <div class="scd">CFTC诉讼耗时12-24个月，结果待定；永续期货规模有限，对CME核心业务影响微小；ADV Q2-Q4维持32-34M；Fitzpatrick过渡顺利；FY26E调整EPS $13.68；P/E修复至21-22x；股息合计总回报约+24%。</div>
+      </div>
+      <div class="sc bear">
+        <div class="scl">熊市情景 Bear Case</div>
+        <div class="sct">诉讼败诉 + 低波动率 + 管理层动荡</div>
+        <div class="scp">$195</div>
+        <div class="scu neg">-20.8% 下行风险</div>
+        <div class="scpr">概率 25%</div>
+        <div class="scd">CFTC诉讼彻底败诉，Kalshi/Coinbase加速扩张至权益/利率类永续；全球宏观明显降温（VIX跌至12以下），ADV回落至26-28M；管理层过渡出现战略分歧；FY26E EPS低于预期；P/E降至18-19x，股价触及195-210区间。</div>
+      </div>
+    </div>
+
+    <h3 class="sub">12个月关键催化剂时间表</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>时间节点</th><th>事件</th><th>潜在影响</th><th>方向</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">2026-07-22</td><td>Q2 2026财报（预期）</td><td>确认Q1势头是否延续；ADV、费率、市场数据增速是关键；预期调整EPS $3.38–$3.50</td><td class="pos bold">↑ 正（预期超预期）</td></tr>
+        <tr><td class="mono">2026 Q3</td><td>CFTC诉讼首次开庭/初步裁决</td><td>若获临时禁令，永续期货受阻，最大正向催化剂；若被驳回则短期承压但核心业务不变</td><td class="bold" style="color:var(--accent-mid)">→ 双向关键变量</td></tr>
+        <tr><td class="mono">2026 Q3</td><td>24/7原油/黄金合约正式上线</td><td>新产品贡献增量ADV；扩大散户参与度</td><td class="pos">↑ 小正</td></tr>
+        <tr><td class="mono">2026 Q3</td><td>Fitzpatrick首次主持财报发布会（Q2）</td><td>新管理层首秀；战略愿景和FY27展望是重点；若稳健可消除交班担忧</td><td class="pos">↑ 正（若稳健）</td></tr>
+        <tr><td class="mono">2026-12月</td><td>年度特别股息宣布</td><td>若FY2026盈利强劲，特别股息可能超$8/股，触发买盘</td><td class="pos bold">↑ 股息催化剂</td></tr>
+        <tr><td class="mono">2027-03-01</td><td>Fitzpatrick正式就任CEO</td><td>Duffy以执行董事长过渡；若市场信心稳定，管理层折价消除</td><td class="bold" style="color:var(--accent-mid)">→ 中性至正</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ── 07 TECHNICALS ── -->
+<div class="section" id="s07">
+  <div class="section-head"><span class="section-num">07</span><span class="section-title">技术面分析 · Technical Analysis（截至2026-06-18）</span></div>
+  <div class="section-body">
+    <div class="callout warn">
+      <div class="cl">技术面综合信号：偏空 / 下行通道底部</div>
+      股价$246.38处于<strong>宽幅下行通道底部</strong>（来源：Stockinvest），距52周低点$244.56 仅约0.7%。已连续多日下跌，近10个交易日内有6天收跌，累计下跌约-8.59%。均线系统全面空头排列（MA5/10/20/50均在当前价上方）。但MACD（3月移动平均）出现买入信号，技术面存在"底部反转潜力"——这是基本面投资者分批建仓的技术参考信号。
+    </div>
+
+    <h3 class="sub">关键价位图示</h3>
+    <div class="tl">
+      <div class="tlr"><span class="tlp" style="color:var(--gold)">$340</span><div class="tlo"><div class="tli" style="width:100%;background:#FDE68A"></div></div><span class="tll">牛市情景目标价</span><span class="tlt t-tar">目标</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">$329.16</span><div class="tlo"><div class="tli" style="width:97%;background:#86EFAC"></div></div><span class="tll">52周高点（2025年10月附近）</span><span class="tlt t-res">阻力</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--gold)">$295</span><div class="tlo"><div class="tli" style="width:87%;background:#FDE68A"></div></div><span class="tll">Snail 12个月目标价</span><span class="tlt t-tar">目标</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--red-warn)">$276</span><div class="tlo"><div class="tli" style="width:81%;background:#FCA5A5"></div></div><span class="tll">技术阻力二（下行趋势线中轨）</span><span class="tlt t-res">阻力</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--red-warn)">$260</span><div class="tlo"><div class="tli" style="width:76%;background:#FCA5A5"></div></div><span class="tll">技术阻力一（均线密集区）</span><span class="tlt t-res">阻力</span></div>
+      <div class="tlr"><span class="tlp" style="color:#1D4ED8;font-weight:700">$246.38</span><div class="tlo"><div class="tli" style="width:72%;background:#93C5FD"></div></div><span class="tll" style="font-weight:600">当前价（2026-06-18）</span><span class="tlt t-cur">当前</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">$244.56</span><div class="tlo"><div class="tli" style="width:72%;background:#86EFAC"></div></div><span class="tll">52周低点 / 强支撑（距当前0.7%）</span><span class="tlt t-sup">支撑</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">$241.54</span><div class="tlo"><div class="tli" style="width:71%;background:#86EFAC"></div></div><span class="tll">下行通道底部（破位则加速下行）</span><span class="tlt t-sup">关键</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--red-warn)">$207</span><div class="tlo"><div class="tli" style="width:61%;background:#FECACA"></div></div><span class="tll">极端熊市情景下沿（Stockinvest预测）</span><span class="tlt t-res">风险</span></div>
+    </div>
+
+    <h3 class="sub">技术指标摘要（来源：Stockinvest / Robinhood，2026-06-18）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标</th><th>数值/信号</th><th>解读</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">RSI（14日）</td><td class="mono" style="color:var(--amber)">~36–40（偏低）</td><td>接近超卖区间（30以下为超卖），反弹概率上升；超卖信号增强基本面投资者分批建仓逻辑</td></tr>
+        <tr><td class="bold">MACD（3月均线）</td><td class="pos bold">买入信号</td><td>3月MACD出现金叉，中期技术底部潜在确认信号（来源：Stockinvest）；与短线空头信号形成背离</td></tr>
+        <tr><td class="bold">均线综合</td><td class="neg bold">全面空头排列</td><td>MA5/10/20/50均在当前价上方；突破$260是技术反转的首要信号</td></tr>
+        <tr><td class="bold">趋势判断</td><td class="neg">宽幅下行通道底部</td><td>Stockinvest：位于宽幅下降趋势下轨，具备反弹条件但需放量确认；通道形态明显</td></tr>
+        <tr><td class="bold">成交量</td><td class="mono">679万股（2026-06-18）</td><td>较均量409万放大66%，恐慌抛售特征；放量下跌后常出现短期底部</td></tr>
+        <tr><td class="bold">枢纽形态</td><td class="neg">2026-06-12顶部枢纽</td><td>6月12日形成局部高点，随后6日累计-8.59%；短线趋势仍偏弱，需等待逆转枢纽确认</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout neutral">
+      <div class="cl">技术面与基本面背离：当前的核心矛盾与机会</div>
+      CME当前呈现"技术面极度偏空、基本面高度强劲"的罕见背离格局。股价在$244–$246区间徘徊，距52周低点不足1%，技术上处于极端弱势位置；而与此同时，Q1 2026全部财务指标创历史单季记录，ROE升至~18.8%、ROIC~13.5%（超越WACC约500bps），盈利质量在S&P 500金融板块中居前列。这种背离的本质是两个情绪性冲击（CEO接班公告+永续期货监管争议）在同一天集中爆发的产物，而非基本面的任何结构性恶化。从CME自身历史看，类似的情绪性抛售后往往出现快速估值修复——2020年疫情冲击后CME股价在约6周内反弹逾30%；2022年加息周期初期的抛售也在两个季度内完全收复。对中长期基本面投资者而言，当前$244–$255区间是2021年以来难得一见的风险收益比窗口。
+    </div>
+  </div>
+</div>
+
+<!-- ── 08 RISKS ── -->
+<div class="section" id="s08">
+  <div class="section-head"><span class="section-num">08</span><span class="section-title">风险提示 · Risk Factors</span></div>
+  <div class="section-body">
+    <ul class="rl">
+      <li class="ri">
+        <span class="rs sh">高风险</span>
+        <div><div class="rt">永续期货竞争扩张与CFTC诉讼彻底败诉</div><div class="rd">若法院完全支持CFTC立场，Kalshi/Coinbase/Deribit等平台的永续期货进一步扩展至权益类、利率类衍生品，CME核心市场份额将受到实质性侵蚀。Kalshi已申请新增12个山寨币品种；若永续期货合法化蔓延至主要资产类别，CME的独家许可证护城河将遭受前所未有的挑战。CFTC主席Selig已公开称CME诉讼"缺乏依据"，不确定性较高。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs sh">高风险</span>
+        <div><div class="rt">低波动率宏观环境：CME的系统性天敌</div><div class="rd">CME交易量与全球市场波动率高度正相关。若美联储成功压降通胀至2%目标、地缘政治紧张局势全面缓和、贸易战实质性降温，VIX长期低于12，CME的ADV可能出现10-20%的显著下滑。这是CME商业模式的系统性局限，是不可对冲的宏观风险。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs sm">中风险</span>
+        <div><div class="rt">CEO过渡期战略不确定性</div><div class="rd">Duffy任职25年，是CME现代化（并购CBOT、NYMEX，推进Globex电子化，全球扩张）的核心推动者。Fitzpatrick具备财务专长，但战略愿景和业务拓展能力尚待市场验证。过渡期（2026年6月-2027年3月）可能导致部分大型战略决策（如潜在并购、新市场进入）延迟。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs sm">中风险</span>
+        <div><div class="rt">监管政策收紧（衍生品行业整体）</div><div class="rd">CME与CFTC的公开对抗可能影响双方的监管合作关系，对CME申请新产品的审批周期造成潜在干扰。若美国国会推动更严格的衍生品杠杆限制或场外市场合规要求调整，亦可能影响CME的清算量。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs sm">中风险</span>
+        <div><div class="rt">利率下行周期压缩利息收入</div><div class="rd">CME通过管理巨额保证金资金池获取利息收入（Q1非经营收入$2.01亿部分来自此）。若美联储大幅降息，这一收入来源将收窄，对整体营收形成拖累，且降息周期通常也伴随波动率下降，对ADV形成双重压制。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs sm">中风险</span>
+        <div><div class="rt">加密市场熊市拖累加密期货ADV</div><div class="rd">CME比特币、以太币期货交易量与加密资产价格周期高度相关。若加密市场进入长期熊市，CME加密类ADV将大幅萎缩，影响金属/加密分部整体数据。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs sl">低风险</span>
+        <div><div class="rt">技术系统与网络安全风险</div><div class="rd">CME Globex平台是全球最大的电子期货交易系统，任何重大故障将对全球市场参与者造成巨大损失并产生声誉风险。CME在IT基础设施和网络安全上持续高投入，历史上极少出现重大系统中断，但黑天鹅风险始终存在。</div></div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── 09 RECOMMENDATION ── -->
+<div class="section" id="s09">
+  <div class="section-head"><span class="section-num">09</span><span class="section-title">投资建议 · Investment Recommendation</span></div>
+  <div class="section-body">
+    <div class="callout buy">
+      <div class="cl">Snail Investment · 精品研究部 · 正式评级</div>
+      <strong>评级：审慎买入（Cautious Buy）</strong> &nbsp;|&nbsp; 12个月目标价：<strong>$295</strong> &nbsp;|&nbsp; 当前价：$246.38（2026-06-18）<br>
+      资本利得上行空间：<strong>+19.7%</strong> &nbsp;|&nbsp; 含股息合计预期回报：<strong>约+24%</strong><br><br>
+      <strong>技术面提示：</strong>距52周低点仅0.7%，均线全面空头排列，RSI约36-40接近超卖，MACD中期买入信号初现。建议<strong>分批建仓</strong>，止损严格设于 <strong>$238</strong>（低于通道底部$241.54约1.5%，触发代表技术面进一步失守）。
+    </div>
+
+    <h3 class="sub">核心逻辑：为何"审慎买入"而非"强力买入"</h3>
+    <p><strong>支持买入的理由（基本面）：</strong>①CME的商业模式是近乎完美的"许可证壁垒+规模经济"双重护城河，盈利质量在S&P 500中居前列；②Q1 2026全指标创历史记录，Q2财报大概率延续强势（预期EPS $3.38–$3.50）；③股价较历史P/E均值（28-30x）折价35%以上，绝对估值低估明显；④4.43%股息率在大市值成长股中极为稀缺，提供较强下行保护；⑤两大负面事件（CEO交班+永续期货）均为情绪性冲击，非结构性威胁。</p>
+    <p><strong>支持"审慎"而非"积极"的理由：</strong>①技术面极度弱势，距52周低点不足1%，且下行通道尚未破局；②CFTC诉讼结果短期内不明朗，持续压制估值倍数；③低波动率宏观场景是CME最大系统性风险（不可对冲）；④CEO过渡期战略不确定性，部分机构投资者在新领导层确立前倾向观望。</p>
+
+    <h3 class="sub">差异化操作建议（按投资者类型）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>投资者类型</th><th>建议策略</th><th>进场参考</th><th>目标价</th><th>止损位</th><th>时间维度</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">中长期基本面投资者</td><td>分两批建仓：第一批$244–$250区间配置60%仓位（当前底部区域）；第二批待Q2财报（7月22日）超预期确认后追加40%。核心逻辑：基本面+估值双重修复</td><td class="mono">$244–$250</td><td class="mono pos bold">$295</td><td class="mono neg">$238</td><td>12–18个月</td></tr>
+        <tr><td class="bold">事件驱动型投资者</td><td>以CFTC诉讼临时禁令申请结果（预计Q3）和Q2财报为双核心观察窗口。若临时禁令获批，重大正向催化剂，快速加仓；若法院驳回，短期承压但基本面健康</td><td class="mono">$240–$252</td><td class="mono pos bold">$320–$340</td><td class="mono neg">$235</td><td>6–9个月</td></tr>
+        <tr><td class="bold">股息导向型投资者</td><td>CME变动股息政策在当前$246对应约4.43%收益率；若FY2026盈利超预期，12月特别股息可能超$8/股（额外3.2%收益率）。以"持有收息+等待资本升值"策略参与</td><td class="mono">$244–$255</td><td class="mono gold bold">$10.65/年股息</td><td class="mono neg">$232</td><td>12–24个月</td></tr>
+        <tr><td class="bold">技术交易型投资者</td><td>MACD中期买入信号初现，RSI接近超卖，$244–$247区间轻仓试多，以$238为铁止损；若有效突破$260（第一技术阻力）放量确认，视为反转信号，可加仓追进</td><td class="mono">$244–$247</td><td class="mono acc">$260（短线）</td><td class="mono neg bold">$238（严格）</td><td>1–3个月</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">评级更新触发条件</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>触发条件</th><th>可能评级变化</th></tr></thead>
+      <tbody>
+        <tr><td>Q2财报ADV维持35M+、调整EPS超$3.45</td><td class="pos bold">上调至强力买入；目标价上调至$320</td></tr>
+        <tr><td>CFTC诉讼获临时禁令（永续期货暂停）</td><td class="pos bold">上调至强力买入；目标价上调至$340</td></tr>
+        <tr><td>年度特别股息超$9/股（12月宣布）</td><td class="pos">目标价上调至$310；股息催化</td></tr>
+        <tr><td>股价跌破$241.54（技术通道破位）</td><td class="neg">评级下调至持有；止损$238；等待企稳</td></tr>
+        <tr><td>CFTC诉讼彻底败诉，永续期货扩展至权益/利率</td><td class="neg bold">下调至减持；目标价下调至$210；基本面重估</td></tr>
+        <tr><td>VIX跌至12以下并持续3个月以上</td><td class="neg">评级下调至持有；目标价下调至$250</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout warn">
+      <div class="cl">分析师独立性声明</div>
+      本报告由Snail Investment精品研究部独立撰写。我们的目标价$295低于卖方一致预期$305.93（折扣约3.6%），低于KBW目标$305和Rothschild目标$323，体现对CFTC诉讼不确定性和管理层过渡风险的合理保守折扣。我们明确不认同Morningstar内在价值$148的极端估算，认为其严重低估了CME许可证矩阵的竞争壁垒价值。本报告仅供参考，不构成任何投资邀约或招募文件。
+    </div>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disc">
+  <div class="disc-hd">免责声明 / Disclaimer</div>
+  <p>本报告仅供信息参考目的，不构成任何投资邀约、要约、招募或建议。Snail Investment精品研究部力求数据准确可靠，所有关键数据均注明一手来源。</p>
+  <p><strong>核心数据来源：</strong>CME Group官方投资者关系网站（2026-04-22 Q1业绩新闻稿；2026-02-04 FY2025年报；2026-06-09/10/11/17各项公告）；SEC 10-Q（2026-04-24）；Robinhood行情数据（2026-06-18）；Stockinvest.us技术分析（2026-06-18）；TipRanks / stockanalysis.com分析师预期数据库；Morningstar估值报告（2026-06-17）。</p>
+  <p>本报告目标价及评级基于截至2026年6月18日的公开信息，任何重大新信息均可能使本报告内容不再适用，本研究部保留随时修改或撤销的权利。投资美股市场涉及市场风险、流动性风险、汇率风险及监管风险。过去业绩不代表未来表现。</p>
+  <p>© 2026 Snail Investment · 精品研究部 · 保留所有权利 · 未经授权不得转载</p>
+</div>
+
+</div><!-- end page-body -->
+
+<div class="pf">
+  <span class="pfb">🐌 SNAIL INVESTMENT · EQUITY RESEARCH · 精品研究部</span>
+  <span class="pfb">CME Group · NASDAQ: CME · 深度报告 · 2026-06-18</span>
+</div>
+
+</body>
+</html>
