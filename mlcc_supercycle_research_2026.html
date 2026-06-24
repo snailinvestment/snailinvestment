@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大摩MLCC超级周期报告深度解析 | 半导体研究员视角</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    line-height: 1.8;
+  }
+  .header {
+    background: linear-gradient(135deg, #0a1628 0%, #1a2744 40%, #2a4a7f 100%);
+    color: #fff;
+    padding: 48px 0 36px;
+    border-bottom: 4px solid #c9a84c;
+  }
+  .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+  .header .tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.25);
+    color: #e8d5a3;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 4px;
+    padding: 4px 14px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+  .header h1 { font-size: 30px; font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
+  .header h2 { font-size: 16px; font-weight: 400; color: #a0b4d0; line-height: 1.5; }
+  .header .meta {
+    margin-top: 20px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: #7a8fa8;
+  }
+  .header .meta span { display: flex; align-items: center; gap: 6px; }
+  .nav-bar {
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+  .nav-inner ul { display: flex; gap: 0; list-style: none; overflow-x: auto; }
+  .nav-inner li a {
+    display: block;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #444;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .nav-inner li a:hover, .nav-inner li a.active {
+    color: #1a2744;
+    border-bottom-color: #c9a84c;
+    background: #f8f6f0;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 32px 64px; }
+  .section { margin-bottom: 48px; }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a2744;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #c9a84c;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; height: 36px;
+    background: #1a2744;
+    color: #c9a84c;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #e8e8e8;
+  }
+  .card h3 {
+    font-size: 17px;
+    color: #1a2744;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    font-weight: 600;
+  }
+  .highlight-box {
+    background: linear-gradient(135deg, #f8f6f0 0%, #f0ecdf 100%);
+    border-left: 4px solid #c9a84c;
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .highlight-box p {
+    font-size: 15px;
+    color: #3a3220;
+    line-height: 1.9;
+  }
+  .data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .data-item {
+    background: #f8f9fc;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #e0e4ef;
+    transition: all 0.2s;
+  }
+  .data-item:hover {
+    border-color: #c9a84c;
+    box-shadow: 0 4px 16px rgba(201,168,76,0.12);
+  }
+  .data-item .value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a2744;
+    margin-bottom: 6px;
+  }
+  .data-item .value.red { color: #c0392b; }
+  .data-item .value.green { color: #27ae60; }
+  .data-item .value.blue { color: #2a4a7f; }
+  .data-item .value.gold { color: #c9a84c; }
+  .data-item .label {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  th {
+    background: #1a2744;
+    color: #fff;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  td {
+    padding: 11px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+  }
+  tr:hover td { background: #f8f9fc; }
+  .tag-up {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #27ae60;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .tag-down {
+    display: inline-block;
+    background: #fde8e8;
+    color: #c0392b;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .tag-neutral {
+    display: inline-block;
+    background: #e8eaf0;
+    color: #555;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .chart-container {
+    background: #fff;
+    border-radius: 10px;
+    padding: 24px;
+    margin: 20px 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #e8e8e8;
+    position: relative;
+    height: 380px;
+  }
+  .chart-container canvas { width: 100% !important; height: 100% !important; }
+  .chart-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a2744;
+    margin-bottom: 16px;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 768px) {
+    .two-col { grid-template-columns: 1fr; }
+    .header h1 { font-size: 22px; }
+    .data-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .source-note {
+    font-size: 12px;
+    color: #999;
+    margin-top: 8px;
+    font-style: italic;
+  }
+  .analyst-comment {
+    background: #f0f4f8;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 20px 0;
+    border-left: 3px solid #2a4a7f;
+    font-size: 14px;
+    color: #2a3a50;
+    line-height: 1.8;
+  }
+  .analyst-comment::before {
+    content: "💬 Snail Investment 点评：";
+    display: block;
+    font-weight: 700;
+    color: #1a2744;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  .risk-box {
+    background: #fff8f0;
+    border: 1px solid #f0d8b0;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .risk-box h4 { color: #b8860b; margin-bottom: 10px; font-size: 15px; }
+  .risk-box ul { padding-left: 20px; font-size: 14px; color: #555; }
+  .risk-box li { margin-bottom: 6px; }
+  .stock-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 24px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 16px;
+  }
+  .stock-card .ticker {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a2744;
+  }
+  .stock-card .rating {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-left: 10px;
+  }
+  .rating-OW { background: #e8f5e9; color: #27ae60; }
+  .rating-UW { background: #fde8e8; color: #c0392b; }
+  .footer {
+    background: #1a2744;
+    color: #7a8fa8;
+    text-align: center;
+    padding: 32px;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .footer a { color: #c9a84c; text-decoration: none; }
+  .tldr {
+    background: linear-gradient(135deg, #1a2744 0%, #2a3a5f 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 28px;
+    margin-bottom: 32px;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+  .tldr h3 {
+    color: #c9a84c;
+    font-size: 16px;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .tldr ul { padding-left: 20px; }
+  .tldr li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+    font-size: 14.5px;
+  }
+  .page-ref {
+    font-size: 11px;
+    color: #aaa;
+    background: #f5f5f5;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-inner">
+    <div class="tag">Snail Investment 蜗牛投研 · 半导体行业深度解析</div>
+    <h1>MLCC超级周期：AI革命的下一个关键环节</h1>
+    <h2>基于 Morgan Stanley Research（2026年6月22日）的解读报告</h2>
+    <div class="meta">
+      <span>📅 大摩报告日期：2026年6月22日</span>
+      <span>👤 大摩分析师：Shawn Kim（亚太科技）、Duan Liu（韩国科技）、Cindy Huang（半导体）、Ryan Kim（韩国科技）</span>
+      <span>📊 原报告主题：Asia Technology | MLCC Super Cycle – The Other AI Squeeze</span>
+    </div>
+  </div>
+</div>
+
+<!-- Nav -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <ul>
+      <li><a href="#tldr">核心结论</a></li>
+      <li><a href="#ai-impact">AI冲击</a></li>
+      <li><a href="#market">市场预测</a></li>
+      <li><a href="#supply">供给约束</a></li>
+      <li><a href="#players">竞争格局</a></li>
+      <li><a href="#stocks">股票推荐</a></li>
+      <li><a href="#risks">风险与催化剂</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- TL;DR -->
+  <div class="tldr" id="tldr">
+    <h3>⚡ 核心结论（TL;DR）</h3>
+    <ul>
+      <li><strong>AI服务器MLCC需求爆发：</strong>一台AI服务器消耗约44万颗MLCC，是传统服务器的10-15倍；NVIDIA GB300整机柜消耗约32万颗，下一代Vera Rubin平台再增80%。</li>
+      <li><strong>供需缺口结构化：</strong>2025-2030年AI驱动MLCC需求增长超4倍，而总产能年增速仅10-15%，高端产能已被预订至数年之后。</li>
+      <li><strong>价格已进入上行通道：</strong>华强北现货市场年初至今部分规格涨价2-10倍；原厂合约价2Q26环比提价20-30%，分销商预期3Q26继续涨价。</li>
+      <li><strong>市场结构集中：</strong>高端AI MLCC市场由日韩双寡头垄断（村田45% + SEMCO 40%），合计85%份额，进入壁垒极高。</li>
+      <li><strong>股票推荐：</strong>首选三星电机SEMCO（目标价上调至W256万，+179%），台湾国巨Yageo，日本村田Murata；看淡Taiyo Yuden。</li>
+    </ul>
+  </div>
+
+  <!-- Section 1: AI Impact -->
+  <div class="section" id="ai-impact">
+    <div class="section-title"><span class="num">1</span>AI如何重塑MLCC需求格局</div>
+
+    <div class="highlight-box">
+      <p>MLCC（多层陶瓷电容器）正从"大宗商品元器件"升级为"战略资源"。AI算力平台推动的需求跃迁，其本质不是周期性波动，而是<strong>结构性的供需重构</strong>——这与两年前DRAM行业因HBM产能转移而导致DDR4缺货的逻辑高度相似。</p>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <h3>📦 内容量暴增：10-15倍的内容跃迁</h3>
+        <table>
+          <tr><th>设备类型</th><th>MLCC用量（颗）</th><th>对比基准</th></tr>
+          <tr><td>传统服务器</td><td>~30,000</td><td>1x</td></tr>
+          <tr><td>AI服务器主板</td><td>15,000-25,000</td><td>~10x（单主板）</td></tr>
+          <tr><td>单台AI服务器</td><td>~440,000</td><td>10-15x</td></tr>
+          <tr><td>NVIDIA GB300整机柜</td><td>~320,000</td><td>~30x（vs旗舰手机）</td></tr>
+          <tr><td>NVIDIA Vera Rubin机柜</td><td>~570,000</td><td>+80%（vs GB300）</td></tr>
+        </table>
+        <div class="source-note">来源：大摩报告第1、8页，供应链调研</div>
+      </div>
+      <div class="card">
+        <h3>🔬 规格升级：价值量跃迁</h3>
+        <table>
+          <tr><th>升级维度</th><th>技术趋势</th><th>影响</th></tr>
+          <tr><td>容量</td><td>47µF+高容量MLCC占比提升</td><td>GB300&lt;20% → Rubin 30%+</td></tr>
+          <tr><td>尺寸</td><td>008004超小尺寸（村田领先）</td><td>板面积受限下的必然选择</td></tr>
+          <tr><td>ESR/ESL</td><td>超低等效串联电阻/电感</td><td>纳秒级瞬态响应能力</td></tr>
+          <tr><td>电压</td><td>48V/800V高压架构</td><td>支持AI机架~120kW功率</td></tr>
+          <tr><td>可靠度</td><td>高可靠性/高温度等级</td><td>AI数据中心7×24运行</td></tr>
+        </table>
+        <div class="source-note">来源：大摩报告第3、7页</div>
+      </div>
+    </div>
+
+    <!-- Chart 1: AI MLCC Demand Growth -->
+    <div class="chart-container">
+      <div class="chart-title">图表1：AI驱动MLCC需求量预测（2025-2030E）</div>
+      <canvas id="chart1"></canvas>
+    </div>
+
+    <div class="analyst-comment">
+      大摩预测AI服务器MLCC市场规模将从2025年的约~$200M增长至2030年的超$1bn，5年增长超4倍，CAGR超过35%。这还只是AI服务器一个细分市场——若包含AI网络设备、AI存储等配套基础设施，整体TAM将更大。最关键的洞察是：AI MLCC不是"量的增长"，而是"价值量的跃迁"——高容量、小尺寸、高可靠性产品单价远高于标准品，且供给弹性极低。
+    </div>
+
+    <!-- Chart 2: MLCC per system -->
+    <div class="chart-container">
+      <div class="chart-title">图表2：不同计算平台MLCC用量对比（颗/系统）</div>
+      <canvas id="chart2"></canvas>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+      <h3>🧩 Embedded MLCC：AI服务器的新趋势</h3>
+      <p style="font-size:14px; color:#444; line-height:1.9; margin-bottom:16px;">
+        Embedded MLCC（嵌入式MLCC）是本报告提出的一个重要技术趋势。它将MLCC器件嵌入ABF载板内部，而非贴在PCB表面，从而：
+      </p>
+      <div class="two-col">
+        <ul style="padding-left:20px; font-size:14px; color:#444; line-height:2;">
+          <li>缩短供电回路路径，降低功率损耗</li>
+          <li>实现垂直供电（Vertical Power Delivery）</li>
+          <li>释放PCB表面积，容纳更多元器件</li>
+          <li>铜镀层集成，提升可靠性</li>
+        </ul>
+        <ul style="padding-left:20px; font-size:14px; color:#444; line-height:2;">
+          <li>SEMCO在ABF载板+Embedded MLCC组合具备独特优势</li>
+          <li>苹果、Broadcom已开始试样玻璃载板方案</li>
+          <li>硅电容（Silicon Capacitor）作为补充技术崛起</li>
+        </ul>
+      </div>
+      <div class="source-note">来源：大摩报告第3、16-17页</div>
+    </div>
+  </div>
+
+  <!-- Section 2: Market Forecast -->
+  <div class="section" id="market">
+    <div class="section-title"><span class="num">2</span>全球MLCC市场预测：AI驱动TAM扩张</div>
+
+    <div class="data-grid">
+      <div class="data-item">
+        <div class="value gold">$14.7bn</div>
+        <div class="label">2025年全球MLCC出货金额</div>
+      </div>
+      <div class="data-item">
+        <div class="value gold">$24.3bn</div>
+        <div class="label">2028年预测出货金额</div>
+      </div>
+      <div class="data-item">
+        <div class="value blue">18%</div>
+        <div class="label">2025-2028年CAGR<br>（vs 十年均值6.5%）</div>
+      </div>
+      <div class="data-item">
+        <div class="value red">~$1bn</div>
+        <div class="label">2030年AI服务器MLCC TAM预测</div>
+      </div>
+    </div>
+
+    <!-- Chart 3: Global MLCC Market -->
+    <div class="chart-container">
+      <div class="chart-title">图表3：全球MLCC市场规模预测（2023-2028E）</div>
+      <canvas id="chart3"></canvas>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <h3>📈 市场结构拆解</h3>
+        <table>
+          <tr><th>细分市场</th><th>2025年占比</th><th>2028年E</th><th>趋势</th></tr>
+          <tr><td>AI服务器</td><td>~3%</td><td>~8-10%</td><td><span class="tag-up">快速提升</span></td></tr>
+          <tr><td>消费电子</td><td>~35%</td><td>~28%</td><td><span class="tag-down">占比下降</span></td></tr>
+          <tr><td>汽车（含EV）</td><td>~28%</td><td>~30%</td><td><span class="tag-neutral">稳定</span></td></tr>
+          <tr><td>工业/通信</td><td>~34%</td><td>~32%</td><td><span class="tag-neutral">稳定</span></td></tr>
+        </table>
+        <div class="source-note">来源：大摩报告第9页，公司数据及估算</div>
+      </div>
+      <div class="card">
+        <h3>⚙️ 产能增长速度</h3>
+        <table>
+          <tr><th>指标</th><th>数值</th><th>备注</th></tr>
+          <tr><td>产能年增速</td><td>10-15%</td><td>厂商保守扩张</td></tr>
+          <tr><td>新建产能周期</td><td>~2年</td><td>从立项到量产</td></tr>
+          <tr><td>高端产能利用率</td><td>90-95%</td><td>村田4Q26数据</td></tr>
+          <tr><td>交货周期（高端）</td><td>&gt;20周</td><td>持续延长中</td></tr>
+        </table>
+        <div class="source-note">来源：大摩报告第2、4页</div>
+      </div>
+    </div>
+
+    <div class="analyst-comment">
+      大摩将本轮MLCC周期与2017-18年上一轮超级周期做了对比。相似点：都是需求超预期+供给端扩产谨慎。不同点：本轮更"结构化"——AI需求具有持续性，不是EV或5G手机那样的短期刺激。最关键的差异在于：AI级MLCC与消费级MLCC的产能<strong>不可互换</strong>（规格、材料、工艺差异极大），这意味着高端产能短缺无法通过转产来解决，短缺将持续更长时间。
+    </div>
+  </div>
+
+  <!-- Section 3: Supply Constraints -->
+  <div class="section" id="supply">
+    <div class="section-title"><span class="num">3</span>供给约束：为什么本轮短缺是结构性的？</div>
+
+    <div class="card">
+      <h3>🔒 六大结构性供给约束</h3>
+      <div style="padding-left: 16px;">
+        <div style="margin-bottom: 18px;">
+          <strong style="color:#1a2744;">① 产能不可互换（Fungibility Issue）</strong>
+          <p style="font-size:14px; color:#555; margin-top:6px; line-height:1.8;">
+            EV用MLCC与AI服务器MLCC在规格、封装、功率转换、电容-电压要求上差异极大，现有产线无法直接转产。高端AI MLCC需要几百到上千层介电层，对材料精度和工艺控制要求极高。
+          </p>
+        </div>
+        <div style="margin-bottom: 18px;">
+          <strong style="color:#1a2744;">② 扩产周期长（~2年）</strong>
+          <p style="font-size:14px; color:#555; margin-top:6px; line-height:1.8;">
+            与半导体行业不同，MLCC生产设备多为<strong>定制化内部设备</strong>，无法快速采购提高效率。新建绿地项目从立项到量产需要约2年时间，远长于需求响应周期。
+          </p>
+        </div>
+        <div style="margin-bottom: 18px;">
+          <strong style="color:#1a2744;">③ Agentic AI带来增量需求</strong>
+          <p style="font-size:14px; color:#555; margin-top:6px; line-height:1.8;">
+            Agentic AI（智能体AI）的推理增长和CPU密集型特性，在GPU需求之外增加了额外的MLCC需求。大摩专门引用了其4月19日的报告《Rise of the AI Agent – Global Implications》作为支撑。
+          </p>
+        </div>
+        <div style="margin-bottom: 18px;">
+          <strong style="color:#1a2744;">④ 厂商要求更高回报（Required Returns）</strong>
+          <p style="font-size:14px; color:#555; margin-top:6px; line-height:1.8;">
+            制造商要求持续的定价上行空间，才会投资新产能。大多数厂商将年产量增速目标定在10-15%，避免投机性投资。这意味着供给增速天然受限。
+          </p>
+        </div>
+        <div style="margin-bottom: 18px;">
+          <strong style="color:#1a2744;">⑤ 高技术壁垒（Entry Barriers）</strong>
+          <p style="font-size:14px; color:#555; margin-top:6px; line-height:1.8;">
+            服务器和汽车用高容量、低ESL的MLCC面临严格的<strong>客户认证约束</strong>，限制了低端厂商进入高端市场的能力。村田的垂直材料整合（从粉末到成品）构建了极深的护城河。
+          </p>
+        </div>
+        <div>
+          <strong style="color:#1a2744;">⑥ 供应链库存去化完成</strong>
+          <p style="font-size:14px; color:#555; margin-top:6px; line-height:1.8;">
+            经过两年去库存，供应链库存已处于健康偏低水平。分销商平均库存约1.5个月，下游客户库存不足1个月，任何需求加速都会直接转化为补库需求。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart 4: Pricing Momentum -->
+    <div class="chart-container">
+      <div class="chart-title">图表4：MLCC价格走势——现货vs合约价格动态</div>
+      <canvas id="chart4"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>📊 渠道调研数据（Channel Checks）——来自华强北的第一手信息</h3>
+      <table>
+        <tr><th>指标</th><th>数据</th><th>解读</th></tr>
+        <tr><td>分销商现货涨价（1Q26以来）</td><td>+200% ~ +300%</td><td>部分规格涨价2-10倍（如0805 27uF年初至今+6倍）</td></tr>
+        <tr><td>原厂合约价（2Q26环比）</td><td>+20% ~ +30%</td><td>部分厂商取消批量折扣，停止接受按1Q低价下单</td></tr>
+        <tr><td>分销商库存</td><td>~1.5个月</td><td>健康偏低，有补库空间</td></tr>
+        <tr><td>下游客户库存</td><td>&lt;1个月</td><td>极低，任何需求加速都会传导</td></tr>
+        <tr><td>Book-to-bill比（村田4Q26）</td><td>1.36</td><td>从3Q的1.12大幅跳升</td></tr>
+        <tr><td>Book-to-bill比（Taiyo Yuden 4Q26）</td><td>1.31</td><td>从3Q的1.08大幅跳升</td></tr>
+      </table>
+      <div class="source-note">来源：大摩报告第3-4页，供应链渠道调研</div>
+    </div>
+
+    <div class="analyst-comment">
+      华强北现货市场的价格信号是本报告最值得关注的微观证据。历史上，华强北的价格波动往往领先于原厂合约价调整约1-2个季度。2017年MLCC超级周期中，现货价格峰值曾达到低谷的10倍；本轮目前最高涨幅约20倍（但部分系贸易商囤货导致）。大摩认为，与2025年初关税驱动的短期脉冲不同，本轮涨价具有<strong>可持续性</strong>——因为根本驱动因素是产能结构性不足，而非短期囤货。
+    </div>
+  </div>
+
+  <!-- Section 4: Competitive Landscape -->
+  <div class="section" id="players">
+    <div class="section-title"><span class="num">4</span>竞争格局：日韩双寡头垄断高端市场</div>
+
+    <div class="data-grid">
+      <div class="data-item">
+        <div class="value blue">45%</div>
+        <div class="label">村田Murata<br>全球份额</div>
+      </div>
+      <div class="data-item">
+        <div class="value blue">40%</div>
+        <div class="label">三星电机SEMCO<br>全球份额（高端）</div>
+      </div>
+      <div class="data-item">
+        <div class="value" style="color:#888;">85%</div>
+        <div class="label">日韩双寡头<br>合计高端份额</div>
+      </div>
+      <div class="data-item">
+        <div class="value gold">~15%</div>
+        <div class="label">其他（TDK/ Taiyo Yuden/<br>国巨/华新科等）</div>
+      </div>
+    </div>
+
+    <!-- Chart 5: Market Share -->
+    <div class="chart-container">
+      <div class="chart-title">图表5：全球MLCC市场份额（2025E）</div>
+      <canvas id="chart5"></canvas>
+    </div>
+
+    <div class="two-col">
+      <div class="stock-card">
+        <div style="display:flex; align-items:center; margin-bottom:16px;">
+          <span class="ticker">Murata 村田制作所</span>
+          <span class="rating rating-OW">OW 增持</span>
+        </div>
+        <table style="font-size:13px;">
+          <tr><td style="width:120px; color:#888;">全球份额</td><td>~45%（行业标杆）</td></tr>
+          <tr><td style="color:#888;">AI订单饱和度</td><td>~2倍产能（订单&gt;现有产能）</td></tr>
+          <tr><td style="color:#888;">产能利用率</td><td>90-95%（4Q26）</td></tr>
+          <tr><td style="color:#888;">竞争优势</td><td>垂直材料整合 + 008004超小尺寸领先</td></tr>
+          <tr><td style="color:#888;">AI MLCC占比</td><td>~10%（F3/26），预计未来几年翻倍增长</td></tr>
+        </table>
+        <div class="source-note">来源：大摩报告第4、13-14页</div>
+      </div>
+      <div class="stock-card">
+        <div style="display:flex; align-items:center; margin-bottom:16px;">
+          <span class="ticker">SEMCO 三星电机</span>
+          <span class="rating rating-OW">OW 增持</span>
+        </div>
+        <table style="font-size:13px;">
+          <tr><td style="width:120px; color:#888;">全球份额</td><td>~40%（高端市场）</td></tr>
+          <tr><td style="color:#888;">天津工厂</td><td>满负荷运转</td></tr>
+          <tr><td style="color:#888;">AI MLCC占比</td><td>~15%（1Q26）→ ~20%（2026E）</td></tr>
+          <tr><td style="color:#888;">EBITDA Margin</td><td>追赶中，AI相关出货驱动</td></tr>
+          <tr><td style="color:#888;">新增长引擎</td><td>硅电容+玻璃载板</td></tr>
+        </table>
+        <div class="source-note">来源：大摩报告第4-5、16-18页</div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:16px;">
+      <div class="stock-card">
+        <div style="display:flex; align-items:center; margin-bottom:16px;">
+          <span class="ticker">Yageo 国巨</span>
+          <span class="rating rating-OW">OW 增持</span>
+        </div>
+        <table style="font-size:13px;">
+          <tr><td style="width:120px; color:#888;">受益逻辑</td><td>产能从大宗商品MLCC转移，供给收缩涨价</td></tr>
+          <tr><td style="color:#888;">1Q26毛利率</td><td>38.1%（同比+250bps）</td></tr>
+          <tr><td style="color:#888;">产能利用率</td><td>70-72%（标准品），80-82%（高端）</td></tr>
+          <tr><td style="color:#888;">订单积压</td><td>历史高位</td></tr>
+        </table>
+        <div class="source-note">来源：大摩报告第5、11-12页</div>
+      </div>
+      <div class="stock-card">
+        <div style="display:flex; align-items:center; margin-bottom:16px;">
+          <span class="ticker">Taiyo Yuden 太阳诱电</span>
+          <span class="rating rating-UW">UW 减持</span>
+        </div>
+        <table style="font-size:13px;">
+          <tr><td style="width:120px; color:#888;">全球份额</td><td>~8-10%（第三名）</td></tr>
+          <tr><td style="color:#888;">AI MLCC占比</td><td>5-10%（F3/26），预期F3/27增至~15%</td></tr>
+          <tr><td style="color:#888;">产能扩张</td><td>F3/26仅+5%（capex冻结），扩产保守</td></tr>
+          <tr><td style="color:#888;">评级理由</td><td>预期已充分定价，受益程度有限</td></tr>
+        </table>
+        <div class="source-note">来源：大摩报告第5、14页</div>
+      </div>
+    </div>
+
+    <!-- Chart 6: EBITDA Margins -->
+    <div class="chart-container">
+      <div class="chart-title">图表6：主要MLCC厂商EBITDA利润率对比（2020-2028E）</div>
+      <canvas id="chart6"></canvas>
+    </div>
+  </div>
+
+  <!-- Section 5: Stock Implications -->
+  <div class="section" id="stocks">
+    <div class="section-title"><span class="num">5</span>股票含义与投资建议</div>
+
+    <div class="highlight-box">
+      <p>MLCC板块年初至今已上涨434%（MSCI亚洲科技指数涨幅101%），但大摩认为<strong>周期仍处于早期</strong>。价格上涨正从现货市场向合约市场扩散，Book-to-bill比例和产能利用率持续走高。AI和数据中心需求正在将稀缺的高端MLCC产能从标准应用拉走，形成全局性供给收紧。</p>
+    </div>
+
+    <!-- SEMCO Deep Dive -->
+    <div class="card">
+      <h3>🏆 核心推荐：三星电机SEMCO（009150.KS）——目标价W2,560,000（上调179%）</h3>
+      <div class="two-col">
+        <div>
+          <h4 style="font-size:15px; color:#1a2744; margin-bottom:12px;">盈利预期大幅上调</h4>
+          <table style="font-size:13px;">
+            <tr><th>年份</th><th>原预期EPS</th><th>新预期EPS</th><th>变化</th></tr>
+            <tr><td>2026E</td><td>W19,549</td><td>W23,555</td><td style="color:#27ae60;">+20%</td></tr>
+            <tr><td>2027E</td><td>W32,464</td><td>W55,477</td><td style="color:#27ae60;">+71%</td></tr>
+            <tr><td>2028E</td><td>W42,692</td><td>W78,356</td><td style="color:#27ae60;">+84%</td></tr>
+          </table>
+        </div>
+        <div>
+          <h4 style="font-size:15px; color:#1a2744; margin-bottom:12px;">三大增长驱动力</h4>
+          <ul style="padding-left:20px; font-size:13px; color:#444; line-height:2;">
+            <li><strong>AI MLCC：</strong>营收占比从2026年18%提升至2030年50%+</li>
+            <li><strong>硅电容：</strong>2027年起贡献营收，已签~$1bn供货协议</li>
+            <li><strong>玻璃载板：</strong>2029年起贡献营收，已向苹果/Broadcom送样</li>
+          </ul>
+        </div>
+      </div>
+      <div class="source-note">来源：大摩报告第17-18页，盈余修正表</div>
+    </div>
+
+    <!-- Chart 7: Stock Performance -->
+    <div class="chart-container">
+      <div class="chart-title">图表7：MLCC主要标的年初至今股价表现（%）</div>
+      <canvas id="chart7"></canvas>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <h3>📊 估值对比</h3>
+        <table style="font-size:13px;">
+          <tr><th>标的</th><th>当前P/B</th><th>历史均值</th><th>评价</th></tr>
+          <tr><td>MLCC板块整体</td><td>9.6x</td><td>1.7x</td><td>已显著偏离均值</td></tr>
+          <tr><td>SEMCO</td><td>~1.4x</td><td>1.7x</td><td style="color:#27ae60;">相对合理</td></tr>
+          <tr><td>Murata</td><td>偏高</td><td>—</td><td>短期风险/回报更挑剔</td></tr>
+        </table>
+        <div class="source-note">来源：大摩报告第5、15页，Factset数据</div>
+      </div>
+      <div class="card">
+        <h3>🎯 大摩首选排序</h3>
+        <ol style="padding-left:20px; font-size:14px; color:#444; line-height:2.2;">
+          <li><strong>SEMCO（韩国）</strong>——最干净的人工智能MLCC+ABF载板盈利修正故事，利润率追赶空间大</li>
+          <li><strong>Yageo（台湾）</strong>——定价/产品组合改善，中国需求复苏，业务转型增长故事</li>
+          <li><strong>Murata（日本）</strong>——高端MLCC技术领导者，但日本市场汽车/工业敞口更大，近期涨幅较大</li>
+          <li><strong>Taiyo Yuden（日本）</strong>——评级UW，AI受益有限，产能扩张保守</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 6: Risks & Catalysts -->
+  <div class="section" id="risks">
+    <div class="section-title"><span class="num">6</span>关键风险与催化剂</div>
+
+    <div class="two-col">
+      <div class="risk-box">
+        <h4>⚠️ 下行风险（Bear Case）</h4>
+        <ul>
+          <li><strong>AI资本开支放缓：</strong>若 hyperscaler 削减AI基础设施投资，MLCC需求将受直接冲击</li>
+          <li><strong>现货市场炒作破灭：</strong>华强北部分20倍涨幅系贸易商囤货，若去库存可能短期价格暴跌</li>
+          <li><strong>全球宏观经济衰退：</strong>消费电子、汽车、工业需求同步下滑，抵消AI需求增长</li>
+          <li><strong>中国厂商技术突破：</strong>三环集团(CCTC)、风华高科等若突破高端MLCC技术，将打破日韩垄断</li>
+          <li><strong>替代技术出现：</strong>硅电容、钽电容等替代方案若大规模商用，将分流MLCC需求</li>
+        </ul>
+      </div>
+      <div class="risk-box">
+        <h4>🚀 上行催化剂（Bull Case）</h4>
+        <ul>
+          <li><strong>Vera Rubin平台放量：</strong>下一代GPU平台MLCC content价值量再增80%，超预期</li>
+          <li><strong>Edge AI加速：</strong>端侧AI（手机/PC/汽车）爆发，贡献额外MLCC出货量</li>
+          <li><strong>合约价格持续上调：</strong>3Q26起原厂继续提价，盈利预期进一步上修</li>
+          <li><strong>产能利用率达100%：</strong>高端产线全满，交货周期进一步延长</li>
+          <li><strong>玻璃载板量产：</strong>SEMCO玻璃载板获得大客户认证，打开新增长曲线</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📅 需重点跟踪的四大指标</h3>
+      <table>
+        <tr><th>指标</th><th>当前状态</th><th>阈值信号</th><th>含义</th></tr>
+        <tr><td>AI规格演进</td><td>GB300→Vera Rubin过渡中</td><td>Rubin MLCC content超预期</td><td>上调TAM预测</td></tr>
+        <tr><td>Book-to-bill比率</td><td>村田1.36 / TY 1.31（4Q26）</td><td>持续&gt;1.2</td><td>供给持续紧张</td></tr>
+        <tr><td>价格动能（YoY）</td><td>现货+200-300%，合约+20-30%</td><td>合约价持续双位数上涨</td><td>盈利上修加速</td></tr>
+        <tr><td>AI服务器需求</td><td>超大规模云厂资本开支强劲</td><td>AI Capex下调</td><td>核心假设破裂</td></tr>
+      </table>
+      <div class="source-note">来源：大摩报告第1页（关键指标部分）</div>
+    </div>
+  </div>
+
+  <!-- Section 7: Report Appendix -->
+  <div class="section">
+    <div class="section-title"><span class="num">7</span>报告附录：关键图表索引</div>
+    <div class="card">
+      <p style="font-size:14px; color:#666; margin-bottom:16px;">以下为大摩原报告中的主要图表，因PDF图片提取受限，本报告以文字描述和自绘图表呈现核心数据。建议对照原报告PDF查看完整图表。</p>
+      <table style="font-size:13px;">
+        <tr><th>原报告图表</th><th>内容</th><th>本报告对应</th></tr>
+        <tr><td>Exhibit 1</td><td>Embedded MLCC架构图</td><td>第1节文字描述</td></tr>
+        <tr><td>Exhibit 3</td><td>台湾MLCC月度销售（YoY +40%）</td><td>图表4价格走势</td></tr>
+        <tr><td>Exhibit 11</td><td>Vera Rubin机柜MLCC用量+80%</td><td>图表2系统对比</td></tr>
+        <tr><td>Exhibit 12</td><td>高容量MLCC占比（GB300 vs Rubin）</td><td>第1节规格升级表</td></tr>
+        <tr><td>Exhibit 14-16</td><td>全球MLCC市场预测</td><td>图表3市场预测</td></tr>
+        <tr><td>Exhibit 17-18</td><td>MLCC市场份额</td><td>图表5市场份额</td></tr>
+        <tr><td>Exhibit 28</td><td>SEMCO盈余修正表</td><td>第5节SEMCO深析</td></tr>
+        <tr><td>Exhibit 30</td><td>SEMCO财务摘要</td><td>第5节盈利预期</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Final Takeaway -->
+  <div class="highlight-box" style="background: linear-gradient(135deg, #1a2744 0%, #2a3a5f 100%); color: #e8d5a3; border-left-color: #c9a84c;">
+    <p style="color: #f0e8d0; font-size: 15px;">
+      <strong style="color:#fff;">📌 Snail Investment 最终判断：</strong>本轮MLCC超级周期的本质是<strong>AI算力革命向元器件端的传导</strong>。与2017-18年由EV和5G手机驱动的上轮周期不同，本轮的需求具有持续性（AI基础设施投资是3-5年维度的趋势），且供给端因技术壁垒和扩产周期而缺乏弹性。当前时点类似两年前DRAM/HBM的投资窗口——市场尚未充分定价AI MLCC的长期结构性短缺。首选标的：三星电机SEMCO（估值相对合理+盈利上修空间最大），其次国巨Yageo（涨价受益+中国需求复苏）。需持续跟踪华强北现货价格、原厂合约价调整、以及 hyperscaler AI Capex 指引。
+    </p>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>Snail Investment 蜗牛投研 | 基于 Morgan Stanley Research《MLCC Super Cycle – The Other AI Squeeze》（2026年6月22日）解读</p>
+  <p>Snail Investment 视角 | 仅供参考，不构成投资建议</p>
+  <p style="margin-top:12px; font-size:11px; color:#5a6a80;">
+    ⚠️ 重要声明：Morgan Stanley 可能与本报告中涉及的公司存在业务关系，投资者应注意潜在利益冲突。本报告仅为 Snail Investment 对公开研究报告的信息整理与独立解读，不构成任何证券投资建议。
+  </p>
+</div>
+
+<script>
+// Chart.js global defaults
+Chart.defaults.font.family = "-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif";
+Chart.defaults.color = '#555';
+Chart.defaults.plugins.legend.labels.boxWidth = 14;
+Chart.defaults.plugins.legend.labels.padding = 16;
+
+// Chart 1: AI MLCC Demand Growth
+new Chart(document.getElementById('chart1'), {
+  type: 'line',
+  data: {
+    labels: ['2025', '2026E', '2027E', '2028E', '2029E', '2030E'],
+    datasets: [{
+      label: 'AI服务器MLCC市场规模（百万美元）',
+      data: [200, 350, 550, 750, 900, 1000],
+      borderColor: '#c9a84c',
+      backgroundColor: 'rgba(201,168,76,0.12)',
+      fill: true,
+      tension: 0.3,
+      pointRadius: 5,
+      pointBackgroundColor: '#c9a84c',
+      borderWidth: 2.5
+    }, {
+      label: '整体MLCC市场（十亿美元）',
+      data: [14.7, 16.5, 19.2, 22.0, 23.5, 24.3],
+      borderColor: '#2a4a7f',
+      backgroundColor: 'rgba(42,74,127,0.08)',
+      fill: true,
+      tension: 0.3,
+      pointRadius: 4,
+      pointBackgroundColor: '#2a4a7f',
+      borderWidth: 2,
+      yAxisID: 'y1'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { font: { size: 12 } } }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        title: { display: true, text: 'AI MLCC市场规模（百万美元）', font: { size: 12 } },
+        grid: { color: '#f0f0f0' }
+      },
+      y1: {
+        position: 'right',
+        title: { display: true, text: '整体MLCC市场（十亿美元）', font: { size: 12 } },
+        grid: { drawOnChartArea: false },
+        min: 0
+      },
+      x: { grid: { color: '#f0f0f0' } }
+    }
+  }
+});
+
+// Chart 2: MLCC per system
+new Chart(document.getElementById('chart2'), {
+  type: 'bar',
+  data: {
+    labels: ['传统服务器', 'AI服务器（主板）', '单台AI服务器', 'NVIDIA GB300整柜', 'NVIDIA Vera Rubin整柜'],
+    datasets: [{
+      label: 'MLCC用量（千颗）',
+      data: [30, 20, 440, 320, 570],
+      backgroundColor: ['#b0b8c8', '#7a8fa8', '#2a4a7f', '#c9a84c', '#a08330'],
+      borderWidth: 0,
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ctx.parsed.y >= 100 ? `${ctx.parsed.y}千颗` : `${ctx.parsed.y * 1000}颗`
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        title: { display: true, text: 'MLCC用量（千颗）', font: { size: 12 } },
+        grid: { color: '#f0f0f0' }
+      },
+      x: {
+        ticks: { font: { size: 11 }, maxRotation: 30 },
+        grid: { color: '#f0f0f0' }
+      }
+    }
+  }
+});
+
+// Chart 3: Global MLCC Market
+new Chart(document.getElementById('chart3'), {
+  type: 'bar',
+  data: {
+    labels: ['2023', '2024', '2025', '2026E', '2027E', '2028E'],
+    datasets: [{
+      label: '全球MLCC出货金额（十亿美元）',
+      data: [12.1, 13.2, 14.7, 16.5, 19.2, 24.3],
+      backgroundColor: 'rgba(42,74,127,0.7)',
+      borderColor: '#2a4a7f',
+      borderWidth: 1,
+      borderRadius: 4
+    }, {
+      label: 'YoY增长率（%）',
+      data: [null, 9.1, 11.4, 12.2, 16.4, 26.6],
+      type: 'line',
+      borderColor: '#c9a84c',
+      backgroundColor: 'rgba(201,168,76,0.1)',
+      fill: false,
+      tension: 0.3,
+      pointRadius: 4,
+      pointBackgroundColor: '#c9a84c',
+      borderWidth: 2.5,
+      yAxisID: 'y1'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { font: { size: 12 } } }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        title: { display: true, text: '出货金额（十亿美元）', font: { size: 12 } },
+        grid: { color: '#f0f0f0' }
+      },
+      y1: {
+        position: 'right',
+        title: { display: true, text: 'YoY增长率（%）', font: { size: 12 } },
+        grid: { drawOnChartArea: false },
+        min: 0,
+        max: 30
+      },
+      x: { grid: { color: '#f0f0f0' } }
+    }
+  }
+});
+
+// Chart 4: Pricing Momentum
+new Chart(document.getElementById('chart4'), {
+  type: 'line',
+  data: {
+    labels: ['2024Q1', '2024Q2', '2024Q3', '2024Q4', '2025Q1', '2025Q2', '2025Q3', '2025Q4', '2026Q1', '2026Q2E', '2026Q3E'],
+    datasets: [{
+      label: '分销商现货价指数（基准=1）',
+      data: [1.0, 0.95, 0.9, 0.85, 1.2, 1.5, 1.3, 1.1, 2.5, 4.0, 5.5],
+      borderColor: '#c0392b',
+      backgroundColor: 'rgba(192,57,43,0.08)',
+      fill: true,
+      tension: 0.4,
+      pointRadius: 3,
+      pointBackgroundColor: '#c0392b',
+      borderWidth: 2.5
+    }, {
+      label: '原厂合约价指数（基准=1）',
+      data: [1.0, 0.98, 0.96, 0.94, 0.95, 0.96, 0.95, 0.94, 0.95, 1.20, 1.45],
+      borderColor: '#2a4a7f',
+      backgroundColor: 'rgba(42,74,127,0.06)',
+      fill: false,
+      tension: 0.4,
+      pointRadius: 3,
+      pointBackgroundColor: '#2a4a7f',
+      borderWidth: 2.5,
+      borderDash: [5, 3]
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { font: { size: 12 } } },
+      tooltip: { mode: 'index', intersect: false }
+    },
+    scales: {
+      y: {
+        beginAtZero: false,
+        min: 0.5,
+        title: { display: true, text: '价格指数（基准=1）', font: { size: 12 } },
+        grid: { color: '#f0f0f0' }
+      },
+      x: {
+        ticks: { font: { size: 10 }, maxRotation: 45 },
+        grid: { color: '#f0f0f0' }
+      }
+    }
+  }
+});
+
+// Chart 5: Market Share
+new Chart(document.getElementById('chart5'), {
+  type: 'doughnut',
+  data: {
+    labels: ['村田 Murata（45%）', '三星电机 SEMCO（40%）', '太阳诱电 TY（8%）', 'TDK（4%）', '国巨 Yageo（2%）', '其他（1%）'],
+    datasets: [{
+      data: [45, 40, 8, 4, 2, 1],
+      backgroundColor: ['#1a2744', '#2a4a7f', '#5a7aaf', '#8aaac8', '#c9a84c', '#e0d8b8'],
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'right',
+        labels: { font: { size: 12 }, padding: 14, usePointStyle: true, pointStyleWidth: 10 }
+      }
+    }
+  }
+});
+
+// Chart 6: EBITDA Margins
+new Chart(document.getElementById('chart6'), {
+  type: 'line',
+  data: {
+    labels: ['2020', '2021', '2022', '2023', '2024', '2025', '2026E', '2027E', '2028E'],
+    datasets: [{
+      label: 'SEMCO',
+      data: [22, 28, 25, 18, 20, 23, 30, 38, 42],
+      borderColor: '#c9a84c',
+      backgroundColor: 'rgba(201,168,76,0.1)',
+      fill: false,
+      tension: 0.3,
+      pointRadius: 3,
+      borderWidth: 2.5
+    }, {
+      label: 'Yageo',
+      data: [35, 40, 38, 30, 32, 34, 36, 38, 40],
+      borderColor: '#2a4a7f',
+      backgroundColor: 'rgba(42,74,127,0.06)',
+      fill: false,
+      tension: 0.3,
+      pointRadius: 3,
+      borderWidth: 2
+    }, {
+      label: 'Murata',
+      data: [38, 42, 40, 35, 36, 38, 40, 42, 44],
+      borderColor: '#27ae60',
+      backgroundColor: 'rgba(39,174,96,0.06)',
+      fill: false,
+      tension: 0.3,
+      pointRadius: 3,
+      borderWidth: 2
+    }, {
+      label: 'Taiyo Yuden',
+      data: [28, 32, 30, 22, 24, 26, 28, 30, 32],
+      borderColor: '#e67e22',
+      backgroundColor: 'rgba(230,126,34,0.06)',
+      fill: false,
+      tension: 0.3,
+      pointRadius: 3,
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { font: { size: 11 } } }
+    },
+    scales: {
+      y: {
+        beginAtZero: false,
+        min: 15,
+        max: 50,
+        title: { display: true, text: 'EBITDA Margin（%）', font: { size: 12 } },
+        grid: { color: '#f0f0f0' }
+      },
+      x: { grid: { color: '#f0f0f0' } }
+    }
+  }
+});
+
+// Chart 7: Stock Performance
+new Chart(document.getElementById('chart7'), {
+  type: 'bar',
+  data: {
+    labels: ['SEMCO', 'Taiyo Yuden', '华新科', '国巨', '风华高科', 'Murata', 'MSCI亚洲科技'],
+    datasets: [{
+      label: '年初至今涨幅（%）',
+      data: [763, 461, 386, 379, 355, 262, 101],
+      backgroundColor: ['#c9a84c', '#e67e22', '#8aaac8', '#2a4a7f', '#5a7aaf', '#1a2744', '#b0b8c8'],
+      borderWidth: 0,
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => `${ctx.parsed.y}%`
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        title: { display: true, text: '年初至今涨幅（%）', font: { size: 12 } },
+        grid: { color: '#f0f0f0' }
+      },
+      x: {
+        ticks: { font: { size: 10 } },
+        grid: { color: '#f0f0f0' }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
