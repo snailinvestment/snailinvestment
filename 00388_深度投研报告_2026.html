@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港交易所集团 (00388.HK) 深度研究报告 — Snail Investment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-base:#F3F4F6;--bg-section:#FFFFFF;--bg-card:#F8F9FA;--bg-dark:#0D1F2D;
+  --border:#DDE1E8;--border-strong:#B8BEC9;
+  --text-primary:#111827;--text-body:#374151;--text-muted:#6B7280;--text-faint:#9CA3AF;--text-invert:#FFFFFF;
+  --accent:#0F4C75;--accent-mid:#1B6CA8;--accent-light:#E8F4FD;
+  --gold:#B8860B;--gold-light:#FBF5E6;
+  --red-warn:#B91C1C;--red-bg:#FEF2F2;
+  --green-pos:#15803D;--green-bg:#F0FDF4;
+  --amber:#B45309;--amber-bg:#FFFBEB;
+  --radius:4px;--radius-md:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg-base);color:var(--text-body);font-family:'Noto Sans SC',sans-serif;font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+
+/* COVER */
+.cover{background:var(--bg-dark);color:var(--text-invert);position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(15,76,117,.75) 0%,transparent 60%),
+  repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.018) 80px);
+  pointer-events:none;}
+.cover-inner{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:56px 48px 48px;}
+.brand-row{display:flex;align-items:center;gap:12px;margin-bottom:40px;}
+.brand-snail{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+.brand-dept{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.06em;}
+.brand-sep{color:rgba(255,255,255,.2);}
+.cover-ticker{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.12em;margin-bottom:10px;}
+.cover-name{font-family:'Noto Serif SC',serif;font-size:34px;font-weight:700;line-height:1.25;color:#fff;margin-bottom:4px;}
+.cover-name-en{font-family:'IBM Plex Mono',monospace;font-size:13px;color:rgba(255,255,255,.42);letter-spacing:.05em;margin-bottom:30px;}
+.csg{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-md);overflow:hidden;margin-bottom:32px;}
+.cs{background:rgba(0,0,0,.32);padding:18px 14px;}
+.csl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+.csv{font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:500;color:#fff;line-height:1;margin-bottom:3px;}
+.css{font-size:10px;color:rgba(255,255,255,.35);}
+.cvr{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.vb{display:inline-flex;align-items:center;gap:10px;background:rgba(15,76,117,.6);border:1px solid rgba(27,108,168,.5);border-radius:var(--radius);padding:10px 20px;}
+.vbl{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.1em;text-transform:uppercase;}
+.vbr{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:700;color:var(--gold);}
+.vt{font-family:'IBM Plex Mono',monospace;font-size:13px;color:rgba(255,255,255,.65);}
+.vt strong{color:#fff;font-size:17px;}
+.cm{margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.cmi{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.32);letter-spacing:.05em;}
+
+/* LAYOUT */
+.pb{max-width:960px;margin:0 auto;padding:0 24px 60px;}
+
+/* TOC */
+.tb{background:var(--bg-section);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+.ti{max-width:960px;margin:0 auto;padding:0 24px;display:flex;overflow-x:auto;scrollbar-width:none;}
+.ti::-webkit-scrollbar{display:none;}
+.tl{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--text-muted);text-decoration:none;padding:13px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;}
+.tl:hover{color:var(--accent-mid);border-bottom-color:var(--accent-mid);}
+
+/* SECTIONS */
+.sec{background:var(--bg-section);border:1px solid var(--border);border-radius:var(--radius-md);margin-top:20px;overflow:hidden;}
+.sh{display:flex;align-items:center;gap:14px;padding:22px 28px 20px;border-bottom:1px solid var(--border);}
+.sn{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-faint);letter-spacing:.08em;min-width:26px;}
+.st{font-family:'Noto Serif SC',serif;font-size:15px;font-weight:700;color:var(--text-primary);}
+.sb{padding:24px 28px;}
+
+/* TYPOGRAPHY */
+h3.sub{font-family:'Noto Serif SC',serif;font-size:13.5px;font-weight:700;color:var(--text-primary);margin:22px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+h3.sub:first-child{margin-top:0;}
+p{margin-bottom:12px;font-size:13.5px;color:var(--text-body);}
+p:last-child{margin-bottom:0;}
+strong{color:var(--text-primary);}
+
+/* CALLOUT */
+.co{border-left:3px solid;border-radius:0 var(--radius) var(--radius) 0;padding:14px 18px;margin:16px 0;font-size:13px;}
+.co.buy{border-color:var(--green-pos);background:var(--green-bg);}
+.co.hold{border-color:var(--amber);background:var(--amber-bg);}
+.co.warn{border-color:var(--red-warn);background:var(--red-bg);}
+.co.neu{border-color:var(--accent-mid);background:var(--accent-light);}
+.col{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;opacity:.6;}
+
+/* TABLES */
+.dtw{overflow-x:auto;margin:14px 0;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+thead tr{background:var(--bg-base);border-bottom:1px solid var(--border-strong);}
+th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);padding:9px 14px;text-align:left;font-weight:500;}
+th.r,td.r{text-align:right;}
+td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-body);font-size:13px;}
+tr:last-child td{border-bottom:none;}
+tr:nth-child(even) td{background:var(--bg-card);}
+td.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;}
+td.pos{color:var(--green-pos);font-family:'IBM Plex Mono',monospace;font-weight:600;}
+td.neg{color:var(--red-warn);font-family:'IBM Plex Mono',monospace;font-weight:600;}
+td.bold{font-weight:600;color:var(--text-primary);}
+td.hl{background:var(--accent-light)!important;font-weight:600;}
+
+/* METRICS */
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0;}
+.mc{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;}
+.ml{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+.mv{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:500;color:var(--text-primary);line-height:1;margin-bottom:4px;}
+.ms{font-size:11px;color:var(--text-muted);}
+.mv.pos{color:var(--green-pos);}
+.mv.neg{color:var(--red-warn);}
+.mv.acc{color:var(--accent-mid);}
+.mv.gold{color:var(--gold);}
+
+/* SEG BAR */
+.sbw{margin:14px 0;}
+.sbr{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+.sblb{font-size:12px;color:var(--text-body);width:180px;flex-shrink:0;}
+.sbt{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.sbf{height:100%;border-radius:4px;}
+.sbv{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--text-body);width:110px;text-align:right;}
+
+/* SCENARIO */
+.sg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0;}
+.sc{border-radius:var(--radius-md);padding:20px;border:1px solid;}
+.sc.bull{border-color:#86EFAC;background:#F0FDF4;}
+.sc.base{border-color:#93C5FD;background:#EFF6FF;}
+.sc.bear{border-color:#FCA5A5;background:#FFF5F5;}
+.scl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px;opacity:.55;}
+.sct{font-family:'Noto Serif SC',serif;font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:10px;}
+.scp{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:500;color:var(--text-primary);margin-bottom:4px;}
+.scu{font-family:'IBM Plex Mono',monospace;font-size:12px;margin-bottom:8px;}
+.scu.pos{color:var(--green-pos);}
+.scu.neg{color:var(--red-warn);}
+.scpr{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;background:rgba(0,0,0,.06);border-radius:2px;padding:2px 8px;margin-bottom:10px;color:var(--text-muted);}
+.scd{font-size:12px;color:var(--text-body);line-height:1.6;}
+
+/* RISK */
+.rl{list-style:none;}
+.ri{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.ri:last-child{border-bottom:none;}
+.rs{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;border-radius:2px;padding:3px 8px;white-space:nowrap;text-transform:uppercase;letter-spacing:.07em;margin-top:2px;min-width:54px;text-align:center;}
+.rsh{background:#FECACA;color:#991B1B;}
+.rsm{background:#FDE68A;color:#92400E;}
+.rsl{background:#BBF7D0;color:#166534;}
+.rt{font-weight:600;font-size:13px;color:var(--text-primary);margin-bottom:3px;}
+.rd{font-size:12.5px;color:var(--text-muted);}
+
+/* VAL CARDS */
+.vg{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+.vc{flex:1;min-width:150px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;}
+.vcn{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);margin-bottom:8px;}
+.vcp{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:500;color:var(--accent-mid);line-height:1;margin-bottom:4px;}
+.vcw{font-size:11px;color:var(--text-muted);}
+.vcd{font-size:11.5px;color:var(--text-muted);margin-top:8px;border-top:1px solid var(--border);padding-top:8px;}
+
+/* TAGS */
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;border-radius:2px;padding:2px 7px;margin-right:4px;vertical-align:middle;}
+.tb2{background:var(--accent-light);color:var(--accent-mid);}
+.tg{background:var(--gold-light);color:var(--gold);}
+.tr2{background:var(--red-bg);color:var(--red-warn);}
+.ta{background:var(--amber-bg);color:var(--amber);}
+.tgn{background:var(--green-bg);color:var(--green-pos);}
+
+/* TECH LEVELS */
+.tlw{display:flex;flex-direction:column;gap:8px;margin:14px 0;}
+.tlr{display:flex;align-items:center;gap:12px;}
+.tlp{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;width:80px;text-align:right;flex-shrink:0;}
+.tlo{flex:1;position:relative;height:6px;background:var(--border);border-radius:3px;}
+.tli{position:absolute;top:0;left:0;height:100%;border-radius:3px;}
+.tll{font-size:11.5px;color:var(--text-muted);width:190px;flex-shrink:0;}
+.tlt{font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 6px;border-radius:2px;width:60px;text-align:center;flex-shrink:0;}
+.t-sup{background:#DCFCE7;color:#166534;}
+.t-cur{background:#DBEAFE;color:#1E40AF;font-weight:700;}
+.t-res{background:#FEE2E2;color:#991B1B;}
+.t-tar{background:var(--gold-light);color:var(--gold);}
+
+/* DISCLAIMER / FOOTER */
+.disc{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);margin-top:20px;padding:20px 28px;}
+.disc p{font-size:11px;color:var(--text-faint);line-height:1.65;margin-bottom:6px;}
+.disc-hd{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;}
+.pf{max-width:960px;margin:16px auto 0;padding:0 24px 32px;display:flex;justify-content:space-between;align-items:center;}
+.pfb{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-faint);letter-spacing:.08em;}
+
+@media(max-width:720px){
+  .csg{grid-template-columns:repeat(3,1fr);}
+  .mg{grid-template-columns:repeat(2,1fr);}
+  .sg{grid-template-columns:1fr;}
+  .cover-inner{padding:36px 20px 32px;}
+  .sb{padding:18px;}
+  .cover-name{font-size:24px;}
+}
+@media(max-width:480px){.csg{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+
+<!-- ════ COVER ════ -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="brand-row">
+      <span class="brand-snail">🐌 Snail Investment</span>
+      <span class="brand-sep">·</span>
+      <span class="brand-dept">精品研究部 · Equity Research</span>
+    </div>
+    <div class="cover-ticker">00388.HK &nbsp;·&nbsp; 港股主板 &nbsp;·&nbsp; 金融基础设施 / 交易所运营商</div>
+    <div class="cover-name">香港交易所集团</div>
+    <div class="cover-name-en">Hong Kong Exchanges and Clearing Limited &nbsp;·&nbsp; 深度研究报告 &nbsp;·&nbsp; 截至 2026年6月18日</div>
+    <div class="csg">
+      <div class="cs"><div class="csl">最新收盘价</div><div class="csv">HK$380</div><div class="css">港元（2026-06-18估算）</div></div>
+      <div class="cs"><div class="csl">市值</div><div class="csv">HK$4,817亿</div><div class="css">12.678亿股×380</div></div>
+      <div class="cs"><div class="csl">P/E（TTM）</div><div class="csv">25.1x</div><div class="css">TTM净利润189亿港元</div></div>
+      <div class="cs"><div class="csl">股息收益率</div><div class="csv">~3.34%</div><div class="css">派息率约90%</div></div>
+      <div class="cs"><div class="csl">52周区间</div><div class="csv">HK$320–466</div><div class="css">低：$320 / 高：$466</div></div>
+    </div>
+    <div class="cvr">
+      <div class="vb"><div><div class="vbl">评级</div><div class="vbr">持有</div></div></div>
+      <div class="vt">12个月目标价 &nbsp;<strong>HK$430</strong>&nbsp;·&nbsp; 较当前上行 <strong>+13.2%</strong> &nbsp;·&nbsp; 含股息合计回报约 <strong>+16.5%</strong></div>
+    </div>
+    <div class="cm">
+      <span class="cmi">分析师：Snail Investment 精品研究部</span>
+      <span class="cmi">报告日期：2026-06-18</span>
+      <span class="cmi">下次财报：2026-08-19（H1 2026）</span>
+      <span class="cmi">数据来源：HKEX官方公告 / 港交所披露易 / 东吴证券 / 东方财富 / TradingView / Investing.com</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════ TOC ════ -->
+<nav class="tb">
+  <div class="ti">
+    <a href="#s01" class="tl">01 · 核心摘要</a>
+    <a href="#s02" class="tl">02 · 公司概况</a>
+    <a href="#s03" class="tl">03 · 财务分析</a>
+    <a href="#s04" class="tl">04 · 关键催化剂</a>
+    <a href="#s05" class="tl">05 · 估值</a>
+    <a href="#s06" class="tl">06 · 情景分析</a>
+    <a href="#s07" class="tl">07 · 技术面</a>
+    <a href="#s08" class="tl">08 · 风险</a>
+    <a href="#s09" class="tl">09 · 投资建议</a>
+  </div>
+</nav>
+
+<div class="pb">
+
+<!-- ── 01 SUMMARY ── -->
+<div class="sec" id="s01">
+  <div class="sh"><span class="sn">01</span><span class="st">核心摘要 · Executive Summary</span></div>
+  <div class="sb">
+    <div class="co neu">
+      <div class="col">本报告核心观点</div>
+      港交所（HKEX）是<strong>中国与全球资本市场之间唯一的垄断性门户</strong>，具备不可替代的战略地位——沪深港通、IPO市场、LME、衍生品清算中心四位一体，护城河极深。Q1 2026财务表现亮眼：收入82.03亿港元（+20%）、归母净利润51.88亿港元（+27%）、EBITDA利润率创历史高位81%，全部超市场预期。2025年重夺全球IPO集资榜首（集资2,869亿港元，+226%），叠加港股ADT持续活跃（2026年5月底ADT约2,753亿港元），基本面处于近年峰值。然而，当前股价HK$380 较52周高位HK$466 已回调约18.5%，估值亦从历史低位有所修复，P/E 25.1x 已处合理中枢。综合判断，港交所基本面无可挑剔，但估值并不便宜、港股活跃度高度依赖中国宏观与地缘政治是关键制约。评级：<strong>持有</strong>，12个月目标价<strong>HK$430</strong>，含股息合计预期回报约+16.5%。
+    </div>
+    <div class="mg">
+      <div class="mc"><div class="ml">Q1 2026 收入同比</div><div class="mv pos">+20%</div><div class="ms">82.03亿港元，历史季度新高</div></div>
+      <div class="mc"><div class="ml">Q1 归母净利润同比</div><div class="mv pos">+27%</div><div class="ms">51.88亿港元，历史季度新高</div></div>
+      <div class="mc"><div class="ml">Q1 EBITDA利润率</div><div class="mv gold">81%</div><div class="ms">历史最高；同比+3ppt</div></div>
+      <div class="mc"><div class="ml">Q1 EPS</div><div class="mv pos">HK$4.09</div><div class="ms">超预期13.6%（预期3.60）</div></div>
+      <div class="mc"><div class="ml">FY2025 收入同比</div><div class="mv pos">+30.7%</div><div class="ms">291.61亿港元</div></div>
+      <div class="mc"><div class="ml">FY2025 归母净利润</div><div class="mv pos">+36%</div><div class="ms">177.54亿港元</div></div>
+      <div class="mc"><div class="ml">2025年IPO集资额</div><div class="mv acc">2,869亿</div><div class="ms">港元；全球第一；+226%</div></div>
+      <div class="mc"><div class="ml">较52周高位回撤</div><div class="mv neg">-18.5%</div><div class="ms">HK$466→HK$380</div></div>
+    </div>
+    <h3 class="sub">核心投资逻辑：垄断性"中国门户"的双面性</h3>
+    <p><strong>正面因素（为何值得持有）：</strong>①<strong>唯一垄断性中国资本门户</strong>——沪深港通是全球投资者合法配置中国资产的最主要通道，替代选项几乎不存在；②<strong>IPO超级周期尚未结束</strong>——AI价值链企业上市浪潮持续（2026年前5月IPO集资1,668亿港元，全球第一）；③<strong>轻资产超高利润率</strong>——EBITDA利润率81%，净利润率62.5%，规模效应极强；④<strong>南向资金持续流入</strong>——内资对港股的配置比例持续提升，是ADT增长的最核心驱动力；⑤<strong>每周股票期权、国债抵押品等创新产品</strong>不断丰富衍生品生态。</p>
+    <p><strong>负面因素（为何仅持有而非买入）：</strong>①<strong>估值已处合理中枢</strong>——P/E 25.1x 在历史区间约20-40x中位于中段，安全边际有限；②<strong>业务高度依赖ADT，波动性大</strong>——港股成交量与中国经济信心、A股走势、地缘政治高度相关，一旦市场降温，收入可下滑30-40%；③<strong>地缘政治双向风险</strong>——港交所同时暴露于中美关系紧张（制裁风险、资本外流）和香港自治空间收窄两类风险；④<strong>利率下行压缩保证金投资收益</strong>——香港利率跟随美国下行，将压制非交易类经常性收入；⑤股价较高位已有回调，但尚未到"显著低估"的买点。</p>
+  </div>
+</div>
+
+<!-- ── 02 COMPANY ── -->
+<div class="sec" id="s02">
+  <div class="sh"><span class="sn">02</span><span class="st">公司概况 · Company Profile</span></div>
+  <div class="sb">
+    <h3 class="sub">基本信息</h3>
+    <div class="dtw"><table><tbody>
+      <tr><td style="width:160px;color:var(--text-muted)">公司全称</td><td class="bold">香港交易及结算所有限公司（港交所）</td><td style="width:150px;color:var(--text-muted)">股票代码</td><td class="bold mono">00388.HK</td></tr>
+      <tr><td style="color:var(--text-muted)">成立时间</td><td>2000年3月（前身香港联合交易所1891年创立）</td><td style="color:var(--text-muted)">上市日期</td><td class="mono">2000-06-27</td></tr>
+      <tr><td style="color:var(--text-muted)">总部</td><td>香港中环交易广场</td><td style="color:var(--text-muted)">员工人数</td><td class="mono">约2,640人</td></tr>
+      <tr><td style="color:var(--text-muted)">总股本</td><td class="bold mono">12.678亿股</td><td style="color:var(--text-muted)">市值（约）</td><td class="mono">HK$4,817亿</td></tr>
+      <tr><td style="color:var(--text-muted)">最大单一股东</td><td>香港特别行政区政府（通过财政司）约5.98%</td><td style="color:var(--text-muted)">重要关联公司</td><td>伦敦金属交易所（LME，2012年收购）</td></tr>
+      <tr><td style="color:var(--text-muted)">监管架构</td><td colspan="3">证券及期货事务监察委员会（SFC）监管；政府对港交所具有特殊监管权力</td></tr>
+    </tbody></table></div>
+
+    <h3 class="sub">四大业务板块（Q1 2026收入结构）</h3>
+    <div class="sbw">
+      <div class="sbr"><span class="sblb">现货市场（交易结算费）</span><div class="sbt"><div class="sbf" style="width:50%;background:#0F4C75"></div></div><span class="sbv">~41.0亿 · ~50%</span></div>
+      <div class="sbr"><span class="sblb">股本及金融衍生品</span><div class="sbt"><div class="sbf" style="width:20%;background:#1B6CA8"></div></div><span class="sbv">~16.5亿 · ~20%</span></div>
+      <div class="sbr"><span class="sblb">投资收益（保证金/公司）</span><div class="sbt"><div class="sbf" style="width:15%;background:#4A90C4"></div></div><span class="sbv">~12.3亿 · ~15%</span></div>
+      <div class="sbr"><span class="sblb">商品（LME）</span><div class="sbt"><div class="sbf" style="width:8%;background:#7EB8D8"></div></div><span class="sbv">~6.6亿 · ~8%</span></div>
+      <div class="sbr"><span class="sblb">数据及连接服务</span><div class="sbt"><div class="sbf" style="width:7%;background:#9CA3AF"></div></div><span class="sbv">~5.6亿 · ~7%</span></div>
+    </div>
+    <p style="font-size:11.5px;color:var(--text-muted)">注：收入结构按Snail Investment基于公司披露估算，实际比例以港交所官方中期报告（2026-08-19）为准。</p>
+
+    <h3 class="sub">关键运营指标（2024–Q1 2026）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标</th><th class="r">FY2024</th><th class="r">FY2025</th><th class="r">Q1 2025</th><th class="r">Q1 2026</th><th class="r">同比</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">港股现货ADT（亿港元）</td><td class="mono r">1,320</td><td class="mono r">4,627</td><td class="mono r">2,427</td><td class="mono r">2,767</td><td class="pos r">+14%</td></tr>
+        <tr><td class="bold">南向ADT（亿港元）</td><td class="mono r">—</td><td class="mono r">1,211</td><td class="mono r">~750</td><td class="mono r">~940</td><td class="pos r">+25%（估）</td></tr>
+        <tr><td class="bold">北向ADT（亿元人民币）</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">~1,500</td><td class="mono r">~2,124</td><td class="pos r">+42%</td></tr>
+        <tr><td class="bold">期交所衍生品ADV（千张）</td><td class="mono r">~800</td><td class="mono r">1,660</td><td class="mono r">~901</td><td class="mono r">~1,050</td><td class="pos r">+17%（估）</td></tr>
+        <tr><td class="bold">IPO家数</td><td class="mono r">70</td><td class="mono r">119</td><td class="mono r">—</td><td class="mono r">40</td><td class="pos r">Q1历史新高</td></tr>
+        <tr><td class="bold hl">IPO集资额（亿港元）</td><td class="mono r hl">~900</td><td class="mono r bold hl">2,869</td><td class="mono r hl">~190</td><td class="mono r bold hl">1,104</td><td class="pos r bold hl">+226%（FY）/ 创2021来新高（Q1）</td></tr>
+        <tr><td class="bold">港股总市值（万亿港元）</td><td class="mono r">~35</td><td class="mono r">~43</td><td class="mono r">—</td><td class="mono r">~45</td><td class="pos r">+~4%</td></tr>
+        <tr><td class="bold">上市公司总数（联交所）</td><td class="mono r">2,580+</td><td class="mono r">2,600+</td><td class="mono r">—</td><td class="mono r">~2,630</td><td class="r">稳步增加</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">与CME、ICE的横向比较</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>维度</th><th>港交所 HKEX</th><th>CME Group</th><th>ICE（洲际）</th><th>上交所（未上市）</th></tr></thead>
+      <tbody>
+        <tr><td>市值</td><td class="bold" style="color:var(--accent-mid)">HK$4,817亿（$620亿）</td><td>$915亿</td><td>~$880亿</td><td>N/A</td></tr>
+        <tr><td>核心护城河</td><td class="pos bold">中国资本门户垄断地位</td><td>衍生品许可证矩阵</td><td>债券/能源清算</td><td>国内监管壁垒</td></tr>
+        <tr><td>EBITDA利润率</td><td class="pos bold">81%（Q1 2026）</td><td>72.8%（Q1 2026）</td><td>~45%</td><td>N/A</td></tr>
+        <tr><td>ADT/ADV依赖度</td><td class="neg bold">极高（约70%+收入）</td><td>高（约80%收入）</td><td>中等</td><td>极高</td></tr>
+        <tr><td>地缘政治风险</td><td class="neg bold">极高（中美博弈核心地带）</td><td>高（中国军事名单）</td><td>低</td><td>极高</td></tr>
+        <tr><td>P/E（TTM）</td><td class="bold">25.1x</td><td>21.6x</td><td>~24x</td><td>N/A</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="co neu">
+      <div class="col">护城河核心判断</div>
+      港交所的护城河高度集中于一个命题：<strong>"它是世界上唯一能让全球资金合法、大规模投资中国资产的交易场所"</strong>。沪深港通每天流动数千亿资金、中国企业最重要的境外融资窗口、LME基本金属全球定价基准——这三项任何一项都具有极强的不可替代性。但护城河的另一面是：港交所的命运与香港政治稳定性、中国经济景气度、中美资本市场关系深度绑定，这是它与CME最核心的差异所在——CME是"全球波动率的受益者"，而港交所是"中国开放程度的晴雨表"。
+    </div>
+  </div>
+</div>
+
+<!-- ── 03 FINANCIALS ── -->
+<div class="sec" id="s03">
+  <div class="sh"><span class="sn">03</span><span class="st">财务分析 · Financial Analysis</span></div>
+  <div class="sb">
+    <h3 class="sub">历史年度及季度财务数据（来源：港交所官方业绩公告 / 披露易）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标（港元，百万）</th><th class="r">FY2022</th><th class="r">FY2023</th><th class="r">FY2024</th><th class="r">FY2025</th><th class="r">Q1 2026</th><th class="r">Q1 2025</th><th class="r">同比（Q1）</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">收入及其他收益</td><td class="mono r">17,047</td><td class="mono r">20,432</td><td class="mono r">22,371</td><td class="mono r">29,161</td><td class="mono r">8,203</td><td class="mono r">6,831</td><td class="pos r">+20.1%</td></tr>
+        <tr><td class="bold">主要业务收入</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">~6,500</td><td class="mono r">~5,320</td><td class="pos r">+22%</td></tr>
+        <tr><td style="padding-left:18px;color:var(--text-muted)">— 交易及结算费</td><td class="mono r">6,840</td><td class="mono r">7,800</td><td class="mono r">9,400</td><td class="mono r">12,682</td><td class="mono r">~4,100</td><td class="mono r">~3,157</td><td class="pos r">+30%（估）</td></tr>
+        <tr><td style="padding-left:18px;color:var(--text-muted)">— 结算及交收费</td><td class="mono r">2,800</td><td class="mono r">3,100</td><td class="mono r">3,900</td><td class="mono r">8,661</td><td class="mono r">~2,400</td><td class="mono r">~1,980</td><td class="pos r">+21%（估）</td></tr>
+        <tr><td style="padding-left:18px;color:var(--text-muted)">— 投资收益净额</td><td class="mono r">3,028</td><td class="mono r">4,500</td><td class="mono r">3,820</td><td class="mono r">~3,800</td><td class="mono r">441</td><td class="mono r">516</td><td class="neg r">-14.5%</td></tr>
+        <tr><td class="bold">经营费用</td><td class="mono r">6,101</td><td class="mono r">6,500</td><td class="mono r">6,700</td><td class="mono r">6,068</td><td class="mono r">~1,560</td><td class="mono r">~1,516</td><td class="r">+2.9%</td></tr>
+        <tr><td class="bold hl">EBITDA利润率</td><td class="mono r hl">~71%</td><td class="mono r hl">~73%</td><td class="mono r hl">~75%</td><td class="mono r hl">~80%</td><td class="mono r bold hl">81%</td><td class="mono r hl">78%</td><td class="pos r bold hl">+3ppt</td></tr>
+        <tr><td class="bold">净利润率</td><td class="mono r">~55%</td><td class="mono r">~57%</td><td class="mono r">~58%</td><td class="mono r">~61%</td><td class="mono r bold" style="color:var(--green-pos)">62.5%</td><td class="mono r">~60%</td><td class="pos r">+2.5ppt</td></tr>
+        <tr><td class="bold hl">归母净利润</td><td class="mono r hl">9,395</td><td class="mono r hl">11,679</td><td class="mono r hl">13,047</td><td class="mono r bold hl">17,754</td><td class="mono r bold hl">5,188</td><td class="mono r hl">4,077</td><td class="pos r bold hl">+27.2%</td></tr>
+        <tr><td class="bold">基本EPS（港元）</td><td class="mono r">7.43</td><td class="mono r">9.24</td><td class="mono r">10.32</td><td class="mono r">14.01</td><td class="mono r bold" style="color:var(--green-pos)">4.09</td><td class="mono r">3.22</td><td class="pos r">+27.0%</td></tr>
+        <tr><td class="bold">EBITDA（TTM）</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r bold">24,250</td><td class="mono r">—</td><td class="r">—</td></tr>
+        <tr><td class="bold">经营现金流</td><td class="mono r">~9,500</td><td class="mono r">~11,500</td><td class="mono r">~12,500</td><td class="mono r">~17,000</td><td class="mono r">—</td><td class="mono r">—</td><td class="r">—</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:11.5px;color:var(--text-muted)">注：Q1 2026官方来源为港交所2026年4月29日业绩公告；各细项分部数据部分按Snail估算，具体以官方中报（2026-08-19）为准。投资收益净额Q1同比下降主要因外部管理基金公允价值收益大幅减少（2026Q1：0.2亿 vs 2025Q1：13.8亿）。</p>
+
+    <h3 class="sub">关键财务比率（截至2026年6月18日）</h3>
+    <div class="mg">
+      <div class="mc"><div class="ml">P/E（TTM）</div><div class="mv">25.1x</div><div class="ms">历史区间20-40x；中枢位置</div></div>
+      <div class="mc"><div class="ml">EBITDA利润率</div><div class="mv gold">81%</div><div class="ms">Q1历史最高；全球同类领先</div></div>
+      <div class="mc"><div class="ml">净利润率（TTM）</div><div class="mv pos">62.5%</div><div class="ms">SimplyWallSt确认</div></div>
+      <div class="mc"><div class="ml">股息收益率</div><div class="mv acc">~3.34%</div><div class="ms">派息率约90%；半年度派发</div></div>
+      <div class="mc"><div class="ml">收入增速（FY25）</div><div class="mv pos">+30.7%</div><div class="ms">291.61亿港元</div></div>
+      <div class="mc"><div class="ml">净利润增速（FY25）</div><div class="mv pos">+36.0%</div><div class="ms">177.54亿港元</div></div>
+      <div class="mc"><div class="ml">EPS超预期幅度</div><div class="mv pos">+13.6%</div><div class="ms">Q1实际4.09 vs 预期3.60</div></div>
+      <div class="mc"><div class="ml">下次财报</div><div class="mv acc">2026-08-19</div><div class="ms">H1 2026中期业绩</div></div>
+    </div>
+
+    <h3 class="sub">资产负债表分析（来源：港交所官方披露，2026-03-31）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>科目</th><th class="r">2026-03-31（估）</th><th class="r">2025-12-31</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">现金及短期投资</td><td class="mono r">HK$320亿+</td><td class="mono r">HK$300亿+</td><td>主要为公司资金及保证金资金池；高流动性</td></tr>
+        <tr><td class="bold">总资产</td><td class="mono r">HK$~3,500亿</td><td class="mono r">HK$~3,300亿</td><td>保证金存款及结算资产构成主体，为表内记录</td></tr>
+        <tr><td class="bold">结算参与者保证金</td><td class="mono r">HK$~2,800亿</td><td class="mono r">HK$~2,600亿</td><td>港交所以受托人身份管理；规模随市场活跃度增长</td></tr>
+        <tr><td class="bold">长期债务</td><td class="mono r">HK$~100亿</td><td class="mono r">HK$~100亿</td><td>主要为LME收购相关债务；结构稳健，杠杆极低</td></tr>
+        <tr><td class="bold hl">净现金（公司资金）</td><td class="mono r hl">HK$~200亿</td><td class="mono r hl">HK$~180亿</td><td class="hl">自有净现金充裕；支撑高派息率（90%）</td></tr>
+        <tr><td class="bold">商誉（LME等并购）</td><td class="mono r">HK$~175亿</td><td class="mono r">HK$~175亿</td><td>主要来自2012年LME收购（18.8亿美元）；按年评估减值</td></tr>
+        <tr><td class="bold">股东权益</td><td class="mono r">HK$~250亿</td><td class="mono r">HK$~240亿</td><td>轻资产经营；权益规模小但ROE高</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:11.5px;color:var(--text-muted)">注：港交所资产负债表的特殊性在于，<strong>结算参与者保证金存款（约2,800亿港元）</strong>虽列为表内资产/负债，但港交所以受托人（而非本金方）身份管理，不构成港交所自身的实质性财务风险敞口。分析港交所财务健康时应将此项目与经营资产明确区分。</p>
+
+    <h3 class="sub">资本回报率：ROE / ROIC / ROA（Snail Investment估算）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标</th><th class="r">FY2022</th><th class="r">FY2023</th><th class="r">FY2024</th><th class="r">FY2025</th><th class="r">TTM（Q1 2026）</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="bold hl">ROE（净资产收益率）</td><td class="mono r hl">~38%</td><td class="mono r hl">~44%</td><td class="mono r hl">~51%</td><td class="mono r bold hl" style="color:var(--green-pos)">~73%</td><td class="mono r bold hl" style="color:var(--green-pos)">~75%</td><td class="hl">高派息率（90%）主动压缩权益分母；ROE远高于CME（~19%），但解读需谨慎</td></tr>
+        <tr><td class="bold hl">ROIC（投入资本回报率）</td><td class="mono r hl">~18%</td><td class="mono r hl">~22%</td><td class="mono r hl">~25%</td><td class="mono r bold hl" style="color:var(--green-pos)">~32%</td><td class="mono r bold hl" style="color:var(--green-pos)">~34%</td><td class="hl">WACC约8-9%；ROIC超越WACC约25ppt；经济增加值极为可观</td></tr>
+        <tr><td class="bold">ROA（总资产收益率）</td><td class="mono r">~2.9%</td><td class="mono r">~3.5%</td><td class="mono r">~4.0%</td><td class="mono r">~5.4%</td><td class="mono r bold">~5.8%</td><td>总资产含结算保证金（约2,800亿），ROA受此压低；剔除结算资产后ROA超15%</td></tr>
+        <tr><td class="bold">FCF收益率</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">~3.6%</td><td class="mono r bold" style="color:var(--accent-mid)">~3.9%</td><td>TTM FCF约189亿港元÷市值4,817亿；合理但不够便宜</td></tr>
+        <tr><td class="bold">经济增加值（EVA）</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r pos">高且持续扩张</td><td class="mono r pos bold">~180亿港元/年</td><td>ROIC（34%）大幅超越WACC（8.5%），每年创造约180亿港元经济增加值</td></tr>
+      </tbody>
+    </table></div>
+    <div class="co buy">
+      <div class="col">财务质量与资本回报综合判断</div>
+      港交所的盈利质量在亚洲交易所中无可匹敌：EBITDA利润率81%、净利润率62.5%、ROIC高达34%（超越WACC约25ppt），每年创造约180亿港元经济增加值。派息率稳定在90%，是亚洲最慷慨的交易所之一。资产负债表极为稳健，自有净现金约200亿港元，无实质性杠杆压力。需特别提示的是，<strong>ROE 75%远高于CME（~19%）并非因为盈利能力更强，而是因为90%的超高派息率将股东权益压缩至极低水平</strong>——这是股东友好型资本分配的结果，而非财务杠杆风险。ROIC 34%才是衡量港交所真实资本回报效率的核心指标。
+    </div>
+  </div>
+</div>
+
+<!-- ── 04 CATALYSTS ── -->
+<div class="sec" id="s04">
+  <div class="sh"><span class="sn">04</span><span class="st">关键催化剂与近期事件 · Key Catalysts</span></div>
+  <div class="sb">
+    <h3 class="sub">一、IPO超级周期：AI价值链企业上市浪潮仍在加速</h3>
+    <p>2025年港交所以IPO集资2,869亿港元（+226%）重夺全球第一，2026年延续强势：截至5月底，IPO集资额已达1,668亿港元（较2025年同期777亿+115%），全球继续领跑。AI价值链企业是最核心驱动力——自2025年12月至2026年5月底，AI价值链IPO集资额达979亿港元，占同期全市场约55%；目前仍有70家AI价值链企业上市申请处理中。</p>
+    <p>截至2026年3月31日，待处理上市申请431宗（较2025年12月31日+25%），是历史高位，为后续IPO收入提供强可见度。港交所管理层将香港定位为"AI时代中国新经济企业首选上市地"，这一叙事正在兑现。</p>
+
+    <h3 class="sub">二、沪深港通深化：南向资金累计买入成为港股基础流动性</h3>
+    <p>截至2026年2月末，南向资金累计净买入港股超过历史高位，南向ADT在FY2025 达1,211亿港元（占港股ADT 26.2%），是港股活跃度提升的核心驱动力。近期重要进展：</p>
+    <div class="dtw"><table>
+      <thead><tr><th>事件</th><th>时间</th><th>对港交所的影响</th></tr></thead>
+      <tbody>
+        <tr><td>在岸国债及政策性金融债作为衍生品履约抵押品（OTC清算）</td><td class="mono">2026-06-21起</td><td class="pos">提升国际投资者资本效率，增强人民币资产吸引力，推动互换通和衍生品市场扩容</td></tr>
+        <tr><td>每周股票期权产品扩容（新增品种）</td><td class="mono">2026-06月</td><td class="pos">亚洲首家每周股票期权，2024年11月首推后快速获市场接纳，扩容进一步提升衍生品ADV</td></tr>
+        <tr><td>股指期货合约涨跌停扩大（T+1盘 ±6%）</td><td class="mono">2026-06-20起</td><td class="pos">提升价格发现效率，吸引更多国际对冲需求，有利于衍生品成交量</td></tr>
+        <tr><td>数字债券上市（港按60亿港元+25亿港元+30亿人民币）</td><td class="mono">2026-06-16</td><td class="pos">全球规模最大数字债券发行，巩固香港数字资产和绿色金融中心地位</td></tr>
+        <tr><td>交易广场金融大会堂提升工程（2026-10展览）</td><td class="mono">2026年H2</td><td>品牌形象提升；非直接财务影响</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">三、LME重组与商品业务重振</h3>
+    <p>LME（伦敦金属交易所）是港交所2012年以18.8亿美元收购的核心资产，2022年镍危机后遭受严重声誉损失（提前终止交易引发全球批评和大量诉讼）。2025年以来，LME采取了一系列修复措施：增加仓储透明度、推进T+1结算、引入新的风险管理框架，FY2025 LME收入实现恢复性增长（LME ADV +18%）。2026年Q1商品分部保持稳定增长，但仍是港交所收入中盈利率相对偏低的板块。</p>
+
+    <h3 class="sub">四、股东回报：高派息率是价值核心</h3>
+    <p>港交所的派息政策极为慷慨：<strong>派息率稳定约90%</strong>，半年度派发，每股末期股息6.52港元（TradingView数据），当前股息率约3.34%。结合Q1 EPS 4.09港元已超过市场预期，若H1 2026业绩维持强势，中期股息可能再度超预期。对于以收息为主要目标的投资者而言，港交所是亚洲最优质的高股息标的之一。</p>
+  </div>
+</div>
+
+<!-- ── 05 VALUATION ── -->
+<div class="sec" id="s05">
+  <div class="sh"><span class="sn">05</span><span class="st">估值分析 · Valuation</span></div>
+  <div class="sb">
+    <h3 class="sub">多方法估值框架</h3>
+    <div class="vg">
+      <div class="vc"><div class="vcn">DCF 自由现金流折现</div><div class="vcp">HK$440</div><div class="vcw">权重 35%</div><div class="vcd">WACC 8.5%（港元基础）；FY26E FCF ~210亿港元，FY27E ~230亿港元；永续增长率3.0%；10年显式预测期。FCF转化率约90%净利润</div></div>
+      <div class="vc"><div class="vcn">P/E 相对估值</div><div class="vcp">HK$420</div><div class="vcw">权重 40%</div><div class="vcd">目标25x FY26E EPS HK$16.8（基于FY25 EPS $14.01+20%增速）；25x为历史中枢区间下沿，考虑当前宏观不确定性给予保守倍数</div></div>
+      <div class="vc"><div class="vcn">EV/EBITDA</div><div class="vcp">HK$445</div><div class="vcw">权重 20%</div><div class="vcd">目标19x EBITDA（TTM 242.5亿港元；当前约19.9x处历史中枢；考虑ADT不确定性，不给予溢价）</div></div>
+      <div class="vc"><div class="vcn">股息收益率法</div><div class="vcp">HK$400</div><div class="vcw">权重 5%</div><div class="vcd">目标收益率3.5%；FY26E DPS约HK$14.0（按90%派息率×FY26E EPS $16.8）；$400×3.5%=$14.0</div></div>
+    </div>
+    <div class="co neu">
+      <div class="col">加权综合目标价</div>
+      四法加权：HK$440×35% + HK$420×40% + HK$445×20% + HK$400×5% = <strong>HK$428</strong>，取整为 <strong>HK$430</strong>（±10%区间：HK$387–HK$473）。较当前价HK$380 隐含资本利得上行空间 <strong>+13.2%</strong>；加上3.34%股息率，12个月预期总回报约 <strong>+16.5%</strong>。
+    </div>
+
+    <h3 class="sub">FY2026–2027预测（基准情景，Snail Investment）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标</th><th class="r">FY2024A</th><th class="r">FY2025A</th><th class="r">FY2026E</th><th class="r">FY2027E</th><th>关键假设</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">港股ADT（亿港元）</td><td class="mono r">1,320</td><td class="mono r">4,627</td><td class="mono r">2,800</td><td class="mono r">2,600</td><td>Q1实现2,767亿；H2假设季节性小幅回落；FY2025为异常高基数</td></tr>
+        <tr><td class="bold">IPO集资额（亿港元）</td><td class="mono r">~900</td><td class="mono r">2,869</td><td class="mono r">2,400</td><td class="mono r">2,200</td><td>AI上市潮延续但基数效应显现；仍是历史高位区间</td></tr>
+        <tr><td class="bold">总收入（亿港元）</td><td class="mono r">223.7</td><td class="mono r">291.6</td><td class="mono r">310.0</td><td class="mono r">295.0</td><td>+6.3%（2026E）；H2ADT回落压力；IPO收入继续贡献</td></tr>
+        <tr><td class="bold">EBITDA利润率</td><td class="mono r">~75%</td><td class="mono r">~80%</td><td class="mono r">80%</td><td class="mono r">79%</td><td>规模效应持续；费用增速控制在低个位数</td></tr>
+        <tr><td class="bold hl">归母净利润（亿港元）</td><td class="mono r hl">130.5</td><td class="mono r bold hl">177.5</td><td class="mono r bold hl">212.6</td><td class="mono r bold hl">200.0</td><td>+19.8%（2026E）；基于Q1已实现51.88亿，全年线性外推+H2季节调整</td></tr>
+        <tr><td class="bold hl">EPS（港元）</td><td class="mono r hl">10.32</td><td class="mono r bold hl">14.01</td><td class="mono r bold hl">16.77</td><td class="mono r bold hl">15.77</td><td>Q1已实现4.09（超预期13.6%）；全年预测保守外推</td></tr>
+        <tr><td class="bold">DPS（港元，90%派息率）</td><td class="mono r">~9.30</td><td class="mono r">~12.60</td><td class="mono r">~15.09</td><td class="mono r">~14.19</td><td>半年度派发；90%派息率假设不变</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:11.5px;color:var(--text-muted)">注：2026E/2027E均为Snail Investment基准情景，FY2027E收入略有下滑反映FY2025-2026高ADT基数的均值回归压力，并非基本面恶化。</p>
+
+    <h3 class="sub">卖方一致预期（来源：Investing.com / TradingView / 各研究报告）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>机构/来源</th><th>评级</th><th class="r">目标价（HKD）</th><th>关键观点</th></tr></thead>
+      <tbody>
+        <tr><td>TradingView综合（最高）</td><td class="tag tgn">强烈买入</td><td class="mono r bold pos">$610</td><td>最激进预期；基于ADT持续高位和IPO超级周期</td></tr>
+        <tr><td>Investing.com（17家均值）</td><td class="tag tgn">强烈买入</td><td class="mono r bold pos">$518.47</td><td>17家买入/0家卖出；+39.75%上行空间（基于371港元）</td></tr>
+        <tr><td>东方财富证券</td><td class="tag tgn">增持</td><td class="mono r pos">$500（约）</td><td>2026E P/E 23.6x；ADT+IPO双轮驱动</td></tr>
+        <tr><td>东吴证券</td><td class="tag tgn">优于大市</td><td class="mono r pos">$480（约）</td><td>科技股浪潮催化活跃度；戴维斯双击预期</td></tr>
+        <tr><td>Morningstar</td><td class="tag ta">公平价值</td><td class="mono r">$367（公允价值）</td><td>认为当前价格（约380）略高于公允价值</td></tr>
+        <tr><td class="bold hl">卖方一致预期综合</td><td class="bold hl">买入</td><td class="mono r bold hl">$454–518</td><td class="hl">区间范围；上行空间约+20-36%</td></tr>
+        <tr><td class="bold" style="color:var(--accent-mid)">🐌 Snail Investment</td><td class="bold" style="color:var(--accent-mid)">持有</td><td class="mono r bold" style="color:var(--accent-mid)">$430</td><td>较卖方均值保守约17%；反映ADT均值回归和地缘政治折扣</td></tr>
+      </tbody>
+    </table></div>
+    <div class="co hold">
+      <div class="col">为何我们比卖方更保守（折扣约17-20%）</div>
+      卖方整体给予港交所强烈买入评级，目标价均值约$454-518港元。我们保守的核心原因：①<strong>FY2025 ADT 4,627亿港元是异常高基数</strong>（由科技股浪潮和南向资金大规模入场推动），FY2026若ADT均值回归至2,500-2,800亿区间，收入增速将显著放缓甚至回落；②<strong>地缘政治折价被多数卖方低估</strong>——中美博弈背景下，国际资本对港股的配置意愿存在结构性压制；③<strong>估值已处25x，安全边际不足</strong>，不支持给予更高买入评级。我们的$430目标价仍代表约+13%的上行空间（含股息+16.5%），处于"值得持有但不值得激进买入"的区间。
+    </div>
+  </div>
+</div>
+
+<!-- ── 06 SCENARIOS ── -->
+<div class="sec" id="s06">
+  <div class="sh"><span class="sn">06</span><span class="st">情景分析 · Scenario Analysis（基于HK$380）</span></div>
+  <div class="sb">
+    <div class="sg">
+      <div class="sc bull">
+        <div class="scl">牛市情景 Bull Case</div>
+        <div class="sct">ADT维持高位 + IPO超预期 + 中美缓和</div>
+        <div class="scp">HK$560</div>
+        <div class="scu pos">+47.4% 上行空间</div>
+        <div class="scpr">概率 20%</div>
+        <div class="scd">ADT全年维持3,000亿+（科技股浪潮延续、南向资金加速）；IPO集资额超3,000亿港元；中美关系实质性缓和，国际资本重返港股；互联互通进一步扩容（更多A股纳入）；FY2026E EPS超HK$20，市场重新定价港交所给予30x+ P/E。</div>
+      </div>
+      <div class="sc base">
+        <div class="scl">基准情景 Base Case</div>
+        <div class="sct">ADT温和回落 + IPO延续活跃</div>
+        <div class="scp">HK$430</div>
+        <div class="scu pos">+13.2% 上行空间</div>
+        <div class="scpr">概率 45%</div>
+        <div class="scd">ADT全年约2,500-2,800亿港元（H2季节性回落）；IPO集资额约2,400亿港元（全球继续领先但低于2025）；利率小幅下行压缩保证金投资收益；FY2026E净利润约212亿港元，EPS约HK$16.77；P/E 25x维持；含股息总回报约+16.5%。</div>
+      </div>
+      <div class="sc bear">
+        <div class="scl">熊市情景 Bear Case</div>
+        <div class="sct">ADT大幅回落 + 地缘政治冲击</div>
+        <div class="scp">HK$260</div>
+        <div class="scu neg">-31.6% 下行风险</div>
+        <div class="scpr">概率 35%</div>
+        <div class="scd">中美关系恶化（新一轮制裁波及港股）或中国宏观大幅下行，港股ADT回落至1,500亿港元以下（类2022年水平）；国际资本持续外流；IPO市场降温；FY2026E净利润跌至130-150亿港元区间（类2024年水平）；P/E压缩至20x以下；熊市概率较高（35%）反映我们对地缘政治尾部风险的审慎判断。</div>
+      </div>
+    </div>
+
+    <h3 class="sub">12个月关键催化剂时间表</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>时间节点</th><th>事件</th><th>潜在影响</th><th>方向</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">2026-08-19</td><td>H1 2026中期业绩发布</td><td>Q2 ADT维持约2,700亿+，EPS预期约HK$3.60；若超预期则大幅正向催化，若低于预期则承压</td><td class="pos bold">↑ 关键正向节点</td></tr>
+        <tr><td class="mono">2026 Q3-Q4</td><td>互联互通产品扩容（新资产类别纳入）</td><td>若有更多衍生品、REITs、外汇产品纳入互联互通，提升ADV和手续费</td><td class="pos">↑ 正向</td></tr>
+        <tr><td class="mono">2026 Q3-Q4</td><td>AI价值链企业IPO集中落地</td><td>70+家AI企业排队；若大型IPO（如字节跳动、蚂蚁集团等）推进，将大幅拉升季度IPO收入</td><td class="pos bold">↑ 重大正向</td></tr>
+        <tr><td class="mono">持续</td><td>中美关系与制裁动态</td><td>任何对港股的新制裁措施或资本管制均为最大负面催化剂</td><td class="neg bold">↓↓ 最大尾部风险</td></tr>
+        <tr><td class="mono">2026 H2</td><td>美联储降息路径</td><td>降息加速→保证金投资收益压缩→非交易类收入减少；但同时利于资产价格，ADT可能受益</td><td class="bold" style="color:var(--accent-mid)">→ 双向影响</td></tr>
+        <tr><td class="mono">2026-12月</td><td>全年股息宣布</td><td>若FY2026 EPS超预期，全年DPS可能超HK$15，触发股息投资者买盘</td><td class="pos">↑ 股息催化</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ── 07 TECHNICALS ── -->
+<div class="sec" id="s07">
+  <div class="sh"><span class="sn">07</span><span class="st">技术面分析 · Technical Analysis（截至2026-06-18）</span></div>
+  <div class="sb">
+    <div class="co hold">
+      <div class="col">技术面综合信号：震荡偏弱 / 区间底部</div>
+      根据TradingView数据，港交所股价近10天下跌约-9.16%，较52周高位$466回撤约18.5%，但较52周低位$320上方约18.8%，股价处于宽幅区间中段偏下方。近一年维度表现为-4.47%，弱于恒生指数整体表现。当前技术面呈"区间震荡底部待定"特征——既非超卖反弹信号，也非强势趋势延续，更多体现为短线压力与中期基本面支撑的拉锯。
+    </div>
+
+    <h3 class="sub">关键价位图示</h3>
+    <div class="tlw">
+      <div class="tlr"><span class="tlp" style="color:var(--gold)">HK$560</span><div class="tlo"><div class="tli" style="width:100%;background:#FDE68A"></div></div><span class="tll">牛市情景目标价</span><span class="tlt t-tar">目标</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">HK$466</span><div class="tlo"><div class="tli" style="width:83%;background:#86EFAC"></div></div><span class="tll">52周高点 / 阻力区</span><span class="tlt t-res">阻力</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--gold)">HK$430</span><div class="tlo"><div class="tli" style="width:77%;background:#FDE68A"></div></div><span class="tll">Snail Investment 12个月目标价</span><span class="tlt t-tar">目标</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--red-warn)">HK$410</span><div class="tlo"><div class="tli" style="width:73%;background:#FCA5A5"></div></div><span class="tll">短期技术阻力（均线密集区）</span><span class="tlt t-res">阻力</span></div>
+      <div class="tlr"><span class="tlp" style="color:#1D4ED8;font-weight:700">HK$380</span><div class="tlo"><div class="tli" style="width:68%;background:#93C5FD"></div></div><span class="tll" style="font-weight:600">当前价（2026-06-18估算）</span><span class="tlt t-cur">当前</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">HK$360</span><div class="tlo"><div class="tli" style="width:64%;background:#86EFAC"></div></div><span class="tll">中期支撑（前期整固区）</span><span class="tlt t-sup">支撑</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">HK$320</span><div class="tlo"><div class="tli" style="width:57%;background:#86EFAC"></div></div><span class="tll">52周低点 / 强支撑</span><span class="tlt t-sup">强支撑</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--red-warn)">HK$260</span><div class="tlo"><div class="tli" style="width:46%;background:#FECACA"></div></div><span class="tll">极端熊市情景目标（ADT大幅下滑）</span><span class="tlt t-res">风险</span></div>
+    </div>
+
+    <h3 class="sub">技术指标摘要（来源：TradingView，2026-06-18前后）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标</th><th>数值/信号</th><th>解读</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">近10天表现</td><td class="neg mono">-9.16%</td><td>短线趋势偏弱；月变化-9.16%，近一年-4.47%；弱于港股大盘</td></tr>
+        <tr><td class="bold">近一周表现</td><td class="neg mono">-1.88%</td><td>小幅持续下行；无明显反弹触发信号</td></tr>
+        <tr><td class="bold">当前区间定位</td><td class="mono" style="color:var(--amber)">区间中段偏下</td><td>$320（低）-$466（高）区间中点约$393；当前$380低于中点，提供一定安全边际</td></tr>
+        <tr><td class="bold">分析师预期EPS</td><td class="pos mono">HK$3.60（Q2预期）</td><td>TradingView确认；Q1已实现4.09（超13.6%）；若Q2再超预期为强正向信号</td></tr>
+        <tr><td class="bold">分析师评级（17家）</td><td class="pos bold">Strong Buy（无卖出）</td><td>Investing.com：17买/0卖；但机构目标价均值$518，与实际股价差距大，需审慎</td></tr>
+      </tbody>
+    </table></div>
+    <div class="co neu">
+      <div class="col">技术面综合解读</div>
+      港交所目前处于"基本面强劲但股价承压"的状态，与Q1 2026业绩创纪录（+27%净利润）形成背离。这种背离主要源于：①市场担忧FY2025超高ADT（4,627亿/日）难以持续，对FY2026进行前瞻性折价；②地缘政治情绪反复波动（中美博弈）压制港股整体估值；③恒生指数近期整体偏弱。从技术面看，$360-$380是近期重要支撑区间，若股价有效守住并Q2业绩超预期，可能触发反弹至$410-$430目标区间。对于基本面投资者，当前区域是可以考虑逐步建仓的位置，但宜保留仓位以应对可能的地缘政治下行风险。
+    </div>
+  </div>
+</div>
+
+<!-- ── 08 RISKS ── -->
+<div class="sec" id="s08">
+  <div class="sh"><span class="sn">08</span><span class="st">风险提示 · Risk Factors</span></div>
+  <div class="sb">
+    <ul class="rl">
+      <li class="ri">
+        <span class="rs rsh">高风险</span>
+        <div><div class="rt">地缘政治与制裁风险：港交所的核心尾部风险</div><div class="rd">中美关系若进一步恶化，美国可能对港股实施新一轮制裁措施（如将更多港股标的纳入OFAC制裁名单、限制美国机构投资者参与港股通），将直接导致资本外流和ADT大幅萎缩。2020年《香港国安法》实施后已出现过一轮国际资本撤离；若中美博弈升级，这一风险可能重演且规模更大。这是港交所与CME最大的差异性风险。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs rsh">高风险</span>
+        <div><div class="rt">ADT均值回归风险：FY2025高基数不可持续</div><div class="rd">FY2025港股ADT达4,627亿港元/日，是历史均值（约1,000-1,500亿）的3-4倍，由2024年底至2025年初的科技股浪潮和南向资金大规模涌入共同推动。若市场情绪回归常态（如恒生科技指数大幅回调）、A股分流资金，ADT回落至2,000亿甚至以下，将对收入和利润产生30-40%的负面冲击，是港交所最核心的周期性风险。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs rsm">中风险</span>
+        <div><div class="rt">香港金融中心地位持续性风险</div><div class="rd">《国安法》实施以来，香港经历了人才外流、部分外资机构裁减香港业务、国际评级机构下调香港评级等压力。若香港的国际金融中心地位进一步受损（如更多监管整合、普通法体系适用空间缩小），将长期影响港交所的国际化估值溢价。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs rsm">中风险</span>
+        <div><div class="rt">利率下行压缩保证金投资收益</div><div class="rd">港交所通过管理约2,800亿港元的保证金资金池（Margin Fund）获取投资收益，FY2025此类收益约38亿港元。随着美联储降息，香港HIBOR跟随下行，投资收益率将持续承压。Q1 2026投资收益净额已同比下降14.5%（4.41亿 vs 5.16亿），是当季唯一同比负增长的收入分部。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs rsm">中风险</span>
+        <div><div class="rt">LME监管合规与声誉风险</div><div class="rd">2022年镍危机中港交所/LME提前终止交易，引发全球多方诉讼，至今仍有部分法律风险悬而未决。若出现重大追加赔偿判决，将对利润产生一次性冲击并再度损害LME声誉。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs rsm">中风险</span>
+        <div><div class="rt">中国宏观经济下行拖累港股成交量</div><div class="rd">港股ADT高度依赖南向资金（占比约26%），南向资金流向与中国经济信心、A股走势、人民币汇率高度相关。若2026年中国GDP增速明显低于预期（如跌破4%），将通过压制南向资金流入和降低外资配置意愿双重影响ADT。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs rsl">低风险</span>
+        <div><div class="rt">IPO市场竞争（新加坡、深圳等）</div><div class="rd">新加坡交易所、深交所持续优化上市规则试图吸引中国科技企业，但香港的流动性深度、人民币/港元双币种融资、现有中国新经济上市公司生态使其竞争优势难以被短期撼动。整体竞争风险可控。</div></div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── 09 RECOMMENDATION ── -->
+<div class="sec" id="s09">
+  <div class="sh"><span class="sn">09</span><span class="st">投资建议 · Investment Recommendation</span></div>
+  <div class="sb">
+    <div class="co hold">
+      <div class="col">Snail Investment · 精品研究部 · 正式评级</div>
+      <strong>评级：持有（Hold）</strong> &nbsp;|&nbsp; 12个月目标价：<strong>HK$430</strong> &nbsp;|&nbsp; 当前价：HK$380（2026-06-18）<br>
+      资本利得上行空间：<strong>+13.2%</strong> &nbsp;|&nbsp; 含股息合计预期回报：<strong>约+16.5%</strong><br><br>
+      <strong>技术面提示：</strong>短线偏弱（近月-9.16%），HK$360-380为近期支撑区间；Q2财报（2026-08-19）是关键催化节点。若股价跌破HK$350，则需重新评估基本面假设。
+    </div>
+
+    <h3 class="sub">核心逻辑：为何"持有"而非"买入"</h3>
+    <p><strong>支持持有（而非卖出）的理由：</strong>①港交所的垄断性战略地位无可替代，基本面持续强劲（Q1净利润+27%，EBITDA利润率81%）；②AI价值链IPO浪潮尚在高峰，2026年上半年已超越2025年同期；③南向资金持续流入的结构性趋势未变；④3.34%股息率和90%派息率提供稳定现金回报；⑤ROIC 34%、每年创造约180亿港元经济增加值，是亚洲交易所中最优质的商业模式之一。</p>
+    <p><strong>支持"持有"而非"积极买入"的理由：</strong>①估值P/E 25.1x处于合理中枢而非显著低估，安全边际不如CME（21.6x）充裕；②FY2025 ADT 4,627亿/日是历史异常高位，FY2026均值回归压力较大，收入增速将明显放缓；③地缘政治尾部风险（中美博弈）是结构性制约，难以量化但不可忽视；④我们的目标价$430对应的总回报约16.5%，"值得持有收息，但不是此刻加仓的最优时点"。</p>
+
+    <h3 class="sub">差异化操作建议（按投资者类型）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>投资者类型</th><th>建议策略</th><th>进场参考</th><th>目标价</th><th>止损位</th><th>时间维度</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">中长期基本面投资者</td><td>维持现有仓位，不建议大幅加仓。如需新建仓位，建议在HK$355-375区间（支撑附近）分两批小额建仓；等待Q2财报（8月19日）超预期确认后才考虑加仓。核心逻辑：收股息+等待ADT数据改善</td><td class="mono">HK$355-375</td><td class="mono pos bold">HK$430</td><td class="mono neg">HK$340</td><td>12-18个月</td></tr>
+        <tr><td class="bold">股息导向型投资者</td><td>3.34%当前股息率+90%派息率，在港股大市值股中属高水平。持有收息策略合理；若FY2026 EPS超预期，全年DPS可能超HK$15（收益率约3.9%）。建议在$360-385区间稳步收集，以股息+小幅资本升值为主要回报来源</td><td class="mono">HK$360-385</td><td class="mono gold bold">DPS ~HK$15</td><td class="mono neg">HK$335</td><td>12-24个月</td></tr>
+        <tr><td class="bold">事件驱动型投资者</td><td>Q2财报（8月19日）是最重要的短期催化窗口：预期EPS $3.60，若实际超$4.00则强正向催化剂。另外，大型AI企业IPO落地（如字节跳动、蚂蚁集团相关实体）可能带来单季度重大收入惊喜，届时可快速买入</td><td class="mono">等待信号</td><td class="mono pos bold">HK$460-500</td><td class="mono neg">HK$355</td><td>3-6个月</td></tr>
+        <tr><td class="bold">风险厌恶型投资者</td><td>地缘政治（中美博弈）和ADT均值回归的双重风险使港交所不适合保守组合。如需配置香港金融板块，建议控制在总组合3%以内，并对中美关系紧张指标保持持续关注，若局势明显恶化则优先减仓</td><td class="mono">不建议主动建仓</td><td class="mono">谨慎</td><td class="mono neg">地缘政治恶化则减仓</td><td>短线观望</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">与CME的横向对比：两种交易所投资逻辑</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>维度</th><th>港交所 HKEX（持有）</th><th>CME Group（审慎买入）</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">当前股价折扣</td><td class="mono" style="color:var(--amber)">+13.2%上行（至目标价）</td><td class="pos mono">+19.7%上行（至目标价）</td></tr>
+        <tr><td class="bold">含股息总回报</td><td class="mono">+16.5%</td><td class="pos mono">+24%</td></tr>
+        <tr><td class="bold">估值（P/E TTM）</td><td class="mono" style="color:var(--amber)">25.1x（合理）</td><td class="pos mono">21.6x（偏低）</td></tr>
+        <tr><td class="bold">护城河</td><td class="pos mono">中国资本门户垄断</td><td class="pos mono">衍生品许可证矩阵</td></tr>
+        <tr><td class="bold">主要风险</td><td class="neg mono">ADT均值回归 + 地缘政治</td><td class="neg mono">永续期货竞争 + CEO过渡</td></tr>
+        <tr><td class="bold">股息率</td><td class="pos mono">3.34%（90%派息率）</td><td class="pos mono">4.43%（含特别股息）</td></tr>
+        <tr><td class="bold">当前技术面</td><td class="mono" style="color:var(--amber)">震荡偏弱，区间中段</td><td class="neg mono">极端偏弱，距52周低位0.7%</td></tr>
+        <tr><td class="bold">Snail 评级</td><td class="bold" style="color:var(--amber)">持有（Hold）</td><td class="pos bold">审慎买入（Cautious Buy）</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:12.5px;color:var(--text-muted);margin-top:10px">综合而言，若在CME和港交所中二选一，我们更偏好CME：估值更低（21.6x vs 25.1x）、安全边际更大（+24% vs +16.5%总回报）、股息率更高（4.43% vs 3.34%）、地缘政治风险相对更可控。港交所是更"弹性"的标的——若中国资本市场牛市延续，港交所的上行空间远大于CME；但若地缘政治或ADT回落，下行空间也同样更大。</p>
+
+    <h3 class="sub">评级更新触发条件</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>触发条件</th><th>可能评级变化</th></tr></thead>
+      <tbody>
+        <tr><td>Q2财报EPS超HK$4.0（Q2 2026，2026-08-19）</td><td class="pos bold">上调至审慎买入；目标价上调至HK$480</td></tr>
+        <tr><td>大型AI企业IPO落地（集资额超200亿/单笔）</td><td class="pos">目标价上调至HK$460；正向催化</td></tr>
+        <tr><td>互联互通扩容（新增重大资产类别）</td><td class="pos">上调至审慎买入；估值重估</td></tr>
+        <tr><td>ADT持续跌破2,000亿港元（连续2个月）</td><td class="neg">下调至减持；目标价下调至HK$340</td></tr>
+        <tr><td>中美关系实质性恶化（新一轮制裁波及港股）</td><td class="neg bold">立即下调至减持；目标价下调至HK$280</td></tr>
+        <tr><td>香港金融中心地位进一步受损的重大政策信号</td><td class="neg bold">下调至减持；长期结构性重估</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="co warn">
+      <div class="col">分析师独立性声明</div>
+      本报告由Snail Investment精品研究部独立撰写。我们对港交所的评级（持有，目标价HK$430）显著低于卖方一致预期（均值约HK$454-518，强烈买入），折扣约17-20%。核心差异在于我们对FY2025 ADT高基数的均值回归风险和地缘政治尾部风险的更保守估计。我们同时认为Morningstar公允价值HK$367略偏保守（未充分反映IPO超级周期贡献）。本报告仅供参考，不构成任何投资邀约或招募文件，投资者须自行承担风险。
+    </div>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disc">
+  <div class="disc-hd">免责声明 / Disclaimer</div>
+  <p>本报告仅供信息参考目的，不构成任何投资邀约、要约、招募或建议。Snail Investment精品研究部在编制本报告时力求数据准确可靠，所有关键数据均注明一手来源。</p>
+  <p><strong>核心数据来源：</strong>香港交易所及结算所有限公司官方业绩公告（2026-04-29 Q1 2026业绩）；港交所投资者关系网站及披露易（hkexgroup.com）；财华社2026年4月、5月、6月报道；TradingView行情及EPS数据（2026-06-22）；Investing.com行情及分析师预期（2026-06-23）；东吴证券研报（2026-02-26）；东方财富证券研报（2026-03-03）；国信证券研报（2025-05-09）；Simply Wall St 分析（2026-05-01）；GuruFocus行情数据（2026-06-18）。</p>
+  <p>本报告目标价及评级基于截至2026年6月18日的公开信息，任何重大新信息均可能使本报告内容不再适用，本研究部保留随时修改或撤销权利。投资港股市场涉及市场风险、流动性风险、汇率风险、政治风险及监管风险。过去业绩不代表未来表现。</p>
+  <p>© 2026 Snail Investment · 精品研究部 · 保留所有权利 · 未经授权不得转载</p>
+</div>
+
+</div><!-- end page-body -->
+
+<div class="pf">
+  <span class="pfb">🐌 SNAIL INVESTMENT · EQUITY RESEARCH · 精品研究部</span>
+  <span class="pfb">香港交易所 00388.HK · 深度报告 · 2026-06-18</span>
+</div>
+
+</body>
+</html>
