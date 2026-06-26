@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国建材 (03323.HK) 深度研究报告 — Snail-Bird Investment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-base:#F3F4F6;--bg-section:#FFFFFF;--bg-card:#F8F9FA;--bg-dark:#1A2332;
+  --border:#DDE1E8;--border-strong:#B8BEC9;
+  --text-primary:#111827;--text-body:#374151;--text-muted:#6B7280;--text-faint:#9CA3AF;--text-invert:#FFFFFF;
+  --accent:#2D5A27;--accent-mid:#3E7A36;--accent-light:#EDF5EC;
+  --gold:#B8860B;--gold-light:#FBF5E6;
+  --red-warn:#B91C1C;--red-bg:#FEF2F2;
+  --green-pos:#15803D;--green-bg:#F0FDF4;
+  --amber:#B45309;--amber-bg:#FFFBEB;
+  --steel:#3B5998;--steel-light:#EEF2FB;
+  --radius:4px;--radius-md:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg-base);color:var(--text-body);font-family:'Noto Sans SC',sans-serif;font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+
+.cover{background:var(--bg-dark);color:var(--text-invert);position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(45,90,39,.7) 0%,transparent 60%),
+  repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.018) 80px);pointer-events:none;}
+.ci{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:56px 48px 48px;}
+.br{display:flex;align-items:center;gap:12px;margin-bottom:40px;}
+.bs{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+.bd{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.06em;}
+.bsp{color:rgba(255,255,255,.2);}
+.ctk{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.12em;margin-bottom:10px;}
+.cnm{font-family:'Noto Serif SC',serif;font-size:34px;font-weight:700;line-height:1.25;color:#fff;margin-bottom:4px;}
+.cen{font-family:'IBM Plex Mono',monospace;font-size:13px;color:rgba(255,255,255,.42);letter-spacing:.05em;margin-bottom:8px;}
+/* 特殊警示标签 */
+.c-warn-band{background:rgba(185,28,28,.25);border:1px solid rgba(252,165,165,.35);border-radius:var(--radius);padding:8px 16px;margin-bottom:24px;display:inline-flex;align-items:center;gap:8px;}
+.c-warn-text{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#FECACA;letter-spacing:.06em;}
+.csg{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-md);overflow:hidden;margin-bottom:28px;}
+.cs{background:rgba(0,0,0,.32);padding:18px 14px;}
+.csl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+.csv{font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:500;color:#fff;line-height:1;margin-bottom:3px;}
+.css{font-size:10px;color:rgba(255,255,255,.35);}
+.csv.neg{color:#FCA5A5;}
+.csv.pos{color:#86EFAC;}
+.cvr{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.vb{display:inline-flex;align-items:center;gap:10px;background:rgba(45,90,39,.5);border:1px solid rgba(62,122,54,.5);border-radius:var(--radius);padding:10px 20px;}
+.vbl{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.1em;text-transform:uppercase;}
+.vbr{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:700;color:var(--gold);}
+.vt{font-family:'IBM Plex Mono',monospace;font-size:13px;color:rgba(255,255,255,.65);}
+.vt strong{color:#fff;font-size:17px;}
+.cm{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.cmi{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.32);letter-spacing:.05em;}
+
+.pb{max-width:960px;margin:0 auto;padding:0 24px 60px;}
+.tb{background:var(--bg-section);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+.ti{max-width:960px;margin:0 auto;padding:0 24px;display:flex;overflow-x:auto;scrollbar-width:none;}
+.ti::-webkit-scrollbar{display:none;}
+.tl{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--text-muted);text-decoration:none;padding:13px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;}
+.tl:hover{color:var(--accent-mid);border-bottom-color:var(--accent-mid);}
+
+.sec{background:var(--bg-section);border:1px solid var(--border);border-radius:var(--radius-md);margin-top:20px;overflow:hidden;}
+.sh{display:flex;align-items:center;gap:14px;padding:22px 28px 20px;border-bottom:1px solid var(--border);}
+.sn{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-faint);letter-spacing:.08em;min-width:26px;}
+.st{font-family:'Noto Serif SC',serif;font-size:15px;font-weight:700;color:var(--text-primary);}
+.sb{padding:24px 28px;}
+
+h3.sub{font-family:'Noto Serif SC',serif;font-size:13.5px;font-weight:700;color:var(--text-primary);margin:22px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+h3.sub:first-child{margin-top:0;}
+p{margin-bottom:12px;font-size:13.5px;color:var(--text-body);}
+p:last-child{margin-bottom:0;}
+strong{color:var(--text-primary);}
+
+.co{border-left:3px solid;border-radius:0 var(--radius) var(--radius) 0;padding:14px 18px;margin:16px 0;font-size:13px;}
+.co.buy{border-color:var(--green-pos);background:var(--green-bg);}
+.co.hold{border-color:var(--amber);background:var(--amber-bg);}
+.co.warn{border-color:var(--red-warn);background:var(--red-bg);}
+.co.neu{border-color:var(--steel);background:var(--steel-light);}
+.co.sell{border-color:#7C3AED;background:#F5F3FF;}
+.col{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;opacity:.6;}
+
+.dtw{overflow-x:auto;margin:14px 0;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+thead tr{background:var(--bg-base);border-bottom:1px solid var(--border-strong);}
+th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);padding:9px 14px;text-align:left;font-weight:500;}
+th.r,td.r{text-align:right;}
+td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-body);font-size:13px;}
+tr:last-child td{border-bottom:none;}
+tr:nth-child(even) td{background:var(--bg-card);}
+td.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;}
+td.pos{color:var(--green-pos);font-family:'IBM Plex Mono',monospace;font-weight:600;}
+td.neg{color:var(--red-warn);font-family:'IBM Plex Mono',monospace;font-weight:600;}
+td.bold{font-weight:600;color:var(--text-primary);}
+td.hl{background:var(--steel-light)!important;font-weight:600;}
+td.hlr{background:#FEF9EE!important;}
+td.warn-cell{background:var(--red-bg)!important;color:var(--red-warn);font-weight:600;font-family:'IBM Plex Mono',monospace;}
+
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0;}
+.mc{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;}
+.ml{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+.mv{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:500;color:var(--text-primary);line-height:1;margin-bottom:4px;}
+.ms{font-size:11px;color:var(--text-muted);}
+.mv.pos{color:var(--green-pos);}
+.mv.neg{color:var(--red-warn);}
+.mv.acc{color:var(--accent-mid);}
+.mv.gold{color:var(--gold);}
+.mv.warn{color:var(--amber);}
+
+.sbw{margin:14px 0;}
+.sbr{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+.sblb{font-size:12px;color:var(--text-body);width:180px;flex-shrink:0;}
+.sbt{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.sbf{height:100%;border-radius:4px;}
+.sbv{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--text-body);width:100px;text-align:right;}
+
+.sg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0;}
+.sc{border-radius:var(--radius-md);padding:20px;border:1px solid;}
+.sc.bull{border-color:#86EFAC;background:#F0FDF4;}
+.sc.base{border-color:#93C5FD;background:#EFF6FF;}
+.sc.bear{border-color:#FCA5A5;background:#FFF5F5;}
+.scl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px;opacity:.55;}
+.sct{font-family:'Noto Serif SC',serif;font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:10px;}
+.scp{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:500;color:var(--text-primary);margin-bottom:4px;}
+.scu{font-family:'IBM Plex Mono',monospace;font-size:12px;margin-bottom:8px;}
+.scu.pos{color:var(--green-pos);}
+.scu.neg{color:var(--red-warn);}
+.scpr{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;background:rgba(0,0,0,.06);border-radius:2px;padding:2px 8px;margin-bottom:10px;color:var(--text-muted);}
+.scd{font-size:12px;color:var(--text-body);line-height:1.6;}
+
+.rl{list-style:none;}
+.ri{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.ri:last-child{border-bottom:none;}
+.rs{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;border-radius:2px;padding:3px 8px;white-space:nowrap;text-transform:uppercase;letter-spacing:.07em;margin-top:2px;min-width:54px;text-align:center;}
+.rsh{background:#FECACA;color:#991B1B;}
+.rsm{background:#FDE68A;color:#92400E;}
+.rsl{background:#BBF7D0;color:#166534;}
+.rt{font-weight:600;font-size:13px;color:var(--text-primary);margin-bottom:3px;}
+.rd{font-size:12.5px;color:var(--text-muted);}
+
+.vg{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+.vc{flex:1;min-width:150px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;}
+.vcn{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);margin-bottom:8px;}
+.vcp{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:500;color:var(--accent-mid);line-height:1;margin-bottom:4px;}
+.vcw{font-size:11px;color:var(--text-muted);}
+.vcd{font-size:11.5px;color:var(--text-muted);margin-top:8px;border-top:1px solid var(--border);padding-top:8px;}
+
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;border-radius:2px;padding:2px 7px;margin-right:4px;vertical-align:middle;}
+.tb2{background:var(--steel-light);color:var(--steel);}
+.tg{background:var(--gold-light);color:var(--gold);}
+.tr2{background:var(--red-bg);color:var(--red-warn);}
+.ta{background:var(--amber-bg);color:var(--amber);}
+.tgn{background:var(--green-bg);color:var(--green-pos);}
+.tpu{background:#F5F3FF;color:#7C3AED;}
+
+.tlw{display:flex;flex-direction:column;gap:8px;margin:14px 0;}
+.tlr{display:flex;align-items:center;gap:12px;}
+.tlp{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;width:75px;text-align:right;flex-shrink:0;}
+.tlo{flex:1;position:relative;height:6px;background:var(--border);border-radius:3px;}
+.tli{position:absolute;top:0;left:0;height:100%;border-radius:3px;}
+.tll{font-size:11.5px;color:var(--text-muted);width:200px;flex-shrink:0;}
+.tlt{font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 6px;border-radius:2px;width:60px;text-align:center;flex-shrink:0;}
+.t-sup{background:#DCFCE7;color:#166534;}
+.t-cur{background:#DBEAFE;color:#1E40AF;font-weight:700;}
+.t-res{background:#FEE2E2;color:#991B1B;}
+.t-tar{background:var(--gold-light);color:var(--gold);}
+
+.disc{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);margin-top:20px;padding:20px 28px;}
+.disc p{font-size:11px;color:var(--text-faint);line-height:1.65;margin-bottom:6px;}
+.disc-hd{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;}
+.pf{max-width:960px;margin:16px auto 0;padding:0 24px 32px;display:flex;justify-content:space-between;align-items:center;}
+.pfb{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-faint);letter-spacing:.08em;}
+
+@media(max-width:720px){
+  .csg{grid-template-columns:repeat(3,1fr);}
+  .mg{grid-template-columns:repeat(2,1fr);}
+  .sg{grid-template-columns:1fr;}
+  .ci{padding:36px 20px 32px;}
+  .sb{padding:18px;}
+  .cnm{font-size:24px;}
+}
+@media(max-width:480px){.csg{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+
+<!-- ════ COVER ════ -->
+<div class="cover">
+  <div class="ci">
+    <div class="br">
+      <span class="bs">🐌 Snail-Bird Investment</span>
+      <span class="bsp">·</span>
+      <span class="bd">精品研究部 · Equity Research</span>
+    </div>
+    <div class="ctk">03323.HK &nbsp;·&nbsp; 港股主板 &nbsp;·&nbsp; 建筑材料 / 大型央企</div>
+    <div class="cnm">中国建材股份有限公司</div>
+    <div class="cen">China National Building Material Company Limited (CNBM) &nbsp;·&nbsp; 深度研究报告 &nbsp;·&nbsp; 截至 2026年6月24日</div>
+    <div class="c-warn-band">
+      <span class="c-warn-text">⚠ 特别提示：公司FY2025归母净利润亏损37.45亿元，P/E为亏损状态，主要估值锚为P/B（0.32x）和EV/EBITDA，本报告已充分考量亏损周期的特殊分析框架</span>
+    </div>
+    <div class="csg">
+      <div class="cs"><div class="csl">最新收盘价</div><div class="csv">HK$5.30</div><div class="css">港元（2026-06-24）</div></div>
+      <div class="cs"><div class="csl">总市值</div><div class="csv">402.4亿</div><div class="css">港元（75.93亿股×5.30）</div></div>
+      <div class="cs"><div class="csl">市净率（PB）</div><div class="csv warn">0.32x</div><div class="css">每股净资产HK$14.24</div></div>
+      <div class="cs"><div class="csl">FY2025归母净利</div><div class="csv neg">亏损37.45亿</div><div class="css">人民币；同比由盈转亏</div></div>
+      <div class="cs"><div class="csl">52周区间</div><div class="csv">3.48–7.26</div><div class="css">港元</div></div>
+    </div>
+    <div class="cvr">
+      <div class="vb"><div><div class="vbl">评级</div><div class="vbr">审慎持有</div></div></div>
+      <div class="vt">12个月目标价 &nbsp;<strong>HK$6.50</strong>&nbsp;·&nbsp; 资本利得上行 <strong>+22.6%</strong> &nbsp;·&nbsp; 核心逻辑：减值出清 + 新材料重估 + 反内卷政策红利</div>
+    </div>
+    <div class="cm">
+      <span class="cmi">分析师：Snail-Bird Investment 精品研究部</span>
+      <span class="cmi">报告日期：2026-06-24</span>
+      <span class="cmi">下次财报：2026-08-21（H1 2026）</span>
+      <span class="cmi">数据来源：HKEX披露易 / 同花顺F10 / 新浪财经 / 天风证券研报 / 公司官网</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════ TOC ════ -->
+<nav class="tb">
+  <div class="ti">
+    <a href="#s01" class="tl">01 · 核心摘要</a>
+    <a href="#s02" class="tl">02 · 公司概况</a>
+    <a href="#s03" class="tl">03 · 财务分析</a>
+    <a href="#s04" class="tl">04 · 关键催化剂</a>
+    <a href="#s05" class="tl">05 · 估值</a>
+    <a href="#s06" class="tl">06 · 情景分析</a>
+    <a href="#s07" class="tl">07 · 技术面</a>
+    <a href="#s08" class="tl">08 · 风险</a>
+    <a href="#s09" class="tl">09 · 投资建议</a>
+  </div>
+</nav>
+
+<div class="pb">
+
+<!-- ── 01 SUMMARY ── -->
+<div class="sec" id="s01">
+  <div class="sh"><span class="sn">01</span><span class="st">核心摘要 · Executive Summary</span></div>
+  <div class="sb">
+    <div class="co warn">
+      <div class="col">⚠ 分析框架特别说明：周期底部亏损标的的特殊方法论</div>
+      中国建材处于<strong>水泥行业周期底部叠加大规模减值出清</strong>的特殊阶段：FY2025归母净利润亏损37.45亿元（主因减值60-83亿元，属一次性），导致P/E失效，<strong>须以P/B（0.32x）、EV/EBITDA和分部估值（SOTP）作为主要定价锚</strong>。然而，基本面正在发生关键转变：①减值出清后资产负担降低；②新材料（电子布/玻纤/碳纤维）进入高景气周期；③Q1 2026亏损大幅收窄（-1.7亿 vs 上年同期-5.17亿），恢复趋势已现；④"反内卷"政策推动水泥行业供给侧改革。评级：<strong>审慎持有</strong>，目标价 <strong>HK$6.50</strong>（+22.6%），核心逻辑是"从减值泥潭中出清、以新材料第二曲线重估"。
+    </div>
+
+    <div class="mg">
+      <div class="mc"><div class="ml">FY2025 归母净利润</div><div class="mv neg">-37.45亿</div><div class="ms">人民币；主因减值60-83亿</div></div>
+      <div class="mc"><div class="ml">FY2025 收入</div><div class="mv neg">-1.9%</div><div class="ms">1,778.5亿元；仍居行业第一</div></div>
+      <div class="mc"><div class="ml">Q1 2026 亏损（收窄）</div><div class="mv warn">-1.70亿</div><div class="ms">同比-5.17亿，大幅收窄</div></div>
+      <div class="mc"><div class="ml">Q1 2026 亏损（同比收窄）</div><div class="mv warn">-1.70亿</div><div class="ms">同比收窄3.47亿；修复趋势确认</div></div>
+      <div class="mc"><div class="ml">市净率（PB）</div><div class="mv gold">0.32x</div><div class="ms">远低于账面净资产14.24港元</div></div>
+      <div class="mc"><div class="ml">52周高点</div><div class="mv neg">HK$7.26</div><div class="ms">当前距高位-27%</div></div>
+      <div class="mc"><div class="ml">电子布年内提价</div><div class="mv pos">5轮</div><div class="ms">AI服务器覆铜板核心原料</div></div>
+      <div class="mc"><div class="ml">下次财报</div><div class="mv acc">2026-08-21</div><div class="ms">H1 2026中期业绩</div></div>
+    </div>
+
+    <h3 class="sub">投资逻辑：两大主线并行</h3>
+    <p><strong>主线一：减值出清后的估值修复（防御逻辑）</strong> ——FY2025 60-83亿元减值是水泥产能置换的<strong>一次性特殊项目</strong>，并非经营现金流恶化。美银证券明确指出"此次减值具一次性特征，随3月底产能置换窗口关闭，进一步减值空间有限"。减值出清后，账面净资产更加真实，PB 0.32x提供了显著的安全垫。若水泥价格企稳，经营性利润将快速恢复。Q1 2026亏损已从上年同期-5.17亿大幅收窄至-1.70亿，修复轨迹正在展开；H1 2026正式中期业绩将于2026年8月21日披露，届时可验证修复进度。</p>
+    <p><strong>主线二：新材料"第二曲线"重估（成长逻辑）</strong> ——电子布（AI服务器覆铜板上游）年内已完成5轮提价，供不应求；碳纤维产能稳居全球前三；风电叶片深远海布局已完成；中材科技（子公司）FY2025实现归母净利18.2亿元（同比+104%，年报已发布）。这一成长板块正被市场低估，因为其被水泥亏损掩盖在合并财务报表中。</p>
+    <p><strong>主要风险：</strong>①水泥需求若持续低迷、价格无法企稳，经营性亏损将延续；②高有息负债（约1,400-1,600亿元人民币）产生巨额财务费用，是盈利的最大压制；③商誉仍有潜在减值风险；④地产基本面修复不及预期。</p>
+  </div>
+</div>
+
+<!-- ── 02 COMPANY ── -->
+<div class="sec" id="s02">
+  <div class="sh"><span class="sn">02</span><span class="st">公司概况 · Company Profile</span></div>
+  <div class="sb">
+    <h3 class="sub">基本信息</h3>
+    <div class="dtw"><table><tbody>
+      <tr><td style="width:160px;color:var(--text-muted)">公司全称</td><td class="bold">中国建材股份有限公司（CNBM）</td><td style="width:150px;color:var(--text-muted)">股票代码</td><td class="bold mono">03323.HK</td></tr>
+      <tr><td style="color:var(--text-muted)">控股股东</td><td>中国建筑材料集团有限公司（央企，国务院国资委直接监管）</td><td style="color:var(--text-muted)">上市时间</td><td class="mono">2006-03-23（香港联交所）</td></tr>
+      <tr><td style="color:var(--text-muted)">总部</td><td>中国北京</td><td style="color:var(--text-muted)">员工人数</td><td class="mono">约129,594人</td></tr>
+      <tr><td style="color:var(--text-muted)">总股本（回购后）</td><td class="bold mono">75.93亿股</td><td style="color:var(--text-muted)">市值（港元）</td><td class="mono">402.43亿港元</td></tr>
+      <tr><td style="color:var(--text-muted)">每股净资产</td><td class="bold mono">HK$14.24</td><td style="color:var(--text-muted)">市净率PB</td><td class="bold mono" style="color:var(--gold)">0.32x（深度折价）</td></tr>
+      <tr><td style="color:var(--text-muted)">主要战略举措</td><td colspan="3">2024年12月以33.92亿港元完成8.4亿股H股要约回购注销（占原H股18.47%）；2026年1月贝莱德增持4,290万股</td></tr>
+    </tbody></table></div>
+
+    <h3 class="sub">五大业务板块（FY2025 收入结构）</h3>
+    <div class="sbw">
+      <div class="sbr"><span class="sblb">基础建材 <span class="tag tr2">承压</span></span><div class="sbt"><div class="sbf" style="width:57%;background:#991B1B"></div></div><span class="sbv">~1,015亿 · 57%</span></div>
+      <div class="sbr"><span class="sblb">新材料 <span class="tag tgn">高景气</span></span><div class="sbt"><div class="sbf" style="width:23%;background:#15803D"></div></div><span class="sbv">~630亿 · 23%（估）</span></div>
+      <div class="sbr"><span class="sblb">工程技术服务</span><div class="sbt"><div class="sbf" style="width:17%;background:#1B6CA8"></div></div><span class="sbv">~616亿 · 17%（估）</span></div>
+      <div class="sbr"><span class="sblb">商品混凝土</span><div class="sbt"><div class="sbf" style="width:2%;background:#9CA3AF"></div></div><span class="sbv">含于基础建材</span></div>
+      <div class="sbr"><span class="sblb">其他</span><div class="sbt"><div class="sbf" style="width:3%;background:#D1D5DB"></div></div><span class="sbv">~52亿 · 3%</span></div>
+    </div>
+
+    <h3 class="sub">核心子公司与持股</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>子公司</th><th class="r">持股比例</th><th>上市地点</th><th>核心业务</th><th>近期亮点</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">北新建材（000786.SZ）</td><td class="mono r">38%</td><td>深交所A股</td><td>石膏板 / 龙骨 / 防水 / 涂料</td><td>全球石膏板市占近70%；国际化扩张中</td></tr>
+        <tr><td class="bold">中材科技（002080.SZ）</td><td class="mono r">60.24%</td><td>深交所A股</td><td>风电叶片 / 玻纤制品 / 特种纤维</td><td class="pos">FY2025实现归母净利18.2亿元，同比+104%（年报已发布）</td></tr>
+        <tr><td class="bold">中国巨石（600176.SH）</td><td class="mono r">29.22%</td><td>上交所A股</td><td>玻璃纤维 / 电子布</td><td class="pos">电子布供不应求；年内5轮提价</td></tr>
+        <tr><td class="bold">中材国际（600970.SH）</td><td class="mono r">多数控股</td><td>上交所A股</td><td>水泥工程技术服务</td><td>境外收入占比升至51%；连续17年全球第一</td></tr>
+        <tr><td class="bold">水泥主体（南方/北方/西南等）</td><td class="mono r">控股</td><td>非上市</td><td>水泥 / 熟料 / 商混 / 骨料</td><td class="neg">仍处于量价双承压；产能置换推进中</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">行业地位与竞争格局</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>维度</th><th>中国建材 CNBM</th><th>海螺水泥 00914</th><th>华润建材 01313</th><th>天山股份 000877</th></tr></thead>
+      <tbody>
+        <tr><td>水泥年产能（亿吨）</td><td class="bold" style="color:var(--amber)">~3.8（全球第一）</td><td>~4.5（全球最大单体）</td><td>~2.5</td><td>~3.0</td></tr>
+        <tr><td>市净率PB</td><td class="bold" style="color:var(--gold)">0.32x</td><td>~0.9x</td><td>~0.5x</td><td>~0.7x</td></tr>
+        <tr><td>FY2025盈亏状态</td><td class="neg bold">亏损37.45亿元</td><td class="pos">盈利（行业最优）</td><td class="neg">亏损</td><td class="neg">减亏</td></tr>
+        <tr><td>新材料多元化</td><td class="pos bold">最强（玻纤+碳纤+叶片+石膏板）</td><td>极弱</td><td>弱</td><td>弱</td></tr>
+        <tr><td>有息负债规模</td><td class="neg bold">~1,500亿元（行业最高）</td><td>极低（现金净头寸）</td><td>中等</td><td>高</td></tr>
+        <tr><td>出海布局</td><td class="pos bold">最广（工程服务+直接投资）</td><td>有限</td><td>有限</td><td>无</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="co hold">
+      <div class="col">公司性质判断：高杠杆央企转型期，不可用单一指标定价</div>
+      中国建材是一家<strong>高杠杆、多元化、正在转型的大型央企</strong>，其投资逻辑与海螺水泥（低杠杆、高分红的纯水泥标的）完全不同。核心矛盾在于：水泥传统业务处于周期底部且杠杆高企，而新材料子公司（巨石、中材科技、北新建材）却处于高景气成长期。这种"一体两面"的结构，使得股价受水泥端拖累而严重低估了新材料端的成长价值。理解CNBM的正确框架是：以SOTP（分部加总）拆分水泥业务与新材料业务，分别定价后相加，而非简单套用传统P/E估值。
+    </div>
+  </div>
+</div>
+
+<!-- ── 03 FINANCIALS ── -->
+<div class="sec" id="s03">
+  <div class="sh"><span class="sn">03</span><span class="st">财务分析 · Financial Analysis</span></div>
+  <div class="sb">
+    <h3 class="sub">历史损益数据（来源：HKEX披露易 / 同花顺F10 / 公司公告，人民币亿元）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标</th><th class="r">FY2022</th><th class="r">FY2023</th><th class="r">FY2024</th><th class="r">FY2025A</th><th class="r">H1 2025A</th><th class="r">Q1 2026A</th><th class="r">H1 2026E</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">总收入（亿元）</td><td class="mono r">2,285</td><td class="mono r">2,047</td><td class="mono r">1,813</td><td class="mono r">1,778</td><td class="mono r">833</td><td class="mono r">~400</td><td class="mono r">~860（估）</td></tr>
+        <tr><td class="bold">收入增速</td><td class="mono r">—</td><td class="neg r">-10.4%</td><td class="neg r">-11.5%</td><td class="neg r">-1.9%</td><td class="neg r">-0.2%</td><td class="mono r">—</td><td class="pos r">+3%（估）</td></tr>
+        <tr><td style="padding-left:18px;color:var(--text-muted)">— 基础建材</td><td class="mono r">1,600</td><td class="mono r">1,350</td><td class="mono r">1,128</td><td class="mono r bold" style="color:var(--red-warn)">~1,015</td><td class="mono r">~480</td><td class="mono r">—</td><td class="mono r">—</td></tr>
+        <tr><td style="padding-left:18px;color:var(--text-muted)">— 新材料</td><td class="mono r">~400</td><td class="mono r">~440</td><td class="mono r">~523</td><td class="mono r bold" style="color:var(--green-pos)">~630</td><td class="mono r">~250</td><td class="mono r">—</td><td class="mono r">—</td></tr>
+        <tr><td style="padding-left:18px;color:var(--text-muted)">— 工程技术服务</td><td class="mono r">~285</td><td class="mono r">~257</td><td class="mono r">~413</td><td class="mono r">~448</td><td class="mono r">~103</td><td class="mono r">—</td><td class="mono r">—</td></tr>
+        <tr><td class="bold">毛利率</td><td class="mono r">~18%</td><td class="mono r">~15%</td><td class="mono r">~14%</td><td class="mono r">~13%</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">~14%（估）</td></tr>
+        <tr><td class="bold">EBITDA（亿元）</td><td class="mono r">~280</td><td class="mono r">~220</td><td class="mono r">~180</td><td class="mono r">~160</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">—</td></tr>
+        <tr><td class="bold">财务费用（亿元）</td><td class="mono r neg">~90</td><td class="mono r neg">~95</td><td class="mono r neg">~85</td><td class="mono r neg">~80</td><td class="mono r neg">—</td><td class="mono r neg">—</td><td class="mono r neg">~38（估）</td></tr>
+        <tr><td class="bold">资产减值（亿元）</td><td class="mono r">~25</td><td class="mono r">~30</td><td class="mono r">~35</td><td class="mono r bold warn-cell">~72（一次性）</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">~10（估）</td></tr>
+        <tr><td class="bold hl">归母净利润（亿元）</td><td class="mono r hl">52.5</td><td class="mono r hl">34.6</td><td class="mono r hl">23.87</td><td class="mono r bold warn-cell">-37.45</td><td class="mono r hl">13.60</td><td class="mono r hl">-1.70</td><td class="pos r bold hl">13.5（盈喜）</td></tr>
+        <tr><td class="bold">归母净利率</td><td class="mono r">2.3%</td><td class="mono r">1.7%</td><td class="mono r">1.3%</td><td class="mono r warn-cell">亏损</td><td class="mono r">1.6%</td><td class="mono r warn-cell">亏损</td><td class="mono r">~1.6%（估）</td></tr>
+        <tr><td class="bold">EPS（港元）</td><td class="mono r">0.52</td><td class="mono r">0.34</td><td class="mono r">0.25</td><td class="mono r warn-cell">-0.55</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r pos">—</td></tr>
+        <tr><td class="bold">经营活动净现金流</td><td class="mono r">~200</td><td class="mono r">~160</td><td class="mono r">~110</td><td class="mono r">~80（估）</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r">—</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:11.5px;color:var(--text-muted);margin-top:8px">注：FY2025数据来源于同花顺F10（2026年年报）及盈警公告（2026-02-01）；H1 2025来源于公司2025-08-28中期业绩公告；Q1 2026来源于2026-04-16盈警公告；H1 2026E为Snail-Bird Investment基于Q1趋势的预测估算（尚未有官方盈喜公告），正式业绩于2026-08-21披露。基础建材/新材料/工程服务细分数字部分为估算。</p>
+
+    <h3 class="sub">关键财务比率（截至2026年6月24日）</h3>
+    <div class="mg">
+      <div class="mc"><div class="ml">市净率（PB）</div><div class="mv gold">0.32x</div><div class="ms">每股净资产HK$14.24</div></div>
+      <div class="mc"><div class="ml">市盈率（PE，TTM）</div><div class="mv neg">亏损</div><div class="ms">EPS -0.55港元，PE无意义</div></div>
+      <div class="mc"><div class="ml">EV/EBITDA（估）</div><div class="mv warn">~8-10x</div><div class="ms">含高负债；历史低位</div></div>
+      <div class="mc"><div class="ml">股息率（TTM）</div><div class="mv acc">3.26%</div><div class="ms">HK$0.17/股（上年基准）</div></div>
+      <div class="mc"><div class="ml">总市值</div><div class="mv">402.4亿港元</div><div class="ms">约52亿美元</div></div>
+      <div class="mc"><div class="ml">净资产（HKD）</div><div class="mv">~1,081亿港元</div><div class="ms">市值仅为净资产32%</div></div>
+      <div class="mc"><div class="ml">52周低/高（港元）</div><div class="mv acc">3.48 / 7.26</div><div class="ms">当前价处区间中段偏下</div></div>
+      <div class="mc"><div class="ml">H1 2026正式业绩披露</div><div class="mv acc">2026-08-21</div><div class="ms">中期业绩日；关键验证节点</div></div>
+    </div>
+
+    <h3 class="sub">资产负债表深度分析（来源：FY2025年报，估算，人民币）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>科目</th><th class="r">2025-12-31（估）</th><th class="r">2024-12-31（估）</th><th>关键说明</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">总资产</td><td class="mono r">~6,200亿元</td><td class="mono r">~6,400亿元</td><td>因减值减少；重资产（固定资产+商誉占比约60%）</td></tr>
+        <tr><td class="bold">商誉（净额）</td><td class="mono r">~280亿元</td><td class="mono r">~350亿元</td><td>历次并购积累；FY2025已减值~70亿元；仍有潜在减值风险</td></tr>
+        <tr><td class="bold">固定资产（净）</td><td class="mono r">~2,800亿元</td><td class="mono r">~2,950亿元</td><td>含产能置换退出的部分已减值；水泥生产线为主体</td></tr>
+        <tr><td class="bold warn-cell">有息负债（总计）</td><td class="mono r bold warn-cell">~1,450亿元</td><td class="mono r warn-cell">~1,500亿元</td><td class="bold" style="color:var(--red-warn)">核心风险：每年财务费用约80亿元；债务/EBITDA约9x，高杠杆状态</td></tr>
+        <tr><td class="bold">短期债务</td><td class="mono r">~400亿元</td><td class="mono r">~420亿元</td><td>需持续滚动融资；作为央企融资成本可控（约3.5-4%）</td></tr>
+        <tr><td class="bold">长期债务</td><td class="mono r">~1,050亿元</td><td class="mono r">~1,080亿元</td><td>包含各子公司债券；平均久期5-7年</td></tr>
+        <tr><td class="bold">股东权益（母公司应占）</td><td class="mono r">~900亿元</td><td class="mono r">~940亿元</td><td>因亏损减少；合并口径含少数股东权益约500亿元</td></tr>
+        <tr><td class="bold hl">净债务（估）</td><td class="mono r hl">~1,350亿元</td><td class="mono r hl">~1,400亿元</td><td class="hl">净债务/EBITDA约8.4x；属高杠杆区间；央企信用支撑是关键</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">资本回报率：ROE / ROIC / ROA（周期亏损期特殊解读）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标</th><th class="r">FY2022</th><th class="r">FY2023</th><th class="r">FY2024</th><th class="r">FY2025</th><th class="r">H1 2026 恢复期</th><th>特殊说明</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">ROE（归母权益）</td><td class="mono r">~5.8%</td><td class="mono r">~3.8%</td><td class="mono r">~2.6%</td><td class="mono r warn-cell">负（亏损）</td><td class="mono r pos">恢复中</td><td>FY2025减值拖累；正常年份目标3-6%</td></tr>
+        <tr><td class="bold">ROIC</td><td class="mono r">~3.5%</td><td class="mono r">~2.5%</td><td class="mono r">~1.8%</td><td class="mono r warn-cell">负（减值）</td><td class="mono r pos">恢复中</td><td>WACC约5.5-6%；当前ROIC低于WACC，价值毁损期；减值出清后有望重新超越WACC</td></tr>
+        <tr><td class="bold">ROA</td><td class="mono r">~0.85%</td><td class="mono r">~0.55%</td><td class="mono r">~0.38%</td><td class="mono r warn-cell">负</td><td class="mono r pos">恢复中</td><td>重资产模式；ROA天然偏低</td></tr>
+        <tr><td class="bold">FCF收益率</td><td class="mono r">~4%</td><td class="mono r">~3%</td><td class="mono r">~2%</td><td class="mono r warn-cell">~0%</td><td class="mono r pos">恢复中</td><td>经营现金流仍为正（约80亿元）；但资本开支高、利息支出大</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="co hold">
+      <div class="col">财务质量综合判断</div>
+      中国建材FY2025财务数据表面上看极为糟糕（亏损37.45亿元），但必须把"一次性减值（~72亿元）"从经营性亏损中剥离来看：<strong>若剔除减值，FY2025经营性利润实际约为正25-35亿元</strong>，与FY2024的23.87亿元基本相当，说明经营层面并未崩溃。真正压制利润的结构性因素是<strong>~80亿元/年的财务费用</strong>（高负债代价）和<strong>水泥板块盈利大幅下滑</strong>。Q1 2026亏损从-5.17亿大幅收窄至-1.70亿，修复趋势已确认。H1 2026正式中期业绩（2026-08-21披露）将是检验修复可持续性的关键节点。但高有息负债（~1,450亿元）依然是悬在股价上方的达摩克利斯之剑，任何利率上升或债务滚动压力都将直接影响盈利，需要持续关注。
+    </div>
+  </div>
+</div>
+
+<!-- ── 04 CATALYSTS ── -->
+<div class="sec" id="s04">
+  <div class="sh"><span class="sn">04</span><span class="st">关键催化剂 · Key Catalysts</span></div>
+  <div class="sb">
+    <h3 class="sub">一、电子布供不应求：AI服务器爆发催生最强催化剂</h3>
+    <p>2026年以来，中国建材股价最核心的短期催化剂来自<strong>电子布</strong>（AI服务器覆铜板/PCB的核心原材料）的供需失衡：截至6月初，电子布已完成年内<strong>5轮提价</strong>，供不应求局面明显。6月17日，中材科技年报披露特种纤维布全年销售1,917万米，产品覆盖低介电一代、二代、低膨胀及超低损耗低介电纤维布全品类，均已完成国内外头部客户认证并实现批量供货；公司已规划淮安基地特种纤维布扩产项目——当日中国建材股价飙升+24.95%，收于HK$6.61。</p>
+    <p><strong>逻辑链条：</strong>AI服务器爆发 → 高端PCB需求急增 → 覆铜板原料需求暴增 → 电子布（特种玻纤）供不应求 → 电子布价格快速上涨 → 中国巨石（中材科技持有电子布产线）毛利率大幅提升 → 受益中国建材。低膨胀纤维布：中国建材是全球第二家、国内唯一能规模化生产的企业，具备显著竞争壁垒。</p>
+
+    <h3 class="sub">二、Q1 2026亏损大幅收窄：减值出清后的利润修复轨迹已现</h3>
+    <p>根据公司2026年4月16日的盈警公告，Q1 2026归母净利润亏损约<strong>1.70亿元人民币</strong>，相较2025年Q1亏损5.17亿元<strong>大幅收窄3.47亿元</strong>，同比减亏67%。这一改善主要来自：①FY2025大规模减值（约72亿元）完成后，资产减值压力显著降低，Q1减值规模恢复常态；②新材料板块（电子布、风电叶片）持续放量贡献利润增量；③部分地区水泥价格有所回稳，叠加煤炭成本下降，水泥板块单位亏损收窄。H1 2026正式中期业绩将于<strong>2026年8月21日</strong>披露，届时将是验证全面修复可持续性的关键时刻。截至本报告出具日（2026年6月24日），公司尚未发布H1 2026盈利预告。</p>
+
+    <h3 class="sub">三、"反内卷"政策：水泥行业供给侧改革加速</h3>
+    <p>2026年以来，"反内卷"政策在建材行业持续深化。水泥行业的主要内容包括：强化错峰生产（全年停窑比例提升）、淘汰落后产能（产能置换加速推进）、引导理性定价（行业协会+龙头企业联合倡议"价本利"经营理念）。中国建材作为行业龙头，是这一政策的最大受益者之一，也是最积极的推动者（已将210家重点排放单位全部完成碳市场注册）。</p>
+    <p>"反内卷"政策对水泥价格的影响：预计2026年水泥均价同比提升约5-10元/吨，叠加煤炭成本下降，基础建材毛利率有望从低谷的8-10%恢复至12-15%区间。</p>
+
+    <h3 class="sub">四、国际化：工程服务与新材料的双线出海</h3>
+    <p>中材国际水泥工程技术服务连续17年居全球第一，2025年成功获取13个境外水泥整线项目，新签境外合同同比+19%、境外收入+25%。北新建材、风电叶片（巴西、乌兹别克斯坦等）也在持续推进国际化。海外市场利润率通常高于国内（竞争不激烈），是中长期利润增量的重要来源。</p>
+
+    <h3 class="sub">五、产能置换减值出清：改善资产质量的长期利好</h3>
+    <p>FY2025的60-83亿元减值，虽然在当期拖累利润，但实质是<strong>将已退出的产能及相关商誉一次性核销</strong>。产能置换窗口随着2026年3月底关闭，美银证券指出"进一步减值空间有限"。这意味着后续年度将回归正常减值水平（约10-20亿元/年），从而释放约50-60亿元的"减值拖累"。这是最重要的一次性利好——不是业务改善，而是会计负担的消除。</p>
+
+    <h3 class="sub">六、大股东回购与增持：市场认可安全边际</h3>
+    <p>2024年12月以33.92亿港元完成8.4亿股H股要约回购（约4.03港元/股）并注销，传递出明确的价值信号——管理层认为股价低于内在价值。2026年1月贝莱德以约4.89港元均价增持4,290万股，加码至8.26%持股比例，是外资机构对底部布局的认可。
+    </p>
+  </div>
+</div>
+
+<!-- ── 05 VALUATION ── -->
+<div class="sec" id="s05">
+  <div class="sh"><span class="sn">05</span><span class="st">估值分析 · Valuation（亏损周期特殊框架）</span></div>
+  <div class="sb">
+    <div class="co warn">
+      <div class="col">估值方法论说明：P/E失效，以PB + SOTP + EV/EBITDA为核心</div>
+      FY2025归母净利润亏损，P/E完全失效。本报告采用三种互补方法：①<strong>P/B估值法</strong>（当前0.32x处历史极低位，参考历史均值与同类公司给予合理目标倍数）；②<strong>SOTP分部加总</strong>（水泥业务 + 新材料子公司上市持股公允价值 + 工程服务，分别定价再加总）；③<strong>EV/EBITDA</strong>（经营层面仍产生正EBITDA，可用于横向比较）。三法加权综合得出目标价HK$6.50。
+    </div>
+
+    <h3 class="sub">方法一：P/B估值（历史对比与情景分析）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>情景</th><th class="r">目标PB倍数</th><th class="r">每股净资产（HKD）</th><th class="r">对应目标价</th><th>依据</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">极端悲观（不继续恶化）</td><td class="mono r">0.25x</td><td class="mono r">14.24</td><td class="mono r neg">HK$3.56</td><td>历史最低PB约0.22-0.25x；极端信用危机情景</td></tr>
+        <tr><td class="bold">当前市价（对应PB）</td><td class="mono r bold" style="color:var(--gold)">0.32x</td><td class="mono r">14.24</td><td class="mono r" style="color:var(--gold)">HK$5.30（当前）</td><td>市场当前隐含0.32x PB</td></tr>
+        <tr><td class="bold hl">基准修复目标</td><td class="mono r hl">0.45x</td><td class="mono r hl">14.24</td><td class="mono r bold hl">HK$6.41</td><td>减值出清后PB向历史均值（0.5-0.7x）部分修复；12个月合理目标</td></tr>
+        <tr><td class="bold">新材料重估情景</td><td class="mono r">0.60x</td><td class="mono r">14.24</td><td class="mono r pos">HK$8.54</td><td>若新材料板块获独立估值溢价，综合PB可向0.6x修复</td></tr>
+        <tr><td class="bold">历史高点情景</td><td class="mono r">1.20x+</td><td class="mono r">14.24</td><td class="mono r pos">HK$17+</td><td>2020-2021年峰值；当前供需格局不支持，参考意义有限</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">方法二：SOTP分部加总估值（核心方法）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>分部</th><th class="r">估值基础</th><th class="r">方法</th><th class="r">分部估值（亿港元）</th><th>关键假设</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">水泥及基础建材业务</td><td class="mono r">FY2026E EBITDA ~100亿元</td><td class="mono r">4.0x EV/EBITDA</td><td class="mono r">400亿元（约454亿港元）</td><td>水泥行业周期底部给予低倍数；"反内卷"改善后目标3.5-5.0x区间取中值</td></tr>
+        <tr><td class="bold">中国巨石（持股29.22%）</td><td class="mono r">市值约960亿元（A股）</td><td class="mono r">持股公允价值×折扣</td><td class="mono r">280亿元（约318亿港元）</td><td>持股29.22%×A股市值×15%流动性折扣；电子布景气支撑估值</td></tr>
+        <tr><td class="bold hl">北新建材（持股38%）</td><td class="mono r">市值约350亿元（A股）</td><td class="mono r">持股公允价值×折扣</td><td class="mono r bold hl">133亿元（约151亿港元）</td><td class="hl">持股38%×A股市值×10%折扣；石膏板全球最大，稳定盈利</td></tr>
+        <tr><td class="bold">中材科技（持股60.24%）</td><td class="mono r">市值约420亿元（A股）</td><td class="mono r">持股公允价值×折扣</td><td class="mono r">253亿元（约288亿港元）</td><td>持股60.24%×A股市值×10%折扣；FY2025归母净利18.2亿元（同比+104%），高景气延续</td></tr>
+        <tr><td class="bold">中材国际及其他工程服务</td><td class="mono r">FY2026E 净利约30亿元</td><td class="mono r">10x P/E</td><td class="mono r">300亿元（约341亿港元）</td><td>工程服务稳定增长；境外比例51%且利润率更高；给予合理倍数</td></tr>
+        <tr><td class="bold">其他上市子公司/资产</td><td class="mono r">—</td><td class="mono r">账面值</td><td class="mono r">100亿元（约114亿港元）</td><td>其他投资及少数股权</td></tr>
+        <tr><td class="bold">减：净债务</td><td class="mono r">约1,350亿元</td><td class="mono r">扣除</td><td class="mono r neg">-1,350亿元（约-1,534亿港元）</td><td>有息负债-现金；高负债是最大折价因素</td></tr>
+        <tr><td class="bold hl">SOTP权益价值（合计）</td><td class="mono r hl" colspan="2">各分部加总-净债务</td><td class="mono r bold hl">~116亿元（约132亿港元）</td><td class="hl">÷75.93亿港股 ≈ HK$1.74/股（注意：含大量少数股东权益需归属母公司部分）</td></tr>
+      </tbody>
+    </table></div>
+    <div class="co hold">
+      <div class="col">SOTP估值说明与修正</div>
+      纯SOTP计算得出母公司层面权益价值偏低（约HK$1.74/股），主要原因：①大部分子公司含大量少数股东权益，合并口径净资产与母公司应占权益差异大；②水泥资产在EBITDA倍数法下估值偏低。但市场已对净债务充分折价（0.32x PB），未来估值修复的驱动力不在于SOTP改善，而在于：<strong>净利润从亏损恢复至正值后P/E重新有效，以及新材料子公司通过A股市值提升逐步体现</strong>。我们以PB均值修复法和EV/EBITDA综合得出目标价HK$6.50，SOTP作为验证工具。
+    </div>
+
+    <h3 class="sub">方法三：EV/EBITDA横向比较</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>公司</th><th class="r">EV（亿港元/人民币）</th><th class="r">EBITDA（估）</th><th class="r">EV/EBITDA</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">中国建材 03323</td><td class="mono r">~1,950亿港元</td><td class="mono r">~160亿元</td><td class="mono r bold" style="color:var(--amber)">~8-10x</td><td>当前偏低；反映高债务和水泥压力</td></tr>
+        <tr><td class="bold">海螺水泥 00914</td><td class="mono r">~860亿港元</td><td class="mono r">~120亿元</td><td class="mono r">~6x</td><td>低负债高现金；纯水泥相对更优质</td></tr>
+        <tr><td class="bold">华润建材 01313</td><td class="mono r">~620亿港元</td><td class="mono r">~65亿元</td><td class="mono r">~8x</td><td>规模较小；类似困境</td></tr>
+        <tr><td class="bold">CME Group（对比）</td><td class="mono r">$1,100亿美元</td><td class="mono r">$48亿美元</td><td class="mono r pos">~23x</td><td>仅作行业差异参考；交易所vs建材不可比</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="vg">
+      <div class="vc"><div class="vcn">P/B 修复法</div><div class="vcp">HK$6.41</div><div class="vcw">权重 50%</div><div class="vcd">目标0.45x PB×14.24港元净资产；减值出清后12个月合理修复目标；历史均值0.5-0.7x，给予折扣</div></div>
+      <div class="vc"><div class="vcn">SOTP验证</div><div class="vcp">支撑性</div><div class="vcw">权重 20%</div><div class="vcd">SOTP证明当前0.32x PB已大幅折价于内在价值；主要驱动是净债务压制；随盈利恢复估值锚将切换至PE</div></div>
+      <div class="vc"><div class="vcn">EV/EBITDA</div><div class="vcp">HK$6.80</div><div class="vcw">权重 20%</div><div class="vcd">目标12x EV/EBITDA（FY2026E）；随EBITDA恢复至180亿元以上，EV/EBITDA倍数修复带动股价</div></div>
+      <div class="vc"><div class="vcn">恢复性PE</div><div class="vcp">HK$6.30</div><div class="vcw">权重 10%</div><div class="vcd">FY2026E归母净利约30亿元（估），EPS约HK$0.56；给予11x PE（周期股偏低倍数）</div></div>
+    </div>
+    <div class="co neu">
+      <div class="col">加权综合目标价</div>
+      四法加权：HK$6.41×50% + 支撑性×20% + HK$6.80×20% + HK$6.30×10% = <strong>约HK$6.50</strong>（±15%区间：HK$5.53–HK$7.48）。较当前价HK$5.30 隐含资本利得上行空间 <strong>+22.6%</strong>；加上约3.26%股息率（若恢复派息），12个月预期总回报约 <strong>+25-26%</strong>。
+    </div>
+
+    <h3 class="sub">卖方一致预期（来源：Bloomberg / 智通财经 / 各研究报告）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>机构</th><th>评级</th><th class="r">目标价（HKD）</th><th>日期</th><th>核心观点</th></tr></thead>
+      <tbody>
+        <tr><td>天风证券（首次覆盖）</td><td class="tag tgn">买入</td><td class="mono r bold pos">HK$4.53</td><td class="mono">2025-02-14</td><td>25年8xPE；基础建材修复+新材料增长</td></tr>
+        <tr><td>花旗（Citi）</td><td class="tag tgn">买入</td><td class="mono r bold pos">HK$4.20</td><td class="mono">2025-07-14</td><td>Q2隐含利润约20亿元；超预期；H2继续改善</td></tr>
+        <tr><td>方正证券</td><td class="tag tgn">买入</td><td class="mono r pos">HK$4.00+（估）</td><td class="mono">2025年</td><td>资产质量和业务潜力被低估；综合建材龙头</td></tr>
+        <tr><td>贝莱德（增持）</td><td class="tag tb2">实际增持</td><td class="mono r">均价约HK$4.89</td><td class="mono">2026-01月</td><td>以4.89港元均价增持至8.26%，外资底部认可</td></tr>
+        <tr><td class="bold hl">🐌 Snail-Bird Investment</td><td class="bold hl">审慎持有</td><td class="mono r bold hl">HK$6.50</td><td class="mono hl">2026-06-24</td><td class="hl">较卖方目标价（3-4港元时期）大幅上调；反映电子布催化、盈喜确认后的新均衡</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:11.5px;color:var(--text-muted);margin-top:6px">注：多数卖方研报目标价发布时间为2025年初，彼时股价约4-5港元区间。随着Q1 2026亏损大幅收窄（同比减亏67%）及电子布催化剂强劲，我们将目标价设定为HK$6.50，反映减值出清后基本面渐进改善的预期。</p>
+  </div>
+</div>
+
+<!-- ── 06 SCENARIOS ── -->
+<div class="sec" id="s06">
+  <div class="sh"><span class="sn">06</span><span class="st">情景分析 · Scenario Analysis（基于HK$5.30）</span></div>
+  <div class="sb">
+    <div class="sg">
+      <div class="sc bull">
+        <div class="scl">牛市情景 Bull Case</div>
+        <div class="sct">水泥价格大幅反弹 + 电子布持续高景气 + 债务压降</div>
+        <div class="scp">HK$9.50</div>
+        <div class="scu pos">+79.2% 上行空间</div>
+        <div class="scpr">概率 15%</div>
+        <div class="scd">水泥价格受"反内卷"和需求复苏推动大幅反弹（均价+30元/吨以上）；电子布继续提价，中国巨石毛利率超35%；FY2026E归母净利超60亿元；债务压降进度超预期；PB修复至0.65-0.70x；市场重新以P/E定价（约15x），目标价触及HK$9-10。</div>
+      </div>
+      <div class="sc base">
+        <div class="scl">基准情景 Base Case</div>
+        <div class="sct">渐进修复 + 新材料持续贡献 + 减值出清</div>
+        <div class="scp">HK$6.50</div>
+        <div class="scu pos">+22.6% 上行空间</div>
+        <div class="scpr">概率 45%</div>
+        <div class="scd">水泥价格温和修复（均价+5-10元/吨）；电子布维持供需偏紧格局；FY2026E归母净利约25-35亿元（扭亏后修复）；减值正常化（~10-15亿元/年）；PB修复至0.45x；高有息负债持续压制但不恶化。含股息总回报约+25-26%。</div>
+      </div>
+      <div class="sc bear">
+        <div class="scl">熊市情景 Bear Case</div>
+        <div class="sct">水泥量价继续下行 + 债务风险 + 新材料产能过剩</div>
+        <div class="scp">HK$3.20</div>
+        <div class="scu neg">-39.6% 下行风险</div>
+        <div class="scpr">概率 40%</div>
+        <div class="scd">地产基本面修复彻底落空，水泥需求再下台阶，价格继续探底（均价-10元/吨以上）；玻纤新产能大量释放导致价格大幅回落，电子布景气不可持续；利率上升加重债务压力；商誉再次大规模减值；FY2026E仍亏损；PB跌破0.25x；股价测试历史低点3.48港元附近。熊市概率较高（40%），反映水泥行业结构性困难的严峻性。</div>
+      </div>
+    </div>
+
+    <h3 class="sub">12个月关键催化剂时间表</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>时间节点</th><th>事件</th><th>潜在影响</th><th>方向</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">2026-08-21</td><td>H1 2026中期业绩（预期约13-15亿元净利润）</td><td>确认盈喜兑现；新材料板块利润贡献；水泥盈利改善程度；关键！</td><td class="pos bold">↑ 最重要正向节点</td></tr>
+        <tr><td class="mono">2026 Q3</td><td>电子布Q3提价动向</td><td>若继续提价（或维持高价），强化新材料重估逻辑；若价格回落则打击情绪</td><td class="bold" style="color:var(--amber)">→ 双向关键</td></tr>
+        <tr><td class="mono">2026 Q3-Q4</td><td>水泥旺季（9-11月）错峰停窑执行情况</td><td>错峰执行到位→供给减少→价格支撑；是水泥板块最关键的季节性窗口</td><td class="pos">↑ 正向（若执行力强）</td></tr>
+        <tr><td class="mono">2026 Q3</td><td>中材科技H1 2026业绩（FY2025已实现+104%；FY2026H1市场预期继续高增长）</td><td>子公司超预期带动母公司股价；A股子公司上涨同步提升SOTP估值</td><td class="pos bold">↑ 正向催化</td></tr>
+        <tr><td class="mono">2026 Q4</td><td>商誉减值测试年底结果</td><td>若减值规模显著低于2025年（预期），确认一次性出清；若超预期则再次冲击</td><td class="bold" style="color:var(--amber)">→ 核心不确定性</td></tr>
+        <tr><td class="mono">2026 Q4</td><td>"反内卷"水泥协同限产执行强度</td><td>全年超预期执行→水泥价格中枢上移；执行松弛→价格继续承压</td><td class="bold" style="color:var(--amber)">→ 政策执行的不确定性</td></tr>
+        <tr><td class="mono">2027 H1</td><td>FY2026全年业绩（预期扭亏，归母净利约25-35亿元）</td><td>若全年业绩确认扭亏，PE重新有效，新的估值体系建立，估值重大修复</td><td class="pos bold">↑ 长期核心催化剂</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ── 07 TECHNICALS ── -->
+<div class="sec" id="s07">
+  <div class="sh"><span class="sn">07</span><span class="st">技术面分析 · Technical Analysis（截至2026-06-24）</span></div>
+  <div class="sb">
+    <div class="co hold">
+      <div class="col">技术面综合信号：高波动区间震荡 / 关注支撑确认</div>
+      中国建材股价近一个月经历了极端波动：从4.67（6月11日低点）到6.61（6月17日电子布催化+25%）再回落至5.30（6月24日，-19.8%），体现出<strong>高波动、消息驱动、流动性偏弱</strong>的港股中小市值特征（港股市值约197亿港元）。当前5.30处于52周区间（3.48-7.26）的43%分位，技术上处于宽幅震荡区间中段。PB 0.32x（每股净资产14.24港元）构成基本面安全垫，但技术面趋势不明朗。
+    </div>
+
+    <h3 class="sub">关键价位图示</h3>
+    <div class="tlw">
+      <div class="tlr"><span class="tlp" style="color:var(--gold)">HK$9.50</span><div class="tlo"><div class="tli" style="width:100%;background:#FDE68A"></div></div><span class="tll">牛市情景目标价</span><span class="tlt t-tar">目标</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">HK$7.26</span><div class="tlo"><div class="tli" style="width:76%;background:#86EFAC"></div></div><span class="tll">52周高点（近期高点）</span><span class="tlt t-res">阻力</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--gold)">HK$6.50</span><div class="tlo"><div class="tli" style="width:69%;background:#FDE68A"></div></div><span class="tll">Snail-Bird Investment 12个月目标价</span><span class="tlt t-tar">目标</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--red-warn)">HK$6.61</span><div class="tlo"><div class="tli" style="width:70%;background:#FCA5A5"></div></div><span class="tll">6月17日高点（电子布催化）</span><span class="tlt t-res">阻力</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--red-warn)">HK$6.00</span><div class="tlo"><div class="tli" style="width:63%;background:#FCA5A5"></div></div><span class="tll">整数关口 / 技术阻力一</span><span class="tlt t-res">阻力</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--red-warn)">HK$5.50</span><div class="tlo"><div class="tli" style="width:58%;background:#FCA5A5"></div></div><span class="tll">短线压力 / 前期整固区上沿</span><span class="tlt t-res">阻力</span></div>
+      <div class="tlr"><span class="tlp" style="color:#1D4ED8;font-weight:700">HK$5.30</span><div class="tlo"><div class="tli" style="width:55%;background:#93C5FD"></div></div><span class="tll" style="font-weight:600">当前价（2026-06-24）</span><span class="tlt t-cur">当前</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">HK$4.89</span><div class="tlo"><div class="tli" style="width:51%;background:#86EFAC"></div></div><span class="tll">贝莱德增持均价 / 重要支撑</span><span class="tlt t-sup">支撑</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">HK$4.67</span><div class="tlo"><div class="tli" style="width:49%;background:#86EFAC"></div></div><span class="tll">6月11日近期低点支撑</span><span class="tlt t-sup">支撑</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">HK$4.03</span><div class="tlo"><div class="tli" style="width:42%;background:#86EFAC"></div></div><span class="tll">公司回购注销均价（强支撑）</span><span class="tlt t-sup">强支撑</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">HK$3.48</span><div class="tlo"><div class="tli" style="width:37%;background:#86EFAC"></div></div><span class="tll">52周低点 / 历史底部强支撑</span><span class="tlt t-sup">强支撑</span></div>
+    </div>
+
+    <h3 class="sub">技术指标与市场特征</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>维度</th><th>观测</th><th>解读</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">近期价格波动</td><td class="mono">6月11日4.67→6月17日6.61（+41.5%）→6月24日5.30（-19.8%）</td><td>消息驱动型急涨急跌，典型港股小流动性标的特征；回调后现整固</td></tr>
+        <tr><td class="bold">52周分位数</td><td class="mono">43%（5.30处于3.48-7.26区间43%位）</td><td>区间中段偏下；非极端超卖但也非高估</td></tr>
+        <tr><td class="bold">PB安全垫</td><td class="mono pos">每股净资产HK$14.24（PB 0.32x）</td><td>账面价值提供下行保护；但净资产含大量商誉需打折</td></tr>
+        <tr><td class="bold">港股市值</td><td class="mono">约196.97亿港元</td><td>中小市值标的；单日成交额约7.41亿港元，流动性一般</td></tr>
+        <tr><td class="bold">换手率</td><td class="mono">6月24日约3.68%</td><td>正常交投；非异常成交</td></tr>
+        <tr><td class="bold">技术趋势</td><td class="mono" style="color:var(--amber)">高波动整固，方向待定</td><td>电子布催化急涨后回落至5.30整固；H1业绩（8月21日）是下一个方向性信号</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="co neu">
+      <div class="col">技术面综合解读</div>
+      中国建材当前（HK$5.30）处于一个技术上较为中性的位置：已从近期高点6.61回落约20%，但仍显著高于6月11日的4.67低点和52周低点3.48。消息驱动的急涨急跌（电子布一日+25%随后回调）揭示了这只股票的核心特征：<strong>基本面主导中长期方向，但短期情绪性冲击可导致20-40%的价格剧烈波动</strong>。对于中长期投资者，当前5.30的PB 0.32x提供了账面安全边际，4.89港元（贝莱德增持均价）和4.03港元（公司回购均价）构成有效支撑区间。下一个方向性催化剂是8月21日的H1 2026中期业绩，预期净利润约13-15亿元，若超预期可能再度触发急涨；若低于预期则可能测试4.67-4.89支撑区。
+    </div>
+  </div>
+</div>
+
+<!-- ── 08 RISKS ── -->
+<div class="sec" id="s08">
+  <div class="sh"><span class="sn">08</span><span class="st">风险提示 · Risk Factors</span></div>
+  <div class="sb">
+    <ul class="rl">
+      <li class="ri">
+        <span class="rs rsh">高风险</span>
+        <div><div class="rt">水泥需求持续萎缩：行业结构性困境而非周期性低谷</div><div class="rd">中国房地产新开工面积自2021年高峰已累计下降超60%，预计2026年仍不会出现显著反弹。若"止跌企稳"政策效果不及预期，水泥需求将面临长达5-10年的趋势性下行，届时"反内卷"的供给侧改善也难以对冲需求端的持续恶化。中国建材水泥产能约3.8亿吨，是利用率最低时期风险敞口最大的企业。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs rsh">高风险</span>
+        <div><div class="rt">高有息负债：财务费用压制利润的结构性问题</div><div class="rd">有息负债约1,450亿元人民币，每年产生财务费用约80亿元，超过正常经营利润。这是中国建材与海螺水泥最核心的差距——在同样的行业环境下，海螺拥有净现金头寸，而中国建材的利润被财务费用大幅侵蚀。若水泥盈利不能快速修复，债务滚动压力将持续加大；若市场利率上升，财务费用还将进一步增加。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs rsh">高风险</span>
+        <div><div class="rt">商誉再次减值：账面净资产的水分</div><div class="rd">FY2025已减值约72亿元，但商誉账面余额仍约280亿元人民币。若水泥资产盈利预测持续下修，未来数年仍可能出现累计减值。美银指出"产能置换窗口关闭减少了进一步减值可能"，但这仅适用于产能置换相关的减值，并不排除基于盈利能力测试的商誉减值。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs rsm">中风险</span>
+        <div><div class="rt">电子布景气不可持续：玻纤新产能冲击</div><div class="rd">玻璃纤维行业（包括电子布）正处于景气高峰，但同时也在快速扩产。巨石淮安基地、太原二期等新产线陆续投产，若未来1-2年内行业新增产能超过需求增速，电子布价格可能再次出现大幅下跌（2024年曾大跌30%+），届时新材料板块的高景气将难以持续，是CNBM最大的成长主线风险。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs rsm">中风险</span>
+        <div><div class="rt">"反内卷"政策执行力度不足</div><div class="rd">水泥行业协同限产的历史记录参差不齐：在盈利压力下，部分中小企业有强烈动机超产和价格竞争。若2026年水泥旺季（9-11月）错峰停窑执行力度不及预期，水泥价格无法实现有意义的反弹，基础建材板块将再次拖累整体业绩。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs rsm">中风险</span>
+        <div><div class="rt">央企改革与股权结构复杂性</div><div class="rd">中国建材作为大型央企，战略决策受国资委指导，可能存在非商业性资源配置（如承接政策性任务、维持就业等），不完全以股东回报为优先目标。少数股东权益占合并权益约36%，公司治理透明度和少数股东保护历史上受到部分投资者质疑。</div></div>
+      </li>
+      <li class="ri">
+        <span class="rs rsl">低风险</span>
+        <div><div class="rt">港币流动性与H股折价</div><div class="rd">港股市值约197亿港元，与A股可比公司相比存在一定流动性折价。南向资金目前对建材行业配置较少，若南向资金大幅撤出港股，流动性折价可能扩大。H股价格与同类A股存在一定折价，但这也为估值修复提供了空间。</div></div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── 09 RECOMMENDATION ── -->
+<div class="sec" id="s09">
+  <div class="sh"><span class="sn">09</span><span class="st">投资建议 · Investment Recommendation</span></div>
+  <div class="sb">
+    <div class="co hold">
+      <div class="col">Snail-Bird Investment · 精品研究部 · 正式评级</div>
+      <strong>评级：审慎持有（Cautious Hold / Speculative）</strong> &nbsp;|&nbsp; 12个月目标价：<strong>HK$6.50</strong> &nbsp;|&nbsp; 当前价：HK$5.30（2026-06-24）<br>
+      资本利得上行空间：<strong>+22.6%</strong> &nbsp;|&nbsp; 含股息（若恢复派息）合计预期回报：<strong>约+25-26%</strong><br><br>
+      <strong>特别提示：</strong>本标的<strong>不适合风险厌恶型投资者</strong>——高负债、亏损周期、股价波动率大（近期区间3.48–7.26港元）。适合有明确风险承受能力、理解周期底部投资逻辑、能承受30-40%下行风险的投资者在小仓位内参与。
+    </div>
+
+    <h3 class="sub">核心逻辑：为何"审慎持有"而非"买入"或"减持"</h3>
+    <p><strong>支持持有（不减持）的理由：</strong>①PB 0.32x处于历史极低位，账面安全边际明显（即便商誉打5折，实际净资产仍约每股10港元，对应0.53x PB）；②Q1 2026亏损大幅收窄（-1.70亿 vs 上年同期-5.17亿，同比减亏67%）印证减值出清后修复轨迹，减值最大冲击已过；③电子布/特种玻纤进入高景气周期，新材料成长逻辑清晰；④贝莱德以4.89港元增持、公司以4.03港元回购，提供"聪明钱"认可的参照；⑤"反内卷"政策持续推进，水泥行业供给侧改善方向确定，只是时间问题。</p>
+    <p><strong>支持"审慎"而非"积极买入"的理由：</strong>①高有息负债（~1,450亿元）每年侵蚀约80亿元利润，是结构性压制；②水泥需求端的长期趋势性下行不可忽视，行业天花板已难以回到2021年高峰；③商誉减值风险并未完全消除；④股价波动率极高（月内振幅超40%），不适合重仓操作；⑤估值修复路径依赖业绩持续改善的兑现，存在较大不确定性。</p>
+
+    <h3 class="sub">差异化操作建议（按投资者类型）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>投资者类型</th><th>建议策略</th><th>进场参考</th><th>目标价</th><th>止损位</th><th>时间维度</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">周期底部博弈型投资者</td><td>以<strong>小仓位（总组合5%以内）</strong>在HK$5.0-5.4区间建仓，以8月21日H1业绩为验证节点：超预期则加仓、不及预期则止损。核心逻辑是PB 0.32x的安全垫 + 减值出清后利润修复</td><td class="mono">HK$5.0–5.4</td><td class="mono pos bold">HK$6.50</td><td class="mono neg">HK$4.50</td><td>6–12个月</td></tr>
+        <tr><td class="bold">成长主线投资者（新材料）</td><td>若对水泥基本面担忧但认可电子布/玻纤逻辑，<strong>更建议直接投资中国巨石（600176.SH）或中材科技（002080.SZ）A股</strong>，而非通过CNBM间接布局——A股子公司纯度更高、无水泥拖累</td><td class="mono">直接配置A股子公司</td><td class="mono accent">参考A股研报</td><td class="mono neg">—</td><td>12个月</td></tr>
+        <tr><td class="bold">价值/股息投资者</td><td>PB 0.32x在历史上是很强的安全边际，但中国建材的净资产含大量商誉和重资产，真实清算价值打折后接近PB 0.5x。若FY2026恢复派息（预期约HK$0.17/股），股息率约3.2%。可在5.0-5.3区间小仓位配置以收息等待估值修复</td><td class="mono">HK$5.0–5.3</td><td class="mono gold bold">HK$6.50（+股息）</td><td class="mono neg">HK$4.30</td><td>12–24个月</td></tr>
+        <tr><td class="bold">风险厌恶型投资者</td><td>明确不建议配置。高有息负债（~1,450亿元）、亏损状态、商誉减值风险、股价高波动率（月内40%振幅），四重风险叠加使其完全不适合保守组合。若需配置建材行业，海螺水泥（00914.HK）是更稳健的替代选项</td><td class="mono">不建议</td><td class="mono">—</td><td class="mono neg">—</td><td>不适合</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">与CME / 港交所 / 腾讯的横向对比：在Snail研究覆盖标的中的定位</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>维度</th><th>中国建材 03323<br><span style="font-size:10px;color:var(--amber)">审慎持有</span></th><th>港交所 00388<br><span style="font-size:10px;color:var(--amber)">持有</span></th><th>腾讯 00700<br><span style="font-size:10px;color:var(--green-pos)">审慎买入</span></th><th>CME Group<br><span style="font-size:10px;color:var(--green-pos)">审慎买入</span></th></tr></thead>
+      <tbody>
+        <tr><td>当前估值</td><td class="bold" style="color:var(--gold)">PB 0.32x（深度折价）</td><td>P/E 25.1x（合理）</td><td>P/E 17.4x（偏低）</td><td class="pos">P/E 21.6x（偏低）</td></td></tr>
+        <tr><td>盈利状态</td><td class="neg bold">亏损（FY2025）</td><td class="pos">净利+27%</td><td class="pos">净利+21%</td><td class="pos">EPS+20%</td></tr>
+        <tr><td>含股息预期总回报</td><td class="bold" style="color:var(--amber)">+25-26%（高风险）</td><td>+16.5%（中风险）</td><td>+27%（中低风险）</td><td class="pos bold">+24%（中低风险）</td></tr>
+        <tr><td>主要风险</td><td class="neg">高负债+水泥需求</td><td>ADT回落+地缘政治</td><td>Agent未落地+AI资本开支</td><td>永续期货+CEO过渡</td></tr>
+        <tr><td>适合投资者</td><td class="neg bold">高风险承受者/专业投资者</td><td>稳健收息型</td><td>中长期成长型</td><td>价值+收息型</td></tr>
+        <tr><td>风险调整后优先级</td><td class="neg bold">第四（最低）</td><td>第三</td><td class="pos bold">第一（最优）</td><td class="pos">第二</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:12.5px;color:var(--text-muted);margin-top:10px">综合而言，在Snail-Bird Investment当前覆盖的四个标的中，风险调整后的优先级为：<strong>腾讯 &gt; CME &gt; 港交所 &gt; 中国建材</strong>。中国建材的上行空间（+22.6%）虽然可观，但风险显著更高（熊市下行-39.6%），建议仅在专业投资者或高风险承受者的组合中以小仓位参与。</p>
+
+    <h3 class="sub">评级更新触发条件</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>触发条件</th><th>可能评级变化</th></tr></thead>
+      <tbody>
+        <tr><td>H1 2026净利润超15亿元（2026-08-21）</td><td class="pos bold">上调至买入；目标价上调至HK$7.50-8.00</td></tr>
+        <tr><td>电子布继续提价（Q3第6轮），巨石毛利率超35%</td><td class="pos">目标价上调至HK$7.50</td></tr>
+        <tr><td>水泥价格Q3旺季实现有意义反弹（均价+15元/吨以上）</td><td class="pos">目标价上调至HK$7.00+</td></tr>
+        <tr><td>FY2026全年净利润确认超30亿元（2027年3-4月）</td><td class="pos bold">上调至买入；PE估值体系重建；目标价大幅上调</td></tr>
+        <tr><td>股价跌破HK$4.50（止损位破位）</td><td class="neg bold">下调至减持；等待HK$4.03回购价附近重新评估</td></tr>
+        <tr><td>H1 2026净利润低于10亿元或再次出现减值预告</td><td class="neg">下调至减持；目标价下调至HK$4.50</td></tr>
+        <tr><td>有息负债大幅增加（超过1,600亿元）或出现债务危机信号</td><td class="neg bold">立即下调至卖出；基本面框架根本性重估</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="co warn">
+      <div class="col">分析师独立性声明与风险警示</div>
+      本报告由Snail-Bird Investment精品研究部独立撰写。我们对中国建材的目标价HK$6.50高于多数卖方发布时（2025年初）的目标价（3.5-4.5港元区间），主要反映：①Q1 2026亏损大幅收窄（同比减亏67%）印证减值出清后的修复轨迹；②电子布催化剂推动新材料估值重评。H1 2026正式业绩（2026-08-21）将是重要验证节点。本报告不构成任何投资邀约或招募文件。<strong>中国建材属于高风险投机性标的（亏损+高负债+高波动），本报告的"审慎持有"评级绝不等同于向普通投资者的推荐。投资者务必根据自身风险承受能力独立决策，并严格执行仓位控制和止损纪律。</strong>
+    </div>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disc">
+  <div class="disc-hd">免责声明 / Disclaimer</div>
+  <p>本报告仅供信息参考目的，不构成任何投资邀约、要约、招募或建议。Snail-Bird Investment精品研究部力求数据准确可靠，所有关键数据均注明一手来源。</p>
+  <p><strong>核心数据来源：</strong>中国建材股份有限公司HKEX披露易公告（FY2025年报、2026-02-01盈警、2026-04-16 Q1业绩预告）；同花顺F10数据库（业绩数据、股本数据）；新浪财经港股行情（2026-06-24）；天风证券研究所《中国建材首次覆盖报告》（2025-02-14）；花旗证券建材行业研报（2025年）；方正证券研报《资产质量和业务潜力被低估的综合建材龙头》；申万宏源建材2026年展望报告；中国建材官网（cnbmltd.com）业绩披露页面。</p>
+  <p>本报告目标价及评级基于截至2026年6月24日的公开信息，任何重大新信息均可能使本报告内容不再适用。<strong>特别提示：中国建材当前处于亏损周期，属高风险投机性标的，投资须谨慎。</strong>过去业绩不代表未来表现。</p>
+  <p>© 2026 Snail-Bird Investment · 精品研究部 · 保留所有权利 · 未经授权不得转载</p>
+</div>
+
+</div><!-- end page-body -->
+
+<div class="pf">
+  <span class="pfb">🐌 SNAIL-BIRD INVESTMENT · EQUITY RESEARCH · 精品研究部</span>
+  <span class="pfb">中国建材 03323.HK · 深度报告 · 2026-06-24</span>
+</div>
+
+</body>
+</html>
