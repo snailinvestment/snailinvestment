@@ -5,21 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>美国硬件/半导体板块SBI泡沫指数日报 - 2026-06-26</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin:0; padding:0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
   .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
   .header { background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%); color: white; padding: 40px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
   .header h1 { font-size: 28px; margin-bottom: 8px; }
   .header .subtitle { font-size: 16px; opacity: 0.85; }
   .header .date { font-size: 14px; opacity: 0.7; margin-top: 8px; }
-  .sbi-score-section { display: flex; align-items: center; gap: 40px; margin: 30px 0; }
-  .sbi-gauge { flex: 0 0 300px; height: 200px; }
-  .sbi-summary { flex: 1; }
+  .sbi-score-section { display: flex; align-items: center; gap: 40px; margin: 30px 0; flex-wrap: wrap; }
+  .sbi-gauge { flex: 0 0 260px; height: 170px; }
+  .sbi-summary { flex: 1; min-width: 260px; }
   .sbi-total { font-size: 64px; font-weight: 800; color: #d32f2f; }
-  .sbi-zone { font-size: 18px; color: #ff9800; margin: 8px 0; }
+  .sbi-zone { font-size: 18px; color: #ff9800; margin: 8px 0; font-weight: 600; }
   .sbi-change { font-size: 16px; color: #666; }
-  .sbi-change.positive { color: #f44336; }
-  .sbi-change.negative { color: #4caf50; }
+  .sbi-change.pos { color: #f44336; font-weight: 600; }
   .section { background: white; border-radius: 12px; padding: 30px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
   .section h2 { font-size: 22px; color: #1a237e; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #3949ab; }
   .dim-table { width: 100%; border-collapse: collapse; }
@@ -28,389 +27,189 @@
   .dim-table tr:hover { background: #f8faff; }
   .score-bar { display: flex; align-items: center; gap: 12px; }
   .score-bar-track { flex: 1; height: 10px; background: #e8edf2; border-radius: 5px; overflow: hidden; }
-  .score-bar-fill { height: 100%; border-radius: 5px; transition: width 0.5s; }
-  .score-0-45 { background: #4caf50; }
-  .score-45-70 { background: #ff9800; }
-  .score-70-100 { background: #f44336; }
-  .score-text { font-weight: 700; min-width: 45px; }
+  .score-bar-fill { height: 100%; border-radius: 5px; }
+  .score-text { font-weight: 700; min-width: 40px; font-size: 15px; }
   .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
   .chart-box { background: #f8faff; border-radius: 10px; padding: 20px; }
   .chart-box h3 { font-size: 16px; color: #3949ab; margin-bottom: 12px; text-align: center; }
-  .chart-box canvas { width: 100% !important; max-height: 280px; }
-  .event-list { list-style: none; }
-  .event-list li { padding: 12px 16px; margin-bottom: 8px; background: #f8faff; border-radius: 8px; border-left: 4px solid #3949ab; }
-  .event-list .date { font-weight: 600; color: #3949ab; font-size: 14px; }
+  .chart-box canvas { width: 100% !important; max-height: 300px; }
+  .event-list { list-style: none; padding: 0; }
+  .event-list li { padding: 12px 16px; margin-bottom: 8px; background: #f8faff; border-radius: 8px; border-left: 4px solid #3949ab; font-size: 14px; line-height: 1.6; }
+  .event-list .dt { font-weight: 600; color: #3949ab; }
   .bull-bear { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .bull { background: #f1f8e9; border-left: 4px solid #689f38; padding: 20px; border-radius: 8px; }
   .bear { background: #fbe9e7; border-left: 4px solid #e64a19; padding: 20px; border-radius: 8px; }
-  .bull h3 { color: #33691e; margin-bottom: 12px; }
-  .bear h3 { color: #bf360c; margin-bottom: 12px; }
-  .bull ul, .bear ul { padding-left: 20px; }
-  .bull li, .bear li { margin-bottom: 8px; line-height: 1.5; }
-  .rec-list { padding-left: 20px; }
-  .rec-list li { margin-bottom: 10px; line-height: 1.6; }
-  .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0; }
+  .bull h3 { color: #33691e; margin-bottom: 12px; font-size: 17px; }
+  .bear h3 { color: #bf360c; margin-bottom: 12px; font-size: 17px; }
+  .bull ul, .bear ul { padding-left: 20px; font-size: 14px; line-height: 1.7; }
+  .bull li, .bear li { margin-bottom: 6px; }
+  .rec-list { padding-left: 20px; font-size: 14px; line-height: 1.8; }
+  .rec-list li { margin-bottom: 8px; }
+  .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 20px 0; }
   .data-card { background: #f8faff; padding: 16px; border-radius: 8px; }
   .data-card .label { font-size: 13px; color: #666; margin-bottom: 4px; }
   .data-card .value { font-size: 22px; font-weight: 700; color: #1a237e; }
   .data-card .sub { font-size: 12px; color: #888; margin-top: 4px; }
   .footer { text-align: center; padding: 30px; color: #888; font-size: 14px; }
-  .legend { display: flex; gap: 20px; justify-content: center; margin: 16px 0; flex-wrap: wrap; }
-  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 13px; }
+  .legend { display: flex; gap: 20px; justify-content: center; margin: 16px 0; flex-wrap: wrap; font-size: 13px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
   .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
-  @media (max-width: 768px) {
-    .sbi-score-section { flex-direction: column; }
+  @media (max-width: 800px) {
     .chart-grid, .bull-bear { grid-template-columns: 1fr; }
+    .sbi-score-section { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- HEADER -->
   <div class="header">
-    <h1>🇺🇸 美国硬件/半导体板块 SBI 泡沫指数日报</h1>
+    <h1>美国硬件/半导体板块 SBI 泡沫指数日报</h1>
     <div class="subtitle">Snail Investment Research · 量化动量研究</div>
-    <div class="date">报告日期：2026-06-26（2026年6月26日（周五））｜美股数据截止：2026-06-25收盘</div>
+    <div class="date">报告日期：2026-06-26（2026年6月26日 周五）｜美股数据截止：2026-06-25 收盘</div>
   </div>
 
-  <!-- SBI SCORE -->
   <div class="section">
-    <h2>📊 SBI 泡沫指数总评</h2>
+    <h2>SBI 泡沫指数总评</h2>
     <div class="sbi-score-section">
-      <div class="sbi-gauge">
-        <canvas id="gaugeChart"></canvas>
-      </div>
+      <div class="sbi-gauge"><canvas id="gaugeChart"></canvas></div>
       <div class="sbi-summary">
         <div class="sbi-total">75.5</div>
-        <div class="sbi-zone">⚠️ 危险区间（65-80）</div>
-        <div class="sbi-change positive">
-          环比变化：↑ 0.2（前次 75.3）
-        </div>
-        <div style="margin-top: 16px; font-size: 14px; color: #555;">
+        <div class="sbi-zone">⚠️ 危险区间（65–80）</div>
+        <div class="sbi-change pos">环比变化：↑ +0.2（前次 75.3）</div>
+        <div style="margin-top:16px;font-size:14px;color:#555;line-height:1.7;">
           SBI &gt; 65 为危险区间 ｜ SBI &gt; 80 为极端危险区间<br>
-          当前评分基于6大维度、12项子指标综合计算
+          评分基于6大维度12项子指标，数据来源：FRED、FINRA、Yahoo Finance、SimianX、Westmount、ValueAddVC
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 6 DIMENSIONS -->
   <div class="section">
-    <h2>🧮 六维度评分明细</h2>
+    <h2>六维度评分明细</h2>
     <table class="dim-table">
-      <thead>
-        <tr>
-          <th>维度</th>
-          <th>权重</th>
-          <th>得分</th>
-          <th>评分条</th>
-          <th>核心依据</th>
-        </tr>
-      </thead>
+      <thead><tr><th>维度</th><th>权重</th><th>得分</th><th>评分条</th><th>核心依据</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>估值</strong></td>
-          <td>25%</td>
-          <td class="score-text">96</td>
-          <td>
-            <div class="score-bar">
-              <div class="score-bar-track">
-                <div class="score-bar-fill score-70-100" style="width: 96%"></div>
-              </div>
-            </div>
-          </td>
-          <td style="font-size:13px; color:#555;">SOX偏离200MA +64.3%，AMD Fwd P/E 76.92</td>
-        </tr>
-        <tr>
-          <td><strong>拥挤度</strong></td>
-          <td>25%</td>
-          <td class="score-text">75</td>
-          <td>
-            <div class="score-bar">
-              <div class="score-bar-track">
-                <div class="score-bar-fill score-70-100" style="width: 75%"></div>
-              </div>
-            </div>
-          </td>
-          <td style="font-size:13px; color:#555;">S&P500 Top10 37.3%，NVDA权重7.5%</td>
-        </tr>
-        <tr>
-          <td><strong>杠杆</strong></td>
-          <td>15%</td>
-          <td class="score-text">100</td>
-          <td>
-            <div class="score-bar">
-              <div class="score-bar-track">
-                <div class="score-bar-fill score-70-100" style="width: 100%"></div>
-              </div>
-            </div>
-          </td>
-          <td style="font-size:13px; color:#555;">FINRA $1.415T，占GDP 4.45%</td>
-        </tr>
-        <tr>
-          <td><strong>业绩兑现</strong></td>
-          <td>15%</td>
-          <td class="score-text">35</td>
-          <td>
-            <div class="score-bar">
-              <div class="score-bar-track">
-                <div class="score-bar-fill score-0-45" style="width: 35%"></div>
-              </div>
-            </div>
-          </td>
-          <td style="font-size:13px; color:#555;">Hyperscaler Capex $725B，FCF压缩</td>
-        </tr>
-        <tr>
-          <td><strong>资金流向</strong></td>
-          <td>10%</td>
-          <td class="score-text">75</td>
-          <td>
-            <div class="score-bar">
-              <div class="score-bar-track">
-                <div class="score-bar-fill score-70-100" style="width: 75%"></div>
-              </div>
-            </div>
-          </td>
-          <td style="font-size:13px; color:#555;">SMH大幅波动，6/23板块暴跌</td>
-        </tr>
-        <tr>
-          <td><strong>外部环境</strong></td>
-          <td>10%</td>
-          <td class="score-text">50</td>
-          <td>
-            <div class="score-bar">
-              <div class="score-bar-track">
-                <div class="score-bar-fill score-45-70" style="width: 50%"></div>
-              </div>
-            </div>
-          </td>
-          <td style="font-size:13px; color:#555;">10Y 4.41%，加息预期升温</td>
-        </tr>
+        <tr><td><strong>估值</strong></td><td>25%</td><td class="score-text">96</td><td><div class="score-bar"><div class="score-bar-track"><div class="score-bar-fill" style="width:96%;background:#f44336;"></div></div></div></td><td style="font-size:13px;color:#555;">SOX偏离200MA +64.3%，AMD Fwd P/E 76.92（极端高估值）</td></tr>
+        <tr><td><strong>拥挤度</strong></td><td>25%</td><td class="score-text">75</td><td><div class="score-bar"><div class="score-bar-track"><div class="score-bar-fill" style="width:75%;background:#f44336;"></div></div></div></td><td style="font-size:13px;color:#555;">S&P500 Top10 37.3%（突破危险线），NVDA权重7.5%</td></tr>
+        <tr><td><strong>杠杆</strong></td><td>15%</td><td class="score-text">100</td><td><div class="score-bar"><div class="score-bar-track"><div class="score-bar-fill" style="width:100%;background:#f44336;"></div></div></div></td><td style="font-size:13px;color:#555;">FINRA $1.415T创历史新高，占GDP 4.45%（超危险线）</td></tr>
+        <tr><td><strong>业绩兑现</strong></td><td>15%</td><td class="score-text">35</td><td><div class="score-bar"><div class="score-bar-track"><div class="score-bar-fill" style="width:35%;background:#4caf50;"></div></div></div></td><td style="font-size:13px;color:#555;">Hyperscaler Capex $725B指引，FCF开始压缩，兑现压力上升</td></tr>
+        <tr><td><strong>资金流向</strong></td><td>10%</td><td class="score-text">75</td><td><div class="score-bar"><div class="score-bar-track"><div class="score-bar-fill" style="width:75%;background:#f44336;"></div></div></div></td><td style="font-size:13px;color:#555;">SMH资金大幅波动（单日±$7B），6/23板块暴跌暴露脆弱性</td></tr>
+        <tr><td><strong>外部环境</strong></td><td>10%</td><td class="score-text">50</td><td><div class="score-bar"><div class="score-bar-track"><div class="score-bar-fill" style="width:50%;background:#ff9800;"></div></div></div></td><td style="font-size:13px;color:#555;">10Y 4.41%，Fed维持利率，加息预期升温，地缘风险持续</td></tr>
       </tbody>
     </table>
-    <div class="legend" style="margin-top: 20px;">
-      <div class="legend-item"><div class="legend-dot" style="background:#4caf50;"></div> 45分以下：低位（安全）</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#ff9800;"></div> 45-70分：预警区间</div>
+    <div class="legend" style="margin-top:20px;">
+      <div class="legend-item"><div class="legend-dot" style="background:#4caf50;"></div> 45分以下：安全</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ff9800;"></div> 45–70分：预警区间</div>
       <div class="legend-item"><div class="legend-dot" style="background:#f44336;"></div> 70分以上：危险区间</div>
     </div>
   </div>
+
   <div class="section">
-    <h2>📈 可视化图表</h2>
+    <h2>可视化图表</h2>
     <div class="chart-grid">
-      <div class="chart-box">
-        <h3>六维度雷达图</h3>
-        <canvas id="radarChart"></canvas>
-      </div>
-      <div class="chart-box">
-        <h3>SOX走势与均线（近30交易日）</h3>
-        <canvas id="soxChart"></canvas>
-      </div>
+      <div class="chart-box"><h3>六维度雷达图</h3><canvas id="radarChart"></canvas></div>
+      <div class="chart-box"><h3>SOX收盘价与200MA走势</h3><canvas id="soxChart"></canvas></div>
     </div>
   </div>
+
   <div class="section">
-    <h2>📰 近期重大事件</h2>
-    <ul class="event-list"><li><span class="date">2026-06-25</span>：SOX反弹+3.59%至13,940.87，板块从6/23暴跌中修复</li><li><span class="date">2026-06-23</span>：全球半导体暴跌：韩国SK海力士/三星跌超12%触发熔断，NVDA -2.93%，AMD -5.02%</li><li><span class="date">2026-06-22</span>：SMH单日流出$7.19B；AI芯片B200租赁价格从$6.11跌至$4.22</li><li><span class="date">2026-06-18</span>：SMH单日流入$6.93B（占AUM 8.78%），半导体ETF历史级资金流入</li><li><span class="date">2026-06-11</span>：ValueAddVC更新Hyperscaler Capex指引：$725B（+77% YoY）</li>
+    <h2>近期重大事件</h2>
+    <ul class="event-list">
+      <li><span class="dt">2026-06-25</span>：SOX反弹 +3.59% 至 13,940.87，板块从6/23暴跌中修复；SMH资金回流</li>
+      <li><span class="dt">2026-06-23</span>：🔴 全球半导体暴跌：韩国SK海力士/三星跌超12%触发熔断，NVDA -2.93%，AMD -5.02%，板块情绪脆弱性暴露</li>
+      <li><span class="dt">2026-06-22</span>：SMH单日流出 $7.19B（ETF历史级流出）；AI芯片B200租赁价格从$6.11跌至$4.22，冲击算力稀缺叙事</li>
+      <li><span class="dt">2026-06-18</span>：SMH单日流入 $6.93B（占AUM 8.78%），半导体ETF历史级资金流入，AI芯片交易从NVDA向外扩散</li>
+      <li><span class="dt">2026-06-11</span>：ValueAddVC更新Hyperscaler Capex指引：$725B（+77% YoY），2027E &gt; $1T；四大云厂同步加码AI基础设施</li>
+      <li><span class="dt">2026-05-31</span>：FINRA融资余额达 $1.415T 历史新高，占GDP约4.45%，超越2021年峰值（3.97%），杠杆风险持续累积</li>
     </ul>
   </div>
+
   <div class="section">
-    <h2>📋 关键数据附录</h2>
+    <h2>关键数据附录</h2>
     <div class="data-grid">
-      <div class="data-card">
-        <div class="label">SOX收盘（6/25）</div>
-        <div class="value">13,940.87</div>
-        <div class="sub">200MA: 8,485 · 偏离 +64.3%</div>
+      <div class="data-card"><div class="label">SOX收盘（6/25）</div><div class="value">13,940.87</div><div class="sub">200MA: 8,485 · 偏离 +64.3% · RSI(14): 58.0</div></div>
+      <div class="data-card"><div class="label">NVDA Forward P/E</div><div class="value">24.04x</div><div class="sub">Trailing P/E: 29.98x · 市值: ~$5.23T</div></div>
+      <div class="data-card"><div class="label">AMD Forward P/E</div><div class="value" style="color:#e64a19;">76.92x</div><div class="sub">Trailing P/E: 174.61x（极端高估值）</div></div>
+      <div class="data-card"><div class="label">AVGO / TSM Fwd P/E</div><div class="value">34.01x / 26.60x</div><div class="sub">板块平均 Fwd P/E: ~40.4x</div></div>
+      <div class="data-card"><div class="label">S&P 500 集中度</div><div class="value" style="color:#e64a19;">Top10: 37.3%</div><div class="sub">Mag7: 33.8% · NVDA权重: 7.5% · Top5: 25.1%</div></div>
+      <div class="data-card"><div class="label">FINRA融资余额（5月）</div><div class="value" style="color:#e64a19;">$1.415T</div><div class="sub">占GDP ~4.45% · YoY +53.7% · 6月数据预计7月中旬发布</div></div>
+      <div class="data-card"><div class="label">10年期国债收益率</div><div class="value">4.41%</div><div class="sub">Fed Funds: 4.25–4.50%（6月FOMC维持）</div></div>
+      <div class="data-card"><div class="label">Hyperscaler Capex 2026E</div><div class="value">~$725B</div><div class="sub">AMZN $200B · MSFT $190B · GOOGL $180B · META $125B</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>多空论点对比</h2>
+    <div class="bull-bear">
+      <div class="bull">
+        <h3>✅ 看多论点</h3>
+        <ul>
+          <li>AI算力需求真实：Hyperscaler Capex $725B指引创历史新高，且2027E &gt; $1T</li>
+          <li>NVDA Fwd P/E 24x相对合理，估值分化明显（AMD 77x极端，NVDA 24x温和）</li>
+          <li>SOX技术面：RSI 58中性，未达超买；价格持续运行在200MA以上+64%</li>
+          <li>Mag7权重33.8%维持高位，机构持续配置AI核心资产，被动资金支撑</li>
+          <li>6/25反弹显示板块韧性，逢低买盘依然活跃（SMH 6/18单日+$6.93B）</li>
+        </ul>
       </div>
-      <div class="data-card">
-        <div class="label">NVDA Forward P/E</div>
-        <div class="value">24.04x</div>
-        <div class="sub">Trailing P/E: 29.98x</div>
-      </div>
-      <div class="data-card">
-        <div class="label">AMD Forward P/E</div>
-        <div class="value" style="color:#e64a19;">76.92x</div>
-        <div class="sub">Trailing P/E: 174.61x（极端）</div>
-      </div>
-      <div class="data-card">
-        <div class="label">AVGO / TSM Forward P/E</div>
-        <div class="value">34.01x / 26.60x</div>
-        <div class="sub">板块平均 Fwd P/E: ~40.4x</div>
-      </div>
-      <div class="data-card">
-        <div class="label">S&P 500 Top10 集中度</div>
-        <div class="value" style="color:#e64a19;">37.3%</div>
-        <div class="sub">Mag7: 33.8% · NVDA权重: 7.5%</div>
-      </div>
-      <div class="data-card">
-        <div class="label">FINRA融资余额（5月）</div>
-        <div class="value" style="color:#e64a19;">$1.415T</div>
-        <div class="sub">占GDP ~4.45% · YoY +53.7%</div>
-      </div>
-      <div class="data-card">
-        <div class="label">10年期国债收益率</div>
-        <div class="value">4.41%</div>
-        <div class="sub">Fed Funds: 4.25-4.50%（维持）</div>
-      </div>
-      <div class="data-card">
-        <div class="label">Hyperscaler Capex 2026E</div>
-        <div class="value">~$725B</div>
-        <div class="sub">YoY +77% · 2027E &gt;$1T</div>
+      <div class="bear">
+        <h3>⚠️ 看空论点</h3>
+        <ul>
+          <li>估值极端：SOX偏离200MA +64.3%，AMD Fwd P/E 76.92，板块整体泡沫化严重</li>
+          <li>杠杆创历史：FINRA $1.415T（GDP占比4.45%），超越2021年峰值，强制平仓风险上升</li>
+          <li>集中度危险：S&P500 Top10达37.3%，超越2000年互联网泡沫峰值，相关性极高</li>
+          <li>6/23暴跌警示：板块脆弱性暴露，资金大幅波动（单日±$7B），情绪面脆弱</li>
+          <li>Hyperscaler Capex $725B需AI变现支撑，当前FCF已开始压缩，ROI尚未兑现</li>
+          <li>AI芯片租赁价格下跌（B200: $6.11→$4.22），算力稀缺叙事受冲击</li>
+        </ul>
       </div>
     </div>
   </div>
+
   <div class="section">
-    <h2>⚖️ 多空论点对比</h2>
-    <div class="bull-bear"><div class='bull'><h3>✅ 看多论点</h3><ul><li>AI算力需求真实：Hyperscaler Capex $725B指引创历史新高</li><li>NVIDIA Fwd P/E 24x相对合理，估值分化（AMD 77x极端，NVDA 24x温和）</li><li>SOX技术面：RSI 58中性，未达超买；200MA以上+64%显示强势趋势</li><li>Mag7权重33.8%维持高位，机构持续配置AI核心资产</li></ul></div><div class='bear'><h3>⚠️ 看空论点</h3><ul><li>估值极端：SOX偏离200MA +64.3%，AMD Fwd P/E 76.92，板块整体泡沫化</li><li>杠杆创历史：FINRA $1.415T（GDP占比4.45%），超越2021年峰值</li><li>集中度危险：S&P500 Top10达37.3%，超越2000年互联网泡沫峰值</li><li>6/23暴跌警示：板块脆弱性暴露，资金大幅波动（单日±$7B）</li><li>Hyperscaler Capex $725B需AI变现支撑，当前FCF已开始压缩</li>
-      </ul>
-    </div>
-  </div>
-  <div class="section">
-    <h2>🎯 操作建议</h2>
-    <ol class="rec-list"><li><strong>1.</strong> 维持SBI 75.5危险区间评级，建议减持半导体追涨仓位</li><li><strong>2.</strong> 保留核心NVIDIA多头（Fwd P/E 24x相对合理），减持AMD等极端估值标的</li><li><strong>3.</strong> 关注6/23级别暴跌的再次触发风险，设置止损（SOX跌破13,000）</li><li><strong>4.</strong> 跟踪FINRA 6月数据（预计7月中旬发布），杠杆如继续创新高将推SBI入极端危险区间（>80）</li><li><strong>5.</strong> 等待板块调整至SOX回归50MA（11,928）附近再考虑加仓</li>
+    <h2>操作建议</h2>
+    <ol class="rec-list">
+      <li><strong>维持SBI 75.5危险区间评级</strong>，建议减持半导体追涨仓位，保留核心优质标的。</li>
+      <li><strong>标的选择：</strong>保留NVDA多头（Fwd P/E 24x相对合理），<span style="color:#e64a19;font-weight:600;">减持AMD等极端估值标的</span>（Fwd P/E 77x）。</li>
+      <li><strong>风控：</strong>关注6/23级别暴跌的再次触发风险，建议设置止损（SOX跌破13,000或20日线13,357）。</li>
+      <li><strong>数据跟踪：</strong>密切跟踪FINRA 6月数据（预计7月中旬发布），杠杆如继续创新高将推SBI入极端危险区间（&gt;80）。</li>
+      <li><strong>加仓时机：</strong>等待板块调整至SOX回归50MA（11,928）附近再考虑加仓，当前价格风险回报比不佳。</li>
+      <li><strong>对冲：</strong>可考虑通过SOXS（3x做空半导体ETF）进行部分对冲，或减持高Beta标的降低组合波动。</li>
     </ol>
   </div>
+
+  <div class="section">
+    <h2>SBI评分方法论</h2>
+    <div style="font-size:14px;color:#555;line-height:1.8;">
+      <p><strong>SBI（Semiconductor Bubble Index）泡沫指数</strong>基于6大维度、12项子指标，评分范围0–100：</p>
+      <ul style="padding-left:20px;margin:10px 0;">
+        <li><strong>估值（25%）：</strong>SOX Forward P/E、龙头PEG、SOX偏离200MA幅度。预警线：偏离30% / 危险线：偏离50%</li>
+        <li><strong>拥挤度（25%）：</strong>S&P500 Top10集中度、NVDA单票权重、半导体ETF资金流入。预警线：集中度30% / 危险线：37%</li>
+        <li><strong>杠杆（15%）：</strong>FINRA融资余额/GDP、融资余额YoY增速。预警线：3.5% / 危险线：4.0%</li>
+        <li><strong>业绩兑现（15%）：</strong>龙头业绩增速、FCF质量、Capex/OCF比率</li>
+        <li><strong>资金流向（10%）：</strong>ETF资金净流向、机构vs散户行为、期权市场信号</li>
+        <li><strong>外部环境（10%）：</strong>美联储利率政策、10年期国债、地缘/贸易风险</li>
+      </ul>
+      <p>评分解释：&lt;45分 安全区间 ｜ 45–65分 观望区间 ｜ 65–80分 危险区间 ｜ &gt;80分 极端危险区间</p>
+      <p style="margin-top:10px;font-size:13px;color:#888;">数据来源：FRED（SOX, DGS10）、FINRA（融资余额）、Yahoo Finance、SimianX（Mag7权重）、Westmount Fundamentals（S&P500集中度）、ValueAddVC（Hyperscaler Capex）、ETFaction（SMH资金流向）、MarketScreener（SOX日内数据）。数据截止2026-06-25美股收盘。</p>
+    </div>
+  </div>
+
   <div class="footer">
     <p>Snail Investment Research · 蜗牛投研 · 2026</p>
-    <p>本报告仅供参考，不构成投资建议。投资有风险，入市需谨慎。</p>
+    <p style="margin-top:6px;">本报告仅供参考，不构成投资建议。投资有风险，入市需谨慎。</p>
   </div>
 
 </div>
 
-<!-- Chart.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script>
-(function() {{
-  // ---- GAUGE CHART ----
-  const gaugeCtx = document.getElementById('gaugeChart').getContext('2d');
-  
-  // Custom gauge using Doughnut
-  const sbiScore = 75.5;
-  const gaugeColor = sbiScore >= 80 ? '#f44336' : sbiScore >= 65 ? '#ff9800' : sbiScore >= 45 ? '#ffeb3b' : '#4caf50';
-  
-  new Chart(gaugeCtx, {{
-    type: 'doughnut',
-    data: {{
-      labels: ['SBI得分', '剩余'],
-      datasets: [{{
-        data: [sbiScore, 100 - sbiScore],
-        backgroundColor: [gaugeColor, '#e8edf2'],
-        borderWidth: 0,
-        circumference: 270,
-        rotation: 225,
-      }}]
-    }},
-    options: {{
-      responsive: true,
-      maintainAspectRatio: true,
-      cutout: '75%',
-      plugins: {{
-        legend: {{ display: false }},
-        tooltip: {{ enabled: false }},
-        title: {{
-          display: true,
-          text: ['SBI总分', sbiScore.toFixed(1) + '分'],
-          position: 'bottom',
-          font: {{ size: [28, 18], weight: 'bold' }},
-          color: ['#1a237e', gaugeColor],
-          padding: {{ top: 20 }},
-        }}
-      }}
-    }}
-  }});
-
-  // ---- RADAR CHART ----
-  const radarCtx = document.getElementById('radarChart').getContext('2d');
-  new Chart(radarCtx, {{
-    type: 'radar',
-    data: {{
-      labels: ['估值', '拥挤度', '杠杆', '业绩兑现', '资金流向', '外部环境'],
-      datasets: [{{
-        label: 'SBI六维度得分',
-        data: [96,75,100,35,75,50],
-        backgroundColor: 'rgba(57, 73, 171, 0.15)',
-        borderColor: '#3949ab',
-        borderWidth: 2,
-        pointBackgroundColor: '#3949ab',
-        pointBorderColor: '#fff',
-        pointBorderWidth: 2,
-        pointRadius: 5,
-      }}]
-    }},
-    options: {{
-      responsive: true,
-      maintainAspectRatio: true,
-      scales: {{
-        r: {{
-          min: 0,
-          max: 100,
-          ticks: {{ stepSize: 20, font: {{ size: 11 }} }},
-          grid: {{ color: 'rgba(0,0,0,0.06)' }},
-          angleLines: {{ color: 'rgba(0,0,0,0.1)' }},
-          pointLabels: {{ font: {{ size: 13, weight: '600' }}, color: '#3949ab' }},
-        }}
-      }},
-      plugins: {{
-        legend: {{ display: false }},
-      }}
-    }}
-  }});
-
-  // ---- SOX LINE CHART ----
-  const soxCtx = document.getElementById('soxChart').getContext('2d');
-  const soxLabels = ['6/18', '6/19', '6/22', '6/23', '6/24', '6/25'];
-  const soxPrices = [14341.78, null, 14634.72, 13482.51, 13458.19, 13940.87];
-  const ma200 = 8485.28;
-  
-  new Chart(soxCtx, {{
-    type: 'line',
-    data: {{
-      labels: soxLabels,
-      datasets: [{{
-        label: 'SOX收盘',
-        data: soxPrices,
-        borderColor: '#3949ab',
-        backgroundColor: 'rgba(57,73,171,0.08)',
-        borderWidth: 2.5,
-        pointRadius: 5,
-        pointBackgroundColor: '#3949ab',
-        tension: 0.3,
-        fill: true,
-      }}, {{
-        label: '200MA',
-        data: [ma200, ma200, ma200, ma200, ma200, ma200],
-        borderColor: '#ff9800',
-        borderWidth: 1.5,
-        borderDash: [6, 3],
-        pointRadius: 0,
-        fill: false,
-      }}]
-    }},
-    options: {{
-      responsive: true,
-      maintainAspectRatio: true,
-      plugins: {{
-        legend: {{
-          position: 'bottom',
-          labels: {{ font: {{ size: 12 }}, usePointStyle: true, padding: 16 }}
-        }},
-        tooltip: {{
-          mode: 'index',
-          intersect: false,
-        }}
-      }},
-      scales: {{
-        y: {{
-          ticks: {{ font: {{ size: 11 }}, callback: v => v.toLocaleString() }},
-          grid: {{ color: 'rgba(0,0,0,0.06)' }},
-        }},
-        x: {{
-          ticks: {{ font: {{ size: 12 }} }},
-          grid: {{ display: false }},
-        }}
-      }}
-    }}
-  }});
-}})();
+(function(){
+  var sbi=75.5, c=sbi>=80?'#f44336':sbi>=65?'#ff9800':'#4caf50';
+  new Chart('gaugeChart',{type:'doughnut',data:{labels:['SBI得分',''],datasets:[{data:[sbi,100-sbi],backgroundColor:[c,'#e8edf2'],borderWidth:0,circumference:270,rotation:225}]},options:{responsive:true,maintainAspectRatio:true,cutout:'76%',plugins:{legend:{display:false},tooltip:{enabled:false}}},plugins:[{id:'gaugeText',afterDraw:function(chart){var t=chart.ctx;t.save();t.textAlign='center';var x=chart.width/2,y=chart.height*0.72;t.font='bold 30px sans-serif';t.fillStyle=c;t.fillText(sbi.toFixed(1),x,y);t.font='13px sans-serif';t.fillStyle='#888';t.fillText('SBI 总分',x,y+22);t.restore();}}]});
+  new Chart('radarChart',{type:'radar',data:{labels:['估值','拥挤度','杠杆','业绩兑现','资金流向','外部环境'],datasets:[{label:'得分',data:[96,75,100,35,75,50],backgroundColor:'rgba(57,73,171,0.15)',borderColor:'#3949ab',borderWidth:2.5,pointBackgroundColor:'#3949ab',pointBorderColor:'#fff',pointBorderWidth:2,pointRadius:5}]},options:{responsive:true,maintainAspectRatio:true,scales:{r:{min:0,max:100,ticks:{stepSize:20,font:{size:11}},grid:{color:'rgba(0,0,0,0.06)'},angleLines:{color:'rgba(0,0,0,0.1)'},pointLabels:{font:{size:13,weight:'600'},color:'#3949ab'}}},plugins:{legend:{display:false}}}});
+  new Chart('soxChart',{type:'line',data:{labels:['6/18','6/19','6/22','6/23','6/24','6/25'],datasets:[{label:'SOX收盘',data:[14341.78,null,14634.72,13482.51,13458.19,13940.87],borderColor:'#3949ab',backgroundColor:'rgba(57,73,171,0.08)',borderWidth:2.5,pointRadius:[5,0,5,5,5,6],pointBackgroundColor:['#3949ab','#3949ab','#3949ab','#e64a19','#e64a19','#3949ab'],tension:0.3,fill:true,spanGaps:true},{label:'200MA',data:[8485,8485,8485,8485,8485,8485],borderColor:'#ff9800',borderWidth:1.5,borderDash:[6,3],pointRadius:0,fill:false}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{position:'bottom',labels:{font:{size:12},usePointStyle:true,padding:16}},tooltip:{mode:'index',intersect:false}},scales:{y:{ticks:{font:{size:11},callback:function(v){return v.toLocaleString();}},grid:{color:'rgba(0,0,0,0.06)'}},x:{ticks:{font:{size:12}},grid:{display:false}}}}});
+})();
 </script>
 </body>
 </html>
