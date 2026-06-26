@@ -64,13 +64,13 @@
 <div class="container">
 
   <div class="header">
-    <h1>美国硬件/半导体板块 SBI 泡沫指数日报</h1>
+    <h1>🇺🇸 美国硬件/半导体板块 SBI 泡沫指数日报</h1>
     <div class="subtitle">Snail Investment Research · 量化动量研究</div>
     <div class="date">报告日期：2026-06-26（2026年6月26日 周五）｜美股数据截止：2026-06-25 收盘</div>
   </div>
 
   <div class="section">
-    <h2>SBI 泡沫指数总评</h2>
+    <h2>📊 SBI 泡沫指数总评</h2>
     <div class="sbi-score-section">
       <div class="sbi-gauge"><canvas id="gaugeChart"></canvas></div>
       <div class="sbi-summary">
@@ -86,7 +86,7 @@
   </div>
 
   <div class="section">
-    <h2>六维度评分明细</h2>
+    <h2>🧮 六维度评分明细</h2>
     <table class="dim-table">
       <thead><tr><th>维度</th><th>权重</th><th>得分</th><th>评分条</th><th>核心依据</th></tr></thead>
       <tbody>
@@ -106,7 +106,7 @@
   </div>
 
   <div class="section">
-    <h2>可视化图表</h2>
+    <h2>📈 可视化图表</h2>
     <div class="chart-grid">
       <div class="chart-box"><h3>六维度雷达图</h3><canvas id="radarChart"></canvas></div>
       <div class="chart-box"><h3>SOX收盘价与200MA走势</h3><canvas id="soxChart"></canvas></div>
@@ -114,7 +114,7 @@
   </div>
 
   <div class="section">
-    <h2>近期重大事件</h2>
+    <h2>📰 近期重大事件</h2>
     <ul class="event-list">
       <li><span class="dt">2026-06-25</span>：SOX反弹 +3.59% 至 13,940.87，板块从6/23暴跌中修复；SMH资金回流</li>
       <li><span class="dt">2026-06-23</span>：🔴 全球半导体暴跌：韩国SK海力士/三星跌超12%触发熔断，NVDA -2.93%，AMD -5.02%，板块情绪脆弱性暴露</li>
@@ -126,7 +126,7 @@
   </div>
 
   <div class="section">
-    <h2>关键数据附录</h2>
+    <h2>📋 关键数据附录</h2>
     <div class="data-grid">
       <div class="data-card"><div class="label">SOX收盘（6/25）</div><div class="value">13,940.87</div><div class="sub">200MA: 8,485 · 偏离 +64.3% · RSI(14): 58.0</div></div>
       <div class="data-card"><div class="label">NVDA Forward P/E</div><div class="value">24.04x</div><div class="sub">Trailing P/E: 29.98x · 市值: ~$5.23T</div></div>
@@ -140,7 +140,7 @@
   </div>
 
   <div class="section">
-    <h2>多空论点对比</h2>
+    <h2>⚖️ 多空论点对比</h2>
     <div class="bull-bear">
       <div class="bull">
         <h3>✅ 看多论点</h3>
@@ -167,10 +167,11 @@
   </div>
 
   <div class="section">
-    <h2>操作建议</h2>
+    <h2>🎯 操作建议</h2>
     <ol class="rec-list">
       <li><strong>维持SBI 75.5危险区间评级</strong>，建议减持半导体追涨仓位，保留核心优质标的。</li>
-      <li><strong>标的选择：</strong>保留NVDA多头（Fwd P/E 24x相对合理），<span style="color:#e64a19;font-weight:600;">减持AMD等极端估值标的</span>（Fwd P/E 77x）。</li>
+      <li><strong>标的选
+ care：</strong>保留NVDA多头（Fwd P/E 24x相对合理），<span style="color:#e64a19;font-weight:600;">减持AMD等极端估值标的</span>（Fwd P/E 77x）。</li>
       <li><strong>风控：</strong>关注6/23级别暴跌的再次触发风险，建议设置止损（SOX跌破13,000或20日线13,357）。</li>
       <li><strong>数据跟踪：</strong>密切跟踪FINRA 6月数据（预计7月中旬发布），杠杆如继续创新高将推SBI入极端危险区间（&gt;80）。</li>
       <li><strong>加仓时机：</strong>等待板块调整至SOX回归50MA（11,928）附近再考虑加仓，当前价格风险回报比不佳。</li>
@@ -179,7 +180,7 @@
   </div>
 
   <div class="section">
-    <h2>SBI评分方法论</h2>
+    <h2>📖 SBI评分方法论</h2>
     <div style="font-size:14px;color:#555;line-height:1.8;">
       <p><strong>SBI（Semiconductor Bubble Index）泡沫指数</strong>基于6大维度、12项子指标，评分范围0–100：</p>
       <ul style="padding-left:20px;margin:10px 0;">
@@ -205,10 +206,110 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script>
 (function(){
-  var sbi=75.5, c=sbi>=80?'#f44336':sbi>=65?'#ff9800':'#4caf50';
-  new Chart('gaugeChart',{type:'doughnut',data:{labels:['SBI得分',''],datasets:[{data:[sbi,100-sbi],backgroundColor:[c,'#e8edf2'],borderWidth:0,circumference:270,rotation:225}]},options:{responsive:true,maintainAspectRatio:true,cutout:'76%',plugins:{legend:{display:false},tooltip:{enabled:false}}},plugins:[{id:'gaugeText',afterDraw:function(chart){var t=chart.ctx;t.save();t.textAlign='center';var x=chart.width/2,y=chart.height*0.72;t.font='bold 30px sans-serif';t.fillStyle=c;t.fillText(sbi.toFixed(1),x,y);t.font='13px sans-serif';t.fillStyle='#888';t.fillText('SBI 总分',x,y+22);t.restore();}}]});
-  new Chart('radarChart',{type:'radar',data:{labels:['估值','拥挤度','杠杆','业绩兑现','资金流向','外部环境'],datasets:[{label:'得分',data:[96,75,100,35,75,50],backgroundColor:'rgba(57,73,171,0.15)',borderColor:'#3949ab',borderWidth:2.5,pointBackgroundColor:'#3949ab',pointBorderColor:'#fff',pointBorderWidth:2,pointRadius:5}]},options:{responsive:true,maintainAspectRatio:true,scales:{r:{min:0,max:100,ticks:{stepSize:20,font:{size:11}},grid:{color:'rgba(0,0,0,0.06)'},angleLines:{color:'rgba(0,0,0,0.1)'},pointLabels:{font:{size:13,weight:'600'},color:'#3949ab'}}},plugins:{legend:{display:false}}}});
-  new Chart('soxChart',{type:'line',data:{labels:['6/18','6/19','6/22','6/23','6/24','6/25'],datasets:[{label:'SOX收盘',data:[14341.78,null,14634.72,13482.51,13458.19,13940.87],borderColor:'#3949ab',backgroundColor:'rgba(57,73,171,0.08)',borderWidth:2.5,pointRadius:[5,0,5,5,5,6],pointBackgroundColor:['#3949ab','#3949ab','#3949ab','#e64a19','#e64a19','#3949ab'],tension:0.3,fill:true,spanGaps:true},{label:'200MA',data:[8485,8485,8485,8485,8485,8485],borderColor:'#ff9800',borderWidth:1.5,borderDash:[6,3],pointRadius:0,fill:false}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{position:'bottom',labels:{font:{size:12},usePointStyle:true,padding:16}},tooltip:{mode:'index',intersect:false}},scales:{y:{ticks:{font:{size:11},callback:function(v){return v.toLocaleString();}},grid:{color:'rgba(0,0,0,0.06)'}},x:{ticks:{font:{size:12}},grid:{display:false}}}}});
+  var sbi=75.5;
+  var c=sbi>=80?'#f44336':sbi>=65?'#ff9800':'#4caf50';
+  new Chart('gaugeChart',{
+    type:'doughnut',
+    data:{
+      labels:['SBI得分',''],
+      datasets:[{data:[sbi,100-sbi],backgroundColor:[c,'#e8edf2'],borderWidth:0,circumference:270,rotation:225}]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:true,
+      cutout:'76%',
+      plugins:{legend:{display:false},tooltip:{enabled:false}}
+    },
+    plugins:[{
+      id:'gaugeText',
+      afterDraw:function(chart){
+        var t=chart.ctx;
+        t.save();
+        t.textAlign='center';
+        var x=chart.width/2;
+        var y=chart.height*0.72;
+        t.font='bold 30px sans-serif';
+        t.fillStyle=c;
+        t.fillText(sbi.toFixed(1),x,y);
+        t.font='13px sans-serif';
+        t.fillStyle='#888';
+        t.fillText('SBI 总分',x,y+22);
+        t.restore();
+      }
+    }]
+  });
+  new Chart('radarChart',{
+    type:'radar',
+    data:{
+      labels:['估值','拥挤度','杠杆','业绩兑现','资金流向','外部环境'],
+      datasets:[{
+        label:'得分',
+        data:[96,75,100,35,75,50],
+        backgroundColor:'rgba(57,73,171,0.15)',
+        borderColor:'#3949ab',
+        borderWidth:2.5,
+        pointBackgroundColor:'#3949ab',
+        pointBorderColor:'#fff',
+        pointBorderWidth:2,
+        pointRadius:5
+      }]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:true,
+      scales:{
+        r:{
+          min:0,max:100,
+          ticks:{stepSize:20,font:{size:11}},
+          grid:{color:'rgba(0,0,0,0.06)'},
+          angleLines:{color:'rgba(0,0,0,0.1)'},
+          pointLabels:{font:{size:13,weight:'600'},color:'#3949ab'}
+        }
+      },
+      plugins:{legend:{display:false}}
+    }
+  });
+  new Chart('soxChart',{
+    type:'line',
+    data:{
+      labels:['6/18','6/19','6/22','6/23','6/24','6/25'],
+      datasets:[{
+        label:'SOX收盘',
+        data:[14341.78,null,14634.72,13482.51,13458.19,13940.87],
+        borderColor:'#3949ab',
+        backgroundColor:'rgba(57,73,171,0.08)',
+        borderWidth:2.5,
+        pointRadius:[5,0,5,5,5,6],
+        pointBackgroundColor:['#3949ab','#3949ab','#3949ab','#e64a19','#e64a19','#3949ab'],
+        tension:0.3,
+        fill:true,
+        spanGaps:true
+      },{
+        label:'200MA',
+        data:[8485,8485,8485,8485,8485,8485],
+        borderColor:'#ff9800',
+        borderWidth:1.5,
+        borderDash:[6,3],
+        pointRadius:0,
+        fill:false
+      }]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:true,
+      plugins:{
+        legend:{position:'bottom',labels:{font:{size:12},usePointStyle:true,padding:16}},
+        tooltip:{mode:'index',intersect:false}
+      },
+      scales:{
+        y:{
+          ticks:{font:{size:11},callback:function(v){return v.toLocaleString();}},
+          grid:{color:'rgba(0,0,0,0.06)'}
+        },
+        x:{ticks:{font:{size:12}},grid:{display:false}}
+      }
+    }
+  });
 })();
 </script>
 </body>
