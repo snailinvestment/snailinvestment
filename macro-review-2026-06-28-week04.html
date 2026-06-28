@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026.6.22–6.28 第4周宏观复盘 | 四维驱动三层传导框架</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --ink:#0d1520;--navy:#0a1f3c;--blue:#1a3d6e;--accent:#c8973a;--gold2:#e8b84b;
+  --silver:#8fa3bc;--slate:#3d5570;--fog:#f2f5f9;--white:#ffffff;
+  --green:#1c7a50;--red:#c0392b;--amber:#d97706;--purple:#7c3aed;
+  --border:rgba(26,61,110,0.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'IBM Plex Sans',sans-serif;background:#eef1f6;color:var(--ink);font-size:13.5px;line-height:1.72;}
+
+.masthead{background:var(--navy);position:relative;overflow:hidden;}
+.masthead::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 75% 35%,rgba(124,58,237,0.15) 0%,transparent 55%),
+             radial-gradient(ellipse at 15% 80%,rgba(200,151,58,0.09) 0%,transparent 50%);}
+.masthead::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(to right,var(--purple),var(--accent),transparent);}
+.mi{max-width:1240px;margin:0 auto;padding:52px 40px 44px;position:relative;z-index:1;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--accent);margin-bottom:20px;
+  display:flex;align-items:center;gap:14px;}
+.eyebrow::before{content:'';display:inline-block;width:32px;height:1px;background:var(--accent);}
+.headline{font-family:'Playfair Display',serif;font-size:38px;font-weight:700;
+  color:var(--white);line-height:1.18;letter-spacing:-0.5px;margin-bottom:14px;max-width:820px;}
+.headline em{font-style:italic;color:#a78bfa;}
+.subline{font-size:13px;color:var(--silver);font-weight:300;margin-bottom:36px;}
+.mrow{display:flex;gap:32px;flex-wrap:wrap;}
+.mc{display:flex;flex-direction:column;gap:3px;}
+.mcl{font-size:9px;letter-spacing:1.8px;text-transform:uppercase;color:rgba(143,163,188,.6);}
+.mcv{font-family:'IBM Plex Mono',monospace;font-size:13px;color:rgba(242,245,249,.92);font-weight:500;}
+
+.alert-bar{padding:11px 40px;display:flex;align-items:center;gap:14px;}
+.alert-bar.warn{background:rgba(124,58,237,0.85);border-top:1px solid rgba(167,139,250,0.4);}
+.alert-bar.info{background:rgba(26,61,110,0.85);border-top:1px solid rgba(143,163,188,0.2);}
+.atext{font-size:11.5px;color:#f5f3ff;font-weight:500;}
+.atext strong{color:#fff;}
+
+.ticker-bar{background:rgba(10,31,60,.95);border-top:1px solid rgba(200,151,58,.2);
+  border-bottom:1px solid rgba(200,151,58,.1);padding:10px 40px;
+  display:flex;gap:28px;overflow-x:auto;scrollbar-width:none;}
+.ticker-bar::-webkit-scrollbar{display:none;}
+.tick{display:flex;align-items:center;gap:7px;white-space:nowrap;
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;}
+.tn{color:var(--silver);font-size:9.5px;letter-spacing:1px;text-transform:uppercase;}
+.tv{color:rgba(242,245,249,.9);font-weight:500;}
+.up{color:#34c97a;font-size:10.5px;}.dn{color:#e05555;font-size:10.5px;}.neu{color:var(--silver);font-size:10.5px;}
+
+.page{max-width:1240px;margin:0 auto;padding:28px 40px 80px;
+  display:grid;grid-template-columns:1fr 308px;gap:22px;align-items:start;}
+.main{display:flex;flex-direction:column;gap:20px;}
+.aside{display:flex;flex-direction:column;gap:20px;}
+
+.card{background:var(--white);border:1px solid var(--border);border-radius:5px;
+  overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.07),0 4px 20px rgba(0,0,0,.05);}
+.ch{padding:14px 22px 13px;border-bottom:1px solid #eaeff6;
+  display:flex;align-items:center;gap:10px;background:linear-gradient(to right,#f7f9fc,#fff);}
+.chb{width:3px;height:17px;border-radius:2px;flex-shrink:0;}
+.chb.b{background:var(--blue);}.chb.g{background:var(--green);}
+.chb.r{background:var(--red);}.chb.a{background:var(--accent);}
+.chb.p{background:var(--purple);}
+.cht{font-size:10px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--blue);}
+.cb{padding:20px 22px;}.cb.np{padding:0;}
+
+.kpi{display:grid;grid-template-columns:repeat(6,1fr);}
+.kc{padding:18px 16px;border-right:1px solid #eaeff6;border-bottom:1px solid #eaeff6;}
+.kc:nth-child(6n){border-right:none;}
+.kc:nth-last-child(-n+6){border-bottom:none;}
+.kl{font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--silver);margin-bottom:6px;}
+.kn{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:600;color:var(--ink);line-height:1;margin-bottom:5px;}
+.kch{font-size:10.5px;font-weight:600;}
+.pos{color:var(--green);}.neg{color:var(--red);}.mtt{color:var(--silver);}
+
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+thead th{background:#f2f5f9;font-size:9.5px;font-weight:600;letter-spacing:1.2px;
+  text-transform:uppercase;color:#4a6080;padding:9px 12px;
+  text-align:left;border-bottom:1px solid #dde5f0;}
+tbody td{padding:9px 12px;border-bottom:1px solid #edf1f7;color:#2d3d52;vertical-align:top;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:rgba(26,61,110,.025);}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;text-align:right;}
+.muted{color:var(--silver);font-size:11px;}
+.br{font-weight:700;background:rgba(26,61,110,.03);}
+.ar{background:rgba(200,151,58,.05);}
+.rr{background:rgba(192,57,43,.04);}
+.gr{background:rgba(28,122,80,.04);}
+.pr{background:rgba(124,58,237,.04);}
+
+.tl{display:flex;flex-direction:column;}
+.tl-item{display:grid;grid-template-columns:56px 1fr;gap:0;}
+.tl-item:not(:last-child) .tl-ln{border-left:2px solid #dde5f0;}
+.tl-l{display:flex;flex-direction:column;align-items:center;padding-top:2px;}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;position:relative;z-index:1;border:2px solid white;}
+.dot.b{background:var(--blue);box-shadow:0 0 0 2px var(--blue);}
+.dot.g{background:var(--green);box-shadow:0 0 0 2px var(--green);}
+.dot.r{background:var(--red);box-shadow:0 0 0 2px var(--red);}
+.dot.a{background:var(--accent);box-shadow:0 0 0 2px var(--accent);}
+.dot.p{background:var(--purple);box-shadow:0 0 0 2px var(--purple);}
+.tl-ln{flex:1;width:2px;background:#dde5f0;margin-top:4px;}
+.tl-dt{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--silver);margin-top:2px;}
+.tl-r{padding:0 0 20px 14px;}
+.tl-h{font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+.tl-b{font-size:12px;color:#4a6080;line-height:1.6;}
+
+.sc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.sc-card{border:1px solid #dde5f0;border-radius:4px;overflow:hidden;}
+.sc-h{padding:10px 14px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.sc-h.bull{background:rgba(28,122,80,.1);color:var(--green);}
+.sc-h.base{background:rgba(26,61,110,.08);color:var(--blue);}
+.sc-h.bear{background:rgba(192,57,43,.08);color:var(--red);}
+.sc-b{padding:14px;}
+.sc-p{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;margin-bottom:4px;}
+.sc-prob{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--silver);margin-bottom:8px;}
+.sc-desc{font-size:11.5px;color:#4a6080;line-height:1.55;}
+
+.ri{padding:11px 14px;border-left:3px solid;margin-bottom:9px;background:#f9fafc;border-radius:0 3px 3px 0;}
+.ri.h{border-color:var(--red);}.ri.m{border-color:var(--amber);}.ri.l{border-color:var(--silver);}
+.ri-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
+.ri-name{font-size:12px;font-weight:600;color:var(--ink);}
+.badge{font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:2px;text-transform:uppercase;}
+.badge.h{background:rgba(192,57,43,.1);color:var(--red);}
+.badge.m{background:rgba(217,119,6,.1);color:var(--amber);}
+.badge.l{background:rgba(143,163,188,.15);color:var(--slate);}
+.ri-desc{font-size:11.5px;color:#4a6080;}
+
+.ai{margin-bottom:14px;}
+.ar2{display:flex;justify-content:space-between;margin-bottom:5px;font-size:12px;}
+.an{font-weight:500;}.ap{font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--blue);}
+.ab{height:6px;background:#eaeff6;border-radius:3px;overflow:hidden;}
+.af{height:100%;border-radius:3px;}
+.as{font-size:10.5px;color:var(--silver);margin-top:3px;}
+
+.tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;
+  padding:2px 7px;border-radius:2px;text-transform:uppercase;margin-left:5px;vertical-align:middle;}
+.tag-bull{background:rgba(28,122,80,.1);color:var(--green);}
+.tag-bear{background:rgba(192,57,43,.1);color:var(--red);}
+.tag-neu{background:rgba(143,163,188,.15);color:var(--slate);}
+.tag-warn{background:rgba(217,119,6,.12);color:var(--amber);}
+.tag-pur{background:rgba(124,58,237,.1);color:var(--purple);}
+
+.divider{height:1px;background:#eaeff6;margin:16px 0;}
+.fn{font-size:10.5px;color:var(--silver);font-style:italic;margin-top:10px;
+  padding-top:10px;border-top:1px solid #eaeff6;}
+p{margin-bottom:10px;}p:last-child{margin-bottom:0;}strong{color:var(--ink);}
+
+/* MU 财报大框 */
+.mu-box{background:linear-gradient(135deg,#0a200f,#0e3320);
+  border:1px solid rgba(28,122,80,.4);border-radius:4px;padding:18px;margin-bottom:14px;}
+.mu-tag{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4ade80;margin-bottom:12px;}
+.mu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px;}
+.mg{text-align:center;padding:12px 8px;background:rgba(255,255,255,.05);border-radius:3px;}
+.mg-n{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;color:#fff;}
+.mg-l{font-size:9.5px;color:rgba(74,222,128,.7);margin-top:3px;}
+
+/* PCE 框 */
+.pce-box{background:linear-gradient(135deg,#20100a,#3d1f15);
+  border:1px solid rgba(192,57,43,.35);border-radius:4px;padding:16px 18px;margin-bottom:14px;}
+.pce-tag{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#f87171;margin-bottom:8px;}
+.pce-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px;}
+.pg{text-align:center;padding:10px;background:rgba(255,255,255,.05);border-radius:3px;}
+.pg-n{font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:600;color:#fff;}
+.pg-l{font-size:9.5px;color:rgba(248,113,113,.7);margin-top:3px;}
+
+.chart-wrap{position:relative;width:100%;}
+
+/* 周汇总 */
+.week-wrap{background:linear-gradient(135deg,#0a1f3c,#1a3d6e);
+  border-radius:4px;padding:18px;margin-bottom:14px;}
+.week-title{font-family:'Playfair Display',serif;font-size:15px;
+  color:#fff;font-style:italic;line-height:1.5;}
+.week-attr{font-size:10px;color:rgba(200,151,58,.8);margin-top:8px;letter-spacing:1px;}
+
+.rf{background:var(--navy);border-top:1px solid rgba(200,151,58,.15);padding:14px 40px;}
+.rf-inner{max-width:1240px;margin:0 auto;display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;}
+.rl{font-size:9.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);flex-shrink:0;padding-top:1px;}
+.rt{font-size:10px;color:rgba(143,163,188,.65);line-height:1.65;}
+.disc{max-width:1240px;margin:0 auto;padding:10px 40px 20px;
+  font-size:9.5px;color:rgba(143,163,188,.4);background:var(--navy);line-height:1.65;}
+
+@media(max-width:900px){
+  .page{grid-template-columns:1fr;padding:16px 16px 60px;}
+  .mi{padding:36px 20px 30px;}.headline{font-size:26px;}
+  .ticker-bar,.alert-bar,.rf,.disc{padding-left:20px;padding-right:20px;}
+  .kpi{grid-template-columns:repeat(3,1fr);}
+  .kc:nth-child(6n){border-right:1px solid #eaeff6;}
+  .kc:nth-child(3n){border-right:none;}
+  .sc-row,.mu-grid,.pce-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="mi">
+    <div class="eyebrow">全球宏观投资研究 &nbsp;·&nbsp; 四维驱动 — 三层传导框架</div>
+    <h1 class="headline">2026.6.22–6.28（第4周）宏观复盘<br>
+      <em>分裂叙事：MU史诗财报 vs 科技轮动崩塌</em>
+    </h1>
+    <p class="subline">6.29–7.5（第5周）展望 &nbsp;|&nbsp; 数据源：BEA · BLS · CME FedWatch · EIA · CNBC · Bloomberg · Trading Economics</p>
+    <div class="mrow">
+      <div class="mc"><span class="mcl">基准日</span><span class="mcv">2026.06.28 (日)</span></div>
+      <div class="mc"><span class="mcl">Micron Q3收入</span><span class="mcv">$414.6亿 大幅超预期+16%</span></div>
+      <div class="mc"><span class="mcl">核心PCE (5月)</span><span class="mcv">YoY +3.4%（史高） MoM +0.3%（符预期）</span></div>
+      <div class="mc"><span class="mcl">WTI 周跌</span><span class="mcv">约-10%，收$68.86（战前低位）</span></div>
+      <div class="mc"><span class="mcl">纳指周跌</span><span class="mcv">-4.6%（科技轮动出逃）</span></div>
+      <div class="mc"><span class="mcl">金价</span><span class="mcv">~$4,092（PCE后反弹）</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ALERT -->
+<div class="alert-bar warn">
+  <span style="font-size:14px;">⚡</span>
+  <span class="atext"><strong>本周叙事高度分裂：</strong> Micron创纪录财报（收入+346% YoY，Q4指引$500亿）验证AI存储周期强劲，但科技板块"卖事实"杀跌（纳指-4.6%）；油价继续暴跌至战前低位（WTI $68.86）；核心PCE 3.4%（史高）强化Warsh鹰派路径；OpenAI IPO延期传言引爆AI叙事信心危机。道指逆势+0.6%，市场呈现罕见"强轮动+弱科技"组合。</span>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="tick"><span class="tn">纳指周跌</span><span class="tv">-4.6%</span><span class="dn">▼ 2月以来最差周</span></div>
+  <div class="tick"><span class="tn">标普500周</span><span class="tv">-约2%</span><span class="dn">▼ 重回7,354</span></div>
+  <div class="tick"><span class="tn">道指周</span><span class="tv">+0.6%</span><span class="up">▲ 52,655历史新高（日中）</span></div>
+  <div class="tick"><span class="tn">MU财报</span><span class="tv">+16% 盘后</span><span class="up">▲ 次日+15%→-4.5%</span></div>
+  <div class="tick"><span class="tn">WTI</span><span class="tv">$68.86</span><span class="dn">▼ -约10% 战前低位</span></div>
+  <div class="tick"><span class="tn">布伦特</span><span class="tv">~$71</span><span class="dn">▼ -约10%</span></div>
+  <div class="tick"><span class="tn">伦敦金</span><span class="tv">~$4,092</span><span class="up">▲ PCE后反弹+1.1%</span></div>
+  <div class="tick"><span class="tn">核心PCE YoY</span><span class="tv">+3.4%</span><span class="dn">2023年10月以来最高</span></div>
+  <div class="tick"><span class="tn">10Y美债</span><span class="tv">~4.40%</span><span class="up">▼ 油价下行压低通胀预期</span></div>
+  <div class="tick"><span class="tn">Apple</span><span class="tv">-6%</span><span class="dn">▼ 涨价引发抛售</span></div>
+  <div class="tick"><span class="tn">OpenAI IPO</span><span class="tv">延期2027?</span><span class="dn">▼ AI信心冲击</span></div>
+</div>
+
+<!-- PAGE -->
+<div class="page">
+<div class="main">
+
+  <!-- KPI -->
+  <div class="card">
+    <div class="ch"><div class="chb a"></div><span class="cht">本周关键数据快照（6.22–6.28）</span></div>
+    <div class="kpi">
+      <div class="kc"><div class="kl">Micron Q3 收入</div><div class="kn">$414.6亿</div><div class="kch pos">▲ +346% YoY，大幅超预期16%</div></div>
+      <div class="kc"><div class="kl">MU Q4 指引</div><div class="kn">$500亿</div><div class="kch pos">▲ 共识$435.8亿，超预期+15%</div></div>
+      <div class="kc"><div class="kl">核心PCE (5月 YoY)</div><div class="kn">3.4%</div><div class="kch neg">▲ 2023年10月最高</div></div>
+      <div class="kc"><div class="kl">WTI 收盘</div><div class="kn">$68.86</div><div class="kch neg">▼ -约10% 战前水平</div></div>
+      <div class="kc"><div class="kl">纳指周跌</div><div class="kn">-4.6%</div><div class="kch neg">▼ 2月以来最差单周</div></div>
+      <div class="kc"><div class="kl">伦敦金 PCE后</div><div class="kn">~$4,092</div><div class="kch pos">▲ 跌破$4,000后反弹</div></div>
+    </div>
+  </div>
+
+  <!-- Micron财报 -->
+  <div class="card">
+    <div class="ch"><div class="chb g"></div><span class="cht">一、Micron Q3 FY2026财报（6.24盘后）— AI存储史诗时刻</span></div>
+    <div class="cb">
+      <div class="mu-box">
+        <div class="mu-tag">🚀 MU Q3 FY2026 · 6月24日盘后 · 全面碾压预期</div>
+        <div class="mu-grid">
+          <div class="mg"><div class="mg-n">$414.6亿</div><div class="mg-l">收入（预期$358.4亿）</div></div>
+          <div class="mg"><div class="mg-n">+346%</div><div class="mg-l">收入同比增速（去年$93亿）</div></div>
+          <div class="mg"><div class="mg-n">$25.11</div><div class="mg-l">Non-GAAP EPS（预期$20.28）</div></div>
+          <div class="mg"><div class="mg-n">81.2%</div><div class="mg-l">调整后营业利润率</div></div>
+        </div>
+      </div>
+
+      <table style="margin-bottom:16px;">
+        <thead><tr><th>业务板块</th><th>Q3 FY2026 收入</th><th>YoY增速</th><th>分析要点</th></tr></thead>
+        <tbody>
+          <tr class="gr"><td><strong>云端存储（Cloud Memory）</strong></td><td class="mono">$137.7亿</td><td class="mono pos">+306%</td><td class="muted">HBM4爆发；Nvidia Vera Rubin平台 HBM供应从3月起翻倍斜率爬坡</td></tr>
+          <tr class="gr"><td><strong>核心数据中心（Core DC）</strong></td><td class="mono">$115.2亿</td><td class="mono pos">+653%</td><td class="muted">数据中心SSD超$50亿（环比翻倍+）；AI超算基础设施爆发</td></tr>
+          <tr><td>移动+客户端（Mobile & Client）</td><td class="mono">$115.2亿</td><td class="mono pos">+253%</td><td class="muted">AI PC DRAM规格升至32GB最低；旗舰手机存储规格同步上移</td></tr>
+          <tr><td>汽车+嵌入式（Auto & Embedded）</td><td class="mono">$46.3亿</td><td class="mono pos">+310%</td><td class="muted">车企提前备货；79%毛利率</td></tr>
+          <tr class="gr"><td><strong>Q4 FY2026 指引</strong></td><td class="mono"><strong>$500亿</strong></td><td class="mono pos">共识$435.8亿 +15%</td><td class="muted">2026全年HBM产能已100%锁定；16份战略客户绑定协议（SCA）含约$1000亿最低购买量</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>市场反应的"悖论"：</strong> Micron盘后股价飙升+16%（至约$1,250附近），次日开盘+15%；但随后随大市科技抛售跌回$1,160附近（-4.5%），全周净涨约+10%。更大的"悖论"是纳指在Micron财报后连续下跌——原因是：①记忆体成本上涨意味着苹果、微软等设备商成本上升（苹果MacBook/iPad同日宣布涨价，股价-6%）；②OpenAI IPO延期传言令市场质疑"AI资本回报闭环"时间表；③季末资金再平衡引发科技减仓。</p>
+      <p style="margin-bottom:0;"><strong>结构意义：</strong> Micron与16家客户签署"战略客户协议"（Take-or-Pay），含约$1,000亿最低购买量，并收取$220亿预付款。这标志着AI存储从"传统周期品"转型为"长期可见基础设施"，是半导体产业史上第一次大规模去周期化定价重构。HBM TAM预计2028年达$1,000亿，CAGR约40%。</p>
+      <p class="fn">数据来源：Micron官网Q3 FY2026新闻稿（6.24.2026）；CNBC、Futurum、TechTimes、S&P Global、IG Group分析。</p>
+    </div>
+  </div>
+
+  <!-- 核心PCE + 通胀 -->
+  <div class="card">
+    <div class="ch"><div class="chb r"></div><span class="cht">二、5月PCE通胀（6.25 BEA发布）— 核心黏性超预期，滞胀叙事强化</span></div>
+    <div class="cb">
+      <div class="pce-box">
+        <div class="pce-tag">📊 5月PCE数据（BEA 6.25.2026）· 美联储首选通胀指标</div>
+        <div class="pce-grid">
+          <div class="pg"><div class="pg-n">4.1%</div><div class="pg-l">标题PCE YoY（预期4.1%，前值3.8%）</div></div>
+          <div class="pg"><div class="pg-n">+0.4%</div><div class="pg-l">标题PCE MoM（预期0.5%，低预期）</div></div>
+          <div class="pg"><div class="pg-n">3.4%</div><div class="pg-l">核心PCE YoY（预期3.3%，2023/10最高）</div></div>
+          <div class="pg"><div class="pg-n">+0.3%</div><div class="pg-l">核心PCE MoM（符合预期）</div></div>
+        </div>
+      </div>
+
+      <table style="margin-bottom:14px;">
+        <thead><tr><th>指标</th><th>5月实际</th><th>市场预期</th><th>4月读数</th><th>解读</th></tr></thead>
+        <tbody>
+          <tr class="rr"><td><strong>标题PCE YoY</strong></td><td class="mono neg">4.1%</td><td class="mono">4.1%</td><td class="mono">3.8%</td><td class="muted">符合预期但创2023年4月以来新高；能源主导上行</td></tr>
+          <tr><td>标题PCE MoM</td><td class="mono">+0.4%</td><td class="mono">+0.5%</td><td class="mono">+0.4%</td><td class="muted">低于预期，给予黄金反弹契机</td></tr>
+          <tr class="rr"><td><strong>核心PCE YoY</strong></td><td class="mono neg"><strong>3.4%</strong></td><td class="mono">3.3%</td><td class="mono">3.3%</td><td class="muted">高于预期；2023年10月以来最高；Warsh加息路径确认</td></tr>
+          <tr><td>核心PCE MoM</td><td class="mono">+0.3%</td><td class="mono">+0.3%</td><td class="mono">+0.24%</td><td class="muted">符合预期；核心通胀黏性但未加速</td></tr>
+          <tr class="gr"><td>个人收入 MoM</td><td class="mono pos">+0.7%</td><td class="mono">+0.4%</td><td class="mono">+0.5%</td><td class="muted">大幅超预期；名义购买力仍强</td></tr>
+          <tr><td>个人支出 MoM</td><td class="mono pos">+0.7%</td><td class="mono">+0.6%</td><td class="mono">+0.4%</td><td class="muted">消费韧性强于预期；储蓄率升至3%</td></tr>
+          <tr><td>初申失业金（6.20当周）</td><td class="mono pos">21.5万</td><td class="mono">22.3万</td><td class="mono">22.7万</td><td class="muted">大幅好于预期；劳动市场韧性</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>关键解读：</strong> 核心PCE 3.4%高于预期，初步印证Warsh担忧的"通胀从能源向核心扩散"路径已经启动。Morningstar高级经济学家Caldwell认为，这可能是2026年通胀的峰值（假设7月起油价下跌开始传导），但Warsh本人FOMC声明已清晰表态"five years running off 2% target"，当前核心读数与降息窗口完全不符。</p>
+      <p style="margin-bottom:0;"><strong>市场即时反应：</strong> 黄金在PCE公布后单日涨+1.1%至约$4,092（"通胀高企但月率不超预期"被解读为黄金友好组合）；10Y美债收益率跌至4.39%（低于4.5%前高）；美股整体小幅收跌，全周格局未变。</p>
+      <p class="fn">数据来源：BEA《个人收入与支出》（6.25.2026）；CNBC、FRED（St. Louis Fed）、Morningstar、Trading Economics。</p>
+    </div>
+  </div>
+
+  <!-- 油价 + 美伊 -->
+  <div class="card">
+    <div class="ch"><div class="chb a"></div><span class="cht">三、油价继续暴跌（本周-10%）— 霍尔木兹航运全面加速，沙特起锚</span></div>
+    <div class="cb">
+      <div class="chart-wrap" style="height:220px;margin-bottom:20px;">
+        <canvas id="oilChart"></canvas>
+      </div>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-l"><div class="dot g"></div><div class="tl-ln"></div><div class="tl-dt">6.22 一</div></div>
+          <div class="tl-r">
+            <div class="tl-h">霍尔木兹航运恢复加速，三艘沙特超级油轮出发</div>
+            <div class="tl-b">三艘沙特阿拉伯旗帜超级油轮（载约600万桶）在广播位置后离开霍尔木兹。沙特Ras Tanura码头开始装载，标志着海湾主要产油国正式启动产量恢复。WTI周一跌约-4.5%至$79.5附近。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-l"><div class="dot r"></div><div class="tl-ln"></div><div class="tl-dt">6.23 二</div></div>
+          <div class="tl-r">
+            <div class="tl-h">集装箱船遇袭事件引发短暂反弹 + 半导体暴跌</div>
+            <div class="tl-b">集装箱船"永爱"号在阿曼东南海域被不明飞行体击中，油价单日反弹+2%。同日，BoFA发布"下调AI目标价"报告，SMH芯片ETF暴跌7%，纳指下挫，科技股开始大规模出逃。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-l"><div class="dot g"></div><div class="tl-ln"></div><div class="tl-dt">6.24 三</div></div>
+          <div class="tl-r">
+            <div class="tl-h">Trump宣布"伊朗承诺零通行费" + 布伦特跌破$74</div>
+            <div class="tl-b">特朗普发文称伊朗已告知不会征收过境费或保险费，布伦特暴跌-4.3%至$73.74（战前最低），WTI跌-3.9%至$70.34（3月以来最低）。Micron盘后财报爆炸性超预期，股价+16%，但市场消化次日。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-l"><div class="dot a"></div><div class="tl-ln"></div><div class="tl-dt">6.25 四</div></div>
+          <div class="tl-r">
+            <div class="tl-h">PCE发布（核心3.4%超预期）+ 霍尔木兹过境量激增至75%战前水平</div>
+            <div class="tl-b">过境量已恢复至战前约75%，近1,000万桶原油处于过境或等待区。道琼斯创日内历史新高52,655.66，但纳指和S&P500均小幅下跌（科技继续轮动出逃）。黄金+1.1%至$4,092（PCE月率低预期）。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-l"><div class="dot r"></div><div class="tl-ln"></div><div class="tl-dt">6.26 五</div></div>
+          <div class="tl-r">
+            <div class="tl-h">WTI跌至$68.86（战前水平）+ OpenAI IPO延期引爆AI信心危机</div>
+            <div class="tl-b">WTI单日跌-4%至$68.86，周跌约10%，为2026年2月28日开战以来最低。NYT报道OpenAI正考虑将IPO推迟至2027年（因SpaceX上市后表现不佳及市场波动），SoftBank跌-9.2%，AI基础设施股普跌。纳指连续五日下跌（-0.24%），为2月以来最长连跌。</div>
+          </div>
+        </div>
+      </div>
+      <p class="fn">数据来源：Trading Economics（WTI/布伦特日线）；CNBC（美伊进展、Trump声明）；EIA STEO（6.9.2026）；FXStreet；Al Jazeera；OilPrice.com。</p>
+    </div>
+  </div>
+
+  <!-- 资产行情 -->
+  <div class="card">
+    <div class="ch"><div class="chb b"></div><span class="cht">四、大类资产行情复盘（6.26收盘·基准日6.28）</span></div>
+    <div class="cb">
+      <div class="chart-wrap" style="height:250px;margin-bottom:18px;">
+        <canvas id="assetChart"></canvas>
+      </div>
+      <table>
+        <thead><tr><th>品种</th><th>周收盘</th><th>周涨跌</th><th>核心驱动</th></tr></thead>
+        <tbody>
+          <tr class="rr"><td><strong>WTI 原油</strong></td><td class="mono">$68.86</td><td class="mono neg">▼ -约10%</td><td class="muted">霍尔木兹恢复至75%战前水平；沙特起锚；过去4周累计-22.2%；创战前最低</td></tr>
+          <tr class="rr"><td><strong>布伦特</strong></td><td class="mono">~$71</td><td class="mono neg">▼ -约10%</td><td class="muted">同上；跌破$74创3月低位</td></tr>
+          <tr class="ar"><td><strong>伦敦金</strong></td><td class="mono">~$4,092</td><td class="mono neg">▼ -约3%（跌破$4,000后反弹）</td><td class="muted">周中曾跌破$4,000创7个月新低；PCE月率低预期后反弹+1.1%至$4,092</td></tr>
+          <tr><td><strong>伦敦银</strong></td><td class="mono">~$33</td><td class="mono neg">▼ 弱势</td><td class="muted">科技需求受压；工业预期整体偏弱</td></tr>
+          <tr class="pr"><td><strong>标普500</strong></td><td class="mono">7,354.02</td><td class="mono neg">▼ 周-约2%</td><td class="muted">科技轮动出逃；季末再平衡；能源、医疗、工业获资金流入</td></tr>
+          <tr class="pr"><td><strong>纳斯达克</strong></td><td class="mono">25,297.62</td><td class="mono neg">▼ -4.6%（5日连跌）</td><td class="muted">Apple-6%（涨价）；OpenAI IPO延期；芯片整体承压；2月以来最差周</td></tr>
+          <tr class="gr"><td><strong>道琼斯</strong></td><td class="mono">51,876.11</td><td class="mono pos">▲ +0.6%</td><td class="muted">历史日中新高52,655（6.25）；工业+2.2%、医疗+1.5%、卡特彼勒+6%引领</td></tr>
+          <tr class="gr"><td><strong>Micron (MU)</strong></td><td class="mono">~$1,160-1,200</td><td class="mono pos">▲ 周净+约+10%</td><td class="muted">盘后+16%→次日+15%→回落-4.5%→再平衡；全周净涨</td></tr>
+          <tr><td><strong>Apple (AAPL)</strong></td><td class="mono">跌约6%（日）</td><td class="mono neg">▼ 周大幅下跌</td><td class="muted">Mac/iPad涨价宣布→成本转嫁担忧；6月25日单日-6%</td></tr>
+          <tr><td><strong>10Y 美债收益率</strong></td><td class="mono">~4.40%</td><td class="mono pos">▼ 周降约10bp</td><td class="muted">油价暴跌压低通胀预期；实际利率下行利好债券；科技抛售资金避险</td></tr>
+          <tr><td><strong>美元指数</strong></td><td class="mono">~99.0–99.5</td><td class="mono neg">▼ 小幅走软</td><td class="muted">油价下跌→通胀降温预期→美联储加息概率边际减弱</td></tr>
+          <tr><td><strong>BTC</strong></td><td class="mono">~$61,000</td><td class="mono neg">▼ -约5%</td><td class="muted">科技资产风险偏好收缩；OpenAI IPO延期冲击AI叙事；BoJ套息平仓压力</td></tr>
+        </tbody>
+      </table>
+      <p class="fn">数据来源：CNBC（6.26收盘数据）；TheStreet（日内精确点位）；Trading Economics（WTI/Gold）；Schwab Market Update（6.26.2026）。</p>
+    </div>
+  </div>
+
+  <!-- 中间传导层 -->
+  <div class="card">
+    <div class="ch"><div class="chb b"></div><span class="cht">五、中间传导层 + 科技市场结构分析</span></div>
+    <div class="cb">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">📊 通胀路径（PCE序列）</div>
+          <div class="chart-wrap" style="height:180px;"><canvas id="pceChart"></canvas></div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">🏭 周行业轮动</div>
+          <div class="chart-wrap" style="height:180px;"><canvas id="sectorChart"></canvas></div>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>传导层</th><th>本周核心内容</th><th>分析要点</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>通胀</strong></td>
+            <td>标题PCE 4.1%（能源主驱）；核心PCE 3.4%（超预期，史高）；MoM +0.3%（符预期）；个人收入+0.7%（大超预期）</td>
+            <td class="muted">"通胀高但月率受控"组合——支撑Warsh年内加息路径，但不提前至9月；黄金"通胀受益"逻辑重新点燃</td>
+          </tr>
+          <tr>
+            <td><strong>经济</strong></td>
+            <td>初申失业金21.5万（超预期强劲）；个人支出+0.7%；密歇根消费者信心终值48.9%（历史低位）；Q1 GDP终值修正待确认</td>
+            <td class="muted">消费韧性与信心低迷并存——"高频数据强、情绪数据弱"的典型滞胀征兆</td>
+          </tr>
+          <tr class="pr">
+            <td><strong>科技结构</strong></td>
+            <td>SMH芯片ETF周跌约7%（6.23单日）；纳指5日连跌；OpenAI IPO延期（NYT报道）；SPCX跌至$153附近；苹果-6%；SK Hynix计划$300亿美国上市</td>
+            <td class="muted">科技板块"买预期卖事实"正在系统性发酵：MU财报验证AI需求真实，但估值透支需要时间消化；OpenAI IPO延期令AI资本闭环叙事出现裂缝</td>
+          </tr>
+          <tr class="gr">
+            <td><strong>市场结构轮动</strong></td>
+            <td>道指历史新高（工业/医疗/金融驱动）；Russell 2000+0.7%（周五）；工业+2.2%、医疗+1.5%；资金流出科技进入防御型</td>
+            <td class="muted">季末资金再平衡叠加AI估值消化，形成"科技熊、旧经济牛"的罕见格局；BlackRock仍维持科技6-12个月看多</td>
+          </tr>
+          <tr>
+            <td><strong>汇率/流动性</strong></td>
+            <td>美元指数小幅走软~99；10Y美债跌至约4.40%（通胀压力经油价传导预期）；CME Oct加息概率从60.7%微降至约58%；黄金$4,000-$4,092区间震荡</td>
+            <td class="muted">PCE数据确认通胀仍高，但月率控制令市场稍作喘息；10Y美债与金价出现正相关（俱为"通胀+加息"双向押注）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 次周日历 -->
+  <div class="card">
+    <div class="ch"><div class="chb g"></div><span class="cht">六、6.29–7.5 第5周关键事件日历</span></div>
+    <div class="cb np">
+      <table>
+        <thead><tr><th>日期</th><th>星期</th><th>事件</th><th>重要度</th><th>数据源</th></tr></thead>
+        <tbody>
+          <tr><td>6.29</td><td>周一</td><td>欧元区6月CPI初值；美国Dallas Fed制造业指数</td><td>中等</td><td class="muted">欧盟统计局、Dallas Fed</td></tr>
+          <tr class="br"><td><strong>6.30</strong></td><td><strong>周二</strong></td><td><strong>美国Q1 GDP终值（BEA）；CB消费者信心指数；美国财政部季度再融资</strong></td><td><strong>高</strong></td><td class="muted">BEA、Conference Board、财政部</td></tr>
+          <tr class="br"><td><strong>7.2</strong></td><td><strong>周三</strong></td><td><strong>🔴 美国6月非农就业（NFP）+ 失业率（提前至周三，7.4休市）</strong></td><td><strong>极高</strong></td><td class="muted">BLS</td></tr>
+          <tr><td>7.3</td><td>周四</td><td>美国初申失业金；美国5月工厂订单；FOMC 6月会议纪要（Warsh版本首次公开）</td><td>高</td><td class="muted">DOL、BEA、美联储官网</td></tr>
+          <tr><td>7.4</td><td>周五</td><td>美国独立日假期（股债市场休市）</td><td>—</td><td class="muted">—</td></tr>
+          <tr class="ar"><td>全周</td><td>持续</td><td>⚡ <strong>伊朗核谈正式协议磋商进展（MoU后第一轮正式谈判）</strong></td><td><strong>极高</strong></td><td class="muted">IAEA、路透社、白宫</td></tr>
+          <tr class="ar"><td>全周</td><td>持续</td><td>⚡ <strong>OPEC+特别会议：讨论伊朗产量配额恢复计划（预期争议激烈）</strong></td><td><strong>高</strong></td><td class="muted">OPEC官网</td></tr>
+        </tbody>
+      </table>
+      <p class="fn" style="padding:8px 12px 12px;margin:0;"><strong>核心变盘节点：</strong> 7月2日非农（若世界杯/服务业就业继续超预期）将再度拷问美联储加息路径；FOMC纪要（7.3）是Warsh内部讨论首次公开，市场将仔细解读9月加息信号；OPEC+伊朗产量磋商是决定油价是否继续下行至$60s的关键催化剂。</p>
+    </div>
+  </div>
+
+  <!-- 三情景 -->
+  <div class="card">
+    <div class="ch"><div class="chb b"></div><span class="cht">七、次周三大情景推演（基准55% / 乐观25% / 悲观20%）</span></div>
+    <div class="cb">
+      <div class="sc-row">
+        <div class="sc-card">
+          <div class="sc-h bull">▲ 乐观情景 25%</div>
+          <div class="sc-b">
+            <div class="sc-p" style="color:var(--green);">软着陆曙光</div>
+            <div class="sc-prob">非农降温 + FOMC纪要鸽派</div>
+            <div class="sc-desc">6月NFP温和（+12万以下），薪资增速回落；FOMC纪要显示多数委员担忧过度紧缩；油价稳定在$65-70（通胀降温）；AI科技完成洗盘后反弹；黄金突破$4,300；10Y美债回落至4.2%；降息预期2027年初重新点燃。</div>
+          </div>
+        </div>
+        <div class="sc-card">
+          <div class="sc-h base">— 基准情景 55%</div>
+          <div class="sc-b">
+            <div class="sc-p" style="color:var(--blue);">滞胀持续震荡</div>
+            <div class="sc-prob">非农中性 + 纪要无明确信号</div>
+            <div class="sc-desc">6月NFP符合预期（+14-18万）；FOMC纪要措辞对称，无9月加息明确信号；油价$65-75震荡（Hormuz全面恢复 vs 产油国减产冲动）；科技股低位整固（纳指24,500-26,000区间）；黄金$4,000-4,200；10Y美债4.3-4.5%震荡。</div>
+          </div>
+        </div>
+        <div class="sc-card">
+          <div class="sc-h bear">▼ 悲观情景 20%</div>
+          <div class="sc-b">
+            <div class="sc-p" style="color:var(--red);">加息恐慌再现</div>
+            <div class="sc-prob">非农超预期 + 纪要鹰派</div>
+            <div class="sc-desc">6月NFP大幅超预期（+20万+，世界杯效应延续）；FOMC纪要显示多位委员讨论9月加息；伊朗核谈破裂导致油价反弹至$80+；核心PCE黏性+非农强劲双轨强化加息路径；纳指测试$24,000；10Y美债重回4.7%；黄金因实际利率上行再度跌破$4,000。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- ASIDE -->
+<div class="aside">
+
+  <!-- 叙事框架 -->
+  <div class="card">
+    <div class="ch"><div class="chb p"></div><span class="cht">本周核心叙事</span></div>
+    <div class="cb">
+      <div class="week-wrap">
+        <div class="week-title">"分裂叙事：<br>MU史诗财报 vs<br>科技轮动崩塌"</div>
+        <div class="week-attr">6.22–6.28 叙事主线 · 第4周</div>
+      </div>
+      <p style="font-size:12px;color:#4a6080;">本周是AI投资叙事最为"内部撕裂"的一周：Micron的$414亿收入和$500亿Q4指引，从需求侧完全验证了AI存储超级周期；但同一周内，苹果MacBook涨价、OpenAI IPO延期、SpaceX上市后不佳表现，令市场开始质疑"AI资本支出的回报闭环何时兑现"。</p>
+      <div class="divider"></div>
+      <p style="font-size:12px;color:#4a6080;"><strong>关键矛盾：</strong> 道指历史新高（旧经济）vs 纳指5连跌（新经济）同时出现——这是市场对AI估值重新定价最清晰的信号，而非景气度逆转。黄金跌破$4,000后反弹，确认了"通胀+加息+去风险"三角共振未结束。</p>
+      <div class="divider"></div>
+      <p style="font-size:12px;color:#4a6080;"><strong>4周油价路径：</strong> WTI从第1周$90→$85→$77→本周$68.86，过去4周累计-22.2%，这是本轮最重大的宏观结构性变化，其对Q3通胀的传导将在7-8月PCE数据中充分体现。</p>
+    </div>
+  </div>
+
+  <!-- 资产配置 -->
+  <div class="card">
+    <div class="ch"><div class="chb g"></div><span class="cht">八、资产配置调整建议</span></div>
+    <div class="cb">
+      <div class="ai">
+        <div class="ar2"><span class="an">AI算力/半导体</span><span class="ap">24% ▼-4%</span></div>
+        <div class="ab"><div class="af" style="width:24%;background:linear-gradient(to right,#1a3d6e,#3d6ea8);"></div></div>
+        <div class="as">科技轮动出逃中减仓；MU财报验证AI周期，但估值消化需时间；等待纳指测试24,500支撑后分批吸纳</div>
+      </div>
+      <div class="ai">
+        <div class="ar2"><span class="an">黄金</span><span class="ap">27% ▲+5%</span></div>
+        <div class="ab"><div class="af" style="width:27%;background:linear-gradient(to right,#c8973a,#e8b84b);"></div></div>
+        <div class="as">核心PCE3.4%+实际利率高位→黄金重获"通胀对冲"价值；跌破$4,000后分批建仓；目标$4,300-4,500</div>
+      </div>
+      <div class="ai">
+        <div class="ar2"><span class="an">防御/价值板块（工业/医疗）</span><span class="ap">10% 新增</span></div>
+        <div class="ab"><div class="af" style="width:10%;background:linear-gradient(to right,#1c7a50,#2da06a);"></div></div>
+        <div class="as">道指轮动逻辑成立；卡特彼勒+6%验证；非科技企业盈利稳健；小仓位分散配置</div>
+      </div>
+      <div class="ai">
+        <div class="ar2"><span class="an">电力设备/国内基础设施</span><span class="ap">18% ▼-2%</span></div>
+        <div class="ab"><div class="af" style="width:18%;background:linear-gradient(to right,#6a8099,#8fa3bc);"></div></div>
+        <div class="as">独立逻辑仍在，小幅减仓腾挪至黄金</div>
+      </div>
+      <div class="ai">
+        <div class="ar2"><span class="an">现金+短期国债</span><span class="ap">21% ▼-1%</span></div>
+        <div class="ab"><div class="af" style="width:21%;background:linear-gradient(to right,#8fa3bc,#aabbd1);"></div></div>
+        <div class="as">10Y美债已回落至4.4%，可适当向中期国债延展久期</div>
+      </div>
+      <div class="ai">
+        <div class="ar2"><span class="an">原油及能源</span><span class="ap">0% ▼清仓</span></div>
+        <div class="ab"><div class="af" style="width:0%;background:var(--red);"></div></div>
+        <div class="as">WTI已回落至战前价位，战争溢价清零；OPEC+产量磋商是唯一潜在反转因素，清仓观望</div>
+      </div>
+      <div class="divider"></div>
+      <p style="font-size:11.5px;color:#4a6080;"><strong>核心操作逻辑转变：</strong> 从第1-2周的"能源+防御"向"黄金+选择性科技"切换。油价已回归战前，能源仓位彻底清零；黄金获得核心PCE 3.4%的"通胀背书"，成为新的核心持仓；科技板块分批低吸，等待AI叙事从"估值透支"回归"盈利驱动"。</p>
+    </div>
+  </div>
+
+  <!-- 资产点位 -->
+  <div class="card">
+    <div class="ch"><div class="chb b"></div><span class="cht">资产关键点位（第5周参考）</span></div>
+    <div class="cb np">
+      <table>
+        <thead><tr><th>品种</th><th>支撑</th><th>阻力</th><th>方向</th></tr></thead>
+        <tbody>
+          <tr><td>WTI</td><td class="mono">$62</td><td class="mono">$76</td><td><span class="tag tag-bear">OPEC决定</span></td></tr>
+          <tr><td>布伦特</td><td class="mono">$65</td><td class="mono">$79</td><td><span class="tag tag-bear">偏弱</span></td></tr>
+          <tr><td>伦敦金</td><td class="mono">$3,950</td><td class="mono">$4,350</td><td><span class="tag tag-bull">通胀背书，先扬</span></td></tr>
+          <tr><td>标普500</td><td class="mono">7,150</td><td class="mono">7,600</td><td><span class="tag tag-neu">非农决定</span></td></tr>
+          <tr><td>纳指</td><td class="mono">24,500</td><td class="mono">26,200</td><td><span class="tag tag-neu">低位整固</span></td></tr>
+          <tr><td>道指</td><td class="mono">51,000</td><td class="mono">53,500</td><td><span class="tag tag-bull">旧经济强势</span></td></tr>
+          <tr><td>MU (Micron)</td><td class="mono">$1,050</td><td class="mono">$1,350</td><td><span class="tag tag-bull">财报后整固吸纳</span></td></tr>
+          <tr><td>10Y美债</td><td class="mono">4.15%</td><td class="mono">4.65%</td><td><span class="tag tag-neu">非农/纪要决定</span></td></tr>
+          <tr><td>美元指数</td><td class="mono">97.5</td><td class="mono">101.0</td><td><span class="tag tag-neu">偏弱震荡</span></td></tr>
+          <tr><td>BTC</td><td class="mono">$58,000</td><td class="mono">$67,000</td><td><span class="tag tag-bear">AI叙事受压</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 风险提示 -->
+  <div class="card">
+    <div class="ch"><div class="chb r"></div><span class="cht">九、风险提示</span></div>
+    <div class="cb">
+      <div class="ri h">
+        <div class="ri-head"><span class="ri-name">伊朗核谈判破裂→油价反弹</span><span class="badge h">高</span></div>
+        <div class="ri-desc">MoU仅为框架协议，正式核协议谈判尚未开始。若伊朗强硬派主导、IAEA访问被拒，油价可从$68单日弹升至$85+，通胀叙事强势归来。</div>
+      </div>
+      <div class="ri h">
+        <div class="ri-head"><span class="ri-name">6月NFP超预期→9月加息定价</span><span class="badge h">高</span></div>
+        <div class="ri-desc">若7月2日NFP再次大幅超预期（世界杯+基建就业），FOMC纪要同步释放9月鹰派信号，美债10Y突破4.7%，科技股二次急跌。</div>
+      </div>
+      <div class="ri m">
+        <div class="ri-head"><span class="ri-name">OPEC+内部分裂→减产失败</span><span class="badge m">中</span></div>
+        <div class="ri-desc">伊拉克要求提升配额、UAE退出机制持续，若OPEC+无法就伊朗产量回归达成共识，市场将预期原油继续下行至$60以下，能源股承压。</div>
+      </div>
+      <div class="ri m">
+        <div class="ri-head"><span class="ri-name">OpenAI IPO延期的连锁效应</span><span class="badge m">中</span></div>
+        <div class="ri-desc">若OpenAI正式确认延期，CoreWeave、Cerebras、Anthropic等AI公司融资窗口收窄，AI资本支出叙事受到系统性质疑，波及算力股估值。</div>
+      </div>
+      <div class="ri l">
+        <div class="ri-head"><span class="ri-name">黄金再次跌破$4,000</span><span class="badge l">低-中</span></div>
+        <div class="ri-desc">若非农超预期+FOMC纪要鹰派同时出现，实际利率上行可能再度将黄金推回$3,900以下，此前新增仓位面临短期浮亏。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 机构观点 -->
+  <div class="card">
+    <div class="ch"><div class="chb a"></div><span class="cht">本周主要机构观点</span></div>
+    <div class="cb np">
+      <table>
+        <thead><tr><th>机构</th><th>观点摘要</th></tr></thead>
+        <tbody>
+          <tr><td>Goldman Sachs</td><td class="muted">"仍在Buy the Dip模式；零售、机构、企业均在低位增持；市场整体方向向上"</td></tr>
+          <tr><td>JPMorgan</td><td class="muted">OpenAI IPO延期报道后：担忧AI基础设施融资困难对算力股造成压力</td></tr>
+          <tr><td>BlackRock</td><td class="muted">维持6-12个月科技看多；技术AI盈利增长可跑赢高利率压制；MSCI US IT过去一年的盈利增长已证明其韧性</td></tr>
+          <tr><td>Morningstar</td><td class="muted">5月PCE可能是全年通胀峰值；假设关税效应渐退+油价正常化，预计H2通胀逐步回落</td></tr>
+          <tr><td>Bank of America</td><td class="muted">本周发布AI目标价下调报告，触发SMH单日-7%；认为AI成本上升影响中下游企业利润率</td></tr>
+          <tr><td>Micron CEO Mehrotra</td><td class="muted">"这是Micron历史上最重要的季度。$100B SCA合同标志着内存行业彻底告别周期属性"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 免责 -->
+  <div class="card" style="background:rgba(10,31,60,.96);border-color:rgba(200,151,58,.15);">
+    <div class="cb">
+      <p style="font-size:9.5px;color:rgba(143,163,188,.6);line-height:1.65;margin:0;">
+        <span style="color:var(--accent);font-weight:700;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;display:block;margin-bottom:8px;">重要提示 & 免责声明</span>
+        本报告为宏观投资研究复盘，仅供参考，不构成投资建议。所有数据均来自文中标注的官方渠道及权威媒体。市场受多重不可预测因素影响，历史不代表未来，投资者须自行判断，盈亏自负。
+      </p>
+    </div>
+  </div>
+
+</div><!-- /aside -->
+</div><!-- /page -->
+
+<!-- FOOTER -->
+<div class="rf">
+  <div class="rf-inner">
+    <span class="rl">数据来源</span>
+    <span class="rt">BEA 5月PCE（6.25.2026）&nbsp;·&nbsp; Micron Q3 FY2026新闻稿（6.24）&nbsp;·&nbsp; CNBC（日内行情/Apple/MU）&nbsp;·&nbsp; TheStreet（6.24-26每日复盘）&nbsp;·&nbsp; Trading Economics（WTI/布伦特/Gold）&nbsp;·&nbsp; EIA STEO（6.9.2026）&nbsp;·&nbsp; Schwab Market Update（6.26）&nbsp;·&nbsp; Futurum/TechTimes（MU深度）&nbsp;·&nbsp; OilPrice.com &nbsp;·&nbsp; NYT/Quartz（OpenAI IPO延期）&nbsp;·&nbsp; FRED St. Louis Fed（PCE历史）&nbsp;·&nbsp; CME FedWatch（加息概率）
+    </span>
+  </div>
+</div>
+<div class="disc">
+  编制：全球宏观投资研究 &nbsp;|&nbsp; 基准日：2026.06.28（日）&nbsp;|&nbsp; 四维驱动 — 三层传导框架 &nbsp;|&nbsp; 不构成任何投资建议，严禁作为投资决策依据。
+</div>
+
+<script>
+Chart.defaults.font.family="'IBM Plex Sans',sans-serif";
+Chart.defaults.color='#6a7f99';
+const C={navy:'#0a1f3c',blue:'#1a3d6e',accent:'#c8973a',green:'#1c7a50',red:'#c0392b',silver:'#8fa3bc',purple:'#7c3aed'};
+
+// 1. 资产横向条形
+new Chart(document.getElementById('assetChart'),{
+  type:'bar',
+  data:{
+    labels:['MU(Micron)','黄金','道指','10Y美债(bp)','BTC','标普500','Apple','纳指','布伦特','WTI'],
+    datasets:[{
+      label:'周涨跌幅 %',
+      data:[10.0,-3.0,0.6,-10.0,-5.0,-2.0,-6.0,-4.6,-10.0,-10.0],
+      backgroundColor:[10,-3,0.6,-10,-5,-2,-6,-4.6,-10,-10].map(v=>v>=0?C.green:C.red),
+      borderRadius:3,barThickness:16,
+    }]
+  },
+  options:{
+    indexAxis:'y',
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.x>0?'+':''}${ctx.parsed.x.toFixed(1)}%`}}},
+    scales:{
+      x:{grid:{color:'rgba(0,0,0,0.06)'},border:{display:false},
+        ticks:{callback:v=>(v>0?'+':'')+v+'%',font:{family:"'IBM Plex Mono'",size:11}}},
+      y:{grid:{display:false},border:{display:false},ticks:{font:{size:12}}}
+    },
+    animation:{duration:900,easing:'easeOutQuart'}
+  }
+});
+
+// 2. 油价周内走势
+new Chart(document.getElementById('oilChart'),{
+  type:'line',
+  data:{
+    labels:['6.22周一','6.23周二','6.24周三','6.25周四','6.26周五'],
+    datasets:[
+      {label:'WTI ($)',data:[79.5,81.0,70.34,70.0,68.86],
+        borderColor:C.accent,backgroundColor:'rgba(200,151,58,.08)',
+        borderWidth:2.5,pointRadius:5,pointBackgroundColor:C.accent,fill:false,tension:0.3},
+      {label:'布伦特 ($)',data:[82.0,84.0,73.74,73.5,71.0],
+        borderColor:C.blue,backgroundColor:'rgba(26,61,110,.07)',
+        borderWidth:2.5,pointRadius:5,pointBackgroundColor:C.blue,fill:false,tension:0.3}
+    ]
+  },
+  options:{
+    plugins:{legend:{position:'top',labels:{boxWidth:12,font:{size:11}}},
+      tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}`}}},
+    scales:{
+      x:{grid:{color:'rgba(0,0,0,0.05)'},border:{display:false},ticks:{font:{size:11}}},
+      y:{grid:{color:'rgba(0,0,0,0.05)'},border:{display:false},
+        ticks:{callback:v=>'$'+v,font:{family:"'IBM Plex Mono'",size:11}},min:55,max:95}
+    },
+    animation:{duration:1000}
+  }
+});
+
+// 3. PCE路径序列
+new Chart(document.getElementById('pceChart'),{
+  type:'line',
+  data:{
+    labels:['1月','2月','3月','4月','5月'],
+    datasets:[
+      {label:'标题PCE YoY %',data:[3.0,3.2,4.8,3.8,4.1],
+        borderColor:C.red,backgroundColor:'rgba(192,57,43,.07)',
+        borderWidth:2.5,pointRadius:5,tension:0.3,fill:true},
+      {label:'核心PCE YoY %',data:[2.6,2.7,2.8,3.3,3.4],
+        borderColor:C.blue,borderWidth:2,pointRadius:4,tension:0.3,
+        fill:false,borderDash:[5,3]}
+    ]
+  },
+  options:{
+    plugins:{legend:{position:'top',labels:{boxWidth:12,font:{size:10}}}},
+    scales:{
+      x:{grid:{color:'rgba(0,0,0,0.05)'},border:{display:false},ticks:{font:{size:11}}},
+      y:{grid:{color:'rgba(0,0,0,0.05)'},border:{display:false},
+        ticks:{callback:v=>v+'%',font:{family:"'IBM Plex Mono'",size:10}},min:1.5,max:5.5}
+    },
+    animation:{duration:1000}
+  }
+});
+
+// 4. 周行业轮动
+new Chart(document.getElementById('sectorChart'),{
+  type:'bar',
+  data:{
+    labels:['工业','医疗','材料','能源','金融','消费主','消费选','通信','科技'],
+    datasets:[{
+      label:'周涨跌 %',
+      data:[2.2,1.5,1.4,-2.0,0.8,-1.1,-1.8,-1.0,-5.0],
+      backgroundColor:[2.2,1.5,1.4,-2.0,0.8,-1.1,-1.8,-1.0,-5.0].map(v=>v>=0?C.green:C.red),
+      borderRadius:3,barThickness:14,
+    }]
+  },
+  options:{
+    indexAxis:'y',
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{grid:{color:'rgba(0,0,0,0.06)'},border:{display:false},
+        ticks:{callback:v=>(v>0?'+':'')+v+'%',font:{family:"'IBM Plex Mono'",size:10}}},
+      y:{grid:{display:false},border:{display:false},ticks:{font:{size:11}}}
+    },
+    animation:{duration:900}
+  }
+});
+</script>
+</body>
+</html>
