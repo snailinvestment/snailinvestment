@@ -773,9 +773,12 @@
 
   </div>
 
+</div>
+<!-- /panel-china -->
 
-
-  <div class="section-hd" id="semi-cn-section" style="margin-top:36px;">
+<!-- A股半导体 -->
+<div class="panel" id="panel-semi-cn">
+<div class="section-hd" id="semi-cn-section" style="margin-top:36px;">
 
     <h2>A股半导体热度</h2>
 
@@ -1158,6 +1161,10 @@
 </div>
 
 
+
+
+</div>
+<!-- /panel-semi-cn -->
 
 <!-- 港股 -->
 
@@ -2783,7 +2790,13 @@ function renderTabs(cat){
 
     const isFirst = i===0;
 
-    return `<a href="#" class="topbar-main-tab ${isFirst?'active':''}" onclick="scrollToSection('${t.target}');return false;">${t.text}</a>`;
+    const onclick = (cat==='china' && t.target==='semi-cn-section') 
+      ? "switchCat('china','semi-cn');return false"
+      : (cat==='china' && t.target==='panel-china')
+      ? "switchCat('china');return false"
+      : "scrollToSection('"+t.target+"');return false";
+
+    return "<a href='#' class='topbar-main-tab "+(isFirst?'active':'')+"' onclick='"+onclick+"'>"+t.text+"</a>";
 
   }).join('');
 
@@ -2813,9 +2826,15 @@ function scrollToSection(id){
 
 function switchCat(cat, scrollTarget, updateHash=true){
 
+  // Map cat to panel: for semi-cn scrolling, use panel-semi-cn instead of panel-china
+  let panelId = 'panel-' + cat;
+  if(cat === 'china' && scrollTarget && scrollTarget.startsWith('semi-cn')){
+    panelId = 'panel-semi-cn';
+  }
+
   sidebarNav.querySelectorAll('.nav-item[data-cat]').forEach(a=>a.classList.toggle('active', a.dataset.cat===cat));
 
-  panels.forEach(p=>p.classList.toggle('active', p.id==='panel-'+cat));
+  panels.forEach(p=>p.classList.toggle('active', p.id===panelId));
 
   renderTabs(cat);
 
@@ -2869,7 +2888,7 @@ function syncSemiSubActive(){
 
   const id = activePanel ? activePanel.id : '';
 
-  semiCnLink.classList.toggle('active', id==='panel-china');
+  semiCnLink.classList.toggle('active', id==='panel-china' || id==='panel-semi-cn');
 
   semiUsLink.classList.toggle('active', id==='panel-us');
 
@@ -2995,13 +3014,18 @@ function applyHash(){
 
   }
 
-  const validCats = ['china','hk','us','macro'];
+  const validCats = ['china','hk','us','macro','semi-cn'];
 
   if(validCats.includes(cat)){
 
-    switchCat(cat, scrollTarget, false);
+    // For semi-cn hash, map to china with semi-cn scroll
+    if(cat === 'semi-cn'){
+      switchCat('china', 'semi-cn', false);
+    } else {
+      switchCat(cat, scrollTarget, false);
+    }
 
-    if(cat==='china' || cat==='us'){
+    if(cat==='china' || cat==='us' || cat==='semi-cn'){
 
       semiSub.classList.add('open');
 
@@ -3025,7 +3049,7 @@ function applyHash(){
 
   if(activePanel) renderTabs(activePanel.id.replace('panel-',''));
 
-  if(activePanel && (activePanel.id==='panel-china' || activePanel.id==='panel-us')){
+  if(activePanel && (activePanel.id==='panel-china' || activePanel.id==='panel-semi-cn' || activePanel.id==='panel-us')){
 
     semiSub.classList.add('open');
 
@@ -3052,6 +3076,3 @@ window.addEventListener('hashchange', ()=>{
 </body>
 
 </html>
-
-Last deploy trigger: Mon Jun  8 01:31:59     2026
-
