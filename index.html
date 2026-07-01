@@ -278,7 +278,7 @@
 
   .sector-hd {
 
-    display:flex;align-items:center;gap:8px;margin-bottom:28px;padding-left:4px;
+    display:flex;align-items:center;gap:8px;margin-bottom:36px;padding-left:4px;
 
     border-left:3px solid var(--accent, #1a56db);
 
@@ -3183,6 +3183,29 @@ function toggleMonth(el){
   else { cards.classList.add('open'); arrow.classList.add('open'); }
 }
 
+</script>
+
+<script>
+// Remove Cloudflare deploy trigger text that appears after </html>
+(function() {
+  function removeDeployTrigger() {
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    var node;
+    while (node = walker.nextNode()) {
+      if (node.nodeValue.indexOf('Last deploy trigger') !== -1) {
+        node.remove();
+        break;
+      }
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', removeDeployTrigger);
+  } else {
+    removeDeployTrigger();
+  }
+  // Also try after a short delay in case it's injected later
+  setTimeout(removeDeployTrigger, 500);
+})();
 </script>
 
 </body>
