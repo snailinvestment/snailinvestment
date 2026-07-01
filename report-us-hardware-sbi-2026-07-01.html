@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美国硬件/半导体SBI泡沫指数日报 | 2026年7月1日</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB',Microsoft YaHei,sans-serif;background:#0d1117;color:#e6edf3;line-height:1.6}
+.container{max-width:960px;margin:0 auto;padding:20px}
+.header{text-align:center;padding:30px 20px;background:linear-gradient(135deg,#0f2040 0%,#0d1117 100%);border-radius:12px;margin-bottom:20px;border:1px solid #30363d}
+.header h1{font-size:26px;color:#c9a84c;margin-bottom:8px}
+.header .sub{color:#8b949e;font-size:14px}
+.badge{display:inline-block;padding:4px 14px;border-radius:20px;font-size:14px;font-weight:bold;margin:8px 4px}
+.badge-danger{background:#da3633;color:#fff}.badge-warn{background:#d29922;color:#000}
+.card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:24px;margin-bottom:20px}
+.card h2{font-size:18px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.gauge-wrap{display:flex;justify-content:center;align-items:center;padding:20px 0}
+.score-big{font-size:72px;font-weight:900;text-align:center;background:linear-gradient(135deg,#c9a84c,#f5d77a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;line-height:1}
+.score-label{color:#8b949e;font-size:14px;text-align:center;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{background:#21262d;color:#fff;padding:10px 12px;text-align:left;border:1px solid #30363d;font-weight:600}
+td{padding:10px 12px;border:1px solid #30363d;color:#c9d1d9}
+tr:hover td{background:#1c2128}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin-right:4px}
+.tag-r{background:#ffe0e0;color:#da3633}.tag-g{background:#d4edda;color:#238636}.tag-y{background:#fff3cd;color:#b08800}
+.dim-bar{height:28px;background:#21262d;border-radius:6px;overflow:hidden;margin:4px 0 12px}
+.dim-fill{height:100%;border-radius:6px;transition:width 1s ease;display:flex;align-items:center;padding-left:8px;font-size:12px;font-weight:700;color:#fff}
+.news-item{padding:10px 0;border-bottom:1px solid #21262d;font-size:14px}
+.news-item:last-child{border:none}
+.conclusion{background:linear-gradient(135deg,#0f2040,#161b22);border-left:4px solid #c9a84c;padding:16px 20px;border-radius:0 8px 8px 0;margin:12px 0;font-size:14px}
+.footer{text-align:center;padding:20px;color:#484f58;font-size:12px;border-top:1px solid #30363d;margin-top:20px}
+.red{color:#f85149}.green{color:#3fb950}.gold{color:#c9a84c}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>🇺🇸 美国硬件/半导体 SBI 泡沫指数日报</h1>
+<div class="sub">分析日期: 2026年7月1日（周三） | 数据截至: 2026年6月30日（周一）美股收盘</div>
+<div style="margin-top:12px">
+<span class="badge badge-danger">🔴 危险区间 (65-80)</span>
+<span style="color:#8b949e;font-size:13px">| 上次: 72.2分（6月29日）</span>
+</div>
+</div>
+
+<!-- SBI总分 -->
+<div class="card">
+<h2>🎯 SBI 总分: <span class="red">75.8</span> / 100</h2>
+<div class="gauge-wrap">
+<div style="text-align:center">
+<div class="score-big">75.8</div>
+<div class="score-label">危险区间 · 环比 ▲ +3.6 分</div>
+</div>
+</div>
+<canvas id="gaugeChart" height="180"></canvas>
+</div>
+
+<!-- 六维度 -->
+<div class="card">
+<h2>📐 六维度评分详情</h2>
+<table>
+<tr><th>维度</th><th>权重</th><th>得分</th><th>环比</th><th>关键指标</th></tr>
+<tr><td><b>估值</b></td><td>25%</td><td><span style="color:#d29922">70.5</span></td><td>▼ -1.7</td><td>NVDA PE 30.64合理, AMD PE 190.46极端, SOX高位</td></tr>
+<tr><td><b>拥挤度</b></td><td>25%</td><td><span class="red">88.3</span></td><td>▲ +1.2</td><td>S&P Top10 >37%集中度, NVIDIA市值$4.95T</td></tr>
+<tr><td><b>杠杆</b></td><td>15%</td><td><span class="red">92.6</span></td><td>▲ +2.4</td><td>FINRA融资余额$1.416T(+53.7% YoY)创历史新高!</td></tr>
+<tr><td><b>业绩兑现</b></td><td>15%</td><td><span style="color:#d29922">56.8</span></td><td>—</td><td>NVDA业绩强劲, AMD盈利能力待改善, AI capex持续扩张</td></tr>
+<tr><td><b>资金流向</b></td><td>10%</td><td><span style="color:#d29922">71.2</span></td><td>▲ +1.5</td><td>半导体设备股大涨(应用材料+11%创新高), 存储板块承压</td></tr>
+<tr><td><b>外部环境</b></td><td>10%</td><td><span class="red">74.5</span></td><td>▲ +1.8</td><td>10Y美债4.44%, 韩国巨资投半导体, 地缘风险持续</td></tr>
+</table>
+
+<canvas id="radarChart" height="260" style="margin-top:16px"></canvas>
+
+<div style="margin-top:16px">
+<div class="dim-bar"><div class="dim-fill" style="width:70.5%;background:linear-gradient(90deg,#d29922,#e3b341)">估值 70.5</div></div>
+<div class="dim-bar"><div class="dim-fill" style="width:88.3%;background:linear-gradient(90deg,#da3633,#f85149)">拥挤度 88.3</div></div>
+<div class="dim-bar"><div class="dim-fill" style="width:92.6%;background:linear-gradient(90deg,#da3633,#f85149)">杠杆 92.6</div></div>
+<div class="dim-bar"><div class="dim-fill" style="width:56.8%;background:linear-gradient(90deg,#d29922,#e3b341)">业绩兑现 56.8</div></div>
+<div class="dim-bar"><div class="dim-fill" style="width:71.2%;background:linear-gradient(90deg,#d29922,#e3b341)">资金流向 71.2</div></div>
+<div class="dim-bar"><div class="dim-fill" style="width:74.5%;background:linear-gradient(90deg,#e33a2e,#ff7b54)">外部环境 74.5</div></div>
+</div>
+</div>
+
+<!-- 核心数据 -->
+<div class="card">
+<h2>📊 核心数据（6月30日收盘）</h2>
+<table>
+<tr><th>指标</th><th>数值</th><th>日期/来源</th><th>备注</th></tr>
+<tr><td>SOX费城半导体指数</td><td>~5,373 (MacroMicro基准)</td><td>2026-06-30</td><td>V型反弹后维持高位</td></tr>
+<tr><td>NVIDIA (NVDA)</td><td>$200.09 (<span class="green">+0.55%</span>)</td><td>2026-06-30 / FinanceCharts</td><td>PE(TTM) <b>30.64</b>, Fwd PE 24.04, 市值<b>$4.95万亿</b></td></tr>
+<tr><td>AMD</td><td>$580.91</td><td>2026-06-30 / FinanceCharts</td><td>PE(TTM) <span class="red">190.46</span>(极端!), 市值$9,492亿</td></tr>
+<tr><td>Broadcom (AVGO)</td><td>—</td><td>2026-06-30</td><td>数据中心/AI芯片需求强劲</td></tr>
+<tr><td>TSMC (TSM)</td><td>—</td><td>2026-06-30</td><td>先进制程产能满载</td></tr>
+<tr><td>美国10Y国债收益率</td><td><span class="red">4.44%</span></td><td>2026-06-30 / yieldcurve.pro</td><td>较前日+6bp, 52周区间3.97%-4.67%</td></tr>
+<tr><td>FINRA融资余额</td><td><b>$1.416万亿</b></td><td>2026年5月 / FINRA</td><td><span class="red">历史新高!</span> 环比+8.5%, 同比+53.7%</td></tr>
+<tr><td>S&P 500 Top10集中度</td><td>>37%</td><td>2026年6月</td><td>远超历史均值, 集中度极高</td></tr>
+<tr><td>Mag7权重(S&P500)</td><td>~34%</td><td>2026年6月</td><td>七巨头主导指数走势</td></tr>
+<tr><td>NVIDIA在SOX权重</td><td>~25%+</td><td>估算</td><td>单一股票对指数影响极大</td></tr>
+</table>
+</div>
+
+<!-- 新闻事件 -->
+<div class="card">
+<h2>📰 关键事件 & 信号</h2>
+<div class="ni news-item"><span class="tag tag-r">杠杆极值</span>FINRA融资余额5月达$1.416万亿，环比增8.5%，同比暴增53.7%，<b>刷新历史纪录</b>，超过2021年周期峰值$935B超51%</div>
+<div class="ni news-item"><span class="tag tag-g">NVDA估值回归</span>NVIDIA PE降至30.64倍（Forward PE仅24.04），较12个月均值42.52低27.94%，较3年均值59.61低48.59%，估值吸引力相对提升</div>
+<div class="ni news-item"><span class="tag tag-r">AMD估值泡沫</span>AMD PE高达190.46倍（股价$580.91），远高于行业平均，AI芯片业务尚未充分兑现到利润端</div>
+<div class="ni news-item"><span class="tag tag-g">设备股爆发</span>应用材料涨超11%创历史新高，本月涨幅已超50%；科磊涨超7%，泛林集团涨近6%。半导体设备景气度持续向上游扩散</div>
+<div class="ni news-item"><span class="tag tag-r">存储回调</span>美光/闪迪一度跌超8%（后收窄至4%+），ARM一度跌约9%，市场对存储和IP授权的预期出现分化</div>
+<div class="ni news-item"><span class="tag tag-y">利率环境</span>10年期美债收益率升至4.44%（+6bp），52周波动区间3.97%-4.67%，高利率环境压制成长股估值上限</div>
+<div class="ni news-item"><span class="tag tag-y">韩国投资计划</span>韩国宣布超5760亿美元投资计划强化全球AI和半导体领导地位，加剧全球产能竞争</div>
+<div class="ni news-item"><span class="tag tag-r">拥挤度警示</span>S&P 500前10大股权重超37%、Mag7占34%，NVIDIA单股市值近$5万亿——指数结构极度扭曲，尾部风险被低估</div>
+</div>
+
+<!-- 趋势图 -->
+<div class="card">
+<h2>📈 SBI 近期趋势（6月11日~7月1日）</h2>
+<canvas id="trendChart" height="200"></canvas>
+</div>
+
+<!-- 多空论点 -->
+<div class="card">
+<h2>⚖️ 多空论点对比</h2>
+<div class="grid2">
+<div style="background:rgba(46,160,67,0.08);border:1px solid rgba(46,160,67,0.3);border-radius:10px;padding:16px">
+<h3 style="color:#3fb950;font-size:15px;margin-bottom:10px">🟢 多头论点</h3>
+<ul style="list-style:none;font-size:13px;color:#c9d1d9;line-height:1.9">
+<li>✅ NVDA PE 30.64倍处合理区间，Fwd PE仅24倍</li>
+<li>✅ AI capex周期仍在加速，四大云厂商持续加码</li>
+<li>✅ 半导体设备股集体创新高（应用材料等）</li>
+<li>✅ 全球功率/模拟芯片进入新一轮涨价周期</li>
+<li>✅ 韩国巨额投资印证行业长期景气</li>
+</ul>
+</div>
+<div style="background:rgba(218,54,51,0.08);border:1px solid rgba(218,54,51,0.3);border-radius:10px;padding:16px">
+<h3 style="color:#f85149;font-size:15px;margin-bottom:10px">🔴 空头论点</h3>
+<ul style="list-style:none;font-size:13px;color:#c9d1d9;line-height:1.9">
+<li>⚠️ 融资余额$1.416T创历史新高(+53.7% YoY)</li>
+<li>⚠️ S&P 500 Top10集中度>37%，结构性脆弱</li>
+<li>⚠️ AMD PE 190倍、多数半导体标的估值极端</li>
+<li>⚠️ 10Y国债4.44%，高利率环境未变</li>
+<li>⚠️ 存储/ARM等细分方向已出现大幅回调信号</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- 结论建议 -->
+<div class="card">
+<h2>💡 核心结论 & 操作建议</h2>
+<div class="conclusion">
+<b style="color:#c9a84c">⚠️ 危险区间（75.8分），杠杆维度92.6分达极端水平！</b>
+<br><br>
+<b>核心判断：</b>美国硬件/半导体板块SBI从72.2分攀升至75.8分，连续四周处于危险区间。最令人担忧的是<b>杠杆维度飙至92.6分的历史极值</b>——FINRA融资余额$1.416万亿美元同比暴增53.7%，远超2021年前一轮泡沫峰值($935B)逾51%。这意味着一旦出现触发因素，杠杆出清的踩踏效应将极为剧烈。
+<br><br>
+<b>估值呈现明显分化：</b>NVIDIA PE 30.64倍反而处于合理偏低位置（Fwd PE仅24.04），但AMD PE 190倍、多数二线半导体标的估值仍处极端水平。这种"龙头合理、跟风者泡沫化"的结构是典型牛市末期的特征。
+<br><br>
+<b>操作建议：</b><br>
+• 整体仓位：<span style="color:#f85149;font-weight:bold">建议不高于5成</span>，尤其避免使用杠杆<br>
+• 结构选择：<span style="color:#3fb950">优选NVDA等有真实业绩支撑且估值合理的龙头</span>，规避AMD等纯故事驱动的高PE标的<br>
+• 对冲策略：考虑买入保护性看跌期权或适当增加现金仓位<br>
+• 触发预警线：若SBI突破82分 → 无条件减仓至3成以下<br>
+• 关注事件：7月FOMC会议、Q2财报季(NVIDIA等)、融资余额月度更新
+</div>
+</div>
+
+<div class="footer">
+报告生成时间: 2026-07-01 09:22 CST | 数据来源: FRED, FINRA, FinanceCharts, MacroMicro, yieldcurve.pro, AdvisorPerspectives, simianx.ai 等<br>
+© Snail Investment SBI 泡沫指数系统 | 仅供参考，不构成投资建议
+</div>
+</div>
+
+<script>
+// 仪表盘
+new Chart(document.getElementById('gaugeChart'),{
+type:'doughnut',
+data:{datasets:[{
+data:[75.8,24.2],
+backgroundColor:['#c9a84c','#21262d'],borderWidth:0}]},
+options:{responsive:true,maintainAspectRatio:false,circumference:270,rotation:270,
+cutout:'75%',plugins:{legend:{display:false},tooltip:{enabled:false}},
+animation:{animateRotate:true,duration:1500}}});
+
+// 雷达图
+new Chart(document.getElementById('radarChart'),{
+type:'radar',
+data:{
+labels:['估值','拥挤度','杠杆','业绩兑现','资金流向','外部环境'],
+datasets:[{
+label:'SBI六维度得分',
+data:[70.5,88.3,92.6,56.8,71.2,74.5],
+fill:true,backgroundColor:'rgba(201,168,76,0.15)',
+borderColor:'#c9a84c',pointBackgroundColor:'#c9a84c',pointBorderColor:'#fff',
+pointRadius:4,lineWidth:2}]},
+options:{responsive:true,maintainAspectRatio:false,
+scales:{r:{min:0,max:100,ticks:{stepSize:20,color:'#8b949e'},
+grid:{color:'#21262d'},angleLines:{color:'#21262d'},
+pointLabels:{color:'#e6edf3',font:{size:12}}}},
+plugins:{legend:{labels:{color:'#e6edf3'}}}}});
+
+// 趋势线
+new Chart(document.getElementById('trendChart'),{
+type:'line',
+data:{
+labels:['6/11','6/16','6/19','6/23','6/29','7/1'],
+datasets:[{
+label:'SBI总分',
+data:[73.3,76.5,74.1,null,72.2,75.8],
+borderColor:'#c9a84c',backgroundColor:'rgba(201,168,76,0.1)',fill:true,
+tension:0.4,lineWidth:2.5,pointRadius:4,pointBackgroundColor:'#c9a84c'},
+{
+label:'危险线(65)',
+data:[65,65,65,65,65,65],
+borderColor:'#d29922',borderDash:[5,5],lineWidth:1.5,pointRadius:0},
+{
+label:'极端危险线(80)',
+data:[80,80,80,80,80,80],
+borderColor:'#f85149',borderDash:[5,5],lineWidth:1.5,pointRadius:0}]},
+options:{responsive:true,maintainAspectRatio:false,
+scales:{x:{grid:{color:'#21262d'},ticks:{color:'#8b949e'}},
+y:{min:50,max:100,grid:{color:'#21262d'},ticks:{color:'#8b949e'}}},
+plugins:{legend:{labels:{color:'#e6edf3'}}}});
+</script>
+</body>
+</html>
