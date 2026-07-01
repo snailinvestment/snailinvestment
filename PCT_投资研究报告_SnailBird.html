@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PC Partner Group (SGX: PCT) 深度研究报告 | 蜗牛鸟投资</title>
+<style>
+  :root {
+    --ink:    #0e1b2e;
+    --navy:   #132743;
+    --steel:  #1e3a5f;
+    --accent: #c8960c;
+    --gold:   #e0a820;
+    --bg:     #f2efe8;
+    --paper:  #fafaf7;
+    --white:  #ffffff;
+    --text:   #1a2330;
+    --muted:  #5c6b7a;
+    --rule:   #ddd8cc;
+    --green:  #1a6840;
+    --red:    #9e2320;
+    --amber:  #8a6200;
+    --teal:   #0d5f6e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Georgia", "Noto Serif SC", "Source Han Serif SC", serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+  }
+
+  .page { max-width: 1060px; margin: 0 auto; background: var(--paper); box-shadow: 0 2px 40px rgba(14,27,46,.10); }
+
+  /* ─── TOPBAR ─── */
+  .topbar {
+    background: var(--ink);
+    border-bottom: 3px solid var(--gold);
+    display: flex; align-items: center; gap: 0;
+    position: sticky; top: 0; z-index: 100;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .topbar-brand {
+    background: var(--gold);
+    color: var(--ink);
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    padding: 13px 18px;
+    flex-shrink: 0;
+  }
+  .topbar a {
+    color: #c8d4e0;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    padding: 13px 10px;
+    border-bottom: 2px solid transparent;
+    transition: color .2s, border-color .2s;
+  }
+  .topbar a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(140deg, var(--ink) 0%, var(--steel) 60%, #1a3a60 100%);
+    color: #e8edf3;
+    padding: 46px 52px 38px;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "PCT";
+    position: absolute;
+    right: -10px; top: -20px;
+    font-size: 160px;
+    font-family: Arial Black, sans-serif;
+    font-weight: 900;
+    color: rgba(255,255,255,.03);
+    letter-spacing: -4px;
+    pointer-events: none;
+    line-height: 1;
+  }
+  .hero-eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .hero-title {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .hero-title span { color: #9ab3cc; font-size: 18px; font-weight: normal; }
+  .hero-sub {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #b0bfce;
+    margin-top: 6px;
+    margin-bottom: 26px;
+  }
+
+  /* KPI strip */
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-top: 1px solid rgba(255,255,255,.12);
+    border-bottom: 1px solid rgba(255,255,255,.12);
+    margin-bottom: 22px;
+  }
+  .kpi-strip-item {
+    padding: 14px 14px;
+    border-right: 1px solid rgba(255,255,255,.1);
+    font-family: Arial, sans-serif;
+  }
+  .kpi-strip-item:last-child { border-right: none; }
+  .kpi-strip-item .lbl { font-size: 10px; color: #8fa5bb; text-transform: uppercase; letter-spacing: .8px; }
+  .kpi-strip-item .val { font-size: 18px; color: #fff; font-weight: bold; margin-top: 4px; line-height: 1.2; }
+  .kpi-strip-item .sub { font-size: 10.5px; color: #7a94a8; margin-top: 2px; }
+
+  /* Rating badge */
+  .rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(200,150,12,.15);
+    border: 1px solid var(--gold);
+    padding: 10px 20px;
+    border-radius: 2px;
+  }
+  .rating-badge .r-main {
+    font-family: Arial, sans-serif;
+    font-weight: 900;
+    font-size: 17px;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+  .rating-badge .r-tp {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #c8d4e0;
+  }
+  .rating-badge .r-up {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #6ec98c;
+    font-weight: bold;
+  }
+
+  /* ─── SECTION ─── */
+  .section {
+    padding: 36px 52px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .sec-h {
+    font-family: Arial, sans-serif;
+    font-size: 19px;
+    color: var(--navy);
+    border-left: 5px solid var(--gold);
+    padding-left: 14px;
+    margin-bottom: 20px;
+    letter-spacing: .3px;
+  }
+  .sec-h .n { color: var(--gold); margin-right: 6px; font-weight: normal; }
+
+  h3.sub-h {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: var(--steel);
+    margin: 26px 0 10px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 6px;
+  }
+
+  p { font-size: 14.5px; color: var(--text); margin-bottom: 13px; }
+  .lead {
+    font-size: 15px;
+    color: var(--navy);
+    background: #f0ecdf;
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    line-height: 1.85;
+  }
+
+  /* ─── TABLES ─── */
+  table { width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; font-size: 13px; margin: 14px 0 20px; }
+  thead th {
+    background: var(--navy);
+    color: #fff;
+    padding: 9px 12px;
+    text-align: left;
+    font-weight: 500;
+    letter-spacing: .2px;
+  }
+  tbody td { padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  tbody tr:nth-child(even) td { background: #f6f3ec; }
+  .rc { text-align: right; font-variant-numeric: tabular-nums; }
+  .pos { color: var(--green); font-weight: 700; }
+  .neg { color: var(--red); font-weight: 700; }
+
+  /* ─── CARD GRIDS ─── */
+  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 16px 0; }
+  .g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 16px 0; }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--gold);
+    padding: 14px 16px;
+  }
+  .card .c-lbl { font-family: Arial, sans-serif; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+  .card .c-val { font-family: Arial, sans-serif; font-size: 22px; color: var(--navy); font-weight: 700; margin-top: 5px; line-height: 1.1; }
+  .card .c-sub { font-family: Arial, sans-serif; font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+
+  /* segment bar */
+  .seg { border: 1px solid var(--rule); padding: 16px 18px; margin-bottom: 12px; background: #fff; }
+  .seg h4 { font-family: Arial, sans-serif; font-size: 14px; color: var(--navy); margin-bottom: 6px; }
+  .seg p { margin: 0; font-size: 13.5px; }
+  .bar-wrap { background: #e8e4da; height: 7px; border-radius: 3px; overflow: hidden; margin-top: 10px; }
+  .bar { background: var(--gold); height: 7px; border-radius: 3px; }
+
+  /* model boxes */
+  .mbox {
+    border: 1px dashed var(--gold);
+    background: #fdf9ef;
+    padding: 16px 20px;
+    margin: 14px 0;
+  }
+  .mbox h4 { font-family: Arial, sans-serif; font-size: 13.5px; color: var(--navy); margin-bottom: 8px; font-weight: 700; }
+  .mbox p, .mbox li { font-size: 13.5px; }
+  .mbox ul { padding-left: 18px; margin: 6px 0 0; }
+  .mbox li { margin-bottom: 4px; }
+
+  /* risk badges */
+  .badge { display: inline-block; font-family: Arial, sans-serif; font-size: 11px; padding: 2px 10px; border-radius: 10px; font-weight: 700; }
+  .b-hi  { background: #fce8e7; color: var(--red); }
+  .b-mid { background: #fdf0d4; color: var(--amber); }
+  .b-lo  { background: #e2f0e9; color: var(--green); }
+
+  /* tech panel */
+  .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 16px 0; }
+  .tech-item {
+    background: #fff;
+    border: 1px solid var(--rule);
+    padding: 14px 16px;
+  }
+  .tech-item .t-label { font-family: Arial, sans-serif; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+  .tech-item .t-val { font-family: Arial, sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); }
+  .tech-item .t-sub { font-size: 12.5px; color: var(--muted); font-family: Arial, sans-serif; margin-top: 4px; }
+  .tech-item.teal { border-top: 3px solid var(--teal); }
+  .tech-item.amber { border-top: 3px solid var(--gold); }
+  .tech-item.red   { border-top: 3px solid var(--red); }
+  .tech-item.green { border-top: 3px solid var(--green); }
+
+  /* price ladder */
+  .price-ladder { font-family: Arial, sans-serif; font-size: 13px; }
+  .price-row { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-bottom: 1px solid var(--rule); }
+  .price-row:last-child { border-bottom: none; }
+  .price-row .p-tag { width: 110px; flex-shrink: 0; color: var(--muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: .4px; }
+  .price-row .p-val { font-size: 15px; font-weight: 700; color: var(--navy); width: 80px; }
+  .price-row .p-note { color: var(--muted); font-size: 12px; flex: 1; }
+  .price-row.current .p-val { color: var(--gold); }
+  .price-row.support .p-val { color: var(--green); }
+  .price-row.resist .p-val { color: var(--red); }
+
+  /* currency note */
+  .curr-note {
+    background: #eef4fb;
+    border-left: 3px solid var(--teal);
+    padding: 10px 14px;
+    font-family: Arial, sans-serif;
+    font-size: 12.5px;
+    color: #2a4a6a;
+    margin-bottom: 16px;
+  }
+
+  .fn { font-size: 11.5px; color: var(--muted); font-family: Arial, sans-serif; line-height: 1.7; }
+
+  /* sources */
+  .src-list { font-family: Arial, sans-serif; font-size: 12.5px; color: var(--muted); line-height: 2; padding-left: 18px; }
+  .src-list li { margin-bottom: 2px; }
+
+  /* disclaimer */
+  .disclaimer {
+    background: var(--ink);
+    color: #8fa5bb;
+    font-family: Arial, sans-serif;
+    font-size: 11.5px;
+    padding: 28px 52px;
+    line-height: 1.9;
+  }
+  .disclaimer strong { color: var(--gold); }
+
+  .footer-bar {
+    background: var(--ink);
+    border-top: 1px solid rgba(200,150,12,.3);
+    color: #5a7290;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    padding: 14px;
+  }
+
+  @media (max-width: 700px) {
+    .kpi-strip { grid-template-columns: repeat(2,1fr); }
+    .g3, .g4 { grid-template-columns: 1fr 1fr; }
+    .tech-grid { grid-template-columns: 1fr; }
+    .hero, .section, .disclaimer { padding-left: 22px; padding-right: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ── TOPBAR ── -->
+<div class="topbar">
+  <div class="topbar-brand">🐦 蜗牛鸟投资 · 精品研究</div>
+  <a href="#summary">投资摘要</a>
+  <a href="#company">公司概览</a>
+  <a href="#segments">业务结构</a>
+  <a href="#financials">财务分析</a>
+  <a href="#balance">资产负债表&amp;FCF</a>
+  <a href="#shareholder">股东回报</a>
+  <a href="#technical">技术面</a>
+  <a href="#valuation">估值模型</a>
+  <a href="#macro">行业&amp;宏观</a>
+  <a href="#risk">风险矩阵</a>
+  <a href="#catalysts">催化剂</a>
+  <a href="#conclusion">投资结论</a>
+  <a href="#sources">来源</a>
+</div>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-eyebrow">SNAIL-BIRD INVESTMENT &nbsp;|&nbsp; 精品研究部 &nbsp;|&nbsp; SGX科技行业覆盖</div>
+  <div class="hero-title">PC Partner Group Limited <span>(SGX: PCT)</span></div>
+  <div class="hero-sub">NVIDIA Blackwell生态旗舰AIB制造商 · ZOTAC / Inno3D / Manli三品牌运营商 — 深度投资研究报告</div>
+
+  <div class="kpi-strip">
+    <div class="kpi-strip-item">
+      <div class="lbl">现价（7月1日午间）</div>
+      <div class="val">S$3.06</div>
+      <div class="sub">历史新高附近</div>
+    </div>
+    <div class="kpi-strip-item">
+      <div class="lbl">52周区间</div>
+      <div class="val">S$0.80–3.08</div>
+      <div class="sub">上市首日至今ATH</div>
+    </div>
+    <div class="kpi-strip-item">
+      <div class="lbl">市值（约）</div>
+      <div class="val">S$11.9亿</div>
+      <div class="sub">约3.88亿股流通</div>
+    </div>
+    <div class="kpi-strip-item">
+      <div class="lbl">FY2025 EPS</div>
+      <div class="val">HK$1.27</div>
+      <div class="sub">≈S$0.213（+88% YoY）</div>
+    </div>
+    <div class="kpi-strip-item">
+      <div class="lbl">报告日期</div>
+      <div class="val">2026年7月1日</div>
+      <div class="sub">蜗牛鸟投资精品研究部</div>
+    </div>
+  </div>
+
+  <div class="rating-badge">
+    <div class="r-main">积极买入（ACCUMULATE）</div>
+    <div class="r-tp">12个月目标价：<strong style="color:#e0c060">S$3.50</strong></div>
+    <div class="r-up">潜在回报 +14.4% (+股息约5%)</div>
+  </div>
+</div>
+
+<!-- ─── 01 投资摘要 ─── -->
+<div class="section" id="summary">
+  <h2 class="sec-h"><span class="n">01</span>投资摘要</h2>
+  <div class="lead">
+    PC Partner Group（SGX: PCT）是全球领先的NVIDIA AIB（Add-In Board）显卡合作制造商，旗下ZOTAC、Inno3D、Manli三大品牌覆盖全球70+国家，是NVIDIA RTX 50系列Blackwell GPU消费端生态的核心受益方。FY2025公司实现营收HK$139.5亿（+38.4%）、净利润HK$4.94亿（+88.5%），均创历史新高，毛利率亦从9.5%改善至10.2%。股价自2024年11月SGX上市低点S$0.80大幅反弹至当前S$3.06（接近历史新高S$3.08），但以FY2025业绩测算的PE仍仅约14.4x，较亚洲科技硬件同业溢价有限，叠加丰厚现金股息（FY2025总派息约S$0.14/股，收益率约4.6%），估值仍具吸引力。首次覆盖，给予<strong>积极买入（ACCUMULATE）</strong>评级，12个月目标价<strong>S$3.50</strong>。
+  </div>
+  <table>
+    <thead><tr><th>核心结论</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>评级</td><td>积极买入（ACCUMULATE）— 基本面强劲，但需关注GPU周期波动与关税风险</td></tr>
+      <tr><td>12M目标价</td><td><strong>S$3.50</strong>（基准情形），对应FY2025 PE 16.4x；悲观情形S$2.40，乐观情形S$4.20</td></tr>
+      <tr><td>核心驱动</td><td>Blackwell RTX 50系列需求持续放量、自有品牌销售占比提升、新加坡上市提升机构关注度、印尼新厂降低供应链风险</td></tr>
+      <tr><td>核心担忧</td><td>NVIDIA高度集中客户/供应商依赖、显存供给约束推高成本、美国关税潜在诉讼（约$2,500万美元敞口）、管理层高层变动</td></tr>
+      <tr><td>报告语境说明</td><td>财务数据以港元（HKD）列示（公司报告货币）；股价以新加坡元（SGD）列示；汇率参考1 SGD ≈ 5.96 HKD</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ─── 02 公司概览 ─── -->
+<div class="section" id="company">
+  <h2 class="sec-h"><span class="n">02</span>公司概览</h2>
+  <div class="curr-note">💱 货币说明：PC Partner财务报表以港元（HKD）编制；股票在新加坡交易所（SGX）以新加坡元（SGD）交易。本报告所有财务数据以HKD列示，股价及市值以SGD列示，汇率参考约1 SGD ≈ 5.96 HKD（或1 HKD ≈ 0.168 SGD）。</div>
+  <p>PC Partner Group Limited成立于1997年，前身于香港运营，2024年11月完成SGX二次上市后，于2025年完成港交所退市并将集团总部迁至<strong>新加坡</strong>，完成战略"再定位"。公司核心业务为显卡（VGA Card）的设计、生产与销售，旗下运营<strong>ZOTAC</strong>（高性能消费/专业显卡及Mini-PC）、<strong>Inno3D</strong>（消费及工作站显卡）、<strong>Manli</strong>（主流及矿卡市场）三大自有品牌，同时承接ODM/OEM订单，并提供电子制造服务（EMS）。</p>
+  <p>公司自<strong>2006年</strong>起与NVIDIA建立稳定的GPU供应合作关系，是NVIDIA授权AIB合作伙伴中规模较大的亚太系厂商之一，产品销往亚太（APAC）、北美与拉丁美洲（NALA）、中国大陆（PRC）及欧洲中东非洲印度（EMEAI）等地区，覆盖超过<strong>70个国家</strong>。<span class="fn">[来源：Yahoo Finance公司简介；SGinvestors.io；Minichart.com.sg FY2025结果分析]</span></p>
+  <div class="g4">
+    <div class="card"><div class="c-lbl">成立年份</div><div class="c-val">1997年</div><div class="c-sub">总部：新加坡（2025年迁入）</div></div>
+    <div class="card"><div class="c-lbl">员工人数</div><div class="c-val">≈2,980</div><div class="c-sub">含新印尼（巴淡岛）制造厂</div></div>
+    <div class="card"><div class="c-lbl">SGX上市日期</div><div class="c-val">2024年11月15日</div><div class="c-sub">2025年完成港交所退市</div></div>
+    <div class="card"><div class="c-lbl">流通股数</div><div class="c-val">约3.88亿股</div><div class="c-sub">无回购，无期权稀释</div></div>
+  </div>
+  <p class="fn">数据来源：SGinvestors.io；PitchBook（截至2026年4月30日流通股数据）；TradingView。</p>
+</div>
+
+<!-- ─── 03 业务结构 ─── -->
+<div class="section" id="segments">
+  <h2 class="sec-h"><span class="n">03</span>业务结构分析</h2>
+
+  <h3 class="sub-h">3.1 收入构成（FY2025）</h3>
+  <div class="seg">
+    <h4>VGA显卡（自有品牌 + ODM/OEM）— 约85-90%收入占比</h4>
+    <p>FY2025 VGA销售额同比增长约<strong>50%</strong>，其中自有品牌（ZOTAC/Inno3D/Manli）销售额同比大增<strong>68.9%</strong>，RTX 5090旗舰卡发布带动高端产品组合ASP（平均售价）大幅提升，是公司毛利率改善的核心驱动力。原材料成本（主要为GPU及显存）占营收比例约<strong>87.1%</strong>，显示公司轻资产高周转的商业模式本质。</p>
+    <div class="bar-wrap"><div class="bar" style="width:88%"></div></div>
+  </div>
+  <div class="seg">
+    <h4>电子制造服务（EMS）— 约5-10%收入占比</h4>
+    <p>为ATM/POS系统供应商、工业设备制造商及消费电子企业提供代工服务，客户包括全球ATM/POS知名品牌。该业务毛利率高于VGA整机组装，提供稳定基础收益，并支持公司在印尼新厂的产能爬坡与技术资质积累。</p>
+    <div class="bar-wrap"><div class="bar" style="width:8%"></div></div>
+  </div>
+  <div class="seg">
+    <h4>其他PC产品（Mini-PC、主板及IP授权）— 约5%</h4>
+    <p>ZOTAC Mini-PC（含ZBOX系列）及主板在企业/教育领域保持稳定出货，AI Server/GPU Server相关产品正快速成长，是公司向AI基础设施端延伸的重要探针业务。</p>
+    <div class="bar-wrap"><div class="bar" style="width:5%"></div></div>
+  </div>
+
+  <h3 class="sub-h">3.2 地区分布（FY2025同比增速）</h3>
+  <table>
+    <thead><tr><th>地区</th><th class="rc">收入增速（FY2025 YoY）</th><th>战略意义</th></tr></thead>
+    <tbody>
+      <tr><td>亚太（APAC）</td><td class="rc pos">+33.6%</td><td>基本盘，日本/韩国等成熟市场AIB换代需求</td></tr>
+      <tr><td>北美与拉丁美洲（NALA）</td><td class="rc pos">+47.1%</td><td>关税风险敞口所在区域，同时也是ZOTAC品牌溢价最高市场</td></tr>
+      <tr><td>中国大陆（PRC）</td><td class="rc pos">+26.6%</td><td>国内GPU算力需求+消费级游戏换代，受出口管制约束有限（消费端）</td></tr>
+      <tr><td>欧洲中东非洲印度（EMEAI）</td><td class="rc pos">+55.1%</td><td>增速最快，AI工作站与数据中心GPU渗透率快速提升</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：Minichart.com.sg FY2025财务结果分析（2026年2月27日）</p>
+</div>
+
+<!-- ─── 04 财务分析 ─── -->
+<div class="section" id="financials">
+  <h2 class="sec-h"><span class="n">04</span>财务分析（损益表）</h2>
+
+  <h3 class="sub-h">4.1 年度业绩追踪（HKD百万）</h3>
+  <table>
+    <thead><tr><th>指标</th><th class="rc">FY2023</th><th class="rc">FY2024</th><th class="rc">FY2025</th><th class="rc">YoY变化（24→25）</th></tr></thead>
+    <tbody>
+      <tr><td>营业收入</td><td class="rc">HK$9,178</td><td class="rc">HK$10,080</td><td class="rc"><strong>HK$13,950</strong></td><td class="rc pos">+38.4%</td></tr>
+      <tr><td>净利润（归属母公司）</td><td class="rc">HK$61</td><td class="rc">HK$262</td><td class="rc"><strong>HK$494</strong></td><td class="rc pos">+88.5%</td></tr>
+      <tr><td>每股盈利（EPS）</td><td class="rc">HK$0.16</td><td class="rc">HK$0.68</td><td class="rc"><strong>HK$1.27</strong></td><td class="rc pos">+86.8%</td></tr>
+      <tr><td>毛利率</td><td class="rc">~7%</td><td class="rc">9.5%</td><td class="rc"><strong>10.2%</strong></td><td class="rc pos">+0.7pt</td></tr>
+      <tr><td>净利率</td><td class="rc">0.7%</td><td class="rc">2.6%</td><td class="rc"><strong>3.5%</strong></td><td class="rc pos">+0.9pt</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">*FY2023净利润及EPS基于Simply Wall St历史记录推算；FY2024、FY2025数据来自StockAnalysis.com（基于SGX披露）及Minichart.com.sg详细分析（2026年2月27日）。</p>
+
+  <h3 class="sub-h">4.2 盈利质量与结构性说明</h3>
+  <div class="g3">
+    <div class="card"><div class="c-lbl">FY2025 营收</div><div class="c-val">HK$139.5亿</div><div class="c-sub">三年CAGR约+23%</div></div>
+    <div class="card"><div class="c-lbl">FY2025 净利润</div><div class="c-val">HK$4.94亿</div><div class="c-sub">两年增长711%</div></div>
+    <div class="card"><div class="c-lbl">一次性税务影响</div><div class="c-val">HK$6,340万</div><div class="c-sub">香港税务局离岸利润诉讼和解，一次性</div></div>
+  </div>
+  <p>需要特别指出的是，FY2025净利润虽达历史新高，但包含一次性税务和解拨备<strong>HK$6,340万</strong>（对香港税务局离岸利润主张的和解支付），该项目压低了报告期有效税率并为不可持续项目，分析标准化盈利时应予以还原，调整后FY2025净利润约为<strong>HK$5.57亿</strong>，净利率约4.0%，盈利质量更为突出。<span class="fn">[来源：Minichart.com.sg FY2025财务结果分析]</span></p>
+
+  <h3 class="sub-h">4.3 FY2025 H1 vs H2 拆分（季节性分析）</h3>
+  <table>
+    <thead><tr><th>指标</th><th class="rc">H1 FY2025</th><th class="rc">H2 FY2025（推算）</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>营业收入</td><td class="rc">HK$6,360M</td><td class="rc">HK$7,590M</td><td>H2受RTX 5090系列持续放量驱动</td></tr>
+      <tr><td>净利润</td><td class="rc">HK$250.4M</td><td class="rc">HK$243.8M</td><td>H2含税务和解一次性拨备，调整后H2利润略高</td></tr>
+      <tr><td>净利率</td><td class="rc">3.9%</td><td class="rc">~3.2%（含税务拨备）</td><td>调整后H2净利率约4.0%</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">H2为FY2025全年减H1推算；H1数据来自Simply Wall St 1HFY2025结果披露（2025年8月19日更新）。</p>
+
+  <h3 class="sub-h">4.4 当前估值速览（以现价S$3.06计算）</h3>
+  <table>
+    <thead><tr><th>估值指标</th><th class="rc">数值</th><th>行业参考/说明</th></tr></thead>
+    <tbody>
+      <tr><td>P/E（FY2025，以SGD EPS计）</td><td class="rc">≈14.4x</td><td>EPS HK$1.27 ≈ SGD$0.213；亚洲科技硬件平均P/E约19-21x</td></tr>
+      <tr><td>P/S（FY2025）</td><td class="rc">≈0.51x</td><td>市值SGD11.9亿 / 营收SGD23.4亿；硬件制造商典型区间0.3-1.0x</td></tr>
+      <tr><td>EV/EBITDA（FY2025）</td><td class="rc">≈5.9x</td><td>EV≈SGD7.67亿（市值减净现金）/ EBITDA≈SGD1.30亿</td></tr>
+      <tr><td>股息收益率（FY2025总派息）</td><td class="rc">≈4.6%</td><td>以总派息约SGD$0.14/股估算（详见第6节）</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ─── 05 资产负债表与FCF ─── -->
+<div class="section" id="balance">
+  <h2 class="sec-h"><span class="n">05</span>资产负债表与自由现金流分析</h2>
+
+  <h3 class="sub-h">5.1 资产负债表亮点（FY2025年末）</h3>
+  <div class="g3">
+    <div class="card"><div class="c-lbl">现金及银行存款</div><div class="c-val">HK$25亿</div><div class="c-sub">较FY2024大幅增长</div></div>
+    <div class="card"><div class="c-lbl">资产负债表结构</div><div class="c-val">净现金</div><div class="c-sub">现金超出有息负债，无偿债压力</div></div>
+    <div class="card"><div class="c-lbl">EBITDA（FY2025）</div><div class="c-val">SGD$1.30亿</div><div class="c-sub">EBITDA margin 5.50%</div></div>
+  </div>
+
+  <p>PC Partner FY2025资产负债表呈现显著改善：现金及银行存款大幅增至<strong>HK$25亿</strong>（约SGD4.2亿），形成净现金头寸，为持续高派息及未来扩张投资提供充足缓冲。需要关注的是，VGA显卡业务具有明显的库存占用特征——产品SKU众多、供应链为"下单NVIDIA GPU→生产→配送"的线性模式，导致存货水位偏高；公司将其列为关键经营风险之一，一旦出货周期拉长或需求突然回落，库存减值风险不可忽视。<span class="fn">[来源：Minichart.com.sg — 风险分析："elevated inventories and borrowings"]</span></p>
+
+  <h3 class="sub-h">5.2 自由现金流（FCF）与盈利质量</h3>
+  <p>以TradingView数据为基础，FY2025 EBITDA约为SGD$1.30亿（EBITDA margin 5.50%），结合公司净利润高增长与现金大幅积累，可推断FY2025经营活动现金流质量明显好于前两年。Minichart分析亦指出FY2025为"record revenue, profit, cash flow"年份。<span class="fn">[来源：TradingView EBITDA数据；Minichart.com.sg FY2025分析]</span></p>
+  <div class="mbox">
+    <h4>我们对FCF的分析框架（保险行业参照扩展至制造业）</h4>
+    <p>与TRV以经营现金流/净利润比率衡量盈利含金量的方法类似，PC Partner的盈利含金量衡量指标应为：现金余额增量（HK$25亿年末现金）+ 派息总额（HK$2.35亿）/ 税后净利润（HK$4.94亿）。据此推算，FY2025公司将约70%的税后利润以现金形式留存或返还股东，其余30%用于存货/应收款净增加及资本支出（印尼新厂），FCF转化率健康，但需监测存货周转天数趋势。</p>
+  </div>
+
+  <h3 class="sub-h">5.3 资本支出（CapEx）方向</h3>
+  <p>公司2024-2025年主要资本支出用于：①印度尼西亚巴淡岛（Batam）<strong>新制造厂</strong>建设，该工厂已于FY2025内投入运营，旨在分散制造风险并降低对中国大陆制造基地的依赖；②新加坡<strong>新总部</strong>落成，配合主要上市地转移；③AI GPU服务器及GPU Cluster相关产能布局。总体而言公司属轻资本支出模式，CapEx/营收比例较低，与其以组装为主的生产性质吻合。</p>
+</div>
+
+<!-- ─── 06 股东回报 ─── -->
+<div class="section" id="shareholder">
+  <h2 class="sec-h"><span class="n">06</span>股东回报分析</h2>
+
+  <h3 class="sub-h">6.1 股息政策——高派息率，FY2025大幅加息</h3>
+  <table>
+    <thead><tr><th>派息项目</th><th class="rc">FY2024</th><th class="rc">FY2025</th><th class="rc">变化</th></tr></thead>
+    <tbody>
+      <tr><td>中期股息</td><td class="rc">HK$0.25/股（1H24）</td><td class="rc">HK$0.25/股（1H25）</td><td class="rc">持平</td></tr>
+      <tr><td>末期股息</td><td class="rc">HK$0.15/股</td><td class="rc">SGD$0.05/股（≈HK$0.30）</td><td class="rc pos">大幅提升</td></tr>
+      <tr><td>特别股息</td><td class="rc">无</td><td class="rc">SGD$0.05/股（≈HK$0.30）</td><td class="rc pos">首次派发</td></tr>
+      <tr><td>全年合计派息</td><td class="rc">HK$0.40/股</td><td class="rc">≈HK$0.85/股</td><td class="rc pos">+112.5%</td></tr>
+      <tr><td>全年合计派息（SGD）</td><td class="rc">≈SGD$0.067/股</td><td class="rc">≈SGD$0.143/股</td><td class="rc pos">+113%</td></tr>
+      <tr><td>股息支付总额</td><td class="rc">HK$5,800万</td><td class="rc">HK$2.35亿</td><td class="rc pos">+305%</td></tr>
+      <tr><td>派息比率</td><td class="rc">~50%</td><td class="rc">~43%</td><td class="rc">合理范围</td></tr>
+    </tbody>
+  </table>
+  <p>值得注意的是，FY2025末期股息及特别股息均以<strong>新加坡元（SGD）</strong>结算，这与公司战略性迁移至新加坡作为主要上市地及汇报货币逐步转轨的方向一致，同时也为持有SGX账户的投资者提供了更便利的股息接收渠道。<span class="fn">[来源：Simply Wall St股息历史；Minichart.com.sg FY2025分析]</span></p>
+
+  <h3 class="sub-h">6.2 股息收益率对比</h3>
+  <div class="g3">
+    <div class="card"><div class="c-lbl">FY2025股息收益率（历史）</div><div class="c-val">10.11%</div><div class="c-sub">以2025年平均价格计算（TradingView）</div></div>
+    <div class="card"><div class="c-lbl">当前股息收益率（以S$3.06计）</div><div class="c-val">≈4.7%</div><div class="c-sub">以FY2025总派息SGD$0.143/股计算</div></div>
+    <div class="card"><div class="c-lbl">新加坡科技行业平均股息</div><div class="c-val">2.4%</div><div class="c-sub">PCT处行业前四分位</div></div>
+  </div>
+  <p>尽管股价大幅上涨使股息收益率从历史高位10%+回落至约4.7%，公司仍位于新加坡科技行业派息梯队前列，且<strong>FY2025派息比率43%</strong>属于保守的可持续派息水平（现金流充足支撑）。若FY2026净利润维持或小幅增长，管理层有望维持或进一步提升绝对派息额，为投资者提供较确定性的现金回报基础。<span class="fn">[来源：Simply Wall St — "Payout ratio is a comfortable 49% and this is well supported by cash flows"（基于H1 2025数据）]</span></p>
+
+  <h3 class="sub-h">6.3 股份回购状况</h3>
+  <p>根据FY2025全年公告披露，公司<strong>无股份回购</strong>，也无库存股或期权授予，流通股保持约3.88亿股稳定不变。这意味着公司将可支配资本的优先用途设定为高股息而非回购，与大多数亚太中小型科技制造商的资本配置偏好相符——在每股账面价值不高且缺乏充足回购授权机制的情况下，高现金股息是向投资者传递业绩信心的主要工具。<span class="fn">[来源：Minichart.com.sg — "No Share Buybacks or Dilution: No share buybacks, treasury shares, or share option grants occurred during the period"]</span></p>
+</div>
+
+<!-- ─── 07 技术面分析 ─── -->
+<div class="section" id="technical">
+  <h2 class="sec-h"><span class="n">07</span>技术面分析</h2>
+
+  <h3 class="sub-h">7.1 趋势与均线系统</h3>
+  <p>PCT自2024年11月15日以S$0.80的价格在SGX上市以来，走出了一波幅度高达约<strong>+283%</strong>的强势主升浪，至2026年6月25日创下历史新高<strong>S$3.08</strong>，当前S$3.06仅距ATH约0.65%。股价持续运行于多条均线之上，短期均线（5日/8日/20日）呈明显多头排列，反映市场持续做多的动能结构。<span class="fn">[来源：TradingView SGX:PCT — ATH S$3.08于2026年6月25日；52周低点S$0.80于2024年11月26日]</span></p>
+
+  <div class="tech-grid">
+    <div class="tech-item teal">
+      <div class="t-label">当前股价（7月1日午间）</div>
+      <div class="t-val">S$3.06</div>
+      <div class="t-sub">距历史新高S$3.08仅差-0.65%，处于历史顶部区间</div>
+    </div>
+    <div class="tech-item amber">
+      <div class="t-label">Beta系数</div>
+      <div class="t-val">1.51</div>
+      <div class="t-sub">显著高于大盘，周波动率约11%，属高波动科技股</div>
+    </div>
+    <div class="tech-item green">
+      <div class="t-label">过去12个月涨幅</div>
+      <div class="t-val">+145.5%</div>
+      <div class="t-sub">大幅跑赢STI指数，GPU周期行情驱动</div>
+    </div>
+    <div class="tech-item red">
+      <div class="t-label">分析师价格区间预测</div>
+      <div class="t-val">S$2.54–S$3.60</div>
+      <div class="t-sub">TradingView汇总分析师目标价区间</div>
+    </div>
+  </div>
+
+  <h3 class="sub-h">7.2 动量指标（近期读数参考）</h3>
+  <table>
+    <thead><tr><th>指标</th><th>读数/信号</th><th>解读</th></tr></thead>
+    <tbody>
+      <tr><td>RSI（14日）</td><td>中性偏强（估计55-65区间）</td><td>月内+25.4%涨幅后动量趋缓；未进入极端超买（>80）区域，但接近高位</td></tr>
+      <tr><td>MACD</td><td>正值 / 多头结构</td><td>中短期动量维持偏多，但需关注金叉后的背离信号</td></tr>
+      <tr><td>随机指标（Stochastic）</td><td>偏高位（估计70-80+）</td><td>短期获利盘压力存在，注意价格在ATH附近的震荡整理</td></tr>
+      <tr><td>成交量特征</td><td>SGX每日交易量偏薄（微盘）</td><td>市值约SGD11.9亿，属SGX小盘股，流动性偏弱，大额买卖对价格冲击大</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">注：PCT在SGX的每日成交量相对较薄，技术指标参考价值有限，应结合基本面共同判断。TradingView披露PCT周波动率约11%，远高于多数SGX主板股票，提示短期双向波动风险较大。</p>
+
+  <h3 class="sub-h">7.3 关键价位参考</h3>
+  <div style="border:1px solid var(--rule);background:#fff;margin:14px 0">
+    <div class="price-ladder">
+      <div class="price-row resist">
+        <div class="p-tag">历史新高/阻力</div>
+        <div class="p-val">S$3.08</div>
+        <div class="p-note">2026年6月25日ATH，前高密集区，突破需放量确认</div>
+      </div>
+      <div class="price-row current">
+        <div class="p-tag">▶ 当前价格</div>
+        <div class="p-val">S$3.06</div>
+        <div class="p-note">7月1日午间报价，贴近ATH运行</div>
+      </div>
+      <div class="price-row support">
+        <div class="p-tag">近端支撑1</div>
+        <div class="p-val">S$2.54</div>
+        <div class="p-note">分析师目标价下沿，前期整理密集区间，对应FY2025 PE约12x</div>
+      </div>
+      <div class="price-row support">
+        <div class="p-tag">中期支撑2</div>
+        <div class="p-val">S$2.10–2.20</div>
+        <div class="p-note">2026年3月前一轮回落区间，与内部人员减持区域重合（NaiNap Ho）</div>
+      </div>
+      <div class="price-row support">
+        <div class="p-tag">强支撑区</div>
+        <div class="p-val">S$1.50–1.80</div>
+        <div class="p-note">2025年8月-2026年1月底部区间，对应FY2025 PE 7-8.5x</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub-h">7.4 技术面与基本面交叉验证</h3>
+  <p>PCT的技术走势典型地体现了GPU超级周期驱动下市场预期修复的特征：从上市首日的S$0.80（市值仅约SGD3.1亿）到当前S$3.06（市值SGD11.9亿），估值重评主要由FY2025超预期业绩（净利润+88.5%）及SGX主板一次性上市带来的机构投资者关注度大幅提升共同驱动。当前股价已在技术上进入历史高位整理区域，短期内超额收益的获取更多依赖基本面的持续超预期（GPU需求维持、下半年结果），而非纯粹趋势动量的延伸。</p>
+</div>
+
+<!-- ─── 08 估值模型 ─── -->
+<div class="section" id="valuation">
+  <h2 class="sec-h"><span class="n">08</span>估值模型 — 蜗牛鸟"GPU周期定位×现金回报折现"双轴框架</h2>
+  <p>对于PC Partner这类以GPU驱动为核心、盈利高度依附于NVIDIA产品换代节奏的AIB制造商，我们放弃单纯使用DCF（结果对终值假设过度敏感），转而以<strong>周期调整P/E（CAP/E）为主、EV/EBITDA同业对标为辅、股息折现模型（DDM）交叉验证</strong>的三维估值体系，同时对关税法律风险与内部人减持信号做情景折价处理。</p>
+
+  <div class="mbox">
+    <h4>第一步：标准化周期盈利（Normalized EPS）</h4>
+    <p>FY2025 EPS HK$1.27含一次性税务和解HK$0.163/股，剔除后标准化EPS约<strong>HK$1.43</strong>（≈SGD$0.240）。另考虑FY2025为RTX 50系列Blackwell强周期爆发年，FY2026将面临高基数效应与RTX 5090供应逐步充裕后ASP边际下行的压力，我们给予FY2026标准化EPS预测值<strong>SGD$0.215-0.250</strong>（YoY +0%至+17%），中枢取SGD$0.230。</p>
+  </div>
+  <div class="mbox">
+    <h4>第二步：合理P/E倍数（Justified P/E）</h4>
+    <ul>
+      <li>亚洲科技硬件AIB制造商（参考Gigabyte、ASUS、MSI等）历史P/E区间约8-18x，中枢约12-14x</li>
+      <li>PCT因单一NVIDIA依赖性（浓度风险）、薄利模式（净利率3.5%）及SGX小盘流动性折价，给予相对同业10-20%的折价</li>
+      <li>但AI超级周期背景下GPU AIB厂商享有结构性估值溢价，叠加高股息支撑（4.7%），修正后给予目标P/E区间<strong>13-17x FY2025标准化EPS</strong></li>
+    </ul>
+  </div>
+  <div class="mbox">
+    <h4>第三步：三情景目标价推导（以SGD$0.240为标准化EPS）</h4>
+  </div>
+  <table>
+    <thead><tr><th>情景</th><th class="rc">假设条件</th><th class="rc">目标P/E</th><th class="rc">EPS（SGD）</th><th class="rc">目标价（SGD）</th><th class="rc">概率权重</th></tr></thead>
+    <tbody>
+      <tr><td>悲观情形<br><span class="fn">GPU周期回落+关税重创</span></td><td class="rc">FY2026净利润-30%；关税赔偿全额兑现</td><td class="rc">11x</td><td class="rc">0.168</td><td class="rc neg"><strong>S$1.85</strong></td><td class="rc">20%</td></tr>
+      <tr><td>基准情形<br><span class="fn">Blackwell需求延续</span></td><td class="rc">FY2026净利润持平至+15%；关税和解</td><td class="rc">15x</td><td class="rc">0.233</td><td class="rc"><strong>S$3.50</strong></td><td class="rc">55%</td></tr>
+      <tr><td>乐观情形<br><span class="fn">AI服务器突破+RTX 6000预热</span></td><td class="rc">FY2026净利润+30%；AI GPU服务器扩大贡献</td><td class="rc">18x</td><td class="rc">0.312</td><td class="rc pos"><strong>S$5.62</strong></td><td class="rc">25%</td></tr>
+    </tbody>
+  </table>
+  <p><strong>概率加权目标价</strong> = (S$1.85×20%) + (S$3.50×55%) + (S$5.62×25%) = S$0.37 + S$1.925 + S$1.405 = <strong>≈S$3.70</strong></p>
+  <p>我们以基准情形为研究锚定目标，取12个月目标价<strong>S$3.50</strong>（较现价+14.4%），叠加约4.7%股息收益率，综合潜在回报约<strong>19%</strong>，支撑积极买入评级。</p>
+
+  <h3 class="sub-h">8.1 EV/EBITDA同业对标</h3>
+  <table>
+    <thead><tr><th>公司</th><th class="rc">市场</th><th class="rc">EV/EBITDA</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td><strong>PC Partner (PCT)</strong></td><td class="rc">SGX</td><td class="rc"><strong>≈5.9x</strong></td><td>基于FY2025 EBITDA，SGD计算</td></tr>
+      <tr><td>技嘉（Gigabyte）</td><td class="rc">台股</td><td class="rc">≈8-12x</td><td>AIB及主板制造，规模更大</td></tr>
+      <tr><td>华硕（ASUS）</td><td class="rc">台股</td><td class="rc">≈10-14x</td><td>品牌溢价更高，产品线更宽</td></tr>
+      <tr><td>微星（MSI）</td><td class="rc">台股</td><td class="rc">≈8-12x</td><td>AIB+笔记本+外设</td></tr>
+    </tbody>
+  </table>
+  <p>以EV/EBITDA横向比较，PCT约5.9x显著低于台湾AIB同类企业8-14x区间，具备相对估值折价空间。估值折价一方面反映SGX小盘流动性溢价要求，另一方面也体现市场对NVIDIA单一依赖风险的定价，两者均非绝对性的基本面劣势，若公司持续扩大自有品牌AI产品贡献，折价理应收窄。</p>
+</div>
+
+<!-- ─── 09 行业与宏观 ─── -->
+<div class="section" id="macro">
+  <h2 class="sec-h"><span class="n">09</span>行业与宏观背景</h2>
+
+  <h3 class="sub-h">9.1 NVIDIA Blackwell超级周期：AIB厂商的黄金窗口期</h3>
+  <p>NVIDIA RTX 50系列（Blackwell架构）于2025年初开始出货，其中RTX 5090旗舰卡的市场需求持续超出供应，ASP大幅提升推动PC Partner FY2025自有品牌VGA销售额增长68.9%。从历史GPU产品周期来看，新旗舰卡从发布到出货满足约需12-18个月，这意味着RTX 50系列的主要需求放量窗口将延伸至2026年下半年甚至2027年初，公司有望在此期间延续较高的毛利率水平。<span class="fn">[来源：Minichart.com.sg FY2025分析；KGI证券研报摘要（MiniChart, 2026年1月9日）]</span></p>
+
+  <h3 class="sub-h">9.2 AI PC与AI服务器：第二增长曲线的开启</h3>
+  <p>全球主要PC OEM厂商开始在新品中集成AI加速芯片，ZOTAC GPU服务器及AI GPU Cluster产品亦正从小批量向规模化推进，这为PC Partner提供了从消费级游戏显卡向企业AI基础设施端延伸的战略机遇。尽管该业务目前尚未在公告中单独披露收入规模，但管理层已多次在战略表述中强调AI计算市场的布局，具备长期结构性增量价值。</p>
+
+  <h3 class="sub-h">9.3 显存（HBM/GDDR）供给约束：双刃剑效应</h3>
+  <p>AI数据中心对高带宽内存（HBM）的爆发式需求，导致主流图形内存（GDDR6/GDDR7）产能被压缩，推动显存价格上涨。从PC Partner角度看，这既构成<strong>成本压力</strong>（原材料成本占比87.1%，显存价格上涨将直接侵蚀毛利），又形成<strong>定价权支撑</strong>（供给约束下终端显卡涨价具有合理性，且PC Partner有能力转嫁部分成本至终端零售价格），两者同时作用，净影响取决于公司定价能力的强弱，历史上ZOTAC品牌在高端市场的溢价能力较强。<span class="fn">[来源：Minichart.com.sg — "Rising price on graphic memory has already prompted graphics card price increases"; KGI研报摘要]</span></p>
+
+  <h3 class="sub-h">9.4 美国关税政策风险</h3>
+  <p>公司面临约<strong>2,500万美元</strong>的美国海关显卡进口关税潜在诉讼敞口，截至FY2025年报披露时，已支付<strong>1,180万美元</strong>并计为其他应收款（pending诉讼结果返还）。这一法律不确定性是当前最具实质性的一次性财务风险，若最终判决不利于公司，将对净利润产生约HK$1.97亿的潜在一次性冲击，相当于FY2025净利润的约40%。公司已将部分生产转移至印尼以降低未来关税风险。<span class="fn">[来源：Minichart.com.sg — "Legal Contingencies: US$25 million potential US customs tariff liability"]</span></p>
+</div>
+
+<!-- ─── 10 风险矩阵 ─── -->
+<div class="section" id="risk">
+  <h2 class="sec-h"><span class="n">10</span>风险矩阵</h2>
+  <table>
+    <thead><tr><th>风险类别</th><th>核心说明</th><th>等级</th></tr></thead>
+    <tbody>
+      <tr><td><strong>NVIDIA供应商集中风险</strong></td><td>GPU采购高度依赖NVIDIA单一供应商（合作自2006年），任何NVIDIA产品配给政策变化或授权合作关系调整，将直接冲击公司核心业务</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>美国关税与贸易摩擦</strong></td><td>约$2,500万美元关税诉讼悬而未决，叠加地缘政治贸易摩擦加剧，NALA市场（+47.1%高增速区域）受影响风险最大</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>GPU周期波动</strong></td><td>FY2025营收及利润高度受益于RTX 50系列Blackwell爆发式需求，若下一代产品（RTX 6000/"Rubin"）发布节奏延迟或需求不及预期，将导致业绩大幅波动</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>显存价格上涨侵蚀毛利</strong></td><td>原材料成本占营收87.1%，GDDR显存价格受HBM挤压可能进一步走高，挤压公司薄利空间</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>库存减值风险</strong></td><td>VGA显卡库存水位偏高（业务性质使然），若需求突变或下一代产品发布提前，库存减值风险不容忽视</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>高管层变动</strong></td><td>FY2025年内多名高级管理人员离职，已按SGX规定披露，管理层稳定性需持续跟踪</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>SGX小盘流动性风险</strong></td><td>市值约SGD11.9亿，在SGX属小盘股，每日交易量相对偏薄，机构建仓或减仓对股价冲击较大，Beta达1.51</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>外汇风险（HKD/SGD）</strong></td><td>财务以HKD计算，股价以SGD交易，港元与美元联系汇率制度稳健，但SGD/HKD波动仍带来一定换算风险</td><td><span class="badge b-lo">低</span></td></tr>
+      <tr><td><strong>SGX主板重新上市后机构关注度</strong></td><td>迁至SGX后分析师覆盖仍仅约1家（Simply Wall St记录），机构持股结构尚不透明，信息不对称风险相对较高</td><td><span class="badge b-lo">低</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ─── 11 催化剂 ─── -->
+<div class="section" id="catalysts">
+  <h2 class="sec-h"><span class="n">11</span>催化剂与近期展望</h2>
+  <div class="g2">
+    <div class="card">
+      <div class="c-lbl">下一财报日</div>
+      <div class="c-val">2026年8月21日</div>
+      <div class="c-sub">H1 FY2026中期业绩，市场关注RTX 5080/5070系列出货量及毛利率变化</div>
+    </div>
+    <div class="card">
+      <div class="c-lbl">关键监测指标</div>
+      <div class="c-val">毛利率 vs 10.2%</div>
+      <div class="c-sub">能否守住FY2025改善的毛利率基准，是判断显存成本传导能力的核心指标</div>
+    </div>
+  </div>
+  <p>正面催化剂包括：①RTX 5080/5070系列2026年上半年大规模放货进一步扩大出货量；②ZOTAC AI GPU服务器拿下标志性企业订单；③关税诉讼有利结果（1,180万美元已付金额返还）；④分析师覆盖扩大带来机构投资者增持。负面催化剂包括：①关税不利判决、②内部人大额减持（创始人相关人员之前已有减持记录）、③GPU需求突然下行导致库存减值。</p>
+</div>
+
+<!-- ─── 12 投资结论 ─── -->
+<div class="section" id="conclusion">
+  <h2 class="sec-h"><span class="n">12</span>投资结论</h2>
+  <p>PC Partner是NVIDIA Blackwell超级周期中亚太区最直接的纯粹AIB受益标的之一，FY2025的业绩爆发（营收+38%、净利润+89%、派息+113%）具有充分的基本面支撑，并非单纯的情绪驱动。公司战略性迁入新加坡、印尼新厂投运及向AI计算延伸的布局均指向中长期竞争力的夯实。</p>
+  <p>在估值层面，当前S$3.06对应FY2025标准化P/E约12.7x（剔除一次性税务影响后），EV/EBITDA约5.9x，相较台湾AIB同业仍有约30-40%的估值折价空间，安全边际相对充足。股息收益率约4.7%提供基础现金回报，在高息环境下构成较好的持仓安全垫。</p>
+  <p>主要担忧在于：股价已从上市价S$0.80大幅上涨至ATH附近，短期技术面存在回调整固压力；美国关税诉讼最终裁决的不确定性仍是悬在业绩上方的尾部风险；以及GPU产品周期转换期间不可避免的需求季节性波动。</p>
+  <p><strong>综合结论：首次覆盖给予"积极买入（ACCUMULATE）"评级，12个月目标价S$3.50，潜在资本利得回报约+14.4%，叠加约4.7%股息收益率，综合潜在回报约19%。</strong>建议投资者在S$2.70-2.90区间择机积累仓位（若股价出现Blackwell周期数据反馈前的技术性回调），以获取更充裕的安全边际；当前S$3.06现价持有者可继续持有，关注8月21日H1 2026业绩公告作为下一关键评估节点。</p>
+</div>
+
+<!-- ─── 13 数据来源 ─── -->
+<div class="section" id="sources">
+  <h2 class="sec-h"><span class="n">13</span>数据来源</h2>
+  <ul class="src-list">
+    <li>Minichart.com.sg — "PC Partner Group Limited 2025 Financial Results: Profit Doubled, Final & Special Dividends of SGD0.05 per Share Each Announced"（2026年2月27日）</li>
+    <li>Minichart.com.sg — "PC Partner Group 2026 Stock Analysis: NVIDIA Alignment, AI Growth & SGX Upside – KGI Outperform Rating & Price Target Explained"（2026年1月9日，KGI证券报告摘要）</li>
+    <li>Simply Wall St — SGX:PCT 股息历史、FY2024/H1 2025财务数据及估值分析（2025年8月-2026年6月）</li>
+    <li>StockAnalysis.com — SGX:PCT 年度收入及盈利数据（"Revenue HK$13.95B, Earnings HK$494.2M, +88.53%"）</li>
+    <li>TradingView — SGX:PCT EBITDA、股息率、ATH S$3.08（2026年6月25日）、分析师目标价区间S$2.54–3.60</li>
+    <li>Yahoo Finance / SG.Finance — PCT.SI 公司简介、股价历史及股东结构</li>
+    <li>SGinvestors.io — SGX:PCT 上市信息、产品线描述（ZOTAC/Inno3D/Manli）及地区分布</li>
+    <li>PitchBook — SGX:PCT 流通股数约3.88亿股（截至2026年4月30日）</li>
+    <li>Investing.com — PCPA 市值及EPS TTM数据（截至2026年4月24日）</li>
+    <li>The Edge Singapore — "HK-based PC Partner guides for growth in net profit for full year"（2025年2月13日）</li>
+    <li>Yahoo Finance / SG Finance — H1 FY2025 Results："Graphics card-maker PC Partner posts 28.5% higher revenue"（2025年8月19日）</li>
+    <li>StockTitan.net — PC Partner 财务汇总（基于SGX 10-Q等价披露文件）</li>
+    <li>GuruFocus — SGX:PCT 基本面数据概览</li>
+  </ul>
+  <p class="fn" style="margin-top:12px">注：PC Partner于2024-2025年间完成从港交所到SGX的主要上市迁移，历史财务数据来源包括港交所披露文件及SGX上市后的定期披露，部分数据来自第三方平台对官方公告的二次整理，已尽量交叉核验。所有估值计算基于2026年7月1日午间报价S$3.06及1 SGD ≈ 5.96 HKD汇率假设。</p>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <strong>重要免责声明：</strong>本报告由蜗牛鸟投资（Snail-Bird Investment 🐦）精品研究部编制，仅供内部研究及专业投资者参考，不构成任何证券买卖的要约、邀请或建议。本报告所涉及的目标价、盈利预测及情景分析均基于截至报告日可获取的公开信息及分析师的独立判断，实际结果可能因市场环境、宏观经济变化、公司经营决策及不可预见风险而与预测存在重大差异。历史业绩或价格表现不代表未来表现。PCT为新加坡交易所上市小盘科技股，流动性风险相对较高，投资者应充分评估自身风险承受能力并寻求独立专业意见。本报告涉及的港元/新加坡元换算采用报告日参考汇率，投资者应关注外汇波动风险。本报告版权归蜗牛鸟投资所有，未经书面授权不得以任何形式转载、引用或传播。
+</div>
+
+<div class="footer-bar">SNAIL-BIRD INVESTMENT 🐦 &nbsp;|&nbsp; 精品研究部 &nbsp;|&nbsp; SGX科技行业覆盖 &nbsp;|&nbsp; CONFIDENTIAL · FOR PROFESSIONAL INVESTORS ONLY</div>
+
+</div>
+</body>
+</html>
