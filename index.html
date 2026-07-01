@@ -260,7 +260,7 @@
 
 
 
-  .section-hd {display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:6px;}
+  .section-hd {display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:6px;}
 
   .section-hd h2 {font-size:1.15rem;font-weight:700;letter-spacing:.1px;}
 
@@ -276,7 +276,7 @@
 
   .sector-hd {
 
-    display:flex;align-items:center;gap:8px;margin-bottom:20px;padding-left:4px;
+    display:flex;align-items:center;gap:8px;margin-bottom:28px;padding-left:4px;
 
     border-left:3px solid var(--accent, #1a56db);
 
@@ -576,7 +576,7 @@
 
         </a>
 
-        <a href="#" onclick="switchCat('us','semi-us');return false;" id="semi-us-link">
+        <a href="#" onclick="switchCat('semi-us');return false;" id="semi-us-link">
 
           <span style="font-weight:600;color:var(--accent2);width:20px;text-align:center;">U</span><span>美国半导体热度</span>
 
@@ -2252,9 +2252,6 @@
 
       </div>
 
-    </div>
-
-  </div>
       <div class="card">
         <div class="card-top">
           <div class="card-icon" style="background:#0a2240;color:#d4a017;">TR</div>
@@ -2268,8 +2265,17 @@
         <a class="card-btn" href="TRV_深度投研报告_2026.html">阅读报告</a>
       </div>
 
+    </div>
+
+  </div>
 
 
+
+</div>
+<!-- /panel-us -->
+
+<!-- 美国半导体热度 -->
+<div class="panel" id="panel-semi-us">
     <div class="section-hd" id="semi-us-section" style="margin-top:36px;">
     <h2>美国半导体热度</h2>
     <span class="muted">每日更新 · 覆盖AI芯片/光通信/设备/EDA全产业链</span>
@@ -2305,6 +2311,14 @@
     </div>
     <div class="month-cards open">
       <div class="grid">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#0f2040;color:#c9a84c;">US</div>
+          <div>
+            <div class="card-sub">2026年6月30日 (周二) · 最新</div>
+            <div class="card-title">美股半导体硬件SBI泡沫指数</div>
+          </div>
+        </div>
         <div class="card-desc">美股硬件/半导体板块SBI泡沫指数日报，基于估值/拥挤度/杠杆/业绩兑现/资金流向/外部环境六维度评分，今日总分76.0分（危险区间），环比持平。SOX 6/29反弹+3.83%系超卖修复，但FINRA融资余额$1.415T创历史新高、S&P500 Top10集中度37.46%达1970年代来最高，泡沫未消。</div>
         <div class="card-tags"><span class="tag">美股</span><span class="tag">半导体</span><span class="tag">SBI泡沫指数</span></div>
         <a class="card-btn" href="report-us-hardware-sbi-2026-06-30.html">阅读报告</a>
@@ -2653,10 +2667,8 @@
 </div>
 
 </div>
-      </div>
-    </div>
-  </div>
-<!-- /panel-us -->
+</div>
+<!-- /panel-semi-us -->
 
 
 
@@ -2834,8 +2846,6 @@ const tabConfig = {
 
     {text:'深度投研', target:'panel-us', active:true},
 
-    {text:'半导体热度', target:'semi-us-section'},
-
   ],
 
   macro: [
@@ -2847,6 +2857,12 @@ const tabConfig = {
   research: [
 
     {text:'深度研究', target:'panel-research', active:true},
+
+  ],
+
+  'semi-us': [
+
+    {text:'美国半导体热度', target:'panel-semi-us', active:true},
 
   ],
 
@@ -2955,7 +2971,7 @@ function syncSemiSubActive(){
 
   semiCnLink.classList.toggle('active', id==='panel-china' || id==='panel-semi-cn');
 
-  semiUsLink.classList.toggle('active', id==='panel-us');
+  semiUsLink.classList.toggle('active', id==='panel-us' || id==='panel-semi-us');
 
 }
 
@@ -3079,14 +3095,15 @@ function applyHash(){
 
   }
 
-  const validCats = ['china','hk','us','macro','semi-cn'];
+  const validCats = ['china','hk','us','macro','semi-cn','semi-us'];
 
   if(validCats.includes(cat)){
 
     if(cat === 'semi-cn'){ switchCat('china', 'semi-cn', false); }
+    else if(cat === 'semi-us'){ switchCat('semi-us', null, false); }
     else { switchCat(cat, scrollTarget, false); }
 
-    if(cat==='china' || cat==='us' || cat==='semi-cn'){
+    if(cat==='china' || cat==='us' || cat==='semi-cn' || cat==='semi-us'){
 
       semiSub.classList.add('open');
 
@@ -3110,7 +3127,7 @@ function applyHash(){
 
   if(activePanel) renderTabs(activePanel.id.replace('panel-',''));
 
-  if(activePanel && (activePanel.id==='panel-china' || activePanel.id==='panel-semi-cn' || activePanel.id==='panel-us')){
+  if(activePanel && (activePanel.id==='panel-china' || activePanel.id==='panel-semi-cn' || activePanel.id==='panel-us' || activePanel.id==='panel-semi-us')){
 
     semiSub.classList.add('open');
 
