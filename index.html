@@ -376,6 +376,24 @@
 
   .card.hidden {display:none;}
 
+  /* ── Monthly toggle for SBI reports ── */
+  .month-group {margin-bottom:8px;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+  .month-toggle {
+    display:flex;align-items:center;gap:8px;
+    padding:10px 16px;cursor:pointer;user-select:none;
+    background:var(--bg);font-size:.82rem;font-weight:600;color:var(--text);
+    transition:background .15s;
+  }
+  .month-toggle:hover {background:var(--tag-bg);}
+  .month-toggle .arrow {
+    display:inline-block;transition:transform .2s;
+    font-size:.7rem;color:var(--text2);
+  }
+  .month-toggle .arrow.open {transform:rotate(90deg);}
+  .month-cards {display:none;}
+  .month-cards.open {display:block;}
+  .month-cards .grid {margin-top:0;padding:0 4px 8px;}
+
 
 
   .overlay {display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:190;}
@@ -792,19 +810,19 @@
 
 <!-- A股半导体 -->
 <div class="panel" id="panel-semi-cn">
-<div class="section-hd" id="semi-cn-section" style="margin-top:36px;">
-
+  <div class="section-hd" id="semi-cn-section" style="margin-top:36px;">
     <h2>A股半导体热度</h2>
-
     <span class="muted">每日更新 · 覆盖设计/制造/设备/材料全产业链</span>
-
   </div>
 
-  <div class="grid">
-
-
-
-    <div class="card">
+  <div class="month-group">
+    <div class="month-toggle" onclick="toggleMonth(this)">
+      <span class="arrow open">&rsaquo;</span>
+      <span>2026年6月</span>
+    </div>
+    <div class="month-cards open">
+      <div class="grid">
+<div class="card">
 
       <div class="card-top">
 
@@ -1179,7 +1197,9 @@
 
 </div>
 <!-- /panel-semi-cn -->
-
+      </div>
+    </div>
+  </div>
 <!-- 港股 -->
 
 <div class="panel" id="panel-hk">
@@ -2284,20 +2304,19 @@
 
 
 
-  <div class="section-hd" id="semi-us-section" style="margin-top:36px;">
-
+    <div class="section-hd" id="semi-us-section" style="margin-top:36px;">
     <h2>美国半导体热度</h2>
-
     <span class="muted">每日更新 · 覆盖AI芯片/光通信/设备/EDA全产业链</span>
-
   </div>
 
-  <div class="grid">
-
-      
-
-      
-      <div class="card">
+  <div class="month-group">
+    <div class="month-toggle" onclick="toggleMonth(this)">
+      <span class="arrow open">&rsaquo;</span>
+      <span>2026年6月</span>
+    </div>
+    <div class="month-cards open">
+      <div class="grid">
+<div class="card">
         <div class="card-top">
           <div class="card-icon" style="background:#0f2040;color:#c9a84c;">US</div>
           <div>
@@ -2664,7 +2683,11 @@
 
 </div>
 
-</div><!-- /panel-us -->
+</div>
+      </div>
+    </div>
+  </div>
+<!-- /panel-us -->
 
 
 
@@ -3140,6 +3163,14 @@ window.addEventListener('hashchange', ()=>{
   applyHash();
 
 });
+
+function toggleMonth(el){
+  const arrow = el.querySelector('.arrow');
+  const cards = el.nextElementSibling;
+  const isOpen = cards.classList.contains('open');
+  if(isOpen){ cards.classList.remove('open'); arrow.classList.remove('open'); }
+  else { cards.classList.add('open'); arrow.classList.add('open'); }
+}
 
 </script>
 
