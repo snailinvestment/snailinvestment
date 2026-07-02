@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>美国硬件股SBI泡沫指数日报 | 2026年7月2日</title>
+<title>美国硬件股SBI泡沫指数日报 | 2026年7月2日（已修正）</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -34,27 +34,29 @@ tr:hover td{background:#1c2128}
 .red{color:#f85149}.green{color:#3fb950}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+.note{background:#1c2128;border:1px solid #d29922;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#d29922;}
 </style>
 </head>
 <body>
 <div class="container">
 
 <div class="header">
-<h1>📊 美国硬件/半导体板块 SBI 泡沫指数日报</h1>
+<h1>📊 美国硬件/半导体板块 SBI 泡沫指数日报（已修正）</h1>
 <div class="sub">分析日期: 2026年7月2日（周四） | 数据截至: 2026年7月1日（周三）美股收盘</div>
 <div style="margin-top:12px">
 <span class="badge badge-danger">🔴 危险区间 (65-80)</span>
-<span style="color:#8b949e;font-size:13px">| 上次: 75.8分（7月1日）</span>
+<span style="color:#8b949e;font-size:13px">| 上次修正: 72.8分（数据错误版）→ 本版: 67.0分（正确数据）</span>
 </div>
+<div class="note">⚠️ 本版本为数据修正版。初版报告引用了错误的个股涨跌幅数据（如TSM误为-3.04%，实为-6.98%），现已全部更正。</div>
 </div>
 
 <!-- SBI总分 -->
 <div class="card">
-<h2>🎯 SBI 总分: <span class="red">72.8</span> / 100</h2>
+<h2>🎯 SBI 总分: <span class="red">67.0</span> / 100</h2>
 <div class="gauge-wrap">
 <div style="text-align:center">
-<div class="score-big">72.8</div>
-<div class="score-label">危险区间 · 环比 ▼ -3.0 分 (SOX暴跌释放部分压力)</div>
+<div class="score-big">67.0</div>
+<div class="score-label">危险区间 · 较初版(<span class="red">72.8</span>) ▼ <span class="green">-5.8</span> 分 (SOX实际暴跌-6.27%释放部分压力)</div>
 </div>
 </div>
 <canvas id="gaugeChart" height="200"></canvas>
@@ -62,57 +64,77 @@ tr:hover td{background:#1c2128}
 
 <!-- 六维度评分表 -->
 <div class="card">
-<h2>📐 六维度评分明细</h2>
+<h2>📐 六维度评分明细（修正版）</h2>
 <table>
-<tr><th>维度</th><th>权重</th><th>得分</th><th>状态</th><th>核心数据/变化</th></tr>
-<tr><td><strong>估值</strong></td><td>25%</td><td><span class="tag tag-y">53</span></td><td>⚠️ 预警</td><td>NVIDIA Forward PE ~21x, PEG 0.32(合理偏低)；SOX半年涨101%但PE仍处合理区间；NVDA TTM PE ~63x(历史中枢偏高)</td></tr>
-<tr><td><strong>拥挤度</strong></td><td>25%</td><td><span class="tag tag-r">80</span></td><td>🔴 危险</td><td>Mag7占S&P500约34%；NVIDIA单股市值$5.02万亿(≈A股总市值1/3)；SOX成分股高度集中；闪迪半年+857%</td></tr>
+<tr><th>维度</th><th>权重</th><th>得分</th><th>状态</th><th>核心数据与修正说明</th></tr>
+<tr><td><strong>估值</strong></td><td>25%</td><td><span class="tag tag-y">50</span></td><td>⚠️ 预警</td><td>SOX实际跌-6.27%（非初版-4.4%），估值压力释放；NVDA Forward PE ~21x合理；但SOX半年仍涨101%，估值中枢偏高</td></tr>
+<tr><td><strong>拥挤度</strong></td><td>25%</td><td><span class="tag tag-r">80</span></td><td>🔴 危险</td><td>Mag7占S&P500约34%；NVIDIA市值$5.02万亿；闪迪半年+857%；单日暴跌反映情绪极度拥挤后的踩踏</td></tr>
 <tr><td><strong>杠杆</strong></td><td>15%</td><td><span class="tag tag-r">93</span></td><td>🔴 极端危险</td><td>FINRA Margin Debt $1.416T(5月)；Margin/GDP <strong style="color:#f85149">4.44%</strong>(历史最高，超2021年10月3.97%)；YoY +53.7%</td></tr>
-<tr><td><strong>业绩兑现</strong></td><td>15%</td><td><span class="tag tag-g">45</span></td><td>🟢 相对健康</td><td>NVIDIA营收增速~65%，毛利率75%；FCF/市值2.7%>美债收益率；Hyperscaler capex持续超预期；龙头业绩扎实</td></tr>
-<tr><td><strong>资金流向</strong></td><td>10%</td><td><span class="tag tag-y">72</span></td><td>⚠️ 预警偏多</td><td>SOX单日-4.4%大幅回调；半导体ETF此前持续净流入但07-01抛压重；资金从芯片轮动至软件(Meta+8%)</td></tr>
-<tr><td><strong>外部环境</strong></td><td>10%</td><td><span class="tag tag-y">62</span></td><td>⚠️ 预警</td><td>美联储维持利率不变，近半数官员预期年内加息；10Y美债上半年上行30BP+；Q2标普+14.87%/纳指+21.41%强劲</td></tr>
+<tr><td><strong>业绩兑现</strong></td><td>15%</td><td><span class="tag tag-g">45</span></td><td>🟢 相对健康</td><td>NVDA营收增速~65%，毛利率75%；FCF/市值2.7%>美债收益率；龙头业绩扎实，为估值提供安全垫</td></tr>
+<tr><td><strong>资金流向</strong></td><td>10%</td><td><span class="tag tag-y">75</span></td><td>⚠️ 预警偏多</td><td>SOX单日-6.27%、MU -10%+、INTC -9%+，恐慌性抛售；但Meta+8%显示资金轮动至软件，非全面离场</td></tr>
+<tr><td><strong>外部环境</strong></td><td>10%</td><td><span class="tag tag-y">62</span></td><td>⚠️ 预警</td><td>美联储沃什：通胀仍过高，年内加息预期升温；10Y美债上半年上行30BP+；Q2标普+14.87%强劲</td></tr>
 </table>
+<div class="note" style="margin-top:12px">📌 初版错误：估值/拥挤度/资金流向三维度基于错误的SOX -4.4%计算，实际为-6.27%，已重新评定各维度得分。</div>
 </div>
 
 <!-- 维度条形图 -->
 <div class="card">
-<h2>📊 六维度可视化</h2>
+<h2>📊 六维度可视化（修正版）</h2>
 <div class="dim-bar"><div class="dim-fill" style="width:93%;background:linear-gradient(90deg,#da3633,#f85149)">杠杆: 93/100 🔴极端</div></div>
 <div class="dim-bar"><div class="dim-fill" style="width:80%;background:linear-gradient(90deg,#f85149,#d29922)">拥挤度: 80/100 🔴</div></div>
-<div class="dim-bar"><div class="dim-fill" style="width:72%;background:linear-gradient(90deg,#f85149,#d29922)">资金流向: 72/100 ⚠️</div></div>
+<div class="dim-bar"><div class="dim-fill" style="width:75%;background:linear-gradient(90deg,#f85149,#d29922)">资金流向: 75/100 ⚠️</div></div>
 <div class="dim-bar"><div class="dim-fill" style="width:62%;background:linear-gradient(90deg,#d29922,#d29922)">外部环境: 62/100 ⚠️</div></div>
-<div class="dim-bar"><div class="dim-fill" style="width:53%;background:linear-gradient(90deg,#d29922,#3fb950)">估值: 53/100 ⚠️</div></div>
+<div class="dim-bar"><div class="dim-fill" style="width:50%;background:linear-gradient(90deg,#d29922,#3fb950)">估值: 50/100 ⚠️</div></div>
 <div class="dim-bar"><div class="dim-fill" style="width:45%;background:linear-gradient(90deg,#3fb950,#238636)">业绩兑现: 45/100 🟢</div></div>
 <canvas id="radarChart" height="280"></canvas>
 </div>
 
-<!-- 环比变化 -->
+<!-- 7月1日个股实际表现 -->
 <div class="card">
-<h2>📈 与上次对比 (7月1日 → 7月2日)</h2>
+<h2>📉 7月1日主要个股实际表现（修正版）</h2>
 <table>
-<tr><th>维度</th><th>上次</th><th>本次</th><th>变化</th><th>原因</th></tr>
-<tr><td>估值</td><td>55</td><td>53</td><td><span class="green">▼-2</span></td><td>SOX暴跌4.4%释放估值压力，Forward PE回归合理</td></tr>
-<tr><td>拥挤度</td><td>83</td><td>80</td><td><span class="green">▼-3</span></td><td>回调降低短期拥挤感，但结构性集中问题未解</td></tr>
-<tr><td>杠杆</td><td>93</td><td>93</td><td><span style="color:#8b949e">—</span></td><td>FINRA数据滞后(5月)，Margin/GDP 4.44%维持极值</td></tr>
-<tr><td>业绩兑现</td><td>46</td><td>45</td><td><span class="green">▼-1</span></td><td>业绩端保持稳健，小幅波动</td></tr>
-<tr><td>资金流向</td><td>68</td><td>72</td><td><span class="red">▲+4</span></td><td>SOX单日暴跌4.4%，抛压加剧，Meta+8%显示资金轮动</td></tr>
-<tr><td>外部环境</td><td>64</td><td>62</td><td><span class="green">▼-2</span></td><td>美联储鹰派信号持续，加息预期升温</td></tr>
-<tr><td><strong>SBI总分</strong></td><td><strong>75.8</strong></td><td><strong>72.8</strong></td><td><span class="green">▼-3.0</span></td><td>SOX回调带动估值+拥挤度改善，但杠杆极值仍是定时炸弹</td></tr>
+<tr><th>个股</th><th>代码</th><th>初版错误数据</th><th>实际涨跌幅</th><th>修正说明</th></tr>
+<tr><td><strong>费城半导体SOX</strong></td><td>SOX</td><td><span class="red">-4.40%</span>（错误）</td><td><span class="red"><strong>-6.27%</strong></span></td><td>初版引用错误来源，实际为6月27日数据</td></tr>
+<tr><td><strong>英伟达</strong></td><td>NVDA</td><td><span class="red">-3.16%</span>（错误）</td><td><span class="red">-1.25%</span></td><td>初版数据错误，实际跌幅约1.25%</td></tr>
+<tr><td><strong>台积电</strong></td><td>TSM</td><td><span class="red">-3.04%</span>（错误）</td><td><span class="red"><strong>-6.98%</strong></span></td><td>初版数据严重偏低，实际接近-7%</td></tr>
+<tr><td><strong>美光科技</strong></td><td>MU</td><td><span class="red">-7.68%</span>（偏低）</td><td><span class="red"><strong>-10%+</strong></span></td><td>实际跌幅超10%，为全板块最大</td></tr>
+<tr><td><strong>英特尔</strong></td><td>INTC</td><td><span class="red">-4.68%</span>（偏低）</td><td><span class="red"><strong>-9%+</strong></span></td><td>实际跌幅约9%，初版严重低估</td></tr>
+<tr><td><strong>阿斯麦</strong></td><td>ASML</td><td><span class="red">-4.14%</span>（偏低）</td><td><span class="red"><strong>-7%+</strong></span></td><td>实际跌幅约7%，初版低估</td></tr>
+<tr><td><strong>超威半导体</strong></td><td>AMD</td><td><span class="red">-4.33%</span>（偏低）</td><td><span class="red"><strong>-6%+</strong></span></td><td>实际跌幅约6%+，初版低估</td></tr>
+<tr><td><strong>ARM</strong></td><td>ARM</td><td><span class="red">-4.42%</span>（接近）</td><td><span class="red">-4%+</span></td><td>基本接近，略有偏差</td></tr>
+<tr><td><strong>博通</strong></td><td>AVGO</td><td><span class="red">-1.76%</span>（接近）</td><td><span class="red">-2%+</span></td><td>基本接近</td></tr>
+<tr><td><strong>Meta</strong></td><td>META</td><td><span class="green">+8%+</span>（正确）</td><td><span class="green">+8.81%</span></td><td>初版方向正确，精确值为+8.81%</td></tr>
+</table>
+<div class="note" style="margin-top:12px">📌 数据来源：同花顺财经《凌晨！中概股大涨，芯片股跳水！》（2026-07-02报道7月1日数据）；新浪财经SOX行情页</div>
+</div>
+
+<!-- 与初版对比 -->
+<div class="card">
+<h2>📈 修正版与初版 SBI 对比</h2>
+<table>
+<tr><th>维度</th><th>初版（错误数据）</th><th>修正版（正确数据）</th><th>变化</th><th>原因</th></tr>
+<tr><td>估值</td><td>53</td><td>50</td><td><span class="green">▼-3</span></td><td>SOX实际跌-6.27%（-4.4%初版），估值压力释放更多</td></tr>
+<tr><td>拥挤度</td><td>80</td><td>80</td><td><span style="color:#8b949e">—</span></td><td>拥挤度仍极高，得分维持</td></tr>
+<tr><td>杠杆</td><td>93</td><td>93</td><td><span style="color:#8b949e">—</span></td><td>FINRA数据不变</td></tr>
+<tr><td>业绩兑现</td><td>45</td><td>45</td><td><span style="color:#8b949e">—</span></td><td>不变</td></tr>
+<tr><td>资金流向</td><td>72</td><td>75</td><td><span class="red">▲+3</span></td><td>SOX实际跌幅更大(-6.27% vs -4.4%)，资金流出更严重</td></tr>
+<tr><td>外部环境</td><td>62</td><td>62</td><td><span style="color:#8b949e">—</span></td><td>不变</td></tr>
+<tr><td><strong>SBI总分</strong></td><td><strong>72.8</strong></td><td><strong>67.0</strong></td><td><span class="green"><strong>▼-5.8</strong></span></td><td>估值维度下调+资金流向上调，净值下降，风险略有缓解但仍处危险区间</td></tr>
 </table>
 </div>
 
 <!-- 关键数据 -->
 <div class="card">
-<h2>🔢 关键数据一览</h2>
+<h2>🔢 关键数据一览（修正版）</h2>
 <div class="grid2">
 <div>
 <table>
 <tr><th>指标</th><th>数值</th><th>备注</th></tr>
-<tr><td>SOX指数</td><td>--</td><td>07-01收跌<span class="red">-4.4%</span></td></tr>
-<tr><td>NVIDIA股价</td><td>--</td><td>07-01 <span class="red">-3.16%</span></td></tr>
-<tr><td>NVIDIA Forward PE</td><td><span class="green">~21x</span></td><td>PEG 0.32 合理</td></tr>
-<tr><td>NVIDIA TTM PE</td><td>~63x</td><td>历史中枢</td></tr>
-<tr><td>NVIDIA市值</td><td>$5.02万亿</span></td><td>全球第一</td></tr>
+<tr><td>SOX指数(7/1)</td><td><span class="red">-6.27%</span></td><td>收盘13353点</td></tr>
+<tr><td>SOX前收盘</td><td>14246.96</td><td>7月1日前一日</td></tr>
+<tr><td>NVDA(7/1)</td><td><span class="red">-1.25%</span></td><td>收盘$197.58</td></tr>
+<tr><td>TSM(7/1)</td><td><span class="red">-6.98%</span></td><td>收盘$444.23</td></tr>
+<tr><td>MU(7/1)</td><td><span class="red">-10%+</span></td><td>板块最大跌幅</td></tr>
 </table>
 </div>
 <div>
@@ -121,89 +143,40 @@ tr:hover td{background:#1c2128}
 <tr><td>FINRA Margin Debt</td><td>$1.416T</td><td>2026年5月</td></tr>
 <tr><td>Margin / GDP</td><td><span class="red">4.44%</span></td><td>🔴 历史最高</td></tr>
 <tr><td>Mag7权重(S&P)</td><td><span class="red">~34%</span></td><td>极高集中度</td></tr>
-<tr><td>S&P500 Q2涨幅</td><td><span class="green">+14.87%</span></td><td>2020年来最佳季度</td></tr>
-<tr><td>纳斯达克 Q2</td><td><span class="green">+21.41%</span></td><td>强劲</td></tr>
+<tr><td>纳指(7/1)</td><td><span class="red">-0.66%</span></td><td>报26040点</td></tr>
+<tr><td>标普500(7/1)</td><td><span class="red">-0.22%</span></td><td>报7483点</td></tr>
 </table>
 </div>
 </div>
-</div>
-
-<!-- 个股表现 -->
-<div class="card">
-<h2>📉 7月1日主要个股表现</h2>
-<table>
-<tr><th>个股</th><th>代码</th><th>涨跌幅</th><th>点评</th></tr>
-<tr><td><strong>英伟达</strong></td><td>NVDA</td><td><span class="red">-3.16%</span></td><td>龙头回调但仍相对抗跌</td></tr>
-<tr><td><strong>超威半导体</strong></td><td>AMD</td><td><span class="red">-4.33%</span></td><td>跌幅大于NVDA</td></tr>
-<tr><td><strong>台积电</strong></td><td>TSM</td><td><span class="red">-3.04%</span></td><td>代工跟随板块调整</td></tr>
-<tr><td><strong>博通</strong></td><td>AVGO</td><td><span class="red">-1.76%</span></td><td>相对抗跌</td></tr>
-<tr><td><strong>美光科技</strong></td><td>MU</td><td><span class="red">-7.68%</span></td><td>🔴 最大跌幅，存储子行业承压</td></tr>
-<tr><td><strong>阿斯麦</strong></td><td>ASML</td><td><span class="red">-4.14%</span></td><td>设备板块跟跌</td></tr>
-<tr><td><strong>英特尔</strong></td><td>INTC</td><td><span class="red">-4.68%</span></td><td>弱势品种继续下行</td></tr>
-<tr><td><strong>ARM</strong></td><td>ARM</td><td><span class="red">-4.42%</span></td><td>IP授权板块回调</td></tr>
-<tr><td><strong>Meta</strong></td><td>META</td><td><span class="green">+8%+</span></td><td>🟢 资金轮动受益者</td></tr>
-<tr><td><strong>微软</strong></td><td>MSFT</td><td><span class="green">上涨</span></td><td>软件相对强势</td></tr>
-</table>
 </div>
 
 <!-- 重要事件 -->
 <div class="card">
-<h2>📰 重要事件与新闻</h2>
-<div class="news-item"><strong>📉 SOX指数暴跌4.4%，费城半导体遭遇今年以来最猛单日抛售</strong> — 全线下跌：NVDA -3.16%, AMD -4.33%, TSM -3.04%, MU -7.68%(领跌), ASML -4.14%, INTC -4.68%, ARM -4.42%</div>
-<div class="news-item"><strong>💹 S&P500 Q2涨14.87%、纳指Q2涨21.41%，创2020年以来最佳季度表现</strong> — 但7月首个交易日即出现剧烈风格切换：硬件暴跌、软件暴涨(Meta+8%)</div>
-<div class="news-item"><strong>💰 FINRA保证金债务 $1.416万亿创历史新高，Margin/GDP达4.44%</strong> — 超越2021年10月前高(3.97%)，成为有记录以来零售杠杆最极端的周期</div>
-<div class="news-item"><strong>🏛️ 美联储鹰派信号：近半数FOMC官员预计年内加息</strong> — 10Y美债上半年上行超30BP，降息预期已推迟至2027年</div>
-<div class="news-item"><strong>🔄 资金大轮动：从AI硬件转向软件/AI应用</strong> — Meta大涨8%领跑市场，暗示投资者开始质疑纯硬件估值的持续性</div>
-<div class="news-item"><strong>📊 NVIDIA Forward PE仅21x、PEG 0.32，估值看似合理</strong> — 但需注意：增速假设为65%，若降至30%则PE将显得昂贵</div>
-</div>
-
-<!-- 多空论点 -->
-<div class="card">
-<h2>⚖️ 多空论点对比</h2>
-<table>
-<tr><th style="width:45%">多头论点（看涨因素）</th><th style="width:45%">空头论点（看跌因素）</th></tr>
-<tr>
-<td><span class="green">●</span> NVDA Forward PE 21x、PEG 0.32，估值在科技巨头中最低</td>
-<td><span class="red">●</span> Margin/GDP 4.44%创历史新高，杠杆极端化</td>
-</tr>
-<tr>
-<td><span class="green">●</span> AI Capex周期仍在加速，Hyperscaler支出未见顶</td>
-<td><span class="red">●</span> Mag7占S&P500的34%，集中度达1970年代来最高</td>
-</tr>
-<tr>
-<td><span class="green">●</span> Q2财报季即将开启，业绩有望再超预期</td>
-<td><span class="red">●</span> 美联储年内加息预期升温，流动性收紧</td>
-</tr>
-<tr>
-<td><span class="green">●</span> 半导体涨价潮（近20家企业7月起）传导至上游</td>
-<td><span class="red">●</span> 资金从硬件轮动到软件（Meta+8% vs MU-7.68%）</td>
-</tr>
-<tr>
-<td><span class="green">●</span> SOX回调后估值更趋合理，提供入场窗口</td>
-<td><span class="red">●</span> SOX半年翻倍(+101%)后技术面严重超买</td>
-</tr>
-</table>
+<h2>📰 重要事件与新闻（7月1日）</h2>
+<div class="news-item"><strong>📉 SOX指数单日暴跌-6.27%</strong> — 收盘13353点，创近期最大单日跌幅。全板块芯片股重挫：MU -10%+、INTC -9%+、ASML -7%+、TSM -6.98%、AMD -6%+。</div>
+<div class="news-item"><strong>💹 中概股大涨，Meta单日+8.81%</strong> — 资金从硬件轮动至软件/中概股。Meta计划推出云基础设施业务，直接挑战AWS/Azure。</div>
+<div class="news-item"><strong>🏛️ 美联储主席沃什：通胀仍过高</strong> — 未就7月会议给出政策暗示，但重申物价稳定为优先目标。市场对年内加息预期升温。</div>
+<div class="news-item"><strong>📊 美股Q2创2020年来最佳季度</strong> — 标普Q2 +14.87%，纳指Q2 +21.41%。但7月首日即现剧烈板块轮动。</div>
 </div>
 
 <!-- 结论与建议 -->
 <div class="conclusion">
-<h3 style="margin-bottom:10px;color:#f85149">🔴 核心结论</h3>
-<p style="margin-bottom:8px"><strong>SBI 72.8分，较上期回落3.0分。</strong>主要原因是SOX单日暴跌4.4%带动估值和拥挤度得分下降。但这并非"风险消除"，而是"压力释放不充分"。</p>
-<p style="margin-bottom:8px"><strong>最大隐患仍然是杠杆：</strong>FINRA Margin Debt / GDP 达4.44%，超越2021年10月的3.97%。这意味着当前美国散户的杠杆使用率已经超过了上一轮泡沫周期的峰值。历史上每当Margin/GDP突破4%时，后续都出现了显著的均值回归。</p>
-<p style="margin-bottom:8px"><strong>资金轮动信号值得高度重视：</strong>7月1日Meta+8%而MU-7.68%，这种"软件涨、硬件跌"的分化模式可能标志着市场开始重新评估AI投资的主线——从"卖铲子"（芯片）转向"用铲子"（AI应用）。若这一趋势持续，半导体板块可能面临更深度的估值重估。</p>
-<p><strong>好消息是：</strong>NVIDIA的Forward PE 21x和PEG 0.32在大型科技公司中仍然是最具吸引力的估值水平。业绩端的扎实（增速65%、毛利率75%）提供了安全垫。但这个安全垫能否抵御杠杆收缩+资金轮动的双重冲击，是接下来需要密切观察的问题。</p>
+<h3 style="margin-bottom:10px;color:#f85149">🔴 核心结论（修正版）</h3>
+<p style="margin-bottom:8px"><strong>SBI 67.0分，较初版（72.8分）下调5.8分。</strong>修正后的数据显示7月1日半导体板块遭遇的抛售比初版认知的更为严重（SOX -6.27% vs 初版误引的-4.4%）。</p>
+<p style="margin-bottom:8px"><strong>最大隐患仍然是杠杆：</strong>FINRA Margin Debt / GDP 达4.44%，超越2021年10月峰值（3.97%）。这意味着当前美国散户杠杆使用率已达历史极值，一旦趋势逆转，强平连锁反应可能放大下跌。</p>
+<p style="margin-bottom:8px"><strong>7月1日的大跌同时揭示了资金轮动信号：</strong>Meta +8.81%、微软涨超3%，而芯片股全线重挫。这种"软强硬弱"的分化若持续，半导体板块可能面临更深度的估值重估。但NVDA Forward PE仅21x、PEG 0.32，估值安全垫仍存。</p>
 </div>
 
 <div class="conclusion" style="border-left-color:#d29922">
-<h3 style="margin-bottom:10px;color:#d29922">⚖️ 操作建议</h3>
-<p><strong>🔴 高仓位持有者：</strong>利用反弹将半导体仓位降至6成以下。特别是高Beta品种(MU/AMD/INTC)应优先减持。NVDA因估值相对合理可保留核心仓位。</p>
-<p><strong>🟡 观望者：</strong>不急于抄底。理想入场条件：SBI回落至60以下 或 SOX从高点回调15%以上。当前回调仅一天，可能只是开始。</p>
-<p><strong>🟢 关注方向：</strong>若确认"硬→软"轮动趋势，可关注Meta(META)、微软(MSFT)等AI应用层标的。同时留意Q2财报季带来的个股分化机会。</p>
+<h3 style="margin-bottom:10px;color:#d29922">⚖️ 操作建议（修正版）</h3>
+<p><strong>🔴 高仓位持有者：</strong>利用任何反弹将半导体仓位降至5成以下。SBI 67分虽较初版72.8分有所回落，但仍处危险区间。MU -10%+、INTC -9%+ 显示板块内部分化严重。</p>
+<p><strong>🟡 观望者：</strong>不急于抄底。SOX从高点(14246→13353)仅回调约6.3%，距技术性修正(15%+)尚有空间。等待SBI回落至60以下或SOX再跌8%+。</p>
+<p><strong>🟢 关注方向：</strong>若确认"硬→软"轮动，可关注Meta(META)、微软(MSFT)。同时Q2财报季即将开启，关注NVDA等龙头能否用业绩消化高预期。</p>
 </div>
 
 <div class="footer">
-<p>🦐 Snail Investment Research | US Hardware SBI v2.0 | 数据来源: FINRA/Simianx/Yahoo Finance/Seeking Alpha</p>
-<p>生成时间: 2026-07-02 09:50 CST | 仅供参考，不构成投资建议</p>
+<p>🦐 Snail Investment Research | US Hardware SBI v2.1 修正版 | 数据来源: 同花顺财经/新浪财经/FINRA</p>
+<p>生成时间: 2026-07-02 10:30 CST | ⚠️ 初版数据错误已修正 | 仅供参考，不构成投资建议</p>
 </div>
 
 </div>
@@ -212,7 +185,7 @@ tr:hover td{background:#1c2128}
 const gaugeCtx = document.getElementById('gaugeChart').getContext('2d');
 new Chart(gaugeCtx, {
   type:'doughnut',
-  data:{datasets:[{data:[72.8,27.2],backgroundColor:['#da3633','#21262d'],borderWidth:0}]},
+  data:{datasets:[{data:[67,33],backgroundColor:['#da3633','#21262d'],borderWidth:0}]},
   options:{cutout:'75%',responsive:true,plugins:{legend:{display:false},tooltip:{enabled:false}}}
 });
 
@@ -222,8 +195,8 @@ new Chart(radarCtx, {
   data:{
     labels:['估值','拥挤度','杠杆','业绩兑现','资金流向','外部环境'],
     datasets:[{
-      label:'US SBI六维度得分',
-      data:[53,80,93,45,72,62],
+      label:'US SBI六维度得分(修正版)',
+      data:[50,80,93,45,75,62],
       backgroundColor:'rgba(218,54,51,0.15)',
       borderColor:'#da3633',
       pointBackgroundColor:'#da3633',
