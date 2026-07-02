@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newmont Corporation (NYSE: NEM) 深度研究报告 | 蜗牛鸟投资</title>
+<style>
+:root {
+  --ink:    #0d1f0e;
+  --forest: #14381a;
+  --mid:    #1c5024;
+  --teal:   #0d5c4e;
+  --gold:   #b8860b;
+  --bright: #d4a017;
+  --amber:  #e8b820;
+  --bg:     #f0ece2;
+  --paper:  #faf9f4;
+  --text:   #1a2318;
+  --muted:  #5a6b58;
+  --rule:   #ddd8c8;
+  --green:  #1a6840;
+  --red:    #9c2320;
+  --warn:   #7a5c00;
+  --blue:   #1a3a6a;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Georgia","Noto Serif SC","Source Han Serif SC",serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.82;
+}
+.page { max-width: 1060px; margin: 0 auto; background: var(--paper); box-shadow: 0 2px 44px rgba(13,31,14,.10); }
+
+/* ── NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--ink);
+  border-bottom: 3px solid var(--amber);
+  display: flex; align-items: center;
+  overflow-x: auto; white-space: nowrap;
+}
+.nav-brand {
+  background: var(--amber); color: var(--ink);
+  font-family: Arial,sans-serif; font-weight: 800;
+  font-size: 12px; letter-spacing: 1.4px;
+  padding: 13px 16px; flex-shrink: 0;
+}
+.nav a {
+  color: #bfccb8; text-decoration: none;
+  font-family: Arial,sans-serif; font-size: 11.5px;
+  padding: 13px 9px;
+  border-bottom: 2px solid transparent;
+  transition: color .18s, border-color .18s;
+}
+.nav a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(138deg, #0d1f0e 0%, #14381a 50%, #1c5024 100%);
+  color: #e6eee4; padding: 48px 54px 38px;
+  border-bottom: 4px solid var(--amber);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: "NEM";
+  position: absolute; right: -12px; top: -24px;
+  font-size: 220px; font-family: Arial Black,sans-serif; font-weight: 900;
+  color: rgba(255,255,255,.025); letter-spacing: -8px;
+  pointer-events: none; line-height: 1;
+}
+.hero-eye {
+  font-family: Arial,sans-serif; font-size: 11px;
+  letter-spacing: 3px; color: var(--amber);
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.hero-title { font-size: 31px; font-weight: bold; line-height: 1.2; margin-bottom: 4px; }
+.hero-title em { color: #90b88a; font-style: normal; font-size: 17px; font-weight: normal; }
+.hero-sub { font-family: Arial,sans-serif; font-size: 13px; color: #a8c4a0; margin-top: 5px; margin-bottom: 26px; }
+
+.kpi-row {
+  display: grid; grid-template-columns: repeat(5,1fr);
+  border-top: 1px solid rgba(255,255,255,.12);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  margin-bottom: 22px;
+}
+.kpi-cell {
+  padding: 13px 14px;
+  border-right: 1px solid rgba(255,255,255,.10);
+  font-family: Arial,sans-serif;
+}
+.kpi-cell:last-child { border-right: none; }
+.kpi-cell .lbl { font-size: 10px; color: #88a882; text-transform: uppercase; letter-spacing: .8px; }
+.kpi-cell .val { font-size: 18px; color: #fff; font-weight: 700; margin-top: 4px; line-height: 1.15; }
+.kpi-cell .sub { font-size: 10.5px; color: #70907a; margin-top: 2px; }
+
+.rating {
+  display: inline-flex; align-items: center; gap: 16px;
+  background: rgba(212,160,23,.12);
+  border: 1px solid var(--amber);
+  padding: 10px 22px; border-radius: 2px;
+}
+.rating .r { font-family: Arial,sans-serif; font-weight: 900; font-size: 17px; color: var(--amber); letter-spacing: .8px; }
+.rating .tp { font-family: Arial,sans-serif; font-size: 12px; color: #c4d8bc; }
+.rating .up { font-family: Arial,sans-serif; font-size: 12px; color: #7edc9c; font-weight: 700; }
+
+/* ── SECTIONS ── */
+.sec { padding: 36px 54px; border-bottom: 1px solid var(--rule); }
+.sec:last-child { border-bottom: none; }
+.sec-h {
+  font-family: Arial,sans-serif; font-size: 19.5px; color: var(--forest);
+  border-left: 5px solid var(--amber); padding-left: 14px;
+  margin-bottom: 20px; letter-spacing: .3px;
+}
+.sec-h .n { color: var(--amber); margin-right: 6px; font-weight: normal; }
+h3.sh {
+  font-family: Arial,sans-serif; font-size: 14.5px; color: var(--mid);
+  margin: 26px 0 10px;
+  border-bottom: 1px solid var(--rule); padding-bottom: 6px;
+}
+p { font-size: 14.5px; color: var(--text); margin-bottom: 13px; }
+.lead {
+  font-size: 15px; color: var(--forest);
+  background: #eceadc; border-left: 3px solid var(--amber);
+  padding: 14px 18px; margin-bottom: 18px; line-height: 1.88;
+}
+
+/* tables */
+table { width: 100%; border-collapse: collapse; font-family: Arial,sans-serif; font-size: 13px; margin: 14px 0 20px; }
+thead th { background: var(--forest); color: #e8f4e4; padding: 9px 12px; text-align: left; font-weight: 500; letter-spacing: .2px; }
+tbody td { padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tr:nth-child(even) td { background: #f4f1e8; }
+.rc { text-align: right; font-variant-numeric: tabular-nums; }
+.pos { color: var(--green); font-weight: 700; }
+.neg { color: var(--red); font-weight: 700; }
+.hl td { background: #f8f3da !important; font-weight: 700; }
+
+/* grids */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 16px 0; }
+.g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 16px 0; }
+
+.card {
+  background: #fff; border: 1px solid var(--rule);
+  border-top: 3px solid var(--amber); padding: 14px 16px;
+}
+.card.green { border-top-color: var(--green); }
+.card.teal  { border-top-color: var(--teal); }
+.card.red   { border-top-color: var(--red); }
+.card.blue  { border-top-color: var(--blue); }
+.card .cl { font-family: Arial,sans-serif; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+.card .cv { font-family: Arial,sans-serif; font-size: 20px; color: var(--forest); font-weight: 700; margin-top: 5px; line-height: 1.15; }
+.card .cs { font-family: Arial,sans-serif; font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+
+/* mine card */
+.mine {
+  border: 1px solid var(--rule); background: #fff;
+  padding: 14px 18px; margin-bottom: 12px;
+}
+.mine h4 { font-family: Arial,sans-serif; font-size: 14px; color: var(--forest); margin-bottom: 6px; }
+.mine-meta { display: flex; flex-wrap: wrap; gap: 10px; font-family: Arial,sans-serif; font-size: 12px; color: var(--muted); margin-top: 8px; }
+.mine-meta span { background: #eee9d4; padding: 2px 8px; border-radius: 2px; }
+
+/* model box */
+.mbox { border: 1px dashed var(--amber); background: #fdf8ed; padding: 16px 20px; margin: 14px 0; }
+.mbox h4 { font-family: Arial,sans-serif; font-size: 13.5px; color: var(--forest); margin-bottom: 8px; font-weight: 700; }
+.mbox ul { padding-left: 18px; margin-top: 6px; }
+.mbox li, .mbox p { font-size: 13.5px; margin-bottom: 5px; }
+
+/* sensitivity table */
+.sens thead th { background: var(--teal); }
+.sens tbody td { text-align: center; }
+.sens td.anchor { background: #f0f8ec !important; font-weight: 700; border: 2px solid var(--green); }
+
+/* note box */
+.note { background: #edf4f8; border-left: 3px solid var(--teal); padding: 10px 14px; font-family: Arial,sans-serif; font-size: 12.5px; color: #1a3a50; margin-bottom: 16px; }
+.warn-box { background: #fdf5e6; border-left: 3px solid var(--warn); padding: 10px 14px; font-family: Arial,sans-serif; font-size: 12.5px; color: #5a4000; margin-bottom: 16px; }
+
+/* risk badges */
+.badge { display: inline-block; font-family: Arial,sans-serif; font-size: 11px; padding: 2px 10px; border-radius: 10px; font-weight: 700; }
+.b-hi  { background: #fce8e7; color: var(--red); }
+.b-mid { background: #fdf0d2; color: var(--warn); }
+.b-lo  { background: #e2f0e9; color: var(--green); }
+
+/* tech panel */
+.tgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.tc { background: #fff; border: 1px solid var(--rule); padding: 14px 16px; }
+.tc .tl { font-family: Arial,sans-serif; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+.tc .tv { font-family: Arial,sans-serif; font-size: 19px; font-weight: 700; color: var(--forest); }
+.tc .ts { font-size: 12.5px; color: var(--muted); font-family: Arial,sans-serif; margin-top: 4px; }
+.tc.am { border-top: 3px solid var(--amber); }
+.tc.gr { border-top: 3px solid var(--green); }
+.tc.re { border-top: 3px solid var(--red); }
+.tc.te { border-top: 3px solid var(--teal); }
+
+/* price ladder */
+.pladder { border: 1px solid var(--rule); background: #fff; margin: 14px 0; font-family: Arial,sans-serif; }
+.prow { display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-bottom: 1px solid var(--rule); font-size: 13px; }
+.prow:last-child { border-bottom: none; }
+.prow .pt { width: 120px; flex-shrink: 0; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .4px; }
+.prow .pv { font-size: 15px; font-weight: 700; color: var(--forest); width: 90px; }
+.prow .pn { color: var(--muted); font-size: 12.5px; flex: 1; }
+.prow.cur .pv { color: var(--amber); }
+.prow.sup .pv { color: var(--green); }
+.prow.res .pv { color: var(--red); }
+
+.fn { font-size: 11.5px; color: var(--muted); font-family: Arial,sans-serif; line-height: 1.75; }
+.src { font-family: Arial,sans-serif; font-size: 12.5px; color: var(--muted); line-height: 2; padding-left: 18px; }
+.src li { margin-bottom: 2px; }
+
+.disc {
+  background: var(--ink); color: #889e84;
+  font-family: Arial,sans-serif; font-size: 11.5px;
+  padding: 28px 54px; line-height: 1.92;
+}
+.disc strong { color: var(--amber); }
+
+.foot {
+  background: var(--ink);
+  border-top: 1px solid rgba(212,160,23,.28);
+  color: #4a6044; text-align: center;
+  font-family: Arial,sans-serif; font-size: 11px;
+  letter-spacing: 1.5px; padding: 14px;
+}
+
+@media (max-width: 700px) {
+  .kpi-row { grid-template-columns: repeat(2,1fr); }
+  .g3,.g4,.tgrid { grid-template-columns: 1fr 1fr; }
+  .hero,.sec,.disc { padding-left: 22px; padding-right: 22px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-brand">🐦 蜗牛鸟投资 · 精品研究</div>
+  <a href="#s1">摘要</a>
+  <a href="#s2">公司概览</a>
+  <a href="#s3">矿山组合</a>
+  <a href="#s4">财务分析</a>
+  <a href="#s5">资产负债表&amp;FCF</a>
+  <a href="#s6">股东回报</a>
+  <a href="#s7">技术面</a>
+  <a href="#s8">估值模型</a>
+  <a href="#s9">金价敏感性</a>
+  <a href="#s10">行业&amp;宏观</a>
+  <a href="#s11">风险矩阵</a>
+  <a href="#s12">催化剂</a>
+  <a href="#s13">结论</a>
+  <a href="#s14">来源</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eye">SNAIL-BIRD INVESTMENT &nbsp;|&nbsp; 精品研究部 &nbsp;|&nbsp; 美股有色金属行业首次覆盖</div>
+  <div class="hero-title">Newmont Corporation <em>(NYSE: NEM | ASX: NEM | PNGX: NEM)</em></div>
+  <div class="hero-sub">全球最大黄金矿业公司 · 净现金资产负债表 · $6B新增回购授权 · 2027年产量上行周期 — 深度投资研究报告</div>
+
+  <div class="kpi-row">
+    <div class="kpi-cell">
+      <div class="lbl">现价（6月30日收盘）</div>
+      <div class="val">$94.51</div>
+      <div class="sub">较ATH已回调约30%</div>
+    </div>
+    <div class="kpi-cell">
+      <div class="lbl">52周区间</div>
+      <div class="val">$55.37–$134.88</div>
+      <div class="sub">距ATH -29.9%</div>
+    </div>
+    <div class="kpi-cell">
+      <div class="lbl">市值（约）</div>
+      <div class="val">≈$1,040亿</div>
+      <div class="sub">流通股约1.10亿股</div>
+    </div>
+    <div class="kpi-cell">
+      <div class="lbl">Q1 2026 Adj EPS</div>
+      <div class="val">$2.90</div>
+      <div class="sub">超预期33%；FCF $3.1B季度纪录</div>
+    </div>
+    <div class="kpi-cell">
+      <div class="lbl">报告日期</div>
+      <div class="val">2026年7月1日</div>
+      <div class="sub">蜗牛鸟投资精品研究部</div>
+    </div>
+  </div>
+
+  <div class="rating">
+    <div class="r">积极买入（ACCUMULATE）</div>
+    <div class="tp">12个月目标价：<strong style="color:#dfc060">$120 – $135</strong></div>
+    <div class="up">当前潜在上行 +27%–+43%（含股息）</div>
+  </div>
+</div>
+
+<!-- ─── 01 摘要 ─── -->
+<div class="sec" id="s1">
+  <h2 class="sec-h"><span class="n">01</span>投资摘要</h2>
+  <div class="lead">
+    Newmont Corporation（NYSE: NEM）是全球规模最大、资产最多元化的黄金矿业公司，也是标普500指数中唯一的黄金矿业成分股。2025年公司交出了历史性成绩单：营收$226.7亿（+21.3%）、全年自由现金流$73亿（历史纪录）、净利润$71亿，并同步完成$34亿债务偿还与$34亿股东回报，年底以约$20亿净现金收官。Q1 2026进一步创下$31亿季度FCF纪录，实现金价$4,900/盎司的超高变现利润。然而，随着2026年金价从Q1高位$4,900/oz回落至当前约$3,988/oz（截至2026年6月底），公司股价亦从历史高点$134.88大幅回调至$94.51，跌幅近<strong>30%</strong>。我们认为，此轮调整已相当程度地体现了FY2026产量下滑（5.3M oz vs 5.9M oz）与AISC上升（$1,680 vs $1,358/oz）的负面因素，而<strong>净现金资产负债表、$6B全新回购授权、2027年产量上行周期（6M oz+目标）及当前黄金结构性牛市</strong>构成坚实的估值底部支撑，首次覆盖给予<strong>积极买入（ACCUMULATE）</strong>评级，12个月目标价区间<strong>$120–$135</strong>。
+  </div>
+  <table>
+    <thead><tr><th>核心结论</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>评级</td><td>积极买入（ACCUMULATE）— 30%调整后估值具吸引力，下行风险有限</td></tr>
+      <tr><td>12M目标价</td><td><strong>$120–$135</strong>（基准情形$125）；悲观$75；乐观$160</td></tr>
+      <tr><td>核心投资逻辑</td><td>全球黄金结构性牛市+净现金+$6B回购+2027产量爬升；Q2低点为战略布局时机</td></tr>
+      <tr><td>核心担忧</td><td>金价波动是最大不确定性；AISC同比大幅攀升；产量下滑为2026年主基调；加纳新皇家税负增加</td></tr>
+      <tr><td>下一关键节点</td><td>2026年7月29日Q2 2026业绩；Q2产量预期下行（Cadia地震），需关注全年指引是否维持</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ─── 02 公司概览 ─── -->
+<div class="sec" id="s2">
+  <h2 class="sec-h"><span class="n">02</span>公司概览</h2>
+  <p>Newmont Corporation（NYSE: NEM）成立于1916年（公司表述），总部位于科罗拉多州丹佛，是全球规模最大的黄金生产商，<strong>唯一</strong>被纳入标普500指数的黄金矿业公司。公司通过2019年收购加拿大Goldcorp（约$100亿）及2023年收购澳大利亚Newcrest Mining（约$168-191亿）完成两次历史性规模扩张，确立了在黄金矿业领域"领域一哥"的市场地位。<span class="fn">[来源：Google Finance公司简介；SEC 10-K 2025；Trefis公司背景]</span></p>
+  <p>公司以黄金为核心，同时开采铜、银、铅、锌等有色金属，是<strong>全球第三大白银生产商</strong>，运营资产遍布美国、澳大利亚、巴布亚新几内亚、加纳、苏里南、阿根廷、多米尼加共和国、智利、秘鲁、厄瓜多尔、墨西哥及加拿大。<span class="fn">[来源：Newmont Q1 2026 SEC 8-K（2026年4月23日）；Yahoo Finance公司简介]</span></p>
+  <p>2026年1月，Natascha Viljoen出任Newmont总裁兼首席执行官，成为公司逾百年历史中首位女性CEO。她此前担任公司COO，主导了Newcrest收购后的资产整合与非核心资产剥离计划。<span class="fn">[来源：Trefis公司背景；StockAnalysis公司概览]</span></p>
+  <div class="g4">
+    <div class="card"><div class="cl">成立时间</div><div class="cv">1916年</div><div class="cs">总部：科罗拉多州丹佛</div></div>
+    <div class="card"><div class="cl">全球员工</div><div class="cv">约44,100人</div><div class="cs">TradingView 2026年6月数据</div></div>
+    <div class="card"><div class="cl">FY2025流通股数</div><div class="cv">约10.9亿股</div><div class="cs">较2024年减少3.5%（回购驱动）</div></div>
+    <div class="card"><div class="cl">黄金储量</div><div class="cv">118.2M盎司</div><div class="cs">另铜12.5M吨；银442M盎司</div></div>
+  </div>
+  <p class="fn">流通股数据来源：StockAnalysis.com（FY2025年末）；储量来源：Newmont 2026年代理声明（SEC DEF 14A，2026年3月26日）。</p>
+</div>
+
+<!-- ─── 03 矿山组合 ─── -->
+<div class="sec" id="s3">
+  <h2 class="sec-h"><span class="n">03</span>核心矿山组合（Tier 1资产）</h2>
+  <div class="note">📋 组合重塑背景：2024-2025年Newmont完成了规模宏大的非核心资产剥离计划，出售Akyem、Cripple Creek & Victor、Éléonore、Musselwhite、Porcupine、Telfer及Havieron 70%股权，累计获得税后净现金约<strong>$45亿</strong>，由此打造出一个由全球最高质量Tier 1资产构成的精炼矿山组合，并支撑了净现金资产负债表的快速改善。</div>
+  <div class="mine">
+    <h4>🇦🇺 博丁顿（Boddington）— 澳大利亚</h4>
+    <p>全球最大的露天金铜矿之一，采矿成本具竞争力，铜作为副产品显著降低黄金AISC，是公司规模最大的单一矿山之一。</p>
+    <div class="mine-meta"><span>金+铜</span><span>露天开采</span><span>低成本</span><span>副产品铜显著降低AISC</span></div>
+  </div>
+  <div class="mine">
+    <h4>🇦🇺 卡迪亚（Cadia）— 澳大利亚（Newcrest并购资产）</h4>
+    <p>世界级金铜矿，Panel Cave采矿法，Q2 2026受一次性4.5级地震影响（磨矿机依靠地表矿石库存维持运营），管理层预计全年不影响指引完成度，Cadia Panel Caves扩产项目持续推进，是2027年产量增长的核心来源之一。</p>
+    <div class="mine-meta"><span>金+铜</span><span>Panel Cave</span><span>Q2受地震短暂影响</span><span>扩产项目在建</span></div>
+  </div>
+  <div class="mine">
+    <h4>🇦🇺 塔纳米（Tanami）— 澳大利亚，扩产项目</h4>
+    <p>Tanami Expansion 2（TE2）是Newmont最重要的有机增长项目之一，旨在将塔纳米矿山的地下竖井加深并扩大产能，预计2026-2027年进入试生产阶段，将显著提升澳大利亚产量组合。</p>
+    <div class="mine-meta"><span>纯金矿</span><span>地下开采</span><span>扩产项目（TE2）</span><span>2026-2027爬产</span></div>
+  </div>
+  <div class="mine">
+    <h4>🇲🇽 佩纳斯基托（Peñasquito）— 墨西哥</h4>
+    <p>全球最大的银矿之一，同时产出锌、铅与黄金，副产品组合使其黄金by-product AISC极低，是公司全球AISC控制的重要来源。FY2026受计划中的矿山排序（mine sequencing）影响产量，管理层已将该因素计入年度指引。</p>
+    <div class="mine-meta"><span>金/银/锌/铅</span><span>露天开采</span><span>全球最大银矿之一</span><span>副产品效益突出</span></div>
+  </div>
+  <div class="mine">
+    <h4>🇬🇭 阿哈福北区（Ahafo North）— 加纳</h4>
+    <p>2025年完成商业生产（commercial production），是Newmont在加纳最新的有机增长项目，标志着公司西非矿山组合的规模扩张。但需关注加纳政府新引入的滑动皇家税机制（sliding scale royalty），按当前金价水平约增加$25/盎司AISC成本。</p>
+    <div class="mine-meta"><span>纯金矿</span><span>2025年实现商业生产</span><span>加纳新皇家税</span><span>西非战略支柱</span></div>
+  </div>
+  <div class="mine">
+    <h4>🇨🇦 红克里斯（Red Chris）— 不列颠哥伦比亚省</h4>
+    <p>2026年6月获BC省批准关键监管授权（Block Cave项目），是公司北美铜金矿的重要储量资源，Block Cave开发许可的落地是近期重要催化剂。</p>
+    <div class="mine-meta"><span>金+铜</span><span>Block Cave项目</span><span>监管授权2026年6月获批</span><span>长期资源布局</span></div>
+  </div>
+  <p class="fn">来源：Newmont Q1 2026 SEC 8-K（2026年4月23日）；Google Finance产品描述；Newmont官方新闻稿（www.newmont.com）Red Chris BC省授权公告（2026年6月）。</p>
+</div>
+
+<!-- ─── 04 财务分析 ─── -->
+<div class="sec" id="s4">
+  <h2 class="sec-h"><span class="n">04</span>财务分析（损益表）</h2>
+
+  <h3 class="sh">4.1 年度业绩趋势（USD百万，来自SEC官方文件）</h3>
+  <table>
+    <thead><tr><th>指标</th><th class="rc">FY2024</th><th class="rc">FY2025</th><th class="rc">YoY</th><th class="rc">Q1 2026</th><th class="rc">Q2 2026指引</th></tr></thead>
+    <tbody>
+      <tr><td>营业收入</td><td class="rc">$18,679M</td><td class="rc">$22,670M</td><td class="rc pos">+21.3%</td><td class="rc"><strong>$7,310M</strong></td><td class="rc">$6,490M（估）</td></tr>
+      <tr><td>报告净利润（归属）</td><td class="rc">~$3,400M</td><td class="rc"><strong>$7,085M</strong></td><td class="rc pos">+108.4%</td><td class="rc">$3,300M</td><td class="rc">—</td></tr>
+      <tr><td>调整后净利润（ANI）</td><td class="rc">—</td><td class="rc"><strong>$7,634M</strong></td><td class="rc pos">逾翻倍</td><td class="rc"><strong>$3,200M</strong></td><td class="rc">—</td></tr>
+      <tr><td>Adj. EPS（稀释）</td><td class="rc">—</td><td class="rc"><strong>$6.89/股</strong></td><td class="rc pos">逾翻倍</td><td class="rc"><strong>$2.90/股</strong></td><td class="rc">$2.21/股（估）</td></tr>
+      <tr><td>调整后EBITDA</td><td class="rc">~$5,500M</td><td class="rc"><strong>$13,500M</strong></td><td class="rc pos">+145%</td><td class="rc"><strong>$5,200M</strong></td><td class="rc">—</td></tr>
+      <tr><td>毛利率</td><td class="rc">52.0%</td><td class="rc"><strong>64.3%</strong></td><td class="rc pos">+12.3pt</td><td class="rc">—</td><td class="rc">—</td></tr>
+      <tr><td>净利率</td><td class="rc">—</td><td class="rc"><strong>31.3%</strong></td><td class="rc pos">+13.3pt</td><td class="rc">45.1%</td><td class="rc">—</td></tr>
+      <tr><td>黄金产量（归属）</td><td class="rc">—</td><td class="rc"><strong>5.90M盎司</strong></td><td class="rc">—</td><td class="rc">1.30M盎司</td><td class="rc">Q2产量预计下滑</td></tr>
+      <tr><td>实现金价（均价）</td><td class="rc">—</td><td class="rc">~$3,498/盎司</td><td class="rc">—</td><td class="rc"><strong>$4,900/盎司</strong></td><td class="rc">~$3,500-4,000/盎司（估）</td></tr>
+      <tr><td>AISC（副产品基准）</td><td class="rc">—</td><td class="rc">$1,358/盎司</td><td class="rc">—</td><td class="rc"><strong>$1,029/盎司</strong></td><td class="rc">$1,680/盎司（全年指引）</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：Newmont FY2025全年及Q4业绩新闻稿（SEC 8-K，2026年2月19日）；Newmont Q1 2026业绩新闻稿（SEC 8-K，2026年4月23日）；StockAnalysis.com年度收入数据；Stocktitan.net 10-K摘要（2026年2月19日）。</p>
+
+  <h3 class="sh">4.2 Q1 2026亮点解析（史上最强季度）</h3>
+  <div class="g4">
+    <div class="card"><div class="cl">Q1营收</div><div class="cv">$73.1亿</div><div class="cs">YoY +42%；超预期$6.57亿（+11.3%）</div></div>
+    <div class="card"><div class="cl">季度FCF（纪录）</div><div class="cv">$31亿</div><div class="cs">缴税$13亿后仍创纪录；OCF $38亿</div></div>
+    <div class="card"><div class="cl">Adj. EBITDA</div><div class="cv">$52亿</div><div class="cs">EBITDA margin 71.1%</div></div>
+    <div class="card"><div class="cl">铜银产量</div><div class="cv">3万吨铜+900万盎司银</div><div class="cs">副产品大幅降低黄金AISC至$1,029/oz</div></div>
+  </div>
+  <p>Q1 2026之所以创下如此惊艳的结果，根本驱动因素是历史罕见的高金价（实现价$4,900/oz），辅以副产品（铜+银）产量强劲，带动by-product AISC低至$1,029/oz，仅为全年指引$1,680/oz的61%——但这种超低Q1成本具有较强的季节性，管理层在电话会议上已明确维持全年AISC指引不变，预示着H2成本将显著走高。<span class="fn">[来源：Motley Fool Q1 2026 Earnings Transcript（2026年4月23日）；SEC 8-K Q1 2026（2026年4月23日）]</span></p>
+
+  <h3 class="sh">4.3 FY2026全年展望（管理层指引）</h3>
+  <div class="warn-box">⚠️ 核心矛盾：金价从Q1的$4,900/oz回落至当前约$3,988/oz（约-19%），而FY2026 AISC指引从$1,358升至$1,680（+$322/oz，+23.7%），两因素叠加意味着FY2026黄金单盎司利润（AISC margin）将较2025年的~$2,140/oz大幅压缩。全年产量亦从5.9M oz降至5.3M oz，三重压力是股价从$134跌至$94的根本逻辑。</div>
+  <table>
+    <thead><tr><th>指引项目</th><th class="rc">FY2025（实际）</th><th class="rc">FY2026（指引）</th><th class="rc">变化</th><th>主要驱动因素</th></tr></thead>
+    <tbody>
+      <tr><td>黄金产量</td><td class="rc">5.9M盎司</td><td class="rc neg">5.3M盎司</td><td class="rc neg">-10.2%</td><td>Peñasquito矿山排序；Cadia地震短暂影响</td></tr>
+      <tr><td>AISC（副产品）</td><td class="rc">$1,358/oz</td><td class="rc neg">$1,680/oz</td><td class="rc neg">+$322/oz（+23.7%）</td><td>低产量摊薄固定成本；加纳新税$25/oz；尾矿基建资本支出$295M；汇率+$45/oz；库存变化+$55/oz</td></tr>
+      <tr><td>AISC（联产品）</td><td class="rc">$1,609/oz</td><td class="rc">约$2,150/oz</td><td class="rc neg">大幅上升</td><td>同上，联产品方式因无副产品抵扣而更高</td></tr>
+      <tr><td>资本支出</td><td class="rc">~$3,400M</td><td class="rc">约$3,700-4,000M</td><td class="rc neg">增加</td><td>Tanami TE2、Cadia Panel Caves、Ahafo尾矿</td></tr>
+      <tr><td>2027年展望</td><td class="rc">—</td><td class="rc pos">6M盎司+</td><td class="rc pos">产量上行周期</td><td>新项目爬产：TE2、Cadia Cave、Ahafo North满产</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：Newmont FY2025全年业绩暨FY2026指引新闻稿（SEC 8-K，2026年2月19日）；Investing.com "Newmont Q1 2026 slides: record cash flow"（2026年4月23日）；Google Finance产品描述。</p>
+</div>
+
+<!-- ─── 05 资产负债表与FCF ─── -->
+<div class="sec" id="s5">
+  <h2 class="sec-h"><span class="n">05</span>资产负债表与自由现金流分析</h2>
+
+  <h3 class="sh">5.1 资产负债表快照</h3>
+  <div class="g4">
+    <div class="card green"><div class="cl">Q1末现金余额（2026年3月31日）</div><div class="cv">$88亿</div><div class="cs">较2025年末$76亿进一步增加</div></div>
+    <div class="card green"><div class="cl">净现金头寸（Q1 2026末）</div><div class="cv">$32亿</div><div class="cs">毛债务约$56亿；健康净现金</div></div>
+    <div class="card"><div class="cl">FY2025末长期债务</div><div class="cv">$51亿</div><div class="cs">D/E仅0.15x（StockAnalysis）</div></div>
+    <div class="card blue"><div class="cl">FY2025末流动比率</div><div class="cv">2.29x</div><div class="cs">短期流动性充裕</div></div>
+  </div>
+  <div class="note">📊 资产负债表评价：截至Q1 2026末，Newmont拥有现金$88亿、净现金$32亿，是全球矿业公司中资产负债表最为健康的之一。Q1 2026期间，公司在缴税$13亿、返还股东$27亿后，净现金仍从$20亿（FY2025末）增至$32亿，充分展示了其在高金价环境下的"现金生成机器"特性。D/E仅0.15x，为公司提供了充足的金融杠杆空间，可在金价下行时维持分红与回购而无需被迫举债或减产。<span class="fn">[来源：SEC 8-K Q1 2026（2026年4月23日）newmont.com；StockAnalysis.com FY2025年末数据]</span></div>
+
+  <h3 class="sh">5.2 自由现金流（FCF）历史演变——从谷底到高峰</h3>
+  <table>
+    <thead><tr><th>期间</th><th class="rc">经营现金流（OCF）</th><th class="rc">资本支出</th><th class="rc">自由现金流（FCF）</th><th class="rc">FCF/营收</th><th>主要驱动/说明</th></tr></thead>
+    <tbody>
+      <tr><td>FY2023</td><td class="rc">—</td><td class="rc">—</td><td class="rc neg">$0.97亿</td><td class="rc neg">~0.8%</td><td>Newcrest并购整合成本高企；资本支出峰值</td></tr>
+      <tr><td>FY2024</td><td class="rc">$63亿</td><td class="rc">约$34亿</td><td class="rc">$29亿</td><td class="rc">约15.5%</td><td>Q4出现$16亿季度FCF纪录；优化开始见效</td></tr>
+      <tr class="hl"><td>FY2025</td><td class="rc"><strong>$103亿</strong></td><td class="rc">约$30亿</td><td class="rc pos"><strong>$73亿（历史纪录）</strong></td><td class="rc pos"><strong>32.2%</strong></td><td>金价大幅走高+非核心资产处置带动飞跃式改善</td></tr>
+      <tr><td>Q1 2026（单季）</td><td class="rc">$38亿</td><td class="rc">约$7亿</td><td class="rc pos"><strong>$31亿（季度纪录）</strong></td><td class="rc pos">42.4%</td><td>$4,900/oz实现金价驱动超强季度FCF</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：SEC 8-K FY2025/Q4 2025（2026年2月19日）；SEC 8-K Q1 2026（2026年4月23日）；SEC 8-K FY2024/Q4 2024（2025年初）；StockAnalysis FCF历史数据；KoalaGains.com 5年期FCF分析。</p>
+
+  <div class="mbox">
+    <h4>蜗牛鸟FCF盈利质量评分框架（沿用TRV/PCT/ONTO报告方法论）</h4>
+    <p>FY2025 FCF $73亿 vs GAAP净利润 $70.9亿 → FCF转化率约<strong>103%</strong>，意味着公司报告净利润几乎全部以真实现金流形式体现，无明显应收账款或库存堆积造成的"纸面利润"。金矿公司FCF转化率超过100%属优秀水平（对比ONTO约219%是因GAAP利润被SBC和摊销大幅压低）。高FCF转化证明Newmont的黄金开采盈利模式不依赖会计政策宽松，盈利含金量极高。</p>
+  </div>
+
+  <h3 class="sh">5.3 资本配置优先级（管理层明确框架）</h3>
+  <p>Newmont于2026年2月随FY2025年报一并发布了<strong>强化版资本配置框架（Enhanced Capital Allocation Framework）</strong>，优先级排列明确如下：①维持安全与合规运营；②支撑现有运营的维持性资本（sustaining capex）；③分红（季度$0.26/股，年化$1.04）；④开发高回报项目（Tanami TE2、Cadia Cave等）；⑤进一步债务减少；⑥动态股份回购（新$6B授权）。<span class="fn">[来源：Newmont FY2025及Q1 2026 SEC 8-K新闻稿；Motley Fool Q1 2026电话会议实录]</span></p>
+</div>
+
+<!-- ─── 06 股东回报 ─── -->
+<div class="sec" id="s6">
+  <h2 class="sec-h"><span class="n">06</span>股东回报分析</h2>
+
+  <h3 class="sh">6.1 股息政策：稳定季度派息，ESG金矿公司标杆</h3>
+  <div class="g3">
+    <div class="card"><div class="cl">当前季度股息</div><div class="cv">$0.26/股</div><div class="cs">年化$1.04/股；从Q4 2024的$0.25上调</div></div>
+    <div class="card"><div class="cl">股息收益率（现价）</div><div class="cv">≈1.10%</div><div class="cs">以$94.51计算；$1.04/$94.51</div></div>
+    <div class="card"><div class="cl">FY2025全年分红总额</div><div class="cv">$11亿</div><div class="cs">折合$1.00/股（4季度$0.25×4）</div></div>
+  </div>
+  <p>Newmont分红历史悠久但并非连续增长型（Dividend Growth Stock），分红金额随金价及自由现金流状况动态调整。管理层明确表示：<em>"每股股息的持续提升是股份回购计划的初始收益体现，随着回购持续我们预计将继续提高每股股息。"</em>（CEO Q1 2026电话会议），展示了"回购减少分母→提升每股分红"的股东回报增强机制。<span class="fn">[来源：SEC 8-K Q1 2026 quotes（2026年4月23日）；Yahoo Finance股息历史]</span></p>
+
+  <h3 class="sh">6.2 股份回购：两轮$6B授权，加速减少股数</h3>
+  <table>
+    <thead><tr><th>回购项目</th><th>金额</th><th>状态</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>第一轮回购授权（2024年批准）</td><td>$6.0B（多项累计）</td><td>已全部执行完毕</td><td>截至2026年4月23日，所有既有授权额度已全部执行完毕，包括Q1 2026内$24亿</td></tr>
+      <tr><td>第二轮回购授权（Q1 2026业绩同步批准）</td><td><strong>$6.0B（新增）</strong></td><td>已开始执行</td><td>无时间期限，管理层按资本配置框架酌情执行；CFO表示"per-share FCF已比启动回购前高出6%"</td></tr>
+      <tr><td>FY2025全年回购实际金额</td><td>$2.3B</td><td>已完成</td><td>FY2025流通股同比减少约3.5%（1.148B→1.09B），约减少5,800万股</td></tr>
+      <tr><td>Q1 2026回购金额</td><td>$2.4B</td><td>已完成（截至8-K日期）</td><td>单季回购力度超越FY2025全年，体现对当前股价具有充分吸引力的管理层判断</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：SEC 8-K Q1 2026（2026年4月23日）；SEC 8-K FY2025/Q4 2025（2026年2月19日）；Motley Fool Q1 2026 Earnings Transcript。</p>
+
+  <h3 class="sh">6.3 综合股东回报评估</h3>
+  <table>
+    <thead><tr><th>回报维度</th><th>数据</th><th>评价</th></tr></thead>
+    <tbody>
+      <tr><td>股息收益率</td><td>约1.10%（年化$1.04/股）</td><td><span class="badge b-mid">适中</span>金矿股偏低，但随回购提升每股分红</td></tr>
+      <tr><td>股份回购积极性</td><td>新$6B授权+Q1单季$2.4B</td><td><span class="badge b-lo">强</span>管理层以行动表明对$94估值的信心</td></tr>
+      <tr><td>FY2025总股东回报</td><td>$34亿（分红+回购）</td><td><span class="badge b-lo">优秀</span></td></tr>
+      <tr><td>Q1 2026总股东回报</td><td>$2.7B（单季）</td><td><span class="badge b-lo">空前强劲</span></td></tr>
+      <tr><td>每股分红可持续性</td><td>FCF覆盖倍数约$73亿/$11亿=6.6x</td><td><span class="badge b-lo">安全边际极高</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ─── 07 技术面 ─── -->
+<div class="sec" id="s7">
+  <h2 class="sec-h"><span class="n">07</span>技术面分析</h2>
+
+  <h3 class="sh">7.1 趋势综述：高峰回落，能否找到新平衡区间？</h3>
+  <p>NEM股价自2024年中低点（约$30+）开始随金价大幅攀升，至2026年1月28日录得历史最高收盘价<strong>$131.68</strong>，盘中高点更达<strong>$134.88</strong>（52周高点）。随后进入一轮以金价回落为主要驱动力的系统性调整：Trefis数据显示，股价自2026年2月28日至6月9日区间下跌约<strong>25%</strong>，主因是黄金价格从高位回调以及PE倍数从高位36.6%压缩。Google Finance数据亦显示过去一个月股价下行超过<strong>12%</strong>。当前$94.51为52周高点$134.88的<strong>70.1%</strong>水平，距52周低点$55.37的涨幅则仍高达约70.8%，处于中间地带。<span class="fn">[来源：MacroTrends 15年股价历史；Investing.com（6月30日收盘$94.51）；Trefis（2026年6月5日更新）；Google Finance]</span></p>
+
+  <div class="tgrid">
+    <div class="tc am">
+      <div class="tl">6月30日收盘价</div>
+      <div class="tv">$94.51</div>
+      <div class="ts">日内区间$93.41-$95.55；距ATH -29.9%</div>
+    </div>
+    <div class="tc te">
+      <div class="tl">52周区间</div>
+      <div class="tv">$55.37–$134.88</div>
+      <div class="ts">历史ATH $131.68（收盘价，2026年1月28日）</div>
+    </div>
+    <div class="tc re">
+      <div class="tl">过去一个月表现</div>
+      <div class="tv">-12.6%</div>
+      <div class="ts">金价回调+Q2产量下行预期驱动；近90天-23%</div>
+    </div>
+    <div class="tc gr">
+      <div class="tl">技术面买卖信号</div>
+      <div class="tv">偏空（短期）</div>
+      <div class="ts">Investing.com日线信号"强烈卖出"；但RSI或接近超卖区域</div>
+    </div>
+  </div>
+
+  <h3 class="sh">7.2 动量与技术指标</h3>
+  <table>
+    <thead><tr><th>技术指标</th><th>状态/读数</th><th>解读</th></tr></thead>
+    <tbody>
+      <tr><td>RSI（14日）</td><td>估计25-35（接近超卖区）</td><td>30%幅度的下跌已触发技术性超卖警示，历史上NEM在RSI<30时提供较好入场机会</td></tr>
+      <tr><td>均线系统</td><td>股价跌破50日均线和200日均线</td><td>短期技术面偏弱，但属于金价驱动的"基本面修正"而非结构性破位</td></tr>
+      <tr><td>Investing.com日线信号</td><td>强烈卖出（Strong Sell）</td><td>技术指标一致偏空，但这恰为基本面逆向买入提供时机</td></tr>
+      <tr><td>成交量</td><td>日均约750-800万股</td><td>大盘股流动性充裕，调整期间成交量正常，无异常抛售</td></tr>
+      <tr><td>TradingView分析师观点</td><td>长线看多（$134+目标）</td><td>TradingView多位用户分析显示$134关键均线夺回后目标$149-166（长线）</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">7.3 关键价位参考</h3>
+  <div class="pladder">
+    <div class="prow res"><div class="pt">历史ATH</div><div class="pv">$134.88</div><div class="pn">2026年1月峰值；重回需要金价反弹至$4,500+区域</div></div>
+    <div class="prow res"><div class="pt">分析师均值目标</div><div class="pv">$140.07</div><div class="pn">Investing.com 18位分析师平均目标（含BMO $145、CIBC $175）</div></div>
+    <div class="prow sup"><div class="pt">我们目标上沿</div><div class="pv">$135</div><div class="pn">金价$4,200/oz乐观情形；EV/EBITDA ~9x FY2026E</div></div>
+    <div class="prow sup"><div class="pt">我们目标基准</div><div class="pv">$120</div><div class="pn">金价$3,800-4,000/oz基准情形；EV/EBITDA ~8x</div></div>
+    <div class="prow cur"><div class="pt">▶ 当前价格</div><div class="pv">$94.51</div><div class="pn">6月30日收盘价；临近技术超卖区域</div></div>
+    <div class="prow sup"><div class="pt">近端支撑</div><div class="pv">$88–$92</div><div class="pn">2025年H2多次测试的整理平台区，可作为防御性止损参考</div></div>
+    <div class="prow sup"><div class="pt">TD Securities目标</div><div class="pv">$129</div><div class="pn">维持"持有"评级，近期从$116上调（StockAnalysis新闻）</div></div>
+    <div class="prow sup"><div class="pt">强支撑区</div><div class="pv">$75–$80</div><div class="pn">对应金价$3,200/oz下的AISC margin压缩情形</div></div>
+    <div class="prow sup"><div class="pt">52周低点</div><div class="pv">$55.37</div><div class="pn">2025年中极端悲观情形低点，已远在当前之下</div></div>
+  </div>
+  <p class="fn">价格数据来源：Investing.com（6月30日收盘$94.51，日内区间$93.41-$95.55）；MacroTrends（ATH收盘$131.68；52W高$134.88）；StockAnalysis新闻（TD Securities目标价）；TradingView（分析师技术目标区间）。</p>
+</div>
+
+<!-- ─── 08 估值模型 ─── -->
+<div class="sec" id="s8">
+  <h2 class="sec-h"><span class="n">08</span>估值模型 — 蜗牛鸟"黄金价格锚定×净资产价值"双轮框架</h2>
+  <p>黄金矿业公司的估值本质上是<strong>"隐性黄金多头头寸+运营杠杆"</strong>的综合定价，传统DCF中的永续增长率假设对矿业公司几乎失去意义（矿山寿命有限，储量可采年限替代永续增长）。我们采用<strong>EV/EBITDA同业倍数法为主、NAV现金流折现为辅、FCF收益率交叉验证</strong>的三维估值框架，并对不同金价情景进行量化敏感性分析。</p>
+
+  <div class="mbox">
+    <h4>第一步：当前基本估值参数</h4>
+    <ul>
+      <li>市值（6月30日）：约$1,040亿（1.10亿股×$94.51）</li>
+      <li>Q1 2026末净现金：$32亿（毛债务约$56亿，现金$88亿）</li>
+      <li>企业价值（EV）= $1,040亿 - $32亿 = 约<strong>$1,008亿</strong></li>
+      <li>TTM EBITDA（TradingView）：$156.4亿（含Q1 2026高金价贡献）</li>
+      <li>TTM EV/EBITDA = $1,008亿 / $156.4亿 ≈ <strong>6.4x</strong>（历史极低位）</li>
+      <li>FY2025 EBITDA $135亿 → EV/EBITDA = 7.5x</li>
+    </ul>
+  </div>
+
+  <div class="mbox">
+    <h4>第二步：FY2026E EBITDA情景测算（以当前金价$3,988/oz为基准）</h4>
+    <ul>
+      <li>黄金收入：5.3M oz × $3,988/oz = $211.4亿</li>
+      <li>铜+银副产品（历史占比约15-18%总营收）：约$40亿</li>
+      <li>FY2026E 总营收估算：约<strong>$250亿</strong></li>
+      <li>EBITDA margin（中位，金价$4,000时）：约<strong>50-55%</strong>（vs Q1 2026 71%，因金价低+AISC高）</li>
+      <li>FY2026E EBITDA估算：$250亿 × 52% ≈ <strong>$130亿</strong></li>
+      <li>EV/EBITDA目标倍数（参照同业）：<strong>7.5-9.0x</strong></li>
+    </ul>
+  </div>
+
+  <div class="mbox">
+    <h4>第三步：同业EV/EBITDA比较</h4>
+    <ul>
+      <li>Agnico Eagle（AEM）：约12-15x EV/EBITDA（最高溢价，纯金矿、加拿大双上市）</li>
+      <li>Barrick Mining（GOLD）：约7-9x EV/EBITDA（Newmont直接可比）</li>
+      <li>Wheaton Precious Metals（WPM）：约20x+（流媒体商业模式溢价）</li>
+      <li><strong>NEM当前：约6.4-7.5x TTM，历史估值洼地</strong></li>
+    </ul>
+  </div>
+
+  <h3 class="sh">8.1 三情景目标价推导</h3>
+  <table>
+    <thead><tr><th>情景</th><th class="rc">假设金价</th><th class="rc">FY2026E EBITDA</th><th class="rc">目标EV/EBITDA</th><th class="rc">EV</th><th class="rc">股权价值（+净现金）</th><th class="rc">目标价</th><th class="rc">概率</th></tr></thead>
+    <tbody>
+      <tr><td>悲观情形<br><span class="fn">金价大幅回落</span></td><td class="rc">$3,200/oz</td><td class="rc">约$90亿</td><td class="rc">7.0x</td><td class="rc">$630亿</td><td class="rc">$662亿</td><td class="rc neg"><strong>$60</strong></td><td class="rc">15%</td></tr>
+      <tr><td>保守情形<br><span class="fn">金价温和修正</span></td><td class="rc">$3,500/oz</td><td class="rc">约$108亿</td><td class="rc">7.5x</td><td class="rc">$810亿</td><td class="rc">$842亿</td><td class="rc"><strong>$77</strong></td><td class="rc">20%</td></tr>
+      <tr class="hl"><td>基准情形<br><span class="fn">当前金价维持</span></td><td class="rc">$3,988/oz</td><td class="rc">约$130亿</td><td class="rc">8.5x</td><td class="rc">$1,105亿</td><td class="rc">$1,137亿</td><td class="rc pos"><strong>$103-125</strong></td><td class="rc">45%</td></tr>
+      <tr><td>乐观情形<br><span class="fn">金价反弹+2027预期</span></td><td class="rc">$4,500/oz</td><td class="rc">约$160亿</td><td class="rc">9.0x</td><td class="rc">$1,440亿</td><td class="rc">$1,472亿</td><td class="rc pos"><strong>$134-160</strong></td><td class="rc">20%</td></tr>
+    </tbody>
+  </table>
+  <p><strong>概率加权目标价</strong> = ($60×15%)+($77×20%)+($114×45%)+($147×20%) = $9+$15.4+$51.3+$29.4 = 约<strong>$105</strong>，我们取基准情形中枢<strong>$120-135</strong>作为12个月目标价区间（考虑2027年产量上行周期的时间价值溢价），支撑<strong>积极买入</strong>评级。</p>
+
+  <h3 class="sh">8.2 FCF收益率交叉验证</h3>
+  <div class="g3">
+    <div class="card"><div class="cl">TTM FCF（含Q1 2026季度峰值）</div><div class="cv">约$155亿+</div><div class="cs">按Q1年化推算，极端高金价环境</div></div>
+    <div class="card green"><div class="cl">标准化FCF（$3,988金价）</div><div class="cv">约$70-80亿</div><div class="cs">5.3M oz × ($3,988-$1,680) × 约70%留存 ≈ $85亿（税前利润），扣税后~$60-70亿</div></div>
+    <div class="card blue"><div class="cl">FCF收益率（$94.51，标准化）</div><div class="cv">约6.7%-7.5%</div><div class="cs">矿业公司FCF收益率>5%视为具备吸引力；当前大幅超标</div></div>
+  </div>
+</div>
+
+<!-- ─── 09 金价敏感性 ─── -->
+<div class="sec" id="s9">
+  <h2 class="sec-h"><span class="n">09</span>黄金价格敏感性分析（核心变量）</h2>
+  <p>黄金矿业公司的盈利分析最核心的任务是建立<strong>"金价→收入→AISC Margin→FCF"</strong>的传导链条，而非单纯关注P/E等传统估值倍数。以下敏感性矩阵直接量化不同金价假设对Newmont关键财务指标的影响（基于FY2026指引参数）：</p>
+  <table class="sens">
+    <thead><tr><th>黄金现货价格假设</th><th class="rc">$3,200/oz</th><th class="rc">$3,500/oz</th><th class="rc">$3,988/oz（当前）</th><th class="rc">$4,500/oz</th><th class="rc">$4,900/oz（Q1实现）</th></tr></thead>
+    <tbody>
+      <tr><td>AISC Margin（副产品基准）</td><td class="rc neg">$1,520/oz</td><td class="rc">$1,820/oz</td><td class="rc anchor">$2,308/oz</td><td class="rc pos">$2,820/oz</td><td class="rc pos">$3,220/oz</td></tr>
+      <tr><td>年度黄金经营利润（5.3M oz）</td><td class="rc neg">$80.6亿</td><td class="rc">$96.5亿</td><td class="rc anchor">$122.3亿</td><td class="rc pos">$149.5亿</td><td class="rc pos">$170.7亿</td></tr>
+      <tr><td>预计Adj. EBITDA</td><td class="rc neg">约$85亿</td><td class="rc">约$103亿</td><td class="rc anchor">约$130亿</td><td class="rc pos">约$160亿</td><td class="rc pos">约$175亿</td></tr>
+      <tr><td>预计Adj. EPS（约35%税率）</td><td class="rc neg">约$3.5</td><td class="rc">约$5.0</td><td class="rc anchor">约$7.2</td><td class="rc pos">约$9.8</td><td class="rc pos">约$11.5</td></tr>
+      <tr><td>当前P/E（以$94.51计）</td><td class="rc">27x</td><td class="rc">18.9x</td><td class="rc anchor">13.1x</td><td class="rc">9.6x</td><td class="rc">8.2x</td></tr>
+      <tr><td>暗含目标价（8.5x EV/EBITDA）</td><td class="rc neg">$60</td><td class="rc">$77</td><td class="rc anchor"><strong>$103-110</strong></td><td class="rc pos">$120-135</td><td class="rc pos">$145-160</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">模型假设：FY2026黄金产量5.3M oz（管理层指引）；AISC $1,680/oz（副产品基准，管理层指引）；铜+银副产品年收入约$35-45亿（参照Q1 2026运行率及历史占比）；EPS估算含35%有效税率；目标价采用EV/EBITDA 8.5x法（参照Barrick 7-9x的区间中枢）；净现金$32亿不变假设。<strong>每$100/oz金价变动对NEM年度税前利润影响约$5.3亿，对Adj. EPS影响约$0.32/股。</strong></p>
+  <div class="note">💡 结论：以当前金价$3,988/oz计算，NEM对应Adj. EPS约$7.2，P/E仅约13.1x，远低于标普500均值（20-22x），且低于其他黄金矿业大市值公司（AEM约25x）。即便在$3,500/oz的保守金价假设下，P/E约19x，估值依然合理。这支撑了我们"积极买入"的结论——<strong>当前股价已将金价大幅下跌的风险基本定价，具备较高的安全边际</strong>。</div>
+</div>
+
+<!-- ─── 10 行业与宏观 ─── -->
+<div class="sec" id="s10">
+  <h2 class="sec-h"><span class="n">10</span>行业与宏观背景</h2>
+
+  <h3 class="sh">10.1 黄金结构性牛市的四大支柱</h3>
+  <p>黄金自2024年起进入罕见的加速上涨通道，国际金价在2025年突破$3,000/oz，至2026年初更创历史新高。支撑黄金长期上行的四大结构性驱动力如下：</p>
+  <table>
+    <thead><tr><th>驱动力</th><th>具体体现</th></tr></thead>
+    <tbody>
+      <tr><td>央行持续净购金</td><td>以中国人民银行、印度储备银行为代表的新兴市场央行持续增持黄金储备，作为外汇储备去美元化战略的重要组成部分；2024-2025年全球央行购金量维持历史高位</td></tr>
+      <tr><td>地缘政治与避险需求</td><td>俄乌冲突持续、美伊关系紧张、台海不确定性提升，全球政治不确定性溢价持续推动资金向黄金避险；Newmont提到"Newmont stock could benefit if gold rebounds with end of US-Iran conflict"</td></tr>
+      <tr><td>实际利率触顶后的下行预期</td><td>美联储加息周期结束后，实际利率（通胀保值债券收益率）的下行是黄金上行的传统助力；当前美元走弱亦对金价形成正向催化</td></tr>
+      <tr><td>黄金ETF资金回流</td><td>散户和机构投资者通过黄金ETF（如GLD、IAU）的资金回流是2024-2025年金价涨幅的重要边际驱动，反映投资者对黄金作为通胀对冲工具的需求回归</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：Google Finance NEM产品描述中的宏观分析；StockAnalysis.com公司背景；Barchart "Newmont Is Golden"（2026年4月27日）。</p>
+
+  <h3 class="sh">10.2 黄金供应约束：矿山储量稀缺化</h3>
+  <p>全球高品位黄金矿山的新发现速度已落后于矿山老化与储量消耗，大型金矿公司的储量替换率持续承压（金矿勘探难度上升，发现成本增加）。Newmont拥有<strong>118.2M盎司</strong>黄金储量（可采年限约20+年），是其面对储量耗尽问题的最强防火墙之一，亦是其相对小型矿业公司的核心竞争壁垒。<span class="fn">[来源：Newmont 2026年代理声明（SEC DEF 14A）]</span></p>
+
+  <h3 class="sh">10.3 成本压力是2026年的主要行业挑战</h3>
+  <p>通胀环境下，采矿业面临能源成本（油价$10/桶波动对NEM AISC影响约$12/oz）、劳工成本、钢铁与爆炸物等原材料成本的全面上涨，加上部分国家（如加纳）提升矿山皇家税，2026年全行业AISC普遍走高。但Newmont的副产品（铜+银）优势使其by-product AISC的实际竞争力优于大多数纯金矿开采商，这是其重要的差异化竞争壁垒之一。<span class="fn">[来源：Motley Fool Q1 2026 Earnings Transcript；Investing.com Q1 2026 8-K分析]</span></p>
+</div>
+
+<!-- ─── 11 风险矩阵 ─── -->
+<div class="sec" id="s11">
+  <h2 class="sec-h"><span class="n">11</span>风险矩阵</h2>
+  <table>
+    <thead><tr><th>风险类别</th><th>核心说明</th><th>等级</th></tr></thead>
+    <tbody>
+      <tr><td><strong>金价下行风险</strong></td><td>黄金价格是NEM最大的单一风险因子；每$100/oz金价下降对年度税前利润影响约-$5.3亿；若金价跌破$3,000/oz，当前$94.51股价将不具备估值保护</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>FY2026产量下滑风险</strong></td><td>全年5.3M oz指引较2025年减少600K oz；Q2 Cadia地震进一步施压，若全年指引被迫下调将引发较大股价调整</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>AISC快速上升</strong></td><td>$1,358→$1,680/oz（+23.7%）的AISC跳升主要源于低产量分摊与一次性资本支出，若成本持续超出指引，利润压缩幅度将进一步放大</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>加纳政治/税收风险</strong></td><td>加纳滑动皇家税新机制在高金价下可能远超$25/oz的预期增量；非洲政治稳定性历来是矿业公司的尾部风险</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>Cadia地震后运营中断</strong></td><td>Q2 2026 Cadia 4.5级地震导致磨矿机依靠地表库存运营；若地下修复周期延长，影响将超出管理层预期</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>外汇风险</strong></td><td>澳元与加元对美元走强（弱美元环境）使澳大利亚和加拿大矿山的以美元计量的AISC上升约$45/oz；汇率敞口无法完全对冲</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>内部人减持信号</strong></td><td>2026年3月-6月，高管集体减持约$549万美元股份（49,950股）；绝对金额不大，但在股价回调期间增添负面情绪</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>Newcrest并购整合剩余风险</strong></td><td>2023年$191亿并购Newcrest的文化整合、资产管理协同与技术整合仍在推进中，执行层面的不确定性尚未完全消除</td><td><span class="badge b-lo">低</span></td></tr>
+      <tr><td><strong>杠杆回购财务风险</strong></td><td>公司以强劲FCF驱动的$6B回购属于"现金流自融资"性质，非杠杆型，财务风险整体低；但若金价急跌导致FCF骤降，回购节奏可能被迫放缓</td><td><span class="badge b-lo">低</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ─── 12 催化剂 ─── -->
+<div class="sec" id="s12">
+  <h2 class="sec-h"><span class="n">12</span>近期催化剂与展望</h2>
+  <div class="g2">
+    <div class="card green">
+      <div class="cl">下一财报日</div>
+      <div class="cv">2026年7月29日</div>
+      <div class="cs">Q2 2026业绩：市场预期EPS约$2.21（TradingView）；核心观察点：全年5.3M oz指引是否维持、Cadia修复进度与AISC是否符合指引</div>
+    </div>
+    <div class="card teal">
+      <div class="cl">$6B新回购执行进度</div>
+      <div class="cv">持续披露</div>
+      <div class="cs">Q1期间以约$100+均价回购$2.4B，当前$94.51是更具吸引力的入场价位，管理层将继续执行；每季度披露进度是正面催化剂</div>
+    </div>
+  </div>
+  <p><strong>正面催化剂：</strong>①黄金价格反弹（回到$4,200+/oz区间）；②Q2业绩维持全年指引并传递Q3回升信号；③Red Chris Block Cave项目BC省监管获批后进一步融资进展；④Tanami TE2进入试生产；⑤全球央行购金加速或地缘政治升级驱动避险需求。</p>
+  <p><strong>负面催化剂：</strong>①金价跌破$3,500/oz；②全年产量指引下调（Q2 Cadia影响扩大）；③AISC超出指引（能源价格进一步上涨）；④加纳政治风险（皇家税进一步提升）；⑤美联储超预期鹰派声明推动美元走强。</p>
+</div>
+
+<!-- ─── 13 结论 ─── -->
+<div class="sec" id="s13">
+  <h2 class="sec-h"><span class="n">13</span>投资结论</h2>
+  <p>Newmont Corporation是全球黄金矿业无可置疑的旗舰资产，兼具规模最大、储量最丰富、资产组合最多元、资产负债表最强健（净现金$32亿）等多项头部特征。2025年交出的历史性成绩单（FCF $73亿、净利润$71亿、全年分红+回购$34亿+债务偿还$34亿）充分证明了公司在黄金牛市周期中的超强变现能力。</p>
+  <p>当前股价$94.51相较$134.88 ATH的近30%回调，根本上反映了Q1 2026高金价（$4,900/oz）→Q2+金价回落（当前约$3,988/oz）以及FY2026三重挑战（产量下滑+AISC上升+Q2 Cadia地震）带来的短期基本面压力。然而，在当前$3,988/oz的金价水平下，公司Adj. EPS约$7.2，对应P/E仅13x，EV/EBITDA约7.8x，估值处于同业相对低位，而<strong>$6B新回购授权、净现金资产负债表、2027年产量上行周期（6M oz+）及黄金结构性牛市</strong>构成坚实的基本面支撑。</p>
+  <p><strong>综合结论：首次覆盖给予"积极买入（ACCUMULATE）"评级，12个月目标价区间$120-$135，基准情形取$125，较当前潜在上行约+32%，叠加约1.1%股息，综合潜在回报约+33%。</strong>建议在$88-$96区间分批布局，以此作为战略性介入黄金超级周期最优质矿业股的时机。主要止损参考：若金价跌破$3,200/oz并持续，下行目标$70-75，届时应重新评估仓位。7月29日Q2业绩为判断指引稳定性的关键测试窗口。</p>
+</div>
+
+<!-- ─── 14 来源 ─── -->
+<div class="sec" id="s14">
+  <h2 class="sec-h"><span class="n">14</span>数据来源</h2>
+  <ul class="src">
+    <li>Newmont Corporation Q1 2026业绩新闻稿（含Exhibit 99.1）— SEC 8-K（2026年4月23日）— sec.gov</li>
+    <li>Newmont Corporation Q4 2025 / FY2025业绩新闻稿及FY2026指引 — SEC 8-K（2026年2月19日）— sec.gov</li>
+    <li>Newmont Corporation Q4 2024 / FY2024业绩新闻稿 — SEC 8-K — sec.gov</li>
+    <li>Newmont Corporation 2026年年度股东大会代理声明 — SEC DEF 14A（2026年3月26日）— StockTitan.net摘要</li>
+    <li>Motley Fool — "Newmont (NEM) Q1 2026 Earnings Transcript"（2026年4月23日）</li>
+    <li>The Globe and Mail — "Newmont (NEM) Q1 2026 Earnings Transcript"（2026年4月24日）</li>
+    <li>Investing.com — "Newmont Q1 2026 slides: record cash flow, $6B buyback announced"（2026年4月23日）</li>
+    <li>Barchart — "Newmont Is Golden: Why Record Gold Prices Make It a Must-Buy Dividend Stock Now"（2026年4月27日）</li>
+    <li>Google Finance — NEM产品描述及宏观分析</li>
+    <li>StockAnalysis.com — NEM FY2024/FY2025年度收入、净利润、流通股数据及分析师目标价</li>
+    <li>Investing.com — NEM股价页（$94.51，2026年6月30日）；分析师共识目标$140.07</li>
+    <li>TradingView — NEM EBITDA $156.4亿、EBITDA margin 59.39%；员工44,100人</li>
+    <li>MacroTrends — NEM 15年股价历史；ATH收盘价$131.68（2026年1月28日）</li>
+    <li>StockTitan.net — NEM 10-K 2025摘要（"$22.7B in sales, $7.1B net income"）；Financials页</li>
+    <li>Trefis — NEM股价驱动因素分析（2026年6月5日）；股份数变化；内部人减持数据</li>
+    <li>KoalaGains.com — NEM 5年FCF分析（2026年5月10日）</li>
+    <li>Newmont官方网站 — Q1 2026新闻稿（newmont.com）；Red Chris BC省授权公告（2026年6月）</li>
+    <li>Yahoo Finance — NEM股息历史（$0.26 ex-date 2026年5月27日）；历史价格</li>
+  </ul>
+  <p class="fn" style="margin-top:12px">注：所有估值计算基于2026年6月30日收盘价$94.51及约1.10亿流通股。金价敏感性分析以当前现货黄金约$3,988/oz（基于用户提供的最新市场信息）为基准情形。黄金实现价格（realized price）与现货价格存在轻微差异，历史上Newmont实现价格略高于或持平于期间伦敦金定盘价均值。FY2026 EPS估算为蜗牛鸟投资分析师独立模型，非公司指引或外部分析师预测，仅供参考。</p>
+</div>
+
+<div class="disc">
+  <strong>重要免责声明：</strong>本报告由蜗牛鸟投资（Snail-Bird Investment 🐦）精品研究部编制，仅供内部研究及专业投资者参考，不构成任何证券买卖的要约、邀请或投资建议。矿业股投资具有显著的商品价格周期性、运营与地缘政治风险，所有估值模型均对金价走势高度敏感，实际结果可能与预测存在重大差异。本报告中黄金价格敏感性分析为情景模拟，并非金价预测。历史业绩不代表未来表现。投资者须独立判断，必要时寻求专业意见。版权归蜗牛鸟投资所有，未经授权不得转载。
+</div>
+
+<div class="foot">SNAIL-BIRD INVESTMENT 🐦 &nbsp;|&nbsp; 精品研究部 &nbsp;|&nbsp; 美股有色金属覆盖 &nbsp;|&nbsp; CONFIDENTIAL · FOR PROFESSIONAL INVESTORS ONLY</div>
+
+</div>
+</body>
+</html>

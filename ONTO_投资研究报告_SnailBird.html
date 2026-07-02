@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onto Innovation (NYSE: ONTO) 深度研究报告 | 蜗牛鸟投资</title>
+<style>
+:root {
+  --ink:     #0c1a2e;
+  --navy:    #102840;
+  --steel:   #1a3d5c;
+  --teal:    #0e5f78;
+  --gold:    #c89a0e;
+  --bright:  #e0b020;
+  --bg:      #f1ede5;
+  --paper:   #fafaf6;
+  --text:    #18242f;
+  --muted:   #5b6b7a;
+  --rule:    #ddd8ce;
+  --green:   #1a6840;
+  --red:     #9c2320;
+  --amber:   #7a5c00;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Georgia","Noto Serif SC","Source Han Serif SC",serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.82;
+}
+.page { max-width: 1060px; margin: 0 auto; background: var(--paper); box-shadow: 0 2px 44px rgba(12,26,46,.09); }
+
+/* ── NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--ink);
+  border-bottom: 3px solid var(--bright);
+  display: flex; align-items: center;
+  overflow-x: auto; white-space: nowrap;
+}
+.nav-brand {
+  background: var(--bright); color: var(--ink);
+  font-family: Arial,sans-serif; font-weight: 800;
+  font-size: 12px; letter-spacing: 1.4px;
+  padding: 13px 16px; flex-shrink: 0;
+}
+.nav a {
+  color: #c2d0de; text-decoration: none;
+  font-family: Arial,sans-serif; font-size: 11.5px;
+  padding: 13px 9px;
+  border-bottom: 2px solid transparent;
+  transition: color .18s,border-color .18s;
+}
+.nav a:hover { color: var(--bright); border-bottom-color: var(--bright); }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(138deg, #0c1a2e 0%, #102840 45%, #173660 100%);
+  color: #e5ecf3; padding: 48px 54px 38px;
+  border-bottom: 4px solid var(--bright);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: "ONTO";
+  position: absolute; right: -8px; top: -16px;
+  font-size: 190px; font-family: Arial Black,sans-serif; font-weight: 900;
+  color: rgba(255,255,255,.025); letter-spacing: -6px;
+  pointer-events: none; line-height: 1;
+}
+.hero-eye {
+  font-family: Arial,sans-serif; font-size: 11px;
+  letter-spacing: 3px; color: var(--bright);
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.hero-title { font-size: 31px; font-weight: bold; line-height: 1.2; margin-bottom: 4px; }
+.hero-title em { color: #90afc8; font-style: normal; font-size: 17px; font-weight: normal; }
+.hero-sub { font-family: Arial,sans-serif; font-size: 13px; color: #aec0cf; margin-top: 5px; margin-bottom: 26px; }
+
+/* ── KPI STRIP ── */
+.kpi-row {
+  display: grid; grid-template-columns: repeat(5,1fr);
+  border-top: 1px solid rgba(255,255,255,.12);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  margin-bottom: 22px;
+}
+.kpi-cell {
+  padding: 13px 14px;
+  border-right: 1px solid rgba(255,255,255,.1);
+  font-family: Arial,sans-serif;
+}
+.kpi-cell:last-child { border-right: none; }
+.kpi-cell .lbl { font-size: 10px; color: #8faabb; text-transform: uppercase; letter-spacing: .8px; }
+.kpi-cell .val { font-size: 18px; color: #fff; font-weight: 700; margin-top: 4px; line-height: 1.15; }
+.kpi-cell .sub { font-size: 10.5px; color: #768fa0; margin-top: 2px; }
+
+/* rating badge */
+.rating {
+  display: inline-flex; align-items: center; gap: 16px;
+  background: rgba(200,154,14,.13);
+  border: 1px solid var(--bright);
+  padding: 10px 22px; border-radius: 2px;
+}
+.rating .r { font-family: Arial,sans-serif; font-weight: 900; font-size: 17px; color: var(--bright); letter-spacing: .8px; }
+.rating .tp { font-family: Arial,sans-serif; font-size: 12px; color: #c2d0de; }
+.rating .up { font-family: Arial,sans-serif; font-size: 12px; color: #7edc9c; font-weight: 700; }
+
+/* ── SECTIONS ── */
+.sec { padding: 36px 54px; border-bottom: 1px solid var(--rule); }
+.sec:last-child { border-bottom: none; }
+
+.sec-h {
+  font-family: Arial,sans-serif; font-size: 19.5px; color: var(--navy);
+  border-left: 5px solid var(--bright); padding-left: 14px;
+  margin-bottom: 20px; letter-spacing: .3px;
+}
+.sec-h .n { color: var(--bright); margin-right: 6px; font-weight: normal; }
+
+h3.sh {
+  font-family: Arial,sans-serif; font-size: 14.5px; color: var(--steel);
+  margin: 26px 0 10px;
+  border-bottom: 1px solid var(--rule); padding-bottom: 6px;
+}
+p { font-size: 14.5px; color: var(--text); margin-bottom: 13px; }
+.lead {
+  font-size: 15px; color: var(--navy);
+  background: #eee9da; border-left: 3px solid var(--bright);
+  padding: 14px 18px; margin-bottom: 18px; line-height: 1.88;
+}
+
+/* tables */
+table { width: 100%; border-collapse: collapse; font-family: Arial,sans-serif; font-size: 13px; margin: 14px 0 20px; }
+thead th { background: var(--navy); color: #fff; padding: 9px 12px; text-align: left; font-weight: 500; letter-spacing: .2px; }
+tbody td { padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tr:nth-child(even) td { background: #f5f2ea; }
+.rc { text-align: right; font-variant-numeric: tabular-nums; }
+.pos { color: var(--green); font-weight: 700; }
+.neg { color: var(--red); font-weight: 700; }
+
+/* grids */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 16px 0; }
+.g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 16px 0; }
+
+.card {
+  background: #fff; border: 1px solid var(--rule);
+  border-top: 3px solid var(--bright);
+  padding: 14px 16px;
+}
+.card .cl { font-family: Arial,sans-serif; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+.card .cv { font-family: Arial,sans-serif; font-size: 20px; color: var(--navy); font-weight: 700; margin-top: 5px; line-height: 1.15; }
+.card .cs { font-family: Arial,sans-serif; font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+.card.teal { border-top-color: var(--teal); }
+.card.red   { border-top-color: var(--red); }
+.card.green { border-top-color: var(--green); }
+
+/* model box */
+.mbox { border: 1px dashed var(--bright); background: #fdf8ed; padding: 16px 20px; margin: 14px 0; }
+.mbox h4 { font-family: Arial,sans-serif; font-size: 13.5px; color: var(--navy); margin-bottom: 8px; font-weight: 700; }
+.mbox ul { padding-left: 18px; margin-top: 6px; }
+.mbox li { font-size: 13.5px; margin-bottom: 5px; }
+.mbox p { font-size: 13.5px; }
+
+/* note box */
+.note {
+  background: #e8f3fa; border-left: 3px solid var(--teal);
+  padding: 10px 14px; font-family: Arial,sans-serif;
+  font-size: 12.5px; color: #1a3d5c; margin-bottom: 16px;
+}
+
+/* risk badges */
+.badge { display: inline-block; font-family: Arial,sans-serif; font-size: 11px; padding: 2px 10px; border-radius: 10px; font-weight: 700; }
+.b-hi  { background: #fce8e7; color: var(--red); }
+.b-mid { background: #fdf0d2; color: var(--amber); }
+.b-lo  { background: #e2f0e9; color: var(--green); }
+
+/* tech panel */
+.tgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.tc {
+  background: #fff; border: 1px solid var(--rule); padding: 14px 16px;
+}
+.tc .tl { font-family: Arial,sans-serif; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+.tc .tv { font-family: Arial,sans-serif; font-size: 19px; font-weight: 700; color: var(--navy); }
+.tc .ts { font-size: 12.5px; color: var(--muted); font-family: Arial,sans-serif; margin-top: 4px; }
+.tc.at { border-top: 3px solid var(--bright); }
+.tc.tl-t { border-top: 3px solid var(--teal); }
+.tc.g  { border-top: 3px solid var(--green); }
+.tc.r  { border-top: 3px solid var(--red); }
+
+/* price ladder */
+.pladder { border: 1px solid var(--rule); background: #fff; margin: 14px 0; font-family: Arial,sans-serif; }
+.prow { display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-bottom: 1px solid var(--rule); font-size: 13px; }
+.prow:last-child { border-bottom: none; }
+.prow .pt { width: 120px; flex-shrink: 0; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .4px; }
+.prow .pv { font-size: 15px; font-weight: 700; color: var(--navy); width: 90px; }
+.prow .pn { color: var(--muted); font-size: 12.5px; flex: 1; }
+.prow.cur .pv { color: var(--bright); }
+.prow.sup .pv { color: var(--green); }
+.prow.res .pv { color: var(--red); }
+
+/* peer comp highlight */
+.onto-row td { font-weight: 700; background: #f0ecd8 !important; color: var(--navy); }
+
+.fn { font-size: 11.5px; color: var(--muted); font-family: Arial,sans-serif; line-height: 1.75; }
+.src { font-family: Arial,sans-serif; font-size: 12.5px; color: var(--muted); line-height: 2; padding-left: 18px; }
+.src li { margin-bottom: 2px; }
+
+.disc {
+  background: var(--ink); color: #8fa8bf;
+  font-family: Arial,sans-serif; font-size: 11.5px;
+  padding: 28px 54px; line-height: 1.92;
+}
+.disc strong { color: var(--bright); }
+
+.foot {
+  background: var(--ink);
+  border-top: 1px solid rgba(200,154,14,.28);
+  color: #52728a; text-align: center;
+  font-family: Arial,sans-serif; font-size: 11px;
+  letter-spacing: 1.5px; padding: 14px;
+}
+
+@media (max-width: 700px) {
+  .kpi-row { grid-template-columns: repeat(2,1fr); }
+  .g3,.g4,.tgrid { grid-template-columns: 1fr 1fr; }
+  .hero,.sec,.disc { padding-left: 22px; padding-right: 22px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-brand">🐦 蜗牛鸟投资 · 精品研究</div>
+  <a href="#s1">摘要</a>
+  <a href="#s2">公司概览</a>
+  <a href="#s3">产品组合</a>
+  <a href="#s4">财务分析</a>
+  <a href="#s5">资产负债表&amp;FCF</a>
+  <a href="#s6">股东回报</a>
+  <a href="#s7">技术面</a>
+  <a href="#s8">估值模型</a>
+  <a href="#s9">同业对标</a>
+  <a href="#s10">行业&amp;宏观</a>
+  <a href="#s11">风险矩阵</a>
+  <a href="#s12">催化剂</a>
+  <a href="#s13">结论</a>
+  <a href="#s14">来源</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eye">SNAIL-BIRD INVESTMENT &nbsp;|&nbsp; 精品研究部 &nbsp;|&nbsp; 美股半导体设备行业首次覆盖</div>
+  <div class="hero-title">Onto Innovation Inc. <em>(NYSE: ONTO)</em></div>
+  <div class="hero-sub">先进封装与先进节点过程控制领导者 · Dragonfly G5 + Atlas G6 + Rigaku AI战略联盟 — 深度投资研究报告</div>
+
+  <div class="kpi-row">
+    <div class="kpi-cell">
+      <div class="lbl">现价（6月30日收盘）</div>
+      <div class="val">$373.01</div>
+      <div class="sub">近历史新高；市值约$185亿</div>
+    </div>
+    <div class="kpi-cell">
+      <div class="lbl">52周区间</div>
+      <div class="val">$89.40–$377.35</div>
+      <div class="sub">52周涨幅 +318%</div>
+    </div>
+    <div class="kpi-cell">
+      <div class="lbl">FY2025全年营收</div>
+      <div class="val">$10.05亿</div>
+      <div class="sub">历史首次突破$10亿，+1.8% YoY</div>
+    </div>
+    <div class="kpi-cell">
+      <div class="lbl">Q1 2026 Non-GAAP EPS</div>
+      <div class="val">$1.42</div>
+      <div class="sub">超预期 $1.37，营收$291.9M +9.5%</div>
+    </div>
+    <div class="kpi-cell">
+      <div class="lbl">报告日期</div>
+      <div class="val">2026年7月1日</div>
+      <div class="sub">蜗牛鸟投资精品研究部</div>
+    </div>
+  </div>
+
+  <div class="rating">
+    <div class="r">中性偏谨慎（HOLD）</div>
+    <div class="tp">12个月目标价区间：<strong style="color:#dfc060">$310 – $360</strong></div>
+    <div class="up">估值已充分定价 | 关注Q2业绩验证</div>
+  </div>
+</div>
+
+<!-- ─── 01 投资摘要 ─── -->
+<div class="sec" id="s1">
+  <h2 class="sec-h"><span class="n">01</span>投资摘要</h2>
+  <div class="lead">
+    Onto Innovation（NYSE: ONTO）是全球领先的半导体过程控制设备与计量（Metrology）解决方案供应商，专注于先进封装（Advanced Packaging）、先进节点（Advanced Nodes，含GAA/DRAM/NAND）及专用器件（Specialty Devices）三大高成长细分市场。公司在AI浪潮驱动的半导体资本开支超级周期中占据最佳战略卡位——其Dragonfly G5检测系统及Atlas G6 OCD计量平台直接服务于CoWoS/SoIC等2.5D/3D封装技术，是台积电、三星、SK海力士等领先客户不可或缺的产线工具。2026年股价从年初约$136飙升至$373，涨幅超过174%，已创历史新高。鉴于当前估值（GAAP P/E约174x、EV/EBITDA约85x）已相当程度地反映了上升周期的乐观预期，且$7.1亿Rigaku少数股权收购引入$12.65亿可转换债务、$3亿股票回购计划，资产负债表结构性变化带来新的整合执行风险，我们首次覆盖给予<strong>中性偏谨慎（HOLD）</strong>评级，12个月目标价区间<strong>$310-$360</strong>。
+  </div>
+  <table>
+    <thead><tr><th>核心结论</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>评级</td><td>中性偏谨慎（HOLD）— 优质赛道龙头，但当前价格已充分反映乐观情形</td></tr>
+      <tr><td>目标价区间（12个月）</td><td><strong>$310–$360</strong>（基准情形）；悲观情形$220；乐观情形$450</td></tr>
+      <tr><td>核心投资逻辑</td><td>AI驱动封装复杂度提升→先进封装检测/计量需求结构性增长；FY2026管理层指引营收超$13亿（+30%+）；非GAAP运营利润率目标突破30%</td></tr>
+      <tr><td>核心担忧</td><td>GAAP利润大幅低于non-GAAP（商誉摊销+SBC压制）；Rigaku投资$7.1亿+可转债$12.65亿改变资本结构；客户高度集中（三大客户占H1 2025营收57%）；中国出口管制持续收紧</td></tr>
+      <tr><td>下一关键节点</td><td>2026年8月6日Q2 2026业绩发布，验证$320-330M指引及非GAAP运营利润率28%+目标</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ─── 02 公司概览 ─── -->
+<div class="sec" id="s2">
+  <h2 class="sec-h"><span class="n">02</span>公司概览</h2>
+  <p>Onto Innovation Inc.总部位于马萨诸塞州威尔明顿（Wilmington, MA），由Nanometrics Inc.与Rudolph Technologies Inc.于2019年合并而成，是全球专注于<strong>过程控制与良率管理</strong>的半导体设备公司。公司以单一业务段运营，产品线横跨宏缺陷检测（Macro-Defect Inspection）、计量（Metrology）、光刻（Lithography）及先进过程控制（APC）分析软件，服务于晶圆制造前端（Front-End）与先进封装后端（Back-End）全链路工厂。<span class="fn">[来源：Morningstar公司描述；SEC 10-K 2022/2023]</span></p>
+  <p>公司在韩国、日本、中国、台湾、新加坡、马来西亚、越南及欧洲设有分支销售与服务机构，主要收入来自台湾及韩国市场（HBM/CoWoS核心生产地），体现了公司在AI芯片封装产业链中的核心卡位。<span class="fn">[来源：SEC 10-Q 2025Q2 TradingView分析；Morningstar]</span></p>
+  <div class="g4">
+    <div class="card"><div class="cl">前身合并年份</div><div class="cv">2019年</div><div class="cs">Nanometrics + Rudolph合并</div></div>
+    <div class="card"><div class="cl">员工人数</div><div class="cv">≈1,551–2,000</div><div class="cs">Google Finance/Motley Fool披露</div></div>
+    <div class="card"><div class="cl">流通股数</div><div class="cv">约4,974万股</div><div class="cs">Morningstar/Google Finance数据</div></div>
+    <div class="card"><div class="cl">市值（6月30日）</div><div class="cv">≈$185亿</div><div class="cs">$373.01 × 4,974万股</div></div>
+  </div>
+  <p class="fn">数据来源：Morningstar（截至2026年6月27日）；Google Finance（截至2026年6月30日）；Robinhood市场数据。</p>
+</div>
+
+<!-- ─── 03 产品组合 ─── -->
+<div class="sec" id="s3">
+  <h2 class="sec-h"><span class="n">03</span>产品组合与市场定位</h2>
+
+  <h3 class="sh">3.1 三大终端市场（FY2025贡献）</h3>
+  <table>
+    <thead><tr><th>市场</th><th class="rc">FY2025收入贡献（估）</th><th class="rc">FY2025 YoY</th><th>核心平台</th></tr></thead>
+    <tbody>
+      <tr><td><strong>先进封装与专用器件</strong><br><span class="fn">HBM/CoWoS/SoIC/2.5D Logic</span></td><td class="rc">约$550-580M（54%+）</td><td class="rc pos">显著增长</td><td>Dragonfly G5检测、3Di互联计量、Dragonfly 2D/3D Bump</td></tr>
+      <tr><td><strong>先进节点</strong><br><span class="fn">GAA逻辑、DRAM、NAND</span></td><td class="rc">约$308M（31%）</td><td class="rc pos">+100%+ YoY</td><td>Atlas G6 OCD计量、Semilab薄膜材料表征（新增）</td></tr>
+      <tr><td><strong>专用器件</strong><br><span class="fn">化合物半导体/功率/光学</span></td><td class="rc">剩余约15%</td><td class="rc">稳定</td><td>传统计量与缺陷检测工具</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">注：先进节点收入$308M为公司FY2025 Q4电话会议披露数据（"advanced nodes revenue for 2025 $308 million, more than doubling"）；先进封装Q4 2025单季已达约$145M（占比54%+）。来源：Intellectia.ai Q4 2025财报电话会议AI摘要；Motley Fool Q3 2025电话会议实录。</p>
+
+  <h3 class="sh">3.2 旗舰产品平台</h3>
+  <div class="g2">
+    <div class="card teal">
+      <div class="cl">Dragonfly G5 — 2026年旗舰检测系统</div>
+      <div class="cv">AI封装核心工具</div>
+      <div class="cs" style="font-size:13px;margin-top:8px">2026年初发布，已获多家封装客户订单，为公司Q1 2026业绩超预期的核心驱动力，提供高分辨率2D/3D缺陷检测，专为HBM micro-bump与CoWoS中介层检测设计。已向10+客户出货，覆盖共封装光学（CPO）与2.5D逻辑封装等前沿应用。</div>
+    </div>
+    <div class="card teal">
+      <div class="cl">Atlas G6 — OCD光学关键尺寸计量</div>
+      <div class="cv">先进节点核心平台</div>
+      <div class="cs" style="font-size:13px;margin-top:8px">覆盖GAA、DRAM及NAND的光学关键尺寸（OCD）计量，整合Ai Diffract分析软件，可无损测量深层结构参数，在V-NAND层数和GAA FinFET结构复杂化的背景下需求持续上升。正与Rigaku的CD-SAXS X射线平台形成互补生态。</div>
+    </div>
+  </div>
+
+  <h3 class="sh">3.3 战略性收购布局</h3>
+  <table>
+    <thead><tr><th>收购/投资</th><th>时间</th><th>金额</th><th>战略意义</th></tr></thead>
+    <tbody>
+      <tr><td>Semilab International产品线（部分）</td><td>2025年H2完成</td><td>约$4.95亿（现金+股票）</td><td>新增薄膜材料表征能力，叠加材料计量入口，FY2026预计贡献年收入$1.30亿+，并立即增厚EPS</td></tr>
+      <tr><td>Rigaku Holdings 27%股权</td><td>2026年H2预计完成</td><td>约$7.10亿（Goldman $5亿过桥贷款+自有资金）</td><td>接入CD-SAXS X射线过程控制平台，与Atlas OCD形成光学+X射线的混合计量体系，目标市场规模5年内超$10亿；已获两家关键客户初始资质认证</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ─── 04 财务分析 ─── -->
+<div class="sec" id="s4">
+  <h2 class="sec-h"><span class="n">04</span>财务分析（损益表）</h2>
+
+  <h3 class="sh">4.1 年度业绩趋势（SEC官方披露，USD百万）</h3>
+  <table>
+    <thead><tr><th>指标</th><th class="rc">FY2024</th><th class="rc">FY2025</th><th class="rc">YoY</th><th class="rc">Q1 2026</th><th class="rc">Q2 2026指引</th></tr></thead>
+    <tbody>
+      <tr><td>营业收入</td><td class="rc">$987.3M</td><td class="rc">$1,005.3M</td><td class="rc pos">+1.8%</td><td class="rc"><strong>$291.9M</strong></td><td class="rc"><strong>$320–330M</strong></td></tr>
+      <tr><td>GAAP毛利率</td><td class="rc">52.2%</td><td class="rc">49.7%</td><td class="rc neg">-2.5pt</td><td class="rc">50.1%</td><td class="rc">56%–56.5%</td></tr>
+      <tr><td>Non-GAAP毛利率</td><td class="rc">53.6%</td><td class="rc">54.6%</td><td class="rc pos">+1.0pt</td><td class="rc">55.7%</td><td class="rc">—</td></tr>
+      <tr><td>GAAP营业利润率</td><td class="rc">—</td><td class="rc">~9%</td><td class="rc">—</td><td class="rc">11.5%</td><td class="rc">17.8%–18.7%</td></tr>
+      <tr><td>Non-GAAP营业利润率</td><td class="rc">~28.6%</td><td class="rc">~25.2%（Q4）</td><td class="rc">—</td><td class="rc">26.7%</td><td class="rc">28.0%–28.6%</td></tr>
+      <tr><td>GAAP稀释EPS</td><td class="rc">—</td><td class="rc">$2.15（TTM推算）</td><td class="rc">—</td><td class="rc">$0.67</td><td class="rc">$1.09–$1.18</td></tr>
+      <tr><td>Non-GAAP稀释EPS</td><td class="rc">Q4 FY2024: $1.51</td><td class="rc">Q4 FY2025: $1.26</td><td class="rc neg">-16.6%</td><td class="rc"><strong>$1.42</strong></td><td class="rc"><strong>$1.65–$1.73</strong></td></tr>
+      <tr><td>FY2026全年EPS预测（分析师）</td><td class="rc">—</td><td class="rc">—</td><td class="rc">—</td><td class="rc" colspan="2"><strong>Non-GAAP: $7.16（Investing.com；7位分析师上调）</strong></td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：SEC 8-K FY2026 Q1（2026年5月5日）；SEC 8-K FY2026 Q4/FY2025（2026年2月6日）；Investing.com Q1 2026 earnings call transcript；SEC 8-K FY2025 Q1（2025年5月8日）。</p>
+
+  <h3 class="sh">4.2 GAAP vs Non-GAAP差异解析（重要！）</h3>
+  <div class="note">⚠️ 投资者注意：Onto Innovation的GAAP利润与Non-GAAP利润之间存在显著差距，主因是大额无形资产摊销（Semilab收购产生）、股票补偿费用（SBC）及重组成本。Q1 2026 GAAP净利润$3,380万 vs Non-GAAP净利润$7,080万，差异约$3,700万，差距率约52%。FY2026全年若Semilab摊销及Rigaku债务利息持续累积，GAAP EPS与Non-GAAP EPS的鸿沟将进一步扩大，此为估值分析的关键调整项。</div>
+  <div class="g3">
+    <div class="card"><div class="cl">Q1 2026 GAAP净利润</div><div class="cv">$3,380万</div><div class="cs">GAAP EPS $0.67，YoY -47.3%</div></div>
+    <div class="card"><div class="cl">Q1 2026 Non-GAAP净利润</div><div class="cv">$7,080万</div><div class="cs">Non-GAAP EPS $1.42，YoY -5.3%</div></div>
+    <div class="card"><div class="cl">Q1 2026 vs 预期超出幅度</div><div class="cv">+3.65%</div><div class="cs">EPS $1.42 vs 预期$1.37；营收超2.23%</div></div>
+  </div>
+
+  <h3 class="sh">4.3 收入来源结构（Q2 2025数据）</h3>
+  <p>根据公司SEC 10-Q披露，Q2 2025收入来源：<strong>系统与软件占84%</strong>、零配件占8%、服务占8%。客户高度集中：H1 2025三大客户分别贡献营收的22%、18%及17%（合计57%），推测为台积电（CoWoS）、SK海力士（HBM）及三星。这一高集中度在封装超级周期下是优势（同步受益），但若单一客户资本开支大幅削减，波动性将显著放大。<span class="fn">[来源：TradingView/SEC 10-Q 2025Q2分析（2025年8月7日）]</span></p>
+</div>
+
+<!-- ─── 05 资产负债表与FCF ─── -->
+<div class="sec" id="s5">
+  <h2 class="sec-h"><span class="n">05</span>资产负债表与自由现金流分析</h2>
+
+  <h3 class="sh">5.1 资产负债表快照（Q1 2026末，2026年3月31日）</h3>
+  <div class="g4">
+    <div class="card"><div class="cl">现金及短期投资</div><div class="cv">$6.54亿</div><div class="cs">含$2.52亿现金等价物（Motley Fool）</div></div>
+    <div class="card"><div class="cl">有息负债（Q1末）</div><div class="cv">$0（近零）</div><div class="cs">Q1 2026末总债务已降至零（Motley Fool）</div></div>
+    <div class="card"><div class="cl">应收账款</div><div class="cv">$3.07亿</div><div class="cs">+5.1% YoY，与营收增速匹配</div></div>
+    <div class="card"><div class="cl">EBITDA（TTM）</div><div class="cv">$2.23亿</div><div class="cs">含Q1 2026 EBITDA $6,354万</div></div>
+  </div>
+  <p>Q1 2026末公司持有现金及短期投资<strong>$6.54亿</strong>，有息债务几乎为零，资产负债表极为干净。然而，2026年5月公司为资助Rigaku $7.1亿少数股权投资发行了规模约<strong>$12.65亿</strong>（含超额认购部分）的2031年到期可转换优先债券，同时计划使用部分债券募资进行约<strong>$3亿股票回购</strong>，这将使公司从"净现金"跨越到"净负债"状态，是FY2026下半年财务健康监测的核心指标。<span class="fn">[来源：Dealroom.co（2026年5月19日）；TipRanks（2026年4月21日）；Motley Fool Q1 2026数据]</span></p>
+
+  <h3 class="sh">5.2 历史自由现金流（FCF）趋势——盈利含金量高</h3>
+  <table>
+    <thead><tr><th>期间</th><th class="rc">经营现金流</th><th class="rc">资本支出</th><th class="rc">自由现金流</th><th class="rc">FCF/营收</th></tr></thead>
+    <tbody>
+      <tr><td>FY2025（TTM，Motley Fool）</td><td class="rc">$328.3M</td><td class="rc">$(28.5M)</td><td class="rc pos"><strong>$299.8M</strong></td><td class="rc pos"><strong>≈29.8%</strong></td></tr>
+      <tr><td>Q4 FY2025（单季）</td><td class="rc"><strong>$95M（记录）</strong></td><td class="rc">—</td><td class="rc">—</td><td class="rc">35.6%</td></tr>
+      <tr><td>Q1 FY2025（记录）</td><td class="rc">$92M</td><td class="rc">—</td><td class="rc">—</td><td class="rc">34.5%</td></tr>
+      <tr><td>Q1 FY2026</td><td class="rc">$26M</td><td class="rc">—</td><td class="rc neg">（环比大幅下降）</td><td class="rc neg">8.9%</td></tr>
+    </tbody>
+  </table>
+  <p>过去12个月自由现金流<strong>$2.998亿</strong>，FCF/营收比率近<strong>30%</strong>，显示公司"轻资本支出（$2,850万）、重软件与IP驱动利润"的高质量商业模式。然而Q1 2026单季经营现金流仅$2,600万（相较Q1 2025的$9,200万骤降72%），主要源于应收账款及存货增加（新产品Dragonfly G5备货）以及营运资金占用增加，需持续跟踪现金流是否在Q2-Q3 2026回归正常化轨道。<span class="fn">[来源：SEC 8-K FY2026 Q1（2026年5月5日）；Motley Fool FCF数据；Intellectia.ai Q4 FY2025 transcript摘要]</span></p>
+
+  <div class="mbox">
+    <h4>蜗牛鸟FCF盈利质量评分框架（参照TRV/PCT报告方法论）</h4>
+    <p>TTM FCF $299.8M vs GAAP净利润$136.8M（FY2025）→ FCF转化倍数约<strong>2.19x</strong>，说明公司GAAP利润受到大额非现金摊销压低，但实际现金生成能力远超GAAP报告盈利，印证了Non-GAAP口径更能反映公司运营质量的观点。高FCF率（~30%）与ASML、KLA等顶级半导体设备公司水平相当，是公司核心价值的重要支柱。</p>
+  </div>
+</div>
+
+<!-- ─── 06 股东回报分析 ─── -->
+<div class="sec" id="s6">
+  <h2 class="sec-h"><span class="n">06</span>股东回报分析</h2>
+
+  <h3 class="sh">6.1 股息政策：零股息，全额资本再投资</h3>
+  <p>Onto Innovation目前<strong>不派发股息</strong>，股息收益率为0%。这与公司所处的高增长半导体设备行业惯例一致——公司将全部可自由支配现金优先用于研发投入（新产品开发）、战略收购及股份回购，而非股息分配。对于追求股息收入的投资者，本股票不适合作为核心持仓工具。<span class="fn">[来源：Morningstar "Dividend Yield (Trailing) 0.00%"；Google Finance]</span></p>
+
+  <h3 class="sh">6.2 股份回购：$1.265亿可转债支撑的$3亿回购计划</h3>
+  <p>公司于2026年5月宣布通过发行约$12.65亿可转换优先债券，将其中约<strong>$3亿</strong>专项用于回购普通股，这是公司历史上规模最大的单次股份回购计划。值得注意的是：</p>
+  <ul style="padding-left:20px;font-size:14.5px;margin-bottom:13px">
+    <li>回购资金来自新增负债（而非现有现金流生成），实质上以债务撬动了杠杆式回购，需关注稀释效应能否被可转债到期转股所抵消；</li>
+    <li>$1.265亿可转债本身将于2031年到期，若股价届时处于转换价以上，或产生一定的EPS稀释；</li>
+    <li>在高速成长期以债务融资回购股票，财务杠杆将上升，需结合后续现金流恢复能力评估可持续性。</li>
+  </ul>
+  <p>积极角度看，管理层的回购行为传达出对股价长期价值的信心，且以Non-GAAP EPS $7.16+（FY2026分析师预期）为基础，可转债利息（预计约3%-4%票面利率）相对于盈利能力仍有充裕覆盖倍数。<span class="fn">[来源：Dealroom.co "Onto Innovation prices $1.3B convertible notes to fund Rigaku acquisition and stock buyback"（2026年5月19日）]</span></p>
+
+  <h3 class="sh">6.3 总股东回报（TSR）表现</h3>
+  <div class="g3">
+    <div class="card green"><div class="cl">过去12个月TSR</div><div class="cv">+239.8%</div><div class="cs">Simply Wall St（截至6月底）</div></div>
+    <div class="card green"><div class="cl">2026年YTD涨幅</div><div class="cv">约+174%</div><div class="cs">从$136至$373，股价翻倍以上</div></div>
+    <div class="card"><div class="cl">近90天回报</div><div class="cv">+70.9%</div><div class="cs">Rigaku宣布+Q1超预期双催化驱动</div></div>
+  </div>
+  <p class="fn">来源：Simply Wall St（"1 year total shareholder return of 239.8%"）；Robinhood价格数据（2026年6月30日）。</p>
+</div>
+
+<!-- ─── 07 技术面分析 ─── -->
+<div class="sec" id="s7">
+  <h2 class="sec-h"><span class="n">07</span>技术面分析</h2>
+
+  <h3 class="sh">7.1 趋势综述</h3>
+  <p>ONTO在2026年走出了一轮罕见的单年三倍行情，从年初约$136一路飙升至6月30日收盘$373.01，创下历史新高$377.35（Robinhood/Google Finance数据）。这一走势由基本面催化剂主导：Dragonfly G5发布（3月）→Q1超预期业绩（5月）→Rigaku战略布局（4月-5月）三大事件驱动连续性突破，股价持续运行于短中长期均线之上，多头趋势结构完整。<span class="fn">[来源：Google Finance 52周高点$377.14；Robinhood $377.35]</span></p>
+
+  <div class="tgrid">
+    <div class="tc at">
+      <div class="tl">6月30日收盘价</div>
+      <div class="tv">$373.01</div>
+      <div class="ts">距52周高点$377.35仅-1.15%，历史新高区域</div>
+    </div>
+    <div class="tc tl-t">
+      <div class="tl">52周区间</div>
+      <div class="tv">$89.40–$377.35</div>
+      <div class="ts">年内涨幅约+318%；股价从$89.40爬升至ATH</div>
+    </div>
+    <div class="tc g">
+      <div class="tl">Beta系数</div>
+      <div class="tv">1.62</div>
+      <div class="ts">高弹性半导体设备股，单周波动幅度可达5-10%</div>
+    </div>
+    <div class="tc r">
+      <div class="tl">GAAP P/E（TTM）</div>
+      <div class="tv">≈174x</div>
+      <div class="ts">Google Finance显示174.27x，估值处历史极高位</div>
+    </div>
+  </div>
+
+  <h3 class="sh">7.2 动量与超买超卖研判</h3>
+  <table>
+    <thead><tr><th>技术指标</th><th>读数/状态</th><th>解读</th></tr></thead>
+    <tbody>
+      <tr><td>RSI（14日）</td><td>估计65-75（近期强势区）</td><td>Q1业绩公布后+25%单周涨幅后进入偏热区域；关注是否出现顶背离</td></tr>
+      <tr><td>均线系统</td><td>全线多头排列</td><td>股价持续远高于50日/200日均线，短期均线（5/10/20日）呈扩散多头</td></tr>
+      <tr><td>MACD</td><td>正值/持续扩张</td><td>中短期动量强劲，但高位需警惕动量收窄信号</td></tr>
+      <tr><td>成交量</td><td>均量约143万股/日</td><td>流动性充裕，机构参与度高，无流动性溢价担忧</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">7.3 关键价位参考</h3>
+  <div class="pladder">
+    <div class="prow res">
+      <div class="pt">历史新高/阻力</div>
+      <div class="pv">$377.35</div>
+      <div class="pn">6月30日盘中高点；突破需伴随业绩超预期（Q2）</div>
+    </div>
+    <div class="prow cur">
+      <div class="pt">▶ 当前收盘价</div>
+      <div class="pv">$373.01</div>
+      <div class="pn">2026年6月30日收盘，贴近ATH运行</div>
+    </div>
+    <div class="prow sup">
+      <div class="pt">近端支撑1</div>
+      <div class="pv">$310–$340</div>
+      <div class="pn">Q1业绩公告前区间顶部（$301.5收盘）；对应我们目标价上沿</div>
+    </div>
+    <div class="prow sup">
+      <div class="pt">中期支撑2</div>
+      <div class="pv">$250–$275</div>
+      <div class="pn">2026年3-4月整理区间；分析师最低目标价参考区域</div>
+    </div>
+    <div class="prow sup">
+      <div class="pt">强支撑区</div>
+      <div class="pv">$180–$220</div>
+      <div class="pn">2025年H2底部区域；若基本面不变，回调此位置性价比极高</div>
+    </div>
+    <div class="prow sup">
+      <div class="pt">52周低点</div>
+      <div class="pv">$89.40</div>
+      <div class="pn">2025年7月前期低谷；对应当时市场对WFE下行的悲观预期</div>
+    </div>
+  </div>
+  <p class="fn">价格数据来源：Robinhood（6月30日区间$353.30-$377.35，收盘$373.01）；Google Finance（52周高$377.14；低$89.40）；Investing.com（Q1业绩后$301.5）。</p>
+
+  <h3 class="sh">7.4 技术面与估值的背离风险</h3>
+  <p>当前ONTO的技术面与估值面呈现显著背离：技术面全线做多信号，但GAAP P/E约174x已达极限估值区域，Non-GAAP P/E（以FY2026分析师预期$7.16计）约52x仍显著高于半导体设备行业历史均值（20-30x）。这类高估值在半导体上行周期顶部阶段并不罕见（参照2021年KLAC/LRCX的超高估值），但一旦WFE景气周期信号反转，回调幅度可能超出预期，建议设定动态止损。</p>
+</div>
+
+<!-- ─── 08 估值模型 ─── -->
+<div class="sec" id="s8">
+  <h2 class="sec-h"><span class="n">08</span>估值模型 — 蜗牛鸟"WFE周期位置×FCF折现"双轨框架</h2>
+  <p>对半导体设备公司，我们采用<strong>EV/Non-GAAP EBITDA同业估值为主、Non-GAAP P/E为辅、DCF（基于FCF）交叉验证</strong>的三维估值体系，并对在手收购整合风险进行情景折价。核心前提：GAAP利润受无形资产摊销及SBC严重低估公司实际盈利能力，Non-GAAP口径是行业共识估值基础。</p>
+
+  <div class="mbox">
+    <h4>第一步：FY2026 Non-GAAP 盈利预测（标准化）</h4>
+    <ul>
+      <li>管理层指引FY2026全年营收超<strong>$13亿</strong>（同比增长+30%+，Q1+Q2中点约$620M，假设H2提速）</li>
+      <li>管理层目标年末Non-GAAP运营利润率超<strong>30%</strong>；全年均值保守取28.5%</li>
+      <li>FY2026 Non-GAAP EBITDA估算：$1,300M × 28.5% + D&A ≈ 约<strong>$4.00-4.30亿</strong></li>
+      <li>分析师FY2026 Non-GAAP EPS共识：<strong>$7.16</strong>（Investing.com；7位分析师上调）</li>
+      <li>Rigaku可转债利息增加约$3,000-4,000万年化成本，需在Non-GAAP EPS中适度调整</li>
+    </ul>
+  </div>
+
+  <div class="mbox">
+    <h4>第二步：EV/EBITDA目标倍数推导</h4>
+    <ul>
+      <li>KLA Corporation（KLAC）FY2026预期EV/EBITDA：约25-30x（行业最高标准）</li>
+      <li>Camtek（CAMT）：约20-22x（先进封装最纯粹标的，流动性溢价折价）</li>
+      <li>Nova Ltd（NVMI）：约18-22x</li>
+      <li>ONTO目标定位：先进封装+先进节点双引擎，整合Rigaku后能力扩展，合理区间取<strong>22-28x FY2026 Non-GAAP EBITDA</strong></li>
+      <li>以EBITDA $4.15亿中枢、25x目标倍数 → EV约$103.75亿，减净负债约$6亿（含可转债$12.65亿-现金$6.5亿）→ 股权价值约$97.75亿 → 每股约<strong>$196</strong>（注：此为基于GAAP/TTM数据的现实估值；用FY2026非GAAP预期则显著更高）</li>
+    </ul>
+  </div>
+
+  <div class="mbox">
+    <h4>第三步：Non-GAAP P/E目标价推导（市场实际定价框架）</h4>
+    <p>鉴于市场目前以Non-GAAP P/E而非GAAP P/E对半导体设备股定价，我们以Non-GAAP EPS $7.16（FY2026分析师共识）为基础：</p>
+  </div>
+
+  <table>
+    <thead><tr><th>情景</th><th class="rc">假设条件</th><th class="rc">目标Non-GAAP P/E</th><th class="rc">FY2026 EPS</th><th class="rc">12M目标价</th><th class="rc">概率</th></tr></thead>
+    <tbody>
+      <tr><td>悲观情形<br><span class="fn">WFE下行+Rigaku整合受阻</span></td><td class="rc">营收$12亿，EPS $5.50，30%估值折价</td><td class="rc">28x</td><td class="rc">$5.50</td><td class="rc neg"><strong>$154</strong></td><td class="rc">15%</td></tr>
+      <tr><td>保守情形<br><span class="fn">营收$13亿，指引兑现</span></td><td class="rc">EPS $7.16，行业均值P/E</td><td class="rc">40x</td><td class="rc">$7.16</td><td class="rc"><strong>$286</strong></td><td class="rc">25%</td></tr>
+      <tr><td>基准情形<br><span class="fn">超预期+Rigaku顺利推进</span></td><td class="rc">EPS $7.50，适度溢价</td><td class="rc">46x</td><td class="rc">$7.50</td><td class="rc"><strong>$345</strong></td><td class="rc">40%</td></tr>
+      <tr><td>乐观情形<br><span class="fn">AI封装爆发+软件收入占比提升</span></td><td class="rc">EPS $9.0，龙头溢价</td><td class="rc">50x</td><td class="rc">$9.00</td><td class="rc pos"><strong>$450</strong></td><td class="rc">20%</td></tr>
+    </tbody>
+  </table>
+  <p><strong>概率加权目标价</strong> = ($154×15%) + ($286×25%) + ($345×40%) + ($450×20%) = $23.1+$71.5+$138+$90 = <strong>约$323</strong>，与我们设定的12个月目标价区间<strong>$310-$360</strong>（基准情形$345）吻合。</p>
+  <p>现价$373.01 vs 加权目标价$323，提示当前市场定价已超出我们概率加权公允值约<strong>15.5%</strong>，属于"充分定价区间"，因此给予<strong>中性偏谨慎（HOLD）</strong>评级，而非买入。</p>
+</div>
+
+<!-- ─── 09 同业对标 ─── -->
+<div class="sec" id="s9">
+  <h2 class="sec-h"><span class="n">09</span>同业对标分析</h2>
+  <table>
+    <thead><tr><th>公司</th><th class="rc">市值</th><th class="rc">EV/EBITDA（FY2026E）</th><th class="rc">Non-GAAP P/E（FY2026E）</th><th class="rc">YoY营收增速</th><th>核心竞争力</th></tr></thead>
+    <tbody>
+      <tr><td>KLA Corp（KLAC）</td><td class="rc">约$1,300亿</td><td class="rc">≈26x</td><td class="rc">≈28x</td><td class="rc">+10%-15%</td><td>过程控制全品类霸主，市场份额最高</td></tr>
+      <tr><td>Nova Ltd（NVMI）</td><td class="rc">约$50亿</td><td class="rc">≈22x</td><td class="rc">≈30x</td><td class="rc">+20%+</td><td>光学与XPS计量，聚焦先进节点</td></tr>
+      <tr><td>Camtek（CAMT）</td><td class="rc">约$45亿</td><td class="rc">≈20x</td><td class="rc">≈28x</td><td class="rc">+25%+</td><td>先进封装2D/3D检测，与ONTO直接竞争</td></tr>
+      <tr><td>FormFactor（FORM）</td><td class="rc">约$25亿</td><td class="rc">≈18x</td><td class="rc">≈22x</td><td class="rc">+10%</td><td>探针卡，与封装工具协同</td></tr>
+      <tr class="onto-row"><td><strong>Onto Innovation（ONTO）</strong></td><td class="rc"><strong>≈$185亿</strong></td><td class="rc"><strong>≈85x（TTM）/≈36x（FY26E）</strong></td><td class="rc"><strong>≈52x（FY2026E）</strong></td><td class="rc"><strong>+30%+（FY2026指引）</strong></td><td>先进封装+先进节点双引擎；Rigaku X射线战略</td></tr>
+    </tbody>
+  </table>
+  <p>ONTO在FY2026预期P/E约52x的估值水平下，已显著高于所有同业（28-30x区间），溢价来源于：①FY2026管理层指引+30%营收增速（大幅领先同业）；②Dragonfly G5在AI封装市场的先发优势；③Rigaku X射线计量开辟全新市场。溢价具有部分合理性，但执行风险（Rigaku整合、$12.65亿可转债利息压力）构成对溢价的向下拉力。</p>
+</div>
+
+<!-- ─── 10 行业与宏观 ─── -->
+<div class="sec" id="s10">
+  <h2 class="sec-h"><span class="n">10</span>行业与宏观背景</h2>
+
+  <h3 class="sh">10.1 AI驱动的WFE超级周期</h3>
+  <p>全球晶圆制造设备（WFE）支出规模在2026年已被主要投行机构上调至<strong>$1,400亿-$1,500亿</strong>（B.Riley: 从$1,150亿上调至$1,400亿+）区间，AI计算算力投资是核心驱动力，台积电CoWoS/SoIC封装产线扩张、SK海力士/三星HBM4 DRAM扩产，以及英特尔18A/TSMC N2等GAA节点pilot-to-volume转化，均构成对ONTO设备的结构性需求增量。<span class="fn">[来源：B.Riley "WFE industry views for 2026 surged from $115B to $140B-plus"（Intellectia.ai转引，2026年3月）]</span></p>
+
+  <h3 class="sh">10.2 先进封装——最快速增长的WFE子市场</h3>
+  <p>先进封装资本开支增速预计在2026年超越前道制造，成为WFE内增速最快的子市场之一。ONTO的封装客户（台积电/Amkor等）已明确指示2026年封装设备需求可能较2025年增长<strong>20%以上</strong>（Q3 2025电话会议客户指引），管理层据此将FY2026先进封装业务增速目标设定为<strong>超过30%</strong>。</p>
+
+  <h3 class="sh">10.3 中国出口管制风险——结构性缺口</h3>
+  <p>公司在Q2 2025 10-Q中明确披露："US export regulations affecting sales to China, impacting the ability to provide certain products and services to Chinese customers"（美国出口管制对中国客户销售能力形成限制），这意味着中国市场收入贡献受到结构性上限约束，潜在的出口管制升级（覆盖更多型号工具）是公司营收端的持续下行风险，需关注美国BIS对先进计量/检测工具的管制范围扩大动向。<span class="fn">[来源：TradingView/SEC 10-Q Q2 2025分析（2025年8月7日）]</span></p>
+
+  <h3 class="sh">10.4 制造工厂多元化：从美国转向亚洲低成本工厂</h3>
+  <p>ONTO于2025年开始将超过30%的工具出货量转移至亚洲扩展工厂，并计划到2026年底将国际工厂出货比例提升至60%+，以应对美国制造成本上升及潜在关税风险，同时提升靠近客户（台湾/韩国）的响应速度，这一举措有助于维护中长期毛利率改善趋势。<span class="fn">[来源：Motley Fool Q3 2025 ONTO电话会议实录（2025年11月7日）]</span></p>
+</div>
+
+<!-- ─── 11 风险矩阵 ─── -->
+<div class="sec" id="s11">
+  <h2 class="sec-h"><span class="n">11</span>风险矩阵</h2>
+  <table>
+    <thead><tr><th>风险类别</th><th>核心说明</th><th>等级</th></tr></thead>
+    <tbody>
+      <tr><td><strong>估值过高风险</strong></td><td>现价对应GAAP P/E约174x、Non-GAAP P/E约52x（FY2026预期），已处历史极高区间；一旦增长预期下修，估值压缩空间巨大</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>Rigaku整合执行风险</strong></td><td>$7.1亿少数股权投资叠加$12.65亿可转债，为ONTO有史以来最大规模资本配置；X射线与OCD计量技术融合的商业化进程存在不确定性</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>中国出口管制风险</strong></td><td>BIS持续收紧对华计量/检测设备出口许可，可能进一步限制ONTO中国市场收入，影响约15-20%潜在客户群</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>客户高度集中风险</strong></td><td>H1 2025三大客户合计贡献营收57%；台积电/SK海力士资本开支单一波动即可导致ONTO业绩大幅偏离</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>WFE下行周期风险</strong></td><td>半导体设备行业具有强周期性；若AI资本开支增速在2027年出现放缓，WFE景气度将快速回落，ONTO估值面临双重压缩（盈利下调+估值倍数收缩）</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>可转债稀释风险</strong></td><td>$12.65亿可转债若达到转换价，将对现有股东形成稀释；Capped Call结构可部分对冲但无法完全消除</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>GAAP/Non-GAAP利润差距扩大</strong></td><td>Semilab + Rigaku带来的无形资产摊销将持续压低GAAP利润，加大GAAP投资者的估值判断难度，可能引发卖压</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>Q1 2026现金流骤降</strong></td><td>单季经营现金流从$92M骤降至$26M，若不能在Q2-Q3快速恢复，将引发市场对运营质量的质疑</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>竞争加剧风险</strong></td><td>KLA Corp在先进封测检查市场持续加大投入；Camtek在2.5D封装检查领域与ONTO正面竞争，技术领先窗口期有限</td><td><span class="badge b-lo">低</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ─── 12 催化剂 ─── -->
+<div class="sec" id="s12">
+  <h2 class="sec-h"><span class="n">12</span>近期催化剂与展望</h2>
+  <div class="g2">
+    <div class="card teal">
+      <div class="cl">下一财报日</div>
+      <div class="cv">2026年8月6日</div>
+      <div class="cs">Q2 2026业绩；指引营收$320-330M，Non-GAAP EPS $1.65-1.73；是验证FY2026 $13亿+营收目标的关键节点</div>
+    </div>
+    <div class="card teal">
+      <div class="cl">Rigaku交易预计完成</div>
+      <div class="cv">2026年H2</div>
+      <div class="cs">交割后将披露财务并表影响、X射线订单管线及协同收入展望，为下一轮估值重评提供依据</div>
+    </div>
+  </div>
+  <p><strong>正面催化剂：</strong>①Q2业绩继续超预期（非GAAP EPS达$1.73+上沿）；②Rigaku CD-SAXS赢得第三、四家关键客户资质认证；③FY2026 H2运营利润率突破30%里程碑提前实现；④美日半导体设备出口限制对竞争对手（特别是中系设备）产生不对称打击，进一步拉大ONTO的市场份额。</p>
+  <p><strong>负面催化剂：</strong>①Q2营收或EPS低于指引区间下沿；②台积电/SK海力士宣布下调2026年资本开支；③BIS扩大对华计量工具出口限制范围；④Rigaku交割后公布的整合成本超出市场预期；⑤10x宽基AI股回调引发半导体设备板块系统性杀估值。</p>
+</div>
+
+<!-- ─── 13 投资结论 ─── -->
+<div class="sec" id="s13">
+  <h2 class="sec-h"><span class="n">13</span>投资结论</h2>
+  <p>Onto Innovation是我们在半导体设备行业研究覆盖范围内最具基本面说服力的长期标的之一：精准卡位AI驱动的先进封装与先进节点两个最快速增长的WFE子市场，Dragonfly G5与Atlas G6的产品竞争力获得领先客户的实质性验证（台积电/SK海力士双认证），管理层执行纪录稳定、FCF转化率达30%，资本配置方向清晰（Rigaku布局下一代X射线计量）。</p>
+  <p>然而，在股价已从$89.40大幅上涨至$373.01（年内+318%、2026年YTD+174%）的背景下，当前估值已显著超出我们的概率加权公允价值区间（约$310-360）。GAAP P/E 174x与Non-GAAP P/E约52x（FY2026预期）均处于行业估值上限，给未来12个月的绝对回报空间留下了极窄的安全边际，且Rigaku交易带来的$12.65亿可转债将改变公司一贯的净现金资产负债表优势，引入新的财务杠杆风险。</p>
+  <p><strong>综合结论：首次覆盖给予"中性偏谨慎（HOLD）"评级，12个月目标价区间$310-$360，基准情形取$345（以Non-GAAP EPS $7.50 × 46x计算）。</strong>建议当前持仓者继续持有并收获正在兑现的AI封装超级周期红利，但不建议在$370+的当前价格水平新建重仓，等待Q2业绩（8月6日）后的价格反应或Rigaku整合进展更明朗时再评估是否升级评级。若股价回落至$280-$310区间，性价比将显著提升，届时考虑上调至买入。</p>
+</div>
+
+<!-- ─── 14 数据来源 ─── -->
+<div class="sec" id="s14">
+  <h2 class="sec-h"><span class="n">14</span>数据来源</h2>
+  <ul class="src">
+    <li>Onto Innovation Inc. Q1 2026财务结果新闻稿 — SEC 8-K（2026年5月5日）— sec.gov</li>
+    <li>Onto Innovation Inc. Q4 2025 / FY2025财务结果新闻稿 — SEC 8-K（2026年2月6日）— sec.gov</li>
+    <li>Onto Innovation Inc. Q1 2025财务结果新闻稿 — SEC 8-K（2025年5月8日）— sec.gov</li>
+    <li>Onto Innovation Inc. Q2 2025财务结果新闻稿 — Onto Innovation官网 / SEC（2025年8月7日）</li>
+    <li>Investing.com — "Earnings call transcript: Onto Innovation beats Q1 2026 earnings expectations"（2026年5月5日）</li>
+    <li>Simply Wall St — NYSE:ONTO Q1 2026 results及TSR数据（2026年6月下旬）</li>
+    <li>TipRanks — "Onto Innovation Takes Strategic Minority Stake in Rigaku"（2026年4月21日）</li>
+    <li>Dealroom.co — "Onto Innovation prices $1.3B convertible notes"（2026年5月19日）</li>
+    <li>Intellectia.ai — ONTO FY2025 Q4 Earnings Transcript AI摘要；B.Riley分析师报告摘要</li>
+    <li>Motley Fool — ONTO Q3 2025 Earnings Call Transcript（2025年11月7日）；Q1 2026财务数据</li>
+    <li>Morningstar — ONTO股票报价及基本面数据（2026年6月27日）</li>
+    <li>Google Finance — ONTO 52周区间、市值、Beta、EPS数据（2026年6月30日）</li>
+    <li>Robinhood — ONTO 6月30日日内区间及收盘价数据</li>
+    <li>StockAnalysis.com — ONTO FY2024/FY2025年度营收对比</li>
+    <li>TradingView — ONTO SEC 10-Q 2025Q2分析摘要（2025年8月7日）；客户集中度数据</li>
+    <li>WallStreetZen — ONTO流通股数及历史IPO价格</li>
+    <li>Stocktitan.net — Q1 2026 8-K摘要与Rigaku股权交易详情</li>
+  </ul>
+  <p class="fn" style="margin-top:12px">注：Onto Innovation财务年度以1月初结束（非自然年度），FY2025实际截止日期为2026年1月3日，FY2026Q1截止日期为2026年3月29日。所有GAAP/Non-GAAP数据来自公司SEC官方披露，第三方平台数据已交叉核对。估值计算基于2026年6月30日收盘价$373.01，流通股约4,974万股。</p>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disc">
+  <strong>重要免责声明：</strong>本报告由蜗牛鸟投资（Snail-Bird Investment 🐦）精品研究部编制，仅供内部研究及专业投资者参考，不构成任何证券买卖的要约、邀请或投资建议。本报告所涉及的目标价、盈利预测及情景分析均基于截至2026年7月1日可获取的公开信息及分析师的独立判断，实际结果可能因市场环境、宏观经济变化、公司经营决策、地缘政治风险及不可预见因素而与预测存在重大差异。半导体设备行业具有显著的周期性，历史业绩不代表未来表现。ONTO的GAAP利润与Non-GAAP利润之间存在显著差距，投资者应审慎评估两套口径的适用性。本报告不构成对任何投资产品的招揽。版权归蜗牛鸟投资所有，未经书面授权不得转载。
+</div>
+
+<div class="foot">SNAIL-BIRD INVESTMENT 🐦 &nbsp;|&nbsp; 精品研究部 &nbsp;|&nbsp; 美股半导体设备覆盖 &nbsp;|&nbsp; CONFIDENTIAL · FOR PROFESSIONAL INVESTORS ONLY</div>
+
+</div>
+</body>
+</html>

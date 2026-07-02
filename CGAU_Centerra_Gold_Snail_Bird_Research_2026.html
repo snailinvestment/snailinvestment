@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centerra Gold (NYSE: CGAU) 深度研究报告 — Snail-Bird Investment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-base:#F3F4F6;--bg-section:#FFFFFF;--bg-card:#F8F9FA;--bg-dark:#140E00;
+  --border:#DDE1E8;--border-strong:#B8BEC9;
+  --text-primary:#111827;--text-body:#374151;--text-muted:#6B7280;--text-faint:#9CA3AF;--text-invert:#FFFFFF;
+  --accent:#7C5E0A;--accent-mid:#B8860B;--accent-light:#FBF5E6;
+  --gold:#C9901A;--gold-light:#FEF9EC;
+  --red-warn:#B91C1C;--red-bg:#FEF2F2;
+  --green-pos:#15803D;--green-bg:#F0FDF4;
+  --amber:#B45309;--amber-bg:#FFFBEB;
+  --copper:#A0522D;--copper-bg:#FDF3EC;
+  --steel:#1E3A5F;--steel-light:#EEF4FB;
+  --stream:#6B21A8;--stream-bg:#F5F3FF;
+  --radius:4px;--radius-md:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg-base);color:var(--text-body);font-family:'Noto Sans SC',sans-serif;font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+
+.cover{background:var(--bg-dark);color:var(--text-invert);position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(124,94,10,.72) 0%,rgba(30,58,95,.3) 65%,transparent 100%),
+  repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.015) 80px);pointer-events:none;}
+.ci{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:56px 48px 48px;}
+.br{display:flex;align-items:center;gap:12px;margin-bottom:40px;}
+.bs{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+.bd{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.06em;}
+.bsp{color:rgba(255,255,255,.2);}
+.cover-type{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;background:rgba(201,144,26,.25);border:1px solid rgba(201,144,26,.4);border-radius:var(--radius);padding:4px 12px;color:#FCD34D;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;}
+.ctk{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.12em;margin-bottom:10px;}
+.cnm{font-family:'Noto Serif SC',serif;font-size:34px;font-weight:700;line-height:1.25;color:#fff;margin-bottom:4px;}
+.cen{font-family:'IBM Plex Mono',monospace;font-size:13px;color:rgba(255,255,255,.42);letter-spacing:.05em;margin-bottom:28px;}
+.csg{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-md);overflow:hidden;margin-bottom:28px;}
+.cs{background:rgba(0,0,0,.32);padding:18px 14px;}
+.csl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+.csv{font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:500;color:#fff;line-height:1;margin-bottom:3px;}
+.css{font-size:10px;color:rgba(255,255,255,.35);}
+.csv.pos{color:#86EFAC;}.csv.neg{color:#FCA5A5;}.csv.gold{color:#FCD34D;}.csv.warn{color:#FDE68A;}
+.cvr{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.vb{display:inline-flex;align-items:center;gap:10px;background:rgba(124,94,10,.5);border:1px solid rgba(201,144,26,.5);border-radius:var(--radius);padding:10px 20px;}
+.vbl{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.1em;text-transform:uppercase;}
+.vbr{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:700;color:#FCD34D;}
+.vt{font-family:'IBM Plex Mono',monospace;font-size:13px;color:rgba(255,255,255,.65);}
+.vt strong{color:#fff;font-size:17px;}
+.cm{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.cmi{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.32);letter-spacing:.05em;}
+
+.pb{max-width:960px;margin:0 auto;padding:0 24px 60px;}
+.toc-bar{background:var(--bg-section);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+.toc-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;overflow-x:auto;scrollbar-width:none;}
+.toc-inner::-webkit-scrollbar{display:none;}
+.toc-link{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--text-muted);text-decoration:none;padding:13px 11px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;}
+.toc-link:hover{color:var(--accent-mid);border-bottom-color:var(--accent-mid);}
+
+.sec{background:var(--bg-section);border:1px solid var(--border);border-radius:var(--radius-md);margin-top:20px;overflow:hidden;}
+.sh{display:flex;align-items:center;gap:14px;padding:22px 28px 20px;border-bottom:1px solid var(--border);}
+.sn{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-faint);letter-spacing:.08em;min-width:26px;}
+.st{font-family:'Noto Serif SC',serif;font-size:15px;font-weight:700;color:var(--text-primary);}
+.sb{padding:24px 28px;}
+
+h3.sub{font-family:'Noto Serif SC',serif;font-size:13.5px;font-weight:700;color:var(--text-primary);margin:22px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+h3.sub:first-child{margin-top:0;}
+p{margin-bottom:12px;font-size:13.5px;color:var(--text-body);}
+p:last-child{margin-bottom:0;}
+strong{color:var(--text-primary);}
+
+.co{border-left:3px solid;border-radius:0 var(--radius) var(--radius) 0;padding:14px 18px;margin:16px 0;font-size:13px;}
+.co.buy{border-color:var(--green-pos);background:var(--green-bg);}
+.co.hold{border-color:var(--amber);background:var(--amber-bg);}
+.co.warn{border-color:var(--red-warn);background:var(--red-bg);}
+.co.neu{border-color:var(--steel);background:var(--steel-light);}
+.co.gold{border-color:var(--accent-mid);background:var(--accent-light);}
+.co.stream{border-color:var(--stream);background:var(--stream-bg);}
+.col{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;opacity:.6;}
+
+.dtw{overflow-x:auto;margin:14px 0;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+thead tr{background:var(--bg-base);border-bottom:1px solid var(--border-strong);}
+th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);padding:9px 14px;text-align:left;font-weight:500;}
+th.r,td.r{text-align:right;}
+td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-body);font-size:13px;}
+tr:last-child td{border-bottom:none;}
+tr:nth-child(even) td{background:var(--bg-card);}
+td.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;}
+td.pos{color:var(--green-pos);font-family:'IBM Plex Mono',monospace;font-weight:600;}
+td.neg{color:var(--red-warn);font-family:'IBM Plex Mono',monospace;font-weight:600;}
+td.bold{font-weight:600;color:var(--text-primary);}
+td.hl{background:var(--accent-light)!important;font-weight:600;}
+td.hl-g{background:var(--green-bg)!important;font-weight:600;color:var(--green-pos);}
+td.hl-s{background:var(--stream-bg)!important;font-weight:600;color:var(--stream);}
+td.hl-w{background:var(--amber-bg)!important;}
+
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0;}
+.mc{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;}
+.ml{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+.mv{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:500;color:var(--text-primary);line-height:1;margin-bottom:4px;}
+.ms{font-size:11px;color:var(--text-muted);}
+.mv.pos{color:var(--green-pos);}
+.mv.neg{color:var(--red-warn);}
+.mv.acc{color:var(--accent-mid);}
+.mv.str{color:var(--stream);}
+
+.sbw{margin:14px 0;}
+.sbr{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+.sblb{font-size:12px;color:var(--text-body);width:200px;flex-shrink:0;}
+.sbt{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.sbf{height:100%;border-radius:4px;}
+.sbv{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--text-body);width:110px;text-align:right;}
+
+.sg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0;}
+.sc{border-radius:var(--radius-md);padding:20px;border:1px solid;}
+.sc.bull{border-color:#86EFAC;background:#F0FDF4;}
+.sc.base{border-color:#93C5FD;background:#EFF6FF;}
+.sc.bear{border-color:#FCA5A5;background:#FFF5F5;}
+.scl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px;opacity:.55;}
+.sct{font-family:'Noto Serif SC',serif;font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:10px;}
+.scp{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:500;color:var(--text-primary);margin-bottom:4px;}
+.scu{font-family:'IBM Plex Mono',monospace;font-size:12px;margin-bottom:8px;}
+.scu.pos{color:var(--green-pos);}
+.scu.neg{color:var(--red-warn);}
+.scpr{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;background:rgba(0,0,0,.06);border-radius:2px;padding:2px 8px;margin-bottom:10px;color:var(--text-muted);}
+.scd{font-size:12px;color:var(--text-body);line-height:1.6;}
+
+.rl{list-style:none;}
+.ri{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.ri:last-child{border-bottom:none;}
+.rs{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;border-radius:2px;padding:3px 8px;white-space:nowrap;text-transform:uppercase;letter-spacing:.07em;margin-top:2px;min-width:54px;text-align:center;}
+.rsh{background:#FECACA;color:#991B1B;}
+.rsm{background:#FDE68A;color:#92400E;}
+.rsl{background:#BBF7D0;color:#166534;}
+.rt{font-weight:600;font-size:13px;color:var(--text-primary);margin-bottom:3px;}
+.rd{font-size:12.5px;color:var(--text-muted);}
+
+.vg{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+.vc{flex:1;min-width:150px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;}
+.vcn{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);margin-bottom:8px;}
+.vcp{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:500;color:var(--accent-mid);line-height:1;margin-bottom:4px;}
+.vcw{font-size:11px;color:var(--text-muted);}
+.vcd{font-size:11.5px;color:var(--text-muted);margin-top:8px;border-top:1px solid var(--border);padding-top:8px;}
+
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;border-radius:2px;padding:2px 7px;margin-right:4px;vertical-align:middle;}
+.tg{background:var(--gold-light);color:var(--gold);}
+.tr2{background:var(--red-bg);color:var(--red-warn);}
+.tgn{background:var(--green-bg);color:var(--green-pos);}
+.tc{background:var(--copper-bg);color:var(--copper);}
+.ts{background:var(--steel-light);color:var(--steel);}
+.ta{background:var(--amber-bg);color:var(--amber);}
+.tst{background:var(--stream-bg);color:var(--stream);}
+
+.tlw{display:flex;flex-direction:column;gap:8px;margin:14px 0;}
+.tlr{display:flex;align-items:center;gap:12px;}
+.tlp{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;width:75px;text-align:right;flex-shrink:0;}
+.tlo{flex:1;position:relative;height:6px;background:var(--border);border-radius:3px;}
+.tli{position:absolute;top:0;left:0;height:100%;border-radius:3px;}
+.tll{font-size:11.5px;color:var(--text-muted);width:220px;flex-shrink:0;}
+.tlt{font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 6px;border-radius:2px;width:60px;text-align:center;flex-shrink:0;}
+.t-sup{background:#DCFCE7;color:#166534;}
+.t-cur{background:#DBEAFE;color:#1E40AF;font-weight:700;}
+.t-res{background:#FEE2E2;color:#991B1B;}
+.t-tar{background:var(--gold-light);color:var(--gold);}
+
+.disc{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);margin-top:20px;padding:20px 28px;}
+.disc p{font-size:11px;color:var(--text-faint);line-height:1.65;margin-bottom:6px;}
+.disc-hd{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;}
+.pf{max-width:960px;margin:16px auto 0;padding:0 24px 32px;display:flex;justify-content:space-between;align-items:center;}
+.pfb{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-faint);letter-spacing:.08em;}
+
+@media(max-width:720px){
+  .csg{grid-template-columns:repeat(3,1fr);}
+  .mg{grid-template-columns:repeat(2,1fr);}
+  .sg{grid-template-columns:1fr;}
+  .ci{padding:36px 20px 32px;}
+  .sb{padding:18px;}
+  .cnm{font-size:24px;}
+}
+@media(max-width:480px){.csg{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="ci">
+    <div class="br">
+      <span class="bs">🐦 Snail-Bird Investment</span>
+      <span class="bsp">·</span>
+      <span class="bd">贵金属与有色金属研究部 · Precious & Base Metals Research</span>
+    </div>
+    <div class="cover-type">首次覆盖 · Initiation of Coverage</div>
+    <div class="ctk">CGAU &nbsp;·&nbsp; NYSE &nbsp;·&nbsp; TSX: CG &nbsp;·&nbsp; 黄金 / 铜 / 钼 &nbsp;·&nbsp; 加拿大中型矿业</div>
+    <div class="cnm">Centerra Gold Inc.</div>
+    <div class="cen">中央黄金公司 &nbsp;·&nbsp; 深度研究报告 · 首次覆盖 &nbsp;·&nbsp; 截至 2026年6月24日</div>
+    <div class="csg">
+      <div class="cs"><div class="csl">收盘价（NYSE）</div><div class="csv gold">$17.43</div><div class="css">USD（2026-06-24）</div></div>
+      <div class="cs"><div class="csl">金价（6月24日）</div><div class="csv warn">$3,988/oz</div><div class="css">较1月高点$5,589回落28.7%</div></div>
+      <div class="cs"><div class="csl">Mt Milligan有效金价</div><div class="csv warn">~$2,752/oz</div><div class="css">扣除Royal Gold流量权益后</div></div>
+      <div class="cs"><div class="csl">净现金（Q1末）</div><div class="csv pos">$543M</div><div class="css">总流动性$943M；零长期负债</div></div>
+      <div class="cs"><div class="csl">52周区间</div><div class="csv">$6.71–$21.17</div><div class="css">当前处于73%分位</div></div>
+    </div>
+    <div class="cvr">
+      <div class="vb"><div><div class="vbl">首次覆盖评级</div><div class="vbr">审慎买入</div></div></div>
+      <div class="vt">12个月目标价 &nbsp;<strong>$22.00</strong>&nbsp;·&nbsp; 资本利得上行 <strong>+26.2%</strong> &nbsp;·&nbsp; 含股息合计回报约 <strong>+27.4%</strong></div>
+    </div>
+    <div class="cm">
+      <span class="cmi">分析师：Snail-Bird Investment 贵金属与有色金属研究部</span>
+      <span class="cmi">报告日期：2026-06-24</span>
+      <span class="cmi">下次财报：2026-08-07（Q2 2026）</span>
+      <span class="cmi">数据来源：SEC 6-K / GlobeNewswire / GuruFocus / MacroTrends / GoldPriceTools / TipRanks</span>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<nav class="toc-bar">
+  <div class="toc-inner">
+    <a href="#s01" class="toc-link">01 · 核心摘要</a>
+    <a href="#s02" class="toc-link">02 · 公司与资产</a>
+    <a href="#s03" class="toc-link">03 · 流量协议</a>
+    <a href="#s04" class="toc-link">04 · 矿山运营</a>
+    <a href="#s05" class="toc-link">05 · 财务分析</a>
+    <a href="#s06" class="toc-link">06 · 股东回报</a>
+    <a href="#s07" class="toc-link">07 · 成长管道</a>
+    <a href="#s08" class="toc-link">08 · 金价与宏观</a>
+    <a href="#s09" class="toc-link">09 · 估值</a>
+    <a href="#s10" class="toc-link">10 · 情景分析</a>
+    <a href="#s11" class="toc-link">11 · 技术面</a>
+    <a href="#s12" class="toc-link">12 · 风险</a>
+    <a href="#s13" class="toc-link">13 · 投资建议</a>
+  </div>
+</nav>
+
+<div class="pb">
+
+<!-- 01 SUMMARY -->
+<div class="sec" id="s01">
+  <div class="sh"><span class="sn">01</span><span class="st">核心摘要 · Executive Summary</span></div>
+  <div class="sb">
+    <div class="co buy">
+      <div class="col">首次覆盖核心观点</div>
+      我们以<strong>审慎买入</strong>评级、12个月目标价<strong>$22.00</strong>（+26.2%）首次覆盖Centerra Gold（NYSE: CGAU）。Centerra是一家加拿大中型黄金/铜/钼矿业公司，拥有两座生产矿山（Mount Milligan、Öksüt）和三个不同阶段的成长期资产。投资逻辑建立在三大支柱上：①当前P/NAV 0.57x（基于$4,000/oz金价的NAV估算$30.33/股）处于中型金矿商的深度折价区间；②Royal Gold流量协议虽限制Mt Milligan的收入弹性，但Öksüt无约束全额受益于金价，而流量约束在当前$4,000/oz金价下已被充分定价；③净现金$543M + $300M+股份回购授权 + 稳定增长股息，构成中型金矿商中罕见的股东回报优势。主要风险是Öksüt土耳其地缘政治风险和Thompson Creek建设执行风险。
+    </div>
+
+    <div class="mg">
+      <div class="mc"><div class="ml">Q1 2026 营收同比</div><div class="mv pos">+31.8%</div><div class="ms">$484.7M；超预期31.8%</div></div>
+      <div class="mc"><div class="ml">Q1 2026 EPS（调整后）</div><div class="mv pos">$0.44</div><div class="ms">超预期4.8%；净利+160% YoY</div></div>
+      <div class="mc"><div class="ml">FY2026E 调整后EPS</div><div class="mv pos">$3.80–4.00</div><div class="ms">基于$4,000/oz金价估算</div></div>
+      <div class="mc"><div class="ml">调整后P/E（当前）</div><div class="mv pos">~4.5x</div><div class="ms">$17.43÷$3.90E；显著低估</div></div>
+      <div class="mc"><div class="ml">P/NAV（@$4,000/oz）</div><div class="mv pos">0.57x</div><div class="ms">NAV估算$30.33/股；深度折价</div></div>
+      <div class="mc"><div class="ml">Mt Milligan有效金价</div><div class="mv str">$2,752/oz</div><div class="ms">流量协议调整后；低于市价28%</div></div>
+      <div class="mc"><div class="ml">净现金（零负债）</div><div class="mv pos">$543M</div><div class="ms">总流动性$943M；矿业中最强</div></div>
+      <div class="mc"><div class="ml">股份回购（近2年）</div><div class="mv pos">$300M+</div><div class="ms">低价位大规模回购；EPS提升</div></div>
+    </div>
+
+    <h3 class="sub">三大核心投资命题</h3>
+    <p><strong>命题一：金价从历史高位回落，但已构建新的价格底座</strong> ——2026年1月28日，现货金价触及历史最高点$5,589/oz，随后在Warsh鹰派信号冲击下大幅回调，当前（6月24日）约$3,988/oz，较高点回落约28.7%。表面上看这是不利因素，但实则提供了更清晰的投资机会：①$4,000/oz仍是历史高位区间（仅1年前尚在$3,000以下）；②J.P. Morgan预测年底$6,000+、Goldman目标$4,900，共识认为金价已建立新的价格底座；③金价从高点回落已反映在CGAU股价的$6.71→$21.17→$17.43轨迹中，当前股价已消化了部分金价回调预期。</p>
+    <p><strong>命题二：流量协议是结构性约束，但在高金价下并非致命缺陷</strong> ——Royal Gold持有Mt Milligan 35%金流量（@$435/oz固定价）+ 18.75%铜流量（@现货×15%），使Mt Milligan在$4,000/oz金价时的有效实现价格仅约$2,752/oz（-31.2%）。这是Centerra与纯金矿商最本质的差异，也是其历史P/NAV折价的核心原因。然而，Öksüt无任何流量约束，全额享受金价上涨，且在$4,000/oz下提供约$2,100/oz的AISC利润率，已成为FY2026E最大的单矿利润来源（预计约$247M）。流量约束已被市场充分定价（0.57x P/NAV），当前不构成新的边际负面信息。</p>
+    <p><strong>命题三：强劲的股东回报与资本纪律，是矿业公司中的稀缺品质</strong> ——净现金$543M（零长期债务）+ $300M+近两年股份回购（在$9–12均价区间执行，当前股价$17.43意味着浮盈显著）+ 稳定增长的季度股息（C$0.05→C$0.07，+40% in FY2023），构成了中型金矿商中鲜见的"攻守兼备"股东回报框架。管理层在强金价时期选择回购而非冒险并购，这种资本纪律支持给予估值溢价（目标P/NAV 0.90–0.95x）。</p>
+  </div>
+</div>
+
+<!-- 02 COMPANY -->
+<div class="sec" id="s02">
+  <div class="sh"><span class="sn">02</span><span class="st">公司概况与资产组合 · Company Profile & Asset Portfolio</span></div>
+  <div class="sb">
+    <h3 class="sub">基本信息</h3>
+    <div class="dtw"><table><tbody>
+      <tr><td style="width:160px;color:var(--text-muted)">公司全称</td><td class="bold">Centerra Gold Inc.（中央黄金）</td><td style="width:160px;color:var(--text-muted)">交易代码</td><td class="bold mono">NYSE: CGAU &nbsp;/&nbsp; TSX: CG</td></tr>
+      <tr><td style="color:var(--text-muted)">总部</td><td>加拿大安大略省多伦多</td><td style="color:var(--text-muted)">CEO</td><td class="bold">Paul Tomory</td></tr>
+      <tr><td style="color:var(--text-muted)">稀释股本</td><td class="bold mono">198.60M股</td><td style="color:var(--text-muted)">市值（约）</td><td class="mono">~$3.46B USD</td></tr>
+      <tr><td style="color:var(--text-muted)">净现金（Q1末）</td><td class="pos bold mono">$543M（零长期债务）</td><td style="color:var(--text-muted)">总流动性</td><td class="pos mono">$943M</td></tr>
+      <tr><td style="color:var(--text-muted)">Beta（vs S&P 500）</td><td class="mono">0.80</td><td style="color:var(--text-muted)">季度股息</td><td class="mono">C$0.07/季（年化约US$0.205）；收益率~1.16%</td></tr>
+      <tr><td style="color:var(--text-muted)">下次财报</td><td class="bold mono">2026-08-07（Q2 2026）</td><td style="color:var(--text-muted)">COO</td><td class="mono" style="color:var(--amber)">Mike Sylvestre（临时）；正在招聘正式COO</td></tr>
+    </tbody></table></div>
+
+    <h3 class="sub">资产组合总览</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>资产</th><th>类型</th><th>地点</th><th>状态</th><th>流量权益</th><th>FY2026E关键指标</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">Mount Milligan</td><td><span class="tag tg">金</span><span class="tag tc">铜</span></td><td>加拿大BC省</td><td><span class="tag tgn">生产中</span></td><td class="hl-s bold">Royal Gold：35%金@$435/oz + 18.75%铜@15%现货</td><td>产金140–155Koz；产铜50–60Mlb；AISC by-product $1,200–1,300/oz；矿山寿命至2045年</td></tr>
+        <tr><td class="bold">Öksüt</td><td><span class="tag tg">金</span></td><td>土耳其中部</td><td><span class="tag tgn">生产中</span></td><td class="pos bold">无约束 — 全额保留</td><td>产金110–125Koz；AISC $1,850–1,950/oz；高品位堆浸；无流量限制下全享$4,000+金价</td></tr>
+        <tr><td class="bold">Thompson Creek</td><td><span class="tag ts">钼</span></td><td>美国爱达荷州</td><td><span class="tag ta">重启建设中</span></td><td>无</td><td>2027年H1目标首产；FY2026资本开支$200–250M；可行性研究2024年完成</td></tr>
+        <tr><td class="bold">Kemess</td><td><span class="tag tg">金</span><span class="tag tc">铜</span></td><td>加拿大BC省</td><td><span class="tag ts">PFS进行中</span></td><td>无（未生产）</td><td>PEA NPV $1.1B（@$3,000/oz金）；在$4,000/oz下NAV估约$1.6–1.8B；PFS预计2027年完成</td></tr>
+        <tr><td class="bold">Goldfield District</td><td><span class="tag tg">金</span></td><td>美国内华达州</td><td><span class="tag ts">工程开发中</span></td><td>无</td><td>7年矿山寿命；峰值年产~100Koz；2026年完成工程+采购；预计2028–2030年投产</td></tr>
+        <tr><td class="bold">Langeloth</td><td><span class="tag ts">钼</span></td><td>美国宾夕法尼亚州</td><td><span class="tag tr2">事故暂停</span></td><td>无</td><td>2026年1月发生事故；修复进行中；全年指导待定；影响约$20–40M运营利润</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">中型金矿商横向比较</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>公司</th><th>代码</th><th class="r">市值</th><th class="r">P/NAV（估）</th><th class="r">AISC（FY2025）</th><th class="r">净负债/现金</th><th>核心特征</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">Centerra Gold</td><td class="mono">NYSE:CGAU</td><td class="mono r">$3.46B</td><td class="mono r pos bold">0.57x（折价深）</td><td class="mono r">$1,614/oz</td><td class="pos mono r">净现金+$543M</td><td>金铜钼；流量约束；最强资产负债表；丰富成长管道</td></tr>
+        <tr><td class="bold">Kinross Gold</td><td class="mono">NYSE:KGC</td><td class="mono r">~$15B</td><td class="mono r">~1.1x</td><td class="mono r">~$1,200/oz</td><td class="mono r" style="color:var(--amber)">净负债~$1B</td><td>大型低成本；多地区分散；无流量约束</td></tr>
+        <tr><td class="bold">Coeur Mining</td><td class="mono">NYSE:CDE</td><td class="mono r">~$5B</td><td class="mono r">~0.8x</td><td class="mono r">~$1,400/oz eq</td><td class="mono r neg">净负债~$0.4B</td><td>金银混合；美洲聚焦；有息债务</td></tr>
+        <tr><td class="bold">Agnico Eagle</td><td class="mono">NYSE:AEM</td><td class="mono r">~$65B</td><td class="mono r">~1.3x</td><td class="mono r">~$875/oz</td><td class="mono r pos">管理良好</td><td>低成本加拿大大型矿；无新兴市场风险；高P/NAV溢价</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="co gold">
+      <div class="col">竞争定位：以折价买入"成长期权最丰富的中型矿商"</div>
+      Centerra在中型金矿商中的核心差异化优势是：①多金属（金+铜+钼）天然对冲——铜副产品显著降低Mt Milligan净AISC；②三条平行成长轨道（Thompson Creek 2027首产 + Kemess PFS + Goldfield工程）在同类中属最丰富；③财务纪律——零长期负债、$300M+回购、稳定股息。主要差距是：流量协议（结构性约束）和Öksüt地缘政治风险，两者共同导致历史P/NAV折价，但这一折价在$4,000/oz金价下已属过度。
+    </div>
+  </div>
+</div>
+
+<!-- 03 STREAMING -->
+<div class="sec" id="s03">
+  <div class="sh"><span class="sn">03</span><span class="st">流量协议深度解析 · Streaming Agreement — The Critical Revenue Constraint</span></div>
+  <div class="sb">
+    <div class="co stream">
+      <div class="col">理解流量协议是准确评估Centerra的前提——这是CGAU与同类矿商最根本的结构性差异</div>
+      Mount Milligan与Royal Gold Ltd.（RGLD）签订的流量协议，使Centerra无法完整享受金价上涨红利，这是CGAU历史上相对同类矿商估值折价的核心来源。但深入理解流量协议在不同金价情景下的边际效应，才能准确评估当前投资机会：<strong>$4,000/oz金价下，流量协议的"成本"是固定的（$435/oz × 35%），而Centerra保留65%产量所享受的边际利润可随金价无限扩张</strong>——这正是当前P/NAV 0.57x的估值低估所在。
+    </div>
+
+    <h3 class="sub">流量协议精确条款（来源：Mt Milligan Purchase Agreement，SEC文件公开披露）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>资产</th><th>流量持有方</th><th>金流量条款</th><th>铜流量条款</th><th>历史背景</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="bold">Mount Milligan</td>
+          <td class="bold" style="color:var(--stream)">Royal Gold Ltd.<br>（NYSE: RGLD）</td>
+          <td class="hl-s bold">购买<strong>35%</strong>金产出<br>固定价：<strong>$435/oz</strong></td>
+          <td class="hl-s bold">购买<strong>18.75%</strong>铜产出<br>固定价：<strong>现货×15%</strong></td>
+          <td>2011年Mt Milligan建设期，Centerra以流量权益换取Royal Gold约$7.8亿预付建设资金，避免了大规模股权稀释</td>
+        </tr>
+        <tr><td class="bold">Öksüt</td><td class="pos bold">无流量权益</td><td class="pos">全额保留（100%）</td><td class="pos">全额保留（100%）</td><td>Öksüt于2016年收购，无流量协议约束</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">有效实现金价推导（@$4,000/oz当前金价）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>计算步骤</th><th class="r">数值</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">市场现货金价</td><td class="mono r pos">$4,000/oz</td><td>6月24日实测（Fortune确认$3,988，取整$4,000）</td></tr>
+        <tr><td style="padding-left:20px;color:var(--text-muted)">Centerra自留比例</td><td class="mono r">65%</td><td>100% - Royal Gold的35%流量权益</td></tr>
+        <tr><td style="padding-left:20px;color:var(--text-muted)">自留部分实现价值</td><td class="mono r">$2,600/oz</td><td>65% × $4,000</td></tr>
+        <tr><td style="padding-left:20px;color:var(--text-muted)">Royal Gold支付给Centerra</td><td class="mono r" style="color:var(--stream)">$152/oz</td><td>Royal Gold以$435/oz购买35%产量；分摊至每盎司：$435 × 35% = $152</td></tr>
+        <tr><td class="bold hl-s">Mt Milligan有效金价（加权）</td><td class="mono r bold hl-s">$2,752/oz</td><td class="bold">= $2,600（自留65%）+ $152（Royal Gold支付35%×$435）</td></tr>
+        <tr><td class="bold">vs 无流量权益情景差距</td><td class="mono r neg">-$1,248/oz（-31.2%）</td><td>流量协议使Mt Milligan有效金价比市价低约31%</td></tr>
+        <tr><td class="bold">Öksüt有效金价</td><td class="mono r pos bold">$4,000/oz（全额）</td><td>无流量约束；Öksüt完整受益于金价上涨</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">金价敏感性：流量协议在不同金价下的边际效应</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>金价（$/oz）</th><th class="r">Mt Milligan有效金价</th><th class="r">Öksüt有效金价</th><th class="r">流量成本（绝对）</th><th class="r">流量成本（比例）</th><th>关键含义</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">$2,500</td><td class="mono r hl-w">$1,777</td><td class="mono r">$2,500</td><td class="mono r neg">$723/oz</td><td class="mono r">-28.9%</td><td>Mt Milligan盈利收窄但仍有约$527/oz利润</td></tr>
+        <tr><td class="mono">$3,000</td><td class="mono r">$2,102</td><td class="mono r">$3,000</td><td class="mono r neg">$898/oz</td><td class="mono r">-29.9%</td><td>—</td></tr>
+        <tr><td class="mono bold">$4,000（当前）</td><td class="mono r bold hl-s">$2,752</td><td class="mono r pos bold">$4,000</td><td class="mono r neg">$1,248/oz</td><td class="mono r bold">-31.2%</td><td>Öksüt已成最大利润贡献矿山；合并盈利能力创历史新高</td></tr>
+        <tr><td class="mono">$5,000</td><td class="mono r pos">$3,402</td><td class="mono r pos">$5,000</td><td class="mono r neg">$1,598/oz</td><td class="mono r">-32.0%</td><td>流量成本比例趋于稳定（约31–32%）；Centerra保留65%产量边际利润持续扩张</td></tr>
+        <tr><td class="mono">$5,589（历史高）</td><td class="mono r pos bold">$3,782</td><td class="mono r pos bold">$5,589</td><td class="mono r neg">$1,807/oz</td><td class="mono r">-32.3%</td><td>若金价重回1月高点，Centerra EPS可能超$5.00</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="co stream">
+      <div class="col">流量协议综合判断：折价已充分定价，当前不构成新增边际负面</div>
+      <p><strong>流量协议的本质权衡：</strong>2011年以流量换建设资金是历史上的合理决策；2025年Centerra通过要约回购注销了原来为融资而发行的大量股份（$300M+回购），实质上是对历史稀释的"补偿"。流量协议是永久性约束（至2045年），但：①P/NAV 0.57x已充分反映了这一约束；②流量成本比例在金价$3,000–5,000/oz之间保持稳定（约30–32%），意味着金价越高，Centerra保留的65%所产生的边际利润扩张幅度也越大；③Öksüt完全不受约束，且在$4,000/oz金价下已超越Mt Milligan成为更大的利润来源。因此，流量协议是"已知风险、已定价折扣"，不应是回避该股的理由。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 04 OPERATIONS -->
+<div class="sec" id="s04">
+  <div class="sh"><span class="sn">04</span><span class="st">矿山运营分析 · Mine Operations（@$4,000/oz金价）</span></div>
+  <div class="sb">
+    <h3 class="sub">Mount Milligan — 现金流引擎（流量调整后）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标</th><th class="r">Q1 2026A</th><th class="r">FY2026E指导</th><th class="r">FY2026E（@$4,000）</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">金产量（oz）</td><td class="mono r">29,572</td><td class="mono r">140,000–155,000</td><td class="mono r">147,500（中值）</td><td>矿山寿命延至2045年；稳定生产</td></tr>
+        <tr><td class="bold">铜产量（Mlb）</td><td class="mono r">14.2</td><td class="mono r">50–60</td><td class="mono r">55（中值）</td><td>铜副产品大幅降低净AISC</td></tr>
+        <tr><td class="bold hl-s">有效实现金价（流量调整）</td><td class="mono r hl-s">~$2,280（Q1均值估）</td><td class="mono r hl-s">—</td><td class="mono r bold hl-s">$2,752/oz</td><td>Royal Gold 35%@$435；铜副产品信贷不受流量影响</td></tr>
+        <tr><td class="bold">AISC（by-product，$/oz）</td><td class="mono r">~$1,100（估）</td><td class="mono r">$1,200–1,300</td><td class="mono r">$1,250（中值）</td><td>铜副产品约$200/oz信贷；实际AISC远低于总成本</td></tr>
+        <tr><td class="bold hl-g">AISC利润率（流量调整后）</td><td class="mono r hl-g">~$1,180/oz</td><td class="mono r hl-g">—</td><td class="mono r bold hl-g">$1,502/oz</td><td>= 有效金价$2,752 - AISC$1,250；盈利能力强劲</td></tr>
+        <tr><td class="bold">季度FCF（Q1）</td><td class="mono r pos">$106M</td><td class="mono r">—</td><td class="mono r">~$350M（年化估）</td><td>Mt Milligan是稳定现金流引擎</td></tr>
+        <tr><td class="bold">FY2026E利润贡献（估）</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r bold pos">~$221M</td><td>147,500oz × $1,502/oz利润率</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">Öksüt — 无流量约束，高金价下的超额利润引擎</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标</th><th class="r">Q1 2026A</th><th class="r">FY2026E指导</th><th class="r">FY2026E（@$4,000）</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">金产量（oz）</td><td class="mono r pos">38,429</td><td class="mono r">110,000–125,000</td><td class="mono r">117,500（中值）</td><td>Q1超计划；品位1.48g/t高于计划1.26g/t</td></tr>
+        <tr><td class="bold pos">有效实现金价（无流量）</td><td class="mono r pos">~$3,200（Q1均值）</td><td class="mono r pos">$4,000</td><td class="mono r bold pos">$4,000/oz — 全额享受</td><td>无流量约束；是Centerra金价β最高的资产</td></tr>
+        <tr><td class="bold">AISC（by-product，$/oz）</td><td class="mono r">$1,653</td><td class="mono r neg bold">$1,850–1,950（偏高）</td><td class="mono r">$1,900（中值）</td><td>特许权使用费约$650–750/oz是最大成本项；土耳其通胀</td></tr>
+        <tr><td class="bold hl-g">AISC利润率（@$4,000）</td><td class="mono r hl-g">$1,547/oz（Q1）</td><td class="mono r hl-g">—</td><td class="mono r bold hl-g">$2,100/oz</td><td>= $4,000 - $1,900；$2,100/oz是历史高位利润率</td></tr>
+        <tr><td class="bold">季度FCF（Q1）</td><td class="mono r pos">$132M</td><td class="mono r">—</td><td class="mono r pos">~$400M（年化估）</td><td>堆浸低资本开支模式；FCF转化率极高</td></tr>
+        <tr><td class="bold">FY2026E利润贡献（估）</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r bold pos">~$247M</td><td>117,500oz × $2,100/oz；已超越Mt Milligan</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">合并AISC利润率（FY2026E，@$4,000/oz加权）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>矿山</th><th class="r">产金量（oz）</th><th class="r">有效金价</th><th class="r">AISC（$/oz）</th><th class="r">利润率（$/oz）</th><th class="r">利润贡献（$M）</th><th class="r">占比</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">Mt Milligan（流量调整）</td><td class="mono r">147,500</td><td class="mono r hl-s">$2,752</td><td class="mono r">$1,250</td><td class="mono r pos">$1,502</td><td class="mono r pos bold">$221M</td><td class="mono r">47%</td></tr>
+        <tr><td class="bold">Öksüt（无流量）</td><td class="mono r">117,500</td><td class="mono r pos">$4,000</td><td class="mono r">$1,900</td><td class="mono r pos bold">$2,100</td><td class="mono r pos bold">$247M</td><td class="mono r">53%</td></tr>
+        <tr><td class="bold hl-g">合并加权</td><td class="mono r hl-g">265,000</td><td class="mono r hl-g">$3,281（加权有效金价）</td><td class="mono r hl-g">$1,551（加权AISC）</td><td class="mono r bold hl-g">$1,730/oz</td><td class="mono r bold hl-g">$468M</td><td class="mono r hl-g">100%</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="co warn">
+      <div class="col">关键风险提示：Öksüt AISC $1,900/oz 的利润率敏感性</div>
+      Öksüt是Centerra的"高风险高利润"资产。在金价$4,000/oz时利润率达$2,100/oz；但若金价回落至$2,500/oz，利润率仅剩$600/oz；低于$1,900/oz则亏损。特许权使用费约$650–750/oz是硬性成本，不随金价下降而减少。此外，土耳其地缘政治风险（详见第12节）使Öksüt资产的估值折价难以完全消除。我们的基准情景假设金价维持$3,800–4,200/oz区间，在此范围内Öksüt提供约$1,900–2,300/oz的利润率，是强有力的现金流来源。
+    </div>
+  </div>
+</div>
+
+<!-- 05 FINANCIALS -->
+<div class="sec" id="s05">
+  <div class="sh"><span class="sn">05</span><span class="st">财务分析 · Financial Analysis</span></div>
+  <div class="sb">
+    <h3 class="sub">历史损益数据（来源：SEC 6-K / GlobeNewswire，美元）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标</th><th class="r">FY2023A</th><th class="r">FY2024A</th><th class="r">FY2025A</th><th class="r">Q1 2025A</th><th class="r">Q1 2026A</th><th class="r">FY2026E<br>(@$4,000/oz)</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">营收（$M）</td><td class="mono r">$1,059</td><td class="mono r">$1,210</td><td class="mono r bold">$1,380</td><td class="mono r">~$367</td><td class="mono r pos bold">$484.7</td><td class="mono r bold hl-g">~$2,000–2,100E</td></tr>
+        <tr><td style="padding-left:18px;color:var(--text-muted)">— 金销售收入</td><td class="mono r">$771</td><td class="mono r">$860</td><td class="mono r">$1,080</td><td class="mono r">~$255</td><td class="mono r pos">~$385</td><td class="mono r">~$1,380E（含流量调整）</td></tr>
+        <tr><td style="padding-left:18px;color:var(--text-muted)">— 铜销售收入</td><td class="mono r">$170</td><td class="mono r">$200</td><td class="mono r">$240</td><td class="mono r">~$55</td><td class="mono r pos">~$90</td><td class="mono r">~$220E（@$4.50/磅）</td></tr>
+        <tr><td style="padding-left:18px;color:var(--text-muted)">— 钼及其他</td><td class="mono r">$118</td><td class="mono r">$150</td><td class="mono r">$60</td><td class="mono r">~$57</td><td class="mono r neg">~$10（Langeloth暂停）</td><td class="mono r" style="color:var(--amber)">~$50E（视修复进度）</td></tr>
+        <tr><td class="bold">调整后EBITDA（$M）</td><td class="mono r">$370</td><td class="mono r">$430</td><td class="mono r">$580</td><td class="mono r">~$145</td><td class="mono r pos">~$215（+48%）</td><td class="mono r bold hl-g">~$900–950E</td></tr>
+        <tr><td class="bold hl">EBITDA利润率</td><td class="mono r hl">35%</td><td class="mono r hl">36%</td><td class="mono r hl">42%</td><td class="mono r hl">~40%</td><td class="mono r bold hl">~44%</td><td class="mono r bold hl-g">~45–47%E</td></tr>
+        <tr><td class="bold">持续资本开支（$M）</td><td class="mono r">$130</td><td class="mono r">$130</td><td class="mono r">$160（估）</td><td class="mono r">~$35</td><td class="mono r">~$40</td><td class="mono r">$85–105E</td></tr>
+        <tr><td class="bold">非持续资本开支（$M）</td><td class="mono r">$73</td><td class="mono r">$55</td><td class="mono r">~$190（估）</td><td class="mono r">~$65</td><td class="mono r neg">~$62（Thompson Creek）</td><td class="mono r neg">$260–315E（主为TC）</td></tr>
+        <tr><td class="bold">自由现金流（$M）</td><td class="mono r">$167</td><td class="mono r">$245</td><td class="mono r">~$180E</td><td class="mono r">—</td><td class="mono r">$49（Q1）</td><td class="mono r bold pos">~$300–350E</td></tr>
+        <tr><td class="bold">调整后净利润（$M）</td><td class="mono r">$131</td><td class="mono r">$175</td><td class="mono r bold">$229</td><td class="mono r">~$70</td><td class="mono r pos bold">~$87</td><td class="mono r bold hl-g">~$750–800E</td></tr>
+        <tr><td class="bold hl">调整后EPS（$）</td><td class="mono r hl">$0.63</td><td class="mono r hl">$0.85</td><td class="mono r bold hl">$1.13</td><td class="mono r hl">$0.34</td><td class="mono r pos bold hl">$0.44（超预期4.8%）</td><td class="mono r bold hl-g">~$3.80–4.00E</td></tr>
+        <tr><td class="bold">GAAP净利润（$M）</td><td class="mono r">$85</td><td class="mono r">$80</td><td class="mono r bold pos">$584</td><td class="mono r">$30</td><td class="mono r pos">$79.4（+160%）</td><td class="mono r">—</td></tr>
+        <tr><td class="bold">全年金产量（oz）</td><td class="mono r">~230,000</td><td class="mono r">~243,000</td><td class="mono r bold">275,316</td><td class="mono r">~59,000</td><td class="mono r pos">68,001（+15%）</td><td class="mono r">250,000–280,000E</td></tr>
+        <tr><td class="bold">合并AISC（by-product，$/oz）</td><td class="mono r">$1,420</td><td class="mono r">$1,350</td><td class="mono r bold">$1,614</td><td class="mono r">—</td><td class="mono r">—</td><td class="mono r hl">$1,650–1,750E（指导）</td></tr>
+        <tr><td class="bold">年末现金（$M）</td><td class="mono r">$560</td><td class="mono r">$625</td><td class="mono r">$529</td><td class="mono r">—</td><td class="mono r pos">$543（Q1末）</td><td class="mono r pos bold">$600–750E</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:11.5px;color:var(--text-muted);margin-top:8px">注：FY2025 GAAP净利润$584M含大规模非经常性项目（资产公允价值重估约$355M），调整后净利润$229M更能反映持续经营能力。FY2026E基于：金产量265,000oz（指导中值）、Mt Milligan有效金价$2,752/oz（含流量调整）、Öksüt有效金价$4,000/oz（无流量）、铜$4.50/磅、持续资本开支$95M（指导中值）、非持续$287M（Thompson Creek中值）。Q1 2026数据来源：2026-04-29 SEC 6-K及GlobeNewswire新闻稿。</p>
+
+    <h3 class="sub">关键财务比率（截至2026年6月24日）</h3>
+    <div class="mg">
+      <div class="mc"><div class="ml">调整后P/E（FY2026E）</div><div class="mv pos">~4.5x</div><div class="ms">$17.43÷$3.90E；中型金矿商中显著低估</div></div>
+      <div class="mc"><div class="ml">EV/EBITDA（FY2026E）</div><div class="mv pos">~3.8x</div><div class="ms">EV~$3.5B÷EBITDA~$925M；历史低位</div></div>
+      <div class="mc"><div class="ml">P/NAV（@$4,000/oz）</div><div class="mv pos">0.57x</div><div class="ms">NAV估算$30.33/股；深度折价</div></div>
+      <div class="mc"><div class="ml">FCF收益率（FY2026E）</div><div class="mv pos">~9.5%</div><div class="ms">FCF~$330M÷市值$3.46B</div></div>
+      <div class="mc"><div class="ml">净现金</div><div class="mv pos">+$543M</div><div class="ms">零长期有息债务；矿业中最强财务结构</div></div>
+      <div class="mc"><div class="ml">AISC利润率（合并加权）</div><div class="mv pos">$1,730/oz</div><div class="ms">流量调整后；FY2026E历史高位</div></div>
+      <div class="mc"><div class="ml">ROIC（年化，FY2026E）</div><div class="mv pos">~18–22%</div><div class="ms">远超WACC 8–9%；价值创造强烈</div></div>
+      <div class="mc"><div class="ml">股息收益率</div><div class="mv acc">~1.16%</div><div class="ms">C$0.07/季；另有大额股份回购</div></div>
+    </div>
+
+    <h3 class="sub">资产负债表深度（来源：Q1 2026 SEC 6-K，美元）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>科目</th><th class="r">2026-03-31</th><th class="r">2025-12-31</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">现金及等价物</td><td class="mono r pos bold">$543M</td><td class="mono r">$529M</td><td>Q1净增$14M；Thompson Creek大额资本开支后仍有积累</td></tr>
+        <tr><td class="bold">权益投资组合</td><td class="mono r">~$115M</td><td class="mono r">$115M</td><td>含Liberty Gold Corp.等战略股权投资</td></tr>
+        <tr><td class="bold">矿产资产（PP&E净值）</td><td class="mono r">~$2.0B</td><td class="mono r">~$1.9B</td><td>Thompson Creek建设进展+Mt Milligan折旧</td></tr>
+        <tr><td class="bold">Kemess矿产权益</td><td class="mono r">~$350M</td><td class="mono r">~$340M</td><td>历史勘探资本化；PEA NPV$1.1B（@$3,000/oz），@$4,000/oz估约$1.6–1.8B</td></tr>
+        <tr><td class="bold pos hl-g">长期有息债务</td><td class="mono r pos bold hl-g">极低（近零）</td><td class="mono r pos hl-g">极低</td><td class="hl-g bold">零长期有息负债；$400M信贷额度备用未动用；矿业中最优资产负债结构</td></tr>
+        <tr><td class="bold hl-g">净现金头寸</td><td class="mono r pos bold hl-g">+$543M</td><td class="mono r pos hl-g">+$529M</td><td class="hl-g">持续正净现金；即便FY2026全年Thompson Creek资本开支$230M后仍预计维持$400M+</td></tr>
+        <tr><td class="bold">股东权益</td><td class="mono r">~$3.0B</td><td class="mono r">~$2.9B</td><td>Q1净利$79.4M增加；季度回购$22.5M减少；净增$57M</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">资本回报率（矿业特殊框架：AISC利润率为核心指标）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>指标</th><th class="r">FY2023A</th><th class="r">FY2024A</th><th class="r">FY2025A</th><th class="r">FY2026E（@$4,000）</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="bold hl-g">AISC利润率（合并加权）</td><td class="mono r hl-g">$580/oz（金价$2,000）</td><td class="mono r hl-g">$750/oz（金价$2,350）</td><td class="mono r hl-g">$1,036/oz（金价$2,650均）</td><td class="mono r bold hl-g">$1,730/oz（@$4,000）</td><td class="hl-g">矿业最核心指标；FY2026E为历史峰值；驱动全部盈利指标</td></tr>
+        <tr><td class="bold">调整后ROE</td><td class="mono r">~4.5%</td><td class="mono r">~6.0%</td><td class="mono r">~7.8%</td><td class="mono r pos bold">~25–28%</td><td>$4,000/oz金价下ROE飙升；资产轻、利润高</td></tr>
+        <tr><td class="bold">ROIC</td><td class="mono r">~3.8%</td><td class="mono r">~5.2%</td><td class="mono r">~7.0%</td><td class="mono r pos bold">~18–22%</td><td>WACC约8–9%；FY2026E ROIC超WACC约10–13ppt；强烈价值创造</td></tr>
+        <tr><td class="bold">FCF收益率</td><td class="mono r">~5.0%</td><td class="mono r">~7.0%</td><td class="mono r">~5.2%</td><td class="mono r pos bold">~9.5%</td><td>大额非持续资本开支仍压制FCF；但@$4,000/oz下FCF大幅改善</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="co gold">
+      <div class="col">财务质量综合判断</div>
+      在$4,000/oz金价基础下，Centerra的财务质量在中型金矿商中属优秀：调整后P/E约4.5x、EV/EBITDA约3.8x、FCF收益率约9.5%，均处于行业低估区间。ROIC预计约18–22%（FY2026E），远超WACC约8–9%，意味着公司正处于强烈的价值创造阶段。需特别注意：FY2025 GAAP净利润$584M含约$355M非经常性公允价值重估收益，剔除后调整净利$229M才是持续经营能力的真实反映。<strong>FY2026E调整后净利预计约$750–800M，较FY2025调整值$229M增长约230%——这一飞跃完全来自金价从FY2025均值约$2,650/oz升至当前$4,000/oz，以及流量调整下的结构性利润放大效应。</strong>
+    </div>
+  </div>
+</div>
+
+<!-- 06 SHAREHOLDER RETURNS -->
+<div class="sec" id="s06">
+  <div class="sh"><span class="sn">06</span><span class="st">股东回报与资本纪律 · Shareholder Returns & Capital Discipline</span></div>
+  <div class="sb">
+    <div class="co buy">
+      <div class="col">核心判断：资本纪律是Centerra在矿业同类中最被低估的竞争优势</div>
+      矿业公司历史上最常见的价值毁损路径是"牛市顶部高价并购烂矿"——超预算、超期、最终大幅减值。Centerra在当前强金价周期中选择了截然不同的路径：用超额现金流回购股份（$300M+，在$9–12均价执行），维持并增长股息，同时专注于自我资助的有机成长。这种资本纪律在矿业历史上属于稀缺品质，支持给予P/NAV溢价（目标0.90–0.95x，高于无纪律矿商均值0.80–0.85x）。
+    </div>
+
+    <h3 class="sub">股份回购历史（NCIB — 正常过户竞价计划）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>回购计划</th><th class="r">授权规模</th><th class="r">期间</th><th class="r">执行均价（估）</th><th class="r">注销股本（估）</th><th>价值创造分析</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">2024年NCIB</td><td class="mono r pos">$150M</td><td class="mono r">2024全年</td><td class="mono r pos bold">~$9–10</td><td class="mono r pos">~15–17M股</td><td>在当前$17.43股价下，相当于以约55–58%的折价回购，浮盈约80%；EPS每股提升约7–8%</td></tr>
+        <tr><td class="bold">2025年NCIB</td><td class="mono r pos">$150M</td><td class="mono r">2025全年</td><td class="mono r pos bold">~$11–13</td><td class="mono r pos">~12–14M股</td><td>同样处于大幅折价区间回购；显著低于当前股价$17.43</td></tr>
+        <tr><td class="bold hl-g">2024–2025合计</td><td class="mono r bold hl-g">$300M+</td><td class="mono r hl-g">24个月</td><td class="mono r hl-g">~$10–12均值</td><td class="mono r bold hl-g">~27–31M股（约13–16%）</td><td class="hl-g">相当于在当前价约60%折价位置消除了13–16%的股本稀释，是同类矿商中价值创造效率最高的回购</td></tr>
+        <tr><td class="bold">2026年NCIB（进行中）</td><td class="mono r">~$100–150M（预期）</td><td class="mono r">2026全年</td><td class="mono r">~$15–18（估）</td><td class="mono r">~6–10M股</td><td>Q1已执行约$22.5M（约1.3M股@$17.3均价）；全年有望维持</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">股息历史与增长路径</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>期间</th><th class="r">季度股息（C$/股）</th><th class="r">年化（C$/股）</th><th class="r">同比增幅</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">FY2022</td><td class="mono r">C$0.05</td><td class="mono r">C$0.20</td><td class="mono r">基准年</td><td>恢复派息</td></tr>
+        <tr><td class="mono">FY2023</td><td class="mono r pos bold">C$0.07</td><td class="mono r pos bold">C$0.28</td><td class="mono r pos bold">+40%</td><td>大幅上调；传递利润改善信号</td></tr>
+        <tr><td class="mono">FY2024–2026（当前）</td><td class="mono r">C$0.07</td><td class="mono r">C$0.28（约USD$0.205）</td><td class="mono r">维持</td><td>维持高位；重心转向大规模回购；当前收益率约1.16%</td></tr>
+        <tr><td class="mono bold pos">Q2 2026潜在上调（2026-08-07）</td><td class="mono r pos">C$0.09–0.10（预期）</td><td class="mono r pos">C$0.36–0.40（年化）</td><td class="mono r pos bold">+28–43%</td><td>若Q2财报强劲（EPS超$0.90），管理层有条件宣布股息上调，将是重大正向催化剂</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">总股东回报（TSR）框架与资本配置优先级</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>资本用途</th><th class="r">FY2026E金额（$M）</th><th class="r">占FY2026E FCF比例</th><th>说明与战略意义</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">① 持续资本开支（矿山维护）</td><td class="mono r">$95M（中值）</td><td class="mono r">~27%</td><td>最高优先级；维持现有矿山正常运营；不可削减</td></tr>
+        <tr><td class="bold">② Thompson Creek非持续资本</td><td class="mono r neg">$287M（中值）</td><td class="mono r neg">~82%（超FCF）</td><td>成长性资本；以净现金$543M垫资；2027年首产后转为利润来源</td></tr>
+        <tr><td class="bold">③ 现金股息</td><td class="mono r">~$41M</td><td class="mono r">~12%</td><td>$0.205/年×198.6M股；稳定且持续增长</td></tr>
+        <tr><td class="bold">④ 股份回购（NCIB）</td><td class="mono r pos">~$100–150M</td><td class="mono r">~29–43%</td><td>以当前价$17.43回购（NAV折价43%）；每回购$1创造约$1.75NAV价值；高效</td></tr>
+        <tr><td class="bold hl-g">FY2026E FCF（@$4,000/oz）</td><td class="mono r bold hl-g">~$300–350M</td><td class="mono r hl-g">100%基础</td><td class="hl-g">Thompson Creek资本开支超出FCF部分以净现金垫支；无需外部融资</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">资本纪律对比（中型金矿商）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>公司</th><th class="r">净现金/净债务</th><th class="r">股息率</th><th class="r">近2年回购规模</th><th>并购记录</th><th>资本纪律评分</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">Centerra（CGAU）</td><td class="pos mono r">净现金+$543M</td><td class="mono r">1.16%</td><td class="pos mono r">$300M+（规模显著）</td><td class="pos">无大型破坏性并购</td><td class="pos bold">⭐⭐⭐⭐⭐</td></tr>
+        <tr><td class="bold">Kinross（KGC）</td><td class="mono r" style="color:var(--amber)">净债务~$1B</td><td class="mono r">~1.5%</td><td class="mono r">有限</td><td class="neg">Tasiast高价并购</td><td class="bold" style="color:var(--amber)">⭐⭐⭐</td></tr>
+        <tr><td class="bold">Coeur（CDE）</td><td class="mono r neg">净债务~$0.4B</td><td class="mono r">无</td><td class="mono r">无</td><td class="neg">多次高价并购</td><td class="neg bold">⭐⭐</td></tr>
+        <tr><td class="bold">Agnico Eagle（AEM）</td><td class="pos mono r">管理良好</td><td class="mono r">~3%+</td><td class="pos mono r">积极且质量高</td><td class="pos bold">历史并购质量优</td><td class="pos bold">⭐⭐⭐⭐⭐</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- 07 GROWTH PIPELINE -->
+<div class="sec" id="s07">
+  <div class="sh"><span class="sn">07</span><span class="st">成长管道 · Growth Pipeline</span></div>
+  <div class="sb">
+    <h3 class="sub">Thompson Creek（钼）— 2027年H1首产目标</h3>
+    <p>Thompson Creek位于爱达荷州，是北美重要的钼矿资产，Centerra于2024年完成可行性研究后启动重启，目标<strong>2027年中期实现首产</strong>。2026年为关键建设年，资本开支$200–250M主要用于长周期设备采购和土建。钼当前价格约$25/磅，AISC约$12–15/磅，提供约$10–13/磅的利润空间。钼的中长期需求来自核电合金、国防工业和能源设备，清洁能源复苏是重要增量来源。Langeloth事故（2026年1月）目前仅影响下游焙烧能力，不影响Thompson Creek矿山建设进度。</p>
+
+    <h3 class="sub">Kemess PEA — BC省下一个大型金铜矿（NPV上调至~$1.6–1.8B @ $4,000/oz）</h3>
+    <p>2026年1月发布的更新PEA在$3,000/oz金价下给出NPV₅% $1.1B、IRR 16%的结论。<strong>在当前$4,000/oz金价下，Snail-Bird估算Kemess NPV约为$1.6–1.8B</strong>（PEA NPV随金价提升约$500M），黄金储量2.3Moz、铜851Mlb；PFS预计2027年完成，是FY2027年的重要估值催化剂。铜副产品将使Kemess的by-product AISC大幅低于总成本，与Mt Milligan类似但规模更大。</p>
+
+    <h3 class="sub">Goldfield District（内华达）— 近期年产量增量</h3>
+    <p>7年矿山寿命，峰值年产约100,000盎司；2026年完成工程研究+长周期设备采购；预计2028–2030年投产。内华达是全球最稳定矿业管辖区，零政治风险。在$4,000/oz金价下，Goldfield的项目经济性显著优于原PEA估算。</p>
+
+    <h3 class="sub">NAV估算（@$4,000/oz金价基准，Snail-Bird独立建模）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>资产</th><th class="r">NAV估算（$M）</th><th class="r">NAV/股（$）</th><th>方法与核心假设</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">Mt Milligan（含流量调整，寿命至2045）</td><td class="mono r pos bold">$3,200M</td><td class="mono r pos">$16.11</td><td>DCF至2045年；折现率6%；有效金价$2,752/oz；铜$4.00/磅；含铜副产品信贷</td></tr>
+        <tr><td class="bold">Öksüt（无流量约束）</td><td class="mono r pos bold">$950M</td><td class="mono r pos">$4.78</td><td>DCF至矿山寿命末（寿命优化研究进行中）；有效金价$4,000/oz；AISC$1,900/oz；折现率7%（地缘政治风险溢价）</td></tr>
+        <tr><td class="bold hl-g">Kemess（PEA，@$4,000/oz上调）</td><td class="mono r bold hl-g">$800M</td><td class="mono r bold hl-g">$4.03</td><td>PEA NPV$1.1B（@$3,000）→$1.6B（@$4,000）× 50%开发概率折扣；PFS 2027年完成后折扣可下调</td></tr>
+        <tr><td class="bold">Thompson Creek（钼，重启中）</td><td class="mono r">$380M</td><td class="mono r">$1.91</td><td>DCF至矿山寿命；钼价$22/磅长期假设；含Langeloth下游价值；2026年建设进度确认后折扣降低</td></tr>
+        <tr><td class="bold">Goldfield（工程开发中）</td><td class="mono r">$320M</td><td class="mono r">$1.61</td><td>@$4,000/oz重算；峰值100Koz × 7年 × 60%开发折扣；内华达政治风险极低</td></tr>
+        <tr><td class="bold">权益投资组合+其他</td><td class="mono r">$130M</td><td class="mono r">$0.65</td><td>按公允价值；Liberty Gold等战略持股</td></tr>
+        <tr><td class="bold pos">净现金（Q1末实际）</td><td class="mono r pos bold">$543M</td><td class="mono r pos">$2.73</td><td>现金$543M；零长期债务；不折现</td></tr>
+        <tr><td class="bold neg">减：总部成本（PV）</td><td class="mono r neg">-$300M</td><td class="mono r neg">-$1.51</td><td>年均总部开支$35M；折现率6%；10年显式期</td></tr>
+        <tr><td class="bold hl-g">NAV合计</td><td class="mono r bold hl-g">$6,023M</td><td class="mono r bold hl-g">$30.33/股</td><td class="hl-g">当前股价$17.43对应P/NAV = 0.57x；中型金矿商均值0.80–0.90x；折价约36%</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:11.5px;color:var(--text-muted);margin-top:6px">注：所有NAV估算均为Snail-Bird Investment独立建模，使用$4,000/oz长期基准金价（基于当前实际金价）、铜$4.00/磅、钼$22/磅。Kemess和Goldfield均已采用概率折扣（50%和60%）。实际NAV对金价高度敏感：金价每变化$500/oz，Centerra NAV变化约$1.5–2.0B，对应NAV/股变化约$7.5–10.0。</p>
+  </div>
+</div>
+
+<!-- 08 GOLD & MACRO -->
+<div class="sec" id="s08">
+  <div class="sh"><span class="sn">08</span><span class="st">金价走势与宏观背景 · Gold Price Trajectory & Macro Outlook</span></div>
+  <div class="sb">
+    <h3 class="sub">2025–2026年金价实际运行轨迹（来源：GoldPriceTools / CBS News / LiteFinance / Fortune / GoldSilver.com）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>时间</th><th class="r">金价（$/oz）</th><th>关键驱动事件</th></tr></thead>
+      <tbody>
+        <tr><td>2025年底</td><td class="mono r">~$4,550</td><td>2025年全年上涨约65%（Kitco确认）；央行购金+去美元化+ETF创纪录流入$890亿；全年创53个历史新高</td></tr>
+        <tr><td>2026年初（1月初）</td><td class="mono r">~$4,331</td><td>年初短暂整固</td></tr>
+        <tr><td>2026年1月26日</td><td class="mono r pos bold">$5,100+</td><td>首次突破$5,000大关（Bullion Trading LLC确认）；Trump 100%关税威胁+联储主席调查引发避险需求</td></tr>
+        <tr><td class="bold">2026年1月28日</td><td class="mono r pos bold">$5,589.38/oz</td><td class="bold pos">历史最高收盘价（CBS News / GoldPriceTools确认）；结构性需求峰值：央行购金+ETF流入+地缘政治全面升温</td></tr>
+        <tr><td>2026年1月29日</td><td class="mono r pos">$5,600（盘中高点）</td><td>盘中触及$5,600；收盘价峰值约$5,420（GoldPriceTools确认）</td></tr>
+        <tr><td>2026年1月30日</td><td class="mono r neg bold">$4,894（单日-9%）</td><td class="neg bold">Trump任命Kevin Warsh为美联储主席 → 市场解读为鹰派 → 黄金单日暴跌9%（最大单日跌幅之一）；杠杆仓位大规模平仓</td></tr>
+        <tr><td>2026年2月中旬</td><td class="mono r">$4,900–5,100</td><td>快速回稳；基本面买家重新入场；Warsh"鹰派解读"被证明为过度反应</td></tr>
+        <tr><td>2026年3月–4月</td><td class="mono r">回落→$4,170（年内低点）</td><td>J.P. Morgan确认"年内低点约$4,170/oz"；联储政策观望+地缘政治阶段性缓和</td></tr>
+        <tr><td>2026年5月</td><td class="mono r" style="color:var(--amber)">$4,453–4,773</td><td>LiteFinance确认区间；投资者需求恢复；中国PBoC加速购金（Q1增持8吨/月）</td></tr>
+        <tr><td>2026年6月</td><td class="mono r" style="color:var(--amber)">$4,023–4,548</td><td>伊朗停火谈判消息+Warsh加息预期压制；整体在$4,000关口附近震荡</td></tr>
+        <tr><td class="bold">2026年6月22日</td><td class="mono r bold" style="color:var(--gold)">$4,192/oz（周高）</td><td>短期冲高；Warsh鹰派讲话前</td></tr>
+        <tr><td class="bold">2026年6月24日（报告日）</td><td class="mono r bold" style="color:var(--gold)">$3,988/oz</td><td>Fortune实测（9AM ET）；PCE 4.1%+Warsh鹰派+9月加息概率62%→短期承压；较历史高位$5,589回落28.7%</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">金价关键观察：历史高位回落28.7%后的结构性判断</h3>
+    <div class="co gold">
+      <div class="col">Snail-Bird Research核心金价判断：$4,000/oz是新的"价格底座"而非峰值的回归</div>
+      <p>从$5,589跌至$3,988（-28.7%）是否意味着黄金牛市结束？我们的判断是否定的，理由：</p>
+      <p>①<strong>驱动力依然完整</strong>：央行去美元化购金（中国Q1增速3倍于前季）、ETF资产管理规模创历史新高（$5,590亿 / 4,025吨）、全球债务货币化压力（美债/GDP超130%）——这三项结构性驱动力均未逆转。</p>
+      <p>②<strong>$4,170是年内低点而非新熊市起点</strong>：J.P. Morgan明确指出"年内价格低点约$4,170"，从$5,589跌至$4,170（-25%）是历次黄金牛市中正常的"中场休整"，历史案例：2011年$1,920→$1,550（-19%）随后恢复，2020年$2,075→$1,680（-19%）随后大涨至$2,400+。</p>
+      <p>③<strong>机构共识：H2–2027年金价重回$4,700–6,300区间</strong>：J.P. Morgan年底目标$6,000–6,300；Goldman目标$4,900（最保守）；UBS目标$5,500；LBMA共识$4,742。即使最保守的Goldman目标$4,900也意味着从当前$4,000上涨约+23%。</p>
+      <p>④<strong>当前$4,000是"买入黄金相关资产"的历史机会窗口</strong>：在$5,589时买入CGAU意味着P/NAV约0.75x（NAV基于$5,500/oz金价估算约$40+/股）；而在$4,000金价、CGAU $17.43时，P/NAV仅0.57x（NAV $30.33/股）——折价更大，安全边际更充裕。</p>
+    </div>
+
+    <h3 class="sub">H2 2026金价情景与Centerra EPS敏感性（含流量协议调整）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>金价均值（$/oz）</th><th class="r">Mt Milligan<br>有效金价</th><th class="r">Öksüt<br>有效金价</th><th class="r">合并AISC<br>利润率</th><th class="r">FY2026E<br>调整后EPS</th><th>对应目标价<br>（8x P/E）</th><th>情景概率</th></tr></thead>
+      <tbody>
+        <tr><td class="mono bold pos">$5,000（回升至高位）</td><td class="mono r hl-s">$3,402</td><td class="mono r pos">$5,000</td><td class="mono r pos bold">$2,580/oz</td><td class="mono r pos bold">~$5.20</td><td class="mono r pos bold">~$41.6</td><td class="mono r">15%</td></tr>
+        <tr><td class="mono">$4,500（温和回升）</td><td class="mono r hl-s">$3,077</td><td class="mono r pos">$4,500</td><td class="mono r pos">$2,155/oz</td><td class="mono r pos bold">~$4.50</td><td class="mono r pos bold">~$36.0</td><td class="mono r">25%</td></tr>
+        <tr><td class="mono bold">$4,000（当前基准）</td><td class="mono r bold hl-s">$2,752</td><td class="mono r bold pos">$4,000</td><td class="mono r bold pos">$1,730/oz</td><td class="mono r bold pos">~$3.90</td><td class="mono r bold pos">~$31.2</td><td class="mono r bold">35%</td></tr>
+        <tr><td class="mono" style="color:var(--amber)">$3,600（温和回落）</td><td class="mono r hl-s">$2,492</td><td class="mono r" style="color:var(--amber)">$3,600</td><td class="mono r" style="color:var(--amber)">$1,270/oz</td><td class="mono r" style="color:var(--amber)">~$2.60</td><td class="mono r" style="color:var(--amber)">~$20.8</td><td class="mono r">15%</td></tr>
+        <tr><td class="mono neg">$3,000（显著回落）</td><td class="mono r hl-s">$2,102</td><td class="mono r" style="color:var(--amber)">$3,000</td><td class="mono r" style="color:var(--amber)">$730/oz</td><td class="mono r neg">~$1.40</td><td class="mono r neg">~$11.2</td><td class="mono r">10%</td></tr>
+        <tr><td class="mono neg bold">$2,500（极端回落）</td><td class="mono r hl-s">$1,777</td><td class="mono r neg">$2,500</td><td class="mono r neg bold">$305/oz</td><td class="mono r neg bold">~$0.40</td><td class="mono r neg bold">~$3.2</td><td class="mono r neg">5%</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:11.5px;color:var(--text-muted);margin-top:6px">注：Mt Milligan有效金价 = 市场金价×65% + $435×35%；Öksüt有效金价 = 市场金价（无约束）。合并AISC利润率为加权均值。机构年底目标：J.P. Morgan $6,000–6,300；Goldman（最保守）$4,900；UBS $5,500；LBMA共识 $4,742。</p>
+
+    <h3 class="sub">铜与钼宏观背景</h3>
+    <p><strong>铜（当前约$4.50/磅）：</strong>Mt Milligan年产铜55Mlb（中值），是重要的利润来源和AISC对冲工具。铜中长期基本面——电动车、电网现代化、AI数据中心（铜冷却系统需求）——偏正面，供给新增有限（主要矿山老化）。铜价每变化$0.50/磅，影响Mt Milligan by-product AISC约$60–80/oz。</p>
+    <p><strong>钼（当前约$25/磅）：</strong>Thompson Creek在$20/磅以上盈利空间充裕（AISC约$12–15/磅）。钼的核心需求来自不锈钢（约60%）、核电合金（成长驱动）和国防工业；中长期供给端全球新增项目稀缺，结构性偏紧。</p>
+  </div>
+</div>
+
+<!-- 09 VALUATION -->
+<div class="sec" id="s09">
+  <div class="sh"><span class="sn">09</span><span class="st">估值分析 · Valuation</span></div>
+  <div class="sb">
+    <h3 class="sub">矿业估值特殊框架：P/NAV为核心，辅以EV/EBITDA和P/CF</h3>
+    <div class="co gold">
+      <div class="col">矿业估值方法论</div>
+      黄金矿业公司的标准估值框架以<strong>P/NAV（市值/净资产价值）</strong>为核心。P/E在矿业中局限性较大（非现金折旧摊销、大宗商品价格波动使净利润不稳定），<strong>AISC利润率</strong>（金价减AISC的每盎司利润）才是衡量运营盈利能力的最核心指标。流量协议的存在使Centerra的P/NAV历史上低于无流量约束矿商，但在资本纪律溢价的部分对冲下，我们认为合理目标P/NAV应为0.90–0.95x（低于完全无约束矿商1.0–1.2x，但高于0.80x行业均值）。
+    </div>
+
+    <div class="vg">
+      <div class="vc"><div class="vcn">P/NAV（核心）</div><div class="vcp">$27.30</div><div class="vcw">权重 40%</div><div class="vcd">NAV $30.33/股（@$4,000/oz）×目标0.90x；当前0.57x→0.90x修复空间约+58%；流量折扣（-0.10x）+资本纪律溢价（+0.05x）净折扣0.05–0.10x vs同类</div></div>
+      <div class="vc"><div class="vcn">EV/EBITDA</div><div class="vcp">$20.00</div><div class="vcw">权重 30%</div><div class="vcd">目标7.5x×FY2026E EBITDA约$925M（@$4,000/oz）；中型金矿商历史区间5–9x；7.5x反映流量约束折扣（-0.5x）+资本纪律溢价（+0.5x）的中性结果</div></div>
+      <div class="vc"><div class="vcn">调整后P/E</div><div class="vcp">$19.50</div><div class="vcw">权重 20%</div><div class="vcd">目标5.0x×FY2026E EPS $3.90；偏低P/E倍数反映：流量约束限制EPS上行弹性、Öksüt地缘政治风险、Thompson Creek执行风险</div></div>
+      <div class="vc"><div class="vcn">P/CF（经营现金流）</div><div class="vcp">$21.50</div><div class="vcw">权重 10%</div><div class="vcd">目标9x×FY2026E CFO约$475M（年化估）；CFO比FCF更能反映真实现金生成（FCF被Thompson Creek资本开支压制）</div></div>
+    </div>
+
+    <div class="co buy">
+      <div class="col">加权综合目标价</div>
+      四法加权：$27.30×40% + $20.00×30% + $19.50×20% + $21.50×10% = <strong>$22.87</strong>，保守取整为 <strong>$22.00</strong>（±15%区间：$18.70–$25.30）。取$22.00而非$22.87的原因：金价维持$4,000/oz的假设存在一定下行风险（H2 Warsh可能进一步加息），给予5%保守折扣以提供安全边际。<br><br>
+      较当前价$17.43：资本利得上行空间 <strong>+26.2%</strong>；含股息合计12个月预期总回报约 <strong>+27.4%</strong>。
+    </div>
+
+    <h3 class="sub">卖方分析师目标价对比</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>机构</th><th>评级</th><th class="r">目标价（USD）</th><th>金价假设（估）</th><th>核心观点</th></tr></thead>
+      <tbody>
+        <tr><td>Scotiabank（Ovais Habib）</td><td class="tag tgn">Outperform</td><td class="mono r bold pos">$21.00</td><td class="mono">$3,800–4,000</td><td>Q1超预期+自我资助成长；从$19上调</td></tr>
+        <tr><td>Canaccord Genuity</td><td class="tag tgn">Buy</td><td class="mono r bold pos">~$21–22</td><td class="mono">$3,800+</td><td>Kemess PEA强健；Thompson Creek成长期权</td></tr>
+        <tr><td>BofA（Lawson Winder）</td><td class="tag ta">中性偏买</td><td class="mono r" style="color:var(--amber)">$14.50</td><td class="mono">$3,000（保守）</td><td>流量约束限制上行；Öksüt AISC风险</td></tr>
+        <tr><td>RBC Capital</td><td class="tag ta">Hold</td><td class="mono r">—</td><td class="mono">—</td><td>等待Thompson Creek进展；观望</td></tr>
+        <tr><td class="bold hl-g">🐦 Snail-Bird Investment</td><td class="bold hl-g">审慎买入</td><td class="mono r bold hl-g">$22.00</td><td class="mono hl-g">$4,000（实际市价）</td><td class="hl-g">基于实际金价$4,000/oz + 流量协议精确计算 + 股东回报溢价；P/NAV 0.57x深度折价</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- 10 SCENARIOS -->
+<div class="sec" id="s10">
+  <div class="sh"><span class="sn">10</span><span class="st">情景分析 · Scenario Analysis（基于$17.43）</span></div>
+  <div class="sb">
+    <div class="sg">
+      <div class="sc bull">
+        <div class="scl">牛市情景 Bull Case</div>
+        <div class="sct">金价回升$4,800+ + 项目全面推进 + Kemess PFS强健</div>
+        <div class="scp">$32.00</div>
+        <div class="scu pos">+83.6% 上行空间</div>
+        <div class="scpr">概率 20%</div>
+        <div class="scd">金价恢复至$4,800–5,200（机构预测中值区间；J.P. Morgan目标$6,000+）；Öksüt AISC利润率$2,900+/oz；Mt Milligan有效金价$3,127–3,452/oz；FY2026E EPS超$4.80；Thompson Creek按计划2027年H1首产；Kemess PFS（2027年）确认NPV超$1.8B；P/NAV修复至0.95–1.0x；目标价$30–35区间。</div>
+      </div>
+      <div class="sc base">
+        <div class="scl">基准情景 Base Case</div>
+        <div class="sct">金价$3,800–4,200区间震荡 + 项目稳步推进</div>
+        <div class="scp">$22.00</div>
+        <div class="scu pos">+26.2% 上行空间</div>
+        <div class="scpr">概率 45%</div>
+        <div class="scd">金价均值约$3,900–4,050/oz（Warsh鹰派短期承压，结构性需求支撑底部）；Mt Milligan有效金价约$2,700–2,800/oz；Öksüt约$3,900/oz；FY2026E EPS约$3.80–4.00；Thompson Creek 2026年建设顺利；P/NAV修复至0.90x（股东回报溢价）；含股息总回报约+27%。</div>
+      </div>
+      <div class="sc bear">
+        <div class="scl">熊市情景 Bear Case</div>
+        <div class="sct">金价回落$3,000以下 + Öksüt扰动 + 建设延误</div>
+        <div class="scp">$12.00</div>
+        <div class="scu neg">-31.2% 下行风险</div>
+        <div class="scpr">概率 35%</div>
+        <div class="scd">美联储Warsh执行2次以上加息，地缘政治显著缓和（俄乌和谈+中东停火），金价回落至$3,000以下；Öksüt利润率在$3,000/oz时仅约$1,100/oz（仍为正，但显著压缩）；Mt Milligan有效金价$2,102/oz，AISC利润率$852/oz；FY2026E EPS跌至$1.60；Thompson Creek成本超支；P/NAV压缩至0.60–0.65x；目标价约$12–14。<br>关键注意：即便金价跌至$2,500/oz，Mt Milligan仍有约$527/oz利润率（有效金价$1,777 vs AISC$1,250），不会出现矿山亏损——净现金$543M提供强有力的下行保护。</div>
+      </div>
+    </div>
+
+    <h3 class="sub">12个月关键催化剂时间表</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>时间</th><th>事件</th><th>潜在影响</th><th>方向</th></tr></thead>
+      <tbody>
+        <tr><td class="mono bold">2026-08-07</td><td>Q2 2026财报发布（预期EPS约$0.90–1.05）</td><td>确认$4,000/oz金价下盈利能力；Öksüt产量和AISC执行；若同步宣布股息上调为最大正催化剂</td><td class="pos bold">↑ 最重要节点</td></tr>
+        <tr><td class="mono">2026-08-07</td><td>潜在股息上调（C$0.07→C$0.09+）</td><td>+28–43%股息增幅；传递强烈盈利信心；触发价值型买盘</td><td class="pos bold">↑ 重要正催化</td></tr>
+        <tr><td class="mono">2026 Q3</td><td>Thompson Creek建设关键里程碑</td><td>关键设备到位+基础工程确认；若顺利，2027年H1首产信心大增</td><td class="bold" style="color:var(--amber)">→ 双向关键</td></tr>
+        <tr><td class="mono">2026 Q3-Q4</td><td>Öksüt寿命优化研究结果</td><td>若纳入低品位氧化矿可延长矿山寿命至2030+，NAV增加约$1–2/股</td><td class="pos">↑ 正向</td></tr>
+        <tr><td class="mono">持续</td><td>美联储Warsh政策动态</td><td>加息→短期金价承压；停止加息/降息预期→金价支撑；是最大外部宏观变量</td><td class="bold" style="color:var(--amber)">→ 最大宏观变量</td></tr>
+        <tr><td class="mono">2026 Q4</td><td>COO正式继任公告</td><td>若继任者矿山运营背景强（尤其大型建设经验），消除Thompson Creek执行不确定性</td><td class="pos">↑ 小正</td></tr>
+        <tr><td class="mono">2027 Q1-Q2</td><td>Thompson Creek首产确认</td><td>Centerra正式成为金-铜-钼多金属生产商；产量跨越式增长；估值体系重评</td><td class="pos bold">↑ 长期核心催化剂</td></tr>
+        <tr><td class="mono">2027年</td><td>Kemess PFS完成（@$4,000/oz金价，NPV估~$1.6B）</td><td>PFS确认将触发市场对Kemess独立资产价值的重定价；可能是FY2027最大正催化剂</td><td class="pos bold">↑ 重大长期催化剂</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- 11 TECHNICALS -->
+<div class="sec" id="s11">
+  <div class="sh"><span class="sn">11</span><span class="st">技术面分析 · Technical Analysis（截至2026-06-24）</span></div>
+  <div class="sb">
+    <div class="co hold">
+      <div class="col">技术面：强势上涨后的健康回调 / 200日均线之上 / 当前区域为合理介入窗口</div>
+      CGAU从52周低点$6.71到历史高点$21.17涨幅+215%（主要对应金价从$3,000+到$5,589/oz的飙升）。当前$17.43距高点回调16.7%，仍处于200日均线之上（CNN Markets确认）。从52周区间定位看，当前处于73%分位——既非超卖，也非高估。在P/NAV 0.57x（深度折价）的基本面支撑下，技术面回调更应被视为介入机会，而非趋势逆转信号。
+    </div>
+
+    <h3 class="sub">关键价位图示</h3>
+    <div class="tlw">
+      <div class="tlr"><span class="tlp" style="color:var(--gold)">$32.00</span><div class="tlo"><div class="tli" style="width:100%;background:#FDE68A"></div></div><span class="tll">牛市情景目标价（金价回升$5,000+）</span><span class="tlt t-tar">牛市目标</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">$21.17</span><div class="tlo"><div class="tli" style="width:66%;background:#86EFAC"></div></div><span class="tll">52周高点（历史技术阻力）</span><span class="tlt t-res">阻力</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--gold)">$22.00</span><div class="tlo"><div class="tli" style="width:69%;background:#FDE68A"></div></div><span class="tll">Snail-Bird 12个月目标价</span><span class="tlt t-tar">目标</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--red-warn)">$19.00</span><div class="tlo"><div class="tli" style="width:59%;background:#FCA5A5"></div></div><span class="tll">近期技术阻力（前整固区上沿）</span><span class="tlt t-res">阻力</span></div>
+      <div class="tlr"><span class="tlp" style="color:#1D4ED8;font-weight:700">$17.43</span><div class="tlo"><div class="tli" style="width:54%;background:#93C5FD"></div></div><span class="tll" style="font-weight:600">当前价（2026-06-24）·理想建仓区</span><span class="tlt t-cur">当前</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">$16.00</span><div class="tlo"><div class="tli" style="width:50%;background:#86EFAC"></div></div><span class="tll">P/NAV 0.53x支撑（理想加仓区下沿）</span><span class="tlt t-sup">支撑</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">$14.50</span><div class="tlo"><div class="tli" style="width:45%;background:#86EFAC"></div></div><span class="tll">200日均线附近 / 止损参考位</span><span class="tlt t-sup">关键</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--green-pos)">$12.00</span><div class="tlo"><div class="tli" style="width:37%;background:#86EFAC"></div></div><span class="tll">熊市情景目标 / 强支撑</span><span class="tlt t-sup">熊市底</span></div>
+      <div class="tlr"><span class="tlp" style="color:var(--red-warn)">$6.71</span><div class="tlo"><div class="tli" style="width:21%;background:#FECACA"></div></div><span class="tll">52周低点（极端情景参考）</span><span class="tlt t-res">极端低</span></div>
+    </div>
+
+    <div class="co gold">
+      <div class="col">技术面综合解读与建仓策略</div>
+      在P/NAV 0.57x的基本面支撑下，当前$16–18区间是历史上较优的建仓窗口。最优技术策略：在$16–18区间分批建仓（当前价$17.43处于区间中）；以$14.50（200日均线附近）为止损参考；以$22为首要目标，$27+为长期目标（若金价恢复$4,500+且项目顺利推进）。若金价因Warsh进一步加息而短暂下试$3,500–3,800区间，CGAU可能跌至$14–15区间，届时P/NAV约0.46–0.50x，将是更优买点，届时建议加大仓位。
+    </div>
+  </div>
+</div>
+
+<!-- 12 RISKS -->
+<div class="sec" id="s12">
+  <div class="sh"><span class="sn">12</span><span class="st">风险提示 · Risk Factors</span></div>
+  <div class="sb">
+    <ul class="rl">
+      <li class="ri"><span class="rs rsh">高风险</span><div>
+        <div class="rt">金价大幅持续回落：从$4,000跌至$3,000以下</div>
+        <div class="rd">金价每下跌$100/oz，Centerra合并调整后EPS约下降$0.22（流量调整后加权）。从$4,000回落至$3,000意味着EPS从约$3.90降至约$1.70，P/E将重新走高，估值压力上升。保护机制：Mt Milligan即便在$2,500/oz时（有效金价$1,777）仍略高于AISC$1,250，不亏损；净现金$543M提供流动性缓冲；但Öksüt在$2,500以下有亏损风险（AISC$1,900）。</div>
+      </div></li>
+      <li class="ri"><span class="rs rsh">高风险</span><div>
+        <div class="rt">Öksüt土耳其地缘政治风险：Kumtor历史警示</div>
+        <div class="rd">Centerra于2022年被吉尔吉斯斯坦政府强制国有化Kumtor矿（矿业史上著名主权风险案例）。Öksüt同处新兴市场，面临：特许权费可能再次上调（FY2026指导已大幅提升$650–750/oz）；政局变化导致运营中断；土耳其里拉波动影响成本基准。在$4,000/oz金价下，Öksüt贡献FY2026E约$247M利润（占合并53%）——Öksüt的地缘政治风险是Centerra最大的单一尾部风险。</div>
+      </div></li>
+      <li class="ri"><span class="rs rsh">高风险</span><div>
+        <div class="rt">Thompson Creek建设超支与延误</div>
+        <div class="rd">大型矿山建设历史超支率约30–50%；若资本开支从预算$700–900M（估）超支至$1.1B+且首产延至2028年，将对Centerra的现金储备和投资回报率产生重大压力。COO David Hendriks于2026年3月离职，在关键建设年期间的管理层变动增加执行风险。</div>
+      </div></li>
+      <li class="ri"><span class="rs rsm">中风险</span><div>
+        <div class="rt">流量协议：收入弹性的永久性结构约束</div>
+        <div class="rd">Royal Gold流量权益至2045年到期，这是一个不可改变的结构性约束。在金价上涨时，Centerra的营收增幅永远低于无约束矿商约35%（金产量方面）。这不构成新的风险，但在黄金超级牛市中将使Centerra相对跑输纯金矿商，是给予持续折价的基础。</div>
+      </div></li>
+      <li class="ri"><span class="rs rsm">中风险</span><div>
+        <div class="rt">Mt Milligan运营风险（地质复杂性+水权）</div>
+        <div class="rd">2024年FY因"复杂矿化带"导致产量偏低端；地表水权许可（已于2026年1月完成修订，近期风险降低）；Royal Gold流量权益降低净实现价格（已定价但需持续关注）。任何重大运营中断将触发对全年产量指导的下调。</div>
+      </div></li>
+      <li class="ri"><span class="rs rsm">中风险</span><div>
+        <div class="rt">Langeloth事故持续影响</div>
+        <div class="rd">2026年1月事故影响全年钼焙烧能力，损失约$20–40M运营利润；若修复工期延至Q3–Q4，还可能影响Thompson Creek首产时的下游加工配套能力。公司未将此定性为重大材料信息，暗示影响可控，但具体影响金额仍在评估中。</div>
+      </div></li>
+      <li class="ri"><span class="rs rsl">低风险</span><div>
+        <div class="rt">铜价下行 / 加元汇率风险</div>
+        <div class="rd">铜价每下跌$0.50/磅，Mt Milligan by-product AISC上升约$60–80/oz（可管理）。加元升值通过远期合约部分对冲（合约延至2027年底）。两者均为可管理的低优先级风险，铜中长期基本面（清洁能源+AI数据中心）偏正面。</div>
+      </div></li>
+    </ul>
+  </div>
+</div>
+
+<!-- 13 RECOMMENDATION -->
+<div class="sec" id="s13">
+  <div class="sh"><span class="sn">13</span><span class="st">投资建议 · Investment Recommendation</span></div>
+  <div class="sb">
+    <div class="co buy">
+      <div class="col">Snail-Bird Investment · 贵金属与有色金属研究部 · 首次覆盖评级</div>
+      <strong>首次覆盖评级：审慎买入（Cautious Buy / Initiation）</strong> &nbsp;|&nbsp; 12个月目标价：<strong>$22.00</strong><br>
+      当前价：$17.43（2026-06-24，NYSE: CGAU）&nbsp;|&nbsp; 资本利得上行空间：<strong>+26.2%</strong> &nbsp;|&nbsp; 含股息合计预期回报：<strong>约+27.4%</strong><br><br>
+      <strong>三大评级支柱：</strong>①P/NAV 0.57x（@$4,000/oz实际金价）处于中型金矿商深度折价区间（均值0.85–0.90x），折价约36%；②流量协议对Mt Milligan的约束已被市场充分定价，而Öksüt在$4,000/oz下贡献更大利润（$247M），两矿合并AISC利润率$1,730/oz为历史高位；③净现金$543M + $300M+回购 + 股息持续增长的资本纪律框架，在矿业同类中属稀缺品质，支持P/NAV溢价。
+    </div>
+
+    <h3 class="sub">差异化操作建议（按投资者类型）</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>投资者类型</th><th>建议策略</th><th>建仓参考</th><th>目标价</th><th>止损位</th><th>时间维度</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">黄金多头 /<br>大宗商品投资者</td><td>当前$17.43是合理介入区（P/NAV 0.57x，P/E ~4.5x）；建议分两批：第一批当前价位（40%仓位），第二批Q2财报超预期后追加（60%）。注意：若金价短暂下试$3,600–3,800，CGAU可能跌至$15–16，届时加倍仓位更为合适</td><td class="mono">$16–18（第一批）<br>$15–17（若金价回调）</td><td class="mono pos bold">$22（12月）<br>$32（牛市）</td><td class="mono neg">$14.50</td><td>12–18个月</td></tr>
+        <tr><td class="bold">P/NAV价值投资者</td><td>P/NAV 0.57x vs 同类均值0.85–0.90x：折价约36%，是清晰的NAV折价买入机会。无需等待更低价格——$4,000/oz金价下NAV$30.33/股提供充足安全边际。建议以$15–18为核心建仓区，目标P/NAV回归0.80–0.90x</td><td class="mono">$15–18（积极）</td><td class="mono pos bold">$24–27</td><td class="mono neg">$14.50</td><td>12–24个月</td></tr>
+        <tr><td class="bold">成长期权投资者</td><td>Thompson Creek（2027首产）+Kemess PFS（2027年，@$4,000/oz NPV估$1.6B）+Goldfield，三个平行期权构成强大的成长期权矩阵。当前建仓，持有至上述里程碑兑现，目标价$30+（2028年Thompson Creek+Kemess双重兑现）</td><td class="mono">$16–19</td><td class="mono pos bold">$30+（2028+）</td><td class="mono neg">$13.50</td><td>24–48个月</td></tr>
+        <tr><td class="bold">风险厌恶型投资者</td><td>Öksüt土耳其风险+Thompson Creek建设风险仍存在；建议总组合中3–5%小仓位参与，作为黄金板块的补充配置。若寻求更低风险的黄金敞口，Agnico Eagle（AEM，低成本+零新兴市场风险）是更稳健替代。不建议将CGAU作为核心黄金持仓</td><td class="mono">小仓位（3–5%）</td><td class="mono">$22</td><td class="mono neg">$14.50</td><td>12个月</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub">评级更新触发条件</h3>
+    <div class="dtw"><table>
+      <thead><tr><th>触发条件</th><th>可能评级变化</th></tr></thead>
+      <tbody>
+        <tr><td>金价回升并稳定在$4,500+/oz（连续4周）</td><td class="pos bold">上调至强力买入；目标价上调至$28–32</td></tr>
+        <tr><td>Q2 2026财报EPS超$0.95（2026-08-07）+ 宣布股息上调</td><td class="pos bold">维持审慎买入；目标价上调至$25</td></tr>
+        <tr><td>Thompson Creek Q3–Q4关键里程碑顺利（设备到位确认）</td><td class="pos">目标价上调至$24；执行风险折扣降低</td></tr>
+        <tr><td>Kemess PFS（2027年）确认NPV超$1.5B</td><td class="pos bold">目标价大幅上调；成长溢价充分释放</td></tr>
+        <tr><td>Öksüt寿命优化研究确认延寿至2030+</td><td class="pos">NAV增加$1–2/股；目标价上调至$23</td></tr>
+        <tr><td>金价持续跌破$3,200/oz（连续4周）</td><td class="neg bold">下调至持有；目标价下调至$15</td></tr>
+        <tr><td>土耳其政府对Öksüt实施新的不利措施</td><td class="neg bold">立即下调至减持；目标价大幅下调</td></tr>
+        <tr><td>Thompson Creek成本超支超30%或工期延误超6个月</td><td class="neg">下调至持有；目标价下调至$18</td></tr>
+        <tr><td>COO正式继任（运营背景强）</td><td class="pos">小幅正向；消除管理层执行不确定性</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="co warn">
+      <div class="col">分析师独立性声明与黄金投资首要原则</div>
+      本报告由Snail-Bird Investment贵金属与有色金属研究部独立撰写，不代表任何卖方机构立场。目标价$22.00低于P/NAV加权结果$22.87，主动给予5%保守折扣以反映金价下行风险（Warsh可能加息）。我们的目标价高于BofA $14.50（基于$3,000/oz保守金价假设），低于Scotiabank $21（金价假设相近，但我们的股东回报溢价更高）。<br><br>
+      <strong>黄金矿业投资首要原则：先建立对黄金中长期价格的判断，此判断将主导CGAU的最终回报。</strong>我们的基准情景假设金价维持$3,800–4,200/oz区间，在此基础上CGAU呈现显著低估（P/NAV 0.57x）。若您认为金价将回到$2,500以下，则任何矿业公司均不值得买入；若您认为金价将恢复至$5,000+（J.P. Morgan目标$6,000+），则CGAU在当前价格是极具吸引力的标的（EPS可能超$5.00，P/E将跌至约3x）。本报告仅供参考，不构成任何投资邀约。
+    </div>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disc">
+  <div class="disc-hd">免责声明 / Disclaimer</div>
+  <p>本报告仅供信息参考，不构成任何投资邀约、要约、招募或建议。Snail-Bird Investment贵金属与有色金属研究部力求数据准确可靠，所有关键数据均注明一手来源，并经过独立核实。</p>
+  <p><strong>核心数据来源：</strong>金价历史轨迹：CBS News（$5,589.38历史高点确认，2026-01-28）；GoldPriceTools（$5,420收盘峰值；$4,170年内低点；J.P. Morgan预测）；LiteFinance（详细月度轨迹，2026-01-29高点$5,593/5,595.52）；Fortune（6月24日实测$3,988/oz，9AM ET）；GoldSilver.com / Scottsdale Bullion（机构预测汇总：J.P. Morgan $6,000–6,300；Goldman $4,900；UBS $5,500；Wells Fargo $6,100–6,300）；Kitco（2025全年+65%，LBMA共识$4,742）。Centerra Gold运营数据：SEC 6-K（2026-02-19 FY2025年报；2026-04-29 Q1 2026财报）；GlobeNewswire（各季度新闻稿）。Royal Gold流量协议条款：Mount Milligan购买协议（SEC公开文件）。行情数据：GuruFocus（2026-06-24）；MacroTrends（52周区间）；TipRanks / Stockanalysis（卖方评级）。</p>
+  <p>黄金矿业公司价值高度依赖大宗商品价格，目标价将随金属价格波动相应调整。过去业绩不代表未来表现。</p>
+  <p>© 2026 Snail-Bird Investment · 贵金属与有色金属研究部 · 保留所有权利 · 未经授权不得转载</p>
+</div>
+
+</div><!-- end page-body -->
+<div class="pf">
+  <span class="pfb">🐦 SNAIL-BIRD INVESTMENT · PRECIOUS & BASE METALS RESEARCH · INITIATION OF COVERAGE</span>
+  <span class="pfb">Centerra Gold NYSE: CGAU / TSX: CG · 深度报告 · 首次覆盖 · 2026-06-24</span>
+</div>
+</body>
+</html>
