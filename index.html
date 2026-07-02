@@ -275,10 +275,10 @@
         <span class="nav-arrow">▸</span>
       </div>
       <div class="nav-sub" id="semiSub">
-        <a href="#" onclick="switchCat('china','semi-cn');return false;" id="semi-cn-link">
+        <a href="#" onclick="switchCat('semi-cn');return false;" id="semi-cn-link">
           <span style="font-weight:600;color:var(--accent2);width:20px;text-align:center;">A</span><span>A股半导体热度</span>
         </a>
-        <a href="#" onclick="switchCat('us','semi-us');return false;" id="semi-us-link">
+        <a href="#" onclick="switchCat('semi-us');return false;" id="semi-us-link">
           <span style="font-weight:600;color:var(--accent2);width:20px;text-align:center;">U</span><span>美国半导体热度</span>
         </a>
       </div>
@@ -560,6 +560,16 @@
   </div>
 </div>
 
+
+<!-- A股半导体热度 -->
+<div class="panel" id="panel-semi-cn">
+  <div class="section-hd">
+    <h2>A股半导体热度</h2>
+    <span class="muted">每日更新 · SBI泡沫指数</span>
+  </div>
+  <div class="grid">
+  </div>
+</div><!-- /panel-semi-cn -->
 <!-- 港股 -->
 <div class="panel" id="panel-hk">
   <div class="section-hd">
@@ -1152,6 +1162,19 @@
       <div class="card-desc">美股硬件/半导体板块SBI泡沫指数日报，基于估值/拥挤度/杠杆/业绩兑现/资金流向/外部环境六维度评分，今日总分77分（危险区间），环比+1.1分。SOX偏离200MA达+71.4%，估值维度骤升至91分。</div>
       <div class="card-tags"><span class="tag">美股</span><span class="tag">半导体</span><span class="tag">SBI泡沫指数</span></div>
       <a class="card-btn" href="report-us-hardware-sbi-2026-06-20.html">阅读报告</a>
+
+    <div class="card">
+      <div class="card-top">
+        <div class="card-icon" style="background:#dbeafe;color:#1d4ed;">HK</div>
+        <div>
+          <div class="card-title">PCT（栢能集团，0999.HK）投资研究报告</div>
+          <div class="card-sub">2026年7月1日 · 最新</div>
+        </div>
+      </div>
+      <div class="card-desc">PCT（栢能集团）深度投研报告，覆盖AI算力产业链、估值分析、风险提示。</div>
+      <div class="card-tags"><span class="tag">港股</span><span class="tag">科技互联网</span><span class="tag">AI算力</span><span class="tag">最新</span></div>
+      <a class="card-btn" href="PCT_投资研究报告_SnailBird.html">阅读报告</a>
+    </div>
     </div>
     <div class="card">
       <div class="card-top">
@@ -1253,6 +1276,16 @@
 </div>
 </div><!-- /panel-us -->
 
+
+<!-- 美国半导体热度 -->
+<div class="panel" id="panel-semi-us">
+  <div class="section-hd">
+    <h2>美国半导体热度</h2>
+    <span class="muted">每日更新 · SBI泡沫指数</span>
+  </div>
+  <div class="grid">
+  </div>
+</div><!-- /panel-semi-us -->
 <!-- 宏观周记 -->
 <div class="panel" id="panel-macro">
   <div class="section-hd">
@@ -1355,14 +1388,20 @@ const topbarTabs = document.getElementById('topbarTabs');
 const tabConfig = {
   china: [
     {text:'化工价格', target:'panel-china', active:true},
-    {text:'半导体热度', target:'semi-cn-section'},
+    {text:'半导体热度', target:'panel-semi-cn'},
   ],
   hk: [
     {text:'深度投研', target:'panel-hk', active:true},
   ],
   us: [
     {text:'深度投研', target:'panel-us', active:true},
-    {text:'半导体热度', target:'semi-us-section'},
+    {text:'半导体热度', target:'panel-semi-us'},
+  ],
+  'semi-cn': [
+    {text:'SBI泡沫指数', target:'panel-semi-cn', active:true},
+  ],
+  'semi-us': [
+    {text:'SBI泡沫指数', target:'panel-semi-us', active:true},
   ],
   macro: [
     {text:'宏观周记', target:'panel-macro', active:true},
@@ -1419,8 +1458,8 @@ function toggleSemiSub(){
 function syncSemiSubActive(){
   const activePanel = document.querySelector('.panel.active');
   const id = activePanel ? activePanel.id : '';
-  semiCnLink.classList.toggle('active', id==='panel-china');
-  semiUsLink.classList.toggle('active', id==='panel-us');
+  semiCnLink.classList.toggle('active', id==='panel-semi-cn');
+  semiUsLink.classList.toggle('active', id==='panel-semi-us');
 }
 
 function toggleSidebar(forceClose){
@@ -1474,18 +1513,21 @@ if(localStorage.getItem('theme')==='dark'){
 
 // init from URL hash
 function applyHash(){
-  const hash = window.location.hash.slice(1); // remove leading #
+  const hash = window.location.hash.slice(1);
   if(!hash) return;
-  const parts = hash.split('-');
+  const parts = hash.split('/');
   const cat = parts[0];
   let scrollTarget = null;
-  if(parts.length >= 3 && parts[1] === 'semi'){
-    scrollTarget = parts[1] + '-' + parts[2];
+  if(parts.length >= 2 && parts[1] === 'semi'){
+    scrollTarget = 'panel-semi-' + parts[2];
   }
-  const validCats = ['china','hk','us','macro'];
+  const validCats = ['china','hk','us','macro','semi-cn','semi-us','research'];
   if(validCats.includes(cat)){
     switchCat(cat, scrollTarget, false);
-    if(cat==='china' || cat==='us'){
+    if(cat==='semi-cn' || cat==='semi-us'){
+      semiSub.classList.add('open');
+      semiToggle.classList.add('expanded');
+    } else if(cat==='china' || cat==='us'){
       semiSub.classList.add('open');
       semiToggle.classList.add('expanded');
     }
