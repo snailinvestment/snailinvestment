@@ -52,8 +52,6 @@
 
     background:var(--bg);color:var(--text);min-height:100vh;display:flex;
 
-    padding-top:var(--topbar-h);margin:0;padding-left:0;padding-right:0;padding-bottom:0;box-sizing:border-box;
-
     transition:background .3s,color .3s;font-size:14px;line-height:1.5;
 
     width:100%;
@@ -251,19 +249,18 @@
   .sidebar-bottom {padding:12px 16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
 
   .sidebar-version {font-size:.7rem;color:var(--text2);font-weight:500;}
-  .sidebar-version-note {font-size:.6rem;color:#e0a820;margin-top:2px;}
 
 
 
   /* ── Main content ── */
 
-  .main-wrap {margin-left:var(--sidebar-w);flex:1;min-width:0;}
+  .main-wrap {margin-left:var(--sidebar-w);margin-top:var(--topbar-h);flex:1;min-width:0;}
 
   .content {max-width:1200px;margin:0 auto;padding:28px 32px 60px;}
 
 
 
-  .section-hd {display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:6px;}
+  .section-hd {display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:6px;}
 
   .section-hd h2 {font-size:1.15rem;font-weight:700;letter-spacing:.1px;}
 
@@ -279,7 +276,7 @@
 
   .sector-hd {
 
-    display:flex;align-items:center;gap:8px;margin-bottom:36px;padding-left:4px;
+    display:flex;align-items:center;gap:8px;margin-bottom:12px;padding-left:4px;
 
     border-left:3px solid var(--accent, #1a56db);
 
@@ -351,7 +348,7 @@
 
     background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 18px;
 
-    display:flex;align-items:center;gap:20px;transition:box-shadow .2s;
+    display:flex;align-items:center;gap:14px;transition:box-shadow .2s;
 
   }
 
@@ -378,24 +375,6 @@
 
 
   .card.hidden {display:none;}
-
-  /* ── Monthly toggle for SBI reports ── */
-  .month-group {margin-bottom:8px;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
-  .month-toggle {
-    display:flex;align-items:center;gap:8px;
-    padding:10px 16px;cursor:pointer;user-select:none;
-    background:var(--bg);font-size:.82rem;font-weight:600;color:var(--text);
-    transition:background .15s;
-  }
-  .month-toggle:hover {background:var(--tag-bg);}
-  .month-toggle .arrow {
-    display:inline-block;transition:transform .2s;
-    font-size:.7rem;color:var(--text2);
-  }
-  .month-toggle .arrow.open {transform:rotate(90deg);}
-  .month-cards {display:none;}
-  .month-cards.open {display:block;}
-  .month-cards .grid {margin-top:0;padding:0 4px 8px;}
 
 
 
@@ -579,7 +558,7 @@
 
         </a>
 
-        <a href="#" onclick="switchCat('semi-us');return false;" id="semi-us-link">
+        <a href="#" onclick="switchCat('us','semi-us');return false;" id="semi-us-link">
 
           <span style="font-weight:600;color:var(--accent2);width:20px;text-align:center;">U</span><span>美国半导体热度</span>
 
@@ -605,8 +584,7 @@
 
   <div class="sidebar-bottom">
 
-    <span class="sidebar-version">v2.3</span>
-    <span class="sidebar-version-note">(cards · 0701-1900)</span>
+    <span class="sidebar-version">v1.4</span>
 
   </div>
 
@@ -635,6 +613,33 @@
   </div>
 
   <div class="grid">
+
+
+    <div class="card">
+      <div class="card-top">
+        <div class="card-icon" style="background:#0f2040;color:#c9a84c;">CN</div>
+        <div>
+          <div class="card-title">A股半导体SBI泡沫指数</div>
+          <div class="card-sub">2026年7月1日（周三） · 最新</div>
+        </div>
+      </div>
+      <div class="card-desc">A股半导体板块SBI泡沫指数日报，基于估值/拥挤度/杠杆/业绩兑现/资金流向/外部环境六维度评分，今日总分78.6分（危险区间），环比+3.3分。申万半导体PE 152.4倍(100%分位)，两融首破3万亿，寒武纪市值破万亿。</div>
+      <div class="card-tags"><span class="tag">A股</span><span class="tag">半导体</span><span class="tag">SBI泡沫指数</span><span class="tag">最新</span></div>
+      <a class="card-btn" href="report-semiconductor-sbi-2026-07-01.html">阅读报告</a>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div class="card-icon" style="background:#0f2040;color:#c9a84c;">CN</div>
+        <div>
+          <div class="card-title">A股半导体SBI泡沫指数</div>
+          <div class="card-sub">2026年6月30日 (周二)</div>
+        </div>
+      </div>
+      <div class="card-desc">A股半导体板块SBI泡沫指数，基于估值/拥挤度/杠杆/业绩兑现/资金流向/外部环境六维度评分，今日总分73.7分（危险区间），环比-5.2分。乐咕乐股06-29更新等权TTM PE分位100%，科创50再创历史新高，但电子板块主力资金净流出195亿，融资余额高位回落。</div>
+      <div class="card-tags"><span class="tag">A股</span><span class="tag">半导体</span><span class="tag">SBI泡沫指数</span><span class="tag">最新</span></div>
+      <a class="card-btn" href="report-semiconductor-sbi-2026-06-30.html">阅读报告</a>
+    </div>
     <div class="card">
 
       <div class="card-top">
@@ -787,67 +792,19 @@
 
 <!-- A股半导体 -->
 <div class="panel" id="panel-semi-cn">
-  <div class="section-hd" id="semi-cn-section" style="margin-top:36px;">
+<div class="section-hd" id="semi-cn-section" style="margin-top:36px;">
+
     <h2>A股半导体热度</h2>
+
     <span class="muted">每日更新 · 覆盖设计/制造/设备/材料全产业链</span>
+
   </div>
 
-  <div class="month-group">
-    <div class="month-toggle" onclick="toggleMonth(this)">
-      <span class="arrow open">&rsaquo;</span>
-      <span>2026年7月</span>
-    </div>
-    <div class="month-cards open">
-      <div class="grid">
-<div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#0f2040;color:#c9a84c;">CN</div>
-        <div>
-          <div class="card-title">A股半导体SBI泡沫指数</div>
-          <div class="card-sub">2026年7月2日（周四） · 最新</div>
-        </div>
-      </div>
-      <div class="card-desc">A股半导体板块SBI泡沫指数日报，基于六维度评分今日总分80.5分（接近极端危险区间），环比+1.9分。申万半导体PE 194倍(99%+分位)达历史极限，主力单日净流出242亿但ETF仍吸金66亿+，资金严重分化。</div>
-      <div class="card-tags"><span class="tag">A股</span><span class="tag">半导体</span><span class="tag">SBI泡沫指数</span><span class="tag">最新</span></div>
-      <a class="card-btn" href="report-semiconductor-sbi-2026-07-02.html">阅读报告</a>
-    </div>
+  <div class="grid">
+
+
 
     <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#0f2040;color:#c9a84c;">CN</div>
-        <div>
-          <div class="card-title">A股半导体SBI泡沫指数</div>
-          <div class="card-sub">2026年7月1日（周三）</div>
-      <div class="card-tags"><span class="tag">A股</span><span class="tag">半导体</span><span class="tag">SBI泡沫指数</span></div>
-      <a class="card-btn" href="report-semiconductor-sbi-2026-07-01.html">阅读报告</a>
-    </div>
-      </div>
-    </div>
-  </div>
-
-  </div>
-  </div>
-
-  <div class="month-group">
-    <div class="month-toggle" onclick="toggleMonth(this)">
-      <span class="arrow open">&rsaquo;</span>
-      <span>2026年6月</span>
-    </div>
-    <div class="month-cards open">
-      <div class="grid">
-<div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#0f2040;color:#c9a84c;">CN</div>
-        <div>
-          <div class="card-title">A股半导体SBI泡沫指数</div>
-          <div class="card-sub">2026年6月30日 (周二)</div>
-        </div>
-      </div>
-      <div class="card-desc">A股半导体板块SBI泡沫指数，基于估值/拥挤度/杠杆/业绩兑现/资金流向/外部环境六维度评分，今日总分73.7分（危险区间），环比-5.2分。乐咕乐股06-29更新等权TTM PE分位100%，科创50再创历史新高，但电子板块主力资金净流出195亿，融资余额高位回落。</div>
-      <div class="card-tags"><span class="tag">A股</span><span class="tag">半导体</span><span class="tag">SBI泡沫指数</span><span class="tag">最新</span></div>
-      <a class="card-btn" href="report-semiconductor-sbi-2026-06-30.html">阅读报告</a>
-    </div>
-<div class="card">
 
       <div class="card-top">
 
@@ -1222,9 +1179,7 @@
 
 </div>
 <!-- /panel-semi-cn -->
-      </div>
-    </div>
-  </div>
+
 <!-- 港股 -->
 
 <div class="panel" id="panel-hk">
@@ -1247,7 +1202,7 @@
 
       <span class="sector-icon">📱</span><h3>科技互联网</h3>
 
-      <span class="sector-count">3份报告</span>
+      <span class="sector-count">2份报告</span>
 
     </div>
 
@@ -1298,30 +1253,6 @@
         <div class="card-tags"><span class="tag">金融科技</span><span class="tag">券商</span><span class="tag">财富管理</span></div>
 
         <a class="card-btn" href="FUTU_深度投研报告_2026.html">阅读报告</a>
-
-      </div>
-
-      <div class="card">
-
-        <div class="card-top">
-
-          <div class="card-icon" style="background:#1a3a5c;color:#4da6ff;">PC</div>
-
-          <div>
-
-            <div class="card-title">栢能集团 (PCT / 01263.HK)</div>
-
-            <div class="card-sub">SGX: PCT · AI/GPU硬件 · ACCUMULATE · S$3.50</div>
-
-          </div>
-
-        </div>
-
-        <div class="card-desc">全球最大显卡制造商之一，NVIDIA核心AIC合作伙伴，深度分析AI GPU供应链红利、RTX 5090放量周期、印尼新厂产能扩张及估值重估逻辑。</div>
-
-        <div class="card-tags"><span class="tag">GPU</span><span class="tag">AI硬件</span><span class="tag">NVIDIA供应链</span><span class="tag">显卡</span></div>
-
-        <a class="card-btn" href="PCT_投资研究报告_SnailBird.html">阅读报告</a>
 
       </div>
 
@@ -1414,6 +1345,48 @@
         <div class="card-tags"><span class="tag">水泥</span><span class="tag">新材料</span><span class="tag">央企改革</span></div>
 
         <a class="card-btn" href="03323_深度投研报告_2026.html">阅读报告</a>
+
+      </div>
+
+          <div>
+
+            <div class="card-title">中国海洋石油 (0883.HK)</div>
+
+            <div class="card-sub">HKEX: 0883 · 能源/油气</div>
+
+          </div>
+
+        </div>
+
+        <div class="card-desc">中国最大海上油气生产商，分析其成本优势、股息收益率、油价敏感性及估值逻辑。</div>
+
+        <div class="card-tags"><span class="tag">能源</span><span class="tag">油气</span><span class="tag">高股息</span></div>
+
+        <a class="card-btn" href="0883HK_深度投研报告_2026.html">阅读报告</a>
+
+      </div>
+
+      <div class="card">
+
+        <div class="card-top">
+
+          <div class="card-icon" style="background:#5C4033;color:#D4A574;">HQ</div>
+
+          <div>
+
+            <div class="card-title">中国宏桥 (01378.HK)</div>
+
+            <div class="card-sub">HKEX: 1378 · 周期 · BUY · HK$35</div>
+
+          </div>
+
+        </div>
+
+        <div class="card-desc">全球最大电解铝生产商，深度分析铝价周期、电力成本优势及碳中和背景下估值重估逻辑。</div>
+
+        <div class="card-tags"><span class="tag">电解铝</span><span class="tag">周期</span><span class="tag">电力成本</span></div>
+
+        <a class="card-btn" href="01378_深度投研报告_2026.html">阅读报告</a>
 
       </div>
 
@@ -2293,6 +2266,9 @@
 
       </div>
 
+    </div>
+
+  </div>
       <div class="card">
         <div class="card-top">
           <div class="card-icon" style="background:#0a2240;color:#d4a017;">TR</div>
@@ -2306,65 +2282,21 @@
         <a class="card-btn" href="TRV_深度投研报告_2026.html">阅读报告</a>
       </div>
 
-    </div>
-
-  </div>
 
 
+  <div class="section-hd" id="semi-us-section" style="margin-top:36px;">
 
-</div>
-<!-- /panel-us -->
-
-<!-- 美国半导体热度 -->
-<div class="panel" id="panel-semi-us">
-    <div class="section-hd" id="semi-us-section" style="margin-top:36px;">
     <h2>美国半导体热度</h2>
+
     <span class="muted">每日更新 · 覆盖AI芯片/光通信/设备/EDA全产业链</span>
-  </div>
-
-  <div class="month-group">
-    <div class="month-toggle" onclick="toggleMonth(this)">
-      <span class="arrow open">&rsaquo;</span>
-      <span>2026年7月</span>
-    </div>
-    <div class="month-cards open">
-      <div class="grid">
-<div class="card">
-        <div class="card-top">
-          <div class="card-icon" style="background:#0f2040;color:#c9a84c;">US</div>
-          <div>
-            <div class="card-title">美股半导体硬件SBI泡沫指数</div>
-            <div class="card-sub">2026年7月2日（周四） · 最新</div>
-          </div>
-        </div>
-        <div class="card-desc">美股硬件/半导体板块SBI泡沫指数日报（数据修正版），六维度评分总分67.0分（危险区间），初版72.8分因SOX数据错误（-4.4%误为-6.27%）已修正。杠杆维度93分仍处极值。</div>
-        <div class="card-tags"><span class="tag">美股</span><span class="tag">半导体</span><span class="tag">SBI泡沫指数</span><span class="tag">最新</span></div>
-        <a class="card-btn" href="report-us-hardware-sbi-2026-07-02.html">阅读报告</a>
-      </div>
-
-<div class="card">
-        <div class="card-top">
-          <div class="card-icon" style="background:#0f2040;color:#c9a84c;">US</div>
-          <div>
-            <div class="card-title">美股半导体硬件SBI泡沫指数</div>
-            <div class="card-sub">2026年7月1日（周三）</div>
-        <div class="card-tags"><span class="tag">美股</span><span class="tag">半导体</span><span class="tag">SBI泡沫指数</span></div>
-        <a class="card-btn" href="report-us-hardware-sbi-2026-07-01.html">阅读报告</a>
-      </div>
-      </div>
-    </div>
-  </div>
 
   </div>
-  </div>
 
-  <div class="month-group">
-    <div class="month-toggle" onclick="toggleMonth(this)">
-      <span class="arrow open">&rsaquo;</span>
-      <span>2026年6月</span>
-    </div>
-    <div class="month-cards open">
-      <div class="grid">
+  <div class="grid">
+
+      
+
+      
       <div class="card">
         <div class="card-top">
           <div class="card-icon" style="background:#0f2040;color:#c9a84c;">US</div>
@@ -2376,6 +2308,18 @@
         <div class="card-desc">美股硬件/半导体板块SBI泡沫指数日报，基于估值/拥挤度/杠杆/业绩兑现/资金流向/外部环境六维度评分，今日总分76.0分（危险区间），环比持平。SOX 6/29反弹+3.83%系超卖修复，但FINRA融资余额$1.415T创历史新高、S&P500 Top10集中度37.46%达1970年代来最高，泡沫未消。</div>
         <div class="card-tags"><span class="tag">美股</span><span class="tag">半导体</span><span class="tag">SBI泡沫指数</span></div>
         <a class="card-btn" href="report-us-hardware-sbi-2026-06-30.html">阅读报告</a>
+      </div>
+<div class="card">
+        <div class="card-top">
+          <div class="card-icon" style="background:#0f2040;color:#c9a84c;">US</div>
+          <div>
+            <div class="card-title">美股半导体硬件SBI泡沫指数</div>
+            <div class="card-sub">2026年7月1日（周三） · 最新</div>
+          </div>
+        </div>
+        <div class="card-desc">美股硬件/半导体板块SBI泡沫指数日报，基于估值/拥挤度/杠杆/业绩兑现/资金流向/外部环境六维度评分，今日总分75.8分（危险区间），环比+3.6分。FINRA融资余额$1.416T创历史新高(+53.7% YoY)，杠杆维度92.6分达极值；NVDA PE 30.64合理但AMD PE 190极端。</div>
+        <div class="card-tags"><span class="tag">美股</span><span class="tag">半导体</span><span class="tag">SBI泡沫指数</span><span class="tag">最新</span></div>
+        <a class="card-btn" href="report-us-hardware-sbi-2026-07-01.html">阅读报告</a>
       </div>
 
       <div class="card">
@@ -2717,9 +2661,10 @@
     </div>
 
   </div>
+
 </div>
-</div>
-</div><!-- /panel-semi-us -->
+
+</div><!-- /panel-us -->
 
 
 
@@ -2735,61 +2680,59 @@
 
   </div>
 
-  <div class="grid">
+  <div style="display:flex;flex-direction:column;gap:12px;">
 
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#ede9fe;color:#6d28d9;">W4</div>
-        <div>
-          <div class="card-title">2026年6月第4周 · 全球宏观复盘与7月展望</div>
-          <div class="card-sub">6.22-6.28全球宏观回顾 · 四维驱动三层传导框架</div>
-        </div>
+    <div class="list-item">
+      <div class="list-icon" style="background:#ede9fe;color:#6d28d9;">W4</div>
+      <div class="list-body">
+        <div class="list-title">2026年6月第4周 · 全球宏观复盘与7月展望</div>
+        <div class="list-meta">6.22-6.28全球宏观回顾 · 四维驱动三层传导框架 · 大类资产配置建议</div>
       </div>
-      <div class="card-desc">6.22-6.28全球宏观回顾 · 四维驱动三层传导框架 · 大类资产配置建议</div>
-      <div class="card-tags"><span class="tag">宏观</span><span class="tag">周记</span><span class="tag">资产配置</span></div>
-      <a class="card-btn" href="macro-review-2026-06-28-week04.html">阅读全文</a>
+      <a class="list-btn" href="macro-review-2026-06-28-week04.html">阅读全文</a>
+    </div>
+    <div class="list-item">
+      <div class="list-icon" style="background:#dcfce7;color:#166534;">W25</div>
+      <div class="list-body">
+        <div class="list-title">2026年6月第3周 · 全球宏观复盘与第4周展望</div>
+        <div class="list-meta">6.15-6.21全球宏观回顾 · 下周重大事件前瞻 · 大类资产配置建议</div>
+      </div>
+      <a class="list-btn" href="macro-review-2026-06-21-week03.html">阅读全文</a>
     </div>
 
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#dcfce7;color:#166534;">W3</div>
-        <div>
-          <div class="card-title">2026年6月第3周 · 全球宏观复盘与第4周展望</div>
-          <div class="card-sub">6.15-6.21全球宏观回顾 · 下周重大事件前瞻</div>
-        </div>
+    <div class="list-item">
+
+      <div class="list-icon" style="background:#fef3c7;color:#92400e;">W24</div>
+
+      <div class="list-body">
+
+        <div class="list-title">2026年6月第2周 · 全球宏观复盘与第3周展望</div>
+
+        <div class="list-meta">美伊和谈·SpaceX IPO·欧央行加息·FOMC前瞻 · 大类资产配置建议</div>
+
       </div>
-      <div class="card-desc">6.15-6.21全球宏观回顾 · 下周重大事件前瞻 · 大类资产配置建议</div>
-      <div class="card-tags"><span class="tag">宏观</span><span class="tag">周记</span><span class="tag">资产配置</span></div>
-      <a class="card-btn" href="macro-review-2026-06-21-week03.html">阅读全文</a>
+
+      <a class="list-btn" href="macro-review-2026-06-14-week02.html">阅读全文</a>
+
     </div>
 
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#fef3c7;color:#92400e;">W2</div>
-        <div>
-          <div class="card-title">2026年6月第2周 · 全球宏观复盘与第3周展望</div>
-          <div class="card-sub">美伊和谈 · SpaceX IPO · 欧央行加息</div>
-        </div>
-      </div>
-      <div class="card-desc">美伊和谈·SpaceX IPO·欧央行加息·FOMC前瞻 · 大类资产配置建议</div>
-      <div class="card-tags"><span class="tag">宏观</span><span class="tag">周记</span><span class="tag">资产配置</span></div>
-      <a class="card-btn" href="macro-review-2026-06-14-week02.html">阅读全文</a>
-    </div>
+    <div class="list-item">
 
-    <div class="card">
-      <div class="card-top">
-        <div class="card-icon" style="background:#fee2e2;color:#b91c1c;">W1</div>
-        <div>
-          <div class="card-title">2026年6月第1周 · 全球宏观复盘与第2周展望</div>
-          <div class="card-sub">美联储政策路径 · 中东局势演变</div>
-        </div>
+      <div class="list-icon" style="background:#fee2e2;color:#b91c1c;">W23</div>
+
+      <div class="list-body">
+
+        <div class="list-title">2026年6月第1周 · 全球宏观复盘与第2周展望</div>
+
+        <div class="list-meta">美联储政策路径 · 中东局势演变 · 全球流动性观察 · 大类资产配置建议</div>
+
       </div>
-      <div class="card-desc">美联储政策路径 · 中东局势演变 · 全球流动性观察 · 大类资产配置建议</div>
-      <div class="card-tags"><span class="tag">宏观</span><span class="tag">周记</span><span class="tag">资产配置</span></div>
-      <a class="card-btn" href="macro_2026W23.html">阅读全文</a>
+
+      <a class="list-btn" href="macro_2026W23.html">阅读全文</a>
+
     </div>
 
   </div>
+
 </div>
 
 
@@ -2806,58 +2749,48 @@
 
     </div>
 
-    <div class="grid">
+    <div style="display:flex;flex-direction:column;gap:12px;">
 
-      <div class="card">
-        <div class="card-top">
-          <div class="card-icon" style="background:#5b4dcf;color:#fff;">AI</div>
-          <div>
-            <div class="card-title">AI算力产业链投资逻辑全面迭代</div>
-            <div class="card-sub">从β普涨到α精选 · 架构控制权 · 投资框架升级</div>
-          </div>
+      <div class="list-item">
+
+        <div class="list-icon" style="background:#5b4dcf;color:#fff;">AI</div>
+
+        <div class="list-body">
+
+          <div class="list-title">AI算力产业链投资逻辑全面迭代</div>
+
+          <div class="list-meta">从β普涨到α精选 · 架构控制权 · 投资框架升级 · 2026-06-14</div>
+
         </div>
-        <div class="card-desc">从β普涨到α精选 · 架构控制权 · 投资框架升级 · 2026-06-14</div>
-        <div class="card-tags"><span class="tag">AI</span><span class="tag">算力</span><span class="tag">产业链</span></div>
-        <a class="card-btn" href="ai_compute_chain_research_2026.html">阅读全文</a>
+      <div class="list-item">
+        <div class="list-icon" style="background:#c9a84c;color:#fff;">ML</div>
+        <div class="list-body">
+          <div class="list-title">大摩MLCC超级周期报告深度解析</div>
+          <div class="list-meta">AI服务器MLCC内容量暴增10-15倍 &middot; 供给端六大结构性约束 &middot; 核心标的SEMCO &middot; 2026-06-24</div>
+        </div>
+        <a class="list-btn" href="mlcc_supercycle_research_2026.html">阅读全文</a>
       </div>
 
-      <div class="card">
-        <div class="card-top">
-          <div class="card-icon" style="background:#c9a84c;color:#fff;">ML</div>
-          <div>
-            <div class="card-title">大摩MLCC超级周期报告深度解析</div>
-            <div class="card-sub">AI服务器MLCC内容量暴增10-15倍</div>
-          </div>
+      <div class="list-item">
+        <div class="list-icon" style="background:#1a3a5c;color:#c8a44e;">HB</div>
+        <div class="list-body">
+          <div class="list-title">Token经济学范式迁移：从GPU算力到HBM的核心迭代</div>
+          <div class="list-meta">AI推理时代底层逻辑重构 &middot; HBM容量&times;带宽=Token吞吐 &middot; 存储产业三十年周期律的终结 &middot; 2026-06-26</div>
         </div>
-        <div class="card-desc">AI服务器MLCC内容量暴增10-15倍 · 供给端六大结构性约束 · 核心标的SEMCO · 2026-06-24</div>
-        <div class="card-tags"><span class="tag">MLCC</span><span class="tag">AI硬件</span><span class="tag">超级周期</span></div>
-        <a class="card-btn" href="mlcc_supercycle_research_2026.html">阅读全文</a>
+        <a class="list-btn" href="hbm_token_economics_research_2026.html">阅读全文</a>
       </div>
 
-      <div class="card">
-        <div class="card-top">
-          <div class="card-icon" style="background:#1a3a5c;color:#c8a44e;">HB</div>
-          <div>
-            <div class="card-title">Token经济学范式迁移：从GPU算力到HBM的核心迭代</div>
-            <div class="card-sub">AI推理时代底层逻辑重构</div>
-          </div>
+      <div class="list-item">
+        <div class="list-icon" style="background:#c0392b;color:#fff;">PW</div>
+        <div class="list-body">
+          <div class="list-title">AI电力半导体的隐形牛市：从27亿到160亿的三级跳</div>
+          <div class="list-meta">JP Morgan深度解读 &middot; 800V HVDC重构数据中心配电 &middot; SiC/GaN百亿美元增量 &middot; 82%三年CAGR &middot; 2026-06</div>
         </div>
-        <div class="card-desc">AI推理时代底层逻辑重构 · HBM容量×带宽=Token吞吐 · 存储产业三十年周期律的终结 · 2026-06-26</div>
-        <div class="card-tags"><span class="tag">HBM</span><span class="tag">Token经济学</span><span class="tag">存储</span></div>
-        <a class="card-btn" href="hbm_token_economics_research_2026.html">阅读全文</a>
+        <a class="list-btn" href="ai_power_semiconductors_jpm_2026.html">阅读全文</a>
       </div>
 
-      <div class="card">
-        <div class="card-top">
-          <div class="card-icon" style="background:#c0392b;color:#fff;">PW</div>
-          <div>
-            <div class="card-title">AI电力半导体的隐形牛市：从27亿到160亿的三级跳</div>
-            <div class="card-sub">JP Morgan深度解读 · 800V HVDC</div>
-          </div>
-        </div>
-        <div class="card-desc">JP Morgan深度解读 · 800V HVDC重构数据中心配电 · SiC/GaN百亿美元增量 · 82%三年CAGR · 2026-06</div>
-        <div class="card-tags"><span class="tag">电力半导体</span><span class="tag">SiC</span><span class="tag">GaN</span></div>
-        <a class="card-btn" href="ai_power_semiconductors_jpm_2026.html">阅读全文</a>
+        <a class="list-btn" href="ai_compute_chain_research_2026.html">阅读全文</a>
+
       </div>
 
     </div>
@@ -2910,6 +2843,8 @@ const tabConfig = {
 
     {text:'深度投研', target:'panel-us', active:true},
 
+    {text:'半导体热度', target:'semi-us-section'},
+
   ],
 
   macro: [
@@ -2921,12 +2856,6 @@ const tabConfig = {
   research: [
 
     {text:'深度研究', target:'panel-research', active:true},
-
-  ],
-
-  'semi-us': [
-
-    {text:'美国半导体热度', target:'panel-semi-us', active:true},
 
   ],
 
@@ -3035,7 +2964,7 @@ function syncSemiSubActive(){
 
   semiCnLink.classList.toggle('active', id==='panel-china' || id==='panel-semi-cn');
 
-  semiUsLink.classList.toggle('active', id==='panel-us' || id==='panel-semi-us');
+  semiUsLink.classList.toggle('active', id==='panel-us');
 
 }
 
@@ -3159,15 +3088,14 @@ function applyHash(){
 
   }
 
-  const validCats = ['china','hk','us','macro','research','semi-cn','semi-us'];
+  const validCats = ['china','hk','us','macro','semi-cn'];
 
   if(validCats.includes(cat)){
 
     if(cat === 'semi-cn'){ switchCat('china', 'semi-cn', false); }
-    else if(cat === 'semi-us'){ switchCat('semi-us', null, false); }
     else { switchCat(cat, scrollTarget, false); }
 
-    if(cat==='china' || cat==='us' || cat==='semi-cn' || cat==='semi-us'){
+    if(cat==='china' || cat==='us' || cat==='semi-cn'){
 
       semiSub.classList.add('open');
 
@@ -3191,7 +3119,7 @@ function applyHash(){
 
   if(activePanel) renderTabs(activePanel.id.replace('panel-',''));
 
-  if(activePanel && (activePanel.id==='panel-china' || activePanel.id==='panel-semi-cn' || activePanel.id==='panel-us' || activePanel.id==='panel-semi-us')){
+  if(activePanel && (activePanel.id==='panel-china' || activePanel.id==='panel-semi-cn' || activePanel.id==='panel-us')){
 
     semiSub.classList.add('open');
 
@@ -3213,37 +3141,6 @@ window.addEventListener('hashchange', ()=>{
 
 });
 
-function toggleMonth(el){
-  const arrow = el.querySelector('.arrow');
-  const cards = el.nextElementSibling;
-  const isOpen = cards.classList.contains('open');
-  if(isOpen){ cards.classList.remove('open'); arrow.classList.remove('open'); }
-  else { cards.classList.add('open'); arrow.classList.add('open'); }
-}
-
-</script>
-
-<script>
-// Remove Cloudflare deploy trigger text that appears after </html>
-(function() {
-  function removeDeployTrigger() {
-    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-    var node;
-    while (node = walker.nextNode()) {
-      if (node.nodeValue.indexOf('Last deploy trigger') !== -1) {
-        node.remove();
-        break;
-      }
-    }
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', removeDeployTrigger);
-  } else {
-    removeDeployTrigger();
-  }
-  // Also try after a short delay in case it's injected later
-  setTimeout(removeDeployTrigger, 500);
-})();
 </script>
 
 </body>
