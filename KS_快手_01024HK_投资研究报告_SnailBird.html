@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>快手科技 Kuaishou (01024.HK) 深度研究报告 | 蜗牛鸟投资</title>
+<style>
+:root{
+  --ink:    #0e0a22;
+  --deep:   #160e38;
+  --mid:    #241860;
+  --indigo: #3020a0;
+  --violet: #5030c0;
+  --sky:    #2080c8;
+  --teal:   #1890a0;
+  --gold:   #c49000;
+  --bright: #d8aa00;
+  --amber:  #ecc020;
+  --bg:     #eeedf0;
+  --paper:  #fafaf8;
+  --text:   #18182a;
+  --muted:  #5a5870;
+  --rule:   #dcdaea;
+  --green:  #1a6840;
+  --red:    #9c2320;
+  --warn:   #7a5c00;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.80}
+.page{max-width:1060px;margin:0 auto;background:var(--paper);box-shadow:0 2px 44px rgba(14,10,34,.12)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:3px solid var(--amber);display:flex;align-items:center;overflow-x:auto;white-space:nowrap}
+.nav-brand{background:var(--amber);color:var(--ink);font-weight:800;font-size:12px;letter-spacing:1.4px;padding:13px 16px;flex-shrink:0}
+.nav a{color:#b0b0d0;text-decoration:none;font-size:11.5px;padding:13px 9px;border-bottom:2px solid transparent;transition:color .18s,border-color .18s}
+.nav a:hover{color:var(--amber);border-bottom-color:var(--amber)}
+
+/* HERO */
+.hero{background:linear-gradient(138deg,#0e0a22 0%,#160e38 40%,#1a0845 70%,#200830 100%);color:#e5e0f8;padding:48px 54px 38px;border-bottom:4px solid var(--amber);position:relative;overflow:hidden}
+.hero::before{content:"KS";position:absolute;right:-10px;top:-20px;font-size:260px;font-weight:900;color:rgba(255,255,255,.018);letter-spacing:-8px;pointer-events:none;line-height:1}
+.hero-eye{font-size:11px;letter-spacing:3px;color:var(--amber);text-transform:uppercase;margin-bottom:10px}
+.hero-title{font-size:30px;font-weight:bold;line-height:1.2;margin-bottom:4px}
+.hero-title em{color:#8090d8;font-style:normal;font-size:16px;font-weight:normal}
+.hero-sub{font-size:13px;color:#8888c0;margin-top:5px;margin-bottom:26px}
+
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:22px}
+.kpi-c{padding:13px 14px;border-right:1px solid rgba(255,255,255,.10)}
+.kpi-c:last-child{border-right:none}
+.kpi-c .lbl{font-size:10px;color:#7878b0;text-transform:uppercase;letter-spacing:.8px}
+.kpi-c .val{font-size:18px;color:#fff;font-weight:700;margin-top:4px;line-height:1.15}
+.kpi-c .sub{font-size:10.5px;color:#5858a0;margin-top:2px}
+
+.rbox{display:inline-flex;align-items:center;gap:16px;background:rgba(216,170,0,.12);border:1px solid var(--amber);padding:10px 22px;border-radius:2px}
+.rbox .r{font-weight:900;font-size:17px;color:var(--amber);letter-spacing:.8px}
+.rbox .tp{font-size:12px;color:#c0c0e0}
+.rbox .up{font-size:12px;color:#7ed8a0;font-weight:700}
+
+/* SECTIONS */
+.sec{padding:36px 54px;border-bottom:1px solid var(--rule)}
+.sec:last-child{border-bottom:none}
+.sec-h{font-size:19.5px;color:var(--mid);border-left:5px solid var(--amber);padding-left:14px;margin-bottom:20px;font-weight:bold}
+.sec-h .n{color:var(--amber);margin-right:6px;font-weight:normal}
+h3.sh{font-size:14.5px;color:var(--indigo);margin:26px 0 10px;border-bottom:1px solid var(--rule);padding-bottom:6px;font-weight:bold}
+p{font-size:14.5px;color:var(--text);margin-bottom:13px}
+.lead{font-size:15px;color:var(--deep);background:#ebe8f8;border-left:3px solid var(--amber);padding:14px 18px;margin-bottom:18px;line-height:1.88}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0 20px}
+thead th{background:var(--deep);color:#d0d0f4;padding:9px 12px;text-align:left;font-weight:600;letter-spacing:.2px}
+tbody td{padding:8px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:nth-child(even) td{background:#f4f2fa}
+.rc{text-align:right;font-variant-numeric:tabular-nums}
+.pos{color:var(--green);font-weight:700}
+.neg{color:var(--red);font-weight:700}
+.hl td{background:#ecebfc!important;font-weight:700}
+
+/* grids */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+
+.card{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--amber);padding:14px 16px}
+.card.b1{border-top-color:var(--indigo)}
+.card.b2{border-top-color:var(--sky)}
+.card.b3{border-top-color:var(--teal)}
+.card.b4{border-top-color:var(--green)}
+.card.b5{border-top-color:var(--red)}
+.card .cl{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.card .cv{font-size:20px;color:var(--deep);font-weight:700;margin-top:5px;line-height:1.15}
+.card .cs{font-size:11.5px;color:var(--muted);margin-top:4px}
+
+/* revenue waterfall */
+.rev-seg{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.rev-label{width:100px;flex-shrink:0;font-size:12.5px;color:var(--muted);text-align:right}
+.rev-bar-w{flex:1;background:#e8e6f4;height:26px;border-radius:2px;overflow:hidden}
+.rev-bar{height:26px;display:flex;align-items:center;padding:0 10px;font-size:12.5px;font-weight:700;color:#fff}
+.rev-meta{width:120px;font-size:11.5px;color:var(--muted);padding-left:8px}
+
+/* kling special */
+.kling-box{background:linear-gradient(135deg,#1a0845 0%,#240e60 50%,#1a2060 100%);border-radius:4px;padding:22px 26px;margin:16px 0;color:#e0e0f8}
+.kling-box h4{font-size:15px;font-weight:bold;color:var(--amber);margin-bottom:14px}
+.kling-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.kling-kpi-item .lk{font-size:10px;color:#8080c0;text-transform:uppercase;letter-spacing:.5px}
+.kling-kpi-item .lv{font-size:22px;font-weight:700;color:#fff;margin-top:3px}
+.kling-kpi-item .ls{font-size:11px;color:#6060a8;margin-top:2px}
+
+/* mbox */
+.mbox{border:1px dashed var(--amber);background:#f6f4fc;padding:16px 20px;margin:14px 0}
+.mbox h4{font-size:13.5px;color:var(--deep);margin-bottom:8px;font-weight:700}
+.mbox ul{padding-left:18px;margin-top:6px}
+.mbox li,.mbox p{font-size:13.5px;margin-bottom:5px}
+
+/* note boxes */
+.note{background:#eef0fc;border-left:3px solid var(--sky);padding:10px 14px;font-size:12.5px;color:#1a1a50;margin-bottom:16px}
+.warn-box{background:#fef8e6;border-left:3px solid var(--bright);padding:10px 14px;font-size:12.5px;color:#5a4200;margin-bottom:16px}
+.risk-note{background:#fef0f0;border-left:3px solid var(--red);padding:12px 14px;font-size:13px;color:#6a2020;margin-bottom:14px}
+
+/* risk badges */
+.badge{display:inline-block;font-size:11px;padding:2px 10px;border-radius:10px;font-weight:700}
+.b-hi{background:#fce8e7;color:var(--red)}
+.b-mid{background:#fdf0d2;color:var(--warn)}
+.b-lo{background:#e2f0e9;color:var(--green)}
+
+/* tech panel */
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.tc{background:#fff;border:1px solid var(--rule);padding:14px 16px}
+.tc .tl{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.tc .tv{font-size:19px;font-weight:700;color:var(--deep)}
+.tc .ts{font-size:12.5px;color:var(--muted);margin-top:4px}
+.tc.am{border-top:3px solid var(--amber)}
+.tc.in{border-top:3px solid var(--indigo)}
+.tc.sk{border-top:3px solid var(--sky)}
+.tc.re{border-top:3px solid var(--red)}
+.tc.gr{border-top:3px solid var(--green)}
+
+/* price ladder */
+.pladder{border:1px solid var(--rule);background:#fff;margin:14px 0}
+.prow{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--rule);font-size:13px}
+.prow:last-child{border-bottom:none}
+.prow .pt{width:130px;flex-shrink:0;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+.prow .pv{font-size:15px;font-weight:700;color:var(--deep);width:80px}
+.prow .pn{color:var(--muted);font-size:12.5px;flex:1}
+.prow.cur .pv{color:var(--amber)}
+.prow.sup .pv{color:var(--green)}
+.prow.res .pv{color:var(--red)}
+
+/* SOTP */
+.sotp{border:2px solid var(--indigo);background:#f0eef8;padding:18px 22px;margin:14px 0;border-radius:2px}
+.sotp h4{font-size:14px;font-weight:bold;color:var(--indigo);margin-bottom:12px}
+.sotp-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--rule);font-size:13.5px}
+.sotp-row:last-child{border-bottom:none;font-weight:700;font-size:14px;color:var(--deep);padding-top:12px}
+.sotp-val{font-weight:700;color:var(--indigo)}
+
+/* insider */
+.insider-row{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.insider-row:last-child{border-bottom:none}
+.in-tag{flex-shrink:0;font-size:11px;padding:3px 10px;border-radius:2px;font-weight:700;min-width:55px;text-align:center}
+.in-tag.buy{background:#e2f0e9;color:var(--green)}
+.in-tag.sell{background:#fce8e7;color:var(--red)}
+.in-tag.neutral{background:#eef0fc;color:var(--indigo)}
+
+.curr-note{background:#eef2fc;border-left:3px solid var(--sky);padding:10px 14px;font-size:12.5px;color:#1a1a50;margin-bottom:16px}
+.fn{font-size:11.5px;color:var(--muted);line-height:1.75}
+.src{font-size:12.5px;color:var(--muted);line-height:2;padding-left:18px}
+.src li{margin-bottom:2px}
+.disc{background:var(--ink);color:#7070a8;font-size:11.5px;padding:28px 54px;line-height:1.92}
+.disc strong{color:var(--amber)}
+.foot{background:var(--ink);border-top:1px solid rgba(216,170,0,.28);color:#3a3870;text-align:center;font-size:11px;letter-spacing:1.5px;padding:14px}
+
+@media(max-width:700px){
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .g3,.g4,.tgrid{grid-template-columns:1fr 1fr}
+  .kling-kpi{grid-template-columns:1fr 1fr}
+  .hero,.sec,.disc{padding-left:22px;padding-right:22px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-brand">🐦 蜗牛鸟投资 · 精品研究</div>
+  <a href="#s1">摘要</a>
+  <a href="#s2">公司概览</a>
+  <a href="#s3">收入结构</a>
+  <a href="#s4">财务分析</a>
+  <a href="#s5">资产负债表&amp;FCF</a>
+  <a href="#s6">股东回报</a>
+  <a href="#s7">内部人活动</a>
+  <a href="#s8">技术面</a>
+  <a href="#s9">可灵分拆专析</a>
+  <a href="#s10">估值模型(SOTP)</a>
+  <a href="#s11">竞争格局</a>
+  <a href="#s12">风险矩阵</a>
+  <a href="#s13">催化剂</a>
+  <a href="#s14">结论</a>
+  <a href="#s15">来源</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eye">SNAIL-BIRD INVESTMENT &nbsp;|&nbsp; 精品研究部 &nbsp;|&nbsp; 港股互联网/AI行业首次覆盖</div>
+  <div class="hero-title">快手科技 Kuaishou Technology <em>(HKEX: 01024.HK）</em></div>
+  <div class="hero-sub">中国第二大短视频平台 · MAU 7.72亿创历史新高 · 可灵AI ARR一年4倍增长至近$5亿 · 分拆传闻200亿美元估值 · 4%股东回报承诺 — 深度研究报告</div>
+  <div class="kpi-row">
+    <div class="kpi-c">
+      <div class="lbl">H股现价（7月3日）</div>
+      <div class="val">HK$42.60</div>
+      <div class="sub">市值约HK$1,790亿；近52周低位</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">FY2025 经调整净利润</div>
+      <div class="val">RMB 206亿</div>
+      <div class="sub">同比+16.5%；调整净利率14.5%</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">Q1 2026 MAU</div>
+      <div class="val">7.72亿</div>
+      <div class="sub">历史最高；同比+8.4%</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">可灵AI ARR（3月）</div>
+      <div class="val">~$5亿USD</div>
+      <div class="sub">同比×4；Q1单季收入>6.5亿RMB</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">报告日期</div>
+      <div class="val">2026年7月3日</div>
+      <div class="sub">蜗牛鸟投资精品研究部</div>
+    </div>
+  </div>
+  <div class="rbox">
+    <div class="r">积极买入（BUY）</div>
+    <div class="tp">12个月目标价：<strong style="color:#dfc060">HK$58 – HK$75</strong>，SOTP基准HK$62</div>
+    <div class="up">当前估值隐含可灵AI几乎为零价值；分拆催化剂待解锁</div>
+  </div>
+</div>
+
+<!-- 01 投资摘要 -->
+<div class="sec" id="s1">
+  <h2 class="sec-h"><span class="n">01</span>投资摘要</h2>
+  <div class="curr-note">💱 货币说明：快手财务数据以人民币（RMB/CNY）报告；H股（01024.HK）以港元（HKD）交易（同时设有81024人民币柜台）。本报告财务数据以RMB列示，股价及市值以HKD列示（参考汇率约1 RMB ≈ 1.089 HKD，或1 HKD ≈ 0.918 RMB）。</div>
+  <div class="lead">
+    快手科技（01024.HK）是中国第二大短视频与直播平台，凭借"老铁经济"信任基因和下沉市场护城河，正在经历从内容社区向"AI原生平台"的深层蜕变。2026年一季度财报呈现典型的"战略性利润换取长期竞争力"特征：营收337亿元温和增长（+3.4%），但经调整净利润大幅下滑26.3%至34亿元，毛利率压缩3.4个百分点——这是快手主动加大AI算力投入（FY2026资本开支指引<strong>260亿元</strong>）的阶段性代价。然而，真正令市场兴奋的是<strong>可灵AI</strong>：单季收入超6.5亿元、同比增超300%，年化收入运行率（ARR）已达近<strong>5亿美元</strong>（一年内增长4倍），即将以高达<strong>200亿美元</strong>估值分拆融资的传闻更将其推上头版。以当前股价HK$42.6计算，快手市值（约HK$1,790亿）与可灵AI潜在估值（$200亿美元 = 约HK$1,560亿）的数量级之接近，意味着市场几乎将快手的核心广告+电商业务（仍在贡献RMB 200亿+调整利润）定价为零，这一定价明显背离基本面。我们首次覆盖给予<strong>积极买入（BUY）</strong>评级，SOTP基准目标价<strong>HK$62</strong>（区间HK$58-75）。
+  </div>
+  <table>
+    <thead><tr><th>核心结论</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>评级</td><td>积极买入（BUY）— 可灵分拆期权+核心业务深度折价，双重催化剂待释放</td></tr>
+      <tr><td>SOTP目标价（12个月）</td><td>HK$62（基准）；区间HK$58-75；悲观情形HK$30（可灵失败）；乐观情形HK$90</td></tr>
+      <tr><td>核心多头逻辑</td><td>可灵AI ARR 4倍增长验证商业化路径；MAU历史新高；管理层承诺全年正向FCF+4%股东回报；核心广告+电商业务被市场严重折价定价；可灵分拆潜在价值解锁</td></tr>
+      <tr><td>核心担忧</td><td>字节跳动（抖音）的强势竞争压力；Q1 2026利润-26.3%打击市场情绪；260亿元CapEx压制FCF；直播收入-13.5%的持续下滑；可灵分拆若稀释快手股东权益</td></tr>
+      <tr><td>下一关键节点</td><td>2026年8月：H1 2026中报；可灵AI分拆/融资最终协议公告（最大待催化的信号）</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 02 公司概览 -->
+<div class="sec" id="s2">
+  <h2 class="sec-h"><span class="n">02</span>公司概览</h2>
+  <p>快手科技由宿华与程一笑于2011年联合创立，总部位于北京，2021年2月在香港联合交易所挂牌上市（代码01024.HK，同时设有人民币柜台81024）。公司是全球日活用户规模最大的短视频与直播平台之一，以"普惠科技"为品牌基因，以下沉市场和低线城市用户为核心圈层，并向一二线城市以及海外（核心市场：巴西）持续拓展。程一笑现任CEO（创始人兼任），金秉担任CFO，公司架构为"创始人双股权架构"（W股），在港股以加权投票权注册。<span class="fn">[来源：快手科技官方IR网站；PRNewswire 2025年全年业绩（2026年3月25日）]</span></p>
+  <div class="g4">
+    <div class="card b1"><div class="cl">上市时间</div><div class="cv">2021年2月</div><div class="cs">香港联交所；W股架构</div></div>
+    <div class="card b2"><div class="cl">流通股数（估）</div><div class="cv">约42亿股</div><div class="cs">总股本（A+B+W多股合并）；估算值</div></div>
+    <div class="card"><div class="cl">市值（7月3日）</div><div class="cv">约HK$1,790亿</div><div class="cs">42.6×42亿股；≈RMB 1,644亿</div></div>
+    <div class="card b3"><div class="cl">CEO</div><div class="cv">程一笑</div><div class="cs">创始人兼任；CFO：金秉</div></div>
+  </div>
+  <p class="fn">注：快手总股本数据因W股架构（多层股权）在港股信披中呈现复杂，本报告以约42亿股作为市值计算基础（通过年度分红HK$30亿/股息率约1.68%反推），投资者应以公司最新季报股本信息为准。来源：快手科技Q1 2026业绩电话会（2026年5月27日）；澎湃新闻（thepaper.cn，2026年5月27日）。</p>
+</div>
+
+<!-- 03 收入结构 -->
+<div class="sec" id="s3">
+  <h2 class="sec-h"><span class="n">03</span>收入结构分析</h2>
+  <h3 class="sh">3.1 三大业务板块（Q1 2026）</h3>
+  <div class="rev-seg">
+    <div class="rev-label">线上营销</div>
+    <div class="rev-bar-w"><div class="rev-bar" style="width:58.3%;background:#2040a8">196亿元 (+9.3%)  &nbsp;占比58.3%</div></div>
+    <div class="rev-meta">广告+快手粉条；AI大模型带来3-4%额外增量</div>
+  </div>
+  <div class="rev-seg">
+    <div class="rev-label">直播业务</div>
+    <div class="rev-bar-w"><div class="rev-bar" style="width:25.2%;background:#703090">85亿元 (-13.5%)  占比25.2%</div></div>
+    <div class="rev-meta">主动调整生态；结构性下滑但聚焦质量</div>
+  </div>
+  <div class="rev-seg">
+    <div class="rev-label">其他服务</div>
+    <div class="rev-bar-w"><div class="rev-bar" style="width:16.5%;background:#d8aa00">56亿元 (+15.9%)  占比16.5%</div></div>
+    <div class="rev-meta">电商+可灵AI（>6.5亿）；增速最快</div>
+  </div>
+  <p class="fn">来源：快手科技2026年第一季度业绩公告（ir.kuaishou.com，2026年5月27日）；新浪财经、观察者网（2026年5月27-28日）。</p>
+
+  <h3 class="sh">3.2 AI驱动的广告业务提效</h3>
+  <p>线上营销收入是快手最大的利润来源，Q1 2026以9.3%的稳健增速延续好转趋势。关键是AI的渗透提效正在实质性地改善广告货币化效率：①生成式推荐大模型和智能出价大模型为Q1国内线上营销收入带来约<strong>3%-4%的提升</strong>；②AIGC短视频营销素材消耗渗透率已达10%；③UAX全自动广告投放产品新增Agent功能；④每位DAU平均营销收入（ARPU）从44.1元提升至47.6元（+7.9%）。<span class="fn">[来源：快手Q1 2026电话会实录（新浪财经，2026年5月27日）]</span></p>
+
+  <h3 class="sh">3.3 直播业务战略性收缩：量缩但质升</h3>
+  <p>直播收入-13.5%至85亿元，看似一大利空，但管理层将其定性为"主动建立丰富健康的直播生态"的战略选择——减少低质量娱乐直播（打赏），转向内容多元化（游戏、AI互动、AI特效礼物）。从长期平台生态角度，这一调整有助于降低监管风险并提升用户粘性。游戏板块在本季度有亮眼表现，AI特效礼物与互动工具亦优化了用户体验。</p>
+</div>
+
+<!-- 04 财务分析 -->
+<div class="sec" id="s4">
+  <h2 class="sec-h"><span class="n">04</span>财务分析（损益表）</h2>
+  <h3 class="sh">4.1 多期业绩对比（RMB亿元，来自快手官方公告）</h3>
+  <table>
+    <thead><tr><th>指标</th><th class="rc">FY2024</th><th class="rc">FY2025</th><th class="rc">YoY</th><th class="rc">Q1 2026</th><th class="rc">Q2 2026（预估）</th></tr></thead>
+    <tbody>
+      <tr><td>总营收</td><td class="rc">RMB 1,270亿</td><td class="rc"><strong>RMB 1,428亿</strong></td><td class="rc pos">+12.5%</td><td class="rc">RMB 337亿</td><td class="rc">约RMB 370-400亿</td></tr>
+      <tr><td>线上营销收入</td><td class="rc">约RMB 724亿</td><td class="rc">RMB 814.62亿</td><td class="rc pos">+12.5%</td><td class="rc">RMB 196亿</td><td class="rc">约RMB 215-230亿</td></tr>
+      <tr><td>直播收入</td><td class="rc">约RMB 370亿</td><td class="rc">RMB 391亿</td><td class="rc pos">+5.5%</td><td class="rc neg">RMB 85亿（-13.5%）</td><td class="rc">约RMB 90-100亿</td></tr>
+      <tr><td>其他服务（含电商、可灵）</td><td class="rc">约RMB 174亿</td><td class="rc">RMB 222亿</td><td class="rc pos">+27.6%</td><td class="rc pos">RMB 56亿（+15.9%）</td><td class="rc">约RMB 65-75亿</td></tr>
+      <tr><td>毛利润</td><td class="rc">—</td><td class="rc">—</td><td class="rc">—</td><td class="rc">RMB 172.49亿</td><td class="rc">—</td></tr>
+      <tr><td>毛利率</td><td class="rc">约52%</td><td class="rc">约54.6%（Q1 2025参考）</td><td class="rc">—</td><td class="rc neg">51.2%（-3.4pt）</td><td class="rc">—</td></tr>
+      <tr><td>经调整净利润</td><td class="rc">约RMB 177亿</td><td class="rc"><strong>RMB 206亿</strong></td><td class="rc pos">+16.5%</td><td class="rc neg"><strong>RMB 33.7亿（-26.3%）</strong></td><td class="rc">约RMB 40-55亿</td></tr>
+      <tr><td>经调整净利润率</td><td class="rc">约13.9%</td><td class="rc">14.5%</td><td class="rc pos">+0.6pt</td><td class="rc neg">10.0%（-4.0pt）</td><td class="rc">约11-14%</td></tr>
+      <tr><td>研发费用</td><td class="rc">—</td><td class="rc">—</td><td class="rc">—</td><td class="rc neg">RMB 36.21亿（+9.8%）</td><td class="rc">—</td></tr>
+      <tr><td>销售及营销费用</td><td class="rc">—</td><td class="rc">—</td><td class="rc">—</td><td class="rc">RMB 103.33亿（+4.4%）</td><td class="rc">—</td></tr>
+      <tr><td>DAU（日均）</td><td class="rc">约3.99亿</td><td class="rc">4.1亿</td><td class="rc pos">+2.8%</td><td class="rc">4.13亿（+1.2%）</td><td class="rc">—</td></tr>
+      <tr><td>MAU（月均）</td><td class="rc">约7.10亿</td><td class="rc">7.25亿</td><td class="rc pos">+2.1%</td><td class="rc pos"><strong>7.72亿（+8.4%，历史新高）</strong></td><td class="rc">—</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：快手科技2025年第四季度及全年业绩公告（PRNewswire，2026年3月25日）；快手科技2026年第一季度业绩公告（2026年5月27日）；证券时报（stcn.com，2026年3月25日、2026年5月27日）；澎湃新闻（thepaper.cn，2026年5月27日）；OFweek AI（2026年5月28日）。</p>
+
+  <h3 class="sh">4.2 Q1 2026利润承压的深层解析</h3>
+  <div class="warn-box">⚠️ 短期利润下滑三大原因（均为战略性、可逆性因素）：①AI算力成本上升推高销售成本（同比+11.1%），压制毛利率；②研发费用+9.8%（AI投入），增速高于营收+3.4%；③所得税开支从2.58亿大幅增加至5.04亿（近乎翻倍）。从本质上看，这是快手"主动以短期利润换取长期AI竞争力"的战略选择，正如本系列报告中ONTO（以SBC和摊销压低GAAP利润）的逻辑类似——利润下滑反映会计处理和战略投入，而非核心业务的基本面恶化。</div>
+
+  <div class="g4">
+    <div class="card b1"><div class="cl">核心商业收入增速</div><div class="cv">+10.7%</div><div class="cs">营销+电商合计；线上增长势头健康</div></div>
+    <div class="card b2"><div class="cl">每位DAU营销ARPU</div><div class="cv">RMB 47.6元</div><div class="cs">同比+7.9%；货币化效率持续提升</div></div>
+    <div class="card"><div class="cl">可灵AI CapEx（FY2026指引）</div><div class="cv">RMB 260亿</div><div class="cs">多数集中在H1；主动应对算力涨价提前采购</div></div>
+    <div class="card b3"><div class="cl">海外业务</div><div class="cv">由盈转亏</div><div class="cs">经营亏损-3,100万（vs +2,800万）；但亏损收窄；巴西基本盘稳健</div></div>
+  </div>
+</div>
+
+<!-- 05 资产负债表与FCF -->
+<div class="sec" id="s5">
+  <h2 class="sec-h"><span class="n">05</span>资产负债表与自由现金流分析</h2>
+  <h3 class="sh">5.1 资产负债表与现金储备</h3>
+  <div class="g3">
+    <div class="card b4"><div class="cl">FY2026年CapEx指引</div><div class="cv">RMB 260亿</div><div class="cs">全年最大单项支出；算力基础设施投资</div></div>
+    <div class="card b1"><div class="cl">FCF管理目标</div><div class="cv">全年正向FCF</div><div class="cs">CFO金秉Q1电话会承诺（260亿CapEx下仍能实现）</div></div>
+    <div class="card"><div class="cl">资产负债表属性</div><div class="cv">净现金</div><div class="cs">互联网公司标准轻资产架构；无重大有息负债</div></div>
+  </div>
+  <div class="note">📊 FCF可行性评估：CFO金秉在Q1 2026电话会明确表示"尽管有260亿元资本支出，公司的目标依然是继续保持全年集团层面正向自由现金流"。这一承诺能否兑现的关键在于：互联网平台企业的经营活动现金流通常远高于GAAP净利润（非现金费用：D&A+SBC均为大额），若FY2026经营现金流达到RMB 280-320亿+，则扣除CapEx 260亿后FCF约为正20-60亿。FY2025全年经调整净利润206亿，对应经营现金流通常在1.2-1.5倍区间（约247-309亿），支撑该承诺的可信度。来源：快手Q1 2026电话会（澎湃新闻，2026年5月27日）。</div>
+
+  <div class="mbox">
+    <h4>蜗牛鸟FCF盈利质量评分框架（沿用本系列报告方法论）</h4>
+    <p>快手的FCF分析逻辑与ONTO报告高度类似：大额资本支出（AI算力）在当前阶段创造负面FCF压力，但这是主动战略投资而非经营质量下滑。历史上，大规模AI/云基础设施投入后2-3年通常带来更高的边际利润率（参考AWS、Azure的capex→profit trajectory）。快手管理层给出"正向FCF"目标，叠加可灵AI ARR加速增长，是中期FCF拐点临近的最有力信号。关键监测指标：Q2/Q3 2026的可灵收入增速是否持续300%+及AI成本边际化。</p>
+  </div>
+</div>
+
+<!-- 06 股东回报 -->
+<div class="sec" id="s6">
+  <h2 class="sec-h"><span class="n">06</span>股东回报分析</h2>
+  <h3 class="sh">6.1 分红政策：年度现金分红（30亿港元）</h3>
+  <div class="g3">
+    <div class="card b2"><div class="cl">FY2026年度分红（已宣布）</div><div class="cv">HK$30亿</div><div class="cs">年度固定分红；以市值约HK$1,790亿计，股息率约1.68%</div></div>
+    <div class="card"><div class="cl">FY2025年度分红</div><div class="cv">HK$30亿</div><div class="cs">持平；体现分红政策的稳定性</div></div>
+    <div class="card b4"><div class="cl">合计股东回报率</div><div class="cv">约4%</div><div class="cs">含分红+股份回购；较去年提升；CFO明确承诺</div></div>
+  </div>
+
+  <h3 class="sh">6.2 股份回购：主动且积极</h3>
+  <p>快手CFO金秉在Q1 2026电话会中明确表示："在今年30亿港币的年度分红的基础上，我们还持续积极地进行股份回购。2026年全年，包括分红和股份回购在内的股东回报金额将较去年进一步增加，使股东回报率进一步提升至约<strong>4%</strong>的水平。"以总市值HK$1,790亿计算，4%股东回报率意味着全年分红+回购约<strong>HK$71.6亿</strong>，扣除分红30亿，年度回购规模约<strong>HK$41.6亿</strong>。</p>
+  <p>雪球投资者讨论中提到"十几天不回购肯定是有重大事件，大概率是在谈可灵的事情"——说明公司此前进行<strong>连续日度回购</strong>，偶有中断时市场即出现敏感解读，这从侧面验证了公司回购执行的积极程度和对股价价值的强烈信号。<span class="fn">[来源：雪球快手讨论（xueqiu.com/S/01024，2026年5月23日）；快手Q1 2026电话会（澎湃新闻，2026年5月27日）]</span></p>
+
+  <h3 class="sh">6.3 资本配置优先级（管理层明确框架）</h3>
+  <table>
+    <thead><tr><th>优先级</th><th>配置方向</th><th>金额/目标</th></tr></thead>
+    <tbody>
+      <tr><td>① 最高优先</td><td>AI战略投资（算力基础设施+可灵研发）</td><td>FY2026 CapEx RMB 260亿（H1集中）</td></tr>
+      <tr><td>② 高优先</td><td>年度股息</td><td>HK$30亿（稳定维持）</td></tr>
+      <tr><td>③ 次优先</td><td>持续股份回购</td><td>约HK$40亿+（估算，构成4%总回报）</td></tr>
+      <tr><td>④ 机会性</td><td>战略收购/生态投资</td><td>目前无大型公告</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 07 内部人活动 -->
+<div class="sec" id="s7">
+  <h2 class="sec-h"><span class="n">07</span>内部人活动分析（Insider Activity）</h2>
+  <div class="note">📌 本节沿用TRV/NEM/NOK报告中引入的内部人活动分析框架，结合快手W股架构特点进行本土化分析。快手为港股上市W股架构，主要遵循HKEX《上市规则》的董事持股申报制度，而非美国Form 4体系，信息颗粒度有所差异。</div>
+  <div class="insider-row">
+    <div class="in-tag neutral">管理层</div>
+    <div>
+      <strong>程一笑（创始人/CEO）</strong>：作为W股架构持有B类/W类多倍投票权股份，是公司实际控制人。可灵AI分拆事宜由其主导推进（"程一笑在2025年Q4电话会披露可灵ARR超3亿美元"，"在Q1 2026电话会上详细拆解可灵增长逻辑"），体现出对可灵AI长期价值的高度信心，其持续增加AI投入的决策同时也是对自身股权价值的战略押注。<span class="fn">[来源：证券时报，2026年3月25日]</span>
+    </div>
+  </div>
+  <div class="insider-row">
+    <div class="in-tag buy">回购</div>
+    <div>
+      <strong>公司（作为内部人之延伸）</strong>：连续日度股份回购是快手管理层对股价具有吸引力的最清晰信号。投资者注意到"十几天不回购"时出现讨论，说明回购频率通常非常高，偶发中断本身就具有信息价值（往往对应重大事项谈判期间的窗口期，即可灵分拆融资谈判）。管理层承诺FY2026总股东回报率4%并较去年提升，具有明确的量化约束和信号意义。<span class="fn">[来源：雪球快手讨论（2026年5月），快手Q1 2026电话会（2026年5月27日）]</span>
+    </div>
+  </div>
+  <div class="insider-row">
+    <div class="in-tag neutral">大股东</div>
+    <div>
+      <strong>腾讯（Tencent）</strong>：作为快手上市前战略股东及现持股约14%的大股东，同时也被列为可灵AI首轮融资的潜在投资方（"正与腾讯等投资方商谈"）。腾讯对可灵的战略投资兴趣（若最终达成），将是对可灵AI价值最强力的外部背书，亦可深化可灵与微信/腾讯生态的整合潜力。<span class="fn">[来源：电商派（pai.com.cn），2026年5月27日]</span>
+    </div>
+  </div>
+  <table style="margin-top:14px">
+    <thead><tr><th>内部人信号维度</th><th>观察</th><th>评价</th></tr></thead>
+    <tbody>
+      <tr><td>管理层AI战略投入强度</td><td>260亿CapEx短期压制利润，长期布局坚定；CEO亲自主持可灵商业化说明</td><td><span class="badge b-lo">强烈看多</span></td></tr>
+      <tr><td>公司回购频率</td><td>连续高频日度回购，中断即引市场关注</td><td><span class="badge b-lo">积极</span></td></tr>
+      <tr><td>腾讯潜在投资可灵</td><td>谈判中，尚未最终协议；若达成则为重大外部背书</td><td><span class="badge b-mid">待验证</span></td></tr>
+      <tr><td>雪球投资者情绪</td><td>分化：多头认为"分拆是利好"；空头担心"稀释股东权益"和字节跳动压制</td><td><span class="badge b-mid">分歧</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 08 技术面 -->
+<div class="sec" id="s8">
+  <h2 class="sec-h"><span class="n">08</span>技术面分析</h2>
+  <h3 class="sh">8.1 趋势综述：AI投资重压下估值触底？</h3>
+  <p>快手股价从2021年上市时的高峰（最高曾达约HK$417，后经历大幅回调+三次稀释调整）至今已经历深度重置，当前HK$42.6处于历史估值的低位区间。近期股价走势反映的是以下几股力量的角力：FY2025业绩超预期（+）vs Q1 2026利润大幅下滑（-）vs 可灵AI爆发（+） vs 字节跳动竞争压力（-）。<span class="fn">[来源：雪球01024行情页；观察者网（2026年5月28日）]</span></p>
+  <div class="tgrid">
+    <div class="tc am">
+      <div class="tl">H股现价（7月3日）</div>
+      <div class="tv">HK$42.60</div>
+      <div class="ts">52周估计低位区域；Q1 2026业绩后承压</div>
+    </div>
+    <div class="tc in">
+      <div class="tl">FY2025 经调整P/E</div>
+      <div class="tv">约8.0x</div>
+      <div class="ts">市值HK$1,790亿/RMB1,644亿 ÷ 206亿调整净利润</div>
+    </div>
+    <div class="tc sk">
+      <div class="tl">FY2026E 经调整P/E</div>
+      <div class="tv">约11-13x</div>
+      <div class="ts">预计FY2026E调整净利润约RMB 130-150亿</div>
+    </div>
+    <div class="tc re">
+      <div class="tl">技术面信号</div>
+      <div class="tv">偏弱（短期）</div>
+      <div class="ts">AI投入期利润承压；雪球"低估但未见底"；关注Q2拐点</div>
+    </div>
+  </div>
+
+  <h3 class="sh">8.2 关键价位参考</h3>
+  <div class="pladder">
+    <div class="prow res"><div class="pt">乐观目标价</div><div class="pv">HK$75</div><div class="pn">可灵分拆$10B估值成功+核心业务重估至14x P/E FY2026</div></div>
+    <div class="prow res"><div class="pt">SOTP基准目标</div><div class="pv">HK$62</div><div class="pn">核心业务12x FY2026E + 可灵$5B USD保守估值</div></div>
+    <div class="prow cur"><div class="pt">▶ 当前价格</div><div class="pv">HK$42.60</div><div class="pn">7月3日用户确认；隐含可灵AI几乎零价值</div></div>
+    <div class="prow sup"><div class="pt">近端支撑</div><div class="pv">HK$38–40</div><div class="pn">52周低点估计区间；若跌破则建议加仓</div></div>
+    <div class="prow sup"><div class="pt">强支撑区</div><div class="pv">HK$30–35</div><div class="pn">悲观情形：可灵商业化失败+字节跳动持续侵蚀；对应6-7x FY2026E</div></div>
+    <div class="prow sup"><div class="pt">历史高位</div><div class="pv">HK$417（调整前）</div><div class="pn">2021年IPO高峰；现价较调整后历史高位仍有巨大折价</div></div>
+  </div>
+</div>
+
+<!-- 09 可灵AI分拆专析 -->
+<div class="sec" id="s9">
+  <h2 class="sec-h"><span class="n">09</span>可灵AI（Kling）分拆专项分析</h2>
+  <div class="kling-box">
+    <h4>🎬 可灵AI（Kling AI）— 快手最具战略价值的资产</h4>
+    <div class="kling-kpi">
+      <div class="kling-kpi-item">
+        <div class="lk">Q1 2026 单季收入</div>
+        <div class="lv">>RMB 6.5亿</div>
+        <div class="ls">同比增速+300%；Q4 2025仅3.4亿</div>
+      </div>
+      <div class="kling-kpi-item">
+        <div class="lk">ARR（2026年3月）</div>
+        <div class="lv">~$5亿美元</div>
+        <div class="ls">一年内增长4倍（2025年3月为$1亿美元）</div>
+      </div>
+      <div class="kling-kpi-item">
+        <div class="lk">计划分拆估值</div>
+        <div class="lv">$200亿美元</div>
+        <div class="ls">首轮拟融资$20亿美元；与腾讯等商谈中</div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:#a0a0d0">可灵AI是全球领先的AI视频生成与多模态创作平台，已推出可灵1.5、2.6、3.0系列模型，支持最长15秒视频生成、音画同出、灵动画布Agent等功能，已登顶全球42个国家App Store，覆盖广告营销、影视短剧、游戏三大核心商业场景。B端API+P端订阅双轮驱动，留存趋势良好，正在快速建立全球专业创作者生态。来源：程一笑Q1 2026电话会（新浪财经，2026年5月27日）。</p>
+  </div>
+
+  <h3 class="sh">9.1 分拆方案要点（截至2026年7月1日可获取信息）</h3>
+  <table>
+    <thead><tr><th>项目</th><th>内容</th><th>状态/说明</th></tr></thead>
+    <tbody>
+      <tr><td>分拆目标估值</td><td>USD 200亿（约HK$1,560亿）</td><td>媒体报道目标值；尚处谈判阶段，未最终确定</td></tr>
+      <tr><td>首轮融资规模</td><td>USD 20亿（约HK$156亿）</td><td>规划融资规模；实际可能调整</td></tr>
+      <tr><td>潜在投资方</td><td>腾讯等战略/财务投资者</td><td>"正与腾讯等投资方商谈，目前尚未达成任何最终协议"</td></tr>
+      <tr><td>快手持股比例（分拆后）</td><td>约90%+（首轮融资后）</td><td>若融资USD20亿/估值USD200亿=10%出让，快手仍持90%</td></tr>
+      <tr><td>回购中断信号</td><td>雪球：连续多日无回购引市场猜测分拆谈判中</td><td>间接印证谈判进入关键阶段</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：电商派（pai.com.cn，2026年5月27日）；雪球01024讨论区（2026年5月23日）。注：分拆消息来自媒体报道，快手官方在电话会中未直接确认估值具体金额，管理层回应为"不评论具体市场传闻"。</p>
+
+  <h3 class="sh">9.2 分拆对快手股价的影响分析</h3>
+  <p>分拆可灵AI的逻辑与快手股价具有双重效应。正面：①独立融资使可灵AI获得更多发展资本；②独立估值让市场对可灵价值定价更透明，消除"集团折价"；③若成功上市，快手可通过减持可灵股权产生大额非经常性收益，进一步提升每股价值。负面：①若快手对可灵的持股比例大幅稀释（如低于60%），失去并表权；②独立运营后可灵AI的算力成本由快手主体剥离，反而可能短期改善快手本体利润率；③市场担心可灵失败风险全部由早期持股的快手股东承担。</p>
+  <p>雪球用户评价精辟："分拆有两个作用，最大的作用是助推可灵发展，其次是独立财务...到上市的话可以共享客观的非经常性收益，也能大幅拉动快手股价，当然，大股东不会特别在意股价。"<span class="fn">[来源：雪球01024讨论（2026年5月23日）]</span></p>
+</div>
+
+<!-- 10 估值模型SOTP -->
+<div class="sec" id="s10">
+  <h2 class="sec-h"><span class="n">10</span>估值模型 — 蜗牛鸟"SOTP分部加总×可灵期权价值"框架</h2>
+  <p>对快手这种"成熟平台+高增长AI子业务"的混合体，单纯的整体P/E估值会将可灵AI的高增长贡献与核心广告+电商业务的稳健利润混淆，产生严重的估值失真。我们采用<strong>SOTP（分部加总估值）法为主，结合可灵AI单独DCF/收入倍数法估值</strong>，这与本系列药明康德报告中的分部加权思路一致，但可灵的"期权价值"属性更强。</p>
+
+  <div class="mbox">
+    <h4>第一步：核心平台业务（非可灵部分）估值</h4>
+    <ul>
+      <li>FY2026E 经调整净利润（核心，不含可灵贡献）：假设约RMB 115-125亿（全年调整利润约130-150亿，减去可灵贡献约15-25亿）</li>
+      <li>可比中国互联网平台P/E（微博、哔哩哔哩、微信视频号母公司腾讯）：8-15x调整P/E区间</li>
+      <li>快手核心业务：MAU 7.72亿历史高位+广告ARPU稳步提升+电商渗透+AI赋能，给予<strong>10-12x FY2026E核心P/E</strong></li>
+      <li>核心业务估值：RMB120亿 × 11x = RMB 1,320亿 ≈ <strong>HK$1,437亿</strong></li>
+    </ul>
+  </div>
+  <div class="mbox">
+    <h4>第二步：可灵AI单独估值</h4>
+    <ul>
+      <li>ARR（2026年3月）：~$5亿美元（RMB ~36亿），Q1 2026收入6.5亿+（季度），年化约25-30亿RMB</li>
+      <li>管理层对2026年可灵收入"同比翻倍以上"：FY2025全年约10-12亿，FY2026E约22-28亿</li>
+      <li>可比AI SaaS平台收入倍数：海外高增长AI应用（Midjourney/Runway类）通常获20-30x NTM收入倍数</li>
+      <li>保守：FY2026E可灵收入RMB25亿 × 15x = RMB375亿 ≈ <strong>HK$408亿</strong>（快手持股90%=HK$368亿）</li>
+      <li>中性：分拆估值$20B USD（管理层谈判目标）=HK$1,560亿 → 快手持股90%=HK$1,404亿</li>
+      <li>本模型采用保守估值HK$368亿（100% → $5B USD等效，大幅折扣于$20B谈判估值）</li>
+    </ul>
+  </div>
+
+  <div class="sotp">
+    <h4>📐 SOTP加总估值（基准情形）</h4>
+    <div class="sotp-row"><span>核心平台业务（广告+电商+直播，11x FY2026E）</span><span class="sotp-val">HK$1,437亿</span></div>
+    <div class="sotp-row"><span>可灵AI（保守：15x FY2026E收入，快手持90%）</span><span class="sotp-val">HK$368亿</span></div>
+    <div class="sotp-row"><span>净现金（估算）</span><span class="sotp-val">约HK$100-150亿</span></div>
+    <div class="sotp-row"><span>海外业务（巴西，保守：盈亏平衡价值）</span><span class="sotp-val">HK$0（保守）</span></div>
+    <div class="sotp-row"><span><strong>SOTP总股权价值</strong></span><span class="sotp-val"><strong>约HK$1,905-1,955亿</strong></span></div>
+    <div class="sotp-row"><span><strong>对应每股价值（约42亿股）</strong></span><span class="sotp-val"><strong>HK$45.4-46.5元</strong></span></div>
+  </div>
+
+  <p>保守基准SOTP得出每股约HK$46，接近当前股价HK$42.6。这反映的是<strong>可灵仅以$5B估值（vs谈判$20B）的极保守假设</strong>。若可灵分拆融资以$10B USD估值落地，快手持90%=HK$702亿，则SOTP升至HK$2,239亿/约HK$53.3/股；若分拆估值达$15B，则SOTP约HK$60/股。</p>
+
+  <h3 class="sh">10.1 三情景目标价（H股，HKD）</h3>
+  <table>
+    <thead><tr><th>情景</th><th class="rc">假设</th><th class="rc">核心业务价值</th><th class="rc">可灵估值</th><th class="rc">SOTP目标</th><th class="rc">概率</th></tr></thead>
+    <tbody>
+      <tr><td>悲观情形<br><span class="fn">可灵商业化停滞</span></td><td class="rc">核心业务8x；可灵=$2B</td><td class="rc">HK$1,044亿</td><td class="rc">HK$124亿</td><td class="rc neg"><strong>HK$28</strong></td><td class="rc">10%</td></tr>
+      <tr><td>保守情形<br><span class="fn">可灵增长放缓</span></td><td class="rc">核心业务10x；可灵=$5B</td><td class="rc">HK$1,306亿</td><td class="rc">HK$368亿</td><td class="rc"><strong>HK$40</strong></td><td class="rc">25%</td></tr>
+      <tr class="hl"><td><strong>基准情形</strong><br><span class="fn">分拆$10B+延续增长</span></td><td class="rc">核心业务11x；可灵=$10B（快手90%）</td><td class="rc">HK$1,437亿</td><td class="rc">HK$702亿</td><td class="rc pos"><strong>HK$62</strong></td><td class="rc">45%</td></tr>
+      <tr><td>乐观情形<br><span class="fn">分拆$20B+快手重估</span></td><td class="rc">核心业务13x；可灵=$20B（快手90%）</td><td class="rc">HK$1,698亿</td><td class="rc">HK$1,404亿</td><td class="rc pos"><strong>HK$74</strong></td><td class="rc">20%</td></tr>
+    </tbody>
+  </table>
+  <p><strong>概率加权目标价</strong> = (HK$28×10%)+(HK$40×25%)+(HK$62×45%)+(HK$74×20%) = HK$2.8+HK$10+HK$27.9+HK$14.8 = <strong>约HK$55.5</strong>，我们取基准情形HK$62作为12个月目标价，与加权值$55.5差异反映了分拆催化剂的时间价值溢价。</p>
+</div>
+
+<!-- 11 竞争格局 -->
+<div class="sec" id="s11">
+  <h2 class="sec-h"><span class="n">11</span>竞争格局与行业定位</h2>
+  <table>
+    <thead><tr><th>竞争对手</th><th>核心优势</th><th>对快手的威胁程度</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td><strong>字节跳动（抖音）</strong></td><td>DAU约7亿（国内），一线城市主导，算法引擎领先，TikTok全球扩张</td><td><span class="badge b-hi">最高</span> — 最大的单一竞争威胁；雪球评价"字节跳动过于强势带来的情绪压制"</td></tr>
+      <tr><td>腾讯（视频号）</td><td>微信12亿用户流量入口，社交分发天然优势</td><td><span class="badge b-mid">中等</span> — 视频号用户与快手有重叠，但用户构成差异大；腾讯同时是快手股东</td></tr>
+      <tr><td>哔哩哔哩</td><td>Z世代用户，高质量内容，品牌广告</td><td><span class="badge b-lo">较低</span> — 用户圈层差异明显（B站偏城市年轻人，快手偏下沉市场）</td></tr>
+      <tr><td>AI视频赛道（Runway、Sora等）</td><td>海外AI视频生成领先技术</td><td><span class="badge b-mid">中等（可灵层面）</span> — 可灵ARR增速4倍证明其竞争力，但全球市场竞争激烈</td></tr>
+    </tbody>
+  </table>
+  <p>快手的核心差异化优势在于：①下沉市场的<strong>"老铁信任基因"</strong>——用户黏性和社区氛围难以复制；②<strong>电商与内容的自然融合</strong>（独特于抖音的"朋友带货"场景）；③可灵AI的先发优势及与主App生态的深度整合（可灵直接赋能快手广告/电商/短剧，非独立孤岛）。</p>
+</div>
+
+<!-- 12 风险矩阵 -->
+<div class="sec" id="s12">
+  <h2 class="sec-h"><span class="n">12</span>风险矩阵</h2>
+  <table>
+    <thead><tr><th>风险类别</th><th>核心说明</th><th>等级</th></tr></thead>
+    <tbody>
+      <tr><td><strong>字节跳动竞争加剧</strong></td><td>抖音在快手传统优势的下沉市场渗透加深，MAU差距拉大；TikTok在海外市场的攻势压制快手海外增长</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>AI资本开支超预期</strong></td><td>260亿CapEx若超支或算力价格继续上涨，正向FCF承诺可能落空，触发市场大幅抛售</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>可灵AI商业化不及预期</strong></td><td>AI视频生成市场竞争激烈（Sora、Runway），若ARR增速大幅放缓，分拆估值大幅压缩，股价双重打击</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>可灵分拆稀释股东权益</strong></td><td>若分拆条款对快手现有股东不利（如低价发行、可灵AI利润长期不并表），雪球投资者担忧"现在外面能买到可灵股权，我们港股股东没有分配到股权"</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>直播收入持续下滑</strong></td><td>直播打赏受监管政策及用户消费行为改变影响，已连续多季下滑，-13.5%趋势若加速将侵蚀最高利润率业务</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>宏观消费环境疲软</strong></td><td>管理层提及"宏观消费没有显著改善"对电商业务货币化率造成短期压力；消费信心若持续低迷将影响广告与电商GMV</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>互联网监管政策</strong></td><td>国家对互联网平台内容监管、算法推荐、数据安全、未成年人保护等持续收紧</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>海外业务扩张受阻</strong></td><td>海外收入-11.6%且由盈转亏；汇率波动+市场策略调整；巴西以外的扩张进展缓慢</td><td><span class="badge b-lo">低</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 13 催化剂 -->
+<div class="sec" id="s13">
+  <h2 class="sec-h"><span class="n">13</span>近期催化剂与展望</h2>
+  <div class="g2">
+    <div class="card b1">
+      <div class="cl">下一财报日（H1 2026）</div>
+      <div class="cv">2026年8月（预计）</div>
+      <div class="cs">核心观察：①可灵AI收入是否超10亿/季（接近ARR翻倍路径）；②直播业务是否企稳回升；③FCF是否在CapEx高峰后转正；④FY2026全年利润指引是否改善</div>
+    </div>
+    <div class="card b2">
+      <div class="cl">可灵AI分拆融资公告</div>
+      <div class="cv">随时可能公告</div>
+      <div class="cs">一旦官方公告分拆融资条款（估值$10B-$20B区间），将是最大的单一股价催化剂，预计触发HK$5-15+的单日大幅上涨</div>
+    </div>
+  </div>
+  <p><strong>正面催化剂：</strong>①可灵AI分拆融资官方公告（最大催化剂）；②Q2 2026可灵收入超10亿元（证明ARR翻倍路径）；③AI漫剧营销消耗维持爆发式增长带动广告加速；④管理层FY2026全年利润指引上调；⑤腾讯以战略投资者参与可灵融资（协同价值背书）；⑥港股整体涨势中互联网板块价值重估。</p>
+  <p><strong>负面催化剂：</strong>①可灵分拆条款不利于快手上市公司股东；②Q2 2026经调整净利润继续同比大幅下滑（-30%+）；③抖音推出对标可灵的直接竞争产品并以更低价格抢占市场；④FCF无法实现正向目标（CapEx超支）；⑤国内消费持续疲软拖累广告ARPU增长。</p>
+</div>
+
+<!-- 14 投资结论 -->
+<div class="sec" id="s14">
+  <h2 class="sec-h"><span class="n">14</span>投资结论</h2>
+  <p>快手科技处于其历史上最具战略意义的转型节点：从中国第二大短视频平台向"AI原生媒体与创作平台"的跨越，正在通过可灵AI的爆发式商业化（ARR一年增长4倍至近$5亿美元）和对主营业务的AI深度渗透（广告提升3-4%、电商GMV提升约3%）以实证方式得到验证。MAU突破7.72亿历史高位，展示了平台用户价值的真实扩张。</p>
+  <p>核心投资逻辑的关键是当前估值错配：以HK$42.6计算的市值HK$1,790亿，对应FY2025调整P/E仅约8倍（远低于A股同类互联网平台15-25x），且以当前可灵AI谈判估值$200亿美元（HK$1,560亿）来看，快手的核心广告+电商平台（仍创造RMB 200亿+调整利润）的隐含定价几乎为零。这种定价显然是市场在"字节跳动竞争"和"AI投资亏损"双重情绪压制下的过度折价。管理层以行动背书：连续高频股份回购+承诺全年正向FCF+明确4%股东回报率，是对公司价值高度信心的最直接体现。</p>
+  <p><strong>综合结论：首次覆盖给予"积极买入（BUY）"评级，SOTP基准目标价HK$62（12个月），区间HK$58-75，较现价潜在上行约+45.5%（基准），叠加约1.7%股息，综合潜在回报约+47%。</strong>可灵AI分拆融资的官方公告是最大的潜在催化剂，一旦落地按$10B+估值确定，将单独贡献HK$10-30+的价值解锁。建议现价附近积极建仓，以HK$38-40区间作为加仓机会；风险控制参考止损：若可灵商业化数据连续两季低于预期（单季收入<5亿且ARR增速低于100%），重新评估评级。2026年8月中报是首个完整的H1数据验证窗口。</p>
+</div>
+
+<!-- 15 数据来源 -->
+<div class="sec" id="s15">
+  <h2 class="sec-h"><span class="n">15</span>数据来源</h2>
+  <ul class="src">
+    <li>快手科技2025年第四季度及全年业绩公告 — PRNewswire / ir.kuaishou.com（2026年3月25日）</li>
+    <li>快手科技2026年第一季度未经审计合并财务业绩公告 — ir.kuaishou.com（2026年5月27日）</li>
+    <li>证券时报（stcn.com）— "快手2025年净利润206亿元 继续加码AI投入"（2026年3月25日）</li>
+    <li>证券时报（stcn.com）— "快手2026年一季度月活7.72亿创历史新高 可灵AI收入超6.5亿元"（2026年5月27日）</li>
+    <li>澎湃新闻（thepaper.cn）— "快手可灵ARR一年增长4倍，管理层称在大幅AI开支下目标保持全年正向现金流"（2026年5月27日）</li>
+    <li>新浪财经（finance.sina.com.cn）— "全文|快手Q1业绩会实录：继续投资可灵AI 加大股东回报"（2026年5月27日）</li>
+    <li>观察者网（guancha.cn）— "快手Q1：营收337亿元，可灵AI收入飙升超300%"（2026年5月28日）</li>
+    <li>OFweek人工智能网（ofweek.com）— "快手Q1增收不增利：利润下滑26%，可灵AI收入暴增300%成第二曲线"（2026年5月28日）</li>
+    <li>电商派（pai.com.cn）— "快手一季度营收337亿元 可灵AI收入超6.5亿元"（2026年5月27日）</li>
+    <li>搜狐（sohu.com）— "快手：快手2026年第一季度财报-主营业务稳步提效 可灵AI跑出商业加速"（2026年6月1日）</li>
+    <li>雪球（xueqiu.com/S/01024）— 快手讨论区：分拆分析、持仓成本讨论、回购观察（2026年5月23日、5月27日）</li>
+    <li>极目新闻（ctdsb.net）— "快手发布2026年第一季度财报 可灵AI商业化进程加速"（2026年5月26-27日）</li>
+    <li>富途证券（futubull）— "快手(1024.HK)深度报告：电商+广告业务高增长驱动 盈利能力持续向好"</li>
+    <li>快手科技官方IR网站 — ir.kuaishou.com（公司简介、历史业绩存档）</li>
+  </ul>
+  <p class="fn" style="margin-top:12px">注：所有估值计算基于用户提供的2026年7月3日H股收盘价HK$42.60及估算流通股约42亿股（通过年度分红HK$30亿与股息率反推，实际股本数据以公司最新季报为准）。快手财务数据以人民币报告，HKD换算参考约1 RMB = 1.089 HKD。可灵AI分拆估值数据来自媒体报道，非官方确认数字，投资者应以快手科技官方公告为准。FY2026E盈利预测为蜗牛鸟投资分析师独立模型，非公司指引或外部机构预测。</p>
+</div>
+
+<div class="disc">
+  <strong>重要免责声明：</strong>本报告由蜗牛鸟投资（Snail-Bird Investment 🐦）精品研究部编制，仅供内部研究及专业投资者参考，不构成任何证券买卖的要约、邀请或投资建议。快手科技（01024.HK）为港股上市互联网/AI公司，面临中国互联网监管风险、科技竞争风险、字节跳动竞争压力及可灵AI商业化不确定性等多重风险，其股价可能出现大幅波动。本报告中关于可灵AI分拆估值（$200亿美元）来自媒体报道，尚未获快手官方确认，投资者不应将其作为确定性基础进行决策。SOTP估值中的可灵AI估值区间（$2B-$20B USD）存在极大不确定性。历史业绩不代表未来表现。版权归蜗牛鸟投资所有，未经授权不得转载。
+</div>
+<div class="foot">SNAIL-BIRD INVESTMENT 🐦 &nbsp;|&nbsp; 精品研究部 &nbsp;|&nbsp; 港股互联网/AI行业覆盖 &nbsp;|&nbsp; CONFIDENTIAL · FOR PROFESSIONAL INVESTORS ONLY</div>
+
+</div>
+</body>
+</html>

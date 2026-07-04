@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>巨化股份 (600160.SH) 深度研究报告 | 蜗牛鸟投资</title>
+<style>
+:root{
+  --ink:    #1a0e2a;
+  --deep:   #2a1440;
+  --mid:    #4a2060;
+  --teal:   #5a3478;
+  --sky:    #7b4ba0;
+  --gold:   #a07800;
+  --bright: #c49200;
+  --amber:  #d8aa10;
+  --red:    #9c2320;
+  --green:  #1a6840;
+  --warn:   #7a5c00;
+  --blue:   #1a3a6a;
+  --bg:     #f0eee8;
+  --paper:  #fafaf6;
+  --text:   #1c1820;
+  --muted:  #5e5870;
+  --rule:   #dddace;
+  /* 化工风格主题色 */
+  --chem1:  #2a5080;
+  --chem2:  #1e6858;
+  --chem3:  #9c2320;
+  --hero-a: #1a1030;
+  --hero-b: #1e2848;
+  --hero-c: #0e3850;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC","Source Han Sans SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.78}
+.page{max-width:1060px;margin:0 auto;background:var(--paper);box-shadow:0 2px 44px rgba(26,14,42,.10)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:var(--hero-a);border-bottom:3px solid var(--amber);display:flex;align-items:center;overflow-x:auto;white-space:nowrap}
+.nav-brand{background:var(--amber);color:var(--hero-a);font-weight:800;font-size:12px;letter-spacing:1.4px;padding:13px 16px;flex-shrink:0}
+.nav a{color:#b8c8d8;text-decoration:none;font-size:11.5px;padding:13px 9px;border-bottom:2px solid transparent;transition:color .18s,border-color .18s}
+.nav a:hover{color:var(--amber);border-bottom-color:var(--amber)}
+
+/* HERO */
+.hero{background:linear-gradient(138deg,#1a1030 0%,#1e2848 50%,#0e3850 100%);color:#e5ecf5;padding:48px 54px 38px;border-bottom:4px solid var(--amber);position:relative;overflow:hidden}
+.hero::before{content:"JH";position:absolute;right:-10px;top:-20px;font-size:240px;font-weight:900;color:rgba(255,255,255,.022);letter-spacing:-8px;pointer-events:none;line-height:1}
+.hero-eye{font-size:11px;letter-spacing:3px;color:var(--amber);text-transform:uppercase;margin-bottom:10px}
+.hero-title{font-size:30px;font-weight:bold;line-height:1.2;margin-bottom:4px}
+.hero-title em{color:#88b0cc;font-style:normal;font-size:16px;font-weight:normal}
+.hero-sub{font-size:13px;color:#90adc4;margin-top:5px;margin-bottom:26px}
+
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:22px}
+.kpi-c{padding:13px 14px;border-right:1px solid rgba(255,255,255,.10)}
+.kpi-c:last-child{border-right:none}
+.kpi-c .lbl{font-size:10px;color:#8090a8;text-transform:uppercase;letter-spacing:.8px}
+.kpi-c .val{font-size:18px;color:#fff;font-weight:700;margin-top:4px;line-height:1.15}
+.kpi-c .sub{font-size:10.5px;color:#607080;margin-top:2px}
+
+.rbox{display:inline-flex;align-items:center;gap:16px;background:rgba(196,146,0,.13);border:1px solid var(--amber);padding:10px 22px;border-radius:2px}
+.rbox .r{font-weight:900;font-size:17px;color:var(--amber);letter-spacing:.8px}
+.rbox .tp{font-size:12px;color:#c0d0e0}
+.rbox .up{font-size:12px;color:#7ed8a0;font-weight:700}
+
+/* SECTIONS */
+.sec{padding:36px 54px;border-bottom:1px solid var(--rule)}
+.sec:last-child{border-bottom:none}
+.sec-h{font-size:19.5px;color:var(--chem1);border-left:5px solid var(--amber);padding-left:14px;margin-bottom:20px;font-weight:bold}
+.sec-h .n{color:var(--amber);margin-right:6px;font-weight:normal}
+h3.sh{font-size:14.5px;color:var(--chem2);margin:26px 0 10px;border-bottom:1px solid var(--rule);padding-bottom:6px;font-weight:bold}
+p{font-size:14.5px;color:var(--text);margin-bottom:13px}
+.lead{font-size:15px;color:var(--chem1);background:#e8ecf0;border-left:3px solid var(--amber);padding:14px 18px;margin-bottom:18px;line-height:1.88}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0 20px}
+thead th{background:var(--chem1);color:#d8e8f8;padding:9px 12px;text-align:left;font-weight:600;letter-spacing:.2px}
+tbody td{padding:8px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:nth-child(even) td{background:#f4f2ea}
+.rc{text-align:right;font-variant-numeric:tabular-nums}
+.pos{color:var(--green);font-weight:700}
+.neg{color:var(--red);font-weight:700}
+.hl td{background:#eff4f8!important;font-weight:700}
+
+/* grids */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+
+.card{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--amber);padding:14px 16px}
+.card.b1{border-top-color:var(--chem1)}
+.card.b2{border-top-color:var(--chem2)}
+.card.b3{border-top-color:var(--red)}
+.card.b4{border-top-color:var(--blue)}
+.card .cl{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.card .cv{font-size:20px;color:var(--chem1);font-weight:700;margin-top:5px;line-height:1.15}
+.card .cs{font-size:11.5px;color:var(--muted);margin-top:4px}
+
+/* quota box — special */
+.quota-box{background:linear-gradient(135deg,#eff6fc 0%,#e6f0f8 100%);border:2px solid var(--chem1);border-radius:2px;padding:18px 22px;margin:14px 0}
+.quota-box h4{font-size:14px;color:var(--chem1);font-weight:bold;margin-bottom:10px}
+.quota-item{display:flex;align-items:center;gap:12px;margin-bottom:8px;font-size:13.5px}
+.quota-pct{font-size:24px;font-weight:900;color:var(--chem1);min-width:60px}
+.quota-bar-w{flex:1;background:#d0dce8;height:10px;border-radius:4px;overflow:hidden}
+.quota-bar{background:var(--chem1);height:10px;border-radius:4px}
+.quota-note{font-size:12px;color:var(--muted);min-width:160px}
+
+/* pipeline */
+.pipe-row{display:flex;align-items:center;margin-bottom:10px;gap:10px;font-size:13px}
+.pipe-label{width:90px;flex-shrink:0;color:var(--muted);font-size:12px;text-align:right}
+.pipe-bar-w{flex:1;background:#e2e6ea;height:28px;border-radius:2px;overflow:hidden}
+.pipe-bar{height:28px;display:flex;align-items:center;padding:0 10px;font-weight:700;font-size:12px;color:#fff;border-radius:2px}
+.pipe-meta{width:180px;font-size:11.5px;color:var(--muted)}
+
+/* mbox */
+.mbox{border:1px dashed var(--amber);background:#faf8ed;padding:16px 20px;margin:14px 0}
+.mbox h4{font-size:13.5px;color:var(--chem1);margin-bottom:8px;font-weight:700}
+.mbox ul{padding-left:18px;margin-top:6px}
+.mbox li,.mbox p{font-size:13.5px;margin-bottom:5px}
+
+/* note / warn */
+.note{background:#e6f4ec;border-left:3px solid var(--chem2);padding:10px 14px;font-size:12.5px;color:#1a3a28;margin-bottom:16px}
+.warn-box{background:#fef8e6;border-left:3px solid var(--bright);padding:10px 14px;font-size:12.5px;color:#5a4200;margin-bottom:16px}
+.risk-note{background:#fef0f0;border-left:3px solid var(--red);padding:12px 14px;font-size:13px;color:#6a2020;margin-bottom:14px}
+
+/* risk badges */
+.badge{display:inline-block;font-size:11px;padding:2px 10px;border-radius:10px;font-weight:700}
+.b-hi{background:#fce8e7;color:var(--red)}
+.b-mid{background:#fdf0d2;color:var(--warn)}
+.b-lo{background:#e2f0e9;color:var(--green)}
+
+/* tech */
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.tc{background:#fff;border:1px solid var(--rule);padding:14px 16px}
+.tc .tl{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.tc .tv{font-size:19px;font-weight:700;color:var(--chem1)}
+.tc .ts{font-size:12.5px;color:var(--muted);margin-top:4px}
+.tc.am{border-top:3px solid var(--amber)}
+.tc.c1{border-top:3px solid var(--chem1)}
+.tc.c2{border-top:3px solid var(--chem2)}
+.tc.re{border-top:3px solid var(--red)}
+
+/* price ladder */
+.pladder{border:1px solid var(--rule);background:#fff;margin:14px 0}
+.prow{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--rule);font-size:13px}
+.prow:last-child{border-bottom:none}
+.prow .pt{width:120px;flex-shrink:0;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+.prow .pv{font-size:15px;font-weight:700;color:var(--chem1);width:80px}
+.prow .pn{color:var(--muted);font-size:12.5px;flex:1}
+.prow.cur .pv{color:var(--amber)}
+.prow.sup .pv{color:var(--green)}
+.prow.res .pv{color:var(--red)}
+
+/* sensitivity */
+.sens thead th{background:var(--chem2)}
+.sens td{text-align:center}
+.sens td.anchor{background:#eff6f0!important;font-weight:700;border:2px solid var(--green)}
+.sens td.hi{background:#e6f3ff!important}
+.sens td.lo{background:#fff0f0!important}
+
+.fn{font-size:11.5px;color:var(--muted);line-height:1.75}
+.src{font-size:12.5px;color:var(--muted);line-height:2;padding-left:18px}
+.src li{margin-bottom:2px}
+.disc{background:var(--hero-a);color:#7a9aaa;font-size:11.5px;padding:28px 54px;line-height:1.92}
+.disc strong{color:var(--amber)}
+.foot{background:var(--hero-a);border-top:1px solid rgba(196,146,0,.28);color:#3a5868;text-align:center;font-size:11px;letter-spacing:1.5px;padding:14px}
+
+@media(max-width:700px){
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .g3,.g4,.tgrid{grid-template-columns:1fr 1fr}
+  .hero,.sec,.disc{padding-left:22px;padding-right:22px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-brand">🐦 蜗牛鸟投资 · 精品研究</div>
+  <a href="#s1">摘要</a>
+  <a href="#s2">公司概览</a>
+  <a href="#s3">业务分部</a>
+  <a href="#s4">配额制护城河</a>
+  <a href="#s5">财务分析</a>
+  <a href="#s6">资产负债表&amp;FCF</a>
+  <a href="#s7">股东回报</a>
+  <a href="#s8">技术面</a>
+  <a href="#s9">估值模型</a>
+  <a href="#s10">制冷剂价格敏感性</a>
+  <a href="#s11">成长新引擎</a>
+  <a href="#s12">风险矩阵</a>
+  <a href="#s13">催化剂</a>
+  <a href="#s14">结论</a>
+  <a href="#s15">来源</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eye">SNAIL-BIRD INVESTMENT &nbsp;|&nbsp; 精品研究部 &nbsp;|&nbsp; A股化工行业首次覆盖</div>
+  <div class="hero-title">巨化股份 Zhejiang Juhua Co., Ltd. <em>(SSE: 600160.SH)</em></div>
+  <div class="hero-sub">全球氟化工龙头 · HFCs配额占全国39.30% · "特许经营"护城河 · AI液冷新材料第二曲线 — 深度投资研究报告</div>
+  <div class="kpi-row">
+    <div class="kpi-c">
+      <div class="lbl">现价（7月3日）</div>
+      <div class="val">RMB 49.35</div>
+      <div class="sub">近期从约37元大幅上涨</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">FY2025 归母净利润</div>
+      <div class="val">RMB 37.83亿</div>
+      <div class="sub">同比+94.29%；逆行业大幅增长</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">Q1 2026 归母净利润</div>
+      <div class="val">RMB 11.73亿</div>
+      <div class="sub">同比+45.93%；EPS 0.434元</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">HFCs配额（2026）</div>
+      <div class="val">占全国39.30%</div>
+      <div class="sub">全球最大三代制冷剂配额持有者</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">报告日期</div>
+      <div class="val">2026年7月3日</div>
+      <div class="sub">蜗牛鸟投资精品研究部</div>
+    </div>
+  </div>
+  <div class="rbox">
+    <div class="r">中性（HOLD）</div>
+    <div class="tp">12个月目标价：<strong style="color:#d8c060">RMB 48 – 56</strong>，基准RMB 51</div>
+    <div class="up">当前估值较充分；关注旺季兑现与甘肃投产进展</div>
+  </div>
+</div>
+
+<!-- 01 投资摘要 -->
+<div class="sec" id="s1">
+  <h2 class="sec-h"><span class="n">01</span>投资摘要</h2>
+  <div class="lead">
+    巨化股份（600160.SH）是国内氟化工行业的绝对龙头，拥有全球规模最大的制冷剂产能及配额优势：2026年三代制冷剂（HFCs）生产配额29.99万吨，占全国总配额的<strong>39.30%</strong>，确立了其在行业"特许经营"模式中无可撼动的垄断地位。配额制自2024年起实施后，"总量约束下的定价权回归"逻辑得到充分验证——以R32为代表的主流制冷剂价格从2024年初的约1.5万元/吨飙升至当前约6万元/吨以上，驱动公司FY2025归母净利润同比暴增94%至37.83亿元，经营活动净现金流更大增127.54%至62.61亿元。2026年一季度延续强劲势头，净利润11.73亿元再增46%。然而，股价年内已从约37元（4月底）飙升至49.35元（+34%），市盈率攀至约22-26倍FY2026E，基本充分反映了制冷剂旺季的乐观预期。甘肃巨化基地力争年底完成试车投产，将带动2027年产能扩张；AI液冷（氢氟醚、全氟聚醚）和四代制冷剂是中长期增量叙事，但当前体量尚小。在<strong>技术信号偏空、估值基本充分定价</strong>的背景下，我们首次覆盖给予<strong>中性（HOLD）</strong>评级，12个月目标价<strong>RMB 51</strong>（区间RMB 48-56）。
+  </div>
+  <table>
+    <thead><tr><th>核心结论</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>评级</td><td>中性（HOLD）— 基本面优质，但当前价格已较充分反映旺季利好</td></tr>
+      <tr><td>12M目标价</td><td><strong>RMB 51</strong>（基准）；区间RMB 48-56；悲观情形RMB 32；乐观情形RMB 65</td></tr>
+      <tr><td>核心多头逻辑</td><td>配额制"特许经营"→定价权持续向制冷剂端集中；HFCs价格高位有望维持；FY2026旺季（Q2-Q3）景气延续；AI液冷第二曲线布局超前</td></tr>
+      <tr><td>核心空头逻辑</td><td>股价年内已涨34%，估值趋于充分；技术面中线卖出信号（5月底）；非制冷剂业务仍在"内卷"周期底部；甘肃基地2026年不贡献实质收入；负自由现金流（capex高峰）</td></tr>
+      <tr><td>下一关键节点</td><td>2026年8月（预计）：H1 2026中报；核心看点：制冷剂Q2旺季价量数据、甘肃基地进度及AI液冷订单披露</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 02 公司概览 -->
+<div class="sec" id="s2">
+  <h2 class="sec-h"><span class="n">02</span>公司概览</h2>
+  <p>浙江巨化股份有限公司成立于1958年（前身为巨化集团），总部位于浙江省衢州市，1998年6月在上海证券交易所上市（代码：600160）。公司是国内领先的<strong>氟化工、氯碱化工新材料</strong>先进制造业基地，拥有从氟化工原料（萤石→氢氟酸→各类氟化工品）到终端应用（制冷剂→含氟聚合物→电子氟化液→食品包装材料）的<strong>完整垂直一体化产业链</strong>，是全球范围内产业链最完整的氟化工企业之一。<span class="fn">[来源：巨化股份2025年年度报告（600160_20260423，2026年4月23日）；证券时报（stcn.com，2026年4月22日）]</span></p>
+  <p>公司2025年研发投入11.20亿元，占营收4.15%，全年实施科创项目186项，连续十一年获上交所信息披露A级评价，ESG评级维持AA级。<span class="fn">[来源：证券时报（stcn.com，2026年4月23日）]</span></p>
+  <div class="g4">
+    <div class="card b1"><div class="cl">上市时间</div><div class="cv">1998年6月</div><div class="cs">上交所，代码600160</div></div>
+    <div class="card b2"><div class="cl">总股本</div><div class="cv">27.03亿股</div><div class="cs">以2025年末总股本为基数</div></div>
+    <div class="card"><div class="cl">市值（7月3日）</div><div class="cv">约RMB 1,334亿</div><div class="cs">49.35元×27.03亿股</div></div>
+    <div class="card b4"><div class="cl">实控人</div><div class="cv">巨化集团（国资）</div><div class="cs">865家机构持仓占流通A股68.40%</div></div>
+  </div>
+  <p class="fn">来源：亿牛网巨化股份PE历史；东方财富Q1 2026一季报数据（2026年4月29日）；巨化股份2025年年度报告（2026年4月22日）。</p>
+</div>
+
+<!-- 03 业务分部 -->
+<div class="sec" id="s3">
+  <h2 class="sec-h"><span class="n">03</span>业务分部分析（FY2025年度）</h2>
+  <h3 class="sh">3.1 主营业务结构（FY2025全年）</h3>
+  <table>
+    <thead><tr><th>业务板块</th><th class="rc">FY2025营收</th><th class="rc">同比</th><th class="rc">毛利率</th><th>核心特征</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td><strong>制冷剂（二/三代HCFCs+HFCs）</strong></td><td class="rc"><strong>RMB 135.44亿</strong></td><td class="rc pos"><strong>+43.37%</strong></td><td class="rc pos"><strong>50.81%（+21.74pct）</strong></td><td>盈利绝对主力；均价3.95万元/吨（+47.55%）；R32市价已突破6万元/吨</td></tr>
+      <tr><td>石化材料</td><td class="rc">约RMB 40亿</td><td class="rc neg">约持平</td><td class="rc neg">负区间</td><td>乙烯/聚丙烯等；同质化竞争激烈，景气低迷</td></tr>
+      <tr><td>基础化工品及其他</td><td class="rc">约RMB 29亿</td><td class="rc">+8.59%</td><td class="rc">偏低</td><td>氯碱化工基础产品；产能利用率约75%，行业底部运行</td></tr>
+      <tr><td>含氟聚合物材料</td><td class="rc">约RMB 18亿</td><td class="rc pos">+5.50%</td><td class="rc neg">负区间</td><td>PTFE/PVDF/PVDC等；PVDC为全球产能第一；PVDF产能过剩仍待出清</td></tr>
+      <tr><td>氟化工原料</td><td class="rc">约RMB 13亿</td><td class="rc pos">+10.50%</td><td class="rc">约5-8%</td><td>萤石→无水氟化氢→HCFC基础原料；价格回落</td></tr>
+      <tr><td>食品包装材料</td><td class="rc">约RMB 7亿</td><td class="rc neg">-26.52%</td><td class="rc">中等</td><td>PVDC等；全球产能规模第一（制造业单项冠军）；量价承压</td></tr>
+      <tr><td>含氟精细化学品</td><td class="rc">约RMB 3.94亿</td><td class="rc pos">+31%</td><td class="rc pos">较高</td><td>电子氟化液（氢氟醚+全氟聚醚）；AI液冷新材料；量增明显</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：巨化股份2025年年度报告（2026年4月23日）；证券时报（stcn.com，2026年4月23日）；东方财富研究报告（2026年4月29日）。注：制冷剂为2025年年报数字，其他板块为Q1-Q3加估算。</p>
+
+  <h3 class="sh">3.2 业务分化的结构性特征</h3>
+  <p>巨化股份的当前业务结构呈现高度的<strong>"制冷剂独树一帜，非制冷剂普遍承压"</strong>的格局：制冷剂业务以50.81%的超高毛利率（同比提升21.74个百分点）贡献了绝大部分利润增量，而石化材料、含氟聚合物等非制冷剂业务毛利率已落入负区间，反映化工行业产能过剩、"内卷式"竞争的普遍困境（国家统计局数据：2025年化工行业规模以上企业利润总额同比下降7.3%）。公司逆势大幅增长，完全依赖制冷剂配额制提供的结构性红利。<span class="fn">[来源：巨化股份2025年年度报告（2026年4月23日），第39页]</span></p>
+</div>
+
+<!-- 04 配额制护城河 -->
+<div class="sec" id="s4">
+  <h2 class="sec-h"><span class="n">04</span>配额制护城河专析——"特许经营"商业模式</h2>
+  <p>巨化股份最核心的竞争壁垒不是技术，而是<strong>政策性配额赋予的"准垄断定价权"</strong>。理解这一护城河是研究巨化股份的核心前提。</p>
+
+  <h3 class="sh">4.1 配额制度框架</h3>
+  <p>根据《蒙特利尔议定书》基加利修正案，中国作为发展中国家大国，已承诺分阶段削减三代制冷剂（HFCs）的生产和消费。国家生态环境部自<strong>2024年起</strong>对HFCs生产实行配额管理，以总量约束的方式强制出清了行业供给侧过剩产能，标志着三代制冷剂从"自由竞争商品"向<strong>"政策性限量供给特许商品"</strong>的根本性转变。管理层将这一模式称为"基因重塑"——HFCs从此具备了消费品+特许经营的双重属性。<span class="fn">[来源：巨化股份2025年业绩预增公告（stockmc.xueqiu.com，2026年1月22日）；巨化股份2025年年度报告（2026年4月23日）]</span></p>
+
+  <div class="quota-box">
+    <h4>🏆 2026年巨化股份配额优势一览</h4>
+    <div class="quota-item">
+      <div class="quota-pct">39.30%</div>
+      <div class="quota-bar-w"><div class="quota-bar" style="width:79.3%"></div></div>
+      <div class="quota-note"><strong>HFCs（三代）生产配额</strong>全国第一<br>绝对值：29.99万吨（2026年国家核定）</div>
+    </div>
+    <div class="quota-item">
+      <div class="quota-pct">26.30%</div>
+      <div class="quota-bar-w"><div class="quota-bar" style="width:52.6%;background:#1e6858"></div></div>
+      <div class="quota-note"><strong>HCFC-22（二代）生产配额</strong>全国第一<br>绝对值：3.84万吨；内用配额占全国31.55%</div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px">R32、R125、R134a等主流品种市占率均居行业首位。来源：巨化股份2026年一季度说明会（stcn.com，2026年4月）；巨化股份2025年年度报告。</p>
+  </div>
+
+  <h3 class="sh">4.2 配额制下的价格传导机制</h3>
+  <div class="note">📈 价格奇迹：R32（主流家用空调制冷剂）从2024年初约1.5万元/吨大幅攀升，截至公司2025年三季度说明会时（2025年11月）"市场价已突破6万元/吨"，两年间涨幅约<strong>300%</strong>，远超大宗商品历史波动区间。这一价格上涨并非市场炒作，而是"配额总量约束+需求稳健增长（空调+新能源汽车）"下供求关系根本性改善的自然结果。来源：同花顺（10jqka.com），Q3 2025点评报告。</div>
+  <table>
+    <thead><tr><th>制冷剂品种</th><th>主要下游</th><th class="rc">2024年初价格</th><th class="rc">2025年均价</th><th class="rc">当前市价（估）</th><th class="rc">2年涨幅</th></tr></thead>
+    <tbody>
+      <tr><td>R32（二氟甲烷）</td><td>家用空调（变频）</td><td class="rc">约1.5万元/吨</td><td class="rc pos">约4.3万元/吨</td><td class="rc pos">约6万+元/吨</td><td class="rc pos">+300%+</td></tr>
+      <tr><td>R125（五氟乙烷）</td><td>混配制冷剂R410a/R404a原料</td><td class="rc">约1.8万元/吨</td><td class="rc pos">约5.2万元/吨</td><td class="rc pos">约7万+元/吨</td><td class="rc pos">+290%+</td></tr>
+      <tr><td>R134a（四氟乙烷）</td><td>汽车空调（新能源车核心）</td><td class="rc">约1.2万元/吨</td><td class="rc pos">约4.0万元/吨</td><td class="rc pos">约5万+元/吨</td><td class="rc pos">+320%+</td></tr>
+      <tr><td>R22（HCFC-22，二代）</td><td>老旧分体空调、工商制冷</td><td class="rc">约1.4万元/吨</td><td class="rc pos">约3.0万元/吨</td><td class="rc pos">约4万+元/吨</td><td class="rc pos">+185%+</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：同花顺Q3 2025三季报点评报告（10jqka.com）；巨化股份2025年三季报说明会（2025年11月）。</p>
+</div>
+
+<!-- 05 财务分析 -->
+<div class="sec" id="s5">
+  <h2 class="sec-h"><span class="n">05</span>财务分析（损益表）</h2>
+
+  <h3 class="sh">5.1 多期业绩对比（RMB亿元）</h3>
+  <table>
+    <thead><tr><th>指标</th><th class="rc">FY2023</th><th class="rc">FY2024</th><th class="rc">FY2025</th><th class="rc">Q1 2026</th><th class="rc">FY2026E（分析师共识）</th></tr></thead>
+    <tbody>
+      <tr><td>营业收入</td><td class="rc">RMB 206.55亿</td><td class="rc">RMB 244.63亿</td><td class="rc"><strong>RMB 269.91亿</strong></td><td class="rc">RMB 60.18亿</td><td class="rc"><strong>约RMB 290-315亿</strong></td></tr>
+      <tr><td>收入增速</td><td class="rc neg">—</td><td class="rc pos">+18.4%</td><td class="rc pos">+10.33%</td><td class="rc pos">+3.75%</td><td class="rc pos">约+10-17%</td></tr>
+      <tr><td>归母净利润</td><td class="rc">约RMB 10亿</td><td class="rc">RMB 19.47亿</td><td class="rc pos"><strong>RMB 37.83亿</strong></td><td class="rc pos"><strong>RMB 11.73亿</strong></td><td class="rc"><strong>约RMB 51-58亿</strong></td></tr>
+      <tr><td>净利润增速</td><td class="rc">—</td><td class="rc pos">约+95%</td><td class="rc pos">+94.29%</td><td class="rc pos">+45.93%</td><td class="rc pos">约+35-53%</td></tr>
+      <tr><td>扣非归母净利润</td><td class="rc">—</td><td class="rc">约RMB 19亿</td><td class="rc">RMB 37.54亿</td><td class="rc">RMB 11.64亿</td><td class="rc">—</td></tr>
+      <tr><td>制冷剂营收</td><td class="rc">—</td><td class="rc">约RMB 94亿</td><td class="rc pos">RMB 135.44亿</td><td class="rc">—</td><td class="rc">—</td></tr>
+      <tr><td>制冷剂毛利率</td><td class="rc">约20%</td><td class="rc">约29%</td><td class="rc pos"><strong>50.81%（+21.74pct）</strong></td><td class="rc">—</td><td class="rc">—</td></tr>
+      <tr><td>整体毛利率</td><td class="rc">—</td><td class="rc">约17%</td><td class="rc pos">约28-30%</td><td class="rc">约28.9%（Q1-Q3 2025参考）</td><td class="rc">—</td></tr>
+      <tr><td>基本每股收益（EPS）</td><td class="rc">约0.37元</td><td class="rc">约0.72元</td><td class="rc pos"><strong>1.40元</strong></td><td class="rc pos"><strong>0.434元</strong></td><td class="rc"><strong>约1.90-2.17元</strong></td></tr>
+      <tr><td>加权平均ROE</td><td class="rc">—</td><td class="rc">约8.5%</td><td class="rc pos">约19.2%（净经营资产口径）</td><td class="rc">5.58%（单季）</td><td class="rc">—</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：巨化股份2025年年度报告（2026年4月23日）；Q1 2026一季报（2026年4月29日）；证券之星（2026年4月29日）；东方财富研究报告（2026年4月29日）。FY2024归母净利润由FY2025 +94.29%反算：37.83/1.9429≈19.47亿元；FY2023历史EPS参照同花顺PE历史数据（2023年净利润约9.44亿）。FY2026E为分析师预测区间，证券之星共识约58.68亿（EPS 2.17），东方财富研究所51.36亿（EPS 1.90），各机构存在差异。</p>
+
+  <h3 class="sh">5.2 Q4 2025的一次性扰动——锦纶业务减值</h3>
+  <div class="warn-box">⚠️ Q4 2025存在重大一次性影响：公司对巨化锦纶有限责任公司的环己酮、己内酰胺和丁酮肟生产装置进行减值测试，并计提资产减值准备<strong>合计3.21亿元</strong>，列入FY2025年度损益。此外，Q4为制冷剂传统淡季，叠加季节性价格下滑，导致Q4单季利润环比大幅下降约55%。分析FY2025业绩时需注意这一季节性+一次性因素，Q1-Q3更能反映正常经营水平。来源：巨化股份2025年业绩预增公告（2026年1月22日）；东方财富研究报告（2026年4月29日）。</div>
+
+  <div class="g4">
+    <div class="card b1"><div class="cl">Q1 2026 ROE（加权）</div><div class="cv">5.58%</div><div class="cs">同比+1.17pt；单季持续改善</div></div>
+    <div class="card b2"><div class="cl">Q1 2026 ROIC</div><div class="cv">4.24%</div><div class="cs">较上年同期+0.47pt</div></div>
+    <div class="card"><div class="cl">每股净资产（Q1 2026末）</div><div class="cv">RMB 8.01元</div><div class="cs">同比+16.1%；P/B约6.16x</div></div>
+    <div class="card b3"><div class="cl">营运资本/营收（FY2025）</div><div class="cv">-0.05</div><div class="cs">负值=供应商占款>客户垫付，极佳现金流结构</div></div>
+  </div>
+</div>
+
+<!-- 06 资产负债表与FCF -->
+<div class="sec" id="s6">
+  <h2 class="sec-h"><span class="n">06</span>资产负债表与自由现金流分析</h2>
+
+  <h3 class="sh">6.1 资产负债表快照（Q1 2026末）</h3>
+  <div class="g4">
+    <div class="card b2"><div class="cl">资产负债率（Q1 2026）</div><div class="cv">38.48%</div><div class="cs">行业适中水平；财务结构稳健</div></div>
+    <div class="card b1"><div class="cl">每股净资产</div><div class="cv">RMB 8.01元</div><div class="cs">同比增长16.1%；P/B≈6.16x（以49.35计）</div></div>
+    <div class="card"><div class="cl">境外资产（2025年末）</div><div class="cv">RMB 34.22亿</div><div class="cs">浙江+山东+阿联酋三大基地；境外持续扩张</div></div>
+    <div class="card b4"><div class="cl">研发投入（FY2025）</div><div class="cv">RMB 11.20亿</div><div class="cs">占营收4.15%；全年研发项目186项</div></div>
+  </div>
+  <div class="note">📊 资产负债表评价：巨化股份负债率38.48%属于化工制造业合理区间（行业平均约50%），不存在明显偿债压力。与本系列其他报告（NEM净现金）相比，巨化处于适度杠杆区间，资本开支高峰（FY2025固定资产投资77.68亿元）对应的是主动扩张投资而非被迫融资。阿联酋、甘肃等新基地的建设将持续占用资金，但不构成财务风险。<span class="fn">[来源：东方财富研究报告，2026年4月29日]</span></div>
+
+  <h3 class="sh">6.2 经营现金流与自由现金流分析</h3>
+  <table>
+    <thead><tr><th>期间</th><th class="rc">经营活动净现金流（OCF）</th><th class="rc">固定资产投资（CapEx）</th><th class="rc">自由现金流（FCF）</th><th class="rc">FCF/净利润</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>FY2024</td><td class="rc">约RMB 27.5亿</td><td class="rc">约RMB 45-55亿</td><td class="rc neg">约-RMB 18-28亿</td><td class="rc">—</td><td>投资扩张期；配额制效益尚未充分释放</td></tr>
+      <tr class="hl"><td>FY2025</td><td class="rc pos"><strong>RMB 62.61亿（+127.54%）</strong></td><td class="rc neg">RMB 77.68亿（历史高峰）</td><td class="rc neg"><strong>约-RMB 15.07亿</strong></td><td class="rc">—</td><td>OCF大增但CapEx更高；甘肃+阿联酋基地投建高峰</td></tr>
+      <tr><td>Q1 2026</td><td class="rc pos">RMB 9.41亿（+93.55%）</td><td class="rc">—</td><td class="rc">—</td><td class="rc">约80%</td><td>每股经营现金流0.35元；季度现金生成质量高</td></tr>
+    </tbody>
+  </table>
+  <div class="mbox">
+    <h4>蜗牛鸟FCF盈利质量评分框架（沿用本系列报告方法论）</h4>
+    <p>FY2025：OCF RMB 62.61亿 vs GAAP净利润RMB 37.83亿 → OCF/净利润倍率<strong>1.65x</strong>。这意味着公司的真实现金生成能力远超报告净利润（主因：制冷剂业务供应商占款良好+应收款增加有限，形成经营性"造血"优势）。负FCF（OCF 62.61亿 - CapEx 77.68亿 = -15.07亿）完全由主动性扩张投资驱动，而非经营质量下滑。参照NEM（矿山扩建期同样出现负FCF）的分析框架，对于高盈利能力公司的扩张投资期，FCF负值是可接受的阶段性现象，应聚焦于OCF的持续扩张趋势。预计随甘肃基地2026年底投产后进入运营阶段，FY2027起资本开支将明显回落，FCF转正可期。</p>
+  </div>
+</div>
+
+<!-- 07 股东回报 -->
+<div class="sec" id="s7">
+  <h2 class="sec-h"><span class="n">07</span>股东回报分析</h2>
+
+  <h3 class="sh">7.1 分红政策：双次分红+稳定派息比例</h3>
+  <div class="g3">
+    <div class="card b2"><div class="cl">FY2025全年分红总额（估）</div><div class="cv">约RMB 15.12亿</div><div class="cs">占归母净利润约40%（历史派息率稳定）</div></div>
+    <div class="card"><div class="cl">FY2025年报分红</div><div class="cv">每10股3.8元</div><div class="cs">每股0.38元；以27亿股计≈RMB 10.26亿</div></div>
+    <div class="card"><div class="cl">Q3 2025中期分红</div><div class="cv">每股0.18元</div><div class="cs">约RMB 4.86亿；2026年1月实施</div></div>
+  </div>
+  <p>值得重视的是，巨化股份2025年实施了<strong>前三季度中期分红</strong>（每股0.18元，2026年1月实施），这是公司历史上较为少见的中期分红举措，反映管理层对未来盈利可持续性的信心，以及对投资者回报的重视程度提升。公司自上市以来，累计派发现金分红62.89亿元（含回购金额），占累计归母净利润<strong>40.13%</strong>，利润分配政策体现了穿越周期的一致性。<span class="fn">[来源：同花顺巨化股份大事（basic.10jqka.com.cn/600160/event.html）；东方财富研究报告（2026年4月29日）]</span></p>
+
+  <h3 class="sh">7.2 当前股息收益率</h3>
+  <table>
+    <thead><tr><th>分红项目</th><th class="rc">金额（每股）</th><th class="rc">总金额</th><th>除权日</th></tr></thead>
+    <tbody>
+      <tr><td>Q3 2025中期分红</td><td class="rc">RMB 0.18元</td><td class="rc">RMB 4.86亿</td><td>2026年1月（已实施）</td></tr>
+      <tr><td>2025年度末期分红</td><td class="rc">RMB 0.38元（每10股3.8元）</td><td class="rc">RMB 10.27亿</td><td>2026年（待实施）</td></tr>
+      <tr class="hl"><td><strong>2025年度合计</strong></td><td class="rc"><strong>RMB 0.56元/股</strong></td><td class="rc"><strong>RMB 15.13亿</strong></td><td>—</td></tr>
+      <tr><td>股息收益率（以49.35元计）</td><td class="rc"><strong>约1.13%</strong></td><td class="rc">—</td><td>A股化工龙头典型水平</td></tr>
+    </tbody>
+  </table>
+  <p>股息收益率1.13%属于A股成长型化工股的正常水平，并非主要投资回报来源。公司的投资价值主要来自制冷剂景气周期带来的EPS增长与P/E扩张，而非股息收益。<span class="fn">[来源：亿牛网巨化股份PE历史（eniu.com/gu/sh600160）；巨化股份2025年年度报告]</span></p>
+</div>
+
+<!-- 08 技术面 -->
+<div class="sec" id="s8">
+  <h2 class="sec-h"><span class="n">08</span>技术面分析</h2>
+
+  <h3 class="sh">8.1 趋势综述：制冷剂景气驱动的强势上涨后出现技术信号</h3>
+  <p>巨化股份股价在2025年H2随制冷剂价格大幅上涨而启动强劲行情。根据同花顺数据，近期（2026年5月22日）平均持仓成本约<strong>34.85元</strong>，当前49.35元较平均持仓成本溢价约41.6%。更关键的是，同花顺于2026年5月22日发出<strong>"中线卖出信号"</strong>及"空头行情中加速下跌趋势"的技术预警——这一预警发出时股价可能略高于当前水平（约35-40元区间），随后股价在Q2继续涨至当前49.35元，说明该技术信号未能拦截这波上涨，但其含义值得关注。<span class="fn">[来源：同花顺600160行情页（stockpage.10jqka.com.cn/600160），2026年5月22日诊断]</span></p>
+
+  <div class="tgrid">
+    <div class="tc am">
+      <div class="tl">7月3日价格</div>
+      <div class="tv">RMB 49.35</div>
+      <div class="ts">距4月29日约37元已涨+34%；接近部分机构目标价49元</div>
+    </div>
+    <div class="tc c1">
+      <div class="tl">估算52周区间</div>
+      <div class="tv">约RMB 23–52</div>
+      <div class="ts">下沿为2025年中制冷剂行情启动前低点；当前接近年内高点</div>
+    </div>
+    <div class="tc re">
+      <div class="tl">同花顺中线技术信号</div>
+      <div class="tv">卖出（5月）</div>
+      <div class="ts">5月22日发出"中线卖出"预警；值得持续关注是否触发回调</div>
+    </div>
+    <div class="tc c2">
+      <div class="tl">机构持仓比例</div>
+      <div class="tv">68.40%</div>
+      <div class="ts">865家机构持仓，占流通A股68.40%；筹码结构集中</div>
+    </div>
+  </div>
+
+  <h3 class="sh">8.2 动量与估值技术指标</h3>
+  <table>
+    <thead><tr><th>指标</th><th>读数/状态</th><th>解读</th></tr></thead>
+    <tbody>
+      <tr><td>P/E（TTM，以49.35计）</td><td>约32x（TTM EPS约1.534）</td><td>以TTM盈利计已偏高；以FY2026E预期 (~22-26x)较合理</td></tr>
+      <tr><td>P/B（LF）</td><td>约6.16x（净资产8.01元）</td><td>高于化工行业平均P/B（约2-3x），体现配额制溢价</td></tr>
+      <tr><td>P/S（TTM）</td><td>约4月29日3.65x→当前约4.95x</td><td>对于年收入270亿的化工企业而言溢价显著</td></tr>
+      <tr><td>成交量</td><td>A股日均成交额约8-15亿元</td><td>流动性充裕；大盘股，机构主导</td></tr>
+      <tr><td>融资余额趋势</td><td>2026年3月6日以来出现融资流入</td><td>短期融资做多情绪偏强，但也暗示潜在平仓压力</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">8.3 关键价位参考</h3>
+  <div class="pladder">
+    <div class="prow res"><div class="pt">我们目标上沿</div><div class="pv">RMB 56</div><div class="pn">乐观情形：FY2026净利润57亿+，制冷剂价格维持高位，给予25x PE</div></div>
+    <div class="prow res"><div class="pt">我们基准目标</div><div class="pv">RMB 51</div><div class="pn">基准情形：FY2026净利润~55亿，EPS 2.03元，给予25x PE</div></div>
+    <div class="prow cur"><div class="pt">▶ 当前价格</div><div class="pv">RMB 49.35</div><div class="pn">7月3日；已超部分机构目标价（49元）；安全边际有限</div></div>
+    <div class="prow sup"><div class="pt">近端支撑</div><div class="pv">RMB 44–47</div><div class="pn">Q1 2026业绩公布前价格区间（约4月中下旬）；前期整理密集区</div></div>
+    <div class="prow sup"><div class="pt">中期支撑</div><div class="pv">RMB 36–40</div><div class="pn">4月29日前收盘区间（约37元）；FY2025年报业绩确认前均值</div></div>
+    <div class="prow sup"><div class="pt">强支撑区</div><div class="pv">RMB 28–32</div><div class="pn">对应FY2026E净利润悲观情形（制冷剂价格大幅回调）下的合理PE估值区间</div></div>
+  </div>
+</div>
+
+<!-- 09 估值模型 -->
+<div class="sec" id="s9">
+  <h2 class="sec-h"><span class="n">09</span>估值模型 — 蜗牛鸟"周期顶部修正PE×配额溢价"框架</h2>
+  <p>对于化工周期股，传统DCF在利润波动剧烈时几乎失去意义，我们采用<strong>周期调整PE（P/E + 景气周期位置修正）为主、EV/EBITDA交叉验证</strong>的估值框架，核心方法论参照本系列TRV报告的"P/B-ROE模型"思路，但适配化工周期品特征——在制冷剂景气高峰期给予一定的向下修正倍数，以防止"用高峰利润×高峰估值"的双重高估误区。</p>
+
+  <div class="mbox">
+    <h4>第一步：FY2026E盈利区间测算</h4>
+    <ul>
+      <li>分析师共识（证券之星）：FY2026 净利润 RMB 58.68亿，EPS RMB 2.17元（高端）</li>
+      <li>东方财富研究所（4月29日最新下修）：FY2026净利润 RMB 51.36亿，EPS RMB 1.90元（低端）</li>
+      <li>我们中值基准：FY2026净利润约 <strong>RMB 55亿</strong>，EPS约 <strong>RMB 2.03元</strong></li>
+      <li>Q1 2026单季11.73亿×4 = 年化46.9亿（底部）；Q2旺季叠加≈全年50-58亿范围合理</li>
+    </ul>
+  </div>
+
+  <div class="mbox">
+    <h4>第二步：目标PE倍数推导（配额制溢价 vs 周期修正）</h4>
+    <ul>
+      <li><strong>历史PE区间</strong>：同花顺数据：2022=23.81x, 2023=9.44x（行业低谷）, 2024=19.47x（配额制预期修复）, 2025=37.83x（盈利飞跃+估值扩张）, 2026年预期PE约22-26x（盈利继续提升但增速放缓）</li>
+      <li><strong>可比公司</strong>：国内氟化工同业（昊华科技、三美股份、康和医药）PE约18-28x；考虑巨化配额市占率第一的龙头溢价，给予约3-5x溢价合理</li>
+      <li><strong>配额制溢价逻辑</strong>：配额制赋予了"类消费品+特许经营"属性，使得估值天花板高于普通周期化工（约15-20x）；但上限也受到"政策不可永续"和"HFOs替代风险"约束，不宜给予>30x的成长股倍数</li>
+      <li><strong>我们的目标PE区间</strong>：<strong>20-28x FY2026E EPS</strong>（随周期位置动态调整）</li>
+    </ul>
+  </div>
+
+  <h3 class="sh">9.1 三情景目标价推导</h3>
+  <table>
+    <thead><tr><th>情景</th><th class="rc">假设条件</th><th class="rc">FY2026E EPS</th><th class="rc">目标PE</th><th class="rc">目标价（RMB）</th><th class="rc">概率</th></tr></thead>
+    <tbody>
+      <tr><td>悲观情形<br><span class="fn">制冷剂价格大幅回落</span></td><td class="rc">R32跌回2.5万元/吨；净利润35亿</td><td class="rc">1.30元</td><td class="rc">17x</td><td class="rc neg"><strong>22.10</strong></td><td class="rc">15%</td></tr>
+      <tr><td>保守情形<br><span class="fn">价格温和回落</span></td><td class="rc">R32维持4.5万元/吨；净利润约46亿</td><td class="rc">1.70元</td><td class="rc">20x</td><td class="rc"><strong>34.00</strong></td><td class="rc">20%</td></tr>
+      <tr class="hl"><td><strong>基准情形</strong><br><span class="fn">价格高位震荡</span></td><td class="rc">R32维持5.5-6万元/吨；净利润约55亿</td><td class="rc"><strong>2.03元</strong></td><td class="rc"><strong>25x</strong></td><td class="rc pos"><strong>50.75</strong></td><td class="rc">45%</td></tr>
+      <tr><td>乐观情形<br><span class="fn">价格继续上涨+甘肃投产</span></td><td class="rc">净利润约65亿；FY2027投产预期</td><td class="rc">2.41元</td><td class="rc">27x</td><td class="rc pos"><strong>65.00</strong></td><td class="rc">20%</td></tr>
+    </tbody>
+  </table>
+  <p><strong>概率加权目标价</strong> = (22.10×15%)+(34.00×20%)+(50.75×45%)+(65.00×20%) = 3.32+6.80+22.84+13.00 = <strong>约45.96元</strong>，接近当前股价49.35元的下方（-6.9%），表明当前价格<strong>基本处于公允价值区间上沿</strong>。以基准情形单独计算目标价50.75元，与我们给出的RMB 51基准目标一致，当前股价仅有约3%上行空间，安全边际不足，支撑<strong>HOLD评级</strong>。</p>
+</div>
+
+<!-- 10 制冷剂价格敏感性 -->
+<div class="sec" id="s10">
+  <h2 class="sec-h"><span class="n">10</span>制冷剂价格敏感性分析（核心量化工具）</h2>
+  <p>与NEM报告中的金价敏感性分析框架类似，巨化股份的关键驱动变量是<strong>制冷剂产品价格</strong>——这是决定公司盈利最核心的单一因素，且高度不可预测（受政策配额、气候、空调排产、国际市场等多重因素影响）。</p>
+  <table class="sens">
+    <thead><tr><th>R32等效均价（万元/吨）</th><th class="rc">2.0万</th><th class="rc">3.0万</th><th class="rc">4.0万</th><th class="rc">5.0万（约当前）</th><th class="rc">6.0万</th><th class="rc">7.0万</th></tr></thead>
+    <tbody>
+      <tr><td>制冷剂板块毛利率（估）</td><td class="rc lo">约10%</td><td class="rc">约25%</td><td class="rc">约38%</td><td class="rc anchor"><strong>约48%</strong></td><td class="rc hi">约56%</td><td class="rc hi">约62%</td></tr>
+      <tr><td>制冷剂年营收（约31万吨）</td><td class="rc lo">62亿</td><td class="rc">93亿</td><td class="rc">124亿</td><td class="rc anchor"><strong>155亿</strong></td><td class="rc hi">186亿</td><td class="rc hi">217亿</td></tr>
+      <tr><td>制冷剂年营业利润（估）</td><td class="rc lo">约6亿</td><td class="rc">约23亿</td><td class="rc">约47亿</td><td class="rc anchor"><strong>约74亿</strong></td><td class="rc hi">约104亿</td><td class="rc hi">约135亿</td></tr>
+      <tr><td>公司全年归母净利润（估）</td><td class="rc lo">约5亿</td><td class="rc">约20亿</td><td class="rc">约40亿</td><td class="rc anchor"><strong>约58亿</strong></td><td class="rc hi">约80亿</td><td class="rc hi">约105亿</td></tr>
+      <tr><td>对应EPS（元）</td><td class="rc lo">0.18</td><td class="rc">0.74</td><td class="rc">1.48</td><td class="rc anchor"><strong>2.15</strong></td><td class="rc hi">2.96</td><td class="rc hi">3.88</td></tr>
+      <tr><td>目标价（25x PE，元）</td><td class="rc lo neg">4.50</td><td class="rc">18.50</td><td class="rc">37.00</td><td class="rc anchor"><strong>53.75</strong></td><td class="rc hi pos">74.00</td><td class="rc hi pos">97.00</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">模型假设：制冷剂年销量约31万吨（参照FY2025约32万吨年化）；非制冷剂业务（石化、基础化工、聚合物等）综合年营业利润约-10至+5亿元（当前处于"内卷"底部，以零贡献为中性假设）；有效所得税率约15-18%；归母比例约95%。每1万元/吨制冷剂均价变动，对归母净利润影响约±15-18亿元（±EPS约0.55-0.67元）。来源：巨化股份2025年三季报（同花顺）；东方财富研究报告（2026年4月29日）。</p>
+</div>
+
+<!-- 11 成长新引擎 -->
+<div class="sec" id="s11">
+  <h2 class="sec-h"><span class="n">11</span>成长新引擎分析</h2>
+
+  <h3 class="sh">11.1 第四代制冷剂（HFOs）——下一代"特许经营"卡位</h3>
+  <p>随着全球HFCs削减时间表推进（发达国家2036年削减85%，中国2041年开始大幅削减），以HFO-1234yf等为代表的第四代低GWP制冷剂（HFOs）将逐步替代三代HFCs。巨化已建成<strong>8,000吨/年HFOs产能</strong>，通过为霍尼韦尔等国际巨头代工掌握了核心技术；R-495新型低GWP混配制冷剂已获欧洲专利授权（德法英意四国），通过某头部新能源车企整车道路测试；甘肃基地拟新增<strong>5万吨HFOs产能</strong>（力争2026年底完成试车）。公司提前布局HFOs，有望在三代→四代的代际转换中复制当前的配额优势。<span class="fn">[来源：同花顺大事记（600160/event.html）；证券时报（stcn.com，2026年4月23日）]</span></p>
+
+  <h3 class="sh">11.2 AI液冷新材料——数据中心的氟化液机遇</h3>
+  <p>巨化股份是国内最早从事液冷业务的企业之一，"巨芯冷却液"项目一期1,000吨/年已建成运营，规划总产能5,000吨/年。产品覆盖<strong>氢氟醚（HFE）</strong>和<strong>全氟聚醚（PFPE）</strong>两大系列，可直接应用于AI服务器浸没式液冷——随着AI计算算力密度大幅提升，浸没式液冷市场空间快速扩大（国内氟化液产品及市场"保持良好成长"）。2025年含氟精细化学品销量同比+31%，收入同比+31%至3.94亿元，是非制冷剂板块中唯一实现较快增长的板块。<span class="fn">[来源：东方财富研究报告（2026年4月29日）；同花顺大事记（600160/event.html）]</span></p>
+
+  <div class="note">💡 战略定位：类比NEM报告中的"AI GPU服务器"叙事对PCT的估值提升作用，巨化股份的AI液冷氟化液业务当前体量（约4亿元）相对公司270亿元总营收而言比例尚小（约1.5%），但市场给予的估值溢价（"AI液冷概念"）已超出其当前财务贡献。中长期（FY2028+），若氢氟醚产能扩张至5,000吨/年以上，该业务年收入可能达15-20亿元，成为第三主要利润贡献板块，是当前估值中尚未完全兑现的期权价值。</div>
+
+  <h3 class="sh">11.3 甘肃基地——2027年产能上行的关键</h3>
+  <table>
+    <thead><tr><th>项目</th><th>规模</th><th>进度</th><th>战略意义</th></tr></thead>
+    <tbody>
+      <tr><td>甘肃巨化高性能氟氯新材料一体化项目</td><td>规划5万吨HFOs+相关配套</td><td>力争2026年6月建成，2026年底试车投产</td><td>四代制冷剂产能储备；西部绿电降低能源成本</td></tr>
+      <tr><td>配套1GW风电项目</td><td>1,000MW可再生能源</td><td>积极推进中</td><td>绿色化工转型；降低能源成本；ESG价值</td></tr>
+      <tr><td>阿联酋基地</td><td>已运营，产能持续释放</td><td>运行良好；配额基线期（2024-2026）积极争取最大配额</td><td>海外市场扩张；争取全球HFCs配额基线</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：同花顺大事记；巨化股份2025年年度报告（2026年4月23日）。</p>
+</div>
+
+<!-- 12 风险矩阵 -->
+<div class="sec" id="s12">
+  <h2 class="sec-h"><span class="n">12</span>风险矩阵</h2>
+  <table>
+    <thead><tr><th>风险类别</th><th>核心说明</th><th>等级</th></tr></thead>
+    <tbody>
+      <tr><td><strong>制冷剂价格大幅回落</strong></td><td>价格为公司最大的单一风险变量（每1万元/吨变动对净利润影响±15-18亿元）；若配额管控效果弱于预期、或下游需求不振（空调/汽车销量回落），R32价格可能从6万/吨大幅下调</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>HFOs替代速度超预期</strong></td><td>若HFO-1234yf等四代制冷剂产能大规模释放（含海外巨头扩产或中国配套快速落地），将削弱HFCs的价格溢价；巨化HFOs产能虽有布局，但规模尚小，转型期存在利润结构性空洞</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>非制冷剂业务持续亏损</strong></td><td>石化材料、含氟聚合物的毛利率已落入负区间；若全球化工"内卷"局面持续，非制冷剂板块将成为持续性利润拖累，且短期难以出清（产能过剩顽疾）</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>甘肃基地投产延期风险</strong></td><td>大型一体化化工项目建设难度高，若甘肃基地投产不及"2026年底试车"目标，将推迟FY2027产能增量预期，影响市场对中长期成长性的定价</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>原材料价格波动</strong></td><td>萤石（主要氟化工原料）价格波动、以及上游氟化氢成本变化，直接影响制冷剂生产成本；能源价格上涨亦对生产成本构成压力</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>国际贸易摩擦与出口风险</strong></td><td>公司约50%的HFCs配额属于外贸配额（仅用于出口）；若美欧对华化工品加征关税或启动反倾销，将影响海外销售价格和份额</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>技术面中线卖出信号</strong></td><td>同花顺2026年5月22日发出"中线卖出"预警，结合股价年内已大幅上涨34%，短期获利回吐压力不可忽视</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>阿联酋地缘风险</strong></td><td>中东地缘政治紧张（投资者问询：阿联酋工厂是否仍在产）可能影响海外基地的正常生产；管理层表示Q1 2026影响有限，但持续紧张局势仍需跟踪</td><td><span class="badge b-lo">低</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 13 催化剂 -->
+<div class="sec" id="s13">
+  <h2 class="sec-h"><span class="n">13</span>近期催化剂与展望</h2>
+  <div class="g2">
+    <div class="card b1">
+      <div class="cl">下一财报日</div>
+      <div class="cv">2026年8月（预计）</div>
+      <div class="cs">H1 2026中报；核心关注：①Q2制冷剂旺季价量兑现；②非制冷剂亏损是否收窄；③甘肃基地最新进度；④AI液冷订单规模首次披露</div>
+    </div>
+    <div class="card b2">
+      <div class="cl">甘肃基地试车投产</div>
+      <div class="cv">力争2026年年底</div>
+      <div class="cs">5万吨HFOs产能落地是FY2027最大催化剂；若提前投产则上调评级</div>
+    </div>
+  </div>
+  <p><strong>正面催化剂：</strong>①Q2空调旺季制冷剂量价双升，H1中报超预期；②R32价格进一步突破7万元/吨（减量更快的市场信号）；③甘肃基地提前试车成功；④AI液冷氟化液获大客户批量订单；⑤国家继续收紧2027年HFCs配额（供给进一步约束）；⑥非制冷剂业务随"反内卷"政策落地出现边际改善。</p>
+  <p><strong>负面催化剂：</strong>①R32等制冷剂价格明显回落（4万元/吨以下）；②空调/汽车销售旺季不及预期；③2027年HFCs配额超预期扩大（放宽约束）；④甘肃项目建设重大延期；⑤美欧加征制冷剂进口关税；⑥巨芯冷却液竞争加剧（其他国内企业扩产氟化液）。</p>
+</div>
+
+<!-- 14 投资结论 -->
+<div class="sec" id="s14">
+  <h2 class="sec-h"><span class="n">14</span>投资结论</h2>
+  <p>巨化股份拥有国内乃至全球氟化工行业中难以复制的核心资产：HFCs生产配额占全国39.30%的绝对垄断地位，使其在"配额制总量约束+需求刚性增长"的市场格局中成为不可替代的受益者。制冷剂价格从2024年初1.5万元/吨飙升至当前约6万元/吨，驱动公司FY2025归母净利润暴增94%，OCF增长127%，基本面转型之彻底令人印象深刻。四代制冷剂（HFOs）和AI液冷氟化液的布局，也为公司勾勒出超越当前周期的中长期成长蓝图。</p>
+  <p>然而，从估值角度审视，当前股价49.35元（2026年7月3日）已基本反映了制冷剂旺季的乐观预期：以共识EPS 2.17元计算的FY2026E P/E约22.7x，与我们的基准目标价51元（对应25x P/E）仅有约3%的上行空间；若以更保守的EPS 2.03元计算，基准目标价50.75元与当前股价几乎持平。从概率加权目标价45.96元来看，当前股价甚至略高于加权公允价值约7%，体现出一定的短期溢价。</p>
+  <p><strong>综合结论：首次覆盖给予"中性（HOLD）"评级，12个月目标价区间RMB 48-56，基准情形RMB 51，较当前仅约+3.4%上行，加上约1.1%股息，综合潜在12个月回报约+4.5%——不足以支撑"买入"。</strong>建议现有持仓者继续持有并享受旺季分红，新建仓位投资者等待以下两类入场机会：①股价回调至RMB 44-47（对应约22x FY2026E）区间时，安全边际改善后考虑积极买入；②甘肃基地成功试车并开始产量爬坡后，上调至"积极买入"评级。主要止损参考：若制冷剂均价跌破4万元/吨，考虑降至减持。</p>
+</div>
+
+<!-- 15 数据来源 -->
+<div class="sec" id="s15">
+  <h2 class="sec-h"><span class="n">15</span>数据来源</h2>
+  <ul class="src">
+    <li>浙江巨化股份有限公司2025年年度报告 — 上交所/巨化官网（2026年4月22-23日）</li>
+    <li>浙江巨化股份有限公司2026年第一季度报告 — 上交所（2026年4月29日）cninfo.com</li>
+    <li>巨化股份2025年度业绩预增公告 — 上交所（2026年1月22日）stockmc.xueqiu.com</li>
+    <li>证券时报（stcn.com）— "巨化股份2025年业绩逆势增长 氟化工龙头地位持续巩固"（2026年4月22日）</li>
+    <li>证券时报（stcn.com）— "巨化股份2025年净利润增超九成 氟化工龙头价值凸显"（2026年4月23日）</li>
+    <li>东方财富网（finance.eastmoney.com）— "巨化股份：2026年一季度净利润11.73亿元 同比增长45.93%"（2026年5月1日）</li>
+    <li>东方财富研究报告（pdf.dfcfw.com）— 龙证证券2025年报及2026年Q1点评（2026年4月29日）</li>
+    <li>证券之星（stock.stockstar.com）— "巨化股份2026年一季报简析"（2026年4月29日）</li>
+    <li>同花顺F10（basic.10jqka.com.cn/600160）— 盈利预测汇总、大事记、公司主要数据</li>
+    <li>亿牛网（eniu.com/gu/sh600160）— 巨化股份历史PE数据及业绩公告摘要</li>
+    <li>国家生态环境部 — 2026年HFCs配额公示数据（引用自巨化股份2025年年度报告）</li>
+    <li>国家统计局 — 2025年化工行业规模以上企业利润总额同比-7.3%（引用自巨化股份2025年年度报告）</li>
+    <li>巨化股份互动问答平台（stcn.com 600160行情页）— 2025年Q4及2026年配额说明、甘肃基地进度问答</li>
+    <li>平安证券、中银证券Q3 2025三季报点评 — 引用自同花顺盈利预测页（10jqka.com.cn）</li>
+  </ul>
+  <p class="fn" style="margin-top:12px">注：所有财务计算以用户提供的2026年7月3日收盘价RMB 49.35及总股本27.03亿股（2025年末基数）为基础。FY2026E净利润为分析师预测区间（证券之星共识58.68亿元/东方财富龙证证券51.36亿元/我们自建模型约55亿元），各机构假设存在差异，投资者应参照最新业绩及管理层指引做出独立判断。制冷剂价格灵敏度分析为蜗牛鸟投资分析师独立模型，非公司官方披露。</p>
+</div>
+
+<div class="disc">
+  <strong>重要免责声明：</strong>本报告由蜗牛鸟投资（Snail-Bird Investment 🐦）精品研究部编制，仅供内部研究及专业投资者参考，不构成任何证券买卖的要约、邀请或投资建议。巨化股份（600160.SH）作为A股化工周期股，盈利受制冷剂价格波动影响极大，历史上曾出现大幅利润波动，投资者须充分了解化工行业的周期性特征及政策风险。本报告估值目标价基于2026年7月3日市价RMB 49.35，实际结果可能因制冷剂价格、配额政策、宏观经济环境及公司经营变化而与预测存在重大差异。历史业绩不代表未来表现。版权归蜗牛鸟投资所有，未经授权不得转载。
+</div>
+<div class="foot">SNAIL-BIRD INVESTMENT 🐦 &nbsp;|&nbsp; 精品研究部 &nbsp;|&nbsp; A股化工行业覆盖 &nbsp;|&nbsp; CONFIDENTIAL · FOR PROFESSIONAL INVESTORS ONLY</div>
+
+</div>
+</body>
+</html>
