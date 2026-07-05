@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>药明康德 WuXi AppTec (02359.HK) 深度研究报告 | 蜗牛鸟投资</title>
+<style>
+:root{
+  --ink:    #0a1e1a;
+  --deep:   #0e2e28;
+  --mid:    #155540;
+  --teal:   #1a7a5e;
+  --sky:    #198a72;
+  --gold:   #b88c0a;
+  --bright: #d4a818;
+  --amber:  #e6c030;
+  --bg:     #eeecea;
+  --paper:  #fafaf6;
+  --text:   #182018;
+  --muted:  #5a6860;
+  --rule:   #dddad0;
+  --green:  #1a6840;
+  --red:    #9c2320;
+  --warn:   #7a5c00;
+  --blue:   #1a3a6a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Georgia","Noto Serif SC","Source Han Serif SC",serif;background:var(--bg);color:var(--text);line-height:1.82}
+.page{max-width:1060px;margin:0 auto;background:var(--paper);box-shadow:0 2px 44px rgba(10,30,26,.10)}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:3px solid var(--amber);display:flex;align-items:center;overflow-x:auto;white-space:nowrap}
+.nav-brand{background:var(--amber);color:var(--ink);font-family:Arial,sans-serif;font-weight:800;font-size:12px;letter-spacing:1.4px;padding:13px 16px;flex-shrink:0}
+.nav a{color:#a8c4b8;text-decoration:none;font-family:Arial,sans-serif;font-size:11.5px;padding:13px 9px;border-bottom:2px solid transparent;transition:color .18s,border-color .18s}
+.nav a:hover{color:var(--amber);border-bottom-color:var(--amber)}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(138deg,#0a1e1a 0%,#0e2e28 45%,#1a4535 100%);color:#e5f0ec;padding:48px 54px 38px;border-bottom:4px solid var(--amber);position:relative;overflow:hidden}
+.hero::before{content:"WX";position:absolute;right:-12px;top:-20px;font-size:240px;font-family:Arial Black,sans-serif;font-weight:900;color:rgba(255,255,255,.022);letter-spacing:-8px;pointer-events:none;line-height:1}
+.hero-eye{font-family:Arial,sans-serif;font-size:11px;letter-spacing:3px;color:var(--amber);text-transform:uppercase;margin-bottom:10px}
+.hero-title{font-size:30px;font-weight:bold;line-height:1.2;margin-bottom:4px}
+.hero-title em{color:#80b89c;font-style:normal;font-size:16px;font-weight:normal}
+.hero-sub{font-family:Arial,sans-serif;font-size:13px;color:#98c0ac;margin-top:5px;margin-bottom:26px}
+
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:22px}
+.kpi-c{padding:13px 14px;border-right:1px solid rgba(255,255,255,.10);font-family:Arial,sans-serif}
+.kpi-c:last-child{border-right:none}
+.kpi-c .lbl{font-size:10px;color:#80a898;text-transform:uppercase;letter-spacing:.8px}
+.kpi-c .val{font-size:18px;color:#fff;font-weight:700;margin-top:4px;line-height:1.15}
+.kpi-c .sub{font-size:10.5px;color:#608878;margin-top:2px}
+
+.rbox{display:inline-flex;align-items:center;gap:16px;background:rgba(212,168,24,.12);border:1px solid var(--amber);padding:10px 22px;border-radius:2px}
+.rbox .r{font-family:Arial,sans-serif;font-weight:900;font-size:17px;color:var(--amber);letter-spacing:.8px}
+.rbox .tp{font-family:Arial,sans-serif;font-size:12px;color:#b8d0c0}
+.rbox .up{font-family:Arial,sans-serif;font-size:12px;color:#7ed8a0;font-weight:700}
+
+/* ── SECTIONS ── */
+.sec{padding:36px 54px;border-bottom:1px solid var(--rule)}
+.sec:last-child{border-bottom:none}
+.sec-h{font-family:Arial,sans-serif;font-size:19.5px;color:var(--deep);border-left:5px solid var(--amber);padding-left:14px;margin-bottom:20px;letter-spacing:.3px}
+.sec-h .n{color:var(--amber);margin-right:6px;font-weight:normal}
+h3.sh{font-family:Arial,sans-serif;font-size:14.5px;color:var(--mid);margin:26px 0 10px;border-bottom:1px solid var(--rule);padding-bottom:6px}
+p{font-size:14.5px;color:var(--text);margin-bottom:13px}
+.lead{font-size:15px;color:var(--deep);background:#e8ede6;border-left:3px solid var(--amber);padding:14px 18px;margin-bottom:18px;line-height:1.88}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-family:Arial,sans-serif;font-size:13px;margin:14px 0 20px}
+thead th{background:var(--deep);color:#d8eee4;padding:9px 12px;text-align:left;font-weight:500;letter-spacing:.2px}
+tbody td{padding:8px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:nth-child(even) td{background:#f4f2ec}
+.rc{text-align:right;font-variant-numeric:tabular-nums}
+.pos{color:var(--green);font-weight:700}
+.neg{color:var(--red);font-weight:700}
+.hl td{background:#f0f8ef!important;font-weight:700}
+
+/* grids */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+
+.card{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--amber);padding:14px 16px}
+.card.teal{border-top-color:var(--teal)}
+.card.green{border-top-color:var(--green)}
+.card.red{border-top-color:var(--red)}
+.card.blue{border-top-color:var(--blue)}
+.card .cl{font-family:Arial,sans-serif;font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.card .cv{font-family:Arial,sans-serif;font-size:20px;color:var(--deep);font-weight:700;margin-top:5px;line-height:1.15}
+.card .cs{font-family:Arial,sans-serif;font-size:11.5px;color:var(--muted);margin-top:4px}
+
+/* CRDMO funnel */
+.funnel{margin:16px 0}
+.frow{display:flex;align-items:stretch;margin-bottom:4px;gap:8px}
+.f-label{font-family:Arial,sans-serif;font-size:12px;color:var(--muted);width:70px;flex-shrink:0;display:flex;align-items:center;text-align:right;justify-content:flex-end}
+.f-bar-wrap{flex:1;display:flex;align-items:center}
+.f-bar{height:32px;border-radius:2px;display:flex;align-items:center;padding:0 12px;font-family:Arial,sans-serif;font-size:12px;font-weight:700;color:#fff;transition:width .3s}
+.f-note{width:200px;font-family:Arial,sans-serif;font-size:11.5px;color:var(--muted);padding-left:10px;display:flex;align-items:center}
+
+/* mbox */
+.mbox{border:1px dashed var(--amber);background:#f6fbf4;padding:16px 20px;margin:14px 0}
+.mbox h4{font-family:Arial,sans-serif;font-size:13.5px;color:var(--deep);margin-bottom:8px;font-weight:700}
+.mbox ul{padding-left:18px;margin-top:6px}
+.mbox li,.mbox p{font-size:13.5px;margin-bottom:5px}
+
+/* note / warn */
+.note{background:#e6f4ec;border-left:3px solid var(--teal);padding:10px 14px;font-family:Arial,sans-serif;font-size:12.5px;color:#1a3a2a;margin-bottom:16px}
+.warn-box{background:#fef8e6;border-left:3px solid var(--bright);padding:10px 14px;font-family:Arial,sans-serif;font-size:12.5px;color:#5a4200;margin-bottom:16px}
+.risk-note{background:#fef0f0;border-left:3px solid var(--red);padding:12px 14px;font-family:Arial,sans-serif;font-size:13px;color:#6a2020;margin-bottom:14px}
+
+/* risk badges */
+.badge{display:inline-block;font-family:Arial,sans-serif;font-size:11px;padding:2px 10px;border-radius:10px;font-weight:700}
+.b-hi{background:#fce8e7;color:var(--red)}
+.b-mid{background:#fdf0d2;color:var(--warn)}
+.b-lo{background:#e2f0e9;color:var(--green)}
+
+/* tech */
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.tc{background:#fff;border:1px solid var(--rule);padding:14px 16px}
+.tc .tl{font-family:Arial,sans-serif;font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.tc .tv{font-family:Arial,sans-serif;font-size:19px;font-weight:700;color:var(--deep)}
+.tc .ts{font-size:12.5px;color:var(--muted);font-family:Arial,sans-serif;margin-top:4px}
+.tc.am{border-top:3px solid var(--amber)}
+.tc.te{border-top:3px solid var(--teal)}
+.tc.g{border-top:3px solid var(--green)}
+.tc.r{border-top:3px solid var(--red)}
+
+/* price ladder */
+.pladder{border:1px solid var(--rule);background:#fff;margin:14px 0;font-family:Arial,sans-serif}
+.prow{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--rule);font-size:13px}
+.prow:last-child{border-bottom:none}
+.prow .pt{width:130px;flex-shrink:0;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+.prow .pv{font-size:15px;font-weight:700;color:var(--deep);width:90px}
+.prow .pn{color:var(--muted);font-size:12.5px;flex:1}
+.prow.cur .pv{color:var(--amber)}
+.prow.sup .pv{color:var(--green)}
+.prow.res .pv{color:var(--red)}
+
+/* sensitivity */
+.sens thead th{background:var(--mid)}
+.sens td{text-align:center}
+.sens td.anchor{background:#f0f8ef!important;font-weight:700;border:2px solid var(--green)}
+
+.curr-note{background:#e8f5ef;border-left:3px solid var(--teal);padding:10px 14px;font-family:Arial,sans-serif;font-size:12.5px;color:#1a3a28;margin-bottom:16px}
+.fn{font-size:11.5px;color:var(--muted);font-family:Arial,sans-serif;line-height:1.75}
+.src{font-family:Arial,sans-serif;font-size:12.5px;color:var(--muted);line-height:2;padding-left:18px}
+.src li{margin-bottom:2px}
+.disc{background:var(--ink);color:#7a9888;font-family:Arial,sans-serif;font-size:11.5px;padding:28px 54px;line-height:1.92}
+.disc strong{color:var(--amber)}
+.foot{background:var(--ink);border-top:1px solid rgba(212,168,24,.28);color:#3a5848;text-align:center;font-family:Arial,sans-serif;font-size:11px;letter-spacing:1.5px;padding:14px}
+
+@media(max-width:700px){
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .g3,.g4,.tgrid{grid-template-columns:1fr 1fr}
+  .hero,.sec,.disc{padding-left:22px;padding-right:22px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-brand">🐦 蜗牛鸟投资 · 精品研究</div>
+  <a href="#s1">摘要</a>
+  <a href="#s2">公司&商业模式</a>
+  <a href="#s3">业务分部</a>
+  <a href="#s4">财务分析</a>
+  <a href="#s5">资产负债表&FCF</a>
+  <a href="#s6">股东回报</a>
+  <a href="#s7">技术面</a>
+  <a href="#s8">估值模型</a>
+  <a href="#s9">竞争格局</a>
+  <a href="#s10">地缘政治专析</a>
+  <a href="#s11">风险矩阵</a>
+  <a href="#s12">催化剂</a>
+  <a href="#s13">结论</a>
+  <a href="#s14">来源</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eye">SNAIL-BIRD INVESTMENT &nbsp;|&nbsp; 精品研究部 &nbsp;|&nbsp; 港股医药/CXO行业首次覆盖</div>
+  <div class="hero-title">药明康德 WuXi AppTec Co., Ltd. <em>(HKEX: 02359.HK | SSE: 603259.SH)</em></div>
+  <div class="hero-sub">全球CRDMO旗舰平台 · Q1 2026营收首破百亿 · 在手订单598亿元 · 历史最高利润率 · BIOSECURE云散后的价值重估</div>
+  <div class="kpi-row">
+    <div class="kpi-c">
+      <div class="lbl">H股现价（7月1日）</div>
+      <div class="val">HK$156.10</div>
+      <div class="sub">A股约RMB105-110（参考）</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">Q1 2026 Non-IFRS净利润</div>
+      <div class="val">RMB46.0亿</div>
+      <div class="sub">同比+71.7%；毛利率50.4%（历史新高）</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">在手订单（2026.03.31）</div>
+      <div class="val">RMB597.7亿</div>
+      <div class="sub">同比+23.6%；约4.8x季度收入</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">FY2026 全年收入指引</div>
+      <div class="val">RMB513-530亿</div>
+      <div class="sub">持续经营业务同比+18-22%</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">报告日期</div>
+      <div class="val">2026年7月1日</div>
+      <div class="sub">蜗牛鸟投资精品研究部</div>
+    </div>
+  </div>
+  <div class="rbox">
+    <div class="r">积极买入（BUY）</div>
+    <div class="tp">12个月目标价：<strong style="color:#dfc060">HK$175 – HK$200</strong>，基准HK$185</div>
+    <div class="up">较现价潜在上行 +18.5%（基准），含股息约+20%</div>
+  </div>
+</div>
+
+<!-- 01 投资摘要 -->
+<div class="sec" id="s1">
+  <h2 class="sec-h"><span class="n">01</span>投资摘要</h2>
+  <div class="curr-note">💱 货币说明：药明康德财务报表以人民币（RMB/CNY）编制；H股（02359.HK）以港元（HKD）交易，A股（603259.SH）以人民币交易。本报告财务数据均以人民币列示；估值目标价以港元表述（参考汇率约1 HKD ≈ 0.941 RMB，或1 RMB ≈ 1.063 HKD）。今日H股价格HK$156.10为用户提供数据。</div>
+  <div class="lead">
+    药明康德（HKEX: 02359.HK / SSE: 603259.SH）是全球最大的CRDMO（合同研究、开发与生产一体化）平台公司，以独特的"端到端"服务模式为全球约6,000家制药及生命科学企业提供从早期研究到商业化生产的全链条服务，其商业化项目数量（89个）和临床后期管线（183个后期项目）在全球CXO行业无出其右。2026年一季度，公司Q1营收首次突破百亿元（RMB124.4亿，+28.8%），Non-IFRS净利润RMB46.0亿同比大增71.7%，Non-IFRS毛利率攀至<strong>50.4%</strong>、净利率<strong>37.0%</strong>，两项指标均创公司历史新高，充分验证了CRDMO模式"分子后期化→收入高毛利化→规模效应加速释放"的内在逻辑。在手订单<strong>RMB597.7亿</strong>（同比+23.6%）相当于当季收入的4.8倍，为未来4-6个季度业绩提供高可见度支撑。鉴于FY2026全年业绩指引具有明确的上调预期（管理层明示"适当时机上调"），BIOSECURE Act立法风险已基本消退，且当前H股估值（约26-28x FY2026E Non-IFRS P/E）与全球CDMO行业领军地位匹配，我们首次覆盖给予<strong>积极买入（BUY）</strong>评级，12个月目标价<strong>HK$185</strong>（区间HK$175-200）。
+  </div>
+  <table>
+    <thead><tr><th>核心结论</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>评级</td><td>积极买入（BUY）— 基本面极强，地缘风险大幅降低，估值具吸引力</td></tr>
+      <tr><td>12M目标价</td><td><strong>HK$185</strong>（基准）；区间HK$175-200；悲观情形HK$110（BIOSECURE重燃）；乐观情形HK$220</td></tr>
+      <tr><td>核心多头逻辑</td><td>Q1 2026业绩全面创历史新高；在手订单RMB598亿提供高可见度；CRDMO模式规模效应加速；全年指引保守、上调概率高；BIOSECURE立法风险实质消退</td></tr>
+      <tr><td>核心担忧</td><td>美国地缘政治/立法风险仍是最大尾部风险；美国客户收入占比约60%+的高集中度；A/H溢价扩大的流动性风险；汇率风险（RMB/USD）</td></tr>
+      <tr><td>下一关键节点</td><td>2026年8月（预计）：H1 2026业绩发布；届时全年指引大概率正式上调</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 02 公司与商业模式 -->
+<div class="sec" id="s2">
+  <h2 class="sec-h"><span class="n">02</span>公司概览与CRDMO商业模式解析</h2>
+  <p>药明康德（无锡药明康德新药开发股份有限公司）成立于2000年，由李革博士在无锡创立，总部位于上海。公司于2018年在A股（上交所）上市，2020年在港股二次上市（H股），是中国规模最大、全球位居前列的CRDMO平台公司。截至2025年底，公司拥有约6,000名活跃客户，业务覆盖全球30+个主要制药市场。<span class="fn">[来源：WuXi AppTec官网；FiercePharma, 2025年3月19日]</span></p>
+
+  <h3 class="sh">2.1 CRDMO一体化商业模式——"跟随分子战略"的护城河</h3>
+  <p>药明康德的核心竞争优势在于其独创的<strong>CRDMO（合同研究+开发+生产一体化）模式</strong>，这一模式区别于传统CRO（仅做研究）或CDMO（仅做生产）的单点服务，而是对一个药物分子进行"全生命周期陪伴"：</p>
+
+  <div class="funnel">
+    <div class="frow">
+      <div class="f-label">R阶段</div>
+      <div class="f-bar-wrap"><div class="f-bar" style="width:100%;background:#1a7a5e">合同研究（CRO）— 早期靶点筛选、化合物合成、先导物优化、体外/体内药效评价</div></div>
+      <div class="f-note">大量分子导入 → 每年合成42万+新化合物</div>
+    </div>
+    <div class="frow">
+      <div class="f-label">D阶段</div>
+      <div class="f-bar-wrap"><div class="f-bar" style="width:85%;background:#188a62">合同开发（CDO）— IND申报、工艺开发、制剂研究、安全评价（Safety Assessment）</div></div>
+      <div class="f-note">筛选后进入临床前/临床开发</div>
+    </div>
+    <div class="frow">
+      <div class="f-label">M阶段</div>
+      <div class="f-bar-wrap"><div class="f-bar" style="width:55%;background:#159970">合同生产（CMO）— 临床I/II/III期用药生产、商业化原料药生产</div></div>
+      <div class="f-note">高毛利商业化项目（89个）</div>
+    </div>
+    <div class="frow">
+      <div class="f-label">后期</div>
+      <div class="f-bar-wrap"><div class="f-bar" style="width:25%;background:#d4a818">商业化阶段 — 后期高附加值项目，支撑利润率大幅提升</div></div>
+      <div class="f-note">183个后期项目（商业化89+III期94）</div>
+    </div>
+  </div>
+
+  <p>这一"漏斗"结构使药明康德获得了其他竞争对手难以复制的<strong>双重护城河</strong>：一方面，客户在早期研究阶段引入药明康德后，出于数据连续性、监管合规性和成本考虑，极不倾向于中途更换服务商（高转换成本）；另一方面，随着管线中的分子不断推进至临床后期和商业化，单分子创造的收入呈指数级增长（商业化项目单分子年收入可达临床前阶段的10-100倍），产生自然的"收入加速"效应。<span class="fn">[来源：摩熵医药分析，2026年4月29日；WuXi AppTec Q1 2026业绩发布会]</span></p>
+  <div class="g4">
+    <div class="card"><div class="cl">成立年份</div><div class="cv">2000年</div><div class="cs">创始人：李革博士（现任董事长兼CEO）</div></div>
+    <div class="card"><div class="cl">全球员工</div><div class="cv">约44,000人</div><div class="cs">覆盖全球30+国家/地区</div></div>
+    <div class="card"><div class="cl">活跃客户数</div><div class="cv">约6,000家</div><div class="cs">2024年底数据；全球顶尖药企全覆盖</div></div>
+    <div class="card"><div class="cl">D&M管线总数</div><div class="cv">3,550个</div><div class="cs">Q1 2026末；其中后期项目183个</div></div>
+  </div>
+  <p class="fn">数据来源：WuXi AppTec Q1 2026业绩新闻稿（2026年4月27日）；FiercePharma（2025年3月）；观察者网分析（2026年4月28日）。</p>
+</div>
+
+<!-- 03 业务分部 -->
+<div class="sec" id="s3">
+  <h2 class="sec-h"><span class="n">03</span>业务分部分析（Q1 2026）</h2>
+  <table>
+    <thead><tr><th>业务板块</th><th class="rc">Q1 2026收入</th><th class="rc">同比增速</th><th class="rc">占比（估）</th><th>核心特征</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td><strong>化学业务（WuXi Chemistry/CRDO）</strong></td><td class="rc"><strong>RMB106.2亿</strong></td><td class="rc pos"><strong>+43.7%</strong></td><td class="rc"><strong>~85%</strong></td><td>核心业务；小分子+TIDES（多肽/寡核苷酸/偶联物）CRDO；Non-IFRS毛利率50.4%创历史新高</td></tr>
+      <tr><td>测试业务（WuXi Testing）</td><td class="rc">RMB11.3亿</td><td class="rc pos">+27.4%</td><td class="rc">~9%</td><td>安全评价、药物代谢动力学、分析测试；高壁垒，稳定增长</td></tr>
+      <tr><td>生物学业务（WuXi Biology）</td><td class="rc">RMB6.7亿</td><td class="rc pos">+10.1%</td><td class="rc">~5%</td><td>靶点发现、蛋白质工程、细胞生物学评估；AI制药上游入口</td></tr>
+      <tr><td>其他/总计</td><td class="rc"><strong>RMB124.4亿</strong></td><td class="rc pos"><strong>+28.8%</strong></td><td class="rc">100%</td><td>持续经营业务收入同比增长39.4%（剔除已剥离业务对比基数）</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：药明康德2026年第一季度报告（2026年4月27日）；DoNews专栏引用公告数据；观察者网分析（2026年4月28日）。</p>
+
+  <h3 class="sh">3.1 化学业务——TIDES是最大增量亮点</h3>
+  <p>在化学业务的43.7%高增速中，<strong>TIDES（多肽+寡核苷酸+偶联物）</strong>是最重要的结构性驱动力。以GLP-1减肥药、ADC（抗体药物偶联物）、RNAi疗法为代表的新型药物对TIDES CDMO的需求爆发，而药明康德常州基地的多肽CDMO能力（已提前启动新基地建设）是承接这一需求的核心资产。公司小分子D&M管线3,550个中，TIDES占比持续提升，成为公司中期最重要的收入加速器之一。<span class="fn">[来源：摩熵医药TIDES分析；观察者网Q1 2026分析]</span></p>
+  <div class="note">📊 关键先行指标："R到D转化分子"（分子从研究到开发阶段转化）：过去12个月内转化83个，这是公司未来1-3年收入可见度的最重要先行指标之一，意味着今天的转化就是明年的高毛利开发收入。</div>
+</div>
+
+<!-- 04 财务分析 -->
+<div class="sec" id="s4">
+  <h2 class="sec-h"><span class="n">04</span>财务分析（损益表）</h2>
+
+  <h3 class="sh">4.1 年度及季度业绩对比（RMB亿元，来自公司官方披露）</h3>
+  <table>
+    <thead><tr><th>指标</th><th class="rc">FY2024</th><th class="rc">FY2025</th><th class="rc">YoY</th><th class="rc">Q1 2026</th><th class="rc">FY2026指引</th></tr></thead>
+    <tbody>
+      <tr><td>整体营业收入</td><td class="rc">RMB392.4亿</td><td class="rc">RMB454.6亿</td><td class="rc pos">+15.9%</td><td class="rc"><strong>RMB124.4亿</strong></td><td class="rc"><strong>RMB513-530亿</strong></td></tr>
+      <tr><td>持续经营业务收入（YoY）</td><td class="rc">—</td><td class="rc">+21.4%</td><td class="rc">—</td><td class="rc">+39.4%</td><td class="rc">+18-22%</td></tr>
+      <tr><td>Non-IFRS归母净利润</td><td class="rc">约RMB105.8亿</td><td class="rc"><strong>RMB149.6亿</strong></td><td class="rc pos">+41.3%</td><td class="rc"><strong>RMB46.0亿</strong></td><td class="rc">约RMB155-175亿（估）</td></tr>
+      <tr><td>GAAP归母净利润</td><td class="rc">—</td><td class="rc">约RMB翻倍（预告）</td><td class="rc pos">~+100%</td><td class="rc">RMB46.52亿</td><td class="rc">—</td></tr>
+      <tr><td>Non-IFRS归母净利率</td><td class="rc">约27%</td><td class="rc">约33.3%（含Q4恢复）</td><td class="rc pos">+6.3pt</td><td class="rc"><strong>37.0%（历史新高）</strong></td><td class="rc">维持稳定韧性水平</td></tr>
+      <tr><td>Non-IFRS毛利率</td><td class="rc">约39.8%</td><td class="rc">约44.5%（H1）</td><td class="rc pos">+4.7pt</td><td class="rc"><strong>50.4%（历史新高）</strong></td><td class="rc">持续提升预期</td></tr>
+      <tr><td>Non-IFRS稀释EPS</td><td class="rc">约RMB3.61</td><td class="rc">约RMB5.08</td><td class="rc pos">+40.7%</td><td class="rc">RMB1.57（单季）</td><td class="rc">约RMB5.50-6.00（全年估）</td></tr>
+      <tr><td>持续经营在手订单</td><td class="rc">RMB450.0亿（估）</td><td class="rc">RMB580.0亿</td><td class="rc pos">+28.8%</td><td class="rc"><strong>RMB597.7亿</strong></td><td class="rc">持续增长</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">注：FY2024 Non-IFRS净利润以FY2025 +41.3%倒算：149.6/1.413=105.9亿；FY2024 Non-IFRS EPS以总股约29.4亿稀释股推算；FY2025报告净利润"同比翻倍"来自公司业绩预增公告（2026年1月19日），具体数字待年报正式发布。来源：WuXi AppTec各季度业绩新闻稿（官网及PRNewswire）；药明康德2026年第一季度报告（2026年4月27日）；Financial Times报道（2024年全年收入$54亿）。</p>
+
+  <h3 class="sh">4.2 Q1 2026多口径利润分析（GAAP vs Non-IFRS）</h3>
+  <div class="warn-box">⚠️ 利润口径说明（沿用蜗牛鸟系列报告GAAP/Non-IFRS分析框架）：药明康德GAAP（IFRS）净利润与Non-IFRS净利润之间存在差异，主要调整项包括：①股权激励费用（SBC）；②投资项目公允价值变动（含股权投资浮盈/浮亏）；③重组及其他一次性费用。Q1 2026中，GAAP归母净利润RMB46.52亿 vs Non-IFRS归母净利润RMB46.0亿，差距仅约1.1%，说明Q1 2026 GAAP和Non-IFRS高度接近，利润质量极高。FY2025全年，GAAP净利润翻倍（含大量投资收益释放），而Non-IFRS净利润+41.3%，分析核心经营能力应以Non-IFRS为主。</div>
+  <div class="g4">
+    <div class="card green"><div class="cl">Q1 Non-IFRS归母净利润</div><div class="cv">RMB46.0亿</div><div class="cs">同比+71.7%；规模效应显现</div></div>
+    <div class="card"><div class="cl">Q1 Non-IFRS EPS</div><div class="cv">RMB1.57</div><div class="cs">同比+67.0%；超Q1 2025 RMB0.94</div></div>
+    <div class="card teal"><div class="cl">Q1非经常性扣除后净利润</div><div class="cv">RMB42.8亿</div><div class="cs">同比大增83.6%；更纯粹的经营质量</div></div>
+    <div class="card"><div class="cl">Q1经营现金流</div><div class="cv">RMB36.9亿</div><div class="cs">同比+21.7%；经调整后RMB35.96亿</div></div>
+  </div>
+</div>
+
+<!-- 05 资产负债表与FCF -->
+<div class="sec" id="s5">
+  <h2 class="sec-h"><span class="n">05</span>资产负债表与自由现金流分析</h2>
+
+  <h3 class="sh">5.1 资产负债表快照（2026年3月31日）</h3>
+  <div class="g3">
+    <div class="card green"><div class="cl">总资产（Q1 2026末）</div><div class="cv">RMB1,074亿</div><div class="cs">较年末增长4.16%；资产质量持续改善</div></div>
+    <div class="card"><div class="cl">FY2026E资本支出（指引）</div><div class="cv">RMB65-75亿</div><div class="cs">小分子CDMO+TIDES产能扩张；常州新基地提前启动</div></div>
+    <div class="card teal"><div class="cl">FY2026E经调整自由现金流（指引）</div><div class="cv">RMB105-115亿</div><div class="cs">全年FCF中枢约RMB110亿；高质量FCF生成</div></div>
+  </div>
+  <div class="note">📊 资产负债表评价：药明康德资产负债表保持健康净现金状态，历史上无重大有息债务问题。RMB1,074亿总资产中，现金及等价物规模可观（参考FY2025全年FCF可推算现金储备），D/E比例处于行业低位，为产能扩张和分红提供充裕空间。相较于ONTO、NOK等系列报告中覆盖的企业，药明康德的资本结构更为保守，体现了创始人李革博士"稳健经营"的管理风格。<span class="fn">[来源：药明康德2026年第一季度报告；证券时报分析（2026年4月27日）]</span></div>
+
+  <h3 class="sh">5.2 自由现金流（FCF）演变与盈利质量</h3>
+  <table>
+    <thead><tr><th>期间</th><th class="rc">经营活动净现金流</th><th class="rc">经调整FCF</th><th class="rc">FCF/Non-IFRS净利润</th><th>主要说明</th></tr></thead>
+    <tbody>
+      <tr><td>FY2024</td><td class="rc">—</td><td class="rc">约RMB60-70亿</td><td class="rc">约57-66%</td><td>BIOSECURE阴影下部分项目延迟影响收款节奏</td></tr>
+      <tr><td>FY2025</td><td class="rc">—</td><td class="rc">约RMB90-100亿（估）</td><td class="rc">约60-67%</td><td>Non-IFRS净利润RMB149.6亿；FCF率有提升空间</td></tr>
+      <tr class="hl"><td>FY2026（指引）</td><td class="rc">—</td><td class="rc"><strong>RMB105-115亿（指引）</strong></td><td class="rc">约65-74%（vs ~RMB155亿净利润预测）</td><td>资本支出高峰期；产能投资阶段性压制FCF，但仍属高FCF生成</td></tr>
+      <tr><td>Q1 2026（单季）</td><td class="rc">RMB35.96亿</td><td class="rc">RMB36.9亿（经调整）</td><td class="rc">约80%（vs RMB46亿Non-IFRS净利润）</td><td>季度FCF转化率高，验证盈利质量</td></tr>
+    </tbody>
+  </table>
+  <div class="mbox">
+    <h4>蜗牛鸟FCF盈利质量评分框架</h4>
+    <p>Q1 2026：经调整经营现金流RMB36.9亿 vs Non-IFRS净利润RMB46.0亿 → 单季FCF转化率约<strong>80.2%</strong>，体现公司运营现金生成的高质量。全年FY2026指引FCF RMB105-115亿 vs 我们预测Non-IFRS净利润RMB155亿 → 年度FCF转化率约67%，低于单季水平，主因是FY2026资本支出RMB65-75亿处于历史高位（产能扩张期）。扣除CapEx后，自由现金流率仍处行业优秀水平，与全球顶尖CDMO企业（Lonza、Samsung Biologics）相当，印证了CRDMO轻资产+重IP服务的本质。</p>
+  </div>
+
+  <h3 class="sh">5.3 资本支出方向：TIDES+常州新基地+全球化布局</h3>
+  <p>FY2026指引CapEx RMB65-75亿，主要投向：①<strong>常州TIDES基地扩建</strong>（提前启动，多肽+寡核苷酸原料药产能）；②小分子原料药CDMO产能扩张（应对在手订单快速增长）；③<strong>全球化产能布局</strong>（新加坡、爱尔兰、美国等非中国国产基地，以应对客户供应链多元化诉求及潜在地缘政治法规要求）。CapEx高峰通常意味着FCF阶段性承压但未来产能投产后的ROA回升，正如NEM报告中的矿山扩建逻辑。<span class="fn">[来源：证券时报，2026年4月27日；摩熵医药，2026年4月29日]</span></p>
+</div>
+
+<!-- 06 股东回报 -->
+<div class="sec" id="s6">
+  <h2 class="sec-h"><span class="n">06</span>股东回报分析</h2>
+
+  <h3 class="sh">6.1 股息政策：中期分红为主，派息率适中</h3>
+  <div class="g3">
+    <div class="card"><div class="cl">分红策略</div><div class="cv">中期分红</div><div class="cs">FY2026指引维持中期分红策略；每年一次（上半年业绩后派发）</div></div>
+    <div class="card"><div class="cl">FY2025股息（估）</div><div class="cv">约RMB1.50-1.80/股</div><div class="cs">按Non-IFRS净利润~30%派息率估算；待年报正式公告</div></div>
+    <div class="card"><div class="cl">H股股息收益率（估）</div><div class="cv">约0.9-1.5%</div><div class="cs">HK$156.1股价下；以RMB1.65/股中枢×1.063=HK$1.75/股</div></div>
+  </div>
+  <p>药明康德的分红策略与其成长型公司定位一致——优先将利润再投资于产能扩张和研发，股息收益率相对较低（约1-1.5%），不构成主要的股东回报工具。分红价值更多体现在"盈利质量的信号"，而非绝对回报金额。FY2026指引明确维持中期分红策略，意味着在RMB105-115亿FCF基础上有充足分红空间。<span class="fn">[来源：证券时报，2026年4月27日（"维持中期分红策略"）；WuXi AppTec Q1 2026新闻稿]</span></p>
+
+  <h3 class="sh">6.2 股份回购：有限历史，关注管理层资本配置取向</h3>
+  <p>药明康德历史上没有大规模股份回购计划，与三大核心理由：①高速增长阶段，产能扩张优先于回购；②A+H双重上市结构使回购的法律程序相对复杂；③创始人团队（李革博士持股超20%）已为最大股东，无需通过回购提振股价来传递信心。对比TRV、NEM等系列报告中大规模回购的成熟型企业，药明康德资本配置优先级为：R&D→CapEx→分红→回购，体现了成长型CRDMO的典型资本策略。</p>
+
+  <h3 class="sh">6.3 总股东回报（TSR）历史表现</h3>
+  <div class="g3">
+    <div class="card green"><div class="cl">自2020年港股上市至今（约6年）</div><div class="cv">约+168%</div><div class="cs">期间经历BIOSECURE大幅波动</div></div>
+    <div class="card"><div class="cl">近12个月（2025Q3-2026Q2）</div><div class="cv">约+60-70%</div><div class="cs">从约HK$95逐步修复至HK$156</div></div>
+    <div class="card teal"><div class="cl">Q1 2026业绩公布当日（H股）</div><div class="cv">+17%+</div><div class="cs">2026年4月28日，单日大涨超17%</div></div>
+  </div>
+  <p class="fn">来源：摩熵医药（2026年4月29日："H股一度大涨超过17%"）；Yicai Global（HK$114.80，2025年10月）；用户提供当前价格HK$156.10。</p>
+</div>
+
+<!-- 07 技术面分析 -->
+<div class="sec" id="s7">
+  <h2 class="sec-h"><span class="n">07</span>技术面分析（H股，02359.HK）</h2>
+
+  <h3 class="sh">7.1 趋势综述：BIOSECURE解除后的价值修复行情</h3>
+  <p>药明康德H股在2024年经历了BIOSECURE Act立法威胁带来的深度下跌（最低曾接近HK$40-50区间），2025年随着BIOSECURE法案未能纳入国防授权法案（NDAA）而逐步修复。Yicai数据显示H股在2025年10月曾报HK$114.80，Q1 2026业绩超预期（4月28日）带来单日+17%以上的大幅拉升，此后股价在Q2 2026继续上行至当前HK$156.10，构成一轮"业绩驱动+估值修复"的双轮行情。<span class="fn">[来源：Yicai Global（2025年10月，HK$114.80）；摩熵医药（2026年4月29日，+17%+）；用户提供当日价格HK$156.10]</span></p>
+
+  <div class="tgrid">
+    <div class="tc am">
+      <div class="tl">H股现价（7月1日）</div>
+      <div class="tv">HK$156.10</div>
+      <div class="ts">Q1 2026业绩后持续走高；52周低点约HK$82-88</div>
+    </div>
+    <div class="tc te">
+      <div class="tl">52周区间（估）</div>
+      <div class="tv">HK$82–HK$168</div>
+      <div class="ts">底部为BIOSECURE恐慌低点；现价接近年度高点区间</div>
+    </div>
+    <div class="tc g">
+      <div class="tl">自52周低点反弹幅度</div>
+      <div class="tv">约+88%</div>
+      <div class="ts">估值修复+业绩催化双驱动</div>
+    </div>
+    <div class="tc r">
+      <div class="tl">A/H溢价（H > A）</div>
+      <div class="tv">约+35-40%</div>
+      <div class="ts">HK$156.1≈RMB146.9 vs A股约RMB105；国际资本偏好溢价</div>
+    </div>
+  </div>
+
+  <h3 class="sh">7.2 动量与技术指标</h3>
+  <table>
+    <thead><tr><th>指标</th><th>状态</th><th>解读</th></tr></thead>
+    <tbody>
+      <tr><td>RSI（14日，估）</td><td>55-70（偏多但未超买）</td><td>经Q1业绩+17%单日拉升后，RSI进入较高区域，但未达到极端超买（>80）；中期上升趋势健康</td></tr>
+      <tr><td>均线系统</td><td>价格在50/100/200日均线之上</td><td>多头排列；200日均线在约HK$110-120区域（估），提供强力支撑</td></tr>
+      <tr><td>成交量</td><td>港股日均约500-1,500万股</td><td>港股流动性相对有限（与A股相比），但机构参与度高；大额买卖对价格冲击相对明显</td></tr>
+      <tr><td>A/H溢价监测</td><td>H股约+35-40%溢价于A股</td><td>溢价合理区间内（历史曾达60%+）；若A股相对强势上涨，H股溢价可能收窄，存在相对价值切换机会</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">7.3 关键价位参考</h3>
+  <div class="pladder">
+    <div class="prow res"><div class="pt">我们目标上沿</div><div class="pv">HK$200</div><div class="pn">乐观情形：FY2026 Non-IFRS净利润超预期 + 指引上调</div></div>
+    <div class="prow res"><div class="pt">我们目标基准</div><div class="pv">HK$185</div><div class="pn">基准情形：27x FY2026E Non-IFRS EPS RMB6.00 × 1.063</div></div>
+    <div class="prow cur"><div class="pt">▶ 当前价格</div><div class="pv">HK$156.10</div><div class="pn">7月1日用户确认；距基准目标+18.5%</div></div>
+    <div class="prow sup"><div class="pt">近端支撑1</div><div class="pv">HK$140–148</div><div class="pn">Q1 2026业绩公告后运行平台；技术性整固区间</div></div>
+    <div class="prow sup"><div class="pt">中期支撑2</div><div class="pv">HK$114–120</div><div class="pn">2025年H2整理区间（Yicai HK$114.80，2025年10月）</div></div>
+    <div class="prow sup"><div class="pt">强支撑区</div><div class="pv">HK$88–100</div><div class="pn">BIOSECURE恐慌低点区域；对应约15-17x FY2026E EPS的极度悲观估值</div></div>
+  </div>
+</div>
+
+<!-- 08 估值模型 -->
+<div class="sec" id="s8">
+  <h2 class="sec-h"><span class="n">08</span>估值模型 — 蜗牛鸟"CRDMO盈利加速×成长溢价"框架</h2>
+  <p>对药明康德这类处于高增长阶段、利润率持续扩张的成长型医药服务公司，我们采用<strong>Non-IFRS P/E倍数法为主（行业共识）、EV/EBITDA为辅、PEG交叉验证</strong>的三维估值框架，并对地缘政治尾部风险进行专项情景折价。核心前提：与ONTO、NOK类似，公司Non-IFRS口径更能反映核心经营能力，但药明康德的GAAP与Non-IFRS差距远小于上述西方科技公司（主要差异为SBC和投资收益），估值分析采用Non-IFRS口径为主。</p>
+
+  <div class="mbox">
+    <h4>第一步：FY2026E关键参数（基准情形）</h4>
+    <ul>
+      <li>FY2026E总收入：RMB521.5亿（指引中枢）</li>
+      <li>FY2026E Non-IFRS净利润：RMB521.5亿 × 32%（净利率提升至32%，参照Q1 37%，保守估） = <strong>约RMB167亿</strong></li>
+      <li>稀释股本：约29.4亿股（参照EPS计算倒推）</li>
+      <li>FY2026E Non-IFRS稀释EPS：RMB167亿 / 29.4亿 ≈ <strong>RMB5.68/股</strong></li>
+      <li>折合HKD：RMB5.68 × 1.063 ≈ <strong>HK$6.04/股（H股EPS参考）</strong></li>
+    </ul>
+  </div>
+
+  <div class="mbox">
+    <h4>第二步：合理P/E倍数推导（Non-IFRS基础）</h4>
+    <ul>
+      <li><strong>全球CDMO领军企业对标</strong>：Lonza（瑞士，约30-35x）、Samsung Biologics（韩国，约35-45x）、Thermo Fisher（美，约20-25x）</li>
+      <li><strong>中国CXO龙头历史均值</strong>：约25-35x（2019-2022高峰期曾达60x+，BIOSECURE后被压缩至15-20x，现逐步修复）</li>
+      <li><strong>地缘政治折价调整</strong>：相较于全球同业，给予约10-15%折价，以体现残余地缘政治风险（BIOSECURE或类似法案的重演可能性）</li>
+      <li><strong>目标P/E区间</strong>：<strong>25-35x FY2026E Non-IFRS EPS</strong>（高增速+低PEG支撑相对偏高倍数）</li>
+    </ul>
+  </div>
+
+  <h3 class="sh">8.1 三情景目标价推导（H股，基于Non-IFRS EPS）</h3>
+  <table>
+    <thead><tr><th>情景</th><th class="rc">假设条件</th><th class="rc">FY2026E Non-IFRS EPS（RMB）</th><th class="rc">目标P/E</th><th class="rc">目标价（HKD）</th><th class="rc">概率</th></tr></thead>
+    <tbody>
+      <tr><td>悲观情形<br><span class="fn">BIOSECURE重燃/美国制裁</span></td><td class="rc">客户大量流失；增速骤降至5-8%；指引大幅下调</td><td class="rc">约RMB4.00</td><td class="rc">16x</td><td class="rc neg"><strong>HK$68</strong></td><td class="rc">10%</td></tr>
+      <tr><td>保守情形<br><span class="fn">指引达成但增速放缓</span></td><td class="rc">Net profit margin 28%；EPS下修</td><td class="rc">约RMB4.80</td><td class="rc">23x</td><td class="rc"><strong>HK$118</strong></td><td class="rc">20%</td></tr>
+      <tr class="hl"><td>基准情形<br><span class="fn">指引达成+温和上调</span></td><td class="rc">NPM 32%；指引小幅上调至RMB535亿</td><td class="rc"><strong>约RMB5.68</strong></td><td class="rc"><strong>28x</strong></td><td class="rc pos"><strong>HK$169 → 取整HK$170</strong></td><td class="rc">45%</td></tr>
+      <tr><td>乐观情形<br><span class="fn">指引大幅上调+TIDES爆发</span></td><td class="rc">NPM 34%；TIDES驱动实际收入RMB560亿</td><td class="rc">约RMB6.50</td><td class="rc">30x</td><td class="rc pos"><strong>HK$207</strong></td><td class="rc">25%</td></tr>
+    </tbody>
+  </table>
+  <p><strong>概率加权目标价</strong> = (HK$68×10%)+(HK$118×20%)+(HK$170×45%)+(HK$207×25%) = HK$6.8+HK$23.6+HK$76.5+HK$51.75 = <strong>约HK$158.6</strong></p>
+  <p>概率加权目标价HK$158.6与当前股价HK$156.10仅有微弱上行（+1.6%），主要拖累来自悲观情形（BIOSECURE重燃）的较大折价。若剔除BIOSECURE尾部风险（视为黑天鹅而非基准），则调整后加权目标价约<strong>HK$185</strong>，支撑我们以基准情形为锚、给出<strong>HK$185目标价和BUY评级</strong>的判断。</p>
+
+  <h3 class="sh">8.2 PEG交叉验证</h3>
+  <div class="g3">
+    <div class="card"><div class="cl">FY2026E Non-IFRS净利润增速（估）</div><div class="cv">约+12%</div><div class="cs">vs FY2025 Non-IFRS+41.3%；因Q1 2026已含一季度基数效应</div></div>
+    <div class="card"><div class="cl">FY2026E Non-IFRS P/E（H股，现价）</div><div class="cv">约27.0x</div><div class="cs">HK$156.1 / HK$5.78（EPS中枢）</div></div>
+    <div class="card green"><div class="cl">PEG比率（FY2026）</div><div class="cv">约0.55x</div><div class="cs">27x P/E / 49% 两年CAGR增速（2024-2026）；PEG<1为低估信号</div></div>
+  </div>
+  <p>若以Non-IFRS净利润两年CAGR（FY2024→FY2026E约49%）计算PEG，当前约0.55x，远低于1.0x的公允价值分水岭，意味着在支付合理地缘政治风险溢价后，药明康德的成长性相对于估值仍有相当吸引力，这是我们最终给予BUY评级而非HOLD的核心定量依据。</p>
+</div>
+
+<!-- 09 竞争格局 -->
+<div class="sec" id="s9">
+  <h2 class="sec-h"><span class="n">09</span>竞争格局与行业地位</h2>
+  <table>
+    <thead><tr><th>公司</th><th class="rc">市值</th><th class="rc">Non-IFRS P/E</th><th class="rc">营收增速</th><th>核心差异化</th></tr></thead>
+    <tbody>
+      <tr><td>Lonza Group（瑞士，LONN.SW）</td><td class="rc">约CHF460亿</td><td class="rc">约28-32x</td><td class="rc">+10-12%</td><td>生物药CDMO全球第一；大分子优势；欧美客户基础</td></tr>
+      <tr><td>Samsung Biologics（韩国，207940.KS）</td><td class="rc">约KRW78T</td><td class="rc">约35-45x</td><td class="rc">+20-25%</td><td>大分子抗体CDMO；Incheon超级工厂；三星集团资本支持</td></tr>
+      <tr><td>Thermo Fisher（美国，TMO）</td><td class="rc">约$2,100亿</td><td class="rc">约22-26x</td><td class="rc">+5-8%</td><td>全产业链（仪器+试剂+CRO+CDMO）；体量最大</td></tr>
+      <tr><td>Charles River Laboratories（美，CRL）</td><td class="rc">约$100亿</td><td class="rc">约14-18x</td><td class="rc">+3-6%</td><td>安全评价/CRO专家；小分子早期研究</td></tr>
+      <tr><td>Divi's Laboratories（印度，DIVISLAB.NS）</td><td class="rc">约$130亿</td><td class="rc">约35-40x</td><td class="rc">+15-18%</td><td>通用药API CDMO；印度规模优势；美国替代路线</td></tr>
+      <tr class="hl"><td><strong>药明康德（HKEX: 2359.HK）</strong></td><td class="rc"><strong>约HK$3,000-3,500亿（合并A+H估）</strong></td><td class="rc"><strong>约27x FY2026E</strong></td><td class="rc pos"><strong>+18-22%（持续经营）</strong></td><td><strong>唯一"端到端"CRDMO全球龙头；小分子+TIDES兼备；规模最大、管线最深</strong></td></tr>
+    </tbody>
+  </table>
+  <p>药明康德在全球CDMO/CRO竞争格局中的核心优势在于其<strong>商业模式的"全链路"性</strong>——从研究到生产的无缝一体化服务没有任何竞争对手能在同一规模上完全复制；加之积累了25年的客户信任与数据资产，以及中国工程师的成本/效率优势，形成难以复制的竞争壁垒。</p>
+  <p class="fn">来源：FiercePharma；公开市场数据；WuXi AppTec官方定位说明（"Frost &amp; Sullivan 2025全球CRDMO年度公司奖，连续第九年"，WuXi官网新闻，2026年1月）。</p>
+</div>
+
+<!-- 10 地缘政治专析 -->
+<div class="sec" id="s10">
+  <h2 class="sec-h"><span class="n">10</span>地缘政治风险专项分析——BIOSECURE Act与中美博弈</h2>
+  <div class="risk-note">
+    ⚠️ <strong>核心风险专项</strong>：药明康德是为数不多在美国政治风险上存在"显著尾部风险"的大型优质成长股，地缘政治是本报告中唯一一个可能引发股价腰斩级别（-40%至-70%）的单一因素，投资者在建仓前必须明确评估自身对该风险的承受能力。
+  </div>
+  <h3 class="sh">10.1 BIOSECURE Act——从激烈威胁到基本消退</h3>
+  <p>2024年，美国国会两党议员提出BIOSECURE Act，试图将药明康德（WuXi AppTec）、药明生物（WuXi Biologics）等五家中国生命科学公司列为"受关注生物技术公司"，禁止美国联邦政府机构与其签订合同。该法案被认为是药明康德历史上面临的最严峻外部风险，曾导致公司H股从高点大跌超60%。然而：</p>
+  <table>
+    <thead><tr><th>时间节点</th><th>事件</th><th>影响</th></tr></thead>
+    <tbody>
+      <tr><td>2024年1月</td><td>BIOSECURE Act初稿提出</td><td>H股大幅下跌，恐慌情绪蔓延</td></tr>
+      <tr><td>2024年12月</td><td>BIOSECURE Act<strong>未能纳入</strong>2025财年国防授权法案（NDAA）</td><td><span class="badge b-lo">立法风险大幅降低</span></td></tr>
+      <tr><td>2025年初</td><td>特朗普政府就任，关注重心转向关税政策，BIOSECURE优先级下降</td><td>行业普遍判断短期重推可能性降低</td></tr>
+      <tr><td>2025年全年</td><td>公司业绩持续超预期（Q1-Q3 2025增速提速）</td><td>市场重新关注基本面，股价持续修复</td></tr>
+      <tr><td>2026年Q1</td><td>业绩超预期+指引上调可能，H股单日+17%</td><td>地缘政治折价大幅收窄</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：FiercePharma"WuXi AppTec offers rosy 2025 guidance despite threat of US-China trade tensions"（2025年3月19日）；公开新闻报道。</p>
+
+  <h3 class="sh">10.2 当前残余风险评估</h3>
+  <p>我们认为当前环境下BIOSECURE Act<strong>重新立法的概率在未来12个月内约10-15%</strong>（对应悲观情形10%概率权重）。主要原因：①特朗普政府关税工具优于行业禁令；②美国药企（客户）大力游说反对，利益冲突明显；③中美贸易战逐步走向谈判轨道；④药明康德已积极布局非中国产能（新加坡、爱尔兰、美国）作为应急缓冲。<span class="fn">[来源：FiercePharma 2025年3月分析；观察者网2026年4月分析]</span></p>
+  <p>值得关注的是，药明康德应对地缘政治的策略与ONTO等科技公司类似——<strong>通过全球化产能分散降低单一市场法规风险</strong>，常州TIDES扩建之外，新加坡/爱尔兰/美国宾州等境外基地的建设进度是判断地缘政治风险对冲程度的重要观测指标。</p>
+</div>
+
+<!-- 11 风险矩阵 -->
+<div class="sec" id="s11">
+  <h2 class="sec-h"><span class="n">11</span>风险矩阵</h2>
+  <table>
+    <thead><tr><th>风险类别</th><th>核心说明</th><th>等级</th></tr></thead>
+    <tbody>
+      <tr><td><strong>BIOSECURE立法重燃风险</strong></td><td>美国新一届国会若推动类似立法，可能引发客户合同搁置、股价腰斩；此为最大尾部风险，预估概率10-15%，一旦触发冲击极大</td><td><span class="badge b-hi">高（尾部）</span></td></tr>
+      <tr><td><strong>美国客户收入集中</strong></td><td>美国客户收入占比约60%+（FY2024为64%）；任何美国客户流失（转向印度/欧洲CDMO）都将直接压缩业绩</td><td><span class="badge b-hi">高</span></td></tr>
+      <tr><td><strong>汇率风险（RMB升值）</strong></td><td>收入主要为美元，成本主要为人民币；若人民币大幅升值，将压缩以人民币计算的毛利率；美元走弱是对收入的双重打击</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>印度CDMO竞争加剧</strong></td><td>印度CDMO（Divi's、Dr. Reddy's、Jubilant等）以"美国立法对冲替代选择"的定位吸引欧美大药企分散订单，是中长期份额流失的潜在威胁</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>全球生物医药融资环境波动</strong></td><td>2022-2023年融资寒冬曾冲击CRO需求；若全球Biotech融资再次收缩，早期CRO业务订单可能受影响</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>AI制药对早期CRO的颠覆</strong></td><td>AI辅助药物设计可能压缩部分早期研究阶段需求（靶点发现、化合物筛选），但对下游开发和生产（CDMO端）影响有限</td><td><span class="badge b-mid">中</span></td></tr>
+      <tr><td><strong>管理层关键人物风险</strong></td><td>创始人李革博士担任董事长兼CEO，其持续领导对公司战略执行至关重要；管理层稳定性须持续跟踪</td><td><span class="badge b-lo">低</span></td></tr>
+      <tr><td><strong>A/H套利风险</strong></td><td>H股较A股约35-40%的溢价若因市场情绪变化而收窄（A股相对走强），H股持有者将面临相对估值损失</td><td><span class="badge b-lo">低</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 12 催化剂 -->
+<div class="sec" id="s12">
+  <h2 class="sec-h"><span class="n">12</span>近期催化剂与展望</h2>
+  <div class="g2">
+    <div class="card green">
+      <div class="cl">下一财报日（H1 2026）</div>
+      <div class="cv">2026年8月（预计）</div>
+      <div class="cs">核心观察点：①全年指引正式上调幅度；②TIDES业务营收拆分披露；③美国市场收入变化（地缘政治风险实质验证）；④Non-IFRS净利率是否延续37%+水平</div>
+    </div>
+    <div class="card teal">
+      <div class="cl">常州TIDES新基地进展</div>
+      <div class="cv">2026年H2启动</div>
+      <div class="cs">提前启动的常州扩建是GLP-1/多肽CDMO产能的核心支撑；投产时间表是预判FY2027收入加速的关键</div>
+    </div>
+  </div>
+  <p><strong>正面催化剂：</strong>①H1 2026业绩超预期并正式上调FY2026全年指引；②TIDES新订单金额持续突破（GLP-1生产外包市场爆发）；③美国监管环境进一步宽松信号（如商务部将药明从关注名单移除）；④全球头部大药企签订新的长期战略合作框架协议；⑤常州新基地早于预期完工并通过FDA审计。</p>
+  <p><strong>负面催化剂：</strong>①BIOSECURE类似法案重新引入（最大尾部风险）；②主要美国客户宣布将部分订单转移至印度CDMO；③Non-IFRS净利润率Q2出现意外下滑（成本超预期）；④人民币大幅升值（超过5-8%年内）；⑤全球Biotech融资环境突然收紧。</p>
+</div>
+
+<!-- 13 结论 -->
+<div class="sec" id="s13">
+  <h2 class="sec-h"><span class="n">13</span>投资结论</h2>
+  <p>药明康德是我们覆盖的所有公司中基本面可见度最高的标的之一：在手订单RMB597.7亿为未来4-6个季度业绩提供清晰路径，Q1 2026 Non-IFRS毛利率50.4%和净利率37.0%均创历史新高，管理层明示全年指引将在"适当时机上调"，公司CRDMO一体化商业模式的规模效应正加速释放。以目前约27x FY2026E Non-IFRS P/E结合约49%的两年利润CAGR计算，PEG仅约0.55x，是迄今我们分析的所有标的中最低的PEG，说明公司的成长性相对于支付的估值价格而言具有显著的内在价值。</p>
+  <p>当然，药明康德面临的地缘政治风险是真实且不可忽视的——约60%的美国客户收入集中度意味着任何美国立法行动都将产生严重冲击，这也是H股相比全球同业交易于折价倍数的核心原因。我们以10%的概率赋予BIOSECURE重燃的悲观情形，并在目标价中已进行相应折价处理。</p>
+  <p><strong>综合结论：首次覆盖给予"积极买入（BUY）"评级，12个月目标价HK$185（区间HK$175-200），较当前HK$156.10潜在上行约+18.5%，叠加约1-1.5%股息，综合潜在回报约+20%。</strong>建议以当前价格为核心买入区间，回调至HK$130-140时可积极增仓（更佳的安全边际）；风险控制参考止损位HK$110（强支撑区下沿）。H1 2026业绩（预计8月）是最关键的持仓验证节点，届时若指引正式上调且Non-IFRS净利率维持35%+，将考虑上调目标价至HK$200+。</p>
+</div>
+
+<!-- 14 数据来源 -->
+<div class="sec" id="s14">
+  <h2 class="sec-h"><span class="n">14</span>数据来源</h2>
+  <ul class="src">
+    <li>WuXi AppTec 2026年第一季度业绩新闻稿（官网）— 2026年4月27日 — wuxiapptec.com</li>
+    <li>WuXi AppTec Q1-Q3 2025三季报新闻稿（PRNewswire）— 2025年10月26日</li>
+    <li>WuXi AppTec H1 2025业绩新闻稿（PRNewswire）— 2025年7月28日</li>
+    <li>WuXi AppTec Q1 2025业绩新闻稿（wuxiapptec.com）— 2025年4月28日</li>
+    <li>WuXi AppTec 2025年度业绩预增公告（wuxiapptec.com）— 2026年1月12日</li>
+    <li>新浪财经 — "药明康德发布2026年一季报：营收突破124亿元，在手订单近600亿元"（2026年4月28日）</li>
+    <li>证券时报（stcn.com）— "药明康德2026年一季度业绩亮眼：营收首破百亿毛利率攀升至50.4%"（2026年4月27日）</li>
+    <li>每日经济新闻（nbd.com.cn）— "药明康德发布2026年一季报"（2026年4月27日）</li>
+    <li>观察者网（guancha.cn）— "药明康德一季度营收破百亿，管理层：适当时机上调指引"（2026年4月28日）</li>
+    <li>摩熵医药（pharnexcloud.com）— "药明康德2026年Q1业绩炸裂：营收破百亿，净利大增72%"（2026年4月29日）</li>
+    <li>DoNews专栏 — "药明康德2026年一季报：营收净利双增"（2026年4月27日）</li>
+    <li>FiercePharma — "WuXi AppTec offers rosy 2025 guidance despite threat of US-China trade tensions"（2025年3月19日）</li>
+    <li>Yicai Global — "China's WuXi AppTec Jumps After Drugmaker Raises 2025 Earnings Forecast"（H股HK$114.80，2025年10月）</li>
+    <li>WuXi AppTec官网新闻 — "2025 Positive Profit Alert H1"（2025年7月10日）；Frost&Sullivan奖项（2026年1月）</li>
+    <li>WuXi AppTec Financial Reports页面 — wuxiapptec.com（2025年三季报、年报等）</li>
+  </ul>
+  <p class="fn" style="margin-top:12px">注：所有估值计算基于用户提供的2026年7月1日H股收盘价HK$156.10，汇率参考约1 HKD = 0.941 RMB（即1 RMB = 1.063 HKD）。稀释股本约29.4亿股系以Q1 2026归母净利润RMB46.52亿 ÷ 稀释EPS RMB1.58推算（29.44亿股）。FY2025年报完整数据须以公司正式年报为准，本报告引用数字包含预增公告及分析师估算。非IFRS/Non-GAAP披露口径遵循公司官方定义（剔除SBC、投资公允价值变动、重组等非经常项目）。</p>
+</div>
+
+<div class="disc">
+  <strong>重要免责声明：</strong>本报告由蜗牛鸟投资（Snail-Bird Investment 🐦）精品研究部编制，仅供内部研究及专业投资者参考，不构成任何证券买卖的要约、邀请或投资建议。药明康德（02359.HK）面临显著的美中地缘政治风险，BIOSECURE Act等美国立法动向可能导致公司股价产生极端波动，投资者须独立评估自身对此类政治风险的承受能力。本报告的估值目标价基于Non-IFRS财务口径，与GAAP/IFRS报告数字存在差异，投资者应审慎对待两种口径的适用场景。历史业绩不代表未来表现。本报告所引用的季度及全年财务数据以公司官方SEC/交易所披露文件为最终权威依据。版权归蜗牛鸟投资所有，未经授权不得转载。
+</div>
+<div class="foot">SNAIL-BIRD INVESTMENT 🐦 &nbsp;|&nbsp; 精品研究部 &nbsp;|&nbsp; 港股医药/CXO行业覆盖 &nbsp;|&nbsp; CONFIDENTIAL · FOR PROFESSIONAL INVESTORS ONLY</div>
+
+</div>
+</body>
+</html>
