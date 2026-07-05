@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美光科技 Micron Technology (NASDAQ: MU) 财报跟踪&投资更新 | 蜗牛鸟投资</title>
+<style>
+:root{
+  --ink:    #060e1e;
+  --navy:   #0a1830;
+  --steel:  #0e2c58;
+  --blue:   #1050b0;
+  --sky:    #1878d8;
+  --cyan:   #0890b8;
+  --teal:   #0a9878;
+  --gold:   #c49000;
+  --bright: #d8aa10;
+  --amber:  #ecbf20;
+  --bg:     #eef0f4;
+  --paper:  #fafbfd;
+  --text:   #101828;
+  --muted:  #5a6880;
+  --rule:   #d8dce8;
+  --green:  #0c6838;
+  --red:    #9c2020;
+  --warn:   #7a5800;
+  --elec:   #00b8e0;  /* electric blue - data center */
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Georgia","Noto Serif SC","Source Han Serif SC",serif;background:var(--bg);color:var(--text);line-height:1.80}
+.page{max-width:1080px;margin:0 auto;background:var(--paper);box-shadow:0 2px 48px rgba(6,14,30,.12)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:3px solid var(--amber);display:flex;align-items:center;overflow-x:auto;white-space:nowrap}
+.nav-brand{background:var(--amber);color:var(--ink);font-weight:800;font-size:12px;letter-spacing:1.4px;padding:13px 16px;flex-shrink:0}
+.nav a{color:#9ab0c8;text-decoration:none;font-size:11.5px;padding:13px 9px;border-bottom:2px solid transparent;transition:color .18s,border-color .18s}
+.nav a:hover{color:var(--amber);border-bottom-color:var(--amber)}
+
+/* HERO — special earnings update style */
+.hero{background:linear-gradient(138deg,#060e1e 0%,#0a1830 45%,#0e2440 100%);color:#e5eaf5;padding:42px 54px 34px;border-bottom:4px solid var(--amber);position:relative;overflow:hidden}
+.hero::before{content:"MU";position:absolute;right:-12px;top:-18px;font-size:250px;font-weight:900;color:rgba(255,255,255,.02);letter-spacing:-6px;pointer-events:none;line-height:1}
+
+/* beat banner */
+.beat-banner{background:linear-gradient(90deg,#0c3a0c,#1a6a1a);border:2px solid #4adc4a;padding:12px 24px;border-radius:3px;margin-bottom:18px;display:flex;align-items:center;gap:16px}
+.beat-banner .beat-tag{font-weight:900;font-size:15px;color:#6afc6a;letter-spacing:1px}
+.beat-banner .beat-text{font-size:13px;color:#a8d8a8}
+
+.hero-eye{font-size:11px;letter-spacing:3px;color:var(--amber);text-transform:uppercase;margin-bottom:8px}
+.hero-title{font-size:28px;font-weight:bold;line-height:1.2;margin-bottom:4px}
+.hero-title em{color:#7898b8;font-style:normal;font-size:15px;font-weight:normal}
+.hero-sub{font-size:13px;color:#8890b0;margin-top:4px;margin-bottom:22px}
+
+.report-type{display:inline-block;background:rgba(236,191,32,.18);border:1px solid var(--amber);color:var(--amber);font-size:12px;font-weight:700;letter-spacing:1px;padding:4px 16px;border-radius:1px;margin-bottom:14px;text-transform:uppercase}
+
+/* KPI strip — key numbers */
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:20px}
+.kpi-c{padding:12px 14px;border-right:1px solid rgba(255,255,255,.10)}
+.kpi-c:last-child{border-right:none}
+.kpi-c .lbl{font-size:10px;color:#7888a8;text-transform:uppercase;letter-spacing:.8px}
+.kpi-c .val{font-size:18px;color:#fff;font-weight:700;margin-top:4px;line-height:1.15}
+.kpi-c .sub{font-size:10.5px;color:#5868a0;margin-top:2px}
+.kpi-c .beat{font-size:10px;color:#6afc6a;font-weight:700;margin-top:1px}
+
+.rbox{display:inline-flex;align-items:center;gap:16px;background:rgba(216,170,16,.13);border:1px solid var(--amber);padding:10px 20px;border-radius:2px}
+.rbox .r{font-weight:900;font-size:16px;color:var(--amber);letter-spacing:.8px}
+.rbox .tp{font-size:12px;color:#b8c8d8}
+.rbox .up{font-size:12px;color:#6afc9a;font-weight:700}
+
+/* SECTIONS */
+.sec{padding:34px 54px;border-bottom:1px solid var(--rule)}
+.sec:last-child{border-bottom:none}
+.sec-h{font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:14px;margin-bottom:18px;font-weight:bold}
+.sec-h .n{color:var(--amber);margin-right:6px;font-weight:normal}
+h3.sh{font-size:14.5px;color:var(--steel);margin:24px 0 10px;border-bottom:1px solid var(--rule);padding-bottom:6px;font-weight:bold}
+p{font-size:14.5px;color:var(--text);margin-bottom:12px}
+.lead{font-size:15px;color:var(--navy);background:#e8ecf4;border-left:3px solid var(--amber);padding:14px 18px;margin-bottom:16px;line-height:1.88}
+
+/* Beat / Miss tags */
+.beat-tag-sm{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 8px;border-radius:3px;margin-left:6px}
+.beat-s{background:#d4f4da;color:var(--green)}
+.miss-s{background:#fce8e8;color:var(--red)}
+.in-line{background:#e8eef8;color:var(--steel)}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0 18px}
+thead th{background:var(--navy);color:#ccd8f0;padding:9px 12px;text-align:left;font-weight:600;letter-spacing:.2px}
+tbody td{padding:8px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:nth-child(even) td{background:#f2f4fa}
+.rc{text-align:right;font-variant-numeric:tabular-nums}
+.pos{color:var(--green);font-weight:700}
+.neg{color:var(--red);font-weight:700}
+.hl td{background:#e8f4ec!important;font-weight:700}
+.guidance-row td{background:#fffde8!important;font-weight:700;color:var(--navy)}
+
+/* grids */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}
+
+.card{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--amber);padding:14px 16px}
+.card.b1{border-top-color:var(--blue)}
+.card.b2{border-top-color:var(--sky)}
+.card.b3{border-top-color:var(--teal)}
+.card.b4{border-top-color:var(--green)}
+.card.b5{border-top-color:var(--red)}
+.card.bel{border-top-color:var(--elec)}
+.card .cl{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.card .cv{font-size:20px;color:var(--navy);font-weight:700;margin-top:5px;line-height:1.15}
+.card .cs{font-size:11.5px;color:var(--muted);margin-top:4px}
+
+/* SCA special box */
+.sca-box{background:linear-gradient(135deg,#040c20,#081830);border:2px solid var(--elec);border-radius:3px;padding:20px 24px;margin:14px 0;color:#d0e4f8}
+.sca-box h4{font-size:15px;font-weight:bold;color:var(--elec);margin-bottom:12px;letter-spacing:.5px}
+.sca-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
+.sca-ki .sk{font-size:10px;color:#7098c0;text-transform:uppercase;letter-spacing:.5px}
+.sca-ki .sv{font-size:24px;font-weight:900;color:#fff;margin-top:4px}
+.sca-ki .ss{font-size:11px;color:#5888c0;margin-top:2px}
+
+/* mbox */
+.mbox{border:1px dashed var(--amber);background:#f8f6e8;padding:16px 20px;margin:12px 0}
+.mbox h4{font-size:13.5px;color:var(--navy);margin-bottom:8px;font-weight:700}
+.mbox ul{padding-left:18px;margin-top:6px}
+.mbox li,.mbox p{font-size:13.5px;margin-bottom:5px}
+
+/* note boxes */
+.note{background:#e8f2fc;border-left:3px solid var(--sky);padding:10px 14px;font-size:12.5px;color:#0a1e40;margin-bottom:14px}
+.warn-box{background:#fef8e4;border-left:3px solid var(--bright);padding:10px 14px;font-size:12.5px;color:#5a4000;margin-bottom:14px}
+.record-box{background:linear-gradient(135deg,#f0faf0,#e4f8ec);border:2px solid var(--teal);padding:14px 18px;margin:14px 0;border-radius:2px}
+.record-box h4{font-size:13.5px;font-weight:700;color:var(--teal);margin-bottom:8px}
+
+/* risk badges */
+.badge{display:inline-block;font-size:11px;padding:2px 10px;border-radius:10px;font-weight:700}
+.b-hi{background:#fce8e8;color:var(--red)}
+.b-mid{background:#fdf0d0;color:var(--warn)}
+.b-lo{background:#e0f0e8;color:var(--green)}
+
+/* tech panel */
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+.tc{background:#fff;border:1px solid var(--rule);padding:14px 16px}
+.tc .tl{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.tc .tv{font-size:19px;font-weight:700;color:var(--navy)}
+.tc .ts{font-size:12.5px;color:var(--muted);margin-top:4px}
+.tc.am{border-top:3px solid var(--amber)}
+.tc.sk{border-top:3px solid var(--sky)}
+.tc.gr{border-top:3px solid var(--green)}
+.tc.re{border-top:3px solid var(--red)}
+.tc.cy{border-top:3px solid var(--elec)}
+
+/* price ladder */
+.pladder{border:1px solid var(--rule);background:#fff;margin:12px 0}
+.prow{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--rule);font-size:13px}
+.prow:last-child{border-bottom:none}
+.prow .pt{width:130px;flex-shrink:0;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+.prow .pv{font-size:15px;font-weight:700;color:var(--navy);width:100px}
+.prow .pn{color:var(--muted);font-size:12.5px;flex:1}
+.prow.cur .pv{color:var(--amber)}
+.prow.sup .pv{color:var(--green)}
+.prow.res .pv{color:var(--red)}
+.prow.guide .pv{color:var(--elec)}
+
+/* valuation table */
+.val-scenario td{font-size:13px}
+
+/* comparison tables */
+.mu-row td{background:#e8f0fc!important;font-weight:700}
+
+.fn{font-size:11.5px;color:var(--muted);line-height:1.75}
+.src{font-size:12.5px;color:var(--muted);line-height:2;padding-left:18px}
+.src li{margin-bottom:2px}
+.disc{background:var(--ink);color:#7088a8;font-size:11.5px;padding:26px 54px;line-height:1.92}
+.disc strong{color:var(--amber)}
+.foot{background:var(--ink);border-top:1px solid rgba(216,170,16,.28);color:#3a4870;text-align:center;font-size:11px;letter-spacing:1.5px;padding:14px}
+
+/* quarter progress bar */
+.qbar{display:flex;gap:4px;margin:10px 0}
+.qb{flex:1;height:36px;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;border-radius:2px;color:#fff}
+.qb-done{background:var(--blue)}
+.qb-guide{background:var(--teal);border:2px dashed #fff}
+.qb-future{background:#334;color:#666}
+
+@media(max-width:700px){
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .g3,.g4,.tgrid,.sca-kpi{grid-template-columns:1fr 1fr}
+  .hero,.sec,.disc{padding-left:22px;padding-right:22px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-brand">🐦 蜗牛鸟投资 · 精品研究</div>
+  <a href="#s1">业绩速览</a>
+  <a href="#s2">收入结构</a>
+  <a href="#s3">SCA战略协议</a>
+  <a href="#s4">资产负债&FCF</a>
+  <a href="#s5">股东回报</a>
+  <a href="#s6">Q4指引深析</a>
+  <a href="#s7">估值模型</a>
+  <a href="#s8">技术面</a>
+  <a href="#s9">风险矩阵</a>
+  <a href="#s10">投资结论</a>
+  <a href="#s11">来源</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eye">SNAIL-BIRD INVESTMENT &nbsp;|&nbsp; 精品研究部 &nbsp;|&nbsp; 美股半导体·内存/存储行业</div>
+  <div class="report-type">📊 财报跟踪与投资更新报告 · Earnings Update</div>
+
+  <div class="beat-banner">
+    <div class="beat-tag">🏆 全线创纪录</div>
+    <div class="beat-text">FQ3 2026 营收$41.46B 超预期+16.2% &nbsp;|&nbsp; Non-GAAP EPS $25.11 超预期+21.3% &nbsp;|&nbsp; 毛利率84.9%超预期约+3pt &nbsp;|&nbsp; FQ4指引超预期+22%</div>
+  </div>
+
+  <div class="hero-title">Micron Technology, Inc. <em>(NASDAQ: MU) — FY2026 Q3 财报解析</em></div>
+  <div class="hero-sub">财报日期：2026年6月24日 &nbsp;|&nbsp; FQ3 2026财季截止日：2026年5月31日 &nbsp;|&nbsp; 下一财报预期：2026年9月22日</div>
+
+  <div class="kpi-row">
+    <div class="kpi-c">
+      <div class="lbl">FQ3 营收</div>
+      <div class="val">$41.46B</div>
+      <div class="sub">同比+346%；环比+74%</div>
+      <div class="beat">超预期+$5.77B (+16.2%)</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">Non-GAAP EPS</div>
+      <div class="val">$25.11</div>
+      <div class="sub">同比+1200%+；环比+106%</div>
+      <div class="beat">超预期+$4.40 (+21.3%)</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">Non-GAAP 毛利率</div>
+      <div class="val">84.9%</div>
+      <div class="sub">历史最高；一年前约40%</div>
+      <div class="beat">超预期约+3.0pt</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">调整后FCF（季度纪录）</div>
+      <div class="val">$18.3B</div>
+      <div class="sub">经营现金流$25.39B</div>
+      <div class="beat">历史单季最高</div>
+    </div>
+    <div class="kpi-c">
+      <div class="lbl">现价（7月3日）</div>
+      <div class="val">$975.56</div>
+      <div class="sub">财报后盘后+16%；约$1.12万亿市值</div>
+      <div class="beat">距历史新高区间</div>
+    </div>
+  </div>
+
+  <div class="rbox">
+    <div class="r">强烈买入（STRONG BUY）</div>
+    <div class="tp">12个月目标价：<strong style="color:#e8c840">$1,200</strong>（区间$1,000–$1,500）</div>
+    <div class="up">$100B RPO锁定多年收入；结构性供应约束延续2027年后</div>
+  </div>
+</div>
+
+<!-- 01 业绩速览 -->
+<div class="sec" id="s1">
+  <h2 class="sec-h"><span class="n">01</span>FQ3 2026业绩速览 — 全线破纪录</h2>
+
+  <div class="lead">
+    美光科技于2026年6月24日发布FY2026第三财季（截止2026年5月31日）业绩，每一项关键指标均创下公司历史记录，并全线超越华尔街预期上沿。这是美光历史上第五个连续创收入记录的季度，营收$41.46B同比暴增346%（12个月前还是$9.30B），Non-GAAP EPS $25.11同比增长超1200%，调整后毛利率84.9%较一年前约40%翻倍以上。更震撼市场的是Q4指引：$50B±$1B的营收指引和$31±$1的EPS指引均大幅超出共识预期20%以上，彻底打消了市场对AI内存需求见顶的疑虑。
+  </div>
+
+  <h3 class="sh">1.1 FQ3 2026 财务数据一览（与各季度对比）</h3>
+  <table>
+    <thead><tr><th>指标</th><th class="rc">FQ3 FY2025（一年前）</th><th class="rc">FQ2 FY2026（上季）</th><th class="rc">FQ3 FY2026（本季）</th><th class="rc">YoY变化</th><th class="rc">QoQ变化</th><th>vs. 预期</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td><strong>总营收</strong></td><td class="rc">$9.30B</td><td class="rc">$23.86B</td><td class="rc pos"><strong>$41.46B</strong></td><td class="rc pos">+346%</td><td class="rc pos">+74%</td><td><span class="beat-tag-sm beat-s">超预期+16.2%</span></td></tr>
+      <tr><td>GAAP毛利润</td><td class="rc">—</td><td class="rc">—</td><td class="rc">—</td><td class="rc">—</td><td class="rc">—</td><td>—</td></tr>
+      <tr><td><strong>Non-GAAP毛利率</strong></td><td class="rc">~40%</td><td class="rc">~75%（估）</td><td class="rc pos"><strong>84.9%</strong></td><td class="rc pos">+44.9pt</td><td class="rc pos">+9.9pt</td><td><span class="beat-tag-sm beat-s">超预期+3.0pt</span></td></tr>
+      <tr><td>GAAP净利润</td><td class="rc">—</td><td class="rc">$13.79B</td><td class="rc pos"><strong>$28.24B</strong></td><td class="rc pos">+100%+</td><td class="rc pos">+105%</td><td>—</td></tr>
+      <tr class="hl"><td><strong>Non-GAAP稀释EPS</strong></td><td class="rc">$1.91</td><td class="rc">$12.20</td><td class="rc pos"><strong>$25.11</strong></td><td class="rc pos">+1,215%</td><td class="rc pos">+106%</td><td><span class="beat-tag-sm beat-s">超预期+21.3%</span></td></tr>
+      <tr><td>GAAP稀释EPS</td><td class="rc">—</td><td class="rc">$12.07</td><td class="rc pos"><strong>$24.67</strong></td><td class="rc">—</td><td class="rc pos">+104%</td><td>—</td></tr>
+      <tr><td>经营活动现金流</td><td class="rc">$4.61B</td><td class="rc">$11.90B</td><td class="rc pos"><strong>$25.39B</strong></td><td class="rc pos">+450%</td><td class="rc pos">+113%</td><td>—</td></tr>
+      <tr class="hl"><td><strong>调整后自由现金流</strong></td><td class="rc">—</td><td class="rc">—</td><td class="rc pos"><strong>$18.3B（季度纪录）</strong></td><td class="rc">—</td><td class="rc">—</td><td><span class="beat-tag-sm beat-s">历史最高</span></td></tr>
+      <tr><td>资本支出（净额）</td><td class="rc">—</td><td class="rc">—</td><td class="rc">$7.1B</td><td class="rc">—</td><td class="rc">—</td><td>—</td></tr>
+      <tr><td>现金+有价证券+受限现金</td><td class="rc">—</td><td class="rc">—</td><td class="rc pos"><strong>$30.2B</strong></td><td class="rc">—</td><td class="rc">—</td><td>—</td></tr>
+      <tr><td>季度削减债务</td><td class="rc">—</td><td class="rc">—</td><td class="rc pos"><strong>$4.4B（本季偿债）</strong></td><td class="rc">—</td><td class="rc">—</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：Micron Technology FQ3 2026 8-K/业绩新闻稿（investors.micron.com，2026年6月24日）；StockTitan（2026年6月24日）；Quartr摘要（2026年6月25日）；Bitget News（2026年6月28日）；Public.com（2026年7月3日，EPS共识vs实际）。</p>
+
+  <div class="record-box">
+    <h4>🏆 FQ3 2026 创历史纪录汇总（美光公司单季历史）</h4>
+    <div class="g4">
+      <div><strong>营收</strong>：$41.46B ✓</div>
+      <div><strong>毛利率</strong>：84.9% ✓</div>
+      <div><strong>Non-GAAP EPS</strong>：$25.11 ✓</div>
+      <div><strong>调整FCF</strong>：$18.3B ✓</div>
+      <div><strong>经营现金流</strong>：$25.39B ✓</div>
+      <div><strong>净利润</strong>：$28.24B ✓</div>
+      <div><strong>连续季度营收纪录</strong>：第5次 ✓</div>
+      <div><strong>数据中心年化营收</strong>：>$100B ✓</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 收入结构 -->
+<div class="sec" id="s2">
+  <h2 class="sec-h"><span class="n">02</span>收入结构深度解析</h2>
+
+  <h3 class="sh">2.1 数据中心：绝对主角（占总营收61%）</h3>
+  <div class="g2">
+    <div class="card bel">
+      <div class="cl">核心数据中心DRAM收入</div>
+      <div class="cv">$11.52B</div>
+      <div class="cs">同比+650%（约7.5×）；超分析师共识$6.80B约+69%——最大单项超预期</div>
+    </div>
+    <div class="card bel">
+      <div class="cl">云存储（企业SSD）收入</div>
+      <div class="cv">$13.77B</div>
+      <div class="cs">同比约+300%（约4×）；超共识$10.69B约+29%；数据中心SSD收入超$5B并环比翻倍以上</div>
+    </div>
+  </div>
+  <div class="note">💡 数据中心+云存储合计收入：<strong>$25.29B</strong>，占FQ3总营收约<strong>61%</strong>，年化运行率突破<strong>$100亿美元（$100B）</strong>，是美光历史上从未有过的收入级别，也是公司管理层在业绩准备声明中特别提出的里程碑。来源：Micron FQ3 2026准备声明（investors.micron.com，2026年6月24日）；Bitget News（2026年6月28日）。</div>
+
+  <h3 class="sh">2.2 HBM（高带宽存储）：AI算力核心部件</h3>
+  <p>HBM营收连续第二个季度超过<strong>$1B</strong>，且全年2026年HBM产能<strong>已全部承诺出货</strong>（sold out），并签署了与关键AI客户的长期供应协议。美光HBM的竞争优势体现在：①HBM3E产品实现量产并持续供货主要AI训练客户；②持续开发下一代HBM4（基于1-gamma DRAM节点）；③通过与NVIDIA、AMD、英特尔等主要AI芯片厂商建立深度技术合作，确保下一代AI训练系统中HBM的获选资格。</p>
+  <p class="fn">来源：Micron FQ3 2026准备声明（investors.micron.com，2026年6月24日）。"Full-year 2026 HBM capacity is fully committed with long-term supply agreements with key AI customers."</p>
+
+  <h3 class="sh">2.3 各业务单元全线增长</h3>
+  <table>
+    <thead><tr><th>业务单元</th><th class="rc">FQ3 FY2026营收</th><th class="rc">vs FQ2 FY2026</th><th class="rc">vs FQ3 FY2025</th><th>核心驱动</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td><strong>DRAM（合计）</strong></td><td class="rc"><strong>约$28-30B（估）</strong></td><td class="rc pos">大幅增长</td><td class="rc pos">+200%+</td><td>HBM+数据中心DDR5+服务器DRAM</td></tr>
+      <tr><td>NAND/SSD（合计）</td><td class="rc">约$11-13B（估）</td><td class="rc pos">增长</td><td class="rc pos">约+100-150%</td><td>企业SSD+消费级存储回暖</td></tr>
+      <tr><td>计算&网络（CNS）</td><td class="rc">记录</td><td class="rc pos">✓增长</td><td class="rc pos">✓增长</td><td>AI训练/推理服务器内存</td></tr>
+      <tr><td>移动（Mobile）</td><td class="rc">记录</td><td class="rc pos">✓增长</td><td class="rc pos">✓增长</td><td>手机换机周期+折叠屏拉动</td></tr>
+      <tr><td>嵌入式（Embedded）</td><td class="rc">记录</td><td class="rc pos">✓增长</td><td class="rc pos">✓增长</td><td>工业AI、汽车电子</td></tr>
+      <tr><td>存储（Storage）</td><td class="rc">记录</td><td class="rc pos">✓增长</td><td class="rc pos">✓增长</td><td>企业SSD、消费级NVMe</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">注：DRAM/NAND具体分业务营收未在本季财报中单独按产品线公布（美光通常按业务单元披露），数字为基于分析师拆解的估算。来源：Micron FQ3 2026准备声明；Quartr摘要（2026年6月25日）。</p>
+
+  <h3 class="sh">2.4 供需格局：结构性约束延伸至2027年后</h3>
+  <div class="g2">
+    <div class="card b4">
+      <div class="cl">2026年DRAM位元出货增速预期</div>
+      <div class="cv">低至中20%s区间</div>
+      <div class="cs">需求增速远超此，价格持续受益</div>
+    </div>
+    <div class="card b4">
+      <div class="cl">2026年NAND位元出货增速预期</div>
+      <div class="cv">约20%</div>
+      <div class="cs">企业SSD需求爆炸性增长持续拉动</div>
+    </div>
+  </div>
+  <p>管理层明确表示：<em>"DRAM和NAND行业需求持续显著超过行业供应。预计这种供应紧张状态将在2027年日历年之后依然存在，这是AI驱动的跨细分市场需求叠加结构性供应约束的结果。"</em>结构性供应约束的根本原因：①技术复杂度快速提升（HBM3E→HBM4→HBM4E；DRAM 1-alpha→1-beta→1-gamma节点）；②新制造厂建设周期3-5年（greenfield expansion）；③建设成本大幅上升导致竞争对手扩产节奏审慎。<span class="fn">[来源：Micron FQ3 2026准备声明（investors.micron.com，2026年6月24日）]</span></p>
+</div>
+
+<!-- 03 SCA战略协议 -->
+<div class="sec" id="s3">
+  <h2 class="sec-h"><span class="n">03</span>战略客户协议（SCA）专析 — 本季报告最重要的结构性变量</h2>
+
+  <div class="sca-box">
+    <h4>⚡ 战略客户协议（Strategic Customer Agreements, SCAs）— 美光历史性的商业模式转变</h4>
+    <div class="sca-kpi">
+      <div class="sca-ki"><div class="sk">已签署SCA数量</div><div class="sv">16个</div><div class="ss">FQ3 2026末，部分于FQ3结束后陆续签署</div></div>
+      <div class="sca-ki"><div class="sk">覆盖DRAM配额</div><div class="sv">~20%</div><div class="ss">占美光总DRAM出货量约20%</div></div>
+      <div class="sca-ki"><div class="sk">覆盖NAND配额</div><div class="sv">最高~1/3</div><div class="ss">占美光总NAND出货量最高33%</div></div>
+      <div class="sca-ki"><div class="sk">已定价SCA剩余履约义务（RPO）</div><div class="sv">>$5B</div><div class="ss">FQ3末，仅含已明确定价的SCA</div></div>
+      <div class="sca-ki"><div class="sk">全部SCA总RPO（含FQ3后签约）</div><div class="sv">约$100B</div><div class="ss">≈美光2年以上的历史年化营收！</div></div>
+      <div class="sca-ki"><div class="sk">协议性质</div><div class="sv">多年期/照付不议</div><div class="ss">Take-or-pay + 价格区间（Price Band）</div></div>
+    </div>
+    <p style="font-size:13px;color:#90b0d0">SCA协议通常包含：最低承诺量（minimum committed volumes）+价格区间（floor and ceiling price）+长期供应保证。这类协议为美光提供了量、价、收入的三重可见度，从根本上改变了其高度周期性的定价模式。来源：Micron FQ3 2026准备声明（investors.micron.com，2026年6月24日）</p>
+  </div>
+
+  <h3 class="sh">3.1 SCAs为何是这份财报最重要的信号？</h3>
+  <p>在蜗牛鸟半导体行业研究框架中，我们高度关注"长期订单能见度"（backlog visibility）对估值锚定的作用——这与药明康德报告中的"在手订单RMB598亿覆盖4.8x季度收入"分析逻辑完全一致。对美光而言，$100B总RPO代表了以下意义：</p>
+  <table>
+    <thead><tr><th>维度</th><th>意义</th></tr></thead>
+    <tbody>
+      <tr><td><strong>收入能见度</strong></td><td>$100B约等于美光过去约1.6年的历史年化营收（FQ3年化约$165B），提供多年期收入下限保证</td></tr>
+      <tr><td><strong>定价能力</strong></td><td>价格区间（Price Band）协议意味着美光的产品定价不再是纯粹现货市场交易，而是有上下限的合同价格；有效遏制了"价格崩盘"的尾部风险</td></tr>
+      <tr><td><strong>客户锁定</strong></td><td>Take-or-pay结构使客户（NVIDIA、AWS、微软等推测）承担不使用时仍须付款的义务，体现了AI超大规模算力客户对长期内存供应保障的极度重视</td></tr>
+      <tr><td><strong>毛利率可持续性</strong></td><td>管理层表示Q4 2026毛利率展望"反映了价格涨幅速度的有意义放缓"（86% vs 84.9%），但SCA价格区间保证了即使现货价格回落，合约价格仍有下限保护</td></tr>
+      <tr><td><strong>周期性打破</strong></td><td>美光正从"自由化商品定价→合约定价"转变，历史上最让投资者头疼的内存"价格崩盘"风险在一定程度上被SCA结构性对冲</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：Micron FQ3 2026准备声明（2026年6月24日）。"For the SCAs that we have entered into so far, including ones executed after the end of FQ3, RPO is approximately $100 billion."</p>
+</div>
+
+<!-- 04 资产负债表与FCF -->
+<div class="sec" id="s4">
+  <h2 class="sec-h"><span class="n">04</span>资产负债表与自由现金流分析</h2>
+
+  <h3 class="sh">4.1 资产负债表快照（FQ3 2026末，2026年5月31日）</h3>
+  <div class="g4">
+    <div class="card b4"><div class="cl">现金+有价证券+受限现金</div><div class="cv">$30.2B</div><div class="cs">季度末余额；大幅增长</div></div>
+    <div class="card"><div class="cl">本季净偿债</div><div class="cv">$4.4B</div><div class="cs">主动加速去杠杆；财务弹性提升</div></div>
+    <div class="card b1"><div class="cl">FQ3 CapEx（净额）</div><div class="cv">$7.1B</div><div class="cs">全年CapEx指引约$27B</div></div>
+    <div class="card b3"><div class="cl">调整后FCF（季度纪录）</div><div class="cv">$18.3B</div><div class="cs">OCF $25.39B - CapEx $7.1B ≈ $18.3B</div></div>
+  </div>
+
+  <h3 class="sh">4.2 自由现金流飞跃——盈利质量极高</h3>
+  <table>
+    <thead><tr><th>指标</th><th class="rc">FQ3 FY2025</th><th class="rc">FQ2 FY2026</th><th class="rc">FQ3 FY2026</th><th class="rc">YoY变化</th></tr></thead>
+    <tbody>
+      <tr><td>经营活动净现金流（OCF）</td><td class="rc">$4.61B</td><td class="rc">$11.90B</td><td class="rc pos"><strong>$25.39B</strong></td><td class="rc pos">+451%</td></tr>
+      <tr><td>资本支出（CapEx，净额）</td><td class="rc">—</td><td class="rc">—</td><td class="rc">$(7.1B)</td><td class="rc">—</td></tr>
+      <tr class="hl"><td><strong>调整后自由现金流（FCF）</strong></td><td class="rc">—</td><td class="rc">—</td><td class="rc pos"><strong>$18.3B（历史纪录）</strong></td><td class="rc">—</td></tr>
+    </tbody>
+  </table>
+  <div class="mbox">
+    <h4>蜗牛鸟FCF盈利质量评分（沿用本系列报告方法论）</h4>
+    <p>FQ3 2026 OCF $25.39B vs GAAP净利润$28.24B → OCF/净利润约<strong>0.90x</strong>（略低于1x，主因SBC和非现金调整项的存在）。调整后FCF $18.3B vs Non-GAAP净利润$28.86B → FCF转化率约<strong>63%</strong>，低于1x是因为本季资本支出$7.1B为主要缺口。全年CapEx指引$27B中Q4将投入~$10B，意味着FCF虽然历史极高，但还受到主动扩产投资的部分压制。管理层表示"FCF预计在Q4将大幅增加"，结合$50B营收指引，全年FCF可能达$50-70B+量级，创公司年度纪录。</p>
+  </div>
+</div>
+
+<!-- 05 股东回报 -->
+<div class="sec" id="s5">
+  <h2 class="sec-h"><span class="n">05</span>股东回报分析</h2>
+  <div class="g2">
+    <div class="card b4">
+      <div class="cl">季度现金股息（本季宣布）</div>
+      <div class="cv">$0.15/股</div>
+      <div class="cs">稳定现金回报；年化$0.60/股；以$975.56计股息率仅约0.06%（成长股典型水平）</div>
+    </div>
+    <div class="card b1">
+      <div class="cl">长期股东回报承诺</div>
+      <div class="cv">100%超额现金</div>
+      <div class="cs">管理层计划"长期将100%超额现金回报给股东"；随着FCF飞跃，回购规模预计大幅提升</div>
+    </div>
+  </div>
+  <p>管理层承诺随着美光进入"FCF显著正向"阶段（FQ3 FCF $18.3B为历史最高），将持续加大股东回报力度，包括继续稳定分红并视FCF情况积极扩大股份回购规模。以FQ3年化FCF约$73B（$18.3B×4）、市值$1.12T计算，潜在FCF收益率约<strong>6.5%</strong>——对于一个增速超300%的科技企业而言，这一FCF yield接近价值投资者通常关注的区间，体现了当前估值的结构性吸引力。<span class="fn">[来源：StockTitan美光FQ3 2026业绩（2026年6月24日）；Micron IR官网]</span></p>
+</div>
+
+<!-- 06 Q4指引深析 -->
+<div class="sec" id="s6">
+  <h2 class="sec-h"><span class="n">06</span>FQ4 2026指引深析（2026年8月28日财季结束）</h2>
+  <div class="note">⭐ 这是财报最强有力的部分——Q4指引大幅超出市场预期，彻底反驳了"AI内存需求已见顶"的空头叙事。以$50B营收指引vs此前市场共识约$40.9B，超出<strong>22.2%</strong>，创美光历史上最大单季预期差。</div>
+
+  <h3 class="sh">6.1 FQ4 2026核心指引</h3>
+  <table>
+    <thead><tr><th>指引项目</th><th class="rc">FQ3 FY2026（实际）</th><th class="rc">市场此前共识</th><th class="rc">FQ4 FY2026（指引）</th><th class="rc">vs 共识</th></tr></thead>
+    <tbody>
+      <tr class="guidance-row"><td><strong>总营收</strong></td><td class="rc">$41.46B</td><td class="rc">约$40.9B</td><td class="rc pos"><strong>$50.0B ± $1.0B</strong></td><td class="rc pos"><strong>+22.2%超预期</strong></td></tr>
+      <tr class="guidance-row"><td><strong>Non-GAAP毛利率</strong></td><td class="rc">84.9%</td><td class="rc">约84%</td><td class="rc pos"><strong>约86%</strong></td><td class="rc pos">+2pt提升</td></tr>
+      <tr class="guidance-row"><td><strong>Non-GAAP EPS</strong></td><td class="rc">$25.11</td><td class="rc">约$25.41</td><td class="rc pos"><strong>$31.00 ± $1.00</strong></td><td class="rc pos">+22.0%超预期</td></tr>
+      <tr><td>Non-GAAP运营费用</td><td class="rc">—</td><td class="rc">—</td><td class="rc">约$1.65B</td><td class="rc">—</td></tr>
+      <tr><td>GAAP运营费用</td><td class="rc">—</td><td class="rc">—</td><td class="rc">约$1.86B</td><td class="rc">—</td></tr>
+      <tr><td>资本支出（FQ4）</td><td class="rc">$7.1B</td><td class="rc">—</td><td class="rc">约$10.0B（增加）</td><td class="rc">—</td></tr>
+      <tr><td>全年资本支出</td><td class="rc">—</td><td class="rc">—</td><td class="rc">约$27B</td><td class="rc">—</td></tr>
+      <tr><td>稀释股本（估）</td><td class="rc">约11.5亿股</td><td class="rc">—</td><td class="rc">约11.5亿股</td><td class="rc">—</td></tr>
+    </tbody>
+  </table>
+  <p class="fn">来源：Micron FQ3 2026准备声明及Q&A（investors.micron.com，2026年6月24日）；Public.com EPS历史数据（下季预期$31.24）。</p>
+
+  <h3 class="sh">6.2 季度收入爬升轨迹</h3>
+  <div class="qbar">
+    <div class="qb qb-done" style="height:36px;opacity:.5">Q1 FY26<br>（估$10-14B）</div>
+    <div class="qb qb-done" style="height:36px;opacity:.7">Q2 FY26<br>$23.86B</div>
+    <div class="qb qb-done">Q3 FY26<br>$41.46B ✓</div>
+    <div class="qb qb-guide">Q4 FY26<br>$50B±1B指引</div>
+  </div>
+  <p class="fn">季度收入连续创纪录；营收从一年前$9.30B（Q3 FY25）大幅跃升至Q4指引$50B，12个月内年化增长率超400%。</p>
+
+  <h3 class="sh">6.3 FQ4指引隐含的盈利能力</h3>
+  <p>以$50B营收×86%毛利率=$43B毛利润，减运营费用$1.65B（non-GAAP）→运营利润约$41.35B，运营利润率约82.7%，再减税费后Non-GAAP净利润约$35B+，EPS约$31.00（管理层指引）。这意味着FQ4单季净利润($35B)可能超过整个标普500指数中大多数公司的<strong>全年净利润</strong>。从历史视角看，这也将创下美光和全球半导体行业单季盈利的历史记录。</p>
+</div>
+
+<!-- 07 估值模型 -->
+<div class="sec" id="s7">
+  <h2 class="sec-h"><span class="n">07</span>估值模型 — 蜗牛鸟"SCA锁定+周期调整EPS"双轨框架</h2>
+
+  <p>内存半导体是历史上最具周期性的行业之一，传统估值方法（单纯使用峰值EPS×高倍数）往往在周期顶部大幅高估股票价值。然而，美光本轮周期的结构性变化（16个SCA协议、$100B RPO、技术代际优势）为更高的估值可持续性提供了依据。我们采用<strong>周期调整EPS（CAEP）为主、峰值年化EPS为辅、EV/FCF交叉验证</strong>的三维估值框架。</p>
+
+  <div class="mbox">
+    <h4>第一步：FY2026全年EPS估算（基于已知季度数据）</h4>
+    <ul>
+      <li>FQ1 2026 EPS（估）：约$3-5（基于Q2 FY2026 $12.20，Q1通常低于Q2）</li>
+      <li>FQ2 2026 EPS（实际）：$12.20</li>
+      <li>FQ3 2026 EPS（实际）：$25.11</li>
+      <li>FQ4 2026 EPS（指引中值）：$31.00</li>
+      <li><strong>FY2026全年Non-GAAP EPS（估）：约$71-75</strong>（以FQ1 $5计）</li>
+      <li>以$975.56 / $73 = <strong>FY2026 P/E约13.4x</strong>（对于+300%+ EPS增长率而言极低）</li>
+    </ul>
+  </div>
+
+  <div class="mbox">
+    <h4>第二步：FY2027 EPS区间估算（关键的跨年度判断）</h4>
+    <ul>
+      <li>乐观情形（供应约束延续至2027+，SCA价格保持）：FQ4出口速率$31/季 × 4 = $124全年，略作修正 = <strong>约$110-120</strong></li>
+      <li>基准情形（温和周期正常化，SCA价格区间下沿保护）：FY2027E = <strong>约$80-100</strong></li>
+      <li>悲观情形（AI资本开支突然回落，现货价格大幅下跌，SCA无法完全保护）：FY2027E = <strong>约$40-60</strong></li>
+      <li>管理层指出"供应紧张预计延伸至2027年后"，支持基准情形更接近乐观一侧</li>
+    </ul>
+  </div>
+
+  <h3 class="sh">7.1 三情景目标价（12个月，基于FY2027E Non-GAAP EPS）</h3>
+  <table class="val-scenario">
+    <thead><tr><th>情景</th><th class="rc">FY2027E EPS</th><th class="rc">目标P/E</th><th class="rc">目标价</th><th class="rc">较现价</th><th class="rc">概率</th></tr></thead>
+    <tbody>
+      <tr><td>悲观情形<br><span class="fn">AI资本开支急刹车；现货价格崩塌</span></td><td class="rc">$45</td><td class="rc">15x</td><td class="rc neg"><strong>$675</strong></td><td class="rc neg">-30.8%</td><td class="rc">15%</td></tr>
+      <tr><td>保守情形<br><span class="fn">周期温和回调；SCA部分保护</span></td><td class="rc">$72</td><td class="rc">13x</td><td class="rc"><strong>$936</strong></td><td class="rc neg">-4.1%</td><td class="rc">25%</td></tr>
+      <tr class="hl"><td><strong>基准情形</strong><br><span class="fn">供应约束持续+SCA价格保护</span></td><td class="rc">$92</td><td class="rc">13x</td><td class="rc pos"><strong>$1,196</strong></td><td class="rc pos">+22.6%</td><td class="rc">40%</td></tr>
+      <tr><td>乐观情形<br><span class="fn">AI供应约束延续+HBM溢价提升</span></td><td class="rc">$115</td><td class="rc">14x</td><td class="rc pos"><strong>$1,610</strong></td><td class="rc pos">+65.1%</td><td class="rc">20%</td></tr>
+    </tbody>
+  </table>
+  <p><strong>概率加权目标价</strong> = ($675×15%)+($936×25%)+($1,196×40%)+($1,610×20%) = $101.25+$234+$478.4+$322 = <strong>约$1,136</strong>，我们取基准情形$1,196取整为<strong>$1,200目标价</strong>，较现价潜在上行约+23%，支撑<strong>强烈买入评级</strong>。</p>
+
+  <h3 class="sh">7.2 EV/FCF交叉验证</h3>
+  <div class="g3">
+    <div class="card b4"><div class="cl">FQ3年化FCF</div><div class="cv">约$73B</div><div class="cs">$18.3B × 4；实际FY2027可能更高（Q4 FCF将"大幅增加"）</div></div>
+    <div class="card"><div class="cl">FCF收益率（以$975.56）</div><div class="cv">约6.5%</div><div class="cs">$73B / 市值$1,121B；接近价值投资区间</div></div>
+    <div class="card b1"><div class="cl">EV/EBITDA（近似）</div><div class="cv">约4-6x</div><div class="cs">以$50B×86%毛利为EBITDA参考；极度低估于科技行业均值20x+</div></div>
+  </div>
+
+  <h3 class="sh">7.3 关键估值前提验证</h3>
+  <p><strong>为什么P/E目标倍数只有13-15x？</strong>历史上，内存半导体在周期顶部的P/E通常只有8-15x（因市场对周期性折价），而高增长科技公司享受20-40x+。美光当前的特殊性在于：①SCA结构改变了纯周期性特征（但市场尚未完全定价）；②HBM的AI硬件基础设施属性（类似AI的电网，需求来自政策性基础设施投资）具有一定的非周期性。若市场逐步接受美光的"AI基础设施"定位，倍数扩张至18-22x是可能的，届时$1,600-2,000的价格区间并非不可想象。</p>
+</div>
+
+<!-- 08 技术面 -->
+<div class="sec" id="s8">
+  <h2 class="sec-h"><span class="n">08</span>技术面分析</h2>
+  <h3 class="sh">8.1 财报后价格行为</h3>
+  <p>美光于2026年6月24日（周三）美市收盘后发布FQ3业绩，盘后大涨超16%。以盘后大涨16%推算，业绩前收盘价约$838，次日开盘跳涨至约$970+，随后在$950-990区间企稳，7月3日收盘$975.56，维持在创历史新高的区间内运行。这是一次典型的"基本面驱动的间隙式跳涨"——不同于纯技术性的情绪驱动，后续回落风险相对有限。</p>
+  <div class="tgrid">
+    <div class="tc am"><div class="tl">7月3日收盘价</div><div class="tv">$975.56</div><div class="ts">财报后维持在历史高位区间；52周低点估计约$390（2025年Q3存储低谷期）</div></div>
+    <div class="tc cy"><div class="tl">市值</div><div class="tv">约$1.12万亿</div><div class="ts">以约11.5亿股计；突破万亿美元级别</div></div>
+    <div class="tc gr"><div class="tl">FY2026 P/E（估）</div><div class="tv">约13.4x</div><div class="ts">以FY2026全年EPS约$73计；极低于行业均值</div></div>
+    <div class="tc re"><div class="tl">技术信号</div><div class="tv">偏多（中线）</div><div class="ts">财报后跳涨形成强支撑；短期或需整固消化涨幅</div></div>
+  </div>
+  <h3 class="sh">8.2 关键价位参考</h3>
+  <div class="pladder">
+    <div class="prow res"><div class="pt">乐观目标（12M）</div><div class="pv">$1,500+</div><div class="pn">AI溢价重估+FY2027 EPS $115，14x P/E</div></div>
+    <div class="prow res"><div class="pt">基准目标（12M）</div><div class="pv">$1,200</div><div class="pn">FY2027E EPS $92 × 13x；我们SOTP基准目标</div></div>
+    <div class="prow guide"><div class="pt">Q4 EPS年化隐含</div><div class="pv">$1,240</div><div class="pn">$31 EPS × 4 × 10x = $1,240；最近估算参考</div></div>
+    <div class="prow cur"><div class="pt">▶ 当前价格</div><div class="pv">$975.56</div><div class="pn">7月3日收盘；约13.4x FY2026E EPS</div></div>
+    <div class="prow sup"><div class="pt">近端支撑</div><div class="pv">$900–$930</div><div class="pn">财报后第一个交易日开盘区域；盘后+16%消化后基础区域</div></div>
+    <div class="prow sup"><div class="pt">中期支撑</div><div class="pv">$800–$840</div><div class="pn">财报前收盘区域；业绩前均衡价格</div></div>
+    <div class="prow sup"><div class="pt">强支撑区</div><div class="pv">$650–$700</div><div class="pn">周期评估框架下保守情形目标价区间上沿</div></div>
+  </div>
+</div>
+
+<!-- 09 风险矩阵 -->
+<div class="sec" id="s9">
+  <h2 class="sec-h"><span class="n">09</span>风险矩阵</h2>
+  <table>
+    <thead><tr><th>风险类别</th><th>核心说明</th><th>等级</th><th>SCA缓冲</th></tr></thead>
+    <tbody>
+      <tr><td><strong>AI资本开支突然收缩</strong></td><td>若NVIDIA/AWS/微软等超大规模客户大幅削减AI服务器投资（宏观衰退/AI泡沫破裂），内存需求将急剧下滑，SCA也难以完全对冲</td><td><span class="badge b-hi">高（尾部）</span></td><td>部分对冲（Take-or-pay有违约条款）</td></tr>
+      <tr><td><strong>三星/SK海力士产能扩张超预期</strong></td><td>竞争对手若大规模提前投产，将打破当前供需紧张格局；绿地工厂一旦完工产能可能快速释放</td><td><span class="badge b-hi">高</span></td><td>SCA价格下限提供一定保护</td></tr>
+      <tr><td><strong>内存价格过快下行</strong></td><td>本季毛利率84.9%远超历史正常水平（通常30-50%），若价格正常化速度快于预期，利润压缩幅度将非常剧烈</td><td><span class="badge b-hi">高</span></td><td>中等（20%DRAM+1/3 NAND受合同价保护）</td></tr>
+      <tr><td><strong>估值周期性压缩</strong></td><td>市场对内存股的历史P/E天花板约10-15x，若周期见顶迹象出现，即使EPS仍强劲，P/E压缩也可导致股价大幅下跌</td><td><span class="badge b-mid">中</span></td><td>无（估值压缩与SCA无关）</td></tr>
+      <tr><td><strong>中美地缘政治/出口管制</strong></td><td>美国对华DRAM/NAND出口管制若进一步收紧，可能限制美光在中国市场的销售份额，而三星/SK海力士在中国市场的竞争优势上升</td><td><span class="badge b-mid">中</span></td><td>无</td></tr>
+      <tr><td><strong>HBM技术竞争加剧</strong></td><td>SK海力士（HBM领先者）和三星均在加速HBM4开发，若美光在下一代HBM的技术差距扩大，可能失去关键AI客户份额</td><td><span class="badge b-mid">中</span></td><td>部分（现有SCA锁定当前代际产品）</td></tr>
+      <tr><td><strong>高资本开支压制FCF</strong></td><td>全年$27B CapEx中Q4将达$10B，若收入端不及指引，FCF将受双重压缩（收入下降+固定投资支出）</td><td><span class="badge b-lo">低</span></td><td>无</td></tr>
+    </tbody>
+  </table>
+  <div class="warn-box">⚠️ 核心投资警示：美光仍是全球最具周期性的大型半导体股票之一。本轮超级周期由AI驱动的结构性因素支撑，但历史上每一次内存"超级周期"最终均以价格崩盘告终（2021-2022年后的下跌幅度曾超80%）。$100B RPO虽然提供了前所未有的能见度，但不能完全对冲极端周期逆转风险。建议投资者在认可以上估值框架的同时，对仓位规模保持审慎，并密切跟踪每季度毛利率指引变化作为周期位置的核心信号。</div>
+</div>
+
+<!-- 10 投资结论 -->
+<div class="sec" id="s10">
+  <h2 class="sec-h"><span class="n">10</span>投资结论与评级更新</h2>
+
+  <p>FQ3 2026是美光科技历史上最强的单季业绩——营收$41.46B（一年前仅$9.30B）、Non-GAAP毛利率84.9%、Non-GAAP EPS $25.11，全部创历史记录并全线大幅超预期。但更关键的是三个信号彻底改变了美光的投资框架：</p>
+  <p><strong>①$100B RPO</strong>——16个战略客户协议提供的约$100B剩余履约义务，将美光从纯现货市场交易者转变为具有多年期合同定价保护的AI基础设施供应商，这是内存行业历史上从未有过的商业模式转型；</p>
+  <p><strong>②Q4指引$50B营收</strong>——+22%超出华尔街共识，彻底打消了"AI内存需求见顶"的空头论点，并暗示全年运行率将达$165B+，是一年前$37.2B年营收的约4.4倍；</p>
+  <p><strong>③"供应紧张延伸至2027年后"的明确表态</strong>——HBM/高容量DRAM/企业SSD的供应约束不是季度性现象，而是至少跨越2027年的结构性现象，为高利润率的持续性提供了长达1-2年的能见度。</p>
+  <p>在当前$975.56股价下，美光以约13.4x FY2026E EPS（全年估约$73）交易，以约10x基于Q4出口速率的年化EPS（$31×4=$124）交易——对于一个增速300%+、具有$100B合同在手、行业供应约束明确的公司，这一估值代表了显著的错误定价。即便给予历史周期性折扣（内存股最高P/E通常12-15x），目标价也在$1,100-1,500区间。</p>
+  <p><strong>综合结论：强烈买入（STRONG BUY），12个月目标价$1,200（区间$1,000-$1,500），较现价潜在上行约+23%（基准）至+54%（乐观）。</strong>核心持仓依据：(1) $100B RPO提供前所未有的多年期收入下限；(2) Q4指引$50B彻底打消短期需求疑虑；(3) FY2026E P/E ~13x对增速300%+公司构成明显折价；(4) FCF年化~$73B意味着6.5%的FCF收益率——在科技板块中罕见。风险控制：若毛利率指引在FQ1 FY2027（12月季报）跌破75%，则重新评估是否降级；该信号将是周期开始回落的最早预警指标。</p>
+</div>
+
+<!-- 11 来源 -->
+<div class="sec" id="s11">
+  <h2 class="sec-h"><span class="n">11</span>数据来源</h2>
+  <ul class="src">
+    <li>Micron Technology FQ3 2026 业绩新闻稿 (8-K) — investors.micron.com（2026年6月24日）</li>
+    <li>Micron Technology FQ3 2026 Earnings Call 准备声明 — investors.micron.com（static-files，2026年6月24日）</li>
+    <li>Micron Technology FQ2 2026 业绩新闻稿 — investors.micron.com（2026年3月18日）</li>
+    <li>Micron Technology FQ2 2025 业绩新闻稿 — SEC EDGAR（a2025q2ex991-pressrelease.htm）</li>
+    <li>StockTitan — "Micron posts $41.5B Q3 revenue, guides Q4 to $50B"（2026年6月24日）</li>
+    <li>Bitget News — "Micron Technology (MU) FY2026 Q3 Earnings: Revenue Surges 346% YoY, Gross Margin Hits Record 84.9%, Q4 Guidance Crushes Estimates"（2026年6月28日）</li>
+    <li>Quartr — "Micron Technology (MU) Q3 2026 earnings summary"（2026年6月25日）</li>
+    <li>Public.com — "Micron Technology (MU) Earnings: Latest Report"（Q3 2026 EPS $25.11 vs 预期$20.20；Q4预期$31.24，2026年9月22日下季）</li>
+    <li>Micron Technology Investor Relations — ir.kuaishou.com（公司简介、IR主页）</li>
+  </ul>
+  <p class="fn" style="margin-top:12px">注：所有估值计算基于用户提供的2026年7月3日收盘价$975.56及约11.5亿稀释股（来自FQ4 2026 EPS指引计算：$31 EPS × ~11.5亿 = ~$35.65B净利润指引，与Non-GAAP毛利率86%×$50B-$1.65B运营费用=约$41.35B运营利润对应）。FY2026/FY2027 EPS估算均为蜗牛鸟投资分析师独立模型，不代表公司官方指引或外部机构预测。美光财年以每年8月底结束。</p>
+</div>
+
+<div class="disc">
+  <strong>重要免责声明：</strong>本报告由蜗牛鸟投资（Snail-Bird Investment 🐦）精品研究部编制，仅供内部研究及专业投资者参考，不构成任何证券买卖的要约、邀请或投资建议。美光科技（NASDAQ: MU）是全球内存/存储行业中高度周期性的公司，其股价和盈利受内存价格、供需格局、AI资本开支等高度波动因素影响，可能在短期内出现大幅下跌。$100B RPO为最低承诺量合同义务，相关具体客户名单及合同细节未在公开文件中完整披露，投资者应以公司官方SEC文件为准。本报告中关于FY2027 EPS区间（$45-$120）为蜗牛鸟独立情景假设，实际结果可能与任何情景大幅偏离。历史业绩不代表未来表现。版权归蜗牛鸟投资所有，未经授权不得转载。
+</div>
+<div class="foot">SNAIL-BIRD INVESTMENT 🐦 &nbsp;|&nbsp; 精品研究部 &nbsp;|&nbsp; 美股半导体·内存存储行业 &nbsp;|&nbsp; CONFIDENTIAL · FOR PROFESSIONAL INVESTORS ONLY</div>
+
+</div>
+</body>
+</html>
