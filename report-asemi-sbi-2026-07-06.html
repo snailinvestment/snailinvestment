@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股半导体SBI泡沫指数日报 | 2026年7月6日</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB',Microsoft YaHei,sans-serif;background:#0d1117;color:#e6edf3;line-height:1.6}
+.container{max-width:960px;margin:0 auto;padding:20px}
+.header{text-align:center;padding:30px 20px;background:linear-gradient(135deg,#1a1f35 0%,#0d1117 100%);border-radius:12px;margin-bottom:20px;border:1px solid #30363d}
+.header h1{font-size:26px;color:#fff;margin-bottom:8px}
+.header .sub{color:#8b949e;font-size:14px}
+.badge{display:inline-block;padding:4px 14px;border-radius:20px;font-size:14px;font-weight:bold;margin:8px 4px}
+.badge-danger{background:#da3633;color:#fff}.badge-warn{background:#d29922;color:#000}
+.card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:24px;margin-bottom:20px}
+.card h2{font-size:18px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.gauge-wrap{display:flex;justify-content:center;align-items:center;padding:20px 0}
+.score-big{font-size:72px;font-weight:900;text-align:center;background:linear-gradient(135deg,#da3633,#f85149);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;line-height:1}
+.score-label{color:#8b949e;font-size:14px;text-align:center;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{background:#21262d;color:#fff;padding:10px 12px;text-align:left;border:1px solid #30363d;font-weight:600}
+td{padding:10px 12px;border:1px solid #30363d;color:#c9d1d9}
+tr:hover td{background:#1c2128}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin-right:4px}
+.tag-r{background:#ffe0e0;color:#da3633}.tag-g{background:#d4edda;color:#238636}.tag-y{background:#fff3cd;color:#b08800}
+.dim-bar{height:28px;background:#21262d;border-radius:6px;overflow:hidden;margin:4px 0 12px}
+.dim-fill{height:100%;border-radius:6px;transition:width 1s ease;display:flex;align-items:center;padding-left:8px;font-size:12px;font-weight:700;color:#fff}
+.news-item{padding:10px 0;border-bottom:1px solid #21262d;font-size:14px}
+.news-item:last-child{border:none}
+.conclusion{background:linear-gradient(135deg,#1a1f35,#161b22);border-left:4px solid #da3633;padding:16px 20px;border-radius:0 8px 8px 0;margin:12px 0;font-size:14px}
+.footer{text-align:center;padding:20px;color:#484f58;font-size:12px;border-top:1px solid #30363d;margin-top:20px}
+.red{color:#f85149}.green{color:#3fb950}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}}
+.note{background:#1c2128;border:1px solid #3fb950;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:13px;color:#3fb950;}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>📊 A股半导体板块 SBI 泡沫指数日报</h1>
+<div class="sub">分析日期: 2026年7月6日（周一） | 数据截至: 2026年7月4日（周五）A股收盘</div>
+<div style="margin-top:12px">
+<span class="badge badge-danger">🔴 危险区间 (65-80)</span>
+<span style="color:#8b949e;font-size:13px">| 上次: 80.5分（7月2日）</span>
+</div>
+</div>
+
+<!-- SBI总分仪表盘 -->
+<div class="card">
+<h2>🎯 SBI 总分: <span class="red">72.8</span> / 100</h2>
+<div class="gauge-wrap">
+<div style="text-align:center">
+<div class="score-big">72.8</div>
+<div class="score-label">危险区间 · 环比 ▼ <span class="green">-7.7 分</span> （暴跌后估值压力释放）</div>
+</div>
+</div>
+<canvas id="gaugeChart" height="200"></canvas>
+<div class="note">💡 SBI较上次下降7.7分，主要因7月2日半导体板块历史级暴跌释放部分估值和拥挤度压力。但资金流向恶化，杠杆仍处高位。</div>
+</div>
+
+<!-- 六维度评分表 -->
+<div class="card">
+<h2>📐 六维度评分明细</h2>
+<table>
+<tr><th>维度</th><th>权重</th><th>得分</th><th>环比</th><th>状态</th><th>核心数据/变化</th></tr>
+<tr><td><strong>估值</strong></td><td>25%</td><td><span class="tag tag-r">85</span></td><td><span class="green">▼-11</span></td><td>🔴 极端偏高</td><td>申万半导体PE经暴跌后有所回落但仍极高；科创50 PE-TTM此前239x(100%分位)；7/2单日暴跌-8.05%释放部分压力</td></tr>
+<tr><td><strong>拥挤度</strong></td><td>25%</td><td><span class="tag tag-y">78</span></td><td><span class="green">▼-4</span></td><td>⚠️ 偏高</td><td>7/2成交额5723亿换手率6.92%；主力净流出484亿(全市场第一)；半导体ETF大面积跌停；但成交占比仍处高位</td></tr>
+<tr><td><strong>杠杆</strong></td><td>15%</td><td><span class="tag tag-y">72</span></td><td><span class="green">▼-6</span></td><td>⚠️ 预警</td><td>两融余额28,711亿(07-02)，从30,304亿回落；融资净买入-81.33亿；连续三周站上3万亿后开始去杠杆</td></tr>
+<tr><td><strong>业绩兑现</strong></td><td>15%</td><td><span class="tag tag-y">52</span></td><td><span style="color:#8b949e">—</span></td><td>⚠️ 预警</td><td>行业净利润+29%(2025)，中报窗口期临近(7/15前后)；高PE已充分price in业绩预期</td></tr>
+<tr><td><strong>资金流向</strong></td><td>10%</td><td><span class="tag tag-r">82</span></td><td><span class="red">▲+17</span></td><td>🔴 危险</td><td>7/2主力净流出半导体484.3亿创纪录；半导体设备ETF净流出18亿；电子板块连续两日净流出近700亿；北向小幅回流但避开科技</td></tr>
+<tr><td><strong>外部环境</strong></td><td>10%</td><td><span class="tag tag-y">55</span></td><td><span class="green">▼-3</span></td><td>⚠️ 偏空</td><td>SOX两日累计暴跌>11%（-6.27%/-5.44%），收12626点周跌幅-9.43%；美国非农数据出炉加息预期升温；国内第二轮涨价潮(15-25%)提供支撑</td></tr>
+</table>
+</div>
+
+<!-- 维度条形图 -->
+<div class="card">
+<h2>📊 六维度可视化</h2>
+<div class="dim-bar"><div class="dim-fill" style="width:85%;background:linear-gradient(90deg,#da3633,#f85149)">估值: 85/100 🔴极端偏高</div></div>
+<div class="dim-bar"><div class="dim-fill" style="width:82%;background:linear-gradient(90deg,#f85149,#d29922)">资金流向: 82/100 🔴危险</div></div>
+<div class="dim-bar"><div class="dim-fill" style="width:78%;background:linear-gradient(90deg,#f85149,#d29922)">拥挤度: 78/100 ⚠️偏高</div></div>
+<div class="dim-bar"><div class="dim-fill" style="width:72%;background:linear-gradient(90deg,#d29922,#d29922)">杠杆: 72/100 ⚠️预警</div></div>
+<div class="dim-bar"><div class="dim-fill" style="width:55%;background:linear-gradient(90deg,#d29922,#3fb950)">外部环境: 55/100 ⚠️偏空</div></div>
+<div class="dim-bar"><div class="dim-fill" style="width:52%;background:linear-gradient(90deg,#d29922,#3fb950)">业绩兑现: 52/100 ⚠️预警</div></div>
+<canvas id="radarChart" height="280"></canvas>
+</div>
+
+<!-- 7月2日暴跌全景 -->
+<div class="card">
+<h2>⚡ 7月2日 半导体板块历史级踩踏全景</h2>
+<table>
+<tr><th>指标</th><th>数值</th><th>备注</th></tr>
+<tr><td>申万半导体指数</td><td><span class="red">-8.05%</span></td><td>单日暴跌</td></tr>
+<tr><td>科创50指数</td><td><span class="red">-7.70%</span></td><td>2025年4月以来最大单日跌幅</td></tr>
+<tr><td>创业板指</td><td><span class="red">-5.71%</span></td><td></td></tr>
+<tr><td>上证指数</td><td><span class="red">-2.03%</span></td><td>被半导体"绑架"</td></tr>
+<tr><td>华夏科创半导体ETF</td><td><span class="red">-11.25%</span></td><td>单日最大跌幅品种</td></tr>
+<tr><td>半导体设备ETF国泰</td><td><span class="red">-9.98%</span></td><td>接近跌停</td></tr>
+<tr><td>半导体成交额</td><td>5,723亿</td><td>换手率6.92%</td></tr>
+<tr><td>主力净流出(半导体)</td><td><span class="red">-484.3亿</span></td><td>全市场第一</td></tr>
+<tr><td>两市总成交额</td><td>3.47万亿</td><td>缩量2089亿</td></tr>
+<tr><td>全市场下跌家数</td><td>超3100只</td><td></td></tr>
+</table>
+</div>
+
+<!-- 美股SOX联动 -->
+<div class="card">
+<h2>🌍 SOX 费城半导体指数 连续重挫</h2>
+<table>
+<tr><th>日期</th><th>涨跌幅</th><th>收盘点位</th><th>事件</th></tr>
+<tr><td>6月30日</td><td>+3.92%</td><td>14,246.96</td><td>Q2最后交易日反弹</td></tr>
+<tr><td>7月1日（周二）</td><td><span class="red">-6.27%</span></td><td>13,353.28</td><td>芯片股集体跳水</td></tr>
+<tr><td>7月2日（周三）</td><td><span class="red">-5.44%</span></td><td>12,626.22</td><td>非农前恐慌 + 假期避险卖盘</td></tr>
+<tr><td colspan="2"><strong>两日累计</strong></td><td colspan="2"><span class="red">&gt; -11%</span> / 周跌幅 <span class="red">-9.43%</span> / 月跌幅 -8.01%</td></tr>
+</table>
+<p style="margin-top:10px;color:#8b949e;font-size:13px">美股SOX的连续暴跌是A股7月2日半导体踩踏的直接导火索。MU两天跌超15%、闪迪进入熊市、INTC两天跌近18%。道指却创新高——典型的"硬软分化"格局。</p>
+</div>
+
+<!-- 环比变化 -->
+<div class="card">
+<h2>📈 与上次对比 (7月2日 → 7月6日)</h2>
+<table>
+<tr><th>维度</th><th>上次(7/2)</th><th>本次(7/6)</th><th>变化</th><th>原因</th></tr>
+<tr><td>估值</td><td>96</td><td>85</td><td><span class="green">▼-11</span></td><td>申万半导体单日-8.05%，股价大幅回落降低PE绝对值</td></tr>
+<tr><td>拥挤度</td><td>82</td><td>78</td><td><span class="green">▼-4</span></td><td>ETF大面积跌停后筹码松动，换手率仍高但恐慌盘出清一部分</td></tr>
+<tr><td>杠杆</td><td>78</td><td>72</td><td><span class="green">▼-6</span></td><td>两融余额从30,304亿降至28,711亿，融资净买入-81亿，被动去杠杆启动</td></tr>
+<tr><td>业绩兑现</td><td>52</td><td>52</td><td><span style="color:#8b949e">—</span></td><td>中报窗口期临近，维持不变</td></tr>
+<tr><td>资金流向</td><td>65</td><td>82</td><td><span class="red">▲+17</span></td><td>主力484亿净流出+ETF净流出18亿，资金出逃规模远超前次242亿</td></tr>
+<tr><td>外部环境</td><td>58</td><td>55</td><td><span class="green">▼-3</span></td><td>SOX两日累跌>11%，美国非农+加息预期升温</td></tr>
+<tr><td><strong>SBI总分</strong></td><td><strong>80.5</strong></td><td><strong>72.8</strong></td><td><span class="green"><strong>▼-7.7</strong></span></td><td>暴跌释放估值/拥挤度/杠杆三维度压力，但资金流向上行抵消部分降幅</td></tr>
+</table>
+</div>
+
+<!-- 关键数据 -->
+<div class="card">
+<h2>🔢 关键数据一览</h2>
+<div class="grid2">
+<div>
+<table>
+<tr><th>指标</th><th>数值</th><th>备注</th></tr>
+<tr><td>申万半导(7/2)</td><td><span class="red">-8.05%</span></td><td>历史级暴跌</td></tr>
+<tr><td>科创50(7/2)</td><td><span class="red">-7.70%</span></td><td>15个月最差</td></tr>
+<tr><td>两融余额</td><td>28,711亿</td><td>07-02数据</td></tr>
+<tr><td>融资净买入</td><td><span class="red">-81.33亿</span></td><td>07-02单日</td></tr>
+<tr><td>SIB上期</td><td>80.5</td><td>7月2日</td></tr>
+</table>
+</div>
+<div>
+<table>
+<tr><th>指标</th><th>数值</th><th>备注</th></tr>
+<tr><td>主力净流出(半导体)</td><td><span class="red">-484.3亿</span></td><td>全市场第一</td></tr>
+<tr><td>电子板块净流出(7/3)</td><td><span class="red">-193亿</span></td><td>连续第二日大额流出</td></tr>
+<tr><td>SOX两日跌幅</td><td><span class="red">&gt;-11%</span></td><td>收于12626点</td></tr>
+<tr><td>北向成交(7/2)</td><td>4,240亿</td><td>活跃度高但结构分化</td></tr>
+<tr><td>半导体涨价潮</td><td><span class="green">第二轮+15~25%</span></td><td>基本面支撑仍在</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<!-- 重要事件 -->
+<div class="card">
+<h2>📰 重要事件与新闻</h2>
+<div class="news-item"><strong>🔥 7月2日：A股半导体遭遇历史级踩踏</strong> — 申万半导体-8.05%，科创50-7.7%（15个月最大单日跌幅），多只半导体ETF封死跌停，华夏科创半导体ETF单日-11.25%。主力资金净流出半导体484.3亿元创全市场纪录。</div>
+<div class="news-item"><strong>🌎 SOX费城半导体两日累跌超11%</strong> — 7月1日-6.27%（13353点）→ 7月2日-5.44%（12626点）。美光两天跌超15%，闪迪进入熊市。道指却创新高——"硬软分化"极致演绎。</div>
+<div class="news-item"><strong>📉 两融去杠杆正式启动</strong> — 两融余额从30,304亿降至28,711亿，融资净买入-81.33亿。融资盘前期重仓电子/半导体，被动减仓与价格下跌形成负反馈共振。</div>
+<div class="news-item"><strong>🤖 资金轮动：高位硬件→低位制造+避险</strong> — 7月3日机器人概念掀涨停潮（板块+9.12%），贵金属集体爆发。资金从半导体持续流向低位制造与避险资源。</div>
+<div class="news-item"><strong>🏭 国内半导体涨价潮：第二轮15%-25%</strong> — 近20家企业7月起涨价，部分龙头提价幅度达15%-25%，显示供需面依然偏紧。回调或带来布局机会。</div>
+<div class="news-item"><strong>🇺🇸 美国非农数据+加息预期升温</strong> — 美联储主席沃什称通胀仍过高，年内加息概率上升。10Y美债上半年上行30BP+。</div>
+</div>
+
+<!-- 结论与建议 -->
+<div class="conclusion">
+<h3 style="margin-bottom:10px;color:#f85149">🔴 核心结论</h3>
+<p style="margin-bottom:8px"><strong>SBI 72.8分，较上次大幅下降7.7分（80.5→72.8）。</strong>7月2日的半导体历史级踩踏是一次"强制性的泡沫挤压"——估值、拥挤度和杠杆三个维度同步改善，这是自本轮行情启动以来SBI首次出现显著回落。</p>
+<p style="margin-bottom:8px"><strong>但警报并未解除：</strong>资金流向维度反而恶化至82分（+17分），说明机构和大资金的撤离速度远超散户的承接能力。主力单日净流出484亿是一个极其危险的信号——这代表的是"聪明钱"在系统性撤退。</p>
+<p style="margin-bottom:8px"><strong>最关键的观察点是本周：</strong>经过7月2日的暴跌和7月3日的弱反弹后，市场将检验是否出现"二次探底"。如果半导体板块在本周继续下行并跌破7月2日低点，则可能确认趋势性反转而非单纯的技术性调整。</p>
+</div>
+
+<div class="conclusion" style="border-left-color:#3fb950">
+<h3 style="margin-bottom:10px;color:#3fb950">⚖️ 操作建议</h3>
+<p><strong>🔴 高仓位投资者：</strong>SBI从80.5降至72.8是好消息但不意味着安全。当前仓位应控制在4成以下。若持有优质龙头（中芯国际、海光信息等），可保留核心底仓但严格设止损（跌破7/2低点的80%必须减仓）。</p>
+<p><strong>🟡 观望者/轻仓：</strong>不要急于抄底。理想的入场条件：（1）SBI回落至60以下 或（2）半导体板块从高点累计回调25%以上 或（3）成交量萎缩至近期均值的50%以下（代表抛压耗尽）。当前三个条件均未满足。</p>
+<p><strong>🟢 关注方向：</strong>若确认调整到位，优先关注受益于国产替代的设备/材料龙头（北方华创、中微公司等）和涨价逻辑明确的功率半导体标的。同时关注机器人等新热点是否形成持续性主线。</p>
+</div>
+
+<div class="footer">
+<p>🦐 Snail Investment Research | SBI泡沫指数模型 v2.0 | 数据来源：东方财富/乐咕乐股/Wind/同花顺/雪球</p>
+<p>生成时间: 2026-07-06 09:15 CST | 仅供参考，不构成投资建议</p>
+</div>
+
+</div>
+
+<script>
+// 仪表盘
+const gaugeCtx = document.getElementById('gaugeChart').getContext('2d');
+new Chart(gaugeCtx, {
+  type:'doughnut',
+  data:{
+    datasets:[{
+      data:[72.8, 27.2],
+      backgroundColor:['#da3633', '#21262d'],
+      borderWidth:0
+    }]
+  },
+  options:{
+    cutout:'75%',
+    responsive:true,
+    plugins:{legend:{display:false}, tooltip:{enabled:false}}
+  }
+});
+
+// 雷达图
+const radarCtx = document.getElementById('radarChart').getContext('2d');
+new Chart(radarCtx, {
+  type:'radar',
+  data:{
+    labels:['估值','拥挤度','杠杆','业绩兑现','资金流向','外部环境'],
+    datasets:[{
+      label:'SBI六维度得分 (7/6)',
+      data:[85, 78, 72, 52, 82, 55],
+      backgroundColor:'rgba(218,54,51,0.15)',
+      borderColor:'#da3633',
+      pointBackgroundColor:'#da3633',
+      pointBorderColor:'#fff',
+      pointRadius:4
+    },{
+      label:'上次得分 (7/2)',
+      data:[96, 82, 78, 52, 65, 58],
+      backgroundColor:'rgba(59,185,80,0.08)',
+      borderColor:'#3fb950',
+      borderDash:[5,5],
+      pointRadius:0
+    },{
+      label:'危险线(70)',
+      data:[70,70,70,70,70,70],
+      backgroundColor:'rgba(210,153,34,0.06)',
+      borderColor:'#d29922',
+      borderDash:[3,3],
+      pointRadius:0
+    }]
+  },
+  options:{
+    responsive:true,
+    scales:{r:{min:0,max:100,ticks:{stepSize:20,color:'#8b949e'},grid:{color:'#21262d'},angleLines:{color:'#21262d'},pointLabels:{color:'#c9d1d9',font:{size:12}}}},
+    plugins:{legend:{labels:{color:'#8b949e',padding:16}}}
+  }
+});
+</script>
+</body>
+</html>
