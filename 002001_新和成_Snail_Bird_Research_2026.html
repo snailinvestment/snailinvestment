@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>新和成(002001.SZ) 投资研究报告 | Snail-Bird Investment</title>
+<style>
+:root{
+  --bg:#f7f5f0;
+  --panel:#ffffff;
+  --ink:#1e2430;
+  --sub:#5b6472;
+  --line:#e2ddd0;
+  --navy:#12233f;
+  --navy2:#1b3a63;
+  --gold:#b5892b;
+  --gold-l:#f1e4c4;
+  --green:#1c7a4d;
+  --red:#a5322a;
+  --amber:#b3781a;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Georgia","Noto Serif SC",serif;line-height:1.65;}
+header.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#f4efe2;padding:34px 6% 26px;}
+header.hero .brand{font-size:13px;letter-spacing:3px;color:var(--gold-l);text-transform:uppercase;margin-bottom:6px;}
+header.hero h1{margin:0 0 4px;font-size:30px;font-weight:700;}
+header.hero .sub{font-size:14px;color:#cfd7e6;margin-bottom:18px;}
+.hero-grid{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;}
+.hero-kpi{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 16px;min-width:130px;}
+.hero-kpi .l{font-size:11px;color:#b9c3d6;letter-spacing:1px;}
+.hero-kpi .v{font-size:19px;font-weight:700;color:#fff;margin-top:2px;}
+.hero-kpi .v.up{color:#7be0a3;}
+.hero-kpi .v.down{color:#f28b82;}
+
+nav{position:sticky;top:0;background:#fffdf8;border-bottom:1px solid var(--line);z-index:50;padding:0 6%;display:flex;gap:22px;overflow-x:auto;font-size:13px;font-family:"Helvetica Neue",Arial,sans-serif;}
+nav a{padding:12px 0;color:var(--sub);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;}
+nav a:hover{color:var(--navy);border-color:var(--gold);}
+
+main{max-width:1080px;margin:0 auto;padding:0 6% 60px;}
+section{padding-top:34px;border-top:1px solid var(--line);margin-top:34px;}
+section:first-of-type{border-top:none;margin-top:20px;}
+h2{font-family:"Helvetica Neue",Arial,sans-serif;font-size:12px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin:0 0 6px;}
+h3{font-size:21px;margin:0 0 16px;color:var(--navy);}
+p{color:#3a4150;font-size:15px;}
+.lead{font-size:16px;color:var(--ink);}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+@media(max-width:800px){.grid2,.grid3,.grid4{grid-template-columns:1fr;}}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px;}
+.kpi{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:8px;padding:12px 16px;}
+.kpi .l{font-size:11px;color:var(--sub);letter-spacing:.5px;font-family:"Helvetica Neue",Arial,sans-serif;}
+.kpi .v{font-size:20px;font-weight:700;color:var(--navy);}
+.kpi .v.up{color:var(--green);} .kpi .v.down{color:var(--red);}
+
+table{width:100%;border-collapse:collapse;font-size:13.5px;font-family:"Helvetica Neue",Arial,sans-serif;}
+th{background:var(--navy);color:#f1e9d8;text-align:left;padding:9px 10px;font-weight:600;}
+td{padding:8px 10px;border-bottom:1px solid var(--line);color:#333;}
+tr:nth-child(even) td{background:#faf8f2;}
+.beat{color:var(--green);font-weight:700;} .miss{color:var(--red);font-weight:700;}
+.tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-family:"Helvetica Neue",Arial,sans-serif;font-weight:600;}
+.tag.buy{background:#e2f3e8;color:var(--green);}
+.tag.hold{background:#fbeecd;color:var(--amber);}
+.tag.risk-l{background:#e2f3e8;color:var(--green);}
+.tag.risk-m{background:#fbeecd;color:var(--amber);}
+.tag.risk-h{background:#f6dedb;color:var(--red);}
+
+.badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.rating-box{background:var(--navy);color:#fff;border-radius:10px;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.rating-box .r{font-size:26px;font-weight:800;color:#7be0a3;}
+.rating-box .tp{font-size:14px;color:#cfd7e6;}
+.ladder{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
+.ladder .row{display:flex;align-items:center;gap:10px;font-size:13px;font-family:"Helvetica Neue",Arial,sans-serif;}
+.ladder .bar{height:10px;border-radius:6px;background:var(--gold);}
+.note{font-size:12px;color:var(--sub);margin-top:6px;}
+.src{font-size:11.5px;color:#8a8f98;border-top:1px dashed var(--line);margin-top:10px;padding-top:8px;font-family:"Helvetica Neue",Arial,sans-serif;}
+footer{background:var(--navy);color:#c9d1e0;font-size:12px;padding:26px 6%;font-family:"Helvetica Neue",Arial,sans-serif;}
+footer a{color:var(--gold-l);}
+.disc{max-width:1080px;margin:0 auto;}
+ul{color:#3a4150;font-size:14.5px;}
+.mbox{border:1px solid var(--line);border-radius:8px;padding:14px 18px;background:#fbf9f4;margin:12px 0;}
+.mbox b{color:var(--navy);}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="brand">Snail-Bird Investment · 蜗牛鸟投资研究</div>
+  <h1>新和成 (002001.SZ)</h1>
+  <div class="sub">基础化工 / 精细化工 — 营养品·香精香料·新材料一体化 · 首次覆盖报告 | 报告日期：2026年7月6日 | 分析师：蜗牛鸟投资 · 精细化工组</div>
+  <div class="hero-grid">
+    <div class="hero-kpi"><div class="l">最近可得收盘价(2026/6/29)</div><div class="v">¥29.45</div></div>
+    <div class="hero-kpi"><div class="l">总市值（约）</div><div class="v">¥905亿</div></div>
+    <div class="hero-kpi"><div class="l">2025A EPS(基本)</div><div class="v">约2.20元</div></div>
+    <div class="hero-kpi"><div class="l">2025A 归母净利润</div><div class="v up">67.64亿元 (+15.26%)</div></div>
+    <div class="hero-kpi"><div class="l">2026Q1 归母净利润</div><div class="v down">18.27亿元 (-2.80%)</div></div>
+    <div class="hero-kpi"><div class="l">2026Q1 资产负债率</div><div class="v up">25.64%</div></div>
+    <div class="hero-kpi"><div class="l">2025A 分红+回购占净利润</div><div class="v up">53.58%</div></div>
+  </div>
+</header>
+
+<nav>
+  <a href="#summary">投资摘要</a>
+  <a href="#business">商业模式与业务结构</a>
+  <a href="#cost">分业务全球成本地位</a>
+  <a href="#supply">行业供需</a>
+  <a href="#financials">财务分析</a>
+  <a href="#cashflow">现金流与资产负债</a>
+  <a href="#returns">股东回报</a>
+  <a href="#valuation">估值与评级</a>
+  <a href="#risk">风险提示</a>
+</nav>
+
+<main>
+
+<section id="summary">
+  <h2>Investment Summary</h2>
+  <h3>投资摘要：全球营养品龙头，蛋氨酸弹性接棒维生素周期</h3>
+  <p class="lead">新和成是国内领先的精细化工平台型企业，业务矩阵覆盖营养品（维生素、蛋氨酸等）、香精香料、高分子新材料、原料药四大板块，其中营养品板块贡献约2/3的营业收入，是公司的核心利润来源。与云铝股份、神火股份等强周期资源品不同，新和成的业务本质是"技术密集+成本领先"型精细化工，其行业逻辑更接近"寡头垄断+价格弹性"模式：维生素A、E全球产能高度集中于新和成、巴斯夫、帝斯曼等少数几家企业，蛋氨酸则由赢创、安迪苏、新和成等寡头主导，供给端任何扰动（工厂故障、地缘冲突、不可抗力）都可能引发价格的非线性大幅波动。2025年公司实现营业收入222.51亿元，同比+2.97%；归母净利润67.64亿元，同比+15.26%，主要受益于蛋氨酸量价齐升及新材料产销两旺，尽管维生素价格因巴斯夫产能恢复而于下半年高位回落。进入2026年，2月末爆发的美伊冲突及霍尔木兹海峡航运受阻，导致全球约20%的蛋氨酸产能（赢创新加坡34万吨+住友化学18万吨）不可抗力停产，叠加维生素行业偶发性停产扰动，公司主导产品价格自年初以来大幅上涨（固体蛋氨酸较年初+138.64%，VE、VA分别+73.87%/+56.80%），2026年一季度业绩已现价格传导的时滞效应，全年业绩弹性值得期待。</p>
+  <div class="grid3">
+    <div class="kpi"><div class="l">2025年营养品营收占比</div><div class="v">66.44%</div></div>
+    <div class="kpi"><div class="l">蛋氨酸全球权益产能排名</div><div class="v">第三（55万吨，权益46万吨）</div></div>
+    <div class="kpi"><div class="l">VA全球产能占比</div><div class="v">约13%-18%</div></div>
+  </div>
+  <p>延续对云铝股份、神火股份的分析框架，并结合精细化工行业的成本与竞争特性，我们采用"四维驱动、三层传导"框架：(1) 商业模式维度——营养品为核心利润引擎，香精香料/新材料提供第二增长曲线，原料药作为稳定器；(2) 分业务全球成本地位维度——公司在维生素中间体（柠檬醛）自给及蛋氨酸单位投资成本上均具备全球领先的成本优势；(3) 行业供需维度——全球维生素、蛋氨酸行业寡头垄断格局下，供给侧扰动（不可抗力、地缘冲突）是价格弹性的核心驱动，而非需求端变化；(4) 财务质量维度——现金流强劲、资产负债率处于化工行业极低水平；(5) 股东回报维度——分红比例持续处于30%-50%区间，2025年分红+回购合计占净利润53.58%。综合来看，我们给予新和成"增持"评级。</p>
+  <div class="src">数据来源：公司2025年年度报告（2026-04-15披露）、2026年第一季度报告（2026-04-28披露）；同花顺F10；新浪财经；国信证券、山西证券、东吴证券相关研究报告。</div>
+</section>
+
+<section id="business">
+  <h2>Business Model &amp; Segment Structure</h2>
+  <h3>商业模式与业务结构："一核两翼一稳定"</h3>
+  <div class="grid2">
+    <div class="card">
+      <b>营养品板块（核心，占营收66.44%）</b>
+      <p>涵盖维生素（VA、VE、VC、VB5、VB6、VB12、VD3、VH共8种，全球少数能生产全系列维生素的企业之一）与蛋氨酸两大类产品。2025年营养品板块营收147.84亿元，同比-1.79%（维生素价格下半年回落所致），但毛利率大幅提升至47.77%（同比+4.59pct），主要得益于蛋氨酸量价齐升。核心子公司山东氨基酸（蛋氨酸生产销售主体）2025年净利润29.72亿元，同比+31.10%；山东新和成精化科技（维生素合并主体）2025年净利润18.11亿元，同比+4%。</p>
+    </div>
+    <div class="card">
+      <b>香精香料板块（第二增长曲线之一）</b>
+      <p>与维生素产业链存在多个共用中间体（如芳樟醇既是香精香料主要产品又是VE生产原料；柠檬醛既可外销又是VA原料），协同效应显著。2025年营收38.66亿元，同比-1.29%，毛利率53.14%，同比+1.30pct，是公司毛利率最高的业务板块。公司芳樟醇系列、叶醇系列市场份额居世界第一，柠檬醛系列市场份额居世界第二。</p>
+    </div>
+  </div>
+  <div class="grid2" style="margin-top:16px;">
+    <div class="card">
+      <b>高分子新材料板块（成长动能）</b>
+      <p>以特种工程塑料PPS（聚苯硫醚）为代表，公司2.2万吨PPS总产能仅次于日本东丽，位居全球第二。同时依托蛋氨酸的氰化技术积累，重点发展己二腈，致力于解决尼龙66产业链"卡脖子"环节。2025年新材料板块营收21.15亿元，同比+26.17%，毛利率29.51%，同比+7.58pct，产销两旺是2025年新材料板块的核心亮点。</p>
+    </div>
+    <div class="card">
+      <b>原料药板块（稳定器）</b>
+      <p>山东新和成药业为原料药主要运营主体，2015-2024年营业收入从14.17亿元增长至39.46亿元，CAGR为12.05%，净利润CAGR达23.96%，近三年平均净利润率34%左右，为公司提供了穿越维生素/蛋氨酸周期波动的稳定现金流补充。2025年"其他业务"（含原料药）营收14.87亿元，同比+54.43%。</p>
+    </div>
+  </div>
+  <div class="src">数据来源：公司2025年年度报告；东方证券《蛋氨酸与新和成的维生素》深度报告（2025-07-02）；新浪财经《解码新和成的创新"基因"》（2026-03-05）。</div>
+</section>
+
+<section id="cost">
+  <h2>Segment Global Cost Position</h2>
+  <h3>分业务全球成本地位：中间体自给与单位投资优势</h3>
+  <table>
+    <tr><th>业务/产品</th><th>全球竞争格局</th><th>公司成本优势来源</th><th>公司全球地位</th></tr>
+    <tr><td>维生素A（VA）</td><td>全球产能约6万吨/年，巴斯夫（1.44万吨，24%）、万华化学（1万吨，2025年3月新投产，17%）、新和成（0.8万吨，13%-18%）、帝斯曼、浙江医药，前三家占比约54%</td><td>自供关键中间体柠檬醛（全球仅巴斯夫5万吨、新和成1.5万吨、可乐丽0.5万吨、万华化学4.8万吨四家企业能生产），成本比外购中间体的竞争对手低10%-15%</td><td class="beat">全球第二至第三梯队，具备全产业链一体化优势</td></tr>
+    <tr><td>维生素E（VE）</td><td>新和成与巴斯夫、帝斯曼、浙江医药合计占据全球约85%市场份额，行业集中度高</td><td>芳樟醇（VE关键中间体）自给，兼具香精香料业务协同变现</td><td class="beat">全球主要供应商之一</td></tr>
+    <tr><td>蛋氨酸</td><td>全球产能寡头垄断：赢创（85万吨）、安迪苏（67万吨）、新和成（55万吨，权益46万吨）位列前三，诺伟司、住友化学紧随其后</td><td>单吨投资显著低于国际同行：新和成约1.67万元/吨 vs 赢创2.57万元/吨 vs 安迪苏3.27万元/吨；关键中间体氰化氢、硫化氢实现自给</td><td class="beat">全球第三大生产企业，国产替代先锋</td></tr>
+    <tr><td>香精香料（芳樟醇/柠檬醛系列）</td><td>行业集中度相对分散，但高端合成香料领域壁垒较高</td><td>与维生素产业链共用中间体，规模化生产带来成本优势</td><td class="beat">芳樟醇、叶醇系列全球市场份额第一</td></tr>
+  </table>
+  <p><b>成本优势的本质：中间体一体化。</b>新和成区别于单纯的维生素/蛋氨酸生产商之处，在于其构建了"丙酮/乙炔→柠檬醛→VA"、"氰化氢/硫化氢→蛋氨酸"等完整的中间体自给产业链，将行业普遍面临的原材料价格波动风险内部化为自身的成本优势。这一模式与云铝股份的"水电+氧化铝"一体化、神火股份的"煤-电-铝"一体化在逻辑上高度相似——即通过控制产业链上游关键投入品，构筑差异化成本曲线，在行业价格下行周期中体现更强的抗风险能力，在价格上行周期中获得更大的利润弹性。</p>
+  <div class="src">数据来源：国信证券《蛋氨酸与新和成的维生素》（2025-07-02）；新浪财经《VA产能全球第一、蛋氨酸全球第三》（2026-05-14）；知乎《从维生素龙头到平台型企业》（2025-03-24）。</div>
+</section>
+
+<section id="supply">
+  <h2>Industry Supply &amp; Demand</h2>
+  <h3>行业供需：寡头垄断格局下的供给侧扰动逻辑</h3>
+  <div class="grid2">
+    <div class="card">
+      <b>维生素行业：供给侧偶发扰动主导价格</b>
+      <p>维生素下游需求基本稳定（VA下游饲料需求占比84%，VE下游饲料占比67%），价格波动主要由供给端变化引起。2024年8月巴斯夫路德维希港工厂爆炸导致VA、VE被迫停产，价格一度暴涨超200%；2025年随着巴斯夫逐步解除不可抗力，维生素价格于年内高位回落（25下半年VA、VE市场均价环比上半年分别-31%、-51%）。2026年以来，受美伊冲突及欧洲能源价格高企影响，帝斯曼、巴斯夫等欧洲工厂产能收缩，叠加国内新和成、浙江医药等企业阶段性停产检修，维生素价格再度回暖（截至2026年5月7日，VE、VA国内均价较年初分别+73.87%、+56.80%）。</p>
+    </div>
+    <div class="card">
+      <b>蛋氨酸行业：地缘冲突引发供给收缩</b>
+      <p>2026年2月28日美伊战争爆发，霍尔木兹海峡航运受阻，直接推升硫磺、丙烯、甲醇等蛋氨酸上游原料价格；供给端，赢创新加坡工厂（34万吨/年）及住友化学亚洲公司（18万吨/年）先后宣布不可抗力停产，两者合计约占全球蛋氨酸总产能的20%。受此影响，国内固体蛋氨酸市场均价截至2026年5月7日较年初大幅上涨138.64%，国产蛋氨酸自给率因此从30%提升至55%以上，新和成作为国内低成本龙头充分受益于这一供给侧收缩。</p>
+    </div>
+  </div>
+  <p><b>行业供需展望：</b>蛋氨酸下游养殖户对价格变动敏感度不高（添加比例仅0.1%-0.3%），价格传导顺畅，这使得蛋氨酸的利润弹性在供给收缩期显著高于普通大宗化工品；维生素在饲料总成本中占比同样不足1%，具备类似的成本传导优势。展望未来，全球蛋氨酸需求预计仍能保持5%-6%的较高增速，而在建新增产能（安迪苏泉州15万吨固体蛋氨酸项目预计2027年投产、新和成中石化合资18万吨液体蛋氨酸项目已投入试生产）释放节奏总体温和，行业格局短期内不会发生根本性逆转。但需要指出，当前价格高点包含较大比例的"地缘风险溢价"，若中东局势缓和、赢创及住友化学的停产产能加快恢复，蛋氨酸及维生素价格存在阶段性显著回落的可能，这是判断公司2026年下半年及2027年业绩持续性的关键变量。</p>
+  <div class="src">数据来源：新浪财经《维生素价格周内飙涨超200%》（2024-08-13）；国信证券《新和成2025年三季报点评》（2025-10-29）；新浪财经《VA产能全球第一、蛋氨酸全球第三》（2026-05-14）；山西证券2025年报及2026一季报点评（2026-04-30）。</div>
+</section>
+
+<section id="financials">
+  <h2>Financial Analysis</h2>
+  <h3>财务分析：主业盈利质量持续提升</h3>
+  <table>
+    <tr><th>核心指标</th><th>2025A</th><th>同比</th><th>2026Q1</th><th>同比</th></tr>
+    <tr><td>营业收入（亿元）</td><td>222.51</td><td class="beat">+2.97%</td><td>62.95</td><td class="beat">+15.72%</td></tr>
+    <tr><td>归母净利润（亿元）</td><td>67.64</td><td class="beat">+15.26%</td><td>18.27</td><td class="miss">-2.80%</td></tr>
+    <tr><td>扣非归母净利润（亿元）</td><td>67.38</td><td class="beat">+15.59%</td><td>17.76</td><td class="miss">-5.51%</td></tr>
+    <tr><td>综合毛利率</td><td>44.67%</td><td class="beat">+2.89pct</td><td>42.88%</td><td class="miss">-3.82pct</td></tr>
+    <tr><td>销售净利率</td><td>30.57%</td><td class="beat">+3.28pct</td><td>29.16%</td><td class="miss">-5.54pct</td></tr>
+    <tr><td>经营活动现金流净额（亿元）</td><td>87.97</td><td class="beat">+24.38%</td><td>—</td><td>—</td></tr>
+  </table>
+  <p>2025年公司业绩增长主要驱动力为蛋氨酸量价齐升与新材料产销两旺，尽管维生素价格下半年高位回落，但公司通过成本优化对冲了部分不利影响，全年毛利率、净利率均实现同比提升。2026年一季度营收同比增长15.72%，但归母净利润同比小幅下降2.80%，主因人民币阶段性升值导致海外收入产生汇兑损失（公司在香港、新加坡、德国、墨西哥、巴西、日本、越南、土耳其、美国等地设有海外子公司），叠加维生素及蛋氨酸价格上涨的传导存在时滞——公司管理层及卖方机构普遍认为，2月末爆发的地缘冲突对产品价格的推升效应将在2026年二、三季度加速兑现，一季度业绩尚未充分反映最新的价格上涨。</p>
+  <p class="note">需关注：2025年应收账款周转率由7.04次降至6.37次，存货周转率由2.99次降至2.82次，周转效率边际放缓，需持续跟踪下游客户回款及库存管理情况；公司财务费用同比大幅下降108.28%，主要系汇率波动带来的汇兑收益，具有一定的非经常性特征，2026年一季度已现反向的汇兑损失，提示汇率因素对公司业绩的双向影响不可忽视。</p>
+  <div class="src">数据来源：公司2025年年度报告、2026年第一季度报告；同花顺F10（2026-04-30）；新浪财经《VA产能全球第一》（2026-05-14）。</div>
+</section>
+
+<section id="cashflow">
+  <h2>Cash Flow &amp; Balance Sheet</h2>
+  <h3>现金流与资产负债表：化工行业中的低杠杆典范</h3>
+  <div class="grid2">
+    <div class="card">
+      <b>经营性现金流强劲</b>
+      <p>2025年经营活动产生的现金流量净额为87.97亿元，同比增长24.38%，显著高于归母净利润规模，现金含金量充分。期末现金及现金等价物余额78.20亿元，同比大幅增长41.62%，账面现金储备充裕，为持续的产能扩张（液体蛋氨酸、尼龙新材料等项目）及股东回报提供了充足的资金支持。</p>
+    </div>
+    <div class="card">
+      <b>资产负债率处于化工行业极低水平</b>
+      <p>公司资产负债率长期维持在25%-35%的低位区间：2024年一季度末为34.87%，2026年一季度末进一步降至25.64%，显著低于多数强周期化工及资源品企业，反映公司现金流驱动的内生增长模式，对外部融资依赖度极低，财务弹性充裕，为应对维生素/蛋氨酸价格周期波动提供了坚实的安全垫。</p>
+    </div>
+  </div>
+  <div class="ladder">
+    <div class="row"><span style="width:110px">2024年Q1末</span><div class="bar" style="width:34.87%"></div><span>34.87%</span></div>
+    <div class="row"><span style="width:110px">2026年Q1末</span><div class="bar" style="width:25.64%"></div><span>25.64%</span></div>
+  </div>
+  <p class="note">公司投资活动现金流净额2025年为-20.43亿元（同比降幅收窄45.88%，主因大额存单到期赎回），筹资活动现金流净额-44.78亿元（同比降幅97.87%，主因现金分红大幅增加），整体现金流结构健康，未见非主业资本开支的异常扩张。</p>
+  <div class="src">数据来源：同花顺F10《新和成2025年报点评》（2026-04-30）；南方基金相关研报数据（2024年基础数据）。</div>
+</section>
+
+<section id="returns">
+  <h2>Shareholder Returns</h2>
+  <h3>股东回报：分红比例稳定在30%-50%区间</h3>
+  <p>公司自上市以来每年坚持现金分红，分红金额占当年净利润的比例长期维持在30%-50%区间。2025年度公司拟每10股派发现金红利8.00元（含税），合计现金分红总额约24.56-30.68亿元（不同口径略有差异，以公司正式公告为准），占归母净利润比重约45.36%；叠加公司同期实施的股份回购，现金分红与回购合计占归母净利润比例达53.58%，创近年新高，对应当前股价的静态股息率约2.7%左右。相较于云铝股份、神火股份等资源品公司近年才开始大幅提升分红的情况，新和成的分红文化建立更早、持续性更强，体现了精细化工龙头企业更为成熟的资本管理和股东回报理念。</p>
+  <div class="src">数据来源：公司2025年度利润分配预案公告；同花顺F10（2026-04-30）；知乎《从维生素龙头到平台型企业》（2025-03-24，历史股息率数据供参考）。</div>
+</section>
+
+<section id="valuation">
+  <h2>Valuation &amp; Rating</h2>
+  <h3>估值与评级</h3>
+  <p>截至2026年6月29日（本报告基准日前最近可得交易日），公司收盘价为29.45元，总市值约905亿元。按2025年EPS约2.20元测算，静态PE约13.4倍；卖方机构对公司2026年盈利预测存在一定分歧，反映市场对地缘冲突驱动的价格上涨持续性尚未形成一致预期：</p>
+  <table>
+    <tr><th>机构</th><th>2026E归母净利润(亿元)</th><th>2026E EPS(元)</th><th>对应PE(现价29.45元)</th><th>评级</th></tr>
+    <tr><td>山西证券</td><td>87.46</td><td>2.85</td><td>约10.3x</td><td><span class="tag buy">买入-B</span></td></tr>
+    <tr><td>国信证券（较早预测）</td><td>约72-77</td><td>2.34-2.80</td><td>约10.5-12.6x</td><td><span class="tag buy">优于大市</span></td></tr>
+    <tr><td>同花顺F10汇总（上调后，反映地缘冲突影响）</td><td>103.56</td><td>—</td><td>约8.7x</td><td><span class="tag hold">增持</span></td></tr>
+    <tr><td>东吴证券（较早预测，未计入地缘冲击）</td><td>72.04</td><td>2.34</td><td>约12.6x</td><td><span class="tag buy">买入</span></td></tr>
+  </table>
+  <p>可以观察到，2026年5月以来受美伊冲突推升蛋氨酸/维生素价格影响，卖方机构对公司2026年盈利预测出现大幅上调（部分机构上调至103.56亿元，较此前72亿元左右的预测提升逾40%），这一分歧本质上反映了市场对当前价格上涨"地缘避险溢价"成分能否延续至全年的不同判断。我们认为，考虑到：(1) 蛋氨酸、维生素行业本身即为寡头垄断格局，供给侧的结构性紧张（新增产能释放缓慢）具备一定持续性；(2) 但地缘冲突相关的"风险溢价"部分存在不确定性，若局势缓和，赢创、住友化学的停产产能存在恢复可能。综合分部估值及卖方预测的中性区间（2026年归母净利润约85-95亿元），给予公司2026年目标PE 11-13倍，对应合理价值区间约31-38元，较当前29.45元存在温和上行空间，但短期股价对地缘政治及维生素/蛋氨酸现货价格的敏感度较高。</p>
+  <div class="rating-box">
+    <div><div class="tp">Snail-Bird Investment 评级</div><div class="r">增持 (Overweight)</div></div>
+    <div><div class="tp">12个月目标价区间</div><div style="font-size:22px;font-weight:800;">¥31.0 - ¥38.0</div></div>
+    <div><div class="tp">最近可得收盘价 (2026/6/29)</div><div style="font-size:22px;font-weight:800;">¥29.45</div></div>
+  </div>
+  <p class="note">估值方法：相对估值法（PE-Band），考虑公司维生素、蛋氨酸、香精香料、新材料四大板块盈利驱动逻辑差异较大，理想情况下应采用分部估值法（SOTP），但受限于各板块盈利拆分数据的公开披露颗粒度，本报告采用整体PE法进行估值锚定。因未能获取报告基准日（2026年7月6日）当日精确收盘价，本报告采用最近可得交易日（2026年6月29日）收盘价29.45元作为参考基准，请以实际交易日行情为准。</p>
+  <div class="src">数据来源：同花顺F10盈利预测栏目（山西证券2026-04-30、国信证券2025-10-29、东吴证券2025-11-01）；证券之星（2026-06-29收盘数据）。</div>
+</section>
+
+<section id="risk">
+  <h2>Risk Factors</h2>
+  <h3>风险提示</h3>
+  <div class="badge-row">
+    <span class="tag risk-h">维生素/蛋氨酸价格大幅回落风险（地缘溢价消退）</span>
+    <span class="tag risk-m">新增产能冲击风险</span>
+    <span class="tag risk-m">原材料成本上行风险</span>
+    <span class="tag risk-m">汇率波动风险</span>
+    <span class="tag risk-l">安全生产风险</span>
+  </div>
+  <ul>
+    <li><b>维生素/蛋氨酸价格大幅回落风险：</b>当前价格上涨包含较大比例的地缘冲突"风险溢价"，若美伊局势缓和、霍尔木兹海峡航运恢复正常，赢创新加坡、住友化学等停产产能加快复产，相关产品价格存在阶段性大幅回落的可能，公司业绩弹性较大，需持续跟踪地缘政治动态及主要厂商复产节奏。</li>
+    <li><b>新增产能冲击风险：</b>万华化学VA项目（2025年3月投产）、浙江医药相关产能扩张，以及安迪苏泉州15万吨固体蛋氨酸项目（预计2027年投产）等新增产能陆续释放，可能加剧行业竞争，压制中长期价格中枢。</li>
+    <li><b>原材料成本上行风险：</b>硫磺、丙烯、甲醇等蛋氨酸上游基础化工品价格受地缘冲突影响大幅上涨，若原材料成本涨幅超过产品价格涨幅，将侵蚀公司毛利空间。</li>
+    <li><b>汇率波动风险：</b>公司产品外销收入占比较高（其中欧盟成员国收入约占外销收入三分之一），人民币汇率波动（如2026年一季度人民币阶段性升值）可能对公司汇兑损益产生阶段性影响。</li>
+    <li><b>项目进度及安全生产风险：</b>液体蛋氨酸、己二腈、天津尼龙新材料等新建项目若进度不及预期，将影响盈利预期兑现节奏；危化品生产存在安全生产隐患，需持续加强管理。</li>
+  </ul>
+  <div class="src">数据来源：公司2025年年度报告风险提示章节；国信证券、东吴证券相关研究报告；知乎行业分析文章（2025-03-24，市场观点供参考）。</div>
+</section>
+
+</main>
+
+<footer>
+  <div class="disc">
+    <p><b>Snail-Bird Investment（蜗牛鸟投资）研究声明：</b> 本报告基于公司公开披露的定期报告（深圳证券交易所指定信息披露网站）及第三方券商研究报告整理，仅供内部研究参考，不构成任何投资建议。报告中所引用的市场数据、盈利预测及估值结论均来自公开渠道，本机构不对其准确性、完整性作绝对保证。由于未能获取报告基准日当日的精确收盘价，本报告采用最近可得交易日数据作为估值参考，可能与实际报告基准日行情存在偏差，请投资者以官方行情数据为准。当前维生素、蛋氨酸价格受地缘政治因素扰动较大，相关盈利预测存在较高不确定性。股票及大宗商品投资存在亏损风险，投资者应独立判断并自行承担投资决策所产生的风险及后果。</p>
+    <p>数据来源汇总：公司2025年年度报告（2026-04-15披露）、2026年第一季度报告（2026-04-28披露）；同花顺F10；新浪财经；证券之星；国信证券、山西证券、东吴证券、东方证券相关研究报告；知乎行业分析文章（部分市场观点及第三方测算数据，仅供参考，不代表本机构观点）。报告日期：2026年7月6日。</p>
+  </div>
+</footer>
+
+</body>
+</html>
