@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股半导体板块 SBI 泡沫指数日报 · 2026-07-09</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+<style>
+  :root{
+    --bg:#0f1420; --panel:#171e2e; --panel2:#1d2638; --line:#2a3550;
+    --txt:#e8edf6; --sub:#9aa7c2; --acc:#4da3ff;
+    --green:#2ecc71; --orange:#f39c12; --red:#e74c3c; --darkred:#8e1b1b;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;line-height:1.6;}
+  .wrap{max-width:1180px;margin:0 auto;padding:24px 20px 60px;}
+  header{background:linear-gradient(135deg,#1b2740,#0f1420);border:1px solid var(--line);border-radius:16px;padding:26px 30px;margin-bottom:20px;}
+  header h1{margin:0 0 6px;font-size:24px;letter-spacing:.5px;}
+  .meta{color:var(--sub);font-size:14px;}
+  .meta b{color:var(--acc);}
+  .grid{display:grid;gap:18px;}
+  .g1{grid-template-columns:1fr;}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  .g2{grid-template-columns:repeat(2,1fr);}
+  @media(max-width:860px){.g3,.g2{grid-template-columns:1fr;}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;}
+  .card h2{margin:0 0 14px;font-size:16px;color:var(--acc);border-left:4px solid var(--acc);padding-left:10px;}
+  .score-hero{display:flex;align-items:baseline;gap:14px;justify-content:center;margin:6px 0 2px;}
+  .score-hero .num{font-size:64px;font-weight:800;line-height:1;}
+  .score-hero .zone{font-size:18px;font-weight:700;padding:4px 12px;border-radius:20px;}
+  .delta{text-align:center;font-size:14px;color:var(--sub);}
+  .delta .down{color:var(--green);} .delta .up{color:var(--red);}
+  canvas{max-width:100%;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);}
+  th{color:var(--sub);font-weight:600;}
+  td.n{text-align:right;font-variant-numeric:tabular-nums;}
+  .pill{display:inline-block;padding:2px 9px;border-radius:12px;font-size:12px;font-weight:700;}
+  .p-up{background:rgba(231,76,60,.18);color:#ff8585;}
+  .p-down{background:rgba(46,204,113,.18);color:#5fe39a;}
+  .p-flat{background:rgba(154,167,194,.18);color:#bcc8e0;}
+  .src{font-size:12.5px;color:var(--sub);}
+  .src td:first-child{color:var(--txt);font-weight:600;white-space:nowrap;}
+  .concl li{margin-bottom:10px;}
+  .tag{display:inline-block;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:12px;color:var(--acc);margin-right:4px;}
+  .advice{background:var(--panel2);border-left:4px solid var(--orange);border-radius:8px;padding:14px 18px;font-size:14px;}
+  .advice ol{margin:8px 0 0;padding-left:20px;}
+  .advice li{margin-bottom:8px;}
+  .foot{margin-top:26px;color:var(--sub);font-size:12px;text-align:center;}
+  .warn{color:#ffb454;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>A股半导体板块 · SBI 泡沫指数日报</h1>
+    <div class="meta">
+      分析日期：<b>2026年7月9日（星期四）</b> ｜ A股数据截止：<b>前一交易日收盘（2026-07-08）</b>
+      <span class="warn">（注：估值分位最新为 07-06，融资余额最新为 07-07，美债为 06-30，均已标注时效）</span>
+    </div>
+  </header>
+
+  <div class="grid g3">
+    <!-- 仪表盘 -->
+    <div class="card">
+      <h2>SBI 总指数仪表盘</h2>
+      <div style="position:relative;height:230px;">
+        <canvas id="gauge"></canvas>
+      </div>
+      <div class="score-hero">
+        <span class="num" id="sbiNum" style="color:var(--red)">70.1</span>
+        <span class="zone" id="sbiZone" style="background:rgba(231,76,60,.18);color:#ff8585;">危险区间</span>
+      </div>
+      <div class="delta">环比前日（07-08，70.9 分）：<span class="down">▼ -0.8</span> 走平微降</div>
+    </div>
+
+    <!-- 六维雷达 -->
+    <div class="card">
+      <h2>六维度雷达图（本次 vs 前次）</h2>
+      <div style="position:relative;height:300px;">
+        <canvas id="radar"></canvas>
+      </div>
+    </div>
+
+    <!-- 关键指标卡 -->
+    <div class="card">
+      <h2>核心读数</h2>
+      <table>
+        <tr><th>维度</th><th>权重</th><th class="n">本次</th><th class="n">前次</th><th class="n">环比</th></tr>
+        <tr><td>估值</td><td>25%</td><td class="n">96</td><td class="n">96</td><td class="n"><span class="pill p-flat">0.0</span></td></tr>
+        <tr><td>拥挤度</td><td>25%</td><td class="n">62</td><td class="n">60</td><td class="n"><span class="pill p-up">+2.0</span></td></tr>
+        <tr><td>杠杆</td><td>15%</td><td class="n">60</td><td class="n">64</td><td class="n"><span class="pill p-down">-4.0</span></td></tr>
+        <tr><td>业绩兑现</td><td>15%</td><td class="n">66</td><td class="n">66</td><td class="n"><span class="pill p-flat">0.0</span></td></tr>
+        <tr><td>资金流向</td><td>10%</td><td class="n">55</td><td class="n">62</td><td class="n"><span class="pill p-down">-7.0</span></td></tr>
+        <tr><td>外部环境</td><td>10%</td><td class="n">62</td><td class="n">62</td><td class="n"><span class="pill p-flat">0.0</span></td></tr>
+        <tr style="font-weight:700;border-top:2px solid var(--line);">
+          <td>SBI 合计</td><td>100%</td><td class="n" style="color:var(--red)">70.1</td><td class="n">70.9</td><td class="n"><span class="pill p-down">-0.8</span></td></tr>
+      </table>
+      <p class="src" style="margin-top:12px;">预警线 45 ｜ 危险线 70 ｜ SBI&gt;65 危险 ｜ SBI&gt;80 极端危险</p>
+    </div>
+  </div>
+
+  <div class="grid g1" style="margin-top:18px;">
+    <div class="card">
+      <h2>近 30 日 SBI 趋势线</h2>
+      <div style="position:relative;height:320px;">
+        <canvas id="trend"></canvas>
+      </div>
+      <p class="src">数据来源：本系列历史日报（2026-06-05 至 2026-07-09），个别交易日因未生成报告留空；末点为本日估算（基于 07-08 收盘数据）。</p>
+    </div>
+  </div>
+
+  <div class="grid g2" style="margin-top:18px;">
+    <div class="card">
+      <h2>底层数据（真实搜索，已标注时效）</h2>
+      <table class="src">
+        <tr><th>指标</th><th>数值</th><th>来源 / 时效</th></tr>
+        <tr><td>申万半导体 PE(TTM)</td><td>147~210 倍，近十年分位 99%+</td><td>微博 / 2026-07</td></tr>
+        <tr><td>中证半导体(H30184)</td><td>PE-TTM 168.07（分位 98.3%）；PB 11.49（分位 99.7%）；PS 18.04（分位 99.8%）；股息率 0.11%（分位 1.2%）</td><td>股叉叉 / 2026-07-06</td></tr>
+        <tr><td>半导体板块涨跌</td><td>沪指 -0.49% 报 3970；全市场成交 2.56~2.58 万亿（连续三日缩量）；半导体设备 ETF 易方达 +2.87%，成交 19.76 亿</td><td>东方财富 / 2026-07-08</td></tr>
+        <tr><td>涨停家数</td><td>全市场涨停 57 家（20CM 8、ST 6）；半导体有研硅 20% 涨停、有研新材/华天科技涨停；板块涨停处年内低位（约 33-34 只）</td><td>aigupiao / 东方财富 / 2026-07-08</td></tr>
+        <tr><td>北向资金（半导体相关）</td><td>北向总成交 3384.04 亿，占两市 13.20%（+0.42%）；净买入未实时披露，近期科技板块净流出</td><td>东方财富 / 证券时报 / 2026-07-08</td></tr>
+        <tr><td>半导体 ETF 资金流</td><td>设备 ETF 易方达近 2 周规模 +63.46 亿、份额 43.35 亿（新高）、单日净流入 2.72 亿；科创芯片 ETF 易方达近 2 周 +9.29 亿；半导体 ETF 鹏华连续 7 日净流入合计 10.56 亿</td><td>东方财富 / 新浪 / 2026-07-06~08</td></tr>
+        <tr><td>两市融资余额</td><td>07-06 两市 29609.75 亿（-104.96 亿）；07-07 29479.38 亿（-130.38 亿，-0.44%）；自 6 月底 29877 亿累计去杠杆约 398 亿</td><td>同花顺 / 东财 Choice / 2026-07-07</td></tr>
+        <tr><td>行业政策 / 新闻</td><td>大基金三期重点倾斜设备/材料；国产 KrF 光刻胶国产化率 15%→50%（7 月）；华为发布 Chiplet 先进封装体系；政企算力采购全面替代海外芯片；工信部机器人专项</td><td>百度 / 雪球 / 2026-07-07~09</td></tr>
+        <tr><td>美联储 / 美债</td><td>10Y 美债 06-30 报 4.44%（上半年 +26BP），2Y 4.14%（+67BP）；FOMC 点阵图分裂（7 名按兵不动、8 名至少降息两次）；联邦基金利率约 3.5-4.5% 区间</td><td>东方财富 / 百度 / 2026-06-30~07-09</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>六维度评分逻辑</h2>
+      <table class="src">
+        <tr><th>维度</th><th>评分依据（线性插值，预警 45 / 危险 70）</th></tr>
+        <tr><td>估值 96</td><td>PE 分位 98-99%+、PE 绝对值 147-210 倍、海量标的几百~上万倍 PE、股息率分位仅 1.2% → 历史极值区</td></tr>
+        <tr><td>拥挤度 62</td><td>ETF 逆势连续净流入（设备 ETF 份额创新高）推升拥挤；但全市场地量（2.56 万亿）、涨停仅 33-34 只、内部分化，抑制拥挤 → 中高</td></tr>
+        <tr><td>杠杆 60</td><td>融资余额自 6 月底累计去杠杆约 398 亿，杠杆资金持续撤离，得分较前值 64 回落</td></tr>
+        <tr><td>业绩兑现 66</td><td>存储涨价 / 设备高景气支撑，但 PEG 中位数偏高、高估值需持续兑现，与前期持平</td></tr>
+        <tr><td>资金流向 55</td><td>北向科技净流出、主力高位净流出 63 股（半导体集中）、长电科技流出超 20 亿；ETF 净流入部分对冲，得分较前次 62 回落</td></tr>
+        <tr><td>外部环境 62</td><td>美债 10Y 4.44% 高位+美联储预期分裂（偏负）；大基金三期 / 国产替代政策强催化（偏正），中性偏暖</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid g1" style="margin-top:18px;">
+    <div class="card">
+      <h2>核心结论（数据支撑）</h2>
+      <ul class="concl">
+        <li><span class="tag">估值</span><b>估值维度 96 分处于历史极值区</b>：申万半导体 PE 147~210 倍、近十年分位 99%+；中证半导体 PE 分位 98.3%、PB 分位 99.7%、股息率分位仅 1.2%，是 SBI 维持危险区间的核心拖累项。</li>
+        <li><span class="tag">杠杆</span><b>杠杆与资金边际降温</b>：两市融资余额自 6 月底累计去杠杆约 398 亿（07-07 报 29479 亿），杠杆维度降至 60；北向科技板块净流出、主力高位净流出 63 股（半导体集中），资金维度降至 55，是 SBI 未进一步冲高的主因。</li>
+        <li><span class="tag">拥挤度</span><b>拥挤度仍中高（62）</b>：半导体 ETF 逆势连续净流入（设备 ETF 近 2 周规模 +63 亿、份额创新高），但全市场地量（成交 2.56 万亿、涨停仅 33-34 只）显示增量资金有限、内部分化。</li>
+        <li><span class="tag">政策</span><b>政策强催化对冲外部压力</b>：大基金三期、国产光刻胶突破、Chiplet 体系、算力国产替代提供业绩兑现预期（业绩维度 66、外部维度 62）；但美债 10Y 4.44% 高位+美联储预期分裂构成估值天花板约束。</li>
+        <li><span class="tag">综合</span><b>SBI 70.1，环比 -0.8 走平微降</b>：仍处危险区间（&gt;65）但未达极端（&gt;80），结构呈"估值极端 + 资金退潮"组合，中期风险收益比持续恶化。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid g1" style="margin-top:18px;">
+    <div class="card">
+      <h2>操作建议</h2>
+      <div class="advice">
+        <b>当前定位：SBI 70.1（危险区间，环比 -0.8 走平）。</b>
+        <ol>
+          <li><b>控仓为主</b>：不建议追高加仓半导体整体，尤其规避 PE 数百~上万倍的纯题材标的；持有者可借政策催化（大基金三期 / 设备材料）分批止盈、降低仓位集中度。</li>
+          <li><b>优选业绩兑现方向</b>：在半导体内部向设备、存储涨价、国产材料（光刻胶 / 电子特气）等已有订单与涨价支撑的细分倾斜，回避无业绩的题材炒作。</li>
+          <li><b>等待右侧信号</b>：融资余额回升 + 北向科技转净流入 + 成交放量，三者共振方可确认增量资金回归；当前仍以防御姿态应对。</li>
+          <li><b>风险监测线</b>：SBI 突破 75 进入高温区、突破 80 进入极端危险区需强制减仓；外部重点盯 10Y 美债破 4.7% 引发的全球科技估值重估。</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    本报告由交易分析团队技术分析师生成 · SBI 泡沫指数仅供风险监测参考，不构成投资建议 · 数据截止 2026-07-08 收盘，分析日 2026-07-09<br>
+    图表由 Chart.js 渲染（需联网加载），所有数值均来自公开搜索结果，未做主观编造。
+  </div>
+</div>
+
+<script>
+/* ===== 数据 ===== */
+const SBI = 70.1, PREV_SBI = 70.9;
+const dims = [
+  {name:"估值",     w:0.25, score:96, prev:96},
+  {name:"拥挤度",   w:0.25, score:62, prev:60},
+  {name:"杠杆",     w:0.15, score:60, prev:64},
+  {name:"业绩兑现", w:0.15, score:66, prev:66},
+  {name:"资金流向", w:0.10, score:55, prev:62},
+  {name:"外部环境", w:0.10, score:62, prev:62},
+];
+const trendLabels = ["06-05","06-11","06-16","06-17","06-19","06-20","06-23","06-24","06-25","06-26","06-28","07-01","07-02","07-03","07-06","07-07","07-08","07-09"];
+const trendData   = [64.6,62.5,62.5,70.1,74.8,73.8,73.3,71.8,76.2,78.6,79.7,78.6,80.5,67.2,72.8,72.8,70.9,70.1];
+
+function zoneColor(s){
+  if(s<45) return '#2ecc71';
+  if(s<65) return '#f39c12';
+  if(s<80) return '#e74c3c';
+  return '#8e1b1b';
+}
+function zoneText(s){
+  if(s<45) return '安全';
+  if(s<65) return '关注';
+  if(s<80) return '危险区间';
+  return '极端危险';
+}
+
+/* ===== 仪表盘（半环）===== */
+const gaugeColor = zoneColor(SBI);
+const gaugeCtx = document.getElementById('gauge').getContext('2d');
+new Chart(gaugeCtx,{
+  type:'doughnut',
+  data:{
+    datasets:[{
+      data:[SBI, 100-SBI],
+      backgroundColor:[gaugeColor, '#eef1f5'],
+      borderWidth:0, circumference:180, rotation:270
+    }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    cutout:'72%',
+    plugins:{
+      legend:{display:false},
+      tooltip:{enabled:false}
+    }
+  },
+  plugins:[{
+    id:'gaugeText',
+    afterDraw(chart){
+      const {ctx, chartArea} = chart;
+      const cx = (chartArea.left+chartArea.right)/2;
+      const cy = chartArea.bottom - 6;
+      ctx.save();
+      ctx.textAlign='center';
+      ctx.fillStyle=gaugeColor;
+      ctx.font='800 34px sans-serif';
+      ctx.fillText(SBI.toFixed(1), cx, cy-14);
+      ctx.fillStyle='#9aa7c2';
+      ctx.font='13px sans-serif';
+      ctx.fillText('SBI 泡沫指数 / 100', cx, cy+6);
+      ctx.restore();
+    }
+  }]
+});
+
+/* ===== 雷达图 ===== */
+new Chart(document.getElementById('radar').getContext('2d'),{
+  type:'radar',
+  data:{
+    labels:dims.map(d=>d.name),
+    datasets:[
+      {label:'本次（07-09）', data:dims.map(d=>d.score),
+        backgroundColor:'rgba(231,76,60,.18)', borderColor:'#e74c3c', pointBackgroundColor:'#e74c3c', borderWidth:2},
+      {label:'前次（07-08）', data:dims.map(d=>d.prev),
+        backgroundColor:'rgba(77,163,255,.12)', borderColor:'#4da3ff', pointBackgroundColor:'#4da3ff', borderWidth:2, borderDash:[5,4]}
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    scales:{ r:{ min:0, max:100, ticks:{stepSize:20, color:'#9aa7c2', backdropColor:'transparent'},
+      grid:{color:'#2a3550'}, angleLines:{color:'#2a3550'}, pointLabels:{color:'#e8edf6', font:{size:13}} } },
+    plugins:{legend:{labels:{color:'#e8edf6'}}}
+  }
+});
+
+/* ===== 趋势线 ===== */
+new Chart(document.getElementById('trend').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:trendLabels,
+    datasets:[{
+      label:'SBI 泡沫指数',
+      data:trendData,
+      borderColor:'#e74c3c', backgroundColor:'rgba(231,76,60,.10)',
+      fill:true, tension:.3, pointRadius:3, pointBackgroundColor:'#e74c3c', borderWidth:2
+    }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    scales:{
+      y:{ min:55, max:85, ticks:{color:'#9aa7c2'},
+        grid:{color:'#2a3550'},
+        title:{display:true,text:'SBI',color:'#9aa7c2'} },
+      x:{ ticks:{color:'#9aa7c2', maxRotation:60, minRotation:0}, grid:{color:'#1d2638'} }
+    },
+    plugins:{
+      legend:{labels:{color:'#e8edf6'}},
+      annotation:{},
+      tooltip:{callbacks:{ afterBody(){ return ''; } }}
+    }
+  },
+  plugins:[{
+    id:'refLines',
+    afterDraw(chart){
+      const {ctx, chartArea:{left,right}, scales:{y}} = chart;
+      const lines=[{v:65,c:'#f39c12',t:'危险线 65'},{v:80,c:'#8e1b1b',t:'极端 80'}];
+      ctx.save();
+      lines.forEach(L=>{
+        const yy=y.getPixelForValue(L.v);
+        ctx.strokeStyle=L.c; ctx.setLineDash([6,4]); ctx.lineWidth=1.5;
+        ctx.beginPath(); ctx.moveTo(left,yy); ctx.lineTo(right,yy); ctx.stroke();
+        ctx.setLineDash([]); ctx.fillStyle=L.c; ctx.font='11px sans-serif'; ctx.textAlign='right';
+        ctx.fillText(L.t, right-4, yy-4);
+      });
+      ctx.restore();
+    }
+  }]
+});
+</script>
+</body>
+</html>
