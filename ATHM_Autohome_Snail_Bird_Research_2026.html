@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>汽车之家（ATHM）深度研究报告 | 蜗牛鸟投资</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#f4f4f2;
+  --bg-panel:#ffffff;
+  --bg-alt:#ececea;
+  --ink:#1c1c1c;
+  --ink-soft:#57585c;
+  --ink-faint:#8a8b8f;
+  --line:#dddddb;
+  --accent:#1f4a8a;
+  --accent-soft:#2f6fb0;
+  --green:#2e6b47;
+  --amber:#9c6a13;
+  --red:#8a1f1f;
+  --mono:'IBM Plex Mono','Courier New',monospace;
+  --sans:'IBM Plex Sans','Noto Sans SC',sans-serif;
+  --serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(244,244,242,0.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.5px;}
+.brand .bird{font-size:18px;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--ink-faint);border:1px solid var(--line);padding:3px 8px;border-radius:3px;}
+
+header.hero{padding:64px 0 40px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#f8f8f6 0%,var(--bg) 100%);}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:18px;}
+h1.title{font-family:var(--serif);font-size:38px;font-weight:700;margin:0 0 10px;line-height:1.35;color:var(--ink);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:780px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:34px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:21px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+.rating-badge{display:inline-block;padding:3px 10px;border-radius:3px;font-size:13px;font-weight:700;font-family:var(--mono);background:#eaf0f7;color:var(--accent);border:1px solid #c7d7e8;}
+
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:700;}
+h2{font-family:var(--serif);font-size:26px;margin:0;color:var(--ink);}
+h3{font-family:var(--sans);font-size:17px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--accent);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--accent);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);}
+
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:14px;color:var(--ink);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:var(--bg-alt);font-family:var(--mono);font-size:12px;color:var(--ink-soft);font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:#f9f8f6;}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#eef3ee;color:var(--green);}
+.tag.miss{background:#f6ece9;color:var(--red);}
+.tag.line{background:#f2eee0;color:var(--amber);}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:25px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--ink);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--amber);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#f6ece9;color:var(--red);}
+.risk-item.mid .rlevel{background:#f2eee0;color:var(--amber);}
+.risk-item.low .rlevel{background:#eef3ee;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+.ladder{width:100%;border-collapse:collapse;font-size:13px;}
+.ladder td{padding:8px 12px;border-bottom:1px solid var(--line);}
+.ladder tr.current td{background:#eaf0f7;font-weight:700;}
+
+.ownership-bar{display:flex;height:34px;border-radius:3px;overflow:hidden;margin:14px 0;border:1px solid var(--line);}
+.ob-seg{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:#fff;}
+
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--ink-soft);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  h1.title{font-size:26px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="bird">🐦</span> 蜗牛鸟投资 · SNAIL-BIRD RESEARCH</div>
+    <div class="navlinks">
+      <span>科技消费 / 汽车垂直服务平台</span>
+      <span class="navtag">NYSE: ATHM · HKEX: 2518</span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">美股 · 中概汽车服务平台 · 深度覆盖</div>
+    <h1 class="title">汽车之家 Autohome Inc.<br>转型阵痛中的深度价值：净现金逼近市值的中概样本</h1>
+    <p class="subtitle">报告日期：2026年7月8日｜覆盖类型：深度覆盖｜分析框架：蜗牛鸟「商业模式 · 行业供需 · 财务质量 · 股东回报」四维评估模型</p>
+    <div class="meta-row">
+      <span>股票代码：<b>NYSE: ATHM / HKEX: 2518</b></span>
+      <span>所属行业：<b>互联网信息服务 · 汽车垂直媒体与交易平台</b></span>
+      <span>控股股东：<b>海尔集团（CARTECH，约43%）</b></span>
+      <span>ADS/普通股比例：<b>1 ADS = 4 股普通股</b></span>
+      <span>分析师：<b>蜗牛鸟投资 科技消费组</b></span>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="label">最新收盘价</div>
+        <div class="value">US$19.94</div>
+        <div class="sub">2026-07-08</div>
+      </div>
+      <div class="kpi">
+        <div class="label">估算总市值</div>
+        <div class="value">≈US$23.3亿</div>
+        <div class="sub">基于约1.17亿股ADS估算</div>
+      </div>
+      <div class="kpi">
+        <div class="label">净现金（估算）</div>
+        <div class="value pos">≈US$27.8亿</div>
+        <div class="sub">现金及投资RMB200.4亿（2026Q1末）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">FY2025营收增速</div>
+        <div class="value neg">-8.3%</div>
+        <div class="sub">RMB64.52亿元</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026Q1营收增速</div>
+        <div class="value neg">-27.9%</div>
+        <div class="sub">RMB10.48亿元，转为经营亏损</div>
+      </div>
+      <div class="kpi">
+        <div class="label">蜗牛鸟评级</div>
+        <div class="value"><span class="rating-badge">增持 · 深度价值</span></div>
+        <div class="sub">净现金覆盖市值，股东回报驱动</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>投资摘要与核心观点</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>汽车之家（Autohome Inc.）是中国领先的汽车垂直内容与服务平台，2026年3月移动端月均日活用户（DAU）达到8,073万，创历史新高，同比增长4.9%（QuestMobile数据）。公司业务正处于从传统"信息媒体+线索"模式向"内容+交易+AI"综合生态转型的关键阶段，但转型尚未能对冲传统燃油车（ICE）广告预算收缩带来的结构性下滑：FY2025全年营收人民币64.52亿元，同比下降8.3%；2026年第一季度营收进一步同比下滑27.9%至人民币10.48亿元，并首次录得经营亏损人民币3,440万元。</p>
+        <p>公司基本面短期承压的核心原因是中国汽车行业结构性变化：传统燃油车厂商广告预算大幅收缩，超过70%的经销商在2025年处于亏损状态，导致公司核心的媒体服务与线索生成两大传统收入支柱持续萎缩。与此同时，公司积极布局新能源汽车（NEV）相关业务与"车事惠"（Autohome Mall）交易平台，FY2025 NEV相关收入（含新零售业务）同比增长30.2%，是转型故事中为数不多的亮点，但目前体量尚不足以对冲传统业务下滑。</p>
+        <p>2025年2月，海尔集团旗下卡泰驰（CARTECH）以约18亿美元收购原控股股东运晨资本（安平系）持有的约42%股权，成为公司新任控股股东，公司管理层随之全面更换，战略方向转向与海尔产业生态协同的O2O汽车服务模式。这一控制权变更是理解当前公司战略与治理结构的关键背景。</p>
+        <div class="callout"><b>核心观点：</b>汽车之家当前呈现出罕见的"核心业务净现值为负"特征——截至2026年一季度末，公司持有现金、现金等价物及短期投资合计人民币200.4亿元（约合27.8亿美元），已超过其约23.3亿美元的估算总市值，意味着市场对其扣除净现金后的核心运营业务给出了负企业价值（Negative EV）定价。这一现象通常反映两类可能：（1）市场对其传统业务持续萎缩、转型能否成功存在深度怀疑，叠加中概股普遍的治理与政策折价；（2）市场存在错杀，公司凭借强劲的股东回报能力（股息+回购）与稳健的资产负债表，具备深度价值重估空间。我们倾向于后者占主导，给予"增持·深度价值"评级，但强调这是一笔"现金流+股东回报"驱动而非"成长驱动"的价值型交易，需要投资者容忍业务基本面的持续波动。</div>
+      </div>
+      <div class="card">
+        <h4>关键数据速览</h4>
+        <ul>
+          <li>2026年3月移动DAU：<b>8,073万</b>（历史新高，+4.9% YoY）</li>
+          <li>FY2025营收：<b>RMB64.52亿元</b>（-8.3% YoY）</li>
+          <li>FY2025 Non-GAAP净利润：<b>RMB16.07亿元</b>（-21.6% YoY），调整后净利率24.9%</li>
+          <li>2026Q1营收：<b>RMB10.48亿元</b>（-27.9% YoY），经营亏损RMB3,440万元</li>
+          <li>现金及投资（2026Q1末）：<b>RMB200.4亿元</b></li>
+          <li>FY2025现金分红：<b>RMB15亿元</b>（承诺不低于此数额）</li>
+          <li>2026上半年中期分红：<b>约RMB5亿元</b>，预计2026年7月24/31日派发</li>
+          <li>控股股东：<b>海尔集团CARTECH，约43%股权</b>（2025年8月完成交割）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="business-model">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>维度一：商业模式分析</h2></div>
+    <p>公司收入分为三大板块，正在经历权重再平衡：</p>
+    <table>
+      <thead><tr><th>业务板块</th><th>FY2025全年收入</th><th>占比</th><th>2026Q1收入</th><th>YoY趋势</th></tr></thead>
+      <tbody>
+        <tr><td>媒体服务（品牌广告）</td><td>RMB11.53亿元</td><td>约17.9%</td><td>RMB1.63亿元</td><td><span class="tag miss">持续下滑</span></td></tr>
+        <tr><td>线索生成服务（经销商订阅）</td><td>RMB27.1亿元</td><td>约42.0%</td><td>RMB5.03亿元</td><td><span class="tag miss">承压下滑</span></td></tr>
+        <tr><td>在线商城及其他（含NEV新零售）</td><td>RMB25.9亿元</td><td>约40.1%</td><td>RMB3.82亿元</td><td><span class="tag beat">+8.8%（全年）</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：公司2025年第四季度及全年业绩公告、2026年第一季度业绩电话会议纪要。</p>
+
+    <h3>业务模式核心逻辑</h3>
+    <div class="grid-3">
+      <div class="card">
+        <h4>传统模式（承压）</h4>
+        <ul>
+          <li>媒体服务：向主机厂收取品牌展示广告费，高度依赖ICE厂商预算，随行业价格战持续收缩</li>
+          <li>线索生成：向经销商收取订阅及按线索付费的营销服务费，2025年超70%经销商亏损直接冲击该板块付费能力</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>转型新引擎（培育期）</h4>
+        <ul>
+          <li>"车事惠"商城（Autohome Mall）：2025年9月试点、Q4正式上线的一站式购车交易平台，已与23个主流汽车品牌达成合作，尚处探索完善阶段</li>
+          <li>线下"以租代购"/城市展厅：聚焦三至五线下沉市场，弥补主机厂渠道覆盖空白，2025年累计举办超5,000场线下车展及团购活动</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>治理结构关注点</h4>
+        <ul>
+          <li>公司通过VIE（可变利益实体）架构运营部分业务，2025年VIE贡献收入占比约10.3%，存在中国法律下协议控制的法律执行力不确定性</li>
+          <li>2025年8月起海尔集团CARTECH成为控股股东（约43%），管理层全面更换，公司明确表示战略方向未发生重大调整，但海尔产业协同（渠道、供应链）将成为中期战略重点</li>
+        </ul>
+      </div>
+    </div>
+    <h3>股权结构一览</h3>
+    <div class="ownership-bar">
+      <div class="ob-seg" style="width:43%;background:#1f4a8a;">海尔集团（CARTECH）约43%</div>
+      <div class="ob-seg" style="width:5%;background:#2f6fb0;">运晨资本（原控股股东）约5%</div>
+      <div class="ob-seg" style="width:52%;background:#9a9a97;">公众流通股约52%</div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：公司2025年8月控制权变更公告、招股说明书披露信息，比例为约数，实际以最新13-D/20-F披露为准。</p>
+  </div>
+</section>
+
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>维度二：行业供需分析</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>中国汽车行业当前处于产能过剩与价格战交织的深度调整期。据公司管理层在2026Q4/全年业绩电话会中披露，全行业整体利润率仅4.1%，超过70%的经销商在2025年处于亏损状态，二手车行业亏损企业占比同样超过70%，二手车平均成交价同比下降约12%（2025年上半年）。这一供给端的持续出清，直接压制了公司线索生成与媒体服务两大传统收入来源的付费能力。</p>
+        <p>需求端结构性变化体现在新能源车对燃油车的持续替代：公司NEV相关收入（含新零售业务）2025年三季度同比增长58.6%，全年增速回落至30.2%，反映高基数下增速自然放缓，但绝对趋势仍显著跑赢传统业务。管理层将2026年战略重心明确指向"内容+交易+AI+二手车+海外市场"五大方向，试图在NEV渗透率提升的窗口期建立新的变现能力。</p>
+        <p>竞争格局方面，汽车之家、易车、懂车帝（抖音系）构成国内汽车垂直媒体三强格局，但短视频与直播电商平台对传统图文媒体广告预算的分流持续存在，叠加AI原生应用（AI购车助手/AI Agent）对传统信息检索路径的潜在替代风险，是管理层在近期业绩电话会中被反复问及的核心议题。</p>
+      </div>
+      <div class="card">
+        <h4>行业供需关键指标</h4>
+        <ul>
+          <li>2025年全行业经销商亏损占比：<b>超70%</b></li>
+          <li>2025年整体行业利润率：<b>约4.1%</b></li>
+          <li>二手车行业亏损企业占比：<b>超70%</b></li>
+          <li>二手车平均成交价：<b>同比下降约12%</b>（2025H1）</li>
+          <li>公司NEV相关收入增速：<b>FY2025 +30.2%</b>，2025Q3 +58.6%</li>
+          <li>公司移动DAU：<b>8,073万</b>（2026年3月，历史新高）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>行业层面核心矛盾：</b>公司用户流量指标（DAU）持续创新高，但传统媒体+线索双引擎的变现能力被行业供给侧出清严重侵蚀，形成"流量与收入背离"的典型转型期特征。转型新业务（NEV新零售、车事惠商城）增速可观但基数尚小，能否在传统业务加速探底前形成有效对冲，是判断公司中期基本面拐点的核心变量。</div>
+  </div>
+</section>
+
+<section id="financials">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>维度三：财务质量分析</h2></div>
+    <h3>收入与利润趋势</h3>
+    <table>
+      <thead><tr><th>指标</th><th>FY2024</th><th>FY2025</th><th>同比</th><th>2025Q1</th><th>2026Q1</th><th>同比</th></tr></thead>
+      <tbody>
+        <tr><td>营业收入</td><td>RMB70.40亿元</td><td>RMB64.52亿元</td><td><span class="tag miss">-8.3%</span></td><td>RMB14.54亿元</td><td>RMB10.48亿元</td><td><span class="tag miss">-27.9%</span></td></tr>
+        <tr><td>毛利率</td><td>—</td><td>—</td><td>—</td><td>78.3%</td><td>75.5%</td><td><span class="tag line">-2.8pct</span></td></tr>
+        <tr><td>经营利润/（亏损）</td><td>—</td><td>—</td><td>—</td><td>盈利</td><td>-RMB0.34亿元</td><td><span class="tag miss">由盈转亏</span></td></tr>
+        <tr><td>归母净利润（GAAP）</td><td>RMB16.81亿元</td><td>RMB14.43亿元</td><td><span class="tag miss">-14.2%</span></td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>Non-GAAP调整后净利润</td><td>RMB20.50亿元</td><td>RMB16.07亿元</td><td><span class="tag miss">-21.6%</span></td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>Non-GAAP调整后净利率</td><td>约29.1%</td><td>24.9%</td><td><span class="tag line">-4.2pct</span></td><td>—</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：公司2025年第四季度及全年业绩公告（2026年3月5日发布）、2026年第一季度业绩公告（2026年5月28日发布）。</p>
+
+    <div class="two-charts">
+      <div class="chart-box"><canvas id="revChart" height="200"></canvas></div>
+      <div class="chart-box"><canvas id="cashChart" height="200"></canvas></div>
+    </div>
+
+    <h3>资产负债表与现金流</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>资产负债表亮点</h4>
+        <ul>
+          <li>现金、现金等价物及短期/长期投资：FY2025末RMB213.6亿元 → 2026Q1末RMB200.4亿元</li>
+          <li>公司基本无有息负债，资产负债表呈"轻资产+高净现金"结构</li>
+          <li>2026Q1经营活动净现金流出RMB1.43亿元，主要受收入下滑及季节性因素影响；FY2025全年经营活动净现金流入RMB8.9亿元</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>盈利质量观察</h4>
+        <ul>
+          <li>Non-GAAP与GAAP净利润差异主要来自股权激励费用及并购形成无形资产摊销，需关注股权激励费用率是否随营收下滑而同比例收缩</li>
+          <li>毛利率从2025Q1的78.3%降至2026Q1的75.5%，反映收入结构中低毛利的线下/交易类业务占比提升，叠加固定成本摊薄效应减弱</li>
+          <li>2026Q1经营性亏损（RMB3,440万元）是公司近年来首次出现的季度经营层面亏损，是本报告重点跟踪的转折性信号</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="shareholder-return">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>维度四：股东回报分析</h2></div>
+    <p>尽管收入端持续承压，公司管理层在历次业绩电话会中均强调"无论行业如何波动，将持续高度重视股东回报"，并将其作为核心资本配置纪律。这是本报告给予"增持"评级的关键支撑因素之一。</p>
+    <div class="grid-2">
+      <div>
+        <h3>股息政策</h3>
+        <p>公司FY2025兑现了不低于RMB15亿元的全年现金分红承诺。管理层进一步确认2026年全年现金分红同样不低于RMB15亿元，并已批准2026年上半年中期股息约RMB5亿元，预计将于2026年7月24日（普通股）及7月31日（ADS）派发——这一时点紧邻本报告日期（2026年7月8日），构成短期催化剂。</p>
+        <h3>股票回购</h3>
+        <p>公司于2025年完成前一轮回购计划，累计回购约712万份ADS，耗资约1.85亿美元。2026年3月5日董事会新批准一项总额不超过2亿美元、期限18个月的新回购计划，截至2026年一季度末已回购约346.5万份ADS，耗资约6,230万美元，执行进度约31%。</p>
+      </div>
+      <div class="card">
+        <h4>股东回报测算（估算）</h4>
+        <ul>
+          <li>FY2025股息总额：<b>RMB15亿元</b>（约2.08亿美元）</li>
+          <li>静态股息率（按当前市值估算）：<b>约8.9%</b></li>
+          <li>2026年新回购计划总额：<b>2亿美元</b>（占估算市值约8.6%）</li>
+          <li>合并股东回报率（股息+回购上限）：<b>约17%左右</b>（理论上限，需分18个月执行）</li>
+          <li>净现金/估算市值比例：<b>约119%</b>（净现金已超过市值）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout"><b>股东回报是本篇报告最核心的多头逻辑：</b>在营收与利润双双承压的背景下，公司仍能维持高强度的现金分红与回购节奏，根本原因在于其历史上积累的超大规模现金储备（约27.8亿美元）远超当前市值，即使核心业务盈利能力持续弱化，公司仍具备充足的资本实力履行股东回报承诺。但需要警惕：若现金持续被用于分红与回购而非再投资于NEV/AI转型，可能加剧市场对其"成长熄火、依赖现金返还"的定价逻辑，形成估值双刃剑。</div>
+  </div>
+</section>
+
+<section id="valuation">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>估值分析</h2></div>
+    <p>鉴于公司当前净现金已超过市值，传统P/E估值方法对核心业务价值的刻画存在局限。我们采用"净现金+核心业务分部估值"的加总法（Sum-of-the-Parts），并以概率加权情景法进行交叉验证。</p>
+    <table>
+      <thead><tr><th>估值指标</th><th>数值（估算）</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>估算总市值</td><td>≈US$23.3亿</td><td>按约1.17亿股ADS × US$19.94估算</td></tr>
+        <tr><td>净现金及投资</td><td>≈US$27.8亿</td><td>RMB200.4亿元（2026Q1末）÷约7.2汇率</td></tr>
+        <tr><td>隐含企业价值（EV）</td><td>≈-US$4.5亿</td><td>市值减净现金，为负值</td></tr>
+        <tr><td>Non-GAAP P/E（FY2025）</td><td>约10.4x</td><td>基于FY2025调整后净利润RMB16.07亿元估算</td></tr>
+        <tr><td>GAAP P/E（FY2025）</td><td>约12.1x</td><td>基于FY2025归母净利润RMB14.43亿元估算</td></tr>
+      </tbody>
+    </table>
+
+    <h3>多情景概率加权估值</h3>
+    <div class="scenario-grid">
+      <div class="scenario pess">
+        <div class="stitle">悲观情景</div>
+        <div class="prob">概率权重 25%</div>
+        <div class="starget">US$14-16</div>
+        <p>传统业务下滑速度未见收敛，2026年全年录得经营亏损，市场进一步下修对转型成功概率的预期，即使净现金托底，流动性折价与治理担忧（VIE/中概股风险）扩大。</p>
+      </div>
+      <div class="scenario base">
+        <div class="stitle">基准情景</div>
+        <div class="prob">概率权重 50%</div>
+        <div class="starget">US$18-23</div>
+        <p>传统业务降幅逐季收窄，NEV及交易类业务维持20%-30%增速，全年维持Non-GAAP盈利但同比继续下滑，股东回报政策不变，估值围绕净现金附近波动，与当前价格区间基本吻合。</p>
+      </div>
+      <div class="scenario opt">
+        <div class="stitle">乐观情景</div>
+        <div class="prob">概率权重 25%</div>
+        <div class="starget">US$26-30</div>
+        <p>车事惠商城与海尔渠道协同效应超预期释放，NEV相关收入占比显著提升并对冲传统业务下滑，2026下半年恢复营收正增长，市场重新给予核心业务正向EV定价。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">概率加权目标价中枢约US$19-22，与当前价格US$19.94基本收敛，反映市场定价已较充分计入短期基本面压力，同时也尚未给予转型成功的乐观溢价——这正是"深度价值"型机会的典型特征：下行有净现金托底，上行有转型期权。</p>
+
+    <h3>营收与股东回报趋势</h3>
+    <div class="chart-box"><canvas id="valChart" height="90"></canvas></div>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2>风险提示</h2></div>
+    <div class="risk-matrix">
+      <div class="risk-item high">
+        <div class="rt"><b>核心业务持续恶化风险</b><span class="rlevel">高</span></div>
+        <p>2026Q1已出现营收同比下滑27.9%及经营层面亏损，若传统媒体与线索生成业务下滑速度未能如预期收敛，且NEV/交易类新业务未能及时形成有效对冲，公司盈利能力可能进一步恶化，侵蚀净现金安全边际。</p>
+      </div>
+      <div class="risk-item high">
+        <div class="rt"><b>中概股结构性风险（VIE/退市/资金出境）</b><span class="rlevel">高</span></div>
+        <p>公司通过VIE架构运营约10.3%的收入相关业务，存在协议控制在中国法律下的执行力不确定性；作为在美上市中概股，长期需关注美国《外国公司问责法》（HFCAA）审计底稿监管政策及潜在退市风险；此外，公司账上的巨额人民币现金能否顺畅、及时地用于境外分红与回购，也受中国外汇管制政策影响，存在资金出境节奏的不确定性。</p>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>控股股东变更后的战略与关联交易风险</b><span class="rlevel">中</span></div>
+        <p>海尔集团CARTECH自2025年8月成为控股股东并全面更换管理层，公司未来战略是否会进一步向海尔产业生态倾斜、是否会产生更多关联交易安排，需持续跟踪；控股股东持股约43%叠加公众流通盘约52%的结构，中小股东话语权相对有限。</p>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>行业竞争与AI替代风险</b><span class="rlevel">中</span></div>
+        <p>短视频/直播电商平台（如懂车帝）持续分流传统图文媒体广告预算；AI原生购车助手/Agent对传统信息检索型商业模式存在潜在颠覆风险，管理层虽已布局"仓颉大模型"等AI能力，但商业化路径与竞争护城河尚待验证。</p>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>股东回报可持续性风险</b><span class="rlevel">中</span></div>
+        <p>若核心业务持续产生经营性现金流出，当前高强度的分红与回购节奏将逐步消耗现有现金储备而非依赖当期利润，长期不可持续；需关注后续季度经营现金流是否能重回正值区间。</p>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>汇率与跨境估值折算风险</b><span class="rlevel">低-中</span></div>
+        <p>公司主要资产、收入及现金以人民币计价，而股票以美元计价交易，人民币兑美元汇率波动将直接影响以美元衡量的净现金价值与分红实际到手金额，本报告相关美元估算均按约7.2的近似汇率折算，实际请以交易日即期汇率为准。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rating">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">08</span><h2>投资建议与交易策略</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b style="color:var(--ink);">评级：增持（深度价值）。</b>我们认为汽车之家当前的风险收益比具备吸引力，核心逻辑并非基本面反转的短期确定性，而是"净现金超过市值+高强度股东回报承诺+转型期权"三者叠加形成的非对称结构：下行风险因巨额净现金托底而相对有限，上行空间则依赖NEV/交易类新业务能否在传统业务加速探底前完成有效接力。这是一笔适合具备中概股风险承受能力、以绝对收益/股息策略为主导的价值型投资者参与的交易，而非成长股逻辑下的配置标的。</p>
+        <div class="callout">
+          <b>关注信号：</b>（1）2026年7月24/31日中期股息实际派发情况及后续股息政策指引；（2）2026年二季度经营利润能否止亏企稳；（3）NEV相关收入及车事惠商城GMV增速能否维持在30%以上；（4）新一轮2亿美元回购计划的执行进度；（5）海尔控股后关联交易及战略协同的具体落地情况。
+        </div>
+        <p>对于计划配置的投资者，可考虑在基准情景估值区间下沿（US$18附近）分批建仓，并将悲观情景US$14-16视为止损参考区间；乐观情景US$26-30可作为阶段性获利了结观察位。鉴于股东回报是本篇报告的核心逻辑支柱，建议采用"持有吃息+逢低加仓"策略，而非短线交易博弈基本面拐点时点。</p>
+      </div>
+      <div class="card">
+        <h4>交易要点摘要</h4>
+        <ul>
+          <li>基准目标价区间：<b>US$18-23</b></li>
+          <li>止损参考位：<b>US$14-16</b>（悲观情景下沿）</li>
+          <li>止盈观察位：<b>US$26-30</b>（乐观情景）</li>
+          <li>建议仓位：<b>标准配置仓位</b>，适合价值/股息策略账户</li>
+          <li>建议持有周期：<b>12个月以上</b>，需跨越2026年下半年多个季度验证转型进展</li>
+          <li>近期催化剂：<b>2026年7月24/31日中期股息派发</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>方法论与数据说明</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">本报告所引用的股价数据（2026年7月8日收盘价US$19.94）由用户提供作为报告基准价格，市值、净现金占比、股息率及估值倍数等均为基于该价格及公司最新公开披露财务数据（截至2026年一季度）的估算结果，实际股本数、汇率及市场价格请以报告当日交易所官方数据及公司最新20-F/6-K文件为准。所有财务数据均引自公司通过美国SEC及港交所披露易发布的公开业绩公告及业绩电话会议纪要。</p>
+      </div>
+      <div>
+        <h5>主要数据来源</h5>
+        <ul class="src-list">
+          <li>公司2025年第四季度及全年业绩公告（PRNewswire，2026年3月5日）</li>
+          <li>公司2026年第一季度业绩公告及电话会议纪要（2026年5月28日）</li>
+          <li>公司2025年第三季度业绩公告（PRNewswire，2025年11月6日）</li>
+          <li>公司控制权变更公告（2025年2月/8月）</li>
+          <li>QuestMobile移动DAU数据、公司公开披露引用</li>
+        </ul>
+      </div>
+      <div>
+        <h5>报告信息</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">蜗牛鸟投资（Snail-Bird Investment）<br>科技消费行业研究组<br>报告日期：2026年7月8日<br>深度覆盖 · 评级：增持（深度价值）</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      本报告由蜗牛鸟投资（Snail-Bird Investment）研究团队独立撰写，仅供参考，不构成任何证券买卖要约或投资建议。报告中的观点、评级及目标价基于报告撰写时可获得的公开信息及分析师的专业判断，可能随市场环境变化而调整，蜗牛鸟投资不承诺更新本报告的内容。汽车之家作为在美国上市的中国公司，其VIE架构、跨境资金流动及中美监管政策存在固有的不确定性，历史股息与回购政策亦不构成对未来的保证。投资者应充分了解相关风险，并根据自身风险承受能力及投资目标独立判断，据此投资操作风险自负。本报告不构成对任何特定投资者的个性化投资建议，亦不对因使用本报告内容而产生的任何直接或间接损失承担责任。
+    </div>
+  </div>
+</footer>
+
+<script>
+const revCtx = document.getElementById('revChart').getContext('2d');
+new Chart(revCtx, {
+  type: 'bar',
+  data: {
+    labels: ['FY2024','FY2025','2025Q1','2026Q1'],
+    datasets: [{
+      label: '营收（人民币百万元）',
+      data: [7040, 6452, 1454, 1048],
+      backgroundColor: ['#c9ccd1','#c9ccd1','#8fb3d9','#1f4a8a'],
+      borderRadius: 2
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, title: { display: true, text: '营业收入趋势', font:{family:'IBM Plex Mono',size:12}, color:'#57585c' } },
+    scales: {
+      y: { grid: { color: '#e4e4e2' }, ticks: { color: '#57585c', font: { family: 'IBM Plex Mono', size: 10 } } },
+      x: { grid: { display: false }, ticks: { color: '#8a8b8f', font: { family: 'IBM Plex Mono', size: 10 } } }
+    }
+  }
+});
+
+const cashCtx = document.getElementById('cashChart').getContext('2d');
+new Chart(cashCtx, {
+  type: 'line',
+  data: {
+    labels: ['2025Q3末','2025Q4末（FY25末）','2026Q1末'],
+    datasets: [{
+      label: '现金及投资（人民币亿元）',
+      data: [218.9, 213.6, 200.4],
+      borderColor: '#2e6b47',
+      backgroundColor: 'rgba(46,107,71,0.08)',
+      borderWidth: 2,
+      pointRadius: 3,
+      pointBackgroundColor: '#2e6b47',
+      fill: true,
+      tension: 0.2
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, title: { display: true, text: '现金及投资余额趋势（受分红/回购影响）', font:{family:'IBM Plex Mono',size:12}, color:'#57585c' } },
+    scales: {
+      y: { grid: { color: '#e4e4e2' }, ticks: { color: '#57585c', font: { family: 'IBM Plex Mono', size: 10 } } },
+      x: { grid: { display: false }, ticks: { color: '#8a8b8f', font: { family: 'IBM Plex Mono', size: 10 } } }
+    }
+  }
+});
+
+const valCtx = document.getElementById('valChart').getContext('2d');
+new Chart(valCtx, {
+  type: 'bar',
+  data: {
+    labels: ['估算总市值', '净现金及投资', 'FY2025股息总额', '2026回购计划上限'],
+    datasets: [{
+      label: '金额（百万美元）',
+      data: [2330, 2780, 208, 200],
+      backgroundColor: ['#1f4a8a','#2e6b47','#9c6a13','#9c6a13'],
+      borderRadius: 2
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: { legend: { display: false }, title: { display: true, text: '市值 vs 净现金 vs 股东回报规模对比（估算，单位：百万美元）', font:{family:'IBM Plex Mono',size:12}, color:'#57585c' } },
+    scales: {
+      x: { grid: { color: '#e4e4e2' }, ticks: { color: '#57585c', font: { family: 'IBM Plex Mono', size: 10 } } },
+      y: { grid: { display: false }, ticks: { color: '#8a8b8f', font: { family: 'IBM Plex Mono', size: 10 } } }
+    }
+  }
+});
+</script>
+
+</body>
+</html>

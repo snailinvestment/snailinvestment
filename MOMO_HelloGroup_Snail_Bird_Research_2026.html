@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>挚文集团（MOMO）深度研究报告 | 蜗牛鸟投资</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#f4f4f2;
+  --bg-panel:#ffffff;
+  --bg-alt:#ececea;
+  --ink:#1c1c1c;
+  --ink-soft:#57585c;
+  --ink-faint:#8a8b8f;
+  --line:#dddddb;
+  --accent:#6a3d9a;
+  --accent-soft:#8659b3;
+  --green:#2e6b47;
+  --amber:#9c6a13;
+  --red:#8a1f1f;
+  --mono:'IBM Plex Mono','Courier New',monospace;
+  --sans:'IBM Plex Sans','Noto Sans SC',sans-serif;
+  --serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--accent);}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(244,244,242,0.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.5px;}
+.brand .bird{font-size:18px;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--ink-faint);border:1px solid var(--line);padding:3px 8px;border-radius:3px;}
+
+header.hero{padding:64px 0 40px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#f8f8f6 0%,var(--bg) 100%);}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:18px;}
+h1.title{font-family:var(--serif);font-size:38px;font-weight:700;margin:0 0 10px;line-height:1.35;color:var(--ink);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:780px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:34px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:21px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+.rating-badge{display:inline-block;padding:3px 10px;border-radius:3px;font-size:13px;font-weight:700;font-family:var(--mono);background:#f1eaf7;color:var(--accent);border:1px solid #dcc9ec;}
+
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:700;}
+h2{font-family:var(--serif);font-size:26px;margin:0;color:var(--ink);}
+h3{font-family:var(--sans);font-size:17px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--accent);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--accent);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);}
+
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:14px;color:var(--ink);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:var(--bg-alt);font-family:var(--mono);font-size:12px;color:var(--ink-soft);font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:#f9f8f6;}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#eef3ee;color:var(--green);}
+.tag.miss{background:#f6ece9;color:var(--red);}
+.tag.line{background:#f2eee0;color:var(--amber);}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:25px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--ink);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--amber);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#f6ece9;color:var(--red);}
+.risk-item.mid .rlevel{background:#f2eee0;color:var(--amber);}
+.risk-item.low .rlevel{background:#eef3ee;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+.ladder{width:100%;border-collapse:collapse;font-size:13px;}
+.ladder td{padding:8px 12px;border-bottom:1px solid var(--line);}
+.ladder tr.current td{background:#f1eaf7;font-weight:700;}
+
+.ownership-bar{display:flex;height:34px;border-radius:3px;overflow:hidden;margin:14px 0;border:1px solid var(--line);}
+.ob-seg{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:#fff;}
+
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--ink-soft);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  h1.title{font-size:26px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="bird">🐦</span> 蜗牛鸟投资 · SNAIL-BIRD RESEARCH</div>
+    <div class="navlinks">
+      <span>科技消费 / 社交娱乐平台</span>
+      <span class="navtag">NASDAQ: MOMO</span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">美股 · 中概社交娱乐平台 · 深度覆盖</div>
+    <h1 class="title">挚文集团 Hello Group Inc.<br>陌陌的"现金牛"与探探的困局：出海故事能否接棒？</h1>
+    <p class="subtitle">报告日期：2026年7月8日｜覆盖类型：深度覆盖｜分析框架：蜗牛鸟「商业模式 · 行业供需 · 财务质量 · 股东回报」四维评估模型</p>
+    <div class="meta-row">
+      <span>股票代码：<b>NASDAQ: MOMO</b></span>
+      <span>所属行业：<b>互联网社交娱乐 · 陌生人社交与直播</b></span>
+      <span>核心资产：<b>陌陌（Momo）· 探探（Tantan）· 海外多品牌矩阵</b></span>
+      <span>连续分红年限：<b>8年</b></span>
+      <span>分析师：<b>蜗牛鸟投资 科技消费组</b></span>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="label">最新收盘价</div>
+        <div class="value">US$6.03</div>
+        <div class="sub">2026-07-08</div>
+      </div>
+      <div class="kpi">
+        <div class="label">估算总市值</div>
+        <div class="value">≈US$8.7亿</div>
+        <div class="sub">较Yahoo Finance 7月2日数据推算</div>
+      </div>
+      <div class="kpi">
+        <div class="label">净现金（估算）</div>
+        <div class="value pos">≈US$12.4亿</div>
+        <div class="sub">现金及投资RMB85.6亿（2026Q1末）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">FY2025营收增速</div>
+        <div class="value neg">-1.9%</div>
+        <div class="sub">RMB103.67亿元</div>
+      </div>
+      <div class="kpi">
+        <div class="label">FY2025海外收入增速</div>
+        <div class="value pos">+70.8%</div>
+        <div class="sub">RMB20.0亿元，占比升至19%</div>
+      </div>
+      <div class="kpi">
+        <div class="label">蜗牛鸟评级</div>
+        <div class="value"><span class="rating-badge">增持 · 深度价值</span></div>
+        <div class="sub">净现金覆盖市值，出海期权尚待验证</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>投资摘要与核心观点</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>挚文集团（Hello Group Inc.，前身为陌陌科技）是中国领先的陌生人社交与直播娱乐平台运营商，旗下核心资产包括国内现金牛业务陌陌（Momo）、陌生人社交应用探探（Tantan），以及近年来快速扩张的海外多品牌矩阵（覆盖MENA中东北非地区的音视频社交与约会产品）。公司FY2025全年营收人民币103.67亿元，同比微降1.9%，其中境内收入人民币83.7亿元（同比-11%），境外收入人民币20.0亿元（同比+70.8%，占比由2024年的11%提升至19%）。</p>
+        <p>2026年第一季度，公司延续了"境内承压、境外高增"的结构性分化：总营收人民币23.86亿元，同比下降5.3%；境内收入人民币17.89亿元，同比大幅下降15%，主要受税收监管趋严对陌陌直播打赏经纪人体系的冲击、以及支付宝渠道政策变化对探探会员续费的短期扰动所致；境外收入人民币5.97亿元，同比增长44%，占比进一步提升至25%，但环比因土耳其新规导致行业性产品下架、斋月季节性及中东地区局势因素出现小幅回落。管理层维持2026年海外收入达到人民币30亿元里程碑的目标，并预计集团整体营收全年持平或略降。</p>
+        <p>公司自2018年起连续8年派发现金分红，2025年度董事会批准每份ADS 0.28美元的特别股息（约占2025年调整后净利润的30%），并持续推进大规模股票回购——截至2026年6月2日，累计回购约6,370万份ADS，耗资约3.995亿美元，回购计划剩余额度约8,660万美元。</p>
+        <div class="callout"><b>核心观点：</b>与我们此前覆盖的多数中概互联网标的类似，挚文集团当前呈现出"净现金逼近甚至超过市值"的深度价值特征——截至2026年一季度末，公司持有现金及投资合计人民币85.6亿元（约合12.4亿美元），显著超过其约8.7亿美元的估算市值，企业价值（EV）为负。核心矛盾在于：陌陌国内现金牛业务受税收监管与用户代际更替（Z世代对传统直播打赏模式粘性下降）的结构性压力，探探用户基数持续萎缩，而海外MENA业务虽增速亮眼但体量尚小（占比仅19%-25%）且盈利能力仍在爬坡。我们给予"增持·深度价值"评级，逻辑与此前覆盖的汽车之家（ATHM）高度相似：下行有净现金托底、股东回报持续兑现，上行则依赖海外出海故事能否成长为第二增长曲线。</div>
+      </div>
+      <div class="card">
+        <h4>关键数据速览</h4>
+        <ul>
+          <li>FY2025总营收：<b>RMB103.67亿元</b>（-1.9% YoY）</li>
+          <li>FY2025境外收入占比：<b>19%</b>（2024年为11%）</li>
+          <li>FY2025归母净利润：<b>RMB8.04亿元</b>（-22.6% YoY）</li>
+          <li>2026Q1营收：<b>RMB23.86亿元</b>（-5.3% YoY）</li>
+          <li>2026Q1境外收入占比：<b>25%</b>（+44% YoY）</li>
+          <li>连续现金分红年限：<b>8年</b>（2025年度特别股息每ADS 0.28美元）</li>
+          <li>累计回购金额：<b>约3.995亿美元</b>（截至2026年6月2日）</li>
+          <li>现金及投资余额（2026Q1末）：<b>RMB85.6亿元</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="business-model">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>维度一：商业模式分析</h2></div>
+    <p>公司收入以增值服务（VAS，主要为直播打赏与会员订阅）为绝对主体，2026Q1增值服务收入占总营收比重达98.6%（RMB23.54亿元），其余为少量其他服务收入。核心资产可分为三大板块：</p>
+    <div class="grid-3">
+      <div class="card">
+        <h4>陌陌（Momo）——现金牛</h4>
+        <ul>
+          <li>公司管理层将陌陌定位为"运营15年的稳健现金牛"，2025年全年直播相关收入RMB70.9亿元，同比下降11%，2025Q4进一步同比下滑14%</li>
+          <li>下滑主因：2025年10月起中国对直播打赏经纪人/主播的税收监管趋严，显著抑制头部主播与经纪公司的创作动机</li>
+          <li>积极信号：付费用户数在2025年下半年止跌回升，Q4单季新增付费用户20万，付费用户结构正从头部大R向中长尾用户迁移</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>探探（Tantan）——持续承压</h4>
+        <ul>
+          <li>探探定位于亚洲领先陌生人约会体验，但2025年境内收入降至RMB6.13亿元（2024年RMB7.33亿元），用户基数持续下降是核心拖累</li>
+          <li>2026Q1进一步受支付宝渠道政策变化影响，会员续费率短期承压</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>海外多品牌矩阵——增长引擎</h4>
+        <ul>
+          <li>依托音视频社交与约会类新产品矩阵，聚焦中东北非（MENA）等新兴市场，2025年境外收入同比+70.8%至RMB20.0亿元，部分海外子品牌已接近盈亏平衡</li>
+          <li>增长驱动包括新产品发布及近期跨境并购整合，2026年目标境外收入达RMB30亿元</li>
+          <li>短期波动因素：土耳其监管趋严导致行业性产品下架、斋月季节性及中东地区地缘冲突，2026Q1境外收入环比小幅下降2%</li>
+        </ul>
+      </div>
+    </div>
+    <h3>商业模式核心逻辑</h3>
+    <p>公司本质上是一家"用境内直播打赏现金牛的存量现金流，补贴境外社交娱乐新品孵化"的资本配置型公司。这一模式的成功与否取决于两个核心变量：（1）陌陌现金牛的现金流衰减速度是否可控；（2）海外新业务能否在盈利前维持合理的获客成本与留存率，避免陷入"烧钱换增长不可持续"的陷阱。目前来看，海外业务的单位经济模型正在改善（毛利率结构性提升），但整体规模仍不足以对冲境内下滑。</p>
+  </div>
+</section>
+
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>维度二：行业供需分析</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>中国直播打赏与陌生人社交行业正经历监管趋严与用户代际更替的双重压力。2025年10月起实施的税收新规及更严格的执行力度，直接压缩了头部主播与经纪公司的分成动机，是陌陌收入下滑的核心行业性因素。与此同时，短视频与直播综合平台（抖音、快手）持续分流泛娱乐用户的时间与消费预算，传统陌生人社交产品面临增量用户见顶、存量用户价值挖掘难度加大的双重挑战。</p>
+        <p>海外市场方面，中东北非（MENA）地区智能手机与移动互联网渗透率仍在快速提升阶段，本地社交娱乐及约会类应用供给相对稀缺，为具备中国互联网公司成熟运营经验的出海企业提供了结构性窗口期。但该区域同时存在监管政策不确定性（如2026Q1土耳其对相关品类产品的行业性下架）、地缘政治风险（中东地区局势）及季节性消费波动（斋月）等特有挑战，中国出海企业的属地化合规与本地化运营能力将是决定长期成败的关键。</p>
+        <p>竞争格局层面，国内陌生人社交赛道已进入存量博弈阶段，探探面临来自多类新兴社交产品的分流；海外MENA赛道则处于跑马圈地阶段，公司凭借多品牌矩阵策略（而非单一产品押注）分散执行风险，是相对审慎的打法。</p>
+      </div>
+      <div class="card">
+        <h4>行业供需关键指标</h4>
+        <ul>
+          <li>陌陌直播收入FY2025：<b>RMB70.9亿元</b>（-11% YoY）</li>
+          <li>陌陌Q4付费用户：<b>390万</b>（环比+20万）</li>
+          <li>探探境内收入FY2025：<b>RMB6.13亿元</b>（-16.4% YoY）</li>
+          <li>境外收入占比变化：<b>2024年11% → 2025年19% → 2026Q1 25%</b></li>
+          <li>2026全年境外收入目标：<b>RMB30亿元</b></li>
+          <li>2026Q1境外收入环比：<b>-2%</b>（斋月+土耳其监管+中东局势扰动）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>行业层面核心矛盾：</b>境内直播打赏行业的税收监管收紧是结构性、非周期性的变化，意味着陌陌现金牛业务的历史高毛利模式可能难以完全恢复；探探所处的陌生人社交赛道竞争加剧，用户基数下滑趋势尚未看到明确拐点。海外MENA业务虽是公司当前最具吸引力的增长故事，但其市场规模、监管稳定性与竞争格局的成熟度均显著低于中国市场，业务的可持续性与利润率天花板仍有待更长时间验证。</div>
+  </div>
+</section>
+
+<section id="financials">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>维度三：财务质量分析</h2></div>
+    <h3>收入与利润趋势</h3>
+    <table>
+      <thead><tr><th>指标</th><th>FY2024</th><th>FY2025</th><th>同比</th><th>2025Q1</th><th>2026Q1</th><th>同比</th></tr></thead>
+      <tbody>
+        <tr><td>营业收入</td><td>约RMB105.7亿元</td><td>RMB103.67亿元</td><td><span class="tag miss">-1.9%</span></td><td>RMB25.21亿元</td><td>RMB23.86亿元</td><td><span class="tag miss">-5.3%</span></td></tr>
+        <tr><td>境内收入</td><td>约RMB94.0亿元</td><td>RMB83.7亿元</td><td><span class="tag miss">-11%</span></td><td>RMB21.05亿元</td><td>RMB17.89亿元</td><td><span class="tag miss">-15%</span></td></tr>
+        <tr><td>境外收入</td><td>RMB11.71亿元</td><td>RMB20.0亿元</td><td><span class="tag beat">+70.8%</span></td><td>RMB4.15亿元</td><td>RMB5.97亿元</td><td><span class="tag beat">+44%</span></td></tr>
+        <tr><td>Non-GAAP毛利率</td><td>—</td><td>—</td><td>—</td><td>37.9%</td><td>38.8%</td><td><span class="tag beat">+0.9pct</span></td></tr>
+        <tr><td>归母净利润（GAAP）</td><td>RMB10.40亿元</td><td>RMB8.04亿元</td><td><span class="tag miss">-22.6%</span></td><td>RMB3.59亿元</td><td>RMB2.92亿元</td><td><span class="tag miss">-18.7%</span></td></tr>
+        <tr><td>Non-GAAP调整后净利润</td><td>RMB12.33亿元</td><td>RMB9.94亿元</td><td><span class="tag miss">-19.4%</span></td><td>RMB4.04亿元</td><td>RMB3.29亿元</td><td><span class="tag miss">-18.6%</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：公司2025年第四季度及全年业绩公告（2026年3月18日）、2026年第一季度业绩公告（2026年6月）。FY2024部分细分数据为基于同比增速反推的估算值。</p>
+
+    <div class="two-charts">
+      <div class="chart-box"><canvas id="revChart" height="200"></canvas></div>
+      <div class="chart-box"><canvas id="cashChart" height="200"></canvas></div>
+    </div>
+
+    <h3>资产负债表与现金流</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>资产负债表亮点</h4>
+        <ul>
+          <li>现金、现金等价物、存款、投资及受限现金：FY2024末RMB147.3亿元 → FY2025末RMB86.8亿元 → 2026Q1末RMB85.6亿元</li>
+          <li>2025年现金余额大幅下降约41%，主要由银行贷款偿还、特别股息派发、并购投资及股票回购共同导致，而非经营性失血</li>
+          <li>2026Q1经营活动净现金流入RMB1.59亿元，延续正向经营现金流</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>盈利质量观察</h4>
+        <ul>
+          <li>Non-GAAP毛利率逆势提升（38.8% vs 37.9%），主因海外MENA产品下调收入分成比例以及更高毛利的海外新品收入占比提升，抵消了陌陌因税收扰动提高经纪人分成比例的负面影响</li>
+          <li>Non-GAAP研发费用同比下降11%至RMB1.65亿元，反映公司在收入承压期主动优化人力成本，体现较强的费用控制纪律</li>
+          <li>境内外利润率存在明显剪刀差：境外业务尚处投资培育期，规模效应释放需时间验证</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="shareholder-return">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>维度四：股东回报分析</h2></div>
+    <p>挚文集团是中概互联网公司中股东回报纪律最为鲜明的标的之一，管理层将"连续8年分红"视为公司治理与财务稳健性的重要标签，这也是本报告给予"增持"评级的关键支撑之一。</p>
+    <div class="grid-2">
+      <div>
+        <h3>股息政策</h3>
+        <p>公司2025年度董事会批准每份ADS 0.28美元的特别现金股息，总额约4,260万美元，约占2025年归属于公司的调整后净利润的30%，为公司连续第8年派发现金股息，已于2026年4月30日派发完毕。</p>
+        <h3>股票回购</h3>
+        <p>截至2026年3月18日，公司在当期回购计划下已累计回购约6,030万份ADS，耗资约3.789亿美元，剩余额度约1.072亿美元；截至2026年6月2日进一步扩大至累计回购约6,370万份ADS，耗资约3.995亿美元，剩余额度约8,660万美元。以当前市值水平衡量，历史累计回购规模已相当可观。</p>
+      </div>
+      <div class="card">
+        <h4>股东回报测算（估算）</h4>
+        <ul>
+          <li>2025年度特别股息：<b>约4,260万美元</b>（占调整后净利润约30%）</li>
+          <li>静态特别股息率（按当前价格估算）：<b>约4.6%</b></li>
+          <li>累计回购金额（多年度）：<b>约3.995亿美元</b></li>
+          <li>剩余回购额度：<b>约8,660万美元</b></li>
+          <li>净现金/估算市值比例：<b>约142%</b>（净现金已显著超过市值）</li>
+          <li>企业价值（EV）：<b>负值</b>（据公开数据估算约为-3.6亿美元区间）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout"><b>股东回报是本篇报告的核心多头逻辑之一：</b>与我们此前覆盖的汽车之家（ATHM）类似，挚文集团同样呈现"净现金超过市值、企业价值为负"的深度价值特征。不同的是，挚文集团的现金消耗速度相对更快（2025年现金余额下降约41%，主要用于分红、并购及回购），投资者需要更密切跟踪未来几个季度经营性现金流能否持续覆盖股东回报支出，避免"用净现金余粮支撑分红回购"的不可持续局面。</div>
+  </div>
+</section>
+
+<section id="valuation">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>估值分析</h2></div>
+    <p>与ATHM案例类似，我们采用"净现金+核心业务分部估值"的加总法（Sum-of-the-Parts）作为主要估值框架，并交叉验证传统P/E、P/S、P/B等相对估值指标。</p>
+    <table>
+      <thead><tr><th>估值指标</th><th>数值（估算）</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>估算总市值</td><td>≈US$8.7亿</td><td>基于市场公开数据及US$6.03股价推算</td></tr>
+        <tr><td>净现金及投资</td><td>≈US$12.4亿</td><td>RMB85.6亿元（2026Q1末）÷约6.9汇率</td></tr>
+        <tr><td>隐含企业价值（EV）</td><td>≈-US$3.6亿</td><td>市值减净现金，为负值</td></tr>
+        <tr><td>trailing P/E（TTM）</td><td>约8.9x</td><td>基于TTM归母净利润估算，处于历史中低区间</td></tr>
+        <tr><td>Price/Sales（TTM）</td><td>约0.65x</td><td>反映市场对营收持续下滑的谨慎定价</td></tr>
+        <tr><td>Price/Book（MRQ）</td><td>约0.55x</td><td>股价已跌破每股净资产，隐含较高安全边际</td></tr>
+      </tbody>
+    </table>
+
+    <h3>多情景概率加权估值</h3>
+    <div class="scenario-grid">
+      <div class="scenario pess">
+        <div class="stitle">悲观情景</div>
+        <div class="prob">概率权重 25%</div>
+        <div class="starget">US$4.5-5.0</div>
+        <p>陌陌直播税收监管冲击持续超预期，探探用户流失未见拐点，海外MENA业务因地缘政治或监管风险增速大幅放缓，2026年全年营收降幅扩大至两位数，股东回报政策被迫收缩。</p>
+      </div>
+      <div class="scenario base">
+        <div class="stitle">基准情景</div>
+        <div class="prob">概率权重 50%</div>
+        <div class="starget">US$5.5-7.0</div>
+        <p>陌陌收入降幅逐步收窄，探探维持低个位数下滑，境外收入维持30%-40%增速并实现全年RMB30亿元目标，公司维持现有股息与回购节奏，估值围绕净现金附近波动，与当前价格区间基本吻合。</p>
+      </div>
+      <div class="scenario opt">
+        <div class="stitle">乐观情景</div>
+        <div class="prob">概率权重 25%</div>
+        <div class="starget">US$8.0-9.5</div>
+        <p>陌陌付费用户企稳回升带动境内收入降幅显著收窄，境外多个子品牌陆续实现盈亏平衡并贡献增量利润，市场重新给予出海故事成长性溢价，企业价值由负转正。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">概率加权目标价中枢约US$6.0-6.5，与当前价格US$6.03高度收敛，反映市场定价已较充分计入境内业务的结构性下滑，同时对海外出海故事保持谨慎，尚未给予显著成长溢价。</p>
+
+    <h3>营收结构与股东回报趋势</h3>
+    <div class="chart-box"><canvas id="valChart" height="90"></canvas></div>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2>风险提示</h2></div>
+    <div class="risk-matrix">
+      <div class="risk-item high">
+        <div class="rt"><b>境内核心业务结构性下滑风险</b><span class="rlevel">高</span></div>
+        <p>陌陌直播打赏收入因税收监管趋严及用户代际更替，2025Q4同比降幅达14%，若监管进一步收紧或高价值用户持续流失，境内现金牛业务的现金创造能力可能持续弱化，削弱公司对外扩张与股东回报的资金基础。</p>
+      </div>
+      <div class="risk-item high">
+        <div class="rt"><b>海外扩张执行与地缘政治风险</b><span class="rlevel">高</span></div>
+        <p>海外MENA业务是公司当前估值重估的核心期权，但2026Q1已因土耳其监管新规、斋月季节性及中东地区局势出现环比下滑，反映该区域业务对属地政策与地缘环境高度敏感，未来能否持续实现高增长存在较大不确定性。</p>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>中概股结构性风险（审计监管/资金出境）</b><span class="rlevel">中</span></div>
+        <p>作为在美上市中概股，公司长期需关注美国审计监管政策及潜在合规要求变化；公司账上人民币现金能否顺畅用于境外分红与回购，也受中国外汇管制政策影响，2025年现金余额下降约41%已部分反映资金持续对外配置的节奏。</p>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>探探用户基数持续萎缩风险</b><span class="rlevel">中</span></div>
+        <p>探探境内收入连续多年下滑（2025年-16.4%），若用户基数流失趋势未能扭转，该业务线可能从"第二曲线"进一步边缘化为公司财务报表中的持续拖累项。</p>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>股东回报可持续性风险</b><span class="rlevel">中</span></div>
+        <p>2025年现金余额下降约41%，若境内经营性现金流持续弱化而境外业务尚未形成有效的自我造血能力，当前高强度的分红与回购节奏可能面临可持续性压力，需密切跟踪后续季度经营现金流表现。</p>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>汇率与跨境估值折算风险</b><span class="rlevel">低-中</span></div>
+        <p>公司主要资产、收入及现金以人民币计价，而股票以美元计价交易，人民币兑美元汇率波动将直接影响以美元衡量的净现金价值与分红实际到手金额，本报告相关美元估算均按约6.9的近似汇率折算，实际请以交易日即期汇率为准。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rating">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">08</span><h2>投资建议与交易策略</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b style="color:var(--ink);">评级：增持（深度价值）。</b>我们认为挚文集团当前的风险收益比具备吸引力，核心逻辑与我们此前覆盖的汽车之家（ATHM）高度相似：净现金已超过市值，企业价值为负，即使核心业务持续承压，公司仍具备充足的资本实力履行连续8年的分红与回购承诺。上行期权则来自海外MENA业务能否成长为真正意义上的第二增长曲线，目前该业务已展现出改善的单位经济模型（毛利率结构性提升），但规模与稳定性仍需时间验证。</p>
+        <div class="callout">
+          <b>关注信号：</b>（1）陌陌直播打赏收入降幅能否在2026年下半年逐步收窄；（2）境外收入能否达成全年RMB30亿元目标，及其对土耳其/中东地缘风险的敏感度是否下降；（3）探探用户基数是否出现企稳迹象；（4）后续季度经营性现金流能否持续覆盖股东回报支出；（5）新一轮回购计划（剩余约8,660万美元额度）的执行进度。
+        </div>
+        <p>对于计划配置的投资者，可考虑在基准情景估值区间下沿（US$5.5附近）分批建仓，并将悲观情景US$4.5-5.0视为止损参考区间；乐观情景US$8.0-9.5可作为阶段性获利了结观察位。鉴于股东回报是本篇报告的核心逻辑支柱之一，建议采用"持有吃息+逢低加仓"策略为主，同时密切跟踪海外业务的季度增长质量作为期权价值重估的验证信号。</p>
+      </div>
+      <div class="card">
+        <h4>交易要点摘要</h4>
+        <ul>
+          <li>基准目标价区间：<b>US$5.5-7.0</b></li>
+          <li>止损参考位：<b>US$4.5-5.0</b>（悲观情景下沿）</li>
+          <li>止盈观察位：<b>US$8.0-9.5</b>（乐观情景）</li>
+          <li>建议仓位：<b>标准配置仓位</b>，适合价值/股息策略账户</li>
+          <li>建议持有周期：<b>12个月以上</b>，需跨越多个季度验证境外业务成长质量</li>
+          <li>核心跟踪指标：<b>境外收入增速、陌陌付费用户数、经营性现金流</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>方法论与数据说明</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">本报告所引用的股价数据（2026年7月8日收盘价US$6.03）由用户提供作为报告基准价格，市值、净现金占比、股息率及估值倍数等均为基于该价格及公司最新公开披露财务数据（截至2026年一季度）、结合Yahoo Finance等公开行情终端于2026年7月上旬的市值/EV参考数据的估算结果，实际股本数、汇率及市场价格请以报告当日交易所官方数据及公司最新20-F/6-K文件为准。所有财务数据均引自公司通过美国SEC披露的公开业绩公告及业绩电话会议纪要。</p>
+      </div>
+      <div>
+        <h5>主要数据来源</h5>
+        <ul class="src-list">
+          <li>公司2025年第四季度及全年业绩公告及电话会议纪要（2026年3月18日）</li>
+          <li>公司2026年第一季度业绩公告及电话会议纪要（2026年6月）</li>
+          <li>Yahoo Finance公开行情与估值数据（2026年7月）</li>
+          <li>Quartr、StockTitan等第三方财经数据平台公开转载资料</li>
+        </ul>
+      </div>
+      <div>
+        <h5>报告信息</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">蜗牛鸟投资（Snail-Bird Investment）<br>科技消费行业研究组<br>报告日期：2026年7月8日<br>深度覆盖 · 评级：增持（深度价值）</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      本报告由蜗牛鸟投资（Snail-Bird Investment）研究团队独立撰写，仅供参考，不构成任何证券买卖要约或投资建议。报告中的观点、评级及目标价基于报告撰写时可获得的公开信息及分析师的专业判断，可能随市场环境变化而调整，蜗牛鸟投资不承诺更新本报告的内容。挚文集团作为在美国上市的中国公司，其跨境资金流动、中美监管政策及所处的直播娱乐行业监管环境均存在固有的不确定性，历史股息与回购政策亦不构成对未来的保证。投资者应充分了解相关风险，并根据自身风险承受能力及投资目标独立判断，据此投资操作风险自负。本报告不构成对任何特定投资者的个性化投资建议，亦不对因使用本报告内容而产生的任何直接或间接损失承担责任。
+    </div>
+  </div>
+</footer>
+
+<script>
+const revCtx = document.getElementById('revChart').getContext('2d');
+new Chart(revCtx, {
+  type: 'bar',
+  data: {
+    labels: ['FY2024','FY2025','2025Q1','2026Q1'],
+    datasets: [
+      {
+        label: '境内收入（人民币百万元）',
+        data: [9400, 8370, 2105, 1789],
+        backgroundColor: '#c9ccd1',
+        borderRadius: 2
+      },
+      {
+        label: '境外收入（人民币百万元）',
+        data: [1171, 2000, 415, 597],
+        backgroundColor: '#6a3d9a',
+        borderRadius: 2
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position:'bottom', labels:{color:'#57585c', font:{family:'IBM Plex Mono', size:10}} },
+      title: { display: true, text: '境内外收入结构变化', font:{family:'IBM Plex Mono',size:12}, color:'#57585c' }
+    },
+    scales: {
+      y: { stacked:true, grid: { color: '#e4e4e2' }, ticks: { color: '#57585c', font: { family: 'IBM Plex Mono', size: 10 } } },
+      x: { stacked:true, grid: { display: false }, ticks: { color: '#8a8b8f', font: { family: 'IBM Plex Mono', size: 10 } } }
+    }
+  }
+});
+
+const cashCtx = document.getElementById('cashChart').getContext('2d');
+new Chart(cashCtx, {
+  type: 'line',
+  data: {
+    labels: ['2024年末','2025年末','2026Q1末'],
+    datasets: [{
+      label: '现金及投资（人民币亿元）',
+      data: [147.3, 86.8, 85.6],
+      borderColor: '#2e6b47',
+      backgroundColor: 'rgba(46,107,71,0.08)',
+      borderWidth: 2,
+      pointRadius: 3,
+      pointBackgroundColor: '#2e6b47',
+      fill: true,
+      tension: 0.2
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, title: { display: true, text: '现金及投资余额趋势（受分红/回购/并购影响）', font:{family:'IBM Plex Mono',size:12}, color:'#57585c' } },
+    scales: {
+      y: { grid: { color: '#e4e4e2' }, ticks: { color: '#57585c', font: { family: 'IBM Plex Mono', size: 10 } } },
+      x: { grid: { display: false }, ticks: { color: '#8a8b8f', font: { family: 'IBM Plex Mono', size: 10 } } }
+    }
+  }
+});
+
+const valCtx = document.getElementById('valChart').getContext('2d');
+new Chart(valCtx, {
+  type: 'bar',
+  data: {
+    labels: ['估算总市值', '净现金及投资', '累计回购规模（多年）', '2025特别股息'],
+    datasets: [{
+      label: '金额（百万美元）',
+      data: [870, 1240, 400, 43],
+      backgroundColor: ['#6a3d9a','#2e6b47','#9c6a13','#9c6a13'],
+      borderRadius: 2
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: { legend: { display: false }, title: { display: true, text: '市值 vs 净现金 vs 股东回报规模对比（估算，单位：百万美元）', font:{family:'IBM Plex Mono',size:12}, color:'#57585c' } },
+    scales: {
+      x: { grid: { color: '#e4e4e2' }, ticks: { color: '#57585c', font: { family: 'IBM Plex Mono', size: 10 } } },
+      y: { grid: { display: false }, ticks: { color: '#8a8b8f', font: { family: 'IBM Plex Mono', size: 10 } } }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
