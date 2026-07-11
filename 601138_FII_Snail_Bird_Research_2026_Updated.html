@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工业富联（601138.SH）深度研究报告（2026H1业绩预增更新版）| 蜗牛鸟投资</title>
+<style>
+:root{
+  --bg:#f2f1ec;
+  --bg-panel:#ffffff;
+  --bg-alt:#eae8e0;
+  --ink:#12203c;
+  --ink-soft:#4b5468;
+  --ink-faint:#8891a0;
+  --line:#d9d6c9;
+  --navy:#0f2a52;
+  --navy-soft:#1e4a86;
+  --gold:#a8791a;
+  --gold-soft:#c99b3f;
+  --green:#1f6b45;
+  --red:#9c2b1f;
+  --mono:'IBM Plex Mono','Courier New',monospace;
+  --sans:'IBM Plex Sans','Noto Sans SC',sans-serif;
+  --serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--gold);}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(242,241,236,0.96);backdrop-filter:blur(6px);border-bottom:2px solid var(--navy);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.5px;color:var(--navy);}
+.brand .bird{font-size:18px;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--navy);border:1px solid var(--navy);padding:3px 8px;border-radius:3px;}
+
+header.hero{padding:64px 0 40px;border-bottom:2px solid var(--navy);background:linear-gradient(180deg,#f8f7f2 0%,var(--bg) 100%);}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:18px;font-weight:700;}
+h1.title{font-family:var(--serif);font-size:38px;font-weight:700;margin:0 0 10px;line-height:1.35;color:var(--navy);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:800px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--navy);border:1px solid var(--navy);margin-top:34px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:21px;font-weight:700;font-family:var(--mono);color:var(--navy);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+.rating-badge{display:inline-block;padding:3px 10px;border-radius:3px;font-size:13px;font-weight:700;font-family:var(--mono);background:#fbf3e3;color:var(--gold);border:1px solid var(--gold-soft);}
+
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--gold);font-weight:700;}
+h2{font-family:var(--serif);font-size:26px;margin:0;color:var(--navy);}
+h3{font-family:var(--sans);font-size:17px;margin:28px 0 12px;color:var(--navy);font-weight:700;border-left:3px solid var(--gold);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--navy);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);}
+.callout.gold{border-left-color:var(--gold);}
+
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:14px;color:var(--navy);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:var(--navy);font-family:var(--mono);font-size:12px;color:#fff;font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:#f9f8f2;}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#e9f3ec;color:var(--green);}
+.tag.miss{background:#f6eae8;color:var(--red);}
+.tag.line{background:#fbf3e3;color:var(--gold);}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--navy);border:1px solid var(--navy);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:25px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--navy);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--gold);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#f6eae8;color:var(--red);}
+.risk-item.mid .rlevel{background:#fbf3e3;color:var(--gold);}
+.risk-item.low .rlevel{background:#e9f3ec;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+.ownership-bar{display:flex;height:34px;border-radius:3px;overflow:hidden;margin:14px 0;border:1px solid var(--line);}
+.ob-seg{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:#fff;}
+
+.segment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.segment-card{background:var(--bg-panel);border:1px solid var(--line);padding:18px 20px;border-top:3px solid var(--navy);}
+.segment-card .sname{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.segment-card .sshare{font-family:var(--mono);font-size:24px;font-weight:700;color:var(--gold);margin-bottom:8px;}
+.segment-card p{font-size:12.5px;margin:0;}
+
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--navy);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .segment-grid{grid-template-columns:1fr;}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  h1.title{font-size:26px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="bird">🐦</span> 蜗牛鸟投资 · SNAIL-BIRD RESEARCH</div>
+    <div class="navlinks">
+      <span>科技硬件 / AI算力基础设施</span>
+      <span class="navtag">SSE: 601138</span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">A股 · 全球AI算力硬件龙头 · 深度覆盖（2026H1业绩预增更新版）</div>
+    <h1 class="title">富士康工业互联网股份有限公司（工业富联）<br>AI资本开支超级周期中的核心受益者：从代工到算力基础设施平台</h1>
+    <p class="subtitle">报告日期：2026年7月10日（基于2026年7月9日晚发布的半年度业绩预增公告更新）｜覆盖类型：深度覆盖｜分析框架：蜗牛鸟科技硬件「商业模式 · 行业供需 · 财务质量（资产负债/营收利润/自由现金流）· 股东回报 · 内部人活动」五维评估模型</p>
+    <div class="meta-row">
+      <span>股票代码：<b>SSE 601138</b></span>
+      <span>所属行业：<b>计算机、通信和其他电子设备制造业</b></span>
+      <span>实际控制人：<b>鸿海精密工业股份有限公司（郭台铭体系）</b></span>
+      <span>董事长兼总经理：<b>郑弘孟</b>（2026年7月7日换届连任）</span>
+      <span>分析师：<b>蜗牛鸟投资 科技硬件组</b></span>
+    </div>
+    <div class="callout gold" style="margin-top:24px;"><b>本次更新要点：</b>公司于2026年7月9日晚发布《2026年半年度业绩预增公告》（公告编号2026-033），预计2026年上半年归母净利润人民币234-244亿元，同比增长93%-101%，半年度盈利规模历史上首次突破人民币200亿元关口；其中第二季度单季归母净利润预计128-138亿元，同比增长86%-101%。本报告已基于该公告及2026年7月7日公司董事会换届公告进行全面更新，市场对该预告的反应值得关注：公告发布后次日（7月10日）公司股价不涨反跌，报收RMB68.29元（-1.78%），反映出市场对增速边际放缓（云服务商AI服务器营收增速从此前300%+降至230%+）已有一定预期消化，详见第一节及第九节分析。</div>
+
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="label">最新收盘价</div>
+        <div class="value">RMB68.29</div>
+        <div class="sub">2026-07-10（预增公告后次日）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">估算总市值</div>
+        <div class="value">≈RMB1.36万亿</div>
+        <div class="sub">公司公开披露口径（7月10日）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026H1预告归母净利润</div>
+        <div class="value pos">RMB234-244亿</div>
+        <div class="sub">同比+93%~+101%，历史上首破200亿</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026Q2预告归母净利润</div>
+        <div class="value pos">RMB128-138亿</div>
+        <div class="sub">同比+86%~+101%</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026H1云服务商AI服务器</div>
+        <div class="value pos">营收+230%+</div>
+        <div class="sub">较FY2025全年300%+增速边际放缓</div>
+      </div>
+      <div class="kpi">
+        <div class="label">蜗牛鸟评级</div>
+        <div class="value"><span class="rating-badge">增持 · 核心持仓</span></div>
+        <div class="sub">高成长延续，增速边际放缓需跟踪</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>投资摘要与核心观点</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>工业富联（601138.SH）是鸿海精密（富士康集团）旗下的核心A股上市平台，2018年登陆上交所，是全球领先的AI算力基础设施JDM（联合设计制造）龙头与高速网络设备制造商。公司业务已从传统的电子设备代工，全面转型为深度绑定英伟达等头部AI芯片厂商的算力硬件核心供应商，2025年公司云计算业务（含AI服务器、通用服务器、高速交换机等）营收占比已提升至66.75%，是驱动公司业绩的第一增长引擎。</p>
+        <p>2025年全年，公司实现营业收入人民币9,028.87亿元，同比增长48.22%；归母净利润人民币352.86亿元，同比增长51.99%；扣非归母净利润人民币341.88亿元，同比增长46.02%。2025年第四季度单季净利润同比增长56%-63%，延续加速态势。2026年第一季度业绩进一步超预期：营业收入人民币2,510.78亿元，同比增长56.52%；归母净利润人民币105.95亿元，同比增长102.55%，扣非归母净利润同比增长109.05%，加权平均净资产收益率同比提升2.70个百分点至6.18%。业绩高增的核心驱动力是云服务商GPU AI服务器出货量同比增长约3.8倍、AI ASIC服务器出货量同比增长约3.2倍，以及800G及以上高速交换机出货量同比增长1.6倍。</p>
+        <p>2026年5月中旬，市场进一步关注到公司在CPO（共封装光学）交换机领域取得实质性突破：全光CPO交换机机柜已提前出货给核心客户英伟达，出货预期由此前预估的2026年超1万台大幅上修至2026-2027年合计超5万台，公司预计2026年CPO业务贡献营收占比有望超过15%，被市场视为继AI服务器之后的"第二增长曲线"，消息公布当日公司股价涨停，创2025年11月以来新高，总市值一度突破人民币1.4万亿元。</p>
+        <p>2026年7月9日晚，公司发布《2026年半年度业绩预增公告》（公告编号2026-033），经财务部门初步核算，预计2026年上半年实现归母净利润人民币234-244亿元，同比增长93%-101%，较2025年同期增加113-123亿元，是公司半年度净利润历史上首次突破200亿元；对应扣非归母净利润227-237亿元，同比增长94%-103%。单季度看，第二季度预计归母净利润128-138亿元，同比增长86%-101%，扣非归母净利润124-134亿元，同比增长84%-99%，延续了2025年高基数之上再次近翻倍增长的态势。公司将此归因于云计算业务产品结构持续优化：2026年上半年，云服务商AI服务器营业收入同比增长超过230%，是主营业务的核心增长引擎；800G以上数据中心交换机出货量同比增长1.4倍；与大客户联合研发的下一代新品进展顺利，预计2026年下半年逐步实现量产。值得注意的是，230%的AI服务器营收增速较2025年全年300%+的增速已出现边际放缓，叠加公司同期（2026年7月7日）完成董事会换届、郑弘孟连任董事长并兼任总经理，市场对预告的反应总体谨慎——公告披露后次日（7月10日），公司股价不涨反跌，报收RMB68.29元（-1.78%），总市值约人民币1.36万亿元，反映出在此前已充分计入高增长预期的高估值水平下，边际增速放缓正成为短期股价的核心扰动变量。</p>
+        <div class="callout gold"><b>核心观点（更新）：</b>本次预增公告进一步验证了工业富联作为AI资本开支超级周期核心受益标的的基本面兑现能力——半年度净利润历史性突破200亿元、同比接近翻倍，公司同时具备英伟达高端AI服务器（GB200/GB300全系列代工份额超50%）、800G+高速交换机（全球市占75%+）与液冷散热三重技术壁垒的护城河逻辑不变。但我们同时提示两个需要密切跟踪的边际变化：（1）云服务商AI服务器营收增速从FY2025全年300%+回落至2026H1的230%+，虽仍处于极高景气区间，但增速斜率放缓的趋势本身可能持续压制估值扩张空间；（2）与大客户联合研发的下一代新品要到2026年下半年才逐步量产，意味着下半年业绩能否维持当前增速对新品放量节奏的依赖度进一步提高，存在阶段性青黄不接的执行风险。以2026年7月10日收盘价人民币68.29元计算，对应14家覆盖机构2026年一致预期净利润均值人民币610.45亿元（区间548.92-667.10亿元），静态测算P/E约22.3倍，机构目标价均值人民币79.19元（区间72.57-93.00元），较当前股价存在约16%的平均隐含上行空间，10家机构给予"买入"评级、2家"推荐"、1家"增持"、1家"跑赢行业"，机构整体仍偏乐观但已非普遍性狂热定价。我们维持"增持·核心持仓"评级，但将此次更新视为从"单边趋势加速"向"高位波动兑现"阶段过渡的信号，建议投资者更加重视逢低分批与下半年新品放量节奏的验证，而非线性外推此前的增速斜率。</div>
+      </div>
+      <div class="card">
+        <h4>关键数据速览（含本次更新）</h4>
+        <ul>
+          <li>2026H1预告归母净利润：<b>RMB234-244亿元</b>（+93%~+101%，历史首破200亿）</li>
+          <li>2026Q2预告归母净利润：<b>RMB128-138亿元</b>（+86%~+101%）</li>
+          <li>2026H1云服务商AI服务器营收增速：<b>超230%</b>（FY2025全年为超300%，边际放缓）</li>
+          <li>2026H1 800G+交换机出货量增速：<b>+1.4倍</b>（FY2025全年为+13倍，边际放缓）</li>
+          <li>下一代新品量产节点：<b>预计2026年下半年逐步量产</b></li>
+          <li>14家机构2026年净利润一致预期：<b>均值RMB610.45亿元</b>（区间548.92-667.10亿）</li>
+          <li>14家机构2026年目标价：<b>均值RMB79.19元</b>（区间72.57-93.00元）</li>
+          <li>2026年7月7日董事会换届：<b>郑弘孟连任董事长兼总经理</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="governance">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>股权结构、管理层与内部人活动</h2></div>
+    <h3>股权结构</h3>
+    <p>根据公开信息整理，公司实际控制人鸿海精密工业股份有限公司（Hon Hai Precision Industry Co., Ltd.，即富士康集团，郭台铭体系）通过多层股权架构合计持有公司股份比例约<b>84.8%</b>，是A股市场罕见的"超高比例控股+超低流通盘"结构——市场上真正可自由流通的股本占比仅约10%出头。这一结构性特征意味着公司股价对边际资金流入流出高度敏感，成交额虽然常年位居A股前列，但相对于总市值而言实际换手的流通筹码规模有限，是理解公司股价波动性的关键背景。</p>
+    <div class="ownership-bar">
+      <div class="ob-seg" style="width:84.8%;background:var(--navy);">鸿海精密（富士康集团）体系 约84.8%</div>
+      <div class="ob-seg" style="width:15.2%;background:#9a9a97;">公众流通股 约15.2%</div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：东方财富网财富号公开整理文章（2025年12月）及多家券商研究报告交叉引用。</p>
+
+    <h3>管理层（2026年7月7日董事会换届更新）</h3>
+    <p>2026年7月7日，公司同步召开临时股东会与董事会会议，完成第四届董事会换届选举及高管团队聘任工作。新一届董事会成员由7人增至9人，其中女性董事占比提升至44%（4人）。郑弘孟先生全票当选，<b>连任董事长并继续兼任总经理</b>，为此前"轮值CEO"表述的更新与确认。</p>
+    <div class="grid-3">
+      <div class="card">
+        <h4>董事长兼总经理</h4>
+        <ul>
+          <li><b>郑弘孟</b>先生：2026年7月7日董事会换届全票连任董事长，并继续兼任总经理，深耕精密制造行业逾30年，此前在内部年会上表示"2025年是公司实现重大转型、迈入跨越式成长的关键一年"</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>新一届董事会与高管团队</h4>
+        <ul>
+          <li>非独立董事：郑弘孟、黄德才、杨秋瑾、许兴仁、丁肇邦；独立董事：李昕、李丹、廖翠萍；职工代表董事：林奂汝</li>
+          <li>副总经理：张瑞雄、白家南、吴振廷；财务总监：沈道邦（续任）；董事会秘书：<b>刘宗长</b>（续任，此前担任研发相关职务，现明确任董事会秘书）；证券事务代表：揭晓小（续任）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>内部人活动观察</h4>
+        <ul>
+          <li>据公开市场信息整理，公司大股东鸿海系持股结构保持稳定，<b>未见大额股权质押</b>，也未见控股股东或核心高管的大规模减持公告</li>
+          <li>本次董事会换届发生在半年度业绩预增公告披露前2天（7月7日换届，7月9日晚披露预增公告），属于公司治理常规换届安排，未见与业绩预告存在关联性异常</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：公司2026年7月7日临时股东会及董事会决议公告（新华社/搜狐财经转载）、公司2026年半年度业绩预增公告（公告编号2026-033，2026年7月9日）。</p>
+    <div class="callout"><b>内部人活动核心解读：</b>与部分A股半导体、AI概念股近期出现的"国家队/大股东密集套现"现象不同，工业富联的控股股东鸿海精密作为产业资本而非财务投资者，其持股稳定性本身即是一种积极信号——反映母公司对公司AI算力业务长期战略价值的认可，而非阶段性套利心态。但投资者也应理解，极低的流通盘比例意味着公司股价对增量资金及市场情绪的敏感度显著高于流通盘正常的同类公司，需相应控制仓位波动容忍度。</div>
+  </div>
+</section>
+
+<section id="business-model">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>商业模式与业务板块拆分</h2></div>
+    <p>公司主营业务已从传统消费电子精密制造，全面升级为"云计算（算力硬件）+通信网络设备+工业互联网"三大板块，2025年全年总营收人民币9,028.87亿元的业务构成如下：</p>
+    <div class="segment-grid">
+      <div class="segment-card">
+        <div class="sname">云计算业务（第一增长引擎）</div>
+        <div class="sshare">66.75%</div>
+        <p>营收RMB6,026.79亿元，同比+88.70%，毛利率5.73%。核心产品为英伟达GB200/GB300/HGX全系列AI服务器、通用X86服务器、GPU整机模组、液冷机柜、高密度存储整机。AI服务器营收同比增长超300%，占云计算板块比重超60%。</p>
+      </div>
+      <div class="segment-card">
+        <div class="sname">通信及移动网络设备</div>
+        <div class="sshare">~33%</div>
+        <p>产品包括800G/1.6T高速以太网交换机、NVLink交换机、CPO共封装交换机、5G通信基站、高端路由器。800G交换机营收同比增长超13倍，全球市占率75%以上；精密机构件业务受益于AI智能终端换机需求上升。</p>
+      </div>
+      <div class="segment-card">
+        <div class="sname">工业互联网（高毛利培育业务）</div>
+        <div class="sshare">0.08%</div>
+        <p>营收RMB6.94亿元，毛利率高达45.79%，是三大板块中盈利能力最强但体量最小的业务。产品包括灯塔工厂整体数字化改造、工业软件、智能制造产线解决方案，对内落地9座灯塔工厂，对外赋能13座智能制造工厂，尚处放量初期，2026年新增5座对外改造订单，目标营收12亿元。</p>
+      </div>
+    </div>
+
+    <h3>核心竞争壁垒</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>技术与市场地位</h4>
+        <ul>
+          <li>AI服务器：全球第一大ODM代工厂，全球市占率42.3%，英伟达GB200/NVL72等高端AI机型代工份额超50%</li>
+          <li>高速交换机（800G+）：全球龙头，市占75%以上，英伟达CPO交换机独家合作制造方，1.6T交换机计划2026年批量落地</li>
+          <li>液冷整机：全球前三、国内第一，主导国内ODCC液冷行业标准制定，自研液冷散热专利超200项</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>订单模式优化（毛利率改善关键变量）</h4>
+        <ul>
+          <li>2026年第一季度，部分云服务商客户新增订单的原材料采购模式由"Buy and Sell"模式转为"Consign"（客供）模式，预计将进一步优化公司毛利率水平并降低营运资金占用</li>
+          <li>海外头部云厂商采用"预付+月结"结算方式，坏账率低于0.5%，客户回款质量较高</li>
+          <li>公司全球14国布局智造基地（国内华南/华东、墨西哥、越南、马来西亚），有助于分散地缘政治与关税风险，服务客户全球化产能需求</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>行业供需趋势分析</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>全球AI算力基础设施行业正处于由头部云服务商及AI芯片厂商资本开支驱动的超级景气周期。公司业绩的核心逻辑，本质上是全球超大规模数据中心（Hyperscaler）资本开支持续加码在硬件制造环节的直接映射：2025年公司云服务商GPU AI服务器营收同比增长超3倍，2025年第四季度单季同比增长超5.5倍；进入2026年，这一趋势未见放缓迹象，一季度AI GPU服务器出货量同比继续增长3.8倍。</p>
+        <p>行业供给端呈现出显著的集中化特征：全球AI服务器ODM代工环节高度集中于少数具备规模化交付能力与供应链整合深度的厂商，公司凭借与英伟达等核心芯片厂商的深度绑定关系及全球化产能布局，在这一格局中占据全球市占率42.3%的领先地位，形成了较高的进入壁垒。与此同时，行业需求结构正从单一GPU服务器向"GPU+ASIC"多元化算力架构演进——公司2026年第一季度AI ASIC服务器出货量同比增长3.2倍，反映出云厂商自研芯片（如亚马逊Trainium、谷歌TPU、Meta MTIA等）的规模化部署同样为代工环节带来增量需求，公司作为多元客户的共同供应商，能够穿越单一芯片架构路线的波动。</p>
+        <p>光通信技术路线切换是行业下一阶段的重要变量：随着AI数据中心网络互联对更低功耗、更低延迟的需求提升，CPO（共封装光学）技术正逐步替代传统可插拔光模块方案，成为下一代AI数据中心网络互联的关键技术方向。公司在CPO全光交换机领域已实现样机出货并提前向英伟达批量交付，出货预期大幅上修，是行业技术路线切换中率先兑现商业化的厂商之一。</p>
+      </div>
+      <div class="card">
+        <h4>行业关键指标速览</h4>
+        <ul>
+          <li>2025年云服务商AI服务器营收增速：<b>超3倍</b></li>
+          <li>2025Q4云服务商AI服务器营收增速：<b>超5.5倍</b>（同比）</li>
+          <li>2026Q1 AI GPU服务器出货量增速：<b>+3.8倍</b>（同比）</li>
+          <li>2026Q1 AI ASIC服务器出货量增速：<b>+3.2倍</b>（同比）</li>
+          <li>2025年800G以上交换机营收增速：<b>+13倍</b>（同比）</li>
+          <li>CPO交换机2026-2027年出货预期：<b>由超1万台上修至超5万台</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>行业层面核心风险提示：</b>公司业绩高度绑定全球头部云服务商及英伟达的资本开支节奏，这一行业级别的高景气度虽然当前处于加速兑现阶段，但本质上仍是强周期性的资本开支行为，一旦全球宏观经济、AI应用商业化落地进度或头部厂商自身资本纪律出现边际变化，行业需求增速存在快速回落的可能性，这是理解公司估值波动性的重要背景。</div>
+  </div>
+</section>
+
+<section id="financials">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>财务质量分析：资产负债、营收利润与自由现金流</h2></div>
+    <h3>营收与利润趋势</h3>
+    <table>
+      <thead><tr><th>指标</th><th>FY2024</th><th>FY2025</th><th>同比</th><th>2025Q3单季</th><th>2026Q1</th><th>同比</th></tr></thead>
+      <tbody>
+        <tr><td>营业收入</td><td>约RMB6,092亿元</td><td>RMB9,028.87亿元</td><td><span class="tag beat">+48.22%</span></td><td>RMB2,431.72亿元</td><td>RMB2,510.78亿元</td><td><span class="tag beat">+56.52%</span></td></tr>
+        <tr><td>归母净利润</td><td>RMB232.11亿元</td><td>RMB352.86亿元</td><td><span class="tag beat">+51.99%</span></td><td>RMB103.73亿元</td><td>RMB105.95亿元</td><td><span class="tag beat">+102.55%</span></td></tr>
+        <tr><td>扣非归母净利润</td><td>—</td><td>RMB341.88亿元</td><td><span class="tag beat">+46.02%</span></td><td>—</td><td>RMB102.50亿元</td><td><span class="tag beat">+109.05%</span></td></tr>
+        <tr><td>云计算业务营收占比</td><td>—</td><td>66.75%</td><td><span class="tag beat">+88.70%</span></td><td>—</td><td>—</td><td>翻倍增长</td></tr>
+        <tr><td>加权平均ROE</td><td>—</td><td>—</td><td>—</td><td>—</td><td>6.18%（单季）</td><td><span class="tag beat">+2.70pct</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：公司2025年年度报告（2026年3月10日披露）、2025年第三季度报告、2026年第一季度报告（2026年4月28日披露）、2025年度业绩预增公告（2026年1月28日）。FY2024营收及净利润为基于FY2025同比增速反推的估算值，请以公司2024年年度报告原始披露为准。</p>
+
+    <h3>2026年半年度业绩预增公告详情（2026年7月9日披露，公告编号2026-033）</h3>
+    <table>
+      <thead><tr><th>指标</th><th>2025H1实际</th><th>2026H1预告下限</th><th>2026H1预告上限</th><th>同比增幅区间</th></tr></thead>
+      <tbody>
+        <tr><td>归母净利润</td><td>RMB121.13亿元</td><td>RMB234.00亿元</td><td>RMB244.00亿元</td><td><span class="tag beat">+93.2% ~ +101.4%</span></td></tr>
+        <tr><td>扣非归母净利润</td><td>RMB116.68亿元</td><td>RMB227.00亿元</td><td>RMB237.00亿元</td><td><span class="tag beat">+94.6% ~ +103.2%</span></td></tr>
+        <tr><td>2026Q2单季归母净利润</td><td>2025Q2约RMB69.00亿元（估算）</td><td>RMB128.00亿元</td><td>RMB138.00亿元</td><td><span class="tag beat">+86% ~ +101%</span></td></tr>
+        <tr><td>2026Q2单季扣非归母净利润</td><td>2025Q2约RMB67.00亿元（估算）</td><td>RMB124.00亿元</td><td>RMB134.00亿元</td><td><span class="tag beat">+84% ~ +99%</span></td></tr>
+        <tr><td>2025H1利润总额（基准数据）</td><td colspan="3">RMB140.23亿元</td><td>—</td></tr>
+        <tr><td>2025H1基本每股收益（基准数据）</td><td colspan="3">RMB0.61元</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">2026Q2单季基准数据为基于2025H1累计数与已知2025年报及三季报数据反推的估算值。业绩预告核心驱动因素：2026年上半年云服务商AI服务器营业收入同比增长超230%（较FY2025全年300%+增速边际放缓），800G以上数据中心交换机出货量同比增长1.4倍（较FY2025全年13倍增速大幅放缓，主因高基数效应），与大客户联合研发的下一代新品预计2026年下半年逐步量产。数据来源：公司2026年半年度业绩预增公告（2026-033号），新浪财经、东方财富网、证券时报等多平台交叉转载确认。</p>
+
+    <div class="two-charts">
+      <div class="chart-box">
+<svg viewBox="0 0 460 300" width="100%" style="max-width:520px;display:block;margin:0 auto;" role="img" aria-label="bar chart">
+<text x="230" y="20" text-anchor="middle" font-size="12" font-family="monospace" fill="#12203c">营收与净利润趋势</text>
+<line x1="52" y1="242.0" x2="408" y2="242.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="245.0" text-anchor="end" font-size="10" fill="#4b5468">0</text>
+<line x1="52" y1="200.4" x2="408" y2="200.4" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="203.4" text-anchor="end" font-size="10" fill="#4b5468">2000</text>
+<line x1="52" y1="158.8" x2="408" y2="158.8" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="161.8" text-anchor="end" font-size="10" fill="#4b5468">4000</text>
+<line x1="52" y1="117.2" x2="408" y2="117.2" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="120.2" text-anchor="end" font-size="10" fill="#4b5468">6000</text>
+<line x1="52" y1="75.6" x2="408" y2="75.6" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="78.6" text-anchor="end" font-size="10" fill="#4b5468">8000</text>
+<line x1="52" y1="34.0" x2="408" y2="34.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="37.0" text-anchor="end" font-size="10" fill="#4b5468">10000</text>
+<text x="414" y="245.0" text-anchor="start" font-size="10" fill="#8891a0">0</text>
+<text x="414" y="203.4" text-anchor="start" font-size="10" fill="#8891a0">100</text>
+<text x="414" y="161.8" text-anchor="start" font-size="10" fill="#8891a0">200</text>
+<text x="414" y="120.2" text-anchor="start" font-size="10" fill="#8891a0">300</text>
+<text x="414" y="78.6" text-anchor="start" font-size="10" fill="#8891a0">400</text>
+<text x="414" y="37.0" text-anchor="start" font-size="10" fill="#8891a0">500</text>
+<rect x="68.9" y="115.3" width="27.6" height="126.7" fill="#c9c6b8" rx="2"/>
+<rect x="96.5" y="145.4" width="27.6" height="96.6" fill="#a8791a" rx="2"/>
+<text x="96.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">FY2024(估)</text>
+<rect x="157.9" y="54.2" width="27.6" height="187.8" fill="#c9c6b8" rx="2"/>
+<rect x="185.5" y="95.2" width="27.6" height="146.8" fill="#a8791a" rx="2"/>
+<text x="185.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">FY2025</text>
+<rect x="246.9" y="191.4" width="27.6" height="50.6" fill="#c9c6b8" rx="2"/>
+<rect x="274.5" y="198.8" width="27.6" height="43.2" fill="#a8791a" rx="2"/>
+<text x="274.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">2025Q3单季</text>
+<rect x="335.9" y="189.8" width="27.6" height="52.2" fill="#c9c6b8" rx="2"/>
+<rect x="363.5" y="197.9" width="27.6" height="44.1" fill="#a8791a" rx="2"/>
+<text x="363.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">2026Q1</text>
+<rect x="52" y="273" width="12" height="12" fill="#c9c6b8"/>
+<text x="68" y="283" font-size="10" fill="#4b5468">营业收入（人民币亿元）</text>
+<rect x="145.5" y="273" width="12" height="12" fill="#a8791a"/>
+<text x="161.5" y="283" font-size="10" fill="#4b5468">归母净利润（人民币亿元）</text>
+</svg>
+</div>
+      <div class="chart-box">
+<svg viewBox="0 0 420 300" width="100%" style="max-width:480px;display:block;margin:0 auto;" role="img" aria-label="doughnut chart">
+<text x="210" y="20" text-anchor="middle" font-size="12" font-family="monospace" fill="#12203c">FY2025营收结构</text>
+<path d="M 140.0 42.0 A 108 108 0 1 1 46.2 203.5 L 85.6 181.0 A 62.63999999999999 62.63999999999999 0 1 0 140.0 87.4 Z" fill="#0f2a52" stroke="#ffffff" stroke-width="2"/>
+<path d="M 46.2 203.5 A 108 108 0 0 1 139.5 42.0 L 139.7 87.4 A 62.63999999999999 62.63999999999999 0 0 0 85.6 181.0 Z" fill="#a8791a" stroke="#ffffff" stroke-width="2"/>
+<path d="M 139.5 42.0 A 108 108 0 0 1 140.0 42.0 L 140.0 87.4 A 62.63999999999999 62.63999999999999 0 0 0 139.7 87.4 Z" fill="#1f6b45" stroke="#ffffff" stroke-width="2"/>
+<rect x="270" y="61" width="12" height="12" fill="#0f2a52"/>
+<text x="286" y="71" font-size="10" fill="#4b5468">云计算业务（66.75%）</text>
+<rect x="270" y="83" width="12" height="12" fill="#a8791a"/>
+<text x="286" y="93" font-size="10" fill="#4b5468">通信及移动网络设备（约33%）</text>
+<rect x="270" y="105" width="12" height="12" fill="#1f6b45"/>
+<text x="286" y="115" font-size="10" fill="#4b5468">工业互联网（0.08%）</text>
+</svg>
+</div>
+    </div>
+
+    <h3>资产负债表与现金流质量</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>资产负债表观察</h4>
+        <ul>
+          <li>总资产：2024年末约RMB1,570.93亿元 → 2025年上半年末约RMB2,209.78亿元，随业务规模扩张同步增长（数据来源：公司半年度业绩情况公告，2025年8月11日披露）</li>
+          <li>存货：2025年上半年末约RMB1,229.49亿元 → 2026年第一季度末进一步升至约<b>RMB1,673.32亿元</b>，主因为匹配海量AI服务器订单提前备货核心芯片与元器件</li>
+          <li>应收账款：2026年第一季度末约<b>RMB1,025.01亿元</b>，随收入规模扩张同步上升，资金持续沉淀在库存与应收款项中，是需要跟踪的营运资金效率指标</li>
+          <li>公司资产周转效率总体较高，符合"轻资产、高turnover"的JDM代工业务模式特征，但存货和应收账款的绝对规模已随业务量级扩大而显著提升</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>现金流与自由现金流观察</h4>
+        <ul>
+          <li>2025年上半年经营活动现金净流入约RMB14.07亿元，同比（2024年上半年约RMB48.11亿元）有所下降，主要受营运资金投入增加影响</li>
+          <li>2026年第一季度经营活动现金净流入大幅提升至约<b>RMB250.24亿元</b>，公司将其归因于销售回款能力增强与业务质量改善</li>
+          <li>2025年上半年现金及现金等价物净增加额约RMB184.18亿元（2024年同期为净减少约RMB150.62亿元），现金流质量呈现边际显著改善趋势</li>
+          <li>随着"Buy and Sell"模式向"Consign"（客供）模式转变，公司未来对存货及营运资金的占用有望进一步下降，是自由现金流持续修复的结构性利好</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>财务质量核心提示：</b>由于公开检索渠道未能获取公司2025年全年经审计现金流量表的完整拆分数据（经营现金流、资本开支、自由现金流的全年口径），本报告仅呈现已公开披露的半年度及季度数据点作为趋势参考，存在一定的口径不连续性。建议投资者在跟踪公司自由现金流健康度时，以公司完整的2025年年度报告现金流量表及后续季度报告披露的累计数据为准，我们将在后续更新中补充完整年度自由现金流分析。</div>
+  </div>
+</section>
+
+<section id="valuation">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>估值分析</h2></div>
+    <p>鉴于公司当前处于净利润增速50%-100%区间的高成长阶段，我们采用相对估值法（P/E-G）作为主要估值框架，并交叉参考多家券商对2026-2028年的盈利预测区间。截至2026年5月的近半年内，累计共14家机构发布了工业富联的研究报告，覆盖评级中10家"买入"、2家"推荐"、1家"增持"、1家"跑赢行业"，整体偏乐观但已非普遍性狂热。</p>
+    <table>
+      <thead><tr><th>指标</th><th>2025A</th><th>2026E（一致预期区间）</th><th>2027E（一致预期区间）</th></tr></thead>
+      <tbody>
+        <tr><td>营业收入（人民币亿元）</td><td>9,028.87</td><td>约13,995-17,028</td><td>约17,800-19,173</td></tr>
+        <tr><td>归母净利润（人民币亿元，14家机构均值）</td><td>352.86</td><td>均值610.45（区间548.92-667.10）</td><td>约771.52-873.35</td></tr>
+        <tr><td>对应净利润增速</td><td>+51.99%</td><td>均值约+73%（区间约+56%-+89%）</td><td>约+12%-45%（区间较宽，源于不同券商假设差异）</td></tr>
+        <tr><td>14家机构2026年目标价（人民币元）</td><td>—</td><td>均值79.19（区间72.57-93.00）</td><td>—</td></tr>
+        <tr><td>估算P/E（按2026年7月10日市值RMB1.36万亿）</td><td>约38.5x</td><td>均值约22.3x（区间20.4-24.8x）</td><td>约15.6-17.6x</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：信达证券（2026年3月）、平安证券（2026年3月）、国联民生（2026年5月，"推荐"评级，2026年净利润预测RMB646.59亿元，未给出目标价）等公开研究报告的盈利预测汇总；14家机构一致预期均值数据引自新浪财经2026年7月10日报道对Choice/Wind等数据终端的整理转载。不同机构假设存在差异，本报告采用区间呈现以反映预测不确定性，不代表蜗牛鸟投资自身盈利预测。以7月10日收盘价RMB68.29元及机构目标价均值RMB79.19元测算，隐含平均上行空间约16%。</p>
+
+    <h3>多情景概率加权目标价（估算，非精确目标价）</h3>
+    <div class="scenario-grid">
+      <div class="scenario pess">
+        <div class="stitle">悲观情景</div>
+        <div class="prob">概率权重 25%</div>
+        <div class="starget">RMB48-55</div>
+        <p>全球AI资本开支增速超预期放缓，头部云厂商订单出现结构性调整或英伟达产品线切换导致阶段性交付真空期，公司云计算业务增速大幅回落至30%以下，叠加当前极低流通盘放大股价波动，估值向25倍以下2026E P/E回归。</p>
+      </div>
+      <div class="scenario base">
+        <div class="stitle">基准情景</div>
+        <div class="prob">概率权重 50%</div>
+        <div class="starget">RMB65-80</div>
+        <p>AI服务器及高速交换机需求维持高景气，CPO业务按管理层指引贡献2026年营收占比15%以上，公司2026年净利润增速落于一致预期区间中枢附近（约70%-80%），估值维持在20-25倍2026E P/E区间，与当前价格基本吻合。</p>
+      </div>
+      <div class="scenario opt">
+        <div class="stitle">乐观情景</div>
+        <div class="prob">概率权重 25%</div>
+        <div class="starget">RMB90-105</div>
+        <p>CPO交换机出货规模显著超预期上修（对标2026-2027年5万台指引的乐观情形），叠加"Consign"模式转换带动毛利率结构性抬升至7.5%以上，市场给予公司"算力硬件平台化"叙事更高估值溢价，2026E P/E扩张至28-30倍。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">概率加权目标价中枢约RMB68-78，与当前价格RMB69.53高度收敛，反映市场定价已较充分计入短中期AI算力景气度的乐观预期，短期进一步上行空间更多依赖CPO等新业务超预期兑现，而非单纯AI服务器主业的线性外推。</p>
+
+    <h3>营收与净利润增长趋势</h3>
+    <div class="chart-box">
+<svg viewBox="0 0 520 300" width="100%" style="max-width:560px;display:block;margin:0 auto;" role="img" aria-label="line chart">
+<text x="260" y="20" text-anchor="middle" font-size="12" font-family="monospace" fill="#12203c">净利润增长趋势（含2026H1业绩预增公告数据点及机构一致预期）</text>
+<line x1="52" y1="244.0" x2="504" y2="244.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="247.0" text-anchor="end" font-size="10" fill="#4b5468">161</text>
+<line x1="52" y1="202.0" x2="504" y2="202.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="205.0" text-anchor="end" font-size="10" fill="#4b5468">308</text>
+<line x1="52" y1="160.0" x2="504" y2="160.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="163.0" text-anchor="end" font-size="10" fill="#4b5468">454</text>
+<line x1="52" y1="118.0" x2="504" y2="118.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="121.0" text-anchor="end" font-size="10" fill="#4b5468">600</text>
+<line x1="52" y1="76.0" x2="504" y2="76.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="79.0" text-anchor="end" font-size="10" fill="#4b5468">747</text>
+<line x1="52" y1="34.0" x2="504" y2="34.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="37.0" text-anchor="end" font-size="10" fill="#4b5468">893</text>
+<text x="52.0" y="260.0" text-anchor="middle" font-size="9" fill="#8891a0">FY2024</text>
+<text x="142.4" y="260.0" text-anchor="middle" font-size="9" fill="#8891a0">FY2025</text>
+<text x="232.8" y="260.0" text-anchor="middle" font-size="9" fill="#8891a0">2026H1预告下限</text>
+<text x="323.2" y="260.0" text-anchor="middle" font-size="9" fill="#8891a0">2026H1预告上限</text>
+<text x="413.6" y="260.0" text-anchor="middle" font-size="9" fill="#8891a0">2026E全年均值</text>
+<text x="504.0" y="260.0" text-anchor="middle" font-size="9" fill="#8891a0">2027E均值</text>
+<polygon points="52,244.0 52.0,223.7 142.4,189.0 232.8,223.1 323.2,220.3 413.6,115.1 504.0,54.3 504,244.0" fill="rgba(15,42,82,0.08)" stroke="none"/>
+<polyline points="52.0,223.7 142.4,189.0 232.8,223.1 323.2,220.3 413.6,115.1 504.0,54.3" fill="none" stroke="#0f2a52" stroke-width="2"/>
+<circle cx="52.0" cy="223.7" r="3" fill="#0f2a52"/>
+<circle cx="142.4" cy="189.0" r="3" fill="#0f2a52"/>
+<circle cx="232.8" cy="223.1" r="3" fill="#0f2a52"/>
+<circle cx="323.2" cy="220.3" r="3" fill="#0f2a52"/>
+<circle cx="413.6" cy="115.1" r="3" fill="#0f2a52"/>
+<circle cx="504.0" cy="54.3" r="3" fill="#0f2a52"/>
+</svg>
+</div>
+  </div>
+</section>
+
+<section id="shareholder-return">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2>股东回报分析</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>公司2025年度利润分配预案为每10股派发现金红利人民币6.5元（含税），对应分红率约55%，延续了公司稳健的现金分红传统。以FY2025归母净利润RMB352.86亿元及55%分红率估算，2025年度合计现金分红规模约RMB194亿元，在A股大市值科技制造企业中处于较高水平。</p>
+        <p>需要指出的是，尽管分红率达到55%的相对较高水平，但由于公司当前估值处于高成长股定价区间（P/E约39倍），以每股RMB0.65的税前分红金额计算，静态股息率仅约<b>0.93%</b>，处于较低水平——这是典型的"高分红率、低股息率"组合，反映公司当前更多被市场作为成长股而非价值股定价，股东回报的主要来源预期仍是资本利得而非股息收益。</p>
+        <p>公司2026年6月9日召开年度股东会，审议2025年度董事会工作报告及2026年度日常关联交易预计等议案，公司治理运作总体规范。</p>
+      </div>
+      <div class="card">
+        <h4>股东回报测算（估算）</h4>
+        <ul>
+          <li>2025年度每10股分红：<b>RMB6.5元（含税）</b></li>
+          <li>分红率：<b>约55%</b></li>
+          <li>估算2025年度分红总额：<b>约RMB194亿元</b></li>
+          <li>静态股息率（按当前股价）：<b>约0.93%</b></li>
+          <li>股东回报主要来源：<b>资本利得（成长股定价）而非股息</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">08</span><h2>风险提示</h2></div>
+    <div class="risk-matrix">
+      <div class="risk-item high">
+        <div class="rt"><b>客户集中度风险</b><span class="rlevel">高</span></div>
+        <p>公司前五大客户营收占比超70%，业绩高度依赖英伟达及少数头部云服务商的资本开支节奏与订单分配，若核心客户订单出现分流（如转向其他ODM厂商）或自身资本开支计划调整，将直接冲击公司业绩。</p>
+      </div>
+      <div class="risk-item high">
+        <div class="rt"><b>低流通盘带来的股价波动风险</b><span class="rlevel">高</span></div>
+        <p>控股股东鸿海系持股约84.8%，实际流通盘占比仅约15%，导致公司股价对边际资金流动及市场情绪变化的敏感度显著高于流通盘正常的可比公司，历史上曾出现单日涨停及大幅波动，投资者需具备相应的波动承受能力。</p>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>ODM代工低毛利率结构性约束与竞争加剧</b><span class="rlevel">中</span></div>
+        <p>公司云计算业务毛利率仅5.73%（2025年），代工模式本身缺乏定价权，公司整体净利率长期维持在3.5%-4%区间，利润天花板相对清晰。同时，AI服务器代工赛道正涌入大量新玩家，广达、浪潮、立讯精密等厂商持续扩产，行业竞争加剧可能长期压制整机代工环节的毛利率水平，尽管"Consign"模式转换有望优化这一结构，但改善节奏与幅度仍存在不确定性。</p>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>AI资本开支周期性回落风险与增速边际放缓</b><span class="rlevel">中</span></div>
+        <p>全球AI算力基础设施投资本质上仍是强周期性资本开支行为，若AI应用商业化落地进度不及预期，导致头部云厂商资本开支纪律收紧，行业需求增速可能出现较快回落。值得关注的是，公司2026年上半年云服务商AI服务器营收增速（超230%）已较2025年全年（超300%）出现边际放缓，800G+交换机出货量增速（1.4倍）也较2025年全年（13倍）大幅放缓（部分为高基数效应），这一增速斜率变化趋势需要持续跟踪，是否会进一步演变为趋势性放缓仍待下半年新品量产节奏验证。</p>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>营运资金占用持续扩大风险</b><span class="rlevel">中</span></div>
+        <p>为匹配海量AI服务器订单，公司持续提前备货核心芯片与元器件，2026年第一季度末存货规模达RMB1,673.32亿元、应收账款达RMB1,025.01亿元，资金持续沉淀在库存与应收款项中。若下游需求增速不及预期或核心客户回款周期延长，存货减值及营运资金效率风险可能上升，是判断公司自由现金流健康度的重要跟踪指标。</p>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>地缘政治与关税风险</b><span class="rlevel">中</span></div>
+        <p>公司全球化产能布局（含墨西哥、越南、马来西亚等基地）有助于分散风险，但作为向美国头部客户交付AI硬件的核心供应商，仍面临中美科技与贸易政策变化、出口管制及关税调整等潜在不确定性。</p>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>汇率波动风险</b><span class="rlevel">低-中</span></div>
+        <p>公司海外收入占比较高，人民币兑美元等主要货币汇率波动将直接影响以人民币计价的营收与利润水平，需结合公司套期保值安排综合评估实际敞口。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rating">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">09</span><h2>投资建议与交易策略</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b style="color:var(--ink);">评级：增持（核心持仓，维持）。</b>2026年半年度业绩预增公告进一步验证了工业富联在AI资本开支超级周期中的基本面兑现能力——半年度净利润历史性突破200亿元、同比接近翻倍，公司业绩增速与估值扩张的匹配度总体仍合理（按机构一致预期均值测算2026E PEG约0.3左右）。CPO业务的持续推进为公司打开了在AI服务器主业之外的第二成长曲线，具备中长期持仓价值。但本次更新中我们观察到两个边际变化值得投资者重视：AI服务器与高速交换机的营收/出货增速斜率均较2025年全年出现放缓，以及存货、应收账款规模的持续扩大对营运资金效率构成一定压力。叠加公告发布后次日股价不涨反跌的市场反应，我们认为公司正从"单边趋势加速"阶段过渡至"高位波动兑现"阶段，建议投资者以逢低分批建仓、紧密跟踪季度业绩与下半年新品量产节奏的方式参与，而非在单一时点重仓介入。</p>
+        <div class="callout">
+          <b>关注信号（更新）：</b>（1）2026年下半年与大客户联合研发的下一代新品能否如期逐步量产，这是验证下半年增速能否维持的关键节点；（2）云服务商AI服务器营收增速能否在230%+的基础上企稳，抑或进一步向下收敛；（3）CPO交换机2026年出货量及营收贡献是否兑现"超15%营收占比"的管理层指引；（4）存货（RMB1,673亿元）与应收账款（RMB1,025亿元）规模能否随"Consign"模式转换逐步优化，而非持续扩大；（5）14家机构目标价均值RMB79.19元与当前股价的16%隐含空间能否在中报正式披露（预计8月）后得到验证或修正。
+        </div>
+        <p>对于计划配置的投资者，可考虑在基准情景估值区间（RMB65-80，与机构目标价区间RMB72.57-93.00大致重叠但更保守）内结合业绩披露节点分批建仓，并将悲观情景RMB48-55视为止损/加仓评估参考区间；乐观情景RMB90-105可作为阶段性止盈观察位。鉴于公司股息率较低、股东回报主要来自资本利得，建议以"跟踪AI算力景气度+季度业绩验证+关注增速斜率变化"为核心的成长股策略参与，而非股息型价值策略。</p>
+      </div>
+      <div class="card">
+        <h4>交易要点摘要（更新）</h4>
+        <ul>
+          <li>基准目标价区间：<b>RMB65-80</b>（机构一致预期均值RMB79.19）</li>
+          <li>止损/加仓评估参考位：<b>RMB48-55</b>（悲观情景）</li>
+          <li>止盈观察位：<b>RMB90-105</b>（乐观情景，机构最高目标价RMB93.00）</li>
+          <li>建议仓位：<b>核心配置仓位，但需控制单笔波动敞口</b>（因低流通盘特性）</li>
+          <li>建议持有周期：<b>6-12个月</b>，紧密跟踪中报正式披露（预计8月）与下半年新品放量节奏</li>
+          <li>核心跟踪指标：<b>AI服务器营收增速斜率、存货/应收账款周转、CPO出货量</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>方法论与数据说明</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">本报告初版基准价格为用户提供的2026年7月9日收盘价RMB69.53；本次更新已切换为2026年7月10日（业绩预增公告披露后次日）收盘价RMB68.29及当日公开披露市值约RMB1.36万亿元作为最新估值基准，市值、P/E等测算基于该价格及公司最新公开披露财务数据（截至2026年半年度业绩预增公告）的估算结果，实际股本数及市场价格请以上交所官方数据及公司最新定期报告为准。所有财务数据均引自公司通过上海证券交易所披露的公开定期报告、业绩预告及公告，行业与竞品数据引自多家持牌券商公开发布的研究报告及主流财经媒体公开报道。本报告对2025年度完整经审计现金流量表数据仍存在披露口径限制，已在财务分析章节明确说明，请投资者以公司完整年报为准进行交叉核实。2026年半年度正式财务报告尚未披露，本次更新中的H1数据均为公司业绩预告区间，属于管理层初步核算的预告性质数据，最终数据以公司正式披露的2026年半年度报告为准。</p>
+      </div>
+      <div>
+        <h5>主要数据来源（含本次更新新增）</h5>
+        <ul class="src-list">
+          <li>公司2026年半年度业绩预增公告（公告编号2026-033，2026年7月9日晚披露）</li>
+          <li>公司2026年7月7日临时股东会及董事会换届决议公告</li>
+          <li>公司2025年年度报告（新浪财经/东方财富转载，2026年3月10日）</li>
+          <li>公司2025年第三季度报告、2026年第一季度报告（2026年4月28日）</li>
+          <li>公司2025年半年度业绩情况公告（用于资产负债表历史数据）</li>
+          <li>信达证券、平安证券、国联民生等持牌券商公开研究报告</li>
+          <li>新浪财经、东方财富网、证券时报、搜狐财经等公开财经平台整理数据（2026年7月9-10日）</li>
+        </ul>
+      </div>
+      <div>
+        <h5>报告信息</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">蜗牛鸟投资（Snail-Bird Investment）<br>科技硬件行业研究组<br>初版报告日期：2026年7月9日<br>本次更新日期：2026年7月10日（基于2026H1业绩预增公告）<br>深度覆盖 · 评级：增持（核心持仓，维持）</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      本报告由蜗牛鸟投资（Snail-Bird Investment）研究团队独立撰写，仅供参考，不构成任何证券买卖要约或投资建议。报告中的观点、评级及目标价基于报告撰写时可获得的公开信息及分析师的专业判断，可能随市场环境变化而调整，蜗牛鸟投资不承诺更新本报告的内容。公司业绩高度依赖全球AI算力资本开支周期及少数头部客户订单，历史高增长不构成对未来业绩的保证；公司控股股东持股比例高、实际流通盘较低，可能导致股价波动性显著高于流通盘正常的可比公司。本次更新中引用的2026年半年度财务数据均为公司业绩预告区间，属于管理层初步核算的预告性质数据，存在因审计调整而与最终正式财报数据产生差异的可能性。本报告中部分财务数据（如2025年度完整现金流量表）因公开检索渠道限制未能完整交叉验证，已在正文中明确标注，投资者应以公司官方定期报告为准进行独立核实。投资者应充分了解相关风险，并根据自身风险承受能力及投资目标独立判断，据此投资操作风险自负。本报告不构成对任何特定投资者的个性化投资建议，亦不对因使用本报告内容而产生的任何直接或间接损失承担责任。
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
