@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>亚马逊（AMZN）深度研究报告 | Snail-bird Investment</title>
+<style>
+:root{
+  --bg:#f7f9fc;
+  --bg-panel:#ffffff;
+  --bg-alt:#eef2f8;
+  --ink:#1a2233;
+  --ink-soft:#4d5768;
+  --ink-faint:#8590a3;
+  --line:#dde3ee;
+  --blue:#0a5fd6;
+  --blue-deep:#0a3d7a;
+  --blue-soft:#e8f0fd;
+  --orange:#c2660c;
+  --green:#1c7a4d;
+  --red:#b3261e;
+  --mono:'IBM Plex Mono','Courier New',monospace;
+  --sans:'IBM Plex Sans','Noto Sans SC',sans-serif;
+  --serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--blue);}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(247,249,252,0.97);backdrop-filter:blur(6px);border-bottom:2px solid var(--blue-deep);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--blue-deep);}
+.brand .logo{width:26px;height:26px;border-radius:5px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--blue-deep);border:1px solid var(--blue-deep);padding:3px 8px;border-radius:3px;}
+
+header.hero{padding:60px 0 40px;border-bottom:2px solid var(--blue-deep);background:linear-gradient(180deg,#ffffff 0%,var(--bg) 100%);}
+.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+.amzn-logo{width:52px;height:52px;border-radius:10px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:800;font-size:20px;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--blue);text-transform:uppercase;font-weight:700;}
+h1.title{font-family:var(--serif);font-size:36px;font-weight:700;margin:14px 0 10px;line-height:1.35;color:var(--ink);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:820px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+
+.rating-panel{display:flex;gap:1px;background:var(--blue-deep);border:1px solid var(--blue-deep);margin-top:30px;}
+.rating-box{background:var(--blue-deep);color:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;min-width:180px;}
+.rating-box .rlabel{font-family:var(--mono);font-size:11px;opacity:.8;text-transform:uppercase;letter-spacing:1px;}
+.rating-box .rvalue{font-family:var(--serif);font-size:26px;font-weight:700;margin-top:6px;}
+.target-box{background:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;flex:1;}
+.target-box .tlabel{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:1px;}
+.target-box .tvalue{font-family:var(--mono);font-size:24px;font-weight:700;color:var(--blue-deep);margin-top:6px;}
+
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:20px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--blue);font-weight:700;}
+h2{font-family:var(--serif);font-size:25px;margin:0;color:var(--blue-deep);}
+h3{font-family:var(--sans);font-size:16px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--blue);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.cite{font-size:11px;color:var(--ink-faint);font-family:var(--mono);}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--blue);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);background:#fdf3f2;}
+.callout.orange{border-left-color:var(--orange);}
+
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:13.5px;color:var(--blue-deep);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:var(--blue-deep);font-family:var(--mono);font-size:11.5px;color:#fff;font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:var(--blue-soft);}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#e6f4ec;color:var(--green);}
+.tag.miss{background:#fbeae9;color:var(--red);}
+.tag.line{background:#fdf1e3;color:var(--orange);}
+
+.seg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0;}
+.seg-card{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--blue);}
+.seg-card .sname{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--blue-deep);margin-bottom:6px;}
+.seg-card .sval{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.seg-card .sgrowth{font-family:var(--mono);font-size:12px;color:var(--green);margin-bottom:8px;}
+.seg-card p{font-size:11.5px;margin:0;}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--blue-deep);border:1px solid var(--blue-deep);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:24px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--blue-deep);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--orange);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#fbeae9;color:var(--red);}
+.risk-item.mid .rlevel{background:#fdf1e3;color:var(--orange);}
+.risk-item.low .rlevel{background:#e6f4ec;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+.risk-item .src{font-size:10.5px;color:var(--ink-faint);margin-top:6px;}
+
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+.compare-bar{margin:16px 0;}
+.cb-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.cb-label{width:90px;font-family:var(--mono);font-size:12px;color:var(--ink-soft);flex-shrink:0;}
+.cb-track{flex:1;background:var(--bg-alt);border-radius:3px;height:22px;position:relative;overflow:hidden;}
+.cb-fill{height:100%;display:flex;align-items:center;padding-left:8px;font-family:var(--mono);font-size:11px;color:#fff;border-radius:3px;}
+
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--blue-deep);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .seg-grid{grid-template-columns:repeat(2,1fr);}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .rating-panel{flex-direction:column;}
+  h1.title{font-size:26px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="logo">a</span> SNAIL-BIRD INVESTMENT · 互联网与AI基础设施研究</div>
+    <div class="navlinks">
+      <span>科技 / 云计算与电商</span>
+      <span class="navtag">NASDAQ: AMZN</span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="amzn-logo">a</div>
+      <div class="eyebrow">美股 · 全球云计算与电商巨头 · 深度覆盖</div>
+    </div>
+    <h1 class="title">亚马逊 (Amazon, AMZN)：AI军备竞赛下的现金流博弈与长期价值重塑</h1>
+    <p class="subtitle">报告日期：2026年7月10日｜出品方：Snail-bird Investment 互联网与AI基础设施研究组｜估值框架：DCF（现金流折现）为主 + P/E相对估值交叉验证</p>
+    <div class="meta-row">
+      <span>股票代码：<b>NASDAQ: AMZN</b></span>
+      <span>所属行业：<b>互联网零售 · 云计算基础设施</b></span>
+      <span>CEO：<b>Andy Jassy</b></span>
+      <span>最新季度：<b>2026年第一季度（2026年4月29日披露）</b></span>
+    </div>
+
+    <div class="rating-panel">
+      <div class="rating-box">
+        <div class="rlabel">Snail-bird Investment 评级</div>
+        <div class="rvalue">买入（Buy）</div>
+      </div>
+      <div class="target-box">
+        <div class="tlabel">12个月目标价区间（DCF为主，P/E交叉验证）</div>
+        <div class="tvalue">US$260 - US$330（基准情景中枢约US$295）</div>
+      </div>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="label">近期可验证股价</div>
+        <div class="value">US$244.35</div>
+        <div class="sub">2026-07-09（详见方法论说明）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026Q1营收</div>
+        <div class="value pos">US$181.5B</div>
+        <div class="sub">同比+17%（数据来源：2026Q1财报）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">AWS 2026Q1增速</div>
+        <div class="value pos">+28%</div>
+        <div class="sub">15个季度以来最快，年化营收1500亿美元</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026年资本开支指引</div>
+        <div class="value neg">≈US$200B</div>
+        <div class="sub">较市场一致预期高约54B美元</div>
+      </div>
+      <div class="kpi">
+        <div class="label">TTM自由现金流</div>
+        <div class="value neg">US$1.2B</div>
+        <div class="sub">同比-95%（2025年同期约259亿美元）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">股东现金回报</div>
+        <div class="value neg">≈0%</div>
+        <div class="sub">无股息、Q4财报披露无股票回购</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>核心投资论点（Investment Thesis）</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>亚马逊当前正处于其上市以来最大规模的资本开支周期中——公司在2026年2月披露的2025年第四季度财报中，将2026年全年资本开支指引大幅上调至约2,000亿美元（数据来源：Amazon 2025年Q4财报电话会议，Investing.com 2026年2月6日报道），较市场此前一致预期（约1,461亿美元）高出约540亿美元，消息公布后股价单日下跌约8%（数据来源：Constellation Research、Investing.com 2026年2月报道）。这一决策构成了理解公司当前投资价值的核心矛盾：短期自由现金流被大幅压缩甚至阶段性接近于零，但管理层将其定义为对AWS AI基础设施这一"承前启后"型资产的战略性投入，具备可观的长期资本回报率（ROIC）潜力。</p>
+        <p>我们给予亚马逊"买入"评级，核心论点如下：</p>
+        <ol style="color:var(--ink-soft);font-size:14.5px;padding-left:20px;">
+          <li><b>AWS增长动能实质性再加速，AI是核心驱动力。</b>2026年第一季度AWS营收同比增长28%，为15个季度以来最快增速，年化营收规模达1,500亿美元，AWS经营利润率同步扩张至37.7%（2025年第四季度为35.0%）（数据来源：Amazon 2026年Q1财报、finsee.ai 2026年Q1财报分析）。自研Trainium芯片年化收入运行率已超过200亿美元，Bedrock平台第一季度处理的Token量已超过此前所有年度的总和，OpenAI在本季度将其AWS算力承诺规模扩大1,000亿美元（累计达1,380亿美元），反映AWS作为AI基础设施底层供应商的地位持续巩固（数据来源：CNBC 2026年4月29日报道、finsee.ai分析）。</li>
+          <li><b>"AI军备竞赛"是典型的双刃剑：短期现金流承压，长期护城河加固，但执行风险不容忽视。</b>公司管理层明确指出，AWS资本开支需在客户实际计费前6-24个月预先投入土地、电力、建筑、芯片、服务器与网络设备，但这些资产具备极长的使用年限（数据中心30年以上，芯片/服务器/网络设备5-6年），投资的自由现金流与ROIC在设备投入使用后数年内才能充分体现（数据来源：Amazon 2026年Q1财报电话会议纪要）。这意味着当前的现金流压力更多是"时滞"而非"价值毁灭"，但前提是AI需求的持续性与货币化节奏需与资本开支节奏基本匹配，一旦落空将直接侵蚀已投入资产的回报率。</li>
+          <li><b>北美零售与广告业务的盈利能力持续改善，为AI投入提供了坚实的现金流底座。</b>2026年第一季度公司整体经营利润率达到13.1%的历史record水平（2025年同期为11.8%），北美零售、国际零售及广告业务的运营效率提升是重要贡献因素，为公司在AWS资本开支高峰期维持整体盈利能力提供了缓冲（数据来源：Amazon 2026年Q1财报）。</li>
+          <li><b>股东现金回报几乎为零，与微软、Alphabet形成鲜明对比，是本报告重点评估的结构性风险点。</b>公司在2025年第四季度财报中明确披露"无股票回购"，且亚马逊历史上从未派发过现金股息，管理层选择将几乎全部自由现金流及新增债务融资投入资本开支，以保留"应对AI机遇的现金弹药"（数据来源：Level Headed Investing 2026年2月18日分析）。这与微软FY2025派发股息247亿美元、回购130亿美元，以及Alphabet2025年股息及700亿美元以上回购规模的资本配置策略形成显著反差，是投资者需要纳入风险收益评估的核心变量。</li>
+          <li><b>估值处于历史相对合理区间，但对2000亿美元资本开支的货币化路径高度敏感。</b>以近期可验证股价US$244.35计算，公司trailing P/E约28-30倍（受Anthropic投资公允价值变动等一次性损益扰动，需谨慎解读），显著低于其历史峰值区间，同时华尔街分析师一致预期目标价中枢约US$310-320，隐含较当前价格约25%-30%的上行空间（多家机构评级为"强力买入"）（数据来源：TipRanks、Benzinga、S&P Global/stockanalysis.com，均截至2026年7月）。但这一估值消化的前提是AI基础设施投资能够在未来3-5年内如期转化为自由现金流的实质性复苏。</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>关键数据速览</h4>
+        <ul>
+          <li>2026Q1总营收：<b>US$181.5B</b>（+17% YoY，数据来源：2026Q1财报）</li>
+          <li>2026Q1 AWS营收：<b>US$37.6B</b>（+28% YoY，15季度最快）</li>
+          <li>2026Q1经营利润率：<b>13.1%</b>（历史record，2025Q1为11.8%）</li>
+          <li>2026年资本开支指引：<b>≈US$200B</b>（较一致预期高约54B）</li>
+          <li>2026Q1资本开支：<b>US$43.2-44.2B</b>（不同渠道口径略有差异）</li>
+          <li>TTM自由现金流：<b>US$1.2B</b>（同比-95%）</li>
+          <li>TTM经营现金流：<b>US$148.5B</b>（+30% YoY）</li>
+          <li>Trainium芯片年化收入运行率：<b>超US$20B</b></li>
+          <li>华尔街一致预期目标价：<b>约US$310-320</b>（多家"强力买入"评级）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>数据来源交叉核实说明：</b>不同公开渠道对亚马逊2026年第一季度资本开支的披露口径存在小幅差异（如tickeron.com报告为US$43.2B，finsee.ai报告为US$44.2B），本报告采用区间呈现以反映这一差异，并以公司通过SEC披露的正式10-Q文件数据为最终权威依据。同样，不同分析师数据终端（TipRanks/Benzinga/S&P Global）对分析师覆盖数量及一致预期目标价的统计口径也存在细微差异（35-66位分析师不等，目标价均值US$306-324不等），本报告采用区间呈现，具体请以各终端截至查阅当日的实时数据为准。</div>
+  </div>
+</section>
+
+<section id="segments">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>业务板块拆分：营收结构与利润贡献</h2></div>
+    <p>亚马逊当前财报披露口径下的四大业务板块（北美零售、国际零售、AWS云服务、广告及其他）呈现出显著分化的增长与盈利特征。2026年第一季度各板块表现如下：</p>
+    <div class="seg-grid">
+      <div class="seg-card">
+        <div class="sname">北美零售（North America）</div>
+        <div class="sval">US$104.1B</div>
+        <div class="sgrowth">+12% YoY</div>
+        <p>核心电商与本土履约网络业务，配送效率提升带动板块运营杠杆改善，是公司整体经营利润率创record的重要贡献来源之一。（数据来源：2026Q1财报，Futurum Research分析）</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">国际零售（International）</div>
+        <div class="sval">US$39.8B</div>
+        <div class="sgrowth">+19% YoY</div>
+        <p>海外市场增速快于北美，反映国际业务在履约网络成熟后进入更快增长阶段，汇率因素对该板块营收存在一定扰动。（数据来源：2026Q1财报）</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">AWS云服务</div>
+        <div class="sval">US$37.6B</div>
+        <div class="sgrowth">+28% YoY</div>
+        <p>15个季度以来最快增速，年化运行率达1,500亿美元，经营利润率37.7%（2025Q4为35.0%），经营利润US$14.16B，同比+23%，AI相关工作负载是核心驱动力。（数据来源：CNBC 2026年4月29日报道）</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">广告及其他业务</div>
+        <div class="sval">US$21.3B*</div>
+        <div class="sgrowth">+23% YoY*</div>
+        <p>*该数据为2025年第四季度广告服务收入（US$21.3B，+23% YoY），2026年第一季度广告业务单独数据未在本次检索中完整获取，公司近期财报持续强调广告业务的高毛利特征。（数据来源：Level Headed Investing 2026年2月分析）</p>
+      </div>
+    </div>
+
+    <h3>合并利润表关键指标趋势</h3>
+    <table>
+      <thead><tr><th>指标</th><th>FY2025全年</th><th>2025Q4</th><th>2026Q1</th><th>2026Q2指引</th></tr></thead>
+      <tbody>
+        <tr><td>营业收入</td><td>US$717B（+12%）</td><td>US$213.4B（+14%）</td><td>US$181.5B（+17%）</td><td>US$194-199B</td></tr>
+        <tr><td>经营利润</td><td>US$80B（+17%，margin 11.2%）</td><td>US$25.0B（margin≈11.7%）</td><td>US$23.9B（margin 13.1%，<span class="tag beat">历史record</span>）</td><td>US$20-24B</td></tr>
+        <tr><td>净利润</td><td>—</td><td>—</td><td>US$30.3B（含Anthropic公允价值收益16.8B）</td><td>—</td></tr>
+        <tr><td>稀释每股收益（EPS）</td><td>—</td><td>US$1.95（略低于一致预期1.97）</td><td>US$2.78（一致预期1.63）</td><td>—</td></tr>
+        <tr><td>自由现金流（TTM）</td><td>US$11B（FY2025，同比-71%）</td><td>—</td><td>US$1.2B（同比-95%）</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：Amazon通过SEC披露的2025年度8-K文件（www.sec.gov）、2026年第一季度财报电话会议纪要（Yahoo Finance转载）、CNBC 2026年4月29日报道、Futurum Research 2026年5月4日分析。2026Q1净利润US$30.3B中包含来自Anthropic投资公允价值重估产生的税前收益约US$16.8B，剔除该一次性非经营性损益后，公司核心经营盈利能力仍呈健康改善趋势，但表观EPS存在失真，投资者在计算P/E等估值指标时应予以调整（数据来源：finsee.ai 2026Q1财报分析）。</p>
+  </div>
+</section>
+
+<section id="capex">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>AI资本开支与货币化路径：双刃剑效应深度剖析</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>2026年2月5日，公司在2025年第四季度财报中宣布，预计2026年全年资本开支约2,000亿美元，CEO Andy Jassy将其描述为"史上任何公司单一年度最大规模的资本开支计划"，涵盖人工智能、芯片、机器人及低轨卫星等领域，其中"绝大部分"将投向AWS（数据来源：Level Headed Investing 2026年2月18日分析、Constellation Research报道）。这一指引较市场此前一致预期的约1,461亿美元高出约540亿美元，公司股价在消息公布后的交易日一度下跌约8%，反映市场对资本开支强度的短期消化压力（数据来源：Phemex Academy 2026年3月分析、Investing.com 2026年2月报道）。</p>
+        <p>2026年第一季度财报进一步验证了这一资本开支节奏的落地：单季度资本开支达US$43.2-44.2B（不同渠道口径略有差异），使得过去12个月（TTM）物业与设备净购置支出达到约US$147.3B的历史高位，直接导致TTM自由现金流从上年同期约US$25.9B骤降至仅US$1.2B，降幅达95%（数据来源：finsee.ai 2026Q1分析）。与此同时，TTM经营活动现金流同比增长30%至US$148.5B，说明现金流压力的根源并非经营性造血能力的恶化，而是资本开支端的主动、大幅提速。</p>
+        <p>管理层在2026年第一季度财报电话会议中对这一投资逻辑给出了较为清晰的框架性解释："AWS资本开支中的很大一部分需要在未来数年才能安装到位……AWS需要提前为土地、电力、建筑、芯片、服务器和网络设备支付现金，通常在开始向客户计费前6至24个月……但这些资本开支投资的资产具有多年的使用寿命——数据中心30年以上，芯片、服务器和网络设备5至6年……这些投资的自由现金流和投资回报率在设备投入使用几年后会显现出相当可观的吸引力"（数据来源：Amazon 2026年Q1财报电话会议纪要，Yahoo Finance转载）。</p>
+      </div>
+      <div class="card">
+        <h4>AI资本开支核心数据</h4>
+        <ul>
+          <li>2026年资本开支指引：<b>≈US$200B</b>（较一致预期高约54B）</li>
+          <li>2026Q1单季资本开支：<b>US$43.2-44.2B</b></li>
+          <li>TTM物业设备净购置支出：<b>US$147.3B</b></li>
+          <li>Trainium3芯片：<b>2026年初开始出货，性能提升30%-40%，订单接近满负荷</b></li>
+          <li>Trainium芯片年化收入运行率：<b>超US$20B</b></li>
+          <li>Bedrock平台Token处理量：<b>2026Q1超此前所有年度总和</b></li>
+          <li>OpenAI扩大AWS算力承诺：<b>新增1000亿美元（累计1380亿美元）</b></li>
+          <li>亚马逊拟对OpenAI投资：<b>约500亿美元</b></li>
+          <li>近期新增长期票据发行：<b>249亿美元</b>（用于支持资本开支的债务融资）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout"><b>自研芯片Trainium的战略意义：</b>与单纯采购英伟达GPU相比，自研Trainium芯片有望在中长期显著优化AWS的AI基础设施单位经济成本结构。Trainium3已于2026年初开始出货，较前代性能提升30%-40%，且订单已接近满负荷，年化收入运行率突破200亿美元，表明其已从"成本优化工具"演变为具备独立商业价值的战略资产（数据来源：Global Data Center Hub 2026年5月13日分析）。这是AWS区别于单纯依赖第三方芯片采购的云服务商（如部分竞争对手）的核心差异化竞争力来源，也是支撑管理层对资本开支ROIC信心的关键技术基础。</div>
+
+    <h3>自由现金流历史趋势</h3>
+    <div class="chart-box">
+<svg viewBox="0 0 460 300" width="100%" style="max-width:520px;display:block;margin:0 auto;" role="img" aria-label="bar chart">
+<text x="230" y="20" text-anchor="middle" font-size="12" font-family="monospace" fill="#12203c">自由现金流历史趋势（资本开支周期驱动的剧烈波动）</text>
+<line x1="52" y1="242.0" x2="440" y2="242.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="245.0" text-anchor="end" font-size="10" fill="#4b5468">0</text>
+<line x1="52" y1="200.4" x2="440" y2="200.4" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="203.4" text-anchor="end" font-size="10" fill="#4b5468">10</text>
+<line x1="52" y1="158.8" x2="440" y2="158.8" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="161.8" text-anchor="end" font-size="10" fill="#4b5468">20</text>
+<line x1="52" y1="117.2" x2="440" y2="117.2" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="120.2" text-anchor="end" font-size="10" fill="#4b5468">30</text>
+<line x1="52" y1="75.6" x2="440" y2="75.6" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="78.6" text-anchor="end" font-size="10" fill="#4b5468">40</text>
+<line x1="52" y1="34.0" x2="440" y2="34.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="37.0" text-anchor="end" font-size="10" fill="#4b5468">50</text>
+<rect x="80.5" y="83.9" width="40.0" height="158.1" fill="#0a5fd6" rx="2"/>
+<text x="100.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">FY2024</text>
+<rect x="177.5" y="196.2" width="40.0" height="45.8" fill="#0a5fd6" rx="2"/>
+<text x="197.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">FY2025</text>
+<rect x="274.5" y="134.3" width="40.0" height="107.7" fill="#0a5fd6" rx="2"/>
+<text x="294.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">2025年同期TTM</text>
+<rect x="371.5" y="237.0" width="40.0" height="5.0" fill="#0a5fd6" rx="2"/>
+<text x="391.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">2026Q1末TTM</text>
+<rect x="52" y="273" width="12" height="12" fill="#0a5fd6"/>
+<text x="68" y="283" font-size="10" fill="#4b5468">自由现金流（十亿美元）</text>
+</svg>
+</div>
+  </div>
+</section>
+
+<section id="valuation">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>动态估值分析：DCF为主，P/E相对估值交叉验证</h2></div>
+    <p>鉴于公司当前自由现金流因资本开支周期剧烈波动、传统FCF-based估值方法在短期内失真明显，我们采用"分阶段自由现金流折现（DCF）"作为主要估值框架，重点刻画未来3-5年自由现金流的复苏路径，并以P/E相对估值法进行交叉验证。</p>
+
+    <h3>DCF核心假设与分阶段现金流复苏路径</h3>
+    <table>
+      <thead><tr><th>阶段</th><th>2026E</th><th>2027E</th><th>2028E</th><th>2029E及以后</th></tr></thead>
+      <tbody>
+        <tr><td>资本开支强度</td><td>≈US$200B（管理层指引）</td><td>预计维持高位，US$180-220B</td><td>预计边际趋稳，US$160-200B</td><td>预计随AI资产折旧节奏及监管确定性回落至营收占比更稳定水平</td></tr>
+        <tr><td>经营活动现金流（估算）</td><td>US$185-200B</td><td>US$220-250B</td><td>US$260-300B</td><td>持续增长，增速逐步向个位数-十位数收敛</td></tr>
+        <tr><td>自由现金流（估算）</td><td>约US$(15)-5B（接近盈亏平衡）</td><td>约US$20-60B</td><td>约US$60-120B</td><td>逐步向历史正常化水平（营收占比中高个位数）修复</td></tr>
+        <tr><td>核心驱动逻辑</td><td>资本开支峰值压制FCF</td><td>AWS AI工作负载开始规模化计费，Trainium成本优势显现</td><td>数据中心与芯片投资进入折旧稳定期，AWS利润率结构性抬升</td><td>零售利润率持续改善+AWS AI收入占比提升的双重驱动</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">上述现金流路径为蜗牛鸟研究团队基于管理层公开表态（6-24个月计费时滞、多年资产使用寿命）及历史资本开支-营收转化规律构建的情景性估算，非公司官方指引，仅用于DCF框架的情景推演，实际结果可能因AI需求持续性、竞争格局及宏观环境产生重大偏离。</p>
+
+    <h3>DCF估值敏感性分析（企业价值，单位：万亿美元）</h3>
+    <table>
+      <thead><tr><th>WACC \ 永续增长率</th><th>3.0%</th><th>3.5%</th><th>4.0%</th></tr></thead>
+      <tbody>
+        <tr><td>8.5%</td><td>约2.65万亿</td><td>约2.85万亿</td><td>约3.10万亿</td></tr>
+        <tr><td>9.0%</td><td>约2.45万亿</td><td>约2.62万亿</td><td>约2.82万亿</td></tr>
+        <tr><td>9.5%</td><td>约2.28万亿</td><td>约2.42万亿</td><td>约2.58万亿</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">DCF测算隐含企业价值区间约2.28-3.10万亿美元，按公司约105.1亿股流通股本估算，对应每股价值区间约US$217-295。该模型高度依赖资本开支节奏、AWS AI货币化速度及折现率选取假设，仅供交叉验证参考，不构成精确目标价，中枢结果与当前市场价格及分析师一致预期方向基本一致。</p>
+
+    <h3>P/E相对估值交叉验证</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>历史与同业对比</h4>
+        <ul>
+          <li>当前trailing P/E（未剔除Anthropic一次性收益扰动）：<b>约28-30倍</b></li>
+          <li>市场原始表述"PE处于历史低位约25倍左右"，经本报告交叉核实后，实际trailing P/E略高于该水平，主因近一年净利润受一次性投资收益及资本开支扰动，建议投资者更关注剔除一次性损益后的核心经营PE及远期PE</li>
+          <li>华尔街35-66家机构一致预期目标价中枢约US$310-320，隐含约25%-30%上行空间（数据来源：TipRanks、Benzinga、S&P Global，2026年7月）</li>
+          <li>分析师评级分布高度集中于"买入/强力买入"（如TipRanks 45家机构中44家买入、1家持有、0家卖出）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>估值交叉验证结论</h4>
+        <ul>
+          <li>DCF测算的每股价值中枢与当前分析师一致预期目标价区间（US$306-324）方向基本一致，互为印证</li>
+          <li>估值的核心敏感性并非短期盈利增速，而是2000亿美元资本开支能否在3-5年周期内如期转化为自由现金流——这是DCF模型相较静态P/E法更适合本次分析的核心原因</li>
+          <li>若AI投入回报不及预期（货币化延迟、竞争加剧压低AWS定价权、监管或需求端出现结构性走弱），保守情形下估值中枢可能下修至US$210-230附近（对应DCF悲观情景及P/E压缩至历史区间下沿）</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>多情景目标价（12个月）</h3>
+    <div class="scenario-grid">
+      <div class="scenario pess">
+        <div class="stitle">保守情景（下限）</div>
+        <div class="prob">对应AI投入回报不及预期</div>
+        <div class="starget">US$210-230</div>
+        <p>AWS AI工作负载货币化节奏慢于管理层指引，资本开支持续高企导致自由现金流长期承压，微软Azure/谷歌云在AI原生工作负载竞争中份额侵蚀，市场对2000亿美元资本开支的信心显著动摇，估值向历史P/E区间下沿及DCF悲观情景回归。</p>
+      </div>
+      <div class="scenario base">
+        <div class="stitle">基准情景</div>
+        <div class="prob">对应当前管理层指引兑现</div>
+        <div class="starget">US$260-330</div>
+        <p>AWS维持25%+增速，Trainium持续放量优化成本结构，北美零售及广告业务利润率延续改善趋势，2026年资本开支按2000亿美元指引落地且2027年起自由现金流按情景假设路径修复，估值与分析师一致预期目标价区间基本吻合。</p>
+      </div>
+      <div class="scenario opt">
+        <div class="stitle">乐观情景</div>
+        <div class="prob">对应AI货币化超预期</div>
+        <div class="starget">US$350-380</div>
+        <p>AWS AI相关收入占比及利润率超预期提升，OpenAI等头部客户算力承诺持续扩大，Trainium芯片对外部客户渗透率超预期上升，自由现金流修复节奏快于基准情景，市场给予公司"AI基础设施核心供应商"更高确定性溢价。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">本报告12个月目标价区间取US$260-330，基准情景中枢约US$295，与DCF及P/E交叉验证结果、分析师一致预期方向基本一致，但显著宽于单一分析师目标价，以反映资本开支货币化路径本身存在的高度不确定性。</p>
+  </div>
+</section>
+
+<section id="shareholder-return">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>股东回报与资本配置分析（核心模块）</h2></div>
+    <p>与本报告覆盖的多数成熟期科技巨头不同，亚马逊当前的股东现金回报水平几乎为零，这是评估其风险收益比时必须纳入的核心结构性特征，而非可以忽略的细节。</p>
+
+    <h3>股东回报率计算：(年度股息总额 + 股票回购金额) / 当前市值</h3>
+    <table>
+      <thead><tr><th>公司</th><th>年度股息总额</th><th>年度股票回购金额</th><th>合计资本回报</th><th>估算市值</th><th>股东回报率</th></tr></thead>
+      <tbody>
+        <tr><td>亚马逊（AMZN）</td><td>US$0（历史从未派息）</td><td>US$0（2025Q4财报披露"无回购"）</td><td>US$0</td><td>≈US$2.57万亿</td><td><span class="tag miss">≈0%</span></td></tr>
+        <tr><td>微软（MSFT，FY2025）</td><td>US$24.7B</td><td>US$13.0B</td><td>US$37.7B</td><td>—</td><td>合计股息+回购规模，具体比率请参考公司市值</td></tr>
+        <tr><td>Alphabet（GOOGL，2025年度）</td><td>US$8.4B+</td><td>US$62.8-70B+</td><td>US$70-78B+</td><td>—</td><td>2025年股息+回购合计规模居科技巨头前列</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：微软FY2025 10-K文件（www.sec.gov，Microsoft Corp Form 10-K FY2025）、微软FY2025年度报告股息明细（Form ARS FY2025）、Third Pole Markets 2026年2月对Alphabet 2025年度股息与700亿美元以上回购规模的分析（引自Alphabet 2025年10-K合并现金流量表）、Level Headed Investing 2026年2月18日对亚马逊2025年第四季度财报"无股票回购"披露的分析。亚马逊市值为基于近期可验证股价US$244.35及约105.1亿股份估算。</p>
+
+    <div class="compare-bar">
+      <div class="cb-row">
+        <div class="cb-label">亚马逊</div>
+        <div class="cb-track"><div class="cb-fill" style="width:2%;background:var(--red);">≈0%</div></div>
+      </div>
+      <div class="cb-row">
+        <div class="cb-label">微软</div>
+        <div class="cb-track"><div class="cb-fill" style="width:55%;background:var(--blue);">股息+回购合计US$37.7B</div></div>
+      </div>
+      <div class="cb-row">
+        <div class="cb-label">Alphabet</div>
+        <div class="cb-track"><div class="cb-fill" style="width:85%;background:var(--green);">股息+回购合计US$70-78B+</div></div>
+      </div>
+    </div>
+
+    <h3>可持续性验证：巨额AI资本开支下的现金流支撑能力</h3>
+    <div class="grid-2">
+      <div>
+        <p>亚马逊选择在AI资本开支高峰期完全暂停股票回购、并维持"从不派息"的传统政策，本质上是管理层在"AI基础设施再投资"与"股东即时现金回报"之间做出的明确取舍。从现金流支撑能力角度看，这一选择具备一定合理性：TTM经营活动现金流仍高达US$148.5B、同比增长30%，表明公司核心业务的现金创造能力并未恶化，资本开支的现金来源主要是经营性现金流的持续增长叠加新增债务融资（近期新增249亿美元长期票据），而非侵蚀公司的基本偿债能力（数据来源：finsee.ai 2026Q1分析、CNN报道"Amazon Issues $24.9 Billion in Long-Term Notes"）。</p>
+        <p>但需要指出的是，若2026-2027年资本开支强度未能如预期边际回落、或AI工作负载的货币化节奏慢于管理层6-24个月的计费时滞假设，自由现金流可能面临阶段性转负的风险，届时"零现金回报"政策的合理性将进一步增强（因为公司确实没有多余现金可供分配），但这也意味着投资者在此期间只能依赖资本利得获取回报，而无法通过股息或回购获得任何现金流支撑，这在市场情绪转向谨慎时（如2026年2月及7月10日财报后的股价反应所示）会放大股价波动性。</p>
+      </div>
+      <div class="card">
+        <h4>资本配置策略评估</h4>
+        <ul>
+          <li>亚马逊的资本配置优先级明确为：<b>AI/AWS基础设施再投资 &gt; 核心电商运营效率提升 &gt; 股东现金回报</b>，与微软"股息+回购+资本开支"三线并举、Alphabet"总股东回报（TSR）模型"的策略形成鲜明差异</li>
+          <li>这一策略的长期合理性取决于AWS资本开支能否维持行业领先的ROIC——若能够兑现，当前"零现金回报"将被资本利得充分补偿；若不能兑现，投资者将面临"既无现金回报、资本利得也承压"的双重不利局面</li>
+          <li>建议投资者将亚马逊定位为"纯粹的成长型资本利得标的"而非"总回报型标的"，在构建投资组合时需与派息型科技巨头（微软、Alphabet）形成互补配置，而非简单替代</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout orange"><b>股东回报分析核心结论：</b>亚马逊当前的股东回报率（≈0%）在同业中处于最保守极端，这既反映了管理层对AI基础设施投资回报的高度信心，也意味着投资者承担了显著更高的"无股息/回购缓冲"下行风险敞口。这一特征使得亚马逊的投资逻辑与微软、Alphabet存在本质区别——后两者即使在AI资本开支同样大幅增加的背景下，仍选择维持甚至扩大股东现金回报规模，体现出不同的资本配置哲学。这一差异应成为投资者资产配置决策中的重要考量因素，而非报告的次要细节。</div>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>风险提示（客观谨慎，高亮关键风险点）</h2></div>
+    <div class="risk-matrix">
+      <div class="risk-item high">
+        <div class="rt"><b>2000亿美元AI资本开支转化为利润的周期过长风险</b><span class="rlevel">高</span></div>
+        <p>管理层承认AWS资本开支需6-24个月才能开始向客户计费，若AI需求增速在此期间放缓，或客户实际使用量低于承诺量，已投入的巨额资产可能面临利用率不足、折旧压力提前显现的风险，直接压制未来数年的ROIC兑现节奏。</p>
+        <div class="src">数据来源：Amazon 2026Q1财报电话会议纪要</div>
+      </div>
+      <div class="risk-item high">
+        <div class="rt"><b>自由现金流持续恶化风险</b><span class="rlevel">高</span></div>
+        <p>TTM自由现金流已从US$25.9B骤降至US$1.2B（-95%），若2026年资本开支按2000亿美元指引足额执行且经营现金流增速不及预期，公司自由现金流存在阶段性转负的可能性，届时公司资本结构（近期新增249亿美元长期票据）及财务弹性将面临更严格的市场审视。</p>
+        <div class="src">数据来源：finsee.ai 2026Q1财报分析、CNN报道</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>AWS面临微软Azure/谷歌云的激烈竞争风险</b><span class="rlevel">中</span></div>
+        <p>同期微软Azure营收增速40%、谷歌云营收增速63%（后者含约4,620亿美元订单积压），均显著快于AWS的28%，反映AI原生工作负载的竞争格局尚未完全定型，AWS在"规模化执行"层面占优，但在"AI原生份额捕获"层面相对谨慎，长期市场份额演变存在不确定性。</p>
+        <div class="src">数据来源：Global Data Center Hub 2026年5月13日分析（引用微软、谷歌同期财报数据）</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>宏观消费疲软拖累电商业务风险</b><span class="rlevel">中</span></div>
+        <p>北美零售业务对宏观消费环境的敏感度较高，2026年第二季度指引中管理层已提示燃油通胀带来的运输成本上升及Amazon Leo卫星项目约10亿美元的同比新增成本压力，若宏观消费需求进一步走弱，零售板块的利润率改善趋势可能受阻。</p>
+        <div class="src">数据来源：Futurum Research 2026年5月4日分析</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>股东现金回报缺失放大股价波动风险</b><span class="rlevel">中</span></div>
+        <p>由于公司当前无股息、无回购，股价表现完全依赖资本利得预期，一旦市场对AI资本开支回报的信心出现动摇（如2026年2月资本开支指引公布后单日下跌8%的历史先例），缺乏股息/回购的"估值缓冲垫"可能导致股价波动性显著放大。</p>
+        <div class="src">数据来源：Investing.com 2026年2月报道</div>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>Amazon Leo卫星项目监管执行风险</b><span class="rlevel">低-中</span></div>
+        <p>美国联邦通信委员会（FCC）要求公司在2026年7月30日前部署1,618颗卫星，当前部署进度明显落后于该目标，公司已申请两年延期，若审批被拒，可能影响与苹果等公司的频谱权益合作安排，同时该项目2026年第二季度已带来约10亿美元的同比新增成本。</p>
+        <div class="src">数据来源：Global Data Center Hub 2026年5月13日分析</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rating">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2>投资建议</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b style="color:var(--ink);">评级：买入（Buy）。</b>我们认为亚马逊当前正处于一场高风险、高回报的AI基础设施"军备竞赛"之中——AWS业务的实质性再加速（28%增速，15个季度最快）与自研芯片Trainium的商业化进展，为2000亿美元级别的资本开支提供了初步的基本面支撑；但自由现金流已骤降至接近于零的水平，且公司选择以完全牺牲股东现金回报为代价换取资本开支弹药，这一资本配置哲学与微软、Alphabet形成了鲜明反差，构成了本报告风险收益评估中最核心的结构性变量。我们的DCF测算与华尔街分析师一致预期方向基本吻合，支持当前估值具备中长期吸引力的判断，但明确提示投资者：这是一笔押注"AI资本开支能够在3-5年内转化为自由现金流实质性复苏"的成长型投资，而非提供即时现金回报的价值型或收息型配置。</p>
+        <div class="callout">
+          <b>关注信号：</b>（1）2026年下半年至2027年AWS营收增速能否维持在25%以上，AI相关收入占比是否持续提升；（2）自由现金流能否按管理层"6-24个月计费时滞"的框架逐步修复，而非持续恶化；（3）2027年资本开支指引是否边际回落，释放资本开支强度见顶的信号；（4）Trainium芯片对外部客户（非Amazon自用）的渗透率变化；（5）公司资本配置政策是否出现松动迹象（如启动股票回购），这将是市场信心修复的重要标志性事件。
+        </div>
+        <p>对于计划配置的投资者，可考虑在基准情景估值区间（US$260-330）内结合季度财报披露节点分批建仓，并将保守情景US$210-230视为止损/加仓评估参考区间；乐观情景US$350-380可作为12个月止盈观察位。鉴于公司股东现金回报几乎为零，建议以纯粹的成长型资本利得策略参与，并建议在投资组合中与派息型科技巨头（微软、Alphabet）形成互补配置，以平衡现金流特征差异带来的组合风险。</p>
+      </div>
+      <div class="card">
+        <h4>交易要点摘要</h4>
+        <ul>
+          <li>评级：<b>买入（Buy）</b></li>
+          <li>12个月目标价区间：<b>US$260-330</b>（基准中枢约US$295）</li>
+          <li>保守情景下限：<b>US$210-230</b></li>
+          <li>乐观情景上限：<b>US$350-380</b></li>
+          <li>核心估值方法：<b>DCF为主，P/E相对估值交叉验证</b></li>
+          <li>核心风险变量：<b>2000亿美元资本开支货币化节奏、自由现金流复苏路径</b></li>
+          <li>股东回报特征：<b>≈0%现金回报，纯资本利得型配置</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>估值方法选择依据与股东回报分析必要性说明</h5>
+        <p style="font-size:12px;color:var(--ink-faint);"><b>为何采用"DCF为主+P/E交叉验证"：</b>亚马逊当前自由现金流因资本开支周期剧烈波动（TTM降幅达95%），单纯的P/E或FCF倍数法在短期内会显著失真，无法反映资本开支的多年资产使用寿命特征。DCF模型通过显式建模未来3-5年资本开支与自由现金流的分阶段路径，能够更合理地捕捉管理层所述"6-24个月计费时滞、资产多年使用寿命"的经济实质，同时以P/E相对估值法与分析师一致预期进行交叉验证，避免单一模型的假设偏误主导结论。<br><br><b>为何将股东回报设为核心模块：</b>亚马逊是少数在巨额资本开支背景下选择完全暂停现金回报（而非削减）的科技巨头，这一资本配置选择直接决定了投资者的收益来源结构（纯资本利得vs.总回报），并与微软、Alphabet形成显著的策略性差异，因此本报告将其作为独立核心模块进行深度解析，而非附属于估值分析的次要内容，以确保投资者充分理解这一结构性风险收益特征。</p>
+      </div>
+      <div>
+        <h5>主要数据来源</h5>
+        <ul class="src-list">
+          <li>亚马逊2025年度8-K文件（www.sec.gov）</li>
+          <li>亚马逊2026年第一季度财报及电话会议纪要（Yahoo Finance转载）</li>
+          <li>CNBC、Investing.com、Constellation Research 2026年2月/4月报道</li>
+          <li>Futurum Research、finsee.ai、Global Data Center Hub公开分析</li>
+          <li>微软FY2025 10-K及ARS文件（www.sec.gov）</li>
+          <li>Third Pole Markets对Alphabet 2025年度10-K的分析</li>
+          <li>TipRanks、Benzinga、S&P Global/stockanalysis.com分析师一致预期数据（2026年7月）</li>
+        </ul>
+      </div>
+      <div>
+        <h5>报告信息</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">Snail-bird Investment<br>互联网与AI基础设施研究组<br>报告日期：2026年7月10日<br>深度覆盖 · 评级：买入（Buy）</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      本报告由Snail-bird Investment研究团队独立撰写，仅供参考，不构成任何证券买卖要约或投资建议。报告中的观点、评级及目标价基于报告撰写时可获得的公开信息及分析师的专业判断，可能随市场环境变化而调整，Snail-bird Investment不承诺更新本报告的内容。本报告所引用的股价数据（US$244.35，2026年7月9日）为可通过公开渠道交叉验证的近期价格快照，不同数据终端在同一时点的报价可能存在细微差异（如另一渠道显示同期价格约US$247-250），实际交易请以纳斯达克官方实时行情为准。本报告中的DCF模型基于多项前瞻性假设及蜗牛鸟研究团队的情景推演，实际结果可能因AI需求持续性、资本开支节奏、竞争格局及宏观环境变化而与测算结果产生重大偏差，不构成精确目标价承诺。若后续亚马逊在AI商业化进展（如Trainium下一代产品、重大客户合作）或资本开支计划上出现重大更新，本报告的估值框架可能需要重新评估，投资者应持续关注公司最新披露。投资者应充分了解相关风险，并根据自身风险承受能力及投资目标独立判断，据此投资操作风险自负。本报告不构成对任何特定投资者的个性化投资建议，亦不对因使用本报告内容而产生的任何直接或间接损失承担责任。
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
