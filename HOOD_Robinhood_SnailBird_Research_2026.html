@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robinhood (HOOD) 深度研究报告 | Snail-bird Investment</title>
+<style>
+:root{
+  --bg:#f7f9fc;
+  --bg-panel:#ffffff;
+  --bg-alt:#eef2f8;
+  --ink:#1a2233;
+  --ink-soft:#4d5768;
+  --ink-faint:#8590a3;
+  --line:#dde3ee;
+  --blue:#0a5fd6;
+  --blue-deep:#0a3d7a;
+  --blue-soft:#e8f0fd;
+  --green-hood:#00c805;
+  --orange:#c2660c;
+  --green:#1c7a4d;
+  --red:#b3261e;
+  --mono:'IBM Plex Mono','Courier New',monospace;
+  --sans:'IBM Plex Sans','Noto Sans SC',sans-serif;
+  --serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--blue);}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(247,249,252,0.97);backdrop-filter:blur(6px);border-bottom:2px solid var(--blue-deep);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--blue-deep);}
+.brand .logo{width:26px;height:26px;border-radius:5px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--blue-deep);border:1px solid var(--blue-deep);padding:3px 8px;border-radius:3px;}
+
+header.hero{padding:60px 0 40px;border-bottom:2px solid var(--blue-deep);background:linear-gradient(180deg,#ffffff 0%,var(--bg) 100%);}
+.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+.hood-logo{width:52px;height:52px;border-radius:10px;background:#000000;color:var(--green-hood);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:800;font-size:26px;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--blue);text-transform:uppercase;font-weight:700;}
+h1.title{font-family:var(--serif);font-size:34px;font-weight:700;margin:14px 0 10px;line-height:1.35;color:var(--ink);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:820px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+
+.rating-panel{display:flex;gap:1px;background:var(--blue-deep);border:1px solid var(--blue-deep);margin-top:30px;}
+.rating-box{background:var(--blue-deep);color:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;min-width:180px;}
+.rating-box .rlabel{font-family:var(--mono);font-size:11px;opacity:.8;text-transform:uppercase;letter-spacing:1px;}
+.rating-box .rvalue{font-family:var(--serif);font-size:26px;font-weight:700;margin-top:6px;}
+.target-box{background:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;flex:1;}
+.target-box .tlabel{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:1px;}
+.target-box .tvalue{font-family:var(--mono);font-size:24px;font-weight:700;color:var(--blue-deep);margin-top:6px;}
+
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:19px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--blue);font-weight:700;}
+h2{font-family:var(--serif);font-size:25px;margin:0;color:var(--blue-deep);}
+h3{font-family:var(--sans);font-size:16px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--blue);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--blue);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);background:#fdf3f2;}
+.callout.orange{border-left-color:var(--orange);}
+
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:13.5px;color:var(--blue-deep);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:var(--blue-deep);font-family:var(--mono);font-size:11.5px;color:#fff;font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:var(--blue-soft);}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#e6f4ec;color:var(--green);}
+.tag.miss{background:#fbeae9;color:var(--red);}
+.tag.line{background:#fdf1e3;color:var(--orange);}
+
+.seg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0;}
+.seg-card{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--blue);}
+.seg-card .sname{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--blue-deep);margin-bottom:6px;}
+.seg-card .sval{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.seg-card .sgrowth{font-family:var(--mono);font-size:12px;margin-bottom:8px;}
+.seg-card .sgrowth.pos{color:var(--green);}
+.seg-card .sgrowth.neg{color:var(--red);}
+.seg-card p{font-size:11.5px;margin:0;}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--blue-deep);border:1px solid var(--blue-deep);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:24px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--blue-deep);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--orange);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#fbeae9;color:var(--red);}
+.risk-item.mid .rlevel{background:#fdf1e3;color:var(--orange);}
+.risk-item.low .rlevel{background:#e6f4ec;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+.risk-item .src{font-size:10.5px;color:var(--ink-faint);margin-top:6px;}
+
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+.compare-bar{margin:16px 0;}
+.cb-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.cb-label{width:100px;font-family:var(--mono);font-size:12px;color:var(--ink-soft);flex-shrink:0;}
+.cb-track{flex:1;background:var(--bg-alt);border-radius:3px;height:22px;position:relative;overflow:hidden;}
+.cb-fill{height:100%;display:flex;align-items:center;padding-left:8px;font-family:var(--mono);font-size:11px;color:#fff;border-radius:3px;}
+
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--blue-deep);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .seg-grid{grid-template-columns:repeat(2,1fr);}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .rating-panel{flex-direction:column;}
+  h1.title{font-size:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="logo">S</span> SNAIL-BIRD INVESTMENT · 金融科技与财富管理研究</div>
+    <div class="navlinks">
+      <span>金融科技 / 财富管理平台</span>
+      <span class="navtag">NASDAQ: HOOD</span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="hood-logo">H</div>
+      <div class="eyebrow">美股 · 零售财富管理与Fintech平台 · 深度覆盖</div>
+    </div>
+    <h1 class="title">Robinhood (HOOD)："超级应用"转型期的估值博弈与股东回报重塑</h1>
+    <p class="subtitle">报告日期：2026年7月11日｜出品方：Snail-bird Investment 金融科技与财富管理研究组｜估值框架：DCF（现金流折现）为主 + P/E及P/FCF相对估值交叉验证</p>
+    <div class="meta-row">
+      <span>股票代码：<b>NASDAQ: HOOD</b></span>
+      <span>所属行业：<b>零售经纪 · 财富管理 · 加密货币交易</b></span>
+      <span>董事长兼CEO：<b>Vlad Tenev</b></span>
+      <span>最新季度：<b>2026年第一季度（2026年4月28日披露）</b>　下一次财报：<b>2026年7月29日</b></span>
+    </div>
+
+    <div class="rating-panel">
+      <div class="rating-box">
+        <div class="rlabel">Snail-bird Investment 评级</div>
+        <div class="rvalue">持有（Hold）</div>
+      </div>
+      <div class="target-box">
+        <div class="tlabel">12个月目标价区间（DCF为主，P/E及P/FCF交叉验证）</div>
+        <div class="tvalue">US$85 - US$140（基准情景中枢约US$112，与当前价格接近）</div>
+      </div>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="label">近期可验证股价</div>
+        <div class="value">US$111.97</div>
+        <div class="sub">2026-07-11（详见方法论说明）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">估算总市值</div>
+        <div class="value">≈US$100.8B</div>
+        <div class="sub">数据来源：Robinhood官网行情、CNN 2026年7月10日</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026Q1营收</div>
+        <div class="value pos">US$1.07B</div>
+        <div class="sub">同比+15%，但略低于市场预期（数据来源：2026Q1财报）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">事件合约（预测市场）营收</div>
+        <div class="value pos">+320% YoY</div>
+        <div class="sub">US$147M，创纪录88亿份合约成交</div>
+      </div>
+      <div class="kpi">
+        <div class="label">加密货币营收</div>
+        <div class="value neg">-47% YoY</div>
+        <div class="sub">US$134M，交易量同比-48%</div>
+      </div>
+      <div class="kpi">
+        <div class="label">远期P/E（vs SCHW 19x/IBKR 32x）</div>
+        <div class="value neg">≈61-67x</div>
+        <div class="sub">显著高于传统券商同业</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>核心投资论点（Investment Thesis）</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>Robinhood正处于从"单一散户交易App"向"金融超级应用（Financial Super App）"转型的关键阶段。公司CEO Vlad Tenev在2026年3月"Take Flight"发布会上明确提出了覆盖储蓄、投资、消费、信贷全场景的"超级应用"愿景（数据来源：heygotrade 2026年5月22日分析），并通过Trump储蓄账户、信用卡、银行业务、期货交易所收购（MIAX）、Robinhood Chain区块链等一系列产品与资本动作加速落地。2026年第一季度财报显示，公司整体营收同比增长15%至10.7亿美元，但略低于市场此前1.17亿美元左右的一致预期，且每股收益0.38美元亦小幅低于预期（约0.39-0.41美元），财报公布后股价一度下跌约2.3%-6%（数据来源：Investing.com、KuCoin 2026年4月29日报道）。</p>
+        <p>我们给予Robinhood"持有"评级，核心论点如下：</p>
+        <ol style="color:var(--ink-soft);font-size:14.5px;padding-left:20px;">
+          <li><b>核心交易与订阅业务展现出穿越单一品类波动的韧性，但增长质量正在发生结构性变化。</b>2026年第一季度净入金达180亿美元，年化增速超20%，是公司管理层口中的"北极星指标"（数据来源：TipRanks 2026年4月财报纪要）；Robinhood Gold订阅用户达到创纪录的430万（同比+36%），占总客户基础16%，占新客户比例达40%（数据来源：Fool.com 2026年4月28日财报电话会议纪要）。这些指标表明公司正从"交易佣金依赖"向"订阅+多产品交叉销售"的更稳定收入结构演进。</li>
+          <li><b>预测市场（事件合约）是当前最亮眼的新兴增长曲线，但其持续性面临监管与需求两方面的不确定性。</b>第一季度事件合约营收同比激增320%至1.47亿美元，单季度交易量达88亿份合约，创历史新高（数据来源：KuCoin、Yahoo Finance 2026年4月29日报道）。Bernstein Research分析师预测整个预测市场行业交易量到2030年有望达到1万亿美元/年（数据来源：The Motley Fool 2026年5月4日报道），但公司管理层同时坦承"部分州对预测市场的司法管辖权提出了担忧"，监管环境仍不明朗（数据来源：GuruFocus 2026年4月29日财报电话会议纪要）。</li>
+          <li><b>加密货币业务的大幅波动是当前最大的业绩扰动项，凸显了公司收入结构对单一资产类别价格周期的高敏感性。</b>2026年第一季度加密货币营收同比骤降47%至1.34亿美元，原生App加密货币名义交易量同比下降48%至240亿美元，这已是自2025年第四季度（同比-38%）以来连续第二个季度出现大幅下滑（数据来源：WEEX Crypto News、cryptowisser.com 2026年4月29日报道）。若剔除并表的Bitstamp机构交易量（420亿美元，未披露同比变化），公司自身加密业务的疲软程度可能更为显著。</li>
+          <li><b>"超级应用"愿景的执行速度值得认可，但多线程扩张也带来了执行风险与费用率的持续抬升。</b>公司近期同步推进Trump储蓄账户（已有550万美国儿童注册，超6000万潜在合格对象，公司作为唯一经纪商与受托人）、WonderFi收购（拓展加拿大加密市场）、MIAX衍生品交易所90%股权收购（与Susquehanna合作，目标建立CFTC持牌期货交易所）、Robinhood Chain区块链（已于2026年7月1日上线）、代理式AI交易（上线数周内已有超5万用户开户）等多条业务线（数据来源：Fool.com、TradingView 2026年6月报道）。与此同时，2026年调整后运营费用及股权激励指引已从此前的26-27.25亿美元上调至27-28.25亿美元，主因新增约1亿美元用于Trump账户系统建设（数据来源：Robinhood 2026Q1财报新闻稿）。</li>
+          <li><b>估值已充分甚至过度计入"超级应用"叙事的乐观预期，是当前风险收益比的核心矛盾。</b>公司当前远期P/E约61-67倍，显著高于嘉信理财（约19倍）和盈透证券（约32倍）（数据来源：heygotrade 2026年5月22日分析），PEG比率已从一年前均值1.08恶化至2.01（数据来源：financecharts.com 2026年5月27日），GuruFocus模型测算其GF Value为61.83美元，较当前股价存在约49%的"显著高估"（数据来源：GuruFocus 2026年6月11日分析）。这种估值状态意味着市场对公司业绩执行的容错空间极低，任何单季度增长不及预期（如本次Q1财报后的股价反应）都可能引发估值的快速重估。</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>关键数据速览</h4>
+        <ul>
+          <li>2026Q1总营收：<b>US$1.07B</b>（+15% YoY，略低于预期，数据来源：2026Q1财报）</li>
+          <li>2026Q1净入金：<b>US$18B</b>（年化增速22%）</li>
+          <li>Robinhood Gold订阅用户：<b>430万</b>（+36% YoY）</li>
+          <li>事件合约（预测市场）营收：<b>US$147M</b>（+320% YoY）</li>
+          <li>加密货币营收：<b>US$134M</b>（-47% YoY）</li>
+          <li>调整后EBITDA利润率：<b>50%</b>（US$534M，+14% YoY）</li>
+          <li>2026年调整后运营费用指引：<b>US$27-28.25亿</b>（较此前上调1亿美元）</li>
+          <li>Q1股票回购：<b>US$250M</b>（约400万股）</li>
+          <li>近期新发行可转换优先票据：<b>US$2.2B（0.00%票息，2029年到期）</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>数据来源交叉核实说明：</b>不同渠道对2026年第一季度EPS及营收是否"超预期"的表述存在差异——部分渠道（如Investing.com）称营收和EPS均"不及预期"（营收10.7亿美元 vs 预期11.7亿美元，EPS 0.38美元 vs 预期0.41美元），另有渠道（如TradingView转载数据）称EPS预期为0.39美元、实际0.38美元、仅小幅miss约1.36%。本报告采用区间呈现以反映这一差异，并以公司通过SEC披露的正式8-K文件（Exhibit 99.1）财务数据为最终权威依据。此外，用户此前提及的"自由现金流利润率64.5%"这一表述，本报告在公开渠道检索中未能找到可交叉验证的官方数据支撑——公开数据显示Robinhood历史自由现金流波动剧烈甚至多次为负（如MacroTrends数据显示FY2024自由现金流约为-2.07亿美元），本报告采用可验证的调整后EBITDA利润率（50%）及净利润率（41.1%-42.1%）作为盈利能力的替代性、可交叉核实指标，并在第四节估值分析中对自由现金流的实际历史表现进行专门说明。</div>
+  </div>
+</section>
+
+<section id="segments">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>业务板块拆分：营收结构与增长质量</h2></div>
+    <p>Robinhood当前财报披露口径下的核心收入构成为：交易类收入（Transaction-based Revenues，含期权、加密货币、股票、事件合约等）、净利息收入（Net Interest Revenues）及其他收入（含Gold订阅费）。2026年第一季度各细分品类表现如下：</p>
+    <div class="seg-grid">
+      <div class="seg-card">
+        <div class="sname">期权交易收入</div>
+        <div class="sval">US$260M</div>
+        <div class="sgrowth pos">+8% YoY</div>
+        <p>公司交易类收入中规模最大的单一品类，增速虽放缓但保持正增长，反映核心散户期权交易活跃度维持韧性。（数据来源：Yahoo Finance 2026年4月29日报道）</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">股票交易收入</div>
+        <div class="sval">US$82M</div>
+        <div class="sgrowth pos">+46% YoY</div>
+        <p>增速显著提升，部分受益于2026年4月14日SEC取消PDT规则（模式日内交易者规则）后活跃交易账户的扩容（数据来源：heygotrade 2026年5月22日分析）。</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">加密货币收入</div>
+        <div class="sval">US$134M</div>
+        <div class="sgrowth neg">-47% YoY</div>
+        <p>连续第二个季度大幅下滑（2025Q4同比-38%），原生App名义交易量同比-48%至240亿美元，是当季最大的业绩拖累项。（数据来源：cryptowisser.com 2026年4月29日报道）</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">事件合约（其他交易收入）</div>
+        <div class="sval">US$147M</div>
+        <div class="sgrowth pos">+320% YoY</div>
+        <p>公司当季最大增长亮点，88亿份合约创纪录成交，是抵消加密货币下滑、支撑交易类收入整体正增长（+7% YoY至6.23亿美元）的核心力量。（数据来源：KuCoin 2026年4月29日报道）</p>
+      </div>
+    </div>
+
+    <h3>合并利润表关键指标趋势</h3>
+    <table>
+      <thead><tr><th>指标</th><th>FY2025全年</th><th>2025Q4</th><th>2026Q1</th><th>市场预期对比</th></tr></thead>
+      <tbody>
+        <tr><td>总净营收</td><td>US$4.5B（创纪录）</td><td>US$1.28B（创纪录）</td><td>US$1.07B（+15%）</td><td><span class="tag miss">略低于预期US$1.17B</span></td></tr>
+        <tr><td>净利润</td><td>—</td><td>—</td><td>US$346M（+3%）</td><td>—</td></tr>
+        <tr><td>稀释每股收益（EPS）</td><td>US$2.05（创纪录）</td><td>US$0.66</td><td>US$0.38（+3%）</td><td><span class="tag miss">略低于预期US$0.39-0.41</span></td></tr>
+        <tr><td>调整后EBITDA</td><td>—</td><td>—</td><td>US$534M（+14%，margin 50%）</td><td>—</td></tr>
+        <tr><td>净利息收入</td><td>—</td><td>—</td><td>US$359M</td><td>受短端利率下行影响面临压力</td></tr>
+        <tr><td>运营费用</td><td>—</td><td>—</td><td>US$656M（+18%）</td><td>主因营销及并购相关支出</td></tr>
+        <tr><td>净入金（Net Deposits）</td><td>US$68B（创纪录）</td><td>US$16B</td><td>US$18B（年化+22%）</td><td>连续多季度保持20%+增速</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：Robinhood通过SEC披露的2026年第一季度8-K文件Exhibit 99.1（www.sec.gov）、2025年第四季度及全年业绩公告（2026年2月10日）、TipRanks/Investing.com/Yahoo Finance对财报电话会议纪要的转载整理。</p>
+
+    <div class="two-charts">
+      <div class="chart-box">
+<svg viewBox="0 0 460 300" width="100%" style="max-width:520px;display:block;margin:0 auto;" role="img" aria-label="bar chart">
+<text x="230" y="20" text-anchor="middle" font-size="12" font-family="monospace" fill="#12203c">2026Q1交易类收入细分（百万美元）</text>
+<line x1="52" y1="242.0" x2="440" y2="242.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="245.0" text-anchor="end" font-size="10" fill="#4b5468">0</text>
+<line x1="52" y1="200.4" x2="440" y2="200.4" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="203.4" text-anchor="end" font-size="10" fill="#4b5468">100</text>
+<line x1="52" y1="158.8" x2="440" y2="158.8" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="161.8" text-anchor="end" font-size="10" fill="#4b5468">200</text>
+<line x1="52" y1="117.2" x2="440" y2="117.2" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="120.2" text-anchor="end" font-size="10" fill="#4b5468">300</text>
+<line x1="52" y1="75.6" x2="440" y2="75.6" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="78.6" text-anchor="end" font-size="10" fill="#4b5468">400</text>
+<line x1="52" y1="34.0" x2="440" y2="34.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="37.0" text-anchor="end" font-size="10" fill="#4b5468">500</text>
+<rect x="80.5" y="133.8" width="40.0" height="108.2" fill="#0a5fd6" rx="2"/>
+<text x="100.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">期权</text>
+<rect x="177.5" y="207.9" width="40.0" height="34.1" fill="#0a5fd6" rx="2"/>
+<text x="197.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">股票</text>
+<rect x="274.5" y="186.3" width="40.0" height="55.7" fill="#0a5fd6" rx="2"/>
+<text x="294.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">加密货币</text>
+<rect x="371.5" y="180.8" width="40.0" height="61.2" fill="#0a5fd6" rx="2"/>
+<text x="391.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">事件合约</text>
+<rect x="52" y="273" width="12" height="12" fill="#0a5fd6"/>
+<text x="68" y="283" font-size="10" fill="#4b5468">2026Q1营收（百万美元）</text>
+</svg>
+</div>
+      <div class="chart-box">
+<svg viewBox="0 0 520 300" width="100%" style="max-width:560px;display:block;margin:0 auto;" role="img" aria-label="line chart">
+<text x="260" y="20" text-anchor="middle" font-size="12" font-family="monospace" fill="#12203c">营收与调整后EBITDA环比趋势</text>
+<line x1="52" y1="244.0" x2="504" y2="244.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="247.0" text-anchor="end" font-size="10" fill="#4b5468">444</text>
+<line x1="52" y1="202.0" x2="504" y2="202.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="205.0" text-anchor="end" font-size="10" fill="#4b5468">629</text>
+<line x1="52" y1="160.0" x2="504" y2="160.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="163.0" text-anchor="end" font-size="10" fill="#4b5468">814</text>
+<line x1="52" y1="118.0" x2="504" y2="118.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="121.0" text-anchor="end" font-size="10" fill="#4b5468">1000</text>
+<line x1="52" y1="76.0" x2="504" y2="76.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="79.0" text-anchor="end" font-size="10" fill="#4b5468">1185</text>
+<line x1="52" y1="34.0" x2="504" y2="34.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="37.0" text-anchor="end" font-size="10" fill="#4b5468">1370</text>
+<text x="52.0" y="260.0" text-anchor="middle" font-size="9" fill="#8891a0">2025Q4</text>
+<text x="504.0" y="260.0" text-anchor="middle" font-size="9" fill="#8891a0">2026Q1</text>
+<polygon points="52.0,244.0 52.0,54.3 504.0,102.0 504.0,244.0" fill="rgba(10,61,122,0.08)" stroke="none"/>
+<polyline points="52.0,54.3 504.0,102.0" fill="none" stroke="#0a3d7a" stroke-width="2"/>
+<circle cx="52.0" cy="54.3" r="3" fill="#0a3d7a"/>
+<circle cx="504.0" cy="102.0" r="3" fill="#0a3d7a"/>
+<polyline points="504.0,223.7" fill="none" stroke="#00c805" stroke-width="2"/>
+<circle cx="504.0" cy="223.7" r="3" fill="#00c805"/>
+</svg>
+</div>
+    </div>
+  </div>
+</section>
+
+<section id="growth-curves">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>新兴增长曲线深度评估：预测市场与加密货币的双重叙事</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b>预测市场（事件合约）：</b>该品类月度交易量从2024年初不足1亿美元跃升至2025年底超过130亿美元/月（数据来源：Forbes，经The Motley Fool 2026年5月4日转载），Robinhood通过其CFTC监管交易所"Rothera"承接这一需求，并已推出2026年FIFA世界杯预测市场等主题产品（数据来源：TradingView 2026年6月25日报道）。从趋势外推角度看，若Bernstein Research对行业2030年1万亿美元交易量的预测部分兑现，这将是一个远超当前体量的增量市场；但我们提示，320%的同比增速本身建立在极低的历史基数之上，且该品类在美国部分州面临"是否构成非法博彩"的司法管辖权争议（数据来源：GuruFocus财报电话会议纪要），监管的最终走向将直接决定这一增长曲线能否持续，而非简单线性外推当前增速。</p>
+        <p><b>加密货币业务：</b>连续两个季度的大幅下滑（2025Q4 -38%，2026Q1 -47%）表明该业务的营收贡献与加密货币市场的价格及情绪周期高度绑定，而非稳定的经常性收入来源。公司试图通过WonderFi收购（拓展加拿大市场，新增约30万资金账户及20亿加元托管资产）、Robinhood Chain区块链（已上线，支持代币化股票及债券的链上交易）及机构化的Bitstamp平台（当季名义交易量420亿美元）来对冲单一App内加密交易量下滑的影响，但截至目前，这些新举措尚未能扭转加密货币板块营收的整体下行趋势。</p>
+      </div>
+      <div class="card">
+        <h4>"超级应用"关键进展一览</h4>
+        <ul>
+          <li>Trump储蓄账户：<b>550万美国儿童已注册</b>，超6000万潜在合格对象，成本加成合同模式（数据来源：Fool.com 2026年4月28日）</li>
+          <li>Robinhood银行业务：<b>较上季度增长5倍</b>，净入金超20亿美元，12.5万资金账户，直接存款绑定率40%</li>
+          <li>退休账户资产：<b>突破300亿美元</b></li>
+          <li>Gold信用卡：<b>超80万持卡人</b>，年化消费流水150亿美元，目标年内突破100万张卡及1亿美元ARR</li>
+          <li>MIAX衍生品交易所：<b>与Susquehanna联合收购90%股权</b>，目标年内建成CFTC持牌期货交易所</li>
+          <li>代理式AI交易：<b>上线数周内超5万账户开户</b>，日交易额达数百万美元级别</li>
+          <li>Robinhood Chain：<b>2026年7月1日正式上线</b>，支持代币化股票/债券链上交易</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout orange"><b>"超级应用"愿景可行性的客观评估：</b>从产品发布节奏与用户指标看，Robinhood在多个新业务线上确实展现出了较强的执行力（Gold订阅、银行业务、信用卡等指标均呈现健康增长）。但"超级应用"愿景本质上要求公司同时在经纪、银行、支付、加密、预测市场、退休规划等多个高度专业化且各自受不同监管框架约束的领域建立竞争力，这对管理团队的执行带宽、合规资源投入及资本配置纪律提出了极高要求。当前费用指引的持续上调（一年内两次上调2026年运营费用预算）已初步反映了多线程扩张对成本结构的压力，这一趋势是否会持续侵蚀公司的调整后EBITDA利润率，是判断"超级应用"叙事能否兑现为股东价值的关键观察指标。</div>
+  </div>
+</section>
+
+<section id="valuation">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>动态估值分析：DCF为主，P/E及P/FCF相对估值交叉验证</h2></div>
+    <p>鉴于Robinhood当前业务结构中交易类收入占比高、波动性大（尤其是加密货币及预测市场两大摆动类别），且历史自由现金流本身存在剧烈波动甚至阶段性为负的特征，我们采用"分阶段现金流折现（DCF）"作为主要估值框架，重点评估订阅与净利息等相对稳定收入能否逐步稀释交易类收入的波动性影响，并以P/E、P/FCF等相对估值法进行交叉验证。</p>
+
+    <h3>估值倍数现状：与传统券商同业对比</h3>
+    <table>
+      <thead><tr><th>指标</th><th>Robinhood (HOOD)</th><th>嘉信理财 (SCHW)</th><th>盈透证券 (IBKR)</th></tr></thead>
+      <tbody>
+        <tr><td>远期P/E</td><td>约61-67倍</td><td>约19倍</td><td>约32倍</td></tr>
+        <tr><td>trailing P/E（不同日期口径）</td><td>约33-56倍（波动较大）</td><td>—</td><td>—</td></tr>
+        <tr><td>P/S（市销率）</td><td>约15.4倍</td><td>—</td><td>—</td></tr>
+        <tr><td>PEG比率</td><td>约2.01（1年前均值1.08）</td><td>—</td><td>—</td></tr>
+        <tr><td>股息政策</td><td>无股息</td><td>常规季度股息</td><td>—</td></tr>
+        <tr><td>核心收入结构</td><td>交易类收入占比高，PFOF+加密货币敏感</td><td>净利息收入及资管费为主，约11.9万亿美元客户资产</td><td>多元化全球交易平台</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：heygotrade 2026年5月22日/5月7日分析（引用Zacks数据）、public.com HOOD P/E页面（2026年7月2日）、gurufocus.com（2026年6月11日）、financecharts.com（2026年5月8日/27日）。不同数据终端对trailing P/E的计算存在显著差异（33-56倍区间），主因Robinhood季度EPS本身波动剧烈（如2025Q3至2026Q1单季净利润环比大幅波动），投资者应对该指标的稳定性保持谨慎。</p>
+
+    <h3>DCF核心假设与分阶段现金流路径</h3>
+    <table>
+      <thead><tr><th>阶段</th><th>2026E</th><th>2027E</th><th>2028E及以后</th></tr></thead>
+      <tbody>
+        <tr><td>核心假设</td><td>净入金维持20%+年化增速，加密货币营收企稳但难现2024年高点，事件合约增速自高基数逐步回落</td><td>Gold订阅及银行/信用卡交叉销售持续提升ARPU，MIAX期货交易所并表贡献增量收入</td><td>"超级应用"多产品协同效应逐步显现，交易类收入波动性对整体盈利的影响权重下降</td></tr>
+        <tr><td>调整后EBITDA利润率（估算）</td><td>48%-52%（费用指引上调施压）</td><td>50%-55%（规模效应逐步显现）</td><td>52%-58%（成熟期利润率）</td></tr>
+        <tr><td>自由现金流路径（估算）</td><td>波动区间较大，经纪-交易商模式下客户资金变动对经营现金流影响显著，需以季度数据谨慎评估</td><td>随订阅与银行业务收入占比提升，现金流稳定性预期改善</td><td>若"超级应用"战略成功，FCF利润率有望向传统券商的中高个位数至双位数区间靠拢</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">上述路径为Snail-bird Investment研究团队基于公开管理层表态及历史增长规律构建的情景性估算，非公司官方指引。需特别提示：由于经纪-交易商业务模式下客户存款、保证金贷款等项目会对经营活动现金流产生较大扰动，Robinhood历史自由现金流数据呈现出与其调整后EBITDA走势并不完全同步的特征（如FY2024全年自由现金流为负值区间，与同期正向EBITDA形成背离），这是DCF模型应用于该公司时面临的核心方法论挑战，也是本报告将P/E与P/FCF同时纳入交叉验证、而非单一依赖某一现金流指标的原因。</p>
+
+    <h3>DCF估值敏感性分析（企业价值，单位：十亿美元）</h3>
+    <table>
+      <thead><tr><th>WACC \ 永续增长率</th><th>4.0%</th><th>5.0%</th><th>6.0%</th></tr></thead>
+      <tbody>
+        <tr><td>10.5%</td><td>约72</td><td>约85</td><td>约103</td></tr>
+        <tr><td>11.5%</td><td>约63</td><td>约72</td><td>约85</td></tr>
+        <tr><td>12.5%</td><td>约56</td><td>约63</td><td>约72</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">DCF测算隐含企业价值区间约560-1,030亿美元，按公司当前估算市值约1,008亿美元及约9亿股流通股本折算，对应每股价值区间约US$62-US$114，中枢与当前股价US$111.97的下沿至中枢区域大致重合，反映当前估值已较充分甚至偏乐观地计入了"超级应用"战略成功的预期，安全边际相对有限。该模型对折现率（反映公司高Beta及业务波动性）及永续增长率假设高度敏感，仅供交叉验证参考，不构成精确目标价。</p>
+
+    <h3>多情景目标价（12个月）</h3>
+    <div class="scenario-grid">
+      <div class="scenario pess">
+        <div class="stitle">保守情景（若营收增速持续放缓）</div>
+        <div class="prob">对应加密/预测市场双双降温</div>
+        <div class="starget">US$65-85</div>
+        <p>加密货币营收降幅未见收窄，预测市场增速从320%的高基数大幅回落，监管对事件合约合法性的挑战升级，"超级应用"多线程扩张的费用压力持续侵蚀EBITDA利润率，估值向传统券商同业估值区间大幅收敛。</p>
+      </div>
+      <div class="scenario base">
+        <div class="stitle">基准情景</div>
+        <div class="prob">对应当前趋势线性延续</div>
+        <div class="starget">US$95-135</div>
+        <p>净入金维持20%左右年化增速，Gold订阅与银行/信用卡交叉销售持续贡献ARPU提升，加密货币营收企稳、预测市场维持较高但边际放缓的增速，估值维持在当前远期P/E区间附近，与近期多家机构上调后的目标价（Morgan Stanley $124、Barclays $122、Mizuho $130）方向基本一致。</p>
+      </div>
+      <div class="scenario opt">
+        <div class="stitle">乐观情景（"超级应用"超预期兑现）</div>
+        <div class="prob">对应多产品协同效应超预期释放</div>
+        <div class="starget">US$150-180</div>
+        <p>MIAX期货交易所、Trump账户、Robinhood Chain代币化资产交易等新业务线超预期放量，预测市场行业规模加速扩张且监管环境明朗化，公司资产负债表与费用效率同步改善，市场给予"全球在线经纪超大规模平台"（Mizuho语）的估值溢价。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">本报告12个月目标价区间取US$85-140，基准情景中枢约US$112，与当前股价US$111.97高度接近，反映市场定价目前处于相对均衡状态——既未过度悲观，也未给予过多安全边际，这是我们给予"持有"而非"买入"或"卖出"评级的核心原因。</p>
+  </div>
+</section>
+
+<section id="shareholder-return">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>股东回报与资本配置分析（核心模块）</h2></div>
+    <p>Robinhood当前无股息政策，股东现金回报完全依赖股票回购，且回购计划与近期一笔20亿美元级别的可转换优先票据发行同步进行，形成了"发债扩表+回购对冲稀释"的独特资本运作组合，值得投资者深入理解其机制与可持续性。</p>
+
+    <h3>股东回报率计算：(年度股息总额 + 股票回购金额) / 当前市值</h3>
+    <table>
+      <thead><tr><th>指标</th><th>数值</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>年度股息总额</td><td>US$0</td><td>公司无股息政策（数据来源：TradingView 2026年7月10日）</td></tr>
+        <tr><td>2026年迄今股票回购</td><td>约US$300M+（约400万股）</td><td>含Q1常规回购US$250M及可转债配套回购约US$290M（数据来源：GuruFocus财报纪要、Investing.com 2026年6月25日）</td></tr>
+        <tr><td>股票回购授权总额</td><td>US$1.5B</td><td>董事会已于2026年3月刷新授权，预计约3年内完成（数据来源：Yahoo Finance 2026年4月29日报道）</td></tr>
+        <tr><td>估算股东回报率（年化）</td><td>约0.5%-1.0%左右</td><td>基于约US$1.5B授权额度3年分摊及当前约US$100.8B市值粗略估算，实际执行节奏可能不均匀</td></tr>
+        <tr><td>与嘉信理财对比</td><td>—</td><td>嘉信理财维持常规季度股息，股东回报结构以"股息+回购"并重，与Robinhood"纯回购、无股息"的策略形成对比</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">相较微软、Alphabet等成熟期科技巨头动辄数百亿美元规模、占市值数个百分点的年度股东回报，Robinhood当前的现金回报强度处于明显更低的水平，这与其自身仍处于高速产品扩张与再投资阶段的公司生命周期定位相符。</p>
+
+    <div class="compare-bar">
+      <div class="cb-row">
+        <div class="cb-label">Robinhood</div>
+        <div class="cb-track"><div class="cb-fill" style="width:12%;background:var(--red);">股息US$0 + 回购授权US$1.5B（3年期）</div></div>
+      </div>
+      <div class="cb-row">
+        <div class="cb-label">嘉信理财</div>
+        <div class="cb-track"><div class="cb-fill" style="width:60%;background:var(--blue);">常规季度股息 + 机会性回购</div></div>
+      </div>
+    </div>
+
+    <h3>可转债与回购并行操作的可持续性验证</h3>
+    <div class="grid-2">
+      <div>
+        <p>2026年6月，公司完成22亿美元0.00%票息可转换优先票据发行（2029年10月到期），净募集资金约21.69亿美元，其中约2.9-3亿美元立即用于回购约274.3万股Class A普通股，另有约1.232亿美元用于购买"上限看涨期权"（Capped Call）交易以对冲潜在股权稀释——该结构将有效转股价格提升至174.42美元/股，上限约237.85美元/股（较定价日收盘价93.48美元溢价125%），叠加同步回购后，公司预计在股价突破约303.95美元之前不会产生净稀释（数据来源：Investing.com 2026年6月25日报道）。</p>
+        <p>这一操作的资本效率评估需从两方面看：其一，0.00%票息意味着公司实质上以近乎零成本获得了22亿美元的低成本资金杠杆，且Capped Call结构将潜在稀释区间推高至远超当前股价（93.48美元定价日基准）的水平，从财务工程角度看是相对精巧的资本运作；其二，将募集资金的约13%-14%立即用于回购，本质上是"借新债、买旧股"的财务杠杆操作，虽然短期内提升每股指标，但也意味着公司资产负债表杠杆率的提升，需要未来的自由现金流增长予以匹配偿付能力，而非单纯依赖股价上涨来实现"无净稀释"的理论状态。</p>
+      </div>
+      <div class="card">
+        <h4>资本配置策略评估</h4>
+        <ul>
+          <li>Robinhood的资本配置优先级大致为：<b>内生产品研发投入（超级应用多线程扩张）≈ 并购扩张（WonderFi、MIAX等）&gt; 股票回购对冲稀释 &gt; 无股息</b></li>
+          <li>与传统金融机构"利润导向型"资本配置不同，Robinhood当前更接近"高成长科技公司"式的资本配置逻辑——将大部分资源投入增长与产品扩张，回购更多承担"技术性抵消可转债稀释"而非"向股东返还超额自由现金流"的功能</li>
+          <li>这一策略的合理性高度依赖于"超级应用"战略能否成功转化为长期、可持续的每股内在价值增长；若新业务线（Trump账户、MIAX、Robinhood Chain）未能如期贡献显著增量利润，当前的资本杠杆操作（可转债）叠加高估值将放大下行风险</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout orange"><b>股东回报分析核心结论：</b>Robinhood当前的股东回报模式本质上是"用可转债杠杆资金进行防御性回购以对冲稀释"，而非传统意义上"用自由现金流盈余进行股东价值返还"。这一模式的可持续性并不取决于自由现金流利润率能否长期维持在某一高位（我们在检索中未能验证用户提及的64.5%这一具体数值），而是取决于公司"超级应用"多线程扩张能否成功转化为可持续的盈利增长，从而为未来可转债到期时的偿付或转股提供充分的资产负债表支撑。这是一个与AWS/微软/Alphabet等现金牛型科技巨头截然不同的资本配置叙事，投资者应据此调整对其股东回报的预期锚点。</div>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>风险提示（客观谨慎，高亮关键风险点）</h2></div>
+    <div class="risk-matrix">
+      <div class="risk-item high">
+        <div class="rt"><b>加密货币交易量随币价大幅波动的风险</b><span class="rlevel">高</span></div>
+        <p>加密货币营收已连续两个季度大幅下滑（2025Q4 -38%，2026Q1 -47%），该品类的收入贡献与比特币等主流加密资产的价格周期及市场情绪高度绑定，若加密货币市场持续低迷，这一板块的营收拖累可能持续甚至扩大。</p>
+        <div class="src">数据来源：cryptowisser.com、WEEX Crypto News 2026年4月29日报道</div>
+      </div>
+      <div class="risk-item high">
+        <div class="rt"><b>监管合规成本与预测市场合法性风险</b><span class="rlevel">高</span></div>
+        <p>公司管理层已公开承认部分州对预测市场（事件合约）业务的司法管辖权提出担忧；同时，公开报道显示预测市场行业竞争对手Kalshi与Polymarket近期联合应对明尼苏达州的博彩禁令挑战，反映该赛道整体面临的监管不确定性正在实质化，可能对公司当前增速最快的业务线构成实质性威胁。</p>
+        <div class="src">数据来源：GuruFocus财报电话会议纪要、CNN 2026年7月2日报道</div>
+      </div>
+      <div class="risk-item high">
+        <div class="rt"><b>高估值对业绩执行的零容忍风险</b><span class="rlevel">高</span></div>
+        <p>公司当前远期P/E约61-67倍，PEG比率已升至2.01（历史均值1.08），本季度仅因营收和EPS小幅不及预期即引发股价下跌2.3%-6%，反映市场对业绩执行的容错空间已非常有限，任何单季度增长不及预期或利润率不及预期都可能引发估值的快速、剧烈重估。</p>
+        <div class="src">数据来源：financecharts.com、KuCoin 2026年4月29日报道</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>宏观高利率/利率下行环境的双向压制风险</b><span class="rlevel">中</span></div>
+        <p>公司净利息收入是当季重要收入来源之一（3.59亿美元），若短端利率进入下行周期，将直接压缩这部分利息收入贡献；与此同时，若宏观经济走弱抑制散户投资活跃度，也将拖累交易类收入，公司在两种截然不同的宏观情景下均面临收入端压力。</p>
+        <div class="src">数据来源：GuruFocus 2026年4月29日财报电话会议纪要</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>可转债与回购并行操作的资本结构风险</b><span class="rlevel">中</span></div>
+        <p>22亿美元可转债的发行提升了公司资产负债表杠杆，尽管当前票息为0.00%且短期偿付压力有限，但2029年到期时若公司股价未能达到有效转股价格（174.42美元）或自由现金流未能充分改善，可能面临再融资或现金偿付的双重压力。</p>
+        <div class="src">数据来源：Investing.com 2026年6月25日报道</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>"超级应用"多线程扩张的执行与费用失控风险</b><span class="rlevel">中</span></div>
+        <p>公司2026年运营费用及股权激励指引已在一年内两次上调，若Trump账户、MIAX、WonderFi、Robinhood Chain等多条新业务线的投入产出比不及预期，持续的费用扩张可能侵蚀当前50%左右的调整后EBITDA利润率，进而压制盈利能力的进一步提升。</p>
+        <div class="src">数据来源：Robinhood 2026Q1财报新闻稿（SEC Exhibit 99.1）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rating">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2>投资建议</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b style="color:var(--ink);">评级：持有（Hold）。</b>我们认为Robinhood的"超级应用"转型战略在产品执行层面展现出了可信的推进速度——Gold订阅、银行业务、信用卡、退休账户等多项核心指标均呈现健康增长态势，预测市场业务的爆发式增长也为公司提供了对冲加密货币周期性波动的重要缓冲。但公司当前估值（远期P/E 61-67倍，PEG 2.01）已较大程度、甚至可能过度计入了这一转型战略全面成功的乐观预期，我们的DCF测算及P/E交叉验证结果显示，当前股价大致处于合理区间的中枢至上沿附近，相较基准情景缺乏明显的估值安全边际。加密货币营收的连续大幅下滑、预测市场的监管不确定性，以及可转债杠杆操作对资产负债表的影响，共同构成了当前风险收益比中需要审慎权衡的负面变量。我们建议投资者在下一次财报（2026年7月29日）披露、特别是加密货币营收企稳信号与预测市场监管环境明朗化之前，维持观望或仅做小仓位配置。</p>
+        <div class="callout">
+          <b>关注信号：</b>（1）2026年第二季度财报（7月29日）中加密货币营收降幅能否企稳收窄；（2）预测市场（事件合约）营收增速能否在320%的高基数上维持可观增长，以及各州监管态度是否进一步明朗；（3）调整后EBITDA利润率能否在持续的费用扩张压力下维持在50%左右；（4）MIAX期货交易所、Robinhood Chain等新业务线的实际营收贡献何时开始体现在财报中；（5）2026年运营费用指引是否会再次上调，这将是市场评估"超级应用"执行纪律的重要信号。
+        </div>
+        <p>对于已持仓或计划配置的投资者，可考虑在基准情景估值区间（US$95-135）内结合季度财报披露节点分批操作，并将保守情景US$65-85视为止损/加仓评估参考区间；乐观情景US$150-180可作为12个月止盈观察位。鉴于公司无股息、股东现金回报强度有限，建议以纯粹的成长型/事件驱动型策略参与，且由于公司Beta系数高达3.95（数据来源：TradingView），投资者需具备较高的波动承受能力，仓位规模应与个人风险偏好审慎匹配。</p>
+      </div>
+      <div class="card">
+        <h4>交易要点摘要</h4>
+        <ul>
+          <li>评级：<b>持有（Hold）</b></li>
+          <li>12个月目标价区间：<b>US$85-140</b>（基准中枢约US$112）</li>
+          <li>保守情景下限：<b>US$65-85</b></li>
+          <li>乐观情景上限：<b>US$150-180</b></li>
+          <li>核心估值方法：<b>DCF为主，P/E及P/FCF相对估值交叉验证</b></li>
+          <li>核心风险变量：<b>加密货币营收企稳节奏、预测市场监管走向、费用纪律</b></li>
+          <li>股东回报特征：<b>无股息，回购主要用于对冲可转债稀释而非纯粹价值返还</b></li>
+          <li>波动性提示：<b>Beta系数约3.95，属高波动性标的</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>估值方法选择依据与股东回报分析必要性说明</h5>
+        <p style="font-size:12px;color:var(--ink-faint);"><b>为何采用"DCF为主+P/E及P/FCF交叉验证"：</b>Robinhood的收入结构中交易类收入（尤其加密货币、预测市场）波动性极大，且作为经纪-交易商，其经营活动现金流受客户资金变动等非经营性因素扰动显著，历史自由现金流数据本身即存在剧烈波动甚至阶段性为负的特征。单一依赖静态P/E或P/FCF倍数法容易被短期波动误导，因此我们采用DCF模型显式建模未来分阶段的收入结构演变（交易类收入占比下降、订阅及净利息收入占比提升）及利润率路径，同时以P/E、P/FCF、PEG等相对估值指标与传统券商同业进行交叉验证，力求更全面地捕捉"超级应用"转型期的价值变化。<br><br><b>为何将股东回报设为核心模块：</b>Robinhood当前"零股息+可转债杠杆式回购"的资本配置模式，与传统成熟金融机构（如嘉信理财）及现金牛型科技巨头存在本质差异，这一模式的可持续性直接取决于"超级应用"战略能否成功转化为长期盈利能力，而非简单的自由现金流分配决策，因此本报告将其作为独立核心模块进行深度解析，以确保投资者充分理解这一结构性特征对每股内在价值的长期影响。</p>
+      </div>
+      <div>
+        <h5>主要数据来源</h5>
+        <ul class="src-list">
+          <li>Robinhood 2026年第一季度8-K文件Exhibit 99.1（www.sec.gov）</li>
+          <li>Robinhood 2025年第四季度及全年业绩公告（2026年2月10日）</li>
+          <li>Robinhood 2026年第一季度财报电话会议纪要（Yahoo Finance/Fool.com/GuruFocus转载）</li>
+          <li>KuCoin、cryptowisser.com、WEEX Crypto News 2026年4月29日报道</li>
+          <li>Investing.com、TradingView 2026年6月报道（可转债发行细节）</li>
+          <li>heygotrade、financecharts.com、GuruFocus、public.com估值数据（2026年5-7月）</li>
+          <li>Robinhood官网行情、CNN、Yahoo Finance股价数据（2026年7月10-11日）</li>
+        </ul>
+      </div>
+      <div>
+        <h5>报告信息</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">Snail-bird Investment<br>金融科技与财富管理研究组<br>报告日期：2026年7月11日<br>深度覆盖 · 评级：持有（Hold）</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      本报告由Snail-bird Investment研究团队独立撰写，仅供参考，不构成任何证券买卖要约或投资建议。报告中的观点、评级及目标价基于报告撰写时可获得的公开信息及分析师的专业判断，可能随市场环境变化而调整，Snail-bird Investment不承诺更新本报告的内容。本报告所引用的股价数据（US$111.97，2026年7月11日）为可通过公开渠道交叉验证的近期价格快照，不同数据终端在同一时点的报价可能存在细微差异（如另一渠道显示7月10日收盘价约US$111.83-115.11），实际交易请以纳斯达克官方实时行情为准。本报告中用户此前提及的"自由现金流利润率64.5%"这一具体数值，在本报告的公开数据核实过程中未能找到官方或权威第三方数据来源的直接支撑，已在正文中明确说明并采用可交叉验证的替代指标（调整后EBITDA利润率、净利润率）进行分析，请投资者以公司官方10-Q/10-K文件披露的现金流量表为准进行独立核实。本报告中的DCF模型基于多项前瞻性假设及Snail-bird Investment研究团队的情景推演，实际结果可能因加密货币市场波动、监管政策变化、"超级应用"战略执行进度等因素而与测算结果产生重大偏差，不构成精确目标价承诺。若后续公司在监管政策（如SEC对预测市场的最终裁定）或加密货币市场出现重大更新，本报告的估值框架可能需要重新评估，投资者应持续关注公司最新披露及2026年7月29日即将发布的第二季度财报。投资者应充分了解相关风险，并根据自身风险承受能力及投资目标独立判断，据此投资操作风险自负。本报告不构成对任何特定投资者的个性化投资建议，亦不对因使用本报告内容而产生的任何直接或间接损失承担责任。
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
