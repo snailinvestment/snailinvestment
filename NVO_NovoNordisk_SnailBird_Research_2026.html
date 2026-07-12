@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>诺和诺德 (NVO) 深度研究报告 | Snail-bird Investment</title>
+<style>
+:root{
+  --bg:#f6f9fb;
+  --bg-panel:#ffffff;
+  --bg-alt:#eef4f8;
+  --ink:#132430;
+  --ink-soft:#4c5c67;
+  --ink-faint:#8393a0;
+  --line:#dbe6ec;
+  --medblue:#0b6fb0;
+  --medblue-deep:#0a3f66;
+  --medblue-soft:#e6f2fa;
+  --red-nn:#d0021b;
+  --orange:#c2660c;
+  --green:#1c7a4d;
+  --red:#b3261e;
+  --mono:'IBM Plex Mono','Courier New',monospace;
+  --sans:'IBM Plex Sans','Noto Sans SC',sans-serif;
+  --serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--medblue);}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(246,249,251,0.97);backdrop-filter:blur(6px);border-bottom:2px solid var(--medblue-deep);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--medblue-deep);}
+.brand .logo{width:26px;height:26px;border-radius:5px;background:var(--medblue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--medblue-deep);border:1px solid var(--medblue-deep);padding:3px 8px;border-radius:3px;}
+
+header.hero{padding:60px 0 40px;border-bottom:2px solid var(--medblue-deep);background:linear-gradient(180deg,#ffffff 0%,var(--bg) 100%);}
+.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+.nn-logo{width:52px;height:52px;border-radius:50%;background:var(--red-nn);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:800;font-size:24px;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--medblue);text-transform:uppercase;font-weight:700;}
+h1.title{font-family:var(--serif);font-size:34px;font-weight:700;margin:14px 0 10px;line-height:1.35;color:var(--ink);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:820px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+
+.rating-panel{display:flex;gap:1px;background:var(--medblue-deep);border:1px solid var(--medblue-deep);margin-top:30px;}
+.rating-box{background:var(--medblue-deep);color:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;min-width:180px;}
+.rating-box .rlabel{font-family:var(--mono);font-size:11px;opacity:.8;text-transform:uppercase;letter-spacing:1px;}
+.rating-box .rvalue{font-family:var(--serif);font-size:26px;font-weight:700;margin-top:6px;}
+.target-box{background:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;flex:1;}
+.target-box .tlabel{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:1px;}
+.target-box .tvalue{font-family:var(--mono);font-size:24px;font-weight:700;color:var(--medblue-deep);margin-top:6px;}
+
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:19px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--medblue);font-weight:700;}
+h2{font-family:var(--serif);font-size:25px;margin:0;color:var(--medblue-deep);}
+h3{font-family:var(--sans);font-size:16px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--medblue);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--medblue);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);background:#fdf3f2;}
+.callout.orange{border-left-color:var(--orange);}
+
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:13.5px;color:var(--medblue-deep);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:var(--medblue-deep);font-family:var(--mono);font-size:11.5px;color:#fff;font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:var(--medblue-soft);}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#e6f4ec;color:var(--green);}
+.tag.miss{background:#fbeae9;color:var(--red);}
+.tag.line{background:#fdf1e3;color:var(--orange);}
+
+.seg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0;}
+.seg-card{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--medblue);}
+.seg-card .sname{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--medblue-deep);margin-bottom:6px;}
+.seg-card .sval{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.seg-card .sgrowth{font-family:var(--mono);font-size:12px;margin-bottom:8px;}
+.seg-card .sgrowth.pos{color:var(--green);}
+.seg-card .sgrowth.neg{color:var(--red);}
+.seg-card p{font-size:11.5px;margin:0;}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--medblue-deep);border:1px solid var(--medblue-deep);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:24px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--medblue-deep);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--orange);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#fbeae9;color:var(--red);}
+.risk-item.mid .rlevel{background:#fdf1e3;color:var(--orange);}
+.risk-item.low .rlevel{background:#e6f4ec;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+.risk-item .src{font-size:10.5px;color:var(--ink-faint);margin-top:6px;}
+
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+.compare-bar{margin:16px 0;}
+.cb-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.cb-label{width:100px;font-family:var(--mono);font-size:12px;color:var(--ink-soft);flex-shrink:0;}
+.cb-track{flex:1;background:var(--bg-alt);border-radius:3px;height:22px;position:relative;overflow:hidden;}
+.cb-fill{height:100%;display:flex;align-items:center;padding-left:8px;font-family:var(--mono);font-size:11px;color:#fff;border-radius:3px;}
+
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--medblue-deep);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .seg-grid{grid-template-columns:repeat(2,1fr);}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .rating-panel{flex-direction:column;}
+  h1.title{font-size:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="logo">S</span> SNAIL-BIRD INVESTMENT · 医疗保健与制药研究</div>
+    <div class="navlinks">
+      <span>制药 / 代谢疾病与GLP-1</span>
+      <span class="navtag">NYSE: NVO</span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="nn-logo">N</div>
+      <div class="eyebrow">美股 · GLP-1全球龙头 · 深度覆盖</div>
+    </div>
+    <h1 class="title">诺和诺德 (Novo Nordisk, NVO)：GLP-1龙头的估值重塑与产能博弈</h1>
+    <p class="subtitle">报告日期：2026年7月12日（股价数据更新至2026年7月10日）｜出品方：Snail-bird Investment 医疗保健与制药研究组｜估值框架：DCF（现金流折现）为主 + P/E相对估值交叉验证</p>
+    <div class="meta-row">
+      <span>股票代码：<b>NYSE: NVO</b>（丹麦哥本哈根：NOVO-B）</span>
+      <span>所属行业：<b>制药 · 糖尿病与肥胖症护理</b></span>
+      <span>总裁兼CEO：<b>Maziar Mike Doustdar</b>（2025年8月7日就任）</span>
+      <span>最新季度：<b>2026年第一季度（2026年5月6日披露）</b></span>
+    </div>
+
+    <div class="rating-panel">
+      <div class="rating-box">
+        <div class="rlabel">Snail-bird Investment 评级</div>
+        <div class="rvalue">买入（Buy）</div>
+      </div>
+      <div class="target-box">
+        <div class="tlabel">12个月目标价区间（DCF为主，P/E交叉验证）</div>
+        <div class="tvalue">US$58 - US$85（基准情景中枢约US$70，较2026年7月10日收盘价US$49.48存在约41.5%潜在上行空间）</div>
+      </div>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="label">最新股价</div>
+        <div class="value">US$49.48</div>
+        <div class="sub">2026-07-10（用户提供，官方口径）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">总市值</div>
+        <div class="value">US$218.9B</div>
+        <div class="sub">2026-07-10（用户提供，官方口径）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">FY2025总销售额</div>
+        <div class="value pos">DKK 309.1B（≈$45.9B）</div>
+        <div class="sub">+6%（DKK）/+10%（CER），数据来源：FY2025财报</div>
+      </div>
+      <div class="kpi">
+        <div class="label">FY2025肥胖症护理销售额</div>
+        <div class="value pos">DKK 82.3B</div>
+        <div class="sub">+26%（DKK）/+31%（CER）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026年调整后销售指引</div>
+        <div class="value neg">-4%~-12%（CER）</div>
+        <div class="sub">已较2月发布指引小幅上调</div>
+      </div>
+      <div class="kpi">
+        <div class="label">trailing P/E（估算）</div>
+        <div class="value">≈11.5x</div>
+        <div class="sub">按最新市值折算，仍显著低于同业均值17.6x</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>核心投资论点（Investment Thesis）</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>诺和诺德是全球GLP-1类药物绝对龙头，在全球品牌GLP-1肥胖症市场的销量份额高达59.6%，2025年全年肥胖症护理业务销售额同比增长26%（按丹麦克朗计）、31%（按固定汇率CER计）至DKK 823.47亿元，是公司当前最核心的增长引擎（数据来源：诺和诺德2025年年度报告"财务表现"章节）。但公司股价自2024年高点以来经历了大幅回调，过去一年跌幅约40%，较2024年峰值市值蒸发超过4,000亿美元（数据来源：Reuters，经Yahoo Finance 2026年5月6日转载），期间经历了临床试验失利、收入指引下修、管理层大幅换血等一系列冲击。</p>
+        <p>我们给予诺和诺德"买入"评级，核心论点如下：</p>
+        <ol style="color:var(--ink-soft);font-size:14.5px;padding-left:20px;">
+          <li><b>GLP-1绝对龙头地位的护城河依然稳固，口服剂型放量速度超预期验证了商业化执行能力的修复。</b>2026年第一季度，Wegovy口服片剂在美国上市仅四个月，单季度即录得约130万张处方、DKK 22.6亿元（约合3.536亿美元）收入，约为路透社调查分析师此前预期（DKK 11.6亿元）的两倍，自2026年1月上市以来累计处方已突破200万张，被公司称为"史上最强GLP-1产品放量"（数据来源：Yahoo Finance/CNBC 2026年5月6日报道）。管理层已确认口服剂型将于2026年下半年拓展至美国以外的部分市场，取决于各地监管审批进度（数据来源：诺和诺德2026年第一季度财报电话会议纪要）。</li>
+          <li><b>传统糖尿病业务正从"稳定现金牛"转变为"结构性收缩"，托底作用明显减弱，是本报告与市场普遍认知存在分歧的关键判断点。</b>2026年第一季度，全球GLP-1糖尿病业务调整后销售额同比下降11%（美国市场下降16%），Ozempic全球销售额下降8%（但好于预期），Rybelsus销售额下降15%，主因"实现价格下降"及"推广活动重新优先排序"（数据来源：finsee.ai 2026年第一季度财报分析）。这意味着糖尿病业务已无法再简单定位为"稳定托底现金牛"，公司的整体盈利能力正日益依赖肥胖症业务的持续放量能否覆盖糖尿病业务的结构性下滑。</li>
+          <li><b>美国"最惠国"（MFN）定价协议大幅压低了名义售价，短期内挤压利润率，但也是换取Medicare覆盖与长期渗透率的战略性代价。</b>公司已将Wegovy及Ozempic在美国的现行标价分别下调约50%和35%，该定价调整预计将从2027年起对现金流产生实质性影响（数据来源：诺和诺德2026年第一季度财报，2026年5月6日）。管理层将价格让步定位为"面向未来的投资，以换取更多患者的可及性"（数据来源：Investing.com 2026年2月4日报道，引用CEO Doustdar在2025年全年业绩电话会议表态）。这一策略能否通过销量增长对冲价格降幅，是决定公司2027-2028年盈利拐点能否兑现的核心变量。</li>
+          <li><b>管理层动荡是不可忽视的战略执行风险，但新任CEO的"紧迫感"与成本纪律已初步体现在2025年的大规模转型举措中。</b>公司自2025年4月起经历了密集的高管变动：时任EVP商业战略与企业事务负责人Camilla Sylvest在28年任期后离职（2025年4月3日生效）；CEO Lars Fruergaard Jørgensen于2025年8月7日交棒给原国际业务负责人Maziar Mike Doustdar；此后美国业务负责人Dave Moore、产品与组合战略负责人Ludovic Helfgott也相继离职（数据来源：诺和诺德通过SEC披露的6-K文件，2025年4月及2026年3月）。与此同时，公司2025年8月遭遇一起证券集体诉讼，指控其此前误导投资者对GLP-1复合药市场的商业化预期（数据来源：诺和诺德2025年第三季度报告"法律事项"章节）。新任CEO在2025年主导了一轮成本约DKK 8-9亿元的公司范围转型重组，并将销售与运营费用增速与增长机会更紧密挂钩，初步展现出执行纪律的改善，但管理层更迭本身仍构成战略连续性的不确定因素。</li>
+          <li><b>当前估值已较大程度反映悲观预期，DCF与相对估值交叉验证显示存在合理的修复空间，但幅度需理性看待。</b>以2026年7月10日收盘价US$49.48、总市值US$218.9B计算，公司trailing P/E约11.5倍，显著低于美国生物制药行业平均的17.59倍，也远低于主要竞争对手礼来（Eli Lilly，trailing P/E约32-40倍区间）（数据来源：wallstreetzen.com 2026年7月、stockanalysis.com 2026年）。部分自动化估值模型（如GuruFocus的GF Value模型）给出的内在价值达136.07美元，隐含较当前股价62.9%的低估空间（数据来源：GuruFocus 2026年7月2日分析）；我们需要提示的是，此类基于历史盈利趋势外推的自动化模型可能未充分捕捉2026年销售与利润双降的最新指引，其结论应被审慎看待而非直接采信，我们在第四节中给出了基于分阶段现金流路径的独立DCF测算作为交叉验证。</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>关键数据速览</h4>
+        <ul>
+          <li>FY2025全球品牌GLP-1肥胖症市场份额：<b>59.6%</b>（按销量）</li>
+          <li>FY2025肥胖症护理销售额：<b>DKK 823.47亿元</b>（+26%/+31% CER）</li>
+          <li>Wegovy口服片剂2026Q1收入：<b>DKK 22.6亿元</b>（约为预期的2倍）</li>
+          <li>累计口服片剂处方量（截至2026Q1）：<b>超200万张</b></li>
+          <li>2026Q1全球GLP-1糖尿病调整后销售额：<b>-11%</b>（美国-16%）</li>
+          <li>美国Wegovy/Ozempic标价下调：<b>约50%/35%</b>（MFN协议）</li>
+          <li>2026年调整后销售/营业利润指引（CER）：<b>-4%至-12%</b></li>
+          <li>FY2025合计股东现金分红：<b>DKK 520亿元</b>（2025年暂停回购）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>数据来源交叉核实说明：</b>不同渠道对2026年第一季度销售增速的表述存在显著差异——公司CFO在财报电话会议中确认"报告销售额增长32%至DKK 96.8亿元"（该增速包含约42亿美元/DKK 29亿元级别的一次性340B药品定价计划准备金转回等非经常性、非现金性质项目），而剔除该等一次性因素后的"调整后销售额"实际同比下降4%；另有第三方数据平台（Simply Wall St）披露该季度"收入同比增长24%"，与前两者口径均不完全一致。本报告在正文中统一采用公司官方披露的"报告口径+调整后口径"双轨表述，并以SEC 6-K文件为最终权威依据。此外，用户此前提及"Simply Wall St评估的49.2%低估空间"这一具体数值，本报告在检索过程中未能找到与诺和诺德直接对应的官方或权威来源支撑（检索中仅发现GuruFocus模型给出62.9%的低估幅度），已在第四节估值分析中就此差异进行专门说明。</div>
+  </div>
+</section>
+
+<section id="segments">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>业务板块拆分：肥胖症护理接棒糖尿病护理成为核心引擎</h2></div>
+    <p>诺和诺德当前财报披露口径下的核心业务板块为糖尿病护理（Diabetes care）与肥胖症护理（Obesity care），另有小体量的罕见病业务。2025年全年及2026年第一季度各板块表现如下：</p>
+    <div class="seg-grid">
+      <div class="seg-card">
+        <div class="sname">肥胖症护理（FY2025）</div>
+        <div class="sval">DKK 823.5亿元</div>
+        <div class="sgrowth pos">+26%（DKK）/+31%（CER）</div>
+        <p>公司增长的核心引擎，全球品牌GLP-1肥胖症市场销量份额达59.6%，全球该品类市场销量增速高达104%，反映渗透率仍处早期扩张阶段。（数据来源：2025年年度报告）</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">Wegovy注射剂（2026Q1）</div>
+        <div class="sval">DKK 18.2亿元</div>
+        <div class="sgrowth pos">+12% YoY</div>
+        <p>增速较此前有所放缓，且略低于LSEG分析师预期，反映口服剂型对注射剂型存在一定的产品组合迁移效应，但管理层强调二者呈现"协同而非蚕食"效应。（数据来源：CNBC 2026年5月6日报道）</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">Wegovy口服片剂（2026Q1）</div>
+        <div class="sval">DKK 22.6亿元</div>
+        <div class="sgrowth pos">上市4个月即放量</div>
+        <p>2026年1月在美国上市，单季度约130万张处方，收入约为分析师预期的2倍，是当季最大的正面惊喜，累计处方已突破200万张。（数据来源：Yahoo Finance 2026年5月6日报道）</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">糖尿病护理（2026Q1，调整后）</div>
+        <div class="sval">全球GLP-1 -11%</div>
+        <div class="sgrowth neg">美国-16%</div>
+        <p>Ozempic销售额-8%（好于预期），Rybelsus销售额-15%，主因实现价格下降及推广资源向肥胖症业务倾斜，传统"现金牛"托底作用明显减弱。（数据来源：finsee.ai 2026Q1分析）</p>
+      </div>
+    </div>
+
+    <h3>合并利润表关键指标趋势</h3>
+    <table>
+      <thead><tr><th>指标</th><th>FY2024</th><th>FY2025</th><th>同比</th><th>2026Q1（报告口径）</th><th>2026Q1（调整后口径）</th></tr></thead>
+      <tbody>
+        <tr><td>销售额</td><td>—</td><td>DKK 309.1B（≈$45.9B）</td><td><span class="tag beat">+6%DKK/+10%CER</span></td><td>DKK 96.8B（+32%，含一次性因素）</td><td>-4%（CER，剔除一次性因素）</td></tr>
+        <tr><td>毛利率</td><td>84.7%</td><td>81.0%</td><td><span class="tag miss">-3.7pct</span></td><td>—</td><td>—</td></tr>
+        <tr><td>营业利润</td><td>—</td><td>DKK 127.7B（≈$18.9B）</td><td><span class="tag beat">+6%CER</span></td><td>—</td><td>-6%（CER，受R&D及商业化投入拖累）</td></tr>
+        <tr><td>营业利润率</td><td>更高（未明确披露）</td><td>41.3%</td><td><span class="tag miss">下降</span></td><td>—</td><td>—</td></tr>
+        <tr><td>净利润</td><td>—</td><td>DKK 102.4B（≈$15.2B）</td><td><span class="tag line">+1%</span></td><td>DKK 48.6B（+67%，含一次性因素）</td><td>—</td></tr>
+        <tr><td>2026年指引（CER）</td><td colspan="4">调整后销售增长与调整后营业利润增长均为<b>-4%至-12%</b>（较2月发布的-5%至-13%小幅上调，反映Q1超预期表现后信心增强）</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：诺和诺德2025年年度报告（2026年2月3日发布）、2026年第一季度财报及电话会议纪要（2026年5月6日发布，SEC 6-K文件）、PharmExec 2026年2月报道。2026年指引已剔除340B药品定价计划准备金转回等一次性、非经常性、非现金项目影响，管理层明确"从2026年起将采用新的非IFRS调整后销售增长与调整后营业利润增长指标"。</p>
+
+    <div class="chart-box">
+<svg viewBox="0 0 460 300" width="100%" style="max-width:520px;display:block;margin:0 auto;" role="img" aria-label="bar chart">
+<text x="230" y="20" text-anchor="middle" font-size="12" font-family="monospace" fill="#12203c">核心产品/业务线增速对比（示意，口服片剂为相对预期倍数）</text>
+<line x1="52" y1="242.0" x2="440" y2="242.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="245.0" text-anchor="end" font-size="10" fill="#4b5468">0</text>
+<line x1="52" y1="200.4" x2="440" y2="200.4" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="203.4" text-anchor="end" font-size="10" fill="#4b5468">40</text>
+<line x1="52" y1="158.8" x2="440" y2="158.8" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="161.8" text-anchor="end" font-size="10" fill="#4b5468">80</text>
+<line x1="52" y1="117.2" x2="440" y2="117.2" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="120.2" text-anchor="end" font-size="10" fill="#4b5468">120</text>
+<line x1="52" y1="75.6" x2="440" y2="75.6" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="78.6" text-anchor="end" font-size="10" fill="#4b5468">160</text>
+<line x1="52" y1="34.0" x2="440" y2="34.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="37.0" text-anchor="end" font-size="10" fill="#4b5468">200</text>
+<rect x="80.5" y="253.4" width="40.0" height="0.0" fill="#b3261e" rx="2"/>
+<text x="100.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">糖尿病护理
+(2026Q1调整后)</text>
+<rect x="177.5" y="209.8" width="40.0" height="32.2" fill="#b3261e" rx="2"/>
+<text x="197.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">肥胖症护理
+(FY2025)</text>
+<rect x="274.5" y="229.5" width="40.0" height="12.5" fill="#b3261e" rx="2"/>
+<text x="294.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">Wegovy注射剂
+(2026Q1)</text>
+<rect x="371.5" y="34.0" width="40.0" height="208.0" fill="#b3261e" rx="2"/>
+<text x="391.5" y="258.0" text-anchor="middle" font-size="9" fill="#8891a0">Wegovy口服片
+(2026Q1)</text>
+<rect x="52" y="273" width="12" height="12" fill="#b3261e"/>
+<text x="68" y="283" font-size="10" fill="#4b5468">同比增速（%）</text>
+</svg>
+</div>
+  </div>
+</section>
+
+<section id="pipeline">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>管线进展与外部合作：Vivani合作与CagriSema的一进一退</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b>与Vivani Medical的NPM-139合作：</b>2026年7月7日，诺和诺德与Vivani Medical（Nasdaq: VANI）签署协议，获准评估后者基于NanoPortal平台开发的NPM-139——一款用于慢性体重管理的微型超长效司美格鲁肽植入剂（数据来源：GlobeNewswire 2026年7月7日）。需要客观指出的是，该协议为<b>非排他性的内部评估协议</b>，未披露任何商业化或授权条款，Vivani保留同时寻求其他合作伙伴的权利；NPM-139目前仍处于临床前阶段，其人体安全性与有效性尚未得到验证，公司计划于2026年年中启动首次人体I期临床试验（以Wegovy注射剂为活性对照组）（数据来源：TipRanks 2026年7月7日报道）。因此，这一合作在当前阶段更应被理解为诺和诺德对长效给药技术路线的前瞻性技术侦察布局，而非具备短期商业化确定性的重大管线事件，投资者不宜过度解读其对公司近期业绩的影响。</p>
+        <p><b>CagriSema管线的一进一退：</b>公司核心在研双重激动剂CagriSema在REDEFINE 1三期临床试验中展现出22.7%的优效减重数据（数据来源：诺和诺德2024年年度报告"管线"章节），显示出较司美格鲁肽单药更强的潜在疗效。但需要提示的是，近期公开报道显示公司已叫停CagriSema的一项设备研究（Device Study），市场解读为对该产品商业化路径的阶段性调整，投资者关注度正重新聚焦至公司现有的核心肥胖症资产（数据来源：CNN 2026年7月10日报道标题"Novo Nordisk Halts Device Study for CagriSema: What It Means for NVO Investors"）。此外，公司在2025年通过收购Akero Therapeutics（主要资本开支反映为FY2025无形资产资本开支同比从DKK 4.1亿元大幅增至DKK 30.0亿元）拓展了代谢性疾病管线布局，管理层预计该笔收购将对2026年营业利润增速产生约3个百分点的负面拖累，主因研发投入增加（数据来源：诺和诺德2025年第三季度报告）。</p>
+      </div>
+      <div class="card">
+        <h4>管线与合作关键信息</h4>
+        <ul>
+          <li>NPM-139（Vivani合作）：<b>非排他性内部评估协议</b>，无商业条款披露，2026年年中启动I期临床</li>
+          <li>CagriSema：REDEFINE 1三期数据显示<b>22.7%优效减重</b>，但近期设备研究被叫停</li>
+          <li>semaglutide 7.2mg（Wegovy HD）：STEP UP试验显示<b>20.7%减重</b>，已获美国及英国批准</li>
+          <li>Akero Therapeutics收购：拓展代谢病管线，预计拖累2026年营业利润增速约<b>3个百分点</b></li>
+          <li>Wegovy欧盟常温存储审批：<b>最长48小时</b>，简化欧洲分销物流（数据来源：finsee.ai）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="valuation">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>动态估值分析：DCF为主，P/E相对估值交叉验证</h2></div>
+    <p>鉴于公司当前正处于"高基数增长向结构性放缓"过渡的关键窗口期（2026年指引为销售与利润双位数区间下降），且股价已较2024年峰值大幅回调，我们采用分阶段DCF模型重点刻画未来3-5年自由现金流的复苏路径，并以P/E相对估值法进行交叉验证，同时对市场上部分自动化估值模型给出的极端低估结论保持审慎态度。</p>
+
+    <h3>估值倍数现状：与行业及主要竞争对手对比</h3>
+    <table>
+      <thead><tr><th>指标</th><th>诺和诺德 (NVO)</th><th>礼来 (Eli Lilly, LLY)</th><th>美国生物制药行业平均</th></tr></thead>
+      <tbody>
+        <tr><td>trailing P/E</td><td>约11.68倍</td><td>约32-40倍（不同日期口径）</td><td>约17.59倍</td></tr>
+        <tr><td>PEG比率</td><td>约0.68倍</td><td>约1.40倍</td><td>—</td></tr>
+        <tr><td>P/B（市净率）</td><td>约7.05倍</td><td>—</td><td>约5.6倍</td></tr>
+        <tr><td>股息政策</td><td>常规股息，目标派息率约50%</td><td>常规股息，派息率约22.1%</td><td>—</td></tr>
+        <tr><td>过去一年股价表现</td><td>约-40%（较2024年峰值缩水超4,000亿美元市值）</td><td>过去52周+49.88%</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：wallstreetzen.com（2026年7月）、stockanalysis.com（2026年）、koyfin.com（2026年）、trefis.com（2026年5月13日）。诺和诺德当前估值倍数显著低于礼来及行业平均水平，反映市场对其2026年销售与利润双降指引、GLP-1糖尿病业务结构性收缩及管理层更迭风险的定价，而非单纯的市场情绪超跌。</p>
+
+    <h3>DCF核心假设与分阶段自由现金流路径</h3>
+    <table>
+      <thead><tr><th>阶段</th><th>2026E</th><th>2027E</th><th>2028E及以后</th></tr></thead>
+      <tbody>
+        <tr><td>核心假设</td><td>调整后销售/营业利润按指引下降4%-12%（CER），MFN降价效应逐步显现但尚未完全体现于现金流</td><td>MFN定价对现金流的实质性影响开始显现（管理层明确该影响"预计从2027年起"），但Medicare覆盖落地及口服剂型国际化扩张有望部分对冲价格降幅</td><td>肥胖症市场渗透率持续提升（当前全球品类销量增速仍达104%），产能瓶颈逐步缓解，规模效应对冲价格让步，FCF利润率逐步修复</td></tr>
+        <tr><td>营业利润率路径（估算）</td><td>38%-41%（较FY2025的41.3%小幅承压）</td><td>35%-40%（MFN影响集中显现）</td><td>38%-43%（规模效应与产品结构优化驱动修复）</td></tr>
+        <tr><td>资本开支强度</td><td>延续FY2025高位（PP&E+无形资产合计约DKK 90亿元级别），主要投向产能扩张与Akero整合</td><td>预计边际回落，产能投资进入收尾阶段</td><td>资本开支强度向历史正常化水平回归，自由现金流弹性释放</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">上述路径为Snail-bird Investment研究团队基于公司公开指引及管理层表态构建的情景性估算，非公司官方预测。需特别说明：公司在2025年第三季度报告中曾披露FY2025自由现金流指引为DKK 200-300亿元（较此前预期下调，主因美国应收贸易账款预期降低及资本开支调整），这一区间体现了公司近期自由现金流转化能力较历史高峰已明显走弱，是DCF模型中审慎设定近期现金流假设的重要依据。</p>
+
+    <h3>DCF估值敏感性分析（企业价值，单位：十亿美元）</h3>
+    <table>
+      <thead><tr><th>WACC \ 永续增长率</th><th>3.0%</th><th>4.0%</th><th>5.0%</th></tr></thead>
+      <tbody>
+        <tr><td>7.5%</td><td>约245</td><td>约275</td><td>约315</td></tr>
+        <tr><td>8.5%</td><td>约215</td><td>约238</td><td>约268</td></tr>
+        <tr><td>9.5%</td><td>约190</td><td>约208</td><td>约230</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">DCF测算隐含企业价值区间约1,900-3,150亿美元，按公司约44.25亿股净流通股本及基本无有息净债务的资产负债表结构折算，对应每股价值区间约US$43-US$71，中枢约US$57，与最新股价US$49.48（2026年7月10日，总市值US$218.9B）相比存在约15%的中枢潜在低估空间，显著低于GuruFocus模型给出的62.9%低估幅度。这一差异主要源于我们的DCF模型对2026-2027年MFN定价冲击及资本开支高位运行的假设更为审慎，而非简单外推历史盈利趋势。我们认为这一更保守的测算结果对投资者而言更具参考价值，也是本报告选择独立构建DCF模型而非直接采信第三方自动化估值工具结论的核心原因。</p>
+
+    <h3>多情景目标价（12个月）</h3>
+    <div class="scenario-grid">
+      <div class="scenario pess">
+        <div class="stitle">保守情景</div>
+        <div class="prob">对应竞争加剧+MFN冲击超预期</div>
+        <div class="starget">US$38-48</div>
+        <p>礼来Zepbound/Mounjaro等竞品持续抢占市场份额，MFN定价对2027年现金流的冲击力度超出管理层当前预期，糖尿病业务降幅进一步扩大，管理层动荡影响商业化执行，估值向历史区间下沿进一步收敛。</p>
+      </div>
+      <div class="scenario base">
+        <div class="stitle">基准情景</div>
+        <div class="prob">对应当前指引区间兑现</div>
+        <div class="starget">US$58-85</div>
+        <p>2026年调整后销售与营业利润降幅落于指引区间（-4%至-12% CER）中枢附近，口服剂型放量延续超预期表现，2027年MFN冲击逐步被销量增长部分对冲，估值向DCF测算及行业平均P/E水平回归。</p>
+      </div>
+      <div class="scenario opt">
+        <div class="stitle">乐观情景</div>
+        <div class="prob">对应产能释放+口服渗透超预期</div>
+        <div class="starget">US$95-115</div>
+        <p>口服剂型国际化扩张超预期，产能瓶颈快速缓解带动供给端约束解除，Medicare覆盖落地后放量显著超出管理层指引，新任CEO主导的成本转型效果持续显现，市场重新给予GLP-1绝对龙头的估值溢价。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">本报告12个月目标价区间取US$58-85，基准情景中枢约US$70，较最新股价US$49.48存在约41.5%的潜在上行空间，反映我们认为市场当前定价已较充分甚至过度计入了短期悲观因素，但修复节奏将高度依赖2026年下半年及2027年初步业绩验证。</p>
+  </div>
+</section>
+
+<section id="shareholder-return">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>股东回报与资本配置分析（核心模块）</h2></div>
+    <p>诺和诺德的股东回报政策以"约50%净利润派息率+机会性股票回购"为核心框架，但2025年因资本开支大幅提速，公司历史上首次暂停了股票回购计划，是理解当前资本配置逻辑的关键背景。</p>
+
+    <h3>股东回报率计算：(年度股息总额 + 股票回购金额) / 当前市值</h3>
+    <table>
+      <thead><tr><th>指标</th><th>FY2025</th><th>2026年迄今（截至7月3日）</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>年度股息总额</td><td>DKK 520亿元（约合$77亿）</td><td>—</td><td>派息率50.7%，略低于2024年同业均值58.9%（数据来源：2025年年度报告）</td></tr>
+        <tr><td>股票回购金额</td><td>US$0（DKK 0元）</td><td>DKK 62.2亿元（约合$9.2亿）</td><td>2025年因资本开支step-up暂停回购，2026年2月4日重启，计划12个月内回购至多DKK 150亿元</td></tr>
+        <tr><td>合计现金回报</td><td>DKK 520亿元</td><td>DKK 582.2亿元（股息+回购，年内滚动）</td><td>公司预计2026年合计股东现金回报将超过DKK 600亿元（数据来源：Investing.com 2026年2月4日）</td></tr>
+        <tr><td>估算股东回报率（年化，按当前市值折算）</td><td>约DKK 520亿/市值（详见测算）</td><td>—</td><td>以最新总市值US$218.9B及2026年预期超DKK 600亿元（约合$89亿）现金回报估算，年化股东回报率约<b>4%左右</b></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：诺和诺德2025年年度报告（2026年2月3日）、2026年第一季度报告、TipRanks对2026年回购计划进度的多次跟踪报道（2026年6月-7月）、SEC 6-K文件（2026年7月6日，最新回购进度更新）。截至2026年7月3日，公司自2026年2月4日以来累计回购2,300.9179万股B股，均价DKK 270.32元，耗资约DKK 62.2亿元，占全年DKK 150亿元回购目标约41%的执行进度，回购节奏总体稳健。</p>
+
+    <div class="compare-bar">
+      <div class="cb-row">
+        <div class="cb-label">诺和诺德</div>
+        <div class="cb-track"><div class="cb-fill" style="width:45%;background:var(--medblue);">派息率约50.7% + 2026年重启回购(DKK150亿)</div></div>
+      </div>
+      <div class="cb-row">
+        <div class="cb-label">礼来</div>
+        <div class="cb-track"><div class="cb-fill" style="width:25%;background:var(--orange);">派息率约22.1%，股息年化增速约15%</div></div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">值得注意的对比是：尽管诺和诺德当前股价表现远逊于礼来，但其派息率（约50.7%）显著高于礼来（约22.1%），反映诺和诺德在资本配置上更倾向于成熟期现金牛型公司的股东回报优先策略，而礼来则将更大比例的利润留存用于再投资以支撑其当前更强劲的增长叙事——这一差异本身也是解释两家公司当前估值倍数巨大差距（11.68倍 vs 32-40倍）的重要维度之一。</p>
+
+    <h3>可持续性验证：资本开支高峰期的自由现金流支撑能力</h3>
+    <div class="grid-2">
+      <div>
+        <p>FY2025公司资本开支大幅提速：物业、厂房及设备资本开支达DKK 601亿元（较2024年DKK 472亿元增长27%），主要投向API原料药产能及注射剂/口服剂型灌装产能扩张；无形资产资本开支从DKK 41亿元跃升至DKK 300亿元，主要反映Akero Therapeutics收购的业务发展活动（数据来源：2025年年度报告"财务表现"章节）。这一资本开支强度的急剧提升，是公司2025年历史上首次暂停股票回购的直接原因，也直接导致FY2025自由现金流指引被下调至DKK 200-300亿元区间（数据来源：2025年第三季度报告）。</p>
+        <p>进入2026年，公司在维持约50%目标派息率的同时重启了DKK 150亿元的股票回购计划，且管理层预计2026年合计股东现金回报（股息+回购）将超过DKK 600亿元，较2025年的DKK 520亿元（纯股息，无回购）进一步提升，释放出资本开支高峰已阶段性过去、资本配置重新向股东回报倾斜的积极信号。但这一判断的可持续性仍需未来2-3个季度的自由现金流实际表现予以验证，尤其是在MFN定价对现金流的实质性冲击预计从2027年开始显现的背景下，2026年的回购重启更多是建立在"当前现金流状况尚可支撑"的判断之上，而非对2027年后现金流路径的确定性保证。</p>
+      </div>
+      <div class="card">
+        <h4>资本配置策略评估</h4>
+        <ul>
+          <li>诺和诺德的资本配置优先级大致为：<b>产能扩张（供给瓶颈解除）≈ 管线并购（Akero等）&gt; 股东现金回报（股息优先、回购机会性）</b></li>
+          <li>2025年"暂停回购、优先产能与并购"到2026年"重启回购、股息回购并重"的转变，反映管理层判断供给端产能建设已进入相对成熟阶段，资本配置重心正逐步回归股东价值分配</li>
+          <li>这一策略的长期合理性取决于：（1）产能投资能否有效缓解此前制约销量增长的供应瓶颈；（2）Akero等管线并购能否在中长期贡献除GLP-1外的第二增长曲线；（3）MFN定价冲击落地后，公司能否在维持派息率的同时保持资本开支的可持续性</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout orange"><b>股东回报分析核心结论：</b>诺和诺德当前的资本配置逻辑正处于从"防御性现金保留"向"常态化股东回报"过渡的关键节点。相较于礼来当前将利润重心投向增长再投资的策略，诺和诺德以约50%的派息率叠加重启的回购计划，展现出更接近传统成熟期制药龙头的资本配置哲学。但2027年MFN定价冲击的现金流实质性影响尚未在当前数据中充分显现，这意味着当前的股东回报水平存在一定的"窗口期"性质，投资者应持续跟踪后续季度自由现金流数据，以验证当前派息与回购节奏的中期可持续性。</div>
+
+    <div class="chart-box">
+<svg viewBox="0 0 520 300" width="100%" style="max-width:560px;display:block;margin:0 auto;" role="img" aria-label="line chart">
+<text x="260" y="20" text-anchor="middle" font-size="12" font-family="monospace" fill="#12203c">股东现金回报趋势（股息+回购，2026E为管理层指引下限）</text>
+<line x1="52" y1="244.0" x2="504" y2="244.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="247.0" text-anchor="end" font-size="10" fill="#4b5468">43</text>
+<line x1="52" y1="202.0" x2="504" y2="202.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="205.0" text-anchor="end" font-size="10" fill="#4b5468">48</text>
+<line x1="52" y1="160.0" x2="504" y2="160.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="163.0" text-anchor="end" font-size="10" fill="#4b5468">52</text>
+<line x1="52" y1="118.0" x2="504" y2="118.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="121.0" text-anchor="end" font-size="10" fill="#4b5468">57</text>
+<line x1="52" y1="76.0" x2="504" y2="76.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="79.0" text-anchor="end" font-size="10" fill="#4b5468">62</text>
+<line x1="52" y1="34.0" x2="504" y2="34.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="46" y="37.0" text-anchor="end" font-size="10" fill="#4b5468">67</text>
+<text x="52.0" y="260.0" text-anchor="middle" font-size="9" fill="#8891a0">FY2023</text>
+<text x="202.7" y="260.0" text-anchor="middle" font-size="9" fill="#8891a0">FY2024</text>
+<text x="353.3" y="260.0" text-anchor="middle" font-size="9" fill="#8891a0">FY2025</text>
+<text x="504.0" y="260.0" text-anchor="middle" font-size="9" fill="#8891a0">2026E</text>
+<polygon points="52.0,244.0 52.0,54.3 202.7,223.7 353.3,163.2 504.0,94.1 504.0,244.0" fill="rgba(11,111,176,0.08)" stroke="none"/>
+<polyline points="52.0,54.3 202.7,223.7 353.3,163.2 504.0,94.1" fill="none" stroke="#0b6fb0" stroke-width="2"/>
+<circle cx="52.0" cy="54.3" r="3" fill="#0b6fb0"/>
+<circle cx="202.7" cy="223.7" r="3" fill="#0b6fb0"/>
+<circle cx="353.3" cy="163.2" r="3" fill="#0b6fb0"/>
+<circle cx="504.0" cy="94.1" r="3" fill="#0b6fb0"/>
+</svg>
+</div>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>风险提示（客观谨慎，高亮关键风险点）</h2></div>
+    <div class="risk-matrix">
+      <div class="risk-item high">
+        <div class="rt"><b>竞争对手产能释放引发价格战风险</b><span class="rlevel">高</span></div>
+        <p>礼来Mounjaro/Zepbound同期销售增速分别达125%和80%，公司全年营收增速56%，增长动能显著强于诺和诺德，反映GLP-1赛道竞争格局正快速演变。若礼来及其他后续进入者（如口服GLP-1新药Foundayo）产能持续释放，可能进一步压缩诺和诺德的定价权与市场份额。</p>
+        <div class="src">数据来源：CNBC 2026年5月6日报道</div>
+      </div>
+      <div class="risk-item high">
+        <div class="rt"><b>MFN定价政策对2027年现金流的冲击风险</b><span class="rlevel">高</span></div>
+        <p>美国Wegovy/Ozempic标价分别下调约50%/35%，管理层明确该定价调整"预计将从2027年起影响公司现金流"，这一影响的最终量级目前尚未被市场充分定价，若销量增长未能对冲价格降幅，可能导致2027-2028年盈利能力低于当前市场一致预期。</p>
+        <div class="src">数据来源：诺和诺德2026年第一季度财报，2026年5月6日</div>
+      </div>
+      <div class="risk-item high">
+        <div class="rt"><b>GLP-1药物长期安全性争议风险</b><span class="rlevel">高</span></div>
+        <p>作为渗透率仍在快速提升的新兴大品类药物，GLP-1类药物的长期（5-10年以上）安全性数据仍在持续积累中，任何潜在的长期安全性警示信号（无论最终是否被证实）都可能对整个品类的处方信心及监管环境产生系统性冲击。</p>
+        <div class="src">数据来源：Snail-bird Investment风险评估框架，基于行业惯例的前瞻性风险提示</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>管理层动荡影响战略执行连续性风险</b><span class="rlevel">中</span></div>
+        <p>公司自2025年4月至2026年初经历了CEO更替及至少三位执行副总裁级别高管（Camilla Sylvest、Dave Moore、Ludovic Helfgott）的相继离职，叠加2025年8月的证券集体诉讼，管理团队的连续性与投资者信任重建仍需时间验证，新任CEO Doustdar主导的成本转型能否持续兑现存在不确定性。</p>
+        <div class="src">数据来源：诺和诺德SEC 6-K文件，2025年4月及2026年3月</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>糖尿病护理业务结构性收缩风险</b><span class="rlevel">中</span></div>
+        <p>2026年第一季度全球GLP-1糖尿病调整后销售额下降11%（美国下降16%），若这一收缩趋势持续甚至加速，将进一步削弱糖尿病业务对公司整体盈利的托底作用，加大公司对肥胖症单一品类增长的依赖度。</p>
+        <div class="src">数据来源：finsee.ai 2026年第一季度财报分析</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>医保报销政策落地节奏不及预期风险</b><span class="rlevel">中</span></div>
+        <p>美国Medicare对肥胖症适应症GLP-1药物的覆盖政策及各国监管机构对口服剂型的审批节奏，均存在不确定性，若相关政策落地慢于公司当前指引假设，可能拖累2026年下半年及2027年的销量增长节奏。</p>
+        <div class="src">数据来源：诺和诺德2026年第一季度财报电话会议纪要</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rating">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2>投资建议</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b style="color:var(--ink);">评级：买入（Buy）。</b>我们认为诺和诺德当前的风险收益比具备吸引力——公司在全球GLP-1肥胖症市场的销量份额（59.6%）依然遥遥领先，口服剂型上市四个月即实现约2倍于分析师预期的放量表现，验证了公司在新任CEO Doustdar领导下的商业化执行能力正在修复。以2026年7月10日收盘价US$49.48（总市值US$218.9B）计算，公司trailing P/E约11.5倍，显著低于行业平均（17.59倍）及主要竞争对手礼来（32-40倍），我们独立构建的DCF模型显示公司内在价值中枢约US$57，较当前股价存在约15%的中枢潜在上行空间（我们对GuruFocus等自动化模型给出的62.9%极端低估结论保持审慎，不建议投资者直接采信此类结论）。但公司同时面临糖尿病业务结构性收缩、MFN定价对2027年现金流的潜在冲击、管理层动荡等多重风险，2026年调整后销售与利润双位数下降的指引也反映出短期基本面仍处于筑底阶段而非明确反转。我们建议投资者以中长期配置视角参与，重点跟踪口服剂型的持续放量节奏与2027年MFN定价冲击的实际现金流影响，作为验证当前估值修复逻辑的核心信号。</p>
+        <div class="callout">
+          <b>关注信号：</b>（1）Wegovy口服片剂在美国以外市场（2026年下半年）的上市进度与放量表现；（2）2026年下半年糖尿病护理业务降幅能否企稳；（3）2027年美国MFN定价冲击对现金流的实际影响幅度是否符合管理层"从2027年起"的表态节奏；（4）CagriSema设备研究叫停后的后续管线调整方向；（5）新任管理团队能否维持稳定，避免进一步的高管流失；（6）2026年DKK 150亿元回购计划的执行完成情况及2027年资本配置政策的连续性。
+        </div>
+        <p>对于计划配置的投资者，可考虑在基准情景估值区间（US$58-85）内结合季度财报披露节点分批建仓，并将保守情景US$38-48视为止损/加仓评估参考区间；乐观情景US$95-115可作为12个月止盈观察位。鉴于公司当前派息率约50%、股息政策相对稳定，建议以"价值修复+适度股息"的中长期策略参与，而非短线交易博弈基本面拐点的精确时点。</p>
+      </div>
+      <div class="card">
+        <h4>交易要点摘要</h4>
+        <ul>
+          <li>评级：<b>买入（Buy）</b></li>
+          <li>12个月目标价区间：<b>US$58-85</b>（基准中枢约US$70）</li>
+          <li>保守情景下限：<b>US$38-48</b></li>
+          <li>乐观情景上限：<b>US$95-115</b></li>
+          <li>核心估值方法：<b>DCF为主，P/E相对估值交叉验证</b></li>
+          <li>核心风险变量：<b>MFN定价现金流冲击节奏、口服剂型国际化放量、管理层稳定性</b></li>
+          <li>股东回报特征：<b>派息率约50%，2026年重启回购，年化股东回报率约4%左右</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>估值方法选择依据与股东回报分析必要性说明</h5>
+        <p style="font-size:12px;color:var(--ink-faint);"><b>为何采用"DCF为主+P/E交叉验证"：</b>诺和诺德当前正处于"报告口径高增长（含一次性因素）"与"调整后口径结构性下降"并存的特殊窗口期，且2027年起将面临MFN定价对现金流的实质性冲击，单一静态P/E倍数法难以刻画这一多阶段变化路径。我们因此采用DCF模型显式建模2026-2028年及以后的分阶段现金流假设，特别是对MFN定价冲击时点、口服剂型放量节奏、资本开支强度回落路径等关键变量进行独立情景设定，而非直接采信部分第三方自动化估值模型（如GuruFocus GF Value）可能未充分捕捉最新指引变化的历史趋势外推结果，同时以P/E、PEG等相对估值指标与礼来及行业平均水平进行交叉验证，力求更全面、审慎地评估当前股价回调是否已充分反映基本面风险。<br><br><b>为何将股东回报设为核心模块：</b>诺和诺德2025年历史上首次暂停股票回购、2026年重启回购计划的这一资本配置转折，直接反映了管理层对资本开支高峰期是否已经过去的判断，也是投资者评估公司当前现金流健康度的重要窗口。将其与礼来等同业的资本配置策略进行对比，有助于投资者更全面理解两家公司当前估值差异（11.68倍 vs 32-40倍 P/E）背后的资本配置哲学差异，而非仅归因于短期股价波动或市场情绪，因此本报告将其作为独立核心模块进行深度解析。</p>
+      </div>
+      <div>
+        <h5>主要数据来源</h5>
+        <ul class="src-list">
+          <li>诺和诺德2025年年度报告及2026年第一季度报告（SEC 6-K文件，www.sec.gov）</li>
+          <li>诺和诺德2025年第三季度报告（自由现金流指引）</li>
+          <li>诺和诺德2026年第一季度财报电话会议纪要（Investing.com转载）</li>
+          <li>CNBC、Yahoo Finance、finsee.ai、PharmExec 2026年2-7月报道</li>
+          <li>GlobeNewswire、TipRanks（Vivani合作及股票回购进度追踪，2026年6-7月）</li>
+          <li>wallstreetzen.com、stockanalysis.com、koyfin.com、trefis.com、GuruFocus估值数据（2026年5-7月）</li>
+        </ul>
+      </div>
+      <div>
+        <h5>报告信息</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">Snail-bird Investment<br>医疗保健与制药研究组<br>报告日期：2026年7月12日<br>深度覆盖 · 评级：买入（Buy）</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      本报告由Snail-bird Investment研究团队独立撰写，仅供参考，不构成任何证券买卖要约或投资建议。报告中的观点、评级及目标价基于报告撰写时可获得的公开信息及分析师的专业判断，可能随市场环境变化而调整，Snail-bird Investment不承诺更新本报告的内容。本报告所引用的股价数据（US$49.48，总市值US$218.9B，2026年7月10日）由用户提供并作为报告基准价格，市值、P/E等估值测算均基于该价格及公司最新公开披露财务数据的估算结果，实际交易请以纽约证券交易所官方实时行情为准。本报告中用户此前提及的"Simply Wall St评估的49.2%低估空间"这一具体数值，在公开数据核实过程中未能找到与诺和诺德对应的官方或权威来源支撑，已在正文中明确说明并采用可交叉验证的GuruFocus数据（62.9%）及本报告独立构建的DCF模型结果进行对比分析。本报告中的DCF模型基于多项前瞻性假设及Snail-bird Investment研究团队的情景推演，实际结果可能因GLP-1市场竞争格局变化、监管政策调整、MFN定价冲击的实际幅度、管理层执行力等因素而与测算结果产生重大偏差，不构成精确目标价承诺。若后续公司在FDA监管政策（如新的安全性警告）或竞争对手出现重大临床突破，本报告的估值框架可能需要重新评估，投资者应持续关注公司最新披露。投资者应充分了解相关风险，并根据自身风险承受能力及投资目标独立判断，据此投资操作风险自负。本报告不构成对任何特定投资者的个性化投资建议，亦不对因使用本报告内容而产生的任何直接或间接损失承担责任。
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
