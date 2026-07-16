@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SK海力士 (SKHY) 深度研究报告 | Snail-bird Investment</title>
+
+<style>
+:root{
+  --bg:#f7f9fc;
+  --bg-panel:#ffffff;
+  --bg-alt:#eef2f8;
+  --ink:#1a2233;
+  --ink-soft:#4d5768;
+  --ink-faint:#8590a3;
+  --line:#dde3ee;
+  --blue:#0a5fd6;
+  --blue-deep:#0a3d7a;
+  --blue-soft:#e8f0fd;
+  --orange:#c2660c;
+  --green:#1c7a4d;
+  --red:#b3261e;
+  --mono:'IBM Plex Mono','Courier New',monospace;
+  --sans:'IBM Plex Sans','Noto Sans SC',sans-serif;
+  --serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--blue);}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(247,249,252,0.97);backdrop-filter:blur(6px);border-bottom:2px solid var(--blue-deep);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--blue-deep);}
+.brand .logo{width:26px;height:26px;border-radius:5px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--blue-deep);border:1px solid var(--blue-deep);padding:3px 8px;border-radius:3px;}
+
+header.hero{padding:60px 0 40px;border-bottom:2px solid var(--blue-deep);background:linear-gradient(180deg,#ffffff 0%,var(--bg) 100%);}
+.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+.skh-logo{width:52px;height:52px;border-radius:10px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:800;font-size:18px;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--blue);text-transform:uppercase;font-weight:700;}
+h1.title{font-family:var(--serif);font-size:33px;font-weight:700;margin:14px 0 10px;line-height:1.35;color:var(--ink);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:820px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+
+.rating-panel{display:flex;gap:1px;background:var(--blue-deep);border:1px solid var(--blue-deep);margin-top:30px;}
+.rating-box{background:var(--blue-deep);color:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;min-width:180px;}
+.rating-box .rlabel{font-family:var(--mono);font-size:11px;opacity:.8;text-transform:uppercase;letter-spacing:1px;}
+.rating-box .rvalue{font-family:var(--serif);font-size:26px;font-weight:700;margin-top:6px;}
+.target-box{background:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;flex:1;}
+.target-box .tlabel{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:1px;}
+.target-box .tvalue{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--blue-deep);margin-top:6px;}
+
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:19px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--blue);font-weight:700;}
+h2{font-family:var(--serif);font-size:25px;margin:0;color:var(--blue-deep);}
+h3{font-family:var(--sans);font-size:16px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--blue);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--blue);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);background:#fdf3f2;}
+.callout.orange{border-left-color:var(--orange);}
+
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:13.5px;color:var(--blue-deep);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:var(--blue-deep);font-family:var(--mono);font-size:11.5px;color:#fff;font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:var(--blue-soft);}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#e6f4ec;color:var(--green);}
+.tag.miss{background:#fbeae9;color:var(--red);}
+.tag.line{background:#fdf1e3;color:var(--orange);}
+
+.seg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0;}
+.seg-card{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--blue);}
+.seg-card .sname{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--blue-deep);margin-bottom:6px;}
+.seg-card .sval{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.seg-card .sgrowth{font-family:var(--mono);font-size:12px;margin-bottom:8px;}
+.seg-card .sgrowth.pos{color:var(--green);}
+.seg-card .sgrowth.neg{color:var(--red);}
+.seg-card p{font-size:11.5px;margin:0;}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--blue-deep);border:1px solid var(--blue-deep);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:24px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--blue-deep);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--orange);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#fbeae9;color:var(--red);}
+.risk-item.mid .rlevel{background:#fdf1e3;color:var(--orange);}
+.risk-item.low .rlevel{background:#e6f4ec;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+.risk-item .src{font-size:10.5px;color:var(--ink-faint);margin-top:6px;}
+
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+.compare-bar{margin:16px 0;}
+.cb-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.cb-label{width:120px;font-family:var(--mono);font-size:12px;color:var(--ink-soft);flex-shrink:0;}
+.cb-track{flex:1;background:var(--bg-alt);border-radius:3px;height:22px;position:relative;overflow:hidden;}
+.cb-fill{height:100%;display:flex;align-items:center;padding-left:8px;font-family:var(--mono);font-size:11px;color:#fff;border-radius:3px;}
+
+.timeline{margin:20px 0;border-left:2px solid var(--blue-deep);padding-left:24px;}
+.tl-item{margin-bottom:18px;position:relative;}
+.tl-item::before{content:'';position:absolute;left:-29px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--blue-deep);}
+.tl-item .tdate{font-family:var(--mono);font-size:11px;color:var(--blue);font-weight:700;}
+.tl-item .ttitle{font-size:14px;font-weight:700;color:var(--ink);margin:2px 0 4px;}
+.tl-item p{font-size:13px;margin:0;}
+
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--blue-deep);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .seg-grid{grid-template-columns:1fr;}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .rating-panel{flex-direction:column;}
+  h1.title{font-size:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="logo">S</span> SNAIL-BIRD INVESTMENT · 半导体与AI基础设施研究</div>
+    <div class="navlinks">
+      <span>半导体 / HBM与存储器</span>
+      <span class="navtag">NASDAQ: SKHY · KRX: 000660</span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="skh-logo">SKH</div>
+      <div class="eyebrow">美股/韩股 · 全球HBM绝对龙头 · 深度覆盖</div>
+    </div>
+    <h1 class="title">SK海力士（SK Hynix, SKHY）：AI算力身份跃迁与长协重塑下的周期博弈</h1>
+    <p class="subtitle">报告日期：2026年7月14日｜出品方：Snail-bird Investment 半导体与AI基础设施研究组｜估值框架：DCF（现金流折现）为主 + P/E相对估值交叉验证</p>
+    <div class="meta-row">
+      <span>股票代码：<b>NASDAQ: SKHY（临时代码SKHYV已于7月13日转换）/ KRX: 000660</b></span>
+      <span>所属行业：<b>存储半导体 · HBM · AI算力基础设施</b></span>
+      <span>ADR结构：<b>10 ADR = 1普通股</b></span>
+      <span>最新季度：<b>2026年第一季度（2026年4月23日披露）</b>　下一次财报：<b>2026年7月内（Q2 2026）</b></span>
+    </div>
+
+    <div class="rating-panel">
+      <div class="rating-box">
+        <div class="rlabel">Snail-bird Investment 评级</div>
+        <div class="rvalue">买入（Buy）</div>
+      </div>
+      <div class="target-box">
+        <div class="tlabel">12个月目标价区间（DCF为主，P/E交叉验证）</div>
+        <div class="tvalue">US$150 - US$210（基准情景中枢约US$178）</div>
+      </div>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="label">近期可验证股价</div>
+        <div class="value">US$175.44</div>
+        <div class="sub">2026-07-14（详见方法论说明，上市仅4个交易日）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">IPO募资规模</div>
+        <div class="value pos">US$265亿</div>
+        <div class="sub">史上最大外国公司美股IPO，超Alibaba 2014年纪录</div>
+      </div>
+      <div class="kpi">
+        <div class="label">全球HBM市场份额</div>
+        <div class="value pos">50%-62%区间</div>
+        <div class="sub">不同数据源/口径存在差异，详见方法论说明</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026Q1营收</div>
+        <div class="value pos">₩52.58万亿</div>
+        <div class="sub">+198% YoY，首次单季突破50万亿韩元</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026Q1经营利润率</div>
+        <div class="value pos">72%</div>
+        <div class="sub">环比+14pct（Q4 2025为58%）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">近期股价波动</div>
+        <div class="value neg">单日-15.4%（韩股）</div>
+        <div class="sub">7月13日历史最大单日跌幅，详见第一节</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>核心投资论点：从周期型存储厂商到AI算力基础设施供应商的身份跃迁</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>SK海力士于2026年7月10日正式在纳斯达克挂牌上市（ADR代码SKHY，临时代码SKHYV已于7月13日转为正式代码），以每ADR 149美元定价发行1.779亿份ADR（对应1,779万股普通股，10 ADR=1普通股），募资约265亿美元，超越阿里巴巴2014年的250亿美元纪录，成为史上最大规模的外国公司美股IPO，也是继SpaceX今年6月857亿美元融资之后美股历史上第二大规模的股票发售（数据来源：Al Jazeera、Yahoo Finance，2026年7月9-10日）。发行获得超7倍认购，订单总额一度接近2,000亿美元，来自逾500个机构账户，包括Baillie Gifford、Coatue Management等顶级机构，前25大账户合计占最终配售约三分之二（数据来源：banksandbankers.com，2026年7月）。这一事件本身即是市场对公司"从周期型存储厂商向AI算力基础设施核心供应商"这一身份跃迁的最直接定价：公司作为全球HBM市场的绝对龙头（各口径份额区间约50%-62%，详见第二节说明），已深度嵌入英伟达等核心AI芯片厂商的供应链，使其估值逻辑从传统存储行业的强周期波动性，逐步向"AI基础设施稀缺资产"的确定性溢价靠拢。</p>
+        <p>但这一身份跃迁的定价逻辑，在上市后短短三个交易日内即遭遇了教科书式的压力测试。2026年7月13日（周一），公司韩国本土股价单日暴跌15.4%，创历史最大单日跌幅，拖累韩国KOSPI指数下跌逾8%并触发20分钟熔断，同期SKHY美股ADR盘中一度下跌9.9%至约154.70美元（较7月10日收盘价168.01美元大幅回落）（数据来源：CNBC、MLQ News，2026年7月13日）。触发这一暴跌的核心导火索，是韩国投资证券（Korea Investment & Securities，KIS）分析师Chae Min-sook发布的研报——将公司2026年第二季度营业利润预测下调至约60.4万亿韩元，较市场一致预期（约65万亿韩元）低约8%，并同步将2026年及2027年营业利润预测分别下调9%和11%，核心理由是"公司多年期高带宽内存长期供货协议（LTA）限制了其在HBM价格上涨周期中充分捕获涨价收益的能力"，同时HBM4全面量产时点被推迟至2026年第三季度（此前部分预期为第二季度）（数据来源：techtimes.com，2026年7月13日）。叠加同期美国对伊朗发动空袭、伊朗威胁封锁霍尔木兹海峡引发的地缘政治与油价冲击，共同构成了这一"史上最大跌幅"的复合诱因。截至2026年7月14日，公司股价出现V型反弹，收复大部分失地至约175.44美元（数据来源：TradingKey，2026年7月14日）。</p>
+        <p>我们给予SK海力士"买入"评级，核心论点如下：</p>
+        <ol style="color:var(--ink-soft);font-size:14.5px;padding-left:20px;">
+          <li><b>HBM寡头垄断地位短期内难以撼动，是公司实现身份跃迁的核心护城河。</b>公司在HBM3E世代即完成对英伟达、AMD等核心客户的全面覆盖，在HBM4世代继续保持技术与量产节奏领先，据TrendForce预测，2026年公司全球HBM位元产出份额约50%（较2025年59%有所回落，反映竞争对手份额修复），在英伟达Vera Rubin平台HBM4分配中仍占据约50%左右的最大份额（数据来源：TrendForce，2026年3月；Presenc AI，2026年5月15日快照）。</li>
+          <li><b>7月13日的暴跌本质上是"预期调整"而非"基本面恶化"，验证了本报告对长协双刃剑效应的核心判断，但也揭示了市场对LTA定价机制的重新定价过程尚未完全消化。</b>KIS及多家韩国券商同步下调的Q2盈利预测，其调整理由并非需求走弱或客户流失，而是长协定价机制本身对现货市场价格暴涨红利的结构性摊薄——这恰恰印证了长协"平滑波动、锁定确定性"的同时也"限制利润弹性"的双刃剑本质。值得注意的是，KIS在下调盈利预测的同时，仍维持380万韩元目标价及"增持"评级，明确将此次调整定性为"长协机制层面的正常调整，而非基本面恶化的信号"（数据来源：tradingkey.com，2026年7月）。</li>
+          <li><b>ADR相对韩股的估值溢价机制正在经历真实的市场检验，这一"新增流动性溢价"本身具备均值回归属性，不应与公司基本面变化混为一谈。</b>上市首日ADR较韩股等值价格存在约20%-25%的溢价（对比台积电ADR相对台股约13%-14%的历史溢价水平），这一溢价部分反映美股投资者为"便利可及性"支付的额外成本，而非对公司基本面的差异化判断（数据来源：indmoney.com、CNBC，2026年7月13日）。随着跨市场套利机制的逐步生效，这一溢价预计将呈现数月维度的缓慢收敛，而非公司内在价值的方向性变化。</li>
+          <li><b>公司资本开支强度显著提升，2027-2028年产能集中释放后的周期反转风险是本报告持续跟踪但当前不认为是主导因素的中期变量。</b>管理层在Q1财报电话会中明确"客户对HBM的需求已经超过了公司未来三年的规划产能"，且CEO表态"内存短缺状况将持续至2027年之后"，这为2026-2027年的业绩确定性提供了较强支撑；但公司同时大幅加码资本开支（M15X晚谷工厂190亿韩元级项目、龙仁产业集群基础设施建设），叠加三星、美光的产能追赶，2027-2028年行业供给格局能否维持当前的紧平衡状态，存在真实的不确定性。</li>
+          <li><b>估值层面，公司IPO定价隐含的远期市盈率显著低于美股同业，为长期投资者提供了相对于Micron等美股上市存储同业的比较优势，但当前极端波动性要求投资者具备充分的风险承受能力。</b>据LSEG数据，发行前公司远期市盈率约5.5倍，低于美光的6.66倍（数据来源：Reuters，2026年7月9日）；即便在7月13日暴跌后按韩股价格测算，隐含远期市盈率仍不足5倍。这一相对低估值水平，叠加公司在HBM领域的技术与规模优势，构成了我们给予"买入"评级的估值基础，但投资者必须清醒认识到，公司上市仅4个交易日即经历了单日15%级别的股价波动，这一波动性水平在美股大盘股中极为罕见，需要相应调整仓位管理策略。</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>关键数据速览</h4>
+        <ul>
+          <li>IPO募资规模：<b>US$265亿</b>（史上最大外国公司美股IPO）</li>
+          <li>IPO超额认购倍数：<b>超7倍</b>（订单总额近US$2,000亿）</li>
+          <li>2026Q1营收：<b>₩52.58万亿</b>（约合$34-35.5亿，+198% YoY）</li>
+          <li>2026Q1净利润：<b>₩40.35万亿</b>（约合$26.5-27.3亿，+398% YoY）</li>
+          <li>2026Q1经营利润率：<b>72%</b>（Q4 2025为58%）</li>
+          <li>全球HBM份额（2026年TrendForce预测）：<b>约50%</b>（2025年为59%）</li>
+          <li>Q1末净现金：<b>₩35万亿</b>（约合$23.6亿）</li>
+          <li>7月13日单日跌幅：<b>韩股-15.4%（历史最大），SKHY ADR盘中-9.9%</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>数据来源交叉核实说明：</b>关于公司全球HBM市场份额，不同数据源存在显著差异——公司SEC招股文件披露为56.4%（数据来源：F-1/A文件）；部分行业分析机构（Astute Group、Presenc AI）引用2026年5月的快照数据给出50%-62%的区间估计；TrendForce对2026全年的预测为50%（较2025年59%回落）。本报告在正文中统一采用区间呈现以反映这一不确定性，并以公司官方SEC文件披露的56.4%作为基准参考。此外，用户此前提及的"ADR相对韩股溢价高达51%"这一具体数值，本报告在检索过程中未能找到与之完全对应的权威数据支撑——检索到的多份近期报道显示的溢价水平集中在20%-25%区间（如indmoney.com、CNBC均报道约20%-25%的溢价水平），本报告以此区间作为主要参照，并提示51%这一数值可能反映的是某一特定交易时点（如7月10日盘中最高点$171.50与韩股等值价格的瞬时差异）的极端读数，而非持续性的稳定溢价水平，建议投资者以公司官方及主流财经媒体的实时数据为准。同样，用户提及的"募集资金将用于美国本土封装基地"这一表述，本报告检索到的公司官方及媒体披露信息（如banksandbankers.com）显示，募资用途主要为"韩国本土产能扩张，包括龙仁半导体产业集群新建晶圆厂、清州先进封装工厂及EUV光刻设备采购"，未见明确提及美国本土封装基地的资金分配安排，本报告对此持审慎态度，建议投资者以公司正式SEC文件（F-1/20-F）中的资金用途章节为最终依据。</div>
+  </div>
+</section>
+
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>产业格局深度剖析：HBM寡头垄断护城河与周期博弈（核心模块）</h2></div>
+
+    <h3>HBM寡头垄断格局与护城河来源</h3>
+    <div class="grid-2">
+      <div>
+        <p>SK海力士在HBM市场的领先地位，本质上建立在"先发质量优势+客户认证壁垒"的双重护城河之上。公司于2022年6月率先向英伟达H100供应HBM3，是HBM3世代事实上的独家供应商，由此奠定了约50%的初始份额基础；在HBM3E世代，公司同样率先完成英伟达认证，而三星电子则经历了长达约18个月的认证坎坷（2024年4月至2025年9月，期间两次未通过英伟达12层HBM3E验证测试，直至2025年9月才最终通过），这一认证时间差直接导致三星错失了整个Blackwell产品周期的HBM3E供货窗口（数据来源：siliconanalysts.com，2026年6月10日）。美光则凭借更快的追赶节奏，已在部分客户分配中反超三星（数据来源：Astute Group，2025年9月26日）。这一认证壁垒的核心逻辑在于：HBM芯片与GPU/AI加速器采用物理封装绑定（Co-packaged），一旦某一供应商的产品通过特定客户平台的认证并进入量产供货，替换成本极高，形成了事实上的"设计导入锁定"（Design-in Lock），这是SK海力士护城河相较于传统DRAM/NAND商品化产品更为坚固的关键原因。</p>
+        <p>公司与英伟达的合作已从单纯的采购关系升级为联合技术开发关系。2026年6月7日，双方宣布了一项覆盖英伟达Vera Rubin AI超级计算平台、Vera CPU、RTX Spark个人AI计算机及Jetson Thor机器人平台全部前瞻产品路线图的多年期技术合作协议，尽管具体财务条款未公开披露，但此前公开报道显示英伟达曾向SK海力士及美光分别预付5.4亿至7.7亿美元不等的资金以锁定HBM产能分配，反映出核心客户正通过资本前置的方式，帮助头部供应商分摊产能建设的资本风险（数据来源：Medium，Noah Bean，2026年6月）。</p>
+      </div>
+      <div class="card">
+        <h4>HBM市场份额格局（多源交叉参考）</h4>
+        <ul>
+          <li>SK海力士：<b>50%-62%</b>（不同口径/时点），SEC招股文件披露<b>56.4%</b></li>
+          <li>三星电子：<b>20%-40%</b>，2026年HBM4份额有望回升至28%左右（TrendForce）</li>
+          <li>美光：<b>5%-20%</b>，已在部分客户分配中反超三星</li>
+          <li>英伟达Vera Rubin HBM4分配（估计）：SK海力士约50%区间、三星约20%区间、美光约20%区间</li>
+          <li>SK海力士HBM相关资本开支：<b>2023年以来累计超US$100亿</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>竞争格局与周期博弈：2027-2028年产能集中释放风险</h3>
+    <p>横向对比三大厂商在HBM4及先进封装领域的追赶进度：三星电子已于近期在英伟达HBM4两档数据速率（10Gb/s及11Gb/s）认证测试中"实质性通过"，2026年市场份额预计从此前约20%回升至28%左右，反映其在经历HBM3E阶段的认证挫折后，正加速追赶（数据来源：TrendForce，2026年3月9日）；美光凭借爱达荷州、弗吉尼亚州本土产能带来的地缘政治多元化优势（对关注供应链安全的美国超大规模云厂商及政府关联项目具有独特吸引力），以及自有晶圆制造带来的垂直整合成本优势，正在多个客户的HBM4分配中获得增量份额（数据来源：01.co，2026年1月28日）。这意味着，尽管SK海力士在HBM4世代仍保持份额领先，但相较于HBM3世代的近乎独占地位，竞争格局已呈现出更均衡分散的趋势。</p>
+    <div class="callout orange"><b>2027-2028年周期反转风险的客观评估：</b>公司管理层及行业分析人士普遍认为，当前HBM供给紧张状态有望持续至2027年之后，但这一判断的前提是AI资本开支维持当前强度且不出现结构性放缓。历史上，公司曾在2023年存储行业下行周期中录得高达7.73万亿韩元的单季营业亏损（数据来源：indmoney.com，2026年7月），这一历史先例提醒投资者，存储行业的强周期属性并未因AI叙事的加入而消失，只是周期的驱动因素与节奏发生了变化。随着三星HBM4产能的加速释放、美光份额的持续提升，叠加SK海力士自身M15X晚谷工厂及龙仁产业集群的新增产能在2027-2028年陆续投产，行业供给格局能否维持当前的紧平衡状态，很大程度上取决于AI推理需求（尤其是Agentic AI应用带来的持续实时推理算力需求，而非仅限于批量式模型训练）能否如公司管理层判断的那样，成为比训练需求更广泛、更具粘性的结构性增量需求来源。这一判断目前更多基于管理层的前瞻性表态，尚缺乏跨越完整周期的历史数据验证，是本报告风险提示部分重点强调的核心不确定性来源。</div>
+  </div>
+</section>
+
+<section id="sustainability">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>业绩持续性评估：长协双刃剑效应与资本开支压力（核心模块）</h2></div>
+
+    <h3>长期供货协议（LTA）的双刃剑效应深度剖析</h3>
+    <div class="grid-2">
+      <div>
+        <p>公司管理层在2026年第一季度财报电话会中明确阐述了推行强化版长期协议（Enhanced LTA）的战略逻辑："随着内存短缺状况持续，客户确保中长期供应量的需求显著增加……内存价格与供应的不确定性，如今已成为客户业务层面的关键风险……对公司而言，通过锁定需求可见性来降低投资负担，是我们的核心优先事项之一"（数据来源：Alpha Spread，2026年第一季度财报电话会议纪要）。这一表态清晰揭示了LTA机制的本质：它是一项"以价格弹性换取投资确定性"的战略交易——通过与核心客户（尤其是英伟达）签订多年期、预先约定价格路径的供货协议，公司能够以更高的确定性支撑其激进的资本开支计划，但代价是在现货市场价格暴涨阶段（如2026年第一季度DRAM合约价环比涨幅达83%-95%区间），公司实际捕获的价格上涨收益要低于理论上的现货市场敞口水平。</p>
+        <p>2026年7月13日的股价暴跌事件，正是这一双刃剑效应从"理论概念"变为"市场实际定价"的关键节点。KIS分析师的核心论断是："这不是一个季度性问题，而是一家主导产品采用预先谈判合同条款进行交易的公司的永久性算术规律"（原文引自techtimes.com对该研报的转述）。这意味着，即便HBM整体价格继续上涨、行业景气度维持高位，公司账面反映的营业利润增速也可能持续低于市场基于"现货价格线性外推"所形成的过高预期，这一预期差是公司股价在财报季前后可能持续面临波动的结构性根源，而非一次性事件。</p>
+      </div>
+      <div class="card">
+        <h4>LTA机制关键信息</h4>
+        <ul>
+          <li>核心逻辑：<b>以价格弹性换取投资确定性</b>，管理层明确表态优先考虑需求可见性</li>
+          <li>2026Q1 DRAM合约价环比涨幅：<b>约83%-95%</b>（现货/传统市场口径）</li>
+          <li>KIS下调2026/2027年营业利润预测：<b>-9%/-11%</b>，主因LTA定价机制摊薄涨价收益</li>
+          <li>HBM4定价展望：<b>2026下半年约$2/Gb → 2027年预期升至$4-5/Gb</b>（数据来源：blockonomi.com）</li>
+          <li>HBM4量产时点：<b>从此前预期的2026年二季度推迟至三季度</b>（KIS研判）</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>宏观需求与资本开支验证</h3>
+    <table>
+      <thead><tr><th>指标</th><th>FY2024</th><th>FY2025</th><th>2025Q4</th><th>2026Q1</th><th>环比/同比</th></tr></thead>
+      <tbody>
+        <tr><td>营业收入</td><td>₩66.2万亿</td><td>₩97.15万亿</td><td>₩32.83万亿</td><td>₩52.58万亿</td><td><span class="tag beat">QoQ+60%/YoY+198%</span></td></tr>
+        <tr><td>营业利润</td><td>约₩23.5万亿</td><td>₩47.21万亿</td><td>₩19.17万亿</td><td>₩37.61万亿</td><td><span class="tag beat">QoQ+96%/YoY+405%</span></td></tr>
+        <tr><td>净利润</td><td>₩19.8万亿</td><td>₩42.95万亿</td><td>₩15.25万亿</td><td>₩40.35万亿</td><td><span class="tag beat">QoQ+165%/YoY+398%</span></td></tr>
+        <tr><td>营业利润率</td><td>—</td><td>约48.6%</td><td>58%</td><td>72%</td><td><span class="tag beat">环比+14pct</span></td></tr>
+        <tr><td>毛利率（2026Q1）</td><td>—</td><td>—</td><td>—</td><td>79%</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：StorageNewsletter（2026年4月29日）、Quartr投资者关系摘要、Blocks & Files（2026年4月23日）、leverageshares.com（2026年6月23日）。汇率换算参考约₩1,494/USD（2026年7月市场汇率）。</p>
+
+    <div class="chart-box"><svg viewBox="0 0 600 320" width="100%" role="img" aria-label="SKHY 营收与营业利润" style="font-family:'IBM Plex Mono',monospace;">
+<text x="300.0" y="28" text-anchor="middle" fill="#1a2233" font-size="14" font-weight="600">营收与营业利润趋势（万亿韩元）</text>
+<line x1="55" y1="250.0" x2="585" y2="250.0" stroke="#e4e8f0" stroke-width="1"/>
+<text x="47" y="253.0" text-anchor="end" fill="#4d5768" font-size="10">0</text>
+<line x1="55" y1="202.5" x2="585" y2="202.5" stroke="#e4e8f0" stroke-width="1"/>
+<text x="47" y="205.5" text-anchor="end" fill="#4d5768" font-size="10">24</text>
+<line x1="55" y1="155.0" x2="585" y2="155.0" stroke="#e4e8f0" stroke-width="1"/>
+<text x="47" y="158.0" text-anchor="end" fill="#4d5768" font-size="10">49</text>
+<line x1="55" y1="107.5" x2="585" y2="107.5" stroke="#e4e8f0" stroke-width="1"/>
+<text x="47" y="110.5" text-anchor="end" fill="#4d5768" font-size="10">73</text>
+<line x1="55" y1="60.0" x2="585" y2="60.0" stroke="#e4e8f0" stroke-width="1"/>
+<text x="47" y="63.0" text-anchor="end" fill="#4d5768" font-size="10">97</text>
+<rect x="81.4" y="120.5" width="37.1" height="129.5" rx="2" fill="#9fb8dd"/>
+<text x="99.9" y="115.5" text-anchor="middle" fill="#4d5768" font-size="9">66.2</text>
+<rect x="124.0" y="204.0" width="37.1" height="46.0" rx="2" fill="#0a5fd6"/>
+<text x="142.6" y="199.0" text-anchor="middle" fill="#0a5fd6" font-size="9">23.5</text>
+<text x="121.2" y="266.0" text-anchor="middle" fill="#8590a3" font-size="10">FY2024</text>
+<rect x="213.9" y="60.0" width="37.1" height="190.0" rx="2" fill="#9fb8dd"/>
+<text x="232.4" y="55.0" text-anchor="middle" fill="#4d5768" font-size="9">97.15</text>
+<rect x="256.5" y="157.7" width="37.1" height="92.3" rx="2" fill="#0a5fd6"/>
+<text x="275.1" y="152.7" text-anchor="middle" fill="#0a5fd6" font-size="9">47.21</text>
+<text x="253.8" y="266.0" text-anchor="middle" fill="#8590a3" font-size="10">FY2025</text>
+<rect x="346.4" y="185.8" width="37.1" height="64.2" rx="2" fill="#9fb8dd"/>
+<text x="364.9" y="180.8" text-anchor="middle" fill="#4d5768" font-size="9">32.83</text>
+<rect x="389.0" y="212.5" width="37.1" height="37.5" rx="2" fill="#0a5fd6"/>
+<text x="407.6" y="207.5" text-anchor="middle" fill="#0a5fd6" font-size="9">19.17</text>
+<text x="386.2" y="266.0" text-anchor="middle" fill="#8590a3" font-size="10">2025Q4</text>
+<rect x="478.9" y="147.2" width="37.1" height="102.8" rx="2" fill="#9fb8dd"/>
+<text x="497.4" y="142.2" text-anchor="middle" fill="#4d5768" font-size="9">52.58</text>
+<rect x="521.5" y="176.4" width="37.1" height="73.6" rx="2" fill="#0a5fd6"/>
+<text x="540.1" y="171.4" text-anchor="middle" fill="#0a5fd6" font-size="9">37.61</text>
+<text x="518.8" y="266.0" text-anchor="middle" fill="#8590a3" font-size="10">2026Q1</text>
+<rect x="180.0" y="289" width="12" height="12" rx="2" fill="#9fb8dd"/>
+<text x="196.0" y="298" fill="#4d5768" font-size="11">营业收入</text>
+<rect x="320.0" y="289" width="12" height="12" rx="2" fill="#0a5fd6"/>
+<text x="336.0" y="298" fill="#4d5768" font-size="11">营业利润</text>
+</svg></div>
+
+    <p>公司管理层预计2026年资本开支将较2025年显著提升，三大投资优先级为：M15X晚谷工厂产能爬坡、龙仁半导体产业集群基础设施准备，以及包括ASML极紫外光刻（EUV）设备在内的先进制程设备采购（数据来源：NineScrolls LLC，2026年4月24日）。这一资本开支强度的提升，本质上是对管理层"客户需求已超未来三年规划产能"这一判断的资本层面回应。但资本开支的持续攀升也意味着未来数年的折旧摊销负担同步加重——若2027-2028年新增产能投产后遭遇需求增速不及预期或竞争对手产能同步释放导致价格承压，折旧摊销的刚性成本特征可能对公司利润率形成较传统周期更持久的压制，这是评估公司"五年内产能翻番"计划长期资本回报率时需要纳入的核心变量。</p>
+
+    <h3>近期股价波动时间线（2026年7月10日-14日）</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tdate">2026年7月10日（周五）</div>
+        <div class="ttitle">纳斯达克正式挂牌，开盘大涨15%</div>
+        <p>ADR以$149发行价开盘涨超15%至$171.50，收盘上涨约12.76%-13%至$168.01，公司市值一度达到1.25万亿美元（数据来源：BigGo Finance）。</p>
+      </div>
+      <div class="tl-item">
+        <div class="tdate">2026年7月13日（周一）</div>
+        <div class="ttitle">韩股暴跌15.4%创历史纪录，ADR盘中重挫近10%</div>
+        <p>KIS下调Q2营业利润预测8%，叠加美国空袭伊朗引发的地缘政治与油价冲击，韩国KOSPI指数下跌超8%触发20分钟熔断，SKHY ADR盘中一度下跌9.9%至约$154.70，收盘跌9.3%至$152.35（数据来源：CNBC、MLQ News）。</p>
+      </div>
+      <div class="tl-item">
+        <div class="tdate">2026年7月14日（周二）</div>
+        <div class="ttitle">V型反弹，期权开始交易</div>
+        <p>ADR上涨约15.19%至$175.44，收复此前跌幅，公司股票期权同日开始在美国期权交易所挂牌交易，$185行权价看涨期权及$145行权价看跌期权最为活跃（数据来源：TradingKey）。</p>
+      </div>
+    </div>
+    <div class="chart-box"><svg viewBox="0 0 600 300" width="100%" role="img" aria-label="SKHY 价格" style="font-family:'IBM Plex Mono',monospace;">
+<text x="300.0" y="26" text-anchor="middle" fill="#1a2233" font-size="14" font-weight="600">SKHY上市首周极端波动时间线（美元）</text>
+<line x1="55" y1="240.0" x2="580" y2="240.0" stroke="#e4e8f0" stroke-width="1"/>
+<text x="47" y="243.0" text-anchor="end" fill="#4d5768" font-size="10">149</text>
+<line x1="55" y1="193.8" x2="580" y2="193.8" stroke="#e4e8f0" stroke-width="1"/>
+<text x="47" y="196.8" text-anchor="end" fill="#4d5768" font-size="10">157</text>
+<line x1="55" y1="147.5" x2="580" y2="147.5" stroke="#e4e8f0" stroke-width="1"/>
+<text x="47" y="150.5" text-anchor="end" fill="#4d5768" font-size="10">164</text>
+<line x1="55" y1="101.2" x2="580" y2="101.2" stroke="#e4e8f0" stroke-width="1"/>
+<text x="47" y="104.2" text-anchor="end" fill="#4d5768" font-size="10">172</text>
+<line x1="55" y1="55.0" x2="580" y2="55.0" stroke="#e4e8f0" stroke-width="1"/>
+<text x="47" y="58.0" text-anchor="end" fill="#4d5768" font-size="10">179</text>
+<path d="M 55.0 240 L 55.0 101.5 L 186.2 123.3 L 317.5 206.3 L 448.8 221.0 L 580.0 76.9 L 580.0 240 Z" fill="rgba(10,95,214,0.08)"/>
+<path d="M 55.0 101.5 L 186.2 123.3 L 317.5 206.3 L 448.8 221.0 L 580.0 76.9" fill="none" stroke="#0a5fd6" stroke-width="2"/>
+<circle cx="55.0" cy="101.5" r="4" fill="#0a3d7a"/>
+<text x="55.0" y="92.5" text-anchor="middle" fill="#1a2233" font-size="10" font-weight="600">171.5</text>
+<text x="55.0" y="256.0" text-anchor="middle" fill="#8590a3" font-size="9">7/10开盘</text>
+<circle cx="186.2" cy="123.3" r="4" fill="#0a3d7a"/>
+<text x="186.2" y="114.3" text-anchor="middle" fill="#1a2233" font-size="10" font-weight="600">168.01</text>
+<text x="186.2" y="256.0" text-anchor="middle" fill="#8590a3" font-size="9">7/10收盘</text>
+<circle cx="317.5" cy="206.3" r="4" fill="#0a3d7a"/>
+<text x="317.5" y="197.3" text-anchor="middle" fill="#1a2233" font-size="10" font-weight="600">154.7</text>
+<text x="317.5" y="256.0" text-anchor="middle" fill="#8590a3" font-size="9">7/13盘中低点</text>
+<circle cx="448.8" cy="221.0" r="4" fill="#0a3d7a"/>
+<text x="448.8" y="212.0" text-anchor="middle" fill="#1a2233" font-size="10" font-weight="600">152.35</text>
+<text x="448.8" y="256.0" text-anchor="middle" fill="#8590a3" font-size="9">7/13收盘</text>
+<circle cx="580.0" cy="76.9" r="4" fill="#0a3d7a"/>
+<text x="580.0" y="67.9" text-anchor="middle" fill="#1a2233" font-size="10" font-weight="600">175.44</text>
+<text x="580.0" y="256.0" text-anchor="middle" fill="#8590a3" font-size="9">7/14反弹</text>
+</svg></div>
+  </div>
+</section>
+
+<section id="valuation">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>动态估值分析：DCF为主，P/E相对估值交叉验证</h2></div>
+    <p>鉴于公司当前正处于"IPO首周极端波动+LTA定价机制重新定价+2027-2028年产能释放不确定性"三重因素交织的特殊窗口期，我们采用分阶段DCF模型评估2028年产能释放后自由现金流的真实复苏路径，并以P/E相对估值法进行交叉验证，同时对当前市场已充分定价的乐观预期保持审慎态度。</p>
+
+    <h3>估值倍数现状：与美股存储同业对比</h3>
+    <table>
+      <thead><tr><th>指标</th><th>SK海力士</th><th>美光（Micron）</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>发行前远期P/E</td><td>约5.5倍</td><td>约6.66倍</td><td>数据来源：LSEG，经Reuters转载，2026年7月9日</td></tr>
+        <tr><td>7月13日暴跌后隐含远期P/E（韩股口径）</td><td>约4.6倍</td><td>—</td><td>数据来源：indmoney.com测算</td></tr>
+        <tr><td>ADR相对韩股溢价（近期观察区间）</td><td>约20%-25%</td><td>不适用</td><td>对比台积电ADR相对台股约13%-14%的历史溢价</td></tr>
+        <tr><td>2023年下行周期单季营业亏损（历史参照）</td><td>₩7.73万亿</td><td>—</td><td>提示存储行业强周期属性并未消失</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：indmoney.com（2026年7月13日）、Reuters（2026年7月9日）。当前公司远期P/E显著低于美光，且更低于历史存储行业景气高点时期的估值中枢，这一"低估值+高增长"的组合，本质上反映了市场对"存储短缺持续至2030年"这一乐观预期尚未完全定价，抑或是对2027-2028年周期反转风险计入了较大的折价，两种解读均有其合理性，需结合DCF模型进一步交叉验证。</p>
+
+    <h3>DCF核心假设与分阶段自由现金流路径</h3>
+    <table>
+      <thead><tr><th>阶段</th><th>2026E</th><th>2027E</th><th>2028E及以后</th></tr></thead>
+      <tbody>
+        <tr><td>核心假设</td><td>HBM4全面量产（Q3起），LTA定价机制持续摊薄现货涨价弹性，营业利润率维持60%-72%高位区间</td><td>HBM4E量产爬坡，三星/美光份额持续修复，行业竞争格局趋于均衡化，定价权边际减弱</td><td>M15X、龙仁集群新增产能集中投产，若需求增速未能同步匹配，存在价格及利用率双重承压风险；若Agentic AI推理需求如管理层预期持续放量，则供需紧平衡有望延续</td></tr>
+        <tr><td>资本开支强度</td><td>较2025年显著提升（M15X爬坡+龙仁基建+EUV设备采购）</td><td>维持高位，产能建设进入收尾冲刺阶段</td><td>预计边际回落，但折旧摊销负担因前期资本开支累积而持续攀升</td></tr>
+        <tr><td>自由现金流路径（估算）</td><td>受资本开支高强度压制，但经营现金流基数庞大（Q1单季净利润已达₩40万亿），预计维持正向且规模可观</td><td>资本开支与经营现金流的剪刀差可能收窄</td><td>若2028年产能释放后价格保持韧性，FCF有望迎来显著修复；若价格承压，FCF修复节奏将大幅放缓，是保守情景的核心假设来源</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">上述路径为Snail-bird Investment研究团队基于公司公开表态及行业分析师观点构建的情景性估算，非公司官方指引。管理层已明确设定"长期净现金超过100万亿韩元"的目标，并表示将在年内评估包括股票回购及注销在内的追加股东回报方案（数据来源：Alpha Spread，2026年Q1财报电话会议纪要），这一现金储备目标本身也隐含了管理层对未来资本开支及潜在周期下行风险的审慎预留。</p>
+
+    <h3>多情景目标价（12个月）</h3>
+    <div class="scenario-grid">
+      <div class="scenario pess">
+        <div class="stitle">保守情景</div>
+        <div class="prob">对应2027-2028年供需关系改善削弱定价权</div>
+        <div class="starget">US$100-130</div>
+        <p>三星、美光HBM4份额修复速度超预期，2027-2028年新增产能集中释放导致行业供给格局逆转，AI资本开支增速放缓（尤其若Agentic AI推理需求增长不及预期），LTA锁定的低价长协在价格下行周期反而可能因客户重新谈判而面临压力，营业利润率从当前72%的历史高位大幅回落，估值向历史周期低谷区间回归。</p>
+      </div>
+      <div class="scenario base">
+        <div class="stitle">基准情景</div>
+        <div class="prob">对应当前供需紧平衡延续至2027年</div>
+        <div class="starget">US$150-210</div>
+        <p>HBM4按管理层规划节奏量产爬坡，供需紧平衡延续至2027年，ADR相对韩股溢价逐步收敛至与台积电类似的13%-14%水平，公司维持当前技术与份额领先地位，估值与IPO定价所隐含的低于美光的相对估值水平基本吻合。</p>
+      </div>
+      <div class="scenario opt">
+        <div class="stitle">乐观情景</div>
+        <div class="prob">对应AI推理需求超预期+纳入主流指数</div>
+        <div class="starget">US$230-270</div>
+        <p>Agentic AI推理需求超预期放量，HBM4E提前放量且定价维持强势，公司股票成功纳入纳斯达克100等主流指数带来被动资金增量买盘，管理层推出明确的股票回购计划提振市场信心，市场给予公司"AI基础设施核心供应商"更高确定性的估值溢价。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">本报告12个月目标价区间取US$150-210，基准情景中枢约US$178，较近期可验证股价US$175.44基本持平至小幅上行，反映我们认为当前价格经过7月13日的剧烈调整后已相对合理地消化了短期LTA定价预期差，但明确提示投资者：这一目标区间的实现高度依赖于HBM4量产节奏能否如期兑现、以及2027-2028年产能释放后的行业供需格局，任何一方面的重大负面变化都可能导致股价向保守情景大幅下修。</p>
+  </div>
+</section>
+
+<section id="shareholder-return">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>股东回报与资本配置分析（核心模块）</h2></div>
+    <p>公司当前正处于"265亿美元募资扩产、应对地缘政治风险、探索追加股东回报"三者并行的资本配置关键窗口期，这一平衡策略的最终落地方案，将是判断公司长期资本配置纪律的重要观察窗口。</p>
+    <div class="grid-2">
+      <div>
+        <p><b>265亿美元募资用途：</b>根据公开披露信息，公司明确表示募集资金将主要用于韩国本土产能扩张，包括龙仁半导体产业集群新建晶圆厂、清州先进封装工厂建设，以及包括ASML极紫外光刻（EUV）设备在内的先进制程设备采购（数据来源：banksandbankers.com，2026年7月）。需要特别提示：本报告在检索过程中未能找到公司官方文件中关于"募集资金专项用于美国本土封装基地建设"的明确表述，用户此前提及的这一具体资金用途安排，本报告持审慎保留态度，建议投资者以公司正式SEC文件（F-1招股说明书及后续20-F年报）中的"Use of Proceeds"章节为最终权威依据进行核实。</p>
+        <p><b>股票回购与股东回报规划：</b>管理层在2026年第一季度财报电话会中表示，公司正逐步积累现金储备（Q1末净现金已达₩35万亿元，约合236亿美元），并设定了"长期净现金超过100万亿韩元"的目标，同时明确表态将"在年内评估包括股票回购及注销在内的追加股东回报方案"（数据来源：Alpha Spread财报电话会议纪要）。UBS等机构将"ADR上市后潜在的股票回购计划"列为推动公司估值重估的三大催化剂之一（另两项为长协最终敲定、HBM4全面量产）（数据来源：tradingkey.com）。需要特别说明：本报告在检索过程中未能找到公司官方确认"计划将自由现金流的一半用于股票回购"这一用户此前提及的具体比例承诺，管理层目前的公开表态更多是原则性、方向性的（"将评估追加回报方案"），尚未见到具体量化的资本配置比例公告，本报告对此持审慎态度，不对未经公司官方确认的具体比例数字进行引用或分析，建议投资者持续关注公司后续正式公告。</p>
+      </div>
+      <div class="card">
+        <h4>资本配置关键数据</h4>
+        <ul>
+          <li>IPO募资：<b>US$265亿</b>，主要投向韩国本土产能扩张（详见左侧说明）</li>
+          <li>Q1末净现金：<b>₩35万亿</b>（约合$23.6亿）</li>
+          <li>管理层长期净现金目标：<b>超₩100万亿</b></li>
+          <li>股票回购计划：<b>管理层表态将于年内评估，尚未有官方确认的具体量化承诺</b></li>
+          <li>UBS对回购的定位：<b>三大估值重估催化剂之一</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout orange"><b>资本配置策略客观评估：</b>公司当前的资本配置优先级明显是"产能扩张 > 地缘政治风险应对 > 股东现金回报"——绝大部分新募集资金及经营现金流被用于支撑HBM及先进封装产能的快速扩张，这与公司管理层反复强调的"客户需求已超未来三年规划产能"这一供给瓶颈判断高度一致，也解释了为何股东回报层面目前仍停留在"原则性表态"阶段而非具体量化承诺。这一资本配置逻辑本身具备合理性——在HBM仍处于产能稀缺、议价能力向供给方倾斜的窗口期，将现金流优先投入产能扩张以巩固份额领先地位，理论上比过早启动大规模回购更有利于长期股东价值。但这也意味着，投资者短期内不应对公司的现金分红或回购规模抱有过高预期，公司当前更适合定位为"成长型资本开支驱动"标的，而非"现金回报型"标的。</div>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>风险提示（客观谨慎，高亮关键风险点）</h2></div>
+    <div class="risk-matrix">
+      <div class="risk-item high">
+        <div class="rt"><b>2027-2028年存储周期反转风险</b><span class="rlevel">高</span></div>
+        <p>公司M15X晚谷工厂、龙仁产业集群等大规模新增产能预计将于2027-2028年陆续投产，叠加三星、美光的同步产能追赶，若AI资本开支增速未能维持当前强度，行业可能面临新一轮供给过剩引发的价格下行周期，公司2023年曾录得单季₩7.73万亿营业亏损的历史先例值得高度关注。</p>
+        <div class="src">数据来源：indmoney.com，2026年7月13日</div>
+      </div>
+      <div class="risk-item high">
+        <div class="rt"><b>长协锁价限制利润爆发弹性风险</b><span class="rlevel">高</span></div>
+        <p>7月13日的股价暴跌已直接验证这一风险的现实性——LTA机制在现货价格暴涨阶段限制了公司捕获全部涨价收益的能力，若市场对公司盈利预期的形成机制持续以"现货价格线性外推"为基准，则每次财报披露实际业绩与过度乐观预期的落差，都可能引发类似7月13日级别的股价剧烈调整。</p>
+        <div class="src">数据来源：techtimes.com，2026年7月13日</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>竞争对手良率提升引发价格战风险</b><span class="rlevel">中</span></div>
+        <p>三星电子已在HBM4两档数据速率认证中实质性通过英伟达测试，2026年份额预计从约20%回升至28%左右；美光凭借美国本土产能的地缘政治优势持续获得增量客户分配。若竞争对手良率与产能爬坡速度超预期，可能加剧HBM4世代的价格竞争，压缩公司当前72%的历史高位营业利润率。</p>
+        <div class="src">数据来源：TrendForce，2026年3月9日；01.co，2026年1月28日</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>中美科技脱钩导致供应链受阻风险</b><span class="rlevel">中</span></div>
+        <p>作为韩国企业，公司在中美科技竞争加剧的背景下，其对华业务（如中国大陆晶圆厂产能）及美国客户供应关系均可能受到出口管制、关税政策等地缘政治因素的潜在扰动，尽管当前尚未见到直接冲击公司核心HBM业务的具体政策变化，但这一结构性风险需要持续跟踪。</p>
+        <div class="src">数据来源：本报告风险评估框架</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>ADR溢价均值回归带来的短期股价波动风险</b><span class="rlevel">中</span></div>
+        <p>ADR相对韩股当前存在约20%-25%的溢价，显著高于台积电ADR约13%-14%的历史溢价水平，随着跨市场套利机制逐步生效，这一溢价的收敛过程可能在未来数月内持续对ADR价格形成阶段性压力，即便公司基本面未发生实质变化。</p>
+        <div class="src">数据来源：indmoney.com，2026年7月13日</div>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>地缘政治与宏观冲击的短期扰动风险</b><span class="rlevel">低-中</span></div>
+        <p>2026年7月12-13日美国空袭伊朗、伊朗威胁封锁霍尔木兹海峡引发的油价及全球风险资产波动，是7月13日股价暴跌的重要复合因素之一，反映公司股价在短期内仍会受到与自身基本面无关的宏观地缘政治事件的显著扰动。</p>
+        <div class="src">数据来源：techtimes.com，2026年7月13日</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rating">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2>投资建议</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b style="color:var(--ink);">评级：买入（Buy）。</b>我们认为SK海力士作为全球HBM市场的绝对龙头，其从周期型存储厂商向AI算力基础设施供应商的身份跃迁具备坚实的产业逻辑支撑——先发认证优势、与英伟达的深度联合开发关系、以及远低于美光的估值倍数，共同构成了公司的核心投资价值。7月13日的历史级暴跌，本质上是市场对"长协双刃剑效应"这一此前被部分低估的风险因素进行的一次剧烈重新定价，而非公司基本面出现实质性恶化的信号，韩国投资证券在下调盈利预测的同时维持"增持"评级及380万韩元目标价，也印证了这一判断。但我们同时明确提示，这一"重新定价"过程可能不会在一次单日暴跌中完全结束——只要市场对公司季度业绩的预期形成机制仍锚定于现货价格的线性外推，类似的预期差修正就可能在未来财报季反复出现，叠加公司当前极高的股价波动性（上市4个交易日内已出现单日15%级别的双向波动），投资者需要以显著高于传统大盘股的风险容忍度参与这一标的。</p>
+        <div class="callout">
+          <b>关注信号：</b>（1）即将于2026年7月内披露的第二季度正式财报，能否验证或推翻KIS研报关于Q2营业利润低于一致预期8%的判断；（2）HBM4全面量产的实际时点能否如期在2026年第三季度兑现；（3）ADR相对韩股的溢价水平能否如预期般逐步向13%-14%的合理区间收敛；（4）公司是否会在年内正式公布具体的股票回购或股东回报量化方案；（5）三星、美光在HBM4认证与量产节奏上的后续进展，及其对2027年供给格局的实际影响；（6）公司股票能否成功纳入纳斯达克100等主流指数，带来被动资金增量。
+        </div>
+        <p>对于计划配置的投资者，可考虑在基准情景估值区间（US$150-210）内结合Q2正式财报披露节点分批建仓，鉴于近期极端波动性，强烈建议采用分批建仓而非单笔重仓介入的方式；并将保守情景US$100-130视为止损/加仓评估参考区间；乐观情景US$230-270可作为12个月止盈观察位。鉴于公司当前股东现金回报尚处于"原则性表态"阶段、且股价波动性极高，建议以"AI基础设施稀缺资产配置+严格仓位管理"为核心的策略参与，不适合风险承受能力有限或追求稳定现金流回报的投资者。</p>
+      </div>
+      <div class="card">
+        <h4>交易要点摘要</h4>
+        <ul>
+          <li>评级：<b>买入（Buy）</b></li>
+          <li>12个月目标价区间：<b>US$150-210</b>（基准中枢约US$178）</li>
+          <li>保守情景下限：<b>US$100-130</b></li>
+          <li>乐观情景上限：<b>US$230-270</b></li>
+          <li>核心估值方法：<b>DCF为主，P/E相对估值交叉验证</b></li>
+          <li>核心风险变量：<b>2027-2028年周期反转、LTA定价机制预期差、竞争格局演变</b></li>
+          <li>波动性提示：<b>上市4个交易日内已现单日15%级别双向波动，需严格仓位管理</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>估值方法选择依据与产业格局分析必要性说明</h5>
+        <p style="font-size:12px;color:var(--ink-faint);"><b>为何采用"DCF为主+P/E交叉验证"：</b>SK海力士当前的核心估值矛盾在于——静态P/E倍数（约5倍区间）显著低于历史及同业水平，看似存在明显低估，但这一低倍数本身建立在历史峰值利润基础之上（正如7月13日事件所揭示，市场正在重新评估这一利润基数的可持续性）。DCF模型通过显式建模2027-2028年产能释放后的自由现金流路径，能够更好地捕捉长协定价机制、竞争格局演变及资本开支周期对长期现金流的结构性影响，避免被静态低倍数误导为"绝对低估"的简单结论，因此我们将其作为主要估值框架，并以P/E相对估值法与美光等同业进行交叉验证。<br><br><b>为何将产业格局分析设为核心模块：</b>公司的投资价值高度依赖于其在HBM市场护城河的可持续性——这一护城河并非传统意义上的品牌或渠道壁垒，而是建立在客户认证周期、技术迭代节奏、产能建设时序等一系列产业动态因素之上，且这些因素正随着三星、美光的加速追赶而持续演变。脱离产业格局的静态财务分析，无法充分捕捉公司护城河可能被侵蚀的动态风险，因此本报告将产业格局分析列为与财务分析同等重要的核心模块，力求为投资者提供更全面、更具前瞻性的分析框架。</p>
+      </div>
+      <div>
+        <h5>主要数据来源</h5>
+        <ul class="src-list">
+          <li>SK Hynix Inc. F-1/F-1A招股说明书（美国SEC官网，www.sec.gov）</li>
+          <li>SK Hynix 2026年第一季度财报及电话会议纪要（Alpha Spread、Quartr、Yahoo Finance转载）</li>
+          <li>Al Jazeera、CNBC、Bloomberg、Reuters（2026年7月9-14日，IPO及股价异动报道）</li>
+          <li>techtimes.com、indmoney.com、MLQ News、tradingkey.com、CoinCentral（2026年7月13-14日，暴跌事件深度分析）</li>
+          <li>TrendForce、siliconanalysts.com、01.co、Astute Group、Presenc AI（2026年1-6月，HBM竞争格局分析）</li>
+          <li>StorageNewsletter、Blocks & Files、NineScrolls LLC（2026年4月，Q1财报数据分析）</li>
+        </ul>
+      </div>
+      <div>
+        <h5>报告信息</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">Snail-bird Investment<br>半导体与AI基础设施研究组<br>报告日期：2026年7月14日<br>深度覆盖 · 评级：买入（Buy）</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      本报告由Snail-bird Investment研究团队独立撰写，仅供参考，不构成任何证券买卖要约或投资建议。报告中的观点、评级及目标价基于报告撰写时可获得的公开信息及分析师的专业判断，可能随市场环境变化而调整，Snail-bird Investment不承诺更新本报告的内容。本报告所引用的股价数据（US$175.44，2026年7月14日）反映的是公司上市仅第4个交易日的极端波动状态，不同时点的价格差异极大（7月10日收盘$168.01、7月13日盘中低点约$152.35、7月14日反弹至$175.44），本报告已在正文中通过时间线详细披露这一波动过程，实际交易请以纳斯达克官方实时行情为准。本报告在第一节及第五节中已就HBM市场份额数据差异、ADR溢价具体数值、募集资金用途及股票回购比例承诺等方面存在的公开信息与用户前期认知之间的差异进行了专门说明，并以公司官方SEC披露文件为最终权威依据，建议投资者以公司正式F-1/20-F文件及后续公告为准进行独立核实。本报告中的DCF模型基于多项前瞻性假设及Snail-bird Investment研究团队的情景推演，实际结果可能因AI资本开支持续性、HBM良率与产能释放节奏、竞争格局演变及地缘政治因素而与测算结果产生重大偏差，不构成精确目标价承诺。若后续公司在HBM良率、产能规划或AI资本开支趋势上出现重大更新，本报告的估值框架可能需要重新评估，投资者应持续关注公司即将披露的2026年第二季度正式财报。投资者应充分了解相关风险，并根据自身风险承受能力及投资目标独立判断，据此投资操作风险自负。本报告不构成对任何特定投资者的个性化投资建议，亦不对因使用本报告内容而产生的任何直接或间接损失承担责任。
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
