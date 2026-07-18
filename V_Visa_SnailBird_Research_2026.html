@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visa (V) 深度研究报告 | Snail-bird Investment</title>
+<style>
+:root{
+  --bg:#f7f9fc;
+  --bg-panel:#ffffff;
+  --bg-alt:#eef2f8;
+  --ink:#1a2233;
+  --ink-soft:#4d5768;
+  --ink-faint:#8590a3;
+  --line:#dde3ee;
+  --blue:#1a1f71;
+  --blue-deep:#12154f;
+  --blue-soft:#e8e9f7;
+  --gold:#f7b600;
+  --orange:#c2660c;
+  --green:#1c7a4d;
+  --red:#b3261e;
+  --mono:'IBM Plex Mono','Courier New',monospace;
+  --sans:'IBM Plex Sans','Noto Sans SC',sans-serif;
+  --serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--blue);}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(247,249,252,0.97);backdrop-filter:blur(6px);border-bottom:2px solid var(--blue);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--blue-deep);}
+.brand .logo{width:26px;height:26px;border-radius:5px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--blue-deep);border:1px solid var(--blue-deep);padding:3px 8px;border-radius:3px;}
+
+header.hero{padding:60px 0 40px;border-bottom:2px solid var(--blue);background:linear-gradient(180deg,#ffffff 0%,var(--bg) 100%);}
+.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+.v-logo{width:52px;height:52px;border-radius:10px;background:var(--blue-deep);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:800;font-size:28px;font-style:italic;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--blue);text-transform:uppercase;font-weight:700;}
+h1.title{font-family:var(--serif);font-size:33px;font-weight:700;margin:14px 0 10px;line-height:1.35;color:var(--ink);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:820px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+
+.rating-panel{display:flex;gap:1px;background:var(--blue-deep);border:1px solid var(--blue-deep);margin-top:30px;}
+.rating-box{background:var(--blue-deep);color:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;min-width:180px;}
+.rating-box .rlabel{font-family:var(--mono);font-size:11px;opacity:.8;text-transform:uppercase;letter-spacing:1px;}
+.rating-box .rvalue{font-family:var(--serif);font-size:26px;font-weight:700;margin-top:6px;}
+.target-box{background:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;flex:1;}
+.target-box .tlabel{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:1px;}
+.target-box .tvalue{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--blue-deep);margin-top:6px;}
+
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:19px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--blue);font-weight:700;}
+h2{font-family:var(--serif);font-size:25px;margin:0;color:var(--blue-deep);}
+h3{font-family:var(--sans);font-size:16px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--blue);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--blue);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);background:#fdf3f2;}
+.callout.orange{border-left-color:var(--orange);}
+
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:13.5px;color:var(--blue-deep);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:var(--blue-deep);font-family:var(--mono);font-size:11.5px;color:#fff;font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:var(--blue-soft);}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#e6f4ec;color:var(--green);}
+.tag.miss{background:#fbeae9;color:var(--red);}
+.tag.line{background:#fdf1e3;color:var(--orange);}
+
+.seg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0;}
+.seg-card{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--blue);}
+.seg-card .sname{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--blue-deep);margin-bottom:6px;}
+.seg-card .sval{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.seg-card .sgrowth{font-family:var(--mono);font-size:12px;margin-bottom:8px;}
+.seg-card .sgrowth.pos{color:var(--green);}
+.seg-card .sgrowth.neg{color:var(--red);}
+.seg-card p{font-size:11.5px;margin:0;}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--blue-deep);border:1px solid var(--blue-deep);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:24px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--blue-deep);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--orange);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#fbeae9;color:var(--red);}
+.risk-item.mid .rlevel{background:#fdf1e3;color:var(--orange);}
+.risk-item.low .rlevel{background:#e6f4ec;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+.risk-item .src{font-size:10.5px;color:var(--ink-faint);margin-top:6px;}
+
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+.compare-bar{margin:16px 0;}
+.cb-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.cb-label{width:120px;font-family:var(--mono);font-size:12px;color:var(--ink-soft);flex-shrink:0;}
+.cb-track{flex:1;background:var(--bg-alt);border-radius:3px;height:22px;position:relative;overflow:hidden;}
+.cb-fill{height:100%;display:flex;align-items:center;padding-left:8px;font-family:var(--mono);font-size:11px;color:#fff;border-radius:3px;}
+
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--blue-deep);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .seg-grid{grid-template-columns:repeat(2,1fr);}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .rating-panel{flex-direction:column;}
+  h1.title{font-size:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="logo">S</span> SNAIL-BIRD INVESTMENT · 金融科技研究</div>
+    <div class="navlinks">
+      <span>金融科技 / 全球支付网络</span>
+      <span class="navtag">NYSE: V</span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="v-logo">V</div>
+      <div class="eyebrow">美股 · 全球最大支付网络之一 · 深度覆盖</div>
+    </div>
+    <h1 class="title">Visa Inc. (NYSE: V)：AI代理商务与稳定币时代的"支付信任层"护城河重估</h1>
+    <p class="subtitle">报告日期：2026年7月16日｜出品方：Snail-bird Investment 金融科技研究组｜分析框架：商业模式与AI/稳定币战略 · 行业竞争与监管格局 · 财务质量 · 估值（DCF为主，P/E交叉验证）· 股东回报 · 资本运作核实</p>
+    <div class="meta-row">
+      <span>股票代码：<b>NYSE: V</b></span>
+      <span>所属行业：<b>数字支付网络 · 金融基础设施</b></span>
+      <span>董事长兼CEO：<b>Ryan McInerney</b></span>
+      <span>最新季度：<b>2026财年第二季度（2026年4月28日披露）</b>　下一次财报：<b>2026年7月28日（FY2026 Q3）</b></span>
+    </div>
+
+    <div class="rating-panel">
+      <div class="rating-box">
+        <div class="rlabel">Snail-bird Investment 评级</div>
+        <div class="rvalue">持有（Hold）</div>
+      </div>
+      <div class="target-box">
+        <div class="tlabel">12个月目标价区间（DCF为主，P/E交叉验证）</div>
+        <div class="tvalue">US$340 - US$420（基准情景中枢约US$385）</div>
+      </div>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="label">近期可验证股价</div>
+        <div class="value">US$362.13</div>
+        <div class="sub">2026-07-02（52周新高，详见方法论说明）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">FY2026Q2净收入</div>
+        <div class="value pos">$11.2B</div>
+        <div class="sub">+17%（+16%固定汇率），2022年以来最快增速</div>
+      </div>
+      <div class="kpi">
+        <div class="label">增值服务（VAS）收入占比</div>
+        <div class="value pos">约30%</div>
+        <div class="sub">Q2同比+27%（固定汇率），第二增长引擎</div>
+      </div>
+      <div class="kpi">
+        <div class="label">稳定币结算年化规模</div>
+        <div class="value pos">$70亿</div>
+        <div class="sub">2026年3月末数据，环比+50%以上</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Q2单季回购</div>
+        <div class="value pos">$79亿</div>
+        <div class="sub">历史最大单季回购，新增$200亿授权</div>
+      </div>
+      <div class="kpi">
+        <div class="label">trailing P/E（区间）</div>
+        <div class="value">约27.7-30.5x</div>
+        <div class="sub">高于多数同业基准，详见估值章节</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>核心投资论点：从"刷卡网络"到"支付信任层"的身份重塑</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>Visa是全球最大的数字支付网络运营商之一，其核心商业模式本质上是一座"收费桥梁"——每一笔通过Visa网络完成的交易，无论金额大小，公司均可在几乎不承担信用风险的前提下（Visa并非发卡行，不直接承担持卡人违约风险）抽取一定比例的网络服务费，这一模式带来了金融服务行业罕见的97.77%毛利率与47.46%净利率水平（数据来源：tradingnews.com，2025年11月）。2026财年第二季度（截至2026年3月31日），公司实现净收入112亿美元，同比增长17%（固定汇率口径+16%），为2022年以来最快单季增速，非GAAP每股收益3.31美元，超市场一致预期3.10美元达0.21美元，财报公布当日股价上涨约8.26%（数据来源：TIKR，2026年4月28日；Visa官方财报新闻稿）。</p>
+        <p>在传统交易网络业务保持稳健增长的同时，公司正积极将自身重新定位为"AI代理商务与可编程货币时代的信任基础设施层"。管理层提出"支付业超大规模服务商"（Hyperscaler of Payments）这一战略愿景，通过API与机器学习能力开放，让合作伙伴得以在Visa-as-a-Service架构之上构建金融产品；2026年6月10日，公司与OpenAI达成合作，将AI代理商务支付路由接入Visa网络；截至2026年3月末，公司稳定币结算试点已达到70亿美元的年化运行规模（较三个月前增长超50%），全球已上线或在建的稳定币关联卡产品超160个（数据来源：tikr.com、ebc.com，2026年7月）。我们给予Visa"持有"评级，核心论点如下：</p>
+        <ol style="color:var(--ink-soft);font-size:14.5px;padding-left:20px;">
+          <li><b>核心网络业务的增长动能不仅未见放缓，反而在2026财年迎来加速，验证了"支付信任层"叙事的现实基础。</b>Q2净收入17%的增速是自2022年疫情后修复期以来的最快水平，剔除疫情后复苏及Visa Europe并表等特殊因素后，CEO Ryan McInerney将其定性为"自2013年以来最强劲的增长"（数据来源：tikr.com，2026年5月12日）。跨境交易量维持两位数增长、处理交易笔数增长9%，反映全球消费支出及跨境商务活动的韧性仍在支撑公司的基本盘业务。</li>
+          <li><b>增值服务（VAS）业务已成长为占总收入约30%的第二增长引擎，是公司区别于单纯"收费过路"商业模式、构建更高粘性护城河的关键变量。</b>该业务涵盖风险与安全服务、受理解决方案、咨询服务等，2026财年第二季度按固定汇率计算同比增长27%，商业及资金流动业务收入同比增长24%，反映公司正从单一的交易清算网络，逐步演变为覆盖商户全生命周期风控、数据与咨询服务的综合金融基础设施提供商。</li>
+          <li><b>AI代理商务与稳定币布局目前更多是"期权价值"而非现实的盈利驱动力，这是理解当前估值溢价合理性的关键界定。</b>正如EBC Financial Group的分析所指出，"这两大主题目前均未对EBITDA构成有意义的贡献，关键在于可选性（optionality）——让新的支付轨道通过Visa的信任层运行，而非绕开它运行"（数据来源：ebc.com，2026年7月）。这意味着，若AI代理未来成为电商及企业采购的主流交互方式、稳定币结算持续对传统跨境支付形成替代或补充，Visa凭借其覆盖超过200个国家/地区、连接消费者/商户/发卡行/收单行的网络效应，具备较强的先发卡位优势；但若这些新兴范式最终绕开Visa的既有网络、由科技平台或稳定币发行方直接完成价值转移与身份确权，公司当前的估值溢价则可能面临系统性重估压力。</li>
+          <li><b>公司当前估值已显著高于金融服务行业平均水平及部分同业基准，这一溢价的合理性存在市场分歧，也是本报告未给予"买入"评级的核心考量。</b>不同数据源对公司trailing P/E的测算存在27.7倍至32.78倍不等的差异（详见第四节估值分析），均显著高于美国多元化金融行业14.7%-15.9%的平均水平，即便与万事达等直接同业相比（约24.6-25.9倍），Visa仍存在一定溢价。部分第三方模型（如Simply Wall St基于现金流的估值模型）认为公司较公允价值折让约24.6%，但同一分析同时指出"P/E视角揭示的是估值风险而非明确的上行空间"，反映出不同估值方法论之间存在真实的结论分歧。</li>
+          <li><b>持续的巨额股票回购是公司资本配置纪律的核心体现，也是管理层对当前估值差距"用真金白银投票"的信号，但回购力度本身不能替代对基本面持续性的独立判断。</b>公司2026财年第二季度回购76-79亿美元（不同渠道口径存在极小差异），为公司历史上最大单季回购规模，董事会已于2026年4月新增200亿美元回购授权，使总可用回购额度达到330亿美元（数据来源：tikr.com，2026年7月）。这一力度反映管理层认为当前估值差距足以用资本进行防御，但投资者仍需独立评估这一判断的合理性，而非简单跟随管理层的资本配置信号。</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>关键数据速览</h4>
+        <ul>
+          <li>FY2026Q2净收入：<b>$11.2B</b>（+17%，2022年以来最快）</li>
+          <li>FY2026Q2非GAAP EPS：<b>$3.31</b>（超预期$0.21）</li>
+          <li>增值服务（VAS）收入占比：<b>约30%</b>（+27%固定汇率）</li>
+          <li>商业及资金流动业务收入增速：<b>+24%</b></li>
+          <li>稳定币结算年化规模（2026年3月）：<b>$70亿</b>（环比+50%+）</li>
+          <li>全球稳定币关联卡产品：<b>超160个</b>（已上线或在建）</li>
+          <li>Q2单季回购：<b>约$76-79亿</b>（历史最大单季）</li>
+          <li>新增回购授权：<b>$200亿</b>（总可用额度$330亿）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>关于"私有化建议"的核实说明：</b>本报告在检索过程中未能找到任何关于Visa面临私有化收购要约或私有化提议的公开报道或权威信息。这与本组近期覆盖的PayPal（PYPL，Stripe与Advent International于2026年7月提出联合私有化要约）情况存在本质差异——Visa当前市值规模（估算约6,000-7,000亿美元区间）远超历史上任何已完成的杠杆收购交易规模（历史最大杠杆收购案例约300-350亿美元级别），以当前私募股权及产业资本的可动用资金规模衡量，针对Visa的整体私有化在现实操作层面几乎不具备可行性，本报告未发现任何权威信源支持此类猜测。若用户所指的"最新私有化建议"实际上是指同为支付行业、近期确实出现私有化要约的PayPal，建议参考本组此前发布的PayPal（PYPL）专项研究报告；本报告将聚焦于Visa自身真实存在的公司行为——包括近期的Prisma、Newpay等并购整合活动及创纪录的股票回购计划，作为资本运作分析的核心内容，不对不存在的私有化传闻进行任何形式的分析或猜测，以确保本报告结论的准确性与客观中立原则。</div>
+  </div>
+</section>
+
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>行业竞争与监管格局：护城河的双重压力测试</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b>竞争格局：</b>Visa与万事达（Mastercard）构成全球卡组织网络事实上的双寡头格局，两者采用高度相似的轻资产、高毛利商业模式——均不直接发卡、不承担持卡人信用风险，仅提供网络清算与相关增值服务。截至近期，万事达trailing P/E约25.9倍（数据来源：StockAnalysis，经tikr.com转载），略低于Visa的27.7-30.5倍区间，反映两者在盈利质量与增长预期上大体相当，但市场给予Visa更高的估值溢价，这一差异的合理性本身也是本报告估值章节重点评估的内容。除传统双寡头竞争外，公司同时面临来自"AI原生"金融科技新势力（如本组此前重点分析的Stripe，其技术架构从诞生之初即面向API化、开发者友好的现代商务场景设计）及各类稳定币原生支付协议的结构性竞争压力，这一竞争维度的重要性正随着AI代理商务的兴起而持续上升。</p>
+        <p><b>监管与诉讼格局：</b>公司当前面临的最重大监管风险，是围绕"刷卡手续费"（Interchange Fee）持续超过20年的反垄断诉讼。2026年，一项总额高达380亿美元的Visa-万事达反垄断和解协议已获得美国联邦法院初步批准，该和解方案拟将信用卡交易的刷卡费率在未来5年内下调10个基点，并对标准消费卡设置为期8年、1.25%的费率上限（数据来源：docketalarm.com，2026年6月22日；paymentsdive.com，2026年4月28日）。但这一和解方案仍面临沃尔玛等大型零售商及多个消费者权益组织的强烈反对，认为和解条款"过于单薄，不足以有效约束Visa、万事达及发卡行"（数据来源：paymentsdive.com，2026年1月6日），最终能否获得法院的正式批准（Fairness Hearing）仍存在不确定性。与此同时，公司在2026年4月还面临两起新增诉讼——欧洲商户在英国高等法院对Visa多个实体提起的跨境交易反垄断诉讼，以及美国南纽约区法院受理的新增集体诉讼（数据来源：Visa公司2026财年第二季度10-Q文件，SEC官网）。</p>
+      </div>
+      <div class="card">
+        <h4>行业关键指标速览</h4>
+        <ul>
+          <li>Visa vs 万事达 trailing P/E：<b>27.7-30.5x vs 25.9x</b></li>
+          <li>刷卡费反垄断和解总额：<b>$380亿</b>（Visa+万事达合计，初步批准）</li>
+          <li>和解拟定费率变化：<b>-10bps（5年）/1.25%费率上限（8年，标准消费卡）</b></li>
+          <li>反对方：<b>沃尔玛等大型零售商、多个消费者权益组织</b></li>
+          <li>2026年4月新增诉讼：<b>欧洲跨境商户诉讼（英国）、SDNY新增集体诉讼（美国）</b></li>
+          <li>最高单日结算敞口（2025年10月-2026年3月均值）：<b>日均$981亿，峰值$1,686亿</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout"><b>Visa作为非借贷方的独特资产负债表定位：</b>值得投资者特别关注的一点是，尽管Visa本身并非贷款人，但其网络每日需要处理规模极其庞大的结算流量——过去六个月（截至2026年3月31日）的最高单日结算敞口达1,686亿美元，日均敞口981亿美元（数据来源：ebc.com，2026年7月）。公司强调历史上因结算失败产生的损失极小，但这一体量本身凸显了公司作为全球支付基础设施"运营信任"的核心地位，也是理解公司为何能够维持远高于传统金融机构的估值倍数、同时又不必承担传统银行信用风险敞口的关键结构性特征。</div>
+  </div>
+</section>
+
+<section id="financials">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>财务质量分析：增长加速与盈利指引</h2></div>
+    <h3>核心经营指标趋势</h3>
+    <table>
+      <thead><tr><th>指标</th><th>FY2026Q2（实际）</th><th>同比</th><th>FY2026Q3（管理层指引）</th><th>FY2026全年（管理层指引/一致预期）</th></tr></thead>
+      <tbody>
+        <tr><td>净收入增速</td><td>+17%（+16%固定汇率）</td><td><span class="tag beat">2022年以来最快</span></td><td>低双位数（预计为全年最低增速季度）</td><td>中双位数增长（管理层重申并略上调）</td></tr>
+        <tr><td>非GAAP EPS</td><td>$3.31</td><td><span class="tag beat">超预期$0.21</span></td><td>中高单位数增速</td><td>一致预期$13.10（+14.2%）</td></tr>
+        <tr><td>GAAP EPS增速</td><td>约+35%（固定汇率）</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>增值服务（VAS）收入</td><td>同比+27%（固定汇率）</td><td><span class="tag beat">占总收入约30%</span></td><td>—</td><td>—</td></tr>
+        <tr><td>运营费用增速</td><td>—</td><td>—</td><td>低双位数（受FIFA相关营销支出提振）</td><td>中双位数</td></tr>
+        <tr><td>处理交易笔数</td><td>+9%</td><td>—</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：Visa 2026财年第二季度财报新闻稿及财报电话会议纪要（investing.com转载，2026年5月1日）、Visa投资者关系官网10-Q文件（s1.q4cdn.com）。FY2026Q3业绩定于2026年7月28日盘后披露，届时将验证当前"低双位数、全年最低增速季度"的管理层指引是否兑现。市场一致预期FY2026Q3稀释EPS为$3.22，同比增长8.1%（数据来源：Yahoo Finance，2026年7月）。</p>
+
+    <h3>FY2025-2027一致预期趋势</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>盈利能力观察</h4>
+        <ul>
+          <li>FY2025 EPS（实际）：<b>$11.47</b></li>
+          <li>FY2026E EPS（一致预期）：<b>$13.10</b>（+14.2%）</li>
+          <li>FY2027E EPS（一致预期）：<b>$14.83</b>（+13.2%）</li>
+          <li>公司过去四个季度均超市场EPS预期，反映指引制定与实际执行之间存在一定的审慎缓冲空间</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>其他财务质量观察</h4>
+        <ul>
+          <li>非营业费用预期上修至约$1.5亿/季度，主因上半财年债务水平上升及利率预期变化</li>
+          <li>公司近期完成Prisma、Newpay等并购整合，预计为FY2026全年净收入增速贡献约1个百分点，同时拖累运营费用增速约1.5个百分点</li>
+          <li>有效税率预期维持在18%-18.5%区间，预计接近区间下限</li>
+        </ul>
+      </div>
+    </div>
+    <div class="chart-box"><svg viewBox="0 0 560 320" width="100%" style="max-width:560px;display:block;margin:0 auto;" role="img" aria-label="FY2025-2027 EPS一致预期趋势">
+  <text x="54" y="22" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#1a2233">FY2025-2027 EPS一致预期趋势</text>
+  <text x="14" y="26.0" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8590a3">美元</text>
+  <line x1="54" y1="276.0" x2="540" y2="276.0" stroke="#e4e8f0" stroke-width="1"/><line x1="54" y1="217.0" x2="540" y2="217.0" stroke="#e4e8f0" stroke-width="1"/><line x1="54" y1="158.0" x2="540" y2="158.0" stroke="#e4e8f0" stroke-width="1"/><line x1="54" y1="99.0" x2="540" y2="99.0" stroke="#e4e8f0" stroke-width="1"/><line x1="54" y1="40.0" x2="540" y2="40.0" stroke="#e4e8f0" stroke-width="1"/>
+  <text x="46" y="280.0" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4d5768">0.0</text><text x="46" y="221.0" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4d5768">4.4</text><text x="46" y="162.0" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4d5768">8.7</text><text x="46" y="103.0" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4d5768">13.1</text><text x="46" y="44.0" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4d5768">17.5</text>
+  <rect x="54.0" y="121.3" width="103.7" height="154.7" rx="2" fill="#8a94b5"/><text x="105.8" y="115.3" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#1a2233">11.47</text><text x="105.8" y="294.0" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8590a3">FY2025</text><rect x="245.2" y="99.3" width="103.7" height="176.7" rx="2" fill="#1a1f71"/><text x="297.0" y="93.3" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#1a2233">13.1</text><text x="297.0" y="294.0" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8590a3">FY2026E</text><rect x="436.3" y="76.0" width="103.7" height="200.0" rx="2" fill="#12154f"/><text x="488.2" y="70.0" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#1a2233">14.83</text><text x="488.2" y="294.0" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8590a3">FY2027E</text>
+</svg></div>
+  </div>
+</section>
+
+<section id="valuation">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>动态估值分析：DCF为主，P/E相对估值交叉验证</h2></div>
+    <p>鉴于不同数据源对公司当前估值倍数的测算存在较大差异，我们首先系统梳理这一差异，再采用DCF模型对AI代理商务、稳定币等尚未贡献实质盈利的新兴业务线进行情景化的长期现金流建模，以期形成更具穿透力的估值判断。</p>
+
+    <h3>估值倍数现状：多源交叉对比</h3>
+    <table>
+      <thead><tr><th>数据来源/日期</th><th>Visa trailing P/E</th><th>对比基准</th><th>结论倾向</th></tr></thead>
+      <tbody>
+        <tr><td>TIKR（2026年5月）</td><td>NTM 22.9倍</td><td>万事达NTM约25.9倍</td><td>Visa相对同业存在折价</td></tr>
+        <tr><td>Simply Wall St（约1个月前）</td><td>27.7倍</td><td>行业14.7倍，同业均值24.6倍，模型公允值21.5倍</td><td>估值偏高，现金流模型显示24.6%低估但P/E指向风险</td></tr>
+        <tr><td>Yahoo Finance（约1周前）</td><td>30.5倍</td><td>行业15.9倍，同业均值26.4倍</td><td>估值明显高于行业及同业均值</td></tr>
+        <tr><td>TradingNews（2025年11月，较早快照）</td><td>32.78倍</td><td>—</td><td>历史高位区间参考</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">本报告在检索中发现，不同第三方数据平台对Visa P/E倍数的测算存在显著差异（22.9倍至32.78倍不等），这一差异可能源于trailing/NTM口径不同、GAAP/非GAAP盈利基数选择不同，以及数据快照时点的价格与最新一期财报的匹配方式不同。本报告在此不强行统一为单一数值，而是呈现区间以反映这一不确定性，并提示投资者：无论采用哪一数据源，Visa相对美国多元化金融服务行业平均水平（14.7%-15.9%区间）均存在显著溢价，这一溢价本身反映了市场对其"支付信任层"叙事及VAS/稳定币/AI代理商务期权价值的定价，其合理性高度依赖于这些新兴业务线能否在未来数年内转化为实质性的盈利贡献。</p>
+
+    <h3>DCF核心假设与情景推演</h3>
+    <table>
+      <thead><tr><th>阶段</th><th>核心网络业务（基本盘）</th><th>增值服务（VAS）</th><th>AI代理商务/稳定币（期权业务）</th></tr></thead>
+      <tbody>
+        <tr><td>2026-2027年</td><td>中双位数收入增速延续，跨境交易及处理笔数增长支撑</td><td>维持20%+高速增长，占比持续提升至35%左右</td><td>贡献度极小，主要体现为战略卡位与生态合作深化，尚不构成独立现金流来源</td></tr>
+        <tr><td>2028-2030年</td><td>增速逐步向个位数中枢收敛，反映全球支付网络渗透率接近成熟</td><td>增速边际放缓但仍快于核心业务，占比有望突破40%</td><td>若代理商务及稳定币结算实现规模化商业变现（如按笔收费、风控/身份确权服务费等），有望成为第三条增长曲线；若未能如期变现，则对整体估值溢价构成下修压力</td></tr>
+        <tr><td>永续增长假设</td><td>与全球GDP及数字支付渗透率长期增速大致匹配</td><td>逐步与核心业务增速趋同</td><td>高度不确定，本报告在DCF模型中对该部分现金流采用保守假设，不纳入乐观情景外的贡献</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">上述路径为Snail-bird Investment研究团队基于公司公开披露及行业分析构建的情景性估算，非公司官方指引。第三方研究平台TIKR的中性情景模型给出2030年9月目标价约687美元，对应自当前价格约90%的总回报（年化约16%），但该模型高度依赖VAS业务能否维持当前增速这一"第二引擎"假设，若增速放缓则需要新的增长来源填补（数据来源：tikr.com，2026年）；本报告采用更为审慎的假设区间，认为该乐观情景代表的是上限而非基准。</p>
+
+    <h3>多情景目标价（12个月）</h3>
+    <div class="scenario-grid">
+      <div class="scenario pess">
+        <div class="stitle">保守情景</div>
+        <div class="prob">对应监管冲击+估值收敛</div>
+        <div class="starget">US$290-330</div>
+        <p>380亿美元反垄断和解在法院最终公平性听证中被推翻或大幅修改（沃尔玛等零售商反对声浪持续），刷卡费率下调幅度超预期，叠加VAS业务增速放缓、AI代理商务及稳定币期权价值未能兑现，估值倍数向行业平均水平大幅收敛。</p>
+      </div>
+      <div class="scenario base">
+        <div class="stitle">基准情景</div>
+        <div class="prob">对应当前趋势延续</div>
+        <div class="starget">US$340-420</div>
+        <p>核心网络业务维持中双位数增速，VAS业务保持20%+增长并持续提升收入占比，反垄断和解按当前条款推进，AI代理商务及稳定币合作深化但尚未构成独立盈利来源，估值倍数维持当前区间波动。</p>
+      </div>
+      <div class="scenario opt">
+        <div class="stitle">乐观情景</div>
+        <div class="prob">对应新业务线加速变现</div>
+        <div class="starget">US$440-480</div>
+        <p>AI代理商务及稳定币结算业务实现规模化商业变现，成为独立于核心网络与VAS之外的"第三增长曲线"，市场给予公司更明确的"支付基础设施超大规模服务商"估值溢价，接近TIKR模型给出的中性情景乐观上限。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">本报告12个月目标价区间取US$340-420，基准情景中枢约US$385，较近期可验证股价US$362.13存在约6%的温和上行空间，较分析师一致预期均值（约$395.57-400.30区间，数据来源：public.com、tikr.com）略为审慎，主要反映我们对当前估值溢价（尤其P/E相对行业的显著折价/溢价争议）及反垄断和解不确定性的中性偏谨慎判断。</p>
+  </div>
+</section>
+
+<section id="shareholder-return">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>股东回报与资本配置分析</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>Visa的股东回报体系以持续、大规模的股票回购为核心，辅以稳定增长的季度现金股息。2026财年第二季度，公司回购规模达到历史最高的单季水平（约76-79亿美元，不同渠道口径存在极小差异），董事会同期新增200亿美元回购授权，使公司当前可动用的回购总额度达到330亿美元（数据来源：tikr.com，2026年7月）。这一持续加码的回购力度，一方面体现了公司现金流创造能力的稳健（核心网络业务几乎不需要重资产资本开支，自由现金流转化效率处于行业极高水平），另一方面也被部分研究机构解读为管理层认为当前估值仍具备吸引力、愿意用资本进行防御的信号。</p>
+        <p>需要指出的是，尽管回购力度可观，但公司当前估值倍数（无论采用哪一数据源）均处于历史及同业相对高位区间，这意味着回购对每股内在价值的增厚效应，需要结合回购执行时的具体价格水平审慎评估——在估值本身存在争议的背景下，大规模回购既可能是"逢低布局"的价值创造行为，也可能是在相对高位持续消耗现金储备，这一判断的最终验证需要观察公司未来数年的每股自由现金流增长轨迹。</p>
+      </div>
+      <div class="card">
+        <h4>股东回报关键数据</h4>
+        <ul>
+          <li>Q2单季回购：<b>约$76-79亿</b>（历史最大单季）</li>
+          <li>新增回购授权：<b>$200亿</b></li>
+          <li>当前可用回购总额度：<b>$330亿</b></li>
+          <li>股息政策：<b>持续增长的季度现金股息（具体最新每股金额请以公司官方公告为准）</b></li>
+          <li>资本开支强度：<b>极低</b>（轻资产网络业务模式）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>风险提示（客观谨慎，高亮关键风险点）</h2></div>
+    <div class="risk-matrix">
+      <div class="risk-item high">
+        <div class="rt"><b>反垄断和解与监管风险</b><span class="rlevel">高</span></div>
+        <p>380亿美元刷卡费反垄断和解仅获得初步批准，最终公平性听证结果仍存不确定性，沃尔玛等大型零售商及多个消费者权益组织的持续反对，可能导致和解条款被修改或推翻，进而对公司核心收费模式构成更严格的监管约束。</p>
+        <div class="src">数据来源：paymentsdive.com，2026年1-4月；docketalarm.com，2026年6月</div>
+      </div>
+      <div class="risk-item high">
+        <div class="rt"><b>估值溢价的可持续性风险</b><span class="rlevel">高</span></div>
+        <p>公司当前trailing P/E（27.7-30.5倍区间）显著高于美国多元化金融服务行业平均水平（14.7%-15.9%），这一溢价高度依赖于VAS业务能否持续高速增长、以及AI代理商务/稳定币期权价值能否兑现，若这些新兴增长驱动因素不及预期，估值倍数存在向行业均值大幅收敛的风险。</p>
+        <div class="src">数据来源：simplywall.st，2026年6月</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>AI代理商务与稳定币"管道化"风险</b><span class="rlevel">中</span></div>
+        <p>若未来AI平台或稳定币发行方选择绕开Visa等传统卡组织网络、自建端到端的价值转移与身份确权体系，Visa存在被"管道化"（沦为可替代的后台清算层、丧失面向消费者与商户的品牌及数据价值）的中长期风险，尽管当前OpenAI等合作伙伴选择与Visa深度整合，但这一格局并非一成不变。</p>
+        <div class="src">数据来源：ebc.com，2026年7月，本报告风险评估延伸</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>新增诉讼与跨境监管风险</b><span class="rlevel">中</span></div>
+        <p>公司2026年4月在英国及美国同时面临新增的反垄断相关诉讼，德国联邦法院等多个司法管辖区的挑战仍在审理中，反映公司在全球多个核心市场同时面临持续的监管与法律合规压力，具体财务影响存在不确定性。</p>
+        <div class="src">数据来源：Visa 2026财年第二季度10-Q文件，SEC官网</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>宏观消费与跨境商务波动风险</b><span class="rlevel">中</span></div>
+        <p>公司业绩与全球消费支出、跨境旅行及贸易活动高度相关，若宏观经济增长放缓或地缘政治因素抑制跨境商务活动，可能对公司支付量、处理交易笔数及跨境收入增速构成压制。</p>
+        <div class="src">数据来源：本报告行业分析框架</div>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>并购整合执行风险</b><span class="rlevel">低-中</span></div>
+        <p>公司近期完成的Prisma、Newpay等并购需要持续的整合投入，尽管当前对财务指标的贡献相对可控（预计FY2026贡献约1个百分点营收增速，同时拖累约1.5个百分点运营费用增速），但整合执行不及预期仍是常规的并购后风险。</p>
+        <div class="src">数据来源：investing.com，2026年5月1日</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rating">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2>投资建议</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b style="color:var(--ink);">评级：持有（Hold）。</b>我们认为Visa作为全球支付网络的双寡头之一，其核心网络业务在2026财年展现出超预期的加速增长，增值服务业务的持续壮大也为公司提供了区别于单纯"过路费"模式的更高粘性护城河，AI代理商务与稳定币领域的全面布局，为公司在下一代支付范式演进中保留了合理的期权价值。但公司当前估值倍数（无论采用哪一数据源）均显著高于行业平均水平，这一溢价的合理性高度依赖于VAS及新兴业务线增长动能的持续性，而380亿美元反垄断和解的最终结果仍存在重大不确定性，可能对公司核心收费模式构成长期约束。我们特别提示，本报告未发现任何关于Visa面临私有化收购的权威信息，若这一预设与近期同业PayPal的私有化要约事件产生混淆，建议投资者审慎区分两家公司当前截然不同的公司行为背景。综合考虑基本面的稳健性与估值溢价的双向风险，我们给予"持有"评级，建议投资者以现有持仓为主、审慎评估新增仓位的性价比。</p>
+        <div class="callout">
+          <b>关注信号：</b>（1）2026年7月28日FY2026 Q3正式财报，能否验证"低双位数增速、全年最低增速季度"的管理层指引；（2）380亿美元反垄断和解的最终公平性听证结果及沃尔玛等零售商反对方的后续行动；（3）稳定币结算年化规模能否延续50%+的季度环比增速；（4）OpenAI等AI代理商务合作伙伴关系的实际商业化进展及收入贡献路径；（5）增值服务（VAS）业务收入占比能否如期突破35%-40%；（6）公司当前330亿美元可用回购额度的后续执行节奏。
+        </div>
+        <p>对于已持仓的投资者，可考虑在基准情景估值区间（US$340-420）内结合季度财报披露节点动态评估仓位；对于计划新增配置的投资者，建议将保守情景US$290-330视为更具安全边际的介入参考区间，而非在当前估值水平追高；乐观情景US$440-480可作为长期持有者的止盈观察位。鉴于公司当前估值溢价存在真实的方法论分歧，建议投资者结合自身对AI代理商务及稳定币长期变现前景的判断，独立评估是否认同当前市场给予的估值溢价，而非简单跟随分析师一致预期。</p>
+      </div>
+      <div class="card">
+        <h4>交易要点摘要</h4>
+        <ul>
+          <li>评级：<b>持有（Hold）</b></li>
+          <li>12个月目标价区间：<b>US$340-420</b>（基准中枢约US$385）</li>
+          <li>保守情景下限：<b>US$290-330</b></li>
+          <li>乐观情景上限：<b>US$440-480</b></li>
+          <li>核心估值方法：<b>DCF为主，P/E相对估值交叉验证</b></li>
+          <li>核心风险变量：<b>反垄断和解结果、估值溢价可持续性、AI代理商务变现节奏</b></li>
+          <li>私有化传闻核实结果：<b>未发现权威信源支持，与PayPal情况存在本质差异</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>方法论与数据说明</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">本报告所引用的股价数据（US$362.13）为可通过公开渠道交叉验证的2026年7月2日收盘数据（52周新高），因用户未提供本次报告的具体基准价格，本报告采用了检索范围内可交叉验证的最近期数据，另有渠道显示约一周前股价为$357.25，反映近期股价在此区间波动，实际交易请以纽约证券交易所官方实时行情为准。本报告已在第一节中明确说明，未能找到任何关于Visa私有化收购提议的权威信息，相关表述已在正文中详细展开，不构成对不存在事件的分析或猜测。本报告在第四节中已就不同数据源对公司P/E倍数测算存在的显著差异（22.9倍至32.78倍不等）进行了专门说明，建议投资者以公司官方财报及主流财经数据终端的实时数据为准。</p>
+      </div>
+      <div>
+        <h5>主要数据来源</h5>
+        <ul class="src-list">
+          <li>Visa Inc. 2026财年第二季度10-Q文件（www.sec.gov）</li>
+          <li>Visa 2026财年第二季度财报新闻稿及电话会议纪要（investing.com、s1.q4cdn.com）</li>
+          <li>Visa关于FY2026Q3财报披露日期的官方公告（businesswire.com，2026年7月7日）</li>
+          <li>TIKR.com（2026年5-7月，多篇估值与业绩分析）</li>
+          <li>EBC Financial Group（2026年7月）、Simply Wall St（2026年6月）、Yahoo Finance（2026年7月）</li>
+          <li>PaymentsDive、DocketAlarm、PYMNTS.com（2026年1-6月，反垄断诉讼与和解进展）</li>
+        </ul>
+      </div>
+      <div>
+        <h5>报告信息</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">Snail-bird Investment<br>金融科技研究组<br>报告日期：2026年7月16日<br>深度覆盖 · 评级：持有（Hold）</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      本报告由Snail-bird Investment研究团队独立撰写，仅供参考，不构成任何证券买卖要约或投资建议。报告中的观点、评级及目标价基于报告撰写时可获得的公开信息及分析师的专业判断，可能随市场环境变化而调整，Snail-bird Investment不承诺更新本报告的内容。本报告已就"私有化建议"这一用户提出的分析要求进行了充分的公开信息核实，未发现任何权威信源支持Visa存在私有化收购提议，相关结论已在正文中明确说明，投资者不应将本报告中的任何表述理解为对不存在事件的确认或猜测。本报告中的DCF模型基于多项前瞻性假设及Snail-bird Investment研究团队的情景推演，实际结果可能因反垄断和解最终结果、AI代理商务及稳定币变现节奏、宏观经济环境等因素而与测算结果产生重大偏差，不构成精确目标价承诺。若后续公司在监管诉讼进展或AI/稳定币商业化路径上出现重大更新，本报告的估值框架可能需要重新评估，投资者应持续关注公司即将于2026年7月28日披露的FY2026第三季度正式财报。投资者应充分了解相关风险，并根据自身风险承受能力及投资目标独立判断，据此投资操作风险自负。本报告不构成对任何特定投资者的个性化投资建议，亦不对因使用本报告内容而产生的任何直接或间接损失承担责任。
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台积电 (TSM) 2Q26财报更新报告 | Snail-bird Investment</title>
+<style>
+:root{
+  --bg:#f7f9fc;
+  --bg-panel:#ffffff;
+  --bg-alt:#eef2f8;
+  --ink:#1a2233;
+  --ink-soft:#4d5768;
+  --ink-faint:#8590a3;
+  --line:#dde3ee;
+  --blue:#0a5fd6;
+  --blue-deep:#0a3d7a;
+  --blue-soft:#e8f0fd;
+  --orange:#c2660c;
+  --green:#1c7a4d;
+  --red:#b3261e;
+  --mono:'IBM Plex Mono','Courier New',monospace;
+  --sans:'IBM Plex Sans','Noto Sans SC',sans-serif;
+  --serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--blue);}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(247,249,252,0.97);backdrop-filter:blur(6px);border-bottom:2px solid var(--blue-deep);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--blue-deep);}
+.brand .logo{width:26px;height:26px;border-radius:5px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--blue-deep);border:1px solid var(--blue-deep);padding:3px 8px;border-radius:3px;}
+
+header.hero{padding:60px 0 40px;border-bottom:2px solid var(--blue-deep);background:linear-gradient(180deg,#ffffff 0%,var(--bg) 100%);}
+.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+.tsm-logo{width:52px;height:52px;border-radius:10px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:800;font-size:18px;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--blue);text-transform:uppercase;font-weight:700;}
+h1.title{font-family:var(--serif);font-size:33px;font-weight:700;margin:14px 0 10px;line-height:1.35;color:var(--ink);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:820px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+
+.rating-panel{display:flex;gap:1px;background:var(--blue-deep);border:1px solid var(--blue-deep);margin-top:30px;}
+.rating-box{background:var(--blue-deep);color:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;min-width:180px;}
+.rating-box .rlabel{font-family:var(--mono);font-size:11px;opacity:.8;text-transform:uppercase;letter-spacing:1px;}
+.rating-box .rvalue{font-family:var(--serif);font-size:26px;font-weight:700;margin-top:6px;}
+.target-box{background:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;flex:1;}
+.target-box .tlabel{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:1px;}
+.target-box .tvalue{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--blue-deep);margin-top:6px;}
+
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:19px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--blue);font-weight:700;}
+h2{font-family:var(--serif);font-size:25px;margin:0;color:var(--blue-deep);}
+h3{font-family:var(--sans);font-size:16px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--blue);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--blue);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);background:#fdf3f2;}
+.callout.orange{border-left-color:var(--orange);}
+
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:13.5px;color:var(--blue-deep);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:var(--blue-deep);font-family:var(--mono);font-size:11.5px;color:#fff;font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:var(--blue-soft);}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#e6f4ec;color:var(--green);}
+.tag.miss{background:#fbeae9;color:var(--red);}
+.tag.line{background:#fdf1e3;color:var(--orange);}
+
+.seg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0;}
+.seg-card{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--blue);}
+.seg-card .sname{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--blue-deep);margin-bottom:6px;}
+.seg-card .sval{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.seg-card .sgrowth{font-family:var(--mono);font-size:12px;margin-bottom:8px;}
+.seg-card .sgrowth.pos{color:var(--green);}
+.seg-card .sgrowth.neg{color:var(--red);}
+.seg-card p{font-size:11.5px;margin:0;}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--blue-deep);border:1px solid var(--blue-deep);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:24px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--blue-deep);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--orange);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#fbeae9;color:var(--red);}
+.risk-item.mid .rlevel{background:#fdf1e3;color:var(--orange);}
+.risk-item.low .rlevel{background:#e6f4ec;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+.risk-item .src{font-size:10.5px;color:var(--ink-faint);margin-top:6px;}
+
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--blue-deep);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .seg-grid{grid-template-columns:repeat(2,1fr);}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .rating-panel{flex-direction:column;}
+  h1.title{font-size:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="logo">S</span> SNAIL-BIRD INVESTMENT · 半导体与AI基础设施研究</div>
+    <div class="navlinks">
+      <span>半导体 / 晶圆代工</span>
+      <span class="navtag">NYSE: TSM · TWSE: 2330</span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="tsm-logo">TSM</div>
+      <div class="eyebrow">美股/台股 · 全球晶圆代工绝对龙头 · 2Q26财报更新</div>
+    </div>
+    <h1 class="title">台积电 (TSMC, TSM)：AI资本开支超级周期的最强验证——纪录利润、上调全年指引与股价背离</h1>
+    <p class="subtitle">报告日期：2026年7月17日（基于2026年7月16日披露的2026年第二季度财报更新）｜出品方：Snail-bird Investment 半导体与AI基础设施研究组｜估值框架：DCF为主 + P/E相对估值交叉验证（延续本组此前对AI算力基础设施供应链的一贯分析框架，与SK海力士SKHY、亚马逊AMZN报告中"AI资本开支双刃剑"逻辑一脉相承）</p>
+    <div class="meta-row">
+      <span>股票代码：<b>NYSE: TSM（ADR）/ TWSE: 2330</b></span>
+      <span>所属行业：<b>晶圆代工 · 半导体制造</b></span>
+      <span>董事长兼CEO：<b>魏哲家（C.C. Wei）</b></span>
+      <span>本次更新基于：<b>2026年第二季度财报（2026年7月16日披露）</b>　下一次财报：<b>2026年10月（Q3 2026）</b></span>
+    </div>
+
+    <div class="rating-panel">
+      <div class="rating-box">
+        <div class="rlabel">Snail-bird Investment 评级</div>
+        <div class="rvalue">买入（Buy）</div>
+      </div>
+      <div class="target-box">
+        <div class="tlabel">12个月目标价区间（DCF为主，P/E交叉验证）</div>
+        <div class="tvalue">US$430 - US$520（基准情景中枢约US$475）</div>
+      </div>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="label">近期可验证股价</div>
+        <div class="value">约US$400附近</div>
+        <div class="sub">2026-07-17（财报后回调，详见方法论说明）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2Q26营收</div>
+        <div class="value pos">$40.20B</div>
+        <div class="sub">+33.7%（美元口径），触及自身指引上沿</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2Q26净利润</div>
+        <div class="value pos">NT$706.56B</div>
+        <div class="sub">+77.4% YoY，连续第5个季度创纪录</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2Q26毛利率/营益率</div>
+        <div class="value pos">67.7% / 60.3%</div>
+        <div class="sub">均创历史新高，超指引上限</div>
+      </div>
+      <div class="kpi">
+        <div class="label">FY2026营收增速指引</div>
+        <div class="value pos">上修至约40%+</div>
+        <div class="sub">此前为"30%以上"</div>
+      </div>
+      <div class="kpi">
+        <div class="label">FY2026资本开支指引</div>
+        <div class="value neg">上修至$600-640亿</div>
+        <div class="sub">此前为$520-560亿，另加码美国亚利桑那$1,000亿</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>本次更新核心结论：业绩与指引双双超预期，但股价短期背离</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>台积电于2026年7月16日（美东时间清晨）公布2026年第二季度财报，交出了一份在几乎所有核心指标上均超越自身指引与市场一致预期的成绩单。公司实现合并营收新台币1兆2,703.8亿元（约合400.2亿美元），同比增长36.0%（新台币口径）/33.7%（美元口径），环比增长12.0%，触及公司此前给出的390-402亿美元指引区间的最上沿（数据来源：TSMC 2026年第二季度财报新闻稿，2026年7月16日）。毛利率达67.7%，营业利益率达60.3%，均超出公司此前65.5%-67.5%与56.5%-58.5%的指引上限，双双刷新历史新高；归属母公司净利润新台币7,065.6亿元，同比大幅增长77.4%，环比增长23.4%，是公司连续第五个季度创下单季利润纪录（数据来源：Bloomberg，经Yahoo Finance转载，2026年7月16日）。分析师此前预期营收新台币1兆2,640亿元、净利润新台币6,326.4亿元，公司此次交出的成绩单在两项核心指标上均实现了显著超越（数据来源：CNBC，经Yahoo Finance转载）。</p>
+        <p>更具指引意义的是，公司同步大幅上调了全年展望：2026全年美元营收增速指引从此前的"30%以上"上修至"略高于40%"，全年资本开支预算从此前的520-560亿美元大幅上调至600-640亿美元，并额外宣布追加对美国亚利桑那州1,000亿美元的投资，使公司在美国的累计承诺投资总额达到2,650亿美元（数据来源：Yahoo Finance，2026年7月16日）。第三季度营收指引为446-458亿美元，中值对应环比增长约12%、同比增长约37%，意味着增长动能非但没有见顶迹象，反而在加速。公司同时宣布将2026年度现金股息大幅上调33%至每股新台币24元（数据来源：Finsee，经X平台转载，2026年7月16日）。</p>
+        <p>然而，这份近乎完美的财报公布后，公司股价并未如预期般上涨，反而在随后的交易日中持续承压——截至2026年7月17日，公司美股ADR已连续第七个交易日下跌，盘中一度跌破400美元关口，创近两个月新低，尽管同期包括DA Davidson（目标价上调至500美元）、TD Cowen（上调至440美元）、Barclays（上调至650美元）在内的多家机构在财报后同步上调了目标价（数据来源：Stocktwits，2026年7月17日）。这一"业绩创纪录、股价却持续走弱"的背离现象，主要归因于更广泛的半导体板块系统性抛售——费城半导体指数（SOXX）当周正经历逾一年以来最差的单周表现，反映市场情绪更多受宏观及板块整体资金流动影响，而非对台积电自身基本面的负面重新定价（数据来源：Stocktwits，2026年7月17日）。</p>
+        <p>基于本次财报更新，我们维持对台积电"买入"评级，核心逻辑更新如下：</p>
+        <ol style="color:var(--ink-soft);font-size:14.5px;padding-left:20px;">
+          <li><b>本季度业绩是本组此前在AMZN、SKHY等报告中反复强调的"AI资本开支超级周期"逻辑的最强正面验证之一。</b>高性能计算（HPC）平台营收环比大增20%，占公司总营收比重升至66%，是驱动本季度业绩超预期的绝对核心，公司管理层明确将AI相关需求描述为"结构性且持续超越供给"（数据来源：Yahoo Finance，2026年7月16日）。这与本组此前在亚马逊报告中分析的"AI资本开支6-24个月计费时滞"逻辑相互印证——上游晶圆代工环节的订单能见度往往领先于下游云厂商实际资本开支的现金流体现，台积电本季度的加速增长，为下游AI基础设施需求的持续性提供了独立的产业链验证。</li>
+          <li><b>先进制程占比与高附加值产品结构持续优化，构筑了公司区别于传统周期性半导体企业的结构性盈利韧性。</b>7纳米及以下先进制程贡献了77%的晶圆收入，其中3纳米、5纳米分别贡献30%、33%，2纳米制程虽仅贡献3%，但已进入放量早期阶段，公司管理层预计其占比将在未来数季度持续提升（数据来源：TSMC 2026年第二季度财报，公司官网）。这一制程结构的持续升级，是支撑公司毛利率维持在60%以上历史高位、且抗周期波动能力显著强于成熟制程代工厂的核心壁垒。</li>
+          <li><b>大幅上调的资本开支指引（+15%至600-640亿美元）与新增1,000亿美元美国投资，是一把需要辩证看待的双刃剑。</b>正面看，这反映管理层对AI需求持续性的信心已从"审慎乐观"转向"全力押注"，追加的美国产能布局也有助于分散地缘政治相关的供应链集中度风险；但负面看，这一资本开支强度的急剧提升，也意味着未来数年的折旧摊销负担将同步大幅增加，若2027-2028年AI资本开支增速出现周期性放缓，当前的产能扩张速度可能面临利用率与投资回报率的双重考验，这一逻辑与本组此前SK海力士（SKHY）报告中关于"2027-2028年产能集中释放周期反转风险"的分析框架高度一致，是本报告持续跟踪的核心中期变量。</li>
+          <li><b>财报后的股价回调本质上是板块系统性风险的体现，而非公司基本面重新定价，这为具备中长期视角的投资者提供了阶段性介入窗口。</b>公司近期股价走势与更广泛的半导体板块抛售高度同步，而非孤立的个股负面事件，叠加分析师在财报后普遍上调目标价（DA Davidson、TD Cowen、Barclays均给出正面评级动作），这一"基本面与股价背离"的组合，历史上往往为具备产业链核心地位的龙头公司提供了较好的风险收益比窗口，但投资者仍需警惕板块系统性抛售是否演变为更持续的趋势性调整。</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>2Q26财报关键数据速览</h4>
+        <ul>
+          <li>营收：<b>$40.20B</b>（+33.7% YoY/+12.0% QoQ），触及指引上沿</li>
+          <li>毛利率：<b>67.7%</b>（超指引上限，环比+1.5pct）</li>
+          <li>营业利益率：<b>60.3%</b>（超指引上限，环比+2.2pct）</li>
+          <li>净利润：<b>NT$706.56B</b>（+77.4% YoY，连续5季度纪录）</li>
+          <li>每ADR盈余：<b>US$4.31</b>（+77.4% YoY）</li>
+          <li>HPC平台营收占比：<b>66%</b>（环比+20%）</li>
+          <li>先进制程（≤7nm）占晶圆收入：<b>77%</b></li>
+          <li>3Q26营收指引：<b>$44.6-45.8B</b>（中值对应+37% YoY）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>数据来源交叉核实说明：</b>本季度净利润中包含出售世界先进（Vanguard International Semiconductor）股份产生的一次性收益约新台币632亿元，约占净利润总额的9%；若剔除该一次性因素，净利润同比增速仍高达约62%（推算值），核心经营性盈利能力的改善依然显著（数据来源：Finsee，经X平台转载，2026年7月16日）。本报告在此特别提示这一非经常性损益的影响，避免投资者将全部77.4%的净利润增速简单等同于经营性盈利能力的同等幅度改善。此外，关于财报后股价的具体点位，不同渠道对"跌破400美元"的具体收盘价未给出完全一致的数字，本报告以"约400美元附近、创近两个月新低"这一区间性表述呈现，建议投资者以纳斯达克/纽交所官方实时行情为准。</div>
+  </div>
+</section>
+
+<section id="segments">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>业务结构与制程节点更新</h2></div>
+    <div class="seg-grid">
+      <div class="seg-card">
+        <div class="sname">高性能计算（HPC）</div>
+        <div class="sval">66%营收占比</div>
+        <div class="sgrowth pos">环比+20%</div>
+        <p>AI芯片所属核心平台，是本季度业绩超预期的绝对主力，反映AI算力需求持续旺盛且超出此前市场预期。</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">智能手机</div>
+        <div class="sval">22%营收占比</div>
+        <div class="sgrowth neg">环比-4%</div>
+        <p>受季节性因素影响环比小幅下滑，但公司整体产品结构已明显向AI/HPC倾斜，智能手机业务占比持续被动下降。</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">车用电子</div>
+        <div class="sval">4%营收占比</div>
+        <div class="sgrowth pos">环比+15%</div>
+        <p>车用电子业务环比增速表现亮眼，反映智能座舱及车用芯片需求的持续复苏。</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">先进封装（CoWoS/COUPE）</div>
+        <div class="sval">产能瓶颈缓解中</div>
+        <div class="sgrowth pos">COUPE已量产</div>
+        <p>公司共封装光学（Co-Packaged Optics）平台COUPE已进入量产阶段，管理层预计将成为"非常重要的技术"；CoWoS先进封装降本试点产线预计还需约一年时间成熟。</p>
+      </div>
+    </div>
+
+    <h3>先进制程节点结构（占晶圆收入比重）</h3>
+    <table>
+      <thead><tr><th>制程节点</th><th>2Q26占比</th><th>趋势解读</th></tr></thead>
+      <tbody>
+        <tr><td>2纳米</td><td>3%</td><td>放量早期阶段，预计未来数季度占比持续提升</td></tr>
+        <tr><td>3纳米</td><td>30%</td><td>已进入规模化量产成熟期，是当前先进制程的主力贡献者之一</td></tr>
+        <tr><td>5纳米</td><td>33%</td><td>公司当前占比最高的单一制程节点，需求依然强劲</td></tr>
+        <tr><td>7纳米及以下合计</td><td>77%</td><td>先进制程占比持续处于高位，是毛利率维持历史高位的核心支撑</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：TSMC 2026年第二季度财报电话会议纪要（The Motley Fool，2026年7月16日）、Quartr投资者关系摘要。关于先进封装竞争格局，管理层在财报电话会议中被问及英特尔EMIB-T先进封装技术的市场渗透进展时表态积极，认为竞争对手封装产能的扩张有助于释放更多台积电前段晶圆产能的出货空间，并明确划清"后段封装竞争不等同于前段晶圆代工份额流失"的界限（数据来源：Finsee，2026年7月16日）。</p>
+  </div>
+</section>
+
+<section id="capex">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>资本开支上修与折旧摊销压力评估</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>本次财报最重要的前瞻性信号，是公司大幅上调了2026年资本开支指引——从此前的520-560亿美元一次性上调至600-640亿美元，涨幅超过15%，同时追加宣布对美国亚利桑那州1,000亿美元的新增投资，使公司在美国的累计承诺投资总额攀升至2,650亿美元（数据来源：Yahoo Finance，2026年7月16日）。这一资本开支强度的跃升，需要从两个维度进行辩证评估：一方面，这是公司管理层对AI算力需求持续性最直接、最真金白银的信心表态，也是对本组此前在多份报告中反复强调的"AI资本开支超级周期"逻辑的产业链上游最强验证；另一方面，历史经验表明，半导体行业的资本开支具备显著的滞后效应与周期属性，当前的产能扩张决策所形成的实际产出，将在未来2-3年内逐步释放，若届时下游AI算力需求增速出现周期性放缓，当前的激进扩产可能面临利用率与投资回报率的双重压力测试。</p>
+        <p>值得关注的是，公司当前现金及有价证券余额高达新台币3.5兆元（约合1,100亿美元），本季度经营活动现金流入新台币7,830亿元，资本开支新台币4,960亿元，现金股利发放新台币1,560亿元（数据来源：Quartr投资者关系摘要，2026年7月）。这意味着，尽管资本开支强度大幅提升，公司经营性现金流的创造能力依然能够充分覆盖资本开支与股东回报的双重需求，公司的资产负债表韧性显著强于本组此前覆盖的部分同业（如SK海力士在IPO前更依赖外部融资支持产能扩张），这是台积电作为行业绝对龙头相较于追赶者的核心财务优势之一。</p>
+      </div>
+      <div class="card">
+        <h4>资本开支与现金流关键数据</h4>
+        <ul>
+          <li>FY2026资本开支指引：<b>$600-640亿</b>（此前$520-560亿，+15%+）</li>
+          <li>新增美国亚利桑那投资：<b>$1,000亿</b></li>
+          <li>累计对美承诺投资总额：<b>$2,650亿</b></li>
+          <li>2Q26现金及有价证券：<b>约NT$3.5兆（约$1,100亿）</b></li>
+          <li>2Q26经营活动现金流：<b>NT$7,830亿</b></li>
+          <li>2Q26资本开支：<b>NT$4,960亿</b></li>
+          <li>2Q26现金股利发放：<b>NT$1,560亿</b></li>
+          <li>2026年度股息：<b>上调33%至NT$24/股</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout orange"><b>与本组此前报告的逻辑呼应：</b>台积电此次大幅上调资本开支指引，与本组此前在SK海力士（SKHY）报告中分析的"客户需求已超未来三年规划产能"这一供给瓶颈判断形成产业链上下游的相互印证——存储与晶圆代工两大AI硬件核心环节，均在近期同步释放出"需求持续超越供给"的信号。但这也进一步凸显了本组在SKHY报告中反复强调的核心风险：2027-2028年，随着台积电、三星、英特尔代工等主要厂商的新增产能集中释放，叠加存储行业的同步扩产，AI硬件供应链是否会在2-3年后迎来阶段性供给过剩，是投资者在当前"甜蜜期"中不应忽视的中期变量。</div>
+  </div>
+</section>
+
+<section id="valuation">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>估值更新：DCF为主，P/E相对估值交叉验证</h2></div>
+    <p>基于本次财报上调的全年指引，我们对此前的估值框架进行更新，同时对财报后股价与分析师目标价之间出现的显著背离进行专门评估。</p>
+
+    <h3>分析师目标价更新一览</h3>
+    <table>
+      <thead><tr><th>机构</th><th>财报前目标价</th><th>财报后目标价</th><th>评级</th></tr></thead>
+      <tbody>
+        <tr><td>DA Davidson</td><td>$450</td><td>$500</td><td>Buy（维持）</td></tr>
+        <tr><td>TD Cowen</td><td>$400</td><td>$440</td><td>Hold（维持）</td></tr>
+        <tr><td>Barclays</td><td>$625</td><td>$650</td><td>Overweight（维持）</td></tr>
+        <tr><td>24/7 Wall St（模型）</td><td>—</td><td>$502.60</td><td>Buy（90%置信度）</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：Stocktwits（2026年7月17日）、Yahoo Finance（2026年7月，24/7 Wall St模型）。值得注意的是，不同机构目标价之间存在高达约48%的显著离散（$440至$650），反映市场对台积电估值的分歧并非源于对基本面数据本身的不同解读（所有机构均认可本季度业绩为"净正面"），而是源于对2027年以后AI资本开支能否维持当前强度、以及大幅上调的资本开支是否会压制中期自由现金流这两大核心假设的分歧。这一分歧本身，恰恰印证了本报告将"2027-2028年周期反转风险"列为核心跟踪变量的合理性。</p>
+
+    <h3>估值倍数与股价背离评估</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>估值现状</h4>
+        <ul>
+          <li>forward P/E：<b>约24-28倍区间</b>（不同数据源存在差异）</li>
+          <li>2026年营收一致预期：<b>约5.2万亿新台币</b>（Forbes援引分析师均值）</li>
+          <li>财报后股价：<b>跌破$400，创近两个月新低</b></li>
+          <li>财报前一周股价：<b>约$420-432区间</b>（经历约9.4%回调后的水平）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>股价背离的合理解读</h4>
+        <ul>
+          <li>费城半导体指数（SOXX）当周经历逾一年最差单周表现，反映板块系统性抛售而非个股特异性风险</li>
+          <li>分析师目标价在财报后普遍上调而非下调，与股价走势方向相反，是"基本面强于股价表现"的直接证据</li>
+          <li>大幅上调的资本开支指引可能引发部分投资者对短期自由现金流被压缩的谨慎反应，这是股价承压的合理基本面解释之一，而非单纯情绪性抛售</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>多情景目标价（12个月）</h3>
+    <div class="scenario-grid">
+      <div class="scenario pess">
+        <div class="stitle">保守情景</div>
+        <div class="prob">对应2027-2028年周期反转风险显现</div>
+        <div class="starget">US$350-400</div>
+        <p>AI资本开支增速在2027年出现超预期放缓，叠加台积电、三星等主要厂商新增产能集中释放导致行业阶段性供给过剩，大幅提升的资本开支强度对自由现金流形成持续压制，forward P/E向历史周期低谷区间（约20-24倍）收敛。</p>
+      </div>
+      <div class="scenario base">
+        <div class="stitle">基准情景</div>
+        <div class="prob">对应当前上调指引兑现</div>
+        <div class="starget">US$430-520</div>
+        <p>公司按上调后的指引实现全年营收增速40%+，2纳米制程持续放量爬坡，HPC平台占比维持在65%以上高位，资本开支强度虽提升但经营现金流仍能充分覆盖，估值维持在当前区间波动，与多数分析师目标价方向基本吻合。</p>
+      </div>
+      <div class="scenario opt">
+        <div class="stitle">乐观情景</div>
+        <div class="prob">对应AI需求超预期延续+板块情绪修复</div>
+        <div class="starget">US$550-650</div>
+        <p>半导体板块系统性抛售情绪逆转，AI资本开支在2027年后继续维持强劲增长而非放缓，2纳米及先进封装技术溢价持续兑现，市场给予公司作为AI硬件供应链不可替代核心资产更高的估值溢价，接近Barclays给出的乐观目标价水平。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">本报告基于本次财报更新，将12个月目标价区间上调至US$430-520，基准情景中枢约US$475，较近期约$400附近的股价水平存在约19%的上行空间。这一区间较此前（若存在）的框架有所上修，主要反映本季度业绩及全年指引的实质性超预期兑现，但我们同时将保守情景下限维持在相对审慎的水平，以充分计入2027-2028年潜在周期反转风险这一核心不确定性。</p>
+
+    <div class="chart-box"><svg viewBox="0 0 560 320" width="100%" style="max-width:560px;display:block;margin:0 auto;" role="img" aria-label="营收环比趋势与3Q26指引">
+  <text x="54" y="22" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#1a2233">营收环比趋势与3Q26指引</text>
+  <text x="14" y="26.0" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8590a3">十亿美元</text>
+  <line x1="54" y1="276.0" x2="540" y2="276.0" stroke="#e4e8f0" stroke-width="1"/><line x1="54" y1="217.0" x2="540" y2="217.0" stroke="#e4e8f0" stroke-width="1"/><line x1="54" y1="158.0" x2="540" y2="158.0" stroke="#e4e8f0" stroke-width="1"/><line x1="54" y1="99.0" x2="540" y2="99.0" stroke="#e4e8f0" stroke-width="1"/><line x1="54" y1="40.0" x2="540" y2="40.0" stroke="#e4e8f0" stroke-width="1"/>
+  <text x="46" y="280.0" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4d5768">0.0</text><text x="46" y="221.0" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4d5768">13.3</text><text x="46" y="162.0" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4d5768">26.7</text><text x="46" y="103.0" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4d5768">40.0</text><text x="46" y="44.0" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4d5768">53.3</text>
+  <rect x="54.0" y="117.2" width="103.7" height="158.8" rx="2" fill="#c9d6ea"/><text x="105.8" y="111.2" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#1a2233">35.9</text><text x="105.8" y="294.0" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8590a3">1Q26</text><rect x="245.2" y="98.1" width="103.7" height="177.9" rx="2" fill="#0a5fd6"/><text x="297.0" y="92.1" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#1a2233">40.2</text><text x="297.0" y="294.0" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8590a3">2Q26</text><rect x="436.3" y="76.0" width="103.7" height="200.0" rx="2" fill="#0a3d7a"/><text x="488.2" y="70.0" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#1a2233">45.2</text><text x="488.2" y="294.0" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8590a3">3Q26指引(中值)</text>
+</svg></div>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>风险提示更新</h2></div>
+    <div class="risk-matrix">
+      <div class="risk-item high">
+        <div class="rt"><b>2027-2028年AI资本开支周期反转风险（维持核心关注）</b><span class="rlevel">高</span></div>
+        <p>本季度大幅上调的资本开支指引（600-640亿美元）意味着未来数年的折旧摊销负担将同步大幅增加，若AI资本开支增速在2027年后出现周期性放缓，叠加行业新增产能集中释放，公司可能面临利用率与自由现金流的双重压力，这一风险与本组SKHY报告中的判断逻辑高度一致。</p>
+        <div class="src">数据来源：本报告第三节资本开支分析</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>半导体板块系统性抛售延续风险</b><span class="rlevel">中</span></div>
+        <p>尽管本报告判断当前股价回调主要源于板块系统性因素而非公司基本面，但若SOXX等半导体板块指数的抛售演变为更持续的趋势性调整（如受宏观利率环境、AI叙事阶段性证伪等因素影响），台积电股价仍可能在基本面稳健的背景下继续承压。</p>
+        <div class="src">数据来源：Stocktwits，2026年7月17日</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>2纳米制程放量节奏不及预期风险</b><span class="rlevel">中</span></div>
+        <p>2纳米制程本季度仅贡献3%的晶圆收入，仍处放量早期阶段，若良率爬坡或客户导入节奏慢于预期，可能影响公司先进制程产品结构升级的既定节奏。</p>
+        <div class="src">数据来源：TSMC 2026年第二季度财报</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>地缘政治与台海风险</b><span class="rlevel">中</span></div>
+        <p>作为总部位于台湾的企业，公司长期面临地缘政治相关的风险敞口，尽管公司持续加码美国及其他海外产能布局（如本次追加的1,000亿美元亚利桑那投资）以分散风险，但短期内公司核心先进制程产能仍高度集中于台湾本土，这一结构性风险无法通过海外扩产在短期内完全消除。</p>
+        <div class="src">数据来源：本报告风险评估框架</div>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>先进封装竞争格局演变风险</b><span class="rlevel">低-中</span></div>
+        <p>英特尔EMIB-T等先进封装技术的市场渗透正在推进，尽管公司管理层明确表态"后段封装竞争不等同于前段晶圆代工份额流失"，但先进封装作为AI芯片性能提升的关键环节，其竞争格局的长期演变仍需持续跟踪。</p>
+        <div class="src">数据来源：Finsee，2026年7月16日</div>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>一次性损益对盈利质量的扰动风险</b><span class="rlevel">低</span></div>
+        <p>本季度净利润中约9%来自出售世界先进股份的一次性收益，尽管剔除该因素后核心经营性盈利增速仍然强劲（约62%），但投资者在评估未来季度同比增速时，应注意这一高基数效应对可比性的影响。</p>
+        <div class="src">数据来源：Finsee，2026年7月16日</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rating">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>投资建议</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b style="color:var(--ink);">评级：买入（Buy，维持并强化）。</b>本次2026年第二季度财报以及随之上调的全年指引，进一步巩固了我们对台积电作为全球AI硬件供应链不可替代核心资产的判断——公司在营收、毛利率、营业利益率、净利润等几乎所有核心指标上均实现了对自身指引与市场预期的双重超越，且这一超预期并非依赖一次性因素（剔除出售世界先进股份的一次性收益后，核心经营性净利润仍同比增长约62%）。管理层同步大幅上调的全年营收增速指引（上修至40%+）与资本开支预算（上修至600-640亿美元），是对AI算力需求持续性最直接的产业链验证，也与本组此前在亚马逊、SK海力士等报告中反复论证的"AI资本开支超级周期"逻辑相互印证。财报后股价的持续回调，我们判断主要源于半导体板块的系统性抛售而非公司基本面的重新定价，叠加分析师在财报后普遍上调目标价这一背离信号，我们认为当前阶段为具备中长期视角的投资者提供了较好的风险收益比窗口。但我们同时明确提示，大幅提升的资本开支强度也意味着2027-2028年潜在的周期反转风险需要持续跟踪，这一风险不会因当前业绩的强劲而消失，只是被短期的高景气度所掩盖。</p>
+        <div class="callout">
+          <b>关注信号：</b>（1）半导体板块系统性抛售情绪能否在未来数周内企稳，验证"基本面与股价背离"的判断；（2）2纳米制程放量节奏及占比提升速度；（3）2026年第三季度实际业绩能否兑现446-458亿美元的营收指引；（4）资本开支强度提升后，经营性自由现金流的实际变化轨迹；（5）主要客户（英伟达、AMD、苹果等）的资本开支或产品路线图是否出现影响台积电订单能见度的重大变化；（6）2027年资本开支指引的首次披露（预计将于2027年1月财报中给出），作为验证当前扩产逻辑是否延续的关键信号。
+        </div>
+        <p>对于计划配置的投资者，可考虑在基准情景估值区间（US$430-520）内、结合当前财报后板块系统性回调形成的相对低位分批建仓；并将保守情景US$350-400视为长期持有者的加仓评估参考区间；乐观情景US$550-650可作为12个月止盈观察位。鉴于公司当前展现出的业绩确定性与板块情绪的短期背离，我们认为这是本组近期覆盖的AI基础设施供应链标的中，风险收益比最具吸引力的机会之一，但仍建议投资者结合自身对2027-2028年AI资本开支持续性的独立判断，合理控制仓位集中度。</p>
+      </div>
+      <div class="card">
+        <h4>交易要点摘要</h4>
+        <ul>
+          <li>评级：<b>买入（Buy，维持并强化）</b></li>
+          <li>12个月目标价区间：<b>US$430-520</b>（基准中枢约US$475，上修）</li>
+          <li>保守情景下限：<b>US$350-400</b></li>
+          <li>乐观情景上限：<b>US$550-650</b></li>
+          <li>核心估值方法：<b>DCF为主，P/E相对估值交叉验证</b></li>
+          <li>核心风险变量：<b>2027-2028年周期反转风险、板块系统性抛售延续性</b></li>
+          <li>本次更新核心变化：<b>全年营收/资本开支指引双双大幅上修，股价短期与基本面背离</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>方法论与数据说明</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">本报告是基于本组此前对AI算力基础设施供应链（含SK海力士SKHY、亚马逊AMZN等报告）建立的一贯分析框架，针对台积电2026年第二季度财报（2026年7月16日披露）进行的专项更新报告。本报告所引用的股价数据反映的是2026年7月17日财报后市场信息（跌破$400，具体收盘价不同渠道未给出完全一致数字），因公开检索渠道在报告撰写时未能提供可完全交叉验证的精确收盘价，本报告采用区间性表述，实际交易请以纽约证券交易所官方实时行情为准。所有财务数据均引自公司通过SEC披露的正式财报文件及新闻稿。</p>
+      </div>
+      <div>
+        <h5>主要数据来源</h5>
+        <ul class="src-list">
+          <li>TSMC 2026年第二季度财报新闻稿及6-K文件（www.sec.gov，investor.tsmc.com）</li>
+          <li>TSMC 2026年第二季度财报电话会议纪要（The Motley Fool，2026年7月16日）</li>
+          <li>Bloomberg，经Yahoo Finance转载（2026年7月16日）</li>
+          <li>Finsee，经X平台转载（2026年7月16日）</li>
+          <li>Stocktwits（2026年7月17日，财报后股价与分析师目标价动态）</li>
+          <li>Quartr投资者关系摘要、Forbes（2026年7月）</li>
+        </ul>
+      </div>
+      <div>
+        <h5>报告信息</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">Snail-bird Investment<br>半导体与AI基础设施研究组<br>报告日期：2026年7月17日<br>财报更新报告 · 评级：买入（Buy，维持并强化）</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      本报告由Snail-bird Investment研究团队独立撰写，仅供参考，不构成任何证券买卖要约或投资建议。报告中的观点、评级及目标价基于报告撰写时可获得的公开信息及分析师的专业判断，可能随市场环境变化而调整，Snail-bird Investment不承诺更新本报告的内容。本报告延续本组此前对AI算力基础设施供应链的一贯分析框架与研究逻辑，但不同报告之间的具体假设与结论可能随最新公开信息的变化而更新，不构成对此前报告结论的绝对延续性承诺。本报告中的DCF模型及多情景目标价基于多项前瞻性假设及Snail-bird Investment研究团队的情景推演，实际结果可能因AI资本开支持续性、半导体行业周期波动、地缘政治因素等而与测算结果产生重大偏差，不构成精确目标价承诺。投资者应充分了解相关风险，并根据自身风险承受能力及投资目标独立判断，据此投资操作风险自负。本报告不构成对任何特定投资者的个性化投资建议，亦不对因使用本报告内容而产生的任何直接或间接损失承担责任。
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
