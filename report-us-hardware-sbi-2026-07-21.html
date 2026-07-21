@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美国硬件/半导体板块 SBI 泡沫指数日报 - 2026-07-21</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;background:#0a0e17;color:#e6edf3;line-height:1.65;padding:24px}
+  .container{max-width:1240px;margin:0 auto}
+  .header{background:linear-gradient(135deg,#11182b 0%,#1a2540 100%);border:1px solid #233044;border-radius:16px;padding:34px 30px;text-align:center;margin-bottom:20px}
+  .header h1{font-size:28px;margin-bottom:8px;font-weight:800;letter-spacing:.5px}
+  .header .subtitle{font-size:13px;color:#8b98ad}
+  .header .subtitle b{color:#cdd9e5}
+  .card{background:#131a2a;border:1px solid #233044;border-radius:14px;padding:24px;margin-bottom:20px}
+  .card h2{font-size:18px;margin-bottom:18px;color:#e6edf3;display:flex;align-items:center;gap:8px}
+  .card h2::before{content:"";display:inline-block;width:5px;height:18px;background:#3498db;border-radius:3px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:860px){.grid2{grid-template-columns:1fr}}
+  .score-wrap{display:flex;align-items:center;gap:30px;flex-wrap:wrap;justify-content:center}
+  .score-meta{flex:1;min-width:260px}
+  .meta-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #1e2a40}
+  .meta-row:last-child{border-bottom:none}
+  .meta-row .k{color:#8b98ad;font-size:13px}
+  .meta-row .v{font-weight:700;font-size:16px}
+  .chg-down{color:#2ecc71}
+  .chg-up{color:#e74c3c}
+  .badge{display:inline-block;padding:5px 14px;border-radius:20px;font-size:13px;font-weight:700;background:#f39c12;color:#1a1205}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid #1e2a40}
+  th{background:#0f1524;color:#8b98ad;font-weight:600;font-size:12.5px;letter-spacing:.3px}
+  tbody tr:hover{background:#0f1524}
+  .sc{font-weight:800;font-size:16px}
+  .pill{display:inline-block;padding:2px 9px;border-radius:10px;font-size:11px;font-weight:700}
+  .pill.safe{background:rgba(46,204,113,.16);color:#2ecc71}
+  .pill.warn{background:rgba(243,156,18,.16);color:#f39c12}
+  .pill.danger{background:rgba(231,76,60,.18);color:#e74c3c}
+  .chart-box{background:#0f1524;border:1px solid #1e2a40;border-radius:12px;padding:16px;position:relative}
+  .chart-box h3{font-size:14.5px;margin-bottom:6px;color:#cdd9e5}
+  .chart-note{font-size:11px;color:#6b788c;margin-top:8px;line-height:1.5}
+  .sox-days{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+  .sox-day{background:#0f1524;border:1px solid #1e2a40;border-radius:8px;padding:12px;text-align:center}
+  .sox-day .d{font-size:11px;color:#6b788c}
+  .sox-day .c{font-size:17px;font-weight:700;margin:3px 0}
+  .sox-day .ch{font-size:12px;font-weight:600}
+  .pos{color:#2ecc71}.neg{color:#e74c3c}
+  .bull-bear{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:860px){.bull-bear{grid-template-columns:1fr}}
+  .bb-col h4{font-size:14px;margin-bottom:12px}
+  .bb-col.bull h4{color:#2ecc71}.bb-col.bear h4{color:#e74c3c}
+  .arg{padding:10px 12px;border-radius:8px;margin-bottom:10px;font-size:13px;line-height:1.5}
+  .bull .arg{background:rgba(46,204,113,.08);border-left:3px solid #2ecc71}
+  .bear .arg{background:rgba(231,76,60,.08);border-left:3px solid #e74c3c}
+  .arg b{color:#e6edf3}
+  .concl li{list-style:none;padding:13px 0;border-bottom:1px solid #1e2a40;display:flex;gap:12px;align-items:flex-start;font-size:13.5px}
+  .concl li:last-child{border-bottom:none}
+  .num{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#3498db;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+  .advice{margin-top:16px;padding:16px 18px;border-radius:10px;background:rgba(243,156,18,.10);border-left:4px solid #f39c12;font-size:13.5px;line-height:1.7}
+  .advice b{color:#f39c12}
+  .footer{padding:20px;text-align:center;font-size:11px;color:#6b788c;border-top:1px solid #1e2a40;margin-top:10px}
+  .src{font-size:11px;color:#6b788c;margin-top:10px}
+  .gauge-wrap{position:relative;width:340px;max-width:100%;margin:0 auto}
+  .gauge-center{position:absolute;top:54%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
+  .gauge-center .val{font-size:48px;font-weight:800;color:#f39c12;line-height:1}
+  .gauge-center .lbl{font-size:12px;color:#8b98ad;margin-top:4px}
+  .verify{margin-bottom:20px;padding:16px 18px;border-radius:10px;background:rgba(46,204,113,.10);border-left:4px solid #2ecc71;font-size:13.5px;line-height:1.7}
+  .verify b{color:#2ecc71}
+  .weekend{margin-bottom:20px;padding:16px 18px;border-radius:10px;background:rgba(231,76,60,.10);border-left:4px solid #e74c3c;font-size:13.5px;line-height:1.7}
+  .weekend b{color:#e74c3c}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 头部 -->
+  <div class="header">
+    <h1>美国硬件 / 半导体板块 SBI 泡沫指数日报</h1>
+    <div class="subtitle">
+      分析日期：<b>2026年7月21日（周二）</b> ｜ 美股数据截止：<b>2026年7月20日（周一）收盘</b> ｜ 框架版本 v3.3（45/70 线性模型 · 含 200MA 修正）
+    </div>
+  </div>
+
+  <!-- ✅ 数据校验提示 -->
+  <div class="verify">
+    <b>✅ 本期沿用并已交叉验证的两条关键基线（7/19–7/20 已证伪旧报误读，本日报 7/20 收盘数据再次印证）：</b><br>
+    ① <b>SOX 真实 200MA ≈ 9,000（Barchart 实测 8,955.82 @07/16，随近期高价滚动小幅上移）</b>：7/20 收盘 11,743.85 较之 <span style="color:#2ecc71;font-weight:700">+30.5%</span>，高于警告线 +30%，估值维度维持 <b>45.6</b>。<br>
+    ② <b>FINRA 6 月融资余额 $1,502,072M（/GDP 4.71%，YoY +49.0%）</b>：FINRA.org 官方统计表确认，6 月数据已于 7 月第三周发布。杠杆维度维持 <b>91.0</b>。<br>
+    两基线均成立，7/20→7/21 的 SBI 比较为<b>同口径可比</b>。
+  </div>
+
+  <!-- 🔥 本周重大变量 -->
+  <div class="weekend">
+    <b>🔥 7/20（周一）交易时段新增重大变量：</b><br>
+    • <b>地缘剧烈升级：</b>美军对伊朗发动<b>连续第 9 晚</b>打击（较周末第 7 晚再升级）；伊朗宣称霍尔木兹海峡通航量「已降至零」（周日仅 4 艘通过，前一日 8 艘）；胡塞武装宣布对沙特实施海上封锁、红海航线受袭。WTI 收 $83.23、布伦特 $89.22（周涨约 14–16%，盘中布伦特一度触 $91.42）；但 mediators 向伊朗递交 10 天停火提案带来边际缓和希望。<br>
+    • <b>芯片温和反弹：</b>SOX 7/20 收 11,743.85（<span style="color:#2ecc71;font-weight:700">+0.60%</span>），SOXX +1.52%、SMH +1.04%、MU +4.6%，结束上周 −11% 暴跌；技术面 SMH/SOXX 出现 MACD 低位金叉（早期企稳信号，未确认反转）。<br>
+    • <b>财报季开启在即：</b>Alphabet / 特斯拉（7/22 盘后）、英特尔 / TI（7/23）密集披露，为 AI 资本支出叙事「关键压力测试」；Hyperscaler Capex BofA 追踪上修至 2027 年 $1.15T。
+  </div>
+
+  <!-- 总分卡片 -->
+  <div class="card">
+    <div class="score-wrap">
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 340 200" width="100%" style="max-width:340px;display:block;margin:0 auto;" role="img" aria-label="SBI gauge 62.2">
+<path d="M 20.0 178.0 A 150 150 0 0 1 146.5 29.8" fill="none" stroke="#2ecc71" stroke-width="22"/>
+<path d="M 146.5 29.8 A 150 150 0 0 1 258.2 56.6" fill="none" stroke="#f39c12" stroke-width="22"/>
+<path d="M 258.2 56.6 A 150 150 0 0 1 320.0 178.0" fill="none" stroke="#e74c3c" stroke-width="22"/>
+<line x1="170" y1="178" x2="218.2" y2="58.4" stroke="#ffd166" stroke-width="4" stroke-linecap="round"/>
+<circle cx="170" cy="178" r="7" fill="#ffd166"/>
+</svg>
+        <div class="gauge-center">
+          <div class="val">62.2</div>
+          <div class="lbl">SBI 总分 / 100</div>
+        </div>
+      </div>
+      <div class="score-meta">
+        <div style="text-align:center;margin-bottom:14px">
+          <span class="badge">Caution 区间（40–65）· 逼近上沿</span>
+        </div>
+        <div class="meta-row"><span class="k">SBI 总分（7/21）</span><span class="v" style="color:#f39c12">62.2</span></div>
+        <div class="meta-row"><span class="k">环比（vs 7/20 = 62.0）</span><span class="v chg-up">▲ +0.2</span></div>
+        <div class="meta-row"><span class="k">变化来源</span><span class="v" style="font-size:13px;color:#8b98ad">估值 45.0→45.6（SOX 反弹）；外部 62→63（地缘再升级）</span></div>
+        <div class="meta-row"><span class="k">SOX 收盘（07/20）</span><span class="v">11,743.85 <span class="chg-down" style="font-size:13px">+0.60%</span></span></div>
+        <div class="meta-row"><span class="k">SOX 较真实 200MA(≈9,000)</span><span class="v neg" style="color:#f39c12">+30.5%</span></div>
+        <div class="meta-row"><span class="k">SOX 52周区间</span><span class="v">5,418 – 14,655</span></div>
+        <div class="meta-row"><span class="k">区间判定</span><span class="v" style="font-size:14px">45 安全 · 65 高位 · 70 危险 · 80 极端</span></div>
+      </div>
+    </div>
+    <div class="src">⚠️ 7/20（周一）美股正常交易，全部市场数据截至 <b>7/20（周一）收盘</b>——本期为真实交易日更新（7/20 报告因生成于美东 7/19 22:33，数据实际截止 7/17 周五）。SOX 11,743.85 较 6/22 峰值 14,655.29 回撤 19.9%，<b>仍处于技术性熊市</b>（−20% 边界附近），且趋势仍 <b>+30.5% 高于 200 日均线</b>——价格崩而估值未便宜，去泡沫不彻底。SBI 62.2 距危险线(70) 仅 7.8 分。</div>
+  </div>
+
+  <!-- SOX 近 9 交易日 -->
+  <div class="card">
+    <h2>SOX 费城半导体指数 近 9 交易日走势</h2>
+    <div class="sox-days">
+      <div class="sox-day"><div class="d">07/09</div><div class="c">12,960</div><div class="ch pos">+3.06%</div></div>
+      <div class="sox-day"><div class="d">07/10</div><div class="c">12,967</div><div class="ch pos">+0.06%</div></div>
+      <div class="sox-day"><div class="d">07/13</div><div class="c">12,348</div><div class="ch neg">−4.78%</div></div>
+      <div class="sox-day"><div class="d">07/14</div><div class="c">12,662</div><div class="ch pos">+2.54%</div></div>
+      <div class="sox-day"><div class="d">07/15</div><div class="c">12,399</div><div class="ch neg">−2.08%</div></div>
+      <div class="sox-day" style="background:rgba(231,76,60,.08);border:1px solid #e74c3c"><div class="d">07/16</div><div class="c">11,867</div><div class="ch neg">−4.29%</div></div>
+      <div class="sox-day" style="background:rgba(231,76,60,.08);border:1px solid #e74c3c"><div class="d">07/17</div><div class="c">11,674</div><div class="ch neg">−1.63%</div></div>
+      <div class="sox-day" style="background:rgba(46,204,113,.08);border:1px solid #2ecc71"><div class="d">07/20</div><div class="c">11,744</div><div class="ch pos">+0.60%</div></div>
+    </div>
+    <div class="src">来源：Nasdaq / MarketWatch / Reuters / 同花顺 iFinD（2026-07-20 收盘：11,743.85，+0.60%；前收 11,673.89）。盘中受油价与地缘影响一度高见 12,071.84。SOX 自 6/22 峰值 14,655.29 回撤 19.9%，确认技术性熊市（−20% 边界）；7 月累计约 −18.6%（2008 年以来最差单月）。7/20 芯片集体反弹：MU +4.6%、SNDK +5.4%、AVGO +1%、NVDA +0.2%。</div>
+  </div>
+
+  <!-- 六维度明细 -->
+  <div class="card">
+    <h2>SBI 六维度评分明细（2026-07-20 收盘 / 45-70 线性模型 · 修正已校验）</h2>
+    <table>
+      <thead><tr><th>维度</th><th>权重</th><th>得分</th><th>前次(7/20)</th><th>风险等级</th><th>核心依据</th></tr></thead>
+      <tbody>
+        <tr><td><b>估值</b></td><td>25%</td><td class="sc" style="color:#f39c12">45.6</td><td style="color:#8b98ad">45.0</td><td><span class="pill warn">预警</span></td><td>SOX 11,743.85 较<b>真实 200MA(≈9,000) 高 +30.5%</b>（高于警告线 +30%→45.6，随 7/20 反弹小幅上修）；龙头 NVDA Fwd PE ~21x/PEG 0.65、AVGO ~25x、TSM ~23x 合理，但<b>指数趋势仍显著高于均线</b></td></tr>
+        <tr><td><b>拥挤度</b></td><td>25%</td><td class="sc" style="color:#e74c3c">70.0</td><td style="color:#8b98ad">70.0</td><td><span class="pill danger">危险</span></td><td>S&amp;P 500 前十大 ~37–40%（Westmount 37.3% / JPMorgan 中旬 40.8% / Fool 7月 32.5% Mag7），处危险线 37%；NVDA 权重仍 ~7.0–7.4%（极值）；结构性脆弱未因回调解除</td></tr>
+        <tr><td><b>杠杆</b></td><td>15%</td><td class="sc" style="color:#e74c3c">91.0</td><td style="color:#8b98ad">91.0</td><td><span class="pill danger">危险</span></td><td>FINRA <b>6月</b>融资余额 $1,502,072M（FINRA.org 确认）/GDP <b>4.71%</b>，远超危险线 4.0%；YoY +49.0%、MoM +6.1%；滞后于价格，去杠杆是下阶段核心尾部风险</td></tr>
+        <tr><td><b>业绩兑现</b></td><td>15%</td><td class="sc" style="color:#f39c12">49.0</td><td style="color:#8b98ad">49.0</td><td><span class="pill warn">预警</span></td><td>TSM Q2 营收 +36%、ASML 上调 2026 至 €43–45B（强）；但「利好不涨」、Hyperscaler Capex/OCF 升至 93%、UBS 预警 2027 增速骤降（76%→25%→6%）、IBM −25% 地雷</td></tr>
+        <tr><td><b>资金流向</b></td><td>10%</td><td class="sc" style="color:#e74c3c">60.0</td><td style="color:#8b98ad">60.0</td><td><span class="pill danger">危险</span></td><td>熊市未解 + 创纪录流入变套牢：2026 年 YTD 半导体 ETF 净流入 <b>$46B</b>（≈31% AUM，历史最高）；SOXX 7 月 MTD +$6.13B（史上最大单月）、SMH +$2.06B，但基金当月分别 −18.6%/−15.2%——散户「接飞刀」；SMH/SOXX MACD 低位金叉（早期企稳，未反转）</td></tr>
+        <tr><td><b>外部环境</b></td><td>10%</td><td class="sc" style="color:#f39c12">63.0</td><td style="color:#8b98ad">62.0</td><td><span class="pill warn">预警</span></td><td>10Y 4.55%（低于预警线 5%）；Fed 3.50–3.75% 维持，但 Waller/Logan 放鹰、2Y 4.2% 已高于 Fed 45bp；<b>美伊第 9 晚互袭 + 霍尔木兹通航近零 + 胡塞红海封锁，油价 WTI $83/布伦特 $89（周涨 14–16%）</b>推升滞胀与风险溢价，较 7/20 小幅上修</td></tr>
+        <tr style="background:#0f1524"><td><b>加权总分</b></td><td>100%</td><td class="sc" style="color:#f39c12">62.2</td><td style="color:#8b98ad">62.0</td><td><span class="pill warn">Caution</span></td><td>六维中 4 维持平、估值(+0.6)与外部环境(+1.0)小幅上修；拥挤度(70)与杠杆(91)锚定危险区，系统性脆弱未解除。距危险线 70 仅 7.8 分</td></tr>
+      </tbody>
+    </table>
+    <div class="src">评分方法：各维度 0–100（越高=泡沫/风险越大），按权重线性加权；预警线 45、危险线 70，区间内线性插值。SBI＞65 为危险区间，＞80 为极端危险区间。环比对比一律使用同模型（v3.3）前一日数值。</div>
+  </div>
+
+  <!-- 4 张 Chart.js 图表 -->
+  <div class="grid2">
+    <div class="chart-box">
+      <h3>六维度雷达图（7/20 62.0 vs 7/21 62.2）</h3>
+      <svg viewBox="0 0 360 300" width="100%" style="max-width:360px;display:block;margin:0 auto;" role="img" aria-label="六维度雷达">
+<polygon points="180.0,130.0 199.1,141.0 199.1,163.0 180.0,174.0 160.9,163.0 160.9,141.0" fill="none" stroke="#1e2a40" stroke-width="1"/>
+<polygon points="180.0,108.0 218.1,130.0 218.1,174.0 180.0,196.0 141.9,174.0 141.9,130.0" fill="none" stroke="#1e2a40" stroke-width="1"/>
+<polygon points="180.0,86.0 237.2,119.0 237.2,185.0 180.0,218.0 122.8,185.0 122.8,119.0" fill="none" stroke="#1e2a40" stroke-width="1"/>
+<polygon points="180.0,64.0 256.2,108.0 256.2,196.0 180.0,240.0 103.8,196.0 103.8,108.0" fill="none" stroke="#1e2a40" stroke-width="1"/>
+<polygon points="180.0,42.0 275.3,97.0 275.3,207.0 180.0,262.0 84.7,207.0 84.7,97.0" fill="none" stroke="#1e2a40" stroke-width="1"/>
+<line x1="180" y1="152" x2="180.0" y2="42.0" stroke="#1e2a40" stroke-width="1"/>
+<line x1="180" y1="152" x2="275.3" y2="97.0" stroke="#1e2a40" stroke-width="1"/>
+<line x1="180" y1="152" x2="275.3" y2="207.0" stroke="#1e2a40" stroke-width="1"/>
+<line x1="180" y1="152" x2="180.0" y2="262.0" stroke="#1e2a40" stroke-width="1"/>
+<line x1="180" y1="152" x2="84.7" y2="207.0" stroke="#1e2a40" stroke-width="1"/>
+<line x1="180" y1="152" x2="84.7" y2="97.0" stroke="#1e2a40" stroke-width="1"/>
+<polygon points="180.0,102.5 246.7,113.5 266.7,202.0 180.0,205.9 122.8,185.0 120.9,117.9" fill="rgba(52,152,219,.12)" stroke="#3498db" stroke-width="2"/>
+<circle cx="180.0" cy="102.5" r="3" fill="#3498db"/>
+<circle cx="246.7" cy="113.5" r="3" fill="#3498db"/>
+<circle cx="266.7" cy="202.0" r="3" fill="#3498db"/>
+<circle cx="180.0" cy="205.9" r="3" fill="#3498db"/>
+<circle cx="122.8" cy="185.0" r="3" fill="#3498db"/>
+<circle cx="120.9" cy="117.9" r="3" fill="#3498db"/>
+<polygon points="180.0,101.8 246.7,113.5 266.7,202.0 180.0,205.9 122.8,185.0 120.0,117.3" fill="rgba(243,156,18,.10)" stroke="#f39c12" stroke-width="2"/>
+<circle cx="180.0" cy="101.8" r="3" fill="#f39c12"/>
+<circle cx="246.7" cy="113.5" r="3" fill="#f39c12"/>
+<circle cx="266.7" cy="202.0" r="3" fill="#f39c12"/>
+<circle cx="180.0" cy="205.9" r="3" fill="#f39c12"/>
+<circle cx="122.8" cy="185.0" r="3" fill="#f39c12"/>
+<circle cx="120.0" cy="117.3" r="3" fill="#f39c12"/>
+<text x="180.0" y="26.0" text-anchor="middle" font-size="11" fill="#cdd9e5" font-family="sans-serif">估值</text>
+<text x="292.6" y="91.0" text-anchor="start" font-size="11" fill="#cdd9e5" font-family="sans-serif">拥挤度</text>
+<text x="292.6" y="221.0" text-anchor="start" font-size="11" fill="#cdd9e5" font-family="sans-serif">杠杆</text>
+<text x="180.0" y="286.0" text-anchor="middle" font-size="11" fill="#cdd9e5" font-family="sans-serif">业绩兑现</text>
+<text x="67.4" y="221.0" text-anchor="end" font-size="11" fill="#cdd9e5" font-family="sans-serif">资金流向</text>
+<text x="67.4" y="91.0" text-anchor="end" font-size="11" fill="#cdd9e5" font-family="sans-serif">外部环境</text>
+<rect x="20" y="20" width="10" height="3" fill="#3498db"/><text x="34" y="24" font-size="10" fill="#cdd9e5" font-family="sans-serif">07-20 (62.0)</text>
+<rect x="120" y="20" width="10" height="3" fill="#f39c12"/><text x="134" y="24" font-size="10" fill="#cdd9e5" font-family="sans-serif">07-21 (62.2)</text>
+</svg>
+      <div class="chart-note">蓝色=2026-07-20(62.0)；橙色=2026-07-21(62.2)。两图几乎重合，仅「估值」由 45.0 外扩至 45.6、「外部环境」由 62 外扩至 63——印证本期 SBI +0.2 来自 SOX 反弹（估值）与地缘再升级（外部），市场结构未变。</div>
+    </div>
+    <div class="chart-box">
+      <h3>SOX 近约 32 交易日走势（含真实 200MA ≈9,000）</h3>
+      <svg viewBox="0 0 720 320" width="100%" style="max-width:720px;display:block;margin:0 auto;" role="img" aria-label="SOX走势">
+<line x1="46" y1="278.0" x2="704" y2="278.0" stroke="#1e2a40" stroke-width="1"/>
+<text x="41.0" y="281.0" text-anchor="end" font-size="9" fill="#8b98ad" font-family="monospace">8,000</text>
+<line x1="46" y1="207.4" x2="704" y2="207.4" stroke="#1e2a40" stroke-width="1"/>
+<text x="41.0" y="210.4" text-anchor="end" font-size="9" fill="#8b98ad" font-family="monospace">10,000</text>
+<line x1="46" y1="136.9" x2="704" y2="136.9" stroke="#1e2a40" stroke-width="1"/>
+<text x="41.0" y="139.9" text-anchor="end" font-size="9" fill="#8b98ad" font-family="monospace">12,000</text>
+<line x1="46" y1="66.3" x2="704" y2="66.3" stroke="#1e2a40" stroke-width="1"/>
+<text x="41.0" y="69.3" text-anchor="end" font-size="9" fill="#8b98ad" font-family="monospace">14,000</text>
+<line x1="46" y1="31.1" x2="704" y2="31.1" stroke="#1e2a40" stroke-width="1"/>
+<text x="41.0" y="34.1" text-anchor="end" font-size="9" fill="#8b98ad" font-family="monospace">15,000</text>
+<line x1="46" y1="242.7" x2="704" y2="242.7" stroke="#9b59b6" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="704" y="237.7" text-anchor="end" font-size="9" fill="#9b59b6" font-family="sans-serif">200MA≈9,000</text>
+<path d="M 46.0 79.8 L 46.0 79.8 L 67.9 129.1 L 89.9 104.9 L 111.8 113.7 L 133.7 129.6 L 155.7 95.6 L 177.6 88.5 L 199.5 62.8 L 221.5 91.2 L 243.4 84.8 L 265.3 54.3 L 287.3 43.9 L 309.2 85.9 L 331.1 85.4 L 353.1 68.4 L 375.0 94.4 L 396.9 76.6 L 418.9 57.6 L 440.8 89.1 L 462.7 114.8 L 484.7 105.1 L 506.6 126.3 L 528.5 116.6 L 550.5 103.0 L 572.4 102.8 L 594.3 124.6 L 616.3 113.5 L 638.2 122.8 L 660.1 141.6 L 682.1 148.4 L 704.0 145.9 L 704.0 278.0 L 46.0 278.0 Z" fill="rgba(52,152,219,.12)"/>
+<path d="M 46.0 79.8 L 67.9 129.1 L 89.9 104.9 L 111.8 113.7 L 133.7 129.6 L 155.7 95.6 L 177.6 88.5 L 199.5 62.8 L 221.5 91.2 L 243.4 84.8 L 265.3 54.3 L 287.3 43.9 L 309.2 85.9 L 331.1 85.4 L 353.1 68.4 L 375.0 94.4 L 396.9 76.6 L 418.9 57.6 L 440.8 89.1 L 462.7 114.8 L 484.7 105.1 L 506.6 126.3 L 528.5 116.6 L 550.5 103.0 L 572.4 102.8 L 594.3 124.6 L 616.3 113.5 L 638.2 122.8 L 660.1 141.6 L 682.1 148.4 L 704.0 145.9" fill="none" stroke="#3498db" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="46.0" cy="79.8" r="2.5" fill="#3498db"/>
+<circle cx="67.9" cy="129.1" r="2.5" fill="#3498db"/>
+<circle cx="89.9" cy="104.9" r="2.5" fill="#3498db"/>
+<circle cx="111.8" cy="113.7" r="2.5" fill="#3498db"/>
+<circle cx="133.7" cy="129.6" r="2.5" fill="#3498db"/>
+<circle cx="155.7" cy="95.6" r="2.5" fill="#3498db"/>
+<circle cx="177.6" cy="88.5" r="2.5" fill="#3498db"/>
+<circle cx="199.5" cy="62.8" r="2.5" fill="#3498db"/>
+<circle cx="221.5" cy="91.2" r="2.5" fill="#3498db"/>
+<circle cx="243.4" cy="84.8" r="2.5" fill="#3498db"/>
+<circle cx="265.3" cy="54.3" r="2.5" fill="#3498db"/>
+<circle cx="287.3" cy="43.9" r="2.5" fill="#3498db"/>
+<circle cx="309.2" cy="85.9" r="2.5" fill="#3498db"/>
+<circle cx="331.1" cy="85.4" r="2.5" fill="#3498db"/>
+<circle cx="353.1" cy="68.4" r="2.5" fill="#3498db"/>
+<circle cx="375.0" cy="94.4" r="2.5" fill="#3498db"/>
+<circle cx="396.9" cy="76.6" r="2.5" fill="#3498db"/>
+<circle cx="418.9" cy="57.6" r="2.5" fill="#3498db"/>
+<circle cx="440.8" cy="89.1" r="2.5" fill="#3498db"/>
+<circle cx="462.7" cy="114.8" r="2.5" fill="#3498db"/>
+<circle cx="484.7" cy="105.1" r="2.5" fill="#3498db"/>
+<circle cx="506.6" cy="126.3" r="2.5" fill="#3498db"/>
+<circle cx="528.5" cy="116.6" r="2.5" fill="#3498db"/>
+<circle cx="550.5" cy="103.0" r="2.5" fill="#3498db"/>
+<circle cx="572.4" cy="102.8" r="2.5" fill="#3498db"/>
+<circle cx="594.3" cy="124.6" r="2.5" fill="#3498db"/>
+<circle cx="616.3" cy="113.5" r="2.5" fill="#3498db"/>
+<circle cx="638.2" cy="122.8" r="2.5" fill="#3498db"/>
+<circle cx="660.1" cy="141.6" r="2.5" fill="#3498db"/>
+<circle cx="682.1" cy="148.4" r="2.5" fill="#3498db"/>
+<circle cx="704.0" cy="145.9" r="2.5" fill="#3498db"/>
+<text x="46.0" y="304.0" text-anchor="middle" font-size="8" fill="#8b98ad" font-family="monospace">06/04</text>
+<text x="111.8" y="304.0" text-anchor="middle" font-size="8" fill="#8b98ad" font-family="monospace">06/09</text>
+<text x="177.6" y="304.0" text-anchor="middle" font-size="8" fill="#8b98ad" font-family="monospace">06/12</text>
+<text x="243.4" y="304.0" text-anchor="middle" font-size="8" fill="#8b98ad" font-family="monospace">06/17</text>
+<text x="309.2" y="304.0" text-anchor="middle" font-size="8" fill="#8b98ad" font-family="monospace">06/23</text>
+<text x="375.0" y="304.0" text-anchor="middle" font-size="8" fill="#8b98ad" font-family="monospace">06/26</text>
+<text x="440.8" y="304.0" text-anchor="middle" font-size="8" fill="#8b98ad" font-family="monospace">07/01</text>
+<text x="506.6" y="304.0" text-anchor="middle" font-size="8" fill="#8b98ad" font-family="monospace">07/07</text>
+<text x="572.4" y="304.0" text-anchor="middle" font-size="8" fill="#8b98ad" font-family="monospace">07/10</text>
+<text x="638.2" y="304.0" text-anchor="middle" font-size="8" fill="#8b98ad" font-family="monospace">07/15</text>
+<text x="704.0" y="304.0" text-anchor="middle" font-size="8" fill="#8b98ad" font-family="monospace">07/20</text>
+<text x="704.0" y="137.9" text-anchor="end" font-size="9" font-weight="700" fill="#3498db" font-family="monospace">11,744</text>
+</svg>
+      <div class="chart-note">紫色虚线为<b>真实 200 日均线</b>(≈9,000，Barchart 实测 8,955.82 @07/16 小幅上移)。SOX 自 06/22 峰值 14,655 回落约 19.9% 至 11,744，但仍 <b>+30.5% 高于 200MA</b>——旧报「低于 200MA 11%」为 200MA 取值错误所致，已证伪。</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <h2>多空论点对比（Chart.js 横向柱状 · 强度 0–100）</h2>
+    <svg viewBox="0 0 680 392" width="100%" style="max-width:680px;display:block;margin:0 auto;" role="img" aria-label="多空论点">
+<line x1="441.0" y1="14" x2="441.0" y2="378" stroke="#8b98ad" stroke-width="1"/>
+<text x="216.0" y="393.0" text-anchor="middle" font-size="9" fill="#8b98ad" font-family="monospace">-100</text>
+<text x="328.5" y="393.0" text-anchor="middle" font-size="9" fill="#8b98ad" font-family="monospace">-50</text>
+<text x="441.0" y="393.0" text-anchor="middle" font-size="9" fill="#8b98ad" font-family="monospace">0</text>
+<text x="553.5" y="393.0" text-anchor="middle" font-size="9" fill="#8b98ad" font-family="monospace">50</text>
+<text x="666.0" y="393.0" text-anchor="middle" font-size="9" fill="#8b98ad" font-family="monospace">100</text>
+<rect x="441.0" y="25.0" width="207.0" height="22" rx="3" fill="#2ecc71"/>
+<text x="210.0" y="40.0" text-anchor="end" font-size="9" fill="#cdd9e5" font-family="sans-serif">AI Capex 超级周期 ~$700B+ (BofA 上修2027 $1.15T)</text>
+<text x="653.0" y="40.0" text-anchor="start" font-size="9" font-weight="700" fill="#2ecc71" font-family="monospace">92</text>
+<rect x="441.0" y="61.0" width="198.0" height="22" rx="3" fill="#2ecc71"/>
+<text x="210.0" y="76.0" text-anchor="end" font-size="9" fill="#cdd9e5" font-family="sans-serif">龙头业绩 NVDA/TSM/ASML 强</text>
+<text x="644.0" y="76.0" text-anchor="start" font-size="9" font-weight="700" fill="#2ecc71" font-family="monospace">88</text>
+<rect x="441.0" y="97.0" width="162.0" height="22" rx="3" fill="#2ecc71"/>
+<text x="210.0" y="112.0" text-anchor="end" font-size="9" fill="#cdd9e5" font-family="sans-serif">技术面 MACD 金叉·动能初稳</text>
+<text x="608.0" y="112.0" text-anchor="start" font-size="9" font-weight="700" fill="#2ecc71" font-family="monospace">72</text>
+<rect x="441.0" y="133.0" width="184.5" height="22" rx="3" fill="#2ecc71"/>
+<text x="210.0" y="148.0" text-anchor="end" font-size="9" fill="#cdd9e5" font-family="sans-serif">散户资金极度坚定 ($46B YTD)</text>
+<text x="630.5" y="148.0" text-anchor="start" font-size="9" font-weight="700" fill="#2ecc71" font-family="monospace">82</text>
+<rect x="441.0" y="169.0" width="189.0" height="22" rx="3" fill="#2ecc71"/>
+<text x="210.0" y="184.0" text-anchor="end" font-size="9" fill="#cdd9e5" font-family="sans-serif">TSM/ASML 指引上调(基本面)</text>
+<text x="635.0" y="184.0" text-anchor="start" font-size="9" font-weight="700" fill="#2ecc71" font-family="monospace">84</text>
+<rect x="227.2" y="205.0" width="213.8" height="22" rx="3" fill="#e74c3c"/>
+<text x="210.0" y="220.0" text-anchor="end" font-size="9" fill="#cdd9e5" font-family="sans-serif">融资余额 $1.50T/GDP4.7%</text>
+<text x="222.2" y="220.0" text-anchor="end" font-size="9" font-weight="700" fill="#e74c3c" font-family="monospace">-95</text>
+<rect x="234.0" y="241.0" width="207.0" height="22" rx="3" fill="#e74c3c"/>
+<text x="210.0" y="256.0" text-anchor="end" font-size="9" fill="#cdd9e5" font-family="sans-serif">前10集中度 ~37–40% 极值</text>
+<text x="229.0" y="256.0" text-anchor="end" font-size="9" font-weight="700" fill="#e74c3c" font-family="monospace">-92</text>
+<rect x="238.5" y="277.0" width="202.5" height="22" rx="3" fill="#e74c3c"/>
+<text x="210.0" y="292.0" text-anchor="end" font-size="9" fill="#cdd9e5" font-family="sans-serif">SOX 熊市 −19.9%·月−18.6%</text>
+<text x="233.5" y="292.0" text-anchor="end" font-size="9" font-weight="700" fill="#e74c3c" font-family="monospace">-90</text>
+<rect x="243.0" y="313.0" width="198.0" height="22" rx="3" fill="#e74c3c"/>
+<text x="210.0" y="328.0" text-anchor="end" font-size="9" fill="#cdd9e5" font-family="sans-serif">利好不涨·对冲基金净空</text>
+<text x="238.0" y="328.0" text-anchor="end" font-size="9" font-weight="700" fill="#e74c3c" font-family="monospace">-88</text>
+<rect x="245.2" y="349.0" width="195.8" height="22" rx="3" fill="#e74c3c"/>
+<text x="210.0" y="364.0" text-anchor="end" font-size="9" fill="#cdd9e5" font-family="sans-serif">估值仍+30%高于200MA·油价飙升·霍尔木兹近零</text>
+<text x="240.2" y="364.0" text-anchor="end" font-size="9" font-weight="700" fill="#e74c3c" font-family="monospace">-87</text>
+<rect x="216" y="6.0" width="10" height="8" fill="#2ecc71"/><text x="230.0" y="14.0" font-size="9" fill="#cdd9e5" font-family="sans-serif">多头</text>
+<rect x="266.0" y="6.0" width="10" height="8" fill="#e74c3c"/><text x="280.0" y="14.0" font-size="9" fill="#cdd9e5" font-family="sans-serif">空头</text>
+</svg>
+    <div class="chart-note">注：此为各论据「强度/确信度」可视化，非方向性收益预测。空头在杠杆(95)、集中度(92)、熊市确认(90)维度强度最高；多头在 Capex 周期(90)与龙头业绩(88)最强，但「利好不涨」削弱兑现置信。本期新增：胡塞红海封锁 + 霍尔木兹近零通航推升地缘强度。</div>
+  </div>
+
+  <!-- 核心数据一览表 -->
+  <div class="card">
+    <h2>核心数据一览表</h2>
+    <table>
+      <thead><tr><th>数据项</th><th>数值</th><th>日期 / 来源</th><th>风险研判</th></tr></thead>
+      <tbody>
+        <tr><td>SOX 收盘</td><td>11,743.85（+0.60%；盘中高 12,071.84）</td><td>2026-07-20 / Nasdaq·MarketWatch·Reuters</td><td>较峰值 −19.9% · 熊市边界</td></tr>
+        <tr><td>SOX 200MA(真实)</td><td>≈9,000（偏离 <b>+30.5%</b>）</td><td>2026-07-16 / Barchart 实测（8,955.82，随滚动小幅上移）</td><td>高于均线→估值处警告线</td></tr>
+        <tr><td>NVDA</td><td>$203.28（+0.2%）/ MktCap ~$4.92T / Fwd PE ~21x / PEG 0.65</td><td>2026-07-20 / 同花顺·StockAnalysis·ValueVerge</td><td>估值合理；仍居市值第一</td></tr>
+        <tr><td>AMD</td><td>$503.57 / MktCap ~$821B / Fwd PE ~58x</td><td>2026-07-20 / 同花顺·StockAnalysis</td><td>高 Fwd PE，定价偏完美</td></tr>
+        <tr><td>AVGO</td><td>$378.16 / MktCap ~$1.80T / Fwd PE ~25x</td><td>2026-07-20 / 同花顺·StockAnalysis</td><td>估值合理</td></tr>
+        <tr><td>TSM</td><td>$402.30 / MktCap ~$2.09T / Fwd PE ~23x</td><td>2026-07-20 / 同花顺·StockAnalysis</td><td>Q2 营收 +36% 强，但「利好不涨」</td></tr>
+        <tr><td>S&amp;P 500 集中度</td><td>前十大 ~37–40%（Westmount 37.3% / JPM 40.8%）/ NVDA ~7.0–7.4% / Mag7 ~32.5%</td><td>2026 年中 / JPMorgan·Westmount·Motley Fool</td><td>处危险线 37%</td></tr>
+        <tr><td>FINRA 融资余额</td><td>$1,502,072M（<b>6月</b>）/ GDP 4.71% / YoY +49.0%</td><td>2026-06-30 / FINRA.org（7 月第三周确认）</td><td><b>远超危险线 4.0%</b></td></tr>
+        <tr><td>利率</td><td>10Y 4.55% / 2Y 4.20% / Fed 3.50–3.75%（有效 3.63%）</td><td>2026-07-20 / FRED·10jqka·sina</td><td>低于预警线 5%；Fed 官员放鹰</td></tr>
+        <tr><td>半导体 ETF 流向</td><td>2026 YTD 净流入 $46B（历史最高）；SOXX 7月 MTD +$6.13B、SMH +$2.06B；四基金一个月内 $24.7B</td><td>2026-07 / Sahm·Kobeissi·163.com·Webull</td><td>创纪录流入 = 散户接飞刀</td></tr>
+        <tr><td>Hyperscaler Capex</td><td>BofA 追踪 2027 年 $1.15T（上修）；2026 约 $697–785B（+77% YoY）</td><td>2026 年中 / BofA·Shard Capital·FT·Moody's</td><td>超级周期 vs 增速骤降疑云</td></tr>
+        <tr><td>本周重大事件</td><td>美伊第 9 晚互袭+霍尔木兹近零+胡塞红海封锁；油价 WTI$83/布伦特$89；Alphabet/Tesla 7/22·Intel 7/23 财报；SMH/SOXX MACD 金叉</td><td>2026-07-20~21 / Reuters·CNA·10jqka·Sahm</td><td>地缘+财报双考验</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 多空论据文字 -->
+  <div class="card">
+    <h2>核心多空论据</h2>
+    <div class="bull-bear">
+      <div class="bb-col bull">
+        <h4>▲ 看多 / 支撑逻辑</h4>
+        <div class="arg"><b>AI Capex 超级周期确认且上修：</b>四大云厂商 2026 年 Capex 合计 ~$697–785B（+77% YoY），BofA 将 2027 年追踪上修至 <b>$1.15T</b>；ASML 上调 2026 指引至 €43–45B 印证扩产加速。UBS 虽预警 2027 增速骤降，但 2026 仍是高强度投入年。</div>
+        <div class="arg"><b>业绩兑现扎实：</b>NVIDIA 营收高增长、FCF 强、Rubin 如期；TSM Q2 营收 +36% 超预期、2026 Capex $52–56B；NVDA/AVGO/TSM 前瞻 PE 20–25x、PEG&lt;1，龙头估值并未失控。</div>
+        <div class="arg"><b>技术面初现企稳：</b>SOX 7/20 反弹 +0.60%、SOXX +1.52%、SMH +1.04%；SMH/SOXX 日线 MACD 低位金叉、RSI 回升（SMH 45 / SOXX 40），提示抛压边际缓和、动能尝试修复。</div>
+        <div class="arg"><b>散户资金极度坚定：</b>2026 YTD 半导体 ETF 净流入 $46B（≈31% AUM，历史最高），单月 SOXX +$6.13B 创纪录；下跌中持续加仓，显示 AI 叙事信仰未破。BofA Arya：「本轮回调是夏季重置，而非基本面反转」。</div>
+      </div>
+      <div class="bb-col bear">
+        <h4>▼ 看空 / 风险逻辑</h4>
+        <div class="arg"><b>杠杆创纪录且继续恶化：</b>FINRA 6月融资余额 $1.50T（+49% YoY，/GDP <b>4.71%</b> 远超危险线 4.0%）；滞后于价格，去杠杆是下阶段核心尾部风险——历史经验对应 25–50% 去杠杆式回调。</div>
+        <div class="arg"><b>集中度极端：</b>S&amp;P 500 前十大 ~37–40%（危险线）、NVDA 单票权重 ~7.0–7.4% 历史极值，系统性脆弱性处历史高位，dot-com 峰值仅 ~27%。</div>
+        <div class="arg"><b>熊市未解 + 资金 unwind 风险：</b>SOX 自峰值 −19.9%、确认技术性熊市，7 月 −18.6%（2008 年来最差）；创纪录 $46B 流入若转赎回（如 7/15 起短暂净赎回），将放大波动；Yardeni 认为 S&amp;P 半导体仍可能再跌 12% 至 200MA。</div>
+        <div class="arg"><b>估值仍偏贵 + 利好不涨 + 地缘油价：</b>SOX 仍 <b>+30.5% 高于 200MA（警告线）</b>，去泡沫不彻底；UBS 预警 Capex 2027 增速骤降重燃 AI 回报质疑；美伊第 9 晚互袭 + 霍尔木兹近零通航 + 胡塞红海封锁推升 WTI 至 $83、布伦特 $89（周涨 14–16%），滞胀与风险溢价上行、2Y 已高于 Fed 45bp。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 核心结论 -->
+  <div class="card">
+    <h2>核心结论</h2>
+    <ul class="concl">
+      <li><div class="num">1</div><div><b>SBI 总分 62.2，处 Caution 区间（40–65）上沿，距危险线 70 仅 7.8 分。</b>本期为真实交易日更新（7/20 收盘），与 7/20（62.0）同口径可比，▲+0.2 来自：① SOX 反弹 +0.60% 使 +30.5% 高于 200MA（估值 45.0→45.6）；② 美伊第 9 晚互袭+霍尔木兹近零+胡塞封锁推升油价（外部 62→63）。其余四维度持平。</div></li>
+      <li><div class="num">2</div><div><b>风险结构为「两危两预两缓」。</b>杠杆(91)、拥挤度(70)处危险区；估值(45.6)、业绩兑现(49)、外部(63)处预警；资金流向(60)处危险。指数已确认熊市（−19.9% 自峰值），但趋势仍显著高于 200MA，说明<b>价格崩而估值未便宜</b>，结构性脆弱未解。</div></li>
+      <li><div class="num">3</div><div><b>基本面韧性强，但「利好不涨」+ 散户接飞刀信号并存。</b>ASML 上调全年指引、TSM Q2 营收 +36%、Hyperscaler Capex $700B+（BofA 上修 2027 至 $1.15T）支撑叙事；然而 2026 YTD 半导体 ETF 创纪录 $46B 流入、SOXX 单月 +$6.13B 却伴当月 −18.6%——典型的下跌中散户坚定加仓，若转赎回将放大波动。UBS 预警 2027 增速骤降（76%→25%→6%）为中期隐忧。</div></li>
+      <li><div class="num">4</div><div><b>杠杆是当前最大、且被低估的尾部风险。</b>融资余额 $1.50T/GDP 4.71% 为历史极值且滞后于价格；该指标为滞后变量，若随价格回落而下降，将是去杠杆起点（对应 25–50% 回调）；若仍在高位，则「借钱扛下跌」的脆弱性持续累积。两维度（杠杆+拥挤度）合计 40% 权重锚定危险区。</div></li>
+      <li><div class="num">5</div><div><b>催化剂密集、外部环境变量多。</b>本周 Alphabet/Tesla（7/22 盘后）、Intel/TI（7/23）财报为 AI 投资逻辑关键压力测试；MSFT/GOOGL 7/29、AMZN/AAPL 7/30、NVDA 8/19；Fed 7/29 议息、PCE 7/28；美伊战争与油价构成地缘上行风险（霍尔木兹通航近零+胡塞封锁）。SBI 距危险线仅 7.8 分，任一去杠杆/不及预期信号即可触发入危险区。</div></li>
+    </ul>
+    <div class="advice">
+      <b>操作建议：</b> SBI 62.2 处 Caution 上沿、逼近危险线(70)，指数已确认熊市但结构性脆弱（杠杆+拥挤度）未解，<b>禁止抄底式追高、严禁杠杆</b>。当前为「基本面健康但交易结构脆弱、动量初稳未反转、估值仍偏高（高于200MA 30%+）」的组合：① 估值已较峰值压缩（NVDA/AVGO/TSM 前瞻 PE 20–25x、PEG&lt;1），可保留业绩兑现强的龙头底仓，但需下调仓位上限；② 规避 AMD 等高 Fwd PE(~58x) 定价完美标的，以及杠杆 ETF（SOXL）与融资抄底；③ 警惕创纪录流入后的二次回调/转赎回，等待 SOX 回落至 200MA 附近或融资余额去化信号再加仓；④ 重点盯防 FINRA 后续月度趋势（去杠杆信号）、10Y 是否重上 4.6%、本周 Alphabet/Intel 财报指引与地缘油价——任一去杠杆/不及预期信号触发即进一步降风险敞口。
+    </div>
+  </div>
+
+  <!-- 数据时效与模型 -->
+  <div class="card">
+    <h2>数据时效与模型说明</h2>
+    <ul class="concl" style="border:none">
+      <li><div class="num">·</div><div><b>SOX 及四龙头：</b>2026-07-20 收盘（Nasdaq 11,743.85 / 同花顺 iFinD / StockAnalysis 估值）。</div></li>
+      <li><div class="num">·</div><div><b>SOX 真实 200MA：</b>≈9,000（Barchart 技术指标页 200-Day 8,955.82 @07/16，随近期高价滚动小幅上移；spy-signal.com 200-SMA ~8,835 印证）。旧报 ~13,150 已证伪。</div></li>
+      <li><div class="num">·</div><div><b>S&amp;P 500 集中度：</b>Westmount（37.3% / NVDA 7.08%）/ JPMorgan（中旬 40.8%）/ Motley Fool（7月 Mag7 32.5%）。</div></li>
+      <li><div class="num">·</div><div><b>FINRA 融资余额：</b><b>2026-06-30（最新月度，FINRA.org 确认）</b> $1,502,072M；/GDP 4.71%、YoY +49.0%。</div></li>
+      <li><div class="num">·</div><div><b>利率：</b>10Y 4.55%（FRED DGS10 07/15~07/20）/ 2Y 4.20% / Fed 有效 3.63%（3.50–3.75% 区间，2026-07-20）。</div></li>
+      <li><div class="num">·</div><div><b>ETF 流向：</b>2026 YTD 净流入 $46B（Kobeissi/BofA/Bloomberg）；SOXX 7月 MTD +$6.13B、SMH +$2.06B（TradingView/Sahm，7/20 数据）；四基金一个月内 $24.7B（163.com）。</div></li>
+      <li><div class="num">·</div><div><b>模型：</b>45/70 线性模型（2026-07-09 起生效）。高于 200MA 按偏离度插值（+30%→45 警告，+50%→70 危险）；Top10 37%→拥挤度 70（危险线）；融资/GDP 4.0%→杠杆 70（危险线），4.71%→91。</div></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    美国硬件/半导体板块 SBI 泡沫指数日报 ｜ 自动化生成于 2026-07-21 10:05 GMT+8 ｜ 数据来源：Nasdaq · MarketWatch · Reuters · 同花顺 iFinD · StockAnalysis · FINRA.org · FRED · Barchart · spy-signal · Sahm · Kobeissi · Webull · JPMorgan · Westmount · Motley Fool · ASML · TSMC · 东方财富 · 财联社 · 163.com · 10jqka 等 ｜ 仅供研究参考，非投资建议
+  </div>
+
+</div>
+
+</body>
+</html>
