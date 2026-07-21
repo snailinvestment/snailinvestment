@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中远海运国际（00517.HK）深度研究报告 | 蜗牛鸟投资</title>
+<style>
+:root{
+  --bg:#f4f4f2;
+  --bg-panel:#ffffff;
+  --bg-alt:#ececea;
+  --ink:#1c1c1c;
+  --ink-soft:#57585c;
+  --ink-faint:#8a8b8f;
+  --line:#dddddb;
+  --navy:#0d3b66;
+  --navy-soft:#1c5c92;
+  --gold:#a8791a;
+  --gold-soft:#c99b3f;
+  --green:#1c7a4d;
+  --amber:#9c6a13;
+  --red:#8a1f1f;
+  --mono:'IBM Plex Mono','Courier New',monospace;
+  --sans:'IBM Plex Sans','Noto Sans SC',sans-serif;
+  --serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--gold);}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(244,244,242,0.96);backdrop-filter:blur(6px);border-bottom:2px solid var(--navy);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.5px;color:var(--navy);}
+.brand .bird{font-size:18px;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--navy);border:1px solid var(--navy);padding:3px 8px;border-radius:3px;}
+
+header.hero{padding:60px 0 40px;border-bottom:2px solid var(--navy);background:linear-gradient(180deg,#f8f7f2 0%,var(--bg) 100%);}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:18px;font-weight:700;}
+h1.title{font-family:var(--serif);font-size:36px;font-weight:700;margin:0 0 10px;line-height:1.35;color:var(--navy);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:800px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+
+.rating-panel{display:flex;gap:1px;background:var(--navy);border:1px solid var(--navy);margin-top:30px;}
+.rating-box{background:var(--navy);color:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;min-width:180px;}
+.rating-box .rlabel{font-family:var(--mono);font-size:11px;opacity:.8;text-transform:uppercase;letter-spacing:1px;}
+.rating-box .rvalue{font-family:var(--serif);font-size:26px;font-weight:700;margin-top:6px;}
+.target-box{background:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;flex:1;}
+.target-box .tlabel{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:1px;}
+.target-box .tvalue{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--navy);margin-top:6px;}
+
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:19px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--gold);font-weight:700;}
+h2{font-family:var(--serif);font-size:26px;margin:0;color:var(--navy);}
+h3{font-family:var(--sans);font-size:16px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--gold);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--navy);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);background:#fdf3f2;}
+.callout.gold{border-left-color:var(--gold);}
+
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:13.5px;color:var(--navy);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:var(--navy);font-family:var(--mono);font-size:11.5px;color:#fff;font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:#f9f8f2;}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#e9f3ec;color:var(--green);}
+.tag.miss{background:#f6eae8;color:var(--red);}
+.tag.line{background:#fbf3e3;color:var(--gold);}
+
+.seg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0;}
+.seg-card{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--navy);}
+.seg-card .sname{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.seg-card .sval{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.seg-card .sgrowth{font-family:var(--mono);font-size:12px;margin-bottom:8px;}
+.seg-card .sgrowth.pos{color:var(--green);}
+.seg-card .sgrowth.neg{color:var(--red);}
+.seg-card p{font-size:11.5px;margin:0;}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--navy);border:1px solid var(--navy);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:24px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--navy);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--amber);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#f6eae8;color:var(--red);}
+.risk-item.mid .rlevel{background:#fbf3e3;color:var(--amber);}
+.risk-item.low .rlevel{background:#e9f3ec;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+.risk-item .src{font-size:10.5px;color:var(--ink-faint);margin-top:6px;}
+
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+.ownership-bar{display:flex;height:34px;border-radius:3px;overflow:hidden;margin:14px 0;border:1px solid var(--line);}
+.ob-seg{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:#fff;}
+
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--navy);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .seg-grid{grid-template-columns:repeat(2,1fr);}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .rating-panel{flex-direction:column;}
+  h1.title{font-size:26px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="bird">🐦</span> 蜗牛鸟投资 · SNAIL-BIRD RESEARCH</div>
+    <div class="navlinks">
+      <span>物流运输 / 航运服务与船舶涂料</span>
+      <span class="navtag">HKEX: 00517</span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">港股 · 中远海运集团旗下航运服务平台 · 深度覆盖</div>
+    <h1 class="title">中远海运国际（中国香港）有限公司（00517.HK）<br>船舶更新超级周期中的"隐形冠军"：高派息现金牛的价值重估</h1>
+    <p class="subtitle">报告日期：2026年7月20日（股价数据更新至2026年7月19日）｜出品方：蜗牛鸟投资（Snail-Bird Investment）物流运输研究组｜分析框架：商业模式 · 行业供需（造船景气周期）· 财务质量（含资产负债表与自由现金流专项分析）· 股东回报 · 管理层与治理 · 近期股价走势 · 估值（相对估值为主，DCF交叉验证）</p>
+    <div class="meta-row">
+      <span>股票代码：<b>HKEX 00517</b></span>
+      <span>所属行业：<b>航运服务业 · 船舶涂料 · 一般贸易</b></span>
+      <span>控股股东：<b>中国远洋海运集团有限公司（中远海运集团）</b></span>
+      <span>最新年报：<b>2025年度业绩（2026年3月25日披露）</b></span>
+    </div>
+
+    <div class="rating-panel">
+      <div class="rating-box">
+        <div class="rlabel">蜗牛鸟投资评级</div>
+        <div class="rvalue">增持（Buy）</div>
+      </div>
+      <div class="target-box">
+        <div class="tlabel">12个月目标价区间（相对估值为主，DCF交叉验证）</div>
+        <div class="tvalue">HK$7.00 - HK$8.80（基准情景中枢约HK$7.90，较2026年7月19日收盘价HK$5.66存在显著上行空间，详见第九节）</div>
+      </div>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="label">最新股价</div>
+        <div class="value">HK$5.66</div>
+        <div class="sub">2026-07-19（用户提供，官方口径）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">FY2025营收</div>
+        <div class="value pos">HK$37.06亿</div>
+        <div class="sub">+2.2%，航运服务业占比99.8%</div>
+      </div>
+      <div class="kpi">
+        <div class="label">FY2025归母净利润</div>
+        <div class="value pos">HK$7.71亿</div>
+        <div class="sub">+8.7%，EPS HK$0.526（+9%）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">每股净资产（NAV）</div>
+        <div class="value">HK$5.55</div>
+        <div class="sub">对应P/B约1.02倍，接近净资产</div>
+      </div>
+      <div class="kpi">
+        <div class="label">末期+特别股息</div>
+        <div class="value pos">HK$0.29/股</div>
+        <div class="sub">2026年7月15日已派发，另有中期息</div>
+      </div>
+      <div class="kpi">
+        <div class="label">静态P/E（更新）</div>
+        <div class="value">约10.8x</div>
+        <div class="sub">按HK$5.66及FY2025 EPS估算</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>核心投资论点</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>中远海运国际（中国香港）有限公司是中国远洋海运集团（中远海运集团）旗下专注于航运服务全产业链布局的上市平台，主要业务涵盖船舶贸易代理、保险顾问、船舶设备及备件供应、船舶涂料生产销售及航运服务科技，另有规模持续萎缩的一般贸易（沥青贸易）业务。公司2025年度实现营业收入港币37.06亿元，同比增长2.2%，其中航运服务业收入港币36.97亿元，同比增长6%，占集团总收入比重已提升至99.8%（2024年：96%），而一般贸易分部收入同比暴跌93%至港币913万元，占比降至0.2%，反映公司业务结构正加速向核心航运服务业务集中（数据来源：公司2025年度业绩公告，2026年3月25日）。公司权益持有人应占溢利港币7.71亿元，同比增长8.7%，每股基本及摊薄盈利港币0.526元，同比增长9%（数据来源：同上）。</p>
+        <p>我们给予中远海运国际"增持"评级，核心论点如下：</p>
+        <ol style="color:var(--ink-soft);font-size:14.5px;padding-left:20px;">
+          <li><b>公司深度嵌入当前中国造船业的历史级景气周期，船舶涂料业务是最直接、最具业绩弹性的受益环节。</b>2025年，中国造船完工量达5,369万载重吨，同比增长11.4%，占全球总量56.1%；新接订单量10,782万载重吨，占全球69%（相当于全球每10艘新船订单中有7艘由中国制造）；手持订单量27,442万载重吨，同比大幅增长31.5%，创历史新高，中国造船业三大核心指标已连续16年保持世界第一（数据来源：中国船舶工业行业协会数据，经东方财富网转载，2026年3月25日）。公司通过合营企业中远佐敦（与挪威佐敦集团各持股50%）深度参与这一景气周期，2025年中远佐敦船舶涂料销售量达1.501亿升（约合20.26万吨），同比大幅增长21%，其中新造船涂料销售量同比飙升34%，是驱动增长的核心动力（数据来源：东方财富网，2026年3月25日）。</li>
+          <li><b>涂料业务收入成本双向改善，是公司当前业绩弹性的核心来源，但内部结构存在分化。</b>公司整体涂料分部2025年收入同比增长22%至港币16.33亿元，税前利润同比增长31%至港币4.30亿元。细分来看，集装箱涂料业务逆势扩张，在中国集装箱制造总量同比下降25%的背景下，公司集装箱涂料销售量仍同比大增56%至63,943吨，体现出较强的份额抢夺能力；但工业用重防腐涂料业务税前利润同比大幅下滑41%至港币6,776万元，主要受航运市场波动叠加关税贸易战影响，主要客户采购趋于谨慎、毛利率承压，反映公司涂料业务并非全线受益，投资者需要区分不同细分品类的景气度差异。</li>
+          <li><b>高股息政策是公司区别于普通周期性航运服务企业的核心护城河，也是本报告给予"增持"评级的重要支撑。</b>公司此次年度业绩宣布派发末期股息每股19港仙及额外特别股息每股10港仙（合计29港仙，已于2026年7月15日派发），叠加此前已派发的中期股息，全年现金分红总额处于历史相对高位。据申万宏源2025年7月首次覆盖报告的判断，公司"高派息率构筑护城河"是核心投资逻辑之一，历史数据显示公司股息支付率长期维持在60%-90%区间的高位（数据来源：申万宏源研究报告，2025年7月10日；GuruFocus历史数据，注：该数据源存在一定滞后性，具体请以公司最新公告为准）。</li>
+          <li><b>保险顾问及船舶备件业务提供了穿越周期的业绩"压舱石"，公司正加速推进传统业务的数智化与低碳化转型。</b>公司2024年1月完成收购海宁保险经纪，进一步拓展了保险顾问业务的市场份额，该业务受益于地缘政治风险上升带来的费率提升及全球船舶保有量增长；公司近期已完成船舶设备及备件供应业务与航运服务科技业务的深度融合，以船舶备件业务为基础拓展低碳服务场景，明确提出"1+3+N"科技创新体系，致力于打造"科技型航运服务公司"（数据来源：公司2025年年度报告业务展望章节，经新浪财经转载）。</li>
+          <li><b>宏观贸易环境与地缘政治的不确定性是公司当前面临的核心外部风险，但短期内的关税贸易摩擦缓和为行业提供了阶段性喘息窗口。</b>公司管理层在年报中明确提示，IMF最新预测显示全球贸易量增长率预计将从2025年的4.1%降至2026年的2.6%，红海航线安全形势仍存变数，欧盟碳关税及IMO 2030碳强度指标（CII）正式纳入航运业监管，为船东带来日益迫切的绿色转型要求。值得关注的是，美国基于1974年贸易法第301条对中国拥有、营运或制造船舶征收的高额港口费，虽一度导致部分中国造船订单阶段性分流，但中美双方已于2025年11月10日起同步暂停该项收费一年，订单已迅速回流中国，短期内缓解了这一贸易摩擦对造船业景气度的冲击（数据来源：公司2025年年度报告业务回顾章节）。</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>关键数据速览</h4>
+        <ul>
+          <li>FY2025航运服务业收入占比：<b>99.8%</b>（2024年96%）</li>
+          <li>中远佐敦2025年涂料销售量：<b>1.501亿升</b>（+21%），新造船涂料+34%</li>
+          <li>涂料分部收入/税前利润：<b>+22%/+31%</b></li>
+          <li>集装箱涂料销售量：<b>63,943吨</b>（+56%，逆行业下滑）</li>
+          <li>工业重防腐涂料税前利润：<b>-41%</b>（关税贸易战影响客户采购）</li>
+          <li>2025年中国造船完工量/新接订单/手持订单全球占比：<b>56.1%/69%/66.8%</b></li>
+          <li>末期+特别股息（本次）：<b>HK$0.29/股</b></li>
+          <li>美国对华船舶港口费：<b>双方暂停征收一年（2025年11月10日起）</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>数据来源交叉核实说明：</b>本报告所引用的股价数据（HK$5.66）为用户提供的2026年7月19日收盘价。对比公司2025年度业绩公布后交易日（2026年3月26日）的HK$6.54，公司股价在约四个月内累计下跌约13.5%，其中部分跌幅（HK$0.29/股）源于2026年6月23日的除净日机械性调整（末期股息19港仙+特别股息10港仙），扣除除净因素后，公司股价在此期间的实质性回调幅度约9%-10%，具体走势分析详见第九节。此外，本报告此前版本中提及的"一般贸易业务收入断崖式下滑93%原因不明"这一信息缺口，经补充检索后已获澄清——公司在2025年度报告中明确说明"本集团已有序退出沥青业务"，年内沥青销售量降至1,681吨（2024年：42,344吨，同比降幅达96%），为存货余量清理性质，并非经营环境恶化所致，一般贸易分部所得税前溢利实际同比增长33%至港币654.4万元（2024年：492.6万元），本报告已在第二节及风险提示中更新这一结论。</div>
+  </div>
+</section>
+
+<section id="business-model">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>商业模式：船舶产业链多点布局的"卖水人"角色</h2></div>
+    <p>中远海运国际的核心商业模式，本质上是围绕船舶全生命周期（建造、交付、运营、维护、更新）提供多元化配套服务的"卖水人"角色，而非直接从事航运运输本身，这使其业绩与航运运费的直接波动相关性相对较低，而与全球造船业景气度、船舶保有量及贸易活动规模的相关性更为直接。</p>
+    <div class="seg-grid">
+      <div class="seg-card">
+        <div class="sname">船舶涂料业务</div>
+        <div class="sval">HK$16.33亿</div>
+        <div class="sgrowth pos">+22%（FY2025）</div>
+        <p>通过合营企业中远佐敦（与挪威佐敦集团50/50合资）及全资附属中远关西公司运营，涵盖船舶涂料、集装箱涂料、工业重防腐涂料，是公司当前业绩弹性的核心来源。</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">船舶贸易代理</div>
+        <div class="sval">与交付量挂钩</div>
+        <div class="sgrowth pos">受益造船景气</div>
+        <p>为航运企业提供船舶建造、买卖及租赁代理服务，佣金收入与新造船交付量及二手船交易量直接挂钩，2024年新造船交付量同比增长逾5倍至10艘（合计83.65万载重吨）。</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">保险顾问</div>
+        <div class="sval">稳定增长</div>
+        <div class="sgrowth pos">海宁保险并表</div>
+        <p>受益于地缘政治风险上升带来的保险费率提升及全球船舶保有量增长，2024年1月完成收购海宁保险经纪后市场份额进一步扩大。</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">船舶设备及备件+航运服务科技</div>
+        <div class="sval">业务融合中</div>
+        <div class="sgrowth pos">数智化转型</div>
+        <p>公司近期已完成两大业务板块的深度融合，以船舶备件业务为基础，通过数字技术赋能拓展低碳服务场景，是公司"1+3+N"科技创新体系的具体落地。</p>
+      </div>
+    </div>
+    <div class="callout"><b>一般贸易业务的战略性收缩（已获澄清）：</b>公司一般贸易分部（主要从事沥青贸易、仓储、加工及供应）收入已从2023年占比17%、2024年占比4%，进一步萎缩至2025年占比仅0.2%（收入港币913万元，同比暴跌93%）。经补充核实，这一收缩并非经营环境恶化所致，而是公司主动战略选择的结果——公司在年报中明确说明"已有序退出沥青业务"，年内沥青销售量降至1,681吨（2024年：42,344吨，降幅达96%），仅为存货余量清理。值得关注的是，该分部所得税前溢利在收入暴跌的同时反而同比增长33%至港币654.4万元（2024年：492.6万元），反映公司在退出低毛利率非核心贸易业务的过程中，实际上是在优化整体盈利质量而非被动收缩，这是对本报告此前版本中提出的信息缺口的补充澄清。</div>
+  </div>
+</section>
+
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>行业供需：全球造船业历史级景气周期与贸易环境的博弈</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>公司所处的航运服务及船舶涂料行业，当前正处于全球造船业景气周期的历史高位。中国船舶工业行业协会数据显示，2025年全国造船完工量达5,369万载重吨，同比增长11.4%；新接订单量10,782万载重吨，占全球市场总量69%；截至2025年末，手持订单量27,442万载重吨，同比大幅增长31.5%，创历史新高，中国造船业三大核心指标继续保持全球领先地位，且已连续16年蝉联世界第一（数据来源：中国船舶工业行业协会，经东方财富网转载，2026年3月25日）。这一景气周期为公司船舶涂料、船舶贸易代理等与新造船交付直接挂钩的业务提供了坚实的需求基础。</p>
+        <p>但公司管理层在年报业务展望中也清醒地指出了行业面临的多重不确定性：其一，据IMF最新预测，全球贸易量增长率预计将从2025年的4.1%降至2026年的2.6%，反映贸易政策变化及贸易前置效应对未来贸易活动的抑制；其二，红海航线安全形势仍存变数，亚欧贸易通道有效运力持续承压；其三，欧盟碳关税及IMO 2030碳强度指标（CII）正式纳入航运业监管框架，船东面临日益迫切的绿色转型要求，这既是挑战也是公司低碳服务业务的潜在机遇；其四，新造船订单将于未来两年集中交付，全球运力将大幅释放，这一供给端的集中释放可能对航运市场运价及部分下游客户的采购能力构成压力（数据来源：公司2025年年度报告业务展望章节）。</p>
+      </div>
+      <div class="card">
+        <h4>行业关键指标速览</h4>
+        <ul>
+          <li>2025年中国造船完工量：<b>5,369万载重吨</b>（+11.4%，全球占比56.1%）</li>
+          <li>2025年新接订单量：<b>10,782万载重吨</b>（全球占比69%）</li>
+          <li>2025年末手持订单量：<b>27,442万载重吨</b>（+31.5%，历史新高，全球占比66.8%）</li>
+          <li>IMF全球贸易量增速预测：<b>2025年4.1% → 2026年2.6%</b></li>
+          <li>美国对华船舶港口费（301条款）：<b>双方暂停征收一年（自2025年11月10日起）</b></li>
+          <li>新船订单集中交付窗口：<b>未来两年</b>，运力将大幅释放</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout gold"><b>行业景气度与公司业绩弹性的传导逻辑：</b>公司船舶涂料业务的核心逻辑在于"新船建造与老船维护的刚性配套"——收入端受益于造船量增加带来的销量提升，成本端受益于原材料（油价相关）成本波动中枢下移，这一"收入成本双向改善"的逻辑在2025年得到了充分验证（中远佐敦新造船涂料销售量同比飙升34%）。展望未来，随着中国造船业手持订单量创历史新高、且已锁定未来数年的产能利用率，公司船舶涂料及相关配套服务业务有望在中期内维持较高的需求确定性，但投资者也需关注"未来两年集中交付"这一供给端释放窗口结束后，行业景气度能否延续，是判断公司中长期业绩弹性可持续性的关键变量。</div>
+  </div>
+</section>
+
+<section id="industry-cycle">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>专题分析一：行业资本支出强度与景气度持续性评估</h2></div>
+    <p>用户直接提出的核心问题极具洞察力——公司业绩与造船行业资本开支及景气度高度绑定，那么当前"历史高位"的景气度，是否意味着行业即将掉头向下？本节尝试从历史周期对比、当前订单结构、供给端约束三个维度，对这一问题进行系统性、审慎的解答，而非简单给出"是"或"否"的结论。</p>
+
+    <h3>历史周期回顾：本轮景气周期已运行5年，与上一轮超级周期（2003-2008年）的异同</h3>
+    <table>
+      <thead><tr><th>年份</th><th>全球新船订单量</th><th>同比变化</th><th>关键事件/背景</th></tr></thead>
+      <tbody>
+        <tr><td>2021年</td><td>1.20亿载重吨</td><td><span class="tag beat">+117%</span></td><td>本轮新一轮船舶景气周期开启元年，疫情后集运运价暴涨催化订单爆发</td></tr>
+        <tr><td>2022年</td><td>有所回落</td><td><span class="tag miss">同比下降</span></td><td>全球高通胀、低增长宏观环境压制订单需求</td></tr>
+        <tr><td>2023年</td><td>1.07亿载重吨</td><td><span class="tag beat">+30%</span></td><td>连续第三年突破1亿载重吨，新造船价格指数创2009年以来新高（178.36点）</td></tr>
+        <tr><td>2024年（1-9月）</td><td>8,711万载重吨</td><td><span class="tag beat">+51.9%</span></td><td>完工量同比+18.2%，手持订单同比+44.3%（19,330万载重吨）</td></tr>
+        <tr><td>2025年</td><td>10,782万载重吨</td><td><span class="tag line">"量缩价稳"</span></td><td>全年新船价格指数184.65点，较2024年末小幅回落2.4%，但仍处历史高位盘整</td></tr>
+        <tr><td>2026年一季度</td><td>—</td><td><span class="tag beat">新接订单+195.2%，手持订单+43.6%</span></td><td>订单量占全球近70%，多家船厂订单已排至2030年（数据来源：证券时报，2026年）</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：国际船舶网（经中国船舶经研中心整理，2024年1月）、证券时报（2024年12月、2026年7月9日、2026年）、东方财富网财富号（2026年5月31日）。需要特别提示：2025年订单数据呈现"量缩价稳"特征、而2026年一季度订单数据又出现同比大幅跃升，两组数据看似矛盾，实则反映了造船订单本身固有的月度/季度高波动性特征（如2025年1月全球新签订单同比骤降73.5%，但2025年12月同比大幅回升72.8%），投资者不宜仅凭单一季度数据线性外推行业趋势，而应结合更长周期的手持订单存量数据进行判断。</p>
+
+    <h3>当前周期与上一轮超级周期（2003-2008年）的本质区别</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>支持"本轮周期更具持续性"的论据</h4>
+        <ul>
+          <li><b>需求驱动因素不同：</b>上一轮周期主要由中国加入WTO后的全球贸易量激增驱动，属于"贸易周期型"需求；本轮周期叠加了船队老龄化淘汰更新+IMO环保新规（EEXI/CII）强制驱动的"刚性更新需求"，后者是较少受宏观贸易波动影响的结构性力量（数据来源：新浪财经，2026年5月7日）</li>
+          <li><b>供给端约束更强：</b>中国以外地区船厂产能因劳动力短缺、钢板成本高企、扩产意愿不足，难以大规模重启，产能恢复速度显著慢于上一轮周期，招商证券分析师周尔双判断"保守测算2025-2030年全球船舶年均交付需求约1.0-1.1亿载重吨，而全球产能恢复缓慢"（数据来源：新浪财经，2026年7月9日）</li>
+          <li><b>头部船企订单能见度大幅拉长：</b>中国船舶、恒力重工等头部船企交船排期已锁定至2029-2030年，较以往周期的1-3年订单能见度显著拉长（数据来源：证券时报，2026年）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>需要审慎看待的风险信号</h4>
+        <ul>
+          <li><b>手持订单/运力比处于阶段性高位：</b>据BIMCO数据，截至2026年一季度末，全球造船业手持订单占现有船队比例已升至17%，为2011年以来最高水平，尽管低于2008年历史峰值，但"排单越久，意味着弹簧压得越紧，越接近潜在的非理性价格波动或订单结构调整"（数据来源：东方财富网财富号，2026年5月31日）</li>
+          <li><b>2026-2027年为交付高峰期，之后新签订单增速可能放缓：</b>多家机构（含新浪财经引用的行业展望报告）明确提示，本轮周期的新船交付将于2026-2027年集中兑现，"之后新签订单增速可能放缓，需关注船厂产能调整节奏和订单结构变化"（数据来源：新浪财经，2026年5月7日）</li>
+          <li><b>分析师本身也提示"警惕乐观下的过快扩产"：</b>即便是持续看多本轮周期的分析人士，也明确提示贸易政策扰动、细分需求分化、燃料技术短板等变量可能制约行业上行空间（数据来源：证券时报，2026年）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout warn"><b>本报告对"行业景气度是否将掉头向下"的审慎判断：</b>基于现有可获取的公开数据，我们认为更准确的表述并非"行业即将掉头向下"，而是<b>"行业正从'新增订单加速期'向'存量订单交付兑现期'过渡"</b>——2025年新增订单已呈现"量缩价稳"的边际降温迹象（尽管2026年一季度数据出现跃升，反映订单本身的高波动性），但由于当前27,442万载重吨的手持订单规模已锁定未来超过5年的船厂产能，即便新增订单增速从此放缓，这一存量订单向完工交付的转化过程本身仍将支撑2026-2027年的行业景气度处于高位。真正需要警惕的风险窗口，是2027-2028年存量订单交付高峰过去之后，若船队老龄化更新需求及IMO环保新规驱动的结构性需求，未能有效承接新增订单的增长任务，行业可能进入订单增速放缓、船厂产能利用率边际回落的阶段性调整期。这与本报告此前在SK海力士（SKHY）、台积电（TSM）等AI硬件供应链报告中反复强调的"当前高景气度不改变2027-2028年产能集中释放后的周期性风险"这一分析逻辑高度一致——不同产业链，但相似的"当前订单能见度充分、但供给集中释放后的中期再平衡风险"结构。</div>
+  </div>
+</section>
+
+<section id="earnings-sustainability">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>专题分析二：公司业绩持续性评估</h2></div>
+    <p>在明确行业处于"存量订单交付兑现期"这一判断的基础上，本节进一步分析公司自身各项业务的业绩持续性及其与行业周期的传导时滞关系，帮助投资者理解"行业新增订单降温"与"公司业绩下滑"之间并非同步发生的简单线性关系。</p>
+
+    <h3>公司各业务线与造船周期的传导时滞分析</h3>
+    <div class="grid-2">
+      <div>
+        <p><b>船舶涂料业务（核心业绩驱动，传导时滞明显）：</b>船舶涂料的实际施工与销售确认收入，主要发生在船舶建造完工交付节点前后，而非新船订单签订当口——这意味着公司涂料业务收入的驱动因子，实质上是"完工量/交付量"而非"新接订单量"。由于当前27,442万载重吨的手持订单已锁定未来超过5年的船厂产能利用，且2026-2027年被行业普遍视为交付高峰期，公司涂料业务（尤其新造船涂料，2025年销售量同比+34%）在这一交付窗口期内的收入确定性相对较高，即便新增订单本身已开始降温，也不会立即传导为公司当期业绩的下滑，存在1-3年的传导时滞缓冲。</p>
+        <p><b>船舶维修保养涂料业务（弱周期对冲缓冲垫）：</b>与新造船涂料不同，维修保养涂料的需求主要取决于存量船队规模及维护周期，与新增订单周期的相关性较低，2025年该业务销售量同比小幅下降2%，体现出相对独立于新船订单周期的弱周期特征，是公司涂料业务组合中天然的对冲缓冲垫，有助于在新船订单周期下行阶段部分平滑公司整体业绩波动。</p>
+        <p><b>船舶贸易代理业务（对新增订单更敏感）：</b>相较涂料业务，船舶贸易代理业务的佣金收入与新船订单签订及二手船交易活动的相关性更为直接和即时，是公司业务组合中对"新增订单降温"这一风险最敏感的环节，需要重点跟踪。</p>
+        <p><b>保险顾问业务（相对独立于造船周期）：</b>该业务收入主要取决于全球船舶保有量及地缘政治风险溢价水平，与新造船订单周期的相关性相对较弱，为公司业绩提供了另一重对冲缓冲。</p>
+      </div>
+      <div class="card">
+        <h4>业绩持续性传导时滞总结</h4>
+        <ul>
+          <li>船舶涂料（新造船）：<b>与"完工交付量"挂钩，传导时滞1-3年</b></li>
+          <li>船舶涂料（维修保养）：<b>与存量船队规模挂钩，弱周期性</b></li>
+          <li>船舶贸易代理：<b>与"新增订单"高度同步，传导时滞最短</b></li>
+          <li>保险顾问：<b>与船舶保有量/风险溢价挂钩，相对独立于订单周期</b></li>
+          <li>当前手持订单锁定产能：<b>覆盖超过5年（按当前完工能力测算）</b></li>
+          <li>行业交付高峰期：<b>2026-2027年</b>（公司涂料业务收入确定性较高的窗口期）</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>公司业绩持续性的三阶段情景推演</h3>
+    <table>
+      <thead><tr><th>阶段</th><th>时间窗口</th><th>行业驱动因素</th><th>对公司业绩的预期影响</th></tr></thead>
+      <tbody>
+        <tr><td>第一阶段：交付兑现期</td><td>2026-2027年</td><td>存量27,442万载重吨手持订单集中转化为完工交付</td><td>公司船舶涂料（尤其新造船涂料）业务收入确定性较高，是本报告基准情景假设公司业绩持续增长的核心支撑窗口</td></tr>
+        <tr><td>第二阶段：再平衡观察期</td><td>2027-2028年</td><td>行业新增订单增速能否承接交付高峰后的产能利用需求，是关键观察点</td><td>若新增订单未能有效承接，公司涂料业务收入增速可能边际放缓；若船队更新+环保新规驱动的结构性需求延续，公司业绩有望保持稳健而非大幅下滑</td></tr>
+        <tr><td>第三阶段：结构性需求验证期</td><td>2028年及以后</td><td>船队老龄化更新需求、IMO碳强度指标（CII）执行力度、绿色船型渗透率是核心变量</td><td>若结构性更新需求确立为行业新常态，公司作为船舶涂料及配套服务的核心供应商有望持续受益；若结构性需求不及预期，公司业绩可能进入景气度下行阶段</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">上述三阶段情景推演为蜗牛鸟研究团队基于当前可获取的行业公开数据构建的分析框架，非公司或行业协会的官方预测。需要特别说明，本报告在检索过程中未能获取公司层面按业务类型细分的收入确认时点、在手订单/合同负债等前瞻性财务指标的具体数据（这类数据若能获取，将显著提升业绩持续性判断的精确度），当前分析主要基于行业普遍的收入确认惯例及业务逻辑推断，而非公司披露的具体前瞻性数据，这是本报告在业绩持续性判断上保持审慎的重要原因。</p>
+
+    <div class="callout gold"><b>公司业绩持续性的核心结论：</b>基于船舶涂料业务"收入确认滞后于订单签订、领先于订单降温"的传导特征，我们认为公司2026-2027年的业绩具备相对较高的确定性支撑（这也是本报告基准情景仍预期公司业绩延续增长的核心依据），行业新增订单即便从当前高位边际降温，也不会立即、同步地传导为公司当期业绩下滑。但这一"传导时滞"本质上是一个"缓冲窗口"而非"免疫窗口"——如果2027-2028年行业新增订单未能延续、结构性更新需求不及预期，公司业绩的高增长阶段大概率也将随之进入平台期甚至阶段性回落。这意味着，当前时点买入公司股票，本质上是在博弈"未来1-2年确定性较高的业绩窗口"与"2027年后需要结构性需求验证的不确定性"之间的风险收益比，而非押注一个可以无限线性外推的永续增长故事，这也是本报告将"2027-2028年周期反转风险"列为核心跟踪变量、并在估值中枢设定上保持相对审慎的根本原因。</div>
+  </div>
+</section>
+
+<section id="financials">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>财务质量分析：营收结构优化与盈利韧性</h2></div>
+    <h3>营收与利润趋势</h3>
+    <table>
+      <thead><tr><th>指标</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>同比（FY2025）</th></tr></thead>
+      <tbody>
+        <tr><td>总收入</td><td>—</td><td>HK$36.27亿</td><td>HK$37.06亿</td><td><span class="tag beat">+2.2%</span></td></tr>
+        <tr><td>航运服务业收入</td><td>HK$14.49亿(重列)</td><td>HK$34.88亿</td><td>HK$36.97亿</td><td><span class="tag beat">+6%</span></td></tr>
+        <tr><td>一般贸易收入</td><td>—</td><td>HK$1.39亿</td><td>HK$0.09亿</td><td><span class="tag miss">-93%</span></td></tr>
+        <tr><td>毛利</td><td>—</td><td>HK$8.46亿</td><td>HK$8.95亿</td><td><span class="tag beat">+6%</span></td></tr>
+        <tr><td>毛利率</td><td>—</td><td>23%</td><td>24%</td><td><span class="tag beat">+1pct</span></td></tr>
+        <tr><td>航运服务业税前溢利</td><td>HK$2.65亿(重列)</td><td>—</td><td>HK$7.27亿</td><td><span class="tag beat">+16%</span></td></tr>
+        <tr><td>归母净利润</td><td>—</td><td>HK$7.09亿</td><td>HK$7.71亿</td><td><span class="tag beat">+8.7%</span></td></tr>
+        <tr><td>每股基本及摊薄盈利</td><td>—</td><td>HK$0.484</td><td>HK$0.526</td><td><span class="tag beat">+9%</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：公司2024年度、2025年度业绩公告（新浪财经、东方财富网、华盛通转载，2025年3月及2026年3月）。FY2023部分数据为经重列口径，与FY2024/2025可比性可能存在一定差异，具体请以公司原始年报披露为准。</p>
+
+    <h3>分部业务盈利能力观察</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>涂料分部细分表现（FY2025）</h4>
+        <ul>
+          <li>涂料分部整体：收入HK$16.33亿（+22%），税前利润HK$4.30亿（+31%）</li>
+          <li>中远佐敦（合营，船舶涂料）：销售量1.501亿升（+21%），新造船涂料+34%，维修保养涂料-2%</li>
+          <li>中远关西（子公司，含集装箱涂料及工业重防腐涂料）：2025年营收（人民币口径）同比+22%至15亿元，利润同比暴增179%</li>
+          <li>集装箱涂料：销售量+56%至63,943吨，逆行业下滑（行业整体-25%）实现份额扩张</li>
+          <li>工业重防腐涂料：税前溢利HK$6,776万元，同比-41%，主因关税贸易战下客户采购转趋谨慎</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>资产负债表与现金管理</h4>
+        <ul>
+          <li>公司近年维持约港币60亿元左右的银行存款及现金等价物水平（数据来源：申万宏源研究报告，2025年7月，需注意该数据存在一定滞后性）</li>
+          <li>受益于此前美联储加息周期，公司财务收益（主要为银行存款利息收入）自2021年的港币0.5亿元显著增长，是公司利润的稳定补充来源</li>
+          <li>高额现金储备为公司持续的高股息政策提供了坚实的资金保障，也反映公司资产负债表整体保守稳健的风格</li>
+        </ul>
+      </div>
+    </div>
+    <div class="chart-box"><svg viewBox="0 0 460 300" width="100%" style="max-width:460px;display:block;margin:0 auto;" role="img" aria-label="收入与净利趋势">
+<text x="230" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1c1c1c" font-family="'IBM Plex Mono',monospace">航运服务业收入与归母净利润趋势</text>
+<line x1="54" y1="254.0" x2="408" y2="254.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="48.0" y="257.0" text-anchor="end" font-size="9" fill="#0d3b66" font-family="monospace">0</text>
+<line x1="54" y1="202.0" x2="408" y2="202.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="48.0" y="205.0" text-anchor="end" font-size="9" fill="#0d3b66" font-family="monospace">10</text>
+<line x1="54" y1="150.0" x2="408" y2="150.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="48.0" y="153.0" text-anchor="end" font-size="9" fill="#0d3b66" font-family="monospace">20</text>
+<line x1="54" y1="98.0" x2="408" y2="98.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="48.0" y="101.0" text-anchor="end" font-size="9" fill="#0d3b66" font-family="monospace">30</text>
+<line x1="54" y1="46.0" x2="408" y2="46.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="48.0" y="49.0" text-anchor="end" font-size="9" fill="#0d3b66" font-family="monospace">40</text>
+<text x="414.0" y="257.0" text-anchor="start" font-size="9" fill="#a8791a" font-family="monospace">0</text>
+<text x="414.0" y="187.7" text-anchor="start" font-size="9" fill="#a8791a" font-family="monospace">3</text>
+<text x="414.0" y="118.3" text-anchor="start" font-size="9" fill="#a8791a" font-family="monospace">6</text>
+<text x="414.0" y="49.0" text-anchor="start" font-size="9" fill="#a8791a" font-family="monospace">9</text>
+<rect x="92.5" y="72.6" width="46" height="181.4" rx="2" fill="#0d3b66"/>
+<text x="115.5" y="67.6" text-anchor="middle" font-size="9" fill="#0d3b66" font-family="monospace">34.88</text>
+<rect x="146.5" y="90.1" width="46" height="163.9" rx="2" fill="#a8791a"/>
+<text x="169.5" y="85.1" text-anchor="middle" font-size="9" fill="#a8791a" font-family="monospace">7.09</text>
+<text x="142.5" y="270.0" text-anchor="middle" font-size="10" fill="#57585c" font-family="monospace">FY2024</text>
+<rect x="269.5" y="61.8" width="46" height="192.2" rx="2" fill="#0d3b66"/>
+<text x="292.5" y="56.8" text-anchor="middle" font-size="9" fill="#0d3b66" font-family="monospace">36.97</text>
+<rect x="323.5" y="75.8" width="46" height="178.2" rx="2" fill="#a8791a"/>
+<text x="346.5" y="70.8" text-anchor="middle" font-size="9" fill="#a8791a" font-family="monospace">7.71</text>
+<text x="319.5" y="270.0" text-anchor="middle" font-size="10" fill="#57585c" font-family="monospace">FY2025</text>
+<text x="8.0" y="52.0" text-anchor="start" font-size="9" fill="#8a8b8f" font-family="monospace">收入(亿)</text>
+<text x="414.0" y="52.0" text-anchor="start" font-size="9" fill="#8a8b8f" font-family="monospace">净利(亿)</text>
+<rect x="64.0" y="282.0" width="10" height="8" fill="#0d3b66"/><text x="78.0" y="289.0" font-size="9" fill="#57585c" font-family="monospace">航运服务业收入</text>
+<rect x="204.0" y="282.0" width="10" height="8" fill="#a8791a"/><text x="218.0" y="289.0" font-size="9" fill="#57585c" font-family="monospace">归母净利润</text>
+</svg></div>
+
+    <h3>资产负债表专项分析</h3>
+    <table>
+      <thead><tr><th>指标</th><th>数值</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>总股本</td><td>14.66亿股</td><td>数据来源：同花顺，2025年中报口径</td></tr>
+        <tr><td>每股净资产（NAV）</td><td>HK$5.55</td><td>对应总权益约HK$81.4亿（估算）</td></tr>
+        <tr><td>净资产收益率（ROE）</td><td>6.09%</td><td>2025年中报口径（可能为半年度未年化数字）</td></tr>
+        <tr><td>账上现金及银行存款</td><td>约HK$60亿左右</td><td>数据来源：申万宏源研究报告，2025年7月（存在滞后性）</td></tr>
+        <tr><td>当前P/B（按HK$5.66估算）</td><td>约1.02倍</td><td>股价已接近每股净资产，安全边际相对充分</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：同花顺（stockpage.10jqka.com.cn），2025年中期报告财务摘要。公司资产负债表呈现典型的"轻资产、高现金"特征——作为主要从事代理、顾问及涂料生产销售业务的服务型企业，公司无需承担传统航运运输企业的重资产船舶投资负担，账上现金及银行存款长期维持在港币60亿元左右的高位，为公司持续的高股息政策提供了坚实的资金基础。需要说明的是，本报告未能在公开检索中获取公司2025年度资产负债表的完整总资产、总负债细分数据，上述净资产及ROE数据主要引自第三方财经数据平台对2025年中期报告的摘要整理，建议投资者以公司完整年报的资产负债表原始数据为准进行独立核实。</p>
+
+    <h3>自由现金流专项分析</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>现金流观察（基于可获取数据）</h4>
+        <ul>
+          <li>2025年中期每股经营现金流：<b>HK$0.22</b>（对应上半年经营活动现金流约HK$3.22亿，按14.66亿股估算）</li>
+          <li>公司业务模式以代理、顾问及涂料生产销售为主，资本开支需求相对有限，理论上经营活动现金流与净利润的匹配度较高</li>
+          <li>财务收益（主要为银行存款利息）是公司现金流的稳定补充来源，尤其在此前美联储加息周期中贡献显著提升</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>自由现金流评估的局限性说明</h4>
+        <ul>
+          <li>本报告在公开检索中未能获取公司2025年度完整的现金流量表数据（含投资活动及筹资活动现金流细分），因此无法精确计算全年自由现金流（经营活动现金流-资本开支）的具体数值</li>
+          <li>基于公司轻资产的业务模式特征及持续的高股息支付能力（本次末期+特别股息合计HK$0.29/股已足额派发），我们判断公司自由现金流生成能力总体健康，但这一判断更多是基于业务模式的定性推断，而非精确的现金流量表数据验证</li>
+          <li>建议投资者以公司完整年报中的合并现金流量表为准，本报告将在后续更新中持续跟踪补充这一数据</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>数据局限性的坦诚说明：</b>尽管我们已尽力检索公司资产负债表与现金流量表的完整数据，但受限于公开渠道对该公司这类中小市值港股财务细节披露的可及性，本报告未能获取公司2025年度经审计的完整总资产、总负债及分项现金流数据。我们认为，与其基于不完整信息推算出可能失真的精确数字，不如如实说明这一局限，并建议投资者在做出投资决策前，直接查阅公司通过港交所披露易发布的2025年年度报告完整财务报表（含资产负债表、现金流量表及附注），以获取最权威、最完整的财务细节。</div>
+  </div>
+</section>
+
+<section id="shareholder-return">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2>股东回报分析：高派息政策构筑估值护城河</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>公司的高股息政策是本报告核心投资逻辑的重要组成部分。2025年度，公司宣布派发末期股息每股19港仙及额外特别股息每股10港仙，合计本次派发29港仙，已于2026年7月15日派发完毕；叠加此前已派发的中期股息（历史上如2024年度中期股息为26.5港仙），公司全年现金分红总额处于历史相对高位。据申万宏源2025年7月首次覆盖报告的判断，公司高股息政策是其核心投资亮点之一，历史数据（GuruFocus，截至2024年6月，存在一定滞后性）显示公司股息支付率长期处于60%-90%的高位区间，历史股息率一度达到10.5%的水平（数据来源：GuruFocus，注明该数据滞后性）。</p>
+        <p>公司高派息政策的可持续性，建立在两大基础之上：其一，公司账上维持约港币60亿元左右的现金及银行存款，资产负债表保守稳健，为持续分红提供了充足的资金弹药；其二，公司核心业务（船舶涂料通过合营企业中远佐敦贡献投资收益、保险顾问及船舶备件业务）现金流创造能力较强，且业务模式相对轻资产，资本开支需求有限，使得公司能够将大部分经营性利润转化为可分配的自由现金流。</p>
+      </div>
+      <div class="card">
+        <h4>股东回报关键数据</h4>
+        <ul>
+          <li>本次末期+特别股息：<b>HK$0.29/股</b>（2026年7月15日派发）</li>
+          <li>历史股息支付率区间：<b>约60%-90%</b>（GuruFocus数据，存在滞后性）</li>
+          <li>历史股息率峰值：<b>约10.5%-12.14%</b>（GuruFocus十年区间数据）</li>
+          <li>账上现金及银行存款：<b>约港币60亿元左右</b>（申万宏源，2025年7月）</li>
+          <li>静态股息率（估算，基于本次分红及HK$5.66股价）：<b>约5.1%（仅末期+特别股息，未计入中期股息）</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout gold"><b>股东回报分析核心结论：</b>公司此次在归母净利润仅增长8.7%的背景下，宣布派发额外特别股息10港仙，这一"超出常规派息节奏"的资本配置动作，可能反映管理层对公司现金储备充裕程度的信心，也可能是对当前航运服务及涂料业务景气周期的阶段性利润兑现。若特别股息成为常态化安排而非一次性事件，将进一步强化公司作为高股息现金牛标的的投资吸引力；但投资者也应注意，特别股息的可持续性通常低于常规股息，不宜将其简单线性外推至未来年度的分红预期中。</div>
+  </div>
+</section>
+
+<section id="governance">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">08</span><h2>股东结构与管理层</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>中远海运国际（中国香港）有限公司的控股股东为中国远洋海运集团有限公司（中远海运集团），后者是中国乃至全球领先的综合航运物流企业集团，能够在产业资源、销售网络、品牌信誉、银行合作等多方面为上市公司提供支持，这一集团背景是公司船舶贸易代理业务（相当比例来自集团内部客户）具备较强业绩韧性的重要原因。</p>
+        <p>公司近年董事会人事经历一定调整：2025年1月，孟昕辞任执行董事，张雪雁获委任为非执行董事，王勇获委任为执行董事（数据来源：新浪财经，2025年1月24-26日）。此外，公司于2025年3月拟委任信永中和为新任核数师，反映公司在审计合规层面的常规调整。整体来看，公司管理层调整属于常规性的央企体系人事轮换，未见明显异常信号。</p>
+      </div>
+      <div class="card">
+        <h4>关联交易观察</h4>
+        <ul>
+          <li>2026年4月29日，公司间接全资附属公司中远海运国际货运，与关连人士美国海贸订立股权转让协议，购买其持有的中国海贸49%股权，交易金额约225.57万美元（数据来源：雪球转载公告，2026年4月）</li>
+          <li>市场评论认为，这是"将一家已控股、已并表的货代公司从51%控股变为100%全资"的小额股权整合，而非大规模并购或买船交易，属于集团内部常规性的股权梳理动作</li>
+          <li>控股股东：<b>中国远洋海运集团有限公司</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="price-trend">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">09</span><h2>近期股价走势分析</h2></div>
+    <p>公司股价自2026年3月25日年度业绩发布以来，经历了持续的震荡下行走势，是本次更新报告重点补充的分析内容。</p>
+    <table>
+      <thead><tr><th>时间节点</th><th>股价</th><th>变动</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>2026年3月25日（业绩发布日）</td><td>约HK$6.85（业绩发布前）</td><td>—</td><td>2025年度业绩公告当日</td></tr>
+        <tr><td>2026年3月26日（业绩发布次日）</td><td>HK$6.54</td><td><span class="tag miss">-4.53%</span></td><td>市场对年报反应偏谨慎，公司股价"绩后跌超4%"</td></tr>
+        <tr><td>2026年6月23日（除净日）</td><td>理论除净后约HK$6.25</td><td>-HK$0.29（机械调整）</td><td>末期股息19港仙+特别股息10港仙除净</td></tr>
+        <tr><td>2026年7月19日（最新）</td><td>HK$5.66</td><td><span class="tag miss">较除净后理论价再跌约9.4%</span></td><td>用户提供的最新收盘价</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：华盛通（2026年3月26日）、富途牛牛（除净公告，2026年6月22日）、用户提供的最新股价（2026年7月19日）。整体来看，公司股价自年报发布至今累计下跌约17.4%（从约HK$6.85至HK$5.66），其中约HK$0.29（占比约4.2个百分点）为除净的机械性调整，剩余约13个百分点的跌幅反映的是市场情绪层面的实质性重新定价。</p>
+
+    <div class="grid-2">
+      <div>
+        <p><b>股价下行的可能解释：</b>结合本报告的基本面分析，我们认为当前股价的持续走弱可能反映以下几方面因素的综合作用：其一，港股市场2026年开年以来整体陷入持续调整，恒生科技指数屡创阶段新低，市场避险情绪上升，中小市值港股普遍承压，公司作为流动性相对有限的标的，可能受到板块系统性抛售的拖累，而非公司特异性的负面事件；其二，工业重防腐涂料业务利润大幅下滑41%、一般贸易业务持续收缩等结构性隐忧，尽管我们在本次更新中已澄清一般贸易收缩属于主动战略退出而非经营恶化，但市场在年报发布初期可能未能充分消化这一细节，产生了过度悲观的定价反应；其三，公司近期披露的新加坡诉讼事项（附属公司新峰公司面临一家商业银行的索赔，庭审已于2026年3月举行）及2026年1月的集团内部资产重组（转让远通海运设备服务公司100%股权），尽管公司评估这些事项对整体业务无重大不利影响，但也可能在短期内增加了市场对公司治理复杂度的谨慎情绪。</p>
+        <p><b>估值反差的解读：</b>值得注意的是，尽管股价持续走弱，但公司基本面数据（FY2025归母净利润+8.7%、涂料分部税前利润+31%、中远佐敦新造船涂料销售量+34%）并未出现相应程度的恶化，这意味着当前股价回调更多是估值倍数的压缩，而非盈利预期的下修。按最新股价HK$5.66计算，公司静态P/E已降至约10.8倍，P/B约1.02倍（已非常接近每股净资产HK$5.55），这一估值水平较3月底进一步压缩，理论上为具备中长期视角的价值型投资者提供了更具吸引力的安全边际，但这一判断的前提是投资者认同当前的下跌主要是情绪性、系统性因素所致，而非市场提前捕捉到了本报告尚未识别的基本面风险信号。</p>
+      </div>
+      <div class="card">
+        <h4>股价走势关键数据</h4>
+        <ul>
+          <li>年报发布至今累计跌幅：<b>约17.4%</b>（HK$6.85→HK$5.66）</li>
+          <li>其中除净机械性调整：<b>约4.2个百分点</b></li>
+          <li>实质性重新定价跌幅：<b>约13个百分点</b></li>
+          <li>当前静态P/E：<b>约10.8倍</b>（3月底约12.4倍）</li>
+          <li>当前P/B：<b>约1.02倍</b>（接近每股净资产HK$5.55）</li>
+          <li>同期背景：<b>港股市场2026年开年以来持续调整，恒生科技指数屡创新低</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="chart-box"><svg viewBox="0 0 460 260" width="100%" style="max-width:460px;display:block;margin:0 auto;" role="img" aria-label="股价走势">
+<text x="230" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1c1c1c" font-family="'IBM Plex Mono',monospace">2026年3月-7月股价走势时间线（港元）</text>
+<line x1="44" y1="190.7" x2="444" y2="190.7" stroke="#e4e2d8" stroke-width="1"/>
+<text x="38.0" y="193.7" text-anchor="end" font-size="9" fill="#57585c" font-family="monospace">5.5</text>
+<line x1="44" y1="141.8" x2="444" y2="141.8" stroke="#e4e2d8" stroke-width="1"/>
+<text x="38.0" y="144.8" text-anchor="end" font-size="9" fill="#57585c" font-family="monospace">6.0</text>
+<line x1="44" y1="92.9" x2="444" y2="92.9" stroke="#e4e2d8" stroke-width="1"/>
+<text x="38.0" y="95.9" text-anchor="end" font-size="9" fill="#57585c" font-family="monospace">6.5</text>
+<line x1="44" y1="44.0" x2="444" y2="44.0" stroke="#e4e2d8" stroke-width="1"/>
+<text x="38.0" y="47.0" text-anchor="end" font-size="9" fill="#57585c" font-family="monospace">7.0</text>
+<path d="M 44.0 58.7 L 44.0 58.7 L 177.3 89.0 L 310.7 117.3 L 444.0 175.0 L 444.0 220.0 L 44.0 220.0 Z" fill="rgba(13,59,102,0.08)"/>
+<path d="M 44.0 58.7 L 177.3 89.0 L 310.7 117.3 L 444.0 175.0" fill="none" stroke="#0d3b66" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="44.0" cy="58.7" r="4" fill="#a8791a"/>
+<text x="44.0" y="49.7" text-anchor="middle" font-size="9" font-weight="700" fill="#0d3b66" font-family="monospace">6.85</text>
+<text x="44.0" y="236.0" text-anchor="middle" font-size="8" fill="#8a8b8f" font-family="monospace">3/25业绩前</text>
+<circle cx="177.3" cy="89.0" r="4" fill="#a8791a"/>
+<text x="177.3" y="80.0" text-anchor="middle" font-size="9" font-weight="700" fill="#0d3b66" font-family="monospace">6.54</text>
+<text x="177.3" y="236.0" text-anchor="middle" font-size="8" fill="#8a8b8f" font-family="monospace">3/26绩后</text>
+<circle cx="310.7" cy="117.3" r="4" fill="#a8791a"/>
+<text x="310.7" y="108.3" text-anchor="middle" font-size="9" font-weight="700" fill="#0d3b66" font-family="monospace">6.25</text>
+<text x="310.7" y="236.0" text-anchor="middle" font-size="8" fill="#8a8b8f" font-family="monospace">6/23除净后(理论)</text>
+<circle cx="444.0" cy="175.0" r="4" fill="#a8791a"/>
+<text x="444.0" y="166.0" text-anchor="middle" font-size="9" font-weight="700" fill="#0d3b66" font-family="monospace">5.66</text>
+<text x="444.0" y="236.0" text-anchor="middle" font-size="8" fill="#8a8b8f" font-family="monospace">7/19最新</text>
+</svg></div>
+  </div>
+</section>
+
+<section id="valuation">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">10</span><h2>估值分析：相对估值为主，DCF交叉验证</h2></div>
+    <p>鉴于公司业务结构中包含高波动性的涂料业务与相对稳定的保险/代理/备件业务，我们采用相对估值法（P/E、股息率）作为主要框架，并以简化DCF情景分析进行交叉验证。</p>
+    <table>
+      <thead><tr><th>估值指标</th><th>数值（估算）</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>静态P/E（最新）</td><td>约10.8倍</td><td>基于HK$5.66股价及FY2025 EPS HK$0.526估算</td></tr>
+        <tr><td>P/B（最新）</td><td>约1.02倍</td><td>基于HK$5.66股价及每股净资产HK$5.55估算，接近净资产</td></tr>
+        <tr><td>历史P/E区间（持续经营口径，十年）</td><td>最高22.86倍，最低7.91倍，中位数12.81倍</td><td>数据来源：GuruFocus（截至2024年6月，存在滞后性）</td></tr>
+        <tr><td>当前P/E相对历史中位数</td><td>低约16%</td><td>反映当前估值已低于历史中位数，具备一定安全边际</td></tr>
+        <tr><td>申万宏源首次覆盖评级（2025年7月10日）</td><td>买入</td><td>核心逻辑："主业受益船舶更新周期，高派息率构筑护城河"</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：申万宏源研究报告（2025年7月10日）、GuruFocus历史数据。需要说明，申万宏源的首次覆盖报告发布于2025年7月，早于公司2025年度业绩正式披露（2026年3月），其具体盈利预测数字未能在本次检索中完整获取，本报告仅引用其评级结论与核心逻辑框架作为参考，不代表对其具体目标价的采信。</p>
+
+    <h3>多情景目标价（12个月）</h3>
+    <div class="scenario-grid">
+      <div class="scenario pess">
+        <div class="stitle">保守情景</div>
+        <div class="prob">对应造船景气周期见顶+贸易摩擦重燃</div>
+        <div class="starget">HK$4.60-5.20</div>
+        <p>中国造船业手持订单在未来两年集中交付完毕后，新接订单增速大幅放缓，叠加美国对华船舶港口费暂停期结束后重新征收、贸易保护主义抬头，工业重防腐涂料等易受贸易摩擦影响的细分业务持续承压，公司特别股息未能延续，港股市场系统性调整延续，估值向历史区间下沿进一步回落。</p>
+      </div>
+      <div class="scenario base">
+        <div class="stitle">基准情景</div>
+        <div class="prob">对应造船景气周期延续+估值修复</div>
+        <div class="starget">HK$7.00-8.80</div>
+        <p>中国造船业景气周期延续至2026-2027年，中远佐敦新造船涂料销售维持双位数增长，保险顾问及船舶备件业务保持稳健，公司维持当前高派息政策（尽管特别股息可能不再重复），近期股价的情绪性超跌得到修复，估值向历史P/E中位数区间回归。</p>
+      </div>
+      <div class="scenario opt">
+        <div class="stitle">乐观情景</div>
+        <div class="prob">对应低碳转型业务超预期放量</div>
+        <div class="starget">HK$9.50-11.50</div>
+        <p>公司"1+3+N"科技创新体系及低碳服务业务超预期放量，存量船队数智化及绿色改装需求释放形成新的增量市场，叠加中美贸易关系持续缓和支撑造船订单加速回流，市场给予公司更高的估值溢价。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">本报告12个月目标价区间取HK$7.00-8.80，基准情景中枢约HK$7.90，较最新股价HK$5.66存在约40%的潜在上行空间。这一显著扩大的上行空间主要源于股价在近四个月内的持续回调（较3月底已下跌约13.5%的实质性重新定价），而公司基本面数据并未出现相应程度的恶化——当前P/E已降至历史中位数以下约16%，P/B接近1倍净资产，我们认为这一估值水平已较为充分甚至过度反映了短期悲观因素。但我们同时提示，若股价的持续走弱反映的是市场提前捕捉到了本报告尚未能完全识别的基本面风险信号（如公司资产负债表完整数据缺失可能掩盖的问题），则当前的"低估值"判断需要相应下修，这是本报告在数据局限性说明中反复强调审慎态度的原因。</p>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">11</span><h2>风险提示</h2></div>
+    <div class="risk-matrix">
+      <div class="risk-item high">
+        <div class="rt"><b>中美贸易摩擦重燃风险</b><span class="rlevel">高</span></div>
+        <p>美国对中国拥有、营运或制造船舶征收的高额港口费虽已暂停一年（自2025年11月10日起），但这一暂停并非永久性安排，若一年期满后重新征收或贸易摩擦以其他形式重燃，可能再次导致中国造船订单阶段性分流，冲击公司船舶涂料及贸易代理业务的需求基础。</p>
+        <div class="src">数据来源：公司2025年年度报告业务回顾章节</div>
+      </div>
+      <div class="risk-item high">
+        <div class="rt"><b>造船景气周期见顶回落风险</b><span class="rlevel">高</span></div>
+        <p>公司年报明确提示"新造船订单将于未来两年集中交付，运力将大幅释放"，这意味着当前27,442万载重吨的历史高位手持订单终将进入交付兑现期，若届时新增订单增速未能同步接续，公司船舶涂料及代理业务可能面临中期需求增速放缓的压力。</p>
+        <div class="src">数据来源：公司2025年年度报告业务展望章节</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>工业重防腐涂料客户采购谨慎化风险</b><span class="rlevel">中</span></div>
+        <p>该细分业务2025年税前利润已同比大幅下滑41%，主因关税贸易战导致主要客户采购数量控制、价格趋于谨慎，若这一谨慎化趋势蔓延至公司其他涂料细分品类，可能进一步压制整体涂料分部的盈利能力。</p>
+        <div class="src">数据来源：公司2025年年度报告分部业绩章节</div>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>一般贸易业务战略退出的执行风险（已部分澄清）</b><span class="rlevel">低</span></div>
+        <p>一般贸易（沥青贸易）分部收入年内暴跌93%，经核实为公司主动"有序退出沥青业务"所致，并非经营环境恶化，该分部税前利润实际同比增长33%。该业务占比已边缘化至0.2%，对整体业绩影响有限，风险等级已从此前的"中"下修为"低"。</p>
+        <div class="src">数据来源：公司2025年年度报告，本报告第二节更新分析</div>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>新加坡诉讼事项</b><span class="rlevel">低</span></div>
+        <p>公司非直接全资附属公司新峰公司于2024年11月收到一家第三方商业银行在新加坡高等法庭提出的索赔，庭审已于2026年3月3日至13日举行，双方已作结案陈词。公司评估该诉讼对整体业务或日常营运并无重大不利影响，且无重大财务影响，但作为持续跟踪事项列入本报告风险提示。</p>
+        <div class="src">数据来源：公司2025年年度报告，经新浪财经转载</div>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>资产负债表数据透明度局限</b><span class="rlevel">低</span></div>
+        <p>本报告在公开检索中未能获取公司2025年度完整的资产负债表总资产/总负债数据及现金流量表分项数据，相关分析主要基于第三方财经数据平台的摘要整理及历史滞后数据，投资者在做出精确的估值判断时，应以公司完整年报原始财务报表为准。</p>
+        <div class="src">数据来源：本报告第六节数据局限性说明</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>全球贸易增速放缓的宏观风险</b><span class="rlevel">中</span></div>
+        <p>IMF预测2026年全球贸易量增速将从2025年的4.1%降至2.6%，若这一宏观贸易环境走弱的判断兑现，可能通过影响航运活动整体规模，间接拖累公司保险顾问、船舶备件等与航运活跃度相关的业务线。</p>
+        <div class="src">数据来源：公司2025年年度报告业务展望章节，引用IMF数据</div>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>特别股息不可持续风险</b><span class="rlevel">低-中</span></div>
+        <p>本次派发的10港仙特别股息若为一次性安排而非常态化政策，投资者不宜将其线性外推至未来年度的股息预期，若市场此前已按此次分红水平定价，未来常规化回归可能带来估值预期的下修。</p>
+        <div class="src">数据来源：本报告第七节股东回报分析</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rating">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>投资建议</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b style="color:var(--ink);">评级：增持（Buy）。</b>我们认为中远海运国际是当前中国造船业历史级景气周期中一个相对低调但业绩弹性扎实的"卖水人"标的——通过合营企业中远佐敦及全资附属中远关西公司深度参与船舶涂料这一与新造船交付直接挂钩的细分市场，2025年数据已充分验证这一逻辑（涂料分部税前利润+31%，中远佐敦新造船涂料销售量+34%）。公司股价自年报发布以来已累计下跌约17.4%（其中约4.2个百分点为除净机械调整），以最新股价HK$5.66计算，静态P/E已降至约10.8倍、P/B约1.02倍，均已回落至历史中位数以下，叠加高股息政策（本次末期+特别股息合计29港仙）及约港币60亿元的现金储备，为投资者提供了较此前更为充分的估值安全边际。但我们同时提示，工业重防腐涂料等细分业务已显现关税贸易战冲击的早期信号，公司资产负债表完整数据的透明度局限也意味着我们无法完全排除市场提前捕捉到未公开风险信号的可能性。综合考虑核心业务的确定性、估值回调后的安全边际与结构性风险的并存，我们给予"增持"评级。</p>
+        <div class="callout">
+          <b>关注信号：</b>（1）中远佐敦及中远关西2026年上半年经营数据，能否延续新造船涂料的高速增长；（2）美国对华船舶港口费一年期暂停到期（2026年11月）后的政策走向；（3）工业重防腐涂料业务的利润率能否企稳，验证关税贸易战冲击是否已充分消化；（4）2026年中期业绩中，特别股息是否会成为常态化安排，以及公司是否将披露更完整的资产负债表与现金流量表细分数据；（5）新加坡诉讼事项的最终裁决结果；（6）近期股价持续走弱的趋势能否企稳，这将是判断当前"低估值"是否为真实投资机会、还是市场提前反映未知风险的关键验证信号。
+        </div>
+        <p>对于计划配置的投资者，可考虑在基准情景估值区间（HK$7.00-8.80）内结合中期业绩披露节点分批建仓，并将保守情景HK$4.60-5.20视为止损/加仓评估参考区间；乐观情景HK$9.50-11.50可作为12个月止盈观察位。鉴于公司高股息特征明显、账上现金充裕、且当前估值已回落至历史中位数以下，建议以"高股息价值配置"为核心策略参与，但考虑到近期股价的持续弱势及资产负债表数据的透明度局限，建议投资者采取分批建仓而非一次性重仓介入的方式，并密切关注公司股价能否企稳作为验证信号。</p>
+      </div>
+      <div class="card">
+        <h4>交易要点摘要</h4>
+        <ul>
+          <li>评级：<b>增持（Buy）</b></li>
+          <li>12个月目标价区间：<b>HK$7.00-8.80</b>（基准中枢约HK$7.90）</li>
+          <li>保守情景下限：<b>HK$4.60-5.20</b></li>
+          <li>乐观情景上限：<b>HK$9.50-11.50</b></li>
+          <li>核心估值方法：<b>相对估值（P/E、股息率）为主，DCF情景分析交叉验证</b></li>
+          <li>核心风险变量：<b>中美贸易摩擦、造船景气周期持续性、工业涂料利润率</b></li>
+          <li>股东回报特征：<b>高股息政策，本次末期+特别股息合计HK$0.29/股</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>方法论与数据说明</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">本报告所引用的股价数据（HK$5.66）由用户提供，为2026年7月19日收盘价。本报告同时引用了2025年度业绩公布后交易日（2026年3月26日，HK$6.54）的历史价格作为股价走势对比基准，具体分析见第九节。本报告中引用的部分历史估值及股息数据（GuruFocus来源）存在约一年左右的滞后性（最新更新至2024年6月），已在正文中明确标注，具体最新数据请以公司官方公告为准。本报告对公司完整资产负债表总资产/总负债数据、完整现金流量表分项数据、公司完整历年股息支付明细等信息，因公开检索渠道限制未能完全获取，已在第六节及风险提示中如实说明这一信息缺口，建议投资者以公司完整年报及官方公告为准进行独立核实。</p>
+      </div>
+      <div>
+        <h5>主要数据来源</h5>
+        <ul class="src-list">
+          <li>中远海运国际（中国香港）有限公司2024年度、2025年度业绩公告（港交所披露易）</li>
+          <li>公司2025年年度报告（业务回顾及展望章节）</li>
+          <li>新浪财经、东方财富网、华盛通（2025年3月-2026年7月，历次业绩及公告转载）</li>
+          <li>中国船舶工业行业协会造船业数据（经东方财富网转载，2026年3月25日）</li>
+          <li>申万宏源研究报告（2025年7月10日，首次覆盖）</li>
+          <li>GuruFocus历史估值与股息数据（注明滞后性）</li>
+        </ul>
+      </div>
+      <div>
+        <h5>报告信息</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">蜗牛鸟投资（Snail-Bird Investment）<br>物流运输行业研究组<br>报告日期：2026年7月20日（价格更新版）<br>深度覆盖 · 评级：增持（Buy）</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      本报告由蜗牛鸟投资（Snail-Bird Investment）研究团队独立撰写，仅供参考，不构成任何证券买卖要约或投资建议。报告中的观点、评级及目标价基于报告撰写时可获得的公开信息及分析师的专业判断，可能随市场环境变化而调整，蜗牛鸟投资不承诺更新本报告的内容。公司所处的航运服务及船舶涂料行业受全球造船业周期、贸易政策及地缘政治因素影响较大，历史业绩及股息政策不构成对未来的保证，尤其是本次特别股息是否会成为常态化安排存在不确定性。本报告中部分数据因公开检索渠道限制存在滞后性或信息缺口，已在正文及方法论部分如实说明，投资者在做出投资决策前应以公司官方定期报告及港交所披露易的最新公告为准进行独立核实。投资者应充分了解相关风险，并根据自身风险承受能力及投资目标独立判断，据此投资操作风险自负。本报告不构成对任何特定投资者的个性化投资建议，亦不对因使用本报告内容而产生的任何直接或间接损失承担责任。
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
