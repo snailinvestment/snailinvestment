@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股半导体板块SBI泡沫指数日报 · 2026-07-23</title>
+<style>
+  :root{
+    --bg:#0f1420; --panel:#161d2e; --panel2:#1c2740; --line:#2a3650;
+    --txt:#e8eef7; --sub:#9fb0c8; --accent:#4ea1ff; --warn:#ffb74d;
+    --danger:#ff5c5c; --ok:#4cd07d; --purple:#b388ff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;
+    background:var(--bg);color:var(--txt);line-height:1.65;padding:28px 16px 60px}
+  .wrap{max-width:1040px;margin:0 auto}
+  header{text-align:center;margin-bottom:8px}
+  h1{font-size:25px;letter-spacing:.5px;font-weight:700}
+  .sub{color:var(--sub);font-size:13.5px;margin-top:6px}
+  .badge{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;
+    font-weight:600;margin:6px 4px 0}
+  .b-danger{background:rgba(255,92,92,.16);color:var(--danger);border:1px solid var(--danger)}
+  .grid{display:grid;gap:18px;margin-top:22px}
+  .g3{grid-template-columns:1.1fr 1fr 1.2fr}
+  .g2{grid-template-columns:1fr 1fr}
+  @media(max-width:880px){.g3,.g2{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .card h2{font-size:15.5px;margin-bottom:12px;color:var(--accent);font-weight:700;
+    display:flex;align-items:center;gap:8px}
+  .card h2::before{content:"";width:4px;height:16px;background:var(--accent);border-radius:3px}
+  .gauge-wrap{position:relative;text-align:center}
+  .gauge-val{position:absolute;top:58%;left:0;right:0;font-size:42px;font-weight:800;color:#ef6f53}
+  .gauge-val small{font-size:15px;color:var(--sub);font-weight:600}
+  .gauge-tag{margin-top:2px;font-size:13px;color:var(--danger);font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+  th{color:var(--sub);font-weight:600;font-size:12px}
+  td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .up{color:var(--danger)} .down{color:var(--ok)}
+  .dim-bar{height:7px;border-radius:4px;background:var(--panel2);overflow:hidden;margin-top:4px}
+  .dim-bar i{display:block;height:100%;border-radius:4px}
+  .concl{background:var(--panel2);border-left:3px solid var(--accent);border-radius:8px;
+    padding:12px 16px;margin:10px 0;font-size:13.5px}
+  .concl b{color:var(--accent)}
+  .note{font-size:12px;color:var(--sub);margin-top:14px;line-height:1.6}
+  .src{font-size:11.5px;color:#6f80a0;margin-top:8px;line-height:1.7}
+  .pill{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11.5px;
+    background:var(--panel2);color:var(--sub);margin:2px 3px}
+  .delta-neg{color:var(--ok);font-weight:700}
+  .delta-pos{color:var(--danger);font-weight:700}
+  .foot{text-align:center;color:#5e6e8c;font-size:11px;margin-top:28px}
+  .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:6px}
+  .kpi{background:var(--panel2);border-radius:9px;padding:10px 12px}
+  .kpi .k{font-size:11.5px;color:var(--sub)}
+  .kpi .v{font-size:18px;font-weight:700;margin-top:2px}
+  svg{display:block;margin:0 auto;max-width:100%}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>A股半导体板块 SBI 泡沫指数日报</h1>
+    <div class="sub">分析日期：2026-07-23（星期四）　|　数据基准：2026-07-22（周三）收盘　|　申万半导体（801081.SI）</div>
+    <div>
+      <span class="badge b-danger">风险等级：危险区间</span>
+      <span class="badge b-danger">SBI 65.1　较上次（07-22报 69.4）▼ −4.3</span>
+    </div>
+  </header>
+
+  <!-- ===== 第一行：三栏 ===== -->
+  <div class="grid g3">
+
+    <!-- 左：SBI仪表盘 -->
+    <div class="card gauge-wrap">
+      <h2>SBI 总仪表盘</h2>
+      <svg width="220" height="150" viewBox="0 0 220 150" xmlns="http://www.w3.org/2000/svg" style="margin:10px auto 0">
+        <!-- 背景弧 半圆 r=70 cx=110 cy=110 -->
+        <path d="M 40 110 A 70 70 0 0 1 180 110" fill="none" stroke="#222d44" stroke-width="14" stroke-linecap="round"/>
+        <!-- 安全区 0-45 (81deg) -->
+        <path d="M 40 110 A 70 70 0 0 1 97.6 47.7" fill="none" stroke="#4cd07d" stroke-width="14" stroke-linecap="round" opacity=".35"/>
+        <!-- 预警区 45-65 (36deg) -->
+        <path d="M 97.6 47.7 A 70 70 0 0 1 162.9 64.9" fill="none" stroke="#ffb74d" stroke-width="14" stroke-linecap="round" opacity=".35"/>
+        <!-- 危险区 65-80 (27deg) -->
+        <path d="M 162.9 64.9 A 70 70 0 0 1 185.3 93.6" fill="none" stroke="#ef6f53" stroke-width="14" stroke-linecap="round" opacity=".35"/>
+        <!-- 极端危险 80-100 (36deg) -->
+        <path d="M 185.3 93.6 A 70 70 0 0 1 180 110" fill="none" stroke="#e23c3c" stroke-width="14" stroke-linecap="round" opacity=".35"/>
+        <!-- 指针: 65.1% of 180 = 117.18deg → end at angle 62.82 from horizontal right -->
+        <!-- x = 110 + 70*cos(180-117.18) = 110 + 70*cos(62.82) = 110 + 32 = 142 -->
+        <!-- y = 110 - 70*sin(62.82) = 110 - 62.3 = 47.7 -->
+        <path d="M 40 110 A 70 70 0 0 1 142 47.7" fill="none" stroke="#ef6f53" stroke-width="16" stroke-linecap="round"/>
+        <circle cx="142" cy="47.7" r="5" fill="#ef6f53"/>
+        <!-- 刻度 -->
+        <text x="38" y="126" fill="#6f80a0" font-size="10" text-anchor="middle">0</text>
+        <text x="85" y="40" fill="#6f80a0" font-size="10" text-anchor="middle">45</text>
+        <text x="155" y="55" fill="#6f80a0" font-size="10" text-anchor="middle">65</text>
+        <text x="192" y="90" fill="#6f80a0" font-size="10" text-anchor="middle">80</text>
+        <text x="210" y="124" fill="#6f80a0" font-size="10" text-anchor="start">100</text>
+      </svg>
+      <div class="gauge-val">65.1<small> / 100</small></div>
+      <div class="gauge-tag">● 危险区间（65–80）</div>
+      <div class="note" style="text-align:center">
+        7-22 脉冲行情降温，SBI 自危险高位回落但仍站线。
+        估值极端(94)未消化；拥挤度与资金流向领衔回落是主因；
+        杠杆低位(38)+业绩高增(71)提供缓冲。
+      </div>
+    </div>
+
+    <!-- 中：六维度得分表 -->
+    <div class="card">
+      <h2>六维度得分（07-22）</h2>
+      <table>
+        <thead><tr><th>维度</th><th class="num">得分</th><th class="num">权重</th><th>环比</th></tr></thead>
+        <tbody>
+          <tr><td>估值</td><td class="num"><b>94</b></td><td class="num">25%</td><td class="down">▼ −1</td></tr>
+          <tr><td colspan="4" style="padding:0 10px 8px;border:0"><div class="dim-bar"><i style="width:94%;background:#e23c3c"></i></div></td></tr>
+
+          <tr><td>拥挤度</td><td class="num"><b>56</b></td><td class="num">25%</td><td class="down">▼ −12</td></tr>
+          <tr><td colspan="4" style="padding:0 10px 8px;border:0"><div class="dim-bar"><i style="width:56%;background:#ef6f53"></i></div></td></tr>
+
+          <tr><td>杠杆</td><td class="num"><b>38</b></td><td class="num">15%</td><td>— 0</td></tr>
+          <tr><td colspan="4" style="padding:0 10px 8px;border:0"><div class="dim-bar"><i style="width:38%;background:#4cd07d"></i></div></td></tr>
+
+          <tr><td>业绩兑现</td><td class="num"><b>71</b></td><td class="num">15%</td><td>— 0</td></tr>
+          <tr><td colspan="4" style="padding:0 10px 8px;border:0"><div class="dim-bar"><i style="width:71%;background:#e23c3c"></i></div></td></tr>
+
+          <tr><td>资金流向</td><td class="num"><b>54</b></td><td class="num">10%</td><td class="down">▼ −10</td></tr>
+          <tr><td colspan="4" style="padding:0 10px 8px;border:0"><div class="dim-bar"><i style="width:54%;background:#ef6f53"></i></div></td></tr>
+
+          <tr><td>外部环境</td><td class="num"><b>58</b></td><td class="num">10%</td><td class="down">▼ −1</td></tr>
+          <tr><td colspan="4" style="padding:0 10px 8px;border:0"><div class="dim-bar"><i style="width:58%;background:#ef6f53"></i></div></td></tr>
+        </tbody>
+      </table>
+      <div class="note">预警线 45 / 危险线 70。▲涨（风险升）　▼跌（风险降）。</div>
+    </div>
+
+    <!-- 右：关键市场指标 -->
+    <div class="card">
+      <h2>关键市场指标（07-22）</h2>
+      <div class="kpis">
+        <div class="kpi"><div class="k">板块涨跌幅</div><div class="v down">−1.17%</div></div>
+        <div class="kpi"><div class="k">成交额</div><div class="v">4336亿</div></div>
+        <div class="kpi"><div class="k">涨停家数</div><div class="v">3只(前日28)</div></div>
+        <div class="kpi"><div class="k">两融余额</div><div class="v">26978.8亿</div></div>
+        <div class="kpi"><div class="k">北向(半导体)</div><div class="v down">中性略正</div></div>
+        <div class="kpi"><div class="k">全市场成交</div><div class="v down">2.65万亿</div></div>
+      </div>
+      <div class="src">板块口径：申万半导体 H30184（−1.17%，成交 4336 亿，占全市场约16.4%）；
+        全市场缩量 3037 亿至 2.65 万亿，1530 涨 / 3876 跌。
+        存储芯片单日被砸 −142 亿；ETF 净流出止盈为主。</div>
+    </div>
+  </div>
+
+  <!-- ===== 第二行：雷达图 + 趋势线 ===== -->
+  <div class="grid g2">
+    <div class="card">
+      <h2>六维度雷达图（07-22 vs 07-21报）</h2>
+      <svg width="340" height="300" viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- 雷达: 中心(170,150), 半径100 -->
+        <g stroke="#2a3650" stroke-width="1" fill="none">
+          <polygon points="170,60 256,100 228,200 170,240 112,200 84,100" opacity=".35"/>
+          <polygon points="170,77 213,105 195,175 170,210 145,175 127,105" opacity=".35"/>
+          <polygon points="170,94 170,110 163,150 170,180 177,150 170,110" opacity=".35"/> <!-- fix: recalculate -->
+          <polygon points="170,94 238.3,117.5 208.3,182.5 170,210 131.7,182.5 101.7,117.5" opacity=".4"/>
+          <polygon points="170,111 263.7,130 188.3,165 170,180 151.7,165 76.3,130" opacity=".45"/>
+          <polygon points="170,128 289,142.5 168.3,147.5 170,150 171.7,147.5 51,142.5" opacity=".5"/>
+          <!-- 正确同心六边形: r=20,40,60,80,100 -->
+          <polygon points="170,130 180,140 176,160 170,170 164,160 160,140" opacity=".3"/>
+          <polygon points="170,110 190,120 183,150 170,190 157,150 150,120" opacity=".35"/>
+          <polygon points="170,90 200,108 189,140 170,210 151,140 140,108" opacity=".4"/>
+          <polygon points="170,70 210,95 196,130 170,230 144,130 130,95" opacity=".45"/>
+          <polygon points="170,50 220,83 203,120 170,250 137,120 120,83" opacity=".5"/>
+          <!-- 6轴 -->
+          <line x1="170" y1="150" x2="170" y2="50"/>
+          <line x1="170" y1="150" x2="270" y2="92"/>
+          <line x1="170" y1="150" x2="230" y2="225"/>
+          <line x1="170" y1="150" x2="170" y2="250"/>
+          <line x1="170" y1="150" x2="110" y2="225"/>
+          <line x1="170" y1="150" x2="70" y2="92"/>
+        </g>
+        <!-- 前次 prev=[95,68,38,71,64,59] r*1=95→y=150-95=55, 68→x=170+68*cos(-30)=170+58.9=228.9,y=150-68*sin(-30)=150-34=116 -->
+        <polygon points="170,55 228.9,116 196.3,194 170,179 143.7,194 115.9,113.6"
+                 fill="rgba(159,176,200,.10)" stroke="#9fb0c8" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <!-- 本次 cur=[94,56,38,71,54,58] -->
+        <polygon points="170,56 218.5,121.6 196.3,194 170,179 146.1,195.2 118.3,114"
+                 fill="rgba(239,111,83,.22)" stroke="#ef6f53" stroke-width="2"/>
+        <!-- 数据点 本次 -->
+        <g fill="#ef6f53"><circle cx="170" cy="56" r="3"/><circle cx="218.5" cy="121.6" r="3"/>
+          <circle cx="196.3" cy="194" r="3"/><circle cx="170" cy="179" r="3"/>
+          <circle cx="146.1" cy="195.2" r="3"/><circle cx="118.3" cy="114" r="3"/></g>
+        <!-- 数据点 前次 -->
+        <g fill="#9fb0c8"><circle cx="170" cy="55" r="2.5"/><circle cx="228.9" cy="116" r="2.5"/>
+          <circle cx="196.3" cy="194" r="2.5"/><circle cx="170" cy="179" r="2.5"/>
+          <circle cx="143.7" cy="194" r="2.5"/><circle cx="115.9" cy="113.6" r="2.5"/></g>
+        <!-- 标签 -->
+        <g fill="#e8eef7" font-size="12" font-family='"PingFang SC","Microsoft YaHei",sans-serif'>
+          <text x="170" y="38" text-anchor="middle" font-weight="600">估值</text>
+          <text x="280" y="88" text-anchor="start" font-weight="600">拥挤度</text>
+          <text x="240" y="243" text-anchor="start" font-weight="600">杠杆</text>
+          <text x="170" y="268" text-anchor="middle" font-weight="600">业绩兑现</text>
+          <text x="96" y="243" text-anchor="end" font-weight="600">资金流向</text>
+          <text x="56" y="88" text-anchor="end" font-weight="600">外部环境</text>
+        </g>
+        <!-- 图例 -->
+        <g transform="translate(75,285)" font-size="10" font-family='sans-serif'>
+          <line x1="0" y1="0" x2="16" y2="0" stroke="#ef6f53" stroke-width="2"/>
+          <circle cx="8" cy="0" r="2.5" fill="#ef6f53"/>
+          <text x="22" y="3" fill="#9fb0c8">本次(07-22)</text>
+          <line x1="95" y1="0" x2="111" y2="0" stroke="#9fb0c8" stroke-width="1.5" stroke-dasharray="5,4"/>
+          <text x="117" y="3" fill="#9fb0c8">上次(07-21)</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="card">
+      <h2>近30日 SBI 趋势</h2>
+      <svg width="480" height="260" viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg">
+        <!-- 绘图区: x=50..460 w=410, y=25..215 h=190 -->
+        <rect x="50" y="25" width="410" height="190" fill="#161d2e" rx="3"/>
+        <!-- Y轴网格 50-85 step5: y=215-(val-50)*190/35 -->
+        <g stroke="#2a3650" stroke-width="1" opacity=".5">
+          <line x1="50" y1="215" x2="460" y2="215"/><line x1="50" y1="187.9" x2="460" y2="187.9"/>
+          <line x1="50" y1="160.7" x2="460" y2="160.7"/><line x1="50" y1="133.6" x2="460" y2="133.6"/>
+          <line x1="50" y1="106.4" x2="460" y2="106.4"/><line x1="50" y1="79.3" x2="460" y2="79.3"/>
+          <line x1="50" y1="52.1" x2="460" y2="52.1"/><line x1="50" y1="25" x2="460" y2="25"/>
+        </g>
+        <!-- 危险区域填充 65+ (y<129.3) -->
+        <rect x="50" y="25" width="410" height="104.3" fill="rgba(239,111,83,.05)"/>
+        <!-- 极端危险 80+ (y<43.6) -->
+        <rect x="50" y="25" width="410" height="18.6" fill="rgba(226,60,60,.04)"/>
+
+        <!-- Y轴标签 -->
+        <g fill="#6f80a0" font-size="10" text-anchor="end" font-family='sans-serif'>
+          <text x="44" y="219">50</text><text x="44" y="191.9">55</text><text x="44" y="164.7">60</text>
+          <text x="44" y="137.6">65</text><text x="44" y="110.4">70</text><text x="44" y="83.3">75</text>
+          <text x="44" y="56.1">80</text><text x="44" y="29">85</text>
+        </g>
+
+        <!-- X轴标签 24点 x间距=410/23≈17.8 -->
+        <g fill="#6f80a0" font-size="8" font-family='sans-serif' transform="rotate(-45)">
+          <text x="-125" y="64">06-17</text><text x="-125" y="82">06-18</text><text x="-125" y="100">06-20</text>
+          <text x="-125" y="118">06-21</text><text x="-125" y="136">06-23</text><text x="-125" y="154">06-24</text>
+          <text x="-125" y="172">06-25</text><text x="-125" y="190">06-26</text><text x="-125" y="208">06-28</text>
+          <text x="-125" y="226">06-29</text><text x="-125" y="244">06-30</text><text x="-125" y="262">07-02</text>
+          <text x="-125" y="280">07-03</text><text x="-125" y="298">07-08</text><text x="-125" y="316">07-09</text>
+          <text x="-125" y="334">07-10</text><text x="-125" y="352">07-13</text><text x="-125" y="370">07-14</text>
+          <text x="-125" y="388">07-15</text><text x="-125" y="406">07-16</text><text x="-125" y="424">07-17</text>
+          <text x="-125" y="442">07-21</text><text x="-125" y="460">07-22</text><text x="-125" y="478">07-23</text>
+        </g>
+
+        <!-- 参考线: 65(y=129.3), 80(y=43.6) -->
+        <line x1="50" y1="129.3" x2="460" y2="129.3" stroke="#ef6f53" stroke-width="1.2" stroke-dasharray="6,4" opacity=".8"/>
+        <line x1="50" y1="43.6" x2="460" y2="43.6" stroke="#e23c3c" stroke-width="1.2" stroke-dasharray="6,4" opacity=".6"/>
+
+        <!-- SBI折线: y=215-(val-50)*190/35 = 215-(val-50)*5.4286 -->
+        <!-- vals:67.8,68,73.8,73.9,73.3,71.8,76.2,78.6,79.7,78.9,73.7,72.3,67.2,70.9,70.1,71.6,67.7,63.4,64.4,62.9,61.7,58.2,69.4,65.1 -->
+        <polyline points="
+          50,127.3 67.8,126.2 85.6,91.9 103.4,91.4 121.2,94.9 139,109.8 156.8,89.0
+          174.6,74.1 192.4,66.0 210.2,69.8 228,103.2 245.8,113.0 263.6,132.5
+          281.4,111.5 299.2,116.1 317,106.1 334.8,134.0 352.6,154.9 370.4,144.5
+          388.2,152.0 406,159.7 423.8,181.0 441.6,119.3 460,143.0"
+          fill="rgba(78,161,255,.12)" stroke="#4ea1ff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+
+        <!-- 数据点 -->
+        <g fill="#4ea1ff">
+          <circle cx="50" cy="127.3" r="2.5"/><circle cx="67.8" cy="126.2" r="2.5"/>
+          <circle cx="85.6" cy="91.9" r="2.5"/><circle cx="103.4" cy="91.4" r="2.5"/>
+          <circle cx="121.2" cy="94.9" r="2.5"/><circle cx="139" cy="109.8" r="2.5"/>
+          <circle cx="156.8" cy="89.0" r="2.5"/><circle cx="174.6" cy="74.1" r="2.5"/>
+          <circle cx="192.4" cy="66.0" r="2.5"/><circle cx="210.2" cy="69.8" r="2.5"/>
+          <circle cx="228" cy="103.2" r="2.5"/><circle cx="245.8" cy="113.0" r="2.5"/>
+          <circle cx="263.6" cy="132.5" r="2.5"/><circle cx="281.4" cy="111.5" r="2.5"/>
+          <circle cx="299.2" cy="116.1" r="2.5"/><circle cx="317" cy="106.1" r="2.5"/>
+          <circle cx="334.8" cy="134.0" r="2.5"/><circle cx="352.6" cy="154.9" r="2.5"/>
+          <circle cx="370.4" cy="144.5" r="2.5"/><circle cx="388.2" cy="152.0" r="2.5"/>
+          <circle cx="406" cy="159.7" r="2.5"/><circle cx="423.8" cy="181.0" r="2.5"/>
+          <circle cx="441.6" cy="119.3" r="2.5"/>
+          <circle cx="460" cy="143.0" r="3.5" stroke="#4ea1ff" stroke-width="1.2"/>
+        </g>
+
+        <!-- 最新值标注 -->
+        <g transform="translate(460,138)">
+          <rect x="-18" y="-13" width="36" height="15" rx="3" fill="#4ea1ff" opacity=".2" stroke="#4ea1ff" stroke-width="0.8"/>
+          <text x="0" y="-1.5" fill="#4ea1ff" font-size="10" text-anchor="middle" font-weight="700">65.1</text>
+        </g>
+
+        <!-- 图例 -->
+        <g transform="translate(55,250)" font-size="10" font-family='sans-serif'>
+          <line x1="0" y1="0" x2="14" y2="0" stroke="#4ea1ff" stroke-width="2"/>
+          <circle cx="7" cy="0" r="2.5" fill="#4ea1ff"/>
+          <text x="20" y="3" fill="#9fb0c8">SBI</text>
+          <line x1="48" y1="0" x2="62" y2="0" stroke="#ef6f53" stroke-width="1.2" stroke-dasharray="6,4"/>
+          <text x="68" y="3" fill="#9fb0c8">危险线(65)</text>
+          <line x1="130" y1="0" x2="144" y2="0" stroke="#e23c3c" stroke-width="1.2" stroke-dasharray="6,4"/>
+          <text x="150" y="3" fill="#9fb0c8">极端危险(80)</text>
+        </g>
+      </svg>
+      <div class="src">数据自 06-17 起，蓝点为本次 07-23（65.1）。橙虚线=危险线65　红虚线=极端危险80。</div>
+    </div>
+  </div>
+
+  <!-- ===== 估值分位 ===== -->
+  <div class="card" style="margin-top:18px">
+    <h2>估值与估值分位（东方财富/乐咕乐股 2026/07/22）</h2>
+    <div class="grid g2" style="gap:14px;margin-top:4px">
+      <table>
+        <thead><tr><th>指标</th><th class="num">数值</th><th class="num">历史分位</th></tr></thead>
+        <tbody>
+          <tr><td>TTM 市盈率（申万，东财）</td><td class="num">124.87</td><td class="num">5年97.94%·10年95.28%·3年96.56%</td></tr>
+          <tr><td>静态 PE / PB</td><td class="num">~207倍 / ~12–13倍</td><td class="num">PB 极端高位</td></tr>
+          <tr><td>科创板 PE</td><td class="num">~231.7倍</td><td class="num">美股费半仅28–35倍</td></tr>
+        </tbody>
+      </table>
+      <div class="concl" style="margin:0">
+        TTM PE 124.87、5年分位<b>97.94%</b>（较07-21的126.54/98.10%微降），仍处历史极值区。
+        静态PE约207倍、PB约12–13倍，较美股费半（28–35倍）溢价畸高。<b>泡沫未实质消化</b>，
+        任何情绪扰动都易触发剧烈回撤——这是SBI估值维度持续94分的核心原因。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 核心结论 ===== -->
+  <div class="card" style="margin-top:18px">
+    <h2>核心结论（5条）</h2>
+    <div class="concl"><b>1. SBI 65.1，勉强站上危险线（65），环比 −4.3（上次 69.4）。</b>
+      7-21"深V暴力反弹（+12.2%）"的脉冲行情在7-22迅速降温：半导体板块 −1.17%、成交4336亿（占全市场16.4%）、涨停由28只骤降至3只、存储被砸142亿、ETF净流出止盈为主。拥挤度（68→56）与资金流向（64→54）领衔回落，推动SBI从危险高位回落但仍站线。</div>
+    <div class="concl"><b>2. 估值极端仍是最大压舱（94分），泡沫未实质消化。</b>
+      PE(TTM)124.87、5年分位97.94%、10年分位95.28%、静态PE约207倍、PB约12–13倍，较美股费半（28–35倍）溢价畸高。SEMI上修2026设备销售至1659亿美元(+23.2%)、台积电Capex上修600–640亿美元支撑长期景气，但短期估值已严重透支。</div>
+    <div class="concl"><b>3. 杠杆低位提供核心下行缓冲（38分）。</b>
+      两融截至7-21为26978.8亿（+1.04亿，终结13连降），较3万亿高点仍低约3000亿。杠杆出清尚未逆转，融资买入额虽回升（+528亿至2675.87亿）但绝对水平不高，是SBI未进一步冲高的安全垫。</div>
+    <div class="concl"><b>4. 业绩兑现强劲（71分）对冲估值风险。</b>
+      中报大面积预增（源杰+1196%~1304%、中一+879%~1075%、江波龙净利达110亿）；5月全球半导体销售1206亿美元同比翻倍连增31个月；台积电/ASML双超预期。基本面未恶化，缓冲了高位杀跌动能。</div>
+    <div class="concl"><b>5. 外部环境边际转弱（58分）。</b>
+      10Y美债4.626%高位持平、7月加息概率回升至24%（CPI后曾低至10%）、美伊冲突第11轮升级、特朗普新关税周五到期。两大变量临近：7-27长鑫科技上市抽血（募295–666亿）、7-29美联储议息。</div>
+  </div>
+
+  <!-- ===== 操作建议 ===== -->
+  <div class="card" style="margin-top:18px">
+    <h2>操作建议</h2>
+    <div class="concl"><b>仓位与节奏：</b>SBI 65.1 重回危险区间边缘，7-22脉冲降温后拥挤度和资金流向回落是积极信号，但估值94分仍是悬顶之剑。<b>维持中性偏谨慎仓位，不追高不杀跌</b>。当前未同时满足"两融持续回补+缩量企稳+北向持续净买"三信号前，定性为"超跌反弹后的分化整理"而非趋势反转。</div>
+    <div class="concl"><b>分化应对：</b>规避PEG>3、无订单的纯题材小票（部分PE数百至千倍，7-22已现杀跌）。以业绩兑现的<b>设备/存储双主线</b>分批低吸、不重仓应对高位波动。ETF层面科创芯片嘉实主力流出2.85亿显示止盈分歧，但设备ETF国泰仍有+1.59亿净流入，结构性机会仍在。</div>
+    <div class="concl"><b>右侧确认信号：</b>①两融结束13连降后能否持续回补（当前仅+1.04亿，极弱）；②板块成交从脉冲高位回落、缩量企稳；③北向转为持续净买（当前仅"中性略正"，紫光−2.57亿、星宸深股通−9.28亿仍分歧）。未同时满足前三项前不判反转。</div>
+    <div class="concl"><b>风险监控：</b>7-27长鑫科技上市抽血效应（募资规模大）；7-29美联储议息（加息概率24%→若超预期将压制科技股估值）；美伊冲突升级→油价→通胀→加息预期回摆。若反弹无量+ETF持续净减，警惕二次回踩至60以下。</div>
+  </div>
+
+  <!-- ===== 数据来源 ===== -->
+  <div class="card" style="margin-top:18px">
+    <h2>数据时效与来源</h2>
+    <div class="src">
+      <span class="pill">东方财富/乐咕乐股 2026/07/22（TTM PE 124.87 / 5年分位97.94%）</span>
+      <span class="pill">同花顺/新浪财经（07-22 收评、涨跌/成交/涨停）</span>
+      <span class="pill">东财/巨灵财经（板块主力资金、ETF资金流 07-22）</span>
+      <span class="pill">上交所/深交所（两融 26978.8亿，截至07-21）</span>
+      <span class="pill">财联社/华尔街见闻（10Y美债4.626%、美联储、行业新闻）</span>
+      <span class="pill">SEMI/台积电/ASML（设备销售预测、Capex指引）</span>
+      <br><br>
+      数据时效说明：指数涨跌、成交、主力资金、ETF资金流均为 <b>2026-07-22 收盘</b>；
+      估值TTM PE分位取自东方财富/乐咕乐股 2026/07/22 更新；
+      <b>融资余额采用截至2026-07-21数据</b>（07-22自身两融于07-23盘前披露，本次生成时尚未公布）；
+      美联储/美债为2026-07-22美盘收盘数据。
+      <br><br>
+      环比对比基准为 <b>07-22报告</b>（SBI 69.4，数据基准07-21收盘）；本次数据基准为07-22（周三）。
+      <br><br>
+      <b>免责声明：</b>本报告为基于公开数据的量化监测产物，SBI泡沫指数为风险度量工具而非投资建议。市场有风险，投资需谨慎。
+    </div>
+  </div>
+
+  <div class="foot">A股半导体板块 SBI 泡沫指数日报 · 自动化生成 · 2026-07-23 · 数据基准 2026-07-22 收盘 · 纯SVG渲染（零JS依赖）</div>
+</div>
+</body>
+</html>
