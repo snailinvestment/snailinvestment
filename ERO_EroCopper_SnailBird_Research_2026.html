@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ero Copper (ERO) 深度研究报告 | Snail-bird Investment</title>
+
+<style>
+:root{
+  --bg:#f6f8f6;--bg-panel:#ffffff;--bg-alt:#eef3ee;--ink:#1a231e;--ink-soft:#4c5a4f;--ink-faint:#83917f;--line:#dbe4db;
+  --copper:#b5651d;--copper-deep:#7a4014;--copper-soft:#f3e4d5;--navy:#1c3b52;--green:#1c6b45;--amber:#9c6a13;--red:#a3271f;
+  --mono:'IBM Plex Mono','Courier New',monospace;--sans:'IBM Plex Sans','Noto Sans SC',sans-serif;--serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--copper);}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+nav{position:sticky;top:0;z-index:100;background:rgba(246,248,246,0.97);backdrop-filter:blur(6px);border-bottom:2px solid var(--navy);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--navy);}
+.brand .logo{width:26px;height:26px;border-radius:5px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--navy);border:1px solid var(--navy);padding:3px 8px;border-radius:3px;}
+header.hero{padding:60px 0 40px;border-bottom:2px solid var(--navy);background:linear-gradient(180deg,#ffffff 0%,var(--bg) 100%);}
+.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+.ero-logo{width:52px;height:52px;border-radius:10px;background:var(--copper);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:800;font-size:20px;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--copper);text-transform:uppercase;font-weight:700;}
+h1.title{font-family:var(--serif);font-size:32px;font-weight:700;margin:14px 0 10px;line-height:1.35;color:var(--ink);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:820px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+.rating-panel{display:flex;gap:1px;background:var(--navy);border:1px solid var(--navy);margin-top:30px;}
+.rating-box{background:var(--navy);color:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;min-width:180px;}
+.rating-box .rlabel{font-family:var(--mono);font-size:11px;opacity:.8;text-transform:uppercase;letter-spacing:1px;}
+.rating-box .rvalue{font-family:var(--serif);font-size:26px;font-weight:700;margin-top:6px;}
+.target-box{background:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;flex:1;}
+.target-box .tlabel{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:1px;}
+.target-box .tvalue{font-family:var(--mono);font-size:21px;font-weight:700;color:var(--navy);margin-top:6px;}
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:18px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--copper);font-weight:700;}
+h2{font-family:var(--serif);font-size:24px;margin:0;color:var(--navy);}
+h3{font-family:var(--sans);font-size:16px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--copper);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--navy);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);background:#fdf2f0;}
+.callout.gold{border-left-color:var(--copper);}
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:13.5px;color:var(--navy);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:var(--navy);font-family:var(--mono);font-size:11.5px;color:#fff;font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:var(--copper-soft);}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#e6f2ea;color:var(--green);}
+.tag.miss{background:#fae8e6;color:var(--red);}
+.tag.line{background:#f3e4d5;color:var(--copper-deep);}
+.seg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0;}
+.seg-card{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--copper);}
+.seg-card .sname{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.seg-card .sval{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.seg-card .sgrowth{font-family:var(--mono);font-size:12px;margin-bottom:8px;}
+.seg-card .sgrowth.pos{color:var(--green);}
+.seg-card .sgrowth.neg{color:var(--red);}
+.seg-card p{font-size:11.5px;margin:0;}
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--navy);border:1px solid var(--navy);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:23px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--navy);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--amber);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#fae8e6;color:var(--red);}
+.risk-item.mid .rlevel{background:#f3e4d5;color:var(--amber);}
+.risk-item.low .rlevel{background:#e6f2ea;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+.risk-item .src{font-size:10.5px;color:var(--ink-faint);margin-top:6px;}
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.compare-bar{margin:16px 0;}
+.cb-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.cb-label{width:130px;font-family:var(--mono);font-size:12px;color:var(--ink-soft);flex-shrink:0;}
+.cb-track{flex:1;background:var(--bg-alt);border-radius:3px;height:22px;position:relative;overflow:hidden;}
+.cb-fill{height:100%;display:flex;align-items:center;padding-left:8px;font-family:var(--mono);font-size:11px;color:#fff;border-radius:3px;}
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--navy);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .seg-grid{grid-template-columns:1fr;}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .rating-panel{flex-direction:column;}
+  h1.title{font-size:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="logo">S</span> SNAIL-BIRD INVESTMENT · 矿产资源研究</div>
+    <div class="navlinks">
+      <span>基础金属 / 铜矿开采</span>
+      <span class="navtag">NYSE/TSX: ERO</span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="ero-logo">Cu</div>
+      <div class="eyebrow">美股/加股 · 巴西铜金矿商 · 深度覆盖</div>
+    </div>
+    <h1 class="title">Ero Copper Corp (NYSE/TSX: ERO)：在美联储降息周期与AI用铜需求交汇点上的成长型纯铜标的</h1>
+    <p class="subtitle">报告日期：2026年7月23日｜出品方：Snail-bird Investment 矿产资源研究组｜分析框架：商业模式与资产组合 · 铜价宏观三重驱动（美联储/全球资本开支与供给/需求端含AI）· 分矿成本与价格产量敏感性 · 财务质量 · 股价走势 · Furnas成长期权 · 估值（相对估值为主，DCF交叉验证）· 股东回报 · 风险提示</p>
+    <div class="meta-row">
+      <span>股票代码：<b>NYSE: ERO / TSX: ERO</b></span>
+      <span>所属行业：<b>基础金属采矿 · 铜（伴生金）</b></span>
+      <span>核心资产地：<b>巴西（巴伊亚州、帕拉州、马托格罗索州）</b></span>
+      <span>最新季度：<b>2026年第一季度（2026年5月4日披露）</b>　下一次财报：<b>2026年8月5日（Q2 2026）</b></span>
+    </div>
+
+    <div class="rating-panel">
+      <div class="rating-box">
+        <div class="rlabel">Snail-bird Investment 评级</div>
+        <div class="rvalue">增持（Buy）</div>
+      </div>
+      <div class="target-box">
+        <div class="tlabel">12个月目标价区间（相对估值为主，DCF交叉验证）</div>
+        <div class="tvalue">US$30 - US$38（基准情景中枢约US$34）</div>
+      </div>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="label">最新收盘价</div>
+        <div class="value">US$26.87</div>
+        <div class="sub">2026-07-21 收盘</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026年铜产量指引</div>
+        <div class="value pos">67,500-77,500吨</div>
+        <div class="sub">下半年权重更高（Caraíba/Tucumã/Xavantina）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026Q1营收</div>
+        <div class="value pos">$263.2M</div>
+        <div class="sub">同比+110%以上，铜金价格及汇兑共同驱动</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026Q1归母净利润</div>
+        <div class="value pos">$108.8M</div>
+        <div class="sub">EPS $1.04（2025Q1为$0.78）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">净债务/杠杆率</div>
+        <div class="value pos">$490.7M / 1.0-1.2x</div>
+        <div class="sub">同比大幅去杠杆，流动性$146.2M</div>
+      </div>
+      <div class="kpi">
+        <div class="label">分析师一致目标价</div>
+        <div class="value">约$35-36（区间）</div>
+        <div class="sub">10 Buy/8 Hold/0 Sell（21家覆盖，存在分歧）</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>核心投资论点</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>Ero Copper Corp是一家总部位于加拿大温哥华、核心资产完全位于巴西的中型铜金矿商，通过持有巴西矿业公司Mineração Caraíba（MCSA，持股99.6%）间接拥有位于巴伊亚州库拉萨河谷的Caraíba矿区及帕拉州的Tucumã露天铜矿，另持有NX Gold（持股97.6%）旗下位于马托格罗索州的Xavantina金银矿，并与淡水河谷基础金属（Vale Base Metals）达成协议、持有位于帕拉州卡拉加斯矿产带的Furnas铜金项目60%权益（数据来源：ChartMill公司简介，2026年7月）。公司2025年实现创纪录的铜产量64,307吨，2026年指引进一步上调至67,500-77,500吨，同时净债务杠杆率从此前的高位大幅改善至1.0-1.2倍区间，反映公司正处于"产量爬坡+资产负债表修复"同步推进的良性阶段（数据来源：StockTitan，2026年3月5日、5月4日）。</p>
+        <p>2026年第一季度，公司实现营业收入2.632亿美元，同比增长逾110%，归属股东净利润1.088亿美元，每股收益1.04美元（2025年同期为0.78美元），管理层同步重申了全年产量、成本及资本开支指引，并明确下半年产量权重更高（Caraíba、Tucumã及Xavantina三大矿区）（数据来源：StockTitan，2026年5月5日）。我们给予Ero Copper"增持"评级，核心论点如下：</p>
+        <ol style="color:var(--ink-soft);font-size:14.5px;padding-left:20px;">
+          <li><b>公司是本轮铜价上行周期中少有的"纯铜"成长型标的，产量增长路径清晰可见，不依赖单一铜价假设即可实现盈利增长。</b>公司2026年铜产量指引区间67,500-77,500吨，较2025年创纪录的64,307吨仍有明确的量增空间，叠加Tucumã矿区已完成商业化爬坡、Caraíba新增Pilar矿井竖井建设持续推进，公司的产量增长故事具备独立于铜价弹性之外的"量"的确定性支撑。</li>
+          <li><b>铜价宏观环境正处于美联储降息周期、全球供给端结构性紧张与AI需求崛起三重利多交汇的窗口期，但机构预测存在显著分歧，需要审慎评估。</b>我们在第三节对这三大驱动因素进行了详细拆解：美联储降息预期通过压低美元指数对铜价形成支撑；全球铜矿新增供给增速仅约1.4%/年、大型矿山普遍面临品位下降与"十五年以上"的新矿开发周期；AI数据中心用铜需求虽绝对规模有限（摩根大通估算2026年AI数据中心带来约11万吨增量需求，占2,800万吨全球市场不足0.4%），但作为边际增量的"波动性放大器"角色不容忽视。但需要特别提示，高盛对2026年铜价的展望明显更为谨慎（预计LME铜价维持在1万-1.1万美元/吨区间，因供给过剩），与摩根大通、花旗等更为乐观的机构（预测均价1.2万美元/吨以上、乐观情形下看至1.5万美元/吨）形成鲜明分歧，这一机构间的预测离散度本身就是当前铜价环境高度不确定性的直接体现。</li>
+          <li><b>Furnas铜金项目的初步经济评估（PEA）结果亮眼，为公司提供了独立于现有运营资产之外的长期增长期权，但商业化时点较远。</b>2026年3月30日提交的技术报告显示，Furnas项目初始矿山寿命达24年，前15年年均铜当量产量约10.8万吨，税后净现值（8%贴现率）达20.4亿美元，内部收益率27.0%（基于铜价4.60美元/磅、金价3,300美元/盎司假设），全生命周期C1现金成本低至约0.30美元/磅铜（受益于伴生金的显著抵扣效应）。但需要指出，该项目开发启动预计要到2029年，公司持股60%对应的10%权益NAV已大幅提升131%至3.65亿美元、占公司资产层面NAV的15%，这是一个真实但需要耐心等待兑现的中长期价值项，而非近1-2年的业绩驱动因素。</li>
+          <li><b>公司当前不派发常规股息，资本配置策略聚焦于去杠杆与增长资本开支，这一策略的合理性建立在铜价高位窗口期加速产量释放的判断之上。</b>2026年资本开支指引2.75-3.20亿美元，叠加公司自由现金流预测（第三方机构预测2025-2027年分别为1.29亿、3.60亿、3.62亿美元）呈现快速增长态势，若这一预测兑现，公司在完成当前增长资本开支周期后，具备在未来1-2年内启动股东现金回报计划的潜在空间，这是我们持续跟踪的重要信号，而非当前已兑现的投资亮点。</li>
+          <li><b>估值层面，不同方法论给出的结论存在真实分歧，当前股价大致处于多空双方论据的交汇地带。</b>以最新股价26.87美元计算，公司远期市盈率约6-7倍，显著低于金属矿业行业平均水平（加拿大矿业行业平均远期P/E约5倍，公司这一比较基准本身处于行业中性水平而非明显低估）；分析师一致目标价中枢约35-36美元，隐含约30%上行空间，但覆盖机构评级本身存在分歧（10家买入、8家持有，高盛近期下调至"中性"，目标价从33美元降至31美元）；第三方模型给出的内在价值估计（如Simply Wall St模型约合人民币21.7美元区间的加元折算值）也低于部分乐观分析师目标价，反映市场对公司合理估值中枢的判断本身尚未形成高度共识。</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>关键数据速览</h4>
+        <ul>
+          <li>2025年铜产量：<b>64,307吨</b>（创纪录），2026年指引67,500-77,500吨</li>
+          <li>2026Q1营收：<b>$263.2M</b>（+110%+），归母净利润$108.8M</li>
+          <li>2026Q1 C1现金成本：<b>$2.39/磅</b>，2026全年指引$2.15-2.35/磅</li>
+          <li>净债务：<b>$490.7M</b>，流动性$146.2M，杠杆率1.0-1.2倍区间</li>
+          <li>2026年资本开支指引：<b>$275-320M</b></li>
+          <li>Furnas项目税后NPV(8%)：<b>$20.4亿</b>，IRR 27.0%（60%权益）</li>
+          <li>Furnas开发启动预计时点：<b>2029年</b></li>
+          <li>公司当前股息政策：<b>无常规股息</b>，资本优先用于去杠杆及增长资本开支</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>数据来源交叉核实说明：</b>关于公司净债务杠杆率的具体数值，本报告检索到的不同表述存在差异——Simply Wall St称"净杠杆率从2.4倍改善至1.0倍"，而StockTitan转载的公司官方新闻稿及另一篇分析文章均引用"净债务杠杆率1.2倍"（截至2025年末）及净债务绝对值4.907亿美元（截至2026年一季度末），本报告采用区间呈现（1.0-1.2倍）以反映这一差异，具体请以公司官方财报附注为准。此外，关于2026年全球铜市场供需缺口的具体规模，不同机构报告给出的数字差异极大（从12.4万吨到超过40万吨不等），本报告在第三节中已详细呈现这一分歧而非简单采信单一数字。分析师目标价方面，不同数据平台涉及加元（CA$）与美元（US$）两种计价单位，本报告已尽力在正文中注明币种，但仍提示投资者在跨平台比较目标价时需特别注意汇率换算（本报告采用约1加元=0.735美元的近似汇率）。</div>
+  </div>
+</section>
+
+<section id="business-model">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>商业模式与资产组合：巴西多矿区铜金组合</h2></div>
+    <div class="seg-grid">
+      <div class="seg-card">
+        <div class="sname">Caraíba矿区（巴伊亚州）</div>
+        <div class="sval">核心现金流资产</div>
+        <div class="sgrowth pos">Pilar竖井建设中</div>
+        <p>公司历史最悠久的核心铜矿资产，位于库拉萨河谷，新建Pilar矿井竖井是公司当前增长资本开支的重点投向之一，旨在延长矿山寿命并提升产能。</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">Tucumã矿区（帕拉州）</div>
+        <div class="sval">新近商业化投产</div>
+        <div class="sgrowth pos">爬坡贡献增量</div>
+        <p>露天铜矿，是公司近年产量增长的核心驱动力之一，已完成商业化爬坡，2026年下半年权重更高的产量释放预期主要来自该矿区及Caraíba矿区的协同贡献。</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">Xavantina矿区（马托格罗索州）</div>
+        <div class="sval">金银副产品</div>
+        <div class="sgrowth pos">基础设施升级中</div>
+        <p>2026年黄金产量指引4-5万盎司，公司持续推进该矿区基础设施升级，金银产出为公司提供了铜价之外的第二金属价格敞口，一定程度分散单一商品价格风险。</p>
+      </div>
+    </div>
+    <div class="callout gold"><b>Furnas项目：与Vale Base Metals的战略合作是公司长期成长期权的核心。</b>公司通过与全球领先矿业公司淡水河谷基础金属的合作协议，持有位于卡拉加斯矿产带（巴西最重要的矿产资源带之一，全球知名的高品位铁矿及多金属成矿带）的Furnas铜金项目60%权益。PEA显示该项目初始资本开支约12.8亿美元，规模显著大于公司当前市值体量，这意味着项目的最终开发决策大概率将涉及额外的项目融资安排（如引入战略投资者、项目层面债务融资或与Vale进一步的权益/资金安排调整），这是评估该项目对公司整体资本结构潜在影响时需要纳入考量的关键变量。</div>
+  </div>
+</section>
+
+<section id="copper-macro">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>铜价宏观三重驱动分析：美联储、全球资本开支与供给、AI需求</h2></div>
+    <p>本报告重点分析铜价的三大宏观驱动因素。我们认为，理解这三重驱动因素的相互作用及其内在的不确定性，是评估Ero Copper这类纯铜标的股价弹性的前提，而非简单假设"铜价只会上涨"。</p>
+
+    <h3>驱动一：美联储货币政策周期</h3>
+    <div class="grid-2">
+      <div>
+        <p>铜价与美元指数historically呈现较强的负相关关系——作为以美元计价的大宗商品，美元走弱通常会提升以非美元货币计价的购买力，从而对铜价形成支撑。市场参与者普遍预期，随着美联储逐步下调利率以支持美国经济，美元将走弱，进而带动铜价上行，这是当前多份行业展望报告中反复提及的看多逻辑之一（数据来源：Argus Media，2026年5月）。同时，美联储从此前5.25%-5.50%高位区间逐步降息，理论上也将刺激资本密集型行业（含矿业本身的资本开支活动）的投资意愿，通过提振设备采购、产能扩张及库存投资等渠道间接利好铜需求（数据来源：Mead Metals行业展望，2025年12月）。</p>
+        <p>但这一逻辑链条并非线性确定——美联储降息节奏本身仍取决于美国通胀及就业数据的演变，若降息节奏慢于市场预期，美元走弱及铜价上行的逻辑将面临阶段性证伪风险；此外，即便美联储如期降息，美元走势也同时受到其他主要经济体货币政策相对变化、地缘政治风险偏好等多重因素共同影响，并非美联储政策的单一函数。</p>
+      </div>
+      <div class="card">
+        <h4>美联储驱动逻辑关键点</h4>
+        <ul>
+          <li>降息→美元走弱→铜价（以美元计价）上行的传导逻辑获市场普遍认可</li>
+          <li>降息同时刺激资本密集型行业投资意愿，间接利好铜需求</li>
+          <li>该逻辑的实现高度依赖降息节奏是否符合市场预期</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>驱动二：全球资本开支与供给端结构性约束</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>供给端紧张的结构性论据</h4>
+        <ul>
+          <li>全球铜矿新增供给增速仅约<b>1.4%/年</b>，显著慢于需求增速预期（数据来源：Intellectia.ai，2026年）</li>
+          <li>现有大型矿山（如必和必拓Escondida、自由港Grasberg）普遍面临品位下降、开采深度增加带来的成本上升</li>
+          <li>从新发现到投产的"一级"（tier-one）矿山开发周期普遍超过<b>15年</b>，主因审批与ESG合规要求趋严（数据来源：Skillings，2026年6月）</li>
+          <li>美国CME铜仓库库存已升至历史新高<b>逾45.3万吨</b>，超过2003年1月创下的此前纪录（约36万吨），部分对冲短期供给紧张预期（数据来源：Argus Media，2026年5月）</li>
+        </ul>
+      </div>
+      <div>
+        <p>供给端约束是当前铜价结构性看多逻辑的核心支柱之一——不同于AI等新兴需求可以相对快速地通过技术迭代或替代方案调整，矿山供给的扩张受到地质禀赋、审批周期、资本开支规模及环保合规要求的多重刚性约束，即便当前铜价已处于历史高位、理论上应激励矿业公司加大资本开支，但从投资决策到实际新增产量释放的时滞极长，这正是Ero Copper这类已具备现成开发中项目（Furnas PEA已完成）及现有运营矿山产量爬坡空间（Tucumã、Pilar竖井）的公司相对稀缺的原因。但同时，美国铜库存创纪录高位这一现象也提示，市场对"迫在眉睫的供给短缺"这一叙事存在一定程度的提前对冲行为（可能与关税政策预期下的囤货行为相关），意味着短期物理供需面可能比长期结构性叙事更为宽松，这是投资者评估铜价短期弹性时需要审慎的信号。</p>
+        <p>值得一提的是，机构对2026年铜市场供需平衡状态的量化预测存在显著分歧：一份报告预测2026年缺口达12.4万吨（较2025年150万吨...原文为150,000吨即15万吨，2027年扩大），另一份报告预测2026年缺口将从2025年的约23万吨扩大至超过40万吨，两组数字之间的巨大差异本身反映出即便是专业机构，对铜市场供需平衡这一核心变量的测算方法与假设也远未达成共识，这是本报告对短期铜价预测保持审慎的重要原因。</p>
+      </div>
+    </div>
+
+    <h3>驱动三：需求端结构性变化——AI数据中心的边际放大器角色</h3>
+    <div class="grid-2">
+      <div>
+        <p>AI数据中心建设对铜需求的拉动，是近两年铜价叙事中最具话题性但也最容易被误读的变量。据摩根大通测算，2026年AI数据中心相较"无AI"基准情形，将带来约<b>11万吨</b>的增量铜需求，这一数字相较于全球约2,800万吨的铜市场总规模而言，占比不足0.4%，绝对体量并不足以单独扭转铜市场的供需平衡（数据来源：Skillings，2026年6月）。但这一增量需求的意义在于其"边际放大器"效应——在一个本就供给紧张、库存/消费比处于历史低位的市场中，即便是相对有限的增量需求，也可能因为发生在"刀刃上"（razor's edge）的紧平衡状态，而对价格产生超出其绝对占比的波动放大效应。</p>
+        <p>更长期看，标普全球的一份报告预测，受AI数据中心、电动车及可再生能源三大领域电气化驱动，全球铜需求可能在2040年前较2025年的2,800万吨增长50%至4,200万吨，若供给端投资不能同步加速，到2040年可能面临近1,000万吨的潜在缺口（数据来源：Stocktwits援引S&P Global报告，2026年3月）。高盛的研究同样指出，电网及电力基础设施相关需求（受AI及国防等战略领域投资驱动）预计将贡献2030年前铜需求增长的<b>60%以上</b>——这意味着，与其将AI视为铜需求的"独立驱动力"，更准确的理解是AI数据中心建设是"电网/电力基础设施投资"这一更宏观需求主题下的重要子集，与传统电气化、可再生能源需求共同构成结构性支撑。</p>
+      </div>
+      <div class="card">
+        <h4>AI用铜需求关键数据</h4>
+        <ul>
+          <li>2026年AI数据中心增量铜需求（JPMorgan估算）：<b>约11万吨</b>（占全球市场&lt;0.4%）</li>
+          <li>2025→2040年全球铜需求增长预测（S&P Global）：<b>2,800万吨→4,200万吨（+50%）</b></li>
+          <li>2040年潜在缺口（若供给不加速）：<b>近1,000万吨</b></li>
+          <li>电网/电力基础设施占2030年前铜需求增长比重（高盛）：<b>超60%</b></li>
+          <li>2025Q4中国精炼铜需求同比（高盛数据）：<b>-8%</b>（近期中国需求走弱信号，与"强劲中国需求"的乐观叙事形成对照）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout warn"><b>铜价宏观展望的审慎综合判断：</b>综合三重驱动因素，我们认为当前铜价环境呈现"结构性看多逻辑扎实、但短期价格路径高度不确定"的特征。美联储降息周期、供给端刚性约束、AI及电气化驱动的需求增长，三者共同构成了铜作为"战略性金属"而非单纯周期性工业品的长期叙事基础，这也是机构投资者近期将资金从贵金属向铜等"增长导向型"资产再配置的重要背景（数据来源：TradingKey，2026年3月）。但机构对铜价的具体预测存在真实且显著的分歧——高盛预计2026年LME铜价将维持在1万-1.1万美元/吨区间（因预期供给过剩），而摩根大通、花旗的预测中枢显著更高（1.2万-1.5万美元/吨区间），叠加近期中国精炼铜需求同比走弱、美国铜库存创历史新高等短期宽松信号，投资者不应简单假设铜价将持续单边上行，Ero Copper的股价表现在中短期内仍将随铜价的实际波动路径而非单一叙事线性演绎。</div>
+  </div>
+</section>
+
+<section id="financials">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>财务质量分析：产量爬坡与去杠杆同步推进</h2></div>
+    <table>
+      <thead><tr><th>指标</th><th>FY2025</th><th>2025Q1</th><th>2026Q1</th><th>同比</th><th>2026年全年指引</th></tr></thead>
+      <tbody>
+        <tr><td>铜产量</td><td>64,307吨（创纪录）</td><td>—</td><td>17,287吨</td><td>—</td><td>67,500-77,500吨</td></tr>
+        <tr><td>金产量（Xavantina等）</td><td>52,290盎司</td><td>—</td><td>5,495盎司</td><td>—</td><td>4-5万盎司</td></tr>
+        <tr><td>营业收入</td><td>—</td><td>约$125M(估)</td><td>$263.2M</td><td><span class="tag beat">+110%+</span></td><td>—</td></tr>
+        <tr><td>归母净利润</td><td>—</td><td>—</td><td>$108.8M</td><td>—</td><td>—</td></tr>
+        <tr><td>每股收益（EPS）</td><td>—</td><td>$0.78</td><td>$1.04</td><td><span class="tag beat">+33%</span></td><td>一致预期约$4.19（全年）</td></tr>
+        <tr><td>C1现金成本</td><td>—</td><td>—</td><td>$2.39/磅</td><td>—</td><td>$2.15-2.35/磅</td></tr>
+        <tr><td>净债务</td><td>—</td><td>—</td><td>$490.7M</td><td>较2025年同期-$71.1M</td><td>—</td></tr>
+        <tr><td>资本开支</td><td>—</td><td>—</td><td>—</td><td>—</td><td>$275-320M</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：公司2025年第四季度及全年、2026年第一季度业绩公告（StockTitan转载，2026年3月5日、5月4-5日）。2025Q1营收为基于同比增速反推的估算值，请以公司原始披露为准。</p>
+    <div class="chart-box"><svg viewBox="0 0 680 340" style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg"><text x="340.0" y="26" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13" font-weight="700" fill="#1a231e">营收与EPS同比趋势</text><line x1="70" y1="280.0" x2="620" y2="280.0" stroke="#e0e8e0" stroke-width="1"/><text x="62" y="284.0" text-anchor="end" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#83917f">0</text><line x1="70" y1="205.0" x2="620" y2="205.0" stroke="#e0e8e0" stroke-width="1"/><text x="62" y="209.0" text-anchor="end" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#83917f">100</text><line x1="70" y1="130.0" x2="620" y2="130.0" stroke="#e0e8e0" stroke-width="1"/><text x="62" y="134.0" text-anchor="end" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#83917f">200</text><line x1="70" y1="55.0" x2="620" y2="55.0" stroke="#e0e8e0" stroke-width="1"/><text x="62" y="59.0" text-anchor="end" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#83917f">300</text><text x="628" y="284.0" text-anchor="start" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#b5651d">0.0</text><text x="628" y="209.0" text-anchor="start" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#b5651d">0.4</text><text x="628" y="133.99999999999997" text-anchor="start" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#b5651d">0.8</text><text x="628" y="59.0" text-anchor="start" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#b5651d">1.2</text><text x="62" y="47" text-anchor="end" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#83917f">百万美元</text><text x="628" y="47" text-anchor="start" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#83917f">美元/股</text><rect x="143.5" y="186.2" width="55" height="93.8" fill="#1c3b52" rx="2"/><text x="171.0" y="181.2" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#1c3b52">125</text><rect x="216.5" y="133.8" width="55" height="146.2" fill="#b5651d" rx="2"/><text x="244.0" y="128.8" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#b5651d">0.78</text><text x="207.5" y="298" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#4c5a4f">2025Q1(估)</text><rect x="418.5" y="82.6" width="55" height="197.4" fill="#1c3b52" rx="2"/><text x="446.0" y="77.6" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#1c3b52">263.2</text><rect x="491.5" y="85.0" width="55" height="195.0" fill="#b5651d" rx="2"/><text x="519.0" y="80.0" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#b5651d">1.04</text><text x="482.5" y="298" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#4c5a4f">2026Q1</text><rect x="190" y="309" width="11" height="11" fill="#1c3b52"/><text x="206" y="318" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#4c5a4f">营业收入（百万美元）</text><rect x="370" y="309" width="11" height="11" fill="#b5651d"/><text x="386" y="318" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#4c5a4f">EPS（美元）</text></svg></div>
+
+    <h3>资本配置观察</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>去杠杆进展</h4>
+        <ul>
+          <li>净债务同比下降$71.1M，杠杆率改善至1.0-1.2倍区间（不同数据源存在小幅差异）</li>
+          <li>流动性$146.2M，为持续的增长资本开支及潜在市场波动提供缓冲</li>
+          <li>管理层明确表态"强调资产负债表实力，同时为增长项目及运营改善提供资金"</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>自由现金流展望（第三方预测，非公司指引）</h4>
+        <ul>
+          <li>2025E：约$129M</li>
+          <li>2026E：约$360M</li>
+          <li>2027E：约$362M</li>
+          <li>若这一快速增长的自由现金流预测兑现，将为公司未来资本回报能力提供坚实基础，但需注意这是第三方机构预测而非公司官方指引</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mine-cost">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>专题分析：分矿成本结构与铜价/产量敏感性分析</h2></div>
+    <p>矿产企业的投资价值评估，理论上应基于每个矿区的全成本（含维持性资本开支的AISC口径）与产品价格假设，构建覆盖不同价格/产量组合的收益区间，而非仅依赖单一的合并层面成本数字。本节据此展开分析，同时如实说明公开数据的可得性局限。</p>
+
+    <h3>分矿区成本结构（2026年，按公开披露数据整理）</h3>
+    <table>
+      <thead><tr><th>矿区</th><th>金属</th><th>2026年C1现金成本指引</th><th>2026年AISC指引</th><th>2026Q1实际C1成本</th><th>成本趋势备注</th></tr></thead>
+      <tbody>
+        <tr><td>合并口径（Caraíba+Tucumã）</td><td>铜</td><td>$2.15-2.35/磅</td><td>公司未单独披露合并铜AISC指引</td><td>$2.39/磅</td><td>H1高于指引区间，H2随Caraíba品位提升逐季下降；2027年指引已预告上移至$2.30-2.50/磅（品位下降+运输成本上升+雷亚尔汇率走强）</td></tr>
+        <tr><td>Caraíba（巴伊亚州）</td><td>铜</td><td>未单独披露</td><td>未单独披露</td><td>$2.79/磅（8,826吨）</td><td>受Pilar矿井计划性采场排序及Surubim贡献减少影响，Q1成本明显高于合并平均，预期随品位改善及Pilar产能释放而逐步下降</td></tr>
+        <tr><td>Tucumã（帕拉州）</td><td>铜</td><td>未单独披露</td><td>未单独披露</td><td>约$1.97/磅（本报告估算，非公司披露）</td><td>本报告基于合并成本与Caraíba产量/成本反推估算Tucumã单位成本，仅供参考，实际请以公司分矿区披露为准（若有）</td></tr>
+        <tr><td>Xavantina（马托格罗索州）</td><td>金</td><td>$1,000-1,250/盎司</td><td>$2,000-2,500/盎司</td><td>C1 $2,120/盎司；AISC $4,441/盎司</td><td>Q1因通风制冷系统升级导致产量偏低、单位成本大幅高于全年指引，预期随基础设施于4月底基本完工、下半年产量释放而回落至指引区间</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：公司2026年第一季度MD&A（SEC官网，2026年5月4日）、Yahoo Finance（2026年4月8日）、公司2025年年报及2026年指引（GlobeNewswire，2026年3月5日）。<b>关键数据局限说明：</b>公司在公开披露的季度报告及新闻稿中，仅完整披露了黄金业务（Xavantina）的C1及AISC分项数据，对于两大铜矿（Caraíba、Tucumã）仅在个别季度披露了单矿区C1现金成本（如本季度Caraíba的$2.79/磅），而全年合并铜AISC指引及分矿区AISC数据均未见公开披露。表中Tucumã单位成本为本报告基于合并数据与Caraíba已知数据反推的估算值，标注为"本报告估算"以区别于公司官方披露数据，请投资者对此保持审慎，并以公司未来可能披露的更细分数据为准。</p>
+
+    <h3>铜价—产量二维敏感性分析：简化经营现金利润区间测算</h3>
+    <p>鉴于公司未完整披露分矿区AISC数据，我们采用合并层面C1现金成本指引中值（$2.25/磅）作为简化假设，测算不同铜价与产量组合下，公司铜业务的经营现金毛利（价格与现金成本之差 × 产量，未扣除维持性/扩张性资本开支、折旧摊销、公司层面费用、税项及黄金业务贡献），以呈现"收益区间"概念。该测算是一个简化的方向性框架，而非精确的净利润预测模型。</p>
+    <table>
+      <thead><tr><th>铜价情景（$/磅）</th><th>67,500吨（指引下限）</th><th>72,500吨（指引中值）</th><th>77,500吨（指引上限）</th></tr></thead>
+      <tbody>
+        <tr><td>$4.00（悲观，接近高盛区间下沿）</td><td>约$260M</td><td>约$280M</td><td>约$299M</td></tr>
+        <tr><td>$4.50</td><td>约$335M</td><td>约$360M</td><td>约$385M</td></tr>
+        <tr><td>$5.00</td><td>约$409M</td><td>约$440M</td><td>约$470M</td></tr>
+        <tr><td>$5.50（接近当前LME现货水平附近）</td><td>约$484M</td><td>约$520M</td><td>约$555M</td></tr>
+        <tr><td>$6.00（乐观，接近花旗预测区间）</td><td>约$558M</td><td>约$599M</td><td>约$641M</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">测算方法：经营现金毛利（简化口径）=（铜价-合并C1现金成本中值$2.25/磅）× 2,204.62磅/吨 × 铜产量。该测算未包含：（1）黄金业务（Xavantina）贡献，若按2026年指引中值产量4.5万盎司、金价假设$3,300/盎司、AISC中值$2,250/盎司计算，可额外贡献约$47M现金毛利；（2）维持性及扩张性资本开支（2026年指引$2.75-3.20亿美元）；（3）公司层面SG&A费用、利息支出及税项。将上述简化经营现金毛利与已知的资本开支指引对比可见，即便在悲观情景（铜价$4.00/磅、产量67,500吨，现金毛利约$260M）下，叠加黄金贡献后的现金流入（约$307M）也大致能够覆盖公司资本开支指引下限（$275M），但安全边际有限；而在基准至乐观情景下，公司具备较为充裕的现金流覆盖资本开支及去杠杆需求的能力。这一测算方向与第三方机构对公司2026-2027年自由现金流大幅增长（$360M、$362M）的预测在量级上基本吻合，形成一定的交叉验证。</p>
+    <div class="callout warn"><b>敏感性分析方法论局限的坦诚说明：</b>本测算是基于公开可得的合并层面成本指引所做的简化估算，并非严谨的分矿区DCF模型或公司官方的精细化财务预测。精确的分矿区全成本敏感性分析，理论上需要包括：各矿区独立的AISC数据（含维持性资本开支分摊）、各矿区的品位及回收率曲线、各矿区适用的特许权使用费及所得税差异、汇率（雷亚尔/美元）敏感性等多重变量，这些细粒度数据未能在公司现有公开披露文件中完整获取。本报告选择呈现一个简化但方向正确的敏感性框架，并如实说明其局限性，而非制造虚假精确度，这是我们在数据处理原则上的一贯立场。</div>
+    <div class="chart-box"><svg viewBox="0 0 680 370" style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg"><text x="340.0" y="24" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12" font-weight="700" fill="#1a231e">简化经营现金毛利敏感性（铜价×产量，百万美元，不含黄金贡献）</text><line x1="60" y1="295.0" x2="650" y2="295.0" stroke="#e0e8e0" stroke-width="1"/><text x="52" y="299.0" text-anchor="end" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#83917f">0</text><line x1="60" y1="225.57142857142856" x2="650" y2="225.57142857142856" stroke="#e0e8e0" stroke-width="1"/><text x="52" y="229.57142857142856" text-anchor="end" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#83917f">200</text><line x1="60" y1="156.14285714285714" x2="650" y2="156.14285714285714" stroke="#e0e8e0" stroke-width="1"/><text x="52" y="160.14285714285714" text-anchor="end" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#83917f">400</text><line x1="60" y1="86.71428571428572" x2="650" y2="86.71428571428572" stroke="#e0e8e0" stroke-width="1"/><text x="52" y="90.71428571428572" text-anchor="end" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#83917f">600</text><text x="52" y="44" text-anchor="end" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#83917f">百万美元</text><rect x="77.0" y="204.7" width="24" height="90.3" fill="#c9d6c9" rx="2"/><rect x="107.0" y="197.8" width="24" height="97.2" fill="#b5651d" rx="2"/><rect x="137.0" y="191.2" width="24" height="103.8" fill="#1c3b52" rx="2"/><text x="119.0" y="311" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" font-size="9" fill="#4c5a4f">$4.00/磅</text><rect x="195.0" y="178.7" width="24" height="116.3" fill="#c9d6c9" rx="2"/><rect x="225.0" y="170.0" width="24" height="125.0" fill="#b5651d" rx="2"/><rect x="255.0" y="161.3" width="24" height="133.7" fill="#1c3b52" rx="2"/><text x="237.0" y="311" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" font-size="9" fill="#4c5a4f">$4.50/磅</text><rect x="313.0" y="153.0" width="24" height="142.0" fill="#c9d6c9" rx="2"/><rect x="343.0" y="142.3" width="24" height="152.7" fill="#b5651d" rx="2"/><rect x="373.0" y="131.8" width="24" height="163.2" fill="#1c3b52" rx="2"/><text x="355.0" y="311" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" font-size="9" fill="#4c5a4f">$5.00/磅</text><rect x="431.0" y="127.0" width="24" height="168.0" fill="#c9d6c9" rx="2"/><rect x="461.0" y="114.5" width="24" height="180.5" fill="#b5651d" rx="2"/><rect x="491.0" y="102.3" width="24" height="192.7" fill="#1c3b52" rx="2"/><text x="473.0" y="311" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" font-size="9" fill="#4c5a4f">$5.50/磅</text><rect x="549.0" y="101.3" width="24" height="193.7" fill="#c9d6c9" rx="2"/><rect x="579.0" y="87.1" width="24" height="207.9" fill="#b5651d" rx="2"/><rect x="609.0" y="72.5" width="24" height="222.5" fill="#1c3b52" rx="2"/><text x="591.0" y="311" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" font-size="9" fill="#4c5a4f">$6.00/磅</text><rect x="120" y="320" width="11" height="11" fill="#c9d6c9"/><text x="136" y="329" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#4c5a4f">67,500吨（指引下限）</text><rect x="320" y="320" width="11" height="11" fill="#b5651d"/><text x="336" y="329" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#4c5a4f">72,500吨（指引中值）</text><rect x="520" y="320" width="11" height="11" fill="#1c3b52"/><text x="536" y="329" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" fill="#4c5a4f">77,500吨（指引上限）</text></svg></div>
+  </div>
+</section>
+
+<section id="price-trend">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>股价走势分析</h2></div>
+    <p>Ero Copper股价在过去数月呈现出与铜矿股典型特征相符的高波动性，本节梳理近期可交叉验证的价格节点，帮助投资者理解当前26.87美元这一价格所处的历史区间位置。</p>
+    <table>
+      <thead><tr><th>时间节点（约）</th><th>股价</th><th>阶段特征</th></tr></thead>
+      <tbody>
+        <tr><td>2026年2月前后</td><td>约US$29.72</td><td>年度业绩发布（3月5日）前的基准价格水平</td></tr>
+        <tr><td>2026年4月8日</td><td>US$23.50</td><td>阶段性回调，市值约$24.6亿，企业价值约$29.6亿；具体回调原因本报告未能完全归因，可能与当期铜价波动或市场风险偏好变化相关</td></tr>
+        <tr><td>2026年5月上旬（估算，源自加元报价折算）</td><td>约US$28.6-31.2（原始CA$38.96-42.50）</td><td>强劲反弹阶段，一周内涨幅曾达15%-17%，与Q1财报（5月4日）超预期及铜价走强窗口期重合</td></tr>
+        <tr><td>2026年5月12日</td><td>约US$30.7（原始CA$41.80附近）</td><td>公司董事Lyle Braaten在此价位附近出售约1万股，为近三个月最大内部人减持</td></tr>
+        <tr><td>2026年6-7月（近期，源自ChartMill快照）</td><td>约US$26.21-26.40</td><td>较5月高点显著回落，反映前期涨幅的部分回吐</td></tr>
+        <tr><td>2026年7月21日（最新）</td><td>US$26.87</td><td>较5月估算高点回落约14%-18%，较4月低点仍高出约14%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：Yahoo Finance（2026年4月8日）、Simply Wall St（估算日期2026年5-6月，原始数据为加元计价，本报告按约1加元=0.735美元的近似汇率折算，可能与实际交易日汇率存在偏差）、ChartMill（近期快照）、2026年7月21日（最新可得）收盘价。<b>需要特别提示：</b>由于部分数据源以加元（TSX上市地）计价、部分以美元（NYSE上市地）计价，且具体日期在原始资料中表述较为模糊（如"上周""近期"等相对时间表述），本报告在还原完整价格时间线时存在一定的精确度局限，上表中标注"估算"的价格点请投资者审慎参考，不作为精确的历史交易价格依据。</p>
+
+    <div class="grid-2">
+      <div>
+        <p><b>股价波动的可能解释：</b>公司股价在2026年2月至7月的约五个月内，经历了"高位28-30美元→回调至23.5美元→反弹至28-31美元区间→再度回落至26-27美元"的完整波动周期，这种波动幅度（单次回调或反弹幅度普遍在15%-20%区间）显著高于大盘蓝筹股的正常波动水平，但与铜矿股（尤其是新兴市场铜矿股）的历史波动特征基本吻合。驱动这一波动的因素可能包括：（1）铜价本身在此期间的波动（本报告第三节已详细分析铜价宏观环境的不确定性）；（2）公司季度业绩发布（3月5日、5月4日）带来的信息冲击；（3）巴西雷亚尔汇率波动对公司美元计价财务表现的影响；（4）更广泛的大宗商品及新兴市场风险偏好变化。</p>
+        <p><b>当前价位的历史区间定位：</b>以7月21日收盘价26.87美元衡量，公司股价大致处于本报告梳理的近五个月区间（23.50-31.20美元附近）的中位数偏下位置，既非阶段性最低点，也未接近阶段性高点。结合本报告第五节的估值分析（远期P/E约6.4倍，分析师一致目标价中枢35-36美元），我们认为当前价位为具备中长期视角的投资者提供了相对合理的介入区间，但鉴于股价本身的高波动性特征，不排除短期内进一步向23-24美元区间回落的可能性，投资者应做好相应的仓位管理准备，而非期待价格线性单向运行。</p>
+      </div>
+      <div class="card">
+        <h4>股价走势关键数据</h4>
+        <ul>
+          <li>近5个月价格区间（估算）：<b>约US$23.50-31.20</b></li>
+          <li>当前价格（7月21日）：<b>US$26.87</b>，处于区间中位数偏下</li>
+          <li>4月8日至今累计涨幅：<b>约+14%</b></li>
+          <li>5月估算高点至今累计跌幅：<b>约-14%至-18%</b></li>
+          <li>近期波动性特征：<b>单次回调/反弹幅度普遍15%-20%，显著高于大盘</b></li>
+          <li>近期财报发布对股价的历史影响：<b>平均单次波动约1.98%（数据来源：StockTitan统计）</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="valuation">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2>估值分析：相对估值为主，DCF交叉验证</h2></div>
+    <table>
+      <thead><tr><th>估值参考点</th><th>数值</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>远期P/E（基于一致预期EPS约$4.19）</td><td>约6.4倍</td><td>行业平均约5倍（加拿大矿业），非明显低估亦非明显高估</td></tr>
+        <tr><td>分析师一致目标价（美元口径，21家覆盖）</td><td>约$35.26（ChartMill），中位数$36.00（TickerNerd）</td><td>隐含约30%-34%上行空间</td></tr>
+        <tr><td>高盛目标价（近期下调，"中性"评级）</td><td>$31（原$33）</td><td>机构中最谨慎的声音之一</td></tr>
+        <tr><td>National Bank目标价（"跑赢大盘"评级）</td><td>C$50（约合$36.8）</td><td>机构中相对乐观的声音</td></tr>
+        <tr><td>Simply Wall St内在价值模型</td><td>约C$29.47（约合$21.7）</td><td>低于当前多数分析师目标价，反映估值方法论分歧</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：ChartMill（2026年7月）、TickerNerd（2026年）、Simply Wall St（2026年5-6月）。不同估值方法论（相对估值P/E法 vs 内在价值/DCF模型）给出的结论存在方向性差异，相对估值法及多数分析师目标价指向当前股价具备上行空间，而部分内在价值模型则显示当前股价已充分甚至略高于模型测算的合理区间，这一分歧本身应作为投资者审慎评估的重要信息，而非简单采信更乐观的一方结论。</p>
+
+    <h3>多情景目标价（12个月）</h3>
+    <div class="scenario-grid">
+      <div class="scenario pess">
+        <div class="stitle">保守情景</div>
+        <div class="prob">对应铜价回落至高盛悲观区间</div>
+        <div class="starget">US$20-24</div>
+        <p>美联储降息节奏慢于预期、全球供给端因高价刺激加速释放导致过剩、中国需求持续走弱（延续2025Q4-8%的疲软趋势），LME铜价回落至高盛预测的1万-1.1万美元/吨区间下沿，公司产量指引下修或成本超预期，估值向历史区间下沿回归。</p>
+      </div>
+      <div class="scenario base">
+        <div class="stitle">基准情景</div>
+        <div class="prob">对应当前指引与主流铜价预测兑现</div>
+        <div class="starget">US$30-38</div>
+        <p>公司2026年铜产量落于67,500-77,500吨指引区间，铜价维持在摩根大通预测的1.2万美元/吨附近震荡，去杠杆持续推进，Furnas项目开发前景逐步明朗但尚未进入实质性资本投入阶段，估值与分析师一致目标价中枢基本吻合。</p>
+      </div>
+      <div class="scenario opt">
+        <div class="stitle">乐观情景</div>
+        <div class="prob">对应AI需求超预期+供给冲击</div>
+        <div class="starget">US$42-50</div>
+        <p>AI数据中心用铜需求超预期放量叠加某大型矿山出现意外供给中断（如Skillings报告中提及的"完美风暴"情景），铜价向花旗预测的1.5万美元/吨区间靠拢，公司自由现金流预测超预期兑现并启动股东回报计划，Furnas项目权益价值获得市场更充分定价，估值向乐观情景显著扩张。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">本报告12个月目标价区间取US$30-38，基准情景中枢约US$34，较最新股价US$26.87存在约27%的潜在上行空间，与市场分析师一致目标价方向基本吻合，但较部分乐观分析师及第三方模型的极值判断更为审慎，充分反映了本报告在第三节中强调的铜价宏观预测本身存在的显著不确定性。</p>
+  </div>
+</section>
+
+<section id="shareholder-return">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">08</span><h2>股东回报与内部人活动</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>Ero Copper当前未派发常规现金股息，公司资本配置策略明确聚焦于（1）偿还债务以改善资产负债表杠杆水平；（2）为Caraíba（Pilar竖井）、Tucumã产量爬坡及Furnas项目前期工作提供资金支持。这一策略符合公司当前所处的"成长期矿业公司"发展阶段特征——在拥有明确产量增长路径及大型开发中项目（Furnas）的背景下，管理层选择将自由现金流优先投入内生增长，而非过早启动股东现金回报，这一判断本身具备合理性，但也意味着投资者当前无法通过股息获得下行保护，总回报完全依赖资本利得。</p>
+        <p>内部人交易方面，本报告检索到公司董事Lyle Braaten于2026年5月12日出售约1万股，成交价约合每股加元41.80元，占其个人直接持股的约3.8%，是过去三个月内规模最大的内部人减持交易。这一减持规模相对有限，且发生在公司股价此前一周内已上涨约17%的高位区间，更可能反映常规的个人财务规划性质减持，而非对公司前景的负面信号，但仍建议投资者纳入持续观察。</p>
+      </div>
+      <div class="card">
+        <h4>股东回报与内部人活动关键数据</h4>
+        <ul>
+          <li>常规股息：<b>无</b>（资本优先用于去杠杆及增长资本开支）</li>
+          <li>机构持股趋势：<b>近期有所增加</b>（数据来源：Simply Wall St）</li>
+          <li>近期最大内部人交易：<b>董事Lyle Braaten出售约1万股（2026年5月12日，约合CA$41.80/股）</b></li>
+          <li>潜在未来股东回报窗口：<b>取决于自由现金流预测（2026E约$360M）能否兑现</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">09</span><h2>风险提示</h2></div>
+    <div class="risk-matrix">
+      <div class="risk-item high">
+        <div class="rt"><b>铜价大幅波动风险</b><span class="rlevel">高</span></div>
+        <p>公司业绩与铜价高度挂钩，机构对2026年铜价预测存在显著分歧（高盛1万-1.1万美元/吨 vs 摩根大通/花旗1.2万-1.5万美元/吨），若铜价实际路径向悲观情形靠拢，公司盈利及估值将面临显著下修压力。</p>
+        <div class="src">数据来源：本报告第三节铜价宏观分析</div>
+      </div>
+      <div class="risk-item high">
+        <div class="rt"><b>巴西地缘政治与运营国别风险</b><span class="rlevel">高</span></div>
+        <p>公司核心资产100%位于巴西，面临巴西货币（雷亚尔）汇率波动、当地税收及矿业政策变化、基础设施及物流条件等新兴市场特有的运营风险，这是评估公司相较于发达国家矿业公司估值折价/溢价水平时需要考量的结构性因素。</p>
+        <div class="src">数据来源：本报告风险评估框架</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>Furnas项目开发资金与时点不确定性风险</b><span class="rlevel">中</span></div>
+        <p>Furnas项目初始资本开支约12.8亿美元，规模显著超过公司当前市值体量，最终开发决策大概率需要额外融资安排；项目开发预计2029年启动，时间跨度较长，期间铜金价格假设（$4.60/磅Cu、$3,300/oz Au）、成本环境均可能发生变化，PEA阶段的经济性测算存在被后续更详细可行性研究修正的可能性。</p>
+        <div class="src">数据来源：StockTitan，2026年3月30日</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>成本超预期风险</b><span class="rlevel">中</span></div>
+        <p>2026年第一季度C1现金成本已达$2.39/磅，略高于公司全年指引区间上限（$2.35/磅），若下半年成本未能如期回落至指引区间，可能对全年盈利指引的兑现构成压力。</p>
+        <div class="src">数据来源：公司2026年第一季度业绩公告</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>产量爬坡执行风险</b><span class="rlevel">中</span></div>
+        <p>公司2026年产量指引呈现明显的下半年权重倾斜，依赖Caraíba、Tucumã及Xavantina三大矿区的协同放量，若任一矿区出现运营中断、设备故障或人力资源问题，可能影响全年产量指引的实现。</p>
+        <div class="src">数据来源：StockTitan，2026年5月5日</div>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>无股息保护下的估值波动风险</b><span class="rlevel">低-中</span></div>
+        <p>公司当前不派发常规股息，投资者的总回报完全依赖资本利得，在铜价或公司自身经营出现波动时，缺乏股息缓冲的估值支撑，股价波动性可能高于同等基本面但具备稳定分红的同业公司。</p>
+        <div class="src">数据来源：本报告第六节股东回报分析</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rating">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">10</span><h2>投资建议</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b style="color:var(--ink);">评级：增持（Buy）。</b>我们认为Ero Copper作为一家具备清晰产量增长路径（2026年指引较2025年创纪录产量进一步提升）、资产负债表持续改善（净债务同比大幅下降、杠杆率降至1.0-1.2倍）、并拥有Furnas这一高质量长期成长期权的纯铜标的，是参与本轮铜价上行周期的一个具备独立"量增"逻辑支撑的选择，不完全依赖单一乐观铜价假设即可实现盈利增长。当前远期P/E约6.4倍，处于矿业行业平均水平附近，分析师一致目标价中枢隐含约30%上行空间，为投资者提供了合理的风险收益比。但我们同时明确提示，铜价宏观环境本身存在显著的机构预测分歧（详见第三节），公司100%的巴西资产集中度、Furnas项目的远期开发不确定性、以及当前无股息保护的资本结构，均要求投资者以匹配自身风险承受能力的仓位参与，而非将其视为低波动性的防御型配置。</p>
+        <div class="callout">
+          <b>关注信号：</b>（1）2026年8月5日即将披露的第二季度财报，能否验证下半年权重更高的产量爬坡节奏；（2）美联储降息路径及美元指数走势对铜价的实际传导效果；（3）中国精炼铜需求能否从2025Q4的-8%同比降幅中企稳回升；（4）C1现金成本能否回落至全年指引区间；（5）Furnas项目后续可行性研究进展及潜在融资安排细节；（6）公司自由现金流预测（2026E约$360M）的实际兑现情况，及管理层是否释放启动股东回报计划的信号。
+        </div>
+        <p>对于计划配置的投资者，可考虑在基准情景估值区间（US$30-38）内结合季度财报披露节点分批建仓，并将保守情景US$20-24视为止损/加仓评估参考区间；乐观情景US$42-50可作为12个月止盈观察位。鉴于公司当前无股息保护、铜价及巴西国别风险敞口较高，建议以"周期成长型"策略参与，仓位规模应与投资者对铜价及新兴市场矿业股波动性的风险承受能力相匹配，不建议作为防御型资产配置。</p>
+      </div>
+      <div class="card">
+        <h4>交易要点摘要</h4>
+        <ul>
+          <li>评级：<b>增持（Buy）</b></li>
+          <li>12个月目标价区间：<b>US$30-38</b>（基准中枢约US$34）</li>
+          <li>保守情景下限：<b>US$20-24</b></li>
+          <li>乐观情景上限：<b>US$42-50</b></li>
+          <li>核心估值方法：<b>相对估值（P/E）为主，DCF情景分析交叉验证</b></li>
+          <li>核心风险变量：<b>铜价路径、巴西国别风险、Furnas融资不确定性</b></li>
+          <li>股东回报特征：<b>无常规股息，总回报依赖资本利得</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>方法论与数据说明</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">本报告所引用的股价数据（US$26.87）为2026年7月21日收盘价。市值、P/E等估值测算基于该价格及公司最新公开披露财务数据的估算结果，实际交易请以纽约证券交易所/多伦多证券交易所官方实时行情为准。本报告在第一节及第三节中已就净债务杠杆率数据差异、全球铜市场供需缺口预测分歧、分析师目标价币种差异等方面进行了详细说明，建议投资者以公司官方SEC/SEDAR+披露文件及权威财经数据终端的实时数据为最终依据。本报告对铜价宏观三重驱动因素（美联储、全球资本开支与供给、AI需求）的分析基于报告撰写时可获得的公开信息，市场环境及机构预测可能随时变化。</p>
+      </div>
+      <div>
+        <h5>主要数据来源</h5>
+        <ul class="src-list">
+          <li>Ero Copper Corp 2025年第四季度及全年、2026年第一季度业绩公告（StockTitan、GlobeNewswire转载）</li>
+          <li>Ero Copper Furnas铜金项目技术报告/PEA（2026年3月30日）</li>
+          <li>ChartMill、TickerNerd、Simply Wall St、Public.com（2026年5-7月，估值与分析师数据）</li>
+          <li>Argus Media（2026年5月，铜市场展望）、Mead Metals（2025年12月，行业展望）</li>
+          <li>Intellectia.ai、Skillings、TradingKey（2026年3-6月，铜价AI需求专题分析）</li>
+          <li>Goldman Sachs Research（2025年12月，铜价预测）</li>
+        </ul>
+      </div>
+      <div>
+        <h5>报告信息</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">Snail-bird Investment<br>矿产资源研究组<br>报告日期：2026年7月23日<br>深度覆盖 · 评级：增持（Buy）</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      本报告由Snail-bird Investment研究团队独立撰写，仅供参考，不构成任何证券买卖要约或投资建议。报告中的观点、评级及目标价基于报告撰写时可获得的公开信息及分析师的专业判断，可能随市场环境变化而调整，Snail-bird Investment不承诺更新本报告的内容。公司所处的铜矿开采行业受全球宏观经济周期、美联储货币政策、大宗商品价格波动及巴西所在新兴市场特有的政治经济风险影响较大，历史产量及财务表现不构成对未来的保证。本报告中关于铜价的宏观展望基于多家机构存在显著分歧的公开预测数据整理而成，本报告不对任何单一铜价预测的准确性做出保证。本报告中的DCF及相对估值分析基于多项前瞻性假设及Snail-bird Investment研究团队的情景推演，实际结果可能因铜价路径、公司产量执行、Furnas项目进展等因素而与测算结果产生重大偏差，不构成精确目标价承诺。投资者应充分了解相关风险，并根据自身风险承受能力及投资目标独立判断，据此投资操作风险自负。本报告不构成对任何特定投资者的个性化投资建议，亦不对因使用本报告内容而产生的任何直接或间接损失承担责任。
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
