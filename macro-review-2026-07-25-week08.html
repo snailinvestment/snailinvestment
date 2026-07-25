@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026.7.20–7.26 第8周宏观复盘 | 四维驱动三层传导框架</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d1520;--navy:#0a1f3c;--blue:#1a3d6e;--accent:#c8973a;--gold2:#e8b84b;
+  --silver:#8fa3bc;--slate:#3d5570;--fog:#f2f5f9;--white:#ffffff;
+  --green:#1c7a50;--red:#c0392b;--amber:#d97706;--purple:#7c3aed;--teal:#0e7490;
+  --border:rgba(26,61,110,0.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'IBM Plex Sans',sans-serif;background:#eef1f6;color:var(--ink);font-size:13.5px;line-height:1.72;}
+
+.masthead{background:var(--navy);position:relative;overflow:hidden;}
+.masthead::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 70% 30%,rgba(192,57,43,0.22) 0%,transparent 55%),
+             radial-gradient(ellipse at 10% 85%,rgba(200,151,58,0.1) 0%,transparent 50%);}
+.masthead::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(to right,var(--red),var(--accent),#d4291e,transparent);}
+.mi{max-width:1240px;margin:0 auto;padding:52px 40px 44px;position:relative;z-index:1;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--accent);margin-bottom:20px;
+  display:flex;align-items:center;gap:14px;}
+.eyebrow::before{content:'';display:inline-block;width:32px;height:1px;background:var(--accent);}
+.headline{font-family:'Playfair Display',serif;font-size:35px;font-weight:700;
+  color:var(--white);line-height:1.2;letter-spacing:-0.5px;margin-bottom:14px;max-width:880px;}
+.headline em{font-style:italic;color:#fca5a5;}
+.subline{font-size:13px;color:var(--silver);font-weight:300;margin-bottom:36px;}
+.mrow{display:flex;gap:24px;flex-wrap:wrap;}
+.mc{display:flex;flex-direction:column;gap:3px;}
+.mcl{font-size:9px;letter-spacing:1.8px;text-transform:uppercase;color:rgba(143,163,188,.6);}
+.mcv{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:rgba(242,245,249,.92);font-weight:500;}
+
+.alert-bar{padding:11px 40px;display:flex;align-items:center;gap:14px;
+  background:rgba(192,57,43,0.9);border-top:1px solid rgba(252,165,165,0.35);}
+.atext{font-size:11.5px;color:#fff1f2;font-weight:500;}
+.atext strong{color:#fff;}
+
+.ticker-bar{background:rgba(10,31,60,.95);border-top:1px solid rgba(200,151,58,.2);
+  border-bottom:1px solid rgba(200,151,58,.1);padding:10px 40px;
+  display:flex;gap:26px;overflow-x:auto;scrollbar-width:none;}
+.ticker-bar::-webkit-scrollbar{display:none;}
+.tick{display:flex;align-items:center;gap:7px;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:11.5px;}
+.tn{color:var(--silver);font-size:9.5px;letter-spacing:1px;text-transform:uppercase;}
+.tv{color:rgba(242,245,249,.9);font-weight:500;}
+.up{color:#34c97a;font-size:10.5px;}.dn{color:#e05555;font-size:10.5px;}.neu{color:var(--silver);font-size:10.5px;}
+
+.page{max-width:1240px;margin:0 auto;padding:28px 40px 80px;
+  display:grid;grid-template-columns:1fr 308px;gap:22px;align-items:start;}
+.main{display:flex;flex-direction:column;gap:20px;}
+.aside{display:flex;flex-direction:column;gap:20px;}
+
+.card{background:var(--white);border:1px solid var(--border);border-radius:5px;
+  overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.07),0 4px 20px rgba(0,0,0,.05);}
+.ch{padding:14px 22px 13px;border-bottom:1px solid #eaeff6;
+  display:flex;align-items:center;gap:10px;background:linear-gradient(to right,#f7f9fc,#fff);}
+.chb{width:3px;height:17px;border-radius:2px;flex-shrink:0;}
+.chb.b{background:var(--blue);}.chb.g{background:var(--green);}
+.chb.r{background:var(--red);}.chb.a{background:var(--accent);}
+.chb.p{background:var(--purple);}.chb.cn{background:#d4291e;}
+.cht{font-size:10px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--blue);}
+.cb{padding:20px 22px;}.cb.np{padding:0;}
+
+.kpi{display:grid;grid-template-columns:repeat(6,1fr);}
+.kc{padding:18px 16px;border-right:1px solid #eaeff6;border-bottom:1px solid #eaeff6;}
+.kc:nth-child(6n){border-right:none;}
+.kc:nth-last-child(-n+6){border-bottom:none;}
+.kl{font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--silver);margin-bottom:6px;}
+.kn{font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:var(--ink);line-height:1;margin-bottom:5px;}
+.kch{font-size:10.5px;font-weight:600;}
+.pos{color:var(--green);}.neg{color:var(--red);}.mtt{color:var(--silver);}
+
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+thead th{background:#f2f5f9;font-size:9.5px;font-weight:600;letter-spacing:1.2px;
+  text-transform:uppercase;color:#4a6080;padding:9px 12px;text-align:left;border-bottom:1px solid #dde5f0;}
+tbody td{padding:9px 12px;border-bottom:1px solid #edf1f7;color:#2d3d52;vertical-align:top;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:rgba(26,61,110,.025);}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;text-align:right;}
+.muted{color:var(--silver);font-size:11px;}
+.br{font-weight:700;background:rgba(26,61,110,.03);}
+.ar{background:rgba(200,151,58,.05);}
+.gr{background:rgba(28,122,80,.04);}
+.rr{background:rgba(192,57,43,.04);}
+.cnr{background:rgba(212,41,30,.04);}
+
+.tl{display:flex;flex-direction:column;}
+.tl-item{display:grid;grid-template-columns:64px 1fr;gap:0;}
+.tl-item:not(:last-child) .tl-ln{border-left:2px solid #dde5f0;}
+.tl-l{display:flex;flex-direction:column;align-items:center;padding-top:2px;}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;position:relative;z-index:1;border:2px solid white;}
+.dot.b{background:var(--blue);box-shadow:0 0 0 2px var(--blue);}
+.dot.g{background:var(--green);box-shadow:0 0 0 2px var(--green);}
+.dot.r{background:var(--red);box-shadow:0 0 0 2px var(--red);}
+.dot.a{background:var(--accent);box-shadow:0 0 0 2px var(--accent);}
+.tl-ln{flex:1;width:2px;background:#dde5f0;margin-top:4px;}
+.tl-dt{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--silver);margin-top:2px;text-align:center;}
+.tl-r{padding:0 0 20px 14px;}
+.tl-h{font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+.tl-b{font-size:12px;color:#4a6080;line-height:1.6;}
+
+.sc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.sc-card{border:1px solid #dde5f0;border-radius:4px;overflow:hidden;}
+.sc-h{padding:10px 14px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.sc-h.bull{background:rgba(28,122,80,.1);color:var(--green);}
+.sc-h.base{background:rgba(26,61,110,.08);color:var(--blue);}
+.sc-h.bear{background:rgba(192,57,43,.08);color:var(--red);}
+.sc-b{padding:14px;}
+.sc-p{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;margin-bottom:4px;}
+.sc-prob{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--silver);margin-bottom:8px;}
+.sc-desc{font-size:11.5px;color:#4a6080;line-height:1.55;}
+
+.ri{padding:11px 14px;border-left:3px solid;margin-bottom:9px;background:#f9fafc;border-radius:0 3px 3px 0;}
+.ri.h{border-color:var(--red);}.ri.m{border-color:var(--amber);}.ri.l{border-color:var(--silver);}
+.ri-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
+.ri-name{font-size:12px;font-weight:600;color:var(--ink);}
+.badge{font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:2px;text-transform:uppercase;}
+.badge.h{background:rgba(192,57,43,.1);color:var(--red);}
+.badge.m{background:rgba(217,119,6,.1);color:var(--amber);}
+.badge.l{background:rgba(143,163,188,.15);color:var(--slate);}
+.ri-desc{font-size:11.5px;color:#4a6080;}
+
+.ai{margin-bottom:14px;}
+.ar2{display:flex;justify-content:space-between;margin-bottom:5px;font-size:12px;}
+.an{font-weight:500;}.ap{font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--blue);}
+.ab{height:6px;background:#eaeff6;border-radius:3px;overflow:hidden;}
+.af{height:100%;border-radius:3px;}
+.as{font-size:10.5px;color:var(--silver);margin-top:3px;}
+
+.tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;
+  padding:2px 7px;border-radius:2px;text-transform:uppercase;margin-left:5px;vertical-align:middle;}
+.tag-bull{background:rgba(28,122,80,.1);color:var(--green);}
+.tag-bear{background:rgba(192,57,43,.1);color:var(--red);}
+.tag-neu{background:rgba(143,163,188,.15);color:var(--slate);}
+.tag-warn{background:rgba(217,119,6,.12);color:var(--amber);}
+.tag-cn{background:rgba(212,41,30,.1);color:#d4291e;}
+
+.divider{height:1px;background:#eaeff6;margin:16px 0;}
+.fn{font-size:10.5px;color:var(--silver);font-style:italic;margin-top:10px;
+  padding-top:10px;border-top:1px solid #eaeff6;}
+p{margin-bottom:10px;}p:last-child{margin-bottom:0;}strong{color:var(--ink);}
+
+/* 油价大框 */
+.oil-box{background:linear-gradient(135deg,#200a0a,#3d1515);
+  border:1px solid rgba(192,57,43,.5);border-radius:4px;padding:18px;margin-bottom:14px;}
+.oil-tag{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fca5a5;margin-bottom:12px;}
+.oil-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px;}
+.og{text-align:center;padding:12px 8px;background:rgba(255,255,255,.05);border-radius:3px;}
+.og-n{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;color:#fff;}
+.og-l{font-size:9.5px;color:rgba(252,165,165,.7);margin-top:3px;}
+
+/* 半导体框 */
+.sox-box{background:linear-gradient(135deg,#1a0f20,#2d1a35);
+  border:1px solid rgba(139,92,246,.4);border-radius:4px;padding:18px;margin-bottom:14px;}
+.sox-tag{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#c4b5fd;margin-bottom:12px;}
+.sox-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px;}
+.sxg{text-align:center;padding:12px 8px;background:rgba(255,255,255,.05);border-radius:3px;}
+.sxg-n{font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:600;color:#fff;}
+.sxg-l{font-size:9.5px;color:rgba(196,181,253,.7);margin-top:3px;}
+
+/* 关税框 */
+.tariff-box{background:linear-gradient(135deg,#201a0a,#3d3315);
+  border:1px solid rgba(217,119,6,.45);border-radius:4px;padding:18px;margin-bottom:14px;}
+.tariff-tag{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fbbf24;margin-bottom:12px;}
+
+/* 中国专题框 */
+.cn-box{background:linear-gradient(135deg,#200a0a,#2d1010);
+  border:1px solid rgba(212,41,30,.35);border-radius:4px;padding:18px;margin-bottom:14px;}
+.cn-tag{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fca5a5;margin-bottom:12px;}
+.cn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px;}
+.cng{text-align:center;padding:12px 8px;background:rgba(255,255,255,.05);border-radius:3px;}
+.cng-n{font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#fff;}
+.cng-l{font-size:9px;color:rgba(252,165,165,.7);margin-top:3px;}
+
+.week-wrap{background:linear-gradient(135deg,#0a1f3c,#1a1010);border-radius:4px;padding:18px;margin-bottom:14px;}
+.week-title{font-family:'Playfair Display',serif;font-size:15px;color:#fff;font-style:italic;line-height:1.5;}
+.week-attr{font-size:10px;color:rgba(252,165,165,.75);margin-top:8px;letter-spacing:1px;}
+
+.chart-wrap{position:relative;width:100%;}
+
+.rf{background:var(--navy);border-top:1px solid rgba(200,151,58,.15);padding:14px 40px;}
+.rf-inner{max-width:1240px;margin:0 auto;display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;}
+.rl{font-size:9.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);flex-shrink:0;padding-top:1px;}
+.rt{font-size:10px;color:rgba(143,163,188,.65);line-height:1.65;}
+.disc{max-width:1240px;margin:0 auto;padding:10px 40px 20px;
+  font-size:9.5px;color:rgba(143,163,188,.4);background:var(--navy);line-height:1.65;}
+
+@media(max-width:900px){
+  .page{grid-template-columns:1fr;padding:16px 16px 60px;}
+  .mi{padding:36px 20px 30px;}.headline{font-size:24px;}
+  .ticker-bar,.alert-bar,.rf,.disc{padding-left:20px;padding-right:20px;}
+  .kpi{grid-template-columns:repeat(3,1fr);}
+  .kc:nth-child(6n){border-right:1px solid #eaeff6;}
+  .kc:nth-child(3n){border-right:none;}
+  .sc-row{grid-template-columns:1fr 1fr;}
+  .oil-grid,.sox-grid,.cn-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="mi">
+    <div class="eyebrow">全球宏观投资研究 &nbsp;·&nbsp; 四维驱动 — 三层传导框架</div>
+    <h1 class="headline">2026.7.20–7.26（第8周）宏观复盘<br>
+      <em>油价破百：伊朗战事扩大化，芯片继续熔断，关税重启</em>
+    </h1>
+    <p class="subline">7.27–8.2（第9周）展望 &nbsp;|&nbsp; 数据源：CME FedWatch · 美联储 · ECB · EIA · 国家统计局 · CNBC · Bloomberg · Reuters · Trading Economics</p>
+    <div class="mrow">
+      <div class="mc"><span class="mcl">基准日</span><span class="mcv">2026.07.26 (日)</span></div>
+      <div class="mc"><span class="mcl">布伦特周内峰值</span><span class="mcv">$100.69（5月以来首破百）</span></div>
+      <div class="mc"><span class="mcl">WTI周涨幅</span><span class="mcv">约+12%（数月最大单周涨幅）</span></div>
+      <div class="mc"><span class="mcl">Sep加息概率</span><span class="mcv">~80%（CME FedWatch）</span></div>
+      <div class="mc"><span class="mcl">新关税(7.24生效)</span><span class="mcv">对60国10-12.5%（对华12.5%）</span></div>
+      <div class="mc"><span class="mcl">10Y美债</span><span class="mcv">4.67-4.70%（2025年1月来最高）</span></div>
+      <div class="mc"><span class="mcl">Mag7单日蒸发</span><span class="mcv">~$8000亿（7.23因AI资本开支担忧）</span></div>
+      <div class="mc"><span class="mcl">离岸人民币</span><span class="mcv">~6.77-6.78（月内偏强）</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ALERT -->
+<div class="alert-bar">
+  <span style="font-size:14px;">🔥</span>
+  <span class="atext"><strong>本周核心变局：</strong> 伊朗冲突全面失控——美国对伊朗实施连续11天空袭，胡塞武装对红海两艘沙特油轮发动袭击，开辟第二战线，布伦特原油周四(7.23)一度暴涨7%突破$100/桶（5月以来首次），WTI周内涨幅达12%创数月最大单周涨幅；卢比奥公开表态伊朗"没有诚意"和谈，特朗普考虑对伊朗发动"大规模打击"。与此同时，特朗普政府新一轮"301条款"关税（对60国10%-12.5%，对华12.5%）于7.24正式生效；科技巨头财报季（GOOGL、TSLA等）因AI资本开支指引超预期，"美股七雄"单日(7.23)蒸发近8000亿美元市值；欧央行7月维持利率不变但保留9月加息选项；CME FedWatch数据显示9月加息概率飙升至约80%。中国方面，人行月内两次大规模流动性投放（合计1.2万亿元）为月末政治局会议护航，A股在关税冲击下周五(7.24)承压但全周仍录得温和上涨。</span>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="tick"><span class="tn">布伦特周内峰值</span><span class="tv">$100.69</span><span class="dn">▲ 5月来首破百，单日+7%</span></div>
+  <div class="tick"><span class="tn">WTI周内峰值</span><span class="tv">~$92.19</span><span class="dn">▲ 周涨约12%</span></div>
+  <div class="tick"><span class="tn">标普500周</span><span class="tv">-0.6%</span><span class="dn">▼ 连续两周下跌</span></div>
+  <div class="tick"><span class="tn">纳指周</span><span class="tv">-2.1%</span><span class="dn">▼ 半导体拖累</span></div>
+  <div class="tick"><span class="tn">道指周</span><span class="tv">-0.4%</span><span class="dn">▼ 三连跌周</span></div>
+  <div class="tick"><span class="tn">SOX(周四单日)</span><span class="tv">-4.3%</span><span class="dn">▼ 持续调整</span></div>
+  <div class="tick"><span class="tn">SanDisk单日</span><span class="tv">-11%</span><span class="dn">▼ 存储股重挫</span></div>
+  <div class="tick"><span class="tn">Intel(财报超预期)</span><span class="tv">-6.5%至-8%</span><span class="dn">▼ 资本开支担忧盖过业绩</span></div>
+  <div class="tick"><span class="tn">10Y美债</span><span class="tv">4.67-4.70%</span><span class="dn">▲ 2025年1月来最高</span></div>
+  <div class="tick"><span class="tn">Sep加息概率</span><span class="tv">~80%</span><span class="dn">▲ CME FedWatch</span></div>
+  <div class="tick"><span class="tn">伦敦金</span><span class="tv">$4,028-4,056</span><span class="dn">▼ 破位后勉强守住$4,000</span></div>
+  <div class="tick"><span class="tn">新关税生效</span><span class="tv">7.24</span><span class="dn">▼ 对华12.5%</span></div>
+  <div class="tick"><span class="tn">上证综指</span><span class="tv">3,814.20</span><span class="dn">▼ 周五-1.61%，全周仍收涨</span></div>
+  <div class="tick"><span class="tn">离岸人民币</span><span class="tv">6.7740</span><span class="up">▲ 月内偏强</span></div>
+</div>
+
+<!-- PAGE -->
+<div class="page">
+<div class="main">
+
+  <!-- KPI -->
+  <div class="card">
+    <div class="ch"><div class="chb a"></div><span class="cht">本周关键数据快照（7.20–7.26）</span></div>
+    <div class="kpi">
+      <div class="kc"><div class="kl">布伦特周内峰值</div><div class="kn">$100.69</div><div class="kch neg">▲ 5月以来首次破百</div></div>
+      <div class="kc"><div class="kl">WTI周涨幅</div><div class="kn">~+12%</div><div class="kch neg">▲ 数月最大单周涨幅</div></div>
+      <div class="kc"><div class="kl">Sep加息概率</div><div class="kn">~80%</div><div class="kch neg">▲ 由上周~60%大幅上冲</div></div>
+      <div class="kc"><div class="kl">10Y美债收益率</div><div class="kn">4.67-4.70%</div><div class="kch neg">▲ 2025年1月以来最高</div></div>
+      <div class="kc"><div class="kl">新关税(7.24生效)</div><div class="kn">10-12.5%</div><div class="kch neg">▲ 覆盖60国，对华12.5%</div></div>
+      <div class="kc"><div class="kl">标普500 周</div><div class="kn">-0.6%</div><div class="kch neg">▼ 连续第二周下跌</div></div>
+    </div>
+  </div>
+
+  <!-- 伊朗冲突深度 -->
+  <div class="card">
+    <div class="ch"><div class="chb r"></div><span class="cht">一、伊朗冲突全面扩大化 — 油价周内破百，红海开辟第二战线</span></div>
+    <div class="cb">
+      <div class="oil-box">
+        <div class="oil-tag">🛢️ 伊朗-霍尔木兹-红海危机3.0 · 7月20-24日 · 冲突烈度本轮最高</div>
+        <div class="oil-grid">
+          <div class="og"><div class="og-n">11天</div><div class="og-l">美国对伊朗连续空袭天数（截至7.20）</div></div>
+          <div class="og"><div class="og-n">2艘</div><div class="og-l">胡塞武装红海袭击沙特油轮数（7.23新战线）</div></div>
+          <div class="og"><div class="og-n">$100.69</div><div class="og-l">布伦特周四峰值（+7%单日）</div></div>
+          <div class="og"><div class="og-n">"Not Serious"</div><div class="og-l">卢比奥评伊朗和谈诚意</div></div>
+        </div>
+      </div>
+
+
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-l"><div class="dot r"></div><div class="tl-ln"></div><div class="tl-dt">7.20 一</div></div>
+          <div class="tl-r">
+            <div class="tl-h">美国完成对伊朗第11轮空袭；胡塞武装宣布对沙特实施海上禁运</div>
+            <div class="tl-b">布伦特收$89.22（+1.3%），WTI收$83.23（+0.9%），本月累计涨幅约20%。特朗普表示伊朗将为造成美军人员死亡"付出代价"。伊朗外交部发言人巴盖伊向记者暗示中间方持续传话，双方或可基于国家利益推进谈判——短暂缓解市场恐慌情绪，美股周一收跌但盘中一度收窄跌幅。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-l"><div class="dot g"></div><div class="tl-ln"></div><div class="tl-dt">7.21 二</div></div>
+          <div class="tl-r">
+            <div class="tl-h">财报行情主导：纳指、标普受益企业盈利数据回升</div>
+            <div class="tl-b">市场情绪短暂修复，标普500、纳指双双收涨，中东局势暂时退居次席，但地缘风险溢价并未消退，油价维持高位盘整。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-l"><div class="dot a"></div><div class="tl-ln"></div><div class="tl-dt">7.22 三</div></div>
+          <div class="tl-r">
+            <div class="tl-h">卢比奥：伊朗谈判"没有诚意"；布伦特涨3%至$94.07</div>
+            <div class="tl-b">美国国务卿卢比奥公开表态，指伊朗在和谈中缺乏诚意，市场解读为外交路径受阻的强烈信号。布伦特收$94.07（+3%以上），WTI收$86.83（约+3%），本月累计涨幅扩大至20%以上。TD Securities Ryan McKay评论："此轮升级及伊朗对流量的遏制，加速了市场重新定价过程，并再度打开了更极端右尾情景的大门。"</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-l"><div class="dot r"></div><div class="tl-ln"></div><div class="tl-dt">7.23 四</div></div>
+          <div class="tl-r">
+            <div class="tl-h">🔴 红海开辟第二战线：胡塞武装袭击2艘沙特油轮；布伦特单日+7%破$100</div>
+            <div class="tl-b">伊朗也门盟友胡塞武装宣称以无人机与导弹袭击了2艘涉嫌违反其对利雅得所宣布海上禁运的沙特油轮。布伦特单日暴涨约7%，收于$100.69，为5月以来首次突破百元大关；WTI收$92.19（+6%），本月累计涨幅超过30%。同日，"美股七雄"(Magnificent Seven)因AI资本开支超预期指引，单日蒸发市值近8000亿美元，纳指全天下跌逾2%。哈萨克斯坦因CPC出口终端中断而临时减产，进一步收紧供应面。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-l"><div class="dot a"></div><div class="tl-ln"></div><div class="tl-dt">7.24 五</div></div>
+          <div class="tl-r">
+            <div class="tl-h">油价从高位回落；特朗普称正考虑对伊朗"大规模打击"</div>
+            <div class="tl-b">布伦特周五自$100高位回落，因原油仍能通过中东贸易航线运输，供应中断预期部分缓解。但特朗普向Axios表示正"认真考虑一次比以往更大规模"的对伊军事行动，"我很接近做出决定"。10年期美债收益率触及2025年1月以来最高的4.67-4.70%，随后随油价回落小幅收窄。全周WTI累计涨幅约12%，创数月最大单周涨幅。</div>
+          </div>
+        </div>
+      </div>
+      <p class="fn">数据来源：CNBC（7.20/7.22/7.23多篇报道）；Bloomberg（7.19「Brent Oil Price Tops $90」/Saxo Bank Asia Market 7.23）；Al Jazeera；TD Securities研报摘录。</p>
+    </div>
+  </div>
+
+  <!-- 半导体持续调整 -->
+  <div class="card">
+    <div class="ch"><div class="chb p"></div><span class="cht">二、全球半导体持续调整 — Intel财报超预期仍遭抛售，"七雄"单日蒸发8000亿</span></div>
+    <div class="cb">
+      <div class="sox-box">
+        <div class="sox-tag">💥 半导体板块延续第7周弱势 · Intel、SanDisk、Micron集体承压</div>
+        <div class="sox-grid">
+          <div class="sxg"><div class="sxg-n">-4.3%</div><div class="sxg-l">半导体分项指数单日跌幅(7.23)</div></div>
+          <div class="sxg"><div class="sxg-n">-11%</div><div class="sxg-l">SanDisk单日跌幅(7.24)</div></div>
+          <div class="sxg"><div class="sxg-n">-6.5%~-8%</div><div class="sxg-l">Intel跌幅（尽管财报超预期）</div></div>
+          <div class="sxg"><div class="sxg-n">~$8000亿</div><div class="sxg-l">"美股七雄"单日市值蒸发(7.23)</div></div>
+        </div>
+      </div>
+
+      <table style="margin-bottom:16px;">
+        <thead><tr><th>标的/事件</th><th>本周表现</th><th>核心驱动</th></tr></thead>
+        <tbody>
+          <tr class="rr"><td><strong>Intel (INTC)</strong></td><td class="mono neg">周五 -6.5%至-8%</td><td class="muted">Q2业绩大幅超预期，但市场聚焦于资本开支指引及18A制程前景，"利好出尽"式抛售</td></tr>
+          <tr class="rr"><td><strong>SanDisk</strong></td><td class="mono neg">周五单日 -11%</td><td class="muted">存储芯片板块整体重挫，与其他内存股联动下跌</td></tr>
+          <tr class="rr"><td><strong>Micron (MU)</strong></td><td class="mono neg">周一 -7%</td><td class="muted">跟随板块系统性调整，资金持续从存储芯片板块流出</td></tr>
+          <tr><td>Broadcom (AVGO)</td><td class="mono neg">-2.7%</td><td class="muted">板块联动下跌</td></tr>
+          <tr><td>AMD</td><td class="mono neg">-3.3%</td><td class="muted">板块联动下跌</td></tr>
+          <tr><td>SMH半导体ETF</td><td class="mono neg">周内多日下跌3%左右</td><td class="muted">连续第7周处于调整通道</td></tr>
+          <tr class="rr"><td><strong>ASMI / ASML（荷兰）</strong></td><td class="mono neg">-4.6% / -3.8%</td><td class="muted">欧洲半导体设备股同步下挫，反映全球联动</td></tr>
+          <tr><td>STMicroelectronics</td><td class="mono neg">-5%</td><td class="muted">同上</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>Wells Fargo Investment Institute定性："健康的现实检验"：</strong> 首席投资官Darrell Cronk指出，"半导体与AI交易正在经历一次健康的现实检验……近期技术面恶化增加了向长期支撑位（包括200日均线）深度回调的风险。虽然从超卖状态出现短期战术性反弹并不令人意外，但中期上升趋势已被打破。" VanEck半导体ETF(SMH)在过去4周内已录得第三次单周下跌。</p>
+
+      <p><strong>核心矛盾延续——基本面强劲 vs 估值消化：</strong> Intel财报大幅超出华尔街预期，但股价不涨反跌，市场焦点已从"业绩是否达标"转向"资本开支是否可持续支撑当前估值"。这一现象与上周（7.13-19）SK海力士、三星"业绩创纪录仍遭抛售"如出一辙，反映AI硬件资产的估值锚定逻辑正发生结构性切换——从"营收增速驱动"转向"自由现金流/资本开支比率驱动"。</p>
+
+      <p style="margin-bottom:0;"><strong>"美股七雄"单日蒸发8000亿的深层信号：</strong> 周四(7.23)科技巨头财报季进入高峰（GOOGL、TSLA等已公布），尽管多数公司业绩超预期，但市场对AI相关资本开支规模持续扩大的可持续性产生疑虑，叠加油价单日暴涨7%的宏观冲击，形成"戴维斯双杀"。TheStreet报道："投资者正在评估科技巨头资本开支上升的报告，成长与科技类股票面临下行压力。"BofA的Bull & Bear Indicator（投资者情绪指标）已触及2021年以来最高水平——历史上这一强烈看多信号往往预示市场回调风险上升。</p>
+      <p class="fn">数据来源：CNBC（7.16/7.20/7.23/7.24股市直播）；Yahoo Finance（7.17市场复盘）；TheStreet（7.22-24每日复盘）；Motley Fool（7.24收盘精确数据+BofA情绪指标）。</p>
+    </div>
+  </div>
+
+  <!-- 新关税 -->
+  <div class="card">
+    <div class="ch"><div class="chb a"></div><span class="cht">三、特朗普新一轮"301条款"关税生效（7.24）— 覆盖60国，对华12.5%</span></div>
+    <div class="cb">
+      <div class="tariff-box">
+        <div class="tariff-tag">⚖️ Section 301关税新政 · 7月24日正式生效 · 替代被最高法院否决的紧急关税</div>
+        <p style="font-size:12px;color:#fef3c7;line-height:1.65;margin-bottom:10px;">
+          特朗普政府对60个被指控存在"强迫劳动"问题的国家实施10%-12.5%新关税，作为此前被最高法院裁定无效的紧急关税措施的替代方案。措施覆盖美国主要贸易伙伴：墨西哥、加拿大、英国、印度面临10%关税；欧盟、台湾地区普遍面临10%关税；日本、韩国、瑞士面临最高12.5%关税，部分商品另加征额外费用；<strong>中国商品面临12.5%关税</strong>。多国已对该"强迫劳动"认定提出异议。
+        </p>
+      </div>
+
+      <p><strong>市场即时反应：</strong> 新关税消息叠加中东局势升温，成为周五(7.24)全球风险资产承压的双重利空来源。A股市场受冲击尤为剧烈：上证综指周五收跌<strong>1.61%至3,814.20点</strong>，深证成指重挫2.47%至13,774.68点，创业板指跌2.65%，全市场超4,900只个股下跌，仅554只上涨，成交额较前一日大幅缩量2,650亿元至19,444亿元。国际市场方面，Section 301关税生效叠加油价飙升，共同推高了10年期美债收益率的通胀预期，成为本周利率上行的重要驱动之一。</p>
+
+      <p style="margin-bottom:0;"><strong>政策路径解读：</strong> 本轮关税是特朗普政府在此前紧急关税权限被最高法院否决后的"补丁式"重启，援引"301条款"这一传统贸易救济工具而非紧急经济权力，被市场认为在法律基础上更为稳固、可持续性更强，这意味着关税作为通胀及贸易摩擦的结构性变量，短期内难以逆转。</p>
+      <p class="fn">数据来源：Saxo Bank Asia Market Quick Take（7.23-24）；Trading Economics（中国股市评论，7.24）；CNBC相关报道。</p>
+    </div>
+  </div>
+
+  <!-- 货币政策：ECB+Fed预览 -->
+  <div class="card">
+    <div class="ch"><div class="chb b"></div><span class="cht">四、货币政策 — 欧央行7月维持不变，FOMC(7.29)及PCE(7.30)决战在即</span></div>
+    <div class="cb">
+      <table style="margin-bottom:16px;">
+        <thead><tr><th>央行</th><th>本周动作</th><th>市场含义</th></tr></thead>
+        <tbody>
+          <tr class="gr">
+            <td><strong>欧央行(ECB)</strong></td>
+            <td>7月维持利率不变于2.25%（6月已加息25bp），转为"观望"立场；拉加德保留9月加息选项，指出通胀风险仍偏上行</td>
+            <td class="muted">在通胀、薪资增速、经济活动及预期均转弱背景下暂停，但未关闭紧缩大门</td>
+          </tr>
+          <tr class="rr">
+            <td><strong>美联储 — FOMC (7.29-30)</strong></td>
+            <td>市场普遍预期维持3.50%-3.75%不变（CME概率约66-85.6%区间，随周内油价/关税消息波动）；焦点转向声明措辞是否将油价纳入"通胀风险上行"表述</td>
+            <td class="muted">"Warsh的7月28-29日会议预计不会产生利率变动"（FX Leaders），但声明是否明确将9月定性为"live meeting"是关键看点</td>
+          </tr>
+          <tr class="ar">
+            <td><strong>Sep加息概率飙升</strong></td>
+            <td>CME FedWatch数据显示9月16日FOMC后加息概率已升至约<strong>80%</strong>（较上周约60%大幅上冲）；触发因素：布伦特破百+ECB鹰派留言+关税新政三重通胀预期上修</td>
+            <td class="muted">"黄金说7.29按兵不动已被完全定价；白银的异常波动说明了更多"（GoldSilver.com）——市场已将主战场从"7月是否加息"转移至"9月加息幅度"</td>
+          </tr>
+          <tr>
+            <td>日本央行</td>
+            <td>6月CPI通胀升至1.7%（5月1.5%），核心CPI 1.6%创3月来新高但仍低于2%目标；能源补贴退坡是主因</td>
+            <td class="muted">通胀持续温和爬升，为下次(10月前后)加息路径提供支撑，但未构成本周直接催化剂</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>次周决战前瞻——两大数据窗口：</strong> 下周将迎来2026年最关键的72小时——7.29 FOMC利率决议（预期按兵不动但措辞定调9月）+ 7.30 6月PCE通胀数据（美联储最青睐的通胀指标，将首次完整反映7月油价飙升前的基期效应）。GoldSilver.com精辟指出："FOMC的决定是已知事件，而PCE数据则不是"——市场当前的高度不确定性正是围绕这一非对称信息展开定价。</p>
+
+      <p style="margin-bottom:0;"><strong>利率与汇率联动小结：</strong> 本周10年期美债收益率经历"四连阳"后触及4.70%（2025年1月以来最高），随后周五因油价从高位回落而小幅收窄至4.67-4.69%；30年期收益率同步上探。美元指数受加息预期升温+避险需求双重支撑走强，对主要非美货币（欧元、日元）形成压制；离岸人民币则因贸易顺差韧性及月内两轮人行流动性投放，在美元走强背景下仍展现相对抗跌性（详见下方中国专题）。</p>
+      <p class="fn">数据来源：FX Leaders（Gold Forecast 7.24，含Sep加息80%概率+FOMC 7.28-29会议信息）；GoldSilver.com（FOMC/PCE预览，7.21）；Saxo Bank（日本CPI）；Trading Economics（10Y美债收益率）；LiteFinance（Gold Forecast，CME 85.6%概率区间）。</p>
+    </div>
+  </div>
+
+  <!-- 中国宏观专题 -->
+  <div class="card">
+    <div class="ch"><div class="chb cn"></div><span class="cht">五、中国宏观专题 — 人行万亿级流动性护航政治局会议，A股逆势企稳</span></div>
+    <div class="cb">
+      <div class="cn-box">
+        <div class="cn-tag">🇨🇳 中国流动性与市场动态（7.20–7.26）</div>
+        <div class="cn-grid">
+          <div class="cng"><div class="cng-n">5000亿</div><div class="cng-l">人行1年期MLF净投放（7.23，2月来最大中长期投放）</div></div>
+          <div class="cng"><div class="cng-n">7000亿</div><div class="cng-l">月内此前逆回购净投放（累计已超1.2万亿）</div></div>
+          <div class="cng"><div class="cng-n">6.7740</div><div class="cng-l">离岸人民币(7.24)，月内偏强</div></div>
+          <div class="cng"><div class="cng-n">3,814.20</div><div class="cng-l">上证综指周五收盘，单日-1.61%</div></div>
+        </div>
+      </div>
+
+      <p style="font-size:11px;font-weight:700;color:var(--blue);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;">💧 人行超大规模流动性投放：护航月末政治局会议</p>
+      <table style="margin-bottom:16px;">
+        <thead><tr><th>操作</th><th>规模</th><th>时点</th><th>解读</th></tr></thead>
+        <tbody>
+          <tr class="gr">
+            <td><strong>1年期MLF净投放</strong></td>
+            <td class="mono">5,000亿元</td>
+            <td>7.23（周四）</td>
+            <td class="muted">为2月以来最大规模中长期流动性投放，旨在为7月下旬政治局会议前的经济增长提供支撑</td>
+          </tr>
+          <tr class="gr">
+            <td><strong>买断式逆回购</strong></td>
+            <td class="mono">7,000亿元</td>
+            <td>本月早些时候</td>
+            <td class="muted">叠加MLF投放，本月合计净投放流动性已超1.2万亿元，为年内力度最大的月度组合操作之一</td>
+          </tr>
+          <tr>
+            <td>7天逆回购利率</td>
+            <td class="mono">1.4%</td>
+            <td>维持不变</td>
+            <td class="muted">政策利率保持稳定，本轮操作以数量型工具为主，非价格型降息</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>政策定力延续："以量补价"支撑经济增长预期。</strong> 与美联储、欧央行的价格型（利率）政策工具不同，人行本周持续采用数量型工具（MLF+逆回购）双管齐下，累计投放规模创年内新高，明确释放"在政治局会议定调前保持流动性充裕"的信号。市场普遍将此解读为对下半年经济动能的预防性支撑，而非应对短期危机的紧急措施。</p>
+
+      <div class="divider"></div>
+
+      <p style="font-size:11px;font-weight:700;color:var(--blue);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;">📈 A股市场：关税冲击下逆势企稳，AI板块资金轮动活跃</p>
+      <table style="margin-bottom:14px;">
+        <thead><tr><th>指数/时点</th><th>表现</th><th>核心驱动</th></tr></thead>
+        <tbody>
+          <tr class="gr"><td><strong>上证综指（周四7.23）</strong></td><td class="mono pos">+0.25%，收3,876.8（一周高点）</td><td class="muted">投资者对中国科技企业受益于全球AI基础设施投资热潮的乐观情绪升温</td></tr>
+          <tr class="cnr"><td><strong>上证综指（周五7.24）</strong></td><td class="mono neg"><strong>-1.61%，收3,814.20</strong></td><td class="muted">全市场超4,900只个股下跌，仅554只上涨；美国新一轮301关税(对华12.5%)+特朗普考虑对伊"大规模打击"双重利空共振</td></tr>
+          <tr class="gr"><td><strong>深证成指（周四7.23）</strong></td><td class="mono pos">+0.44%，收14,123.3</td><td class="muted">AI基础设施受益股带动</td></tr>
+          <tr class="cnr"><td><strong>深证成指（周五7.24）</strong></td><td class="mono neg"><strong>-2.47%，收13,774.68</strong></td><td class="muted">创业板指同步重挫-2.65%至3,480.87；成交额19,444亿元，较前日缩量2,650亿元</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>【核心背景补充】二季度公募持仓"极致抱团"，为7月AI板块回调埋下伏笔：</strong> 本周(7.21-24)密集披露的公募基金2026年二季报（截至6.30持仓）揭示了本轮AI行情的真实结构性风险——据广发证券测算，公募基金对电子行业的持仓比例已达<strong>43.4%</strong>，相对于电子板块23.6%的全A自由流通市值占比，超配幅度约<strong>20个百分点</strong>。这一超配水平极为罕见：历史上唯一一次单个行业持仓占比超过30%的先例，要追溯到2009年6月末的银行股（当时超配约16个百分点）。天相投顾数据显示，主动偏股型基金二季度末整体仓位已提升至<strong>86%</strong>的高位，理论加仓空间已非常有限。</p>
+
+      <p>易方达基金经理张坤旗下的易方达蓝筹精选混合基金二季报（7.21披露）显示，其前十大重仓股新进中芯国际、东山精密，同时贵州茅台、泸州老窖、五粮液、山西汾酒持股数分别较一季度末减持47.13%、51.76%、70.68%、70.91%；<strong>贵州茅台更是近十年来首次退出该基金前十大重仓股</strong>。类似地，景顺长城鼎益混合基金二季度增持中际旭创、赛腾股份等AI标的，同步减持消费类核心持仓。这些调仓动作<strong>发生在二季度（4-6月），本周只是财报密集披露的时间窗口，而非新发生的资金行为</strong>。</p>
+
+      <p><strong>这正是7月AI板块持续承压的深层原因：</strong> 公募资金早在二季度已完成对AI/半导体板块的"极致抱团"，导致三季度增量买盘空间被大幅压缩——即便基金经理看好长期逻辑，也已无充裕仓位可加。兴证全球基金谢治宇在二季报中直言："二季度极端分化的行情不可持续，市场将再平衡。"部分绩优基金经理同步提示"上游过度涨价或对下游应用推广形成反噬"的风险。这一结构性拥挤，叠加本周外部冲击（关税+地缘风险），共同解释了为何AI核心资产在利好持续兑现的背景下依然承压——<strong>不是基本面证伪，而是抱团资金已难以为继的技术性出清</strong>。</p>
+
+      <p><strong>值得关注的对冲信号——"国家队"出手护盘：</strong> 7月19日晚，中国国新宣布已使用股票回购增持专项再贷款及配套资金超500亿元用于维护市场稳定；同日中国诚通宣布近期累计买入中国股票资产近百亿元，两家均表示后续将全力维护资本市场平稳运行。7月20日，证监会同步召集多家市场机构举行座谈会，听取促进市场稳定健康发展的意见建议。这一系列动作表明监管层已关注到本轮回调的抱团出清风险，并采取预防性维稳措施。</p>
+
+      <p style="margin-bottom:0;"><strong>周五主要拖累股：</strong> 贵金属板块大幅走弱（招金黄金、四川黄金、湖南白银跌超7%，与二季度金价高位震荡后基金获利了结有关）；算力租赁持续走弱（利通电子、证通电子触及跌停）；电力板块持续下挫（京能电力、深南电A等跌停）。唯一亮点是军工装备板块逆势走强（长城军工2连板、建设工业涨停），以及半导体设备局部活跃（相关主题ETF逆势上涨3%+）。</p>
+
+      <div class="divider"></div>
+
+      <p style="font-size:11px;font-weight:700;color:var(--blue);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;">💱 人民币汇率</p>
+      <table>
+        <thead><tr><th>指标</th><th>本周动态</th><th>分析</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>离岸人民币（CNH）</td>
+            <td>周三(7.22)回落至约6.77，从此前一个月高点回撤；周五(7.24)在岸报6.7740</td>
+            <td class="muted">中东地缘局势升级推升美元避险需求，人行同日将中间价设于6.7933，较路透预估弱196个基点，释放官方容忍汇率走弱信号</td>
+          </tr>
+          <tr>
+            <td>美国对伊朗11轮空袭后的美元走势</td>
+            <td>美元指数维持坚挺</td>
+            <td class="muted">特朗普淡化与德黑兰谈判前景预期，避险资金持续流入美元资产</td>
+          </tr>
+          <tr>
+            <td>与Sep加息80%概率的联动</td>
+            <td>中美利差倒挂幅度或将阶段性走阔</td>
+            <td class="muted">若9月美联储实质加息，人民币短期承压概率上升，但贸易顺差韧性及人行流动性支撑构成缓冲</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="fn">数据来源：Trading Economics（人民币汇率/上证综指，7.24）；AInvest（PBOC MLF/逆回购分析）；Saxo Bank Asia Market Quick Take（7.23-24）。</p>
+    </div>
+  </div>
+
+  <!-- 资产行情总览 -->
+  <div class="card">
+    <div class="ch"><div class="chb b"></div><span class="cht">六、大类资产行情复盘（7.24收盘·基准日7.26）</span></div>
+    <div class="cb">
+      <div class="chart-box" style="margin-bottom:18px;">
+        <svg viewBox="0 0 680 372" width="100%" style="max-width:680px;display:block;margin:0 auto;" role="img" aria-label="大类资产周涨跌">
+<line x1="402.0" y1="12" x2="402.0" y2="358" stroke="#cbd5e1" stroke-width="1"/>
+<rect x="402.0" y="24.0" width="208.0" height="22" rx="3" fill="#c0392b"/>
+<text x="132" y="39.0" text-anchor="end" font-size="11.5" fill="#334155" font-family="'IBM Plex Sans',sans-serif">WTI(周涨幅)</text>
+<text x="616.0" y="39.0" text-anchor="start" font-size="11" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">+12.0%</text>
+<rect x="402.0" y="58.0" width="190.7" height="22" rx="3" fill="#c0392b"/>
+<text x="132" y="73.0" text-anchor="end" font-size="11.5" fill="#334155" font-family="'IBM Plex Sans',sans-serif">布伦特(周涨幅)</text>
+<text x="598.7" y="73.0" text-anchor="start" font-size="11" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">+11.0%</text>
+<rect x="402.0" y="92.0" width="17.3" height="22" rx="3" fill="#1c7a50"/>
+<text x="132" y="107.0" text-anchor="end" font-size="11.5" fill="#334155" font-family="'IBM Plex Sans',sans-serif">美元指数</text>
+<text x="425.3" y="107.0" text-anchor="start" font-size="11" font-weight="700" fill="#1c7a50" font-family="'IBM Plex Mono',monospace">+1.0%</text>
+<rect x="402.0" y="126.0" width="260.0" height="22" rx="3" fill="#c0392b"/>
+<text x="132" y="141.0" text-anchor="end" font-size="11.5" fill="#334155" font-family="'IBM Plex Sans',sans-serif">10Y美债(bp↑)</text>
+<text x="668.0" y="141.0" text-anchor="start" font-size="11" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">+15.0%</text>
+<rect x="374.1" y="160.0" width="27.9" height="22" rx="3" fill="#c0392b"/>
+<text x="132" y="175.0" text-anchor="end" font-size="11.5" fill="#334155" font-family="'IBM Plex Sans',sans-serif">上证综指(周五单日)</text>
+<text x="368.1" y="175.0" text-anchor="end" font-size="11" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">-1.6%</text>
+<rect x="395.1" y="194.0" width="6.9" height="22" rx="3" fill="#c0392b"/>
+<text x="132" y="209.0" text-anchor="end" font-size="11.5" fill="#334155" font-family="'IBM Plex Sans',sans-serif">道指</text>
+<text x="389.1" y="209.0" text-anchor="end" font-size="11" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">-0.4%</text>
+<rect x="391.6" y="228.0" width="10.4" height="22" rx="3" fill="#c0392b"/>
+<text x="132" y="243.0" text-anchor="end" font-size="11.5" fill="#334155" font-family="'IBM Plex Sans',sans-serif">标普500</text>
+<text x="385.6" y="243.0" text-anchor="end" font-size="11" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">-0.6%</text>
+<rect x="376.0" y="262.0" width="26.0" height="22" rx="3" fill="#c0392b"/>
+<text x="132" y="277.0" text-anchor="end" font-size="11.5" fill="#334155" font-family="'IBM Plex Sans',sans-serif">伦敦金</text>
+<text x="370.0" y="277.0" text-anchor="end" font-size="11" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">-1.5%</text>
+<rect x="365.6" y="296.0" width="36.4" height="22" rx="3" fill="#c0392b"/>
+<text x="132" y="311.0" text-anchor="end" font-size="11.5" fill="#334155" font-family="'IBM Plex Sans',sans-serif">纳指</text>
+<text x="359.6" y="311.0" text-anchor="end" font-size="11" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">-2.1%</text>
+<rect x="327.5" y="330.0" width="74.5" height="22" rx="3" fill="#c0392b"/>
+<text x="132" y="345.0" text-anchor="end" font-size="11.5" fill="#334155" font-family="'IBM Plex Sans',sans-serif">半导体(周四单日)</text>
+<text x="321.5" y="345.0" text-anchor="end" font-size="11" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">-4.3%</text>
+<text x="228.7" y="374.0" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="'IBM Plex Mono',monospace">-10%</text>
+<text x="315.3" y="374.0" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="'IBM Plex Mono',monospace">-5%</text>
+<text x="402.0" y="374.0" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="'IBM Plex Mono',monospace">+0%</text>
+<text x="488.7" y="374.0" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="'IBM Plex Mono',monospace">+5%</text>
+<text x="575.3" y="374.0" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="'IBM Plex Mono',monospace">+10%</text>
+</svg>
+      </div>
+      <table>
+        <thead><tr><th>品种</th><th>7.24收盘</th><th>周涨跌</th><th>核心驱动</th></tr></thead>
+        <tbody>
+          <tr class="rr"><td><strong>标普500</strong></td><td class="mono">7,411.98</td><td class="mono neg">▼ -0.6%（连续两周下跌）</td><td class="muted">油价飙升+半导体调整+关税冲击三重压力；周五勉强收平</td></tr>
+          <tr class="rr"><td><strong>纳斯达克</strong></td><td class="mono">24,975.82</td><td class="mono neg">▼ -2.1%</td><td class="muted">半导体拖累+资本开支担忧；月内累计跌幅接近2%</td></tr>
+          <tr class="ar"><td><strong>道琼斯</strong></td><td class="mono">51,947.25</td><td class="mono neg">▼ -0.4%（三连跌周）</td><td class="muted">Apple+3.51%部分抵消半导体拖累；周五单日+235.6点反弹</td></tr>
+          <tr class="rr"><td><strong>半导体分项(周四单日)</strong></td><td class="mono">—</td><td class="mono neg"><strong>▼ -4.3%</strong></td><td class="muted">连续第7周处于调整通道，中期上升趋势技术性破坏</td></tr>
+          <tr class="rr"><td><strong>10Y美债收益率</strong></td><td class="mono">4.67-4.70%</td><td class="mono neg">▲ 周升，四连阳后触2025年1月高点</td><td class="muted">油价飙升+关税+Sep加息预期80%三重推升，周五因油价回落小幅收窄</td></tr>
+          <tr><td>30Y美债收益率</td><td class="mono">~4.92-5.0%</td><td class="mono neg">▲ 同步走高</td><td class="muted">通胀预期全面上修</td></tr>
+          <tr class="rr"><td><strong>伦敦金</strong></td><td class="mono">$4,028-4,056</td><td class="mono neg">▼ 勉强守住$4,000关口</td><td class="muted">油价+美债收益率+美元三重压制；避险与抗通胀属性被高利率对冲</td></tr>
+          <tr><td>白银</td><td class="mono">上涨约5%（周二）</td><td class="mono pos">异常大涨</td><td class="muted">GoldSilver.com指出白银走势"指向更多信息"，或反映工业需求与货币贬值预期博弈</td></tr>
+          <tr class="rr"><td><strong>布伦特原油</strong></td><td class="mono">周四峰值$100.69，周五回落</td><td class="mono neg">▲ 5月来首破百</td><td class="muted">胡塞红海袭击开辟第二战线；周五因贸易航线仍畅通而部分回落</td></tr>
+          <tr class="rr"><td><strong>WTI原油</strong></td><td class="mono">周四峰值$92.19</td><td class="mono neg">▲ 周涨约12%</td><td class="muted">本月累计涨幅超30%；数月最大单周涨幅</td></tr>
+          <tr><td>美元指数</td><td class="mono">走强</td><td class="mono neg">▲ 避险+加息预期双重支撑</td><td class="muted">对欧元、日元均形成压制</td></tr>
+        </tbody>
+      </table>
+      <p class="fn">数据来源：CNBC（7.20/7.23/7.24日内行情）；Motley Fool（7.24精确收盘数据）；TheStreet（7.24复盘）；FX Leaders（黄金/加息概率，7.24）；Saxo Bank；Trading Economics（10Y美债）。</p>
+    </div>
+  </div>
+
+  <!-- 中间传导层 -->
+  <div class="card">
+    <div class="ch"><div class="chb b"></div><span class="cht">七、中间传导层 — 利率路径与全球联动</span></div>
+    <div class="cb">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">📊 Sep加息概率演变（CME FedWatch）</div>
+          <div class="chart-box"><svg viewBox="0 0 346 208" width="100%" style="max-width:346px;display:block;margin:0 auto;" role="img" aria-label="加息概率路径">
+<line x1="40" y1="174.0" x2="332" y2="174.0" stroke="#eef2f7" stroke-width="1"/>
+<text x="35.0" y="177.0" text-anchor="end" font-size="9" fill="#94a3b8" font-family="'IBM Plex Mono',monospace">40%</text>
+<line x1="40" y1="113.2" x2="332" y2="113.2" stroke="#eef2f7" stroke-width="1"/>
+<text x="35.0" y="116.2" text-anchor="end" font-size="9" fill="#94a3b8" font-family="'IBM Plex Mono',monospace">60%</text>
+<line x1="40" y1="52.4" x2="332" y2="52.4" stroke="#eef2f7" stroke-width="1"/>
+<text x="35.0" y="55.4" text-anchor="end" font-size="9" fill="#94a3b8" font-family="'IBM Plex Mono',monospace">80%</text>
+<path d="M 40.0 104.1 L 40.0 104.1 L 98.4 113.2 L 156.8 98.0 L 215.2 82.8 L 273.6 58.5 L 332.0 52.4 L 332.0 174.0 L 40.0 174.0 Z" fill="rgba(192,57,43,.08)"/>
+<path d="M 40.0 104.1 L 98.4 113.2 L 156.8 98.0 L 215.2 82.8 L 273.6 58.5 L 332.0 52.4" fill="none" stroke="#c0392b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="40.0" cy="104.1" r="5" fill="#c0392b" stroke="#fff" stroke-width="1.5"/>
+<text x="40.0" y="94.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">63%</text>
+<circle cx="98.4" cy="113.2" r="5" fill="#c0392b" stroke="#fff" stroke-width="1.5"/>
+<text x="98.4" y="103.2" text-anchor="middle" font-size="9.5" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">60%</text>
+<circle cx="156.8" cy="98.0" r="5" fill="#c0392b" stroke="#fff" stroke-width="1.5"/>
+<text x="156.8" y="88.0" text-anchor="middle" font-size="9.5" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">65%</text>
+<circle cx="215.2" cy="82.8" r="5" fill="#c0392b" stroke="#fff" stroke-width="1.5"/>
+<text x="215.2" y="72.8" text-anchor="middle" font-size="9.5" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">70%</text>
+<circle cx="273.6" cy="58.5" r="5" fill="#c0392b" stroke="#fff" stroke-width="1.5"/>
+<text x="273.6" y="48.5" text-anchor="middle" font-size="9.5" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">78%</text>
+<circle cx="332.0" cy="52.4" r="5" fill="#c0392b" stroke="#fff" stroke-width="1.5"/>
+<text x="332.0" y="42.4" text-anchor="middle" font-size="9.5" font-weight="700" fill="#c0392b" font-family="'IBM Plex Mono',monospace">80%</text>
+<text x="40.0" y="194.0" text-anchor="middle" font-size="7.8" fill="#64748b" font-family="'IBM Plex Sans',sans-serif">7.9伊朗后</text>
+<text x="98.4" y="194.0" text-anchor="middle" font-size="7.8" fill="#64748b" font-family="'IBM Plex Sans',sans-serif">7.16 CPI后</text>
+<text x="156.8" y="194.0" text-anchor="middle" font-size="7.8" fill="#64748b" font-family="'IBM Plex Sans',sans-serif">7.20周初</text>
+<text x="215.2" y="194.0" text-anchor="middle" font-size="7.8" fill="#64748b" font-family="'IBM Plex Sans',sans-serif">7.22卢比奥后</text>
+<text x="273.6" y="194.0" text-anchor="middle" font-size="7.8" fill="#64748b" font-family="'IBM Plex Sans',sans-serif">7.23布伦特破百</text>
+<text x="332.0" y="194.0" text-anchor="middle" font-size="7.8" fill="#64748b" font-family="'IBM Plex Sans',sans-serif">7.24周五</text>
+</svg></div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">🛢️ 油价8周完整路径（本轮战争溢价历史新高）</div>
+          <div class="chart-box"><svg viewBox="0 0 346 210" width="100%" style="max-width:346px;display:block;margin:0 auto;" role="img" aria-label="油价8周路径">
+<line x1="40" y1="166.4" x2="334" y2="166.4" stroke="#eef2f7" stroke-width="1"/>
+<text x="35.0" y="169.4" text-anchor="end" font-size="9" fill="#94a3b8" font-family="'IBM Plex Mono',monospace">$60</text>
+<line x1="40" y1="139.1" x2="334" y2="139.1" stroke="#eef2f7" stroke-width="1"/>
+<text x="35.0" y="142.1" text-anchor="end" font-size="9" fill="#94a3b8" font-family="'IBM Plex Mono',monospace">$70</text>
+<line x1="40" y1="111.8" x2="334" y2="111.8" stroke="#eef2f7" stroke-width="1"/>
+<text x="35.0" y="114.8" text-anchor="end" font-size="9" fill="#94a3b8" font-family="'IBM Plex Mono',monospace">$80</text>
+<line x1="40" y1="84.5" x2="334" y2="84.5" stroke="#eef2f7" stroke-width="1"/>
+<text x="35.0" y="87.5" text-anchor="end" font-size="9" fill="#94a3b8" font-family="'IBM Plex Mono',monospace">$90</text>
+<line x1="40" y1="57.3" x2="334" y2="57.3" stroke="#eef2f7" stroke-width="1"/>
+<text x="35.0" y="60.3" text-anchor="end" font-size="9" fill="#94a3b8" font-family="'IBM Plex Mono',monospace">$100</text>
+<path d="M 40.0 83.1 L 40.0 83.1 L 82.0 98.5 L 124.0 119.5 L 166.0 142.2 L 208.0 142.5 L 250.0 135.2 L 292.0 113.6 L 334.0 78.6 L 334.0 180.0 L 40.0 180.0 Z" fill="rgba(200,151,58,.12)"/>
+<path d="M 40.0 83.1 L 82.0 98.5 L 124.0 119.5 L 166.0 142.2 L 208.0 142.5 L 250.0 135.2 L 292.0 113.6 L 334.0 78.6" fill="none" stroke="#c8973a" stroke-width="3" stroke-linejoin="round"/>
+<path d="M 40.0 76.1 L 82.0 91.8 L 124.0 114.5 L 166.0 136.4 L 208.0 133.6 L 250.0 122.7 L 292.0 98.9 L 334.0 55.4" fill="none" stroke="#1a3d6e" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="40.0" cy="83.1" r="3.5" fill="#c8973a"/>
+<circle cx="82.0" cy="98.5" r="3.5" fill="#c8973a"/>
+<circle cx="124.0" cy="119.5" r="3.5" fill="#c8973a"/>
+<circle cx="166.0" cy="142.2" r="3.5" fill="#c8973a"/>
+<circle cx="208.0" cy="142.5" r="3.5" fill="#c8973a"/>
+<circle cx="250.0" cy="135.2" r="3.5" fill="#c8973a"/>
+<circle cx="292.0" cy="113.6" r="3.5" fill="#c8973a"/>
+<circle cx="334.0" cy="78.6" r="3.5" fill="#ef4444"/>
+<circle cx="40.0" cy="76.1" r="3" fill="#1a3d6e"/>
+<circle cx="82.0" cy="91.8" r="3" fill="#1a3d6e"/>
+<circle cx="124.0" cy="114.5" r="3" fill="#1a3d6e"/>
+<circle cx="166.0" cy="136.4" r="3" fill="#1a3d6e"/>
+<circle cx="208.0" cy="133.6" r="3" fill="#1a3d6e"/>
+<circle cx="250.0" cy="122.7" r="3" fill="#1a3d6e"/>
+<circle cx="292.0" cy="98.9" r="3" fill="#1a3d6e"/>
+<circle cx="334.0" cy="55.4" r="3" fill="#dc2626"/>
+<text x="40.0" y="198.0" text-anchor="middle" font-size="8.5" fill="#64748b" font-family="'IBM Plex Sans',sans-serif">第1周</text>
+<text x="82.0" y="198.0" text-anchor="middle" font-size="8.5" fill="#64748b" font-family="'IBM Plex Sans',sans-serif">第2周</text>
+<text x="124.0" y="198.0" text-anchor="middle" font-size="8.5" fill="#64748b" font-family="'IBM Plex Sans',sans-serif">第3周</text>
+<text x="166.0" y="198.0" text-anchor="middle" font-size="8.5" fill="#64748b" font-family="'IBM Plex Sans',sans-serif">第4周</text>
+<text x="208.0" y="198.0" text-anchor="middle" font-size="8.5" fill="#64748b" font-family="'IBM Plex Sans',sans-serif">第5周</text>
+<text x="250.0" y="198.0" text-anchor="middle" font-size="8.5" fill="#64748b" font-family="'IBM Plex Sans',sans-serif">第6周</text>
+<text x="292.0" y="198.0" text-anchor="middle" font-size="8.5" fill="#64748b" font-family="'IBM Plex Sans',sans-serif">第7周</text>
+<text x="334.0" y="198.0" text-anchor="middle" font-size="8.5" fill="#64748b" font-family="'IBM Plex Sans',sans-serif">第8周峰值</text>
+<rect x="40.0" y="10" width="10" height="3" rx="1.5" fill="#c8973a"/>
+<text x="54.0" y="14" font-size="9" fill="#475569" font-family="'IBM Plex Sans',sans-serif">WTI</text>
+<rect x="92.0" y="10" width="10" height="3" rx="1.5" fill="#1a3d6e"/>
+<text x="106.0" y="14" font-size="9" fill="#475569" font-family="'IBM Plex Sans',sans-serif">布伦特</text>
+</svg></div>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>传导层</th><th>本周核心内容</th><th>分析要点</th></tr></thead>
+        <tbody>
+          <tr class="rr">
+            <td><strong>利率路径</strong></td>
+            <td>10Y美债四连阳触及4.67-4.70%（2025年1月来最高）；Sep加息概率从上周~60%飙升至~80%；30年期同步走高至约4.92-5.0%区间</td>
+            <td class="muted">油价飙升+新关税+ECB鹰派留言三重通胀预期上修共同驱动，市场定价的紧缩路径已从"是否加息"转向"9月加息后年内是否再加"</td>
+          </tr>
+          <tr class="rr">
+            <td><strong>汇率</strong></td>
+            <td>美元指数走强，对欧元、日元形成压制；离岸人民币周三回落至~6.77但周内整体维持相对韧性；日元受日本6月CPI升至1.7%支撑但未成为焦点</td>
+            <td class="muted">强美元+高利率组合对新兴市场货币构成阶段性压力，但中国因贸易顺差韧性及人行流动性护航展现相对抗跌性</td>
+          </tr>
+          <tr>
+            <td><strong>通胀预期</strong></td>
+            <td>布伦特单周波动幅度达$83→$100→回落，WTI月内累计涨幅超30%；新关税(10-12.5%)叠加为通胀预期提供额外上行动能</td>
+            <td class="muted">7.30 PCE数据尚未完全反映本周油价飙升的滞后效应，8月CPI/PCE报告将是检验本轮油价冲击真实传导力度的关键窗口</td>
+          </tr>
+          <tr>
+            <td><strong>跨市场联动</strong></td>
+            <td>美股半导体持续调整+A股AI板块逆势活跃(资金轮动至SMIC/中际旭创)+欧洲半导体设备股(ASML/ASMI)同步下挫，形成"美股调整、中国相对抗跌"的分化格局</td>
+            <td class="muted">与上周(7.13-19)"三地科技股同周暴跌"不同，本周呈现区域分化——中国AI资产的相对韧性可能反映人行流动性护航及"科技自主可控"叙事的边际支撑</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 次周日历 -->
+  <div class="card">
+    <div class="ch"><div class="chb g"></div><span class="cht">八、7.27–8.2 第9周关键事件日历</span></div>
+    <div class="cb np">
+      <table>
+        <thead><tr><th>日期</th><th>星期</th><th>事件</th><th>重要度</th><th>数据源</th></tr></thead>
+        <tbody>
+          <tr><td>7.27</td><td>周一</td><td>美国7月Dallas Fed制造业指数；中国规模以上工业企业利润(6月)</td><td>中等</td><td class="muted">Dallas Fed、国家统计局</td></tr>
+          <tr><td>7.28</td><td>周二</td><td>美国7月CB消费者信心指数；美国6月成屋签约销售指数</td><td>中等</td><td class="muted">Conference Board、NAR</td></tr>
+          <tr class="br"><td><strong>7.29</strong></td><td><strong>周三</strong></td><td><strong>🔴🔴 FOMC利率决议+Warsh新闻发布会（预期维持不变，关注声明措辞及9月定调）</strong></td><td><strong>极高</strong></td><td class="muted">美联储官网</td></tr>
+          <tr><td>7.29</td><td>周三</td><td>美国Q2 GDP初值（预期数据）</td><td>高</td><td class="muted">BEA</td></tr>
+          <tr class="br"><td><strong>7.30</strong></td><td><strong>周四</strong></td><td><strong>🔴🔴 美国6月核心PCE通胀（美联储最青睐指标，首次反映油价冲击滞后效应）</strong></td><td><strong>极高</strong></td><td class="muted">BEA</td></tr>
+          <tr><td>7.30</td><td>周四</td><td>初申失业金；欧元区Q2 GDP初值</td><td>中等</td><td class="muted">DOL、欧盟统计局</td></tr>
+          <tr><td>7.31</td><td>周五</td><td>中国7月官方制造业/非制造业PMI；美国7月ISM制造业前瞻数据</td><td>高</td><td class="muted">国家统计局、ISM</td></tr>
+          <tr class="cnr"><td>下旬</td><td>待定</td><td>⚡ <strong>中国政治局会议：H2政策定调，市场密切关注定向刺激力度</strong></td><td><strong>极高</strong></td><td class="muted">新华社</td></tr>
+          <tr class="ar rr"><td>全周</td><td>持续</td><td>⚡ <strong>伊朗局势：特朗普"大规模打击"决策窗口；霍尔木兹/红海双线风险</strong></td><td><strong>极高</strong></td><td class="muted">白宫、CENTCOM、路透社</td></tr>
+        </tbody>
+      </table>
+      <p class="fn" style="padding:8px 12px 12px;margin:0;"><strong>核心变盘节点：</strong> 下周迎来2026年信息密度最高的72小时——7.29 FOMC（是否明确将9月定性为"live meeting"）+ 7.30核心PCE（首次完整反映油价飙升前的基期效应，8月数据才会真正体现本周油价冲击）+ 中国政治局会议（H2刺激力度）+ 特朗普对伊朗军事行动的最终决策，四大变量交织将决定8月资产配置的方向性基调。</p>
+    </div>
+  </div>
+
+  <!-- 三情景 -->
+  <div class="card">
+    <div class="ch"><div class="chb b"></div><span class="cht">九、次周三大情景推演（基准45% / 乐观25% / 悲观30%）</span></div>
+    <div class="cb">
+      <div class="sc-row">
+        <div class="sc-card">
+          <div class="sc-h bull">▲ 乐观情景 25%</div>
+          <div class="sc-b">
+            <div class="sc-p" style="color:var(--green);">局势降温+数据温和</div>
+            <div class="sc-prob">伊朗释放实质谈判信号 + PCE温和</div>
+            <div class="sc-desc">伊朗接受实质性谈判条件，红海/霍尔木兹双线风险缓解，油价回落至$75-80；FOMC措辞中性，未明确9月加息；6月核心PCE符合或低于预期；中国政治局会议释放积极定向刺激信号。标普收复7,550+；半导体板块企稳反弹；10Y美债回落至4.45%以下；Sep加息概率降至60%以下。</div>
+          </div>
+        </div>
+        <div class="sc-card">
+          <div class="sc-h base">— 基准情景 45%</div>
+          <div class="sc-b">
+            <div class="sc-p" style="color:var(--blue);">高波动僵持，等待8月数据</div>
+            <div class="sc-prob">局势僵持 + FOMC/PCE中性</div>
+            <div class="sc-desc">伊朗-美国维持"打而不谈"僵持状态，油价$78-95区间大幅波动；FOMC维持不变但保留9月选项，措辞审慎；核心PCE基本符合预期(尚未反映本周油价冲击)；中国政策措辞中性偏暖但无强刺激。标普7,300-7,600区间；半导体延续弱势整固；10Y美债4.50%-4.75%。</div>
+          </div>
+        </div>
+        <div class="sc-card">
+          <div class="sc-h bear">▼ 悲观情景 30%</div>
+          <div class="sc-b">
+            <div class="sc-p" style="color:var(--red);">冲突全面升级+通胀反扑</div>
+            <div class="sc-prob">特朗普发动"大规模打击" + 通胀预期失控</div>
+            <div class="sc-desc">特朗普对伊朗发动大规模军事行动，霍尔木兹实质性封锁，油价突破$110-120；FOMC措辞明确转鹰，暗示9月大概率加息；核心PCE超预期；A股/全球风险资产系统性抛售。标普跌破7,100；10Y美债突破4.85%；黄金因避险需求反弹至$4,200+但涨幅受高利率制约；Sep加息概率升至90%+。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- ASIDE -->
+<div class="aside">
+
+  <!-- 叙事框架 -->
+  <div class="card">
+    <div class="ch"><div class="chb r"></div><span class="cht">本周核心叙事</span></div>
+    <div class="cb">
+      <div class="week-wrap">
+        <div class="week-title">"油价破百：<br>伊朗战事扩大化<br>芯片继续熔断"</div>
+        <div class="week-attr">7.20–7.26 叙事主线 · 第8周</div>
+      </div>
+      <p style="font-size:12px;color:#4a6080;">本周将本轮伊朗冲突推向新高潮——胡塞武装在红海开辟第二战线，布伦特5月以来首次触及$100，卢比奥公开否定伊朗和谈诚意，特朗普考虑"大规模打击"。这标志着冲突从"局部博弈"向"全面对抗"质变的风险显著上升。</p>
+      <div class="divider"></div>
+      <p style="font-size:12px;color:#4a6080;"><strong>最大预期差：</strong> 市场此前普遍预期油价在$68-80区间高位盘整（第6-7周判断），但本周WTI单周涨幅达12%，为数月最大，充分暴露地缘风险溢价的重新定价速度远超此前共识。同时Intel、SanDisk等"财报超预期反遭抛售"现象，印证AI硬件资产估值锚定逻辑正从"营收驱动"转向"资本开支可持续性驱动"。</p>
+      <div class="divider"></div>
+      <p style="font-size:12px;color:#4a6080;"><strong>中美分化新特征：</strong> 与上周三地科技股同周暴跌不同，本周A股AI板块（SMIC、中际旭创）展现相对韧性，机构资金持续从消费股(茅台、海大)轮动至科技股，叠加人行1.2万亿流动性护航，中国资产的抗跌性正逐步显现。</p>
+    </div>
+  </div>
+
+  <!-- 资产配置 -->
+  <div class="card">
+    <div class="ch"><div class="chb g"></div><span class="cht">十、资产配置调整建议</span></div>
+    <div class="cb">
+      <div class="ai">
+        <div class="ar2"><span class="an">现金+短期国债</span><span class="ap">28% ▲+6%</span></div>
+        <div class="ab"><div class="af" style="width:28%;background:linear-gradient(to right,#8fa3bc,#aabbd1);"></div></div>
+        <div class="as">下周FOMC+PCE+政治局会议+特朗普对伊决策四大变量待明；进一步提升防御仓位</div>
+      </div>
+      <div class="ai">
+        <div class="ar2"><span class="an">能源/原油</span><span class="ap">14% ▲+4%</span></div>
+        <div class="ab"><div class="af" style="width:14%;background:linear-gradient(to right,#c0392b,#e05555);"></div></div>
+        <div class="as">冲突扩大化+红海第二战线开辟，地缘风险溢价短期难以消退；增配作为核心对冲</div>
+      </div>
+      <div class="ai">
+        <div class="ar2"><span class="an">AI算力/半导体</span><span class="ap">15% ▼-3%</span></div>
+        <div class="ab"><div class="af" style="width:15%;background:linear-gradient(to right,#1a3d6e,#3d6ea8);"></div></div>
+        <div class="as">技术性熊市延续，Wells Fargo警示200日均线支撑测试风险；维持观察仓位，等待企稳信号</div>
+      </div>
+      <div class="ai">
+        <div class="ar2"><span class="an">中国AI/科技（A股+港股）</span><span class="ap">12% ▲+3%</span></div>
+        <div class="ab"><div class="af" style="width:12%;background:linear-gradient(to right,#d4291e,#f87171);"></div></div>
+        <div class="as">相对韧性显现，机构资金加速轮动；人行流动性护航+政治局会议预期形成边际支撑</div>
+      </div>
+      <div class="ai">
+        <div class="ar2"><span class="an">黄金</span><span class="ap">22% ▼-5%</span></div>
+        <div class="ab"><div class="af" style="width:22%;background:linear-gradient(to right,#c8973a,#e8b84b);"></div></div>
+        <div class="as">高利率环境下避险属性被对冲，$4,000关口存在破位风险；减仓等待PCE数据后再评估</div>
+      </div>
+      <div class="ai">
+        <div class="ar2"><span class="an">电力设备/国内基础设施</span><span class="ap">9% ▼-6%</span></div>
+        <div class="ab"><div class="af" style="width:9%;background:linear-gradient(to right,#6a8099,#8fa3bc);"></div></div>
+        <div class="as">腾挪部分仓位至能源及中国AI板块，等待政治局会议信号明朗</div>
+      </div>
+      <div class="divider"></div>
+      <p style="font-size:11.5px;color:#4a6080;"><strong>下周操作核心逻辑：</strong> 四大不确定性（FOMC措辞、PCE数据、政治局会议力度、特朗普对伊决策）尚未有一项落地，维持防御性配置为主。若特朗普决定发动大规模军事行动，立即将能源仓位提升至20%+并降低权益敞口至40%以下；若伊朗释放实质谈判信号，则逆向操作，快速回补半导体及黄金仓位。</p>
+    </div>
+  </div>
+
+  <!-- 资产点位 -->
+  <div class="card">
+    <div class="ch"><div class="chb b"></div><span class="cht">资产关键点位（第9周参考）</span></div>
+    <div class="cb np">
+      <table>
+        <thead><tr><th>品种</th><th>支撑</th><th>阻力</th><th>方向</th></tr></thead>
+        <tbody>
+          <tr><td>WTI</td><td class="mono">$80</td><td class="mono">$100</td><td><span class="tag tag-bear">冲突决定，高波动</span></td></tr>
+          <tr><td>布伦特</td><td class="mono">$85</td><td class="mono">$110</td><td><span class="tag tag-bear">特朗普决策关键</span></td></tr>
+          <tr><td>伦敦金</td><td class="mono">$3,900</td><td class="mono">$4,150</td><td><span class="tag tag-warn">$4,000保卫战</span></td></tr>
+          <tr><td>标普500</td><td class="mono">7,100</td><td class="mono">7,600</td><td><span class="tag tag-bear">FOMC/PCE决定</span></td></tr>
+          <tr><td>纳指</td><td class="mono">24,300</td><td class="mono">25,900</td><td><span class="tag tag-bear">半导体企稳待确认</span></td></tr>
+          <tr><td>上证综指</td><td class="mono">3,700</td><td class="mono">3,900</td><td><span class="tag tag-cn">Q2抱团出清+政治局会议博弈</span></td></tr>
+          <tr><td>10Y美债</td><td class="mono">4.45%</td><td class="mono">4.85%</td><td><span class="tag tag-bear">PCE+FOMC双决定</span></td></tr>
+          <tr><td>美元指数</td><td class="mono">99.5</td><td class="mono">103.0</td><td><span class="tag tag-bear">避险+加息双支撑</span></td></tr>
+          <tr><td>离岸人民币</td><td class="mono">6.75</td><td class="mono">6.82</td><td><span class="tag tag-cn">人行流动性护航</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 风险提示 -->
+  <div class="card">
+    <div class="ch"><div class="chb r"></div><span class="cht">十一、风险提示</span></div>
+    <div class="cb">
+      <div class="ri h">
+        <div class="ri-head"><span class="ri-name">特朗普发动"大规模打击"</span><span class="badge h">极高</span></div>
+        <div class="ri-desc">若特朗普正式决定对伊朗实施超出既往规模的军事行动，霍尔木兹可能面临实质性封锁，油价可能单日冲击$110-120，全球通胀预期系统性重估。</div>
+      </div>
+      <div class="ri h">
+        <div class="ri-head"><span class="ri-name">FOMC措辞明确转鹰</span><span class="badge h">高</span></div>
+        <div class="ri-desc">若7.29声明明确将9月定性为"高概率加息会议"，叠加7.30 PCE超预期，Sep加息概率可能冲至90%+，10Y美债突破4.85%，权益资产二次探底。</div>
+      </div>
+      <div class="ri m">
+        <div class="ri-head"><span class="ri-name">半导体技术性熊市深化</span><span class="badge m">中-高</span></div>
+        <div class="ri-desc">Wells Fargo已警示200日均线支撑测试风险；若8月起企业陆续下修AI资本开支指引（而非仅估值消化），SOX可能进一步下探，拖累纳指整体表现。</div>
+      </div>
+      <div class="ri h">
+        <div class="ri-head"><span class="ri-name">A股AI板块"抱团"出清风险</span><span class="badge h">高</span></div>
+        <div class="ri-desc">公募电子行业持仓43.4%（超配20个百分点，历史仅2009年银行股可比）+ 主动偏股基金仓位86%高位，增量买盘空间见顶；若三季度业绩不及预期或出现进一步获利了结，抱团股可能面临技术性挤兑式下跌，7.24单日超4,900只个股下跌或是这一风险的首次集中体现。</div>
+      </div>
+      <div class="ri m">
+        <div class="ri-head"><span class="ri-name">中国政治局会议力度不及预期</span><span class="badge m">中</span></div>
+        <div class="ri-desc">若会议政策定调偏保守，叠加新关税(12.5%对华)持续压制出口预期及抱团资金出清压力，A股可能延续弱势。</div>
+      </div>
+      <div class="ri l">
+        <div class="ri-head"><span class="ri-name">红海航运风险外溢</span><span class="badge l">低-中</span></div>
+        <div class="ri-desc">胡塞武装红海袭击若持续扩大化，可能进一步冲击全球航运保险成本及供应链效率，间接推高全球贸易通胀压力。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 机构观点 -->
+  <div class="card">
+    <div class="ch"><div class="chb a"></div><span class="cht">本周主要机构观点</span></div>
+    <div class="cb np">
+      <table>
+        <thead><tr><th>机构</th><th>观点摘要</th></tr></thead>
+        <tbody>
+          <tr><td>TD Securities</td><td class="muted">"此轮升级及伊朗对流量的遏制，加速市场重新定价，再度打开更极端右尾情景的大门"</td></tr>
+          <tr><td>Wells Fargo Investment Institute</td><td class="muted">"半导体/AI交易正经历健康的现实检验；中期上升趋势已被打破，需警惕200日均线支撑测试"</td></tr>
+          <tr><td>MST Financial</td><td class="muted">"预计油价将维持高位，因霍尔木兹危险状况持续，且应急原油库存投放正逐步减少"</td></tr>
+          <tr><td>ING</td><td class="muted">"能源市场参与者对波斯湾石油供应恢复时间表似乎过于乐观"（此判断在本周得到进一步印证）</td></tr>
+          <tr><td>GoldSilver.com</td><td class="muted">"黄金已完全定价7.29按兵不动；白银异常波动指向更多信息，PCE数据是未知变量"</td></tr>
+          <tr><td>BofA Bull&Bear指标</td><td class="muted">投资者情绪触及2021年以来最高水平，历史上此强烈看多信号常预示市场回调风险上升</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 免责 -->
+  <div class="card" style="background:rgba(10,31,60,.96);border-color:rgba(200,151,58,.15);">
+    <div class="cb">
+      <p style="font-size:9.5px;color:rgba(143,163,188,.6);line-height:1.65;margin:0;">
+        <span style="color:var(--accent);font-weight:700;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;display:block;margin-bottom:8px;">重要提示 & 免责声明</span>
+        本报告为宏观投资研究复盘，仅供参考，不构成投资建议。所有数据均来自文中标注的官方渠道及权威媒体。市场受多重不可预测因素影响，历史不代表未来，投资者须自行判断，盈亏自负。
+      </p>
+    </div>
+  </div>
+
+</div><!-- /aside -->
+</div><!-- /page -->
+
+<!-- FOOTER -->
+<div class="rf">
+  <div class="rf-inner">
+    <span class="rl">数据来源</span>
+    <span class="rt">
+      CNBC（7.20/7.22/7.23/7.24油价+股市多篇报道）&nbsp;·&nbsp; Bloomberg（Brent Oil Tops $100/股市直播）&nbsp;·&nbsp; Al Jazeera（伊朗局势）&nbsp;·&nbsp; Saxo Bank Asia Market Quick Take（7.23-24）&nbsp;·&nbsp; TheStreet（7.20-24每日复盘）&nbsp;·&nbsp; Motley Fool（7.24收盘精确数据）&nbsp;·&nbsp; Yahoo Finance（7.17-24市场直播）&nbsp;·&nbsp; FX Leaders（黄金/加息概率，7.24）&nbsp;·&nbsp; GoldSilver.com（FOMC/PCE预览）&nbsp;·&nbsp; LiteFinance（Gold Forecast）&nbsp;·&nbsp; Trading Economics（10Y美债/人民币/上证综指）&nbsp;·&nbsp; AInvest（PBOC流动性分析）&nbsp;·&nbsp; TD Securities研报摘录&nbsp;·&nbsp; CME FedWatch
+    </span>
+  </div>
+</div>
+<div class="disc">
+  编制：全球宏观投资研究 &nbsp;|&nbsp; 基准日：2026.07.26（日）&nbsp;|&nbsp; 四维驱动 — 三层传导框架 &nbsp;|&nbsp; 不构成任何投资建议，严禁作为投资决策依据。
+</div>
+
+</body>
+</html>
