@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英特尔 (INTC) 2026Q2财报跟踪分析 | Snail-bird Investment</title>
+
+<style>
+:root{
+  --bg:#0a1424; --bg-panel:#101f36; --bg-alt:#0c1a2e; --ink:#e8eef8; --ink-soft:#9fb1cc; --ink-faint:#7c8aa3; --line:#223349;
+  --blue:#4f9bff; --blue-deep:#8ab4f8; --navy:#6ea8fe; --steel:#9fb1cc;
+  --red:#ff7a7a; --gold:#f0b429; --green:#3ecf8e; --amber:#f0b429;
+  --mono:'IBM Plex Mono','Courier New',monospace;--sans:'IBM Plex Sans','Noto Sans SC',sans-serif;--serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--blue);}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+nav{position:sticky;top:0;z-index:100;background:rgba(10,20,36,0.97);backdrop-filter:blur(6px);border-bottom:2px solid var(--blue-deep);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--blue-deep);}
+.brand .logo{width:26px;height:26px;border-radius:5px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--blue-deep);border:1px solid var(--blue-deep);padding:3px 8px;border-radius:3px;}
+header.hero{padding:60px 0 40px;border-bottom:2px solid var(--blue-deep);background:linear-gradient(180deg,#0e1c33 0%,var(--bg) 100%);}
+.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+.intc-logo,.rtx-logo{width:52px;height:52px;border-radius:10px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:800;font-size:18px;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--blue);text-transform:uppercase;font-weight:700;}
+h1.title{font-family:var(--serif);font-size:32px;font-weight:700;margin:14px 0 10px;line-height:1.35;color:var(--ink);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:820px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+.rating-panel{display:flex;gap:1px;background:var(--blue-deep);border:1px solid var(--blue-deep);margin-top:30px;}
+.rating-box{background:var(--blue-deep);color:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;min-width:180px;}
+.rating-box .rlabel{font-family:var(--mono);font-size:11px;opacity:.85;text-transform:uppercase;letter-spacing:1px;}
+.rating-box .rvalue{font-family:var(--serif);font-size:24px;font-weight:700;margin-top:6px;}
+.target-box{background:var(--bg-panel);padding:20px 26px;display:flex;flex-direction:column;justify-content:center;flex:1;}
+.target-box .tlabel{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:1px;}
+.target-box .tvalue{font-family:var(--mono);font-size:21px;font-weight:700;color:var(--blue-deep);margin-top:6px;}
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:18px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--blue);font-weight:700;}
+h2{font-family:var(--serif);font-size:24px;margin:0;color:var(--blue-deep);}
+h3{font-family:var(--sans);font-size:16px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--blue);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--blue);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);background:#2a1416;}
+.callout.gold{border-left-color:var(--gold);background:#241d0a;}
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:13.5px;color:var(--blue-deep);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:#16294a;font-family:var(--mono);font-size:11.5px;color:#cdd9ec;font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:var(--bg-alt);}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#0f2e1d;color:var(--green);}
+.tag.miss{background:#2a1416;color:var(--red);}
+.tag.line{background:#241d0a;color:var(--amber);}
+.seg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0;}
+.seg-card{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--blue);}
+.seg-card .sname{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--blue-deep);margin-bottom:6px;}
+.seg-card .sval{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.seg-card .sgrowth{font-family:var(--mono);font-size:12px;margin-bottom:8px;}
+.seg-card .sgrowth.pos{color:var(--green);}
+.seg-card .sgrowth.neg{color:var(--red);}
+.seg-card p{font-size:11.5px;margin:0;}
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--blue-deep);border:1px solid var(--blue-deep);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:23px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--blue-deep);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--amber);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#2a1416;color:var(--red);}
+.risk-item.mid .rlevel{background:#241d0a;color:var(--amber);}
+.risk-item.low .rlevel{background:#0f2e1d;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+.risk-item .src{font-size:10.5px;color:var(--ink-faint);margin-top:6px;}
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.timeline{margin:20px 0;border-left:2px solid var(--blue-deep);padding-left:24px;}
+.tl-item{margin-bottom:18px;position:relative;}
+.tl-item::before{content:'';position:absolute;left:-29px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--blue-deep);}
+.tl-item .tdate{font-family:var(--mono);font-size:11px;color:var(--blue);font-weight:700;}
+.tl-item .ttitle{font-size:14px;font-weight:700;color:var(--ink);margin:2px 0 4px;}
+.tl-item p{font-size:13px;margin:0;}
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--blue-deep);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+svg{display:block;margin:14px auto;max-width:640px;width:100%;height:auto;}
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .seg-grid{grid-template-columns:1fr;}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .rating-panel{flex-direction:column;}
+  h1.title{font-size:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="logo">S</span> SNAIL-BIRD INVESTMENT · 科技硬件与半导体研究</div>
+    <div class="navlinks">
+      <span>半导体 / CPU与晶圆代工</span>
+      <span class="navtag">NASDAQ: INTC</span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="intc-logo">intel</div>
+      <div class="eyebrow">美股 · 半导体设计与制造巨头 · 2026Q2财报跟踪分析</div>
+    </div>
+    <h1 class="title">英特尔 (Intel Corporation, INTC)：15年最强营收增速与资本开支焦虑的两极反应</h1>
+    <p class="subtitle">报告日期：2026年7月26日｜出品方：Snail-bird Investment 科技硬件与半导体研究组｜分析框架：财报核心数据解读 · GAAP亏损成因专题 · 自由现金流与资本开支矛盾 · 晶圆代工进展 · 估值与股价异动 · 风险提示</p>
+    <div class="meta-row">
+      <span>股票代码：<b>NASDAQ: INTC</b></span>
+      <span>所属行业：<b>半导体设计与制造（CPU/GPU/晶圆代工）</b></span>
+      <span>CEO：<b>Lip-Bu Tan</b></span>
+      <span>财报日期：<b>2026年第二季度（2026年7月23日盘后披露）</b>　下一次财报：<b>2026年10月21日（估）</b></span>
+    </div>
+
+    <div class="rating-panel">
+      <div class="rating-box">
+        <div class="rlabel">Snail-bird Investment 评级</div>
+        <div class="rvalue">持有（Hold）</div>
+      </div>
+      <div class="target-box">
+        <div class="tlabel">12个月目标价区间（相对估值为主，需高度关注现金流与执行风险）</div>
+        <div class="tvalue">US$85 - US$115（基准情景中枢约US$100，与近期分析师目标价及市场价格高度收敛）</div>
+      </div>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="label">最新股价</div>
+        <div class="value">US$91.52</div>
+        <div class="sub">2026-07-25（财报后连续两日大幅回调）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026Q2营收</div>
+        <div class="value pos">$16.13B</div>
+        <div class="sub">+25% YoY，15年来最快增速，超预期约12%</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026Q2非GAAP EPS</div>
+        <div class="value pos">$0.42</div>
+        <div class="sub">超预期约91%-93%（一致预期$0.20-0.22）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026Q2 GAAP EPS</div>
+        <div class="value neg">$(2.16)</div>
+        <div class="sub">主因125.29亿美元托管股份非现金公允价值损失</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026Q2调整后自由现金流</div>
+        <div class="value neg">$(84.19)亿</div>
+        <div class="sub">资本开支大幅提升所致</div>
+      </div>
+      <div class="kpi">
+        <div class="label">财报后股价走势</div>
+        <div class="value neg">盘后+13% → 两日累计-18%</div>
+        <div class="sub">市场情绪从狂喜迅速转向对资本开支的担忧</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>核心结论：一份"体检报告"式的复杂财报，需要拆解而非简单定性</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>英特尔于2026年7月23日美股盘后发布第二季度财报，营收达161.28亿美元，同比增长25%，是公司近15年来最快的单季营收增速，较市场一致预期约144.2-144.5亿美元高出约12%；非GAAP每股收益0.42美元，较一致预期0.20-0.22美元几乎翻倍（数据来源：Intel Corporation 2026年第二季度财报8-K文件，2026年7月23日；CNBC、Yahoo Finance转载）。CEO Lip-Bu Tan将其定性为"公司连续第七个季度超越自身业绩指引"，数据中心与AI（DCAI）业务单季收入同比激增59%至63亿美元，是本季度最大的亮点。</p>
+        <p>但财报表面之下存在两条相互矛盾的叙事线：其一，公司GAAP口径下录得高达110.33亿美元的净亏损（每股亏损2.16美元），主要源于与美国政府"CHIPS法案安全飞地协议"相关的托管股份（Escrowed Shares）产生的125.29亿美元非现金公允价值损失，这是一次性会计影响而非经营性亏损；其二，公司调整后自由现金流本季度为负84.19亿美元，且管理层同步将2026年资本开支指引从180亿美元大幅上调至"超过200亿美元"，并明确表示2027年资本开支规模将"显著更高"，这一资本开支激增才是引发市场担忧的核心（数据来源：StockTitan转载10-Q文件、TradingKey，2026年7月23-24日）。</p>
+        <p>市场对这份财报的反应本身即是一部"过山车"：财报发布当晚盘后一度上涨约12%-13%至112美元上方；但次日（7月24日，周五）交易时段风向逆转，盘中一度跌破100美元整数关口，最终收跌7.9%至92.32美元；7月25日进一步下探至91.22-91.54美元区间，两个交易日累计从财报前收盘价100.23美元下跌约<b>18%</b>，市值蒸发约400亿美元（数据来源：TechStock²/ts2.tech、TradingKey、Yahoo Finance，2026年7月24-25日）。我们给予英特尔"持有"评级，核心论点如下：</p>
+        <ol style="color:var(--ink-soft);font-size:14.5px;padding-left:20px;">
+          <li><b>核心经营业绩的改善是真实且扎实的，不应被GAAP净亏损的会计噪音所掩盖。</b>剔除125.29亿美元托管股份非现金损失后，公司非GAAP口径下净利润达22亿美元，去年同期为净亏损4.41亿美元，实现了实质性的扭亏为盈；GAAP口径下的经营利润本身为17.96亿美元正值（去年同期为经营亏损31.76亿美元），经营利润率同比大幅提升35.8个百分点至11.1%，这些经营层面的核心指标印证了业绩改善的真实性。</li>
+          <li><b>市场对资本开支激增的担忧具备合理性，这是理解财报公布后股价"倒v型"走势的关键。</b>公司将2026年资本开支指引上调逾2,000万美元至200亿美元以上，且预告2027年将"显著更高"，叠加本季度调整后自由现金流已为负84.19亿美元，市场的核心疑虑在于：公司能否在维持如此激进资本开支强度的同时，将创纪录的营收增长转化为可持续的自由现金流，而非仅仅是"增收不增现金"的规模扩张。</li>
+          <li><b>晶圆代工（Intel Foundry）业务的对外商业化进展依然是决定公司长期估值重估空间的核心变量，本季度数据显示"渐进但尚未质变"。</b>Intel Foundry总营收58亿美元，同比增长31%，18A制程良率已提升至约85%并追踪好于预期，公司确认已与一家大型云服务商达成制造协议；但对外部（非英特尔自身）客户的营收仅为2.93亿美元，占该分部总营收比例约5%，且该分部仍处于结构性亏损状态，这意味着"英特尔能否真正成为英伟达/台积电式的独立代工巨头"这一核心叙事，本季度仅取得渐进式验证，尚未迎来质变性突破。</li>
+          <li><b>估值层面，公司当前静态P/E因GAAP亏损而失真，远期P/E隐含极高的turnaround溢价，投资者需要认识到当前定价已高度前置了执行成功的预期。</b>公司trailing P/E（TTM）为负值（-43.54倍，因GAAP净亏损），而基于未来12个月预期的远期P/E（NTM）高达约77倍，这一水平显著高于成熟半导体公司的合理区间，反映市场目前更多是基于"困境反转叙事"而非当期盈利能力对公司进行定价，这种定价模式本身具备较高的波动性，正如财报后两日内近18%的暴跌所展示的那样。</li>
+          <li><b>股价在报告期内已经历极端波动（52周区间18.97-142.35美元，年内一度上涨超170%后又两日内回吐近18%），反映市场对公司"复苏"故事的信心仍然脆弱，尚未形成稳定共识。</b>DA Davidson在财报后（7月25日）将目标价从77美元上调至100美元，但评级仍维持"中性"（Neutral）而非转为看多，这一"上调目标价但维持中性评级"的组合，恰当地反映了当前市场对英特尔业绩改善趋势的认可与对执行/估值风险的审慎并存的复杂心态，我们认为这一态度具有参考价值。</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>Q2 2026关键数据速览</h4>
+        <ul>
+          <li>营收：<b>$16.128B</b>（+25%，15年最快增速）</li>
+          <li>非GAAP EPS：<b>$0.42</b>（一致预期$0.20-0.22）</li>
+          <li>GAAP EPS：<b>$(2.16)</b>（含125.29亿美元托管股份非现金损失）</li>
+          <li>DCAI（数据中心与AI）：<b>$6.3B</b>（+59%，创纪录）</li>
+          <li>CCPG（客户端计算）：<b>$8.9B</b>（+13%）</li>
+          <li>Intel Foundry：<b>$5.8B</b>（+31%），对外部客户收入仅$293M（约占5%）</li>
+          <li>调整后自由现金流：<b>$(8.419B)</b></li>
+          <li>2026年资本开支指引：<b>上调至$200亿以上</b>（原$180亿），2027年"显著更高"</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>数据来源交叉核实说明：</b>本报告在检索过程中发现一份文章（TradingKey，"Intel Q2 2026 Earnings: What the Results Mean for the Stock"）给出的数据（营收144亿美元、非GAAP EPS 0.22美元）与公司官方8-K文件及绝大多数其他财经媒体报道的数据（营收161.28亿美元、非GAAP EPS 0.42美元）存在显著且系统性的差异，本报告判断该文章可能包含错误或引用了错误的历史数据，已不采纳该数据作为本报告依据，特此说明以提示投资者注意甄别不同渠道信息质量。此外，关于财报后股价单日跌幅，不同渠道对"7.9%"与"7.91%"等小数点后表述存在极细微差异，本报告采用约7.9%这一区间表述，不影响分析结论。</div>
+  </div>
+</section>
+
+<section id="segments">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>业务板块拆解：AI驱动的数据中心业务是最大亮点</h2></div>
+    <div class="seg-grid">
+      <div class="seg-card">
+        <div class="sname">数据中心与AI（DCAI）</div>
+        <div class="sval">$6.3B</div>
+        <div class="sgrowth pos">+59%（创纪录）</div>
+        <p>受Xeon 6服务器需求驱动，是本季度增速最快、超预期幅度最大的板块；管理层披露服务器平均售价（ASP）同比大涨48%、出货量同比增长9%，价格上涨是主要贡献因素，反映高端产品需求结构性改善（数据来源：ts2.tech，2026年7月25日）。</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">客户端计算与物理AI（CCPG）</div>
+        <div class="sval">$8.9B</div>
+        <div class="sgrowth pos">+13%（环比+15%）</div>
+        <p>公司仍是营收规模最大的单一板块，但管理层同时提示，受存储器（memory）短缺影响，预计第三季度PC销量将持平，反映下游终端需求存在结构性供给瓶颈制约。</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">英特尔代工（Intel Foundry）</div>
+        <div class="sval">$5.8B</div>
+        <div class="sgrowth pos">+31%</div>
+        <p>18A制程良率约85%、追踪好于历史同期节点，14A制程节奏领先历史可比节点；但对外部客户收入仅2.93亿美元（约占该分部收入5%），该分部仍处于结构性亏损，是英特尔转型为独立代工厂故事中最需要时间验证的部分。</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">AI驱动业务合计</div>
+        <div class="sval">约占营收70%</div>
+        <div class="sgrowth pos">整体+70%以上</div>
+        <p>公司披露AI相关业务收入同比整体增长超70%，占公司总营收约70%，反映公司当前的增长引擎已高度集中于AI基础设施相关需求，而非传统PC周期。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：BigGo Finance（2026年7月23日财报电话会议纪要）、TradingKey、ts2.tech（2026年7月23-25日）。</p>
+    <div class="chart-box"><svg viewBox="0 0 680 380" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace"><text x="340" y="26" text-anchor="middle" font-size="13" fill="#e8eef8">2026Q2三大业务线营收与增速</text><line x1="58" y1="58" x2="58" y2="300" stroke="#223349"/><line x1="622" y1="58" x2="622" y2="300" stroke="#223349"/><line x1="58" y1="300" x2="622" y2="300" stroke="#223349"/><line x1="58" y1="300.0" x2="622" y2="300.0" stroke="#15243a"/><text x="52" y="304.0" text-anchor="end" font-size="9" fill="#7c8aa3">0</text><text x="628" y="304.0" text-anchor="start" font-size="9" fill="#7c8aa3">0</text><line x1="58" y1="239.5" x2="622" y2="239.5" stroke="#15243a"/><text x="52" y="243.5" text-anchor="end" font-size="9" fill="#7c8aa3">2.5</text><text x="628" y="243.5" text-anchor="start" font-size="9" fill="#7c8aa3">20</text><line x1="58" y1="179.0" x2="622" y2="179.0" stroke="#15243a"/><text x="52" y="183.0" text-anchor="end" font-size="9" fill="#7c8aa3">5</text><text x="628" y="183.0" text-anchor="start" font-size="9" fill="#7c8aa3">40</text><line x1="58" y1="118.5" x2="622" y2="118.5" stroke="#15243a"/><text x="52" y="122.5" text-anchor="end" font-size="9" fill="#7c8aa3">7.5</text><text x="628" y="122.5" text-anchor="start" font-size="9" fill="#7c8aa3">60</text><line x1="58" y1="58.0" x2="622" y2="58.0" stroke="#15243a"/><text x="52" y="62.0" text-anchor="end" font-size="9" fill="#7c8aa3">10</text><text x="628" y="62.0" text-anchor="start" font-size="9" fill="#7c8aa3">80</text><rect x="97.5" y="147.5" width="48.9" height="152.5" fill="#4f9bff" rx="2"/><rect x="157.6" y="121.5" width="48.9" height="178.5" fill="#f0b429" rx="2"/><text x="152.0" y="316.0" text-anchor="middle" font-size="9" fill="#9fb1cc">DCAI(数据中心/AI)</text><rect x="285.5" y="84.6" width="48.9" height="215.4" fill="#4f9bff" rx="2"/><rect x="345.6" y="260.7" width="48.9" height="39.3" fill="#f0b429" rx="2"/><text x="340.0" y="316.0" text-anchor="middle" font-size="9" fill="#9fb1cc">CCPG(客户端计算)</text><rect x="473.5" y="159.6" width="48.9" height="140.4" fill="#4f9bff" rx="2"/><rect x="533.6" y="206.2" width="48.9" height="93.8" fill="#f0b429" rx="2"/><text x="528.0" y="316.0" text-anchor="middle" font-size="9" fill="#9fb1cc">Intel Foundry(代工)</text><rect x="58" y="331" width="11" height="11" fill="#4f9bff"/><text x="74" y="341" font-size="10" fill="#9fb1cc">2026Q2营收（十亿美元）</text><rect x="268" y="331" width="11" height="11" fill="#f0b429"/><text x="284" y="341" font-size="10" fill="#9fb1cc">同比增速（%）</text></svg></div>
+  </div>
+</section>
+
+<section id="gaap-loss">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>专题解读：110亿美元GAAP净亏损从何而来？</h2></div>
+    <p>本季度财报中最容易引发误读的数字，是GAAP口径下高达110.33亿美元的净亏损（每股亏损2.16美元）——这一数字若脱离上下文单独看待，极易被误解为公司经营状况严重恶化，但深入拆解后可见其本质是一次性、非现金性质的会计事项。</p>
+    <table>
+      <thead><tr><th>项目</th><th>金额</th><th>性质</th></tr></thead>
+      <tbody>
+        <tr><td>GAAP经营利润</td><td>$17.96亿（正值）</td><td>核心经营性指标，去年同期为经营亏损$31.76亿，同比大幅改善</td></tr>
+        <tr><td>"利息及其他"科目净支出</td><td>$125.76亿</td><td>去年同期仅$0.95亿，是本季度巨额亏损的核心来源</td></tr>
+        <tr><td>其中：托管股份（Escrowed Shares）公允价值损失</td><td>$125.29亿</td><td>与美国商务部"CHIPS法案安全飞地协议"相关的非现金、按市值计价损失</td></tr>
+        <tr><td>GAAP净亏损（归属英特尔）</td><td>$(110.33)亿</td><td>每股亏损$(2.16)，主要由上述非现金项目导致</td></tr>
+        <tr><td>非GAAP净利润（剔除上述项目等）</td><td>$22亿（正值）</td><td>每股收益$0.42，去年同期为净亏损$4.41亿</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：TradingKey（2026年7月23日）、24/7 Wall St、longyield.substack.com（2026年7月，财报深度拆解）。此外，公司上半年（H1 2026）财报还确认了一笔39亿美元的Mobileye商誉非现金减值，是另一项影响GAAP口径盈利能力但不影响核心经营现金流的会计事项（数据来源：StockTitan转载10-Q文件）。</p>
+    <div class="callout"><b>如何理解这一"会计幽灵"：</b>托管股份源于英特尔与美国政府在2025年达成的CHIPS法案相关协议——美国政府因此持有英特尔约10%的股权。由于这部分股份需要按公允价值（即英特尔股价）定期重新计量，而英特尔股价在本报告期内经历了剧烈波动（年内一度上涨超170%），股价的大幅上涨反而导致公司需要就这部分"托管给政府"的股份确认更高的公允价值损失——这是一种"股价越涨、账面损失越大"的反直觉会计现象，与公司核心半导体业务的实际经营表现无直接关联。投资者在评估公司盈利能力时，应重点关注非GAAP指标及经营性现金流，而非简单以GAAP净利润数字线性判断公司经营状况。</div>
+  </div>
+</section>
+
+<section id="fcf-capex">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>专题解读：自由现金流转负与资本开支激增——市场担忧的真正核心</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>与GAAP净亏损的"会计噪音"性质不同，本季度自由现金流转负及资本开支指引的大幅上调，是市场在财报后第二个交易日大幅抛售英特尔股票的真正核心原因，这一变量具备更实质性的财务影响。公司本季度调整后自由现金流为负84.19亿美元（上年同期为负10.50亿美元），经营活动现金流虽改善至70.06亿美元（H1累计81.02亿美元，较上年同期的28.63亿美元大幅提升），但资本开支的同步大幅提升完全抵消了经营现金流的改善，导致自由现金流层面依然呈现明显的现金消耗态势。</p>
+        <p>更值得关注的是管理层对未来资本开支节奏的指引：2026年资本开支预算从此前的180亿美元上调至"超过200亿美元"，且CFO Dave Zinsner在财报电话会中明确表示2027年资本开支规模将"显著更高"，主要投向设备、洁净室空间及基板产能，以支持预期中的产品与代工业务增长。叠加公司本季度已支付142亿美元现金以回购Apollo管理的私募股权基金持有的爱尔兰SCIP晶圆厂合资实体49%股权（消除少数股东权益、实现全资控股），公司债务规模已攀升至485.49亿美元，这些因素共同构成了市场对英特尔资产负债表及现金流可持续性的审慎评估基础。</p>
+      </div>
+      <div class="card">
+        <h4>自由现金流与资本结构关键数据</h4>
+        <ul>
+          <li>Q2调整后自由现金流：<b>$(84.19)亿</b>（上年同期$(10.50)亿）</li>
+          <li>Q2经营活动现金流：<b>$70.06亿</b></li>
+          <li>H1经营活动现金流：<b>$81.02亿</b>（上年同期$28.63亿）</li>
+          <li>2026年资本开支指引：<b>$200亿以上</b>（原$180亿）</li>
+          <li>2027年资本开支：<b>管理层预告"显著更高"</b></li>
+          <li>Q2支付142亿美元现金：<b>回购Apollo持有的爱尔兰SCIP合资实体49%股权</b></li>
+          <li>总债务：<b>$485.49亿</b></li>
+          <li>流通股本：<b>50.43亿股</b>（较上年同期49.94亿股有所增加）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>市场担忧的本质：</b>投资者在消化财报后的核心疑虑并非"公司增长是否真实"（DCAI+59%的增速数据足以证明真实性），而是"这一增长能否在维持当前激进资本开支强度的同时，转化为可持续的自由现金流"。若公司需要持续以远超经营现金流改善幅度的速度追加资本开支才能维持增长，其商业模式的资本回报效率将面临市场的持续拷问，这正是财报次日股价"倒V型"走势——盘后因营收利润超预期而大涨，次日交易时段因消化资本开支细节而转跌——最合理的解释。</div>
+  </div>
+</section>
+
+<section id="valuation">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>估值与股价异动分析</h2></div>
+    <table>
+      <thead><tr><th>指标</th><th>数值</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>Trailing P/E（TTM）</td><td>约-43.54倍</td><td>因GAAP口径净亏损而呈负值，参考意义有限</td></tr>
+        <tr><td>远期P/E（NTM）</td><td>约77.19倍</td><td>反映市场基于困境反转叙事给予的高溢价定价</td></tr>
+        <tr><td>Beta</td><td>2.24</td><td>波动性显著高于大盘，与近期实际股价走势吻合</td></tr>
+        <tr><td>市值（估算）</td><td>约$504B</td><td>数据来源：Robinhood，2026年7月25日</td></tr>
+        <tr><td>DA Davidson最新目标价（7月25日更新）</td><td>$100（原$77）</td><td>评级维持"中性"（Neutral），上调目标价但未转看多</td></tr>
+        <tr><td>分析师一致目标价（均值/区间）</td><td>约$115.40（区间$74-$200）</td><td>数据来源：Yahoo Finance，2026年7月24日</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：CNBC（2026年7月25日实时行情）、Robinhood、Yahoo Finance。公司当前估值定价的核心矛盾在于：静态盈利指标（TTM P/E为负）完全无法反映当前的市场定价逻辑，投资者事实上是在为"英特尔能否成功转型为兼具领先CPU设计能力与独立晶圆代工能力的双重巨头"这一长期叙事支付溢价，而非为当期盈利支付常规倍数。这种"故事驱动型"估值的特征是波动性显著放大——财报当周即完整演绎了这一特征：盘后暴涨、次日暴跌，两个交易日内近18%的价格波动幅度，远超公司基本面本身的变化幅度。</p>
+
+    <h3>财报后股价走势时间线</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tdate">2026年7月23日（周四）盘后</div>
+        <div class="ttitle">财报发布，股价盘后飙升</div>
+        <p>财报公布后，股价从收盘价$100.23一度飙升约12%-13%，盘中触及约$112.7，市场初步反应聚焦于营收与EPS的大幅超预期。</p>
+      </div>
+      <div class="tl-item">
+        <div class="tdate">2026年7月24日（周五）</div>
+        <div class="ttitle">市场情绪逆转，全天暴跌7.9%</div>
+        <p>盘前一度上涨约6%，但随着市场进一步消化"资本开支大幅上调"这一细节，涨幅迅速收窄并转为下跌，全天暴跌7.9%，收报$92.32，单日振幅高达约14个百分点，公司当日估值蒸发约400亿美元。</p>
+      </div>
+      <div class="tl-item">
+        <div class="tdate">2026年7月25日（周六，注：数据实际对应周五盘后延续及最新快照）</div>
+        <div class="ttitle">跌势延续，跌破$92</div>
+        <p>股价进一步下探至$91.22-$91.54区间，两个交易日相对财报前收盘价累计下跌约18%，反映市场对资本开支及自由现金流可持续性的担忧尚未充分消化完毕。</p>
+      </div>
+    </div>
+    <div class="chart-box"><svg viewBox="0 0 680 330" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace"><text x="340" y="26" text-anchor="middle" font-size="13" fill="#e8eef8">财报前后股价&quot;过山车&quot;走势（美元）</text><line x1="58" y1="56" x2="58" y2="274" stroke="#223349"/><line x1="58" y1="274" x2="650" y2="274" stroke="#223349"/><line x1="58" y1="274.0" x2="650" y2="274.0" stroke="#15243a"/><text x="52" y="278.0" text-anchor="end" font-size="9" fill="#7c8aa3">85</text><line x1="58" y1="219.5" x2="650" y2="219.5" stroke="#15243a"/><text x="52" y="223.5" text-anchor="end" font-size="9" fill="#7c8aa3">93.8</text><line x1="58" y1="165.0" x2="650" y2="165.0" stroke="#15243a"/><text x="52" y="169.0" text-anchor="end" font-size="9" fill="#7c8aa3">102.5</text><line x1="58" y1="110.5" x2="650" y2="110.5" stroke="#15243a"/><text x="52" y="114.5" text-anchor="end" font-size="9" fill="#7c8aa3">111.2</text><line x1="58" y1="56.0" x2="650" y2="56.0" stroke="#15243a"/><text x="52" y="60.0" text-anchor="end" font-size="9" fill="#7c8aa3">120</text><text x="58.0" y="290.0" text-anchor="middle" font-size="9" fill="#9fb1cc">7/23财报前收盘</text><text x="255.3" y="290.0" text-anchor="middle" font-size="9" fill="#9fb1cc">7/23盘后高点</text><text x="452.7" y="290.0" text-anchor="middle" font-size="9" fill="#9fb1cc">7/24收盘</text><text x="650.0" y="290.0" text-anchor="middle" font-size="9" fill="#9fb1cc">7/25最新</text><path d="M58.0,274.0 L58.0,179.1 L255.3,101.5 L452.7,228.4 L650.0,233.4 L650.0,274.0 Z" fill="#4f9bff" fill-opacity="0.12"/><path d="M58.0,179.1 L255.3,101.5 L452.7,228.4 L650.0,233.4" fill="none" stroke="#4f9bff" stroke-width="2"/><circle cx="58.0" cy="179.1" r="4" fill="#4f9bff"/><circle cx="255.3" cy="101.5" r="4" fill="#4f9bff"/><circle cx="452.7" cy="228.4" r="4" fill="#4f9bff"/><circle cx="650.0" cy="233.4" r="4" fill="#4f9bff"/></svg></div>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>风险提示</h2></div>
+    <div class="risk-matrix">
+      <div class="risk-item high">
+        <div class="rt"><b>资本开支激增下的自由现金流可持续性风险</b><span class="rlevel">高</span></div>
+        <p>2026年资本开支指引已上调至200亿美元以上，2027年预告"显著更高"，而本季度调整后自由现金流已为负84.19亿美元，若经营现金流的改善速度无法匹配资本开支的扩张节奏，公司现金消耗压力可能持续甚至恶化，是当前市场定价的核心担忧。</p>
+        <div class="src">数据来源：本报告第四节自由现金流分析</div>
+      </div>
+      <div class="risk-item high">
+        <div class="rt"><b>估值溢价的可持续性风险</b><span class="rlevel">高</span></div>
+        <p>远期P/E约77倍的估值水平隐含了市场对公司转型成功的高度乐观预期，一旦后续季度业绩或代工业务外部客户拓展不及预期，估值倍数存在大幅收缩的风险，财报后两日内近18%的暴跌已初步展示了这一估值脆弱性。</p>
+        <div class="src">数据来源：本报告第五节估值分析</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>晶圆代工外部客户拓展缓慢风险</b><span class="rlevel">中</span></div>
+        <p>Intel Foundry对外部客户的营收占比仅约5%，公司尚未公开披露任何重大外部代工客户，尽管18A良率数据积极，但"英特尔能否成为独立代工巨头"这一核心长期叙事的商业化验证依然缓慢，是决定长期估值天花板的关键不确定性。</p>
+        <div class="src">数据来源：CNBC，2026年7月23日财报电话会议纪要</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>存储器短缺制约PC业务风险</b><span class="rlevel">中</span></div>
+        <p>公司明确预计第三季度PC销量因存储器短缺而持平，反映行业性供应链瓶颈可能持续制约客户端计算业务的短期增长动能。</p>
+        <div class="src">数据来源：CNBC，2026年7月23日</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>债务规模持续攀升风险</b><span class="rlevel">中</span></div>
+        <p>公司总债务已升至485.49亿美元，叠加本季度142亿美元现金用于收购爱尔兰SCIP合资实体少数股权，资本结构的杠杆水平正持续上升，需要关注这一趋势是否会制约公司未来的财务灵活性。</p>
+        <div class="src">数据来源：StockTitan转载10-Q文件，2026年7月</div>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>美国政府股权关系的会计扰动风险</b><span class="rlevel">低-中</span></div>
+        <p>与美国政府CHIPS法案托管股份相关的公允价值重新计量，可能在公司股价大幅波动期间持续对GAAP净利润产生重大扰动（无论方向），投资者需要持续区分这一非经营性因素与核心业务表现，避免误读财报。</p>
+        <div class="src">数据来源：本报告第三节GAAP亏损成因专题</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rating">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2>投资建议</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b style="color:var(--ink);">评级：持有（Hold）。</b>我们认为英特尔本季度财报揭示了一幅"经营改善真实、资本开支激增引发合理担忧"的复杂图景。数据中心与AI业务59%的创纪录增速、非GAAP口径下的显著扭亏为盈、18A制程良率的持续提升，均是公司自我救赎叙事中扎实且可验证的积极证据；110亿美元的GAAP净亏损很大程度上是与股价波动相关的会计噪音，不应被简单解读为经营恶化。但与此同时，负84亿美元的自由现金流、大幅上调且预告"2027年显著更高"的资本开支指引、Intel Foundry仅约5%的外部客户收入占比，共同指向一个尚未被市场充分定价的核心问题：公司能否在维持当前激进投资强度的同时，将创纪录的营收增长转化为可持续的现金流回报，而这正是决定公司能否配得上当前约77倍远期P/E这一高溢价估值的根本性问题。财报后两个交易日内近18%的股价暴跌，恰恰反映出市场自身对这一问题也远未形成稳定共识。我们给予"持有"评级，既不因经营数据的亮眼表现而盲目乐观追高，也不因短期股价暴跌而简单看空，建议投资者以更长的时间维度耐心观察公司资本开支转化为收入与现金流的实际节奏。</p>
+        <div class="callout">
+          <b>关注信号：</b>（1）2026年第三季度财报（预计10月）中自由现金流能否企稳或收窄负值缺口；（2）Intel Foundry是否会公开披露重大外部代工客户，验证代工业务的真实商业化进展；（3）18A及14A制程良率能否持续提升并如期放量；（4）存储器短缺对PC业务的影响能否在下半年缓解；（5）公司债务水平及资本结构杠杆化趋势是否会引发信用评级层面的关注；（6）DA Davidson等机构后续是否会将评级从"中性"上调为"买入"，作为市场信心实质性改善的信号。
+        </div>
+        <p>对于计划配置的投资者，鉴于当前股价（$91.52附近）已较财报前有明显回调、且已低于DA Davidson最新目标价（$100）及分析师一致目标价均值（约$115.40），本报告认为当前价位对于愿意承受高波动性、认同公司长期转型叙事的投资者具备一定的风险收益比吸引力，但强烈建议采用分批建仓而非重仓介入的方式，并将本报告目标价区间US$85-115作为12个月评估参考，密切跟踪自由现金流及代工外部客户进展这两大核心验证信号，而非仅依赖单季度营收与EPS的表面超预期数据做出投资决策。</p>
+      </div>
+      <div class="card">
+        <h4>交易要点摘要</h4>
+        <ul>
+          <li>评级：<b>持有（Hold）</b></li>
+          <li>12个月目标价区间：<b>US$85-115</b>（基准中枢约US$100）</li>
+          <li>核心正面信号：<b>DCAI+59%增速、非GAAP扭亏为盈、18A良率提升</b></li>
+          <li>核心负面信号：<b>自由现金流转负、资本开支大幅上调、代工外部客户占比仅5%</b></li>
+          <li>核心估值风险：<b>远期P/E约77倍，隐含高度乐观的转型成功预期</b></li>
+          <li>近期波动性：<b>两个交易日内价格振幅近18%，需严格仓位管理</b></li>
+          <li>下一验证窗口：<b>2026年第三季度财报（预计10月）</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>方法论与数据说明</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">本报告基于Intel Corporation于2026年7月23日盘后发布的第二季度财报及后续两个交易日的市场反应撰写，所引用的最新股价（US$91.52）为2026年7月25日的可交叉验证数据。本报告在第一节中已就检索到的一份存在数据错误的第三方文章进行了说明并明确不采纳其数据，建议投资者以公司通过SEC披露的正式8-K及10-Q文件为最终权威依据。本报告第三节对GAAP净亏损成因的解读、第四节对自由现金流及资本开支的分析，均旨在帮助投资者穿透财报表面数字、理解其实质含义，但不构成对公司未来现金流或股价走势的确定性预测。</p>
+      </div>
+      <div>
+        <h5>主要数据来源</h5>
+        <ul class="src-list">
+          <li>Intel Corporation 2026年第二季度8-K及10-Q文件（www.sec.gov）</li>
+          <li>Intel 2026年第二季度财报新闻稿及电话会议纪要（StockTitan、BigGo Finance转载，2026年7月23日）</li>
+          <li>CNBC、Yahoo Finance（2026年7月23-25日，财报及股价报道）</li>
+          <li>TradingKey、ts2.tech、longyield.substack.com（2026年7月23-25日，财报深度拆解）</li>
+          <li>24/7 Wall St、Robinhood（2026年7月24-25日，市场数据与分析师评级）</li>
+        </ul>
+      </div>
+      <div>
+        <h5>报告信息</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">Snail-bird Investment<br>科技硬件与半导体研究组<br>报告日期：2026年7月26日<br>财报跟踪分析 · 评级：持有（Hold）</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      本报告由Snail-bird Investment研究团队独立撰写，仅供参考，不构成任何证券买卖要约或投资建议。报告中的观点、评级及目标价基于报告撰写时可获得的公开信息及分析师的专业判断，可能随市场环境变化而调整，Snail-bird Investment不承诺更新本报告的内容。英特尔当前正处于业务转型的关键阶段，其晶圆代工业务的商业化前景、资本开支强度及美国政府股权关系相关的会计影响均存在较高的不确定性，历史业绩及近期股价波动不构成对未来的保证。本报告对公司近期股价的极端波动进行了如实记录与分析，但不对短期股价走势做出精确预测。投资者应充分了解相关风险，并根据自身风险承受能力及投资目标独立判断，据此投资操作风险自负。本报告不构成对任何特定投资者的个性化投资建议，亦不对因使用本报告内容而产生的任何直接或间接损失承担责任。
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

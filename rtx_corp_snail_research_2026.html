@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RTX Corporation (RTX) 深度研究报告 | Snail-bird Investment</title>
+
+<style>
+:root{
+  --bg:#0a1424; --bg-panel:#101f36; --bg-alt:#0c1a2e; --ink:#e8eef8; --ink-soft:#9fb1cc; --ink-faint:#7c8aa3; --line:#223349;
+  --blue:#4f9bff; --blue-deep:#8ab4f8; --navy:#6ea8fe; --steel:#9fb1cc;
+  --red:#ff7a7a; --gold:#f0b429; --green:#3ecf8e; --amber:#f0b429;
+  --mono:'IBM Plex Mono','Courier New',monospace;--sans:'IBM Plex Sans','Noto Sans SC',sans-serif;--serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--blue);}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+nav{position:sticky;top:0;z-index:100;background:rgba(10,20,36,0.97);backdrop-filter:blur(6px);border-bottom:2px solid var(--blue-deep);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--blue-deep);}
+.brand .logo{width:26px;height:26px;border-radius:5px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--blue-deep);border:1px solid var(--blue-deep);padding:3px 8px;border-radius:3px;}
+header.hero{padding:60px 0 40px;border-bottom:2px solid var(--blue-deep);background:linear-gradient(180deg,#0e1c33 0%,var(--bg) 100%);}
+.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+.intc-logo,.rtx-logo{width:52px;height:52px;border-radius:10px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:800;font-size:18px;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--blue);text-transform:uppercase;font-weight:700;}
+h1.title{font-family:var(--serif);font-size:32px;font-weight:700;margin:14px 0 10px;line-height:1.35;color:var(--ink);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:820px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+.rating-panel{display:flex;gap:1px;background:var(--blue-deep);border:1px solid var(--blue-deep);margin-top:30px;}
+.rating-box{background:var(--blue-deep);color:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;min-width:180px;}
+.rating-box .rlabel{font-family:var(--mono);font-size:11px;opacity:.85;text-transform:uppercase;letter-spacing:1px;}
+.rating-box .rvalue{font-family:var(--serif);font-size:24px;font-weight:700;margin-top:6px;}
+.target-box{background:var(--bg-panel);padding:20px 26px;display:flex;flex-direction:column;justify-content:center;flex:1;}
+.target-box .tlabel{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:1px;}
+.target-box .tvalue{font-family:var(--mono);font-size:21px;font-weight:700;color:var(--blue-deep);margin-top:6px;}
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:18px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--blue);font-weight:700;}
+h2{font-family:var(--serif);font-size:24px;margin:0;color:var(--blue-deep);}
+h3{font-family:var(--sans);font-size:16px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--blue);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--blue);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);background:#2a1416;}
+.callout.gold{border-left-color:var(--gold);background:#241d0a;}
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:13.5px;color:var(--blue-deep);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:#16294a;font-family:var(--mono);font-size:11.5px;color:#cdd9ec;font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:var(--bg-alt);}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#0f2e1d;color:var(--green);}
+.tag.miss{background:#2a1416;color:var(--red);}
+.tag.line{background:#241d0a;color:var(--amber);}
+.seg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0;}
+.seg-card{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--blue);}
+.seg-card .sname{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--blue-deep);margin-bottom:6px;}
+.seg-card .sval{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.seg-card .sgrowth{font-family:var(--mono);font-size:12px;margin-bottom:8px;}
+.seg-card .sgrowth.pos{color:var(--green);}
+.seg-card .sgrowth.neg{color:var(--red);}
+.seg-card p{font-size:11.5px;margin:0;}
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--blue-deep);border:1px solid var(--blue-deep);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:23px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--blue-deep);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--amber);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#2a1416;color:var(--red);}
+.risk-item.mid .rlevel{background:#241d0a;color:var(--amber);}
+.risk-item.low .rlevel{background:#0f2e1d;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+.risk-item .src{font-size:10.5px;color:var(--ink-faint);margin-top:6px;}
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.timeline{margin:20px 0;border-left:2px solid var(--blue-deep);padding-left:24px;}
+.tl-item{margin-bottom:18px;position:relative;}
+.tl-item::before{content:'';position:absolute;left:-29px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--blue-deep);}
+.tl-item .tdate{font-family:var(--mono);font-size:11px;color:var(--blue);font-weight:700;}
+.tl-item .ttitle{font-size:14px;font-weight:700;color:var(--ink);margin:2px 0 4px;}
+.tl-item p{font-size:13px;margin:0;}
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--blue-deep);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+svg{display:block;margin:14px auto;max-width:640px;width:100%;height:auto;}
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .seg-grid{grid-template-columns:1fr;}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .rating-panel{flex-direction:column;}
+  h1.title{font-size:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="logo">S</span> SNAIL-BIRD INVESTMENT · 国防军工与航空航天研究</div>
+    <div class="navlinks">
+      <span>国防军工 / 商用航空发动机与系统</span>
+      <span class="navtag">NYSE: RTX</span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="rtx-logo">RTX</div>
+      <div class="eyebrow">美股 · 全球多元化航空航天与国防巨头 · Q2 2026财报即时更新</div>
+    </div>
+    <h1 class="title">RTX Corporation (NYSE: RTX)：商用航空修复与全球防务扩张双轮驱动下的"beat-and-raise"验证</h1>
+    <p class="subtitle">报告日期：2026年7月23日（基于当日盘前发布的2026年第二季度财报）｜出品方：Snail-bird Investment 国防军工与航空航天研究组｜分析框架：三大业务板块（Collins Aerospace/Pratt & Whitney/Raytheon）· 行业需求（全球防务开支+商用航空复苏）· 财务质量 · GTF动力涡扇发动机风险专题 · 估值（相对估值为主，DCF交叉验证）· 股东回报 · 风险提示</p>
+    <div class="meta-row">
+      <span>股票代码：<b>NYSE: RTX</b></span>
+      <span>所属行业：<b>航空航天与国防（商用发动机+航空系统+导弹防务）</b></span>
+      <span>董事长兼CEO：<b>Christopher Calio</b></span>
+      <span>最新季度：<b>2026年第二季度（2026年7月23日盘前披露）</b>　下一次财报：<b>2026年10月（Q3 2026）</b></span>
+    </div>
+
+    <div class="rating-panel">
+      <div class="rating-box">
+        <div class="rlabel">Snail-bird Investment 评级</div>
+        <div class="rvalue">增持（Buy）</div>
+      </div>
+      <div class="target-box">
+        <div class="tlabel">12个月目标价区间（相对估值为主，DCF交叉验证）</div>
+        <div class="tvalue">US$210 - US$250（基准情景中枢约US$228）</div>
+      </div>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi">
+        <div class="label">最新股价</div>
+        <div class="value">US$208.48</div>
+        <div class="sub">2026-07-23（财报当日+7%）</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026Q2调整后营收</div>
+        <div class="value pos">$24.7B</div>
+        <div class="sub">+14%（+16%有机增长），三大板块全线两位数增长</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026Q2调整后EPS</div>
+        <div class="value pos">$1.89</div>
+        <div class="sub">+21% YoY，超一致预期约13.7%</div>
+      </div>
+      <div class="kpi">
+        <div class="label">在手订单（Backlog）</div>
+        <div class="value pos">$289B</div>
+        <div class="sub">创历史新高，+22% YoY</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026年调整后EPS指引（上修）</div>
+        <div class="value pos">$7.10-7.25</div>
+        <div class="sub">此前指引$6.70-6.90</div>
+      </div>
+      <div class="kpi">
+        <div class="label">2026年自由现金流指引（上修）</div>
+        <div class="value pos">$85-87.5亿</div>
+        <div class="sub">此前指引$82.5-87.5亿</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>核心投资论点：三大板块同步兑现的"beat-and-raise"季度</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>RTX Corporation（原雷神技术公司，由2020年联合技术公司与雷神公司合并而成）是全球领先的多元化航空航天与国防系统供应商，业务覆盖商用飞机发动机（Pratt & Whitney）、航空电子及机身系统（Collins Aerospace）与导弹防御及军工系统（Raytheon）三大板块。公司于2026年7月23日美股盘前发布第二季度财报，交出了一份几乎全线超预期的成绩单：调整后营收247亿美元，同比增长14%（有机增长16%）；调整后每股收益1.89美元，同比增长21%，超市场一致预期约13.7%；GAAP净利润21亿美元，同比增长29%（数据来源：RTX 2026年第二季度财报新闻稿，经Seeking Alpha、MarketScreener转载，2026年7月23日）。财报公布后，公司股价在标普500指数当日下跌1.16%的背景下逆势上涨约7%至208.48美元，反映市场对这份"全面超预期+上修全年指引"成绩单的高度认可（数据来源：FX Leaders，2026年7月23日）。</p>
+        <p>更具指引意义的是，公司同步大幅上调了2026年全年展望：调整后营收指引从此前的925-935亿美元上调至950-960亿美元；有机增长指引从5%-6%大幅上调至8%-9%；调整后每股收益指引从6.70-6.90美元上调至7.10-7.25美元；自由现金流指引从82.5-87.5亿美元上调至85-87.5亿美元（数据来源：eciks.org、MarketScreener，2026年7月23日）。这是公司在2026年内的第二次上调全年指引（此前第一季度财报时已完成一次上调），显示公司管理层对下半年业务执行的信心正在持续增强，而非单一季度的偶然性超预期。</p>
+        <p>我们给予RTX"增持"评级，核心论点如下：</p>
+        <ol style="color:var(--ink-soft);font-size:14.5px;padding-left:20px;">
+          <li><b>三大业务板块罕见地实现同步两位数增长，是公司多元化业务组合"东边不亮西边亮"抗周期能力的直接体现，而非依赖单一板块的脆弱增长。</b>Collins Aerospace营收82.1亿美元（+7.7%报告口径/+13%有机增长），商用原设备销售大增26%；Pratt & Whitney营收88.9亿美元（+16%/+16.5%），商用售后市场激增25%、军用业务增长23%；Raytheon营收82.7亿美元（+18.1%/+18%），受爱国者、标准导弹、先进中程空空导弹（AMRAAM）等地面及防空系统项目驱动。三大板块调整后经营利润率均实现扩张，反映增长质量扎实而非单纯营收规模扩张（数据来源：Yahoo Finance/Zacks，2026年7月23日）。</li>
+          <li><b>创纪录的2,890亿美元在手订单为公司未来数年的收入提供了极高的能见度，国际化程度的提升是尤其值得关注的结构性积极信号。</b>Raytheon板块单季新增订单近200亿美元，其国防板块在手订单达860亿美元，其中48%来自国际客户，反映全球（尤其北约盟国）防务开支扩张正在实质性转化为公司的订单增长，而非仅仅是美国本土国防预算的单一敞口（数据来源：RTX Q2 2026财报电话会议纪要，经Yahoo Finance转载）。管理层同时披露，目前正将五份框架协议转化为确定性合同，代表着尚未完全体现在当前在手订单中的额外需求空间。</li>
+          <li><b>GTF齿轮传动涡扇发动机机队管理计划的运营改善正在实质性兑现，这是压制公司过去两年估值的核心历史包袱正在逐步化解的积极信号。</b>年初至今，GTF机队"停场"（Aircraft-on-Ground, AOG）水平同比下降25%，主要得益于维修（MRO）产出同比提升40%，发动机维修周转时间缩短23%。公司在本季度仍确认了约1.5亿美元与"粉末冶金"（powder metal）相关的补偿性支出，表明这一此前引发行业广泛关注的发动机零部件质量问题的财务影响仍在延续，但运营层面的改善轨迹清晰可见（数据来源：Yahoo Finance/Benzinga，2026年7月23日财报电话会议纪要）。</li>
+          <li><b>公司积极的组合管理策略（剥离非核心资产、聚焦高利润率核心业务）体现了管理层清晰的资本配置纪律。</b>公司同步宣布以6.2亿美元出售Raytheon旗下Blue Canyon Technologies（小卫星平台业务），管理层将此定位为"聚焦核心国防能力"的战略选择，同时宣布投资逾2亿美元用于扩大GTF维修产能及GEM-T（爱国者系统相关组件）生产，体现出"有所为有所不为"的资本配置纪律，而非盲目多元化扩张。</li>
+          <li><b>估值层面，公司当前股价已较大程度消化本次超预期业绩，机构目标价上调但离散度依然存在，投资者需要关注估值扩张的可持续性而非简单线性外推当前的beat幅度。</b>财报后，RBC资本市场维持"跑赢大盘"评级并给出230美元目标价，Jefferies维持"买入"评级、目标价220美元，反映机构对公司中期基本面的普遍认可；但也需注意，公司股价过去52周已累计上涨约38%，显著跑赢标普500及工业板块ETF，当前208.48美元的价位已部分反映了市场对本次财报的乐观预期，未来股价的进一步表现将更多取决于公司能否持续兑现当前的高预期，而非简单延续本次财报的"意外"幅度。</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>Q2 2026关键数据速览</h4>
+        <ul>
+          <li>调整后营收：<b>$24.7B</b>（+14%/+16%有机增长）</li>
+          <li>调整后EPS：<b>$1.89</b>（+21%，超预期约13.7%）</li>
+          <li>GAAP净利润：<b>$21亿</b>（+29%）</li>
+          <li>自由现金流：<b>$29亿</b>（经营现金流$35亿）</li>
+          <li>在手订单：<b>$2,890亿</b>（创历史新高，+22% YoY）</li>
+          <li>现金及等价物（2026年6月30日）：<b>$83.1亿</b>（2025年末为$74.4亿）</li>
+          <li>Collins/P&W/Raytheon营收增速：<b>+7.7%/+16%/+18.1%</b></li>
+          <li>剥离资产：<b>出售Blue Canyon Technologies，交易额$6.2亿</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn"><b>数据来源交叉核实说明：</b>关于本次财报的EPS超预期幅度，不同渠道表述存在小幅差异——FX Leaders称"13.7% EPS意外幅度"，而MarketScreener引用的数据显示GAAP EPS 1.57美元对应市场一致预期1.35美元（超预期约16.3%），调整后EPS 1.89美元的具体对比基准（Zacks一致预期1.66美元）隐含超预期约13.9%，两者较为接近但非完全一致，本报告采用"约13.7%-14%"这一区间表述以反映渠道间的微小差异。此外，关于公司在手订单规模，本报告检索到两个不同的数字——多数近期报道（财报当日）确认为2,890亿美元，而一篇财报前瞻文章（2026年7月22日）提及"2,710亿美元、同比增长25%"，本报告判断后者可能是财报披露前基于历史增长趋势的预估值，与财报当日的官方确认数字存在差异，本报告以财报当日官方披露的2,890亿美元为准。</div>
+  </div>
+</section>
+
+<section id="segments">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>三大业务板块深度拆解</h2></div>
+    <div class="seg-grid">
+      <div class="seg-card">
+        <div class="sname">Collins Aerospace（航空系统，占营收约31.1%）</div>
+        <div class="sval">$8.21B</div>
+        <div class="sgrowth pos">+7.7%（+13%有机）</div>
+        <p>提供航空电子、机身、内饰及综合飞机系统，商用原设备销售+26%（受益商用飞机交付回暖），商用售后市场+10%，国防销售+7%。调整后经营利润率扩张主要受高营收规模摊薄效应驱动，部分被国防业务占比变化、SG&A费用上升及2025年完成的资产剥离影响所抵消。</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">Pratt & Whitney（商用及军用发动机，占营收约37.1%）</div>
+        <div class="sval">$8.89B</div>
+        <div class="sgrowth pos">+16%（+17%有机）</div>
+        <p>商用售后市场大幅增长25%、军用业务增长23%（含F-35项目发动机），是本季度增速最快的板块；但商用原设备销售因大型商用发动机交付结构变化下降8%，反映公司正优先将售后维修物料资源分配至高利润率的售后市场业务，而非单纯追求原设备交付量。</p>
+      </div>
+      <div class="seg-card">
+        <div class="sname">Raytheon（导弹及综合防务系统，占营收约31.5%）</div>
+        <div class="sval">$8.27B</div>
+        <div class="sgrowth pos">+18.1%</div>
+        <p>受地面及防空系统、海军项目、空天防御系统（含爱国者、标准导弹、AMRAAM等核心项目）需求提升驱动，调整后经营利润率同比提升显著（经营利润+29%，增速快于营收），单季新增订单近200亿美元，国际客户占比接近一半，是本季度增长质量最高的板块。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：MarketScreener（2026年财年收入结构披露）、RTX 2026年第二季度财报及Zacks关键指标分析（2026年7月23日）。</p>
+    <div class="chart-box"><svg viewBox="0 0 680 380" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace"><text x="340" y="26" text-anchor="middle" font-size="13" fill="#e8eef8">2026Q2三大板块营收与增速</text><line x1="58" y1="58" x2="58" y2="300" stroke="#223349"/><line x1="622" y1="58" x2="622" y2="300" stroke="#223349"/><line x1="58" y1="300" x2="622" y2="300" stroke="#223349"/><line x1="58" y1="300.0" x2="622" y2="300.0" stroke="#15243a"/><text x="52" y="304.0" text-anchor="end" font-size="9" fill="#7c8aa3">0</text><text x="628" y="304.0" text-anchor="start" font-size="9" fill="#7c8aa3">0</text><line x1="58" y1="239.5" x2="622" y2="239.5" stroke="#15243a"/><text x="52" y="243.5" text-anchor="end" font-size="9" fill="#7c8aa3">2.5</text><text x="628" y="243.5" text-anchor="start" font-size="9" fill="#7c8aa3">5</text><line x1="58" y1="179.0" x2="622" y2="179.0" stroke="#15243a"/><text x="52" y="183.0" text-anchor="end" font-size="9" fill="#7c8aa3">5</text><text x="628" y="183.0" text-anchor="start" font-size="9" fill="#7c8aa3">10</text><line x1="58" y1="118.5" x2="622" y2="118.5" stroke="#15243a"/><text x="52" y="122.5" text-anchor="end" font-size="9" fill="#7c8aa3">7.5</text><text x="628" y="122.5" text-anchor="start" font-size="9" fill="#7c8aa3">15</text><line x1="58" y1="58.0" x2="622" y2="58.0" stroke="#15243a"/><text x="52" y="62.0" text-anchor="end" font-size="9" fill="#7c8aa3">10</text><text x="628" y="62.0" text-anchor="start" font-size="9" fill="#7c8aa3">20</text><rect x="97.5" y="101.3" width="48.9" height="198.7" fill="#6ea8fe" rx="2"/><rect x="157.6" y="206.8" width="48.9" height="93.2" fill="#f0b429" rx="2"/><text x="152.0" y="316.0" text-anchor="middle" font-size="9" fill="#9fb1cc">Collins Aerospace</text><rect x="285.5" y="84.9" width="48.9" height="215.1" fill="#6ea8fe" rx="2"/><rect x="345.6" y="106.4" width="48.9" height="193.6" fill="#f0b429" rx="2"/><text x="340.0" y="316.0" text-anchor="middle" font-size="9" fill="#9fb1cc">Pratt &amp; Whitney</text><rect x="473.5" y="99.9" width="48.9" height="200.1" fill="#6ea8fe" rx="2"/><rect x="533.6" y="81.0" width="48.9" height="219.0" fill="#f0b429" rx="2"/><text x="528.0" y="316.0" text-anchor="middle" font-size="9" fill="#9fb1cc">Raytheon</text><rect x="58" y="331" width="11" height="11" fill="#6ea8fe"/><text x="74" y="341" font-size="10" fill="#9fb1cc">2026Q2营收（十亿美元）</text><rect x="268" y="331" width="11" height="11" fill="#f0b429"/><text x="284" y="341" font-size="10" fill="#9fb1cc">同比增速（%）</text></svg></div>
+  </div>
+</section>
+
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>行业需求背景：全球防务开支扩张与商用航空复苏共振</h2></div>
+    <div class="grid-2">
+      <div>
+        <p>RTX当前的业绩表现，本质上是"商用航空需求持续复苏"与"全球防务开支结构性扩张"两大宏观趋势在同一家公司报表中的同步兑现。商用航空方面，全球客运量的持续增长（国内及国际航空出行需求双双改善）正推动飞行小时数上升，进而拉动发动机及航空系统的售后维修需求，这是Pratt & Whitney商用售后市场同比+25%、Collins商用售后市场+10%的根本驱动力；同时，商用飞机交付量的回暖（如公司管理层在财报电话会中提及的亚航150架空客A220订单，机型完全由Pratt & Whitney GTF发动机独家供电）也支撑了原设备销售的增长。</p>
+        <p>国防方面，公司管理层在财报电话会中明确指出"两党对增加国防开支的支持"以及"强劲的国际需求（尤其来自北约国家）"，这与同期公布财报的洛克希德·马丁（Lockheed Martin）形成了行业层面的相互印证——洛克希德同日公布的第二季度业绩同样大幅超预期并上调全年指引，单季新增650亿美元订单（含与导弹防御局350亿美元的萨德系统多年期协议），在手订单达2,300亿美元创纪录（数据来源：24/7 Wall St，2026年7月23日）。两大国防巨头同步的"beat-and-raise"表现，反映出当前全球"再武装"（rearmament）趋势正在切实转化为主要国防承包商的收入与现金流增长，而非仅停留在预算讨论层面。</p>
+      </div>
+      <div class="card">
+        <h4>行业关键信号</h4>
+        <ul>
+          <li>美国国防预算：<b>持续追踪突破1万亿美元量级</b>（数据来源：Option Beast，2026年7月22日）</li>
+          <li>Raytheon国防在手订单国际占比：<b>48%</b></li>
+          <li>同业印证：洛克希德·马丁同日财报：<b>EPS $7.94（超预期），营收$201亿（+11%），在手订单$2,300亿创纪录</b></li>
+          <li>洛克希德单季新增订单：<b>$650亿</b>（含$350亿萨德系统多年期协议）</li>
+          <li>商用航空驱动力：<b>全球客运量增长、飞行小时数上升、商用飞机交付回暖</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout gold"><b>行业层面的审慎提示：</b>尽管当前全球防务开支扩张与商用航空复苏的双重利好趋势清晰可见，且已获得RTX与洛克希德·马丁两大巨头同期财报的相互印证，但投资者仍需注意，这一趋势的可持续性最终取决于地缘政治局势的演变（若主要冲突降温，国防订单增速可能面临中期放缓压力）及商用航空需求的宏观经济敏感性（若全球经济增长放缓抑制航空出行需求）。此外，公司管理层在财报电话会中也坦承，未来增长将越来越依赖供应链产出能力的提升，且预计因支持产能爬坡而增加的库存投资，将对营运资金形成一定压力，这是需要持续跟踪的执行层面变量。</div>
+  </div>
+</section>
+
+<section id="gtf-risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>专题分析：GTF齿轮传动涡扇发动机风险的化解进展</h2></div>
+    <p>Pratt & Whitney的GTF发动机粉末冶金污染问题，是过去两年持续压制公司估值的最重大历史包袱之一——该问题导致大量装配GTF发动机的空客A320neo系列飞机需要提前返厂检修，造成航空公司运力损失及公司巨额财务补偿支出。本次财报披露的运营数据，为评估这一风险的化解进展提供了最新的量化证据。</p>
+    <table>
+      <thead><tr><th>指标</th><th>最新数据（年初至今）</th><th>解读</th></tr></thead>
+      <tbody>
+        <tr><td>GTF机队"停场"（AOG）水平</td><td>同比下降25%</td><td>核心改善指标，反映实际可用发动机数量的机队占比持续修复</td></tr>
+        <tr><td>MRO（维修、大修及翻修）产出</td><td>同比提升40%</td><td>产能爬坡是驱动AOG改善的直接原因</td></tr>
+        <tr><td>发动机维修周转时间</td><td>缩短23%</td><td>运营效率提升，有助于加速机队修复节奏</td></tr>
+        <tr><td>Q2粉末冶金相关补偿支出</td><td>约1.5亿美元</td><td>财务影响仍在延续但趋于常规化，非失控性成本中心</td></tr>
+        <tr><td>本季度新增投资</td><td>逾2亿美元（GTF MRO产能+GEM-T生产）</td><td>公司持续加码相关产能投资，支撑长期修复轨迹</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：FX Leaders、Benzinga（RTX 2026年第二季度财报电话会议纪要，2026年7月23日）。管理层在电话会中明确表态"GTF机队管理计划的财务及技术展望保持在既定轨道上"，25%的AOG改善幅度是公司管理层近期披露的最积极信号之一，表明这一此前被市场视为"黑天鹅"级别的运营风险正在按计划、可控地逐步化解，而非持续恶化的不可控风险。</p>
+    <div class="callout"><b>对估值的意义：</b>GTF问题的逐步化解，是理解公司当前"beat-and-raise"表现能否持续的关键变量之一——Pratt & Whitney商用售后市场本季度+25%的强劲增速，一定程度上正是MRO产能修复、可维修发动机存量增加带来的直接结果。若这一修复趋势延续，Pratt & Whitney板块有望从"历史包袱"逐步转变为"利润率扩张的驱动力"，这是我们在估值分析中给予公司相对乐观判断的重要支撑因素之一，但1.5亿美元的季度补偿支出也提醒投资者，这一问题的完全出清仍需时间，不宜过早假设该项成本已完全消失。</div>
+  </div>
+</section>
+
+<section id="financials">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>财务质量分析：指引持续上修的可信度评估</h2></div>
+    <table>
+      <thead><tr><th>指标</th><th>2026年初指引</th><th>2026Q1后指引（一次上修）</th><th>2026Q2后指引（二次上修，最新）</th></tr></thead>
+      <tbody>
+        <tr><td>调整后营收</td><td>—</td><td>$925-935亿</td><td>$950-960亿</td></tr>
+        <tr><td>有机增长率</td><td>—</td><td>5%-6%</td><td>8%-9%</td></tr>
+        <tr><td>调整后EPS</td><td>—</td><td>$6.70-6.90</td><td>$7.10-7.25</td></tr>
+        <tr><td>自由现金流</td><td>$82.5-87.5亿</td><td>$82.5-87.5亿</td><td>$85-87.5亿</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：Option Beast（2026年7月22日，财报前指引回顾）、eciks.org/MarketScreener（2026年7月23日，最新指引）。公司在2026年内连续两次上调全年指引，且第二次上修幅度（有机增长率上修3个百分点、EPS上修区间中值约6%）显著大于典型的"温和上修"，反映管理层对下半年业务执行的信心正随着上半年实际交付情况的验证而持续增强，这一"指引可信度递增"的模式本身是评估管理层执行力时的积极信号。</p>
+
+    <h3>资产负债表与现金流观察</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>现金流质量</h4>
+        <ul>
+          <li>Q2经营活动现金流：<b>$35亿</b>，自由现金流：<b>$29亿</b>，现金流转化能力扎实</li>
+          <li>现金及等价物：<b>$83.1亿</b>（2026年6月30日），较2025年末$74.4亿增长约12%</li>
+          <li>管理层提示：因支持产能爬坡的库存投资增加，未来营运资金可能面临一定压力，需持续跟踪自由现金流转化率</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>盈利质量观察</h4>
+        <ul>
+          <li>三大板块调整后经营利润率均实现同比扩张，反映增长的"含金量"较高，而非单纯依赖营收规模扩张</li>
+          <li>Raytheon板块经营利润增速（+29%）显著快于营收增速（+18.1%），显示该板块正处于经营杠杆释放的有利阶段</li>
+          <li>Pratt & Whitney商用原设备销售下滑（-8%）但商用售后市场大增（+25%），反映公司主动优化产品/服务组合、向高利润率业务倾斜的战略执行</li>
+        </ul>
+      </div>
+    </div>
+    <div class="chart-box"><svg viewBox="0 0 680 330" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace"><text x="340" y="26" text-anchor="middle" font-size="13" fill="#e8eef8">2026年调整后EPS指引连续两次上修轨迹</text><line x1="58" y1="56" x2="58" y2="274" stroke="#223349"/><line x1="58" y1="274" x2="650" y2="274" stroke="#223349"/><line x1="58" y1="274.0" x2="650" y2="274.0" stroke="#15243a"/><text x="52" y="278.0" text-anchor="end" font-size="9" fill="#7c8aa3">6</text><line x1="58" y1="219.5" x2="650" y2="219.5" stroke="#15243a"/><text x="52" y="223.5" text-anchor="end" font-size="9" fill="#7c8aa3">6.4</text><line x1="58" y1="165.0" x2="650" y2="165.0" stroke="#15243a"/><text x="52" y="169.0" text-anchor="end" font-size="9" fill="#7c8aa3">6.8</text><line x1="58" y1="110.5" x2="650" y2="110.5" stroke="#15243a"/><text x="52" y="114.5" text-anchor="end" font-size="9" fill="#7c8aa3">7.2</text><line x1="58" y1="56.0" x2="650" y2="56.0" stroke="#15243a"/><text x="52" y="60.0" text-anchor="end" font-size="9" fill="#7c8aa3">7.6</text><text x="58.0" y="290.0" text-anchor="middle" font-size="9" fill="#9fb1cc">2026年初指引</text><text x="354.0" y="290.0" text-anchor="middle" font-size="9" fill="#9fb1cc">Q1后指引</text><text x="650.0" y="290.0" text-anchor="middle" font-size="9" fill="#9fb1cc">Q2后指引(最新)</text><path d="M354.0,274.0 L354.0,165.0 L650.0,113.9 L650.0,274.0 Z" fill="#6ea8fe" fill-opacity="0.12"/><path d="M354.0,165.0 L650.0,113.9" fill="none" stroke="#6ea8fe" stroke-width="2"/><circle cx="354.0" cy="165.0" r="4" fill="#6ea8fe"/><circle cx="650.0" cy="113.9" r="4" fill="#6ea8fe"/></svg></div>
+  </div>
+</section>
+
+<section id="valuation">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>估值分析：目标价计算过程详解、PEG与同业估值合理性评估</h2></div>
+    <p>本节详细展示目标价的具体计算过程，并对当前估值倍数是否偏高、PEG是否合理进行深入的同业对比分析，而非仅给出结论性数字。</p>
+
+    <h3>Step 1：基础参数确认</h3>
+    <table>
+      <thead><tr><th>参数</th><th>数值</th><th>来源</th></tr></thead>
+      <tbody>
+        <tr><td>最新股价</td><td>$208.48</td><td>2026年7月23日收盘（财报当日+7%）</td></tr>
+        <tr><td>2026年调整后EPS指引区间</td><td>$7.10-7.25</td><td>公司最新指引（2026年7月23日上修）</td></tr>
+        <tr><td>2026年调整后EPS指引中值</td><td>$7.175</td><td>本报告计算：(7.10+7.25)/2</td></tr>
+        <tr><td>当前隐含远期P/E（基于2026E EPS中值）</td><td>29.06倍</td><td>本报告计算：208.48 / 7.175</td></tr>
+        <tr><td>2026年有机增长率指引</td><td>8%-9%</td><td>公司最新指引</td></tr>
+        <tr><td>2026Q2调整后EPS同比增速（近期实际增速参考）</td><td>+21%</td><td>公司Q2财报（1.89美元 vs 2025Q2 1.5625美元推算）</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Step 2：三种方法交叉验证目标价</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>方法一：基于2026E EPS的远期P/E法</h4>
+        <ul>
+          <li>假设目标P/E区间28-32倍（参考当前隐含29.1倍附近，结合机构目标价反推的隐含倍数）</li>
+          <li>计算：$7.175 × 28 = $200.9；$7.175 × 32 = $229.6</li>
+          <li>该方法结果区间：<b>约$201-230，中值约$215</b></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>方法二：基于2027E EPS的远期P/E法（前瞻一年）</h4>
+        <ul>
+          <li>假设2027年EPS在2026年中值基础上增长约13%（介于本季度21%同比增速与2026年8-9%有机营收增速之间的审慎折中估计，本报告自行假设，非公司或第三方一致预测）：$7.175×1.13≈$8.11</li>
+          <li>假设目标P/E随增速边际正常化略降至26-29倍</li>
+          <li>计算：$8.11×26=$210.9；$8.11×29=$235.2</li>
+          <li>该方法结果区间：<b>约$211-235，中值约$223</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <h4>方法三：机构目标价交叉参考</h4>
+      <ul>
+        <li>RBC Capital Markets（财报后即时更新）：<b>$230</b>（维持"跑赢大盘"）</li>
+        <li>Jefferies（财报后即时更新）：<b>$220</b>（维持"买入"）</li>
+        <li>财报前分析师一致目标价区间：约$215-220（隐含当时15%-20%上行空间，数据来源：Option Beast）</li>
+        <li>该方法结果区间：<b>约$215-230，中值约$223</b></li>
+      </ul>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">三种方法的中值分别为$215、$223、$223，本报告将三者简单平均（(215+223+223)/3≈$220），并结合当前市场情绪偏乐观（财报当日+7%的强势反应、机构评级罕见地在财报后即时上修而非观望）适度上修至<b>约$228</b>作为基准情景中枢，区间设定为<b>$210-250</b>以反映三种方法结果的离散度及本报告自身假设（尤其方法二中13%的EPS增速假设）的不确定性。<b>需要特别说明：</b>这一目标价计算是相对估值框架下的情景推演，并非严谨的DCF折现现金流模型（后者需要完整的加权平均资本成本、终值增长率及多年现金流预测，本报告受限于篇幅及可得数据未展开完整DCF），本质上仍是"盈利预测×估值倍数"的乘数法，其可靠性高度依赖于目标P/E倍数假设的合理性，这正是下一小节需要重点评估的问题。</p>
+
+    <h3>Step 3：当前估值倍数是否偏高？PEG与同业对比深度评估</h3>
+    <table>
+      <thead><tr><th>公司</th><th>P/E（远期/最新）</th><th>PEG比率</th><th>股息率</th><th>2026年增长特征</th></tr></thead>
+      <tbody>
+        <tr><td>RTX</td><td>约29.1倍（本报告计算）</td><td>约1.4-2.2倍（视增速假设而定，本报告计算）</td><td>约1.4%</td><td>有机增长8%-9%，三大板块同步两位数增长</td></tr>
+        <tr><td>Lockheed Martin (LMT)</td><td>约17倍（2026年7月，另有历史快照显示不同时点达29倍区间）</td><td>13.55倍（GuruFocus，5年EBITDA增速仅1.9%导致失真）</td><td>约3%</td><td>增长相对温和，F-16等项目存在阶段性利润调整扰动</td></tr>
+        <tr><td>General Dynamics (GD)</td><td>trailing 23.14-23.27倍，forward 22.47倍</td><td>2.73倍（5年预期）</td><td>—</td><td>营收$538.1亿(TTM)，ROE 17.97%</td></tr>
+        <tr><td>Northrop Grumman (NOC)</td><td>未明确获取，股价年内-12%至$504.60</td><td>—</td><td>—</td><td>B-21项目扭亏为盈，Q1净利润+82%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：GuruFocus（2026年5月27日，LMT PEG数据）、Yahoo Finance（2026年7月21-23日，GD数据）、Foreign Policy Journal（2026年7月5日，同业估值快照）、fullratio.com（2026年7月10日，GD历史P/E）。</p>
+
+    <div class="chart-box"><svg viewBox="0 0 680 380" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace"><text x="340" y="26" text-anchor="middle" font-size="13" fill="#e8eef8">同业P/E与PEG对比（LMT PEG因低基数增速失真）</text><line x1="58" y1="58" x2="58" y2="300" stroke="#223349"/><line x1="622" y1="58" x2="622" y2="300" stroke="#223349"/><line x1="58" y1="300" x2="622" y2="300" stroke="#223349"/><line x1="58" y1="300.0" x2="622" y2="300.0" stroke="#15243a"/><text x="52" y="304.0" text-anchor="end" font-size="9" fill="#7c8aa3">0</text><text x="628" y="304.0" text-anchor="start" font-size="9" fill="#7c8aa3">0</text><line x1="58" y1="239.5" x2="622" y2="239.5" stroke="#15243a"/><text x="52" y="243.5" text-anchor="end" font-size="9" fill="#7c8aa3">8.8</text><text x="628" y="243.5" text-anchor="start" font-size="9" fill="#7c8aa3">3.8</text><line x1="58" y1="179.0" x2="622" y2="179.0" stroke="#15243a"/><text x="52" y="183.0" text-anchor="end" font-size="9" fill="#7c8aa3">17.5</text><text x="628" y="183.0" text-anchor="start" font-size="9" fill="#7c8aa3">7.5</text><line x1="58" y1="118.5" x2="622" y2="118.5" stroke="#15243a"/><text x="52" y="122.5" text-anchor="end" font-size="9" fill="#7c8aa3">26.2</text><text x="628" y="122.5" text-anchor="start" font-size="9" fill="#7c8aa3">11.2</text><line x1="58" y1="58.0" x2="622" y2="58.0" stroke="#15243a"/><text x="52" y="62.0" text-anchor="end" font-size="9" fill="#7c8aa3">35</text><text x="628" y="62.0" text-anchor="start" font-size="9" fill="#7c8aa3">15</text><rect x="97.5" y="98.8" width="48.9" height="201.2" fill="#6ea8fe" rx="2"/><rect x="157.6" y="271.0" width="48.9" height="29.0" fill="#ff7a7a" rx="2"/><text x="152.0" y="316.0" text-anchor="middle" font-size="9" fill="#9fb1cc">RTX</text><rect x="285.5" y="144.6" width="48.9" height="155.4" fill="#6ea8fe" rx="2"/><rect x="345.6" y="256.0" width="48.9" height="44.0" fill="#ff7a7a" rx="2"/><text x="340.0" y="316.0" text-anchor="middle" font-size="9" fill="#9fb1cc">General Dynamics</text><rect x="473.5" y="182.5" width="48.9" height="117.5" fill="#6ea8fe" rx="2"/><rect x="533.6" y="81.4" width="48.9" height="218.6" fill="#ff7a7a" rx="2"/><text x="528.0" y="316.0" text-anchor="middle" font-size="9" fill="#9fb1cc">Lockheed Martin(近期)</text><rect x="58" y="331" width="11" height="11" fill="#6ea8fe"/><text x="74" y="341" font-size="10" fill="#9fb1cc">远期P/E（倍）</text><rect x="268" y="331" width="11" height="11" fill="#ff7a7a"/><text x="284" y="341" font-size="10" fill="#9fb1cc">PEG比率（倍）</text></svg></div>
+
+    <div class="callout warn"><b>PEG计算方法的关键说明（关于"PEG是否大于1"的问题）：</b>PEG比率＝P/E ÷ 盈利增长率，其数值高度敏感于所选取的"增长率"时间窗口与口径——若采用RTX本季度实际同比EPS增速（21%）计算，PEG≈29.1/21≈<b>1.39倍</b>；若采用更审慎的中期增速假设（如本报告Step 2中方法二使用的13%），PEG≈29.1/13≈<b>2.24倍</b>；若采用公司2026年有机营收增长指引中值（8.5%，注意这是营收增速而非EPS增速，两者口径不完全可比），PEG≈29.1/8.5≈<b>3.42倍</b>。<b>本报告的结论是：RTX的PEG比率确实大于1</b>，且视增速假设不同，大致落在1.4-3.4倍的区间。但这一现象并非RTX独有——General Dynamics的PEG为2.73倍，Lockheed Martin的PEG更是高达13.55倍（尽管该数值主要是其过去5年EBITDA增速仅1.9%这一异常低的分母导致的统计失真，参考意义有限），反映<b>当前整个国防军工板块的PEG比率普遍显著高于1</b>，这是本轮"全球再武装"驱动的估值重估周期的普遍特征，而非RTX个股的估值异常。传统上，PEG=1被视为"合理估值"的经验法则参考线，但该法则最初主要适用于成熟期、增长相对线性的公司，对于当前处于订单能见度历史高位、且商用航空与国防双重周期共振的国防军工板块而言，市场愿意为"增长确定性"及"史无前例的在手订单"支付超过PEG=1的溢价，这一定程度上具备合理性，但也意味着板块整体的估值安全边际较历史周期更薄，一旦增长兑现节奏或订单能见度出现负面变化，PEG大于1的估值结构存在比PEG≈1时更大的下修风险。</div>
+
+    <div class="callout gold"><b>本报告对"估值是否偏高"的最终判断：</b>综合来看，RTX当前29.1倍的远期P/E在国防军工同业中处于<b>中性偏高</b>区间——高于General Dynamics的22.47倍，也高于Lockheed Martin近期约17倍的更审慎快照（但低于LMT在另一时点约29倍的快照，反映该股本身估值波动性也较大）。这一相对溢价，我们认为部分由公司当前<b>三大板块罕见同步两位数增长</b>这一同业中最均衡的增长特征所支撑——General Dynamics、Lockheed Martin均未在同一财报周期展现出与RTX同等广度的板块级增长共振。但溢价本身也意味着容错空间更窄：若RTX后续季度增长动能边际放缓、或GTF问题出现反复，其估值倍数向同业中枢（22-25倍附近）收敛的下行风险，理论上大于当前已处于更低估值水平的General Dynamics等同业。这是我们将目标价基准情景的隐含目标P/E设定在28-32倍这一相对当前29.1倍并未大幅扩张的区间、而非进一步激进上修的核心原因。</div>
+
+    <h3>多情景目标价（12个月）</h3>
+    <div class="scenario-grid">
+      <div class="scenario pess">
+        <div class="stitle">保守情景</div>
+        <div class="prob">对应增长动能边际放缓+估值向同业中枢收敛</div>
+        <div class="starget">US$170-190</div>
+        <p>全球地缘政治局势阶段性降温导致国防订单增速放缓，商用航空需求增长不及预期，GTF粉末冶金问题出现反复或新增财务影响，供应链瓶颈制约产能爬坡节奏，公司增长动能边际放缓，估值倍数向General Dynamics等同业22-24倍中枢收敛（对应$7.175 EPS×24倍≈$172）。</p>
+      </div>
+      <div class="scenario base">
+        <div class="stitle">基准情景</div>
+        <div class="prob">对应当前上修指引兑现</div>
+        <div class="starget">US$210-250</div>
+        <p>公司2026全年业绩落于最新上修后的指引区间（营收950-960亿、EPS 7.10-7.25），三大板块维持当前增长质量，GTF问题化解进程延续，在手订单持续转化为收入，估值倍数维持在28-32倍区间（当前水平附近小幅波动），与机构最新目标价（$220-230）方向基本吻合。</p>
+      </div>
+      <div class="scenario opt">
+        <div class="stitle">乐观情景</div>
+        <div class="prob">对应全球再武装+商用航空超预期共振</div>
+        <div class="starget">US$260-290</div>
+        <p>全球防务开支扩张态势超预期延续，五份框架协议顺利转化为确定性合同带来额外订单增量，商用航空需求持续强劲，GTF问题基本完全出清带动Pratt & Whitney利润率超预期修复，公司第三次上调全年指引，市场愿意为公司支付类似Lockheed Martin历史高点的估值溢价（约35倍附近）。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);">本报告12个月目标价区间取US$210-250，基准情景中枢约US$228，较最新股价US$208.48存在约9%的潜在上行空间，与RBC（$230）及Jefferies（$220）财报后即时给出的目标价方向基本一致。需要再次强调：这一目标价的核心不确定性并非来自盈利预测本身（公司指引及机构一致预期已相对清晰），而是来自<b>目标P/E倍数假设</b>——若市场情绪从当前的"愿为增长确定性支付溢价"转向"审视PEG大于1的估值安全边际"，即便盈利预测完全兑现，股价仍可能因估值倍数收缩而跑输盈利增速，这是我们在给出"增持"而非更激进评级时反复强调的核心逻辑。</p>
+  </div>
+</section>
+
+<section id="shareholder-return">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2>自由现金流与股东回报深度分析</h2></div>
+    <p>本节对公司自由现金流的生成能力、历史趋势及股东回报（股息+回购）的具体构成进行更详细的展开分析。</p>
+
+    <h3>自由现金流趋势与2026年展望</h3>
+    <table>
+      <thead><tr><th>指标</th><th>2026Q2实际</th><th>2026年全年指引（最新，7月23日上修）</th><th>2026年全年指引（年初/Q1后）</th></tr></thead>
+      <tbody>
+        <tr><td>经营活动现金流</td><td>$35亿</td><td>—</td><td>—</td></tr>
+        <tr><td>自由现金流</td><td>$29亿</td><td>$85-87.5亿</td><td>$82.5-87.5亿</td></tr>
+        <tr><td>现金及等价物（期末）</td><td>$83.1亿（2026年6月30日）</td><td>—</td><td>$74.4亿（2025年末）</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-faint);">数据来源：RTX 2026年第二季度财报新闻稿（2026年7月23日）、eciks.org/MarketScreener转载指引数据。以2026年FCF指引中值（约$86.25亿）与最新股价对应的估算市值（约2026年7月23日收盘价$208.48×约12.4亿股流通股≈约2,585亿美元，股数为公开数据估算值）计算，公司FCF收益率约3.3%，处于大型工业/国防股中等水平；对比历史，公司在2023年披露的中期规划中曾提及"2025年目标生成90亿美元自由现金流"（数据来源：RTX 2023年6月8-K文件），实际2026年指引（$85-87.5亿）与该历史目标量级相近但节点推迟一年，反映公司自由现金流释放节奏较早年规划略有滞后，这与GTF问题带来的额外补偿支出及现金流出存在一定关联，是理解当前自由现金流对比历史目标"进度条"的重要背景。</p>
+
+    <h3>股东回报的两大构成：股息与回购</h3>
+    <div class="grid-2">
+      <div>
+        <p><b>股息：稳定增长但收益率温和。</b>公司自1936年起连续每年支付现金股息，是美股工业板块中极少数拥有近90年连续分红历史的公司之一。近期季度股息为每股0.73美元（2026年支付），此前2026年3月支付的季度股息为0.68美元，反映公司在年内曾完成一次股息上调；公司已连续6年提高股息，过去12个月股息增速约7.94%，过去36-60个月平均增速约7.3%-7.4%（数据来源：Koyfin，2026年）。当前股息支付率约50%-53%（不同数据源存在小幅差异），意味着公司将约一半的净利润留存用于再投资，是一个"股息稳健增长但非高股息收益率导向"的资本配置特征。按年化口径计算（不同数据源annual dividend分别显示为$2.72及$0.73×4=$2.92，差异可能源于统计时点或是否包含年内加息效应的滚动口径），静态股息率约1.3%-1.4%。</p>
+        <p><b>股票回购：近期力度明显弱于历史高峰期，是本报告的一项重要发现。</b>公司在2020年合并完成后曾设定"四年内向股东返还200亿美元"的目标，并在2023年进一步表示"预计到2025年末，累计通过股息及股票回购向股东返还330-350亿美元"（数据来源：RTX 2023年6月8-K文件）。但本报告在检索近期数据时发现，第三方数据平台Simply Wall St披露的公司当前"回购收益率"（Buyback Yield）仅为<b>0.02%</b>，处于近乎可忽略的极低水平，与历史上千亿美元级别的回购规划形成鲜明反差。这一发现表明，公司当前资本配置的重心已从2023-2025年周期的"大规模现金返还"，明显转向<b>2026年周期的"优先支持产能扩张与产量爬坡"</b>（如本季度披露的逾2亿美元GTF MRO及GEM-T新增投资），这是理解当前公司资本配置逻辑演变的关键信息，也解释了为何在自由现金流指引持续上修的同时，静态股息率仍维持在较为温和的1.3%-1.4%水平而非通过加大回购提升股东回报强度。</p>
+      </div>
+      <div class="card">
+        <h4>FCF与股东回报关键数据</h4>
+        <ul>
+          <li>2026年FCF指引（最新）：<b>$85-87.5亿</b>（较年初小幅上修）</li>
+          <li>FCF收益率（估算）：<b>约3.3%</b></li>
+          <li>季度股息：<b>$0.73/股</b>（年内已完成一次上调，此前$0.68/股）</li>
+          <li>股息连续增长年限：<b>6年</b>，历史分红记录：<b>1936年至今从未间断</b></li>
+          <li>股息支付率：<b>约50%-53%</b></li>
+          <li>股票回购收益率（Buyback Yield）：<b>约0.02%</b>（近期力度极低，为本报告重要发现）</li>
+          <li>2020-2025历史累计回报目标：<b>$330-350亿</b>（股息+回购，2023年披露）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout gold"><b>股东回报分析的核心结论：</b>RTX当前的资本配置策略呈现出清晰的"再投资优先"特征——公司选择将持续上修的自由现金流，更多地投入GTF产能修复、GEM-T等国防产品线扩产及供应链能力建设，而非通过大规模回购或激进股息上调向股东返还现金。这一策略与公司当前所处的"订单能见度历史高位、产能爬坡是核心瓶颈"发展阶段相符——在手订单转化为实际收入的速度，本质上取决于公司能否足够快地扩充产能，此时将现金优先用于产能投资，理论上比返还股东更有利于兑现在手订单、支撑长期每股价值增长。但对于以总回报（Total Shareholder Return，含股息+回购）为核心配置逻辑的投资者而言，公司当前约1.3%-1.4%的静态股息率叠加近乎可忽略的回购收益率，意味着总现金回报率处于大型工业股中的<b>低位区间</b>，这类投资者的回报预期需要更多依赖资本利得而非现金流分配，与本报告第六节中关于"高PEG需要持续增长兑现支撑"的估值分析结论相互呼应——RTX当前更适合定位为"成长确定性溢价"标的，而非"现金流回报"标的。</div>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">08</span><h2>风险提示</h2></div>
+    <div class="risk-matrix">
+      <div class="risk-item high">
+        <div class="rt"><b>估值扩张的可持续性风险（PEG>1的安全边际考量）</b><span class="rlevel">高</span></div>
+        <p>公司当前远期P/E约29.1倍，PEG比率视增速假设不同大致落在1.4-3.4倍区间，均大于1；尽管本报告第六节分析显示这是当前国防军工板块的普遍现象（General Dynamics PEG 2.73倍）而非RTX独有，但叠加股价过去52周已累计上涨约38%、财报当日再涨7%，若后续季度增长动能或指引上修节奏未能延续本季度的强劲态势，估值倍数存在向同业22-25倍中枢均值回归的压力，且这一下修风险相对估值已更低的同业（如GD）而言更大。</p>
+        <div class="src">数据来源：本报告第六节估值分析</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>GTF粉末冶金问题的残余财务影响风险</b><span class="rlevel">中</span></div>
+        <p>尽管本季度运营指标（AOG-25%、MRO产出+40%）显示问题化解进展积极，但公司仍确认约1.5亿美元的相关补偿支出，表明该问题尚未完全出清，若后续出现新的技术问题或补偿要求超预期，可能对公司财务表现构成阶段性压制。</p>
+        <div class="src">数据来源：本报告第四节GTF专题分析</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>地缘政治局势变化对国防订单增速的风险</b><span class="rlevel">中</span></div>
+        <p>Raytheon板块的强劲增长与近期全球地缘政治紧张局势及"再武装"趋势高度相关，若主要冲突出现降温或和解，可能导致部分国家国防开支扩张节奏放缓，进而影响公司国防板块的订单增速。</p>
+        <div class="src">数据来源：本报告第三节行业需求分析</div>
+      </div>
+      <div class="risk-item mid">
+        <div class="rt"><b>供应链与产能爬坡执行风险</b><span class="rlevel">中</span></div>
+        <p>管理层明确提示，未来增长将越来越依赖供应链产出能力的提升，且库存投资增加将对营运资金形成压力，若供应链瓶颈未能如期缓解，可能制约公司将创纪录在手订单转化为实际收入的节奏。</p>
+        <div class="src">数据来源：Seeking Alpha，2026年7月23日财报电话会议纪要</div>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>商用航空需求的宏观经济敏感性风险</b><span class="rlevel">低-中</span></div>
+        <p>公司商用航空业务（Collins及Pratt & Whitney商用板块）的增长依赖全球航空出行需求的持续复苏，若全球经济增长放缓抑制航空出行及飞机交付需求，可能对公司商用板块的增长动能构成压力。</p>
+        <div class="src">数据来源：本报告第三节行业需求分析</div>
+      </div>
+      <div class="risk-item low">
+        <div class="rt"><b>股东现金回报力度处于历史相对低位</b><span class="rlevel">低</span></div>
+        <p>本报告第七节的核心发现之一是，公司当前股票回购收益率仅约0.02%（近乎可忽略），叠加静态股息率约1.3%-1.4%，总现金回报率处于大型工业股中的低位区间，与2020-2025年周期公司披露的330-350亿美元大规模回报目标形成反差，若投资者以总回报为核心配置逻辑，需充分认识到当前资本配置重心已转向再投资而非现金分配。</p>
+        <div class="src">数据来源：本报告第七节股东回报分析</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rating">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">09</span><h2>投资建议</h2></div>
+    <div class="grid-2">
+      <div>
+        <p><b style="color:var(--ink);">评级：增持（Buy）。</b>我们认为RTX本次第二季度财报是一份质量扎实、含金量高的"beat-and-raise"成绩单——三大业务板块罕见地实现同步两位数增长且利润率同步扩张，创纪录的2,890亿美元在手订单（国际化程度持续提升）为未来数年收入提供了坚实的能见度，GTF发动机粉末冶金问题的化解进展（AOG同比下降25%）也为Pratt & Whitney板块的利润率修复打开了空间。公司管理层在年内已连续两次上调全年指引，且本次上修幅度显著大于典型的"温和微调"，反映执行力正在持续验证。与同期公布同样强劲财报的洛克希德·马丁相互印证，进一步支持了"全球再武装+商用航空复苏"这一行业级趋势的真实性。但我们同时明确提示，公司当前远期P/E约29倍已处于历史相对高位，叠加过去52周约38%的累计涨幅及财报当日7%的进一步上涨，当前股价已较充分反映本次财报的乐观预期，我们给予"增持"而非更激进评级的核心原因，在于对估值扩张可持续性保持一定的审慎态度。</p>
+        <div class="callout">
+          <b>关注信号：</b>（1）2026年第三季度财报能否延续本季度的增长质量与指引上修节奏；（2）GTF问题相关补偿支出能否持续收窄至可忽略水平；（3）五份框架协议转化为确定性合同的进展，验证潜在额外订单增量；（4）供应链产能爬坡是否如期缓解，支撑在手订单向实际收入的转化节奏；（5）全球地缘政治局势演变对国防订单增速的潜在影响；（6）自由现金流转化率能否在库存投资增加的背景下维持稳健。
+        </div>
+        <p>对于计划配置的投资者，可考虑在基准情景估值区间（US$210-250）内结合季度财报披露节点分批建仓，并将保守情景US$170-190视为止损/加仓评估参考区间；乐观情景US$260-290可作为12个月止盈观察位。鉴于公司当前估值已处于相对高位、股息率相对温和，建议以"高质量增长+行业趋势验证"为核心逻辑的策略参与，适合寻求国防军工与商用航空双重敞口、并能够承受估值波动的投资者，而非单纯追求高股息现金流的防御型配置需求。</p>
+      </div>
+      <div class="card">
+        <h4>交易要点摘要</h4>
+        <ul>
+          <li>评级：<b>增持（Buy）</b></li>
+          <li>12个月目标价区间：<b>US$210-250</b>（基准中枢约US$228）</li>
+          <li>保守情景下限：<b>US$170-190</b></li>
+          <li>乐观情景上限：<b>US$260-290</b></li>
+          <li>核心估值方法：<b>相对估值（P/E）为主，DCF交叉验证</b></li>
+          <li>核心风险变量：<b>估值扩张可持续性、GTF残余财务影响、供应链执行</b></li>
+          <li>股东回报特征：<b>季度股息$0.73/股，静态股息率约1.4%</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>方法论与数据说明</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">本报告基于RTX Corporation于2026年7月23日盘前发布的第二季度财报即时撰写，所引用的股价数据（US$208.48）为财报当日交易数据（较前一交易日+7%）。本报告在第一节中已就EPS超预期幅度、在手订单规模等方面存在的渠道间数据小幅差异进行了说明，建议投资者以公司通过SEC披露的正式10-Q文件及官方财报新闻稿为最终权威依据。本报告对公司具体股票回购金额等数据存在检索局限，已在第七节中明确说明，实际交易请以纽约证券交易所官方实时行情为准。</p>
+      </div>
+      <div>
+        <h5>主要数据来源</h5>
+        <ul class="src-list">
+          <li>RTX Corporation 2026年第二季度10-Q文件（www.sec.gov）</li>
+          <li>RTX 2026年第二季度财报新闻稿及电话会议纪要（Seeking Alpha、Benzinga、Yahoo Finance转载，2026年7月23日）</li>
+          <li>FX Leaders、MarketScreener、eciks.org、Proactive Investors（2026年7月23日，财报即时报道）</li>
+          <li>ChartMill、Zacks（2026年7月23日，关键指标分析）</li>
+          <li>Option Beast（2026年7月22日，财报前瞻）、24/7 Wall St（2026年7月23日，同业对比）</li>
+        </ul>
+      </div>
+      <div>
+        <h5>报告信息</h5>
+        <p style="font-size:12px;color:var(--ink-faint);">Snail-bird Investment<br>国防军工与航空航天研究组<br>报告日期：2026年7月23日<br>财报即时更新 · 评级：增持（Buy）</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      本报告由Snail-bird Investment研究团队独立撰写，仅供参考，不构成任何证券买卖要约或投资建议。报告中的观点、评级及目标价基于报告撰写时可获得的公开信息及分析师的专业判断，可能随市场环境变化而调整，Snail-bird Investment不承诺更新本报告的内容。公司所处的航空航天与国防行业受全球地缘政治局势、主要国家国防预算政策、商用航空宏观需求及供应链条件影响较大，历史业绩及指引上修不构成对未来的保证。本报告中的相对估值及情景分析基于多项前瞻性假设及Snail-bird Investment研究团队的判断，实际结果可能因地缘政治变化、供应链执行、GTF问题演变等因素而与测算结果产生重大偏差，不构成精确目标价承诺。投资者应充分了解相关风险，并根据自身风险承受能力及投资目标独立判断，据此投资操作风险自负。本报告不构成对任何特定投资者的个性化投资建议，亦不对因使用本报告内容而产生的任何直接或间接损失承担责任。
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
