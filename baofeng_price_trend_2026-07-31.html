@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宝丰能源（600989）主要产品价格走势 | Snail-bird Investment</title>
+
+<style>
+
+:root{
+  --bg:#0b1120;--card:#0f172a;--t1:#e2e8f0;--t2:#cbd5e1;--t3:#94a3b8;
+  --accent:#c9a84c;--accent2:#16a085;
+  --green:#34d399;--green-bg:#0c2a1e;--green-border:#1f5e45;
+  --red:#f87171;--red-bg:#2a0f0f;--red-border:#5b2323;
+  --orange:#fb923c;--orange-bg:#2a1a0a;--orange-border:#5b3318;
+  --blue:#60a5fa;--blue-bg:#0a1a2e;--blue-border:#bfdbfe;
+  --border:#1e293b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,blinkmacsystemfont,'pingfang sc','microsoft yahei',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;}
+
+.nav{background:#0f172a;border-bottom:1px solid var(--border);padding:0 36px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+.nav-brand{font-weight:800;font-size:15px;color:var(--accent);}
+.nav-links{display:flex;gap:4px;}
+.nav-links a{font-size:13px;color:var(--t3);text-decoration:none;padding:6px 14px;border-radius:6px;transition:all .15s;}
+.nav-links a:hover{color:var(--accent);background:#0c2a1e;}
+
+.container{max-width:1280px;margin:0 auto;padding:32px 24px;}
+.header{margin-bottom:36px;}
+.header-row{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.title-section h1{font-size:28px;font-weight:800;color:var(--t1);margin-bottom:8px;}
+.title-section .subtitle{font-size:14px;color:var(--t3);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.title-section .subtitle span{background:var(--green-bg);color:var(--green);padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;}
+.meta-badges{display:flex;gap:10px;flex-wrap:wrap;}
+.meta-badge{background:#0f172a;border:1px solid var(--border);padding:8px 16px;border-radius:8px;font-size:13px;color:var(--t2);}
+.meta-badge strong{color:var(--t1);margin-right:4px;}
+
+.summary-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px;}
+.summary-card{background:var(--card);border-radius:12px;padding:20px 22px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.04);transition:box-shadow .2s;}
+.summary-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);}
+.sc-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.sc-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff;}
+.sc-icon.pe{background:linear-gradient(135deg,#2563eb,#3b82f6);}
+.sc-icon.pp{background:linear-gradient(135deg,#7c3aed,#8b5cf6);}
+.sc-icon.eva{background:linear-gradient(135deg,#ea580c,#f97316);}
+.sc-icon.coke{background:linear-gradient(135deg,#78716c,#a8a29e);}
+.sc-name{font-size:15px;font-weight:700;color:var(--t1);}
+.sc-spec{font-size:11px;color:var(--t3);}
+.sc-price{font-size:28px;font-weight:800;color:var(--t1);margin:6px 0;}
+.sc-price .unit{font-size:12px;font-weight:400;color:var(--t3);margin-left:2px;}
+.sc-change{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;padding:3px 10px;border-radius:6px;}
+.sc-change.up{color:var(--green);background:var(--green-bg);}
+.sc-change.down{color:var(--red);background:var(--red-bg);}
+.sc-change.mild{color:var(--orange);background:var(--orange-bg);}
+.sc-ytd{font-size:12px;color:var(--t3);margin-top:4px;}
+.sc-ytd span{font-weight:700;}
+.sc-ytd .up{color:var(--green);}
+.sc-ytd .down{color:var(--red);}
+.sc-comparison{font-size:12px;color:var(--t3);margin-top:8px;padding-top:8px;border-top:1px solid #1e293b;}
+.sc-comparison strong{color:var(--t1);}
+
+.chart-section{margin-bottom:36px;}
+.chart-section h2{font-size:20px;font-weight:700;color:var(--t1);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.chart-section h2::before{content:'';width:4px;height:20px;background:var(--accent);border-radius:2px;}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.chart-card{background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.chart-card h3{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--t1);}
+.chart-card .chart-meta{font-size:12px;color:var(--t3);margin-bottom:16px;}
+.chart-container{position:relative;height:280px;}
+.chart-container canvas{width:100%!important;}
+
+.bar-section{margin-bottom:36px;}
+.bar-section h2{font-size:20px;font-weight:700;color:var(--t1);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.bar-section h2::before{content:'';width:4px;height:20px;background:var(--accent);border-radius:2px;}
+.bar-card{background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.bar-container{position:relative;height:320px;}
+.bar-container canvas{width:100%!important;}
+
+.pulse-badge{display:inline-flex;align-items:center;gap:6px;background:#fef3c7;color:#92400e;padding:6px 14px;border-radius:6px;font-size:13px;font-weight:600;margin-top:16px;border:1px solid #fcd34d;}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:#f59e0b;animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.table-section{margin-bottom:36px;}
+.table-section h2{font-size:20px;font-weight:700;color:var(--t1);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.table-section h2::before{content:'';width:4px;height:20px;background:var(--accent);border-radius:2px;}
+.data-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.data-table thead{background:linear-gradient(135deg,#a7f3d0,#6ee7b7);}
+.data-table th{color:#fff;padding:14px 16px;text-align:center;font-size:13px;font-weight:600;}
+.data-table th:first-child{text-align:left;padding-left:24px;}
+.data-table td{padding:14px 16px;text-align:center;font-size:14px;border-bottom:1px solid var(--border);}
+.data-table td:first-child{text-align:left;padding-left:24px;font-weight:600;color:var(--t1);}
+.data-table tbody tr:hover{background:#16202e;}
+.highlight-up{color:var(--green);font-weight:700;}
+.highlight-down{color:var(--red);font-weight:700;}
+
+.footer{text-align:center;padding:20px;color:var(--t3);font-size:12px;border-top:1px solid var(--border);margin-top:40px;}
+
+@media(max-width:1024px){.summary-row{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){
+  .nav{padding:0 16px;}.summary-row{grid-template-columns:1fr;}
+  .chart-grid{grid-template-columns:1fr;}
+  .title-section h1{font-size:22px;}.sc-price{font-size:22px;}
+  .container{padding:16px 12px;}
+  .data-table{font-size:12px;}.data-table th,.data-table td{padding:10px 8px;}
+}
+
+.sb-foot{text-align:center;padding:14px;color:#64748b;font-size:12px;border-top:1px solid #1e293b;margin-top:24px;font-family:sans-serif;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">宝丰能源(BF) 产品价格监控</div>
+  <div class="nav-links"><a href="index.html">← 返回首页</a></div>
+</nav>
+
+<div class="container">
+
+<div class="header">
+  <div class="header-row">
+    <div class="title-section">
+      <h1>宝丰能源（600989）主要产品价格走势</h1>
+      <div class="subtitle">2025年1月-7月 vs 2026年1月-7月 同期对比 <span>数据截至 2026-07-31</span></div>
+      <div class="pulse-badge"><div class="pulse-dot"></div>焦炭十轮提涨后7月下旬转入提降（两轮提降落地）</div>
+    </div>
+    <div class="meta-badges">
+      <div class="meta-badge"><strong>代码</strong> 600989.SH</div>
+      <div class="meta-badge"><strong>行业</strong> 煤化工/聚烯烃</div>
+      <div class="meta-badge"><strong>数据源</strong> 生意社/我的钢铁网/隆众资讯</div>
+    </div>
+  </div>
+</div>
+
+<div class="summary-row">
+  <!-- PE -->
+  <div class="summary-card">
+    <div class="sc-header">
+      <div class="sc-icon pe">PE</div>
+      <div><div class="sc-name">聚乙烯 LLDPE</div><div class="sc-spec">7042 · 线性低密度</div></div>
+    </div>
+    <div class="sc-price">8,200<span class="unit">元/吨</span></div>
+    <div class="sc-change up">同比 ↑ +1%</div>
+    <div class="sc-ytd">年初至今 <span class="up">↑ +28%</span></div>
+    <div class="sc-comparison">2025同期均价 <strong>~8,100 元/吨</strong></div>
+  </div>
+  <!-- PP -->
+  <div class="summary-card">
+    <div class="sc-header">
+      <div class="sc-icon pp">PP</div>
+      <div><div class="sc-name">聚丙烯 PP</div><div class="sc-spec">拉丝级</div></div>
+    </div>
+    <div class="sc-price">8,950<span class="unit">元/吨</span></div>
+    <div class="sc-change up">同比 ↑ +20%</div>
+    <div class="sc-ytd">年初至今 <span class="up">↑ +25%</span></div>
+    <div class="sc-comparison">2025同期均价 <strong>~7,450 元/吨</strong></div>
+  </div>
+  <!-- EVA -->
+  <div class="summary-card">
+    <div class="sc-header">
+      <div class="sc-icon eva">EVA</div>
+      <div><div class="sc-name">EVA</div><div class="sc-spec">1803C · 宝丰出厂价</div></div>
+    </div>
+    <div class="sc-price">10,000<span class="unit">元/吨</span></div>
+    <div class="sc-change down">同比 ↓ -5%</div>
+    <div class="sc-ytd">年初至今 <span class="up">↑ +2%</span></div>
+    <div class="sc-comparison">2025同期均价 <strong>~10,500 元/吨</strong></div>
+  </div>
+  <!-- 焦炭 -->
+  <div class="summary-card">
+    <div class="sc-header">
+      <div class="sc-icon coke">COK</div>
+      <div><div class="sc-name">焦炭</div><div class="sc-spec">准一级冶金焦</div></div>
+    </div>
+    <div class="sc-price">1,800<span class="unit">元/吨</span></div>
+    <div class="sc-change up">同比 ↑ +9%</div>
+    <div class="sc-ytd">年初至今 <span class="up">↑ +15%</span></div>
+    <div class="sc-comparison">2025同期均价 <strong>~1,650 元/吨</strong></div>
+  </div>
+</div>
+
+<!-- PE + PP Charts -->
+<div class="chart-section">
+  <h2>聚乙烯 / 聚丙烯 价格走势对比（元/吨）</h2>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>聚乙烯 LLDPE · 7042</h3>
+      <div class="chart-meta">2026年7月28日生意社基准价 8,200元/吨 | 地缘冲突推升，高位震荡</div>
+      <div class="chart-container"><svg viewBox="0 0 680 320" width="100%" style="display:block;max-width:680px;margin:0 auto;font-family:sans-serif" xmlns="http://www.w3.org/2000/svg"><text x="20" y="26" fill="#e2e8f0" font-size="15" font-weight="700">聚乙烯 PE</text><line x1="60" y1="280.0" x2="652" y2="280.0" stroke="#1e293b" stroke-width="1"/><text x="52" y="284.0" fill="#64748b" font-size="11" text-anchor="end">5.0k</text><line x1="60" y1="254.9" x2="652" y2="254.9" stroke="#1e293b" stroke-width="1"/><text x="52" y="258.9" fill="#64748b" font-size="11" text-anchor="end">5.5k</text><line x1="60" y1="229.8" x2="652" y2="229.8" stroke="#1e293b" stroke-width="1"/><text x="52" y="233.8" fill="#64748b" font-size="11" text-anchor="end">6.0k</text><line x1="60" y1="204.7" x2="652" y2="204.7" stroke="#1e293b" stroke-width="1"/><text x="52" y="208.7" fill="#64748b" font-size="11" text-anchor="end">6.5k</text><line x1="60" y1="179.6" x2="652" y2="179.6" stroke="#1e293b" stroke-width="1"/><text x="52" y="183.6" fill="#64748b" font-size="11" text-anchor="end">7.0k</text><line x1="60" y1="154.4" x2="652" y2="154.4" stroke="#1e293b" stroke-width="1"/><text x="52" y="158.4" fill="#64748b" font-size="11" text-anchor="end">7.5k</text><line x1="60" y1="129.3" x2="652" y2="129.3" stroke="#1e293b" stroke-width="1"/><text x="52" y="133.3" fill="#64748b" font-size="11" text-anchor="end">8.0k</text><line x1="60" y1="104.2" x2="652" y2="104.2" stroke="#1e293b" stroke-width="1"/><text x="52" y="108.2" fill="#64748b" font-size="11" text-anchor="end">8.5k</text><line x1="60" y1="79.1" x2="652" y2="79.1" stroke="#1e293b" stroke-width="1"/><text x="52" y="83.1" fill="#64748b" font-size="11" text-anchor="end">9.0k</text><line x1="60" y1="54.0" x2="652" y2="54.0" stroke="#1e293b" stroke-width="1"/><text x="52" y="58.0" fill="#64748b" font-size="11" text-anchor="end">9.5k</text><text x="60.0" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">1月</text><text x="158.7" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">2月</text><text x="257.3" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">3月</text><text x="356.0" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">4月</text><text x="454.7" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">5月</text><text x="553.3" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">6月</text><text x="652.0" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">7月</text><path d="M60.0,121.8 L158.7,123.3 L257.3,125.3 L356.0,126.8 L454.7,128.3 L553.3,129.3 L652.0,129.3" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6,4" stroke-linejoin="round"/><circle cx="60.0" cy="121.8" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="158.7" cy="123.3" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="257.3" cy="125.3" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="356.0" cy="126.8" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="454.7" cy="128.3" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="553.3" cy="129.3" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="652.0" cy="129.3" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><path d="M60.0,208.7 L158.7,185.6 L257.3,160.5 L356.0,133.4 L454.7,116.8 L553.3,138.9 L652.0,119.3 L652.0,280 L60.0,280 Z" fill="#2563eb" fill-opacity="0.10" stroke="none"/><path d="M60.0,208.7 L158.7,185.6 L257.3,160.5 L356.0,133.4 L454.7,116.8 L553.3,138.9 L652.0,119.3" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linejoin="round"/><circle cx="60.0" cy="208.7" r="3" fill="#2563eb" stroke="#0f172a" stroke-width="1"/><circle cx="158.7" cy="185.6" r="3" fill="#2563eb" stroke="#0f172a" stroke-width="1"/><circle cx="257.3" cy="160.5" r="3" fill="#2563eb" stroke="#0f172a" stroke-width="1"/><circle cx="356.0" cy="133.4" r="3" fill="#2563eb" stroke="#0f172a" stroke-width="1"/><circle cx="454.7" cy="116.8" r="3" fill="#2563eb" stroke="#0f172a" stroke-width="1"/><circle cx="553.3" cy="138.9" r="3" fill="#2563eb" stroke="#0f172a" stroke-width="1"/><circle cx="652.0" cy="119.3" r="3" fill="#2563eb" stroke="#0f172a" stroke-width="1"/><line x1="502" y1="18" x2="520" y2="18" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="6,4"/><text x="526" y="22" fill="#94a3b8" font-size="11">2025</text><line x1="502" y1="35" x2="520" y2="35" stroke="#2563eb" stroke-width="2.5"/><text x="526" y="39" fill="#94a3b8" font-size="11">2026</text></svg></div>
+    </div>
+    <div class="chart-card">
+      <h3>聚丙烯 PP · 拉丝级</h3>
+      <div class="chart-meta">2026年7月28日华东拉丝 8,950元/吨 | 冲高后回落，仍强于2025同期</div>
+      <div class="chart-container"><svg viewBox="0 0 680 320" width="100%" style="display:block;max-width:680px;margin:0 auto;font-family:sans-serif" xmlns="http://www.w3.org/2000/svg"><text x="20" y="26" fill="#e2e8f0" font-size="15" font-weight="700">聚丙烯 PP</text><line x1="60" y1="280.0" x2="652" y2="280.0" stroke="#1e293b" stroke-width="1"/><text x="52" y="284.0" fill="#64748b" font-size="11" text-anchor="end">6.0k</text><line x1="60" y1="257.4" x2="652" y2="257.4" stroke="#1e293b" stroke-width="1"/><text x="52" y="261.4" fill="#64748b" font-size="11" text-anchor="end">6.5k</text><line x1="60" y1="234.8" x2="652" y2="234.8" stroke="#1e293b" stroke-width="1"/><text x="52" y="238.8" fill="#64748b" font-size="11" text-anchor="end">7.0k</text><line x1="60" y1="212.2" x2="652" y2="212.2" stroke="#1e293b" stroke-width="1"/><text x="52" y="216.2" fill="#64748b" font-size="11" text-anchor="end">7.5k</text><line x1="60" y1="189.6" x2="652" y2="189.6" stroke="#1e293b" stroke-width="1"/><text x="52" y="193.6" fill="#64748b" font-size="11" text-anchor="end">8.0k</text><line x1="60" y1="167.0" x2="652" y2="167.0" stroke="#1e293b" stroke-width="1"/><text x="52" y="171.0" fill="#64748b" font-size="11" text-anchor="end">8.5k</text><line x1="60" y1="144.4" x2="652" y2="144.4" stroke="#1e293b" stroke-width="1"/><text x="52" y="148.4" fill="#64748b" font-size="11" text-anchor="end">9.0k</text><line x1="60" y1="121.8" x2="652" y2="121.8" stroke="#1e293b" stroke-width="1"/><text x="52" y="125.8" fill="#64748b" font-size="11" text-anchor="end">9.5k</text><line x1="60" y1="99.2" x2="652" y2="99.2" stroke="#1e293b" stroke-width="1"/><text x="52" y="103.2" fill="#64748b" font-size="11" text-anchor="end">10.0k</text><line x1="60" y1="76.6" x2="652" y2="76.6" stroke="#1e293b" stroke-width="1"/><text x="52" y="80.6" fill="#64748b" font-size="11" text-anchor="end">10.5k</text><line x1="60" y1="54.0" x2="652" y2="54.0" stroke="#1e293b" stroke-width="1"/><text x="52" y="58.0" fill="#64748b" font-size="11" text-anchor="end">11.0k</text><text x="60.0" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">1月</text><text x="158.7" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">2月</text><text x="257.3" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">3月</text><text x="356.0" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">4月</text><text x="454.7" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">5月</text><text x="553.3" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">6月</text><text x="652.0" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">7月</text><path d="M60.0,214.5 L158.7,215.4 L257.3,216.7 L356.0,217.6 L454.7,215.8 L553.3,214.5 L652.0,214.5" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6,4" stroke-linejoin="round"/><circle cx="60.0" cy="214.5" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="158.7" cy="215.4" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="257.3" cy="216.7" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="356.0" cy="217.6" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="454.7" cy="215.8" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="553.3" cy="214.5" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="652.0" cy="214.5" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><path d="M60.0,228.0 L158.7,214.5 L257.3,194.1 L356.0,162.5 L454.7,119.5 L553.3,124.1 L652.0,146.7 L652.0,280 L60.0,280 Z" fill="#7c3aed" fill-opacity="0.10" stroke="none"/><path d="M60.0,228.0 L158.7,214.5 L257.3,194.1 L356.0,162.5 L454.7,119.5 L553.3,124.1 L652.0,146.7" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-linejoin="round"/><circle cx="60.0" cy="228.0" r="3" fill="#7c3aed" stroke="#0f172a" stroke-width="1"/><circle cx="158.7" cy="214.5" r="3" fill="#7c3aed" stroke="#0f172a" stroke-width="1"/><circle cx="257.3" cy="194.1" r="3" fill="#7c3aed" stroke="#0f172a" stroke-width="1"/><circle cx="356.0" cy="162.5" r="3" fill="#7c3aed" stroke="#0f172a" stroke-width="1"/><circle cx="454.7" cy="119.5" r="3" fill="#7c3aed" stroke="#0f172a" stroke-width="1"/><circle cx="553.3" cy="124.1" r="3" fill="#7c3aed" stroke="#0f172a" stroke-width="1"/><circle cx="652.0" cy="146.7" r="3" fill="#7c3aed" stroke="#0f172a" stroke-width="1"/><line x1="502" y1="18" x2="520" y2="18" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="6,4"/><text x="526" y="22" fill="#94a3b8" font-size="11">2025</text><line x1="502" y1="35" x2="520" y2="35" stroke="#7c3aed" stroke-width="2.5"/><text x="526" y="39" fill="#94a3b8" font-size="11">2026</text></svg></div>
+    </div>
+  </div>
+</div>
+
+<!-- EVA + 焦炭 Charts -->
+<div class="chart-section">
+  <h2>EVA / 焦炭 价格走势对比</h2>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>EVA · 1803C 发泡级</h3>
+      <div class="chart-meta">2026年7月30日发泡级 10,000元/吨 | 装置检修+光伏补库推升</div>
+      <div class="chart-container"><svg viewBox="0 0 680 320" width="100%" style="display:block;max-width:680px;margin:0 auto;font-family:sans-serif" xmlns="http://www.w3.org/2000/svg"><text x="20" y="26" fill="#e2e8f0" font-size="15" font-weight="700">EVA（1803C）</text><line x1="60" y1="280.0" x2="652" y2="280.0" stroke="#1e293b" stroke-width="1"/><text x="52" y="284.0" fill="#64748b" font-size="11" text-anchor="end">7.5k</text><line x1="60" y1="254.9" x2="652" y2="254.9" stroke="#1e293b" stroke-width="1"/><text x="52" y="258.9" fill="#64748b" font-size="11" text-anchor="end">8.0k</text><line x1="60" y1="229.8" x2="652" y2="229.8" stroke="#1e293b" stroke-width="1"/><text x="52" y="233.8" fill="#64748b" font-size="11" text-anchor="end">8.5k</text><line x1="60" y1="204.7" x2="652" y2="204.7" stroke="#1e293b" stroke-width="1"/><text x="52" y="208.7" fill="#64748b" font-size="11" text-anchor="end">9.0k</text><line x1="60" y1="179.6" x2="652" y2="179.6" stroke="#1e293b" stroke-width="1"/><text x="52" y="183.6" fill="#64748b" font-size="11" text-anchor="end">9.5k</text><line x1="60" y1="154.4" x2="652" y2="154.4" stroke="#1e293b" stroke-width="1"/><text x="52" y="158.4" fill="#64748b" font-size="11" text-anchor="end">10.0k</text><line x1="60" y1="129.3" x2="652" y2="129.3" stroke="#1e293b" stroke-width="1"/><text x="52" y="133.3" fill="#64748b" font-size="11" text-anchor="end">10.5k</text><line x1="60" y1="104.2" x2="652" y2="104.2" stroke="#1e293b" stroke-width="1"/><text x="52" y="108.2" fill="#64748b" font-size="11" text-anchor="end">11.0k</text><line x1="60" y1="79.1" x2="652" y2="79.1" stroke="#1e293b" stroke-width="1"/><text x="52" y="83.1" fill="#64748b" font-size="11" text-anchor="end">11.5k</text><line x1="60" y1="54.0" x2="652" y2="54.0" stroke="#1e293b" stroke-width="1"/><text x="52" y="58.0" fill="#64748b" font-size="11" text-anchor="end">12.0k</text><text x="60.0" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">1月</text><text x="158.7" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">2月</text><text x="257.3" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">3月</text><text x="356.0" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">4月</text><text x="454.7" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">5月</text><text x="553.3" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">6月</text><text x="652.0" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">7月</text><path d="M60.0,124.3 L158.7,126.8 L257.3,129.3 L356.0,131.8 L454.7,129.3 L553.3,129.3 L652.0,129.3" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6,4" stroke-linejoin="round"/><circle cx="60.0" cy="124.3" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="158.7" cy="126.8" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="257.3" cy="129.3" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="356.0" cy="131.8" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="454.7" cy="129.3" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="553.3" cy="129.3" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="652.0" cy="129.3" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><path d="M60.0,164.5 L158.7,177.0 L257.3,188.6 L356.0,197.1 L454.7,194.6 L553.3,209.7 L652.0,154.4 L652.0,280 L60.0,280 Z" fill="#ea580c" fill-opacity="0.10" stroke="none"/><path d="M60.0,164.5 L158.7,177.0 L257.3,188.6 L356.0,197.1 L454.7,194.6 L553.3,209.7 L652.0,154.4" fill="none" stroke="#ea580c" stroke-width="2.2" stroke-linejoin="round"/><circle cx="60.0" cy="164.5" r="3" fill="#ea580c" stroke="#0f172a" stroke-width="1"/><circle cx="158.7" cy="177.0" r="3" fill="#ea580c" stroke="#0f172a" stroke-width="1"/><circle cx="257.3" cy="188.6" r="3" fill="#ea580c" stroke="#0f172a" stroke-width="1"/><circle cx="356.0" cy="197.1" r="3" fill="#ea580c" stroke="#0f172a" stroke-width="1"/><circle cx="454.7" cy="194.6" r="3" fill="#ea580c" stroke="#0f172a" stroke-width="1"/><circle cx="553.3" cy="209.7" r="3" fill="#ea580c" stroke="#0f172a" stroke-width="1"/><circle cx="652.0" cy="154.4" r="3" fill="#ea580c" stroke="#0f172a" stroke-width="1"/><line x1="502" y1="18" x2="520" y2="18" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="6,4"/><text x="526" y="22" fill="#94a3b8" font-size="11">2025</text><line x1="502" y1="35" x2="520" y2="35" stroke="#ea580c" stroke-width="2.5"/><text x="526" y="39" fill="#94a3b8" font-size="11">2026</text></svg></div>
+    </div>
+    <div class="chart-card">
+      <h3>焦炭 · 准一级冶金焦</h3>
+      <div class="chart-meta">2026年7月28日准一级 ~1,800元/吨 | 十轮提涨后转入提降，两轮落地</div>
+      <div class="chart-container"><svg viewBox="0 0 680 320" width="100%" style="display:block;max-width:680px;margin:0 auto;font-family:sans-serif" xmlns="http://www.w3.org/2000/svg"><text x="20" y="26" fill="#e2e8f0" font-size="15" font-weight="700">焦炭（冶金焦）</text><line x1="60" y1="280.0" x2="652" y2="280.0" stroke="#1e293b" stroke-width="1"/><text x="52" y="284.0" fill="#64748b" font-size="11" text-anchor="end">1,300</text><line x1="60" y1="254.9" x2="652" y2="254.9" stroke="#1e293b" stroke-width="1"/><text x="52" y="258.9" fill="#64748b" font-size="11" text-anchor="end">1,400</text><line x1="60" y1="229.8" x2="652" y2="229.8" stroke="#1e293b" stroke-width="1"/><text x="52" y="233.8" fill="#64748b" font-size="11" text-anchor="end">1,500</text><line x1="60" y1="204.7" x2="652" y2="204.7" stroke="#1e293b" stroke-width="1"/><text x="52" y="208.7" fill="#64748b" font-size="11" text-anchor="end">1,600</text><line x1="60" y1="179.6" x2="652" y2="179.6" stroke="#1e293b" stroke-width="1"/><text x="52" y="183.6" fill="#64748b" font-size="11" text-anchor="end">1,700</text><line x1="60" y1="154.4" x2="652" y2="154.4" stroke="#1e293b" stroke-width="1"/><text x="52" y="158.4" fill="#64748b" font-size="11" text-anchor="end">1,800</text><line x1="60" y1="129.3" x2="652" y2="129.3" stroke="#1e293b" stroke-width="1"/><text x="52" y="133.3" fill="#64748b" font-size="11" text-anchor="end">1,900</text><line x1="60" y1="104.2" x2="652" y2="104.2" stroke="#1e293b" stroke-width="1"/><text x="52" y="108.2" fill="#64748b" font-size="11" text-anchor="end">2,000</text><line x1="60" y1="79.1" x2="652" y2="79.1" stroke="#1e293b" stroke-width="1"/><text x="52" y="83.1" fill="#64748b" font-size="11" text-anchor="end">2,100</text><line x1="60" y1="54.0" x2="652" y2="54.0" stroke="#1e293b" stroke-width="1"/><text x="52" y="58.0" fill="#64748b" font-size="11" text-anchor="end">2,200</text><text x="60.0" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">1月</text><text x="158.7" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">2月</text><text x="257.3" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">3月</text><text x="356.0" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">4月</text><text x="454.7" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">5月</text><text x="553.3" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">6月</text><text x="652.0" y="298.0" fill="#94a3b8" font-size="11" text-anchor="middle">7月</text><path d="M60.0,184.6 L158.7,187.1 L257.3,189.6 L356.0,192.1 L454.7,194.6 L553.3,192.1 L652.0,192.1" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6,4" stroke-linejoin="round"/><circle cx="60.0" cy="184.6" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="158.7" cy="187.1" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="257.3" cy="189.6" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="356.0" cy="192.1" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="454.7" cy="194.6" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="553.3" cy="192.1" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><circle cx="652.0" cy="192.1" r="3" fill="#94a3b8" stroke="#0f172a" stroke-width="1"/><path d="M60.0,212.2 L158.7,214.7 L257.3,197.1 L356.0,184.6 L454.7,149.4 L553.3,129.3 L652.0,154.4 L652.0,280 L60.0,280 Z" fill="#78716c" fill-opacity="0.10" stroke="none"/><path d="M60.0,212.2 L158.7,214.7 L257.3,197.1 L356.0,184.6 L454.7,149.4 L553.3,129.3 L652.0,154.4" fill="none" stroke="#78716c" stroke-width="2.2" stroke-linejoin="round"/><circle cx="60.0" cy="212.2" r="3" fill="#78716c" stroke="#0f172a" stroke-width="1"/><circle cx="158.7" cy="214.7" r="3" fill="#78716c" stroke="#0f172a" stroke-width="1"/><circle cx="257.3" cy="197.1" r="3" fill="#78716c" stroke="#0f172a" stroke-width="1"/><circle cx="356.0" cy="184.6" r="3" fill="#78716c" stroke="#0f172a" stroke-width="1"/><circle cx="454.7" cy="149.4" r="3" fill="#78716c" stroke="#0f172a" stroke-width="1"/><circle cx="553.3" cy="129.3" r="3" fill="#78716c" stroke="#0f172a" stroke-width="1"/><circle cx="652.0" cy="154.4" r="3" fill="#78716c" stroke="#0f172a" stroke-width="1"/><line x1="502" y1="18" x2="520" y2="18" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="6,4"/><text x="526" y="22" fill="#94a3b8" font-size="11">2025</text><line x1="502" y1="35" x2="520" y2="35" stroke="#78716c" stroke-width="2.5"/><text x="526" y="39" fill="#94a3b8" font-size="11">2026</text></svg></div>
+    </div>
+  </div>
+</div>
+
+<!-- Bar chart -->
+<div class="bar-section">
+  <h2>四产品同比涨跌幅对比</h2>
+  <div class="bar-card">
+    <div class="bar-container"><svg viewBox="0 0 680 300" width="100%" style="display:block;max-width:680px;margin:0 auto;font-family:sans-serif" xmlns="http://www.w3.org/2000/svg"><text x="20" y="26" fill="#e2e8f0" font-size="15" font-weight="700">主要产品 · 同比 / 年初至今 %</text><line x1="60" y1="233.6" x2="652" y2="233.6" stroke="#1e293b" stroke-width="1"/><text x="52" y="237.6" fill="#64748b" font-size="11" text-anchor="end">+0%</text><line x1="60" y1="176.4" x2="652" y2="176.4" stroke="#1e293b" stroke-width="1"/><text x="52" y="180.4" fill="#64748b" font-size="11" text-anchor="end">+10%</text><line x1="60" y1="119.1" x2="652" y2="119.1" stroke="#1e293b" stroke-width="1"/><text x="52" y="123.1" fill="#64748b" font-size="11" text-anchor="end">+20%</text><line x1="60" y1="61.8" x2="652" y2="61.8" stroke="#1e293b" stroke-width="1"/><text x="52" y="65.8" fill="#64748b" font-size="11" text-anchor="end">+30%</text><line x1="60" y1="233.6" x2="652" y2="233.6" stroke="#475569" stroke-width="1.2"/><rect x="96.0" y="227.9" width="38.0" height="5.7" fill="#34d399" rx="3"/><text x="115.0" y="222.9" fill="#cbd5e1" font-size="10" text-anchor="middle">+1.0%</text><rect x="134.0" y="73.2" width="38.0" height="160.4" fill="#60a5fa" rx="3"/><text x="153.0" y="68.2" fill="#cbd5e1" font-size="10" text-anchor="middle">+28.0%</text><text x="134.0" y="284" fill="#94a3b8" font-size="11" text-anchor="middle">聚乙烯</text><text x="134.0" y="297" fill="#94a3b8" font-size="11" text-anchor="middle">PE</text><rect x="244.0" y="119.1" width="38.0" height="114.6" fill="#34d399" rx="3"/><text x="263.0" y="114.1" fill="#cbd5e1" font-size="10" text-anchor="middle">+20.0%</text><rect x="282.0" y="90.4" width="38.0" height="143.2" fill="#a78bfa" rx="3"/><text x="301.0" y="85.4" fill="#cbd5e1" font-size="10" text-anchor="middle">+25.0%</text><text x="282.0" y="284" fill="#94a3b8" font-size="11" text-anchor="middle">聚丙烯</text><text x="282.0" y="297" fill="#94a3b8" font-size="11" text-anchor="middle">PP</text><rect x="392.0" y="233.6" width="38.0" height="28.6" fill="#f87171" rx="3"/><text x="411.0" y="275.3" fill="#cbd5e1" font-size="10" text-anchor="middle">-5.0%</text><rect x="430.0" y="222.2" width="38.0" height="11.5" fill="#f87171" rx="3"/><text x="449.0" y="217.2" fill="#cbd5e1" font-size="10" text-anchor="middle">+2.0%</text><text x="430.0" y="284" fill="#94a3b8" font-size="11" text-anchor="middle">EVA</text><text x="430.0" y="297" fill="#94a3b8" font-size="11" text-anchor="middle">1803C</text><rect x="540.0" y="182.1" width="38.0" height="51.6" fill="#34d399" rx="3"/><text x="559.0" y="177.1" fill="#cbd5e1" font-size="10" text-anchor="middle">+9.0%</text><rect x="578.0" y="147.7" width="38.0" height="85.9" fill="#94a3b8" rx="3"/><text x="597.0" y="142.7" fill="#cbd5e1" font-size="10" text-anchor="middle">+15.0%</text><text x="578.0" y="284" fill="#94a3b8" font-size="11" text-anchor="middle">焦炭</text><text x="578.0" y="297" fill="#94a3b8" font-size="11" text-anchor="middle">冶金焦</text><rect x="502" y="14" width="12" height="12" rx="2" fill="#34d399"/><text x="520" y="24" fill="#94a3b8" font-size="11">同比变化</text><rect x="502" y="30" width="12" height="12" rx="2" fill="#60a5fa"/><text x="520" y="40" fill="#94a3b8" font-size="11">年初至今</text></svg></div>
+  </div>
+</div>
+
+<!-- Table -->
+<div class="table-section">
+  <h2>产品价格数据明细表</h2>
+  <table class="data-table">
+    <thead><tr><th>产品</th><th>规格</th><th>2025同期均价</th><th>2026当前价格</th><th>同比变化</th><th>年初至今</th><th>趋势判断</th><th>数据日期</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>聚乙烯 (PE)</td><td>LLDPE 7042</td><td>~8,100 元/吨</td><td>8,200 元/吨</td><td class="highlight-up">↑ +1%</td><td class="highlight-up">↑ +28%</td><td>地缘推升高位震荡</td><td>2026-07-28</td>
+      </tr>
+      <tr>
+        <td>聚丙烯 (PP)</td><td>拉丝级</td><td>~7,450 元/吨</td><td>8,950 元/吨</td><td class="highlight-up">↑ +20%</td><td class="highlight-up">↑ +25%</td><td>冲高回落高位震荡</td><td>2026-07-28</td>
+      </tr>
+      <tr>
+        <td>EVA</td><td>1803C 发泡级</td><td>~10,500 元/吨</td><td>10,000 元/吨</td><td class="highlight-down">↓ -5%</td><td class="highlight-up">↑ +2%</td><td>检修+光伏补库回暖</td><td>2026-07-30</td>
+      </tr>
+      <tr>
+        <td>焦炭</td><td>准一级冶金焦</td><td>~1,650 元/吨</td><td>1,800 元/吨</td><td class="highlight-up">↑ +9%</td><td class="highlight-up">↑ +15%</td><td>十轮提涨后转入提降</td><td>2026-07-28</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  <p>数据来源：生意社、我的钢铁网、隆众资讯、金联创 | 仅供研究参考，不构成投资建议</p>
+  <p style="margin-top:4px;">© 2026 Snail-bird Investment · 宝丰能源(BF)产品价格监控</p>
+    <p style="margin-top:6px;color:#94a3b8;font-size:11px;">注：2026年价格为截至2026-07-31最新现货报价；2025年7月数据系基于上半年走势外推的估计值，仅供趋势参考。</p>
+</div>
+</div>
+
+
+<div class="sb-foot">出品机构：Snail-bird Investment ｜ 个股价格监控系列 ｜ 数据截至 2026-07-31</div>
+</body>
+</html>
