@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全球宏观周报 | 2026年7月第5周复盘与8月第1周展望 | 蜗牛鸟投资</title>
+<style>
+  :root{
+    --bg:#eef1f6; --card:#ffffff; --ink:#1f2420; --ink-soft:#5b6058;
+    --line:#dde3ec; --accent:#c8973a; --accent-2:#1a3d6e; --red:#b5453c;
+    --green:#1c7a50; --amber:#c08a2e; --navy:#0a1f3c;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:"Songti SC","STSong","Noto Serif SC",serif, "PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.7; font-size:15px;
+  }
+  .masthead{
+    background:linear-gradient(135deg,#0a1f3c 0%,#1a3d6e 60%,#2f4457 100%);
+    color:#f2efe6; padding:34px 6vw 26px;
+    border-bottom:4px solid var(--accent);
+  }
+  .masthead-top{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px;}
+  .brand{font-size:13px; letter-spacing:3px; opacity:.85; text-transform:uppercase;}
+  .brand b{color:#e7d7b0;}
+  .masthead h1{font-size:clamp(22px,3vw,32px); margin:10px 0 6px; font-weight:700; letter-spacing:1px;}
+  .masthead .sub{font-size:14px; opacity:.88; max-width:760px;}
+  .masthead-meta{text-align:right; font-size:12.5px; opacity:.8; line-height:1.6;}
+  .alert-banner{
+    margin-top:18px; background:rgba(181,69,60,.16); border:1px solid rgba(231,145,130,.5);
+    border-radius:6px; padding:12px 16px; font-size:13.5px; display:flex; gap:10px; align-items:flex-start;
+  }
+  .alert-banner .tag{
+    background:var(--red); color:#fff; font-size:11px; padding:2px 8px; border-radius:3px;
+    font-weight:700; letter-spacing:1px; flex-shrink:0; margin-top:2px;
+  }
+
+  nav.sticky{
+    position:sticky; top:0; z-index:50; background:#fdfcfa; border-bottom:1px solid var(--line);
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+  }
+  nav.sticky .wrap{display:flex; gap:2px; overflow-x:auto; padding:0 6vw;}
+  nav.sticky a{
+    white-space:nowrap; padding:13px 14px; font-size:13px; color:var(--ink-soft); text-decoration:none;
+    border-bottom:3px solid transparent; font-weight:600;
+  }
+  nav.sticky a:hover{color:var(--accent); border-bottom-color:var(--accent);}
+
+  main{max-width:1120px; margin:0 auto; padding:0 6vw 60px;}
+  section{padding-top:34px; scroll-margin-top:52px;}
+  h2.sec-title{
+    font-size:20px; margin:0 0 4px; color:var(--navy); display:flex; align-items:center; gap:10px;
+  }
+  h2.sec-title .num{
+    background:var(--navy); color:#fff; width:26px; height:26px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;
+  }
+  .sec-desc{color:var(--ink-soft); font-size:13.5px; margin:0 0 18px; padding-left:36px;}
+  h3{font-size:16px; color:var(--accent-2); margin:22px 0 10px;}
+
+  /* KPI strip */
+  .kpi-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:6px;
+  }
+  .kpi{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px 14px 12px;
+    border-top:3px solid var(--accent);
+  }
+  .kpi .label{font-size:11.5px; color:var(--ink-soft); letter-spacing:.5px;}
+  .kpi .value{font-size:20px; font-weight:700; margin:4px 0 2px; color:var(--ink);}
+  .kpi .delta{font-size:12px; font-weight:600;}
+  .up{color:var(--red);} .down{color:var(--green);} .flat{color:var(--ink-soft);}
+
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px; background:var(--card);}
+  caption{text-align:left; font-size:12px; color:var(--ink-soft); margin-bottom:6px;}
+  th{
+    background:#eef0e9; color:var(--navy); text-align:left; padding:9px 10px; font-weight:700;
+    border-bottom:2px solid var(--line); white-space:nowrap;
+  }
+  td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tr:hover td{background:#faf9f5;}
+  .tag-beat{background:#e3efe6; color:var(--green); font-size:11px; padding:1px 7px; border-radius:10px; font-weight:700;}
+  .tag-miss{background:#f7e6e4; color:var(--red); font-size:11px; padding:1px 7px; border-radius:10px; font-weight:700;}
+  .tag-inline{background:#f0eee7; color:var(--ink-soft); font-size:11px; padding:1px 7px; border-radius:10px; font-weight:700;}
+
+  .callout{
+    background:#fbf8f0; border-left:4px solid var(--amber); padding:12px 16px; border-radius:4px;
+    font-size:13.5px; margin:14px 0;
+  }
+  .callout.risk{border-left-color:var(--red); background:#fbf1ef;}
+  .callout.data{border-left-color:var(--navy); background:#eef2f5;}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin:14px 0;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media (max-width:820px){.grid2,.grid3{grid-template-columns:1fr;}}
+
+  .scenario{border-radius:10px; padding:16px 18px; border:1px solid var(--line);}
+  .scenario.bull{border-top:4px solid var(--green);}
+  .scenario.base{border-top:4px solid var(--navy);}
+  .scenario.bear{border-top:4px solid var(--red);}
+  .scenario h4{margin:0 0 6px; display:flex; justify-content:space-between; align-items:center; font-size:15px;}
+  .prob{font-size:13px; font-weight:800; padding:2px 9px; border-radius:12px; color:#fff;}
+  .bull .prob{background:var(--green);} .base .prob{background:var(--navy);} .bear .prob{background:var(--red);}
+  .scenario ul{margin:8px 0 0; padding-left:18px; font-size:13px;}
+  .scenario li{margin-bottom:5px;}
+
+  .driver-header{
+    display:flex; align-items:center; gap:10px; background:#f0eee2; padding:10px 16px; border-radius:8px 8px 0 0;
+    border:1px solid var(--line); border-bottom:none;
+  }
+  .driver-header .icon{font-size:20px;}
+  .driver-body{border:1px solid var(--line); border-radius:0 0 8px 8px; padding:16px; background:var(--card); margin-bottom:18px;}
+  .transmission-row{display:flex; gap:10px; align-items:center; margin:10px 0; font-size:13px;}
+  .transmission-row .layer-tag{
+    background:var(--navy); color:#fff; font-size:11px; padding:3px 9px; border-radius:4px; flex-shrink:0; font-weight:700;
+  }
+
+  .footer-disclaimer{
+    margin-top:50px; padding-top:22px; border-top:1px solid var(--line); font-size:11.5px; color:var(--ink-soft); line-height:1.8;
+  }
+  .footer-disclaimer .fname{font-weight:700; color:var(--accent-2);}
+
+  .quote{font-style:italic; color:var(--ink-soft); border-left:3px solid var(--line); padding-left:12px; font-size:13.5px;}
+  .src{font-size:11.5px; color:#8b9186;}
+  .badge-row{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0;}
+  .badge{background:#eef0e9; color:var(--navy); font-size:11.5px; padding:4px 10px; border-radius:6px; font-weight:600;}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div>
+      <div class="brand">蜗牛鸟投资 <b>Snail-Bird Investment</b> · 全球宏观研究组</div>
+      <h1>全球宏观周报：油价急涨急落、日本天量干预、Fed如期按兵不动</h1>
+      <div class="sub">2026年7月第5周（7.27–8.2）复盘 ｜ 2026年8月第1周（8.3–8.9）展望 —— 四维驱动·三层传导框架</div>
+    </div>
+    <div class="masthead-meta">
+      发布日期：2026年8月1日<br>
+      数据截至：2026年7月31日收盘（部分数据延伸至8月1日）<br>
+      数据源：BLS、CME FedWatch、Fed、ECB、OPEC、日本财务省(MOF)、中国人民银行、国家统计局
+    </div>
+  </div>
+  <div class="alert-banner">
+    <span class="tag">本周焦点</span>
+    <div>
+      （1）FOMC连续第5次会议维持3.50%–3.75%不变，投票9-3、三票主张加息，分歧罕见公开化；（2）伊朗冲突"5夜暂停"后于7/29重启，Brent单周内完成$72→$100+→$82→$91的剧烈来回，7/30日内一度触及91美元区间；（3）日本财务省疑似于7/30实施史上最大规模单日干预（约8.45万亿日元/约530亿美元），USD/JPY从160附近急跌至157.8后反弹；（4）中央政治局会议7/30定调"更加积极的财政政策+适度宽松的货币政策"，新增"及时谋划增量政策"表述；（5）A股7月最后一周科技股显著反弹但全月呈现"红利占优、科技回调"格局。
+    </div>
+  </div>
+</header>
+
+<nav class="sticky">
+  <div class="wrap">
+    <a href="#kpi">KPI速览</a>
+    <a href="#fed">① 美联储政策</a>
+    <a href="#geo">② 地缘与能源</a>
+    <a href="#tech">③ 科技/半导体</a>
+    <a href="#china">④ 中国宏观</a>
+    <a href="#scenario">情景矩阵</a>
+    <a href="#levels">资产关键点位</a>
+    <a href="#alloc">配置建议</a>
+    <a href="#risk">风险register</a>
+    <a href="#outlook">下周展望</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="kpi">
+  <h2 class="sec-title"><span class="num">•</span>本周KPI速览（2026.7.27–7.31）</h2>
+  <p class="sec-desc">四大驱动因子的核心量化指标，环比上周（7.20–7.26）变化</p>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">联邦基金利率区间</div><div class="value">3.50–3.75%</div><div class="delta flat">连续第5次会议持稳</div></div>
+    <div class="kpi"><div class="label">FOMC投票结构</div><div class="value">9–3</div><div class="delta up">3票鹰派异议（历史罕见）</div></div>
+    <div class="kpi"><div class="label">美10年期国债收益率</div><div class="value">4.66%</div><div class="delta up">议息日+5bp</div></div>
+    <div class="kpi"><div class="label">美2年期国债收益率</div><div class="value">4.24%</div><div class="delta down">议息日-4bp</div></div>
+    <div class="kpi"><div class="label">Brent原油（7/30）</div><div class="value">~$91/桶</div><div class="delta up">周内区间$82–100+</div></div>
+    <div class="kpi"><div class="label">WTI原油（7/30）</div><div class="value">~$86/桶</div><div class="delta up">高波动，日内振幅超7%</div></div>
+    <div class="kpi"><div class="label">USD/JPY</div><div class="value">~159.5</div><div class="delta down">日本干预后大幅回撤</div></div>
+    <div class="kpi"><div class="label">美元指数DXY</div><div class="value">~100附近</div><div class="delta down">7月累计约-1%</div></div>
+    <div class="kpi"><div class="label">USD/CNY中间价</div><div class="value">6.7894</div><div class="delta flat">7/28公布，人民币基本平稳</div></div>
+    <div class="kpi"><div class="label">上证指数（7/31收）</div><div class="value">3,832.26</div><div class="delta up">+0.72%，科技股领涨</div></div>
+    <div class="kpi"><div class="label">中国7月制造业PMI</div><div class="value">49.2</div><div class="delta down">较6月50.3回落，重回收缩区间</div></div>
+    <div class="kpi"><div class="label">CME FedWatch 9月加息概率</div><div class="value">63.2%</div><div class="delta up">议息后由约36%大幅跳升</div></div>
+  </div>
+  <div class="callout data">
+    <b>数据口径说明：</b>本周油价数据波动极大且不同数据源存在分钟级/小时级时点差异（CFD报价 vs. 期货结算价），本文统一采用UTC时间戳明确标注，并以7月30日06:15 UTC的Vantage/TradingView联合读数作为周报收盘基准；日本干预规模为彭博基于央行账户变化的估算，MOF官方月度干预数据将于8月末公布，存在修正可能。人民币汇率采用中国外汇交易中心官方中间价。
+  </div>
+</section>
+
+<!-- ============ DRIVER 1: FED POLICY ============ -->
+<section id="fed">
+  <h2 class="sec-title"><span class="num">1</span>驱动一：美联储政策 —— 分裂的FOMC，按兵不动但鹰派色彩加重</h2>
+  <p class="sec-desc">传导层：政策利率 → 收益率曲线 → 美元/风险资产定价</p>
+
+  <div class="driver-header"><span class="icon">🏛</span><b>核心事件：7月29日FOMC会议</b></div>
+  <div class="driver-body">
+    <p>美联储7月29日议息会议宣布连续第五次会议将联邦基金利率维持在<b>3.50%–3.75%</b>区间不变，为2022年11月以来最低水平的第五个会议周期<cite index="1-1">，决策使联邦基金利率(FFR)连续第五次会议保持在3.50%-3.75%的区间，使基准利率维持在2022年11月以来的最低水平</cite>。本次会议最值得关注的并非决策结果本身（市场已充分预期"按兵不动"），而是投票结构与内部分歧的公开化程度。</p>
+
+    <h3>投票分裂：9-3，三票明确主张加息</h3>
+    <p>FOMC投票结果为<b>9票支持维持利率，3票反对并主张加息</b><cite index="2-1">，但三名货币政策委员会成员投下反对票，希望加息</cite>。这是鲍威尔时代后、沃什(Warsh)执掌美联储以来分歧最为公开的一次会议——此前6月17日会议为12-0全票通过维持利率<cite index="6-1">，美联储于2026年6月17日以12-0的一致投票将联邦基金目标区间维持在3.50%-3.75%不变，这是沃什主席上任以来的首次决定</cite>，短短一个多月内鹰派阵营从0票扩大到3票，反映出委员会内部对"通胀是否已失控"的判断出现实质性裂痕。会后市场反应偏负面：<cite index="2-1">标普500指数在美东时间下午3:24下跌0.6%，纳斯达克综合指数下跌0.5%，道琼斯工业平均指数一度下跌超过840点即1.6%；10年期美债收益率上升5个基点至4.657%，而2年期收益率下滑4个基点至4.236%，30年期美债收益率上涨超过9个基点至5.193%</cite>。
+
+    <h3>声明措辞与主席风格转变</h3>
+    <p>沃什主席延续其"少即是多"的沟通风格，<cite index="5-1">会后声明篇幅明显短于此前历任主席时期已成为常态的长度，且这与沃什就任以来的做法一致</cite>。声明重申<cite index="5-1">"经济活动正以稳健步伐扩张，尽管存在部分归因于中东冲突的高度不确定性"</cite>，并首次以简短宣示结尾——<cite index="5-1">委员会将实现价格稳定</cite>。值得注意的是，沃什本人对前瞻指引持怀疑态度，<cite index="5-1">从政策角度看，沃什对美联储过去提供利率前瞻指引的做法表达了不满</cite>，这意味着未来市场需要更多依赖数据本身而非官方沟通来预判政策路径，波动性可能因此上升。</p>
+
+    <h3>点阵图鹰化：年内加息预期首次转正</h3>
+    <p>6月点阵图已显示委员会转向鹰派立场，<cite index="1-1">最新点阵图显示，多数官员现预计2026年末基准利率将落在3.6%至4.1%区间（此前预估为3.25%至3.75%）</cite>。这意味着相较于此前市场对"年内维持不变甚至降息"的预期，美联储官方立场已转向"年内至少加息一次"。据媒体统计，<cite index="6-1">九名官员预期至少加息一次，仅一人预期降息</cite>。长期中性利率预期保持稳定，<cite index="1-1">"长期"锚点仍保持高度统一，大量委员将中性利率精确锁定在3.0%，进一步印证超低利率时代已经结束</cite>。
+
+    <h3>驱动加息预期的核心矛盾：能源通胀 vs. 就业走弱</h3>
+    <div class="grid2">
+      <div class="card">
+        <b style="color:var(--red)">通胀端压力</b>
+        <p style="font-size:13.5px; margin-top:8px;">美国6月CPI同比录得<b>3.5%</b>，核心PCE走势受油价传导影响持续承压。中东冲突推升的能源价格已成为年内最大的外生通胀冲击，<cite index="6-1">美国通胀率处于4.2%时近期降息的可能性较低</cite>（注：此为6月时点表述，7月CPI已边际回落至3.5%，但油价7月下旬重新走高，8月CPI读数存在反弹风险）。</p>
+      </div>
+      <div class="card">
+        <b style="color:var(--green)">就业端走弱</b>
+        <p style="font-size:13.5px; margin-top:8px;"><cite index="75-1">美国6月新增非农就业5.7万人，远低于市场预期的11万人及经修正后5月的12.9万人，为四个月来最低增速</cite>，休闲酒店业更是<cite index="75-1">因季节性雇用疲软及世界杯效应减少6.1万人</cite>。劳动力市场走弱本应支持鸽派立场，但当前委员会明显将抗通胀置于优先位置。
+        </p>
+      </div>
+    </div>
+    <p><cite index="58-1">Indeed招聘实验室经济学家Aubrey Woessner指出，在种种不确定性中，唯一清晰的一点是劳动力市场在美联储眼中已让位于通胀议题</cite>——这是理解本次9-3分裂投票以及鹰派点阵图的关键：即便就业数据疲软，美联储当前的风险管理天平仍明显向抗通胀倾斜。</p>
+
+    <h3>9月议息会议：市场定价急速转鹰</h3>
+    <p>会后CME FedWatch数据显示市场预期出现剧烈跳变：<cite index="55-1">截至7月30日，FOMC声明发布后，9月维持利率不变的概率为36.8%，而加息25个基点的概率达到63.2%；50个基点加息概率为0%（会议前分别为17.8%、60.2%和22%）</cite>。这一变化幅度值得高度关注——市场在会议前后完成了从"轻度押注维持不变"到"多数押注加息"的重定价，核心驱动是三票异议+鹰派点阵图的组合信号，叠加会后油价二次冲高对通胀预期的助推。<span class="tag-miss">超预期</span> 下一次FOMC会议为9月15–16日，沃什将于8月末在杰克逊霍尔全球央行年会发表讲话，届时措辞将是市场重新校准9月加息概率的关键窗口。</p>
+
+    <div class="callout risk">
+      <b>关键分歧提示：</b>需明确区分"美联储官方点阵图立场"（鹰派，倾向年内加息）与"CME FedWatch市场隐含概率"（对9月加息定价63.2%，但仍存在不确定性、且该概率在一周内可能因数据或地缘局势快速反转）。两者方向一致但幅度、时点判断存在差异，不应等同视之。此外需注意，CME FedWatch概率为累计相对当前值的隐含概率，不同会议之间不可简单相加或独立解读<cite index="56-1">这些概率是相对于今天累积计算的，而非在每次会议时重新独立下注：某次会议的加息概率是指到该会议日期时利率高于当前水平的可能性，且已包含此前会议中被定价的任何变动</cite>。
+    </div>
+  </div>
+</section>
+
+<!-- ============ DRIVER 2: GEOPOLITICS / ENERGY ============ -->
+<section id="geo">
+  <h2 class="sec-title"><span class="num">2</span>驱动二：地缘政治与能源 —— 伊朗冲突"暂停-重启"，油价单周完成剧烈往返</h2>
+  <p class="sec-desc">传导层：地缘冲突强度 → 霍尔木兹海峡通行/油价 → 全球通胀预期与航运/能源板块</p>
+
+  <div class="driver-header"><span class="icon">🛢</span><b>核心事件：5夜停火后美国重启对伊打击</b></div>
+  <div class="driver-body">
+    <h3>时间线复盘</h3>
+    <table>
+      <caption>2026年7月最后一周伊朗冲突关键节点</caption>
+      <thead><tr><th>日期</th><th>事件</th><th>市场影响</th></tr></thead>
+      <tbody>
+        <tr><td>7/27（周一）</td><td>美国暂停对伊打击，特朗普称"伊朗请求停火对话"；伊朗官方否认存在谈判<cite index="44-1">，特朗普称美国应伊朗政权请求暂停了对伊朗的打击，并警告如果双方未能达成新停火协议，美国将恢复攻击</cite></td><td>油价单日暴跌超7%<cite index="14-1">，布伦特和WTI原油价格在美国暂停对伊朗的打击、德黑兰称已停止报复性行动后大幅逆转，两大基准价格在7月27日周一单个交易日内下跌超过7%</cite></td></tr>
+        <tr><td>7/28–7/29</td><td>外交僵局延续，霍尔木兹海峡通行量维持低位<cite index="44-1">，截至周一上午，通过该海峡的商品运输船只不足10艘，而战前该海峡日均通行商船约100艘</cite></td><td>油价低位盘整，Brent在$82附近</td></tr>
+        <tr><td>7/29晚（美东）</td><td>美军结束五夜暂停，CENTCOM对伊朗革命卫队目标发动"大规模攻击波"<cite index="48-1">，美军完成了CENTCOM所称的针对伊朗南部数十个革命卫队目标的大规模打击，结束了五夜的暂停</cite></td><td>地缘风险溢价快速回补</td></tr>
+        <tr><td>7/30</td><td>伊朗向约旦发射导弹（被拦截5枚），科威特一中资企业建筑遭袭致1死<cite index="51-1">，伊朗军方称其部队使用无人机袭击了科威特Ahmad Al-Jaber空军基地的美军设施，称此举是对近期美军打击的报复</cite></td><td>Brent反弹至~$91、WTI~$86</td></tr>
+        <tr><td>7/31</td><td>冲突持续，地区扩散风险上升（约旦、科威特相继卷入）</td><td>油价维持高位震荡</td></tr>
+      </tbody>
+    </table>
+
+    <h3>油价：一周内完成教科书式过山车</h3>
+    <div class="callout data">
+      <b>数据核验：</b>本周油价波动幅度在近年历史上罕见，务必按时间戳理解，避免误用单一"周度均价"掩盖真实波动路径：
+      <ul style="margin:8px 0 0; padding-left:20px; font-size:13px;">
+        <li>7/23（冲突升温期）：<cite index="9-1">Brent交投于94.29美元/桶附近，WTI约89.01美元/桶，两大基准一个月内均上涨约五分之一</cite></li>
+        <li>7/27（停火暂缓消息）：<cite index="14-1">Brent最新交易价约87.33美元，WTI最新交易价约82.11美元，均较此前高点显著回落</cite></li>
+        <li>7/30（重启打击后反弹）：<cite index="13-1">截至UTC时间06:15，WTI交投于85.98美元附近，Brent交投于91.25美元附近，均较7月28日低点大幅反弹</cite></li>
+      </ul>
+    </div>
+    <p>结构性背景仍是"地缘溢价 vs. 过剩基本面"的角力：<cite index="8-1">国际能源署预测潜在供应过剩规模达每日370万至400万桶</cite>，高盛年度均价预测仍维持<cite index="8-1">WTI 52美元、Brent 56美元的最悲观立场</cite>，但短期地缘扰动持续压制该逻辑的兑现。<cite index="14-1">EIA最新月度短期能源展望（7月发布）曾预计三季度Brent将回落至74美元附近的相对平静水平，但两周后的局势已凸显该预测的地缘不确定性</cite>，下一期EIA展望将于8月11日发布，是检验官方基准假设是否修正的重要窗口。<span class="tag-miss">与EIA基准预测显著偏离</span></p>
+
+    <h3>红海/也门风险叠加</h3>
+    <p><cite index="14-1">德意志银行分析师在周一的报告中指出，胡塞武装的袭击行为提高了"海湾与红海出口路线同时遭受破坏"的可能性</cite>，这意味着即便霍尔木兹海峡局势阶段性缓和，红海—苏伊士运河替代航线也面临被同步扰乱的风险，航运板块（尤其油轮TCE运价）需持续跟踪。</p>
+  </div>
+
+  <div class="driver-header"><span class="icon">💴</span><b>核心事件：日本疑似史上最大规模单日汇率干预</b></div>
+  <div class="driver-body">
+    <h3>干预经过</h3>
+    <p>美元/日元在7月最后一周逼近<cite index="15-1">1986年以来的水平</cite>，市场对日本官方干预的预期持续升温。7月30日（周四），<cite index="16-1">日元在美联储分裂议息决定公布后大幅走强，市场怀疑存在日本官方干预；此举发生在周五日本央行会议之前，紧随周三美联储分裂决定（维持利率不变，导致美元走软）之后</cite>。彭博基于央行账户数据估算，<cite index="20-1">日本7月30日（周四）为支撑日元疑似动用约8.45万亿日元（约合528亿美元），这可能是东京历史上规模最大的单日干预行动</cite>。
+
+    <h3>汇率走势与二次波动</h3>
+    <p>7月31日（周五）美元/日元出现二次剧烈波动：<cite index="18-1">周五美元兑日元一度下跌0.5%至158.60，从约160的水平在几秒钟内急跌，随后反弹至约159.5一线</cite>，波动幅度小于<cite index="18-1">周四美元兑日元暴跌2.4%、最低触及157.8的疑似干预行情</cite>。日本财务省对干预传闻未予正面确认，符合其一贯的"战略模糊"操作惯例。</p>
+
+    <h3>与货币政策的联动：BOJ按兵不动但转鹰</h3>
+    <p>日本央行7月31日议息决定维持利率在1%不变，但<cite index="19-1">在展望报告中表示核心通胀可能从2026财年下半年（9月至次年3月）起加速升至"明显高于"2%的水平，理由包括工资上涨向销售价格的传导、原油价格上涨以及近期日元贬值</cite>。<cite index="19-1">日本7月核心通胀为1.6%，2026年大部分时间低于2%目标</cite>。决定当晚恰逢疑似干预操作，<cite index="19-1">决定出台之际，东京据称已于周四夜间实施干预，同时美国当局执行了通常被视为干预前奏的"询价"（rate check）操作</cite>，显示美日在汇市操作层面存在一定程度的默契配合。<cite index="18-1">另有消息称韩国外汇当局周四同步抛售美元，与日本形成罕见的协调干预迹象，韩元当时也小幅走强</cite>。
+
+    <h3>策略含义</h3>
+    <div class="callout">
+      Rabobank在干预前已提示：<cite index="15-1">FX策略师Jane Foley认为，仅靠汇率干预可能不足以扭转市场的负面情绪，更需要日本央行释放更强的加息信号；该行三个月目标价预测美元/日元为159</cite>。当前实际点位（约159.5）已基本落在该目标区间内，意味着干预+BOJ鹰派表态的组合拳短期内取得一定效果，但结构性的美日利差（美国3.50–3.75% vs. 日本1%）仍是压制日元的根本性力量，若9月美联储真实施加息，日元贬值压力可能再度加剧，不排除日本当局需要更大规模、更连续的干预操作。
+    </div>
+  </div>
+</section>
+
+<!-- ============ DRIVER 3: TECH / SEMICONDUCTOR ============ -->
+<section id="tech">
+  <h2 class="sec-title"><span class="num">3</span>驱动三：科技/半导体板块动态 —— 美股AI交易分化，中国科技股周五强力反弹</h2>
+  <p class="sec-desc">传导层：AI资本开支叙事 → 权重股表现分化 → 全球风险偏好与A股/美股联动</p>
+  <div class="driver-body">
+    <h3>美股：微软带动纳指大涨，但"科技七姐妹"内部分化加剧</h3>
+    <p>7月31日美股显著走强，<cite index="34-1">纳指涨约680点，微软收涨15.5%，创18年来最大单日涨幅</cite>。但涨势并非普涨——<cite index="38-1">美股半导体股深夜猛拉，存储巨头全线暴涨，但"科技七姐妹"内部出现分化，Meta股价大跌超8%，热门中概股同步普跌</cite>，反映市场对AI资本开支效率与巨头间基本面差异的定价正在细化，不再是无差别的AI叙事驱动。这一分化值得在下周财报季（多家科技巨头陆续发布Q2财报）中持续跟踪。</p>
+
+    <h3>A股：月末科技股集体反弹，存储芯片、机器人题材领涨</h3>
+    <p>7月31日A股尾盘强势，<cite index="39-1">科技股集体上涨带动市场震荡反弹，上证指数收报3832.26点，涨0.72%；深证成指涨2.21%；创业板指涨3.06%；科创综指涨3.69%；全日成交25599亿元，较上一交易日放量2015亿元</cite>。板块层面，<cite index="39-1">多模态AI概念、PCB、人形机器人等题材涨幅居前，AI应用方向多股涨停</cite>，存储芯片板块尤其活跃，<cite index="36-1">兆易创新、德明利、太极实业竞价一字涨停</cite>。</p>
+
+    <div class="callout">
+      <b>7月全月回顾——"红利占优、科技回调"格局：</b><cite index="39-1">申万31个一级行业中，煤炭以14.29%的月涨幅居首，石油石化、银行、食品饮料等行业涨幅居前；前期涨幅较大的电子、通信等科技板块则迎来调整</cite>。这一格局与此前讨论过的"公募基金AI/电子超配拥挤度触及历史极值后的回撤消化"逻辑相互印证——本周五的科技股反弹更宜理解为超跌反弹与资金再平衡，而非趋势性反转的确认信号，仍需观察下周成交量能否持续放大以及资金是否从红利板块回流科技。
+    </div>
+
+    <h3>亚太市场联动</h3>
+    <p>7月31日亚太股市呈现普涨格局，<cite index="37-1">日经225指数收盘涨超4%，韩国综合指数暴涨17.91%，创下韩股历史最大单日涨幅</cite>，SK海力士等存储链条个股表现尤为突出，与A股存储芯片板块的强势形成跨市场共振，反映全球存储芯片周期性紧缺预期（"MLCC超级周期"相关讨论）正在被资金集中定价。</p>
+  </div>
+</section>
+
+<!-- ============ DRIVER 4: CHINA MACRO ============ -->
+<section id="china">
+  <h2 class="sec-title"><span class="num">4</span>驱动四：中国宏观 —— 政治局会议定调"增量政策"，PMI回落至收缩区间</h2>
+  <p class="sec-desc">传导层：政治局定调 → 财政/货币工具落地节奏 → 人民币汇率与A股风险偏好</p>
+
+  <div class="driver-body">
+    <h3>人民币汇率</h3>
+    <table>
+      <caption>2026年7月最后一周人民币汇率中间价（USD/CNY）</caption>
+      <thead><tr><th>日期</th><th>中间价</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>7/28</td><td>6.7928</td><td><cite index="29-1">中国人民银行授权中国外汇交易中心公布，2026年7月28日银行间外汇市场人民币汇率中间价为1美元对人民币6.7928元</cite></td></tr>
+        <tr><td>7/31</td><td>6.7894</td><td><cite index="26-1">100美元对678.94人民币，即中间价6.7894</cite>，周内小幅升值</td></tr>
+      </tbody>
+    </table>
+    <p>离岸人民币近期表现相对平稳偏强，<cite index="31-1">交易于每美元6.74左右，保持自2023年2月以来的最强水平区间</cite>（该数据源时点略早于本周，建议结合7/31官方中间价6.7894交叉验证，两者口径不同——在岸中间价与离岸市场汇率存在正常价差，且随时间推移会有变化，不宜直接等同）。<span class="tag-inline">在岸/离岸口径差异提示</span></p>
+
+    <h3>7月中国官方PMI：制造业重回收缩区间</h3>
+    <div class="callout risk">
+      <cite index="31-1">官方数据显示，中国制造业PMI从6月的50.3降至2026年7月的49.2，标志着自2月以来的首次收缩；非制造业PMI从50.2降至49.0，显示在两个月温和扩张后出现新的下滑</cite>。这一走弱紧随二季度GDP增速不及预期而来——<cite index="82-1">二季度中国GDP同比增长4.3%，低于年初确定的4.5%-5%目标区间，上半年累计同比增长4.7%</cite>。<span class="tag-miss">PMI不及预期，且二季度GDP落至目标区间下方</span>
+    </div>
+
+    <h3>政治局会议（7月30日）：政策定调加码，但落地节奏偏后置</h3>
+    <p>中央政治局7月30日召开会议，部署下半年经济工作。核心信息包括：</p>
+    <ul style="font-size:13.5px;">
+      <li><b>政策基调：</b><cite index="85-1">延续"更加积极的财政政策和适度宽松的货币政策"提法，同时新增"充分发挥各项存量政策效能，及时谋划出台务实管用的增量政策，加大逆周期调节力度"的表述</cite>。</li>
+      <li><b>财政支出提速：</b><cite index="86-1">会议指出宏观政策要发力提效，加快财政支出和债券资金使用进度，有力推进"两重"建设和"两新"工作，兜牢基层"三保"底线，综合运用并适时调整货币政策工具，优化实施财政金融协同促内需政策</cite>。</li>
+      <li><b>增量政策时点预判：</b>据券商解读，<cite index="85-1">预计下半年宏观政策力度将加大，落地时间进度预计集中在第四季度；当前阶段仍以充分落实存量政策为主，预计三季度根据经济运行情况谋划出台增量政策、四季度落地见效</cite>。</li>
+      <li><b>货币政策工具箱：</b>券商预期<cite index="84-1">会议延续适度宽松定调，不过年内降准降息落地概率有限，流动性方面央行呵护态度明确，预计下半年延续流动性充裕格局</cite>。</li>
+    </ul>
+
+    <div class="callout data">
+      <b>解读提示——政策节奏 vs. 市场预期的落差：</b>需要清晰区分"定调转向更积极"与"增量政策实际落地"两个层面。当前会议措辞显示政策姿态较此前更为积极（新增"逆周期调节"表述），但多家券商一致预判实际增量工具的推出与生效将集中在**四季度**，三季度更多是"存量政策补进度"为主。这意味着短期内（8月）市场若期待强刺激落地可能面临预期差，PMI走弱与政策发力时滞之间的缺口，是下周及8月中国资产定价的核心变量之一。
+    </div>
+
+    <h3>资本市场政策信号</h3>
+    <p><cite index="87-1">会议重提"加大逆周期调节力度"</cite>，市场解读认为对稳定资本市场信心具有积极意义，<cite index="30-1">部分机构测算人民币汇率若升值0.1个百分点，股票估值可提升3%-5%，人民币升值与外资流入的正向关联或为A股带来增量资金</cite>（该测算为此前市场观点，实际弹性系数存在较大不确定性，仅供参考，不构成投资建议）。</p>
+  </div>
+</section>
+
+<!-- ============ SCENARIO MATRIX ============ -->
+<section id="scenario">
+  <h2 class="sec-title"><span class="num">✓</span>情景矩阵：8月3日–8月9日</h2>
+  <p class="sec-desc">概率加权情景，聚焦下周三大变量：伊朗冲突演化路径、日元干预持续性、9月加息预期定价修正</p>
+  <div class="grid3">
+    <div class="scenario bull">
+      <h4>乐观情景 <span class="prob">20%</span></h4>
+      <p style="font-size:13px;">伊朗接受新一轮外交斡旋（卡塔尔/巴基斯坦居中），冲突降级；油价回落至Brent $75–80区间；美联储官员表态偏温和，9月加息概率回落至40%以下；日元在BOJ鹰派信号+干预组合下企稳于155–158区间；A股科技板块延续反弹，政治局会议积极定调开始兑现为具体政策预期。</p>
+    </div>
+    <div class="scenario base">
+      <h4>基准情景 <span class="prob">55%</span></h4>
+      <p style="font-size:13px;">伊朗冲突维持"打击-报复"僵持模式，无重大升级也无实质性降级；Brent在$85–95区间高位震荡；美联储维持鹰派沟通基调但无新增实质信号，9月加息概率在50-65%区间反复；美元/日元在158-162区间双向波动，日本当局视情况追加干预；A股延续存量资金博弈、结构性行情（红利与科技轮动），政治局会议定调消化为渐进式预期而非脉冲式行情。</p>
+    </div>
+    <div class="scenario bear">
+      <h4>悲观情景 <span class="prob">25%</span></h4>
+      <p style="font-size:13px;">伊朗冲突进一步外溢（沙特/也门/红海航运遭受实质性破坏），霍尔木兹海峡通行进一步受限，Brent突破$100并挑战前高；能源通胀二次冲击强化9月加息预期升至75%以上，10年期美债收益率上探4.8%+；美元指数因避险情绪走强对冲日元干预效果，日本被迫采取更大规模、更频繁干预；全球风险资产（含A股、美股科技股）承压回调，"稳增长"政策预期与地缘避险情绪形成对冲。</p>
+    </div>
+  </div>
+  <p class="src" style="margin-top:10px;">概率判断基于当前信息集的主观加权，非精确统计模型输出，仅供研究参考，不构成投资建议。</p>
+</section>
+
+<!-- ============ ASSET KEY LEVELS ============ -->
+<section id="levels">
+  <h2 class="sec-title"><span class="num">📊</span>资产关键点位</h2>
+  <table>
+    <thead><tr><th>资产</th><th>当前水平</th><th>关键支撑</th><th>关键阻力</th><th>核心驱动变量</th></tr></thead>
+    <tbody>
+      <tr><td>Brent原油</td><td>~$91</td><td>$82（7/28低点）</td><td>$100（7/24曾触及）<cite index="49-1">Brent结算价100.69美元，为5月22日以来首次收于100美元上方</cite></td><td>伊朗冲突升级/降级节奏</td></tr>
+      <tr><td>WTI原油</td><td>~$86</td><td>$68（7月初低点，据litefinance区间下沿）</td><td>$95+</td><td>同上 + 美国战略储备动向</td></tr>
+      <tr><td>美10年期国债收益率</td><td>4.66%</td><td>4.2%附近</td><td>4.8-5.0%（若加息预期进一步升温）</td><td>9月FOMC定价、通胀数据</td></tr>
+      <tr><td>USD/JPY</td><td>~159.5</td><td>157.8（7/30盘中低点）</td><td>160-162</td><td>日本追加干预阈值、美日利差</td></tr>
+      <tr><td>USD/CNY中间价</td><td>6.7894</td><td>6.80附近心理关口</td><td>6.75附近</td><td>政治局会议政策落地节奏、美元指数走势</td></tr>
+      <tr><td>上证指数</td><td>3,832</td><td>3,750附近（月度支撑）</td><td>3,900-3,950</td><td>科技股情绪、增量资金入场节奏</td></tr>
+      <tr><td>沪深300</td><td>~4,588</td><td>4,500附近</td><td>4,650-4,700</td><td>红利-科技风格切换</td></tr>
+    </tbody>
+  </table>
+  <p class="src">点位数据截至7月31日，仅供参考，日内高频波动请以实时行情为准。</p>
+</section>
+
+<!-- ============ ALLOCATION ============ -->
+<section id="alloc">
+  <h2 class="sec-title"><span class="num">💼</span>大类资产配置建议</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0;">权益</h3>
+      <p style="font-size:13.5px;">A股：维持"哑铃型"配置思路，红利资产（煤炭、银行、食品饮料等7月强势板块）提供防御垫，科技成长（存储芯片、人形机器人、AI应用）作为进攻端，但需警惕7月末反弹的延续性存疑，建议关注8月增量资金入场信号与政策落地细则。美股：科技板块内部分化加剧（微软 vs. Meta），财报季波动率上升，建议降低对"AI板块整体beta"的依赖，转向个股基本面甄别。</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">固定收益</h3>
+      <p style="font-size:13.5px;">美债：10年期收益率在4.6-4.7%区间，若9月加息预期进一步强化，长端收益率存在上行至4.8%+的风险，建议控制久期敞口；短端（2年期4.24%）已price in较多鹰派预期，性价比相对回升。中国债市：政治局会议强调财政支出提速、三季度或迎政府债券发行高峰，需关注供给放量对流动性的阶段性扰动，央行"呵护流动性"表态为债市提供一定缓冲。</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">商品</h3>
+      <p style="font-size:13.5px;">原油：高波动环境下不建议单边押注方向，关注地缘事件驱动的交易性机会；中期供给过剩逻辑（IEA预测370-400万桶/日过剩）与短期地缘溢价的角力将持续，建议以区间思维（Brent $82-100）而非趋势思维应对。黄金：美元走弱窗口+地缘避险需求叠加，若9月加息预期证伪（即Fed实际转鸽），黄金存在阶段性支撑。</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">外汇</h3>
+      <p style="font-size:13.5px;">USD/JPY：日本干预已展现"能撑住但改变不了趋势"的特征，若美联储9月真实施加息，美日利差走阔将重新施压日元，建议关注BOJ是否在8月释放更明确的加息路径信号（而非仅靠干预）。人民币：政治局会议积极定调对汇率情绪形成一定支撑，但增量政策落地时滞（预期集中在Q4）意味着短期内人民币更可能维持窄幅波动而非趋势性升值。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RISK REGISTER ============ -->
+<section id="risk">
+  <h2 class="sec-title"><span class="num">⚠</span>风险登记册</h2>
+  <table>
+    <thead><tr><th>风险事件</th><th>概率</th><th>潜在冲击</th><th>监测指标</th></tr></thead>
+    <tbody>
+      <tr><td>伊朗冲突进一步外溢至沙特/红海航运</td><td>中高</td><td>Brent突破$100，全球通胀预期二次抬升，风险资产承压</td><td>霍尔木兹海峡通行船只数、胡塞武装动向、CENTCOM打击频率</td></tr>
+      <tr><td>美联储9月意外加息（而非维持不变）</td><td>中（市场定价63.2%，但历史上FedWatch短期内常大幅回摆）</td><td>美债收益率曲线全面上移，美元走强，新兴市场资本外流压力</td><td>8月CPI/PCE数据、杰克逊霍尔沃什讲话、8月非农数据（8/7公布）</td></tr>
+      <tr><td>日元干预效果不可持续，触发新一轮亚洲货币竞相贬值</td><td>中</td><td>亚太股汇市联动承压，人民币被动贬值压力上升</td><td>USD/JPY是否重新逼近160+、MOF月度干预数据（8月末公布）</td></tr>
+      <tr><td>中国增量政策落地不及预期（Q4节奏被推迟）</td><td>中低</td><td>A股风险偏好阶段性降温，尤其对政策敏感型板块（地产链、基建链）</td><td>8月财政支出/专项债发行进度数据、9月政治局会议或更高层会议表态</td></tr>
+      <tr><td>美股AI板块业绩分化加剧引发估值重估</td><td>中</td><td>科技权重股波动加大，通过MSCI等指数联动影响全球风险偏好</td><td>8月中上旬美股科技巨头Q2财报陆续发布</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ NEXT WEEK OUTLOOK ============ -->
+<section id="outlook">
+  <h2 class="sec-title"><span class="num">🔭</span>下周展望：8月3日–8月9日关键日程</h2>
+  <table>
+    <thead><tr><th>日期</th><th>事件/数据</th><th>重要性</th></tr></thead>
+    <tbody>
+      <tr><td>8/3–8/7（全周）</td><td>伊朗冲突演化持续跟踪；日本财务省是否追加干预</td><td>高</td></tr>
+      <tr><td>8/7（周五）</td><td>美国7月非农就业报告（BLS）——<cite index="78-1">6月美国新增就业远低于预期，市场关注7月数据能否扭转担忧情绪</cite></td><td>高</td></tr>
+      <tr><td>8/11（周二前后）</td><td>EIA月度短期能源展望（下一期），检验此前"三季度Brent回落至$74"基准预测是否修正</td><td>中高</td></tr>
+      <tr><td>8/12（周三）</td><td>美国7月CPI数据<cite index="77-1">（BLS将于8月12日发布，为下一次CPI读数）</cite></td><td>高（超出本周报窗口但需提前布局关注）</td></tr>
+      <tr><td>全周</td><td>美股科技巨头Q2财报陆续发布，验证AI资本开支叙事分化是否持续</td><td>高</td></tr>
+      <tr><td>全周</td><td>中国8月上旬财政支出、专项债发行数据观察窗口（验证政治局会议"补进度"表述落地情况）</td><td>中</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <b>下周核心研判：</b>市场大概率延续本周"高波动、无明确趋势"的特征。三条主线交织：（1）伊朗冲突的"打击-暂停"节奏若延续本周模式，油价将继续呈现宽幅震荡而非单边趋势，建议以区间思维应对；（2）9月加息概率的市场定价（当前63.2%）预计将随下周非农数据（8/7）出现方向性调整——若就业数据延续6月疲软态势，鹰派定价存在阶段性回落空间；（3）日元汇率将处于"干预效果消化期"，若美日利差因加息预期反复而波动，不排除日本当局在160关口附近再度出手。中国资产层面，政治局会议的积极定调需要通过8月上旬的实际财政支出数据来验证，市场情绪修复的持续性仍待观察。
+  </div>
+</section>
+
+<div class="footer-disclaimer">
+  <p><span class="fname">蜗牛鸟投资 Snail-Bird Investment</span> · 全球宏观研究组</p>
+  <p>本报告基于公开信息及第三方数据源整理编写，数据截至2026年7月31日（部分点位延伸至8月1日发布时点），力求准确但不保证完整性与实时性。原油价格因本周地缘局势急剧变化，不同数据源（CFD报价、期货结算价）之间可能存在分钟级至小时级的口径差异，本文已尽量标注具体时间戳；日本汇率干预规模为第三方机构基于央行账户数据的估算，非官方确认数字，最终数据以日本财务省8月末公布的月度干预报告为准；CME FedWatch概率为市场隐含概率，非美联储官方预测，且历史上存在短期内大幅波动的特征。本报告不构成任何投资建议，市场有风险，投资需谨慎。文中所有关于未来走势、情景概率的判断均为研究团队基于当前信息的主观评估，实际结果可能因新信息、政策变化或市场情绪转变而与预测产生重大偏离。</p>
+</div>
+
+</main>
+</body>
+</html>
