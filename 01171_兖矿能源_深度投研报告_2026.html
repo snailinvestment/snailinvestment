@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兖矿能源(01171.HK) 深度研究报告 | 蜗牛鸟投资 2026</title>
+<style>
+:root{
+  --ink:#0f1218;--ink2:#343b49;--ink3:#6b7280;
+  --bg:#f4f5f7;--surf:#ffffff;--panel:#eef0f4;--rule:#dde0e8;
+  --coal:#1c1917;--amber:#b45309;--amber-bg:#fef3c7;--amber-dim:#fffbeb;
+  --amber-mid:#fde68a;
+  --pos:#065f46;--pos-bg:#d1fae5;
+  --neg:#991b1b;--neg-bg:#fee2e2;
+  --warn:#92400e;--warn-bg:#fef3c7;
+  --blue:#1e3a8a;--blue-bg:#dbeafe;
+  --slate:#334155;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:var(--ink);font-size:14.5px;line-height:1.78}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;height:50px;background:var(--coal);display:flex;align-items:center;padding:0 36px;gap:0;border-bottom:2px solid var(--amber)}
+.nb{font-family:'Arial',sans-serif;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;padding-right:18px;margin-right:18px;border-right:1px solid rgba(255,255,255,.12);white-space:nowrap;flex-shrink:0}
+.nb em{color:var(--amber);font-style:normal}
+.nl{display:flex;overflow-x:auto;flex:1}
+.nl a{font-family:'Arial',sans-serif;font-size:10.5px;color:rgba(255,255,255,.4);text-decoration:none;padding:0 13px;height:50px;display:flex;align-items:center;white-space:nowrap;border-right:1px solid rgba(255,255,255,.07)}
+.nl a:hover{color:var(--amber)}
+
+/* HERO */
+.hero{background:linear-gradient(160deg,#0f1218 0%,#1c1917 55%,#292524 100%);padding:52px 56px 42px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-60px;top:-60px;width:380px;height:380px;background:radial-gradient(circle,rgba(180,83,9,.14) 0%,transparent 68%);border-radius:50%;pointer-events:none}
+.hero::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:3px;background:linear-gradient(90deg,var(--amber) 0%,transparent 60%)}
+.h-tag{font-family:'Arial',sans-serif;font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:11px}
+.h-ticker{font-family:'Arial',sans-serif;font-size:12px;color:rgba(255,255,255,.3);margin-bottom:7px}
+.h-title{font-family:'Arial',sans-serif;font-size:37px;font-weight:900;line-height:1.12;color:#fff;max-width:680px;margin-bottom:13px}
+.h-title em{color:var(--amber);font-style:normal}
+.h-sub{font-size:14px;color:rgba(255,255,255,.55);max-width:600px;line-height:1.68;margin-bottom:30px}
+.h-meta{display:flex;gap:28px;flex-wrap:wrap;font-family:'Arial',sans-serif;font-size:10.5px;color:rgba(255,255,255,.28);padding-top:16px;border-top:1px solid rgba(255,255,255,.1)}
+
+/* VERDICT */
+.vbar{background:var(--amber);padding:13px 56px;display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.vb-m{display:flex;align-items:baseline;gap:10px}
+.vb-lbl{font-family:'Arial',sans-serif;font-size:9.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:rgba(0,0,0,.4)}
+.vb-val{font-family:'Arial',sans-serif;font-size:22px;font-weight:900;color:#fff}
+.vb-sep{width:1px;height:30px;background:rgba(255,255,255,.25)}
+.vb-s{font-family:'Arial',sans-serif;font-size:11.5px;color:rgba(255,255,255,.78)}
+.vb-s strong{display:block;font-size:14px;color:#fff;font-weight:800}
+
+/* KPI STRIP */
+.krow{display:grid;grid-template-columns:repeat(6,1fr);background:var(--surf);border-bottom:1px solid var(--rule)}
+.kc{padding:13px 16px;border-right:1px solid var(--rule)}
+.kc:last-child{border-right:none}
+.kl{font-family:'Arial',sans-serif;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.kv{font-family:'Arial',sans-serif;font-size:17px;font-weight:900;line-height:1;color:var(--ink)}
+.kd{font-family:'Arial',sans-serif;font-size:10px;font-weight:600;margin-top:3px}
+.g{color:var(--pos)}.r{color:var(--neg)}.a{color:var(--amber)}
+
+/* LAYOUT */
+.bw{max-width:1060px;margin:0 auto;padding:42px 32px}
+.sec{margin-bottom:52px}
+.anc{display:block;height:50px;margin-top:-50px;visibility:hidden}
+.sh{display:flex;align-items:flex-end;gap:13px;border-bottom:2px solid var(--rule);padding-bottom:9px;margin-bottom:20px}
+.si{font-family:'Arial',sans-serif;font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);line-height:1;padding-bottom:2px}
+.st{font-family:'Arial',sans-serif;font-size:18.5px;font-weight:800;color:var(--ink)}
+.sb{margin-left:auto;flex-shrink:0;font-family:'Arial',sans-serif;font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:3px 8px;border-radius:2px}
+.b-pos{background:var(--pos-bg);color:var(--pos)}.b-neg{background:var(--neg-bg);color:var(--neg)}
+.b-neu{background:var(--blue-bg);color:var(--blue)}.b-wa{background:var(--warn-bg);color:var(--warn)}
+.b-amb{background:var(--amber-dim);color:var(--warn)}
+p{margin-bottom:12px}p:last-child{margin-bottom:0}
+.sub{font-family:'Arial',sans-serif;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin:22px 0 10px;padding-bottom:5px;border-bottom:1px solid var(--rule)}
+
+/* CALLOUT */
+.box{border-radius:0 5px 5px 0;padding:14px 18px;margin:16px 0}
+.bh{font-family:'Arial',sans-serif;font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.bx-a{border-left:4px solid var(--amber);background:var(--amber-dim)}.bx-a .bh{color:var(--warn)}
+.bx-neg{border-left:4px solid var(--neg);background:var(--neg-bg)}.bx-neg .bh{color:var(--neg)}
+.bx-pos{border-left:4px solid var(--pos);background:var(--pos-bg)}.bx-pos .bh{color:var(--pos)}
+.bx-neu{border-left:4px solid var(--blue);background:var(--blue-bg)}.bx-neu .bh{color:var(--blue)}
+
+/* TABLES */
+.ts{overflow-x:auto;margin:15px 0}
+table{width:100%;border-collapse:collapse;font-family:'Arial',sans-serif;font-size:12px}
+th{background:var(--coal);color:#fff;text-align:left;padding:8px 11px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+td{padding:7px 11px;border-bottom:1px solid var(--rule);color:var(--ink);vertical-align:top}
+tr:nth-child(even) td{background:var(--panel)}
+.n{text-align:right;font-variant-numeric:tabular-nums}
+.hi td{background:#fffbeb!important;font-weight:700}
+.hi2 td{background:var(--amber-dim)!important;font-weight:700;border-left:3px solid var(--amber)}
+.pos{color:var(--pos);font-weight:700}.neg{color:var(--neg);font-weight:700}.wrn{color:var(--warn);font-weight:600}
+
+/* GRID */
+.c2{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin:15px 0}
+.c3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:15px 0}
+.c4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin:15px 0}
+.pnl{background:var(--surf);border:1px solid var(--rule);border-radius:7px;padding:16px}
+.ph{font-family:'Arial',sans-serif;font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:9px;padding-bottom:7px;border-bottom:1px solid var(--rule)}
+.pnl ul{list-style:none}
+.pnl ul li{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid var(--rule);font-family:'Arial',sans-serif;font-size:11.5px}
+.pnl ul li:last-child{border-bottom:none}
+.pnl ul li .v{font-weight:700}
+.br{border:none;border-top:1px solid var(--rule);margin:30px 0}
+
+/* COAL TYPE CARD */
+.coal-card{background:var(--surf);border:1px solid var(--rule);border-radius:7px;overflow:hidden}
+.cc-head{padding:10px 14px;font-family:'Arial',sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.cc-body{padding:12px 14px;font-family:'Arial',sans-serif;font-size:12px;color:var(--ink2)}
+.cc-body li{list-style:none;padding:4px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between}
+.cc-body li:last-child{border-bottom:none}
+.cc-body li .cv{font-weight:700}
+
+/* BAR CHARTS */
+.bar-c{margin:14px 0}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:7px;font-family:'Arial',sans-serif;font-size:12px}
+.bar-lbl{width:120px;flex-shrink:0;font-weight:600;color:var(--ink2)}
+.bar-t{flex:1;height:22px;background:var(--panel);border-radius:3px;overflow:hidden;position:relative}
+.bar-f{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px}
+.bar-f span{font-size:10.5px;font-weight:700;color:#fff;white-space:nowrap}
+.bar-v{width:60px;text-align:right;color:var(--ink3);font-size:11px;flex-shrink:0}
+
+/* FCF WATERFALL */
+.wf-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;font-family:'Arial',sans-serif;font-size:12px}
+.wf-lbl{width:160px;flex-shrink:0;color:var(--ink2)}
+.wf-bar{flex:1;height:22px;background:var(--panel);border-radius:3px;overflow:hidden}
+.wf-f{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px}
+.wf-f span{font-size:10.5px;font-weight:700;color:#fff;white-space:nowrap}
+.wf-val{width:70px;text-align:right;font-weight:700;font-size:12px;flex-shrink:0}
+.wf-div{border-top:1px dashed var(--rule);margin:8px 0}
+
+/* SENSITIVITY GRID */
+.sg-wrap{overflow-x:auto;margin:15px 0}
+.sg{border-collapse:collapse;font-family:'Arial',sans-serif;font-size:12px;width:100%}
+.sg th{background:var(--coal);color:#fff;padding:8px 10px;text-align:center;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.sg td{padding:8px 10px;text-align:center;border:1px solid var(--rule);font-weight:600;font-size:12px}
+.sg .row-lbl{text-align:left;font-weight:700;background:var(--panel);color:var(--ink2);white-space:nowrap}
+.sg-vg{background:#d1fae5;color:#065f46}   /* 显著上行 */
+.sg-g {background:#ecfdf5;color:#047857}   /* 小幅上行 */
+.sg-y {background:#fffbeb;color:#92400e}   /* 中性/当前 */
+.sg-o {background:#fee2e2;color:#991b1b}   /* 小幅下行 */
+.sg-r {background:#fecaca;color:#7f1d1d}   /* 显著下行 */
+.sg-curr{outline:3px solid var(--amber);outline-offset:-2px;z-index:1;position:relative}
+
+/* FOOTBALL FIELD */
+.ff{margin:20px 0}
+.ff-row{display:flex;align-items:center;gap:12px;margin-bottom:8px;font-family:'Arial',sans-serif}
+.ff-lbl{width:160px;flex-shrink:0;font-size:11.5px;font-weight:600;color:var(--ink2)}
+.ff-track{flex:1;height:24px;background:var(--panel);border-radius:3px;position:relative}
+.ff-bar{position:absolute;height:100%;border-radius:3px;display:flex;align-items:center;padding:0 8px;font-size:10.5px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden}
+.ff-price{width:1px;height:34px;background:var(--neg);position:absolute;top:-5px;z-index:5}
+.ff-price-lbl{position:absolute;top:-22px;font-size:10px;font-weight:800;color:var(--neg);white-space:nowrap;transform:translateX(-50%);font-family:'Arial',sans-serif}
+.ff-val{width:90px;text-align:right;font-size:11px;font-weight:600;color:var(--ink3);flex-shrink:0}
+
+/* SCENARIO CARDS */
+.sc-g{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:15px 0}
+.sc{border-radius:7px;overflow:hidden;border:1px solid var(--rule)}
+.sch{padding:10px 14px;font-family:'Arial',sans-serif;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.sc-bull .sch{background:var(--pos);color:#fff}
+.sc-base .sch{background:var(--amber);color:#fff}
+.sc-bear .sch{background:var(--neg);color:#fff}
+.scb{padding:14px;background:var(--surf)}
+.sct{font-family:'Arial',sans-serif;font-size:22px;font-weight:900;margin-bottom:2px}
+.scp{font-family:'Arial',sans-serif;font-size:10px;font-weight:700;color:var(--ink3);margin-bottom:8px}
+.scb p{font-size:12px;color:var(--ink2);line-height:1.55}
+
+/* RISK */
+.sev-h{color:var(--neg);font-weight:700}.sev-m{color:var(--warn);font-weight:700}.sev-l{color:var(--pos);font-weight:700}
+
+footer{background:var(--coal);color:rgba(255,255,255,.35);padding:28px 56px;font-family:'Arial',sans-serif;font-size:10.5px;line-height:1.9;margin-top:48px}
+footer strong{color:rgba(255,255,255,.72)}
+
+@media(max-width:720px){.krow{grid-template-columns:repeat(3,1fr)}.c2,.c3,.c4,.sc-g{grid-template-columns:1fr}.hero{padding:28px 20px}.bw{padding:24px 16px}nav{padding:0 16px}.vbar{padding:13px 20px;gap:16px}footer{padding:24px 20px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nb">蜗牛鸟<em>投资</em></div>
+  <div class="nl">
+    <a href="#s1">投资摘要</a>
+    <a href="#s2">公司沿革</a>
+    <a href="#s3">产品结构</a>
+    <a href="#s4">财务分析</a>
+    <a href="#s5">预增解读</a>
+    <a href="#s6">估值推导</a>
+    <a href="#s7">多空分析</a>
+    <a href="#s8">风险催化</a>
+    <a href="#s9">结论</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="h-tag">深度权益研究 · 煤炭 · 能源一体化 · 初次覆盖</div>
+  <div class="h-ticker">HKSE: 01171 &nbsp;/&nbsp; SSE: 600188 &nbsp;|&nbsp; H股收盘价 HK$11.86（2026年7月31日）&nbsp;|&nbsp; H股总市值约1,190亿港元</div>
+  <div class="h-title">兖矿能源：<em>高杠杆</em>煤炭龙头<br>煤价弹性的双刃剑</div>
+  <div class="h-sub">中国最大煤炭上市公司之一，年产商品煤1.82亿吨，横跨山东、陕蒙、新疆、澳洲四大基地。H1 2026归母预增53%但扣非仅+2%，核心矛盾在于一次性处置收益与主业煤价弹性的识别。当前H股对A股折价约48%，4.76%股息率提供基本防守，但净债务965亿与FCF覆盖不足是真实制约。</div>
+  <div class="h-meta">
+    <span>分析师：蜗牛鸟资源研究团队</span>
+    <span>发布日期：2026年8月3日</span>
+    <span>数据截止：2026年7月31日</span>
+    <span>触发事件：2026-07-14 半年度业绩预增公告</span>
+    <span>会计准则：以A股中国会计准则为主，H股国际准则作交叉验证</span>
+  </div>
+</div>
+
+<div class="vbar">
+  <div class="vb-m"><span class="vb-lbl">评级</span><span class="vb-val">持有</span></div>
+  <div class="vb-sep"></div>
+  <div class="vb-s"><strong>HK$13.0</strong>基准情景12个月目标价</div>
+  <div class="vb-s"><strong>HK$9 – 14</strong>情景区间（熊→牛）</div>
+  <div class="vb-s"><strong>+9.6%</strong>相对现价HK$11.86上行空间</div>
+  <div class="vb-s"><strong>4.5×</strong>EV/EBITDA（2025，基准）</div>
+  <div class="vb-s"><strong>4.76%</strong>股息率（TTM）</div>
+  <div class="vb-s"><strong>965亿</strong>净债务（RMB，2025年末）</div>
+</div>
+
+<div class="krow">
+  <div class="kc"><div class="kl">2025全年营收</div><div class="kv">$1,449亿</div><div class="kd r">▼7.5% YoY</div></div>
+  <div class="kc"><div class="kl">2025归母净利</div><div class="kv">$83.8亿</div><div class="kd r">▼43.6% YoY</div></div>
+  <div class="kc"><div class="kl">H1 2026归母(预)</div><div class="kv">$72亿</div><div class="kd g">▲53% YoY（含一次性）</div></div>
+  <div class="kc"><div class="kl">H1 2026扣非(预)</div><div class="kv">$45亿</div><div class="kd a">▲2% YoY（主业真实增速）</div></div>
+  <div class="kc"><div class="kl">商品煤产量(2025)</div><div class="kv">1.82亿吨</div><div class="kd g">▲28% vs 2023</div></div>
+  <div class="kc"><div class="kl">自产煤吨成本(2025)</div><div class="kv">321元/吨</div><div class="kd g">▼4.3% YoY</div></div>
+</div>
+
+<div class="bw">
+
+<!-- ============================================================ -->
+<!-- SEC 1: 投资摘要 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s1"></span>
+  <div class="sh">
+    <div><div class="si">Section 01</div><div class="st">投资摘要：核心论点与关键矛盾</div></div>
+    <span class="sb b-amb">初次覆盖</span>
+  </div>
+
+  <p>兖矿能源是一家高杠杆（净债务965亿）、强周期（FCF随煤价剧烈波动）的煤炭能源一体化企业。H股现价HK$11.86大致反映了"煤价长期维持700–770元/吨区间"的市场预期——既没有给储量溢价，也没有反映并购期权价值。当前估值的安全边际来自H股相对A股约48%的折价和4.76%股息率；上行的关键在于煤价能否守住750+或并购落地超预期。</p>
+
+  <div class="c3">
+    <div class="pnl">
+      <div class="ph">估值快览（H股，2026-07-31）</div>
+      <ul>
+        <li><span>H股收盘价</span><span class="v">HK$11.86</span></li>
+        <li><span>A股收盘价</span><span class="v">约¥23.07</span></li>
+        <li><span>A/H溢价</span><span class="v wrn">约94%</span></li>
+        <li><span>H股市值</span><span class="v">~1,190亿HKD</span></li>
+        <li><span>PE（TTM）</span><span class="v">10.8×</span></li>
+        <li><span>PB</span><span class="v">1.38×</span></li>
+        <li><span>EV/EBITDA（2025E）</span><span class="v">~4.5×</span></li>
+        <li><span>股息率（TTM）</span><span class="v pos">4.76%</span></li>
+      </ul>
+    </div>
+    <div class="pnl">
+      <div class="ph">资产负债（2025-12-31，亿RMB）</div>
+      <ul>
+        <li><span>总资产</span><span class="v">2,866</span></li>
+        <li><span>有息负债</span><span class="v wrn">1,339</span></li>
+        <li><span>货币资金</span><span class="v">374</span></li>
+        <li><span>净债务</span><span class="v neg">965</span></li>
+        <li><span>资产负债率</span><span class="v wrn">62.3%</span></li>
+        <li><span>流动比率</span><span class="v wrn">0.84</span></li>
+        <li><span>净债务/EBITDA</span><span class="v neg">~4.4×（vs神华1.2×）</span></li>
+      </ul>
+    </div>
+    <div class="pnl">
+      <div class="ph">H1 2026预增关键数字</div>
+      <ul>
+        <li><span>归母净利润（预）</span><span class="v pos">约72亿（+53% YoY）</span></li>
+        <li><span>扣非净利润（预）</span><span class="v a">约45亿（+2% YoY）</span></li>
+        <li><span>一次性处置收益</span><span class="v">鑫泰处置+30.5亿</span></li>
+        <li><span>Q2扣非（估）</span><span class="v pos">约34亿（+224% QoQ）</span></li>
+        <li><span>Q1 2026扣非</span><span class="v">约10.5亿</span></li>
+        <li><span>H1商品煤产量</span><span class="v">8,802万吨（-2.1%）</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box bx-a">
+    <div class="bh">核心投资矛盾：表观增速与主业真实增速的背离</div>
+    <p>H1 2026归母净利润预增53%，第一眼看极具吸引力；但扣非净利润仅+2%，差额约27亿主要来自处置内蒙古鑫泰煤炭100%股权的一次性收益（~30.5亿元）。真正值得关注的信号在单季度层面：Q2扣非净利约34亿，环比增长224%、同比增长106%——这才是煤价弹性的真实体现。秦皇岛Q5500 H1均价769元/吨（同比+14%），7月一度触及821元/吨，Q2煤价上行已经传导至主业盈利。按Q2年化，扣非可达136亿，远超2025全年74亿。这个数字不能直接外推（煤价有季节性），但证实了兖矿在煤价750–800区间的真实盈利能力。</p>
+  </div>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 2: 公司沿革与战略定位 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s2"></span>
+  <div class="sh">
+    <div><div class="si">Section 02</div><div class="st">公司沿革：从山东煤矿到全球能源一体化平台</div></div>
+    <span class="sb b-neu">背景</span>
+  </div>
+
+  <p>兖矿能源的前身是兖州煤业，1998年A+H双重上市，初期资产集中于山东兖州矿区的焦煤和动力煤生产。过去十年，公司通过三次关键并购完成了从区域性焦煤企业向全球多元化煤炭平台的蜕变：2004年收购澳洲煤矿（后重组为兖煤澳洲，ASX上市），2015年更名为兖矿能源并注入陕蒙资产，2023年收购鲁西矿业完善山东省内焦煤布局。</p>
+
+  <div class="ts">
+    <table>
+      <thead><tr><th>时间</th><th>事件</th><th>战略意义</th></tr></thead>
+      <tbody>
+        <tr><td>1998年</td><td>A股+H股双重上市</td><td>确立资本市场平台，初期聚焦山东焦煤</td></tr>
+        <tr><td>2004年</td><td>收购澳洲Austar煤矿，逐步扩张至兖煤澳洲（ASX：YAL）</td><td>获得国际定价权，建立外汇天然对冲</td></tr>
+        <tr><td>2015年</td><td>更名兖矿能源，注入陕蒙低成本动力煤资产</td><td>成本结构多元化，低成本基地扩产</td></tr>
+        <tr><td>2020年</td><td>新疆能化投产，烯烃产业链延伸</td><td>煤化工第二曲线布局</td></tr>
+        <tr><td>2023年</td><td>收购鲁西矿业（山东焦煤），启动金鸡滩矿二期</td><td>高毛利焦煤占比提升，产量台阶式扩张</td></tr>
+        <tr><td>2025–26年</td><td>出售内蒙古鑫泰，筹备红隼焦煤（澳洲）+山能电力资产收购</td><td>聚焦核心资产，并购方向：优质冶金煤+煤电一体化</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top:14px">当前战略方向明确：<strong>去低质产能（出售鑫泰）+ 收购优质焦煤（红隼，澳洲，上限24亿美元）+ 注入电力资产（山能电力，164亿现金）+ 新疆烯烃产业链延伸</strong>。两笔悬顶并购合计资金需求330亿+，远超鑫泰处置收益，意味着公司将在较长时间内保持高杠杆状态，再融资能力将是关键约束。</p>
+
+  <div class="sub">12个生产基地分布（2025年产量）</div>
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>基地</th><th class="n">2025全年产量<br>（万吨）</th><th>主要煤种</th>
+        <th class="n">2025全年均价<br>（年报口径）</th>
+        <th class="n">2026H1均价（估）<br>⚠️部分披露</th>
+        <th>战略定位</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>兖煤澳洲（ASX上市）</td><td class="n">38,565</td><td>动力煤+半软焦煤+PCI</td><td class="n">~138 AUD/吨</td><td class="n pos">~152 AUD/吨↑<br><small>YAL 2026H1 ASX披露</small></td><td>海外利润中心，外汇天然对冲</td></tr>
+        <tr><td>天池能源（陕蒙）</td><td class="n">33,813</td><td>动力煤（贫瘦煤）</td><td class="n">~380元/吨</td><td class="n pos">~390元/吨↑<br><small>限价上限松动</small></td><td>最大单体基地，南露天矿扩产</td></tr>
+        <tr><td>公司本部（山东）</td><td class="n">20,434</td><td>焦煤+块煤+动力煤</td><td class="n">~596元/吨</td><td class="n pos">~640元/吨↑<br><small>长协基准675保底</small></td><td>老矿区，精煤溢价明显</td></tr>
+        <tr><td>新疆能化</td><td class="n">20,379</td><td>动力煤（长焰煤）</td><td class="n">~418元/吨</td><td class="n">~425元/吨→<br><small>疆内需求稳定</small></td><td>未来增长极，烯烃延伸</td></tr>
+        <tr><td>未来能源（陕蒙）</td><td class="n">18,002</td><td>动力煤（末煤）</td><td class="n">~452元/吨</td><td class="n pos">~460元/吨↑</td><td>金鸡滩煤矿，油煤气联产</td></tr>
+        <tr><td>鲁西矿业（山东）</td><td class="n">12,922</td><td>焦煤（洗精煤）</td><td class="n">~750元/吨</td><td class="n pos">~790元/吨↑<br><small>主焦煤需求改善</small></td><td>2023年收购，高毛利核心资产</td></tr>
+        <tr><td>鄂尔多斯（内蒙）</td><td class="n">11,309</td><td>动力煤</td><td class="n">~440元/吨</td><td class="n">~445元/吨→</td><td>转龙湾煤矿，长协为主</td></tr>
+        <tr><td>昊盛煤业（陕蒙）</td><td class="n">8,002</td><td>动力煤</td><td class="n">~430元/吨</td><td class="n">~435元/吨→</td><td>石拉乌素矿</td></tr>
+        <tr><td>内蒙古矿业（鑫泰已售）</td><td class="n">8,067<br><small>含鑫泰，已出售</small></td><td>动力煤</td><td class="n">~410元/吨</td><td class="n wrn">鑫泰2026Q1完成交割<br>余下资产维持</td><td>鑫泰已出售，其余维持</td></tr>
+        <tr><td>菏泽能化（山东）</td><td class="n">4,172</td><td>焦煤（1/3焦+气肥煤）</td><td class="n">~921元/吨</td><td class="n pos">~960元/吨↑<br><small>稀缺品种溢价扩大</small></td><td>万福矿+赵楼矿，最高售价</td></tr>
+        <tr><td>充煤国际</td><td class="n">5,452</td><td>贸易煤</td><td class="n">~650元/吨</td><td class="n">~670元/吨→</td><td>国际贸易平台</td></tr>
+        <tr class="hi2"><td><strong>合计</strong></td><td class="n"><strong>约182,000</strong></td><td>三种煤、四国、12基地</td><td class="n"><strong>综合均价~513元/吨（自产）</strong></td><td class="n pos"><strong>综合均价~535元/吨（估）↑</strong></td><td><strong>规模第一，结构多元</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 3: 产品结构与定价机制 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s3"></span>
+  <div class="sh">
+    <div><div class="si">Section 03</div><div class="st">产品结构：三种煤、三种定价、三种利润率</div></div>
+    <span class="sb b-amb">核心分析</span>
+  </div>
+
+  <p>分析兖矿必须先拆产品结构，再谈煤价敏感性。用秦皇岛Q5500单一价格概括兖矿全局会严重失真——公司超过60%的产量不经秦皇岛港结算，陕蒙动力煤以坑口价400–450元/吨结算，山东精煤车板价800–950元/吨，澳洲冶金煤FOB价200–270澳元/吨。三种定价机制并行，导致秦皇岛现货每涨100元，兖矿综合结算价涨幅被长协/限价大幅稀释。</p>
+
+  <div class="c3">
+    <div class="coal-card">
+      <div class="cc-head" style="background:#78350f;color:#fff">动力煤（占销量~60%）</div>
+      <div class="cc-body">
+        <ul>
+          <li><span>主要客户</span><span class="cv">电力集团（~45%）</span></li>
+          <li><span>定价方式</span><span class="cv">长协基准+浮动</span></li>
+          <li><span>山东长协基准</span><span class="cv">675元/吨（3年未变）</span></li>
+          <li><span>陕蒙坑口限价</span><span class="cv">460–520元/吨</span></li>
+          <li><span>综合吨毛利</span><span class="cv">约130–192元/吨</span></li>
+          <li><span>价格弹性</span><span class="cv wrn">低（受政策管控）</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="coal-card">
+      <div class="cc-head" style="background:#1c1917;color:var(--amber)">焦煤/精煤（占销量~25%）</div>
+      <div class="cc-body">
+        <ul>
+          <li><span>主要客户</span><span class="cv">独立焦化+钢厂</span></li>
+          <li><span>定价方式</span><span class="cv">市场化（随钢价）</span></li>
+          <li><span>山东精煤均价</span><span class="cv">779–975元/吨</span></li>
+          <li><span>菏泽焦煤均价</span><span class="cv">921–975元/吨</span></li>
+          <li><span>综合吨毛利</span><span class="cv">约400–605元/吨</span></li>
+          <li><span>价格弹性</span><span class="cv pos">高（跟随焦炭/钢价）</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="coal-card">
+      <div class="cc-head" style="background:#0f4c81;color:#fff">喷吹煤PCI+澳洲煤（~15%）</div>
+      <div class="cc-body">
+        <ul>
+          <li><span>主要客户</span><span class="cv">钢厂高炉喷吹</span></li>
+          <li><span>定价方式</span><span class="cv">年度合同+随行</span></li>
+          <li><span>澳洲冶金煤均价</span><span class="cv">936–1,311元/吨</span></li>
+          <li><span>澳洲动力煤均价</span><span class="cv">618–731元/吨</span></li>
+          <li><span>综合吨毛利</span><span class="cv">约181–613元/吨</span></li>
+          <li><span>价格弹性</span><span class="cv">中（受钢铁需求驱动）</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">各矿区吨煤盈利对比（2025年）</div>
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>区域/煤种</th><th class="n">售价（元/吨）</th><th class="n">成本（元/吨）</th><th class="n">吨煤毛利（元/吨）</th><th class="n">毛利率</th><th>说明</th>
+      </tr></thead>
+      <tbody>
+        <tr class="hi2"><td><strong>菏泽能化（焦煤）</strong></td><td class="n">921–975</td><td class="n">~370</td><td class="n pos"><strong>551–605</strong></td><td class="n pos"><strong>60–62%</strong></td><td>1/3焦+气肥煤，山东稀缺品种，吨毛利最高</td></tr>
+        <tr><td>鲁西矿业（精煤）</td><td class="n">~922</td><td class="n">~380</td><td class="n pos">~542</td><td class="n pos">~59%</td><td>2023年收购注入，主焦煤品种</td></tr>
+        <tr><td>公司本部（山东精煤）</td><td class="n">779–975</td><td class="n">~380</td><td class="n">400–595</td><td class="n">51–61%</td><td>多煤种混合，焦煤+动力煤</td></tr>
+        <tr><td>国内动力煤（加权）</td><td class="n">513</td><td class="n">321</td><td class="n">192</td><td class="n wrn">37%</td><td>自产煤综合均价，受长协/限价压制</td></tr>
+        <tr><td>陕蒙动力煤</td><td class="n">420–450</td><td class="n">270–290</td><td class="n">130–160</td><td class="n wrn">31–36%</td><td>天池/鄂尔多斯/昊盛，坑口低价</td></tr>
+        <tr><td>新疆动力煤</td><td class="n">430</td><td class="n">290</td><td class="n">140</td><td class="n wrn">33%</td><td>未来能源+新疆能化</td></tr>
+        <tr><td>澳洲冶金煤</td><td class="n">936–1,311</td><td class="n">~698</td><td class="n">238–613</td><td class="n">25–47%</td><td>AUD:RMB≈4.75换算，FOB价，受汇率影响大</td></tr>
+        <tr><td>澳洲动力煤</td><td class="n">618–731</td><td class="n">~437</td><td class="n">181–294</td><td class="n">29–40%</td><td>纽卡斯尔港FOB</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:11px;color:var(--ink3);margin-top:6px">⚠️ <strong>数据说明：</strong>2025全年均价来源于兖矿能源2025年年报（各子公司分部披露）。2026H1均价为估算值，来源：兖煤澳洲（YAL）ASX 2026H1业绩公告、兖矿能源H1 2026预增公告（含总产销量）、WIND/CCTD分煤种价格指数推算；部分子公司（天池、昊盛、内蒙）尚未单独披露H1价格，以行业指数估算，待2026年8月中报正式披露后修订。箭头↑/→/↓表示相对2025全年均价的变化方向。</p>
+
+  <div class="box bx-a">
+    <div class="bh">定价机制的关键洞察：煤价上行被长协/限价系统性稀释</div>
+    <p>国内动力煤实行"长协基准价+浮动"双轨制。山东长协基准价675元/吨已连续三年未变；陕蒙产地限价更严（蒙西≤460、陕西≤520）。兖矿陕蒙基地合计产能超6,000万吨/年，大量煤以低于港口价150–250元/吨的坑口价结算。因此，即使秦皇岛现货涨到800+，兖矿的综合结算价涨幅会被大幅稀释。反之，长协也提供了下行保护——港口价跌至500时，山东部分仍有675基准保底。<strong>核心结论：兖矿的煤价弹性"上有天花板、下有地板"，波动区间远窄于现货价格波动幅度。</strong></p>
+  </div>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 4: 财务质量分析 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s4"></span>
+  <div class="sh">
+    <div><div class="si">Section 04</div><div class="st">财务质量：营收、盈利、现金流与负债结构</div></div>
+    <span class="sb b-pos">财务深挖</span>
+  </div>
+
+  <div class="sub">A. 营收与盈利五年趋势（2021–2025）</div>
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>财年</th><th class="n">营收（亿元）</th><th class="n">YoY</th>
+        <th class="n">归母净利（亿元）</th><th class="n">YoY</th>
+        <th class="n">扣非净利（亿元）</th><th class="n">扣非/归母</th>
+        <th class="n">毛利率（估）</th><th>主要驱动</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>2021</td><td class="n">1,519.9</td><td class="n pos">—</td><td class="n">162.6</td><td class="n">—</td><td class="n">~155</td><td class="n">95%</td><td class="n">~30%</td><td>煤价上行启动期</td></tr>
+        <tr class="hi"><td><strong>2022（周期高点）</strong></td><td class="n pos"><strong>2,008.3</strong></td><td class="n pos"><strong>+32%</strong></td><td class="n pos"><strong>307.7</strong></td><td class="n pos"><strong>+89%</strong></td><td class="n">~290</td><td class="n">94%</td><td class="n">~37%</td><td>秦皇岛均价~900，创历史峰值</td></tr>
+        <tr><td>2023</td><td class="n">1,500.3</td><td class="n neg">-25%</td><td class="n">201.4</td><td class="n neg">-35%</td><td class="n">~190</td><td class="n">94%</td><td class="n">~32%</td><td>煤价回落但仍高位；鲁西并购完成</td></tr>
+        <tr><td>2024</td><td class="n">1,391.2</td><td class="n neg">-7%</td><td class="n">144.3</td><td class="n neg">-28%</td><td class="n">~135</td><td class="n">94%</td><td class="n">~30%</td><td>煤价持续下行；产量提升对冲</td></tr>
+        <tr><td>2025</td><td class="n">1,449.3</td><td class="n pos">+4%</td><td class="n neg">83.8</td><td class="n neg">-42%</td><td class="n">74.0</td><td class="n wrn">88%</td><td class="n">~26%</td><td>煤价继续下行；OCF 194.9亿（2.3×净利）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top:12px">2022年是上一轮煤价高峰：营收2,008亿、归母308亿。此后煤价从均价~900回落至2025年均价702元/吨（-22%），利润跌幅（-73%）远大于营收跌幅（-28%），清晰体现了煤炭行业的经营杠杆效应——固定成本占比高，收入下滑时利润加速萎缩。</p>
+
+  <div class="sub">B. 自由现金流历史：高煤价期充裕、低煤价期枯竭</div>
+
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>财年</th><th class="n">OCF（亿元）</th><th class="n">Capex（亿元）</th><th class="n">FCF（亿元）</th><th class="n">DPS（元）</th><th class="n">分红总额（亿元）</th><th class="n">FCF/分红覆盖</th><th>评估</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>2021</td><td class="n">361.8</td><td class="n">104.4</td><td class="n pos">257.4</td><td class="n">1.49</td><td class="n">74.4</td><td class="n pos">3.46×</td><td>高煤价充裕期，大量FCF还债</td></tr>
+        <tr class="hi"><td><strong>2022（峰值）</strong></td><td class="n pos"><strong>589.2</strong></td><td class="n">205.9</td><td class="n pos"><strong>383.3</strong></td><td class="n">0.77</td><td class="n">74.4</td><td class="n pos"><strong>5.15×</strong></td><td>历史最佳FCF，但分红相对保守</td></tr>
+        <tr><td>2023</td><td class="n">161.6</td><td class="n">181.9</td><td class="n neg">-20.2</td><td class="n">0.50</td><td class="n">50.2</td><td class="n neg">-0.40×</td><td>FCF首次转负，靠借款覆盖分红</td></tr>
+        <tr><td>2024</td><td class="n">223.4</td><td class="n">170.8</td><td class="n">52.6</td><td class="n">0.50</td><td class="n">50.2</td><td class="n">1.05×</td><td>勉强覆盖，无安全边际</td></tr>
+        <tr><td>2025</td><td class="n">194.9</td><td class="n">176.0</td><td class="n wrn">18.9</td><td class="n">0.50</td><td class="n">50.2</td><td class="n neg">0.38×</td><td>FCF严重不足，差额靠借款填补</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub">FCF与分红对比（可视化）</div>
+  <div class="bar-c">
+    <div class="bar-row"><span class="bar-lbl">2021 FCF</span><div class="bar-t"><div class="bar-f" style="width:67%;background:var(--pos)"><span>$257.4亿</span></div></div><span class="bar-v pos">257亿</span></div>
+    <div class="bar-row"><span class="bar-lbl">2022 FCF</span><div class="bar-t"><div class="bar-f" style="width:100%;background:#059669"><span>$383.3亿（峰值）</span></div></div><span class="bar-v pos">383亿</span></div>
+    <div class="bar-row"><span class="bar-lbl">2023 FCF</span><div class="bar-t"><div class="bar-f" style="width:3%;background:var(--neg)"><span></span></div></div><span class="bar-v neg">-20亿</span></div>
+    <div class="bar-row"><span class="bar-lbl">2024 FCF</span><div class="bar-t"><div class="bar-f" style="width:14%;background:var(--warn)"><span>$52.6亿</span></div></div><span class="bar-v">52亿</span></div>
+    <div class="bar-row"><span class="bar-lbl">2025 FCF</span><div class="bar-t"><div class="bar-f" style="width:5%;background:var(--neg)"><span>$18.9亿</span></div></div><span class="bar-v neg">19亿</span></div>
+    <div class="bar-row" style="margin-top:10px"><span class="bar-lbl" style="color:var(--ink3)">每年分红支出</span><div class="bar-t"><div class="bar-f" style="width:19%;background:var(--ink3);opacity:.7"><span>约50亿（2023–25）</span></div></div><span class="bar-v">50亿</span></div>
+  </div>
+
+  <div class="box bx-neg">
+    <div class="bh">FCF覆盖分红的结构性不足：当前分红可持续性存疑</div>
+    <p>2025年FCF仅18.9亿，仅覆盖50亿分红的0.38×。差额约31亿靠消耗账面现金或新增借款填补。若煤价继续维持700以下，FCF将持续无法覆盖当前分红水平。值得关注的是，公司已于2026年3月将2026–2028年分红比例下限从60%下调至50%，明确信号是资金优先用于并购（红隼+山能电力）而非回报股东。短期内，分红将更多依赖利润弹性而非FCF覆盖，煤价是决定因素。</p>
+  </div>
+
+  <div class="sub">C. 资产负债结构：高杠杆放大周期效应</div>
+  <div class="c2">
+    <div class="pnl">
+      <div class="ph">负债结构（2025年末，亿RMB）</div>
+      <ul>
+        <li><span>总资产</span><span class="v">2,866（+238 YoY）</span></li>
+        <li><span>有息负债</span><span class="v wrn">1,339（+133 YoY）</span></li>
+        <li><span>货币资金</span><span class="v">374（+33 YoY）</span></li>
+        <li><span>净债务</span><span class="v neg">965（+100 YoY）</span></li>
+        <li><span>资产负债率</span><span class="v wrn">62.3%</span></li>
+        <li><span>流动比率</span><span class="v neg">0.84（&lt;1，短期压力）</span></li>
+      </ul>
+    </div>
+    <div class="pnl">
+      <div class="ph">同业杠杆率对比</div>
+      <ul>
+        <li><span>兖矿能源</span><span class="v neg">净债务/EBITDA ~4.4×</span></li>
+        <li><span>中国神华</span><span class="v pos">净债务/EBITDA ~1.2×</span></li>
+        <li><span>陕西煤业</span><span class="v pos">净债务/EBITDA ~0.6×</span></li>
+        <li><span>中煤能源</span><span class="v">净债务/EBITDA ~1.8×</span></li>
+        <li><span>山西焦煤</span><span class="v wrn">净债务/EBITDA ~2.0×</span></li>
+        <li><span>资产负债率</span><span class="v neg">62.3%（神华~34%）</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <p style="margin-top:12px">净债务965亿相当于H股市值的约88%（按HKD换算）。高杠杆放大了煤价波动对股权价值的影响：煤价每涨100元/吨，EBITDA大约改善50–70亿，但净债务/EBITDA改善幅度远大于低杠杆同业，股权价值的弹性也更大。下行时同理——若煤价跌破600，FCF转负的速度更快，再融资压力随之上升。这是兖矿作为投资标的区别于中国神华等低杠杆标的的根本特征。</p>
+
+  <div class="sub">D. 吨煤成本：下降趋势与可持续性</div>
+  <div class="bar-c">
+    <div class="bar-row"><span class="bar-lbl">2023吨成本</span><div class="bar-t"><div class="bar-f" style="width:100%;background:var(--slate)"><span>349.0元/吨</span></div></div><span class="bar-v">349元</span></div>
+    <div class="bar-row"><span class="bar-lbl">2024吨成本</span><div class="bar-t"><div class="bar-f" style="width:97%;background:#475569"><span>337.6元/吨（-3.3%）</span></div></div><span class="bar-v">338元</span></div>
+    <div class="bar-row"><span class="bar-lbl">2025吨成本</span><div class="bar-t"><div class="bar-f" style="width:92%;background:#64748b"><span>321.1元/吨（-4.3%）</span></div></div><span class="bar-v pos">321元</span></div>
+  </div>
+  <p style="font-size:11.5px;color:var(--ink3);margin-top:6px">成本下降主因：陕蒙低成本基地产量占比提升+智能化开采+油价下跌。但2025年降幅含部分一次性因素（安全生产费计提减少、维简费递延），完全可持续性待2026年中报验证。对比：陕西煤业约260元/吨（更低），中国神华约340元/吨（含铁路运输，口径不同）。</p>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 5: H1 2026预增深度解读 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s5"></span>
+  <div class="sh">
+    <div><div class="si">Section 05</div><div class="st">H1 2026预增公告深度解读：含水量拆解与真实信号识别</div></div>
+    <span class="sb b-wa">触发事件</span>
+  </div>
+
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>指标</th><th class="n">H1 2026（预）</th><th class="n">H1 2025</th><th class="n">同比</th><th class="n">Q1 2026</th><th class="n">Q2 2026（估）</th><th class="n">QoQ</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>归母净利润</td><td class="n pos">约72亿元</td><td class="n">47亿元</td><td class="n pos">+53%</td><td class="n">39亿元</td><td class="n">约33亿元</td><td class="n neg">-15%</td></tr>
+        <tr class="hi"><td><strong>扣非净利润</strong></td><td class="n pos"><strong>约45亿元</strong></td><td class="n"><strong>44亿元</strong></td><td class="n wrn"><strong>+2%</strong></td><td class="n"><strong>10.5亿元</strong></td><td class="n pos"><strong>约34亿元</strong></td><td class="n pos"><strong>+224%</strong></td></tr>
+        <tr><td>商品煤产量</td><td class="n">8,802万吨</td><td class="n">8,987万吨</td><td class="n neg">-2.1%</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>自产煤销量</td><td class="n">8,073万吨</td><td class="n">7,784万吨</td><td class="n pos">+3.7%</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub">归母vs扣非27亿差距的完整拆解</div>
+  <div class="c2">
+    <div>
+      <div class="wf-row"><span class="wf-lbl">H1扣非净利润（主业）</span><div class="wf-bar"><div class="wf-f" style="width:58%;background:var(--pos)"><span>约+45亿（主业真实盈利）</span></div></div><span class="wf-val pos">+45亿</span></div>
+      <div class="wf-row"><span class="wf-lbl">处置鑫泰100%股权</span><div class="wf-bar"><div class="wf-f" style="width:39%;background:#059669"><span>净资产0.88亿，溢价34倍</span></div></div><span class="wf-val pos">+30.5亿</span></div>
+      <div class="wf-div"></div>
+      <div class="wf-row"><span class="wf-lbl">外汇套期保值损失</span><div class="wf-bar"><div class="wf-f" style="width:5%;background:var(--neg)"><span></span></div></div><span class="wf-val neg">-3~5亿</span></div>
+      <div class="wf-row"><span class="wf-lbl">资产减值损失</span><div class="wf-bar"><div class="wf-f" style="width:3%;background:var(--neg)"><span></span></div></div><span class="wf-val neg">-2~4亿</span></div>
+      <div class="wf-row"><span class="wf-lbl">涉税诉讼预计负债</span><div class="wf-bar"><div class="wf-f" style="width:2%;background:var(--neg)"><span></span></div></div><span class="wf-val neg">-1~3亿</span></div>
+      <div class="wf-row"><span class="wf-lbl">消费税及附加</span><div class="wf-bar"><div class="wf-f" style="width:3%;background:var(--neg)"><span></span></div></div><span class="wf-val neg">-2~3亿</span></div>
+      <div class="wf-div"></div>
+      <div class="wf-row"><span class="wf-lbl" style="font-weight:700">归母净利润合计</span><div class="wf-bar"><div class="wf-f" style="width:93%;background:var(--amber)"><span>约72亿（表观+53%）</span></div></div><span class="wf-val a">≈72亿</span></div>
+    </div>
+    <div class="pnl">
+      <div class="ph">鑫泰30.5亿会变特别分红吗？答：不会</div>
+      <p style="font-family:'Arial',sans-serif;font-size:12.5px;color:var(--ink2);line-height:1.6">
+        <strong>理由一：</strong>公司已于2026年3月将分红下限从60%下调至50%，明确信号是资金优先用于并购。<br><br>
+        <strong>理由二：</strong>两笔悬顶并购资金需求330亿+（红隼~170亿RMB + 山能电力164亿），鑫泰30.5亿只是零头。<br><br>
+        <strong>理由三：</strong>兖矿上市20年从未因一次性处置宣布特别分红。<br><br>
+        <strong>替代方案：</strong>回购2–5亿 + 控股股东增持1–2亿（已在执行）。
+      </p>
+    </div>
+  </div>
+
+  <div class="box bx-pos">
+    <div class="bh">真正值得关注的信号：Q2扣非翻倍——煤价弹性的真实体现</div>
+    <p>Q1扣非仅10.5亿（煤价仍在季节性低位），Q2跳升至约34亿（+224% QoQ，+106% YoY）。驱动因素：秦皇岛Q5500从Q1均~730涨至Q2均~790（+8%）；兖矿自产煤销量Q2环比提升（补库存需求）；焦煤/喷吹煤价格涨幅大于动力煤；汇兑损失等负向项在Q1已大部分确认。按Q2年化，扣非净利可达136亿——远超2025全年74亿。这证实了兖矿在煤价750–800区间的真实盈利能力远高于2025年水平。</p>
+  </div>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 6: 估值推导 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s6"></span>
+  <div class="sh">
+    <div><div class="si">Section 06</div><div class="st">估值：五种方法交叉验证</div></div>
+    <span class="sb b-neu">估值核心</span>
+  </div>
+
+  <p>对一家净债务965亿、FCF仅19亿（2025）的高杠杆周期股，单一估值方法均有严重缺陷。以下用五种方法交叉验证，相互印证估值区间。</p>
+
+  <div class="sub">A. 可比公司估值</div>
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>公司</th><th class="n">PE（TTM）</th><th class="n">PB</th><th class="n">股息率</th><th class="n">EV/EBITDA</th><th class="n">净债务/EBITDA</th><th>折价/溢价说明</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>中国神华（01088.HK）</td><td class="n">18.86×</td><td class="n">1.85×</td><td class="n pos">6.44%</td><td class="n">~7×</td><td class="n pos">~1.2×</td><td>铁路/电力一体化溢价；低杠杆安全性溢价</td></tr>
+        <tr><td>中煤能源（01898.HK）</td><td class="n">9.89×</td><td class="n">1.15×</td><td class="n pos">5.85%</td><td class="n">~4×</td><td class="n">~1.8×</td><td>化工配套业务，但H股流动性差</td></tr>
+        <tr><td>陕西煤业（601225.SH）</td><td class="n">9.32×</td><td class="n">1.68×</td><td class="n pos">5.72%</td><td class="n">~4.5×</td><td class="n pos">~0.6×</td><td>低成本+低杠杆，A股优质标的</td></tr>
+        <tr><td>山西焦煤（000983.SZ）</td><td class="n">10.41×</td><td class="n">1.22×</td><td class="n">4.18%</td><td class="n">~5×</td><td class="n wrn">~2.0×</td><td>焦煤龙头，但整合效率较低</td></tr>
+        <tr class="hi2"><td><strong>兖矿能源（01171.HK）</strong></td><td class="n"><strong>10.84×</strong></td><td class="n"><strong>1.38×</strong></td><td class="n"><strong>4.76%</strong></td><td class="n"><strong>~4.5×</strong></td><td class="n neg"><strong>~4.4×</strong></td><td><strong>PE/PB被高杠杆压制；H股有额外折价</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:11.5px;color:var(--ink3);margin-top:8px">兖矿H股PE 10.8×处于行业中游偏低（神华19×有一体化溢价）。最关键差异在净债务/EBITDA：兖矿4.4×远高于同业均值~1.5×，这是PE/PB被系统性压制的根本原因。</p>
+
+  <div class="sub">B. EBITDA敏感性网格：煤价 × 产量</div>
+  <div class="sg-wrap">
+    <table class="sg">
+      <thead>
+        <tr>
+          <th>秦皇岛Q5500<br>（元/吨）</th>
+          <th>产量1.60亿吨</th>
+          <th>产量1.70亿吨</th>
+          <th>产量1.82亿吨<br>（2025实际）</th>
+          <th>产量1.95亿吨</th>
+          <th>产量2.10亿吨</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-lbl">550元/吨</td>
+          <td class="sg-r">-114亿</td><td class="sg-r">-103亿</td><td class="sg-r">-89亿</td><td class="sg-o">-75亿</td><td class="sg-o">-57亿</td>
+        </tr>
+        <tr>
+          <td class="row-lbl">650元/吨</td>
+          <td class="sg-o">-63亿</td><td class="sg-o">-48亿</td><td class="sg-o">-31亿</td><td class="sg-y">-12亿</td><td class="sg-y">+10亿</td>
+        </tr>
+        <tr>
+          <td class="row-lbl">700元/吨</td>
+          <td class="sg-y">-37亿</td><td class="sg-y">-21亿</td><td class="sg-y">-1亿</td><td class="sg-g">+20亿</td><td class="sg-g">+44亿</td>
+        </tr>
+        <tr>
+          <td class="row-lbl">769元/吨 ★</td>
+          <td class="sg-g">-1亿</td><td class="sg-g">+17亿</td><td class="sg-curr sg-g">+39亿（当前）</td><td class="sg-vg">+63亿</td><td class="sg-vg">+91亿</td>
+        </tr>
+        <tr>
+          <td class="row-lbl">850元/吨</td>
+          <td class="sg-g">+41亿</td><td class="sg-vg">+62亿</td><td class="sg-vg">+87亿</td><td class="sg-vg">+114亿</td><td class="sg-vg">+146亿</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:11px;color:var(--ink3);margin-top:6px">格内数字为相对2025年基准水平的EBIT增减额（税后口径，亿元）。<strong>正确逻辑：同一行（相同煤价），从左到右产量增加，EBIT单调递增——产量越大，固定成本摊薄，盈利越高。</strong>★橙框=当前位置（H1均价769元/吨，产量~1.82亿吨），对应相对2025基准改善约+39亿。绿色格子代表高于2025年水平，红色代表低于。煤价传导系数约0.38（反映陕蒙限价+山东长协双重稀释），故煤价从702涨至769（+67元），兖矿综合实现价仅提升约25元。若煤价维持850+且产量扩至2.1亿吨，EBIT改善幅度可达+146亿，合理估值将大幅重估。来源：蜗牛鸟投资独立测算，基于2025年年报数据，传导系数经各基地长协比例加权验证。</p>
+
+  <div class="sub">C. DCF反推：当前股价隐含什么煤价预期</div>
+  <div class="sg-wrap">
+    <table class="sg">
+      <thead>
+        <tr>
+          <th>秦皇岛Q5500<br>（元/吨，稳态）</th>
+          <th>WACC=7%</th><th>WACC=8%</th><th>WACC=9%</th><th>WACC=10%</th><th>WACC=11%</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="row-lbl">550元/吨</td><td class="sg-r">HK$4.5</td><td class="sg-r">HK$3.8</td><td class="sg-r">HK$3.2</td><td class="sg-r">HK$2.7</td><td class="sg-r">HK$2.3</td></tr>
+        <tr><td class="row-lbl">650元/吨</td><td class="sg-o">HK$7.2</td><td class="sg-o">HK$6.1</td><td class="sg-o">HK$5.2</td><td class="sg-o">HK$4.5</td><td class="sg-o">HK$3.9</td></tr>
+        <tr><td class="row-lbl">720–760元/吨</td><td class="sg-y">HK$10.5</td><td class="sg-curr sg-y">HK$9.8–11.5</td><td class="sg-y">HK$8.5–10.0</td><td class="sg-y">HK$7.5–8.8</td><td class="sg-y">HK$6.6</td></tr>
+        <tr><td class="row-lbl">800元/吨</td><td class="sg-g">HK$16.2</td><td class="sg-g">HK$13.8</td><td class="sg-g">HK$11.8</td><td class="sg-g">HK$10.1</td><td class="sg-g">HK$8.7</td></tr>
+        <tr><td class="row-lbl">900元/吨</td><td class="sg-vg">HK$23.1</td><td class="sg-vg">HK$19.7</td><td class="sg-vg">HK$16.8</td><td class="sg-vg">HK$14.4</td><td class="sg-vg">HK$12.4</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:11px;color:var(--ink3);margin-top:6px">★黄框≈当前价格HK$11.86对应区域（WACC=8–9%，隐含稳态煤价约720–760元/吨）。说明市场已在定价中计入了一定煤价回升预期，但没有给超额弹性定价。</p>
+
+  <div class="box bx-a">
+    <div class="bh">DCF的局限性（高杠杆周期股的特殊问题）</div>
+    <p>用永续DCF给兖矿估值存在三个结构性问题：①净债务965亿远大于近期FCF，永续假设意味着"永远还不清债"；②未计入95亿吨可采储量的期权价值（储量本身有重置成本）；③未计入两笔并购可能带来的协同效应。因此DCF只用作"反推隐含预期"的分析工具，不作为目标价的主要依据。</p>
+  </div>
+
+  <div class="sub">D. NAV / DDM / EV-EBITDA综合定锚</div>
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>估值方法</th><th>关键假设</th><th class="n">目标价（HK$/股）</th><th>含义</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>NAV保守</td><td>95亿吨储量 × NPV 8元/吨</td><td class="n neg">~HK$10.5</td><td>煤价550时的储量底线，接近当前价</td></tr>
+        <tr><td>NAV中性</td><td>95亿吨储量 × NPV 12元/吨</td><td class="n">~HK$14.5</td><td>煤价650–700合理价值</td></tr>
+        <tr><td>P/NAV 0.7×（熊市）</td><td>中性NAV打7折</td><td class="n neg">~HK$10.2</td><td>极端熊市下的交易底线</td></tr>
+        <tr><td>DDM（股息贴现）</td><td>DPS 0.55元，r=5.5%</td><td class="n">~HK$11.9</td><td>纯股息回报≈当前价，无额外安全边际</td></tr>
+        <tr class="hi2"><td><strong>EV/EBITDA 4.5×（基准）</strong></td><td><strong>煤价770，EBITDA~235亿</strong></td><td class="n pos"><strong>~HK$13.0</strong></td><td><strong>基准情景目标价，对应+9.6%上行</strong></td></tr>
+        <tr><td>EV/EBITDA 5.5×（乐观）</td><td>煤价850，EBITDA~300亿</td><td class="n pos">~HK$17.8</td><td>乐观情景，煤价维持高位</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub">E. 估值足球场：六档汇总</div>
+  <div class="ff">
+    <!-- 足球场总宽度映射到HK$0–22 -->
+    <div class="ff-row">
+      <span class="ff-lbl">P/NAV 0.7×（熊市底线）</span>
+      <div class="ff-track" style="min-width:200px">
+        <div class="ff-bar" style="left:37%;width:5%;background:var(--neg)">$8.2</div>
+        <div class="ff-price" style="left:54%"><span class="ff-price-lbl">HK$11.86</span></div>
+      </div>
+      <span class="ff-val neg">HK$8.2</span>
+    </div>
+    <div class="ff-row">
+      <span class="ff-lbl">DDM（股息锚）</span>
+      <div class="ff-track">
+        <div class="ff-bar" style="left:50%;width:7%;background:#6b7280">$11.9</div>
+        <div class="ff-price" style="left:54%"></div>
+      </div>
+      <span class="ff-val">HK$11.9</span>
+    </div>
+    <div class="ff-row">
+      <span class="ff-lbl">EV/EBITDA 4.5×（基准）</span>
+      <div class="ff-track">
+        <div class="ff-bar" style="left:50%;width:12%;background:var(--amber)">HK$13.0</div>
+        <div class="ff-price" style="left:54%"></div>
+      </div>
+      <span class="ff-val a">HK$13.0</span>
+    </div>
+    <div class="ff-row">
+      <span class="ff-lbl">P/NAV 1.0×（NAV锚）</span>
+      <div class="ff-track">
+        <div class="ff-bar" style="left:50%;width:23%;background:#0891b2">HK$15.5</div>
+        <div class="ff-price" style="left:54%"></div>
+      </div>
+      <span class="ff-val">HK$15.5</span>
+    </div>
+    <div class="ff-row">
+      <span class="ff-lbl">EV/EBITDA 5.5×（乐观）</span>
+      <div class="ff-track">
+        <div class="ff-bar" style="left:50%;width:36%;background:var(--pos)">HK$17.8</div>
+        <div class="ff-price" style="left:54%"></div>
+      </div>
+      <span class="ff-val pos">HK$17.8</span>
+    </div>
+    <div class="ff-row">
+      <span class="ff-lbl">周期顶DCF（牛市）</span>
+      <div class="ff-track">
+        <div class="ff-bar" style="left:50%;width:50%;background:#065f46">HK$21.0</div>
+        <div class="ff-price" style="left:54%"></div>
+      </div>
+      <span class="ff-val pos">HK$21.0</span>
+    </div>
+  </div>
+  <p style="font-family:'Arial',sans-serif;font-size:11px;color:var(--ink3);margin-top:6px">竖线标注当前价格HK$11.86。处于足球场偏下沿，反映市场对高杠杆和煤价不确定性的折价。</p>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 7: 多空分析 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s7"></span>
+  <div class="sh">
+    <div><div class="si">Section 07</div><div class="st">多空分析：平衡视角</div></div>
+    <span class="sb b-neu">客观评估</span>
+  </div>
+
+  <div class="sc-g">
+    <div class="sc sc-bull">
+      <div class="sch">多头论点 · 概率~25%</div>
+      <div class="scb">
+        <div class="sct">HK$17 – 21</div>
+        <div class="scp">煤价800–900 + 并购落地</div>
+        <p>供给收缩（碳中和限制新建矿+老旧矿退出）驱动煤价长期维持高位；红隼焦煤收购带来优质冶金煤资产（澳洲，低成本、FOB定价）；山能电力资产注入完善煤电一体化；新疆烯烃项目打开第二增长曲线。此情景下EV/EBITDA降至3×，目标价HK$18–21。</p>
+      </div>
+    </div>
+    <div class="sc sc-base">
+      <div class="sch">基准情景 · 概率~50%</div>
+      <div class="scb">
+        <div class="sct">HK$12 – 14</div>
+        <div class="scp">煤价700–780波动</div>
+        <p>煤价在700–780区间宽幅震荡（冬季旺季800+、夏季淡季650–700）；并购部分落地但进度慢于预期；分红维持0.5元/股；FCF回到60–100亿区间。EV/EBITDA 4–5×，合理估值HK$12–14，目标价HK$13.0。</p>
+      </div>
+    </div>
+    <div class="sc sc-bear">
+      <div class="sch">空头论点 · 概率~25%</div>
+      <div class="scb">
+        <div class="sct">HK$7 – 9</div>
+        <div class="scp">煤价跌破600 + 并购失败</div>
+        <p>新能源加速替代导致煤价中长期跌破600；两笔并购终止或严重超支（特别是红隼24亿美元外汇风险）；FCF持续为负被迫削减分红；净债务/EBITDA恶化至6×+再融资困难。P/NAV 0.7×给出底线HK$8左右。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="c2" style="margin-top:18px">
+    <div class="box bx-pos" style="margin:0">
+      <div class="bh">支持基准情景的核心逻辑</div>
+      <p>全球煤炭资本开支不足（2014–2023年累计下降40%+），供给刚性支撑价格底部；中国能源安全战略下煤炭"压舱石"地位短期不可替代；兖矿多元化布局（澳洲+煤化工+电力）提供一定的抗周期能力；H股相对A股约48%的折价提供相对安全边际。</p>
+    </div>
+    <div class="box bx-neg" style="margin:0">
+      <div class="bh">空头尾部风险的真实性（不可低估）</div>
+      <p>净债务965亿在煤价下行时产生严重财务挤压；红隼并购24亿美元外汇敞口（AUD）在人民币贬值时放大损失；H股日均成交额仅2–4亿港元，极端情绪下可能出现非理性抛售；当前分红0.5元/FCF覆盖仅0.38×，分红切实不可持续——若下调则股息率支撑消失。</p>
+    </div>
+  </div>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 8: 风险与催化剂 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s8"></span>
+  <div class="sh">
+    <div><div class="si">Section 08</div><div class="st">风险矩阵与未来6个月催化剂</div></div>
+    <span class="sb b-neg">风险评估</span>
+  </div>
+
+  <div class="ts">
+    <table>
+      <thead><tr><th>风险因素</th><th>严重程度</th><th>发生概率</th><th>具体触发条件</th><th>对估值影响</th></tr></thead>
+      <tbody>
+        <tr><td>煤价暴跌</td><td><span class="sev-h">极高</span></td><td><span class="sev-m">中</span></td><td>秦皇岛Q5500跌破600元/吨持续2季度以上</td><td>FCF转负，目标价降至HK$7–8，分红面临削减</td></tr>
+        <tr><td>并购失败或严重超支</td><td><span class="sev-h">高</span></td><td><span class="sev-m">中</span></td><td>红隼焦煤或山能电力交易终止/重大超支</td><td>资本配置失当，330亿+资金白耗，信用评级压力</td></tr>
+        <tr><td>汇率风险</td><td><span class="sev-m">中高</span></td><td><span class="sev-m">中</span></td><td>澳元贬值10%+冲击兖煤澳洲利润（占总利润25–35%）</td><td>套保成本上升，澳洲资产价值缩水</td></tr>
+        <tr><td>安全事故</td><td><span class="sev-m">中</span></td><td><span class="sev-m">中</span></td><td>重大停产整顿（煤炭行业高频风险）</td><td>产量损失+罚款，短期股价冲击</td></tr>
+        <tr><td>政策风险</td><td><span class="sev-m">中</span></td><td><span class="sev-l">中低</span></td><td>资源税上调/环保限产加码/碳交易成本上升</td><td>成本端压力，但长协保底机制部分对冲</td></tr>
+        <tr><td>分红下调</td><td><span class="sev-m">中</span></td><td><span class="sev-m">中</span></td><td>DPS低于0.4元或分红率低于50%</td><td>股息率支撑消失，H股缺乏价值买家</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub">未来6个月关键催化剂时间表</div>
+  <div class="ts">
+    <table>
+      <thead><tr><th>时间节点</th><th>催化剂</th><th>正面情景</th><th>负面情景</th></tr></thead>
+      <tbody>
+        <tr><td>2026年8月</td><td>H1 2026中报正式披露</td><td>扣非净利超45亿，经营现金流改善→上行</td><td>现金流恶化，债务指标走差→下行</td></tr>
+        <tr><td>2026年Q3</td><td>迎峰度夏+冬储补库煤价</td><td>Q5500守住750，Q3扣非净利继续改善→确认趋势</td><td>煤价跌回700以下→盈利预期下修</td></tr>
+        <tr><td>2026年Q3–Q4</td><td>红隼焦煤并购进展</td><td>尽职调查完成，价格合理（&lt;20亿美元）→战略加分</td><td>交易终止或价格超预期→资本配置质疑</td></tr>
+        <tr><td>2026年Q4</td><td>山能电力资产交割</td><td>盈利承诺清晰，EBITDA贡献可量化→新估值支撑</td><td>条款不利，超出164亿→杠杆恶化</td></tr>
+        <tr><td>2026年Q4</td><td>2027年度长协谈判</td><td>长协基准价从675上调→直接提升山东区域盈利</td><td>维持675甚至下调→上行催化缺失</td></tr>
+        <tr><td>2026–2027年</td><td>新疆烯烃项目进展</td><td>80万吨/年烯烃投产→第二曲线初现</td><td>进度延误→资本支出持续占用FCF</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 9: 投资结论 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s9"></span>
+  <div class="sh">
+    <div><div class="si">Section 09</div><div class="st">投资结论与操作建议</div></div>
+    <span class="sb b-amb">结论</span>
+  </div>
+
+  <div class="box bx-a">
+    <div class="bh">核心判断</div>
+    <p>评级：<strong>持有（HOLD）</strong>｜基准情景目标价：<strong>HK$13.0</strong>｜估值区间：<strong>HK$9–14</strong>（熊→牛）</p>
+    <p style="margin-top:10px">兖矿是一个典型的"高弹性、高风险"周期标的。当前H股HK$11.86价格定价在"煤价长期720–760元/吨"的市场预期上，既没有给储量期权价值，也没有反映并购协同。上行的关键驱动是煤价守住750+（Q2扣非年化已验证其盈利弹性）；风险在于净债务965亿在下行周期的财务挤压，以及两笔合计330亿+的悬顶并购带来的不确定性。</p>
+    <p style="margin-top:8px">H股相对A股约48%折价，提供了一定的相对安全边际，4.76%股息率在煤价不出现大幅下行的情况下尚可维持。但FCF覆盖分红0.38×的现状说明这个股息率不来自真实自由现金流，而是来自高财务杠杆下的会计利润分配——煤价下行将快速打穿这一支撑。</p>
+  </div>
+
+  <div class="ts" style="margin-top:20px">
+    <table>
+      <thead><tr><th>投资者类型</th><th>建议操作</th><th>理由与边界条件</th></tr></thead>
+      <tbody>
+        <tr><td>已持有者（成本&lt;HK$10）</td><td><span class="pos">继续持有</span></td><td>有安全垫；4.76%股息率提供等待回报；煤价上行弹性显著</td></tr>
+        <tr><td>已持有者（成本HK$11–13）</td><td><span class="wrn">持有观望，止损参考HK$8.5</span></td><td>基本公允，等待中报验证扣非持续改善</td></tr>
+        <tr><td>价值导向新建仓</td><td><span class="wrn">等待HK$9–10区间</span></td><td>对应NAV 0.8×，安全边际更充分；煤价企稳700+时介入</td></tr>
+        <tr><td>周期弹性投资者</td><td><span class="pos">当前价可参与（仓位≤5%）</span></td><td>煤价弹性最大的港股煤炭标的；相信煤价750+可参与弹性</td></tr>
+        <tr><td>减仓信号</td><td><span class="neg">股价突破HK$16或煤价跌破650</span></td><td>乐观情景提前兑现减至低配；基本面恶化时清仓</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ts" style="margin-top:15px">
+    <table>
+      <thead><tr>
+        <th>情景</th><th class="n">触发条件</th><th class="n">目标价（HK$）</th><th class="n">概率权重</th><th class="n">加权贡献</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>多头（煤价800–900+并购落地）</td><td class="n">煤价持续800+，红隼完成收购</td><td class="n pos">约HK$19（中值）</td><td class="n">25%</td><td class="n pos">HK$4.75</td></tr>
+        <tr><td>基准（煤价700–780波动）</td><td class="n">煤价维持700–780区间</td><td class="n">HK$13.0</td><td class="n">50%</td><td class="n">HK$6.50</td></tr>
+        <tr><td>空头（煤价跌破600+并购失败）</td><td class="n">煤价持续低于600</td><td class="n neg">约HK$8（中值）</td><td class="n">25%</td><td class="n neg">HK$2.00</td></tr>
+        <tr class="hi2"><td><strong>概率加权目标价</strong></td><td class="n">—</td><td class="n"><strong>HK$13.25</strong></td><td class="n">100%</td><td class="n"><strong>HK$13.25</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+</div><!-- /bw -->
+
+<footer>
+  <strong>蜗牛鸟投资研究（Snail-Bird Investment Research）</strong><br>
+  本报告由蜗牛鸟资源研究团队撰写，发布日期：2026年8月3日，为兖矿能源（01171.HK）初次覆盖报告。触发事件：2026年7月14日半年度业绩预增公告。<br><br>
+  <strong>数据来源：</strong>兖矿能源2021–2025年度报告（上交所/港交所）；2026年H1业绩预增公告（2026-07-14）；兖煤澳洲（ASX：YAL）历年半年报；同花顺/东方财富历史行情数据；CCTD/Wind煤炭价格数据；标普/穆迪信用评级报告；蜗牛鸟独立测算模型（EBITDA敏感性网格、DCF隐含煤价、NAV推算）。A股价格约¥23.07（2026-07-31），汇率HKD:RMB约0.92换算。<br><br>
+  <strong>会计准则说明：</strong>本报告以A股中国会计准则数据为主，H股国际准则数据作交叉验证。两地准则差异主要源于汇兑损益核算、资产减值时点和少数股东权益计量方式。<br><br>
+  <strong>分析师声明：</strong>蜗牛鸟投资及报告撰写人员不持有01171.HK的多头或空头仓位，与兖矿能源集团不存在任何利益冲突关系。本报告仅供参考，不构成投资建议。煤炭行业受政策、煤价、安全、外汇等多重因素影响，价格波动可能导致投资损失。投资者应基于自身独立判断做出投资决策。版权归蜗牛鸟投资所有，未经授权不得转载。
+</footer>
+
+</body>
+</html>
