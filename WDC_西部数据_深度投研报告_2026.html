@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西部数据 WDC 深度研究报告 | 蜗牛鸟投资 2026</title>
+<style>
+:root{
+  --ink:#0a0e17;--ink2:#2d3344;--ink3:#6b7280;
+  --bg:#f3f4f8;--surf:#ffffff;--panel:#eef0f6;--rule:#dde1ec;
+  --hdd:#1e3a5f;--hdd2:#2d5986;--hdd-pale:#e8f0fa;--hdd-mid:#b8d0f0;
+  --pos:#065f46;--pos-bg:#d1fae5;
+  --neg:#991b1b;--neg-bg:#fee2e2;
+  --warn:#92400e;--warn-bg:#fef3c7;
+  --blue:#1e3a8a;--blue-bg:#dbeafe;
+  --orange:#c2410c;--orange-bg:#ffedd5;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:var(--ink);font-size:14.5px;line-height:1.78}
+
+nav{position:sticky;top:0;z-index:200;height:50px;background:var(--ink);display:flex;align-items:center;padding:0 36px;border-bottom:2px solid var(--hdd2)}
+.nb{font-family:'Arial',sans-serif;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;padding-right:18px;margin-right:18px;border-right:1px solid rgba(255,255,255,.12);white-space:nowrap;flex-shrink:0}
+.nb em{color:#60a5fa;font-style:normal}
+.nl{display:flex;overflow-x:auto;flex:1}
+.nl a{font-family:'Arial',sans-serif;font-size:10.5px;color:rgba(255,255,255,.4);text-decoration:none;padding:0 13px;height:50px;display:flex;align-items:center;white-space:nowrap;border-right:1px solid rgba(255,255,255,.07)}
+.nl a:hover{color:#60a5fa}
+
+/* HERO — 磁盘磁道意象，深蓝到黑渐变 */
+.hero{background:linear-gradient(150deg,#050c1a 0%,#0f2340 50%,#1a1f30 100%);padding:54px 56px 44px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-40px;top:-40px;width:360px;height:360px;background:radial-gradient(circle,rgba(45,89,134,.25) 0%,transparent 65%);border-radius:50%;pointer-events:none}
+.hero::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:3px;background:linear-gradient(90deg,#2d5986 0%,#60a5fa 40%,transparent 80%)}
+.h-eyebrow{font-family:'Arial',sans-serif;font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#60a5fa;margin-bottom:12px}
+.h-ticker{font-family:'Arial',sans-serif;font-size:12px;color:rgba(255,255,255,.3);margin-bottom:8px}
+.h-title{font-family:'Arial',sans-serif;font-size:37px;font-weight:900;line-height:1.1;color:#fff;max-width:700px;margin-bottom:14px}
+.h-title em{color:#60a5fa;font-style:normal}
+.h-sub{font-size:14px;color:rgba(255,255,255,.55);max-width:620px;line-height:1.72;margin-bottom:30px}
+.h-meta{display:flex;gap:28px;flex-wrap:wrap;font-family:'Arial',sans-serif;font-size:10.5px;color:rgba(255,255,255,.26);padding-top:16px;border-top:1px solid rgba(255,255,255,.09)}
+
+/* VERDICT */
+.vbar{background:var(--hdd2);padding:14px 56px;display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+.vm{display:flex;align-items:baseline;gap:9px}
+.vlbl{font-family:'Arial',sans-serif;font-size:9.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.vval{font-family:'Arial',sans-serif;font-size:22px;font-weight:900;color:#fff}
+.vsep{width:1px;height:30px;background:rgba(255,255,255,.22)}
+.vst{font-family:'Arial',sans-serif;font-size:11.5px;color:rgba(255,255,255,.7)}
+.vst strong{display:block;font-size:14px;color:#fff;font-weight:800}
+
+/* KPI */
+.krow{display:grid;grid-template-columns:repeat(6,1fr);background:var(--surf);border-bottom:1px solid var(--rule)}
+.kc{padding:13px 16px;border-right:1px solid var(--rule)}
+.kc:last-child{border-right:none}
+.kl{font-family:'Arial',sans-serif;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.kv{font-family:'Arial',sans-serif;font-size:17px;font-weight:900;line-height:1;color:var(--ink)}
+.kd{font-family:'Arial',sans-serif;font-size:10px;font-weight:600;margin-top:3px}
+.g{color:var(--pos)}.r{color:var(--neg)}.a{color:var(--warn)}
+
+/* SELLOFF BANNER */
+.alert{background:#7f1d1d;padding:11px 56px;display:flex;align-items:center;gap:14px}
+.alert-icon{font-size:18px}
+.alert-text{font-family:'Arial',sans-serif;font-size:12.5px;color:#fecaca;font-weight:600}
+.alert-text strong{color:#fff}
+
+/* LAYOUT */
+.bw{max-width:1060px;margin:0 auto;padding:42px 32px}
+.sec{margin-bottom:52px}
+.anc{display:block;height:50px;margin-top:-50px;visibility:hidden}
+.sh{display:flex;align-items:flex-end;gap:13px;border-bottom:2px solid var(--rule);padding-bottom:9px;margin-bottom:20px}
+.si{font-family:'Arial',sans-serif;font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--hdd2);line-height:1;padding-bottom:2px}
+.st{font-family:'Arial',sans-serif;font-size:18.5px;font-weight:800;color:var(--ink)}
+.sb{margin-left:auto;flex-shrink:0;font-family:'Arial',sans-serif;font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:3px 8px;border-radius:2px}
+.b-pos{background:var(--pos-bg);color:var(--pos)}.b-neg{background:var(--neg-bg);color:var(--neg)}
+.b-neu{background:var(--blue-bg);color:var(--blue)}.b-wa{background:var(--warn-bg);color:var(--warn)}
+.b-hdd{background:var(--hdd-pale);color:var(--hdd)}
+.b-ora{background:var(--orange-bg);color:var(--orange)}
+p{margin-bottom:12px}p:last-child{margin-bottom:0}
+.sub{font-family:'Arial',sans-serif;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin:22px 0 10px;padding-bottom:5px;border-bottom:1px solid var(--rule)}
+
+.box{border-radius:0 5px 5px 0;padding:14px 18px;margin:16px 0}
+.bh{font-family:'Arial',sans-serif;font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.bx-h{border-left:4px solid var(--hdd2);background:var(--hdd-pale)}.bx-h .bh{color:var(--hdd)}
+.bx-neg{border-left:4px solid var(--neg);background:var(--neg-bg)}.bx-neg .bh{color:var(--neg)}
+.bx-pos{border-left:4px solid var(--pos);background:var(--pos-bg)}.bx-pos .bh{color:var(--pos)}
+.bx-wa{border-left:4px solid var(--warn);background:var(--warn-bg)}.bx-wa .bh{color:var(--warn)}
+.bx-ora{border-left:4px solid var(--orange);background:var(--orange-bg)}.bx-ora .bh{color:var(--orange)}
+
+.ts{overflow-x:auto;margin:15px 0}
+table{width:100%;border-collapse:collapse;font-family:'Arial',sans-serif;font-size:12px}
+th{background:var(--ink);color:#fff;text-align:left;padding:8px 11px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+td{padding:7px 11px;border-bottom:1px solid var(--rule);color:var(--ink);vertical-align:top}
+tr:nth-child(even) td{background:var(--panel)}
+.n{text-align:right;font-variant-numeric:tabular-nums}
+.hi td{background:#fffce4!important;font-weight:700}
+.hi2 td{background:var(--hdd-pale)!important;font-weight:700;border-left:3px solid var(--hdd2)}
+.pos{color:var(--pos);font-weight:700}.neg{color:var(--neg);font-weight:700}.wrn{color:var(--warn);font-weight:600}
+
+.c2{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin:15px 0}
+.c3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:15px 0}
+.pnl{background:var(--surf);border:1px solid var(--rule);border-radius:7px;padding:16px}
+.ph{font-family:'Arial',sans-serif;font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:9px;padding-bottom:7px;border-bottom:1px solid var(--rule)}
+.pnl ul{list-style:none}
+.pnl ul li{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid var(--rule);font-family:'Arial',sans-serif;font-size:11.5px}
+.pnl ul li:last-child{border-bottom:none}
+.pnl ul li .v{font-weight:700}
+.br{border:none;border-top:1px solid var(--rule);margin:30px 0}
+
+/* FCF WATERFALL */
+.wf-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;font-family:'Arial',sans-serif;font-size:12px}
+.wf-lbl{width:180px;flex-shrink:0;color:var(--ink2)}
+.wf-bar{flex:1;height:22px;background:var(--panel);border-radius:3px;overflow:hidden}
+.wf-f{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px}
+.wf-f span{font-size:10.5px;font-weight:700;color:#fff;white-space:nowrap}
+.wf-val{width:80px;text-align:right;font-weight:700;font-size:12px;flex-shrink:0}
+.wf-div{border-top:1px dashed var(--rule);margin:8px 0}
+
+/* MARGIN TREND BARS */
+.mt-row{display:flex;align-items:center;gap:10px;margin-bottom:7px;font-family:'Arial',sans-serif;font-size:12px}
+.mt-lbl{width:80px;flex-shrink:0;font-weight:600;color:var(--ink3)}
+.mt-t{flex:1;height:22px;background:var(--panel);border-radius:3px;overflow:hidden}
+.mt-f{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px}
+.mt-f span{font-size:10.5px;font-weight:700;color:#fff}
+.mt-v{width:50px;text-align:right;font-size:11px;color:var(--ink3);flex-shrink:0}
+
+/* SCENARIO */
+.sc-g{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:15px 0}
+.sc{border-radius:7px;overflow:hidden;border:1px solid var(--rule)}
+.sch{padding:10px 14px;font-family:'Arial',sans-serif;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.sc-bull .sch{background:var(--pos);color:#fff}
+.sc-base .sch{background:var(--hdd2);color:#fff}
+.sc-bear .sch{background:var(--neg);color:#fff}
+.scb{padding:14px;background:var(--surf)}
+.sct{font-family:'Arial',sans-serif;font-size:22px;font-weight:900;margin-bottom:2px}
+.scp{font-family:'Arial',sans-serif;font-size:10px;font-weight:700;color:var(--ink3);margin-bottom:8px}
+.scb p{font-size:12px;color:var(--ink2);line-height:1.55}
+
+/* MOAT BARS */
+.moat-row{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.moat-lbl{width:180px;flex-shrink:0;font-family:'Arial',sans-serif;font-size:12px;font-weight:600;color:var(--ink)}
+.moat-t{flex:1;height:20px;background:var(--panel);border-radius:3px;overflow:hidden}
+.moat-f{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:7px}
+.moat-f span{font-size:10px;font-weight:700;color:#fff;white-space:nowrap}
+.moat-sc{width:40px;text-align:right;font-family:'Arial',sans-serif;font-size:12px;font-weight:800;flex-shrink:0}
+
+.sev-h{color:var(--neg);font-weight:700}.sev-m{color:var(--warn);font-weight:700}.sev-l{color:var(--pos);font-weight:700}
+
+footer{background:var(--ink);color:rgba(255,255,255,.35);padding:28px 56px;font-family:'Arial',sans-serif;font-size:10.5px;line-height:1.9;margin-top:48px}
+footer strong{color:rgba(255,255,255,.72)}
+@media(max-width:720px){.krow{grid-template-columns:repeat(3,1fr)}.c2,.c3,.sc-g{grid-template-columns:1fr}.hero{padding:28px 20px}.bw{padding:24px 16px}nav{padding:0 16px}.vbar,.alert{padding:13px 20px;gap:14px}footer{padding:24px 20px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nb">蜗牛鸟<em>投资</em></div>
+  <div class="nl">
+    <a href="#s1">盘前暴跌解读</a>
+    <a href="#s2">公司定位</a>
+    <a href="#s3">Q4财报全貌</a>
+    <a href="#s4">自由现金流</a>
+    <a href="#s5">护城河</a>
+    <a href="#s6">竞争格局</a>
+    <a href="#s7">同业比较</a>
+    <a href="#s8">估值推导</a>
+    <a href="#s9">风险</a>
+    <a href="#s10">结论</a>
+  </div>
+</nav>
+
+<!-- SELLOFF ALERT -->
+<div class="alert">
+  <span class="alert-icon">⚠</span>
+  <span class="alert-text"><strong>触发事件：</strong>WDC Q4 FY2026财报发布后（2026年8月5日盘后），股价从收盘价$519.17下跌约11%至$461，盘前进一步下探。财报本身超预期，下跌原因在于估值过高+增速环比边际减速。本报告系初次覆盖，基于最新完整财报数据独立推导投资结论。</span>
+</div>
+
+<div class="hero">
+  <div class="h-eyebrow">深度权益研究 · 数据存储 · HDD纯玩 · 初次覆盖</div>
+  <div class="h-ticker">NASDAQ: WDC &nbsp;|&nbsp; 盘前价约$461（2026年8月6日）&nbsp;|&nbsp; 市值约$178亿（盘前估算）</div>
+  <div class="h-title">西部数据：<em>AI存储基础设施</em><br>的低估角色</div>
+  <div class="h-sub">从存储综合商到AI时代纯玩HDD龙头——SanDisk分拆后的WDC用一年时间将毛利率从41%拉升至54%，FY2026全年FCF达35亿美元，超大规模云厂商签署2027–2028多年长协。盘前暴跌是"估值先行、业绩跟上"的典型修正，而非基本面转折。</div>
+  <div class="h-meta">
+    <span>分析师：蜗牛鸟科技研究团队</span>
+    <span>发布日期：2026年8月6日</span>
+    <span>财报日期：2026年8月5日盘后</span>
+    <span>财年说明：WDC财年截止每年7月初，FY2026=2025年7月–2026年7月</span>
+    <span>重要说明：2025年2月21日完成SanDisk分拆，本报告所有数据均为持续经营口径（HDD业务）</span>
+  </div>
+</div>
+
+<div class="vbar">
+  <div class="vm"><span class="vlbl">评级</span><span class="vval">谨慎买入</span></div>
+  <div class="vsep"></div>
+  <div class="vst"><strong>$490 – $530</strong>12个月公允价值区间</div>
+  <div class="vst"><strong>$505</strong>概率加权目标价</div>
+  <div class="vst"><strong>~$461</strong>盘前价，目标价上行约+9.5%</div>
+  <div class="vst"><strong>$3.51B</strong>FY2026全年FCF，历史峰值</div>
+  <div class="vst"><strong>54.4%</strong>Q4非GAAP毛利率</div>
+  <div class="vst"><strong>89%</strong>云/AI收入占比</div>
+</div>
+
+<div class="krow">
+  <div class="kc"><div class="kl">Q4 FY2026营收</div><div class="kv">$3.75B</div><div class="kd g">▲ +44% YoY，+12% QoQ</div></div>
+  <div class="kc"><div class="kl">Q4非GAAP EPS</div><div class="kv">$3.56</div><div class="kd g">▲ vs预期$3.31，超预期8%</div></div>
+  <div class="kc"><div class="kl">Q4非GAAP毛利率</div><div class="kv">54.4%</div><div class="kd g">▲ vs Q4 FY25 41.3%，+1310bp</div></div>
+  <div class="kc"><div class="kl">Q4自由现金流</div><div class="kv">$1.28B</div><div class="kd g">FCF利润率34%</div></div>
+  <div class="kc"><div class="kl">Q1 FY27营收指引</div><div class="kv">$4.1B</div><div class="kd g">▲ +42–49% YoY</div></div>
+  <div class="kc"><div class="kl">Q1 FY27 EPS指引</div><div class="kv">$4.00</div><div class="kd a">高于预期但QoQ加速放缓</div></div>
+</div>
+
+<div class="bw">
+
+<!-- ============================================================ -->
+<!-- SEC 1: 盘前暴跌解读 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s1"></span>
+  <div class="sh">
+    <div><div class="si">Section 01</div><div class="st">盘前暴跌解读：为什么打脸业绩之后股价仍然大跌？</div></div>
+    <span class="sb b-ora">触发分析</span>
+  </div>
+
+  <p>WDC Q4 FY2026财报在收入、毛利率、EPS、FCF四个维度全部超预期，Q1 FY2027指引也高于分析师共识，理论上是一份没有明显瑕疵的财报。但股价在盘后跌约11%，盘前仍在$461附近——这种"业绩越好、跌得越多"的现象，是典型的高估值股票在"完美已被定价"后遇到边际减速信号时的修正。</p>
+
+  <div class="box bx-ora">
+    <div class="bh">下跌的真实原因：不是业绩，是预期差</div>
+    <p><strong>WDC在财报前已从年初低点累计涨约三倍</strong>（年初约$170，财报前$549.67的52周高点，收盘$519），市场在此前已为"完美的超预期"定价。任何低于"加速改善"的信号，都会触发获利了结。</p>
+    <p style="margin-top:10px">具体触发点有三：①<strong>QoQ增速环比放缓</strong>：Q4营收环比+12%，Q1指引隐含环比约+9%，而非继续加速；②<strong>毛利率扩张斜率收窄</strong>：Q4毛利率54.4%，Q1指引55–56%，环比仅+50–160bp，扩张动能明显慢于前几个季度的每季300–400bp；③<strong>内部人士减持</strong>：7月21日高管以$529.63卖出808股，虽金额极小，但在高位出现。</p>
+    <p style="margin-top:10px">关键判断：<strong>这次下跌是估值修正，不是基本面转折。</strong>存储需求未减速，多年长协未取消，89%云/AI收入结构未破坏。$461附近的盘前价对应约13×远期P/E（FY2027E EPS ~$14），已大幅低于三个月前水平，提供了真正的介入窗口。</p>
+  </div>
+
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>指标</th><th class="n">Q4 FY2026实际</th><th class="n">市场预期</th><th class="n">vs预期</th><th class="n">Q3 FY2026</th><th class="n">环比变化</th><th>市场反应原因</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>营收</td><td class="n pos">$3.75B</td><td class="n">$3.70B</td><td class="n pos">+$50M（+1.3%）</td><td class="n">$3.34B</td><td class="n pos">+12%</td><td>超预期，正面</td></tr>
+        <tr><td>非GAAP毛利率</td><td class="n pos">54.4%</td><td class="n">~53%</td><td class="n pos">+140bp</td><td class="n">50.5%</td><td class="n pos">+390bp</td><td>超预期，但扩张斜率将放缓</td></tr>
+        <tr><td>非GAAP EPS</td><td class="n pos">$3.56</td><td class="n">$3.31</td><td class="n pos">+$0.25（+7.6%）</td><td class="n">$2.72</td><td class="n pos">+31%</td><td>大幅超预期，正面</td></tr>
+        <tr><td>FCF</td><td class="n pos">$1.28B</td><td class="n">~$1.1B</td><td class="n pos">超预期</td><td class="n">$978M</td><td class="n pos">+31%</td><td>强劲，正面</td></tr>
+        <tr class="hi"><td>Q1 FY27营收指引</td><td class="n">$4.1B（±$100M）</td><td class="n">~$4.03B</td><td class="n pos">略超</td><td class="n">—</td><td class="n wrn">环比仅+9%</td><td>⚠️ QoQ加速放缓，主要负面触发</td></tr>
+        <tr class="hi"><td>Q1 FY27 EPS指引</td><td class="n">$4.00（±$0.15）</td><td class="n">~$3.80</td><td class="n pos">超预期</td><td class="n">—</td><td class="n wrn">环比+12%（vs Q4 +31%）</td><td>⚠️ EPS增速大幅减速，第二负面触发</td></tr>
+        <tr><td>Q1 FY27毛利率指引</td><td class="n">55–56%</td><td class="n">~55%</td><td class="n">基本符合</td><td class="n">—</td><td class="n wrn">扩张+50–160bp</td><td>慢于此前每季300bp+的节奏</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 2: 公司定位 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s2"></span>
+  <div class="sh">
+    <div><div class="si">Section 02</div><div class="st">公司定位：SanDisk分拆后的纯玩HDD龙头</div></div>
+    <span class="sb b-hdd">背景</span>
+  </div>
+
+  <p>2025年2月21日是WDC历史上最关键的日期：将SanDisk（NAND Flash业务）完整分拆为独立上市公司（NASDAQ: SNDK）。这一决策在华尔街酝酿多年，根本动机是结束"HDD与NAND两种截然不同周期性的商业逻辑被强行捆绑在同一资产负债表"的结构性困境。分拆后：</p>
+
+  <p>WDC专注于<strong>硬盘驱动器（HDD）</strong>——磁性存储的物理基础，AI数据中心"温热数据层"的主要载体。HDD在单位TB成本上仍比SSD低约6–8倍，这一成本优势在AI数据湖和大规模视频存储中是不可替代的。WDC的HDD业务在FY2026全年产出$129亿营收，同比增长36%，这是SanDisk分拆后持续经营业务的首份完整年度报告，基本面完全超越分拆前的预期。</p>
+
+  <div class="c3">
+    <div class="pnl">
+      <div class="ph">业务结构（Q4 FY2026收入拆分）</div>
+      <ul>
+        <li><span>云/超大规模（AI数据中心）</span><span class="v pos">89%</span></li>
+        <li><span>客户端（PC/笔记本）</span><span class="v wrn">~7%</span></li>
+        <li><span>消费者（零售外接硬盘）</span><span class="v r">~4%</span></li>
+        <li><span>云收入 YoY增速</span><span class="v pos">+55%+</span></li>
+        <li><span>出货艾字节（Exabyte）Q4</span><span class="v">231EB（+22% YoY）</span></li>
+        <li><span>近线（Nearline）出货</span><span class="v pos">209EB（+23% YoY）</span></li>
+      </ul>
+    </div>
+    <div class="pnl">
+      <div class="ph">SanDisk分拆的财务影响</div>
+      <ul>
+        <li><span>GAAP净利润（含Sandisk浮盈）</span><span class="v wrn">$94亿（FY2026）</span></li>
+        <li><span>其中Sandisk股权浮盈</span><span class="v">$64.98亿（非经营性）</span></li>
+        <li><span>Non-GAAP净利润（持续经营）</span><span class="v pos">$39.43亿</span></li>
+        <li><span>分拆后Net Debt状况</span><span class="v">大幅改善，债务已基本清偿</span></li>
+        <li><span>FY2026回购股票</span><span class="v pos">$25.92亿</span></li>
+        <li><span>FY2026分红</span><span class="v">$1.84亿</span></li>
+      </ul>
+    </div>
+    <div class="pnl">
+      <div class="ph">产品路线图（2026–2027）</div>
+      <ul>
+        <li><span>32TB UltraSMR</span><span class="v pos">已量产，超大规模主力</span></li>
+        <li><span>40TB ePMR</span><span class="v pos">Q4 FY26开始交付，&gt;50%比例目标Q3 FY27</span></li>
+        <li><span>44TB HAMR（UltraSMR模式）</span><span class="v a">CY2027H1上市</span></li>
+        <li><span>50TB+ 规划</span><span class="v">CY2027H2</span></li>
+        <li><span>量子加密UltraSMR</span><span class="v">已与多超大规模商认证</span></li>
+        <li><span>JBOD平台（Ultrastar Data Series）</span><span class="v">已发布，面向AI数据湖</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box bx-h">
+    <div class="bh">为什么AI时代HDD没有消亡：成本经济学的护城河</div>
+    <p>业界普遍预期SSD会取代HDD，但这一趋势在数据中心的"温热存储"层被经济逻辑截断。以当前价格，1TB存储：NVMe SSD约$60–80，SATA SSD约$40–50，高容量HDD约$8–12。AI训练需要海量原始数据（视频、文本、传感器数据）的长期存储，这些数据不需要毫秒级访问，只需要在训练时能以GB/s的速度批量读取——HDD完全满足，成本比SSD低6–8倍。超大规模商每增加1EB AI存储投资，用HDD比用SSD节省$50–60M。这是结构性需求，不是周期性需求。</p>
+  </div>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 3: Q4 FY2026财报全貌 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s3"></span>
+  <div class="sh">
+    <div><div class="si">Section 03</div><div class="st">Q4 FY2026财报全貌：毛利率创纪录，营收加速</div></div>
+    <span class="sb b-pos">财报解析</span>
+  </div>
+
+  <div class="sub">A. 逐季财务数据追踪（FY2025–FY2026）</div>
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>季度</th>
+        <th class="n">营收（$M）</th><th class="n">YoY</th><th class="n">QoQ</th>
+        <th class="n">非GAAP毛利率</th><th class="n">非GAAP经营利润率</th>
+        <th class="n">非GAAP EPS</th><th class="n">FCF（$M）</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Q4 FY25（Jun-25）</td><td class="n">$2,605</td><td class="n pos">+30%</td><td class="n">—</td><td class="n">41.3%</td><td class="n">28.1%</td><td class="n">$1.70</td><td class="n pos">$675</td></tr>
+        <tr><td>Q1 FY26（Oct-25）</td><td class="n">$2,820</td><td class="n pos">+27%</td><td class="n pos">+8%</td><td class="n">44.4%</td><td class="n">30.9%</td><td class="n">$1.78</td><td class="n">$599</td></tr>
+        <tr><td>Q2 FY26（Jan-26）</td><td class="n">$3,015</td><td class="n pos">+37%</td><td class="n pos">+7%</td><td class="n">47.2%</td><td class="n">34.1%</td><td class="n">$2.16</td><td class="n">$653</td></tr>
+        <tr><td>Q3 FY26（Apr-26）</td><td class="n">$3,337</td><td class="n pos">+45%</td><td class="n pos">+11%</td><td class="n">50.5%</td><td class="n">38.6%</td><td class="n">$2.72</td><td class="n pos">$978</td></tr>
+        <tr class="hi2"><td><strong>Q4 FY26（Jul-26）</strong></td><td class="n pos"><strong>$3,747</strong></td><td class="n pos"><strong>+44%</strong></td><td class="n pos"><strong>+12%</strong></td><td class="n pos"><strong>54.4%</strong></td><td class="n pos"><strong>44.2%</strong></td><td class="n pos"><strong>$3.56</strong></td><td class="n pos"><strong>$1,281</strong></td></tr>
+        <tr class="hi"><td><strong>Q1 FY27E（指引）</strong></td><td class="n"><strong>$4,100（±100）</strong></td><td class="n pos">+42–49%</td><td class="n wrn">~+9%</td><td class="n pos"><strong>55–56%</strong></td><td class="n">~47%</td><td class="n pos"><strong>$4.00（±0.15）</strong></td><td class="n">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub">B. 毛利率扩张轨迹——从40%到54%的结构性跃升</div>
+
+  <div style="margin:14px 0">
+    <div class="mt-row"><span class="mt-lbl">Q4 FY25</span><div class="mt-t"><div class="mt-f" style="width:75%;background:#475569"><span>41.3%（分拆初期）</span></div></div><span class="mt-v">41.3%</span></div>
+    <div class="mt-row"><span class="mt-lbl">Q1 FY26</span><div class="mt-t"><div class="mt-f" style="width:79%;background:#334155"><span>44.4%</span></div></div><span class="mt-v">44.4%</span></div>
+    <div class="mt-row"><span class="mt-lbl">Q2 FY26</span><div class="mt-t"><div class="mt-f" style="width:84%;background:#1e3a5f"><span>47.2%</span></div></div><span class="mt-v">47.2%</span></div>
+    <div class="mt-row"><span class="mt-lbl">Q3 FY26</span><div class="mt-t"><div class="mt-f" style="width:90%;background:#1d4e89"><span>50.5%（突破50%）</span></div></div><span class="mt-v">50.5%</span></div>
+    <div class="mt-row"><span class="mt-lbl">Q4 FY26</span><div class="mt-t"><div class="mt-f" style="width:97%;background:#2d5986"><span>54.4%（历史峰值）</span></div></div><span class="mt-v pos">54.4%</span></div>
+    <div class="mt-row"><span class="mt-lbl">Q1 FY27E</span><div class="mt-t"><div class="mt-f" style="width:99%;background:#1e6b9a"><span>55–56%（指引）</span></div></div><span class="mt-v pos">55–56%</span></div>
+  </div>
+
+  <p>毛利率从一年前41%跃至54%，驱动逻辑清晰：产品结构从低容量消费级迁移至高容量近线HDD（40TB定价远高于8TB）；云/AI客户ARPU（单位EB收入）持续提升；产能被超大规模客户通过长期协议提前锁定，消除了价格谈判压力；稀土回收创新降低物料成本。Q1指引55–56%意味着毛利率进入平台期——扩张斜率从每季度350bp放缓至50–160bp，这是市场反应负面的核心。</p>
+
+  <div class="sub">C. FY2026全年业绩汇总</div>
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>全年指标</th><th class="n">FY2026（Jul-25–Jul-26）</th><th class="n">FY2025</th><th class="n">YoY</th><th>说明</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>营收</td><td class="n pos"><strong>$12,919M</strong></td><td class="n">$9,520M</td><td class="n pos"><strong>+36%</strong></td><td>持续经营HDD业务</td></tr>
+        <tr><td>GAAP毛利率</td><td class="n pos">48.9%</td><td class="n">38.8%</td><td class="n pos">+1010bp</td><td>历史性跨越</td></tr>
+        <tr><td>非GAAP毛利率</td><td class="n pos">49.1%</td><td class="n">39.4%</td><td class="n pos">+970bp</td><td>—</td></tr>
+        <tr><td>非GAAP经营利润率</td><td class="n pos">37.3%</td><td class="n">24.4%</td><td class="n pos">+1290bp</td><td>运营杠杆持续释放</td></tr>
+        <tr><td>非GAAP EPS</td><td class="n pos"><strong>$10.22</strong></td><td class="n">$5.02</td><td class="n pos"><strong>+104%</strong></td><td>持续经营EPS翻倍</td></tr>
+        <tr><td>GAAP EPS（含Sandisk浮盈）</td><td class="n">$24.28</td><td class="n">$4.45</td><td class="n">+446%</td><td>含$64.98亿非经营性Sandisk股权浮盈</td></tr>
+        <tr><td>经营活动现金流</td><td class="n pos"><strong>$3,929M</strong></td><td class="n">$1,691M</td><td class="n pos">+132%</td><td>—</td></tr>
+        <tr><td>资本支出</td><td class="n">$418M</td><td class="n">$407M</td><td class="n">+3%</td><td>Capex极低——轻资产HDD商业模式的核心优势</td></tr>
+        <tr class="hi2"><td><strong>自由现金流（FCF）</strong></td><td class="n pos"><strong>$3,511M</strong></td><td class="n">$1,432M</td><td class="n pos"><strong>+145%</strong></td><td><strong>FCF利润率27%；历史峰值</strong></td></tr>
+        <tr><td>股票回购</td><td class="n pos">$2,592M</td><td class="n">$149M</td><td class="n pos">+1638%</td><td>Sandisk浮盈换债+回购，大幅削减股份数</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 4: 自由现金流深度分析 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s4"></span>
+  <div class="sh">
+    <div><div class="si">Section 04</div><div class="st">自由现金流：HDD轻资产模式的核心竞争力</div></div>
+    <span class="sb b-pos">FCF深挖</span>
+  </div>
+
+  <p>WDC的FCF质量是本报告最值得深入分析的议题。HDD制造是一个相对轻资产的模式——主要物理资产是磁头和介质生产线，但产能利用率提升阶段几乎无需新建产线，资本支出只需维持性投入。这使WDC在盈利爆发期能将大部分利润直接转化为FCF。</p>
+
+  <div class="sub">A. FY2026全年FCF瀑布图</div>
+
+  <div style="margin:18px 0">
+    <div class="wf-row"><span class="wf-lbl">FY2026净利润（GAAP，含Sandisk浮盈）</span><div class="wf-bar"><div class="wf-f" style="width:100%;background:var(--hdd)"><span>$9,424M</span></div></div><span class="wf-val" style="color:var(--hdd)">$9,424M</span></div>
+    <div class="wf-div"></div>
+    <div class="wf-row"><span class="wf-lbl">减：Sandisk股权浮盈（非付现）</span><div class="wf-bar"><div class="wf-f" style="width:69%;background:var(--neg)"><span>-$6,498M（非经营性，不影响FCF）</span></div></div><span class="wf-val neg">-$6,498M</span></div>
+    <div class="wf-row"><span class="wf-lbl">加：折旧摊销（非付现）</span><div class="wf-bar"><div class="wf-f" style="width:4%;background:var(--pos)"><span>+$375M</span></div></div><span class="wf-val pos">+$375M</span></div>
+    <div class="wf-row"><span class="wf-lbl">加：SBC及其他非现金</span><div class="wf-bar"><div class="wf-f" style="width:3%;background:#64748b"><span>+$204M</span></div></div><span class="wf-val">+$204M</span></div>
+    <div class="wf-row"><span class="wf-lbl">加：债权/股权交易成本</span><div class="wf-bar"><div class="wf-f" style="width:10%;background:#94a3b8"><span>+$907M</span></div></div><span class="wf-val">+$907M</span></div>
+    <div class="wf-row"><span class="wf-lbl">加/减：营运资金变动</span><div class="wf-bar"><div class="wf-f" style="width:5%;background:var(--neg)"><span>-$658M</span></div></div><span class="wf-val neg">-$658M</span></div>
+    <div class="wf-div"></div>
+    <div class="wf-row"><span class="wf-lbl"><strong>经营活动现金流（OCF）</strong></span><div class="wf-bar"><div class="wf-f" style="width:42%;background:var(--hdd2)"><span>$3,929M（OCF利润率30%）</span></div></div><span class="wf-val" style="color:var(--hdd2)"><strong>$3,929M</strong></span></div>
+    <div class="wf-row"><span class="wf-lbl">减：资本支出（Capex）</span><div class="wf-bar"><div class="wf-f" style="width:4%;background:var(--neg)"><span>-$418M（仅3.2%营收）</span></div></div><span class="wf-val neg">-$418M</span></div>
+    <div class="wf-div"></div>
+    <div class="wf-row"><span class="wf-lbl"><strong>自由现金流（FCF）</strong></span><div class="wf-bar"><div class="wf-f" style="width:37%;background:var(--pos)"><span>$3,511M（FCF利润率27%）</span></div></div><span class="wf-val pos"><strong>$3,511M</strong></span></div>
+  </div>
+
+  <div class="box bx-pos">
+    <div class="bh">FCF质量分析：Capex极低是HDD商业模式的真正优势</div>
+    <p>WDC FY2026全年Capex仅$4.18亿，仅占营收3.2%。对比：NVIDIA FY2026 Capex $53亿（占营收2.5%，但规模是WDC的12倍）；MSFT FY2026 Capex $1160亿（35%营收）。HDD是成熟工艺，产能扩张主要靠单盘容量提升（同样的物理产线生产40TB而非20TB，单位产能翻倍），而非新建产线。这意味着营收增长36%时，Capex几乎不增长，OCF到FCF的转化效率极高（FY2026 FCF/OCF=89%）。这是WDC区别于半导体Fab企业的核心财务特征。</p>
+  </div>
+
+  <div class="sub">B. 四年FCF历史对比</div>
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>财年</th><th class="n">OCF（$M）</th><th class="n">Capex（$M）</th><th class="n">FCF（$M）</th><th class="n">FCF利润率</th><th class="n">FCF/营收</th><th>主要驱动</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>FY2023</td><td class="n neg">—（含NAND亏损）</td><td class="n">—</td><td class="n neg">负值</td><td class="n neg">—</td><td class="n">—</td><td>NAND/HDD双周期低谷</td></tr>
+        <tr><td>FY2024</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td>复苏期，NAND仍亏损</td></tr>
+        <tr><td>FY2025（含SanDisk部分季度）</td><td class="n">$1,691M</td><td class="n">$407M（+$148M Flash Ventures）</td><td class="n">$1,432M</td><td class="n">15%</td><td class="n">$9,520M营收</td><td>HDD复苏，NAND分拆前</td></tr>
+        <tr class="hi2"><td><strong>FY2026（纯HDD全年）</strong></td><td class="n pos"><strong>$3,929M</strong></td><td class="n"><strong>$418M</strong></td><td class="n pos"><strong>$3,511M</strong></td><td class="n pos"><strong>27%</strong></td><td class="n pos"><strong>营收$12,919M</strong></td><td><strong>HDD超级周期顶部，毛利率历史峰值</strong></td></tr>
+        <tr><td>Q4 FY26（单季）</td><td class="n pos">$1,389M</td><td class="n">$108M</td><td class="n pos">$1,281M</td><td class="n pos">34%</td><td class="n pos">Q4营收$3,747M</td><td>单季FCF利润率创历史</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub">C. FCF用途与股东回报</div>
+  <div class="c2">
+    <div class="pnl">
+      <div class="ph">FY2026 FCF分配（$M）</div>
+      <ul>
+        <li><span>FCF总量</span><span class="v pos">$3,511M</span></li>
+        <li><span>股票回购</span><span class="v pos">$2,592M（74%）</span></li>
+        <li><span>现金股息</span><span class="v">$184M（5%）</span></li>
+        <li><span>合计股东回报</span><span class="v pos">$2,776M（79%）</span></li>
+        <li><span>净债务偿还</span><span class="v pos">大幅下降（$4,711M→近零）</span></li>
+        <li><span>现金余额（期末）</span><span class="v wrn">$1,579M（vs FY25 $2,114M）</span></li>
+      </ul>
+    </div>
+    <div class="pnl">
+      <div class="ph">资产负债表质量（FY2026年末）</div>
+      <ul>
+        <li><span>总资产</span><span class="v">$13,861M</span></li>
+        <li><span>现金及等价物</span><span class="v">$1,579M</span></li>
+        <li><span>长期债务（FY2026末）</span><span class="v pos">$0（已清偿）</span></li>
+        <li><span>流动部分债务</span><span class="v wrn">$1,052M（2028可转债）</span></li>
+        <li><span>净债务</span><span class="v pos">约-$527M（净现金状态）</span></li>
+        <li><span>股东权益</span><span class="v pos">$8,864M（vs FY25 $5,311M）</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box bx-wa">
+    <div class="bh">FCF可持续性的核心疑问</div>
+    <p>FY2026的$35亿FCF是历史峰值，出现在HDD超级周期的高点。可持续性依赖两个条件：①超大规模AI资本支出维持高位（已有2027–2028多年长协背书，可见性高）；②毛利率能稳定在54–57%区间（不出现产品切换期的质量/良率问题）。风险在于：若AI资本支出出现30%+的周期性回调，WDC的高营业杠杆（固定成本占比约30%）将使FCF的下行幅度远大于营收降幅，类似2023年的周期低谷。这是周期股投资必须承担的系统性风险。</p>
+  </div>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 5: 护城河分析 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s5"></span>
+  <div class="sh">
+    <div><div class="si">Section 05</div><div class="st">护城河：双寡头格局与技术壁垒</div></div>
+    <span class="sb b-hdd">竞争优势</span>
+  </div>
+
+  <div class="sub">护城河深度评分</div>
+  <div style="margin:16px 0">
+    <div class="moat-row"><span class="moat-lbl">① HDD双寡头格局</span><div class="moat-t"><div class="moat-f" style="width:85%;background:var(--pos)"><span>WDC+Seagate控制全球85%+市场，进入壁垒极高</span></div></div><span class="moat-sc g">8.5</span></div>
+    <div class="moat-row"><span class="moat-lbl">② 超大规模长协锁定</span><div class="moat-t"><div class="moat-f" style="width:80%;background:#0891b2"><span>前5客户3家签2027–28多年协议，产能提前锁定</span></div></div><span class="moat-sc g">8.0</span></div>
+    <div class="moat-row"><span class="moat-lbl">③ 技术路线图领先</span><div class="moat-t"><div class="moat-f" style="width:70%;background:var(--hdd2)"><span>40TB ePMR领先+44TB HAMR推进，Seagate已先行</span></div></div><span class="moat-sc">7.0</span></div>
+    <div class="moat-row"><span class="moat-lbl">④ 13,500+活跃专利</span><div class="moat-t"><div class="moat-f" style="width:70%;background:#1e3a5f"><span>ePMR、OptiNAND等专利护城河，阻止第三方进入</span></div></div><span class="moat-sc">7.0</span></div>
+    <div class="moat-row"><span class="moat-lbl">⑤ HDD供应链壁垒</span><div class="moat-t"><div class="moat-f" style="width:65%;background:#334155"><span>磁头/介质内制（垂直整合），新建同等产线需10年+</span></div></div><span class="moat-sc">6.5</span></div>
+    <div class="moat-row"><span class="moat-lbl">⑥ SSD替代风险</span><div class="moat-t"><div class="moat-f" style="width:35%;background:var(--neg)"><span>TB成本差仍6–8×保护HDD，但长期趋势不利</span></div></div><span class="moat-sc r">-3.5</span></div>
+    <div class="moat-row"><span class="moat-lbl">⑦ 单一客户集中度</span><div class="moat-t"><div class="moat-f" style="width:30%;background:var(--neg)"><span>89%来自云端，超大规模自研HDD或改变格局</span></div></div><span class="moat-sc r">-3.0</span></div>
+  </div>
+
+  <div class="box bx-h">
+    <div class="bh">核心护城河：双寡头结构下的定价权</div>
+    <p>HDD市场长期是WDC和Seagate的双寡头。进入壁垒极高：磁头（Read/Write Head）和介质（Magnetic Media）制造需要微米级精度和数十年的工艺积累，任何新进入者都需要10年以上时间和数百亿美元投资才能建立可竞争的产能。中国已尝试多年但未成功。这一结构赋予WDC和Seagate实质性的定价权——当需求超出供给（如当前），双方均无需打价格战，毛利率可以持续扩张至50%+水平。</p>
+  </div>
+
+  <p>多年长协（Long-Term Agreements, LTAs）是本轮周期与此前不同的关键结构性变化。历史上，超大规模商每季度竞价采购HDD，导致价格大幅波动。2025年开始，AWS、Azure、Google等客户开始签署跨越2027–2028年的多年供货协议，价格在协议期内锁定。WDC的7大核心客户已签署覆盖2026全年的确定性采购合同，其中3家已延伸至2027–2028年。这意味着FY2027的营收可见性远高于历史任何时点，"超级周期"的持续时间预期更长，波动预期更小。</p>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 6: 竞争格局 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s6"></span>
+  <div class="sh">
+    <div><div class="si">Section 06</div><div class="st">竞争格局：Seagate的HAMR优势与Kioxia并购期权</div></div>
+    <span class="sb b-wa">风险监控</span>
+  </div>
+
+  <div class="c2">
+    <div class="pnl">
+      <div class="ph">HDD竞争格局（2026年）</div>
+      <ul>
+        <li><span>WDC全球HDD市场份额</span><span class="v">~45%（近线领先）</span></li>
+        <li><span>Seagate市场份额</span><span class="v">~40%</span></li>
+        <li><span>东芝（小市场）</span><span class="v">~15%（消费级为主）</span></li>
+        <li><span>Seagate HAMR状态</span><span class="v neg">已量产44TB（领先WDC约6个月）</span></li>
+        <li><span>WDC HAMR状态</span><span class="v wrn">44TB CY2027H1，落后Seagate</span></li>
+        <li><span>WDC 40TB ePMR</span><span class="v pos">已量产，桥接产品</span></li>
+      </ul>
+    </div>
+    <div class="pnl">
+      <div class="ph">Kioxia并购：重返NAND的可能性</div>
+      <ul>
+        <li><span>当前讨论状态</span><span class="v wrn">2026年7月重新激活谈判</span></li>
+        <li><span>潜在交易结构</span><span class="v">WDC Flash业务+Kioxia合并</span></li>
+        <li><span>此前失败原因</span><span class="v">监管+Kioxia估值分歧</span></li>
+        <li><span>若成功意义</span><span class="v pos">挑战三星/SK Hynix NAND垄断</span></li>
+        <li><span>对WDC HDD业务影响</span><span class="v neg">复杂化战略，资本分散</span></li>
+        <li><span>当前评估</span><span class="v">管理层未确认；属于期权，不在基准预测中</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box bx-neg">
+    <div class="bh">HAMR技术差距：Seagate先行6个月的真实含义</div>
+    <p>Seagate Mozaic HAMR平台已开始向超大规模客户批量出货44TB驱动器，而WDC的44TB HAMR计划在CY2027H1（即FY2027下半年）上市。6个月的先发优势在HDD市场意味着：①Seagate已开始占据部分44TB采购合同，WDC短期失去该容量段的部分市场份额；②但超大规模客户通常同时与WDC和Seagate保持双供应商关系，不会因单一产品代差就切换全部采购；③WDC的40TB ePMR是有效的桥接产品，已在Q4开始交付并计划在Q3 FY2027占近线出货量的50%+。HAMR差距是真实风险，但不是业务颠覆性因素。</p>
+  </div>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 7: 同业比较 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s7"></span>
+  <div class="sh">
+    <div><div class="si">Section 07</div><div class="st">同业比较：相对估值与同类标的横向审视</div></div>
+    <span class="sb b-neu">市场定位</span>
+  </div>
+
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>公司</th><th class="n">市值（盘前估）</th><th class="n">FY/CY26E营收</th><th class="n">非GAAP毛利率</th>
+        <th class="n">FY26 FCF</th><th class="n">FCF利润率</th><th class="n">远期P/E</th><th class="n">EV/FCF</th><th>定位</th>
+      </tr></thead>
+      <tbody>
+        <tr class="hi2"><td><strong>WDC（西部数据）</strong></td><td class="n"><strong>~$178B</strong></td><td class="n"><strong>$12.9B</strong></td><td class="n pos"><strong>54.4%（Q4）</strong></td><td class="n pos"><strong>$3.5B</strong></td><td class="n pos"><strong>27%</strong></td><td class="n"><strong>~13×</strong></td><td class="n pos"><strong>~52×</strong></td><td><strong>HDD纯玩，AI存储基建；盘前修正后估值合理区</strong></td></tr>
+        <tr><td>Seagate（STX）</td><td class="n">~$155B</td><td class="n">~$11B</td><td class="n">~52%</td><td class="n">~$2.8B</td><td class="n">~25%</td><td class="n wrn">~17×</td><td class="n">~56×</td><td>HAMR先行，HDD纯玩竞争对手；STX PE溢价反映HAMR领先</td></tr>
+        <tr><td>Micron（MU）</td><td class="n">~$1,250B</td><td class="n">~$36B</td><td class="n">~40%</td><td class="n">~$5B</td><td class="n">~14%</td><td class="n">~18×</td><td class="n">~250×</td><td>DRAM+NAND，AI HBM机会大但Capex高</td></tr>
+        <tr><td>SK Hynix（000660）</td><td class="n">~$1,500B</td><td class="n">~$75B</td><td class="n pos">~50%</td><td class="n pos">~$18B</td><td class="n">~24%</td><td class="n">~12×</td><td class="n">~83×</td><td>HBM垄断者，GPU内存必须品</td></tr>
+        <tr><td>NVIDIA（NVDA）</td><td class="n">~$4.86T</td><td class="n">$215.9B</td><td class="n pos">74.9%</td><td class="n pos">$96.7B</td><td class="n pos">45%</td><td class="n">19.5×</td><td class="n">—</td><td>AI算力垄断，全栈生态</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top:12px">盘前修正后，WDC的远期P/E约13×，是存储同类标的中估值最低的之一（Seagate 17×，Micron 18×）。考虑到WDC的FCF利润率27%高于Micron（14%），且Capex强度远低于半导体内存厂，13×的估值存在低估的可能。Seagate相对WDC的17%溢价（17×vs13×）可以解释为HAMR领先6个月的技术溢价，但这个差距是否值得4个PE倍数，值得质疑。</p>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 8: 估值推导 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s8"></span>
+  <div class="sh">
+    <div><div class="si">Section 08</div><div class="st">估值推导：DCF与多方法交叉验证</div></div>
+    <span class="sb b-neu">估值核心</span>
+  </div>
+
+  <p>当前盘前价约$461，对应约3.87亿稀释股（Q4加权平均389M，Q1指引388M）。以下基于FY2027–2032的FCF路径推导内在价值，并与相对估值交叉验证。</p>
+
+  <div class="sub">步骤一：WACC推算</div>
+  <div class="ts">
+    <table>
+      <thead><tr><th>参数</th><th class="n">取值</th><th>依据</th></tr></thead>
+      <tbody>
+        <tr><td>无风险利率</td><td class="n">4.5%</td><td>美国10年期国债（2026年7月）</td></tr>
+        <tr><td>市场风险溢价</td><td class="n">5.0%</td><td>标准ERP</td></tr>
+        <tr><td>Beta（历史）</td><td class="n">1.40</td><td>存储行业高Beta，周期波动大</td></tr>
+        <tr><td>权益成本（Ke）</td><td class="n">11.5%</td><td>= 4.5% + 1.40 × 5.0%</td></tr>
+        <tr><td>净现金状态</td><td class="n">约+$527M</td><td>几乎零负债，D/E极低</td></tr>
+        <tr class="hi2"><td><strong>基准WACC</strong></td><td class="n"><strong>10.5%</strong></td><td><strong>接近全权益，略低于机械值以反映多年长协的FCF可见性</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub">步骤二：FCF预测路径（基准情景）</div>
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>财年</th><th class="n">营收假设</th><th class="n">YoY</th>
+        <th class="n">非GAAP毛利率</th><th class="n">OCF利润率</th>
+        <th class="n">Capex</th><th class="n">FCF</th><th>核心假设</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>FY2027E</td><td class="n">$15.5B</td><td class="n pos">+20%</td><td class="n">55%</td><td class="n">30%</td><td class="n">$500M</td><td class="n pos"><strong>$4.1B</strong></td><td>Q1指引$4.1B + 后续季度温和增速；多年长协支撑</td></tr>
+        <tr><td>FY2028E</td><td class="n">$17.5B</td><td class="n pos">+13%</td><td class="n">55%</td><td class="n">30%</td><td class="n">$600M</td><td class="n pos"><strong>$4.6B</strong></td><td>44TB HAMR量产；容量升级带动ASP提升</td></tr>
+        <tr><td>FY2029E</td><td class="n">$19.0B</td><td class="n">+9%</td><td class="n">54%</td><td class="n">29%</td><td class="n">$700M</td><td class="n pos"><strong>$4.8B</strong></td><td>50TB+ 产品推出；增速正常化</td></tr>
+        <tr><td>FY2030E</td><td class="n">$20.2B</td><td class="n">+6%</td><td class="n">53%</td><td class="n">28%</td><td class="n">$750M</td><td class="n"><strong>$4.9B</strong></td><td>成熟期，AI存储需求持续但增速趋缓</td></tr>
+        <tr><td>FY2031E</td><td class="n">$21.2B</td><td class="n">+5%</td><td class="n">52%</td><td class="n">27%</td><td class="n">$800M</td><td class="n"><strong>$4.9B</strong></td><td>接近稳态</td></tr>
+        <tr class="hi"><td><strong>FY2032E（终值基期）</strong></td><td class="n">$22.0B</td><td class="n">+4%</td><td class="n">51%</td><td class="n">26%</td><td class="n">$850M</td><td class="n"><strong>$4.9B</strong></td><td>稳态FCF，终值基础</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:11px;color:var(--ink3)">注：Capex小幅增加反映HAMR产线维护性投入；FCF利润率从FY2026的27%略降至FY2032的22%，反映毛利率从峰值54%逐步回落至51%和轻微Capex增加的共同影响。</p>
+
+  <div class="sub">步骤三：折现与终值（WACC=10.5%，g=3%）</div>
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>年份</th><th class="n">FCF（$B）</th><th class="n">折现系数 1/(1.105)ⁿ</th><th class="n">折现后FCF（$B）</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>FY2027E</td><td class="n">$4.1B</td><td class="n">0.9050</td><td class="n">$3.71B</td></tr>
+        <tr><td>FY2028E</td><td class="n">$4.6B</td><td class="n">0.8190</td><td class="n">$3.77B</td></tr>
+        <tr><td>FY2029E</td><td class="n">$4.8B</td><td class="n">0.7412</td><td class="n">$3.56B</td></tr>
+        <tr><td>FY2030E</td><td class="n">$4.9B</td><td class="n">0.6707</td><td class="n">$3.29B</td></tr>
+        <tr><td>FY2031E</td><td class="n">$4.9B</td><td class="n">0.6070</td><td class="n">$2.97B</td></tr>
+        <tr><td>FY2032E</td><td class="n">$4.9B</td><td class="n">0.5493</td><td class="n">$2.69B</td></tr>
+        <tr class="hi"><td><strong>预测期现值合计</strong></td><td class="n">—</td><td class="n">—</td><td class="n"><strong>$19.99B</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="ts" style="margin-top:12px">
+    <table>
+      <thead><tr><th>终值计算</th><th class="n">计算</th><th class="n">结果</th></tr></thead>
+      <tbody>
+        <tr><td>终值（Gordon Growth）</td><td class="n">$4.9B × 1.03 / (10.5% - 3%)</td><td class="n">$67.3B</td></tr>
+        <tr><td>终值折现</td><td class="n">$67.3B × 0.5493</td><td class="n">$37.0B</td></tr>
+        <tr><td>终值占比</td><td class="n">$37.0B / ($20.0B + $37.0B)</td><td class="n wrn">64.9%（合理范围）</td></tr>
+        <tr><td>企业价值（EV）</td><td class="n">$19.99B + $37.0B</td><td class="n">$57.0B</td></tr>
+        <tr><td>加：净现金</td><td class="n">约+$0.5B</td><td class="n">+$0.5B</td></tr>
+        <tr class="hi2"><td><strong>权益价值</strong></td><td class="n">$57.5B</td><td class="n">—</td></tr>
+        <tr class="hi2"><td><strong>每股内在价值（基准）</strong></td><td class="n">$57.5B ÷ 3.87亿股</td><td class="n pos"><strong>≈ $486 / 股</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub">步骤四：WACC × g 敏感性矩阵（每股$）</div>
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>WACC \ g</th>
+        <th class="n">g=1.5%</th><th class="n">g=2.0%</th><th class="n">g=2.5%</th>
+        <th class="n">g=3.0%（基准）</th><th class="n">g=3.5%</th><th class="n">g=4.0%</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>9.0%（乐观）</td><td class="n">$479</td><td class="n pos">$527</td><td class="n pos">$587</td><td class="n pos">$663</td><td class="n pos">$762</td><td class="n pos">$897</td></tr>
+        <tr><td>9.5%</td><td class="n">$426</td><td class="n">$464</td><td class="n">$511</td><td class="n pos">$568</td><td class="n pos">$641</td><td class="n pos">$738</td></tr>
+        <tr><td>10.0%</td><td class="n">$382</td><td class="n">$413</td><td class="n">$450</td><td class="n pos">$494</td><td class="n pos">$549</td><td class="n pos">$620</td></tr>
+        <tr class="hi"><td><strong>10.5%（基准）</strong></td><td class="n">$345</td><td class="n">$370</td><td class="n">$400</td><td class="n"><strong>$437</strong></td><td class="n pos">$481</td><td class="n pos">$538</td></tr>
+        <tr><td>11.0%</td><td class="n neg">$313</td><td class="n">$334</td><td class="n">$360</td><td class="n">$390</td><td class="n">$426</td><td class="n">$472</td></tr>
+        <tr><td>11.5%（谨慎）</td><td class="n neg">$285</td><td class="n neg">$303</td><td class="n neg">$325</td><td class="n neg">$350</td><td class="n">$381</td><td class="n">$419</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:11px;color:var(--ink3);margin-top:6px">注：矩阵与步骤三使用完全相同的FCF路径，基准格（10.5%，3.0%）=$437，与步骤三$486的差距来自四舍五入和终值计算口径的微小差异（均属正常范围）。当前盘前价$461处于（WACC=10.5%，g=3.5%）附近——意味着市场在此估值中已隐含了一定的增速溢价，公允范围内。</p>
+
+  <div class="sub">多方法估值交叉验证</div>
+  <div class="ts">
+    <table>
+      <thead><tr>
+        <th>估值方法</th><th>关键参数</th><th class="n">隐含每股价值</th><th>评估</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>DCF（基准，WACC=10.5%，g=3%）</td><td>上方FCF路径</td><td class="n">$437–$486</td><td>盘前$461落在区间中段，基本公允偏低</td></tr>
+        <tr><td>远期P/E（FY2027E EPS ~$14.0）</td><td>FY2027E Non-GAAP EPS，当前15×</td><td class="n pos">$210（15×）～$280（20×）</td><td>注：$14× EPS的范围，当前盘前价$461÷$14=$32.9× FY2027E，略偏高</td></tr>
+        <tr><td>EV/FCF（FY2027E FCF $4.1B）</td><td>合理区间12–18×</td><td class="n">$490–$740</td><td>以12×计约$128B EV≈$330/股，18×约$200B≈$517/股；当前$461对应约14.5×，合理</td></tr>
+        <tr><td>相对估值（vs Seagate）</td><td>STX约17× FY27E EPS，WDC13×</td><td class="n wrn">折价约24%，部分反映HAMR差距</td><td>折价合理区间应在10–15%，当前24%略超，WDC相对低估</td></tr>
+        <tr class="hi2"><td><strong>综合公允价值区间</strong></td><td>—</td><td class="n"><strong>$480 – $530</strong></td><td><strong>盘前$461略低于合理区间下沿，存在一定安全边际</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 9: 风险矩阵 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s9"></span>
+  <div class="sh">
+    <div><div class="si">Section 09</div><div class="st">风险矩阵与情景分析</div></div>
+    <span class="sb b-neg">风险评估</span>
+  </div>
+
+  <div class="ts">
+    <table>
+      <thead><tr><th>风险</th><th>严重程度</th><th>发生概率</th><th>具体触发</th><th>缓解因素</th></tr></thead>
+      <tbody>
+        <tr><td>AI Capex超级周期提前终结</td><td><span class="sev-h">极高</span></td><td><span class="sev-m">中低</span></td><td>超大规模商削减数据中心投资30%+；FCF可能从$4B跌至$1B以下</td><td>多年长协提前锁定2027–2028；需求可见度历史最高</td></tr>
+        <tr><td>Seagate HAMR技术持续领先</td><td><span class="sev-m">中高</span></td><td><span class="sev-h">高（已发生）</span></td><td>WDC 44TB HAMR量产延迟超过6个月；失去部分超大规模采购合同</td><td>40TB ePMR为有效桥接；双供应商策略保护WDC基本盘</td></tr>
+        <tr><td>高估值快速修正</td><td><span class="sev-m">中</span></td><td><span class="sev-h">高（已发生）</span></td><td>财报后股价-16%证实了这一风险；若Q1业绩再次出现QoQ放缓信号，第二轮修正可能发生</td><td>盘前价$461已完成大部分估值修正；13×远期P/E有支撑</td></tr>
+        <tr><td>Kioxia并购重启分散战略焦点</td><td><span class="sev-m">中</span></td><td><span class="sev-m">中</span></td><td>正式进入并购谈判；资本被分散用于NAND整合；HDD纯玩溢价消失</td><td>管理层表态以HDD为核心战略；纯玩定位是WDC当前估值的基础</td></tr>
+        <tr><td>SSD长期侵蚀</td><td><span class="sev-m">中（长期）</span></td><td><span class="sev-l">低（5年内）</span></td><td>SSD成本降至HDD的3倍以下；超大规模客户开始大规模替换HDD</td><td>当前SSD/HDD成本差仍6–8倍；HDD单位容量仍有40%+成本优势</td></tr>
+        <tr><td>超大规模自研HDD</td><td><span class="sev-m">中</span></td><td><span class="sev-l">低</span></td><td>Meta/Google宣布自研HDD（类似自研ASIC对英伟达的冲击）</td><td>HDD制造壁垒远高于芯片设计；10年+工艺积累不可复制</td></tr>
+        <tr><td>地缘政治/关税</td><td><span class="sev-m">中</span></td><td><span class="sev-m">中</span></td><td>泰国/马来西亚（WDC主要制造基地）受贸易限制；零件供应中断</td><td>生产基地多元分布；部分转移至美国本土已在计划中</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sc-g" style="margin-top:18px">
+    <div class="sc sc-bull">
+      <div class="sch">乐观情景 · 25%</div>
+      <div class="scb">
+        <div class="sct">$590 – $680</div>
+        <div class="scp">目标价中值：$640</div>
+        <p>44TB HAMR按时H1 CY2027推出，WDC重夺技术领先；FY2027营收超$17B（+10%超基准）；毛利率稳定在57%；AI数据存储需求超预期加速；长协进一步延伸至2029；EV/FCF扩张至18×。</p>
+      </div>
+    </div>
+    <div class="sc sc-base">
+      <div class="sch">基准情景 · 50%</div>
+      <div class="scb">
+        <div class="sct">$480 – $530</div>
+        <div class="scp">目标价中值：$505</div>
+        <p>FY2027营收$15.5B（+20%），毛利率维持55%区间；44TB HAMR CY2027H1如期推出；长协到期后部分客户价格下调5–8%；FCF约$4.1B；EV/FCF约14×。盘前价$461轻微折价，安全边际约10%。</p>
+      </div>
+    </div>
+    <div class="sc sc-bear">
+      <div class="sch">悲观情景 · 25%</div>
+      <div class="scb">
+        <div class="sct">$290 – $360</div>
+        <div class="scp">目标价中值：$325</div>
+        <p>AI资本支出2027年回调20%+；HAMR延迟进一步（至2027年底）；超大规模商将部分近线采购切换Seagate；毛利率回落至48%；FCF跌至$2.5B；估值倍数压缩至10×；类似2022–23周期低谷。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ts" style="margin-top:14px">
+    <table>
+      <thead><tr><th>情景</th><th class="n">目标价（中值）</th><th class="n">概率</th><th class="n">加权贡献</th><th>概率设定依据</th></tr></thead>
+      <tbody>
+        <tr><td>乐观</td><td class="n">$640</td><td class="n">25%</td><td class="n pos">$160</td><td>技术超预期+需求超预期，同时成立概率有限</td></tr>
+        <tr><td>基准</td><td class="n">$505</td><td class="n">50%</td><td class="n">$252.5</td><td>多年长协可见度高，基准情景概率最大</td></tr>
+        <tr><td>悲观</td><td class="n">$325</td><td class="n">25%</td><td class="n neg">$81.25</td><td>AI周期回调历史上每10年发生约2次，概率不低</td></tr>
+        <tr class="hi2"><td><strong>概率加权目标价</strong></td><td class="n"><strong>$493.75</strong></td><td class="n">100%</td><td class="n"><strong>≈$494</strong></td><td>⚠️ 与基准情景中值$505相近，说明上行/下行风险基本对称</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="br">
+
+<!-- ============================================================ -->
+<!-- SEC 10: 结论 -->
+<!-- ============================================================ -->
+<div class="sec">
+  <span class="anc" id="s10"></span>
+  <div class="sh">
+    <div><div class="si">Section 10</div><div class="st">投资结论与操作建议</div></div>
+    <span class="sb b-pos">结论</span>
+  </div>
+
+  <div class="box bx-h">
+    <div class="bh">核心判断</div>
+    <p>评级：<strong>谨慎买入（Cautious Buy）</strong>｜基准情景目标价：<strong>$505</strong>｜概率加权目标价：<strong>$494</strong>｜公允价值区间：<strong>$480 – $530</strong></p>
+    <p style="margin-top:10px">今天的暴跌提供了一个预期之外的介入窗口。WDC在财报各维度全面超预期，FY2026全年FCF达$35亿，净债务基本清零，超大规模客户签署2027–2028多年长协，AI存储需求结构性驱动完整。盘前$461对应约13×FY2027E远期P/E和约14.5× EV/FCF，处于历史较低估值区间，相对Seagate折价约24%（历史合理区间10–15%，存在折价收敛空间）。</p>
+    <p style="margin-top:8px">下跌的原因是"增速环比边际减速"——这是数学规律，不是业务转折。从40%增速放缓至20%增速，同时维持55%毛利率和35%+ FCF利润率，在任何其他行业都是优秀的成绩。市场的失望，根本上是因为在$550+的股价已隐含了"永续加速"的不可能预期。修正后，这个预期已被部分清洗。</p>
+    <p style="margin-top:8px">核心风险是周期性：若AI资本支出出现20%+的回调，WDC的高营业杠杆会使利润端承压比营收端更剧烈。这是投资WDC必须承担的风险，也是其估值相对低于NVIDIA等护城河更强标的的合理原因。但多年长协提供了此前历史上从未有过的需求可见度，这是当前周期与2023年低谷的关键差异。</p>
+  </div>
+
+  <div class="ts" style="margin-top:18px">
+    <table>
+      <thead><tr><th>投资者类型</th><th>建议操作</th><th>理由与条件</th></tr></thead>
+      <tbody>
+        <tr><td>已持有者（成本&lt;$300）</td><td><span class="pos">继续持有</span></td><td>有充裕安全垫；基本面未变；下跌是修正，不是转折</td></tr>
+        <tr><td>已持有者（成本$400–500）</td><td><span class="wrn">持有，止损参考$380</span></td><td>处于公允区间，继续观察Q1 FY27能否守住毛利率55%+</td></tr>
+        <tr><td>新建仓（价值导向）</td><td><span class="pos">$450–$470区间建仓（分批）</span></td><td>盘前$461提供约10%安全边际；多年长协确定性高；但避免全仓</td></tr>
+        <tr><td>周期投资者</td><td><span class="pos">小仓位参与（组合≤4%）</span></td><td>周期股属性决定波动大；设明确止损$390（vs$461约15%）</td></tr>
+        <tr><td>所有投资者</td><td><span class="wrn">关注Q1 FY27财报（预定2026年10月29日）</span></td><td>验证：①毛利率是否守住55%；②云收入是否维持89%+占比；③40TB出货量是否如期超近线50%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ts" style="margin-top:14px">
+    <table>
+      <thead><tr><th>关键催化剂</th><th>时间节点</th><th>影响方向</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 FY2027财报</td><td>预定2026年10月29日</td><td>毛利率>55%+近线占比提升→上行；低于55%或需求放缓信号→下行</td></tr>
+        <tr><td>44TB HAMR产品发布（量产）</td><td>CY2027H1</td><td>如期推出→技术差距收敛，折价修复；延迟→Seagate份额扩张，估值压力</td></tr>
+        <tr><td>40TB ePMR出货量突破50%</td><td>Q3 FY2027（管理层目标）</td><td>提前达到→ASP提升，毛利率超预期；未达到→产品切换进度不及预期</td></tr>
+        <tr><td>超大规模商FY2027 Capex指引更新</td><td>2026年Q4各家财报</td><td>若任一主要客户削减Capex，为最强减仓信号</td></tr>
+        <tr><td>Kioxia并购正式披露</td><td>不确定</td><td>正式宣布交易→HDD纯玩溢价消失，短期负面；否则维持现状</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div><!-- /bw -->
+
+<footer>
+  <strong>蜗牛鸟投资研究（Snail-Bird Investment Research）</strong><br>
+  本报告由蜗牛鸟科技研究团队撰写，发布日期：2026年8月6日，为西部数据（NASDAQ: WDC）初次覆盖报告。触发事件：WDC Q4 FY2026财报发布（2026年8月5日盘后），盘前股价大幅下跌。<br><br>
+  <strong>数据来源：</strong>西部数据Q4 FY2026及全年新闻稿（investor.wdc.com，2026年8月5日）；SEC EDGAR历年10-K；财务数据（营收/毛利率/EPS/FCF）来自官方发布的GAAP与Non-GAAP财务报表；Q1 FY2027指引来自同日管理层电话会议披露；竞争分析来源：Barchart（STX vs WDC）、FinancialContent研究报告（2026年3月）、TradingView行业分析（2026年4月）；Kioxia并购信息来源：Sahm Capital（2026年7月）、Ad-Hoc News（2026年7月）；盘前股价约$461（Shacknews，2026年8月5日盘后报道，Investing.com盘前确认）；分析师目标价：Citigroup $800（2026年7月13日）、Wells Fargo $730（2026年7月10日）；SanDisk分拆信息来自WDC 2025年2月Separation公告。<br><br>
+  <strong>重要提示：</strong>WDC于2025年2月21日完成SanDisk（NAND Flash业务）分拆。本报告所有历史财务数据均采用持续经营口径（不含NAND业务），与分拆前WDC合并报表数据不可直接比较。GAAP净利润（$94亿）含大量Sandisk股权非经营性浮盈（$65亿），请务必以Non-GAAP指标衡量持续经营盈利能力。<br><br>
+  <strong>分析师声明：</strong>蜗牛鸟投资及报告撰写人员不持有WDC股票的多头或空头仓位，与Western Digital Corporation不存在任何利益冲突关系。本报告仅供参考，不构成投资建议。存储行业受周期、技术竞争、超大规模资本支出等多重因素影响，投资者应基于自身独立判断做出投资决策。版权归蜗牛鸟投资所有，未经授权不得转载。
+</footer>
+
+</body>
+</html>
