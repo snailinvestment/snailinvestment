@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全球宏观周报 | 2026年8月第1周复盘与第2周展望 | 蜗牛鸟投资</title>
+<style>
+  :root{
+    --bg:#f7f5f1; --card:#ffffff; --ink:#1f2420; --ink-soft:#5b6058;
+    --line:#e4e0d8; --accent:#8a6d3b; --accent-2:#3d5a4c; --red:#b5453c;
+    --green:#3d7a56; --amber:#c08a2e; --navy:#2f4457;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:"Songti SC","STSong","Noto Serif SC",serif, "PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.7; font-size:15px;
+  }
+  .masthead{
+    background:linear-gradient(135deg,#22301f 0%,#2f4437 60%,#3d5a4c 100%);
+    color:#f2efe6; padding:34px 6vw 26px;
+    border-bottom:4px solid var(--accent);
+  }
+  .masthead-top{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px;}
+  .brand{font-size:13px; letter-spacing:3px; opacity:.85; text-transform:uppercase;}
+  .brand b{color:#e7d7b0;}
+  .masthead h1{font-size:clamp(22px,3vw,32px); margin:10px 0 6px; font-weight:700; letter-spacing:1px;}
+  .masthead .sub{font-size:14px; opacity:.88; max-width:760px;}
+  .masthead-meta{text-align:right; font-size:12.5px; opacity:.8; line-height:1.6;}
+  .alert-banner{
+    margin-top:18px; background:rgba(181,69,60,.16); border:1px solid rgba(231,145,130,.5);
+    border-radius:6px; padding:12px 16px; font-size:13.5px; display:flex; gap:10px; align-items:flex-start;
+  }
+  .alert-banner .tag{
+    background:var(--red); color:#fff; font-size:11px; padding:2px 8px; border-radius:3px;
+    font-weight:700; letter-spacing:1px; flex-shrink:0; margin-top:2px;
+  }
+
+  nav.sticky{
+    position:sticky; top:0; z-index:50; background:#fdfcfa; border-bottom:1px solid var(--line);
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+  }
+  nav.sticky .wrap{display:flex; gap:2px; overflow-x:auto; padding:0 6vw;}
+  nav.sticky a{
+    white-space:nowrap; padding:13px 14px; font-size:13px; color:var(--ink-soft); text-decoration:none;
+    border-bottom:3px solid transparent; font-weight:600;
+  }
+  nav.sticky a:hover{color:var(--accent); border-bottom-color:var(--accent);}
+
+  main{max-width:1120px; margin:0 auto; padding:0 6vw 60px;}
+  section{padding-top:34px; scroll-margin-top:52px;}
+  h2.sec-title{
+    font-size:20px; margin:0 0 4px; color:var(--navy); display:flex; align-items:center; gap:10px;
+  }
+  h2.sec-title .num{
+    background:var(--navy); color:#fff; width:26px; height:26px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;
+  }
+  .sec-desc{color:var(--ink-soft); font-size:13.5px; margin:0 0 18px; padding-left:36px;}
+  h3{font-size:16px; color:var(--accent-2); margin:22px 0 10px;}
+
+  .kpi-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:6px;
+  }
+  .kpi{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px 14px 12px;
+    border-top:3px solid var(--accent);
+  }
+  .kpi .label{font-size:11.5px; color:var(--ink-soft); letter-spacing:.5px;}
+  .kpi .value{font-size:20px; font-weight:700; margin:4px 0 2px; color:var(--ink);}
+  .kpi .delta{font-size:12px; font-weight:600;}
+  .up{color:var(--red);} .down{color:var(--green);} .flat{color:var(--ink-soft);}
+
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px; background:var(--card);}
+  caption{text-align:left; font-size:12px; color:var(--ink-soft); margin-bottom:6px;}
+  th{
+    background:#eef0e9; color:var(--navy); text-align:left; padding:9px 10px; font-weight:700;
+    border-bottom:2px solid var(--line); white-space:nowrap;
+  }
+  td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tr:hover td{background:#faf9f5;}
+  .tag-beat{background:#e3efe6; color:var(--green); font-size:11px; padding:1px 7px; border-radius:10px; font-weight:700;}
+  .tag-miss{background:#f7e6e4; color:var(--red); font-size:11px; padding:1px 7px; border-radius:10px; font-weight:700;}
+  .tag-inline{background:#f0eee7; color:var(--ink-soft); font-size:11px; padding:1px 7px; border-radius:10px; font-weight:700;}
+
+  .callout{
+    background:#fbf8f0; border-left:4px solid var(--amber); padding:12px 16px; border-radius:4px;
+    font-size:13.5px; margin:14px 0;
+  }
+  .callout.risk{border-left-color:var(--red); background:#fbf1ef;}
+  .callout.data{border-left-color:var(--navy); background:#eef2f5;}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin:14px 0;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media (max-width:820px){.grid2,.grid3{grid-template-columns:1fr;}}
+
+  .scenario{border-radius:10px; padding:16px 18px; border:1px solid var(--line);}
+  .scenario.bull{border-top:4px solid var(--green);}
+  .scenario.base{border-top:4px solid var(--navy);}
+  .scenario.bear{border-top:4px solid var(--red);}
+  .scenario h4{margin:0 0 6px; display:flex; justify-content:space-between; align-items:center; font-size:15px;}
+  .prob{font-size:13px; font-weight:800; padding:2px 9px; border-radius:12px; color:#fff;}
+  .bull .prob{background:var(--green);} .base .prob{background:var(--navy);} .bear .prob{background:var(--red);}
+  .scenario ul{margin:8px 0 0; padding-left:18px; font-size:13px;}
+  .scenario li{margin-bottom:5px;}
+
+  .driver-header{
+    display:flex; align-items:center; gap:10px; background:#f0eee2; padding:10px 16px; border-radius:8px 8px 0 0;
+    border:1px solid var(--line); border-bottom:none;
+  }
+  .driver-header .icon{font-size:20px;}
+  .driver-body{border:1px solid var(--line); border-radius:0 0 8px 8px; padding:16px; background:var(--card); margin-bottom:18px;}
+
+  .footer-disclaimer{
+    margin-top:50px; padding-top:22px; border-top:1px solid var(--line); font-size:11.5px; color:var(--ink-soft); line-height:1.8;
+  }
+  .footer-disclaimer .fname{font-weight:700; color:var(--accent-2);}
+
+  .src{font-size:11.5px; color:#8b9186;}
+  .badge-row{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0;}
+  .badge{background:#eef0e9; color:var(--navy); font-size:11.5px; padding:4px 10px; border-radius:6px; font-weight:600;}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div>
+      <div class="brand">蜗牛鸟投资 <b>Snail-Bird Investment</b> · 全球宏观研究组</div>
+      <h1>全球宏观周报：非农骤减+大幅下修引爆"加息转降息"重定价，黄金单周暴涨逾7%</h1>
+      <div class="sub">2026年8月第1周（8.3–8.9）复盘 ｜ 2026年8月第2周（8.10–8.16）展望 —— 四维驱动·三层传导框架</div>
+    </div>
+    <div class="masthead-meta">
+      发布日期：2026年8月8日<br>
+      数据截至：2026年8月7日收盘<br>
+      数据源：BLS、CME FedWatch、Fed、ECB、OPEC、中国外汇交易中心、国家统计局
+    </div>
+  </div>
+  <div class="alert-banner">
+    <span class="tag">本周焦点</span>
+    <div>
+      （1）美国7月非农意外骤降2.3万人（预期+8万），5-6月合计下修10.3万人，为年内最大就业数据"证伪"事件，直接扭转市场对9月FOMC的加息定价；（2）CME FedWatch 9月"维持不变"概率由周四的约36-45%一举跳升至56-60%，加息概率相应从58%附近骤降至42-44%；（3）现货黄金单周暴涨超7%，一度触及$4,350+/盎司，创1月以来最大单周涨幅，白银同步大涨逾4%至7周新高；（4）美债收益率全线回落，10年期从4.67%降至4.60-4.65%区间，美元指数跌破100至99.6附近；（5）伊朗与阿曼就霍尔木兹海峡"临时航道"达成框架协议，Brent原油从上周~$91高位大幅回落至~$82附近；（6）标普500周五收于7,757.64点历史新高；（7）A股本周持续走强，上证指数8/7收报3,940.04点，人民币汇率保持基本平稳。
+    </div>
+  </div>
+</header>
+
+<nav class="sticky">
+  <div class="wrap">
+    <a href="#kpi">KPI速览</a>
+    <a href="#fed">① 非农与美联储重定价</a>
+    <a href="#gold">② 黄金与避险资产</a>
+    <a href="#geo">③ 地缘与能源</a>
+    <a href="#china">④ 中国宏观</a>
+    <a href="#scenario">情景矩阵</a>
+    <a href="#levels">资产关键点位</a>
+    <a href="#alloc">配置建议</a>
+    <a href="#risk">风险register</a>
+    <a href="#outlook">下周展望</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="kpi">
+  <h2 class="sec-title"><span class="num">•</span>本周KPI速览（2026.8.3–8.7）</h2>
+  <p class="sec-desc">四大驱动因子的核心量化指标，环比上周（7.27–8.2）变化</p>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">7月新增非农就业</div><div class="value">-2.3万</div><div class="delta down">预期+8万，巨幅不及预期</div></div>
+    <div class="kpi"><div class="label">5-6月合计下修</div><div class="value">-10.3万</div><div class="delta down">5月-6.6万，6月-3.7万</div></div>
+    <div class="kpi"><div class="label">美国失业率</div><div class="value">4.1%</div><div class="delta down">较6月4.2%回落，但因参与率下降</div></div>
+    <div class="kpi"><div class="label">CME FedWatch 9月"维持不变"概率</div><div class="value">56–60%</div><div class="delta down">数据公布前约36-45%，急速反转</div></div>
+    <div class="kpi"><div class="label">CME FedWatch 9月"加息"概率</div><div class="value">42–44%</div><div class="delta down">上周五约63.2%，跳水式回落</div></div>
+    <div class="kpi"><div class="label">美10年期国债收益率</div><div class="value">4.60–4.65%</div><div class="delta down">数据公布前4.67%，当日-5至-7bp</div></div>
+    <div class="kpi"><div class="label">美2年期国债收益率</div><div class="value">~4.15–4.20%</div><div class="delta down">盘中一度触及4.15%</div></div>
+    <div class="kpi"><div class="label">现货黄金（8/7）</div><div class="value">$4,315–4,356</div><div class="delta up">周内最高涨幅超7%</div></div>
+    <div class="kpi"><div class="label">现货白银（8/7）</div><div class="value">~$64.1</div><div class="delta up">单日+4.16%，创6周新高</div></div>
+    <div class="kpi"><div class="label">美元指数DXY</div><div class="value">~99.6</div><div class="delta down">数据公布后-0.3%</div></div>
+    <div class="kpi"><div class="label">Brent原油（8/7）</div><div class="value">~$82</div><div class="delta down">较上周~$91明显回落</div></div>
+    <div class="kpi"><div class="label">标普500（8/7收）</div><div class="value">7,757.64</div><div class="delta up">历史新高</div></div>
+    <div class="kpi"><div class="label">USD/CNY中间价（8/7）</div><div class="value">6.7904</div><div class="delta flat">周内小幅调贬9个基点，基本平稳</div></div>
+    <div class="kpi"><div class="label">上证指数（8/7收）</div><div class="value">3,940.04</div><div class="delta up">+1.02%，三大指数全线飘红</div></div>
+  </div>
+  <div class="callout data">
+    <b>数据口径说明：</b>本周CME FedWatch概率在非农数据公布前后出现多次快照，不同信源披露的具体数值存在小幅差异（如"维持不变"概率有56.1%、60%等多个版本），系不同时点、不同机构对同一期货定价的采样差异，本文统一采用公布当日（8月7日）美东时间上午的即时读数，并标注"区间"而非单点数值以反映这种正常的数据抖动。金价数据同样存在现货、期货（GC=F）、CFD报价的口径差异，本文以美东时间上午CNBC现货金价（约$4,350-4,356）为主要参照，同时列出Reuters报道的$4,341.69作为交叉验证。
+  </div>
+</section>
+
+<!-- ============ DRIVER 1: NFP & FED REPRICING ============ -->
+<section id="fed">
+  <h2 class="sec-title"><span class="num">1</span>驱动一：非农就业"爆冷"引爆年内最大规模政策路径重定价</h2>
+  <p class="sec-desc">传导层：就业数据 → 美联储9月决策概率 → 收益率曲线/美元/风险资产</p>
+
+  <div class="driver-header"><span class="icon">📉</span><b>核心事件：7月非农意外萎缩，前值大幅下修</b></div>
+  <div class="driver-body">
+    <h3>数据本身：三重利空叠加</h3>
+    <p>8月7日公布的美国7月就业报告呈现罕见的"三重意外"：<cite index="94-1">7月非农就业人数下降2.3万人，而5月和6月数据合计下修10.3万人</cite>，且这一降幅远超市场预期——<cite index="103-1">经济学家此前预测将增加约8万个岗位</cite>。具体拆解：<cite index="89-1">5月新增就业由此前公布的+12.9万人大幅下修至+6.3万人（下修6.6万），6月由+5.7万人下修至+2.0万人（下修3.7万）</cite>。<cite index="107-1">叠加本次修订，美国经济较此前预期已累计短缺25.2万个就业岗位</cite>，是2026年迄今最大规模的数据"证伪"事件。</p>
+
+    <div class="callout risk">
+      <b>失业率下降≠就业向好：</b>需特别提醒，本次失业率从6月的4.2%降至4.1%<cite index="94-1">，但这一下降并非源于就业改善，而是劳动力参与率持续走低所致</cite>——<cite index="128-1">"投资者应对经济增长潜力保持警惕，在一个越来越少人工作的经济体中"，Amova资产管理美洲区首席投资官Peter Graf在研报中提醒</cite>。这是一个典型的"坏消息式改善"信号，不应被误读为劳动力市场健康度回升。
+    </div>
+
+    <h3>市场即时反应：股债汇商品全面重定价</h3>
+    <table>
+      <caption>2026年8月7日非农公布后主要资产即时反应</caption>
+      <thead><tr><th>资产</th><th>数据公布前</th><th>数据公布后</th><th>变动</th></tr></thead>
+      <tbody>
+        <tr><td>10年期美债收益率</td><td>4.67%<cite index="126-1">（8/6收盘水平，此前一日上涨逾5个基点）</cite></td><td>4.60–4.65%<cite index="124-1">（一度触及4.60%的日内低点后小幅回升）</cite></td><td class="down">-5至-7bp</td></tr>
+        <tr><td>2年期美债收益率</td><td>4.22%</td><td>4.15–4.20%<cite index="124-1">（一度低见4.15%后回升）</cite></td><td class="down">-2至-7bp</td></tr>
+        <tr><td>美元指数DXY</td><td>~99.9附近</td><td>99.60<cite index="127-1">（下跌0.3%）</cite></td><td class="down">-0.3%</td></tr>
+        <tr><td>标普500</td><td>周二已创纪录</td><td>7,757.64<cite index="123-1">（再创历史新高）</cite></td><td class="up">+0.6%</td></tr>
+        <tr><td>现货黄金</td><td>~$4,250附近</td><td>$4,315–4,356</td><td class="up">+2.4%至+7%（周度）</td></tr>
+        <tr><td>纳斯达克综合指数</td><td>-</td><td>+1.1%<cite index="124-1">（英伟达上涨2.3%，博通上涨1%）</cite></td><td class="up">科技股领涨</td></tr>
+        <tr><td>利率敏感型板块（地产建筑、REITs、公用事业）</td><td>-</td><td>-</td><td class="up"><cite index="127-1">早盘领涨，受益于降息预期升温</cite></td></tr>
+      </tbody>
+    </table>
+
+    <h3>CME FedWatch：9月路径概率剧烈翻转</h3>
+    <p>本周最关键的政策定价变化在于市场对9月FOMC决策的预期发生了方向性逆转。<b>数据公布前（8月6日周四）</b>：<cite index="107-1">市场定价9月加息25个基点的概率为55.0%，维持不变的概率为45.0%</cite>；据另一信源，<cite index="126-1">周四10年期收益率盘中曾升破5个基点，反映当时市场对9月加息的定价一度达到58%</cite>。<b>数据公布后（8月7日）</b>：概率结构快速反转，<cite index="108-1">Kalshi预测市场平台显示9月维持利率不变的概率升至65%，CME FedWatch工具显示这一概率为60%</cite>；另据Forbes报道，<cite name="Forbes" index="107-1">"维持利率"概率跳升至56.1%，"加息25个基点"概率降至43.9%</cite>；TradingEconomics引述数据显示<cite index="126-1">9月加息概率由前一日的58%降至42%，12月加息预期同样从32个基点降至28个基点</cite>。<span class="tag-miss">政策路径预期在24小时内发生方向性反转</span></p>
+
+    <div class="callout data">
+      <b>多信源交叉验证提示：</b>不同机构披露的具体百分比存在3-5个百分点的差异（56.1% vs 60% vs 65%），这属于不同数据提供商（CME官方 vs Kalshi预测市场 vs 第三方汇总平台）在同一时点的正常口径差异，不影响"方向性反转"这一核心结论的可靠性——即市场对9月决策的主流预期已从"倾向加息"转为"倾向维持不变"。仍需注意，<cite index="108-1">CME FedWatch同时显示10月加息概率仍有55%，12月加息概率接近75%</cite>，表明市场并未完全排除年内加息可能，只是将时点progressively推后，这与此前政治局分析中"三票鹰派异议"所反映的深层通胀担忧尚未被单一数据点完全消化的逻辑一致。
+    </div>
+
+    <h3>与上周FOMC鹰派论调的张力</h3>
+    <p>本次非农数据与仅一周前的FOMC会议形成鲜明对比。上周会议中<cite index="125-1">三名美联储地区主席在会议上投票支持立即加息——为近年来最大规模的鹰派异议</cite>，且<cite index="126-1">此前有报道称美联储主席沃什曾向英国《金融时报》表示，若未来数周通胀读数持续偏高，他愿意在9月加息</cite>。本周疲软的就业数据使这一鹰派叙事面临直接挑战：<cite index="109-1">"美国劳动力市场再度陷入停滞，这将使美联储的工作更加艰难，也让求职者的处境更加艰难"，Navy Federal信用合作社首席经济学家Heather Long在一份邮件声明中表示</cite>。市场的核心矛盾在于——美联储"抗通胀优先"的鹰派立场（受油价驱动的通胀压力支撑）正与"就业转弱需要宽松支持"的传统政策逻辑发生冲突，这一矛盾将在8月12日CPI数据公布后进一步检验。</p>
+
+    <h3>下一关键节点：8月12日CPI</h3>
+    <p><cite index="108-1">投资者接下来将关注7月通胀数据，将于8月12日通过消费者价格指数(CPI)报告公布</cite>。若届时CPI维持高位（尤其是受油价传导的能源分项），美联储将面临"通胀高、就业弱"的经典滞胀式两难局面，届时9月决策的不确定性可能进一步放大，而非随着本周的就业数据而简单收敛为"确定维持不变"。</p>
+  </div>
+</section>
+
+<!-- ============ DRIVER 2: GOLD / SAFE HAVEN ============ -->
+<section id="gold">
+  <h2 class="sec-title"><span class="num">2</span>驱动二：黄金单周暴涨逾7% —— 降息预期+避险需求的双重共振</h2>
+  <p class="sec-desc">传导层：就业疲软/美元走弱 → 实际利率预期下修 → 贵金属定价</p>
+
+  <div class="driver-body">
+    <h3>价格走势：本周最亮眼的大类资产</h3>
+    <p>现货黄金本周经历显著波动式上涨。<cite index="102-1">周初（8月7日盘前）金价交投于约$4,254附近，为2026年以来上涨5%的水平</cite>，非农数据公布后加速上行：<cite index="99-1">现货黄金截至美东时间上午10:57跳涨2.4%至$4,341.69/盎司，盘中一度上涨超3%，触及6月17日以来最高水平；黄金期货同步上涨2.4%至$4,402.20</cite>。<cite index="99-1">按周度计算，金价有望创下1月19日以来的最大单周涨幅，本周迄今涨幅已超过7%</cite>。到当日晚些时候，<cite index="103-1">现货金价格站稳$4,315.19/盎司，单日上涨$15.19（+0.35%）</cite>；另据CNBC口径，<cite index="105-1">截至美东时间上午9点，金价报$4,356.56/盎司，较周四同一时点的$4,252.59大幅走高</cite>。<span class="tag-beat">显著超出此前区间震荡预期</span></p>
+
+    <h3>驱动逻辑：三重支撑因素叠加</h3>
+    <div class="grid3">
+      <div class="card">
+        <b style="color:var(--green)">1. 降息预期升温</b>
+        <p style="font-size:13px; margin-top:8px;"><cite index="98-1">疲软的7月就业报告强化了美联储降息的理由，降低了持有无息资产（黄金）的机会成本</cite>。这是本周金价上涨最直接的传导路径。</p>
+      </div>
+      <div class="card">
+        <b style="color:var(--navy)">2. 美元与实际收益率同步走弱</b>
+        <p style="font-size:13px; margin-top:8px;"><cite index="101-1">金价上涨受到能源价格走低和劳动力市场走软的支撑，降低了美联储今年加息的预期</cite>，<cite index="103-1">非农意外下滑将美元推至两周低位</cite>，美元与金价的经典负相关在本周表现得尤为清晰。</p>
+      </div>
+      <div class="card">
+        <b style="color:var(--red)">3. 地缘避险需求延续</b>
+        <p style="font-size:13px; margin-top:8px;"><cite index="101-1">中国机构投资者持续增持黄金资产头寸，作为对冲科技股波动的工具，需求同时受到各国央行持续购金的支撑</cite>，这一结构性买盘为本轮反弹提供了额外支撑。</p>
+      </div>
+    </div>
+
+    <h3>白银同步走强，金银比收窄</h3>
+    <p><cite index="103-1">白银周五大幅拉升，将金银比从约69一举压低至约67，令此前逢低布局白银的投资者获得可观回报；现货银价报$64.10/盎司，单日上涨$2.56（+4.16%），创6周新高</cite>。白银的industrial属性叠加贵金属avoir-haven属性，在本周表现出比黄金更强的弹性。</p>
+
+    <h3>机构观点分歧：中期目标仍存较大分歧</h3>
+    <div class="callout">
+      <cite index="100-1">瑞银(UBS)表示，黄金的上涨行情"具有支撑"，预计明年价格将升至$5,000</cite>，反映部分机构对黄金牛市延续性持乐观态度。但也有观点提示风险，<cite index="100-1">目前尚不清楚哪一种市场力量将最终主导金价方向——本周同时存在"就业疲软支持降息"与"中东局势未获永久和平解决方案、能源成本持续影响通胀担忧"两股相互角力的逻辑</cite>。<cite index="102-1">技术面显示黄金即时阻力位于$4,280附近，支撑位于$4,236和$4,195</cite>（该技术位判断时点略早于金价突破$4,300后的最新走势，建议结合最新价格动态更新参考区间）。<span class="tag-inline">机构观点分歧，中期方向未完全明朗</span>
+    </div>
+
+    <h3>年度表现回顾</h3>
+    <p><cite index="104-1">金价年内涨幅已超过25%，自2025年初以来累计上涨逾25%，驱动因素包括持续通胀与经济不确定性</cite>；<cite index="102-1">2026年金价已从6月创下的$4,000附近低点回升至$4,250以上水平</cite>，本周的进一步跳涨使其重新逼近历史高位区间。</p>
+  </div>
+</section>
+
+<!-- ============ DRIVER 3: GEOPOLITICS / ENERGY ============ -->
+<section id="geo">
+  <h2 class="sec-title"><span class="num">3</span>驱动三：地缘与能源 —— 伊朗-阿曼霍尔木兹海峡框架协议，油价显著回落</h2>
+  <p class="sec-desc">传导层：地缘外交进展 → 海峡通行预期改善 → 油价与通胀预期</p>
+
+  <div class="driver-body">
+    <h3>伊朗-阿曼达成"临时航道"框架协议</h3>
+    <p>本周地缘局势出现阶段性缓和信号。<cite index="144-1">伊朗表示已与阿曼就霍尔木兹海峡的拟议航运路线达成协议，这可能是重新开放这一能源运输关键水道的潜在一步</cite>。<cite index="142-1">伊朗副外长Kazem Gharibabadi周三接受采访时表示，尽管伊朗和阿曼已接近敲定拟议框架，但该协议本身不会自动重新开放这一水道</cite>。谈判细节包括：<cite index="142-1">谈判已持续三周以上，双方就拟议的进出港航运路线达成广泛共识，还涉及技术安排、伊朗与阿曼的安全与主权问题，以及一个拟议中的联合协调中心，用于管理海上交通并收集船只信息；根据拟议安排，霍尔木兹海峡内靠近伊朗拉拉克岛及阿曼领海的临时航线将关闭</cite>。</p>
+
+    <div class="callout risk">
+      <b>协议≠海峡完全重开：</b>需要特别提醒的是，此次伊朗-阿曼协议本质上是双边航道安排，并<b>不等同于</b>海峡对所有国际航运的完全重新开放。<cite index="143-1">伊朗外交部发言人Esmaeil Baghaei强调，伊朗-阿曼协议本身无法保证航行安全，只要"美国的海军封锁及其他针对伊朗及其利益的行动仍然存在"</cite>。<cite index="146-1">伊朗此前坚持要求船只在通过前须获得许可并缴纳通行费，声称对这一关键水道拥有主权控制权，这与美国及国际社会的立场直接对立</cite>，因此该协议更应被理解为"降低敌意的阶段性信号"，而非"冲突实质性解决"，油价的回落空间可能相应受限。
+    </div>
+
+    <h3>油价：从上周高位显著回落</h3>
+    <table>
+      <caption>Brent原油价格走势对比（周环比）</caption>
+      <thead><tr><th>时点</th><th>Brent</th><th>WTI</th><th>驱动因素</th></tr></thead>
+      <tbody>
+        <tr><td>上周（7/30，冲突重启期）</td><td>~$91</td><td>~$86</td><td>伊朗冲突五夜暂停后重启打击</td></tr>
+        <tr><td>8/6（周四）</td><td>~$81<cite index="116-1">（连续三个交易日下跌后反弹至约81美元，因投资者评估拟议中霍尔木兹海峡航运协议的影响）</cite></td><td>-</td><td>伊朗-阿曼谈判进展</td></tr>
+        <tr><td>8/7（周五）</td><td>$82.04–83.49<cite index="115-1">（开盘价83.49，此后24小时内下跌1.74%至82.04）</cite></td><td>$78.31<cite index="115-1">（开盘价）</cite></td><td>协议消息进一步消化，叠加就业数据对需求预期的影响</td></tr>
+      </tbody>
+    </table>
+    <p>值得注意的是，即便本周油价明显回落，冲突造成的供应损失依然可观：<cite index="120-1">自中东海湾战争爆发以来，市场已损失超过20亿桶原油供应，相当于战前19天的全球产量</cite>。这一存量损失意味着，即便当前局势降温，市场对"供应缺口修复"的定价路径仍将是渐进式而非一次性的。</p>
+
+    <h3>局势仍存不确定性：多点复杂化因素</h3>
+    <p>尽管出现外交进展，霍尔木兹海峡局势仍然复杂：<cite index="116-1">据报道，伊朗在盖什姆岛附近发生爆炸后，打击了其所称的海峡内"敌对目标"；根据拟议的伊朗-阿曼协议，德黑兰寻求禁止美国和以色列船只通过海峡，并要求被视为敌对的国家在获准通行前支付赔偿；伊朗还提出对违规行为处以货物价值20%的罚款，并表示只有在美国海上封锁解除后，海峡才会完全重新开放</cite>。与此同时，<cite index="116-1">英国海军报告在海峡内一艘油轮附近发生爆炸，伊朗支持的胡塞武装则声称袭击了一艘沙特油轮，并威胁对更多船只采取行动</cite>，红海航线风险与霍尔木兹海峡风险仍呈现同步存在而非相互替代的格局。</p>
+  </div>
+</section>
+
+<!-- ============ DRIVER 4: CHINA MACRO ============ -->
+<section id="china">
+  <h2 class="sec-title"><span class="num">4</span>驱动四：中国宏观 —— 人民币汇率基本平稳，A股延续上行动能</h2>
+  <p class="sec-desc">传导层：政治局会议定调延续消化 → 人民币汇率窄幅波动 → A股风险偏好持续修复</p>
+
+  <div class="driver-body">
+    <h3>人民币汇率：周内窄幅双向波动</h3>
+    <table>
+      <caption>2026年8月第1周人民币汇率中间价（USD/CNY）</caption>
+      <thead><tr><th>日期</th><th>中间价</th><th>较前一日变动</th></tr></thead>
+      <tbody>
+        <tr><td>8/3（周一）</td><td>6.7898<cite index="136-1">调贬4个基点</cite></td><td class="up">贬值4bp</td></tr>
+        <tr><td>8/4（周二）</td><td>6.7917</td><td class="up">贬值19bp</td></tr>
+        <tr><td>8/6（周四）</td><td>6.7895<cite index="139-1">调贬6个基点</cite></td><td class="down">升值约22bp（较8/4）</td></tr>
+        <tr><td>8/7（周五）</td><td>6.7904<cite index="136-1">调贬9个基点</cite></td><td class="up">贬值9bp</td></tr>
+      </tbody>
+    </table>
+    <p>整体来看，人民币汇率本周维持在6.79附近的窄幅区间内双向波动，波动幅度普遍在个位数至20个基点左右，未出现方向性突破，反映出在美联储政策预期剧烈重定价、美元指数走弱的外部环境下，人民币汇率的相对韧性——美元走弱本应为人民币升值提供空间，但当前中间价并未同步大幅走强，可能与国内基本面（7月PMI回落、二季度GDP不及预期等此前已讨论的结构性压力）对汇率形成一定程度的对冲有关。</p>
+
+    <h3>A股：延续7月底以来的上行动能</h3>
+    <table>
+      <caption>2026年8月第1周A股主要指数收盘表现</caption>
+      <thead><tr><th>日期</th><th>上证指数</th><th>涨跌幅</th><th>市场特征</th></tr></thead>
+      <tbody>
+        <tr><td>8/5（周三）</td><td>-</td><td>-</td><td><cite index="137-1">三大指数集体低开高走，科创50大涨超5%</cite></td></tr>
+        <tr><td>8/6（周四）</td><td>3,900.35<cite index="137-1">（另一信源显示低开报3864.27点，盘中修复至收盘上涨0.57%报3900.35点）</cite></td><td class="up">+0.57%</td><td>低开高走后震荡回落，指数涨、个股呈现分化</td></tr>
+        <tr><td>8/7（周五）</td><td>3,940.04<cite index="137-1">（低开高走、全线飘红，涨1.02%）</cite></td><td class="up">+1.02%</td><td>深证成指同步上涨1.4%以上</td></tr>
+      </tbody>
+    </table>
+    <div class="callout data">
+      <b>数据口径提示：</b>8月6日上证指数存在两个版本的收盘表述（"低开0.37%报3864.27点"为盘初数据 vs "收盘上涨0.57%报3900.35点"为全天收盘数据），本文采用后者（全天收盘价）作为周报口径，建议在后续引用中统一采用收盘价而非盘中价，避免时点混淆。
+    </div>
+    <p>亚太市场层面本周呈现一定程度分化：<cite index="137-1">周五亚洲股市整体表现分化，中国股市上涨提振了整体市场情绪，但日本和韩国市场持续承压，半导体股走势偏弱</cite>——这与上周末A股存储芯片板块及韩股SK海力士等标的的强势表现形成一定反差，或反映资金在"美联储政策重定价"的宏观环境下，对不同市场、不同板块的敏感度存在阶段性分化，建议下周持续跟踪该背离是否收敛。</p>
+
+    <h3>政策消化节奏：仍处政治局会议定调的渐进落地期</h3>
+    <p>延续上周报告中的判断，政治局会议"更加积极的财政政策+适度宽松的货币政策"定调仍处于市场消化阶段，多数机构预期实际增量政策将集中在四季度落地。本周A股的持续上行更多应理解为流动性面（美联储政策预期转松、全球风险偏好回升）与结构性资金（科技股、存储芯片链条）共同驱动的结果，而非国内增量政策实质性加码的直接反映——这一判断路径与市场表现基本吻合，需持续关注8月中上旬财政支出数据是否验证"补进度"的实际执行力度。</p>
+  </div>
+</section>
+
+<!-- ============ SCENARIO MATRIX ============ -->
+<section id="scenario">
+  <h2 class="sec-title"><span class="num">✓</span>情景矩阵：8月10日–8月16日</h2>
+  <p class="sec-desc">概率加权情景，聚焦下周核心变量：8月12日CPI数据、伊朗-阿曼协议后续进展、9月加息预期能否进一步收敛</p>
+  <div class="grid3">
+    <div class="scenario bull">
+      <h4>乐观情景 <span class="prob">25%</span></h4>
+      <p style="font-size:13px;">8月12日CPI数据延续温和态势（核心通胀环比放缓），叠加就业数据疲软的组合，使9月"维持不变"概率进一步升至70%以上；伊朗-阿曼协议细化落地，霍尔木兹海峡通行量实质性回升，Brent回落至$75-80区间；美债收益率进一步下行至4.5%以下，黄金短期获利了结但中期上行趋势确认；A股在流动性宽松预期下延续上涨，衔接8月中上旬财政数据验证。</p>
+    </div>
+    <div class="scenario base">
+      <h4>基准情景 <span class="prob">50%</span></h4>
+      <p style="font-size:13px;">CPI数据喜忧参半（整体温和但能源分项因前期油价上涨存在反弹压力），9月决策概率维持"接近五五开"的高度不确定状态；伊朗-阿曼协议执行存在反复，霍尔木兹海峡局势"降温但不解决"，Brent在$78-88区间震荡；黄金高位盘整、消化前期涨幅；美债收益率窄幅波动于4.55-4.70%区间；A股维持结构性行情，人民币汇率延续窄幅波动。</p>
+    </div>
+    <div class="scenario bear">
+      <h4>悲观情景 <span class="prob">25%</span></h4>
+      <p style="font-size:13px;">8月12日CPI数据超预期走高（尤其能源分项因7月油价上涨的传导效应显现），重新点燃9月加息担忧，市场定价大幅回摆至加息概率60%+；伊朗-阿曼协议因"第三方阻挠"（如美国海军封锁未解除）而搁浅，冲突重新升级，Brent反弹至$95+；美债收益率反弹至4.75%+，美元指数重新走强，压制黄金涨势；全球风险资产（含A股）承压，形成"再通胀交易"对市场情绪的二次冲击。</p>
+    </div>
+  </div>
+  <p class="src" style="margin-top:10px;">概率判断基于当前信息集的主观加权，非精确统计模型输出，仅供研究参考，不构成投资建议。</p>
+</section>
+
+<!-- ============ ASSET KEY LEVELS ============ -->
+<section id="levels">
+  <h2 class="sec-title"><span class="num">📊</span>资产关键点位</h2>
+  <table>
+    <thead><tr><th>资产</th><th>当前水平</th><th>关键支撑</th><th>关键阻力</th><th>核心驱动变量</th></tr></thead>
+    <tbody>
+      <tr><td>现货黄金</td><td>$4,315–4,356</td><td>$4,195（前期技术支撑）</td><td>$4,400（前高附近）</td><td>9月FOMC定价、CPI数据、美元走势</td></tr>
+      <tr><td>现货白银</td><td>~$64.10</td><td>$60附近</td><td>$65-66</td><td>金银比修复、工业需求</td></tr>
+      <tr><td>Brent原油</td><td>~$82</td><td>$78-80（8月上旬低点附近）</td><td>$91（上周高点）</td><td>伊朗-阿曼协议执行进展</td></tr>
+      <tr><td>WTI原油</td><td>~$78.3</td><td>$75附近</td><td>$85-86</td><td>同上 + 美国需求预期（非农疲软的负面拖累）</td></tr>
+      <tr><td>美10年期国债收益率</td><td>4.60–4.65%</td><td>4.5%（若降息预期进一步升温）</td><td>4.7%（前期高位）</td><td>8/12 CPI、9月FOMC概率反复</td></tr>
+      <tr><td>美元指数DXY</td><td>~99.6</td><td>99附近</td><td>100.5-101</td><td>美联储政策路径重定价节奏</td></tr>
+      <tr><td>USD/CNY中间价</td><td>6.7904</td><td>6.75附近</td><td>6.80心理关口</td><td>美元指数走势、国内基本面数据</td></tr>
+      <tr><td>上证指数</td><td>3,940</td><td>3,830-3,860（8月初支撑）</td><td>4,000心理关口</td><td>流动性预期、财政数据验证</td></tr>
+      <tr><td>标普500</td><td>7,757.64（历史新高）</td><td>7,600附近</td><td>待新高确认</td><td>降息预期、科技股财报</td></tr>
+    </tbody>
+  </table>
+  <p class="src">点位数据截至8月7日，仅供参考，日内高频波动请以实时行情为准。</p>
+</section>
+
+<!-- ============ ALLOCATION ============ -->
+<section id="alloc">
+  <h2 class="sec-title"><span class="num">💼</span>大类资产配置建议</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0;">权益</h3>
+      <p style="font-size:13.5px;">美股：标普500创历史新高，纳指受科技权重股（英伟达、博通）带动走强，利率敏感型板块（地产建筑、REITs、公用事业）在降息预期升温下同步受益，但需警惕若8/12 CPI数据超预期，本周涨势存在快速逆转风险，建议保持一定防御性配置。A股：延续结构性上行，科创50、存储芯片链条表现活跃，但8月6日盘中数据分化提示个股层面存在明显轮动特征，建议关注8月中上旬财政支出数据能否验证政治局会议定调的实际落地力度，作为判断行情延续性的关键锚点。</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">固定收益</h3>
+      <p style="font-size:13.5px;">美债：10年期收益率本周明显回落至4.60-4.65%区间，若8/12 CPI数据验证通胀降温，收益率存在进一步下探4.5%附近的空间，建议阶段性增加久期敞口；但需注意，本周市场定价的"9月维持不变"概率仍处于56-60%的相对温和区间（并非压倒性共识），CPI数据存在较大扰动空间，不宜过度加杠杆押注单一方向。</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">商品</h3>
+      <p style="font-size:13.5px;">黄金：本周单周涨幅超7%，短期存在获利了结压力，但降息预期升温+央行购金+避险需求的三重支撑逻辑仍然成立，UBS等机构维持中期看涨（$5,000目标价），建议逢回调配置而非追高，同时警惕若CPI超预期引发实际利率反弹，可能压制短期涨势。原油：伊朗-阿曼协议带来的降温效应已部分兑现，但"协议≠海峡完全重开"的现实约束意味着油价下行空间有限，建议以区间思维（Brent $78-91）应对，避免线性外推降温逻辑。</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">外汇</h3>
+      <p style="font-size:13.5px;">美元：本周DXY跌破100至99.6附近，若9月降息预期进一步巩固，美元存在延续走弱空间，但需警惕CPI数据带来的反复。人民币：本周维持6.79附近窄幅双向波动，展现出在外部美元走弱环境下的相对独立性，短期内更可能延续区间震荡而非跟随美元弱势趋势性升值，建议关注国内基本面数据（尤其8月中上旬财政支出进度）对汇率情绪的边际影响。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RISK REGISTER ============ -->
+<section id="risk">
+  <h2 class="sec-title"><span class="num">⚠</span>风险登记册</h2>
+  <table>
+    <thead><tr><th>风险事件</th><th>概率</th><th>潜在冲击</th><th>监测指标</th></tr></thead>
+    <tbody>
+      <tr><td>8/12 CPI数据超预期走高，重燃加息担忧</td><td>中</td><td>美债收益率快速反弹，美元走强，黄金/风险资产承压，"再通胀交易"卷土重来</td><td>核心CPI环比、能源分项传导效应</td></tr>
+      <tr><td>伊朗-阿曼协议因"第三方阻挠"（美国海军封锁）搁浅</td><td>中</td><td>霍尔木兹海峡局势重新恶化，Brent反弹至$90+，通胀预期二次抬升</td><td>美国是否解除海军封锁、协议正式文本能否签署</td></tr>
+      <tr><td>就业数据的"三重利空"（下降+下修+失业率因参与率而降）被证明是趋势性而非one-off</td><td>中低</td><td>市场对美国经济"硬着陆"的担忧升温，风险资产估值面临系统性重估</td><td>8月新增非农（9月首个周五公布）、初请失业金人数周度数据</td></tr>
+      <tr><td>黄金本周涨幅过快，出现技术性回调</td><td>中</td><td>贵金属板块及相关权益（矿业股）短期承压</td><td>CPI数据、美元指数反弹力度、CFTC持仓数据</td></tr>
+      <tr><td>中国8月财政支出数据不及"补进度"预期</td><td>中低</td><td>A股风险偏好阶段性降温，尤其对政策敏感型板块（基建、地产链）</td><td>8月财政部支出进度、专项债发行数据</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ NEXT WEEK OUTLOOK ============ -->
+<section id="outlook">
+  <h2 class="sec-title"><span class="num">🔭</span>下周展望：8月10日–8月16日关键日程</h2>
+  <table>
+    <thead><tr><th>日期</th><th>事件/数据</th><th>重要性</th></tr></thead>
+    <tbody>
+      <tr><td>8/10–8/16（全周）</td><td>伊朗-阿曼霍尔木兹海峡协议后续执行进展持续跟踪；美国海军封锁政策动向</td><td>高</td></tr>
+      <tr><td>8/11（周二前后）</td><td>EIA月度短期能源展望（下一期），检验此前基准预测在协议消息+油价回落背景下是否修正</td><td>中高</td></tr>
+      <tr><td>8/12（周三）</td><td>美国7月CPI数据——本周最重要的宏观数据，将直接检验9月FOMC概率能否进一步向"维持不变"收敛，或因能源分项反弹重新走向"高度不确定"</td><td>极高</td></tr>
+      <tr><td>全周</td><td>美股财报季持续，关注科技巨头Q2业绩对纳指高位的支撑力度</td><td>中高</td></tr>
+      <tr><td>全周</td><td>初请失业金人数周度数据，作为验证非农"三重利空"是否具有趋势性的高频先行指标</td><td>中</td></tr>
+      <tr><td>全周</td><td>中国8月上旬财政支出、专项债发行进度观察窗口（验证政治局会议"补进度"表述的实际执行力度）</td><td>中</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <b>下周核心研判：</b>8月12日CPI数据将是决定下周乃至整个8月中期市场走向的最核心变量，其重要性甚至可能超过本周非农数据本身——因为当前市场定价的"9月维持不变"概率（56-60%）仍处于相对温和、尚未形成压倒性共识的状态，一旦CPI数据（尤其核心通胀或能源分项）出现超预期走高，此前因就业疲软而形成的降息/维稳交易存在快速逆转的风险，重新回到"通胀高、就业弱"的滞胀式两难局面。与此同时，伊朗-阿曼协议的后续执行细节（尤其是"第三方阻挠"，即美国是否愿意解除海军封锁）将决定油价能否延续本周的回落趋势，这一变量与CPI数据存在直接的传导关系（油价回落有利于压低CPI能源分项，反之亦然），两者共同构成下周宏观交易的核心叙事线。黄金经历本周逾7%的暴涨后，短期存在获利了结压力，但中期支撑逻辑（降息预期、央行购金、地缘避险）尚未改变，建议以"逢回调布局"而非"追高"的思路应对。中国资产层面，人民币汇率与A股均展现出对外部剧烈波动的相对韧性，后续走势将更多取决于国内基本面数据（尤其财政支出进度）的验证结果。
+  </div>
+</section>
+
+<div class="footer-disclaimer">
+  <p><span class="fname">蜗牛鸟投资 Snail-Bird Investment</span> · 全球宏观研究组</p>
+  <p>本报告基于公开信息及第三方数据源整理编写，数据截至2026年8月7日收盘。力求准确但不保证完整性与实时性。本周CME FedWatch概率、金价及上证指数收盘价在不同信源间存在小幅口径差异（详见文中各处"数据口径说明"标注），已尽量交叉验证并标注具体时点与来源。CPI数据尚未公布（定于8月12日），文中相关表述均为基于历史模式与市场预期的前瞻性分析，非既成事实。本报告不构成任何投资建议，市场有风险，投资需谨慎。文中所有关于未来走势、情景概率的判断均为研究团队基于当前信息的主观评估，实际结果可能因新信息、政策变化或市场情绪转变而与预测产生重大偏离。</p>
+</div>
+
+</main>
+</body>
+</html>
