@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DHT Holdings (DHT) | Q2 2026 业绩跟踪 | 蜗牛鸟投资 全球运输研究部</title>
+<style>
+/* ── TOKENS ─────────────────────────────────────────────── */
+:root {
+  /* Tanker-sea palette: deep navy + ocean teal + rust amber */
+  --navy:     #0B1F35;
+  --navy-mid: #1A3A52;
+  --teal:     #0E7D7E;
+  --teal-lt:  #C6EBE8;
+  --rust:     #B94C27;
+  --rust-lt:  #F5E0D8;
+  --amber:    #C4820F;
+  --amber-lt: #FDF2DC;
+  --green:    #1B6E3A;
+  --green-lt: #DCF0E4;
+  --red:      #C0392B;
+  --red-lt:   #FDECEA;
+  --ink:      #0E1820;
+  --ink-mid:  #3E5264;
+  --ink-dim:  #6B7F8E;
+  --border:   #D1DCE5;
+  --bg:       #F2F6F9;
+  --surface:  #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+               'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.72;
+}
+.mono {
+  font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
+}
+
+/* ── NAV ─────────────────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--navy);
+  display: flex; align-items: center; gap: 0;
+  padding: 0 36px; height: 46px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.25);
+}
+.nav-brand {
+  font-size: 10.5px; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: rgba(255,255,255,.55);
+  margin-right: auto; white-space: nowrap;
+}
+nav a {
+  color: rgba(255,255,255,.7); text-decoration: none;
+  font-size: 12px; padding: 0 14px; height: 46px;
+  display: flex; align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: color .15s, border-color .15s; white-space: nowrap;
+}
+nav a:hover { color: #fff; border-bottom-color: var(--teal); }
+
+/* ── HEADER ──────────────────────────────────────────────── */
+header {
+  background: var(--navy);
+  color: #fff;
+  padding: 36px 48px 32px;
+  position: relative; overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute; right: -40px; top: -60px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(14,125,126,.22) 0%, transparent 70%);
+  pointer-events: none;
+}
+.h-eyebrow {
+  font-size: 10px; font-weight: 600; letter-spacing: .15em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 10px;
+}
+.h-title {
+  font-size: 30px; font-weight: 700; line-height: 1.15; margin-bottom: 6px;
+}
+.h-sub {
+  font-size: 14px; color: rgba(255,255,255,.6); margin-bottom: 22px;
+}
+.h-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 11px; border-radius: 3px;
+  font-size: 11px; font-weight: 600; letter-spacing: .03em;
+}
+.chip-record { background: rgba(14,125,126,.25); color: #6AECE8; border: 1px solid rgba(14,125,126,.5); }
+.chip-beat   { background: rgba(27,110,58,.3);  color: #7EDBA2; border: 1px solid rgba(27,110,58,.5); }
+.chip-div    { background: rgba(196,130,15,.25); color: #FDD078; border: 1px solid rgba(196,130,15,.4); }
+.chip-rate   { background: rgba(185,76,39,.25);  color: #FFA07A; border: 1px solid rgba(185,76,39,.5); }
+
+/* ── KPI BAR ─────────────────────────────────────────────── */
+.kpi-bar {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.kpi-cell {
+  padding: 18px 20px 16px;
+  border-right: 1px solid var(--border);
+}
+.kpi-cell:last-child { border-right: none; }
+.kpi-label { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 4px; }
+.kpi-val   { font-family: 'SFMono-Regular','Consolas','Menlo',monospace; font-size: 23px; font-weight: 500; color: var(--ink); line-height: 1.1; }
+.kpi-meta  { font-size: 11px; margin-top: 4px; color: var(--ink-dim); }
+.pos { color: var(--green); font-weight: 600; }
+.neg { color: var(--red); font-weight: 600; }
+
+/* ── LAYOUT ──────────────────────────────────────────────── */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 40px 32px; display: flex; flex-direction: column; gap: 32px; }
+
+/* ── SECTION ─────────────────────────────────────────────── */
+section { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+.sec-head {
+  padding: 12px 24px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.sec-tag {
+  font-family: 'SFMono-Regular','Consolas','Menlo',monospace;
+  font-size: 10px; color: var(--ink-dim); background: var(--border);
+  padding: 1px 7px; border-radius: 2px;
+}
+.sec-title { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+.sec-body { padding: 24px; }
+
+/* ── TABLES ──────────────────────────────────────────────── */
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th {
+  text-align: left; font-size: 10px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-dim);
+  padding: 8px 12px; border-bottom: 2px solid var(--border); background: var(--bg);
+}
+td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--ink); vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+.right { text-align: right; }
+.center { text-align: center; }
+
+/* inline tags */
+.tag { display: inline-block; padding: 1px 7px; border-radius: 3px; font-size: 10px; font-weight: 700; }
+.tag-beat   { background: var(--green-lt); color: var(--green); }
+.tag-miss   { background: var(--red-lt);   color: var(--red); }
+.tag-record { background: var(--teal-lt);  color: var(--teal); }
+.tag-caution{ background: var(--amber-lt); color: var(--amber); }
+.tag-new    { background: #EDE9FD; color: #5B35C1; }
+
+/* ── RATE VISUAL ─────────────────────────────────────────── */
+.rate-panel {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
+  margin-top: 0;
+}
+.rate-card {
+  border: 1px solid var(--border); border-radius: 3px;
+  padding: 16px 18px; position: relative; overflow: hidden;
+}
+.rate-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+}
+.rate-card.spot::after  { background: var(--teal); }
+.rate-card.tc::after    { background: var(--amber); }
+.rate-card.combo::after { background: var(--navy-mid); }
+.rate-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 6px; }
+.rate-val   { font-family: 'SFMono-Regular','Consolas','Menlo',monospace; font-size: 26px; font-weight: 600; color: var(--ink); }
+.rate-unit  { font-size: 11px; color: var(--ink-dim); margin-left: 4px; }
+.rate-yoy   { font-size: 11.5px; margin-top: 6px; }
+.rate-sub   { font-size: 11px; color: var(--ink-dim); margin-top: 4px; }
+
+/* ── FLEET GRID ─────────────────────────────────────────── */
+.fleet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.fleet-card {
+  border: 1px solid var(--border); border-radius: 3px; padding: 14px 16px;
+}
+.fleet-name  { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+.fleet-status { font-size: 11px; color: var(--ink-dim); margin-bottom: 8px; }
+.bar-bg { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 5px; }
+.bar-fill { height: 100%; border-radius: 3px; }
+.bar-teal   { background: var(--teal); }
+.bar-amber  { background: var(--amber); }
+.bar-navy   { background: var(--navy-mid); }
+.fleet-note { font-size: 11px; color: var(--ink-dim); }
+
+/* ── CAPITAL STRUCTURE PANEL ─────────────────────────────── */
+.capital-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.cap-box { border: 1px solid var(--border); border-radius: 3px; padding: 16px 18px; }
+.cap-box h4 { font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 12px; }
+
+/* ── MGMT COMMENTARY ─────────────────────────────────────── */
+.mgmt-row {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+  display: grid; grid-template-columns: 160px 1fr 100px; gap: 14px;
+  align-items: start;
+}
+.mgmt-row:last-child { border-bottom: none; }
+.mgmt-theme { font-size: 11px; font-weight: 700; color: var(--ink-mid); text-transform: uppercase; letter-spacing: .06em; }
+.mgmt-text  { font-size: 13px; color: var(--ink); line-height: 1.65; }
+.mgmt-signal { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 3px; text-align: center; }
+.signal-bull { background: var(--green-lt); color: var(--green); }
+.signal-bear { background: var(--red-lt);   color: var(--red); }
+.signal-neut { background: var(--border);   color: var(--ink-mid); }
+.signal-watch{ background: var(--amber-lt); color: var(--amber); }
+
+/* ── VALUATION ───────────────────────────────────────────── */
+.val-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.val-box { border: 1px solid var(--border); border-radius: 3px; padding: 16px 18px; }
+.val-box h4 { font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 12px; }
+
+.scenario-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px; }
+.sc {
+  border-radius: 3px; padding: 14px 16px; text-align: center;
+}
+.sc.bear { background: var(--red-lt);   border: 1px solid #ECA5A0; }
+.sc.base { background: #EBF4FF;         border: 1px solid #A5C4E8; }
+.sc.bull { background: var(--green-lt); border: 1px solid #9DD0B5; }
+.sc-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 5px; }
+.sc.bear .sc-label { color: var(--red); }
+.sc.base .sc-label { color: #1A5FA8; }
+.sc.bull .sc-label { color: var(--green); }
+.sc-price { font-family: 'SFMono-Regular','Consolas','Menlo',monospace; font-size: 24px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.sc-prob  { font-size: 10px; color: var(--ink-dim); margin-bottom: 6px; }
+.sc-note  { font-size: 11px; color: var(--ink-mid); line-height: 1.5; }
+
+/* ── RISKS ───────────────────────────────────────────────── */
+.risk-list { display: flex; flex-direction: column; gap: 0; }
+.risk-item {
+  display: flex; gap: 14px; padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.risk-item:last-child { border-bottom: none; }
+.risk-dot {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0; margin-top: 1px;
+}
+.dot-h { background: var(--red-lt); }
+.dot-m { background: var(--amber-lt); }
+.dot-l { background: var(--green-lt); }
+.risk-body h4 { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.risk-body p  { font-size: 12.5px; color: var(--ink-mid); line-height: 1.65; }
+
+/* ── RATING BOX ──────────────────────────────────────────── */
+.rating-banner {
+  background: var(--navy);
+  color: #fff;
+  border-radius: 3px;
+  padding: 22px 28px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+}
+.rb-left .rb-eyebrow { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 6px; }
+.rb-left .rb-rating  { font-size: 26px; font-weight: 700; color: #fff; }
+.rb-left .rb-sub     { font-size: 12px; color: rgba(255,255,255,.55); margin-top: 4px; }
+.rb-right { border-left: 1px solid rgba(255,255,255,.18); padding-left: 28px; text-align: right; }
+.rb-right .rb-tp-label { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 4px; }
+.rb-right .rb-tp  { font-family: 'SFMono-Regular','Consolas','Menlo',monospace; font-size: 32px; font-weight: 600; }
+.rb-right .rb-prev { font-size: 11px; color: rgba(255,255,255,.5); margin-top: 3px; }
+
+/* ── CALLOUT ─────────────────────────────────────────────── */
+.callout {
+  border-radius: 3px; padding: 14px 18px;
+  font-size: 13px; line-height: 1.7; margin: 14px 0;
+}
+.callout:last-child { margin-bottom: 0; }
+.callout.info   { background: #EBF4FF; border-left: 3px solid #3E8ECC; color: var(--ink-mid); }
+.callout.warn   { background: var(--amber-lt); border-left: 3px solid var(--amber); color: var(--ink-mid); }
+.callout.record { background: var(--teal-lt);  border-left: 3px solid var(--teal);  color: var(--ink-mid); }
+
+/* ── PROSE ────────────────────────────────────────────────── */
+p { font-size: 13.5px; color: var(--ink); line-height: 1.78; margin-bottom: 10px; }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--ink); font-weight: 700; }
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,.4);
+  font-size: 11px;
+  padding: 24px 48px;
+  line-height: 1.9;
+}
+footer strong { color: rgba(255,255,255,.65); }
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 760px) {
+  .kpi-bar { grid-template-columns: repeat(3,1fr); }
+  .rate-panel, .fleet-grid, .capital-grid, .val-grid, .scenario-row { grid-template-columns: 1fr; }
+  .mgmt-row { grid-template-columns: 1fr; }
+  header { padding: 20px 20px 18px; }
+  .wrap  { padding: 20px 14px; }
+  .rating-banner { flex-direction: column; }
+  .rb-right { border-left: none; border-top: 1px solid rgba(255,255,255,.18); padding-left: 0; padding-top: 14px; text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">蜗牛鸟投资 · 全球运输研究部</span>
+  <a href="#rates">运费</a>
+  <a href="#financials">财务</a>
+  <a href="#fleet">船队</a>
+  <a href="#capital">资本</a>
+  <a href="#mgmt">管理层</a>
+  <a href="#valuation">估值</a>
+  <a href="#risks">风险</a>
+</nav>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="h-eyebrow">跟踪报告 · Q2 2026 业绩更新 · 2026年8月9日</div>
+  <div class="h-title">DHT Holdings, Inc. &nbsp;<span style="font-weight:300;opacity:.65">NYSE: DHT</span></div>
+  <div class="h-sub">VLCC专注型独立油轮公司 · 公司历史最强季度 · 霍尔木兹海峡危机下吨英里需求大爆发</div>
+  <div class="h-chips">
+    <span class="chip chip-record">📋 史上最强季度</span>
+    <span class="chip chip-beat">↑ 收入 BEAT +17%</span>
+    <span class="chip chip-beat">↑ EBITDA BEAT +9%</span>
+    <span class="chip chip-div">股息 $1.22/股（第66次连续）</span>
+    <span class="chip chip-rate">现货 TCE $162,600/天</span>
+  </div>
+</header>
+
+<!-- ── KPI BAR ── -->
+<div class="kpi-bar">
+  <div class="kpi-cell">
+    <div class="kpi-label">Q2 运费收入</div>
+    <div class="kpi-val mono">$284.8M</div>
+    <div class="kpi-meta"><span class="pos">+122.9% YoY</span> · <span class="tag tag-beat">BEAT +17%</span></div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-label">Q2 adj. EBITDA</div>
+    <div class="kpi-val mono">$231.0M</div>
+    <div class="kpi-meta"><span class="pos">+234.8% YoY</span> · <span class="tag tag-beat">BEAT +9.1%</span></div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-label">Q2 净利润</div>
+    <div class="kpi-val mono">$198.3M</div>
+    <div class="kpi-meta"><span class="pos">+253.9% YoY</span> · <span class="tag tag-record">史上最强</span></div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-label">Q2 EPS（基本）</div>
+    <div class="kpi-val mono">$1.23</div>
+    <div class="kpi-meta"><span class="pos">vs $0.35 (Q2 2025)</span> · <span class="tag tag-beat">BEAT +0.9%</span></div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-label">Q2 股息</div>
+    <div class="kpi-val mono">$1.22</div>
+    <div class="kpi-meta">100%普通净利润派发 · 第66次连续</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ── 01 综合评价 ── -->
+<section id="summary">
+  <div class="sec-head"><span class="sec-tag">01</span><span class="sec-title">综合评价</span></div>
+  <div class="sec-body">
+    <p>DHT Q2 2026 以三项历史纪录——单季收入、单季利润、单季EBITDA全部创新高——实现了一次<strong>教科书式的周期上行兑现</strong>。更具含义的指标是：H1 2026净利润$362.9M已<strong>超越公司2020年的全年净利润纪录（$266.3M）</strong>，即在2026年上半年单半年时间内突破了公司整个历史上最好的完整年度。</p>
+    <p>业绩超预期驱动因素的质量同样优异。本季利润扩张的主要来源是<strong>运费层面的实质性跃升</strong>（现货TCE $162,600/天 vs Q2 2025的$48,700/天，增幅+234%），而非资产出售等一次性收益。运营成本保持稳健：船舶运营费用同比下降，不定期停租（unscheduled off-hire）仅0.3%，体现出卓越的运营纪律。</p>
+    <div class="callout record">
+      <strong>历史坐标：</strong>H1 2026净利润$362.9M超越2020全年$266.3M历史纪录。即使以Q2 2026单季年化计算（$198.3M × 4 = 约$793M），亦相当于以往约3倍的年度基准。这不仅是一次景气周期的峰值，也是霍尔木兹海峡海运危机叠加VLCC供应紧缩共同催化的结构性超越。
+    </div>
+    <p>需警惕的核心问题是<strong>持续性</strong>：$162,600/天的现货TCE是异常高企的，远超任何合理长期均值（$30,000-50,000/天区间），这一水平能否维持取决于中东局势能否持续而不是进一步升级、同时Q3现货成交价印证了短期持续——已有58%的Q3现货天数以$152,700/天锁定，初步验证Q2强势不是偶发单季。</p>
+  </div>
+</section>
+
+<!-- ── 02 运费率深度剖析 ── -->
+<section id="rates">
+  <div class="sec-head"><span class="sec-tag">02</span><span class="sec-title">运费率深度剖析 · 多重因素共振</span></div>
+  <div class="sec-body">
+    <div class="rate-panel">
+      <div class="rate-card spot">
+        <div class="rate-label">现货 VLCC TCE（D2D基准）</div>
+        <div class="rate-val mono">$162,600<span class="rate-unit">/天</span></div>
+        <div class="rate-yoy"><span class="pos">+233.9% YoY</span> vs Q2 2025 $48,700</div>
+        <div class="rate-sub">Q3已签: $152,700/天（58%覆盖）</div>
+        <div class="rate-sub" style="margin-top:6px;font-size:11px;color:var(--amber)">⚠ IFRS-15调整后：$154,100/天（-$8,500时间差）</div>
+      </div>
+      <div class="rate-card tc">
+        <div class="rate-label">定期租约 VLCC TCE</div>
+        <div class="rate-val mono">$90,800<span class="rate-unit">/天</span></div>
+        <div class="rate-yoy"><span class="pos">+112.1% YoY</span> vs Q2 2025 $42,800</div>
+        <div class="rate-sub">Q3 TC天数: 1,020天 @ $75,900/天均值</div>
+        <div class="rate-sub" style="margin-top:6px;font-size:11px;">新增: DHT Jaguar 3年 @ $75,000/天</div>
+      </div>
+      <div class="rate-card combo">
+        <div class="rate-label">综合平均 TCE</div>
+        <div class="rate-val mono">$126,700<span class="rate-unit">/天</span></div>
+        <div class="rate-yoy"><span class="pos">显著领先周期均值</span></div>
+        <div class="rate-sub">现货占比: 48.4% (↓ 来自Q1 57.3%)</div>
+        <div class="rate-sub" style="margin-top:6px;">Q3整体覆盖: 79% @ $104,400/天</div>
+      </div>
+    </div>
+
+    <br>
+    <p><strong>驱动力拆解：</strong>本季度超高运费率形成是多重结构性因素共振的结果，而非单一事件：</p>
+    <table style="margin-top:12px;">
+      <thead>
+        <tr>
+          <th>驱动因素</th>
+          <th>机制</th>
+          <th>对DHT的影响</th>
+          <th>持续性</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>霍尔木兹海峡紧张局势</strong></td>
+          <td>迫使中东原油绕道，吨英里需求显著增加；船舶进入高风险区收取大额风险溢价</td>
+          <td>DHT不入波斯湾（安全优先），但同样受益于绕道带来的全球VLCC供给收紧</td>
+          <td class="tag tag-caution">不确定</td>
+        </tr>
+        <tr>
+          <td><strong>红海航路受阻（Houthis）</strong></td>
+          <td>也门胡塞武装威胁迫使船舶经苏伊士运河绕行，延长航程</td>
+          <td>DHT已完成数次Yanbu装货，但越来越多船舶从红海经苏伊士离开</td>
+          <td class="tag tag-caution">持续中</td>
+        </tr>
+        <tr>
+          <td><strong>私人资本船队整合</strong></td>
+          <td>一家私人聚合商大量买入VLCC，削减了现货市场的碎片化供应</td>
+          <td>直接收紧现货船期供给，支撑运费率</td>
+          <td class="tag tag-beat">中期持续</td>
+        </tr>
+        <tr>
+          <td><strong>中东NOC大量买船</strong></td>
+          <td>沙特/UAE国家石油公司以溢价购入二手船</td>
+          <td>锁住可用二手船资产；船价底部有支撑，间接减少可用运力</td>
+          <td class="tag tag-beat">结构性</td>
+        </tr>
+        <tr>
+          <td><strong>中国战略储备抽取</strong></td>
+          <td>Q2中国降低商业&战略原油库存、减少出口配额以平抑油价</td>
+          <td>短期降低中国原油进口运输需求，但一旦补库将触发吨英里大反弹</td>
+          <td class="tag tag-caution">短期缓解，反转待催化</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── 03 财务数据 ── -->
+<section id="financials">
+  <div class="sec-head"><span class="sec-tag">03</span><span class="sec-title">关键财务数据 · Q2 2026 实际 vs 预期 vs 历史</span></div>
+  <div class="sec-body">
+    <table>
+      <thead>
+        <tr>
+          <th>指标</th>
+          <th class="right">Q2 2026</th>
+          <th class="right">预期/共识</th>
+          <th class="right">Q2 2025</th>
+          <th class="right">Q1 2026</th>
+          <th class="right">YoY</th>
+          <th class="center">判断</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>运费收入（Shipping revenues）</td>
+          <td class="right mono">$284.8M</td>
+          <td class="right mono">$243.5M</td>
+          <td class="right mono">$127.9M</td>
+          <td class="right mono">$186.3M</td>
+          <td class="right pos">+122.9%</td>
+          <td class="center"><span class="tag tag-beat">BEAT +17%</span></td>
+        </tr>
+        <tr>
+          <td>TCE净收入（adj. net revenues）</td>
+          <td class="right mono">$255.0M</td>
+          <td class="right mono">—</td>
+          <td class="right mono">$92.8M</td>
+          <td class="right mono">$157.2M</td>
+          <td class="right pos">+174.8%</td>
+          <td class="center">—</td>
+        </tr>
+        <tr style="background:#F4FAFA;">
+          <td>调整后 EBITDA</td>
+          <td class="right mono">$231.0M</td>
+          <td class="right mono">$211.8M</td>
+          <td class="right mono">$69.0M</td>
+          <td class="right mono">$133.3M</td>
+          <td class="right pos">+234.8%</td>
+          <td class="center"><span class="tag tag-beat">BEAT +9.1%</span></td>
+        </tr>
+        <tr>
+          <td>EBITDA利润率</td>
+          <td class="right mono">81.1%</td>
+          <td class="right mono">—</td>
+          <td class="right mono">54.0%</td>
+          <td class="right mono">71.5%</td>
+          <td class="right pos">+27.1ppt</td>
+          <td class="center">—</td>
+        </tr>
+        <tr style="background:#F4FAFA;">
+          <td>GAAP 净利润（归母）</td>
+          <td class="right mono">$198.3M</td>
+          <td class="right mono">—</td>
+          <td class="right mono">$56.0M</td>
+          <td class="right mono">$164.5M</td>
+          <td class="right pos">+253.9%</td>
+          <td class="center"><span class="tag tag-record">史上最强季</span></td>
+        </tr>
+        <tr>
+          <td>普通净利润（剔除衍生品）</td>
+          <td class="right mono">$197.0M</td>
+          <td class="right mono">—</td>
+          <td class="right mono">—</td>
+          <td class="right mono">—</td>
+          <td class="right">—</td>
+          <td class="center">股息基准</td>
+        </tr>
+        <tr style="background:#F4FAFA;">
+          <td>EPS（基本/摊薄）</td>
+          <td class="right mono">$1.23</td>
+          <td class="right mono">$1.22</td>
+          <td class="right mono">$0.35</td>
+          <td class="right mono">$1.02</td>
+          <td class="right pos">+251.4%</td>
+          <td class="center"><span class="tag tag-beat">BEAT +0.9%</span></td>
+        </tr>
+        <tr>
+          <td>经营现金流（OCF）</td>
+          <td class="right mono">$219.5M</td>
+          <td class="right mono">—</td>
+          <td class="right mono">$83.6M</td>
+          <td class="right mono">$98.8M</td>
+          <td class="right pos">+162.6%</td>
+          <td class="center">—</td>
+        </tr>
+        <tr style="background:#F4FAFA;">
+          <td>经营现金流利润率（OCF margin）<br><span style="font-size:10.5px;color:var(--amber);font-weight:600;">⚠ 非FCF——新船Capex计入投资活动，不在OCF内</span></td>
+          <td class="right mono">77%</td>
+          <td class="right mono">—</td>
+          <td class="right mono">46.9%</td>
+          <td class="right mono">—</td>
+          <td class="right pos">+30.1ppt</td>
+          <td class="center"><span class="tag tag-caution">OCF口径</span></td>
+        </tr>
+        <tr>
+          <td>真实FCF（OCF − Capex）<br><span style="font-size:10.5px;color:var(--ink-dim);">Q2单季Capex约$8.5M；H1 Capex净额约$71M</span></td>
+          <td class="right mono">~$211M</td>
+          <td class="right mono">—</td>
+          <td class="right mono">—</td>
+          <td class="right mono">—</td>
+          <td class="right">—</td>
+          <td class="center">FCF覆盖Q2股息 ✓</td>
+        </tr>
+        <tr>
+          <td>船舶运营费用（OPEX）</td>
+          <td class="right mono">$18.6M</td>
+          <td class="right mono">—</td>
+          <td class="right mono">$19.6M</td>
+          <td class="right mono">$19.1M</td>
+          <td class="right pos">-5.1%</td>
+          <td class="center">—</td>
+        </tr>
+        <tr style="background:#F4FAFA;">
+          <td>G&A 费用</td>
+          <td class="right mono">$5.6M</td>
+          <td class="right mono">—</td>
+          <td class="right mono">$4.6M</td>
+          <td class="right mono">$5.0M</td>
+          <td class="right neg">+21.7%</td>
+          <td class="center">含~$0.7M非现金</td>
+        </tr>
+        <tr>
+          <td>D&amp;A</td>
+          <td class="right mono">$27.8M</td>
+          <td class="right mono">—</td>
+          <td class="right mono">$26.1M</td>
+          <td class="right mono">$25.6M</td>
+          <td class="right neg">+6.5%</td>
+          <td class="center">新船交付驱动</td>
+        </tr>
+        <tr style="background:#F4FAFA;">
+          <td>H1 2026 净利润（参考）</td>
+          <td class="right mono">$362.9M</td>
+          <td class="right mono">—</td>
+          <td colspan="2" class="right mono" style="color:var(--teal);">超越2020年全年记录 $266.3M</td>
+          <td class="right pos">+262.5%</td>
+          <td class="center"><span class="tag tag-record">历史新高</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout info" style="margin-top:16px;">
+      <strong>盈利勾稽验证：</strong>EBITDA $231.0M → 减D&A $27.8M = EBIT $203.2M → 减净利息 $5.4M（利息支出$6.4M − 利息收入$1.0M）= 税前$197.8M → 减税$0.06M → 加衍生品非现金收益$1.3M → 理论净利$199.0M，实际报告值$198.3M，残差约$0.7M（含舍入及其他小项），属四舍五入量级，不影响分析结论。收入$284.8M → 减OPEX $18.6M、G&A $5.6M、港口费及佣金约$29.6M → EBITDA $231.0M（利润率81.1%），收入至EBITDA链条完全自洽。
+    </div>
+  </div>
+</section>
+
+<!-- ── 04 船队与扩张 ── -->
+<section id="fleet">
+  <div class="sec-head"><span class="sec-tag">04</span><span class="sec-title">船队动态与扩张计划</span></div>
+  <div class="sec-body">
+    <div class="fleet-grid">
+      <div class="fleet-card">
+        <div class="fleet-name">DHT Sundarbans (2012年建造)</div>
+        <div class="fleet-status"><span class="tag tag-new">Q2新增</span> 1年定期租约</div>
+        <div class="bar-bg"><div class="bar-fill bar-amber" style="width:100%;"></div></div>
+        <div class="fleet-note">均值 $109,000/天（与Amazon同批）| 大幅高于Q2 2025 TC均值$42,800</div>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-name">DHT Amazon (2011年建造)</div>
+        <div class="fleet-status"><span class="tag tag-new">Q2新增</span> 1年定期租约</div>
+        <div class="bar-bg"><div class="bar-fill bar-amber" style="width:100%;"></div></div>
+        <div class="fleet-note">均值 $109,000/天（与Sundarbans同批）| 锁定高景气周期收益</div>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-name">DHT Jaguar (2015年建造)</div>
+        <div class="fleet-status"><span class="tag tag-new">Q3后续</span> 3年定期租约</div>
+        <div class="bar-bg"><div class="bar-fill bar-navy" style="width:80%;"></div></div>
+        <div class="fleet-note">$75,000/天，2026年9月起 · 与全球能源公司签订 · 3年长约稳定现金流但低于现货</div>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-name">DHT Impala (新造船)</div>
+        <div class="fleet-status"><span class="tag tag-new">7月24日交付</span> 现代化HHI新造</div>
+        <div class="bar-bg"><div class="bar-fill bar-teal" style="width:100%;"></div></div>
+        <div class="fleet-note">Hyundai Samho Heavy Industries交付 · 2026年第4艘新造船，即刻进入现货市场</div>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-name">DHT Bauhinia (2007年建造)</div>
+        <div class="fleet-status"><span class="tag-caution" style="font-size:10px;padding:1px 7px;background:var(--amber-lt);color:var(--amber);border-radius:3px;font-weight:700;">已出售</span> 7月20日完成交割</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:100%;background:#ccc;"></div></div>
+        <div class="fleet-note">售价净现金$51.0M，Q3确认收益$34.2M · 售出老旧资产，换取高质量现金回报</div>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-name">DHT Oryx（在建新造）</div>
+        <div class="fleet-status"><span class="tag tag-new">Q2新签</span> Hanwha Ocean，2028年8月交付</div>
+        <div class="bar-bg"><div class="bar-fill bar-teal" style="width:18%;"></div></div>
+        <div class="fleet-note">Antelope/Addax姊妹船 · 配EGCS减排系统 · 剩余支付约$211M（12月内$105M）</div>
+      </div>
+    </div>
+
+    <br>
+    <p><strong>船队状态（2026年7月后）：</strong>23艘VLCC在运营（DHT Impala交付后）+ 1艘在建（DHT Oryx），其中12艘定期租约、11艘现货市场。Bauhinia售出标志着主动处置2007年及更早年份老船（此前亦已售出DHT China和DHT Europe，同为2007年建造）的战略连续性——逐步以新船置换老船，而非增量扩张。</p>
+    <p><strong>2026年干坞计划：</strong>7个计划干坞已完成5个（Lion、Amazon、Osprey、Puma、Panther），均按时按预算完成。Harrier和Redwood将在H2 2026完成，占用部分H2运营天数（体现在Q3预期中）。</p>
+  </div>
+</section>
+
+<!-- ── 05 资本结构与股东回报 ── -->
+<section id="capital">
+  <div class="sec-head"><span class="sec-tag">05</span><span class="sec-title">资本结构 · 流动性 · 股东回报</span></div>
+  <div class="sec-body">
+    <div class="capital-grid">
+      <div class="cap-box">
+        <h4>资本结构（2026年6月30日）</h4>
+        <table>
+          <tbody>
+            <tr><td>现金及等价物</td><td class="right mono">$161.7M</td></tr>
+            <tr><td>计息债务</td><td class="right mono">$434.8M</td></tr>
+            <tr><td>净债务</td><td class="right mono">$273.1M</td></tr>
+            <tr><td>总流动性（现金+信贷额度）</td><td class="right mono">$569.0M</td></tr>
+            <tr><td style="color:var(--teal);font-weight:600;">市值杠杆率</td><td class="right mono" style="color:var(--teal);">14.1%</td></tr>
+            <tr><td>每艘船净债务</td><td class="right mono">$11.9M</td></tr>
+            <tr style="background:#F4FAFA;"><td>股东权益（期末）</td><td class="right mono">$1,329.7M</td></tr>
+            <tr><td>总资产</td><td class="right mono">$1,808.0M</td></tr>
+          </tbody>
+        </table>
+        <div class="callout info" style="margin-top:12px;font-size:12px;">
+          <strong>债务covenant：</strong>所有指标均合规，且余量充裕。核心要求：无抵押现金≥$30M或6%×计息债（现持有$161.7M，远超下限）；船值须≥1.35×借款（当前大幅超标）。
+        </div>
+      </div>
+      <div class="cap-box">
+        <h4>新融资 · $250M Nordea RCR信贷设施</h4>
+        <table>
+          <tbody>
+            <tr><td>额度</td><td class="right mono">$250M</td></tr>
+            <tr><td>期限</td><td class="right mono">7年（至2033年6月）</td></tr>
+            <tr><td>利率</td><td class="right mono">SOFR + 135bps</td></tr>
+            <tr><td>还款结构</td><td class="right mono">按20年摊销设计</td></tr>
+            <tr><td>季度削减额（至2028Q2）</td><td class="right mono">$6.8M/季</td></tr>
+            <tr><td>额外增量条款（Accordion）</td><td class="right mono">未提款$250M</td></tr>
+            <tr><td style="color:var(--green);">认购情况</td><td class="right mono" style="color:var(--green);">显著超额认购</td></tr>
+            <tr><td>参与银行</td><td class="right mono">7家关系银行</td></tr>
+          </tbody>
+        </table>
+        <div class="callout info" style="margin-top:12px;font-size:12px;">
+          $250M新RCF替换并偿清了原Nordea旧设施，同时到期日从2028年延长至2033年——核心作用是在不增加资产负债的情况下<strong>大幅改善流动性质量</strong>。至6月30日，该额度全部未提款（即视为纯流动性储备）。
+        </div>
+        <br>
+        <h4 style="margin-top:4px;">H1 2026 股东回报</h4>
+        <table>
+          <tbody>
+            <tr><td>H1股息（已付）</td><td class="right mono">$169.1M ($1.05/股)</td></tr>
+            <tr><td>Q2宣布股息</td><td class="right mono">$1.22/股（8月24日付）</td></tr>
+            <tr><td>H1+Q2宣布合计</td><td class="right mono">$2.27/股</td></tr>
+            <tr><td>H1回购</td><td class="right mono">无</td></tr>
+            <tr><td>股息政策</td><td class="right">100%普通净利润</td></tr>
+          </tbody>
+        </table>
+        <div class="callout warn" style="margin-top:12px;font-size:12px;">
+          以Q2 2026 EPS $1.23 / 当前股价约$19折算，<strong>Q2单季股息收益率约6.4%，年化约25.7%</strong>——但这是高景气峰值水平。正常化周期（$40-50K/天现货TCE）下，年化股息预计在$0.50-$1.00区间（yield约2.6-5.3%），不宜以当前峰值线性外推。
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <p><strong>H2 2026 P&L与现金盈亏平衡：</strong>管理层披露H2 2026 P&L盈亏平衡点为<strong>$29,700/天</strong>，现金盈亏平衡点为<strong>$22,600/天</strong>（差额$7,100为一般企业用途保留）。当前Q3现货已锁定$152,700/天（58%覆盖），意味着Q3已锁定部分远高于盈亏平衡约5倍以上，剩余42%现货天数只需维持约$5,000/天以上即可实现盈利——实际Q3利润已基本确定在$150M+的水平。</p>
+  </div>
+</section>
+
+<!-- ── 06 Q3展望 ── -->
+<section id="outlook">
+  <div class="sec-head"><span class="sec-tag">06</span><span class="sec-title">Q3 2026 前瞻</span></div>
+  <div class="sec-body">
+    <table>
+      <thead>
+        <tr>
+          <th>Q3 2026 指标</th>
+          <th class="right">数值</th>
+          <th>说明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>TC总天数</td><td class="right mono">1,020天</td><td>均值 $75,900/天（含7月利润分成估算）</td></tr>
+        <tr><td>现货总天数</td><td class="right mono">1,029天</td><td>全部可用天数</td></tr>
+        <tr><td>现货已签天数</td><td class="right mono">600天（58%）</td><td>均值 $152,700/天（D2D基准）</td></tr>
+        <tr style="background:#F4FAFA;"><td><strong>整体覆盖（TC+现货）</strong></td><td class="right mono"><strong>79%</strong></td><td><strong>均值 $104,400/天</strong></td></tr>
+        <tr><td>现货P&L盈亏平衡</td><td class="right mono">&lt; $0/天</td><td>TC收入已超过预测成本，现货剩余天数相当于纯利润</td></tr>
+        <tr><td>H2 2026 P&L盈亏平衡</td><td class="right mono">$29,700/天</td><td>—</td></tr>
+        <tr><td>H2 2026 现金盈亏平衡</td><td class="right mono">$22,600/天</td><td>$7,100/天留作企业用途</td></tr>
+        <tr><td>计划干坞</td><td class="right mono">Harrier + Redwood</td><td>2艘将在H2完成年度特检，影响若干运营天数</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout record" style="margin-top:16px;">
+      <strong>Q3即时评估：</strong>以79%天数覆盖、整体均值$104,400/天计算，假设剩余21%未覆盖现货天数以均值$130,000/天成交（略低于Q3已成交水平$152,700/天），则Q3整体TCE约$109,000-115,000/天，对应TCE收入约$220-230M，adj. EBITDA约$195-210M，净利润约$165-180M。Q3将是史上第二或第三强季度。
+    </div>
+  </div>
+</section>
+
+<!-- ── 07 管理层电话会议核心表态 ── -->
+<section id="mgmt">
+  <div class="sec-head"><span class="sec-tag">07</span><span class="sec-title">管理层电话会议核心表态（Harfjeld / Halvorsen，2026年8月6日）</span></div>
+  <div class="sec-body">
+    <div class="mgmt-row">
+      <div class="mgmt-theme">安全优先 · 不入波斯湾</div>
+      <div class="mgmt-text">Harfjeld明确表示，DHT整个Q2均未将船队部署在波斯湾高风险区域，即使进入该区域的同行赚取了巨额风险溢价。公司优先保护船员和船舶资产，而非追求短期利润最大化。尽管如此，DHT仍受益于全球VLCC供给收紧和吨英里增加带来的系统性运费上升。</div>
+      <div><span class="mgmt-signal signal-neut">战略纪律</span></div>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-theme">红海 · Houthis 影响</div>
+      <div class="mgmt-text">公司已完成数次Yanbu（沙特）装货，但随着胡塞武装威胁持续，越来越多船舶选择经苏伊士运河离开红海——而非穿越曼德海峡。此举延长了实际运输距离，进一步消耗全球VLCC运力，实际上对运费形成额外支撑。</div>
+      <div><span class="mgmt-signal signal-bull">利好持续</span></div>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-theme">扩张战略 · 不急买旧船</div>
+      <div class="mgmt-text">Harfjeld表示公司有意随时间增加船队规模，但在当前二手船价格处于高位的情况下，"耐心是关键"。公司不会为了扩张而购入价格虚高的旧船；相反，倾向于有纪律地选择新造或性价比高的资产。同时，新签DHT Oryx（2028年交付）是在当前市场环境下锁定未来产能的低价入手机会。</div>
+      <div><span class="mgmt-signal signal-bull">纪律性扩张</span></div>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-theme">伊朗局势正常化 → 利好合规航运</div>
+      <div class="mgmt-text">管理层认为，美伊冲突若在某个时间点得到解决，将使伊朗原油重新进入合规贸易渠道，这些货量目前由"影子船队"承运。一旦回归合规，这些货量将转移至DHT这类独立运营商，扩大可寻址市场。即使冲突持续，影子船队也可能面临补充需求或退役压力，支撑VLCC资产估值。</div>
+      <div><span class="mgmt-signal signal-bull">长期利好</span></div>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-theme">中国补库 → 需求反弹</div>
+      <div class="mgmt-text">中国在Q2通过抽取战略和商业储备来平抑原油价格波动，导致进口减少。管理层明确指出，一旦库存抽取停止并转为补充，中国的原油运输需求将出现"急剧反弹"。这一周期性拐点是未来6-18个月最关键的吨英里需求催化剂。</div>
+      <div><span class="mgmt-signal signal-watch">待观察</span></div>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-theme">$250M RCF 超额认购</div>
+      <div class="mgmt-text">新信贷设施"显著超额认购"，说明7家关系银行对公司信用质量高度认可。融资成本SOFR+135bps在当前市场属于优质定价；额外$250M未提款accordion条款提供了未来扩张或重组的灵活性，无需重新谈判。</div>
+      <div><span class="mgmt-signal signal-bull">融资优质</span></div>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-theme">100%分红政策坚守</div>
+      <div class="mgmt-text">Halvorsen再次确认普通净利润100%以季度现金股息分配的政策，本季股息$1.22/股为第66次连续季度分红。公司不以留存收益进行投机性积累；新造船资金来源为专项融资（Export Facility等），而非挤压股东回报。</div>
+      <div><span class="mgmt-signal signal-bull">资本回报</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 08 估值更新 ── -->
+<section id="valuation">
+  <div class="sec-head"><span class="sec-tag">08</span><span class="sec-title">估值更新</span></div>
+  <div class="sec-body">
+    <div class="val-grid">
+      <div class="val-box">
+        <h4>关键估值参数</h4>
+        <table>
+          <tbody>
+            <tr><td>当前股价（约）</td><td class="right mono">~$18.5 – $20.0</td></tr>
+            <tr><td>52周区间</td><td class="right mono">~$8.5 – $24.0</td></tr>
+            <tr><td>市值（约）</td><td class="right mono">~$3.0B – $3.2B</td></tr>
+            <tr><td>净债务（2026年6月30日）</td><td class="right mono">$273.1M</td></tr>
+            <tr><td>EV（估算）</td><td class="right mono">~$3.3B – $3.5B</td></tr>
+            <tr style="background:#F4FAFA;"><td>2026E adj. EBITDA（H1实际+H2估算）</td><td class="right mono">~$550-600M</td></tr>
+            <tr><td>EV/EBITDA（2026E，峰值口径）</td><td class="right mono">~5.5 – 6.4x</td></tr>
+            <tr><td>正常化净利润（$40K/天均值下）<br><span style="font-size:10.5px;color:var(--ink-dim);">约23艘×$40K×365天−总成本≈净利</span></td><td class="right mono">~$80 – 120M/年</td></tr>
+            
+            <tr style="background:#F4FAFA;"><td><strong>正常化EBITDA（正确计算）</strong><br><span style="font-size:10.5px;color:var(--ink-dim);">23艘×$40K×365天 − OPEX/G&A约$120M</span></td><td class="right mono"><strong>~$215 – 250M/年</strong></td></tr>
+            <tr><td><strong>EV/EBITDA（正常化，已修正）</strong></td><td class="right mono"><strong>~14 – 16x</strong></td></tr>
+            
+            <tr><td>P/B（市净率）</td><td class="right mono">~1.0 – 1.1x NAV</td></tr>
+            <tr><td>分析师目标价中值</td><td class="right mono">$21.0（2家，Quiver）</td></tr>
+            <tr><td>年化股息（当前峰值口径）</td><td class="right mono">~$4.88/股（基于$1.22×4）</td></tr>
+            <tr><td>峰值口径股息收益率</td><td class="right mono">~24 – 26%</td></tr>
+            <tr><td>正常化口径股息收益率</td><td class="right mono">~2.5 – 5%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="val-box">
+        <h4>情景分析（12个月目标价）</h4>
+        <div class="scenario-row">
+          <div class="sc bear">
+            <div class="sc-label">悲观</div>
+            <div class="sc-price">$12</div>
+            <div class="sc-prob">权重 25%</div>
+            <div class="sc-note">霍尔木兹迅速解封 + 红海恢复；现货TCE回落至$40-50K/天；影子船队部分合规化反而增加供给；中国需求未出现预期反弹</div>
+          </div>
+          <div class="sc base">
+            <div class="sc-label">基准</div>
+            <div class="sc-price">$20</div>
+            <div class="sc-prob">权重 50%</div>
+            <div class="sc-note">中东地缘溢价逐步收窄但维持到Q4；现货TCE正常化至$70-90K/天；中国逐步补库支撑需求；DHT船队扩张序列有序推进</div>
+          </div>
+          <div class="sc bull">
+            <div class="sc-label">乐观</div>
+            <div class="sc-price">$28</div>
+            <div class="sc-prob">权重 25%</div>
+            <div class="sc-note">霍尔木兹持续受阻进入冬季；中国急速补库触发需求激增；VLCC供给维持历史低位；伊朗和谈合规货增量</div>
+          </div>
+        </div>
+        <br>
+        <p style="font-size:12px;color:var(--ink-mid);">概率加权目标价：<strong>$20.0</strong>（= $12×25% + $20×50% + $28×25%）。与Q1报告的目标价区间$14-17相比，随着持续高景气和中东危机未解，目标价上移。</p>
+        <br>
+        <h4 style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px;">同业估值横向比较（Q2 2026，参考）</h4>
+        <table style="font-size:12px;">
+          <thead>
+            <tr><th>公司</th><th class="right">P/NAV</th><th class="right">EV/EBITDA（TTM）</th><th class="right">备注</th></tr>
+          </thead>
+          <tbody>
+            <tr style="background:#EBF4FF;"><td><strong>DHT Holdings</strong></td><td class="right mono"><strong>~1.0–1.1x</strong></td><td class="right mono"><strong>~5.5–6.4x（峰值）/ ~14–16x（正常化）</strong></td><td>折价但非困境定价；板块内相对偏低</td></tr>
+            <tr><td>Frontline (FRO)</td><td class="right mono">~1.3x</td><td class="right mono">~10–12x</td><td>规模最大、流动性溢价</td></tr>
+            <tr><td>INSW</td><td class="right mono">~2.1x</td><td class="right mono">~12–14x</td><td>多元化船型、市场给予较高溢价</td></tr>
+            <tr><td>Euronav (EURN)</td><td class="right mono">~1.5x</td><td class="right mono">~11–13x</td><td>CMB合并后治理优化</td></tr>
+            <tr><td>Teekay Tankers (TNK)</td><td class="right mono">~0.9x</td><td class="right mono">~2.2x</td><td>资本配置/治理折价，板块最低</td></tr>
+            <tr><td>Tsakos (TEN)</td><td class="right mono">&lt;1x</td><td class="right mono">~8–10x</td><td>结构复杂、流动性折价</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:11.5px;color:var(--ink-mid);margin-top:10px;">结论：DHT以~1.0-1.1x NAV、~14-16x正常化EV/EBITDA在板块内属于"折价但不便宜"——市场没有给予超额溢价，亦未当成困境资产。这意味着：除非对"新常态化"高TCE有独立于市场的更乐观判断，否则估值扩张空间有限，持有回报主要来自<strong>股息现金回流</strong>而非股价重估。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 09 风险因素更新 ── -->
+<section id="risks">
+  <div class="sec-head"><span class="sec-tag">09</span><span class="sec-title">风险因素更新</span></div>
+  <div class="sec-body">
+    <div class="risk-list">
+      <div class="risk-item">
+        <div class="risk-dot dot-h">🔴</div>
+        <div class="risk-body">
+          <h4>地缘风险逆转：霍尔木兹/红海局势突然缓解</h4>
+          <p>当前运费率的30-50%溢价来自地缘风险叠加。若美伊谈判突破、卡塔尔LNG与原油运输恢复正常，TCE可能在数周内从$150,000+/天跌回$50-60,000/天，股价将面临30-50%急跌风险。霍尔木兹"停火"消息是最大尾部风险。</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-dot dot-h">🔴</div>
+        <div class="risk-body">
+          <h4>中国需求"补库"时间滞后或强度不足</h4>
+          <p>管理层预期的"中国急速补库"是乐观情景的核心支柱之一。若中国经济继续疲软、政府长期维持低库存策略，或转向管道气与LNG替代原油，则补库效应可能远低于预期，吨英里需求无法形成新的上升支撑。</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-dot dot-m">🟡</div>
+        <div class="risk-body">
+          <h4>VLCC供应侧风险：私人聚合商抛售或新造船交付</h4>
+          <p>此前整合市场的私人聚合商若出现财务问题或策略转变，大量VLCC重入现货市场将冲击运费。此外，2025-2026年大量新造船订单若于2027-2028年密集交付，VLCC供需格局可能骤然逆转。</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-dot dot-m">🟡</div>
+        <div class="risk-body">
+          <h4>资产负债表扩张风险（DHT Oryx + 潜在新买船）</h4>
+          <p>DHT Oryx未来12个月内还需支付约$211M（12个月内$105M），叠加潜在并购机会，若景气突然逆转而现金流大幅收缩，叠加新船付款压力，流动性状况可能趋紧。当前$569M流动性有较大缓冲，但需持续跟踪。</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-dot dot-l">🟢</div>
+        <div class="risk-body">
+          <h4>影子船队合规化 → 对DHT属利好非风险</h4>
+          <p>在前一份报告中列为风险的"影子船队合规化"，结合管理层在本次电话会议的诠释，实际上应重新评估：影子船队一旦合规，这些货量大量转移给DHT等独立运营商，扩大可寻址市场。该项从"风险"调整为"潜在催化剂"。</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-dot dot-l">🟢</div>
+        <div class="risk-body">
+          <h4>融资到期与债务展期风险（已大幅改善）</h4>
+          <p>新$250M Nordea RCF将债务到期日从2028年延长至2033年，且拥有$250M额外accordion条款。当前债务结构分散、期限合理（各笔到期在2028-2038年分布），并在市场超额认购环境下完成，再融资风险显著降低。此项风险已从"中等"调降至"低"。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 10 投资结论 ── -->
+<section id="conclusion">
+  <div class="sec-head"><span class="sec-tag">10</span><span class="sec-title">投资结论</span></div>
+  <div class="sec-body">
+    <div class="rating-banner">
+      <div class="rb-left">
+        <div class="rb-eyebrow">蜗牛鸟投资 · 全球运输研究部 · 评级</div>
+        <div class="rb-rating">持有（由"谨慎买入"下调）</div>
+        <div class="rb-sub">目标价≈现价、核心变量超出能力圈，评级下调与估值现实对齐</div>
+      </div>
+      <div class="rb-right">
+        <div class="rb-tp-label">目标价（12个月，维持）</div>
+        <div class="rb-tp mono">$20.00</div>
+        <div class="rb-prev">较当前约$19，资本利得空间约5%；Q3股息$1.22另计</div>
+      </div>
+    </div>
+    <br>
+    <p>本次Q2 2026业绩更新从根本上<strong>正面强化了DHT的运营质地论证</strong>：公司在史上最有利的VLCC市场环境中，以极低的意外停租率（0.3%）、稳健的运营成本控制（OPEX同比下降）和卓越的商务执行（TC合约时机把握、新船订购节奏）完整捕获了周期红利。史上最强季度的纪录不仅是数字，更是对管理层能力的一次极端市场验证。</p>
+    <p>估值层面，正常化EV/EBITDA约14-16x，在同业板块中属于基本合理；峰值口径约6x则显著便宜。这使得估值图景更为中性——但同时也意味着，股价不存在明显的估值洼地，主要回报来自股息而非股价重估。</p>
+    <p>评级由"谨慎买入"下调为<strong>"持有"</strong>，原因有三：（1）<strong>逻辑自洽</strong>：目标价$20等于现价，5%资本利得空间在承认核心变量（霍尔木兹持续时间）超出能力圈的前提下，不足以支撑买入评级；（2）<strong>同业横向</strong>：DHT以~1.0-1.1x NAV在板块内处于低溢价位置，市场已在定价上反映了对周期可持续性的合理怀疑，估值扩张路径有限；（3）<strong>资本结构矛盾</strong>：100%派发政策在极端景气下确实是股东友好的，但峰值年将现金全分出、同时以债务融资新船（DHT Oryx $211M待付），在周期逆转时将形成现金流压力——这是这类公司的结构性矛盾，非DHT独有，但需在持仓框架中明确计入。对于<strong>已持仓投资者</strong>：持有逻辑完整，继续享有季度股息，建议以TCE连续两季低于$60K/天作为减仓观察信号。对于<strong>未持仓投资者</strong>：当前位置入场需对中东局势有独立于市场的更强判断，否则等待TCE回落至更低定价点（$12-14区间对应悲观情景）是更有把握的入场时机。</p>
+  </div>
+</section>
+
+</div><!-- end wrap -->
+
+<footer>
+  <strong>蜗牛鸟投资研究部 · 全球运输板块</strong> &nbsp;|&nbsp; 本报告仅供内部参考，不构成投资建议。<br>
+  数据来源：DHT Holdings, Inc. Q2 2026业绩公告（Form 6-K，2026年8月5日，SEC EDGAR）；管理层电话会议纪要摘要（2026年8月6日，via MarketBeat/Yahoo Finance）；运费与预期数据：Quiver Quantitative、FinancialContent/StockStory（2026年8月5-8日）；Simply Wall St 分析参考（2026年8月7日）。<br>
+  报告制作日期：2026年8月9日&nbsp;|&nbsp;分析师应结合最新现货市场TCE和霍尔木兹局势进展持续更新估值假设。
+</footer>
+
+</body>
+</html>
