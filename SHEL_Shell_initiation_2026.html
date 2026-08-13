@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shell plc (SHEL) | 首次覆盖报告 · Q2 2026 深度研究 | 蜗牛鸟投资</title>
+<style>
+/* ── TOKENS ── */
+:root {
+  --shell-y: #FBCE07;   /* Shell yellow */
+  --shell-r: #DD1D21;   /* Shell red */
+  --navy:    #0C1E35;
+  --teal:    #007C89;
+  --green:   #1A6E3A;
+  --green-lt:#DCF0E4;
+  --red:     #C0392B;
+  --red-lt:  #FDECEA;
+  --amber:   #B87800;
+  --amber-lt:#FDF3DC;
+  --ink:     #0D1A26;
+  --ink-mid: #3A4F62;
+  --ink-dim: #6A7F8E;
+  --border:  #D0DBE4;
+  --bg:      #F2F5F8;
+  --surface: #FFFFFF;
+  --blue:    #1A5FA8;
+  --blue-lt: #EBF3FC;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  background:var(--bg);color:var(--ink);font-size:14px;line-height:1.72;
+}
+.mono{font-family:'SFMono-Regular','Consolas','Liberation Mono','Menlo',monospace}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:var(--navy);
+  display:flex;align-items:center;
+  padding:0 36px;height:46px;
+  box-shadow:0 2px 12px rgba(0,0,0,.25);
+  gap:0;
+}
+.nav-brand{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-right:auto;white-space:nowrap}
+nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:12px;padding:0 13px;
+  height:46px;display:flex;align-items:center;
+  border-bottom:2px solid transparent;transition:color .15s,border-color .15s;white-space:nowrap}
+nav a:hover{color:#fff;border-bottom-color:var(--shell-y)}
+
+/* ── HEADER ── */
+header{
+  background:linear-gradient(135deg, var(--navy) 0%, #1A3252 100%);
+  color:#fff;padding:38px 48px 32px;
+  position:relative;overflow:hidden;
+}
+header::before{
+  content:'';position:absolute;right:-60px;top:-80px;
+  width:380px;height:380px;
+  background:radial-gradient(circle,rgba(251,206,7,.10) 0%,transparent 65%);
+  pointer-events:none;
+}
+header::after{
+  content:'';position:absolute;left:0;bottom:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--shell-r) 0%,var(--shell-y) 100%);
+}
+.h-eyebrow{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--shell-y);margin-bottom:10px}
+.h-title{font-size:32px;font-weight:700;line-height:1.15;margin-bottom:6px}
+.h-sub{font-size:13.5px;color:rgba(255,255,255,.6);margin-bottom:22px}
+.h-chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:3px;
+  font-size:11px;font-weight:600;letter-spacing:.03em}
+.chip-beat  {background:rgba(27,110,58,.3); color:#7EDBA2;border:1px solid rgba(27,110,58,.5)}
+.chip-rev   {background:rgba(0,124,137,.25);color:#7CE4F0;border:1px solid rgba(0,124,137,.5)}
+.chip-div   {background:rgba(251,206,7,.2); color:#FDD078;border:1px solid rgba(251,206,7,.4)}
+.chip-ma    {background:rgba(185,76,39,.25);color:#FFA07A;border:1px solid rgba(185,76,39,.5)}
+
+/* ── KPI BAR ── */
+.kpi-bar{display:grid;grid-template-columns:repeat(6,1fr);background:var(--surface);
+  border-bottom:1px solid var(--border)}
+.kpi-cell{padding:18px 18px 15px;border-right:1px solid var(--border)}
+.kpi-cell:last-child{border-right:none}
+.kpi-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:4px}
+.kpi-val{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:21px;
+  font-weight:500;color:var(--ink);line-height:1.1}
+.kpi-meta{font-size:11px;margin-top:4px;color:var(--ink-dim)}
+.pos{color:var(--green);font-weight:600}
+.neg{color:var(--red);font-weight:600}
+.ntr{color:var(--ink-dim)}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1120px;margin:0 auto;padding:40px 32px;display:flex;flex-direction:column;gap:32px}
+
+/* ── SECTION ── */
+section{background:var(--surface);border:1px solid var(--border);border-radius:3px;overflow:hidden}
+.sec-head{padding:12px 24px;background:var(--bg);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px}
+.sec-tag{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:10px;
+  color:var(--ink-dim);background:var(--border);padding:1px 7px;border-radius:2px}
+.sec-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.sec-body{padding:24px}
+
+/* ── TABLE ── */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-dim);padding:8px 12px;border-bottom:2px solid var(--border);background:var(--bg)}
+td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--ink);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+.right{text-align:right}
+.center{text-align:center}
+.tag{display:inline-block;padding:1px 7px;border-radius:3px;font-size:10px;font-weight:700}
+.tag-beat{background:var(--green-lt);color:var(--green)}
+.tag-miss{background:var(--red-lt);color:var(--red)}
+.tag-caution{background:var(--amber-lt);color:var(--amber)}
+.tag-neu{background:var(--border);color:var(--ink-mid)}
+.tag-ma{background:#EDE9FD;color:#5B35C1}
+
+/* ── SEGMENT PANEL ── */
+.seg-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.seg-card{border:1px solid var(--border);border-radius:3px;padding:14px 16px;position:relative}
+.seg-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:0 0 3px 3px}
+.seg-ig::after   {background:var(--teal)}
+.seg-up::after   {background:var(--green)}
+.seg-mkt::after  {background:var(--amber)}
+.seg-cp::after   {background:var(--blue)}
+.seg-res::after  {background:#9B59B6}
+.seg-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:6px}
+.seg-earn{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:22px;font-weight:500;color:var(--ink)}
+.seg-yoy{font-size:11px;margin-top:4px}
+.seg-note{font-size:11px;color:var(--ink-dim);margin-top:6px;line-height:1.5}
+
+/* ── PORTFOLIO TIMELINE ── */
+.port-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.port-card{border:1px solid var(--border);border-radius:3px;padding:14px 16px}
+.port-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;margin-bottom:8px}
+.badge-buy{background:#EDE9FD;color:#5B35C1}
+.badge-sell{background:var(--amber-lt);color:var(--amber)}
+.badge-fid{background:var(--blue-lt);color:var(--blue)}
+.port-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.port-val{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:15px;font-weight:500;color:var(--teal);margin-bottom:5px}
+.port-desc{font-size:12px;color:var(--ink-mid);line-height:1.6}
+
+/* ── MGMT ── */
+.mgmt-row{padding:13px 0;border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:160px 1fr 90px;gap:14px;align-items:start}
+.mgmt-row:last-child{border-bottom:none}
+.mgmt-theme{font-size:11px;font-weight:700;color:var(--ink-mid);text-transform:uppercase;letter-spacing:.06em}
+.mgmt-text{font-size:13px;color:var(--ink);line-height:1.65}
+.mgmt-sig{font-size:11px;font-weight:600;padding:3px 8px;border-radius:3px;text-align:center}
+.sig-bull{background:var(--green-lt);color:var(--green)}
+.sig-bear{background:var(--red-lt);color:var(--red)}
+.sig-neu{background:var(--border);color:var(--ink-mid)}
+.sig-watch{background:var(--amber-lt);color:var(--amber)}
+
+/* ── PEER TABLE SPECIAL ── */
+.peer-highlight td{background:#EBF3FC;font-weight:600}
+.peer-col-best{color:var(--green);font-weight:700}
+.peer-col-worst{color:var(--red)}
+
+/* ── VALUATION ── */
+.val-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.val-box{border:1px solid var(--border);border-radius:3px;padding:16px 18px}
+.val-box h4{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:12px}
+.scenario-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px}
+.sc{border-radius:3px;padding:14px 16px;text-align:center}
+.sc.bear{background:var(--red-lt);border:1px solid #ECA5A0}
+.sc.base{background:var(--blue-lt);border:1px solid #A5C4E8}
+.sc.bull{background:var(--green-lt);border:1px solid #9DD0B5}
+.sc-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.sc.bear .sc-label{color:var(--red)}
+.sc.base .sc-label{color:var(--blue)}
+.sc.bull .sc-label{color:var(--green)}
+.sc-price{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:24px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.sc-prob{font-size:10px;color:var(--ink-dim);margin-bottom:6px}
+.sc-note{font-size:11px;color:var(--ink-mid);line-height:1.5}
+
+/* ── RISKS ── */
+.risk-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.risk-item:last-child{border-bottom:none}
+.risk-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:1px}
+.dot-h{background:var(--red-lt)}
+.dot-m{background:var(--amber-lt)}
+.dot-l{background:var(--green-lt)}
+.risk-body h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.risk-body p{font-size:12.5px;color:var(--ink-mid);line-height:1.65}
+
+/* ── RATING BANNER ── */
+.rating-banner{background:var(--navy);color:#fff;border-radius:3px;padding:22px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px}
+.rb-left .rb-eyebrow{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:6px}
+.rb-left .rb-rating{font-size:26px;font-weight:700}
+.rb-left .rb-sub{font-size:12px;color:rgba(255,255,255,.55);margin-top:4px}
+.rb-right{border-left:1px solid rgba(255,255,255,.18);padding-left:28px;text-align:right}
+.rb-right .rb-tp-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px}
+.rb-right .rb-tp{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:32px;font-weight:600}
+.rb-right .rb-prev{font-size:11px;color:rgba(255,255,255,.5);margin-top:3px}
+
+/* ── CALLOUT ── */
+.callout{border-radius:3px;padding:14px 18px;font-size:13px;line-height:1.7;margin:14px 0}
+.callout:last-child{margin-bottom:0}
+.callout.info{background:var(--blue-lt);border-left:3px solid var(--blue);color:var(--ink-mid)}
+.callout.warn{background:var(--amber-lt);border-left:3px solid var(--amber);color:var(--ink-mid)}
+.callout.pos {background:var(--green-lt);border-left:3px solid var(--green);color:var(--ink-mid)}
+.callout.neg {background:var(--red-lt);border-left:3px solid var(--red);color:var(--ink-mid)}
+
+/* ── PROSE ── */
+p{font-size:13.5px;color:var(--ink);line-height:1.78;margin-bottom:10px}
+p:last-child{margin-bottom:0}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,.4);font-size:11px;padding:24px 48px;line-height:1.9}
+footer strong{color:rgba(255,255,255,.65)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .kpi-bar{grid-template-columns:repeat(3,1fr)}
+  .seg-grid{grid-template-columns:repeat(2,1fr)}
+  .port-grid,.val-grid{grid-template-columns:1fr}
+  .mgmt-row{grid-template-columns:1fr}
+  .scenario-row{grid-template-columns:1fr}
+  header{padding:22px 20px 20px}
+  .wrap{padding:20px 14px}
+  .rating-banner{flex-direction:column}
+  .rb-right{border-left:none;border-top:1px solid rgba(255,255,255,.18);padding-left:0;padding-top:14px;text-align:left}
+}
+
+/* ── SUPPLEMENT: Company intro, history, FCF ── */
+
+/* ── TOKENS ── */
+:root {
+  --shell-y:#FBCE07; --shell-r:#DD1D21;
+  --navy:#0C1E35; --navy-mid:#1A3252;
+  --teal:#007C89; --teal-lt:#C6EBE8;
+  --green:#1A6E3A; --green-lt:#DCF0E4;
+  --red:#C0392B; --red-lt:#FDECEA;
+  --amber:#B87800; --amber-lt:#FDF3DC;
+  --blue:#1A5FA8; --blue-lt:#EBF3FC;
+  --ink:#0D1A26; --ink-mid:#3A4F62; --ink-dim:#6A7F8E;
+  --border:#D0DBE4; --bg:#F2F5F8; --surface:#FFFFFF;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',
+    'Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  background:var(--bg);color:var(--ink);font-size:14px;line-height:1.72;
+}
+.mono{font-family:'SFMono-Regular','Consolas','Liberation Mono','Menlo',monospace}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;background:var(--navy);
+  display:flex;align-items:center;padding:0 36px;height:46px;
+  box-shadow:0 2px 12px rgba(0,0,0,.25);gap:0}
+.nav-brand{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-right:auto;white-space:nowrap}
+nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:12px;padding:0 13px;
+  height:46px;display:flex;align-items:center;border-bottom:2px solid transparent;
+  transition:color .15s,border-color .15s;white-space:nowrap}
+nav a:hover{color:#fff;border-bottom-color:var(--shell-y)}
+
+/* ── HEADER ── */
+header{background:linear-gradient(135deg,var(--navy) 0%,#1A3252 100%);
+  color:#fff;padding:36px 48px 30px;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;right:-60px;top:-80px;width:380px;height:380px;
+  background:radial-gradient(circle,rgba(251,206,7,.10) 0%,transparent 65%);pointer-events:none}
+header::after{content:'';position:absolute;left:0;bottom:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--shell-r) 0%,var(--shell-y) 100%)}
+.h-eyebrow{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--shell-y);margin-bottom:10px}
+.h-title{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px}
+.h-sub{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:0}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1120px;margin:0 auto;padding:40px 32px;display:flex;flex-direction:column;gap:32px}
+
+/* ── SECTION ── */
+section{background:var(--surface);border:1px solid var(--border);border-radius:3px;overflow:hidden}
+.sec-head{padding:12px 24px;background:var(--bg);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px}
+.sec-tag{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:10px;
+  color:var(--ink-dim);background:var(--border);padding:1px 7px;border-radius:2px}
+.sec-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.sec-body{padding:24px}
+
+/* ── TABLES ── */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-dim);padding:8px 12px;border-bottom:2px solid var(--border);background:var(--bg)}
+td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--ink);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+.right{text-align:right} .center{text-align:center}
+.tag{display:inline-block;padding:1px 7px;border-radius:3px;font-size:10px;font-weight:700}
+.tag-pos{background:var(--green-lt);color:var(--green)}
+.tag-neg{background:var(--red-lt);color:var(--red)}
+.tag-neu{background:var(--border);color:var(--ink-mid)}
+.tag-warn{background:var(--amber-lt);color:var(--amber)}
+.pos{color:var(--green);font-weight:600} .neg{color:var(--red);font-weight:600}
+.dim{color:var(--ink-dim)}
+
+/* ── COMPANY OVERVIEW CARDS ── */
+.co-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.co-card{border:1px solid var(--border);border-radius:3px;padding:14px 16px}
+.co-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:5px}
+.co-val{font-size:15px;font-weight:600;color:var(--ink);line-height:1.3}
+.co-sub{font-size:11px;color:var(--ink-dim);margin-top:3px}
+
+/* ── HISTORY TIMELINE ── */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:8px;top:6px;bottom:6px;
+  width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:20px}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-28px;top:3px;width:16px;height:16px;border-radius:50%;
+  background:var(--navy);border:2px solid var(--border);display:flex;align-items:center;
+  justify-content:center}
+.tl-dot.key{background:var(--shell-y);border-color:var(--shell-y)}
+.tl-year{font-size:11px;font-weight:700;color:var(--teal);margin-bottom:3px;letter-spacing:.04em}
+.tl-text{font-size:13px;color:var(--ink-mid);line-height:1.65}
+
+/* ── SEGMENT OVERVIEW ── */
+.seg-overview{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.seg-ov-card{border:1px solid var(--border);border-radius:3px;padding:16px 18px;
+  border-left:4px solid var(--border)}
+.seg-ov-card.ig   {border-left-color:var(--teal)}
+.seg-ov-card.up   {border-left-color:var(--green)}
+.seg-ov-card.mkt  {border-left-color:var(--amber)}
+.seg-ov-card.cp   {border-left-color:var(--blue)}
+.seg-ov-card.res  {border-left-color:#9B59B6}
+.seg-ov-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.seg-ov-sub{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:8px}
+.seg-ov-body{font-size:12.5px;color:var(--ink-mid);line-height:1.65}
+
+/* ── RETURN POLICY BOX ── */
+.policy-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px}
+.policy-card{border:1px solid var(--border);border-radius:3px;padding:16px 18px;text-align:center}
+.policy-icon{font-size:24px;margin-bottom:8px}
+.policy-title{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-mid);margin-bottom:6px}
+.policy-val{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:20px;
+  font-weight:600;color:var(--ink);margin-bottom:4px}
+.policy-note{font-size:11px;color:var(--ink-dim);line-height:1.6}
+
+/* ── BUYBACK TRACKER ── */
+.buyback-row{display:flex;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);gap:12px}
+.buyback-row:last-child{border-bottom:none}
+.bb-q{font-size:12px;font-weight:700;color:var(--ink);width:80px;flex-shrink:0}
+.bb-bar-bg{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.bb-bar-fill{height:100%;border-radius:4px;background:var(--navy)}
+.bb-val{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:12px;
+  color:var(--ink);width:60px;text-align:right;flex-shrink:0}
+.bb-note{font-size:11px;color:var(--ink-dim);width:140px;flex-shrink:0}
+
+/* ── FCF CHART (CSS BAR CHART) ── */
+.fcf-chart{margin:16px 0}
+.chart-title{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:12px}
+.chart-grid{display:grid;grid-template-columns:60px 1fr 70px 90px;gap:8px;align-items:center}
+.chart-label{font-size:12px;font-weight:600;color:var(--ink-mid)}
+.chart-bar-bg{height:22px;background:var(--bg);border-radius:3px;border:1px solid var(--border);
+  overflow:hidden;position:relative}
+.chart-bar-fill{height:100%;border-radius:2px;transition:width .3s}
+.bar-cffo  {background:linear-gradient(90deg,#1A5FA8,#3A8FD8)}
+.bar-capex {background:linear-gradient(90deg,#B87800,#D4A020)}
+.bar-fcf   {background:linear-gradient(90deg,#1A6E3A,#2A9E5A)}
+.bar-wc-neg{background:linear-gradient(90deg,#C0392B,#E05540)}
+.bar-wc-pos{background:linear-gradient(90deg,#007C89,#20ACB9)}
+.chart-val{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:12px;
+  color:var(--ink);text-align:right}
+.chart-note{font-size:11px;color:var(--ink-dim)}
+.chart-divider{grid-column:1/-1;height:1px;background:var(--border);margin:4px 0}
+.chart-legend{display:flex;gap:16px;margin-bottom:12px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-mid)}
+.legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+
+/* ── FCF DECOMPOSITION ── */
+.fcf-decomp{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px}
+.decomp-card{border:1px solid var(--border);border-radius:3px;padding:14px 16px}
+.decomp-title{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:10px}
+.decomp-val{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:22px;
+  font-weight:500;color:var(--ink);margin-bottom:4px}
+.decomp-sub{font-size:11.5px;color:var(--ink-dim);line-height:1.6}
+
+/* ── CALLOUT ── */
+.callout{border-radius:3px;padding:14px 18px;font-size:13px;line-height:1.7;margin:14px 0}
+.callout:last-child{margin-bottom:0}
+.callout.info {background:var(--blue-lt);border-left:3px solid var(--blue);color:var(--ink-mid)}
+.callout.warn {background:var(--amber-lt);border-left:3px solid var(--amber);color:var(--ink-mid)}
+.callout.pos  {background:var(--green-lt);border-left:3px solid var(--green);color:var(--ink-mid)}
+.callout.neg  {background:var(--red-lt);border-left:3px solid var(--red);color:var(--ink-mid)}
+
+/* ── PROSE ── */
+p{font-size:13.5px;color:var(--ink);line-height:1.78;margin-bottom:10px}
+p:last-child{margin-bottom:0}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,.4);font-size:11px;
+  padding:24px 48px;line-height:1.9}
+footer strong{color:rgba(255,255,255,.65)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .co-grid{grid-template-columns:repeat(2,1fr)}
+  .seg-overview,.policy-grid,.fcf-decomp{grid-template-columns:1fr}
+  header{padding:22px 20px 18px}
+  .wrap{padding:20px 14px}
+  .chart-grid{grid-template-columns:50px 1fr 60px}
+  .chart-note{display:none}
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">蜗牛鸟投资 · 能源研究部</span>
+  <a href="#company">公司</a>
+  <a href="#summary">概览</a>
+  <a href="#financials">财务</a>
+  <a href="#segments">分部</a>
+  <a href="#portfolio">组合</a>
+  <a href="#mgmt">管理层</a>
+  <a href="#returns">股东回报</a>
+  <a href="#fcf">FCF</a>
+  <a href="#valuation">估值</a>
+  <a href="#peers">同业</a>
+  <a href="#risks">风险</a>
+</nav>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="h-eyebrow">首次覆盖报告 · 公司介绍 · Q2 2026 业绩 · 股东回报 · FCF分析 · 2026年8月11日</div>
+  <div class="h-title">Shell plc &nbsp;<span style="font-weight:300;opacity:.65">NYSE / LSE: SHEL</span></div>
+  <div class="h-sub">全球综合能源巨头 · 首次覆盖 · 公司介绍 · Q2 2026财务深度分析 · 同业对比 · 评级：持有</div>
+  <div class="h-chips">
+    <span class="chip chip-beat">↑ 调整后收益 BEAT +10.3%</span>
+    <span class="chip chip-rev">↑ 收入 +44.7% YoY</span>
+    <span class="chip chip-div">CFFO $21.4B · FCF $17.5B</span>
+    <span class="chip chip-ma">M&A: ARC Resources $16.4B</span>
+  </div>
+</header>
+
+<!-- ── KPI BAR ── -->
+<div class="kpi-bar">
+  <div class="kpi-cell">
+    <div class="kpi-label">调整后收益</div>
+    <div class="kpi-val mono">$9.84B</div>
+    <div class="kpi-meta"><span class="pos">+131% YoY</span> · <span class="tag tag-beat">BEAT +10.3%</span></div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-label">调整后 EBITDA</div>
+    <div class="kpi-val mono">$20.71B</div>
+    <div class="kpi-meta"><span class="pos">+55.6% YoY</span> vs Q2 2025 $13.3B</div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-label">CFFO（经营现金流）</div>
+    <div class="kpi-val mono">$21.43B</div>
+    <div class="kpi-meta"><span class="pos">+79.5% YoY</span> vs $11.9B</div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-label">自由现金流（FCF）</div>
+    <div class="kpi-val mono">$17.52B</div>
+    <div class="kpi-meta"><span class="pos">强劲 · FCF/CFFO = 81.8%</span></div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-label">调整后 EPS（每股ADS）</div>
+    <div class="kpi-val mono">$3.52</div>
+    <div class="kpi-meta">CCS口径 <span class="tag tag-beat">BEAT vs $3.23</span><br><span style="font-size:10px;color:var(--amber)">⚠ ADS口径需核验</span></div>
+  </div>
+  <div class="kpi-cell">
+    <div class="kpi-label">ROACE</div>
+    <div class="kpi-val mono">12.4%</div>
+    <div class="kpi-meta">净债务降至 $41.8B · 杠杆率 18.7%</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ── A1 公司介绍 ── -->
+<section id="intro">
+  <div class="sec-head"><span class="sec-tag">A1</span><span class="sec-title">公司基本介绍</span></div>
+  <div class="sec-body">
+
+    <div class="co-grid">
+      <div class="co-card">
+        <div class="co-label">成立时间</div>
+        <div class="co-val">1897年</div>
+        <div class="co-sub">Shell Transport & Trading 创立；1907年与荷兰皇家合并</div>
+      </div>
+      <div class="co-card">
+        <div class="co-label">注册地 / 总部</div>
+        <div class="co-val">英国伦敦</div>
+        <div class="co-sub">2022年1月完成总部迁伦敦、统一单一股权结构</div>
+      </div>
+      <div class="co-card">
+        <div class="co-label">上市地 / 代码</div>
+        <div class="co-val">NYSE: SHEL<br>LSE: SHEL</div>
+        <div class="co-sub">1 ADS = 2 普通股；伦敦主板同步上市</div>
+      </div>
+      <div class="co-card">
+        <div class="co-label">员工人数</div>
+        <div class="co-val">~82,000人</div>
+        <div class="co-sub">遍及70+国家；近年持续精简（2022年约93,000）</div>
+      </div>
+      <div class="co-card">
+        <div class="co-label">市值（约）</div>
+        <div class="co-val">~$2,500亿</div>
+        <div class="co-sub">全球市值前70名；能源行业全球前3</div>
+      </div>
+      <div class="co-card">
+        <div class="co-label">全年收入（2025）</div>
+        <div class="co-val">~$2,640亿</div>
+        <div class="co-sub">《财富》全球500强常年前15名</div>
+      </div>
+      <div class="co-card">
+        <div class="co-label">日产量（2025）</div>
+        <div class="co-val">~2,940 kboe/d</div>
+        <div class="co-sub">含油、气、液体天然气；2026年因中东冲突下降</div>
+      </div>
+      <div class="co-card">
+        <div class="co-label">LNG销量（2025）</div>
+        <div class="co-val">~67 MT/年</div>
+        <div class="co-sub">全球最大LNG贸易商之一，超越多数国家公司</div>
+      </div>
+    </div>
+
+    <p>Shell plc 是全球最大的综合能源公司之一，业务横跨<strong>石油和天然气勘探与生产、液化天然气（LNG）贸易、炼油化工、能源零售（加油站）、润滑油及低碳能源解决方案</strong>。公司在全球超过70个国家运营，拥有约82,000名员工，年营收约$2,640亿（2025年），是《财富》全球500强的常年高位成员。</p>
+
+    <p>理解Shell，最重要的概念是它的<strong>"综合商业模式"（Integrated Business Model）</strong>：与纯粹的上游勘探公司（如Pioneer天然资源）或纯下游炼化公司不同，Shell将上游油气生产、中游运输与液化、LNG交易优化、下游炼化、终端销售融为一体。这种整合意味着不同业务之间存在天然的对冲关系——高油价时，上游利润丰厚，下游炼化原料成本上升；低油价时，下游炼化利润改善，上游承压。在Q2 2026的极端环境中（中东危机导致卡塔尔资产中断），这种整合优势得到了极致验证。</p>
+
+    <div class="callout info">
+      <strong>Shell vs. ExxonMobil / Chevron 的本质差异：</strong>三者同为超级巨头，但策略取向不同。ExxonMobil以上游纪律性资本配置著称，Chevron聚焦核心区块（Permian+Guyana）追求高ROACE；<strong>Shell的差异化在于LNG贸易与优化的全球领导地位</strong>——其Gas贸易团队全球最强，每年通过购买/出售/调度第三方LNG创造的EBITDA加成约占集团总收益的8-12%，这是XOM和CVX难以复制的"软资产"。
+    </div>
+  </div>
+</section>
+
+<!-- ── A2 历史沿革 ── -->
+<section id="history">
+  <div class="sec-head"><span class="sec-tag">A2</span><span class="sec-title">历史沿革 · 从贝壳商人到全球能源巨头</span></div>
+  <div class="sec-body">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot key"></div>
+        <div class="tl-year">1833–1897 · 起源</div>
+        <div class="tl-text">Marcus Samuel在伦敦经营古玩和贝壳（Shell）贸易起家。1892年其子Marcus Samuel Jr. 改造油轮"Murex"号，将俄罗斯煤油经苏伊士运河运往亚洲，颠覆了当时标准石油的垄断。1897年成立<strong>壳牌运输贸易公司（Shell Transport & Trading）</strong>。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot key"></div>
+        <div class="tl-year">1907 · 皇家荷兰壳牌合并</div>
+        <div class="tl-text">荷兰皇家石油公司（Royal Dutch Petroleum，成立于1890年，在婆罗洲和苏门答腊开采油田）与Shell Transport & Trading以60:40的股比合并，成立<strong>荷兰皇家壳牌集团</strong>（Royal Dutch Shell Group），成为标准石油最强劲的国际竞争对手。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">1920s–1970s · 全球扩张与石油危机</div>
+        <div class="tl-text">在中东、委内瑞拉、尼日利亚等地获得大量勘探权益，成为"七姐妹"（Seven Sisters）之一——与埃克森、BP、海湾等共同主导全球石油定价。1970年代两次石油危机后，Shell开始推进战略转型，降低对OPEC单一区域的依赖。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">1990s–2000s · LNG战略布局与储量丑闻</div>
+        <div class="tl-text">Shell率先推进LNG技术商业化，建设卡塔尔Pearl GTL（气转液）全球最大天然气转换项目，成为LNG技术和贸易的全球领导者。2004年"储量虚报丑闻"爆发（夸大约20%已探明储量），引发监管调查和管理层重组，是公司历史上最重大的治理危机之一。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot key"></div>
+        <div class="tl-year">2015–2016 · BG Group收购 ($70亿)</div>
+        <div class="tl-text">以$700亿收购英国天然气集团（BG Group），这是当时全球能源行业最大并购之一，大幅强化了Shell在巴西、澳大利亚LNG和英国北海的地位。但随即遭遇2014-2016年油价暴跌，使Shell债务压力骤增，被迫裁员约1.2万人并削减资本支出。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot key"></div>
+        <div class="tl-year">2020 · 新冠疫情 · 74年来首次削减股息</div>
+        <div class="tl-text">COVID-19重创全球能源需求，布伦特原油跌至$20/桶以下。Shell宣布将股息削减66%（从$0.47降至$0.16/普通股），这是二战以来即74年来首次减息，在市场和股东中引发巨大震动，股价当日跌约10%。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot key"></div>
+        <div class="tl-year">2021–2022 · 重组、迁址、改名</div>
+        <div class="tl-text">2021年荷兰法院判决Shell须在2030年前将碳排放减少45%（相对2019年），是全球首次针对能源公司的此类判决。为简化双重股权结构，2021年底宣布迁址至英国伦敦并取消A/B股双重结构，2022年1月正式更名为<strong>"Shell plc"</strong>（去掉"Royal Dutch"）。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot key"></div>
+        <div class="tl-year">2023 · CEO更迭与战略再聚焦</div>
+        <div class="tl-text">Wael Sawan接任CEO，宣布"deliver more value with less emissions"战略，推进组合高优化（Portfolio High-Grading）：剥离非核心低回报资产，聚焦LNG、上游高价值区块和营销高ROACE业务；放弃绑定具体绝对减排目标，转向"强度减排"路径，引发环保组织广泛批评。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2024–2025 · 成本削减达标、LNG加拿大启动</div>
+        <div class="tl-text">提前三年完成CMD23成本削减目标（$31亿），进一步追加$57亿目标；LNG加拿大Phase 1（Shell持股40%）于2025年开始向亚洲市场出口LNG，成为北美首个大规模LNG出口项目；2025年退出新泽西州Atlantic Shores海上风电项目，进一步收缩低回报低碳资产。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot key"></div>
+        <div class="tl-year">2026 · ARC收购 · Q2历史业绩</div>
+        <div class="tl-text">宣布以$164亿EV收购加拿大ARC Resources（Montney页岩），为近十年最大并购，强化天然气上游战略并为LNG加拿大Phase 2提供气源；Q2 2026调整后收益$9.84B、FCF $17.5B，为公司历史最强季度之一。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── A3 业务架构 ── -->
+<section id="biz-overview">
+  <div class="sec-head"><span class="sec-tag">A3</span><span class="sec-title">五大业务板块 · 什么赚钱、怎么赚钱</span></div>
+  <div class="sec-body">
+    <p style="margin-bottom:16px;">Shell的五个报告分部构成一个相互协同的价值链，而非彼此独立的业务单元。理解分部的关键是看它们之间的<strong>内部对冲与协同逻辑</strong>，而非单独看每个板块。</p>
+
+    <div class="seg-overview">
+      <div class="seg-ov-card ig">
+        <div class="seg-ov-name">综合天然气（Integrated Gas, IG）</div>
+        <div class="seg-ov-sub">收益占比约35–40% · 最核心差异化板块</div>
+        <div class="seg-ov-body">
+          <strong>做什么：</strong>天然气勘探与开采 → 液化为LNG → 海运 → 销售给终端买家（主要亚洲和欧洲电力及工业客户）；同时通过贸易与优化（T&O）团队在全球现货市场套利，在TTF（欧洲）和JKM（亚洲）之间动态调配货轮。<br><br>
+          <strong>核心资产：</strong>卡塔尔North Field（全球最大LNG项目之一，Shell 30%权益）；Pearl GTL（气转液）；澳大利亚QCLNG/Prelude FLNG；LNG加拿大（Shell 40%，2025年开始出口）；全球30余个LNG接收站和运营泊位。<br><br>
+          <strong>为何是差异化：</strong>Shell LNG贸易团队是全球最活跃的第三方LNG买卖方，每年交易的LNG中约一半来自第三方（非自产），通过时机和路线优化创造超额收益。这是"软实力"，不在资产负债表上体现，但持续贡献EBITDA。
+        </div>
+      </div>
+      <div class="seg-ov-card up">
+        <div class="seg-ov-name">上游（Upstream）</div>
+        <div class="seg-ov-sub">收益占比约30–35% · 油价弹性最高的板块</div>
+        <div class="seg-ov-body">
+          <strong>做什么：</strong>全球70+国家的原油和天然气勘探与开采，包括海上（深水）和陆上（页岩）两种形式。出产的原油通过管道/油轮输送至炼化厂或直接出售。<br><br>
+          <strong>核心资产：</strong>巴西桑托斯盆地（Buzios FPSO，Shell持股19.3%，产量高速增长）；美国Permian盆地页岩油；墨西哥湾深水；马来西亚Sabah气田；尼日利亚深水。收购ARC Resources后，加拿大Montney将成为重要新组成部分（约370 kboe/d）。<br><br>
+          <strong>与油价的关系：</strong>上游板块收益约与布伦特油价高度正相关（油价$10变动约影响上游EBITDA约$10-15亿/季），是集团油价弹性的主要来源。
+        </div>
+      </div>
+      <div class="seg-ov-card mkt">
+        <div class="seg-ov-name">营销（Marketing）</div>
+        <div class="seg-ov-sub">收益占比约10–15% · 高ROACE的现金奶牛</div>
+        <div class="seg-ov-body">
+          <strong>做什么：</strong>Shell全球零售网络（约45,000个加油站，含EV充电）的运营；全球最大润滑油品牌之一（Helix/Rimula）的生产和销售；商业燃料销售（航空、海运、工业客户）。<br><br>
+          <strong>为何值钱：</strong>Mobility（出行）ROACE已升至>15%，Lubricants ROACE>21%——在传统能源行业中属于"高频消耗品"逻辑，对油价相对不敏感，依靠品牌、便利性和差异化产品维持高利润率。<br><br>
+          <strong>近期动态：</strong>以$13亿出售Jiffy Lube（北美快修连锁）、剥离南非零售业务，聚焦核心燃料和润滑油业务，提升资本效率。
+        </div>
+      </div>
+      <div class="seg-ov-card cp">
+        <div class="seg-ov-name">化工与产品（Chemicals & Products, C&P）</div>
+        <div class="seg-ov-sub">收益占比约20–25% · 周期性最强、近年改善明显</div>
+        <div class="seg-ov-body">
+          <strong>做什么：</strong>两大业务——炼油（将原油提炼为汽柴油、航煤、燃料油）和化工（从烃类生产乙烯、聚乙烯、特种化学品等）。Shell在全球拥有约10座大型炼厂（鹿特丹、新加坡Bukom、美国Deer Park等），年炼油能力约200万桶/日。<br><br>
+          <strong>内部协同：</strong>炼厂接收集团自产原油，同时参与T&O团队的原油优化调配，这使Shell的炼厂利用率和炼差（Refining Margin）显著优于独立炼油商。Q2 2026炼厂利用率高达102%（部分设备满负荷+外包处理）。<br><br>
+          <strong>挑战：</strong>化工板块近年全球供需失衡（中国新产能大量投产），长期价差受压；Pearl GTL Train 2中断（预计2027Q1恢复）对原料端有短期影响。
+        </div>
+      </div>
+      <div class="seg-ov-card res">
+        <div class="seg-ov-name">可再生能源与解决方案（Renewables & Energy Solutions）</div>
+        <div class="seg-ov-sub">当前收益贡献极小 · 长期战略投资期</div>
+        <div class="seg-ov-body">
+          <strong>做什么：</strong>商业碳捕集与封存（CCS）；绿色氢（Holland Hydrogen One，欧洲最大绿氢工厂）；天然气交易与管道气；Shell Ventures（能源转型初创企业投资）；电力销售与自然碳汇（NBS）。<br><br>
+          <strong>投资者的主要质疑：</strong>该板块占用资本不少但当前回报极低，Q2 2026调整后收益仅$79M（占集团不足1%）。管理层表示CCS和氢能要到2027年才产生"可接受的回报"，但具体门槛未明确量化，市场无法独立验证。<br><br>
+          <strong>Sawan战略转向：</strong>2023年起Shell放弃绑定海上风电等绝对减排目标，退出多个亏损风电项目（如Atlantic Shores），聚焦"能带来实际回报"的低碳选项（生物燃料、CCS、绿氢），降低资本浪费风险。
+        </div>
+      </div>
+      <div class="seg-ov-card" style="border-left-color:var(--ink-dim);">
+        <div class="seg-ov-name">内部价值链协同：Shell的核心竞争优势</div>
+        <div class="seg-ov-sub">将五个板块连成一个整体</div>
+        <div class="seg-ov-body">
+          Shell的本质竞争优势不在任何单一板块，而在<strong>五个板块之间的实物流和信息流协同</strong>：上游产出原油/天然气 → IG板块液化天然气并优化货流路径 → C&P板块炼化原油并优化炼厂负荷 → Marketing板块将成品分销至全球终端客户 → T&O（贸易与优化）团队在全链条上套利和对冲。这种全价值链整合使Shell能在任何单一环节受阻时（如Q2卡塔尔中断），通过其他环节超额补偿，这在独立上游公司中是不可能实现的。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 01 综合评价 ── -->
+<section id="summary">
+  <div class="sec-head"><span class="sec-tag">01</span><span class="sec-title">综合评价 · 一个穿越中东干扰的季度</span></div>
+  <div class="sec-body">
+    <p>Shell Q2 2026 是一份在极具挑战的宏观背景下的<strong>全面超预期财报</strong>：中东冲突导致卡塔尔LNG出口受阻（约占Shell综合气体产量约20%的外部供应链中断），同期炼油资产高达102%的历史利用率（意味着几乎零非计划停产），化工业务五年来最佳表现，叠加LNG贸易与优化部门精准捕捉霍尔木兹价差，共同构成一次集体超越预期。</p>
+    <p>这份财报的核心意义有三：第一，<strong>整合商业模式的抗压性验证</strong>——上游受中东干扰，下游炼化超额弥补，LNG加拿大放量抵消卡塔尔，整个集团几乎无一拖累，印证了CEO Wael Sawan "通过波动兑现价值" 的战略叙事；第二，<strong>ARC Resources并购战略落地</strong>，这是Shell近十年最大并购，将加拿大Montney页岩油气产量（约370 kboe/d）和约20亿桶2P储量纳入版图，并为LNG加拿大Phase 2提供上游气源支撑；第三，<strong>结构性成本削减临近目标上限</strong>，2022年以来累计$58亿，2026年上半年$7亿，管理层明确表示正追求$57亿目标的上限端。</p>
+    <div class="callout pos">
+      <strong>关键数字：</strong>H1 2026官方FCF $20.451B（CFFO$27.5B + CFI净−$7.05B）、调整后收益$16.75B。注：FCF不宜简单×2年化，因H2油价、营运资本方向、ARC交割资金（约$4B现金出）、H2 Capex均有实质不确定性。股息$0.3906/普通股于Q2支付，合计约$1.09B；Q2期间实际执行回购约$3.0-3.5B（前一批次）；Q3结果前新宣布回购$3B+延续$1.2B，共$4.2B为Q3执行计划。<strong>注意：</strong>此处$5.2B是"Q2+Q3宣布总额"，而非"Q2单季股东实际回款"，Q2当季实际现金回报约$4.1-4.6B（回购实际执行额+股息）。滚动12个月总分配占CFFO约44%。
+    </div>
+    <p>需要警惕的核心矛盾：本季度CFFO $21.4B中含有$3.4B营运资本流入——这是油价季中下跌（布伦特从约$105降至约$85区间）导致应付账款减少的一次性释放。剔除该项后，经营性CFFO约$18B，仍很强，但略低于表面数字。此外，ARC Resources并购将在Q3关闭后，带来$2.8B额外净债，使杠杆率从18.7%升至约20-21%，接近20-25%目标区间上端。</p>
+  </div>
+</section>
+
+<!-- ── 02 关键财务数据 ── -->
+<section id="financials">
+  <div class="sec-head"><span class="sec-tag">02</span><span class="sec-title">关键财务数据 · Q2 2026 全面勾稽</span></div>
+  <div class="sec-body">
+    <table>
+      <thead>
+        <tr><th>指标</th><th class="right">Q2 2026实际</th><th class="right">预期/共识</th><th class="right">Q2 2025</th><th class="right">Q1 2026</th><th class="right">YoY</th><th class="center">判断</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>收入及其他（总）</td><td class="right mono">$96.35B</td><td class="right mono">$81.4–86.8B</td><td class="right mono">$66.44B</td><td class="right mono">$52.41B</td><td class="right pos">+44.9%</td><td class="center"><span class="tag tag-beat">BEAT</span></td></tr>
+        <tr style="background:#F4FAFA;"><td>调整后收益（CCS基准）</td><td class="right mono">$9.84B</td><td class="right mono">$8.92B</td><td class="right mono">$4.26B</td><td class="right mono">$6.91B</td><td class="right pos">+131.0%</td><td class="center"><span class="tag tag-beat">BEAT +10.3%</span></td></tr>
+        <tr><td>GAAP归母净利润</td><td class="right mono">$10.82B</td><td class="right mono">—</td><td class="right mono">$3.60B</td><td class="right mono">$5.69B</td><td class="right pos">+200.6%</td><td class="center">含已实现项目</td></tr>
+        <tr style="background:#F4FAFA;"><td>调整后 EBITDA</td><td class="right mono">$20.71B</td><td class="right mono">—</td><td class="right mono">$13.31B</td><td class="right mono">$12.73B</td><td class="right pos">+55.6%</td><td class="center">—</td></tr>
+        <tr><td>CFFO（经营现金流）</td><td class="right mono">$21.43B</td><td class="right mono">—</td><td class="right mono">$11.94B</td><td class="right mono">$6.07B</td><td class="right pos">+79.5%</td><td class="center">含$3.4B营运资本流入</td></tr>
+        <tr style="background:#F4FAFA;"><td>自由现金流（FCF）</td><td class="right mono">$17.52B</td><td class="right mono">—</td><td class="right mono">—</td><td class="right mono">$2.94B</td><td class="right pos">显著改善</td><td class="center">FCF/CFFO=81.8%<br><span style="font-size:10px;color:var(--amber)">⚠ FCF=$21.43B-$4.24B≠$17.52B，见下注</span></td></tr>
+        <tr><td>资本支出（Capex）</td><td class="right mono">$4.24B</td><td class="right mono">—</td><td class="right mono">—</td><td class="right mono">$3.73B</td><td class="right">—</td><td class="center">全年$24-26B目标</td></tr>
+        <tr style="background:#F4FAFA;"><td>基本 EPS（GAAP，$/普通股）</td><td class="right mono">$1.94</td><td class="right mono">—</td><td class="right mono">$0.61</td><td class="right mono">$1.00</td><td class="right pos">+218.0%</td><td class="center">—</td></tr>
+        <tr><td>调整后 EPS（CCS，ADS口径）</td><td class="right mono">$3.52</td><td class="right mono">$3.23</td><td class="right mono">$1.42</td><td class="right mono">—</td><td class="right pos">+147.9%</td><td class="center"><span class="tag tag-beat">BEAT +9.0%</span></td></tr>
+        <tr style="background:#F4FAFA;"><td>每股股息（/普通股）</td><td class="right mono">$0.3906</td><td class="right mono">—</td><td class="right mono">$0.344</td><td class="right mono">$0.3906</td><td class="right pos">+13.5%</td><td class="center">第二季度连续持平</td></tr>
+        <tr><td>股东回报（回购+股息）</td><td class="right mono">$5.2B</td><td class="right mono">—</td><td class="right mono">$3.3B</td><td class="right mono">$4.8B</td><td class="right pos">+57.6%</td><td class="center">44% CFFO（滚动12月）<br><span style="font-size:10px;color:var(--amber)">⚠ $3B新回购为Q3执行计划，Q2实际回报约$4.1-4.6B</span></td></tr>
+        <tr style="background:#F4FAFA;"><td>ROACE（资本回报率）</td><td class="right mono">12.4%</td><td class="right mono">—</td><td class="right mono">—</td><td class="right mono">10.2%</td><td class="right pos">+2.2ppt</td><td class="center">—</td></tr>
+        <tr><td>净债务</td><td class="right mono">$41.8B</td><td class="right mono">—</td><td class="right mono">—</td><td class="right mono">$52.6B</td><td class="right pos">-$10.8B QoQ</td><td class="center">杠杆率18.7%</td></tr>
+        <tr style="background:#F4FAFA;"><td>产量（kboe/d）</td><td class="right mono">2,455</td><td class="right mono">—</td><td class="right mono">2,682</td><td class="right mono">2,940</td><td class="right neg">-8.5%</td><td class="center">中东干扰所致</td></tr>
+      </tbody>
+    </table>
+    <div class="callout info" style="margin-top:16px;">
+      <strong>盈利勾稽验证：</strong>调整后EBITDA $20.71B → 减D&A约$5.5B → 调整后EBIT约$15.2B → 减净利息约$0.9B → 减税约$5.0B → 调整后净利约$9.3B，与报告$9.84B差约$0.5B，来自少数股东权益及CCS口径差异。GAAP净利$10.82B高于调整后$9.84B，主因：已识别项目净收益约+$1.0B（含资产出售收益，部分被减值冲销），差异有据可查。<br><br><strong>FCF勾稽说明：</strong>Shell官方FCF = CFFO($21.432B) + CFI(−$3.908B) = <strong>$17.524B</strong>，与上表一致。CFI(−$3.908B)包含：资本支出、收购付款（净）、处置收益及其他投资活动净额，不可替换为Cash Capex单项。Q2 CFFO含两项时点性流入：营运资本释放$3.4B + 排放配额及生物燃料付款时点净流入$1.3B；同时剥离两者后，经营性CFFO约<strong>$16.7B</strong>，是更接近可持续水平的参考值。
+    </div>
+  </div>
+</section>
+
+<!-- ── 03 分部表现 ── -->
+<section id="segments">
+  <div class="sec-head"><span class="sec-tag">03</span><span class="sec-title">分部业绩 · 五大板块深度拆解</span></div>
+  <div class="sec-body">
+    <div class="seg-grid">
+      <div class="seg-card seg-ig">
+        <div class="seg-label">综合天然气（IG）</div>
+        <div class="seg-earn mono">$2.69B</div>
+        <div class="seg-yoy"><span class="pos">+141% YoY</span></div>
+        <div class="seg-note">产量631 kboe/d（Q1: 909，中东干扰拖累-30%）。LNG加拿大首年即达满产（100+货轮）完全弥补卡塔尔缺口。第三方LNG贸易量接近纪录。贸易优化部门精准捕捉TTF/JKM价差。Pearl GTL Train 2预计2027Q1恢复。</div>
+      </div>
+      <div class="seg-card seg-up">
+        <div class="seg-label">上游（Upstream）</div>
+        <div class="seg-earn mono">$3.49B</div>
+        <div class="seg-yoy"><span class="pos">+183% YoY</span></div>
+        <div class="seg-note">巴西创产量纪录；Permian同比增长显著。墨西哥湾Na Kika已完成出售（$1.7B）。纳米比亚Orange盆地勘探井录得"极佳储层和流体特征"，2026年底前将钻2口评价井——潜在新增长引擎。</div>
+      </div>
+      <div class="seg-card seg-mkt">
+        <div class="seg-label">营销（Marketing）</div>
+        <div class="seg-earn mono">$1.33B</div>
+        <div class="seg-yoy"><span class="pos">+69% YoY</span></div>
+        <div class="seg-note">出行（Mobility）燃料零售量稳健；润滑油业务量价双升；电动汽车充电覆盖网络扩张。以$1.3B出售Jiffy Lube（北美快速保养连锁）已完成，聚焦核心商业燃料和润滑油。</div>
+      </div>
+      <div class="seg-card seg-cp">
+        <div class="seg-label">化工与产品（C&P）</div>
+        <div class="seg-earn mono">$2.88B</div>
+        <div class="seg-yoy"><span class="pos">五年最佳</span></div>
+        <div class="seg-note">炼油利用率创纪录102%（与交易优化协同驱动）；中间馏分油（柴油/航煤）价差扩大，中东绕道额外需求支撑。化工价差进入Q3开始软化，管理层预警下游环境趋难，Pearl GTL Train 2停产影响下半年原料端。</div>
+      </div>
+      <div class="seg-card seg-res">
+        <div class="seg-label">可再生能源与解决方案</div>
+        <div class="seg-earn mono">$79M</div>
+        <div class="seg-yoy"><span class="ntr">微利</span></div>
+        <div class="seg-note">CCS（碳捕集）和Holland Hydrogen One预计2027年才产生可接受回报，当前占用大量资本但贡献有限。Sprng Energy（印度可再生能源）已以$1.8B出售，聚焦策略进一步聚合。低碳板块进入"强制回报"的整合期。</div>
+      </div>
+    </div>
+
+    <br>
+    <table>
+      <thead>
+        <tr><th>分部</th><th class="right">Q2 2026调整后收益</th><th class="right">Q2 2025</th><th class="right">YoY</th><th class="right">占Q2总收益%</th><th>核心驱动</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>综合天然气（IG）</td><td class="right mono">$2.69B</td><td class="right mono">~$1.12B</td><td class="right pos">+141%</td><td class="right mono">27.3%</td><td>LNG加拿大满产 + 贸易优化</td></tr>
+        <tr style="background:#F4FAFA;"><td>上游（Upstream）</td><td class="right mono">$3.49B</td><td class="right mono">~$1.24B</td><td class="right pos">+181%</td><td class="right mono">35.5%</td><td>油价上涨 + 巴西纪录产量</td></tr>
+        <tr><td>营销（Marketing）</td><td class="right mono">$1.33B</td><td class="right mono">~$0.79B</td><td class="right pos">+68%</td><td class="right mono">13.5%</td><td>燃料利润率扩张</td></tr>
+        <tr style="background:#F4FAFA;"><td>化工与产品（C&P）</td><td class="right mono">$2.88B</td><td class="right mono">~$1.10B</td><td class="right pos">+162%</td><td class="right mono">29.3%</td><td>102%炼厂利用率 + 中间馏分油价差</td></tr>
+        <tr><td>可再生能源与解决方案</td><td class="right mono">$0.08B</td><td class="right mono">~$0.01B</td><td class="right pos">+700%</td><td class="right mono">0.8%</td><td>规模尚小</td></tr>
+        <tr style="background:#EBF4FF;font-weight:600;"><td><strong>企业调整后收益（合计）</strong></td><td class="right mono">$9.84B</td><td class="right mono">$4.26B</td><td class="right pos">+131%</td><td class="right mono">100%</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── 04 组合重塑 ── -->
+<section id="portfolio">
+  <div class="sec-head"><span class="sec-tag">04</span><span class="sec-title">资产组合重塑 · 买入与剥离的战略逻辑</span></div>
+  <div class="sec-body">
+    <div class="port-grid">
+      <div class="port-card">
+        <span class="port-badge badge-buy">收购</span>
+        <div class="port-name">ARC Resources（加拿大）</div>
+        <div class="port-val">EV ~$16.4B（股权$13.6B + 净债$2.8B）</div>
+        <div class="port-desc">Montney页岩核心区，~370 kboe/d产量（58%天然气、42%液体），2P储量约20亿桶。$3.4B现金+约2.28亿Shell股票。预计2026年Q3完成交割。上游气源将直供LNG加拿大Phase 2（如FID通过）。管理层称：从2027年起对FCF/股产生增厚效果；产量CAGR从1%提升至4%至2030年。<br><br><strong>风险：</strong>溢价20%收购，短期摊薄EPS约3-5%；加拿大AECO气价（约40%收益挂钩）较低，需LNG Canada Phase 2 FID才能实现国际气价（JKM/TTF）溢价转化。</div>
+      </div>
+      <div class="port-card">
+        <span class="port-badge badge-buy">战略进展</span>
+        <div class="port-name">LNG加拿大 Phase 2</div>
+        <div class="port-val">预计年内FID（2026年底前）</div>
+        <div class="port-desc">LNG Canada Phase 1已满产（100+货轮），Shell持股40%。Phase 2 FID若通过，将把ARC气源价格从40% AECO+60%国际比例升至约80%国际挂钩，大幅提升加拿大资产变现价值。管理层将Phase 2 FID称为"绝对自由现金流增长的叠加层"。<br><br>地理优势：不列颠哥伦比亚省基地港距亚洲LNG市场约15天航行（远短于墨西哥湾约25天），卡特尔竞争力领先。</div>
+      </div>
+      <div class="port-card">
+        <span class="port-badge badge-sell">剥离</span>
+        <div class="port-name">Na Kika / Coulomb（墨西哥湾）</div>
+        <div class="port-val">$1.7B（出售给Woodside）</div>
+        <div class="port-desc">深水资产，维护成本相对高、剩余储量年限有限。出售符合Shell聚焦"长期低成本低碳"资产的战略方向，释放资本重新配置至加拿大和巴西。</div>
+      </div>
+      <div class="port-card">
+        <span class="port-badge badge-sell">剥离</span>
+        <div class="port-name">Jiffy Lube（北美快修连锁）</div>
+        <div class="port-val">$1.3B</div>
+        <div class="port-desc">非核心非能源业务，品牌授权模式与Shell综合能源战略不高度相关。出售后营销板块聚焦商业燃料、润滑油和EV充电。</div>
+      </div>
+      <div class="port-card">
+        <span class="port-badge badge-sell">剥离</span>
+        <div class="port-name">Sprng Energy（印度可再生能源）</div>
+        <div class="port-val">$1.8B（协议达成）</div>
+        <div class="port-desc">印度太阳能与风电资产，当前回报率低于Shell资本门槛。Shell将可再生投资重心转向与核心业务更协同的区域和形式（生物燃料、绿色氢），而非独立电力项目。</div>
+      </div>
+      <div class="port-card">
+        <span class="port-badge badge-fid">探索/待投</span>
+        <div class="port-name">纳米比亚 Orange盆地</div>
+        <div class="port-val">2026年底前2口评价井</div>
+        <div class="port-desc">Q2勘探井录得"极佳储层和流体特征"——这是Shell近年罕见的重大勘探声明。若评价井确认，纳米比亚有望成为Shell下一个十年的增长引擎（类比Guyana之于ExxonMobil）。市场尚未在估值中充分定价这一期权价值。</div>
+      </div>
+    </div>
+    <div class="callout info" style="margin-top:14px;">
+      <strong>战略逻辑总结：</strong>Shell的组合重塑呈现清晰的"剥离非核心高维护资产 → 收购低成本长生命周期上游 → 强化综合气体/LNG贸易优化 → 探索下一代储量选项（纳米比亚/Namibia）"的路径。ARC是这一转型的核心一步，成本（$16.4B EV）和溢价（20%）相对于战略价值而言处于合理区间，但执行风险依赖于LNG Canada Phase 2 FID落地。
+    </div>
+  </div>
+</section>
+
+<!-- ── 05 管理层电话会议 ── -->
+<section id="mgmt">
+  <div class="sec-head"><span class="sec-tag">05</span><span class="sec-title">管理层电话会议核心表态（Wael Sawan / Sinead Gorman，2026年7月30日）</span></div>
+  <div class="sec-body">
+    <div class="mgmt-row">
+      <div class="mgmt-theme">整合模式 · 穿越波动<br><span style="font-size:10px;color:var(--amber);font-weight:400">⚠ 见失效条件</span></div>
+      <div class="mgmt-text">CEO Sawan开篇即用"delivers through volatility"定调：中东危机导致卡塔尔LNG/Pearl GTL部分中断，但LNG加拿大填补缺口、炼厂实现102%利用率、化工取得五年最佳——这不是偶发，而是整合模式设计的结果。各业务间存在天然的"内部对冲"机制（高油价利好上游、同时利好炼厂炼差）。<br><br><span style="color:var(--amber);font-weight:600">【批判性测试】</span>Q1 2026的CFFO仅$6.07B（Q2的28%），说明整合模式存在边界条件：<strong>当营运资本大规模流出（-$11.2B）叠加地缘催化尚未释放时，整合优势几乎完全被吞噬</strong>。整合模式失效的触发条件是：① 营运资本方向逆转吸收现金（Q1已验证）；② 上游/LNG/炼化三驱动同步走弱而非错位（2023年Q4曾出现）；③ 多个地区同时计划停产（叠加中东干扰）。管理层电话会中不会主动列举这些失效条件，需独立识别。</div>
+      <div><span class="mgmt-sig sig-watch">有边界</span></div>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-theme">成本削减 · 追求上限</div>
+      <div class="mgmt-text">CFO Gorman强调：H1 2026结构性成本削减$7亿，2022年以来累计$58亿，距$57亿目标已超额；公司现在追求$57亿目标的上限端（upper end of $5-7B），且成本通胀（供应链约5-6%压力，尤其深水钻井作业）使这一目标的维持需持续努力。</div>
+      <div><span class="mgmt-sig sig-bull">纪律兑现</span></div>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-theme">ARC 并购 · 创造长期价值</div>
+      <div class="mgmt-text">Sawan称ARC是"在正确时间以正确价格做的正确交易"，强调Montney低成本、低碳强度（顶四分位），以及与LNG Canada的协同潜力。对于短期EPS摊薄（约3-5%），管理层回应：以5年FCF/股增厚视角看待，而非单季度EPS。ARC收购由$10.2B Shell股票支付主要部分，不大幅消耗现金。</div>
+      <div><span class="mgmt-sig sig-bull">长期导向</span></div>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-theme">卡塔尔资产 · 重启时间表</div>
+      <div class="mgmt-text">LNG相关资产恢复比炼油或大宗化工更复杂，需要上游气田、液化装置、运输协调同步。Pearl GTL Train 2预计2027Q1恢复。Sawan明确表示将继续"选择性管理"卡塔尔资产在后冲突时代的商业化机会，但给出保守时间表。</div>
+      <div><span class="mgmt-sig sig-watch">待观察</span></div>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-theme">欧洲储气 · 供应紧张</div>
+      <div class="mgmt-text">管理层提及欧洲储气率约50%（历史同期均值约65-70%），显著偏低；叠加北半球即将进入冬季，Shell的LNG贸易优化部门（Trading & Optimization）有望持续捕捉冬季价差。管理层对这一结构性位置持"审慎乐观"态度，但不提具体价格预测。</div>
+      <div><span class="mgmt-sig sig-bull">结构性利好</span></div>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-theme">化工与产品 · Q3预警</div>
+      <div class="mgmt-text">CFO Gorman主动提示：化工价差在Q3开始软化，下游业务面临"波动性减少、Pearl GTL原料中断"的双重压力，预计Q3 C&P收益将低于Q2的"五年最佳"水平。这是难得的主动预期管理。</div>
+      <div><span class="mgmt-sig sig-bear">谨慎</span></div>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-theme">纳米比亚 · 潜在新储量</div>
+      <div class="mgmt-text">"极佳的储层和流体特征"——这是Shell对勘探结果少有的正面表述。CEO称将在2026年底前追加两口评价井，并视结果决定推进路径。鉴于纳米比亚Orange盆地在全球探明规模（TotalEnergies Venus区块已确认数十亿桶），Shell的兴趣非常具体。</div>
+      <div><span class="mgmt-sig sig-bull">期权价值</span></div>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-theme">股东回报框架</div>
+      <div class="mgmt-text">维持40-50% CFFO分配目标；Q2实际分配44%，低于区间中枢。$3B新回购+$1.2B已暂停回购延续，总计$4.2B待完成（Q3结果前）。股息$0.3906/股维持，未提加息——这是一个稳健而非激进的股息政策，留存现金用于ARC交割资金需求。</div>
+      <div><span class="mgmt-sig sig-neu">稳健</span></div>
+    </div>
+    <div class="callout warn" style="margin-top:16px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <strong style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);">独立核查 · 牛市偏差提示</strong>
+        <span class="tag tag-warn" style="flex-shrink:0;">必读补充</span>
+      </div>
+      <div style="font-size:13px;color:var(--ink-mid);line-height:1.75;">
+        本次电话会管理层表态中约5/8为正面信号，以下四点需独立核查：<br>
+        （1）<strong style="color:var(--ink);">"整合优势"</strong>在Q1 2026 CFFO仅$6.07B的季度几乎消失——当营运资本大规模流出叠加地缘催化尚未释放时，整合保护力有限；<br>
+        （2）ARC的<strong style="color:var(--ink);">"双位数回报"</strong>承诺以LNG Canada Phase 2 FID落地为前提，而FID尚未确认；<br>
+        （3）<strong style="color:var(--ink);">"成本削减$5.8B"</strong>中部分节省来自人员精简，存在技能流失和执行能力下降的隐性风险；<br>
+        （4）<strong style="color:var(--ink);">ROACE 12.4%</strong>在同行中并不突出（CVX 21.4%），管理层在本次电话会中未直接回应这一差距。<br><br>
+        建议将本节管理层信号与第10节风险因素交叉阅读，避免从单一来源形成结论。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 06 股东回报 ── -->
+<section id="returns">
+  <div class="sec-head"><span class="sec-tag">06</span><span class="sec-title">股东回报政策 · 框架、历史与执行纪录</span></div>
+  <div class="sec-body">
+
+    <div class="policy-grid">
+      <div class="policy-card">
+        <div class="policy-icon">📊</div>
+        <div class="policy-title">总分配框架</div>
+        <div class="policy-val">40–50%</div>
+        <div class="policy-note">CFFO通过周期分配给股东（股息+回购），称为"40-50% CFFO distribution policy"，是Shell官方明示的核心承诺，电话会议中被形容为"sacrosanct"（神圣不可侵犯）</div>
+      </div>
+      <div class="policy-card">
+        <div class="policy-icon">💰</div>
+        <div class="policy-title">季度股息</div>
+        <div class="policy-val">$0.3906/普通股<br>= $0.7812/ADS</div>
+        <div class="policy-note">Q2 2026官方披露；年化$1.5624/普通股 = <strong>$3.1248/ADS</strong>（1 ADS=2普通股）。以当前ADS股价约$90计算，年化股息收益率约<strong>3.5%</strong>。每年至少增长4%（Q1 2026宣布+5%）</div>
+      </div>
+      <div class="policy-card">
+        <div class="policy-icon">🔄</div>
+        <div class="policy-title">季度回购承诺</div>
+        <div class="policy-val">≥$30亿/季</div>
+        <div class="policy-note">Q2 2026为第19个连续季度宣布≥$30亿回购；2022年以来累计完成回购约$25B+，流通股数量大幅下降，推动FCF/股和EPS/股显著增厚</div>
+      </div>
+    </div>
+
+    <h4 style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:14px;">季度回购记录（2022年以来，$B）</h4>
+
+    <div>
+      <div class="buyback-row"><div class="bb-q">Q1 2022</div><div class="bb-bar-bg"><div class="bb-bar-fill" style="width:65%"></div></div><div class="bb-val mono">$3.3B</div><div class="bb-note dim">回购恢复元年</div></div>
+      <div class="buyback-row"><div class="bb-q">Q2 2022</div><div class="bb-bar-bg"><div class="bb-bar-fill" style="width:70%"></div></div><div class="bb-val mono">$3.5B</div><div class="bb-note dim">能源超周期受益</div></div>
+      <div class="buyback-row"><div class="bb-q">Q3 2022</div><div class="bb-bar-bg"><div class="bb-bar-fill" style="width:80%"></div></div><div class="bb-val mono">$4.0B</div><div class="bb-note dim">年内最高</div></div>
+      <div class="buyback-row"><div class="bb-q">Q4 2022</div><div class="bb-bar-bg"><div class="bb-bar-fill" style="width:70%"></div></div><div class="bb-val mono">$3.5B</div><div class="bb-note dim">—</div></div>
+      <div class="buyback-row"><div class="bb-q">2023均值</div><div class="bb-bar-bg"><div class="bb-bar-fill" style="width:66%"></div></div><div class="bb-val mono">~$3.3B</div><div class="bb-note dim">油价回落但维持≥$3B</div></div>
+      <div class="buyback-row"><div class="bb-q">2024均值</div><div class="bb-bar-bg"><div class="bb-bar-fill" style="width:68%"></div></div><div class="bb-val mono">~$3.4B</div><div class="bb-note dim">全年$22.6B股东回报</div></div>
+      <div class="buyback-row"><div class="bb-q">Q4 2025</div><div class="bb-bar-bg"><div class="bb-bar-fill" style="width:70%"></div></div><div class="bb-val mono">$3.5B</div><div class="bb-note dim">13连季$3B+</div></div>
+      <div class="buyback-row"><div class="bb-q">Q1 2026</div><div class="bb-bar-bg"><div class="bb-bar-fill" style="width:60%"></div></div><div class="bb-val mono">$3.0B</div><div class="bb-note dim">CFFO受营运资本冲击，但下限维持</div></div>
+      <div class="buyback-row">
+        <div class="bb-q" style="color:var(--teal);font-weight:700;">Q2 2026</div>
+        <div class="bb-bar-bg"><div class="bb-bar-fill" style="width:88%;background:linear-gradient(90deg,var(--teal),#20ACB9)"></div></div>
+        <div class="bb-val mono" style="color:var(--teal);">$4.2B*</div>
+        <div class="bb-note" style="color:var(--teal);">$3B新+$1.2B延续，第19季</div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--ink-dim);margin-top:8px;">*Q2 2026回购：$3B新计划+$1.2B此前暂停回购 = $4.2B，加上股息约$1.0B → Q2股东回报合计$5.2B（44% CFFO）</p>
+
+    <br>
+    <table>
+      <thead>
+        <tr><th>年度</th><th class="right">总股东回报</th><th class="right">占CFFO%</th><th class="right">股息增幅</th><th class="right">回购金额</th><th>备注</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>2020</td><td class="right mono">~$7.0B</td><td class="right mono">~35%</td><td class="right neg">-66%</td><td class="right mono">暂停</td><td>COVID-19；74年来首次减息</td></tr>
+        <tr><td>2021</td><td class="right mono">~$8.5B</td><td class="right mono">~36%</td><td class="right pos">+38%</td><td class="right mono">小规模恢复</td><td>疫后复苏，逐步重建分配</td></tr>
+        <tr style="background:#F4FAFA;"><td>2022</td><td class="right mono">~$26B</td><td class="right mono">~45%</td><td class="right pos">+15%</td><td class="right mono">~$18B</td><td>能源超周期；创历史最高年度回报</td></tr>
+        <tr><td>2023</td><td class="right mono">~$23B</td><td class="right mono">~44%</td><td class="right pos">+15%</td><td class="right mono">~$17B</td><td>油价回落，但维持高回购纪律</td></tr>
+        <tr style="background:#F4FAFA;"><td>2024</td><td class="right mono">~$22.6B</td><td class="right mono">~41%</td><td class="right pos">+4%</td><td class="right mono">~$16B</td><td>CFFO $54.7B；维持"40-50%"框架低端</td></tr>
+        <tr><td>2025</td><td class="right mono">~$22B</td><td class="right mono">~51%</td><td class="right pos">+4%</td><td class="right mono">~$16B</td><td>CFFO $42.9B（下降），维持上限端分配</td></tr>
+        <tr style="background:#EBF4FF;"><td><strong>H1 2026</strong></td><td class="right mono"><strong>~$10B</strong></td><td class="right mono"><strong>44%</strong></td><td class="right pos">+5%</td><td class="right mono"><strong>~$7.2B</strong></td><td>Q2 FCF爆发，全年有望超2022纪录</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout pos" style="margin-top:16px;">
+      <strong>股东回报框架的三大优点：</strong>（1）<strong>动态弹性</strong>——40-50% CFFO框架使回购金额随现金流自然增减，不会在低油价时杀鸡取卵式维持高固定股息；（2）<strong>回购为主</strong>——相比固定高股息，大规模回购能在股价低时提高每股价值（EPS增厚），比等量股息更有效率；（3）<strong>跨周期信用</strong>——连续19个季度≥$3B回购承诺建立了可信度，降低了投资者对"单季CFFO下滑就会减少回购"的担忧。
+    </div>
+    <div class="callout warn">
+      <strong>核心约束与风险：</strong>（1）股息收益率约3.5%（ADS，年化$3.1248/$0.7812×4），与CVX/XOM约3.2%基本相当，但叠加回购后总回报约5-6%，对纯收益型投资者吸引力有限；（2）ARC收购关闭后，Q3-Q4将有约$28亿现金流出用于交割，可能压缩该期间的回购规模；（3）若布伦特持续跌至$65以下，40-50%框架隐含的分配额将从当前约$22B降至约$14-16B/年，回购力度将显著降低。
+    </div>
+  </div>
+</section>
+
+<!-- ── 07 FCF 分析 ── -->
+<section id="fcf">
+  <div class="sec-head"><span class="sec-tag">07</span><span class="sec-title">FCF深度分析 · 最近8个季度历史走势与质量评估</span></div>
+  <div class="sec-body">
+
+    <div class="callout info">
+      <strong>FCF定义说明（Shell官方口径）：</strong>Shell官方FCF = <strong>CFFO + CFI（投资活动现金流）</strong>，即Q2的$21.432B + (−$3.908B) = <strong>$17.524B</strong>。Shell的"Cash capital expenditure"定义为Capex+对联营合营企业投资+权益证券投资之和，<strong>不等同于</strong>CFFO−Capex+处置收入。正确理解：CFI(−$3.908B) = 资本支出 + 收购付款（净）+ 处置收入 + 其他投资活动净额。分析FCF质量时，需单独剥离处置收入（非经常性）和付款时点影响（$1.3B排放配额净流入），Q2经营性CFFO约$16.7B（$21.43B − $3.4B营运资本 − $1.3B时点项）。
+    </div>
+
+    <br>
+    <div class="fcf-chart">
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#1A5FA8"></div>CFFO（剔除营运资本）</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#B87800"></div>Cash Capex</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#1A6E3A"></div>FCF（含处置）</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#007C89"></div>营运资本变动（正=流入）</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#C0392B"></div>营运资本变动（负=流出）</div>
+      </div>
+
+      <div class="chart-title">CFFO（不含营运资本）| Capex | FCF — 最近8季度（$B）</div>
+      <!-- 最大刻度设为22B，对应100%宽度 -->
+      <div class="chart-grid">
+        <!-- header -->
+        <div style="font-size:10px;font-weight:700;color:var(--ink-dim)">季度</div>
+        <div style="font-size:10px;font-weight:700;color:var(--ink-dim)">规模（最大$22B）</div>
+        <div style="font-size:10px;font-weight:700;color:var(--ink-dim);text-align:right">值</div>
+        <div style="font-size:10px;font-weight:700;color:var(--ink-dim)">注记</div>
+
+        <!-- Q3 2024 -->
+        <div class="chart-divider"></div>
+        <div class="chart-label">Q3 2024<br><span style="font-size:10px;color:var(--ink-dim)">布伦特~$80</span></div>
+        <div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-cffo" style="width:68%"></div></div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-capex" style="width:26%"></div></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill bar-fcf" style="width:55%"></div></div>
+        </div>
+        <div class="chart-val mono">$15.0B<br>$5.8B<br>$12.0B</div>
+        <div class="chart-note">FCF强劲；含约$2B处置；CFFO/WC拆分估算</div>
+
+        <!-- Q4 2024 -->
+        <div class="chart-divider"></div>
+        <div class="chart-label">Q4 2024<br><span style="font-size:10px;color:var(--ink-dim)">布伦特~$74</span></div>
+        <div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-cffo" style="width:59%"></div></div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-capex" style="width:26%"></div></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill bar-fcf" style="width:50%"></div></div>
+        </div>
+        <div class="chart-val mono">$13.2B<br>$5.8B<br>~$11B</div>
+        <div class="chart-note">油价季节性回落；Q4税收较高；全年FCF $39.5B</div>
+
+        <!-- Q1 2025 -->
+        <div class="chart-divider"></div>
+        <div class="chart-label">Q1 2025<br><span style="font-size:10px;color:var(--ink-dim)">布伦特~$76</span></div>
+        <div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-cffo" style="width:68%"></div></div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-capex" style="width:23%"></div></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill bar-fcf" style="width:28%"></div></div>
+        </div>
+        <div class="chart-val mono">$15.0B<br>$5.1B<br>$6.1B</div>
+        <div class="chart-note">报告CFFO仅$11.9B（受营运资本+$3B流出拖累）；剔除WC后$15B</div>
+
+        <!-- Q2 2025 -->
+        <div class="chart-divider"></div>
+        <div class="chart-label">Q2 2025<br><span style="font-size:10px;color:var(--ink-dim)">布伦特~$82</span></div>
+        <div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-cffo" style="width:63%"></div></div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-capex" style="width:23%"></div></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill bar-fcf" style="width:37%"></div></div>
+        </div>
+        <div class="chart-val mono">$13.8B<br>$5.1B<br>$8.1B</div>
+        <div class="chart-note">FCF稳健；含$0.9B处置；营运资本基本中性</div>
+
+        <!-- Q3 2025 -->
+        <div class="chart-divider"></div>
+        <div class="chart-label">Q3 2025<br><span style="font-size:10px;color:var(--ink-dim)">布伦特~$79</span></div>
+        <div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-cffo" style="width:64%"></div></div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-capex" style="width:24%"></div></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill bar-fcf" style="width:45%"></div></div>
+        </div>
+        <div class="chart-val mono">$14.1B<br>$5.2B<br>$9.9B</div>
+        <div class="chart-note">年内最强常规季度；Q3 CFFO通常最强（夏季能源需求）</div>
+
+        <!-- Q4 2025 -->
+        <div class="chart-divider"></div>
+        <div class="chart-label">Q4 2025<br><span style="font-size:10px;color:var(--ink-dim)">布伦特~$64</span></div>
+        <div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-cffo" style="width:37%"></div></div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-capex" style="width:25%"></div></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill bar-fcf" style="width:18%"></div></div>
+        </div>
+        <div class="chart-val mono">$8.2B<br>$5.5B<br>$4.0B</div>
+        <div class="chart-note">油价跌至近年低点；调整后收益仅$3.3B；非现金税收拖累</div>
+
+        <!-- Q1 2026 -->
+        <div class="chart-divider"></div>
+        <div class="chart-label">Q1 2026<br><span style="font-size:10px;color:var(--ink-dim)">布伦特~$95</span></div>
+        <div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-cffo" style="width:78%"></div></div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-capex" style="width:17%"></div></div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill" style="width:13%;background:var(--red)"></div></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill bar-fcf" style="width:13%"></div></div>
+        </div>
+        <div class="chart-val mono">$17.2B<br>$3.7B<br>-$11.2B<br>$2.9B</div>
+        <div class="chart-note">⚠ 营运资本急剧流出$11.2B使报告FCF仅$2.9B；CFFO剔除WC达$17.2B</div>
+
+        <!-- Q2 2026 -->
+        <div class="chart-divider"></div>
+        <div class="chart-label" style="color:var(--teal);font-weight:700;">Q2 2026<br><span style="font-size:10px;color:var(--teal)">布伦特~$100</span></div>
+        <div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-cffo" style="width:100%"></div></div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-capex" style="width:19%"></div></div>
+          <div class="chart-bar-bg" style="margin-bottom:3px"><div class="chart-bar-fill bar-wc-pos" style="width:15%"></div></div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill bar-fcf" style="width:80%"></div></div>
+        </div>
+        <div class="chart-val mono" style="color:var(--teal);">$18.0B<br>$4.2B<br>+$3.4B<br>$17.5B</div>
+        <div class="chart-note" style="color:var(--teal);">Q1营运资本大幅回流+$3.4B；最强季度FCF；含$0.2B处置</div>
+      </div>
+    </div>
+
+    <br>
+
+    <!-- FCF质量分解 -->
+    <div class="fcf-decomp">
+      <div class="decomp-card">
+        <div class="decomp-title">FCF质量指标 · Q2 2026</div>
+        <div class="decomp-val mono" style="color:var(--teal);">$17.5B</div>
+        <div class="decomp-sub">
+          <strong>构成：</strong><br>
+          CFFO（含WC）：$21.4B<br>
+          其中营运资本流入：+$3.4B<br>
+          CFFO剔除WC：$18.0B ✓<br>
+          减Capex：-$4.2B<br>
+          加处置收入：+$0.2B<br>
+          <strong>FCF（Shell口径）：$17.5B</strong><br><br>
+          <span style="color:var(--amber)">剔除营运资本一次性效应后，</span>经营性FCF约$14B（$18B CFFO − $4.2B Capex），仍是历史最强水平之一。
+        </div>
+      </div>
+      <div class="decomp-card">
+        <div class="decomp-title">营运资本波动：最重要的噪音因子</div>
+        <div class="decomp-val mono" style="color:var(--amber);">±$11B</div>
+        <div class="decomp-sub">
+          Q1 2026营运资本流出$11.2B（中东危机推高油价+库存积累），使报告CFFO仅$6.1B、FCF仅$2.9B——严重低估经营实质。<br><br>
+          Q2 2026营运资本流入$3.4B（油价季中下跌+库存释放），部分回补。<br><br>
+          <strong>分析原则：</strong>必须用"CFFO剔除营运资本"衡量经营性现金生成能力，两个季度平均化处理更接近真实。H1 CFFO剔除WC = ($17.2+$18.0)/2 × 2 = $35.2B，年化约$35B。
+        </div>
+      </div>
+      <div class="decomp-card">
+        <div class="decomp-title">Capex纪律与前瞻</div>
+        <div class="decomp-val mono" style="color:var(--blue);">$24–26B</div>
+        <div class="decomp-sub">
+          <strong>2026全年Capex指引</strong>（含ARC收购约$4B）<br><br>
+          Q2单季Capex $4.2B（上升，含ARC前期费用）；Q1为$3.7B。<br><br>
+          <strong>2027-2028：$20-22B/年</strong>（ARC收购完成后，其Capex将纳入原指引范围内，不额外增加）。<br><br>
+          与2022-2024相比，Shell的Capex高度自律：2024全年$21.1B vs 2013年$45B的历史高点，已缩减约50%；同期产量稳定，意味着单位产量资本效率大幅提升。
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <h4 style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:14px;">FCF年化历史回顾（全年，含Shell口径处置收入，$B）</h4>
+    <table>
+      <thead>
+        <tr><th>年度</th><th class="right">CFFO</th><th class="right">Cash Capex</th><th class="right">FCF（Shell口径）</th><th class="right">YoY变化</th><th class="right">布伦特均价</th><th>关键事件</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>2019</td><td class="right mono">$42.2B</td><td class="right mono">$24.0B</td><td class="right mono">$24.0B</td><td class="right dim">—</td><td class="right mono">$64</td><td>正常化基准年</td></tr>
+        <tr style="background:#F4FAFA;"><td>2020</td><td class="right mono">$24.0B</td><td class="right mono">$17.9B</td><td class="right mono">$20.0B</td><td class="right neg">-16.7%</td><td class="right mono">$42</td><td>COVID-19；股息削减66%</td></tr>
+        <tr><td>2021</td><td class="right mono">$45.1B</td><td class="right mono">$19.6B</td><td class="right mono">$40.3B</td><td class="right pos">+101.5%</td><td class="right mono">$71</td><td>能源需求复苏</td></tr>
+        <tr style="background:#F4FAFA;"><td>2022</td><td class="right mono">$68.1B</td><td class="right mono">$19.2B</td><td class="right mono">$47.2B</td><td class="right pos">+17.1%</td><td class="right mono">$101</td><td>乌克兰冲突；历史最高FCF</td></tr>
+        <tr><td>2023</td><td class="right mono">$53.4B</td><td class="right mono">$21.4B</td><td class="right mono">$33.8B</td><td class="right neg">-28.5%</td><td class="right mono">$83</td><td>油价回落；化工承压</td></tr>
+        <tr style="background:#F4FAFA;"><td>2024</td><td class="right mono">$54.7B</td><td class="right mono">$21.1B</td><td class="right mono">$39.5B</td><td class="right pos">+16.9%</td><td class="right mono">$80</td><td>低油价下FCF韧性；LNG加拿大开始贡献</td></tr>
+        <tr><td>2025</td><td class="right mono">$42.9B</td><td class="right mono">$20.9B</td><td class="right mono">$26.1B</td><td class="right neg">-33.9%</td><td class="right mono">~$74</td><td>油价回落+化工继续承压；WC和税收拖累</td></tr>
+        <tr style="background:#EBF4FF;font-weight:600;"><td><strong>H1 2026 ×2（年化）</strong></td><td class="right mono"><strong>~$55B</strong></td><td class="right mono"><strong>~$16B*</strong></td><td class="right mono" style="color:var(--teal);"><strong>~$40B+</strong></td><td class="right pos">+53%</td><td class="right mono">$95-105</td><td>霍尔木兹冲击；中东高溢价；Q2史上最强</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--ink-dim);margin-top:8px;">*H1 Capex $7.9B（不含ARC收购约$4B），年化约$16B，远低于全年指引$24-26B，因为ARC收购尾款将在Q3集中支付。2026全年FCF实际值需待Q3/Q4结果后确认。</p>
+
+    <div class="callout warn" style="margin-top:16px;">
+      <strong>FCF分析的三个关键注意事项：</strong><br><br>
+      <strong>① 营运资本是季度FCF最大干扰因子。</strong>Q1 2026营运资本流出$11.2B使报告FCF仅$2.9B，而Q2流入$3.4B使FCF达$17.5B——两季之间的"真实"经营性FCF约$14B/季（CFFO剔除WC约$17-18B − Capex $4-5B）。单季报告FCF在油价剧烈波动期间具有严重误导性，必须使用滚动4季度或H1/全年数据。<br><br>
+      <strong>② 资产处置不应视为经常性FCF。</strong>Shell将处置收入（Q2约$0.2B，2024年全年约$3-4B）计入FCF，而很多分析师将其剔除。两种口径均有合理性，但在比较不同公司FCF时必须统一口径。<br><br>
+      <strong>③ FCF与油价的非线性关系。</strong>Shell的"operating leverage"相当高：布伦特每升$10/桶约带来约$2-3B的年化CFFO增量，但扣除税收（有效税率约35-40%）和Capex（基本固定在$20-22B/年），FCF对油价的弹性约为每$10/桶约$1.3-1.8B/季度，在高油价区间非线性加速（因为边际税率更高，但利润也更高）。
+    </div>
+
+    <div class="callout pos" style="margin-top:12px;">
+      <strong>FCF正常化估算（布伦特$80/桶基准）：</strong>根据历史数据和管理层指引，布伦特$80/桶下，Shell的正常化CFFO（剔除营运资本）约$38-42B/年，减去Capex $20-22B，经营性FCF约$16-22B/年。加上处置收入$1-3B（取决于资产出售进度），FCF约$17-24B/年。以当前市值约$250B计，FCF收益率（FCF Yield）约6.8-9.6%——在全球大盘蓝筹中处于较高位置，一定程度上说明市场对周期顶部的折扣已经内嵌在当前估值中。
+    </div>
+  </div>
+</section>
+
+<!-- ── 06 估值 ── -->
+<section id="valuation">
+  <div class="sec-head"><span class="sec-tag">08</span><span class="sec-title">估值分析</span></div>
+  <div class="sec-body">
+    <div class="val-grid">
+      <div class="val-box">
+        <h4>关键估值参数（截至2026年8月上旬）</h4>
+        <table>
+          <tbody>
+            <tr><td>当前ADS股价（NYSE: SHEL）</td><td class="right mono">~$88 – $92</td></tr>
+            <tr><td>52周区间</td><td class="right mono">$68.63 – $94.90</td></tr>
+            <tr><td>流通股（普通股约）</td><td class="right mono">~5.56B股</td></tr>
+            <tr><td>流通股（ADS，1ADS=2普通股）</td><td class="right mono">~2.78B ADS</td></tr>
+            <tr><td>市值（约）</td><td class="right mono">~$245 – $255B</td></tr>
+            <tr><td>净债务（Q2末）</td><td class="right mono">$41.8B</td></tr>
+            <tr><td>企业价值（EV，约）</td><td class="right mono">~$285 – $295B</td></tr>
+            <tr style="background:#F4FAFA;"><td>2026E 调整后EBITDA（H1实绩$38.45B + H2估算$16-22B）<br><span style="font-size:10px;color:var(--ink-dim)">H1: Q1 $17.74B + Q2 $20.71B；H2以布伦特$80-95区间估算</span></td><td class="right mono"><strong>$54–60B</strong></td></tr>
+            <tr><td>EV/EBITDA（FY2026E，当前价格）<br><span style="font-size:10px;color:var(--ink-dim)">EV约$287B / FY2026E EBITDA $54-60B</span></td><td class="right mono"><strong>~4.8–5.3x</strong></td></tr>
+            <tr><td>EV/EBITDA（正常化，布伦特$70/桶，FY基准）</td><td class="right mono">~9 – 11x<br><span style="font-size:10px;color:var(--ink-dim)">正常化FY EBITDA约$26-32B，EV$287B</span></td></tr>
+            <tr style="background:#F4FAFA;"><td>P/E（调整后，2026E）</td><td class="right mono">~6.5 – 7.5x</td></tr>
+            <tr><td>P/FCF（口径说明）<br><span style="font-size:10px;color:var(--amber)">⚠ 三种口径结论不同，不可混用</span></td><td class="right mono">Q2×4机械年化: <strong>~3.6x</strong>（$70B）<br>H1×2年化: ~6.1x（$41B）<br>基准情景FCF: ~7.8–8.9x（$28-32B）<br><span style="font-size:10px;color:var(--ink-dim)">基准情景口径最接近可持续水平</span></td></tr>
+            <tr><td>股息收益率（年化$3.1248/ADS）<br><span style="font-size:10px;color:var(--ink-dim)">$0.7812/ADS × 4季度；1 ADS = 2普通股</span></td><td class="right mono">~3.4 – 3.5%</td></tr>
+            <tr><td>总回报率（股息3.5%+回购~2%，TTM）</td><td class="right mono">~5 – 6%（修正后股息贡献更高）</td></tr>
+            <tr style="background:#F4FAFA;"><td>分析师目标价均值（17家）</td><td class="right mono">$38.42（普通股）≈$76.8 / ADS</td></tr>
+            <tr><td>Piper Sandler目标价（8月3日）</td><td class="right mono">$89 / ADS（由$88上调）</td></tr>
+            <tr><td>Berenberg目标价（Buy）</td><td class="right mono">—</td></tr>
+            <tr><td>UBS / RBC（Hold评级）</td><td class="right mono">维持中性</td></tr>
+          </tbody>
+        </table>
+        <div class="callout warn" style="margin-top:12px;font-size:12px;">
+          <strong>估值关键说明：</strong>当前峰值EV/EBITDA约7-8x，在油价$100+环境下属于偏低定价（市场对可持续性存疑）。正常化布伦特$70/桶情景下正常化EBITDA约$22-26B，对应EV/EBITDA约11-13x，与综合能源公司历史估值区间（10-14x）基本吻合。分析师目标价均值$76.8/ADS低于当前股价$88-92，主因共识于Q2前建立，更新后多家机构上调目标价。
+        </div>
+      </div>
+      <div class="val-box">
+        <h4>情景分析（12个月目标价，ADS口径）</h4>
+        <div class="scenario-row">
+          <div class="sc bear">
+            <div class="sc-label">悲观</div>
+            <div class="sc-price">$72</div>
+            <div class="sc-prob">权重 30%（上调）</div>
+            <div class="sc-note">中东局势迅速缓解，布伦特回落$60-70；LNG价差收窄；ARC整合拖累；化工持续承压；CFFO回落至~$14-16B</div>
+          </div>
+          <div class="sc base">
+            <div class="sc-label">基准</div>
+            <div class="sc-price">$96</div>
+            <div class="sc-prob">权重 45%（下调）</div>
+            <div class="sc-note">布伦特维持$80-95；LNG加拿大Phase 2 FID落地；ARC按计划关闭；FCF年化~$28-32B；纳米比亚评价井正面；结构性成本持续兑现</div>
+          </div>
+          <div class="sc bull">
+            <div class="sc-label">乐观</div>
+            <div class="sc-price">$118</div>
+            <div class="sc-prob">权重 25%</div>
+            <div class="sc-note">霍尔木兹冬季危机加剧，LNG/油价双双维持高位；纳米比亚确认大型发现；ARC整合超预期；ROACE升至15%+</div>
+          </div>
+        </div>
+        <br>
+        <p style="font-size:12px;color:var(--ink-mid);">概率加权目标价：<strong>$94</strong>（= $72×30%+$96×45%+$118×25%）。算术成立；但三个情景价格均无可审计的财务模型桥接（分部EBITDA→税后FCF→净债务→每ADS价值），属于"定性情景+估值判断"而非严格建模输出，请读者知悉。<br><br>股息约3.5%/ADS + 资本利得约4% → 总回报约7-8%。考虑到估值模型缺乏完整桥接、已知下行风险（WC反向、C&P Q3回落、ARC整合），维持"持有"评级，等待H2数据验证。</p>
+        <br>
+        <div class="callout info" style="font-size:12px;">
+          <strong>估值锚点：</strong>以P/FCF（2026E）约3.5-4x看，Shell在全球大盘股中极为便宜（标普500 P/FCF约18-22x，综合能源历史均值约8-12x）。但这一便宜需要接受：① 油价高于长期均值；② 中东危机持续；③ ARC整合执行顺利。三者同时成立时，Shell是高性价比标的；任一逆转均压制重估空间。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 07 同业对比 ── -->
+<section id="peers">
+  <div class="sec-head"><span class="sec-tag">09</span><span class="sec-title">同业横向比较 · 五大能源超级巨头 Q2 2026</span></div>
+  <div class="sec-body">
+    <p style="margin-bottom:16px;">数据来源：各公司Q2 2026业绩公告（ExxonMobil/Chevron: 2026年7月31日；Shell: 2026年7月30日）；PetroChina采用H股2025年年报及估算值（官方H1 2026半年报预计8月下旬发布）。<strong>重要口径提示：</strong>各公司会计准则（IFRS/US GAAP）、FCF定义（Shell=CFFO+CFI，XOM/CVX=OCF−Capex）、ROACE计算基础、税制及股息/回购结构均存在实质差异，下表为近似参考比较，<strong>不构成严格同质化分析</strong>，PetroChina数据为估算，置信度低。</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>指标</th>
+          <th class="center">Shell<br>(NYSE:SHEL)</th>
+          <th class="center">ExxonMobil<br>(NYSE:XOM)</th>
+          <th class="center">Chevron<br>(NYSE:CVX)</th>
+          <th class="center">PetroChina<br>(HK:857 / SH:601857)</th>
+          <th class="center">BP<br>(NYSE:BP)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Q2调整后收益</strong></td>
+          <td class="center mono">$9.84B</td>
+          <td class="center mono peer-col-best">$14.7B</td>
+          <td class="center mono">$12.0B</td>
+          <td class="center mono">~¥750亿<br>≈$103亿（H1估算）</td>
+          <td class="center mono peer-col-worst">~$2.3B</td>
+        </tr>
+        <tr style="background:#F4FAFA;">
+          <td><strong>CFFO</strong></td>
+          <td class="center mono">$21.4B</td>
+          <td class="center mono peer-col-best">~$24B</td>
+          <td class="center mono">$22.6B</td>
+          <td class="center mono">~$9B（H1）</td>
+          <td class="center mono peer-col-worst">~$5B</td>
+        </tr>
+        <tr>
+          <td><strong>自由现金流（FCF）</strong></td>
+          <td class="center mono">$17.5B</td>
+          <td class="center mono peer-col-best">~$19.5B</td>
+          <td class="center mono">$15.4B</td>
+          <td class="center mono">~$5B（H1）</td>
+          <td class="center mono peer-col-worst">~$2.5B</td>
+        </tr>
+        <tr style="background:#F4FAFA;">
+          <td><strong>ROACE（资本回报率）</strong></td>
+          <td class="center mono">12.4%</td>
+          <td class="center mono peer-col-best">~18%</td>
+          <td class="center mono peer-col-best">21.4%</td>
+          <td class="center mono">~9%</td>
+          <td class="center mono peer-col-worst">~5%</td>
+        </tr>
+        <tr>
+          <td><strong>产量（kboe/d）</strong></td>
+          <td class="center mono">2,455<br><span style="font-size:10px;color:var(--red)">受中东拖累</span></td>
+          <td class="center mono peer-col-best">~4,100<br>(不含中东)</td>
+          <td class="center mono">~3,700+</td>
+          <td class="center mono peer-col-best">~4,300</td>
+          <td class="center mono peer-col-worst">~2,200</td>
+        </tr>
+        <tr style="background:#F4FAFA;">
+          <td><strong>净债务</strong></td>
+          <td class="center mono">$41.8B</td>
+          <td class="center mono peer-col-best">~$15B</td>
+          <td class="center mono peer-col-best">低（净债/CFFO 0.6x）</td>
+          <td class="center mono">~¥700亿≈$96B</td>
+          <td class="center mono peer-col-worst">~$25B（高杠杆）</td>
+        </tr>
+        <tr>
+          <td><strong>杠杆率（Gearing）</strong></td>
+          <td class="center mono">18.7%</td>
+          <td class="center mono peer-col-best">~10%</td>
+          <td class="center mono peer-col-best">~12%</td>
+          <td class="center mono">~30%（含政策性负债）</td>
+          <td class="center mono peer-col-worst">~28%</td>
+        </tr>
+        <tr style="background:#F4FAFA;">
+          <td><strong>EV/EBITDA（峰值口径）</strong></td>
+          <td class="center mono">~7 – 8x</td>
+          <td class="center mono">~9 – 10x</td>
+          <td class="center mono">~8 – 9x</td>
+          <td class="center mono">~4 – 5x</td>
+          <td class="center mono peer-col-worst">~3 – 4x<br><span style="font-size:10px;color:var(--amber)">治理/策略折价</span></td>
+        </tr>
+        <tr>
+          <td><strong>EV/EBITDA（正常化，布伦特$70）</strong></td>
+          <td class="center mono">~12 – 14x</td>
+          <td class="center mono">~10x（低成本优势）</td>
+          <td class="center mono">~10x</td>
+          <td class="center mono">~6 – 8x</td>
+          <td class="center mono peer-col-worst">~8x（但盈利不确定）</td>
+        </tr>
+        <tr style="background:#F4FAFA;">
+          <td><strong>股息收益率（ADS/H股）</strong></td>
+          <td class="center mono">~3.5%<br><span style="font-size:10px;color:var(--ink-dim)">($3.1248/ADS年化)</span><br>+回购~2% → 总回报约5-6%</td>
+          <td class="center mono">~3.2%（低回购力度）</td>
+          <td class="center mono">~3.2%（$1.78/Q）</td>
+          <td class="center mono peer-col-best">~7 – 8%（H股）<br><span style="font-size:10px">高股息政策</span></td>
+          <td class="center mono">~4.5%（业务不稳定）</td>
+        </tr>
+        <tr>
+          <td><strong>结构性成本削减</strong></td>
+          <td class="center mono">$5.8B（2022以来）<br>追求$7B上限</td>
+          <td class="center mono peer-col-best">$12B（2019以来，提前完成）</td>
+          <td class="center mono peer-col-best">$3B（提前完成）</td>
+          <td class="center mono">国企机制，市场化程度不同</td>
+          <td class="center mono peer-col-worst">策略一致性存疑</td>
+        </tr>
+        <tr style="background:#F4FAFA;">
+          <td><strong>战略清晰度</strong></td>
+          <td class="center">◑ 整合气体+上游重组清晰<br>低碳路径待明确</td>
+          <td class="center">● 上游增长+化工差异化清晰<br>低碳支出缩减明确</td>
+          <td class="center">● Permian+Guyana+数据中心电力</td>
+          <td class="center">◑ 受政策影响，战略独立性有限</td>
+          <td class="center peer-col-worst">○ 反复调整，市场信心低</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <p><strong>横向比较核心结论：</strong></p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px;">
+      <div style="border:1px solid var(--border);border-radius:3px;padding:16px 18px;">
+        <p style="font-size:12px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Shell 的相对优势</p>
+        <ul style="padding-left:16px;font-size:12.5px;color:var(--ink-mid);line-height:1.7;">
+          <li><strong>LNG贸易与优化</strong>：全球最强大的LNG交易优化团队，在价格波动中持续贡献2-4% ROACE加成——这是XOM、CVX难以复制的差异化能力</li>
+          <li><strong>化工一体化</strong>：Q2炼化102%利用率是同业无法企及的，反映独特的交易与资产协同</li>
+          <li><strong>FCF生成能力</strong>：FCF/CFFO达81.8%，在资本密集型能源行业中属于顶端，说明资本分配高度理性</li>
+          <li><strong>ARC/LNG Canada期权价值</strong>：本次收购锁定了未来5年的产量增长路径，且价格上优于绿地项目</li>
+        </ul>
+      </div>
+      <div style="border:1px solid var(--border);border-radius:3px;padding:16px 18px;">
+        <p style="font-size:12px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Shell 的相对劣势</p>
+        <ul style="padding-left:16px;font-size:12.5px;color:var(--ink-mid);line-height:1.7;">
+          <li><strong>ROACE落后CVX（12.4% vs 21.4%）</strong>：Chevron的资本回报效率显著领先，根源在于Shell历史遗留的低回报资产比例更高</li>
+          <li><strong>低碳业务ROI不透明</strong>：可再生能源板块占资本不少但贡献微薄（Q2仅$79M），市场对Shell转型成本-收益比存合理质疑</li>
+          <li><strong>中东敞口集中</strong>：卡塔尔业务（LNG+Pearl GTL）中断是本季度最大干扰，集中度风险高于XOM/CVX</li>
+          <li><strong>股息收益率</strong>：约3.5%（ADS，年化$3.1248），与CVX/XOM的3.2%基本持平，远低于PetroChina H股7-8%；叠加回购后总回报约5-6%，对追求稳定现金收益的投资者吸引力有限</li>
+        </ul>
+      </div>
+    </div>
+
+    <br>
+    <div class="callout info">
+      <strong>中石油（PetroChina）特别说明：</strong>PetroChina是规模（产量约4,300 kboe/d）和股息收益率（H股约7-8%）方面突出的同业，但存在本质性结构差异：（1）受中国能源政策约束，定价机制（天然气/成品油价）不完全市场化；（2）在国际油价环境下，炼油板块有时面临政策性亏损；（3）治理透明度和资本配置自主性均低于国际超级巨头；（4）2026年H1官方业绩未披露，上述数据为估算。对于追求纯市场化能源敞口的国际机构投资者，PetroChina更多是"中国能源政策"的代理标的，而非与SHEL/XOM/CVX直接可比的纯粹能源投资。
+    </div>
+  </div>
+</section>
+
+<!-- ── 08 风险因素 ── -->
+<section id="risks">
+  <div class="sec-head"><span class="sec-tag">10</span><span class="sec-title">风险因素</span></div>
+  <div class="sec-body">
+    <div class="risk-item">
+      <div class="risk-dot dot-h">🔴</div>
+      <div class="risk-body">
+        <h4>油气价格周期逆转：布伦特跌至$60-65区间</h4>
+        <p>Q2盈利约80%以上的超出正常化水平均来自高油价（Q2布伦特约$95-110/桶区间均值）。若中东局势缓解、OPEC+增产、全球衰退三者叠加，布伦特跌至$60-65区间，Shell调整后EBITDA将压缩至约$20-24B（正常化），股价可能回落至$70-75区间。这是最大单一风险，且在投资者预期中已被部分定价（峰值P/FCF仅3.5-4x隐含市场对持续性的怀疑）。</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-dot dot-h">🔴</div>
+      <div class="risk-body">
+        <h4>ARC Resources并购整合风险</h4>
+        <p>$16.4B EV是Shell近十年最大收购，核心风险：（1）LNG Canada Phase 2 FID若未能年内落地，ARC资产价值实现将面临延迟；（2）加拿大AECO气价持续低于JKM/TTF，短期收益低于预期；（3）~$10.2B Shell股票支付带来约2.28亿新股稀释（约4%），需要CFFO/股增厚在2027年如期兑现；（4）整合文化和运营管理风险（ARC是独立性较强的加拿大运营商）。</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-dot dot-m">🟡</div>
+      <div class="risk-body">
+        <h4>营运资本$3.4B流入不可重复</h4>
+        <p>Q2 CFFO $21.4B含$3.4B营运资本流入（油价季中下跌释放应付账款），经营性CFFO约$18B更能代表正常化水平。若Q3油价稳定或回升，营运资本可能反向吸收现金$1-3B，表面CFFO数字将显著低于Q2，存在误导市场的风险，需在Q3报告时追踪。</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-dot dot-m">🟡</div>
+      <div class="risk-body">
+        <h4>低碳业务资本回报率不透明</h4>
+        <p>可再生能源与解决方案板块占用大量资本，但Q2调整后收益仅$79M（占集团不足1%）。CCS和氢能（Holland Hydrogen One等）预计2027年才产生"可接受回报"，但何为"可接受"管理层未明确量化。若低碳业务长期拖累ROACE，市场将进一步对Shell估值施压，或迫使管理层更激进地重组该板块（类似剥离Sprng Energy的逻辑）。</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-dot dot-m">🟡</div>
+      <div class="risk-body">
+        <h4>化工与产品板块Q3预警</h4>
+        <p>管理层已主动提示：化工价差Q3开始软化，Pearl GTL Train 2停产影响原料端，下游业务"波动性减少"。Q2 $2.88B属于"五年最佳"，Q3回落至$1.5-2.0B区间属于较大概率事件，需在建模时调低。</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-dot dot-l">🟢</div>
+      <div class="risk-body">
+        <h4>纳米比亚勘探不确定性（下行端有限）</h4>
+        <p>如果两口评价井结果不及预期，市场受影响有限（当前估值未充分定价勘探期权价值）；若确认重大发现，则构成显著估值上行催化剂，属于不对称期权。当前阶段属于低成本持有期权，风险可控。</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-dot dot-l">🟢</div>
+      <div class="risk-body">
+        <h4>监管与能源转型政策风险</h4>
+        <p>欧盟碳边境调节机制（CBAM）、英国能源税制变化、以及气候诉讼（荷兰环保组织诉Shell案后续）均构成长期但低概率的政策风险。Shell已加速从欧洲主要零售业务撤退，将此类监管暴露降至可管理水平。中期而言，监管风险属于行业系统性风险，非Shell特有。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 09 投资结论 ── -->
+<section id="conclusion">
+  <div class="sec-head"><span class="sec-tag">11</span><span class="sec-title">投资结论</span></div>
+  <div class="sec-body">
+    <div class="rating-banner">
+      <div class="rb-left">
+        <div class="rb-eyebrow">蜗牛鸟投资 · 能源研究部 · 首次覆盖评级</div>
+        <div class="rb-rating">持有（由谨慎买入下调）</div>
+        <div class="rb-sub">概率加权目标价$94，总回报约5-6%，不足以支撑积极买入推荐</div>
+      </div>
+      <div class="rb-right">
+        <div class="rb-tp-label">目标价（12个月，ADS）</div>
+        <div class="rb-tp mono">$94</div>
+        <div class="rb-prev">概率加权 $72×30%+$96×45%+$118×25%；总回报约5-6%</div>
+      </div>
+    </div>
+    <br>
+    <p>Shell Q2 2026业绩从多个维度验证了Wael Sawan战略的核心命题：<strong>一个高度整合的综合能源公司，能在单一业务受阻时通过组合内对冲维持盈利韧性</strong>。卡塔尔中断→LNG加拿大补位、中东波动→贸易优化捕捉价差、宏观不确定→炼化超高利用率兜底——这三组对冲均在Q2同步发生，且都有财务数据可验证，不是叙事构建。</p>
+    <p>评级下调为<strong>"持有"</strong>，理由有四：第一，<strong>回报空间不足</strong>：概率加权目标价$94，较当前~$90总回报约5-6%，在已识别ARC整合、营运资本反向、C&P Q3回落三个已知下行因素后，不足以为新资金提供足够的安全边际；第二，<strong>情景权重调整</strong>：三层地缘溢价（油价、LNG价差、炼化价差）均为霍尔木兹危机驱动，脆弱性高——历史上油价高于$85/桶的年份约占40%，将悲观权重提升至30%后，概率加权目标价已贴近现价；第三，<strong>ROACE差距未弥合</strong>：Shell 12.4% vs CVX 21.4%，即使在极端有利的Q2环境下，资本回报效率差距9ppt意味着同等油价假设下CVX内生FCF生成优势显著；第四，<strong>共识落差说明信息不充分</strong>：分析师17家均值目标价$76.8/ADS显著低于现价，主因Q2前预测建立在低油价情景，但Q2后已有Piper Sandler上调至$89——上调空间已被现价消化，市场共识追赶动能有限。本研究部独立基准目标价$96（布伦特$80-90区间、ARC顺利整合）高于均值，是基于对LNG加拿大Phase 2 FID落地的相对乐观判断；若FID在年内不落地，目标价将向均值回归。</p>
+    <p><strong>持有期间的监控指标：</strong>建议以以下信号作为评级重审触发点——（1）<strong>上调触发</strong>：LNG Canada Phase 2 FID于年内落地、布伦特稳定于$90以上且ARC整合Q4数据显示FCF/股增厚路径清晰，可上调至"谨慎买入"；（2）<strong>下调触发</strong>：中东局势实质性缓解、布伦特跌破$70、ARC整合出现重大滑坡，目标价修订至$72，评级可降至"减持"。对于现价已持仓投资者，持有逻辑仍然完整（优质公司+高FCF生成+回购支撑），不建议主动止损；对于未持仓投资者，当前位置的风险回报比不吸引，等待$82-85区间或上述上调触发条件出现后再入场。</p>
+    <p><strong>主要上行催化剂：</strong>LNG Canada Phase 2 FID于年底落地；纳米比亚评价井正面结果；Q3报告显示ARC整合进展顺利；欧洲冬季储气危机推动TTF/JKM持续高位；OPEC+延续减产维持油价支撑。</p>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <strong>蜗牛鸟投资研究部 · 能源板块</strong> &nbsp;|&nbsp; 本报告仅供内部参考，不构成投资建议。<br>
+  主要数据来源：Shell plc Q2 2026业绩公告及电话会议（2026年7月30日，SEC EDGAR Form 6-K）；ExxonMobil Q2 2026业绩公告（2026年7月31日，Nasdaq）；Chevron Q2 2026业绩公告（2026年7月31日，BusinessWire）；ARC Resources并购公告（Shell plc SEC EDGAR，2026年4月27日）；分析师评级：Morningstar/CNN Markets/Piper Sandler/Berenberg Bank（截至2026年8月3日）；股价数据：Morningstar（2026年4月数据，供市值估算）。PetroChina数据为公开可得估算值，仅供参考。<br>
+  同业EV/EBITDA参考：Zacks Investment Research（2026年7月）；行业估值区间为研究部内部估算，不代表特定机构观点。<br>
+  报告制作日期：2026年8月11日。本报告为Shell plc首次覆盖完整版，整合公司基础、历史沿革、业务架构、Q2财务分析、管理层纪要、股东回报政策、FCF历史分析、估值及同业比较。
+</footer>
+
+</body>
+</html>
