@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebius Group (NBIS) — Q2 业绩跟踪 — Snail-bird Investment</title>
+<style>
+        :root {
+            --primary: #4F46E5;
+            --primary-light: #818CF8;
+            --primary-dark: #3730A3;
+            --accent: #7C3AED;
+            --gradient: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #6366F1 100%);
+            --gradient-light: linear-gradient(135deg, #EEF2FF 0%, #F5F3FF 100%);
+            --bg: #FAFAFF;
+            --card-bg: #FFFFFF;
+            --text: #1E1B2E;
+            --text-secondary: #6B6786;
+            --border: #E5E3F0;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --info: #3B82F6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans CJK SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 60px 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            font-weight: 300;
+            margin-bottom: 28px;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            font-size: 14px;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .hero-meta-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        .hero-meta-value {
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'SF Mono', 'Consolas', 'Courier New', monospace;
+        }
+
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 10px 24px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .rating-badge-icon {
+            font-size: 24px;
+        }
+
+        .rating-badge-text {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-child { border-bottom: none; }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .section-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            margin-left: 42px;
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin: 24px 0 12px;
+            padding-left: 12px;
+            border-left: 3px solid var(--primary-light);
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin: 16px 0 8px;
+        }
+
+        p { margin-bottom: 12px; }
+
+        strong { color: var(--primary-dark); }
+
+        .highlight { background: linear-gradient(120deg, #E0E7FF 0%, #F3E8FF 100%); padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+
+        /* Info Boxes */
+        .info-box {
+            background: var(--gradient-light);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+            margin: 16px 0;
+        }
+
+        .info-box-title {
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        .warning-box {
+            background: #FEF3C7;
+            border-left: 4px solid var(--warning);
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+            margin: 16px 0;
+        }
+
+        .danger-box {
+            background: #FEE2E2;
+            border-left: 4px solid var(--danger);
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+            margin: 16px 0;
+        }
+
+        .success-box {
+            background: #D1FAE5;
+            border-left: 4px solid var(--success);
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+            margin: 16px 0;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 16px 0;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+        }
+
+        thead { background: var(--gradient); }
+
+        th {
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tbody tr:nth-child(even) { background: #F9F8FD; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: #EEF0FF; }
+
+        .td-num { font-family: 'SF Mono', 'Consolas', 'Courier New', monospace; text-align: right; }
+        .td-positive { color: var(--success); font-weight: 600; }
+        .td-negative { color: var(--danger); font-weight: 600; }
+
+        /* Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .summary-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .summary-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,70,229,0.1); }
+
+        .summary-card-icon { font-size: 28px; margin-bottom: 8px; }
+
+        .summary-card-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .summary-card-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-family: 'SF Mono', 'Consolas', 'Courier New', monospace;
+        }
+
+        .summary-card-sub {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Thesis Cards */
+        .thesis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .thesis-grid { grid-template-columns: 1fr; }
+        }
+
+        .thesis-card {
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid;
+        }
+
+        .thesis-bull {
+            background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+            border-color: #A7F3D0;
+        }
+
+        .thesis-bear {
+            background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
+            border-color: #FECACA;
+        }
+
+        .thesis-card-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .thesis-bull .thesis-card-title { color: #065F46; }
+        .thesis-bear .thesis-card-title { color: #991B1B; }
+
+        .thesis-card ul { list-style: none; padding: 0; }
+
+        .thesis-card li {
+            padding: 6px 0;
+            font-size: 13.5px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .thesis-bull li::before { content: '✓'; position: absolute; left: 0; color: var(--success); font-weight: 700; }
+        .thesis-bear li::before { content: '✗'; position: absolute; left: 0; color: var(--danger); font-weight: 700; }
+
+        /* Timeline */
+        .timeline { position: relative; padding-left: 28px; margin: 20px 0; }
+        .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background: var(--gradient);
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--primary-light);
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .timeline-content {
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        /* Valuation Football Field */
+        .football-field { margin: 20px 0; }
+        .ff-row { display: flex; align-items: center; margin-bottom: 10px; gap: 12px; }
+        .ff-label { width: 180px; font-size: 13px; font-weight: 500; text-align: right; flex-shrink: 0; }
+        .ff-bar-container { flex: 1; position: relative; height: 28px; background: #F3F4F6; border-radius: 6px; overflow: hidden; }
+        .ff-bar { position: absolute; height: 100%; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: white; }
+        .ff-bar-low { background: linear-gradient(90deg, #EF4444, #F59E0B); }
+        .ff-bar-mid { background: linear-gradient(90deg, #F59E0B, #10B981); }
+        .ff-bar-high { background: linear-gradient(90deg, #10B981, #059669); }
+        .ff-current { position: absolute; top: -4px; bottom: -4px; width: 3px; background: var(--accent); z-index: 10; }
+        .ff-current-label { position: absolute; top: -20px; transform: translateX(-50%); font-size: 10px; font-weight: 700; color: var(--accent); white-space: nowrap; }
+
+        /* Footer */
+        .footer {
+            background: var(--gradient);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .footer p { opacity: 0.9; margin-bottom: 8px; }
+
+        .disclaimer {
+            background: #F3F4F6;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Tags */
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin: 2px;
+        }
+        .tag-buy { background: #D1FAE5; color: #065F46; }
+        .tag-hold { background: #FEF3C7; color: #92400E; }
+        .tag-sell { background: #FEE2E2; color: #991B1B; }
+        .tag-info { background: #DBEAFE; color: #1E40AF; }
+
+        .source-ref {
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        ul.bullet-list { padding-left: 20px; margin: 10px 0; }
+        ul.bullet-list li { margin-bottom: 6px; }
+
+        .number-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 700;
+            margin-right: 6px;
+        }
+    
+  /* ===== Snail-bird Investment 品牌栏（navy/gold 与旧版一致） ===== */
+  .topbar{background:#0a1628;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:54px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+  .topbar-brand{color:#c8a44e;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+  .topbar-nav{display:flex;gap:2px;flex-wrap:wrap}
+  .topbar-nav a{color:rgba(255,255,255,.72);text-decoration:none;font-size:12px;padding:6px 10px;border-radius:4px}
+  .topbar-nav a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .brand-strip{background:#0a1628;color:#fff;padding:14px 28px;border-bottom:1px solid rgba(200,164,78,.25)}
+  .brand-strip-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .brand-strip .label{color:#c8a44e;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+  .brand-strip .type{font-size:13px;color:rgba(255,255,255,.62)}
+  .disc-section{margin:26px 0 0;padding:16px 18px;background:#f7f4ea;border:1px solid #e7dcc0;border-radius:8px;font-size:12px;color:#6b5d3a}
+  .disc-section h4{margin:0 0 6px;color:#8a6d2b;font-size:13px}
+  .disc-section p{margin:4px 0;line-height:1.6}
+  .footer-line{margin-top:18px;padding-top:14px;border-top:1px solid #e7dcc0;font-size:12px;color:#8a6d2b;text-align:center}
+</style>
+</head>
+<body><nav class="topbar">
+  <div class="topbar-brand">Snail-bird Investment</div>
+  <div class="topbar-nav">
+    <a href="#s1">论点</a><a href="#s2">渊源</a><a href="#s3">供需</a>
+    <a href="#s4">护城河</a><a href="#s5">收入</a><a href="#s6">估值</a>
+    <a href="#s7">卖空</a><a href="#s8">风险</a><a href="#s9">催化</a>
+    <a href="#s10">评级</a><a href="#s11">监控</a><a href="#s12">声明</a>
+  </div>
+</nav>
+<div class="brand-strip">
+  <div class="brand-strip-inner">
+    <div>
+      <span class="label">Snail-bird Investment</span>
+      <span class="type"> &mdash; Equity Research</span>
+    </div>
+    <div class="type">NASDAQ: NBIS &middot; Q2 业绩跟踪 &middot; 2026-08-12</div>
+  </div>
+</div>
+
+
+<!-- ========== HERO ========== -->
+<div class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <span class="hero-badge">🔬 跟踪更新 | AI 基础设施</span>
+            <h1>Nebius Group (NASDAQ: NBIS)</h1>
+            <p class="hero-subtitle">全栈 AI 云基础设施 — Q2 业绩兑现，资本强度与稀释重塑估值门槛</p>
+
+            <div class="rating-badge">
+                <span class="rating-badge-icon">⚖️</span>
+                <span class="rating-badge-text">评级：持有（HOLD）— 中性</span>
+            </div>
+
+            <div class="hero-meta" style="margin-top: 24px;">
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">当前股价（8/12 收盘）</span>
+                    <span class="hero-meta-value">$246.93</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">12个月目标价</span>
+                    <span class="hero-meta-value">$210</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">市值（基本/稀释）</span>
+                    <span class="hero-meta-value">$67B / $78B</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">报告日期</span>
+                    <span class="hero-meta-value">2026.08.12</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========== 投资摘要 ========== -->
+<section id="s1">
+    <div class="container">
+        <div class="section-title">
+            <span class="section-title-num">1</span>
+            投资摘要
+        </div>
+        <p class="section-subtitle">Investment Summary — 核心论点、评级逻辑与关键数据一览</p>
+
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="summary-card-icon">📈</div>
+                <div class="summary-card-label">Q2 2026 营收</div>
+                <div class="summary-card-value">$582.3M</div>
+                <div class="summary-card-sub">YoY +454% · QoQ +46%</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-icon">⚡</div>
+                <div class="summary-card-label">ARR（年化收入）</div>
+                <div class="summary-card-value">$3.0B</div>
+                <div class="summary-card-sub">YoY +598% · QoQ +56%</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-icon">💰</div>
+                <div class="summary-card-label">客户承诺总额</div>
+                <div class="summary-card-value">$40B+</div>
+                <div class="summary-card-sub">含 Microsoft / Meta / 4 笔 landmark</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-icon">🔌</div>
+                <div class="summary-card-label">签约电力容量</div>
+                <div class="summary-card-value">5GW</div>
+                <div class="summary-card-sub">年底目标上调（原 >4GW）</div>
+            </div>
+        </div>
+
+        <h3>核心投资论点</h3>
+        <p>
+            Nebius Group 是由前 Yandex 创始人 Arkady Volozh 主导的<strong>全栈 AI 云基础设施公司</strong>，2024 年 10 月在纳斯达克重新上市以来，已迅速成长为"新云（Neocloud）"赛道的领军企业之一。公司核心叙事清晰：<span class="highlight">以自建 GPU 集群 + 全栈 AI 云平台，承接 AI 算力供需缺口中溢出的海量需求</span>。Q2 2026 业绩验证了这一叙事的兑现度——营收 $582.3M（+454% YoY）、ARR 跃升至 $3.0B（+56% QoQ）、调整后 EBITDA $236.2M（margin 40.6%），并新签 4 笔单笔均超 $1B 的 landmark 合同，使客户承诺总额突破 $40B。
+        </p>
+
+        <div class="info-box">
+            <div class="info-box-title">🎯 变异认知（Variant Perception）</div>
+            <p style="margin: 0; font-size: 14px;">
+                市场对 NBIS 的分歧核心在于：<strong>当前约 $67B 基本市值（完全稀释约 $78B）是否已充分定价其超高速增长？</strong><br>
+                <strong>多头认为：</strong>2026 年 ARR 目标 $7-9B 若兑现，对应 2026E EV/ARR 将降至 ~9x；Q2 单季即新增 $40B+ 客户承诺，定价权（核心合同 $20-25M/MW、短期 $40-50M/MW）正在上行。<br>
+                <strong>空头认为：</strong>$20-25B 年度 CapEx + GAAP 持续经营亏损 + 完全稀释股本约 314.9M（较基本股本高 16%）+ 自由现金流（CFO−资本购置）H1 为 −$3.63B = 高风险、需持续融资的资本密集型资产，当前估值已提前反映乐观情景。
+            </p>
+        </div>
+
+        <p>
+            我们的判断：<strong>基本面正处于"经营杠杆拐点验证期"，但绝非"盈利拐点已闭环"。</strong>Q2 调整后 EBITDA margin 升至 40.6%、AI 云 margin 达 50%，规模效应确证；然而 Q2 持续经营 GAAP 净亏损仍达 $190.4M，H1 资本购置 $8.13B 远超经营现金回款，自由现金流深度为负。股价自 52 周低点 $62.01 已上涨约 <strong>298%</strong>，并在 Q2 财报日发布当日大涨 27.8% 至 $246.93，当前估值（基本 EV/ARR ~22.5x、2026E EV/Revenue ~21x）已反映大量乐观预期。
+        </p>
+
+        <p>
+            <strong>评级：持有（HOLD），中性。</strong>12 个月目标价 <strong>$210</strong>（基于完全稀释口径的 ARR 倍数法 ~$214、DCF 中值 ~$215、可比公司 ~$208 加权得出）。当前价位 $246.93 已高于基准内在价值，短期风险收益比趋于中性偏弱；若因宏观或执行波动回调至 $180-200 区间，可视为更优的风险收益比建仓窗口。关键后续验证为 Q3 收入兑现、年底 5GW 电力目标与 2027 容量部署节奏。
+        </p>
+
+        <h3>PM 七问检验</h3>
+        <table>
+            <thead>
+                <tr><th style="width: 35%">问题</th><th>我们的回答</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>什么被错误定价了？</strong></td>
+                    <td>市场可能低估了定价权的上行斜率（首次容量拍卖较此前 Blackwell 峰值高 15%、短期合同 $40-50M/MW）与 $40B+ 客户承诺向 2027 收入的转化确定性</td>
+                </tr>
+                <tr>
+                    <td><strong>当前价格反映了什么？</strong></td>
+                    <td>已定价 2026E ARR 达 $7-9B 中枢 + 经营杠杆拐点 + Microsoft/Meta/4 笔 landmark 合同执行顺利。未充分定价：完全稀释股本 314.9M、GAAP 持续亏损、H1 自由现金流 −$3.63B 的融资依赖</td>
+                </tr>
+                <tr>
+                    <td><strong>什么能证明论点？</strong></td>
+                    <td>Q3 收入如期放量（late-Q2 容量贡献）→ ARR 季度环比 >40% → EBITDA margin 维持 ~40% → 客户集中度实质下降</td>
+                </tr>
+                <tr>
+                    <td><strong>什么能推翻论点？</strong></td>
+                    <td>GPU 供给缓解致 neocloud 定价权回落；Microsoft/Meta 大合同履约延迟；融资环境恶化迫使激进股权稀释；自由现金流长期无法收敛</td>
+                </tr>
+                <tr>
+                    <td><strong>为什么是现在？</strong></td>
+                    <td>Q2 2026 财报（8/12 发布）刚验证收入与订单爆发，但股价当日 +27.8% 已提前反应；估值进入"需执行兑现"区间，是检视风险收益比的节点</td>
+                </tr>
+                <tr>
+                    <td><strong>什么会改变仓位/评级？</strong></td>
+                    <td>上行：回调至 $180-200 → 上调至偏买入；ARR 季度增速持续 >50% 且稀释可控 → 上调目标价<br>下行：EBITDA margin 回落或稀释超预期 → 下调至观望；自由现金流持续恶化 → 下调目标价</td>
+                </tr>
+                <tr>
+                    <td><strong>还缺少什么证据？</strong></td>
+                    <td>2027 容量部署的逐季收入确认节奏；Meta 第二份 $12B 协议（2027 年初起部署）的实际爬坡；资产轻量化（asset-light）合作模式的毛利贡献验证</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ========== 公司概况 ========== -->
+<section id="s2">
+    <div class="container">
+        <div class="section-title">
+            <span class="section-title-num">2</span>
+            公司概况
+        </div>
+        <p class="section-subtitle">Company Overview — 从 Yandex 到 Nebius 的蜕变</p>
+
+        <h3>前世今生：Yandex 的西方遗产</h3>
+        <p>
+            Nebius Group N.V. 的前身是俄罗斯科技巨头 Yandex N.V.。2024 年，Yandex 完成了将其俄罗斯本土业务出售给本地财团的交易，保留了一系列西方资产进行重组。重组后的实体更名为 Nebius Group，于 <strong>2024 年 10 月在纳斯达克重新上市</strong>（代码：NBIS），总部位于荷兰阿姆斯特丹。
+        </p>
+        <p>
+            保留的核心资产包括：Yandex 原有的云基础设施团队和技术、自动驾驶平台 Avride、编程教育平台 TripleTen、AI 数据标注平台 Toloka，以及对实时分析数据库 ClickHouse 的股权。公司目前拥有 <strong>1,543 名员工</strong>，研发团队主要分布在以色列、芬兰和美国。
+        </p>
+
+        <h3>管理层与治理结构</h3>
+        <table>
+            <thead>
+                <tr><th>角色</th><th>姓名</th><th>背景</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>创始人 & CEO</strong></td>
+                    <td>Arkady Volozh</td>
+                    <td>Yandex 联合创始人，主导公司从搜索向 AI 基础设施的战略转型。技术出身，以"长期主义 + 激进投入"著称</td>
+                </tr>
+                <tr>
+                    <td><strong>CFO</strong></td>
+                    <td>Dado Alonso</td>
+                    <td>负责资本结构管理，主导了 2025-2026 年多轮可转债、股权与资产支持融资</td>
+                </tr>
+                <tr>
+                    <td><strong>首席营收官</strong></td>
+                    <td>Marc Boroditsky</td>
+                    <td>主导与 Microsoft、Meta 及 Q2 四笔 landmark 客户（Reflection、Cohere 等）的合同谈判与容量分配</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="warning-box">
+            <div class="info-box-title" style="color: #92400E;">⚠️ 治理风险提示</div>
+            <p style="margin: 0; font-size: 14px;">
+                创始人 Volozh 通过 <strong>B 类超级投票权股（1 股 = 10 票）</strong>控制公司约 55% 的投票权。公众股东（A 类股）话语权有限，治理结构偏向创始人控制型。这一结构在战略执行高效的同时，也意味着小股东对重大决策（如增发、并购）的影响力有限。
+            </p>
+        </div>
+
+        <h3>业务架构</h3>
+        <table>
+            <thead>
+                <tr><th>业务板块</th><th>描述</th><th>战略定位</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Nebius AI Cloud</strong> <span class="tag tag-info">核心</span></td>
+                    <td>全栈 AI 云：大规模 GPU 集群 + 云平台 + AI 开发工具 + 推理服务</td>
+                    <td>占集团营收 98%（Q2 单季 $574.9M），核心增长引擎</td>
+                </tr>
+                <tr>
+                    <td><strong>Token Factory</strong></td>
+                    <td>生产级推理平台，提供模型微调 → 推理的全生命周期服务</td>
+                    <td>提升毛利、摆脱"GPU 房东"定位的关键</td>
+                </tr>
+                <tr>
+                    <td><strong>Aether 3.5</strong></td>
+                    <td>无服务器 AI 计算平台，支持弹性扩缩容</td>
+                    <td>面向中小客户的自助式入口</td>
+                </tr>
+                <tr>
+                    <td><strong>Avride</strong></td>
+                    <td>自动驾驶与配送机器人平台</td>
+                    <td>战略期权价值，仍处早期投入期</td>
+                </tr>
+                <tr>
+                    <td><strong>TripleTen</strong></td>
+                    <td>编程与技术教育平台</td>
+                    <td>稳定现金流贡献，非核心</td>
+                </tr>
+                <tr>
+                    <td><strong>股权投资</strong></td>
+                    <td>ClickHouse（估值 ~$1.5B）、Eigen AI、Clarifai、Tavily</td>
+                    <td>生态协同 + 潜在价值释放</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>关键里程碑</h3>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2024.10</div>
+                <div class="timeline-content">Yandex 完成资产重组，Nebius Group 在纳斯达克重新上市（NBIS）</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2024.12</div>
+                <div class="timeline-content">获得 NVIDIA、Accel 等 $700M 战略融资</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2025.05</div>
+                <div class="timeline-content">Q1 2025：营收 $55.3M（+385% YoY），ARR $249M，验证 AI 云需求</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2025.09</div>
+                <div class="timeline-content">公布 Microsoft $17.4B 五年合同（最大单笔订单）；同步完成 $2.75B 可转债 + $1B 股权增发 + NVIDIA $2B 股权投资</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2025.11</div>
+                <div class="timeline-content">公布 Meta 首份 ~$3B 五年合同；Q3 2025 容量全部售罄</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2026.02</div>
+                <div class="timeline-content">FY2025 全年营收 $529.8M（+479%），ARR $1.2B，Q4 调整后 EBITDA 转正</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2026.03</div>
+                <div class="timeline-content">发行 $4.0B 可转债（2031/2033 两批），初始转股价 ~$183/$180；NVIDIA 预付款权证对应约 21.1M 股</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2026.05</div>
+                <div class="timeline-content"><strong>Q1 2026 里程碑季度</strong>：营收 $399M（+684%），ARR $1.92B，EBITDA margin 32.5%</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2026.08</div>
+                <div class="timeline-content"><strong>Q2 2026 再加速</strong>：营收 $582.3M（+454% YoY）、ARR $3.0B、调整后 EBITDA $236.2M（40.6%）；新签 4 笔单笔 >$1B landmark 合同，客户承诺总额破 $40B；Meta 第二份 $12B 五年协议披露</div>
+            </div>
+        </div>
+
+        <p class="source-ref">数据来源：Nebius 官方财报公告、股东信、Q2 2026 业绩电话会纪要、SEC 文件</p>
+    </div>
+</section>
+
+<!-- ========== 行业分析 ========== -->
+<section id="s3">
+    <div class="container">
+        <div class="section-title">
+            <span class="section-title-num">3</span>
+            行业分析
+        </div>
+        <p class="section-subtitle">Industry Analysis — AI 基础设施与"新云"赛道格局</p>
+
+        <h3>AI 算力供需缺口：结构性短缺</h3>
+        <p>
+            AI 基础设施市场正经历前所未有的供需失衡。大模型训练和推理对 GPU 算力的需求呈指数级增长，而供给端面临三重瓶颈：<strong>GPU 芯片产能（NVIDIA 供给）、数据中心电力容量、以及高功率冷却设施</strong>。Nebius CEO Volozh 在 Q2 2026 股东信中明确表示："AI 算力需求远超供给，每新增 GPU 都引发竞标。"Q2 公司<strong>再次售罄全部可用容量</strong>，并主动保留部分 2027 年容量以追逐更高单价的短期合同。
+        </p>
+
+        <div class="info-box">
+            <div class="info-box-title">📊 关键行业数据</div>
+            <ul class="bullet-list" style="margin: 0;">
+                <li>全球 AI 数据中心电力需求预计从 2025 年的 ~40GW 增长至 2030 年的 200GW+（来源：行业研究）</li>
+                <li>Nebius Q2 <strong>全部可用容量再次售罄</strong>；新签 4 笔 landmark 合同，单笔均 >$1B，客户承诺总额突破 $40B</li>
+                <li>核心瓶颈为<strong>电力和数据中心容量</strong>——Nebius 签约 5GW 电力（年底目标）是核心壁垒</li>
+                <li><strong>定价权上行信号</strong>：核心中长期合同 $20-25M/MW；短期 3-6 月合同已至 $40-50M/MW；首次容量拍卖清盘价较此前 Blackwell 峰值高 15%（较 Blackwell 管线定价高 20%）</li>
+            </ul>
+        </div>
+
+        <h3>"新云（Neocloud）"赛道竞争格局</h3>
+        <p>
+            在传统超大规模云厂商（AWS、Google Cloud、Azure）之外，一批专注 AI 工作负载的"新云"厂商快速崛起。这一赛道的核心逻辑是：传统云的通用架构不适合高密度 GPU 计算，而新云厂商以 AI 原生架构 + 更优的单位经济性抢占市场。
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>厂商</th>
+                    <th>定位</th>
+                    <th>核心优势</th>
+                    <th>主要客户</th>
+                    <th>与 Nebius 对比</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>CoreWeave (CRWV)</strong></td>
+                    <td>头部新云，面向超大规模训练</td>
+                    <td>最深的 H100/B200 资源池，全无阻塞 InfiniBand 网络，率先锁定 PPA；规模领先</td>
+                    <td>Microsoft、OpenAI</td>
+                    <td>规模更大、更偏"GPU 出租"；Nebius 差异化在全栈 + 推理。CRWV 当前 EV/Revenue ~13-16x（TTM），仍 GAAP 亏损、FCF 为负</td>
+                </tr>
+                <tr>
+                    <td><strong>Lambda Labs</strong></td>
+                    <td>开发者友好型，中小规模训练</td>
+                    <td>自服务开通，定价透明，开发者生态最佳</td>
+                    <td>开发者、中小 AI 团队</td>
+                    <td>规模较小，美国为主；Nebius 全球布局 + 企业级服务更强</td>
+                </tr>
+                <tr>
+                    <td><strong>Crusoe</strong></td>
+                    <td>能源套利型，低成本算力</td>
+                    <td>搁浅电力/伴生气发电，PUE 优于同行，边际成本低</td>
+                    <td>成本敏感型大规模训练</td>
+                    <td>不同路线（能源 vs 全栈），非直接竞争</td>
+                </tr>
+                <tr>
+                    <td><strong>Nebius (NBIS)</strong></td>
+                    <td>全栈 AI 原生云，全球化布局</td>
+                    <td>欧洲 GDPR 合规优势 + 全栈（基础设施→云→推理→智能体）+ NVIDIA 深度合作 + 定价权上行</td>
+                    <td>Microsoft、Meta + 4 笔 landmark 新客户</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Nebius 的竞争定位</h3>
+        <p>
+            Nebius 在新云赛道中的差异化体现在三个维度：
+        </p>
+        <ul class="bullet-list">
+            <li><strong>全栈深度</strong>：不只是 GPU 出租，而是构建"基础设施 + 多租户云 + 推理平台 + 智能体"的完整 AI 原生栈。Token Factory 和 Aether 3.5 使公司能捕获更高附加值的推理工作负载</li>
+            <li><strong>欧洲主权优势</strong>：芬兰数据中心 + GDPR 合规能力，是欧洲企业 AI 训练的首选供应商。在数据本地化要求日益严格的趋势下，这一优势具有结构性</li>
+            <li><strong>NVIDIA 战略绑定</strong>：获得"Exemplary Cloud"地位 + $2B 股权投资，意味着在 GPU 分配队列中享有优先权——在供给受限的环境中，这是生死攸关的壁垒</li>
+        </ul>
+
+        <div class="info-box">
+            <div class="info-box-title">🏭 Porter's Five Forces 简析</div>
+            <ul class="bullet-list" style="margin: 0;">
+                <li><strong>买方议价权（中高）</strong>：超大规模客户（Microsoft、Meta）议价能力强，但当前供不应求 + 卖方保留容量策略暂时削弱了买方杠杆</li>
+                <li><strong>卖方议价权（高）</strong>：NVIDIA 作为唯一 GPU 供应商拥有极强议价权，但 Nebius 通过股权合作部分缓解</li>
+                <li><strong>新进入者威胁（中低）</strong>：电力审批 + 数据中心建设 + GPU 采购合同形成高门槛，短期内新进入者难以构成威胁</li>
+                <li><strong>替代品威胁（中）</strong>：超大规模云厂商自建 AI 基础设施（如 AWS Trainium）长期可能替代部分需求</li>
+                <li><strong>行业竞争（高）</strong>：CoreWeave、Lambda、Crusoe 等同赛道玩家激进的产能扩张，长期可能引发价格竞争——但短期拍卖数据指向定价权上行</li>
+            </ul>
+        </div>
+
+        <p class="source-ref">数据来源：WeTheFlywheel Neocloud Providers 2026 行业报告、Nebius Q2 2026 股东信与业绩电话会、行业公开资料</p>
+    </div>
+</section>
+
+<!-- ========== 核心竞争优势 ========== -->
+<section id="s4">
+    <div class="container">
+        <div class="section-title">
+            <span class="section-title-num">4</span>
+            核心竞争优势
+        </div>
+        <p class="section-subtitle">Competitive Advantages — 护城河拆解</p>
+
+        <h3>护城河一：大规模电力合同 = 不可复制的稀缺资源</h3>
+        <p>
+            在 AI 算力赛道，<strong>核心瓶颈已从 GPU 转向电力</strong>。获取大规模高功率数据中心用地和电力合同，通常需要 2-3 年的前置审批和基础设施建设周期。Nebius 已签约 <strong>5GW 电力容量（年底目标，已上调）</strong>，其中 >75% 为自有容量。这意味着：
+        </p>
+        <ul class="bullet-list">
+            <li>宾州新工厂：1.2GW 电力 + 土地已获批</li>
+            <li>2026 年预计连接 800MW-1GW 新容量，Q3 起显著放量</li>
+            <li>全球布局：芬兰（欧洲核心）、密苏里、阿拉巴马、新泽西 Vineland（承载 Microsoft 订单）</li>
+        </ul>
+        <p>
+            电力合同的稀缺性和前置周期构成了真实的进入壁垒——竞争对手即使拥有资金，也难以在短期内复制这一资源。
+        </p>
+
+        <h3>护城河二：NVIDIA 战略联盟</h3>
+        <p>
+            NVIDIA 向 Nebius 投资 <strong>$2B 股权</strong>并授予"Exemplary Cloud"地位，使 Nebius 在 GPU 分配中享有优先权。在 GPU 供给受限的环境下，这一关系直接决定了交付能力。此外，Nebius 将在 H2 2026 部署 <strong>NVIDIA Vera Rubin NVL72</strong>（下一代旗舰 GPU 系统），成为首批部署该架构的云厂商之一。
+        </p>
+
+        <h3>护城河三：在手合同提供收入可见性</h3>
+        <table>
+            <thead>
+                <tr><th>客户 / 协议</th><th>合同金额</th><th>期限</th><th>状态</th><th>备注</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Microsoft</td>
+                    <td class="td-num">$17.4B（含期权最高 $19.4B）</td>
+                    <td>5 年</td>
+                    <td>持续交付中</td>
+                    <td class="td-num">最大单笔订单</td>
+                </tr>
+                <tr>
+                    <td>Meta（首份）</td>
+                    <td class="td-num">~$3.0B</td>
+                    <td>5 年</td>
+                    <td>首批容量已交付</td>
+                    <td class="td-num">2025.11 披露</td>
+                </tr>
+                <tr>
+                    <td>Meta（第二份）</td>
+                    <td class="td-num">$12.0B</td>
+                    <td>5 年</td>
+                    <td>部署自 2027 年初起</td>
+                    <td class="td-num">另含潜在 $15B 未售容量安排（或有）</td>
+                </tr>
+                <tr>
+                    <td>4 笔 Q2 landmark</td>
+                    <td class="td-num">单笔均 >$1B</td>
+                    <td>中长期</td>
+                    <td>已签署，部分 2026 末起上线</td>
+                    <td class="td-num">Reflection、Cohere、美国 Neolab、量化基金</td>
+                </tr>
+                <tr>
+                    <td><strong>客户承诺合计</strong></td>
+                    <td class="td-num"><strong>$40B+</strong></td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="td-num"><strong>较 Q1 的 $20B+ 翻倍</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="success-box">
+            <div class="info-box-title" style="color: #065F46;">✓ 收入可见性增强，结构优化</div>
+            <p style="margin: 0; font-size: 14px;">
+                $40B+ 客户承诺为 2026-2030 年提供了高度可见的收入基础，且 Q2 新增的 4 笔 landmark 合同（含 Reflection、Cohere 等非巨头客户）开始实质性降低对 Microsoft 单一客户的依赖。70% 的 Q2 新合同附带覆盖 50-60% 相关 CapEx 的预付款，预计 2026 年客户预付款 >$9B，成为重要的建设资金来源。
+            </p>
+        </div>
+
+        <h3>护城河四：全栈平台提升客户粘性与毛利</h3>
+        <p>
+            与纯 GPU 出租模式不同，Nebius 的全栈架构（基础设施 → 云平台 → Token Factory 推理 → Aether 无服务器）创造了更深的客户锁定。通过收购 Eigen AI（推理优化）、Clarifai（推理效率）、Tavily（智能体搜索），公司正在构建一个 AI 原生云生态，使客户从训练到推理到部署的全流程都留在 Nebius 平台上。
+        </p>
+        <p>
+            这一战略的直接财务体现是<strong> AI 云 EBITDA margin 从 Q3 2025 的 19% 提升至 Q4 的 24%、Q1 2026 的 45%，再到 Q2 2026 的 50%</strong>——margin 的快速扩张验证了全栈模式的经济性，也解释了集团 margin（40.6%）与 AI 云 margin（50%）之间的差距（Avride、TripleTen 早期投入拖累）。
+        </p>
+
+        <p class="source-ref">数据来源：Nebius Q2 2026 财报、SEC 文件、CEO 股东信、业绩电话会</p>
+    </div>
+</section>
+
+<!-- ========== 财务分析 ========== -->
+<section id="s5">
+    <div class="container">
+        <div class="section-title">
+            <span class="section-title-num">5</span>
+            财务分析
+        </div>
+        <p class="section-subtitle">Financial Analysis — 收入爆发、经营杠杆确认，但自由现金流仍深度为负</p>
+
+        <h3>收入：爆炸式增长</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>指标</th>
+                    <th>Q1 2025</th>
+                    <th>Q2 2025</th>
+                    <th>Q3 2025</th>
+                    <th>Q4 2025</th>
+                    <th>Q1 2026</th>
+                    <th>Q2 2026</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>集团营收</strong></td>
+                    <td class="td-num">$55.3M</td>
+                    <td class="td-num">~$90M</td>
+                    <td class="td-num">$146.5M</td>
+                    <td class="td-num">$227.7M</td>
+                    <td class="td-num">$399.0M</td>
+                    <td class="td-num"><strong>$582.3M</strong></td>
+                </tr>
+                <tr>
+                    <td>YoY 增速</td>
+                    <td class="td-num td-positive">+385%</td>
+                    <td class="td-num td-positive">+NA</td>
+                    <td class="td-num td-positive">+355%</td>
+                    <td class="td-num td-positive">+547%</td>
+                    <td class="td-num td-positive">+684%</td>
+                    <td class="td-num td-positive">+454%</td>
+                </tr>
+                <tr>
+                    <td>QoQ 增速</td>
+                    <td class="td-num">—</td>
+                    <td class="td-num td-positive">+63%</td>
+                    <td class="td-num td-positive">+63%</td>
+                    <td class="td-num td-positive">+56%</td>
+                    <td class="td-num td-positive">+75%</td>
+                    <td class="td-num td-positive">+46%</td>
+                </tr>
+                <tr>
+                    <td><strong>Nebius AI 营收</strong></td>
+                    <td class="td-num">~$46M</td>
+                    <td class="td-num">~$80M</td>
+                    <td class="td-num">~$130M</td>
+                    <td class="td-num">~$210M</td>
+                    <td class="td-num">~$390M</td>
+                    <td class="td-num"><strong>$574.9M</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>ARR（期末）</strong></td>
+                    <td class="td-num">$249M</td>
+                    <td class="td-num">~$420M</td>
+                    <td class="td-num">$780M</td>
+                    <td class="td-num">$1,200M</td>
+                    <td class="td-num">$1,920M</td>
+                    <td class="td-num"><strong>$3,000M</strong></td>
+                </tr>
+                <tr>
+                    <td>ARR QoQ</td>
+                    <td class="td-num">—</td>
+                    <td class="td-num td-positive">+69%</td>
+                    <td class="td-num td-positive">+86%</td>
+                    <td class="td-num td-positive">+54%</td>
+                    <td class="td-num td-positive">+60%</td>
+                    <td class="td-num td-positive">+56%</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+            注：Q2/Q3 2025 部分数据为根据公开信息推算的近似值，以官方财报为准。FY2025 全年营收 $529.8M（+479% YoY）；H1 2026 营收 $981.3M。Q2 AI 云营收占集团 98%。
+        </p>
+
+        <h3>盈利能力：经营杠杆拐点确认，但 GAAP 仍亏损</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>盈利指标</th>
+                    <th>Q3 2025</th>
+                    <th>Q4 2025</th>
+                    <th>Q1 2026</th>
+                    <th>Q2 2026</th>
+                    <th>趋势</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>调整后 EBITDA</strong></td>
+                    <td class="td-num td-negative">亏损</td>
+                    <td class="td-num td-positive">$15M</td>
+                    <td class="td-num td-positive">$129.5M</td>
+                    <td class="td-num td-positive"><strong>$236.2M</strong></td>
+                    <td class="td-positive">快速扩张 ↗</td>
+                </tr>
+                <tr>
+                    <td>集团 EBITDA margin</td>
+                    <td class="td-num td-negative">负</td>
+                    <td class="td-num">~7%</td>
+                    <td class="td-num">32.5%</td>
+                    <td class="td-num td-positive"><strong>40.6%</strong></td>
+                    <td class="td-positive">运营杠杆 ↗</td>
+                </tr>
+                <tr>
+                    <td>AI 云 EBITDA margin</td>
+                    <td class="td-num">19%</td>
+                    <td class="td-num">24%</td>
+                    <td class="td-num">45%</td>
+                    <td class="td-num td-positive"><strong>50%</strong></td>
+                    <td class="td-positive">规模效应 ↗</td>
+                </tr>
+                <tr>
+                    <td><strong>GAAP 持续经营净利润</strong></td>
+                    <td class="td-num td-negative">亏损</td>
+                    <td class="td-num td-negative">亏损</td>
+                    <td class="td-num td-positive">+$621.2M*</td>
+                    <td class="td-num td-negative"><strong>−$190.4M</strong></td>
+                    <td class="td-negative">经营口径仍亏损</td>
+                </tr>
+                <tr>
+                    <td>折旧与摊销（Q2）</td>
+                    <td class="td-num">—</td>
+                    <td class="td-num">—</td>
+                    <td class="td-num">—</td>
+                    <td class="td-num td-negative">$259.7M</td>
+                    <td>占收入 ~45%</td>
+                </tr>
+                <tr>
+                    <td>利息费用（Q2）</td>
+                    <td class="td-num">—</td>
+                    <td class="td-num">—</td>
+                    <td class="td-num">—</td>
+                    <td class="td-num td-negative">$119.1M</td>
+                    <td>债务基数上升</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+            *Q1 2026 GAAP 净利含 $780.6M 股权投资重估收益（ClickHouse 估值 $1.5B），非经常性项目；H1 GAAP 净利 $430.8M 同样主要源于该重估。Q2 持续经营 GAAP 净亏损 $190.4M（−$0.68/股）才是经营质量的真实写照——<strong>调整后 EBITDA 不扣减 D&A、SBC 与利息，不能等同可分配现金</strong>。
+        </p>
+
+        <div class="info-box">
+            <div class="info-box-title">📐 运营杠杆分析（Q2 vs Q1 2026）</div>
+            <p style="margin: 0; font-size: 14px;">
+                Q2 集团 EBITDA margin 由 32.5% 升至 40.6%，AI 云 margin 达 50%，验证规模效应持续释放。管理层重申 2026 年调整后 EBITDA margin 指引 ~40%、中期 EBIT margin 目标 20-30%。但需注意：折旧（$259.7M，占收入 45%）与利息（$119.1M）随资产/债务基数膨胀而快速上升，吞噬了 EBITDA 口径下的"盈利"。
+            </p>
+        </div>
+
+        <h3>自由现金流：扩张性烧钱，非稳态 FCF</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>现金流指标（USD m）</th>
+                    <th>Q1 2026</th>
+                    <th>Q2 2026</th>
+                    <th>H1 2026</th>
+                    <th>解读</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>经营现金流（CFO）</strong></td>
+                    <td class="td-num">$2,258.0</td>
+                    <td class="td-num">$2,246.1</td>
+                    <td class="td-num">$4,504.1</td>
+                    <td>含递延收入增加 $4.40B（H1）与应收回款 $0.43B</td>
+                </tr>
+                <tr>
+                    <td>购置 PP&E 及无形资产</td>
+                    <td class="td-num td-negative">($2,472.9)</td>
+                    <td class="td-num td-negative">($5,657.4)</td>
+                    <td class="td-num td-negative">($8,130.3)</td>
+                    <td>扩张性资本开支，非维护性</td>
+                </tr>
+                <tr>
+                    <td><strong>CFO − 资本购置（分析师口径）</strong></td>
+                    <td class="td-num td-negative">($214.9)</td>
+                    <td class="td-num td-negative">($3,411.3)</td>
+                    <td class="td-num td-negative"><strong>(−$3,626.2)</strong></td>
+                    <td>外部融资需求压力测试</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="warning-box">
+            <div class="info-box-title" style="color: #92400E;">⚠️ FCF 口径说明</div>
+            <p style="margin: 0; font-size: 14px;">
+                H1 经营现金流看似强劲（$4.50B），但 <strong>~97% 来自递延收入增加与营运资本释放，而非经营利润</strong>。同期资本购置 $8.13B，使 CFO−资本购置为 −$3.63B。这是典型的"用客户预付款 + 债务 + 股权为产能建设融资"的扩张形态，<strong>不能将 CFO 年化为稳定自由现金流</strong>。该指标的用途是压力测试外部融资需求，而非刻画股东可得现金。
+            </p>
+        </div>
+
+        <h3>资本支出、融资与资本结构</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>资本与融资指标</th>
+                    <th>FY2025</th>
+                    <th>Q2 2026</th>
+                    <th>2026E 指引</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>CapEx（PP&E 购置）</strong></td>
+                    <td class="td-num">~$5B</td>
+                    <td class="td-num">$5.66B（单季）</td>
+                    <td class="td-num"><strong>$20-25B</strong></td>
+                </tr>
+                <tr>
+                    <td>现金及等价物</td>
+                    <td class="td-num">$3.7B</td>
+                    <td class="td-num"><strong>$8.04B</strong></td>
+                    <td class="td-num">—</td>
+                </tr>
+                <tr>
+                    <td>总债务（流动+非流动）</td>
+                    <td class="td-num">—</td>
+                    <td class="td-num"><strong>~$8.55B</strong></td>
+                    <td class="td-num">—</td>
+                </tr>
+                <tr>
+                    <td><strong>净债务（窄口径）</strong></td>
+                    <td class="td-num">净现金</td>
+                    <td class="td-num"><strong>~$0.50B 净债务</strong></td>
+                    <td class="td-num">—</td>
+                </tr>
+                <tr>
+                    <td>基本股本（期末）</td>
+                    <td class="td-num">—</td>
+                    <td class="td-num"><strong>271.9M 股</strong></td>
+                    <td class="td-num">—</td>
+                </tr>
+                <tr>
+                    <td><strong>完全稀释股本（保守）</strong></td>
+                    <td class="td-num">—</td>
+                    <td class="td-num"><strong>~314.9M 股</strong></td>
+                    <td class="td-num">—</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="warning-box">
+            <div class="info-box-title" style="color: #92400E;">⚠️ 资本结构与稀释风险</div>
+            <p style="margin: 0; font-size: 14px;">
+                2026 年 CapEx 指引 $20-25B <strong>是 2025 全年的 4-5 倍</strong>。融资来源包括：客户预付款（2026E >$9B）、NVIDIA $2B 股权、ATM 增发（已发 12.7M 股 @$224 募 $2.8B，余 12.3M）、可转债与资产支持融资（2026.07 新增 $775M）。完全稀释分母 = 基本 271.9M + NVIDIA 预付款权证 21.1M + 2026.03 $4.0B 可转债初始转股 22.0M ≈ <strong>314.9M 股</strong>，较基本股本高约 16%。<strong>持续融资是悬顶之剑——每轮股权/转股都会稀释每股价值</strong>。
+            </p>
+        </div>
+
+        <p class="source-ref">数据来源：Nebius Q2/H1 2026 财报、SEC 文件、业绩电话会、公司公告</p>
+    </div>
+</section>
+
+<!-- ========== 估值分析 ========== -->
+<section id="s6">
+    <div class="container">
+        <div class="section-title">
+            <span class="section-title-num">6</span>
+            估值分析
+        </div>
+        <p class="section-subtitle">Valuation Analysis — ARR 倍数法（完全稀释）+ DCF + 可比公司</p>
+
+        <h3>当前估值快照（2026.08.12 收盘）</h3>
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="summary-card-label">基本市值</div>
+                <div class="summary-card-value">$67.1B</div>
+                <div class="summary-card-sub">271.9M 股 × $246.93</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-label">完全稀释市值</div>
+                <div class="summary-card-value">$77.7B</div>
+                <div class="summary-card-sub">314.9M 股 × $246.93</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-label">EV/ARR（当前）</div>
+                <div class="summary-card-value">22.5x</div>
+                <div class="summary-card-sub">ARR $3.0B（基本口径 EV）</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-label">EV/Revenue（2026E）</div>
+                <div class="summary-card-value">21.1x</div>
+                <div class="summary-card-sub">营收指引 $3.2B 中枢</div>
+            </div>
+        </div>
+
+        <h3>方法一：ARR 倍数法（核心估值方法，完全稀释口径）</h3>
+        <p>
+            对于处于超高速增长阶段且尚未实现稳定盈利的 SaaS/云公司，<strong>EV/ARR 是最直观的估值锚</strong>。我们基于 2026 年末 ARR 目标 $7-9B（中枢 $8B）进行估值，<strong>统一采用完全稀释股本 314.9M 与窄口径净债务 ~$0.5B</strong>（此前采用的 $1.3B 净现金假设已因债务累积而过时）：
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>情景</th>
+                    <th>2026E ARR</th>
+                    <th>EV/ARR 倍数</th>
+                    <th>隐含 EV</th>
+                    <th>净债务调整</th>
+                    <th>隐含股本价值</th>
+                    <th>隐含股价（稀释）</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>悲观</strong></td>
+                    <td class="td-num">$7.0B</td>
+                    <td class="td-num">6.0x</td>
+                    <td class="td-num">$42.0B</td>
+                    <td class="td-num">−$0.5B</td>
+                    <td class="td-num">$41.5B</td>
+                    <td class="td-num">$132</td>
+                </tr>
+                <tr>
+                    <td><strong>基准</strong></td>
+                    <td class="td-num">$8.0B</td>
+                    <td class="td-num">8.5x</td>
+                    <td class="td-num">$68.0B</td>
+                    <td class="td-num">−$0.5B</td>
+                    <td class="td-num">$67.5B</td>
+                    <td class="td-num"><strong>$214</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>乐观</strong></td>
+                    <td class="td-num">$9.0B</td>
+                    <td class="td-num">11.0x</td>
+                    <td class="td-num">$99.0B</td>
+                    <td class="td-num">−$0.5B</td>
+                    <td class="td-num">$98.5B</td>
+                    <td class="td-num">$313</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 12px; color: var(--text-secondary);">
+            注：若按基本股本 271.9M（忽略可转债与权证稀释）计算，隐含股价约为 $153 / $248 / $363。我们坚持使用完全稀释分母以获得保守、可比较的每股价值。EV/ARR 倍数参考：高增长 AI 基础设施中枢 8-12x，考虑 neocloud 赛道溢价与执行风险折价。
+        </p>
+
+        <h3>方法二：可比公司估值</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>可比公司</th>
+                    <th>市值</th>
+                    <th>EV/Revenue</th>
+                    <th>收入增速</th>
+                    <th>盈利状态</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CoreWeave (CRWV)</td>
+                    <td class="td-num">~$40-58B</td>
+                    <td class="td-num">~13-16x (TTM)</td>
+                    <td class="td-num td-positive">~70-80%</td>
+                    <td class="td-negative">GAAP 亏损 / FCF 负</td>
+                    <td>最直接竞争对手，仍重资产亏损</td>
+                </tr>
+                <tr>
+                    <td>NVIDIA (NVDA)</td>
+                    <td class="td-num">~$3.8T</td>
+                    <td class="td-num">~20x</td>
+                    <td class="td-num td-positive">~80%+</td>
+                    <td class="td-positive">盈利</td>
+                    <td>GPU 供应商，上游</td>
+                </tr>
+                <tr>
+                    <td>Amazon (AMZN) - AWS</td>
+                    <td class="td-num">~$2.2T</td>
+                    <td class="td-num">~3x</td>
+                    <td class="td-num td-positive">~15%</td>
+                    <td class="td-positive">盈利</td>
+                    <td>超大规模云，增速低</td>
+                </tr>
+                <tr>
+                    <td><strong>Nebius (NBIS)</strong></td>
+                    <td class="td-num"><strong>$67B / $78B</strong></td>
+                    <td class="td-num"><strong>21x (2026E)</strong></td>
+                    <td class="td-num td-positive"><strong>454%</strong></td>
+                    <td class="td-negative">EBITDA 正 / GAAP 亏</td>
+                    <td>增速最高，但完全稀释更贵</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 12px; color: var(--text-secondary);">
+            Nebius 的 EV/Revenue（21x on 2026E）显著高于超大规模云（~3x），也高于 CoreWeave 的 TTM ~13-16x，但增速（454% vs CRWV ~75%）支撑部分溢价。若以 FY2027E 收入（~$5.5B）给予 12x EV/Revenue（与 CoreWeave 成长溢价相当），隐含 EV ~$66B → 完全稀释每股约 <strong>$208</strong>。
+        </p>
+
+        <h3>方法三：DCF 估值（参考性，完全稀释口径）</h3>
+        <div class="info-box">
+            <div class="info-box-title">📐 DCF 关键假设</div>
+            <ul class="bullet-list" style="margin: 0;">
+                <li><strong>营收预测</strong>：2026E $3.2B → 2027E $8.0B → 2028E $13B → 2029E $17B → 2030E $20B（基于 ARR 增长率递减）</li>
+                <li><strong>EBITDA margin</strong>：2026E 40% → 2027E 45% → 2028E+ 50%</li>
+                <li><strong>CapEx</strong>：2026E $22B → 2027E $15B → 2028E $10B → 2030E $5B（产能投资递减）</li>
+                <li><strong>WACC</strong>：13%（高 beta + 高杠杆 + 成长性风险溢价）</li>
+                <li><strong>永续增长率</strong>：3.5%；<strong>终值</strong>：基于 2030E EBITDA × 12x 退出倍数</li>
+                <li><strong>分母</strong>：完全稀释 314.9M 股；<strong>净债务</strong>：窄口径 ~$0.5B（原 $1.3B 净现金假设已修正）</li>
+            </ul>
+        </div>
+
+        <p>
+            DCF 模型的挑战在于：公司处于超高速增长期，5 年预测的不确定性极高；$20B+ 年度 CapEx 使自由现金流在预测期内持续为负，价值几乎完全来自终值。在上述假设下，DCF 得出每股内在价值区间为 <strong>$180-$265</strong>，中值 ~$215（完全稀释）。该结果对增速和 WACC 假设极为敏感，仅作参考。
+        </p>
+
+        <h3>估值足球场</h3>
+        <div class="football-field">
+            <div class="ff-row">
+                <div class="ff-label">ARR 倍数（悲观）</div>
+                <div class="ff-bar-container">
+                    <div class="ff-bar ff-bar-low" style="left: 33%; width: 9%;">$132</div>
+                </div>
+            </div>
+            <div class="ff-row">
+                <div class="ff-label">DCF（悲观）</div>
+                <div class="ff-bar-container">
+                    <div class="ff-bar ff-bar-low" style="left: 45%; width: 11%;">$180</div>
+                </div>
+            </div>
+            <div class="ff-row">
+                <div class="ff-label">可比公司</div>
+                <div class="ff-bar-container">
+                    <div class="ff-bar ff-bar-mid" style="left: 51%; width: 11%;">$208</div>
+                </div>
+            </div>
+            <div class="ff-row">
+                <div class="ff-label">ARR 倍数（基准）</div>
+                <div class="ff-bar-container">
+                    <div class="ff-bar ff-bar-mid" style="left: 54%; width: 11%;">$214</div>
+                </div>
+            </div>
+            <div class="ff-row">
+                <div class="ff-label">DCF（基准）</div>
+                <div class="ff-bar-container">
+                    <div class="ff-bar ff-bar-mid" style="left: 54%; width: 11%;">$215</div>
+                </div>
+            </div>
+            <div class="ff-row">
+                <div class="ff-label">独立研究共识*</div>
+                <div class="ff-bar-container">
+                    <div class="ff-bar ff-bar-mid" style="left: 56%; width: 11%;">$224</div>
+                </div>
+            </div>
+            <div class="ff-row">
+                <div class="ff-label">DCF（乐观）</div>
+                <div class="ff-bar-container">
+                    <div class="ff-bar ff-bar-high" style="left: 66%; width: 13%;">$265</div>
+                </div>
+            </div>
+            <div class="ff-row">
+                <div class="ff-label">ARR 倍数（乐观）</div>
+                <div class="ff-bar-container">
+                    <div class="ff-bar ff-bar-high" style="left: 78%; width: 15%;">$313</div>
+                </div>
+            </div>
+            <div class="ff-row">
+                <div class="ff-label" style="color: var(--accent); font-weight: 700;">当前股价 $247</div>
+                <div class="ff-bar-container">
+                    <div class="ff-current" style="left: 62%;">
+                        <div class="ff-current-label">$247</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p style="font-size: 12px; color: var(--text-secondary);">
+            *独立研究共识指以完全稀释 EV/FY2027 收入情景得出的概率加权每股价值 $224（悲观 $105 / 基准 $208 / 乐观 $376）。当前股价 $246.93 处于估值区间上沿——高于全部基准/悲观情景与共识，接近 DCF 基准中值，但低于乐观情景。市场已定价偏向乐观的执行情景。
+        </p>
+
+        <p class="source-ref">数据来源：StockAnalysis.com（8/12/2026 实时数据）、Yahoo Finance、CoreWeave 财务披露、公司财报</p>
+    </div>
+</section>
+
+<!-- ========== 多空论点 ========== -->
+<section id="s7">
+    <div class="container">
+        <div class="section-title">
+            <span class="section-title-num">7</span>
+            多空论点
+        </div>
+        <p class="section-subtitle">Bull vs. Bear — 多空双方核心论点</p>
+
+        <div class="thesis-grid">
+            <div class="thesis-card thesis-bull">
+                <div class="thesis-card-title">🐂 多头核心论点</div>
+                <ul>
+                    <li><strong>增长斜率持续领先</strong>：Q2 营收 +454% YoY、ARR +56% QoQ 至 $3.0B，在手订单单季翻倍至 $40B+</li>
+                    <li><strong>$40B+ 客户承诺</strong>：Microsoft $17.4B + Meta 两份共 $15B + 4 笔 landmark（Reflection/Cohere 等），2026-2030 收入可见性极强</li>
+                    <li><strong>经营杠杆拐点确认</strong>：Q2 调整后 EBITDA margin 40.6%，AI 云 margin 达 50%，规模效应验证</li>
+                    <li><strong>定价权上行</strong>：核心合同 $20-25M/MW，短期 $40-50M/MW，首次拍卖较 Blackwell 峰值高 15%</li>
+                    <li><strong>电力即护城河</strong>：5GW 签约电力（年底目标）+ 2-3 年前置审批 = 难复制的稀缺资源</li>
+                    <li><strong>NVIDIA 战略绑定</strong>：$2B 股权 + Exemplary Cloud 地位 = GPU 供给优先权</li>
+                    <li><strong>预付款缓解融资压力</strong>：2026E 客户预付款 >$9B，覆盖相当部分 CapEx</li>
+                    <li><strong>2027 可见度提升</strong>：管理层称可售罄全部 2027 计划容量，下一轮放量清晰</li>
+                </ul>
+            </div>
+            <div class="thesis-card thesis-bear">
+                <div class="thesis-card-title">🐻 空头核心论点</div>
+                    <ul>
+                    <li><strong>估值已 ahead of itself</strong>：基本 EV/ARR 22.5x、2026E EV/Revenue 21x，股价 52 周涨 ~298%，财报日 +27.8% 已提前反应</li>
+                    <li><strong>CapEx 无底洞</strong>：2026E $20-25B CapEx = 市值的 30-37%，需持续大额融资，稀释风险高</li>
+                    <li><strong>GAAP 仍深度亏损</strong>：Q2 持续经营净亏 $190.4M；H1 自由现金流（CFO−购置）−$3.63B，非稳态盈利</li>
+                    <li><strong>完全稀释稀释</strong>：314.9M 股较基本 271.9M 高 16%；ATM/可转债/权证将持续摊薄每股价值</li>
+                    <li><strong>客户集中度仍高</strong>：Microsoft + Meta 占承诺主体，单一大客户履约/重新谈判风险集中</li>
+                    <li><strong>竞争白热化</strong>：CoreWeave（规模更大）、Crusoe（更低成本）、超大规模云自建 = 长期定价权承压</li>
+                    <li><strong>GPU 技术迭代风险</strong>：NVIDIA 芯片 18 个月一代，大量 CapEx 投入的 GPU 可能快速贬值（尽管 A100 至 2026 仍在续约提供一定缓冲）</li>
+                    <li><strong>创始人控制权过大</strong>：B 类股 10x 投票权，创始人家族控制 55% 投票权，小股东保护不足</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>卖空数据</h3>
+        <table>
+            <thead>
+                <tr><th>卖空指标</th><th>数值</th><th>解读</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>卖空股数（估算）</td>
+                    <td class="td-num">~47M 股</td>
+                    <td>占流通股比例偏高，反映大量投资者看空</td>
+                </tr>
+                <tr>
+                    <td>占流通股比例</td>
+                    <td class="td-num"><strong>~17%+</strong></td>
+                    <td>显著高于市场平均，市场分歧显著</td>
+                </tr>
+                <tr>
+                    <td>回补天数</td>
+                    <td class="td-num">~2 天</td>
+                    <td>日均成交量充足，流动性充裕</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 12px; color: var(--text-secondary);">
+            偏高的卖空比例既意味着下行风险被部分对冲者定价，也意味着正面催化（订单、产能、轧空）可能引发上行。但需注意，Q2 财报后股价已快速重估，轧空空间相对收窄。
+        </p>
+
+        <p class="source-ref">数据来源：MarketBeat Short Interest、StockAnalysis.com、公司披露</p>
+    </div>
+</section>
+
+<!-- ========== 风险因素 ========== -->
+<section id="s8">
+    <div class="container">
+        <div class="section-title">
+            <span class="section-title-num">8</span>
+            风险因素
+        </div>
+        <p class="section-subtitle">Risk Factors — 关键风险与缓释因素</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 5%">#</th>
+                    <th style="width: 20%">风险类别</th>
+                    <th style="width: 35%">风险描述</th>
+                    <th style="width: 15%">影响程度</th>
+                    <th>缓释因素</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>客户集中度</strong></td>
+                    <td>Microsoft + Meta 占客户承诺主体；若大合同取消/缩减/重新谈判将严重影响收入与融资能力</td>
+                    <td><span class="tag tag-sell">高</span></td>
+                    <td>5 年长期约束性协议；Q2 新增 4 笔非巨头 landmark 合同开始多元化；承诺总额翻倍至 $40B+</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>融资/稀释</strong></td>
+                    <td>$20-25B 年度 CapEx 需持续融资，ATM/可转债/权证转股将稀释每股价值（完全稀释 314.9M vs 基本 271.9M）</td>
+                    <td><span class="tag tag-sell">高</span></td>
+                    <td>客户预付款 >$9B（2026E）、NVIDIA 战略投资、资产支持融资（$775M）、容量拍卖等多元来源</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>FCF / 资本强度</strong></td>
+                    <td>H1 自由现金流（CFO−购置）−$3.63B；GAAP 持续经营亏损；依赖预付款/递延收入支撑 CFO</td>
+                    <td><span class="tag tag-sell">高</span></td>
+                    <td>预付款覆盖部分 CapEx；规模效应推升 EBITDA margin；待容量利用率饱和后 FCF 有望收敛</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>执行风险</strong></td>
+                    <td>800MW-1GW 电力连接 + 数据中心建设 + GPU（Vera Rubin）部署时间表可能延迟</td>
+                    <td><span class="tag tag-hold">中高</span></td>
+                    <td>管理层持续超额完成容量目标；9 个数据中心同步推进；Vineland 已建成待许可</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>竞争与定价</strong></td>
+                    <td>CoreWeave/超大规模云扩产 → GPU 供给增加 → 定价权下降 → margin 压缩</td>
+                    <td><span class="tag tag-hold">中</span></td>
+                    <td>当前"售罄"+ 拍卖定价上行 + 全栈差异化 + 欧洲主权优势提供缓冲</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>GPU 贬值</strong></td>
+                    <td>NVIDIA 芯片 18 个月迭代一代，大量投资的 GPU 可能快速减值</td>
+                    <td><span class="tag tag-hold">中</span></td>
+                    <td>NVIDIA 优先供货保障升级路径；A100 至 2029 仍在续约显示经济寿命可超技术周期；全栈服务降低单芯片依赖</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><strong>治理风险</strong></td>
+                    <td>创始人 B 类股 10x 投票权控制 55% 投票权，小股东话语权有限</td>
+                    <td><span class="tag tag-hold">中</span></td>
+                    <td>Volozh 技术出身、利益与股东高度一致；纳斯达克上市需遵守信息披露规则</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><strong>宏观/利率</strong></td>
+                    <td>高利率环境下成长股估值承压；融资成本上升</td>
+                    <td><span class="tag tag-hold">中</span></td>
+                    <td>AI 主题热度提供部分对冲；已锁定部分长期固定利率债务；资产支持融资多元化</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td><strong>地缘政治</strong></td>
+                    <td>前 Yandex 俄罗斯背景可能在特定政府/企业客户中引发审查</td>
+                    <td><span class="tag tag-info">低中</span></td>
+                    <td>已完成资产分离；管理层为欧洲/美国团队；NVIDIA 投资背书</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td><strong>流动性/波动率</strong></td>
+                    <td>高 Beta + 高卖空比例 = 股价波动剧烈，短期回撤可能超过 30%</td>
+                    <td><span class="tag tag-hold">中</span></td>
+                    <td>日均成交量充足；长期投资者可忽略短期波动</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ========== 催化剂 ========== -->
+<section id="s9">
+    <div class="container">
+        <div class="section-title">
+            <span class="section-title-num">9</span>
+            催化剂日历
+        </div>
+        <p class="section-subtitle">Catalyst Calendar — 未来 6-12 个月关键事件节点</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 15%">时间</th>
+                    <th style="width: 30%">事件</th>
+                    <th style="width: 15%">方向</th>
+                    <th>影响逻辑</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>2026 Q3</strong></td>
+                    <td>late-Q2 部署容量开始贡献收入</td>
+                    <td><span class="tag tag-buy">利好</span></td>
+                    <td>Q2 末上线容量转化为 Q3 收入，验证收入/容量转换斜率</td>
+                </tr>
+                <tr>
+                    <td><strong>2026 Q3-Q4</strong></td>
+                    <td>800MW-1GW 新电力容量连接</td>
+                    <td><span class="tag tag-buy">利好</span></td>
+                    <td>产能释放 = 收入加速；Q3 起显著放量是管理层承诺的关键节点</td>
+                </tr>
+                <tr>
+                    <td><strong>2026 H2</strong></td>
+                    <td>NVIDIA Vera Rubin NVL72 部署</td>
+                    <td><span class="tag tag-buy">利好</span></td>
+                    <td>下一代旗舰 GPU 上线 = 性能/成本优势 + 吸引高端客户</td>
+                </tr>
+                <tr>
+                    <td><strong>2026 末起</strong></td>
+                    <td>Q2 四笔 landmark 合同陆续上线</td>
+                    <td><span class="tag tag-buy">潜在利好</span></td>
+                    <td>Reflection/Cohere 等合同开始贡献收入，降低 Microsoft 集中度</td>
+                </tr>
+                <tr>
+                    <td><strong>2026 Q4</strong></td>
+                    <td>大型合同集中上线，启动下一轮放量</td>
+                    <td><span class="tag tag-buy">关键</span></td>
+                    <td>Q4 至 2027 初是下一轮 Revenue Ramp 的核心窗口</td>
+                </tr>
+                <tr>
+                    <td><strong>2026 末</strong></td>
+                    <td>年底 ARR 目标 $7-9B / 5GW 电力目标进度</td>
+                    <td><span class="tag tag-buy">关键</span></td>
+                    <td>ARR 能否达到 $7B 下限、电力达 5GW 是评级关键分水岭</td>
+                </tr>
+                <tr>
+                    <td><strong>2027 初</strong></td>
+                    <td>Meta 第二份 $12B 协议开始部署</td>
+                    <td><span class="tag tag-buy">潜在利好</span></td>
+                    <td>新增大体量订单上线，强化 2027 可见度</td>
+                </tr>
+                <tr>
+                    <td><strong>持续</strong></td>
+                    <td>可转债转股 / ATM 增发执行</td>
+                    <td><span class="tag tag-sell">利空</span></td>
+                    <td>股本稀释压制每股价值；需关注融资节奏与规模</td>
+                </tr>
+                <tr>
+                    <td><strong>2026 下半年</strong></td>
+                    <td>正式 2027 指引发布</td>
+                    <td><span class="tag tag-hold">关键验证</span></td>
+                    <td>2027 收入/容量/融资框架 = 长期论点验证节点</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ========== 评级与目标价 ========== -->
+<section id="s10">
+    <div class="container">
+        <div class="section-title">
+            <span class="section-title-num">10</span>
+            评级与目标价
+        </div>
+        <p class="section-subtitle">Rating & Price Target — 最终投资建议</p>
+
+        <div class="info-box" style="background: var(--gradient); color: white; border: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <div style="font-size: 14px; opacity: 0.8; margin-bottom: 4px;">投资评级</div>
+                    <div style="font-size: 28px; font-weight: 700;">⚖️ 持有（HOLD）— 中性</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 14px; opacity: 0.8; margin-bottom: 4px;">12 个月目标价（完全稀释）</div>
+                    <div style="font-size: 32px; font-weight: 700; font-family: 'SF Mono', 'Consolas', 'Courier New', monospace;">$210</div>
+                </div>
+            </div>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 14px;">
+                <strong>当前股价 $246.93</strong> → 目标价 $210 → 隐含下行 -15%<br>
+                建议操作：当前价位风险收益比中性偏弱，不追高；若回调至 <strong>$180-200</strong>（EV/ARR ~6-7x on 2026E，完全稀释），风险收益比改善，可视为建仓/加仓窗口；若 ARR 季度增速跌破 30% 或稀释显著超预期，下调至观望。
+            </div>
+        </div>
+
+        <h3>评级逻辑</h3>
+        <p>
+            <strong>为什么是"持有"而非"买入"？</strong>
+        </p>
+        <ul class="bullet-list">
+            <li>当前股价 $246.93 高于我们的基准估值 $210 与独立研究共识 $224，估值已定价偏乐观的执行情景</li>
+            <li>Q2 财报日发布当日 +27.8%，股价从 52 周低点 $62.01 累计上涨约 298%，短期获利盘与卖空博弈加剧波动</li>
+            <li>完全稀释分母 314.9M 较基本股本高 16%，持续融资对每股价值的摊薄尚未充分反映在基本市值中</li>
+            <li>H1 自由现金流（CFO−购置）−$3.63B，GAAP 持续经营亏损，盈利质量仍处"拐点验证"而非"闭环"阶段</li>
+        </ul>
+
+        <p>
+            <strong>为什么不是"减持/卖出"？</strong>
+        </p>
+        <ul class="bullet-list">
+            <li>基本面执行强劲——Q2 营收 +454%、ARR $3.0B、调整后 EBITDA margin 40.6%、AI 云 margin 50%，规模效应确证</li>
+            <li>$40B+ 客户承诺 + 定价权上行（$20-25M/MW 核心、短期 $40-50M/MW）提供罕见的需求与收入可见性</li>
+            <li>电力护城河（5GW）+ NVIDIA 战略联盟 + 全栈平台 = 结构性竞争优势难以复制</li>
+            <li>2027 容量几近可售罄，下一轮放量路径清晰，中长期向上期权仍具吸引力</li>
+        </ul>
+
+        <h3>目标价推导</h3>
+        <table>
+            <thead>
+                <tr><th>估值方法</th><th>隐含股价（完全稀释）</th><th>权重</th><th>加权贡献</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ARR 倍数法（基准：8.5x × $8B ARR，净债务 $0.5B）</td>
+                    <td class="td-num">$214</td>
+                    <td class="td-num">50%</td>
+                    <td class="td-num">$107.0</td>
+                </tr>
+                <tr>
+                    <td>DCF（基准情景，完全稀释）</td>
+                    <td class="td-num">$215</td>
+                    <td class="td-num">30%</td>
+                    <td class="td-num">$64.5</td>
+                </tr>
+                <tr>
+                    <td>可比公司（FY2027E 12x EV/Rev）</td>
+                    <td class="td-num">$208</td>
+                    <td class="td-num">20%</td>
+                    <td class="td-num">$41.6</td>
+                </tr>
+                <tr style="background: var(--gradient-light);">
+                    <td><strong>加权目标价</strong></td>
+                    <td class="td-num"></td>
+                    <td class="td-num"><strong>100%</strong></td>
+                    <td class="td-num"><strong>$213 → $210</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>情景敏感性与评级触发</h3>
+        <table>
+            <thead>
+                <tr><th>情景</th><th>触发条件</th><th>隐含股价区间</th><th>评级动作</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>极端乐观</strong></td>
+                    <td>ARR 达 $9B+ + 新大客户 + margin >45% + 稀释可控</td>
+                    <td class="td-num">$300-$380</td>
+                    <td><span class="tag tag-buy">买入</span></td>
+                </tr>
+                <tr>
+                    <td><strong>偏乐观</strong></td>
+                    <td>ARR 达 $8B + margin ~40% + 按计划融资</td>
+                    <td class="td-num">$240-$300</td>
+                    <td><span class="tag tag-hold">持有/小幅加仓</span></td>
+                </tr>
+                <tr>
+                    <td><strong>基准</strong></td>
+                    <td>ARR 达 $7-8B + margin ~35-40% + 轻度稀释</td>
+                    <td class="td-num">$200-$240</td>
+                    <td><span class="tag tag-hold">持有</span></td>
+                </tr>
+                <tr>
+                    <td><strong>偏悲观</strong></td>
+                    <td>ARR < $7B 或 margin <35% 或大幅稀释</td>
+                    <td class="td-num">$130-$200</td>
+                    <td><span class="tag tag-sell">减仓/观望</span></td>
+                </tr>
+                <tr>
+                    <td><strong>极端悲观</strong></td>
+                    <td>大客户合同取消 + 融资困难 + GPU 供过于求</td>
+                    <td class="td-num">$80-$130</td>
+                    <td><span class="tag tag-sell">清仓</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>行动建议</h3>
+        <div class="info-box">
+            <div class="info-box-title">📋 投资者行动指引</div>
+            <table style="margin: 0;">
+                <thead>
+                    <tr><th>投资者类型</th><th>建议操作</th><th>关注指标</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>已持仓</strong></td>
+                        <td>持有核心仓位；若突破 $280 可考虑减仓 10-20% 锁定利润</td>
+                        <td>Q3 财报 ARR 增速、margin 趋势、FCF 收敛</td>
+                    </tr>
+                    <tr>
+                        <td><strong>未持仓</strong></td>
+                        <td>等待回调至 $180-200 建仓；或用小仓位（<3%）在当前价位试水</td>
+                        <td>卖空比例变化、产能爬坡与预付款节奏</td>
+                    </tr>
+                    <tr>
+                        <td><strong>风险偏好低</strong></td>
+                        <td>不建议参与；波动率过高，适合高风险投资者</td>
+                        <td>—</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 监控指标 ========== -->
+<section id="s11">
+    <div class="container">
+        <div class="section-title">
+            <span class="section-title-num">11</span>
+            关键监控指标
+        </div>
+        <p class="section-subtitle">Key Monitoring Metrics — 持续跟踪的核心数据点</p>
+
+        <table>
+            <thead>
+                <tr><th>指标</th><th>当前值</th><th>健康阈值</th><th>预警阈值</th><th>监控频率</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ARR 季度环比增速</strong></td>
+                    <td class="td-num">+56%</td>
+                    <td class="td-positive">>40%</td>
+                    <td class="td-negative"><30%</td>
+                    <td>季度</td>
+                </tr>
+                <tr>
+                    <td><strong>AI 云 EBITDA margin</strong></td>
+                    <td class="td-num">50%</td>
+                    <td class="td-positive">>40%</td>
+                    <td class="td-negative"><30%</td>
+                    <td>季度</td>
+                </tr>
+                <tr>
+                    <td><strong>客户承诺总额</strong></td>
+                    <td class="td-num">$40B+</td>
+                    <td class="td-positive">>$45B</td>
+                    <td class="td-negative"><$30B</td>
+                    <td>季度/事件驱动</td>
+                </tr>
+                <tr>
+                    <td><strong>客户集中度（Top 1）</strong></td>
+                    <td class="td-num">Microsoft 为主</td>
+                    <td class="td-positive">新客户占比上升</td>
+                    <td class="td-negative">单一 >90%</td>
+                    <td>季度</td>
+                </tr>
+                <tr>
+                    <td><strong>自由现金流（CFO−购置）</strong></td>
+                    <td class="td-num">−$3.63B (H1)</td>
+                    <td class="td-positive">缺口收窄</td>
+                    <td class="td-negative">持续扩大</td>
+                    <td>季度</td>
+                </tr>
+                <tr>
+                    <td><strong>现金 / 季度 CapEx</strong></td>
+                    <td class="td-num">$8.0B / $5.66B</td>
+                    <td class="td-positive">>1.5x 覆盖</td>
+                    <td class="td-negative"><1x 覆盖</td>
+                    <td>季度</td>
+                </tr>
+                <tr>
+                    <td><strong>卖空比例</strong></td>
+                    <td class="td-num">~17%+</td>
+                    <td>—</td>
+                    <td class="td-negative">>25%（极端）</td>
+                    <td>半月</td>
+                </tr>
+                <tr>
+                    <td><strong>签约电力容量</strong></td>
+                    <td class="td-num">5GW（年底目标）</td>
+                    <td class="td-positive">>4GW 落地</td>
+                    <td class="td-negative"><3GW</td>
+                    <td>季度</td>
+                </tr>
+                <tr>
+                    <td><strong>完全稀释股本</strong></td>
+                    <td class="td-num">314.9M 股</td>
+                    <td class="td-positive">年增 <15%</td>
+                    <td class="td-negative">年增 >25%</td>
+                    <td>季度</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ========== 免责声明 ========== -->
+<section id="s12">
+    <div class="container">
+        <div class="section-title">
+            <span class="section-title-num">12</span>
+            免责声明
+        </div>
+
+        <div class="disclaimer">
+            <p><strong>⚠️ 重要声明</strong></p>
+            <p>本报告由"Snail-bird Investment"AI 股票研究专家生成，仅供学习和研究参考，<strong>不构成任何形式的个人投资建议</strong>。报告中的所有数据来源于公开信息（公司财报、公告、SEC 文件、公开数据平台及业绩电话会纪要），虽已尽力核实但不保证完全准确和及时。</p>
+            <p>本报告中的估值分析、目标价和评级基于多项假设（WACC、增长率、margin、完全稀释股本、净债务等），这些假设具有高度不确定性，实际结果可能显著偏离预测。Nebius Group (NBIS) 属于高波动性、高风险标的，股价可能在短期内出现大幅波动。</p>
+            <p>投资者应基于自身风险承受能力、投资期限和财务状况，独立做出投资决策。建议在做出任何投资决定前，咨询持牌投资顾问。</p>
+            <p><strong>数据截止日期：</strong>2026 年 8 月 12 日（Q2/H1 2026 财报，2026-08-12 发布；含业绩电话会纪要）</p>
+            <p><strong>报告生成时间：</strong>2026 年 8 月 12 日 (GMT+8)</p>
+        </div>
+
+        <div style="text-align: center; padding: 20px 0;">
+            <p style="color: var(--text-secondary); font-size: 13px;">
+                📊 本报告由 <strong style="color: var(--primary);">Snail-bird Investment</strong> AI 股票研究专家生成<br>
+                数据来源：Nebius 官方财报 · SEC 文件 · StockAnalysis.com · Yahoo Finance · CoreWeave 披露 · 行业公开资料
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== Footer ========== -->
+<div class="footer">
+    <div class="container">
+        <p>Nebius Group (NBIS) — 金融投资研究报告</p>
+        <p style="opacity: 0.7; font-size: 12px;">Snail-bird Investment · AI 股票研究专家 · 2026.08.12</p>
+    </div>
+</div>
+
+
+<div class="footer-line">Snail-bird Investment &mdash; Equity Research &nbsp;|&nbsp; Nebius Group (NBIS) &middot; Q2 业绩跟踪 &middot; 2026-08-12</div>
+</body>
+</html>
