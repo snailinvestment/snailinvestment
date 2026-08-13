@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GE Vernova (GEV) — Q2 2026 业绩跟进 | Snail-Bird Investment</title>
+<style>
+:root {
+  --ink:       #0d1b2a;
+  --ink-2:     #1e3048;
+  --ink-3:     #2c4a6e;
+  --muted:     #5a7899;
+  --faint:     #8da9c4;
+  --rule:      #d0dde8;
+  --paper:     #f7f9fb;
+  --white:     #ffffff;
+  --cyan:      #00b4d8;
+  --cyan-dim:  #ceedf5;
+  --green:     #0a7c5e;
+  --green-bg:  #e9f5f2;
+  --red:       #b5323a;
+  --red-bg:    #fdf0f0;
+  --amber:     #8a5a00;
+  --amber-bg:  #fdf5e6;
+  --navy:      #0c2340;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  background: var(--navy);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.masthead-grid {
+  background-image:
+    linear-gradient(rgba(0,180,216,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,180,216,.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.masthead-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 48px 56px 40px;
+  position: relative;
+  z-index: 1;
+}
+.masthead-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+.brand-mark {
+  width: 34px; height: 34px;
+  border: 2px solid var(--cyan);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; font-weight: 600;
+  color: var(--cyan);
+  letter-spacing: .02em;
+  flex-shrink: 0;
+}
+.brand-name {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,.55);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.masthead-ticker {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.ticker-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  background: var(--cyan);
+  color: var(--navy);
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-weight: 600;
+  letter-spacing: .06em;
+}
+.ticker-name {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1;
+}
+.masthead-subtitle {
+  font-size: 15px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.55;
+  max-width: 720px;
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+.masthead-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 36px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  padding-top: 20px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .06em;
+}
+.masthead-meta-row span strong { color: rgba(255,255,255,.8); font-weight: 600; }
+
+.voltage-bar {
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan) 0%, #0077b6 60%, transparent 100%);
+  position: relative;
+}
+.voltage-bar::after {
+  content: '';
+  position: absolute;
+  right: 0; top: -1px;
+  width: 6px; height: 5px;
+  background: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan);
+  border-radius: 50%;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; box-shadow: 0 0 8px var(--cyan); }
+  50%      { opacity: .5; box-shadow: 0 0 20px var(--cyan); }
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(12,35,64,.06);
+}
+.nav-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 56px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-inner a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 14px 14px;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .18s, border-color .18s;
+}
+.nav-inner a:hover { color: var(--ink); border-bottom-color: var(--cyan); }
+
+/* ── VERDICT BANNER ── */
+.verdict-banner {
+  background: var(--white);
+  border-left: 4px solid var(--cyan);
+  padding: 22px 28px;
+  margin: 36px 0 28px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+.verdict-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.verdict-text {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 15.5px;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.rating-chip { text-align: center; flex-shrink: 0; }
+.rating-chip .rating-word {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--amber);
+  letter-spacing: .04em;
+}
+.rating-chip .rating-tp {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: var(--ink-3);
+  margin-top: 4px;
+}
+.rating-chip .rating-upside {
+  display: block;
+  font-size: 11px;
+  color: var(--green);
+  margin-top: 3px;
+}
+
+/* ── LAYOUT ── */
+.page-body {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 56px 80px;
+}
+
+/* ── KPI STRIP ── */
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 44px;
+}
+.kpi-cell { background: var(--white); padding: 18px 20px; }
+.kpi-cell .kpi-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 6px;
+}
+.kpi-cell .kpi-val {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  display: block;
+  line-height: 1.1;
+}
+.kpi-cell .kpi-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+.kpi-cell.kpi-up .kpi-val   { color: var(--green); }
+.kpi-cell.kpi-down .kpi-val { color: var(--red); }
+.kpi-cell.kpi-neu .kpi-val  { color: var(--amber); }
+
+/* ── SECTIONS ── */
+.section { margin-bottom: 52px; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+.section-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--cyan);
+  font-weight: 600;
+  letter-spacing: .06em;
+  flex-shrink: 0;
+}
+.section-title {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+}
+h3.sub-head {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 28px 0 12px;
+}
+
+p { margin-bottom: 14px; color: var(--ink-2); line-height: 1.75; }
+p:last-child { margin-bottom: 0; }
+
+/* ── SEGMENT TABLE ── */
+.seg-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0 24px; }
+.seg-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 10px 12px;
+  text-align: right;
+  border-bottom: 2px solid var(--ink);
+  color: var(--muted);
+}
+.seg-table th:first-child { text-align: left; }
+.seg-table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--rule);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+}
+.seg-table td:first-child { text-align: left; font-weight: 600; color: var(--ink); }
+.seg-table .pos { color: var(--green); font-weight: 600; }
+.seg-table .neg { color: var(--red); font-weight: 600; }
+.seg-table tr.row-power td { border-left: 3px solid var(--cyan); }
+.seg-table tr.row-elec  td { border-left: 3px solid #0077b6; }
+.seg-table tr.row-wind  td { border-left: 3px solid var(--red); }
+.seg-table tr.row-corp  td { border-left: 3px solid var(--faint); }
+.seg-table tr.row-total td { background: #f0f5fa; font-weight: 700; border-left: 3px solid var(--ink); }
+.seg-table tfoot td { font-weight: 700; border-top: 2px solid var(--ink); background: #f0f5fa; }
+
+/* ── GUIDANCE TABLE ── */
+.guide-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0; }
+.guide-table th {
+  background: var(--ink-2);
+  color: rgba(255,255,255,.8);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  text-align: left;
+}
+.guide-table td { padding: 11px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--ink-2); }
+.guide-table .col-num { text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-variant-numeric: tabular-nums; }
+.guide-table .upward { color: var(--green); font-weight: 600; }
+.guide-table .flat   { color: var(--muted); }
+.guide-table .down   { color: var(--red); }
+
+/* ── CALLOUTS ── */
+.callout {
+  border-left: 3px solid var(--cyan);
+  background: var(--cyan-dim);
+  padding: 16px 20px;
+  margin: 18px 0;
+  font-size: 13.5px;
+  line-height: 1.72;
+  color: var(--ink-2);
+}
+.callout strong { color: var(--ink); }
+.callout-warn  { border-left-color: var(--amber); background: var(--amber-bg); }
+.callout-risk  { border-left-color: var(--red);   background: var(--red-bg); }
+.callout-good  { border-left-color: var(--green);  background: var(--green-bg); }
+
+/* ── BLOCKQUOTE ── */
+blockquote {
+  margin: 20px 0;
+  padding: 14px 18px 14px 20px;
+  border-left: 3px solid var(--ink-3);
+  background: var(--white);
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 14px;
+  color: var(--ink-3);
+  font-style: italic;
+  line-height: 1.72;
+}
+blockquote cite {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--faint);
+  letter-spacing: .06em;
+}
+
+/* ── SCENARIO TABLE ── */
+.scenario-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 20px 0; }
+.scenario-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--ink);
+  text-align: right;
+  color: var(--muted);
+}
+.scenario-table th:first-child { text-align: left; }
+.scenario-table td {
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--rule);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  vertical-align: top;
+  color: var(--ink-2);
+}
+.scenario-table td:first-child { text-align: left; font-weight: 600; }
+.scenario-table td:last-child  { text-align: left; font-size: 12px; color: var(--muted); }
+.s-bear { background: #fff5f5; }
+.s-base { background: #f5f9fc; }
+.s-bull { background: #f2faf6; }
+.s-wtd  { background: #f0f5fa; }
+.s-wtd td { font-weight: 700; border-top: 2px solid var(--ink); }
+.price-big { font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 700; }
+.s-bear .price-big { color: var(--red); }
+.s-base .price-big { color: var(--ink-3); }
+.s-bull .price-big { color: var(--green); }
+.s-wtd  .price-big { color: var(--cyan); }
+
+/* ── TWO-COL CARDS ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+.card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 18px 20px;
+}
+.card h4 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.card ul { list-style: none; padding: 0; }
+.card ul li {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13px;
+  color: var(--ink-2);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.55;
+}
+.card ul li:last-child { border-bottom: none; }
+.bul-up   { color: var(--green); font-weight: 700; flex-shrink: 0; }
+.bul-down { color: var(--red);   font-weight: 700; flex-shrink: 0; }
+.bul-w    { color: var(--cyan);  font-weight: 700; flex-shrink: 0; }
+
+/* ── MONITOR LIST ── */
+.monitor-list { list-style: none; margin: 16px 0; counter-reset: monitor; }
+.monitor-list li {
+  counter-increment: monitor;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.monitor-list li::before {
+  content: counter(monitor, decimal-leading-zero);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cyan);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.monitor-list li strong { color: var(--ink); }
+
+/* ── RISK TABLE ── */
+.risk-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0; }
+.risk-table th {
+  background: var(--ink);
+  color: rgba(255,255,255,.8);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  text-align: left;
+}
+.risk-table td { padding: 12px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; line-height: 1.6; color: var(--ink-2); }
+.risk-high   { background: #fff0ef; }
+.risk-medium { background: #fffaf0; }
+.risk-low    { background: #f5fbf5; }
+.risk-pill {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+.pill-high   { background: #fbd4d2; color: var(--red); }
+.pill-medium { background: #fde8c2; color: var(--amber); }
+.pill-low    { background: #c9e8d8; color: var(--green); }
+
+/* ── PEER TABLE ── */
+.peer-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0; }
+.peer-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 10px 12px;
+  text-align: right;
+  border-bottom: 2px solid var(--ink);
+  color: var(--muted);
+}
+.peer-table th:first-child { text-align: left; }
+.peer-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--rule);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+}
+.peer-table td:first-child { text-align: left; color: var(--ink); }
+.peer-table .gev-row td { font-weight: 700; background: #edf5fb; }
+.peer-table .gev-row td:first-child { border-left: 3px solid var(--cyan); }
+.hl { color: var(--green); font-weight: 600; }
+.hd { color: var(--red); }
+
+/* ── DISCLOSURE ── */
+.disclosure {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 11px;
+  color: var(--faint);
+  line-height: 1.75;
+}
+.disclosure strong { color: var(--muted); }
+
+@media (max-width: 800px) {
+  .masthead-inner, .page-body, .nav-inner { padding-left: 20px; padding-right: 20px; }
+  .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+  .two-col   { grid-template-columns: 1fr; }
+  .ticker-name { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ MASTHEAD ══ -->
+<header class="masthead">
+  <div class="masthead-grid">
+    <div class="masthead-inner">
+      <div class="masthead-brand">
+        <div class="brand-mark">SB</div>
+        <span class="brand-name">Snail-Bird Investment · Industrial &amp; Energy Infrastructure Research</span>
+      </div>
+      <div class="masthead-ticker">
+        <span class="ticker-tag">NYSE: GEV</span>
+        <span class="ticker-name">GE Vernova, Inc.</span>
+      </div>
+      <p class="masthead-subtitle">
+        Q2 2026 业绩跟进：Power与Electrification动能持续强化，30GW产能路径首次披露，
+        FCF指引大幅上调——但估值已对高执行充分定价，当前价格安全边际有限
+      </p>
+      <div class="masthead-meta-row">
+        <span><strong>报告类型</strong> 季度业绩跟进</span>
+        <span><strong>报告日期</strong> 2026-08-13</span>
+        <span><strong>业绩截止</strong> 2026-06-30（Q2 2026）</span>
+        <span><strong>参考价格</strong> $1,043（2026-08-13盘中）</span>
+        <span><strong>报告货币</strong> USD</span>
+        <span><strong>分析师</strong> Snail-Bird Investment Research</span>
+      </div>
+    </div>
+  </div>
+  <div class="voltage-bar"></div>
+</header>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#verdict">评级结论</a>
+    <a href="#q2">Q2业绩</a>
+    <a href="#guidance">指引更新</a>
+    <a href="#mgmt">管理层洞察</a>
+    <a href="#fcf">现金流质量</a>
+    <a href="#valuation">估值</a>
+    <a href="#catalysts">催化剂</a>
+    <a href="#risks">风险</a>
+  </div>
+</nav>
+
+<!-- ══ PAGE BODY ══ -->
+<div class="page-body">
+
+  <!-- VERDICT -->
+  <div id="verdict" class="verdict-banner">
+    <div>
+      <div class="verdict-label">独立投资评级 — Q2 2026业绩后更新</div>
+      <div class="verdict-text">
+        <strong>维持中性。</strong> Q2核心经营超预期，Power与Electrification订单、收入和利润率全面强化；
+        全年FCF指引从$6.5–7.5bn大幅上调至$11.5–12.5bn；30GW at 2030产能路径为季内首次披露的重要正面信息。
+        制约因素在于：Wind亏损扩大，H1 FCF受首付款大幅前置，数据中心范围扩张实质性进入2027年，
+        当前约44x FY2026E EV/EBITDA已对高执行情景充分定价，安全边际极为有限。
+        12个月目标价<strong>$1,100</strong>，对应FY2027基准情景33x EV/EBITDA。
+      </div>
+    </div>
+    <div class="rating-chip">
+      <span class="rating-word">中性</span>
+      <span class="rating-tp">TP $1,100</span>
+      <span class="rating-upside">↑ +5.5% vs $1,043</span>
+    </div>
+  </div>
+
+  <!-- KPI STRIP -->
+  <div class="kpi-strip">
+    <div class="kpi-cell kpi-up">
+      <div class="kpi-label">Q2订单（有机+88%）</div>
+      <span class="kpi-val">$24.2bn</span>
+      <div class="kpi-sub">积压升至$176bn，环比+$13bn</div>
+    </div>
+    <div class="kpi-cell kpi-up">
+      <div class="kpi-label">Q2调整后EBITDA率</div>
+      <span class="kpi-val">11.3%</span>
+      <div class="kpi-sub">同比+340bps；H1合并达10.5%</div>
+    </div>
+    <div class="kpi-cell kpi-up">
+      <div class="kpi-label">全年FCF指引（上调后）</div>
+      <span class="kpi-val">$11.5–12.5bn</span>
+      <div class="kpi-sub">较Q1后指引上调约+$5bn</div>
+    </div>
+    <div class="kpi-cell kpi-down">
+      <div class="kpi-label">Wind Q2 EBITDA</div>
+      <span class="kpi-val">−$275m</span>
+      <div class="kpi-sub">全年亏损指引约−$400m</div>
+    </div>
+    <div class="kpi-cell kpi-neu">
+      <div class="kpi-label">隐含FY2026E EV/EBITDA</div>
+      <span class="kpi-val">~44x</span>
+      <div class="kpi-sub">FY2027E基准约33x；估值高企</div>
+    </div>
+  </div>
+
+  <!-- ══ 01: Q2业绩 ══ -->
+  <section id="q2" class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Q2 2026 分部业绩：Power与Electrification双引擎，Wind拖累扩大</span>
+    </div>
+
+    <p>Q2 2026整体结果强劲，但合并数字掩盖了分部间的结构性分化。Power与Electrification在订单、收入和利润率三个维度全面改善，Wind则订单下滑40%、EBITDA亏损较同期扩大$110m。以下为按分部披露口径整理的季度经营数据。</p>
+
+    <table class="seg-table">
+      <thead>
+        <tr>
+          <th>分部（USD m）</th>
+          <th>Q2 2026订单</th>
+          <th>订单同比</th>
+          <th>Q2 2026收入</th>
+          <th>收入同比（有机）</th>
+          <th>Q2 EBITDA</th>
+          <th>EBITDA率</th>
+          <th>率变化 YoY</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-power">
+          <td>Power</td>
+          <td>16,729</td>
+          <td class="pos">+4x（设备）</td>
+          <td>5,477</td>
+          <td class="pos">+14%</td>
+          <td>1,031</td>
+          <td class="pos">18.8%</td>
+          <td class="pos">+320bps</td>
+        </tr>
+        <tr class="row-elec">
+          <td>Electrification</td>
+          <td>6,347</td>
+          <td class="pos">+66%</td>
+          <td>3,637</td>
+          <td class="pos">+29%</td>
+          <td>671</td>
+          <td class="pos">18.4%</td>
+          <td class="pos">+700bps</td>
+        </tr>
+        <tr class="row-wind">
+          <td>Wind</td>
+          <td>1,249</td>
+          <td class="neg">−40%</td>
+          <td>2,026</td>
+          <td class="neg">−11%</td>
+          <td>(275)</td>
+          <td class="neg">−13.6%</td>
+          <td class="neg">恶化</td>
+        </tr>
+        <tr class="row-corp">
+          <td>Corporate及其他</td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td>(177)</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr class="row-total">
+          <td>合并</td>
+          <td>24,225</td>
+          <td class="pos">+88%（有机）</td>
+          <td>11,104</td>
+          <td class="pos">+12%（有机）</td>
+          <td>1,250</td>
+          <td>11.3%</td>
+          <td class="pos">+340bps</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-good">
+      <strong>Power动能：</strong> Gas Power设备订单约为去年同期4倍，Q2共签署20GW订单和SRA，GW合同总量从100增至116。出货29台燃气轮机（同比+38%），含16台aeroderivative。积压从44GW升至53GW，SRA从56GW升至63GW。定价持续上行，H1设备订单价格较2025年Q4高出20%以上。
+    </div>
+
+    <div class="callout callout-good">
+      <strong>Electrification动能：</strong> 设备积压升至$41bn（同比+69%），H1数据中心相关订单累计超过$5bn，已超过2025年全年水平的两倍。Prolec GE贡献约$900m收入，北美设备积压已成为最大地区份额。EBITDA率700bps扩张至18.4%，已达全年指引上沿。
+    </div>
+
+    <div class="callout callout-warn">
+      <strong>Wind拖累：</strong> Q2订单有机下滑40%，主因北美陆上设备需求低迷。亏损从去年同期$165m扩大至$275m。管理层维持全年约$400m亏损指引，Q3收入仍预计低双位数下滑，EBITDA预期约盈亏平衡。结构性压制来自许可延迟和关税不确定性，尚无明确反转时间表。
+    </div>
+
+    <h3 class="sub-head">积压订单结构：区分backlog与SRA</h3>
+    <p>$176bn总积压中，设备积压$88bn（含Power 53GW正式backlog + Electrification约$41bn）；服务积压$88bn，同比+12%。Gas Power GW中有63GW为槽位预留协议（SRA），尚未转为正式订单。SRA转为backlog需要客户提供可执行的管道、EPC和项目路径，不等同于已锁定收入。</p>
+  </section>
+
+  <!-- ══ 02: 指引更新 ══ -->
+  <section id="guidance" class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">2026年全年指引更新：营收与FCF上调，EBITDA率维持</span>
+    </div>
+
+    <table class="guide-table">
+      <thead>
+        <tr>
+          <th>指标</th>
+          <th>Q1后指引</th>
+          <th>Q2后更新指引</th>
+          <th>方向</th>
+          <th>关键驱动</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>全年收入</strong></td>
+          <td class="col-num">$44.5–45.5bn</td>
+          <td class="col-num upward">$45.5–46.5bn</td>
+          <td class="upward">↑ +$1bn（中点）</td>
+          <td>Electrification产能提前释放+$0.5bn；Power收入上调</td>
+        </tr>
+        <tr>
+          <td><strong>调整后EBITDA率</strong></td>
+          <td class="col-num">12%–14%</td>
+          <td class="col-num flat">12%–14%（维持）</td>
+          <td class="flat">→ 不变</td>
+          <td>绝对EBITDA随收入提升，利润率区间不变</td>
+        </tr>
+        <tr>
+          <td><strong>自由现金流</strong></td>
+          <td class="col-num">$6.5–7.5bn</td>
+          <td class="col-num upward">$11.5–12.5bn</td>
+          <td class="upward">↑ +$5bn（中点）</td>
+          <td>Power SRA首付款规模超预期；全年H1显著高于H2</td>
+        </tr>
+        <tr>
+          <td><strong>Power有机收入增速</strong></td>
+          <td class="col-num">16%–18%</td>
+          <td class="col-num upward">18%–20%</td>
+          <td class="upward">↑ +2pp</td>
+          <td>Gas Power设备量价齐升，H2出货加速至20GW年化率</td>
+        </tr>
+        <tr>
+          <td><strong>Power EBITDA率</strong></td>
+          <td class="col-num">17%–19%</td>
+          <td class="col-num flat">17%–19%（维持）</td>
+          <td class="flat">→ 不变</td>
+          <td>产能投资与R&D费用抵消部分扩张空间</td>
+        </tr>
+        <tr>
+          <td><strong>Electrification收入</strong></td>
+          <td class="col-num">$14.0–14.5bn</td>
+          <td class="col-num upward">$14.5–15.0bn</td>
+          <td class="upward">↑ +$0.5bn</td>
+          <td>Prolec超预期；开关设备、变压器产能加速爬坡</td>
+        </tr>
+        <tr>
+          <td><strong>Electrification EBITDA率</strong></td>
+          <td class="col-num">18%–20%</td>
+          <td class="col-num flat">18%–20%（维持）</td>
+          <td class="flat">→ 不变</td>
+          <td>Q3指引明确"高于Q2的18.4%"，持续温和扩张</td>
+        </tr>
+        <tr>
+          <td><strong>Wind有机收入</strong></td>
+          <td class="col-num">低双位数下滑</td>
+          <td class="col-num flat">低双位数下滑（维持）</td>
+          <td class="flat">→ 不变</td>
+          <td>H2 Onshore设备交付改善，但订单基数仍弱</td>
+        </tr>
+        <tr>
+          <td><strong>Wind EBITDA</strong></td>
+          <td class="col-num">约−$400m</td>
+          <td class="col-num flat">约−$400m（维持）</td>
+          <td class="flat">→ 不变</td>
+          <td>Onshore服务改善和Offshore成本下降部分对冲</td>
+        </tr>
+        <tr>
+          <td><strong>Gas Power产能路径</strong></td>
+          <td class="col-num">20GW（Q3达成年化）</td>
+          <td class="col-num upward">20GW H2 → 24GW 2028 → 30GW 2030</td>
+          <td class="upward">↑ 30GW为季内新增披露</td>
+          <td>现有厂房内精益+增量设备，客户首付款支撑资本支出</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══ 03: 管理层洞察 ══ -->
+  <section id="mgmt" class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">管理层电话会：关键新增信息与前景边界</span>
+    </div>
+
+    <h3 class="sub-head">① 30GW at 2030：产能路径的重大升级</h3>
+
+    <blockquote>
+      "We now see further opportunity to serve this growing demand with 30 gigawatts of annual output in '30 in a capital-efficient manner, utilizing lean and incremental machinery in our existing factory footprint, and have already secured significant supply chain capacity, all funded by customer down payments."
+      <cite>— Scott Strazik, CEO，Q2 2026 电话会</cite>
+    </blockquote>
+
+    <p>30GW年化产出目标是本季度最重要的前瞻性披露。管理层表示：20GW年化已于Q3达成（每季约5GW出货），2028年达24GW，2030年达30GW，且全部在现有厂房内实现，无需新建产线，增量资本支出"适度"（modest），并已由客户首付款覆盖。</p>
+
+    <p>与此同时，公司预计2026年底将实现至少125GW合同化（含SRA），且到年底"2030年产能基本售罄、2031年超过50%完成合同化"。这意味着GEV实际上已在销售2030–2031年的产品，在工业设备行业中属于极为罕见的订单深度，对长期定价权和利润率可持续性具有实质性正面含义。</p>
+
+    <h3 class="sub-head">② 数据中心敞口：范围扩张属于2027年事件</h3>
+
+    <blockquote>
+      "That $300M directional of scope per gigawatt today... we certainly think entitlement just with the things we're already investing in is two to three times what our scope per gigawatt is today, and none of that is in the $5 billion. I think about that incremental scope at two to three times being more credibly expected in our '27 orders than in '26."
+      <cite>— Scott Strazik，回答Citi分析师提问</cite>
+    </blockquote>
+
+    <p>H1 Electrification数据中心相关订单$5bn中尚无SST（固态变压器）订单。管理层对MV-UPS（中压不间断电源）持谨慎乐观态度，可能在H2出现订单，但SST明确在2027年才会开始商业订单。将每GW覆盖范围从约$300m扩大至$600–900m的"2–3倍"增量，最可信的时间节点是2027年。这意味着数据中心业务对2026年的贡献相对确定，对2027年以后的范围扩张应保持分期看待。</p>
+
+    <h3 class="sub-head">③ HA服务飞轮：被低估的长期价值驱动</h3>
+    <p>HA燃气轮机机队已累计超过400万商业运营小时，325台已投运或在合同中。按每4年一次大检修的服务周期，随着这批机器全部投运，到2030年代中期将产生大规模高利润率的定期服务需求。目前$176bn积压中约50%为服务积压，管理层认为"这部分在讨论中被低估"。这是一个随时间自动积累、与新签设备订单互补的结构性收入来源，构成GEV长期FCF可持续性的重要基础。</p>
+
+    <h3 class="sub-head">④ 2032年以后：尚需时间确认</h3>
+    <p>当Wolfe Research分析师询问2032年产能合同化前景时，Strazik明确表示"我们需要更多时间"方能清晰说明时点。这将全周期需求可见度的边界清晰划定在2031年，2032年以后目前属于有意向但尚未可执行的范畴。</p>
+  </section>
+
+  <!-- ══ 04: 现金流质量 ══ -->
+  <section id="fcf" class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">现金流质量分析：真实现金流，但前置效应不宜忽视</span>
+    </div>
+
+    <p>H1公司定义FCF达$9.9bn（CFO $10.7bn减资本支出$0.8bn），全年指引上调至$11.5–12.5bn。数字真实，但需正确理解结构。</p>
+
+    <div class="callout callout-good">
+      <strong>正面：</strong> 公司将全年FCF指引上调$5bn（中点），远超原始计划。这不仅因为H1首付款前置，也反映Power和Electrification的业务量和运营资本管理确实改善。Q2 FCF $5.1bn中，调整后EBITDA贡献$1.25bn，营运资本现金流入$6.4bn（主要是首付款），这说明客户愿意提前支付以锁定产能，本身是需求强度的正向信号。
+    </div>
+
+    <div class="callout callout-warn">
+      <strong>注意：</strong> CFO Ken Parks在电话会中明确表示："我们预计H1 FCF将实质性高于H2（free cash flow in the first half of the year to be substantially higher than the second half），因为大量SRA在H2将转为正式订单。"H1 $9.9bn的FCF高度依赖首付款时点，H2 FCF可能在$2–3bn范围内，不应将H1数字简单外推至全年或年化。
+    </div>
+
+    <p>资本配置方面：H1累计回购430万股、金额约$3.6bn，支付季度股息$0.50/股，合计向股东返还约$4bn（已超过2025年全年水平）。现金余额$13.1bn（含$0.4bn受限现金），净现金约$10.3bn。公司承诺2025–2028年资本支出$6bn（含Prolec $1bn）及R&D $5bn，长期现金能力需以扩张投资后的净现金生成来衡量。</p>
+  </section>
+
+  <!-- ══ 05: 估值 ══ -->
+  <section id="valuation" class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">估值分析：当前价格已对高执行情景充分定价</span>
+    </div>
+
+    <p><strong>企业价值桥接（Q2末数据）：</strong> 股价$1,043 × 266.334m股 = 市值约$277.8bn；加总借款$2.849bn、减现金$13.12bn，EV约$267.5bn。</p>
+    <p><strong>当前隐含倍数：</strong> 2026收入指引中点$46.0bn × EBITDA率中点13% = 约$5.98bn，对应约44.7x FY2026E；对FY2027基准EBITDA $8.22bn约32.6x。</p>
+
+    <table class="scenario-table">
+      <thead>
+        <tr>
+          <th>FY2027情景</th>
+          <th>概率</th>
+          <th>2027E收入</th>
+          <th>EBITDA率</th>
+          <th>EBITDA</th>
+          <th>EV/EBITDA</th>
+          <th>每股价值</th>
+          <th>成立条件</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="s-bear">
+          <td><strong>悲观</strong></td>
+          <td>20%</td>
+          <td>$50.0bn</td>
+          <td>13.5%</td>
+          <td>$6.75bn</td>
+          <td>27x</td>
+          <td class="price-big">$750</td>
+          <td>SRA转化放缓，Wind恶化，AI资本支出下行，倍数随工业周期收缩</td>
+        </tr>
+        <tr class="s-base">
+          <td><strong>基准</strong></td>
+          <td>55%</td>
+          <td>$53.0bn</td>
+          <td>15.5%</td>
+          <td>$8.22bn</td>
+          <td>33x</td>
+          <td class="price-big">$1,067</td>
+          <td>Power/Electrification按指引交付，Wind维持当前亏损，产能爬坡按时完成</td>
+        </tr>
+        <tr class="s-bull">
+          <td><strong>乐观</strong></td>
+          <td>25%</td>
+          <td>$56.0bn</td>
+          <td>17.0%</td>
+          <td>$9.52bn</td>
+          <td>40x</td>
+          <td class="price-big">$1,449</td>
+          <td>30GW路径超预期，DC范围扩张提前，Wind改善，MV-UPS加速，服务超预期</td>
+        </tr>
+        <tr class="s-wtd">
+          <td><strong>概率加权</strong></td>
+          <td>100%</td>
+          <td colspan="3">净现金桥：$13.12bn − $2.85bn = $10.27bn净现金；股数266.334m</td>
+          <td>—</td>
+          <td class="price-big">$1,079</td>
+          <td>相对$1,043约+3.5%；12个月目标价$1,100（含小幅倍数修复预期）</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">算术验证：每股价值 = （EBITDA × 倍数 + 净现金$10.27bn）÷ 266.334m股。以基准计：（$8.22bn × 33 + $10.27bn）÷ 0.266334 ≈ $1,059。倍数选取基于同业对照及Q2后市场认知小幅上移（见下表）。所有假设为分析师独立预测。</p>
+
+    <h3 class="sub-head">同业估值参照</h3>
+
+    <table class="peer-table">
+      <thead>
+        <tr>
+          <th>公司</th>
+          <th>EV/EBITDA（2026E）</th>
+          <th>EV/EBITDA（2027E）</th>
+          <th>收入增速（2026E）</th>
+          <th>EBITDA率</th>
+          <th>订单可见性</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="gev-row">
+          <td>GE Vernova (GEV)</td>
+          <td>~44x</td>
+          <td>~33x（基准）</td>
+          <td class="hl">+18%–20%</td>
+          <td>12%–14%</td>
+          <td class="hl">极强（$176bn积压）</td>
+        </tr>
+        <tr>
+          <td>Siemens Energy (ENR GY)</td>
+          <td>~26x</td>
+          <td>~21x</td>
+          <td>~+12%</td>
+          <td>~8%–10%</td>
+          <td>强</td>
+        </tr>
+        <tr>
+          <td>Vertiv Holdings (VRT)</td>
+          <td>~34x</td>
+          <td>~27x</td>
+          <td class="hl">~+20%</td>
+          <td>~18%</td>
+          <td>强（DC直接敞口）</td>
+        </tr>
+        <tr>
+          <td>Eaton Corp (ETN)</td>
+          <td>~27x</td>
+          <td>~24x</td>
+          <td>~+8%</td>
+          <td class="hl">~25%</td>
+          <td>中等</td>
+        </tr>
+        <tr>
+          <td>ABB Ltd (ABBN SW)</td>
+          <td>~22x</td>
+          <td>~19x</td>
+          <td>~+6%</td>
+          <td>~19%</td>
+          <td>中等</td>
+        </tr>
+        <tr>
+          <td><em>能源基础设施均值</em></td>
+          <td><em>~22x</em></td>
+          <td><em>~19x</em></td>
+          <td><em>~+8%</em></td>
+          <td><em>~16%</em></td>
+          <td><em>—</em></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>GEV在增速、积压深度和订单可见性上均显著优于同业，溢价具有合理支撑，但32–33x FY2027E已是历史偏高区间。Q2后卖方普遍上调目标价（Morgan Stanley $1,350、RBC $1,225、TD Cowen $1,235），市场倍数认知已有所修复，但同时也反映了绝大多数正面因素已被定价。</p>
+  </section>
+
+  <!-- ══ 06: 催化剂 ══ -->
+  <section id="catalysts" class="section">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <span class="section-title">后续关键验证指标</span>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <h4>上行催化剂</h4>
+        <ul>
+          <li><span class="bul-up">↑</span>H2 SRA转正式backlog加速——管理层预期H2首次出现backlog GW超过SRA GW</li>
+          <li><span class="bul-up">↑</span>Power Q3出货量验证20GW年化率——应从每季约3GW提至5GW</li>
+          <li><span class="bul-up">↑</span>MV-UPS出现首批商业订单——若先于SST落地，意味着DC范围扩张提前</li>
+          <li><span class="bul-up">↑</span>Electrification Q3利润率继续高于18.4%——管理层明确指引方向</li>
+          <li><span class="bul-up">↑</span>Wind Q3 EBITDA接近盈亏平衡——管理层明确预期，兑现可建立改善趋势信心</li>
+          <li><span class="bul-up">↑</span>2026年底至少125GW合同化确认——若实际超越125GW，提升对2027年指引确信度</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>下行风险信号</h4>
+        <ul>
+          <li><span class="bul-down">↓</span>H2 FCF大幅低于预期——首付款前置效应超预期将导致全年FCF下修</li>
+          <li><span class="bul-down">↓</span>AI超大规模资本支出计划放缓——DC订单约占Electrification H1订单35%</li>
+          <li><span class="bul-down">↓</span>Gas Power铸件/锻件供应链延误——20GW爬坡关键依赖，周期2–3年</li>
+          <li><span class="bul-down">↓</span>Wind亏损超出$400m——Q2已扩大，北美许可环境若持续恶化风险上升</li>
+          <li><span class="bul-down">↓</span>宏观利率上升或成长股重估——高倍数工业股对流动性环境敏感</li>
+          <li><span class="bul-down">↓</span>SRA转化因EPC进度拖延受阻——订单深度需要项目端同步配合</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-head">优先级排序：Q3财报前最重要的五个验证点</h3>
+    <ol class="monitor-list">
+      <li><strong>Backlog GW vs SRA GW的相对比例：</strong>管理层承诺H2将出现backlog首次超过SRA的里程碑，这是积压订单质量提升的最直接单一指标。</li>
+      <li><strong>H2实际FCF规模：</strong>管理层称H2将实质性低于H1。若H2 FCF落在$2–3bn，则验证前置效应，同时引发市场对2027年FCF能否可持续的讨论。</li>
+      <li><strong>Power Q3出货量：</strong>20GW年化率意味着Q3应出货约5GW，是产能爬坡兑现的数字验证。</li>
+      <li><strong>Wind Q3 EBITDA：</strong>若接近盈亏平衡，则全年$400m亏损指引意味着Q4亏损压缩，改善趋势可信度提升。</li>
+      <li><strong>Electrification DC订单的"范围密度"：</strong>追踪DC订单单GW隐含美元价值，判断MV-UPS何时开始贡献，验证范围扩张路径。</li>
+    </ol>
+  </section>
+
+  <!-- ══ 07: 风险 ══ -->
+  <section id="risks" class="section">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <span class="section-title">风险矩阵</span>
+    </div>
+
+    <table class="risk-table">
+      <thead>
+        <tr>
+          <th style="width:16%">风险</th>
+          <th style="width:8%">级别</th>
+          <th style="width:34%">当前状态与Q2后变化</th>
+          <th style="width:26%">潜在影响</th>
+          <th style="width:16%">缓解因素</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="risk-high">
+          <td><strong>估值压缩</strong></td>
+          <td><span class="risk-pill pill-high">高</span></td>
+          <td>约44x FY2026E，33x FY2027E（基准）。Q2财报日股价曾因GAAP EPS未达预期下跌7%，说明市场对预期差高度敏感。</td>
+          <td>倍数从33x压至27x对应每股约−$300（约−30%）</td>
+          <td>积压深度和FCF结构改善支撑溢价</td>
+        </tr>
+        <tr class="risk-high">
+          <td><strong>FCF前置与H2下修</strong></td>
+          <td><span class="risk-pill pill-high">高</span></td>
+          <td>管理层明确H1 FCF"实质性高于"H2；H1 FCF中营运资本流入$6.4bn（首付款为主）。若SRA转化慢于预期，H2首付款减少。</td>
+          <td>H2 FCF大幅低于预期可能动摇市场对FCF能力的信心</td>
+          <td>全年指引$11.5–12.5bn仍大幅超历史水平</td>
+        </tr>
+        <tr class="risk-medium">
+          <td><strong>产能爬坡执行</strong></td>
+          <td><span class="risk-pill pill-medium">中</span></td>
+          <td>20GW→24GW→30GW路径依赖铸件/锻件供应链和劳动力培训。管理层称供应链已锁定，但本身为2–3年长周期采购。</td>
+          <td>20GW延迟至Q4影响H2收入$200–400m；24GW推迟影响2028年预期</td>
+          <td>400台新机器已安装，供应链确认已到位</td>
+        </tr>
+        <tr class="risk-medium">
+          <td><strong>Wind持续亏损</strong></td>
+          <td><span class="risk-pill pill-medium">中</span></td>
+          <td>Q2亏损$275m较Q1扩大；全年维持约$400m亏损。北美许可延迟和232关税不确定性持续，无明确反转时间表。</td>
+          <td>亏损若扩至$550m，合并EBITDA率约−50–75bps，压制整体估值</td>
+          <td>H2 Onshore交付改善，Dogger Bank B接近完工</td>
+        </tr>
+        <tr class="risk-medium">
+          <td><strong>AI资本支出周期</strong></td>
+          <td><span class="risk-pill pill-medium">中</span></td>
+          <td>Electrification H1 DC相关订单约$5bn，约占总订单35%。若超大规模云服务商资本支出出现板块轮换或延迟，2027年订单增速可能回落。</td>
+          <td>DC占比从35%降至20%将对Electrification增速产生约−10pp影响</td>
+          <td>传统电网更新需求提供多元化缓冲</td>
+        </tr>
+        <tr class="risk-low">
+          <td><strong>竞争产能扩张</strong></td>
+          <td><span class="risk-pill pill-low">低</span></td>
+          <td>西门子能源、三菱重工持续扩产，但重型燃气轮机新产能建设周期2–4年；HA技术壁垒和服务锁定效应短期稳固。</td>
+          <td>2030年以后竞争格局需再评估；短期影响有限</td>
+          <td>400万小时HA运营记录，服务飞轮优势</td>
+        </tr>
+        <tr class="risk-low">
+          <td><strong>SMR/新产品进度</strong></td>
+          <td><span class="risk-pill pill-low">低</span></td>
+          <td>Q2新增2个美国SMR Tech Select；SST首个商业订单预计2027年；燃料电池2026年仍在技术验证。均不影响2026–2027基准财务模型。</td>
+          <td>推迟对近期估值几乎无影响，仅影响长期期权</td>
+          <td>不纳入基准模型，作为上行期权保留</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- DISCLOSURE -->
+  <div class="disclosure">
+    <strong>重要披露与方法论说明。</strong>
+    本报告由Snail-Bird Investment Research就GE Vernova Q2 2026业绩独立撰写，不构成个性化投资建议。
+    <strong>数据来源：</strong>GE Vernova Q2 2026新闻稿、官方电话会纪要（2026-07-22）及Form 10-Q（截至2026-06-30，SEC EDGAR）；价格参考$1,043为2026-08-13盘中快照（置信度低于一手财务数据）。
+    <strong>口径：</strong>FCF采用公司定义（CFO减PP&E及内部软件新增）；分部EBITDA为公司非GAAP管理口径；EV = 市值 + 总借款 − 总现金（不含经营租赁）；净现金$10.27bn = $13.12bn现金 − $2.85bn总借款。
+    <strong>估值：</strong>所有情景输入（收入、利润率、倍数、概率）为独立分析师假设，未使用未经独立核验的卖方一致预期；未建立DCF，因H1现金流受首付款和营运资本时点显著影响。
+    <strong>利益冲突：</strong>Snail-Bird Investment声明目前对GEV无持仓，本报告不受任何外部机构委托。
+    过去表现不代表未来结果。请投资者自行进行尽职调查并咨询专业投资顾问。
+    © 2026 Snail-Bird Investment Research. 保留所有权利。
+  </div>
+
+</div>
+</body>
+</html>
