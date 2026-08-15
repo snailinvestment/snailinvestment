@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>卫星化学（002648）产品与原材料价格走势 | Snail-bird Investment</title>
+
+<style>
+:root{--bg:#f5f6fa;--card:#fff;--t1:#1a1a2e;--t2:#4a5568;--t3:#718096;--accent:#2563eb;--green:#059669;--green-bg:#ecfdf5;--red:#dc2626;--red-bg:#fef2f2;--orange:#ea580c;--orange-bg:#fff7ed;--border:#e2e8f0;--blue:#2563eb;--blue-bg:#eff6ff;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;}
+.nav{background:#fff;border-bottom:1px solid var(--border);padding:0 36px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.nav-brand{font-weight:800;font-size:15px;color:var(--accent);}
+.nav-links a{font-size:13px;color:var(--t3);text-decoration:none;padding:6px 14px;border-radius:6px;}
+.nav-links a:hover{color:var(--accent);background:var(--blue-bg);}
+.container{max-width:1280px;margin:0 auto;padding:32px 24px;}
+.header{margin-bottom:28px;}
+.header-row{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.title-section h1{font-size:28px;font-weight:800;color:var(--t1);margin-bottom:4px;}
+.title-section .subtitle{font-size:14px;color:var(--t3);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.title-section .subtitle span{background:var(--blue-bg);color:var(--accent);padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;}
+.meta-badges{display:flex;gap:10px;flex-wrap:wrap;}
+.meta-badge{background:#fff;border:1px solid var(--border);padding:8px 16px;border-radius:8px;font-size:13px;color:var(--t2);}
+.meta-badge strong{color:var(--t1);margin-right:4px;}
+.insight-box{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;border-radius:10px;padding:14px 20px;margin-bottom:28px;font-size:13px;color:#1e40af;}
+.insight-box strong{color:#1e3a5f;}
+
+.section-label{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:9px;display:flex;align-items:center;gap:8px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.summary-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px;}
+.summary-card{background:var(--card);border-radius:10px;padding:14px 16px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.sc-header{display:flex;align-items:center;gap:7px;margin-bottom:7px;}
+.sc-icon{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0;}
+.sc-icon.aa{background:linear-gradient(135deg,#2563eb,#3b82f6);}
+.sc-icon.ba{background:linear-gradient(135deg,#7c3aed,#8b5cf6);}
+.sc-icon.pp3{background:linear-gradient(135deg,#ea580c,#f97316);}
+.sc-icon.eth2{background:linear-gradient(135deg,#dc2626,#ef4444);}
+.sc-icon.eva2{background:linear-gradient(135deg,#0891b2,#06b6d4);}
+.sc-icon.eo2{background:linear-gradient(135deg,#059669,#10b981);}
+.sc-icon.rm2{background:linear-gradient(135deg,#f59e0b,#fbbf24);}
+.sc-name{font-size:13px;font-weight:700;color:var(--t1);}
+.sc-spec{font-size:10px;color:var(--t3);}
+.sc-price{font-size:22px;font-weight:800;color:var(--t1);margin:3px 0;}
+.sc-price .unit{font-size:10px;font-weight:400;color:var(--t3);}
+.sc-change{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;}
+.sc-change.up{color:var(--green);background:var(--green-bg);}
+.sc-change.down{color:var(--red);background:var(--red-bg);}
+.sc-change.mild{color:var(--orange);background:var(--orange-bg);}
+.sc-comparison{font-size:10px;color:var(--t3);margin-top:5px;padding-top:5px;border-top:1px solid #f1f5f9;}
+
+.chart-section{margin-bottom:26px;}
+.chart-section h2{font-size:19px;font-weight:700;color:var(--t1);margin-bottom:15px;display:flex;align-items:center;gap:8px;}
+.chart-section h2::before{content:'';width:4px;height:18px;background:var(--accent);border-radius:2px;}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;}
+.chart-card{background:var(--card);border-radius:10px;padding:20px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.chart-card h3{font-size:14px;font-weight:700;margin-bottom:3px;color:var(--t1);}
+.chart-card .chart-meta{font-size:10px;color:var(--t3);margin-bottom:12px;}
+.chart-container{position:relative;height:240px;}
+.chart-container canvas{width:100%!important;}
+
+.bar-section{margin-bottom:26px;}
+.bar-section h2{font-size:19px;font-weight:700;color:var(--t1);margin-bottom:15px;display:flex;align-items:center;gap:8px;}
+.bar-section h2::before{content:'';width:4px;height:18px;background:var(--accent);border-radius:2px;}
+.bar-card{background:var(--card);border-radius:10px;padding:22px;border:1px solid var(--border);}
+.bar-container{position:relative;height:320px;}
+.bar-container canvas{width:100%!important;}
+
+.table-section{margin-bottom:26px;}
+.table-section h2{font-size:19px;font-weight:700;color:var(--t1);margin-bottom:15px;display:flex;align-items:center;gap:8px;}
+.table-section h2::before{content:'';width:4px;height:18px;background:var(--accent);border-radius:2px;}
+.data-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.data-table thead{background:linear-gradient(135deg,#1e3a5f,#1e40af);}
+.data-table th{color:#fff;padding:11px 14px;text-align:center;font-size:12px;font-weight:600;}
+.data-table th:first-child{text-align:left;padding-left:20px;}
+.data-table td{padding:11px 14px;text-align:center;font-size:13px;border-bottom:1px solid var(--border);}
+.data-table td:first-child{text-align:left;padding-left:20px;font-weight:600;color:var(--t1);}
+.data-table tbody tr:hover{background:#f8fafc;}
+.highlight-up{color:var(--green);font-weight:700;}
+.highlight-down{color:var(--red);font-weight:700;}
+.highlight-mild{color:var(--orange);font-weight:700;}
+.rm-row{background:#fefce8;}
+
+.footer{text-align:center;padding:20px;color:var(--t3);font-size:12px;border-top:1px solid var(--border);margin-top:36px;}
+@media(max-width:1024px){.summary-row{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:768px){
+  .nav{padding:0 16px;}.summary-row{grid-template-columns:1fr 1fr;}
+  .chart-grid{grid-template-columns:1fr;}.title-section h1{font-size:22px;}
+  .container{padding:16px 12px;}.data-table{font-size:11px;}
+}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-brand">卫星化学(WX) 产品与原材料监控</div><div class="nav-links"><a href="index.html">← 返回首页</a></div></nav>
+<div class="container">
+
+<div class="header"><div class="header-row">
+  <div class="title-section">
+    <h1>卫星化学（002648）产品与原材料价格走势</h1>
+    <div class="subtitle">2025年1月-8月 vs 2026年1月-8月 同期对比 <span>数据截至 2026-08-14</span></div>
+  </div>
+  <div class="meta-badges">
+    <div class="meta-badge"><strong>代码</strong> 002648.SZ</div>
+    <div class="meta-badge"><strong>路线</strong> 轻烃一体化 (C2+C3)</div>
+    <div class="meta-badge"><strong>数据源</strong> 生意社/我的钢铁网/隆众资讯</div>
+  </div>
+</div></div>
+
+<div class="insight-box">💡 卫星化学是国内<b>轻烃一体化龙头</b>，拥有C2（乙烷裂解→乙烯→EO/EG/EVA）和C3（PDH→丙烯→丙烯酸/酯）双产业链。美国乙烷原料成本优势是核心壁垒。2026年丙烯酸及酯行业新产能放缓，有望迎来中长期景气向上。</div>
+
+<div class="section-label">核心产品</div>
+<div class="summary-row">
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon aa">AA</div><div><div class="sc-name">丙烯酸</div><div class="sc-spec">优级品</div></div></div><div class="sc-price">7,950<span class="unit">元/吨</span></div><div class="sc-change down">↓-16%</div><div class="sc-comparison">2025同期 <strong>~9,500</strong></div></div>
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon ba">BA</div><div><div class="sc-name">丙烯酸丁酯</div><div class="sc-spec">华东市场</div></div></div><div class="sc-price">7,800<span class="unit">元/吨</span></div><div class="sc-change down">↓-24%</div><div class="sc-comparison">2025同期 <strong>~10,200</strong></div></div>
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon pp3">C₃</div><div><div class="sc-name">丙烯</div><div class="sc-spec">PDH路线</div></div></div><div class="sc-price">8,614<span class="unit">元/吨</span></div><div class="sc-change up">↑+26%</div><div class="sc-comparison">2025同期 <strong>~6,860</strong></div></div>
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon eth2">C₂</div><div><div class="sc-name">乙烯</div><div class="sc-spec">乙烷裂解</div></div></div><div class="sc-price">7,200<span class="unit">元/吨</span></div><div class="sc-change down">↓-15%</div><div class="sc-comparison">2025同期 <strong>~8,500</strong></div></div>
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon eva2">EV</div><div><div class="sc-name">EVA</div><div class="sc-spec">发泡级</div></div></div><div class="sc-price">9,800<span class="unit">元/吨</span></div><div class="sc-change down">↓-7%</div><div class="sc-comparison">2025同期 <strong>~10,500</strong></div></div>
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon eo2">EO</div><div><div class="sc-name">环氧乙烷</div><div class="sc-spec">华东出厂</div></div></div><div class="sc-price">7,700<span class="unit">元/吨</span></div><div class="sc-change up">↑+18%</div><div class="sc-comparison">2025同期 <strong>~6,500</strong></div></div>
+</div>
+
+<div class="section-label" style="margin-top:6px;">核心原材料</div>
+<div class="summary-row" style="grid-template-columns:repeat(2,1fr);">
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon rm2">乙</div><div><div class="sc-name">乙烷 (C₂)</div><div class="sc-spec">US MB 到岸</div></div></div><div class="sc-price">~1,850<span class="unit">元/吨</span></div><div class="sc-change up">↑+3%</div><div class="sc-comparison">2025同期 <strong>~1,790</strong></div></div>
+  <div class="summary-card"><div class="sc-header"><div class="sc-icon rm2">丙</div><div><div class="sc-name">丙烷 (C₃)</div><div class="sc-spec">PDH原料</div></div></div><div class="sc-price">6,646<span class="unit">元/吨</span></div><div class="sc-change up">↑+47%</div><div class="sc-comparison">2025同期 <strong>~4,500</strong></div></div>
+</div>
+
+<div class="chart-section"><h2>丙烯酸 / 丙烯酸丁酯 走势（元/吨）</h2>
+<div class="chart-grid">
+  <div class="chart-card"><h3>丙烯酸 · 优级品</h3><div class="chart-meta">8/14 优级品 ~7,950元/吨 | 区间5,300-8,300，取优级品参考</div><div class="chart-container"><svg viewBox="0 0 680 320" style="width:100%;height:100%;display:block;">
+  <rect width="680" height="320" fill="transparent"/>
+  <line x1="62" y1="255.0" x2="650" y2="255.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="222.9" x2="650" y2="222.9" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="190.7" x2="650" y2="190.7" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="158.6" x2="650" y2="158.6" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="126.4" x2="650" y2="126.4" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="94.3" x2="650" y2="94.3" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="62.1" x2="650" y2="62.1" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="30.0" x2="650" y2="30.0" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="62.0" y="275" text-anchor="middle" font-size="12" fill="#475569">1月</text>
+  <text x="146.0" y="275" text-anchor="middle" font-size="12" fill="#475569">2月</text>
+  <text x="230.0" y="275" text-anchor="middle" font-size="12" fill="#475569">3月</text>
+  <text x="314.0" y="275" text-anchor="middle" font-size="12" fill="#475569">4月</text>
+  <text x="398.0" y="275" text-anchor="middle" font-size="12" fill="#475569">5月</text>
+  <text x="482.0" y="275" text-anchor="middle" font-size="12" fill="#475569">6月</text>
+  <text x="566.0" y="275" text-anchor="middle" font-size="12" fill="#475569">7月</text>
+  <text x="650.0" y="275" text-anchor="middle" font-size="12" fill="#475569">8月</text>
+  <text x="52" y="259.0" text-anchor="end" font-size="11" fill="#64748b">7.5k</text>
+  <text x="52" y="226.9" text-anchor="end" font-size="11" fill="#64748b">8.0k</text>
+  <text x="52" y="194.7" text-anchor="end" font-size="11" fill="#64748b">8.5k</text>
+  <text x="52" y="162.6" text-anchor="end" font-size="11" fill="#64748b">9.0k</text>
+  <text x="52" y="130.4" text-anchor="end" font-size="11" fill="#64748b">9.5k</text>
+  <text x="52" y="98.3" text-anchor="end" font-size="11" fill="#64748b">10.0k</text>
+  <text x="52" y="66.1" text-anchor="end" font-size="11" fill="#64748b">10.5k</text>
+  <text x="52" y="34.0" text-anchor="end" font-size="11" fill="#64748b">11.0k</text>
+  <polyline points="62.0,81.4 146.0,107.1 230.0,120.0 314.0,132.9 398.0,136.1 482.0,126.4 566.0,132.9 650.0,132.9" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="62.0" cy="81.4" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="146.0" cy="107.1" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="230.0" cy="120.0" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="314.0" cy="132.9" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="398.0" cy="136.1" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="482.0" cy="126.4" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="566.0" cy="132.9" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="650.0" cy="132.9" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 62.0,255.0 L 62.0,132.9 L 146.0,152.1 L 230.0,165.0 L 314.0,177.9 L 398.0,184.3 L 482.0,189.6 L 566.0,274.3 L 650.0,226.1 L 650.0,255.0 Z" fill="rgba(37,99,235,0.06)" stroke="none"/>
+  <polyline points="62.0,132.9 146.0,152.1 230.0,165.0 314.0,177.9 398.0,184.3 482.0,189.6 566.0,274.3 650.0,226.1" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="62.0" cy="132.9" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="146.0" cy="152.1" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="230.0" cy="165.0" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="314.0" cy="177.9" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="398.0" cy="184.3" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="482.0" cy="189.6" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="566.0" cy="274.3" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="650.0" cy="226.1" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <g transform="translate(200.0, 306)"><g transform="translate(0, 0)"><circle cx="0" cy="0" r="5" fill="#94a3b8"/><text x="12" y="4" font-size="12" fill="#475569">2025</text></g><g transform="translate(140, 0)"><circle cx="0" cy="0" r="5" fill="#2563eb"/><text x="12" y="4" font-size="12" fill="#475569">2026</text></g></g>
+</svg></div></div>
+  <div class="chart-card"><h3>丙烯酸丁酯 · 华东市场</h3><div class="chart-meta">8/14 华东 7,800元/吨 | 区间整理</div><div class="chart-container"><svg viewBox="0 0 680 320" style="width:100%;height:100%;display:block;">
+  <rect width="680" height="320" fill="transparent"/>
+  <line x1="62" y1="255.0" x2="650" y2="255.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="226.9" x2="650" y2="226.9" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="198.8" x2="650" y2="198.8" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="170.6" x2="650" y2="170.6" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="142.5" x2="650" y2="142.5" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="114.4" x2="650" y2="114.4" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="86.2" x2="650" y2="86.2" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="58.1" x2="650" y2="58.1" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="30.0" x2="650" y2="30.0" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="62.0" y="275" text-anchor="middle" font-size="12" fill="#475569">1月</text>
+  <text x="146.0" y="275" text-anchor="middle" font-size="12" fill="#475569">2月</text>
+  <text x="230.0" y="275" text-anchor="middle" font-size="12" fill="#475569">3月</text>
+  <text x="314.0" y="275" text-anchor="middle" font-size="12" fill="#475569">4月</text>
+  <text x="398.0" y="275" text-anchor="middle" font-size="12" fill="#475569">5月</text>
+  <text x="482.0" y="275" text-anchor="middle" font-size="12" fill="#475569">6月</text>
+  <text x="566.0" y="275" text-anchor="middle" font-size="12" fill="#475569">7月</text>
+  <text x="650.0" y="275" text-anchor="middle" font-size="12" fill="#475569">8月</text>
+  <text x="52" y="259.0" text-anchor="end" font-size="11" fill="#64748b">7.5k</text>
+  <text x="52" y="230.9" text-anchor="end" font-size="11" fill="#64748b">8.0k</text>
+  <text x="52" y="202.8" text-anchor="end" font-size="11" fill="#64748b">8.5k</text>
+  <text x="52" y="174.6" text-anchor="end" font-size="11" fill="#64748b">9.0k</text>
+  <text x="52" y="146.5" text-anchor="end" font-size="11" fill="#64748b">9.5k</text>
+  <text x="52" y="118.4" text-anchor="end" font-size="11" fill="#64748b">10.0k</text>
+  <text x="52" y="90.2" text-anchor="end" font-size="11" fill="#64748b">10.5k</text>
+  <text x="52" y="62.1" text-anchor="end" font-size="11" fill="#64748b">11.0k</text>
+  <text x="52" y="34.0" text-anchor="end" font-size="11" fill="#64748b">11.5k</text>
+  <polyline points="62.0,69.4 146.0,86.2 230.0,97.5 314.0,108.8 398.0,120.0 482.0,103.1 566.0,108.8 650.0,108.8" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="62.0" cy="69.4" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="146.0" cy="86.2" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="230.0" cy="97.5" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="314.0" cy="108.8" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="398.0" cy="120.0" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="482.0" cy="103.1" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="566.0" cy="108.8" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="650.0" cy="108.8" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 62.0,255.0 L 62.0,131.2 L 146.0,148.1 L 230.0,159.4 L 314.0,170.6 L 398.0,181.9 L 482.0,193.1 L 566.0,224.1 L 650.0,238.1 L 650.0,255.0 Z" fill="rgba(37,99,235,0.06)" stroke="none"/>
+  <polyline points="62.0,131.2 146.0,148.1 230.0,159.4 314.0,170.6 398.0,181.9 482.0,193.1 566.0,224.1 650.0,238.1" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="62.0" cy="131.2" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="146.0" cy="148.1" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="230.0" cy="159.4" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="314.0" cy="170.6" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="398.0" cy="181.9" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="482.0" cy="193.1" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="566.0" cy="224.1" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="650.0" cy="238.1" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+  <g transform="translate(200.0, 306)"><g transform="translate(0, 0)"><circle cx="0" cy="0" r="5" fill="#94a3b8"/><text x="12" y="4" font-size="12" fill="#475569">2025</text></g><g transform="translate(140, 0)"><circle cx="0" cy="0" r="5" fill="#2563eb"/><text x="12" y="4" font-size="12" fill="#475569">2026</text></g></g>
+</svg></div></div>
+</div></div>
+
+<div class="chart-section"><h2>乙烯 / EVA 走势（元/吨）</h2>
+<div class="chart-grid">
+  <div class="chart-card"><h3>乙烯 · CFR东北亚</h3><div class="chart-meta">8/14 CFR东北亚≈8,614元/吨 | 地缘推升，成本优势扩大</div><div class="chart-container"><svg viewBox="0 0 680 320" style="width:100%;height:100%;display:block;">
+  <rect width="680" height="320" fill="transparent"/>
+  <line x1="62" y1="255.0" x2="650" y2="255.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="226.9" x2="650" y2="226.9" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="198.8" x2="650" y2="198.8" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="170.6" x2="650" y2="170.6" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="142.5" x2="650" y2="142.5" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="114.4" x2="650" y2="114.4" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="86.2" x2="650" y2="86.2" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="58.1" x2="650" y2="58.1" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="30.0" x2="650" y2="30.0" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="62.0" y="275" text-anchor="middle" font-size="12" fill="#475569">1月</text>
+  <text x="146.0" y="275" text-anchor="middle" font-size="12" fill="#475569">2月</text>
+  <text x="230.0" y="275" text-anchor="middle" font-size="12" fill="#475569">3月</text>
+  <text x="314.0" y="275" text-anchor="middle" font-size="12" fill="#475569">4月</text>
+  <text x="398.0" y="275" text-anchor="middle" font-size="12" fill="#475569">5月</text>
+  <text x="482.0" y="275" text-anchor="middle" font-size="12" fill="#475569">6月</text>
+  <text x="566.0" y="275" text-anchor="middle" font-size="12" fill="#475569">7月</text>
+  <text x="650.0" y="275" text-anchor="middle" font-size="12" fill="#475569">8月</text>
+  <text x="52" y="259.0" text-anchor="end" font-size="11" fill="#64748b">5.8k</text>
+  <text x="52" y="230.9" text-anchor="end" font-size="11" fill="#64748b">6.2k</text>
+  <text x="52" y="202.8" text-anchor="end" font-size="11" fill="#64748b">6.6k</text>
+  <text x="52" y="174.6" text-anchor="end" font-size="11" fill="#64748b">7.0k</text>
+  <text x="52" y="146.5" text-anchor="end" font-size="11" fill="#64748b">7.4k</text>
+  <text x="52" y="118.4" text-anchor="end" font-size="11" fill="#64748b">7.8k</text>
+  <text x="52" y="90.2" text-anchor="end" font-size="11" fill="#64748b">8.2k</text>
+  <text x="52" y="62.1" text-anchor="end" font-size="11" fill="#64748b">8.6k</text>
+  <text x="52" y="34.0" text-anchor="end" font-size="11" fill="#64748b">9.0k</text>
+  <polyline points="62.0,65.2 146.0,72.2 230.0,86.2 314.0,100.3 398.0,114.4 482.0,128.4 566.0,128.4 650.0,128.4" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="62.0" cy="65.2" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="146.0" cy="72.2" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="230.0" cy="86.2" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="314.0" cy="100.3" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="398.0" cy="114.4" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="482.0" cy="128.4" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="566.0" cy="128.4" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="650.0" cy="128.4" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 62.0,255.0 L 62.0,177.7 L 146.0,191.7 L 230.0,205.8 L 314.0,212.8 L 398.0,198.8 L 482.0,184.7 L 566.0,170.6 L 650.0,57.1 L 650.0,255.0 Z" fill="rgba(220,38,38,0.06)" stroke="none"/>
+  <polyline points="62.0,177.7 146.0,191.7 230.0,205.8 314.0,212.8 398.0,198.8 482.0,184.7 566.0,170.6 650.0,57.1" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="62.0" cy="177.7" r="4" fill="#dc2626" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="146.0" cy="191.7" r="4" fill="#dc2626" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="230.0" cy="205.8" r="4" fill="#dc2626" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="314.0" cy="212.8" r="4" fill="#dc2626" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="398.0" cy="198.8" r="4" fill="#dc2626" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="482.0" cy="184.7" r="4" fill="#dc2626" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="566.0" cy="170.6" r="4" fill="#dc2626" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="650.0" cy="57.1" r="4" fill="#dc2626" stroke="#fff" stroke-width="1.5"/>
+  <g transform="translate(200.0, 306)"><g transform="translate(0, 0)"><circle cx="0" cy="0" r="5" fill="#94a3b8"/><text x="12" y="4" font-size="12" fill="#475569">2025</text></g><g transform="translate(140, 0)"><circle cx="0" cy="0" r="5" fill="#dc2626"/><text x="12" y="4" font-size="12" fill="#475569">2026</text></g></g>
+</svg></div></div>
+  <div class="chart-card"><h3>EVA · 发泡级</h3><div class="chart-meta">8/14 发泡级 ~9,800元/吨 | 检修+光伏补库推升</div><div class="chart-container"><svg viewBox="0 0 680 320" style="width:100%;height:100%;display:block;">
+  <rect width="680" height="320" fill="transparent"/>
+  <line x1="62" y1="255.0" x2="650" y2="255.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="225.0" x2="650" y2="225.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="195.0" x2="650" y2="195.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="165.0" x2="650" y2="165.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="135.0" x2="650" y2="135.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="105.0" x2="650" y2="105.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="75.0" x2="650" y2="75.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="45.0" x2="650" y2="45.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="30.0" x2="650" y2="30.0" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="62.0" y="275" text-anchor="middle" font-size="12" fill="#475569">1月</text>
+  <text x="146.0" y="275" text-anchor="middle" font-size="12" fill="#475569">2月</text>
+  <text x="230.0" y="275" text-anchor="middle" font-size="12" fill="#475569">3月</text>
+  <text x="314.0" y="275" text-anchor="middle" font-size="12" fill="#475569">4月</text>
+  <text x="398.0" y="275" text-anchor="middle" font-size="12" fill="#475569">5月</text>
+  <text x="482.0" y="275" text-anchor="middle" font-size="12" fill="#475569">6月</text>
+  <text x="566.0" y="275" text-anchor="middle" font-size="12" fill="#475569">7月</text>
+  <text x="650.0" y="275" text-anchor="middle" font-size="12" fill="#475569">8月</text>
+  <text x="52" y="259.0" text-anchor="end" font-size="11" fill="#64748b">8.5k</text>
+  <text x="52" y="229.0" text-anchor="end" font-size="11" fill="#64748b">8.9k</text>
+  <text x="52" y="199.0" text-anchor="end" font-size="11" fill="#64748b">9.3k</text>
+  <text x="52" y="169.0" text-anchor="end" font-size="11" fill="#64748b">9.7k</text>
+  <text x="52" y="139.0" text-anchor="end" font-size="11" fill="#64748b">10.1k</text>
+  <text x="52" y="109.0" text-anchor="end" font-size="11" fill="#64748b">10.5k</text>
+  <text x="52" y="79.0" text-anchor="end" font-size="11" fill="#64748b">10.9k</text>
+  <text x="52" y="49.0" text-anchor="end" font-size="11" fill="#64748b">11.3k</text>
+  <text x="52" y="34.0" text-anchor="end" font-size="11" fill="#64748b">11.5k</text>
+  <polyline points="62.0,82.5 146.0,90.0 230.0,97.5 314.0,101.2 398.0,105.0 482.0,105.0 566.0,105.0 650.0,105.0" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="62.0" cy="82.5" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="146.0" cy="90.0" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="230.0" cy="97.5" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="314.0" cy="101.2" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="398.0" cy="105.0" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="482.0" cy="105.0" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="566.0" cy="105.0" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="650.0" cy="105.0" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 62.0,255.0 L 62.0,150.0 L 146.0,172.5 L 230.0,187.5 L 314.0,202.5 L 398.0,206.2 L 482.0,213.8 L 566.0,142.5 L 650.0,157.5 L 650.0,255.0 Z" fill="rgba(8,145,178,0.06)" stroke="none"/>
+  <polyline points="62.0,150.0 146.0,172.5 230.0,187.5 314.0,202.5 398.0,206.2 482.0,213.8 566.0,142.5 650.0,157.5" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="62.0" cy="150.0" r="4" fill="#0891b2" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="146.0" cy="172.5" r="4" fill="#0891b2" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="230.0" cy="187.5" r="4" fill="#0891b2" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="314.0" cy="202.5" r="4" fill="#0891b2" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="398.0" cy="206.2" r="4" fill="#0891b2" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="482.0" cy="213.8" r="4" fill="#0891b2" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="566.0" cy="142.5" r="4" fill="#0891b2" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="650.0" cy="157.5" r="4" fill="#0891b2" stroke="#fff" stroke-width="1.5"/>
+  <g transform="translate(200.0, 306)"><g transform="translate(0, 0)"><circle cx="0" cy="0" r="5" fill="#94a3b8"/><text x="12" y="4" font-size="12" fill="#475569">2025</text></g><g transform="translate(140, 0)"><circle cx="0" cy="0" r="5" fill="#0891b2"/><text x="12" y="4" font-size="12" fill="#475569">2026</text></g></g>
+</svg></div></div>
+</div></div>
+
+<div class="chart-section"><h2>原材料：乙烷 / 丙烷 走势对比（元/吨）</h2>
+<div class="chart-grid">
+  <div class="chart-card"><h3>乙烷 · US Mont Belvieu到岸</h3><div class="chart-meta">8/14 折合 ~1,850元/吨 | 美NGL持稳，锁定低成本</div><div class="chart-container"><svg viewBox="0 0 680 320" style="width:100%;height:100%;display:block;">
+  <rect width="680" height="320" fill="transparent"/>
+  <line x1="62" y1="255.0" x2="650" y2="255.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="226.9" x2="650" y2="226.9" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="198.8" x2="650" y2="198.8" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="170.6" x2="650" y2="170.6" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="142.5" x2="650" y2="142.5" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="114.4" x2="650" y2="114.4" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="86.2" x2="650" y2="86.2" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="58.1" x2="650" y2="58.1" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="30.0" x2="650" y2="30.0" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="62.0" y="275" text-anchor="middle" font-size="12" fill="#475569">1月</text>
+  <text x="146.0" y="275" text-anchor="middle" font-size="12" fill="#475569">2月</text>
+  <text x="230.0" y="275" text-anchor="middle" font-size="12" fill="#475569">3月</text>
+  <text x="314.0" y="275" text-anchor="middle" font-size="12" fill="#475569">4月</text>
+  <text x="398.0" y="275" text-anchor="middle" font-size="12" fill="#475569">5月</text>
+  <text x="482.0" y="275" text-anchor="middle" font-size="12" fill="#475569">6月</text>
+  <text x="566.0" y="275" text-anchor="middle" font-size="12" fill="#475569">7月</text>
+  <text x="650.0" y="275" text-anchor="middle" font-size="12" fill="#475569">8月</text>
+  <text x="52" y="259.0" text-anchor="end" font-size="11" fill="#64748b">1.7k</text>
+  <text x="52" y="230.9" text-anchor="end" font-size="11" fill="#64748b">1.7k</text>
+  <text x="52" y="202.8" text-anchor="end" font-size="11" fill="#64748b">1.8k</text>
+  <text x="52" y="174.6" text-anchor="end" font-size="11" fill="#64748b">1.8k</text>
+  <text x="52" y="146.5" text-anchor="end" font-size="11" fill="#64748b">1.8k</text>
+  <text x="52" y="118.4" text-anchor="end" font-size="11" fill="#64748b">1.8k</text>
+  <text x="52" y="90.2" text-anchor="end" font-size="11" fill="#64748b">1.9k</text>
+  <text x="52" y="62.1" text-anchor="end" font-size="11" fill="#64748b">1.9k</text>
+  <text x="52" y="34.0" text-anchor="end" font-size="11" fill="#64748b">1.9k</text>
+  <polyline points="62.0,142.5 146.0,148.1 230.0,153.8 314.0,159.4 398.0,165.0 482.0,153.8 566.0,153.8 650.0,153.8" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="62.0" cy="142.5" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="146.0" cy="148.1" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="230.0" cy="153.8" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="314.0" cy="159.4" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="398.0" cy="165.0" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="482.0" cy="153.8" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="566.0" cy="153.8" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="650.0" cy="153.8" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 62.0,255.0 L 62.0,120.0 L 146.0,131.2 L 230.0,142.5 L 314.0,153.8 L 398.0,148.1 L 482.0,142.5 L 566.0,142.5 L 650.0,86.2 L 650.0,255.0 Z" fill="rgba(245,158,11,0.06)" stroke="none"/>
+  <polyline points="62.0,120.0 146.0,131.2 230.0,142.5 314.0,153.8 398.0,148.1 482.0,142.5 566.0,142.5 650.0,86.2" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="62.0" cy="120.0" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="146.0" cy="131.2" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="230.0" cy="142.5" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="314.0" cy="153.8" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="398.0" cy="148.1" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="482.0" cy="142.5" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="566.0" cy="142.5" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="650.0" cy="86.2" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <g transform="translate(200.0, 306)"><g transform="translate(0, 0)"><circle cx="0" cy="0" r="5" fill="#94a3b8"/><text x="12" y="4" font-size="12" fill="#475569">2025</text></g><g transform="translate(140, 0)"><circle cx="0" cy="0" r="5" fill="#f59e0b"/><text x="12" y="4" font-size="12" fill="#475569">2026</text></g></g>
+</svg></div></div>
+  <div class="chart-card"><h3>丙烷 · PDH原料</h3><div class="chart-meta">8/14 ~6,646元/吨 | 中东局势推升，7月CP下调后回落</div><div class="chart-container"><svg viewBox="0 0 680 320" style="width:100%;height:100%;display:block;">
+  <rect width="680" height="320" fill="transparent"/>
+  <line x1="62" y1="255.0" x2="650" y2="255.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="225.0" x2="650" y2="225.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="195.0" x2="650" y2="195.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="165.0" x2="650" y2="165.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="135.0" x2="650" y2="135.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="105.0" x2="650" y2="105.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="75.0" x2="650" y2="75.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="45.0" x2="650" y2="45.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="62" y1="30.0" x2="650" y2="30.0" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="62.0" y="275" text-anchor="middle" font-size="12" fill="#475569">1月</text>
+  <text x="146.0" y="275" text-anchor="middle" font-size="12" fill="#475569">2月</text>
+  <text x="230.0" y="275" text-anchor="middle" font-size="12" fill="#475569">3月</text>
+  <text x="314.0" y="275" text-anchor="middle" font-size="12" fill="#475569">4月</text>
+  <text x="398.0" y="275" text-anchor="middle" font-size="12" fill="#475569">5月</text>
+  <text x="482.0" y="275" text-anchor="middle" font-size="12" fill="#475569">6月</text>
+  <text x="566.0" y="275" text-anchor="middle" font-size="12" fill="#475569">7月</text>
+  <text x="650.0" y="275" text-anchor="middle" font-size="12" fill="#475569">8月</text>
+  <text x="52" y="259.0" text-anchor="end" font-size="11" fill="#64748b">3.8k</text>
+  <text x="52" y="229.0" text-anchor="end" font-size="11" fill="#64748b">4.2k</text>
+  <text x="52" y="199.0" text-anchor="end" font-size="11" fill="#64748b">4.6k</text>
+  <text x="52" y="169.0" text-anchor="end" font-size="11" fill="#64748b">5.0k</text>
+  <text x="52" y="139.0" text-anchor="end" font-size="11" fill="#64748b">5.4k</text>
+  <text x="52" y="109.0" text-anchor="end" font-size="11" fill="#64748b">5.8k</text>
+  <text x="52" y="79.0" text-anchor="end" font-size="11" fill="#64748b">6.2k</text>
+  <text x="52" y="49.0" text-anchor="end" font-size="11" fill="#64748b">6.6k</text>
+  <text x="52" y="34.0" text-anchor="end" font-size="11" fill="#64748b">6.8k</text>
+  <polyline points="62.0,195.0 146.0,198.8 230.0,202.5 314.0,204.0 398.0,208.5 482.0,202.5 566.0,202.5 650.0,202.5" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="62.0" cy="195.0" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="146.0" cy="198.8" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="230.0" cy="202.5" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="314.0" cy="204.0" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="398.0" cy="208.5" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="482.0" cy="202.5" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="566.0" cy="202.5" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="650.0" cy="202.5" r="3" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 62.0,255.0 L 62.0,210.0 L 146.0,213.8 L 230.0,221.2 L 314.0,225.0 L 398.0,226.5 L 482.0,225.0 L 566.0,90.0 L 650.0,41.6 L 650.0,255.0 Z" fill="rgba(245,158,11,0.06)" stroke="none"/>
+  <polyline points="62.0,210.0 146.0,213.8 230.0,221.2 314.0,225.0 398.0,226.5 482.0,225.0 566.0,90.0 650.0,41.6" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="62.0" cy="210.0" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="146.0" cy="213.8" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="230.0" cy="221.2" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="314.0" cy="225.0" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="398.0" cy="226.5" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="482.0" cy="225.0" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="566.0" cy="90.0" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="650.0" cy="41.6" r="4" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+  <g transform="translate(200.0, 306)"><g transform="translate(0, 0)"><circle cx="0" cy="0" r="5" fill="#94a3b8"/><text x="12" y="4" font-size="12" fill="#475569">2025</text></g><g transform="translate(140, 0)"><circle cx="0" cy="0" r="5" fill="#f59e0b"/><text x="12" y="4" font-size="12" fill="#475569">2026</text></g></g>
+</svg></div></div>
+</div></div>
+
+<div class="bar-section"><h2>全品类同比涨跌幅对比</h2>
+<div class="bar-card"><div class="bar-container"><svg viewBox="0 0 680 320" style="width:100%;height:100%;display:block;">
+  <rect width="680" height="320" fill="transparent"/>
+  <line x1="50" y1="240.0" x2="660" y2="240.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="50" y1="30.0" x2="660" y2="30.0" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="50" y1="135.0" x2="660" y2="135.0" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="42" y="244.0" text-anchor="end" font-size="11" fill="#64748b">-50%</text>
+  <text x="42" y="34.0" text-anchor="end" font-size="11" fill="#64748b">50%</text>
+  <rect x="57.6" y="135.0" width="38.1" height="33.6" rx="4" fill="#ef4444"/>
+  <rect x="133.9" y="135.0" width="38.1" height="50.4" rx="4" fill="#ef4444"/>
+  <rect x="210.1" y="80.4" width="38.1" height="54.6" rx="4" fill="#10b981"/>
+  <rect x="286.4" y="135.0" width="38.1" height="31.5" rx="4" fill="#ef4444"/>
+  <rect x="362.6" y="97.2" width="38.1" height="37.8" rx="4" fill="#ef4444"/>
+  <rect x="438.9" y="135.0" width="38.1" height="14.7" rx="4" fill="#10b981"/>
+  <rect x="515.1" y="128.7" width="38.1" height="6.3" rx="4" fill="#f59e0b"/>
+  <rect x="591.4" y="36.3" width="38.1" height="98.7" rx="4" fill="#10b981"/>
+  <text x="88.1" y="258" text-anchor="middle" font-size="11" fill="#475569">丙烯酸</text>
+  <text x="164.4" y="258" text-anchor="middle" font-size="11" fill="#475569">丙烯酸丁酯</text>
+  <text x="240.6" y="258" text-anchor="middle" font-size="11" fill="#475569">丙烯</text>
+  <text x="316.9" y="258" text-anchor="middle" font-size="11" fill="#475569">乙烯</text>
+  <text x="393.1" y="258" text-anchor="middle" font-size="11" fill="#475569">EVA</text>
+  <text x="469.4" y="258" text-anchor="middle" font-size="11" fill="#475569">环氧乙烷</text>
+  <text x="545.6" y="258" text-anchor="middle" font-size="11" fill="#475569">乙烷◈</text>
+  <text x="621.9" y="258" text-anchor="middle" font-size="11" fill="#475569">丙烷◈</text>
+</svg></div></div></div>
+
+<div class="table-section"><h2>产品与原材料价格数据明细表</h2>
+<table class="data-table"><thead><tr><th>品类</th><th>产品</th><th>规格</th><th>2025同期</th><th>2026当前</th><th>同比</th><th>产业链</th><th>数据日期</th></tr></thead><tbody>
+<tr><td>产品</td><td>丙烯酸</td><td>优级品</td><td>~9,500</td><td>7,950</td><td class="highlight-down">↓-16%</td><td>C3</td><td>8/14</td></tr>
+<tr><td>产品</td><td>丙烯酸丁酯</td><td>华东市场</td><td>~10,200</td><td>7,800</td><td class="highlight-down">↓-24%</td><td>C3</td><td>8/14</td></tr>
+<tr><td>产品</td><td>丙烯</td><td>PDH</td><td>~6,860</td><td>8,614</td><td class="highlight-up">↑+26%</td><td>C3</td><td>8/14</td></tr>
+<tr><td>产品</td><td>乙烯</td><td>乙烷裂解</td><td>~8,500</td><td>7,200</td><td class="highlight-down">↓-15%</td><td>C2</td><td>8/14</td></tr>
+<tr><td>产品</td><td>EVA</td><td>发泡级</td><td>~10,500</td><td>9,800</td><td class="highlight-down">↓-7%</td><td>C2</td><td>8/14</td></tr>
+<tr><td>产品</td><td>环氧乙烷 EO</td><td>华东出厂</td><td>~6,500</td><td>7,700</td><td class="highlight-up">↑+18%</td><td>C2</td><td>8/14</td></tr>
+<tr class="rm-row"><td>原料</td><td>乙烷 🔸</td><td>US MB到岸</td><td>~1,790</td><td>~1,850</td><td class="highlight-mild">+3%</td><td>C2原料</td><td>8/14</td></tr>
+<tr class="rm-row"><td>原料</td><td>丙烷 🔸</td><td>PDH原料</td><td>~4,500</td><td>6,000</td><td class="highlight-up">↑+33%</td><td>C3原料</td><td>8/14</td></tr>
+</tbody></table></div>
+
+<div class="footer"><p>数据来源：生意社、我的钢铁网、隆众资讯、金联创 | 仅供研究参考，不构成投资建议</p><p style="margin-top:4px;">© 2026 Snail-bird Investment · 卫星化学(WX)产品与原材料价格监控</p>
+    <p style="margin-top:6px;color:#94a3b8;font-size:11px;">注：2026年价格为截至2026-08-14最新现货报价；2025年7月数据系基于上半年走势外推的估计值，仅供趋势参考。</p></div>
+</div>
+
+
+</body>
+</html>
