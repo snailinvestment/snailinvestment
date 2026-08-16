@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandisk Corporation (SNDK) — 深度研究报告 | Snail-Bird Investment</title>
+<style>
+:root{
+  --ink:#0b1220;--ink-2:#182338;--ink-3:#28374f;--steel:#3a4d68;--muted:#647b98;--faint:#93a8c2;
+  --rule:#cddaea;--paper:#f5f8fb;--white:#ffffff;
+  --cyan:#00a7c4;--cyan-2:#00c9e8;--cyan-bg:#e8fafd;
+  --violet:#6b46c1;--violet-bg:#f2eefb;
+  --green:#0d7a52;--green-bg:#e7f6ee;
+  --red:#c0293a;--red-bg:#fdedf0;
+  --amber:#8a5a00;--amber-bg:#fdf5e0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+.masthead{background:var(--ink);position:relative;overflow:hidden;}
+.masthead::before{content:'';position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 15px,rgba(0,201,232,.045) 15px,rgba(0,201,232,.045) 16px),
+    repeating-linear-gradient(90deg,transparent,transparent 15px,rgba(0,201,232,.03) 15px,rgba(0,201,232,.03) 16px);
+  pointer-events:none;}
+.masthead::after{content:'';position:absolute;top:0;right:0;width:420px;height:100%;
+  background:linear-gradient(125deg,transparent 45%,rgba(0,201,232,.13) 100%);pointer-events:none;}
+.masthead-inner{max-width:1160px;margin:0 auto;padding:48px 56px 44px;position:relative;z-index:1;}
+.brand-row{display:flex;align-items:center;gap:10px;margin-bottom:38px;}
+.brand-mark{width:32px;height:32px;border:1.5px solid var(--cyan-2);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:var(--cyan-2);flex-shrink:0;}
+.brand-text{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.38);}
+.masthead-type{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan-2);margin-bottom:10px;}
+.masthead-company{display:flex;align-items:baseline;gap:16px;margin-bottom:4px;flex-wrap:wrap;}
+.company-name{font-family:'IBM Plex Serif',serif;font-size:36px;font-weight:700;color:var(--white);line-height:1;}
+.ticker-chip{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;background:var(--cyan);color:var(--white);padding:3px 10px;border-radius:2px;letter-spacing:.06em;}
+.co-desc{font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(255,255,255,.38);margin-bottom:18px;letter-spacing:.04em;}
+.masthead-sub{font-size:14.5px;font-weight:300;color:rgba(255,255,255,.58);line-height:1.65;max-width:740px;margin-bottom:36px;}
+.masthead-meta{display:flex;flex-wrap:wrap;gap:16px 32px;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.07em;color:rgba(255,255,255,.32);}
+.masthead-meta strong{color:rgba(255,255,255,.68);font-weight:600;}
+.cyan-rule{height:4px;background:linear-gradient(90deg,var(--cyan) 0%,var(--cyan-2) 35%,transparent 100%);}
+nav{background:var(--white);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:100;box-shadow:0 1px 6px rgba(11,18,32,.07);}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 56px;display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.nav-inner a{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:14px 12px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;}
+.nav-inner a:hover{color:var(--ink);border-bottom-color:var(--cyan);}
+.page-body{max-width:1160px;margin:0 auto;padding:0 56px 80px;}
+.verdict-banner{background:var(--white);border-left:4px solid var(--cyan);padding:22px 26px;margin:36px 0 28px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:0 1px 4px rgba(11,18,32,.06);}
+.verdict-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:7px;}
+.verdict-body{font-family:'IBM Plex Serif',serif;font-size:15px;line-height:1.65;color:var(--ink);}
+.rating-block{text-align:center;flex-shrink:0;min-width:92px;}
+.r-word{display:block;font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:var(--amber);letter-spacing:.03em;}
+.r-tp{display:block;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-3);margin-top:5px;}
+.r-note{display:block;font-size:11px;color:var(--muted);margin-top:3px;font-family:'IBM Plex Mono',monospace;line-height:1.4;}
+.kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin-bottom:44px;}
+.kpi-cell{background:var(--white);padding:17px 18px;}
+.kpi-label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:7px;line-height:1.4;}
+.kpi-val{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:600;color:var(--ink);display:block;line-height:1.1;}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.4;}
+.kpi-up .kpi-val{color:var(--green);}.kpi-down .kpi-val{color:var(--red);}.kpi-warn .kpi-val{color:var(--amber);}.kpi-hot .kpi-val{color:var(--cyan);}
+.section{margin-bottom:52px;}
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--rule);}
+.sec-accent{width:4px;height:20px;background:var(--cyan);border-radius:2px;flex-shrink:0;}
+.sec-num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--cyan);font-weight:600;letter-spacing:.06em;flex-shrink:0;}
+.sec-title{font-family:'IBM Plex Serif',serif;font-size:20px;font-weight:700;color:var(--ink);}
+p{margin-bottom:14px;color:var(--ink-3);line-height:1.8;}p:last-child{margin-bottom:0;}
+h3.sub{font-family:'IBM Plex Serif',serif;font-size:16px;font-weight:600;color:var(--ink);margin:26px 0 12px;}
+.timeline{list-style:none;margin:16px 0;padding:0;border-left:2px solid var(--rule);}
+.timeline li{position:relative;padding:0 0 20px 24px;}
+.timeline li::before{content:'';position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--cyan);border:2px solid var(--white);box-shadow:0 0 0 1px var(--cyan);}
+.timeline li:last-child{padding-bottom:0;}
+.tl-year{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--cyan);letter-spacing:.06em;margin-bottom:3px;}
+.tl-desc{font-size:13px;color:var(--ink-3);line-height:1.6;}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0 24px;}
+.product-card{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--cyan);padding:18px 18px 14px;border-radius:2px;}
+.product-card h4{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;}
+.product-card p{font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:0;}
+.product-card .tag{display:inline-block;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:10px;background:var(--cyan-bg);color:var(--cyan);padding:2px 7px;border-radius:2px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0 22px;}
+.th-dark th{background:var(--ink);color:rgba(255,255,255,.75);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;text-align:right;}
+.th-dark th:first-child{text-align:left;}
+.th-dark td{padding:10px 12px;border-bottom:1px solid var(--rule);text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-3);}
+.th-dark td:first-child{text-align:left;color:var(--ink);}
+.th-light th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;border-bottom:2px solid var(--ink);text-align:right;color:var(--muted);}
+.th-light th:first-child{text-align:left;}
+.th-light td{padding:10px 12px;border-bottom:1px solid var(--rule);text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-3);}
+.th-light td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.th-mid th{background:var(--ink-2);color:rgba(255,255,255,.8);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;text-align:left;}
+.th-mid td{padding:10px 14px;border-bottom:1px solid var(--rule);color:var(--ink-3);}
+.th-mid td:last-child{text-align:right;font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--ink);}
+.pos{color:var(--green);font-weight:600;}.neg{color:var(--red);font-weight:600;}.hot{color:var(--cyan);font-weight:600;}
+.row-highlight td{background:#eef8fb;font-weight:700;}
+.row-highlight td:first-child{border-left:3px solid var(--cyan);}
+.row-latest td{background:#eef8fb;}
+.row-latest td:first-child{border-left:3px solid var(--cyan);}
+.row-dc td{border-left:3px solid var(--cyan);}
+.row-edge td{border-left:3px solid var(--violet);}
+.row-cons td{border-left:3px solid var(--muted);}
+.row-total td{background:#eef8fb;font-weight:700;border-left:3px solid var(--ink);}
+.row-sub td{background:#eef8fb;font-weight:700;border-top:1px solid var(--ink);}
+.row-result td{font-weight:700;background:var(--cyan-bg);border-top:2px solid var(--ink);color:var(--ink);}
+.row-result td:last-child{color:var(--cyan);font-size:15px;}
+.row-bear{background:#fdf1f2;}.row-base{background:#f7f9fc;}.row-bull{background:#eef8f2;}.row-wtd{background:var(--cyan-bg);}
+.row-wtd td{font-weight:700;border-top:2px solid var(--ink);}
+.row-risk-h{background:#fdeef0;}.row-risk-m{background:#fdf6e6;}.row-risk-l{background:#eef7f1;}
+.peer-sndk td{background:#eef8fb;font-weight:700;}.peer-sndk td:first-child{border-left:3px solid var(--cyan);}
+.p-big{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;}
+.row-bear .p-big{color:var(--red);}.row-base .p-big{color:var(--ink-3);}.row-bull .p-big{color:var(--green);}.row-wtd .p-big{color:var(--cyan);}
+.callout{border-left:3px solid var(--cyan);background:var(--cyan-bg);padding:15px 19px;margin:16px 0;font-size:13.5px;line-height:1.72;color:var(--ink-3);}
+.callout strong{color:var(--ink);}
+.c-good{border-left-color:var(--green);background:var(--green-bg);}
+.c-risk{border-left-color:var(--red);background:var(--red-bg);}
+.c-warn{border-left-color:var(--amber);background:var(--amber-bg);}
+.c-violet{border-left-color:var(--violet);background:var(--violet-bg);}
+blockquote{margin:18px 0;padding:13px 18px;border-left:3px solid var(--ink-3);background:var(--white);font-family:'IBM Plex Serif',serif;font-size:13.5px;color:var(--steel);font-style:italic;line-height:1.7;}
+blockquote cite{display:block;margin-top:7px;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--faint);letter-spacing:.06em;}
+.moat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+.moat-card{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--ink-3);padding:18px 18px 14px;border-radius:2px;}
+.moat-card h4{font-family:'IBM Plex Serif',serif;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+.moat-card p{font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:0;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.two-card{background:var(--white);border:1px solid var(--rule);padding:18px 18px 14px;}
+.two-card h4{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.two-card ul{list-style:none;padding:0;}
+.two-card ul li{padding:6px 0;border-bottom:1px solid var(--rule);font-size:13px;color:var(--ink-3);display:flex;gap:8px;align-items:flex-start;line-height:1.55;}
+.two-card ul li:last-child{border-bottom:none;}
+.b-up{color:var(--green);font-weight:700;flex-shrink:0;}.b-down{color:var(--red);font-weight:700;flex-shrink:0;}
+.monitor-list{list-style:none;margin:14px 0;counter-reset:mon;}
+.monitor-list li{counter-increment:mon;display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:13px;color:var(--ink-3);line-height:1.6;align-items:flex-start;}
+.monitor-list li::before{content:counter(mon,decimal-leading-zero);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--cyan);flex-shrink:0;margin-top:2px;}
+.monitor-list li strong{color:var(--ink);}
+.pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;padding:3px 7px;border-radius:2px;}
+.pill-h{background:#fbd4d9;color:var(--red);}.pill-m{background:#fbe6b8;color:var(--amber);}.pill-l{background:#c5e9d5;color:var(--green);}
+.disclosure{margin-top:56px;padding-top:22px;border-top:1px solid var(--rule);font-size:11px;color:var(--faint);line-height:1.75;}
+.disclosure strong{color:var(--muted);}
+@media(max-width:900px){.masthead-inner,.page-body,.nav-inner{padding-left:20px;padding-right:20px;}.kpi-strip{grid-template-columns:repeat(2,1fr);}.product-grid,.moat-grid{grid-template-columns:1fr 1fr;}.two-col{grid-template-columns:1fr;}.company-name{font-size:26px;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="brand-row"><div class="brand-mark">SB</div><span class="brand-text">Snail-Bird Investment · 半导体存储技术研究</span></div>
+    <div class="masthead-type">深度研究报告 · 首次覆盖 · FY2026 Q4（财年末）业绩后</div>
+    <div class="masthead-company"><span class="company-name">Sandisk Corporation</span><span class="ticker-chip">NASDAQ: SNDK</span></div>
+    <div class="co-desc">全球领先NAND闪存半导体公司 · 总部：加州米尔皮塔斯 · 员工：约11,000人 · 2025年2月从西部数据分拆独立上市</div>
+    <p class="masthead-sub">FY2026 Q4收入$8.97bn（同比+372%），毛利率84.6%，全年收入$20.25bn（同比+175%）。公司在8月13日投资者日发布2028–2030长期财务模型：中高双位数收入增长、约80%毛利率、约50%调整后FCF利润率。股价过去12个月涨幅逾3,000%，当前市值约$2,400亿，已计入NAND供需紧张持续性的高度乐观预期——本报告在承认基本面实质性改善的同时，对估值给予审慎评估，并特别提示FY2026年度数据截至报告完成时仍为公司自愿披露的未经审计口径。</p>
+    <div class="masthead-meta">
+      <span><strong>报告类型</strong> 首次覆盖 + 财年末业绩深度</span>
+      <span><strong>报告日期</strong> 2026-08-16</span>
+      <span><strong>财年截止</strong> 2026-07-03（FY2026 Q4/财年末，未经审计）</span>
+      <span><strong>参考股价</strong> $1,641.11（2026-08-14收盘，最近交易日）</span>
+      <span><strong>分析师</strong> Snail-Bird Investment Research</span>
+    </div>
+  </div>
+</header>
+<div class="cyan-rule"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#verdict">评级结论</a><a href="#history">历史沿革</a><a href="#products">业务产品</a>
+    <a href="#industry">行业格局</a><a href="#q4">Q4业绩</a><a href="#mgmt">管理层洞察</a>
+    <a href="#cashflow">现金流</a><a href="#moat">护城河</a><a href="#valuation">估值</a>
+    <a href="#risks">风险</a><a href="#monitor">监测指标</a>
+  </div>
+</nav>
+
+<div class="page-body">
+
+<!-- VERDICT -->
+<div id="verdict" class="verdict-banner">
+  <div>
+    <div class="verdict-label">独立投资评级 — 首次覆盖，FY2026财年末业绩及投资者日后（参考价$1,641.11，2026-08-14收盘）</div>
+    <div class="verdict-body">
+      <strong>中性（谨慎）。</strong>
+      Sandisk FY2026 Q4展现出真实的、结构性的经营改善：收入$8.97bn（同比+372%，环比+51%），毛利率84.6%，Datacenter收入全年同比+437%。管理层在投资者日提出2028–2030长期目标（中高双位数收入增长、约80%毛利率、约50%调整后FCF利润率），并通过10份New Business Model（NBM）多年期协议（覆盖8家客户）将定价和bit出货量部分锁定，floor pricing下最低预期收入达$93.9bn（其中具备金融担保性质的部分为$16.5bn）。这些均是可验证的积极信号，NBM确实提升了部分收入的多年期可见度。
+      <br><br>
+      然而，当前市值约$2,400亿对应约22x TTM GAAP P/E——这一倍数本身并不极端，但建立在半导体存储行业历史罕见的84.6%毛利率之上，且这一利润率水平尚未经历完整的价格下行周期检验。第三方行业机构（TrendForce）在2026年7月的预测中同时提示：2026年NAND供给偏紧（缺口约4–5%）支持当前高价格，但工艺迁移放量、新增产能爬坡与消费电子需求持续疲弱，可能使2027年下半年供需平衡向更宽松方向移动——这是一个需要与"AI驱动结构性去周期化"命题同等重视的反向情景。<br><br>
+      本报告认为，"NBM协议提升收入可预见性"与"周期顶部利润率被永久资本化"是两个不同强度的命题，市场当前对二者的区分尚不充分。给予中性评级，反映"基本面改善真实但已被市场较充分定价、且下行验证尚未完成"的平衡判断。
+    </div>
+  </div>
+  <div class="rating-block">
+    <span class="r-word">中性</span>
+    <span class="r-tp">参考值~$1,490</span>
+    <span class="r-note">-9.2% vs $1,641<br>宽区间，见估值章节</span>
+  </div>
+</div>
+
+<!-- KPI -->
+<div class="kpi-strip">
+  <div class="kpi-cell kpi-hot"><div class="kpi-label">FY2026 Q4营收</div><span class="kpi-val">$8,965m</span><div class="kpi-sub">环比+51%；同比+372%</div></div>
+  <div class="kpi-cell kpi-up"><div class="kpi-label">Q4 GAAP毛利率</div><span class="kpi-val">84.6%</span><div class="kpi-sub">环比+6.2ppt；历史罕见高位</div></div>
+  <div class="kpi-cell kpi-up"><div class="kpi-label">FY2026全年收入</div><span class="kpi-val">$20,248m</span><div class="kpi-sub">同比+175%；Datacenter+437%</div></div>
+  <div class="kpi-cell kpi-warn"><div class="kpi-label">FY2027 Q1营收指引</div><span class="kpi-val">$10.3–10.8bn</span><div class="kpi-sub">环比中值+14%；Non-GAAP EPS $44–46</div></div>
+  <div class="kpi-cell kpi-hot"><div class="kpi-label">NBM最低预期收入（floor）</div><span class="kpi-val">$93.9bn</span><div class="kpi-sub">10份协议/8客户；金融担保部分$16.5bn</div></div>
+</div>
+
+<!-- 01 历史 -->
+<section id="history" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">01</span><span class="sec-title">历史沿革：从闪存发明者到AI存储核心供应商的37年周期</span></div>
+  <p>Sandisk的历史是一部NAND闪存从实验室发明到AI基础设施核心组件的产业史，同时也是一部经历多次并购、整合、剥离的公司治理史。理解这段历史，是理解当前"New Business Model"战略转型合理性的关键。</p>
+  <ul class="timeline">
+    <li><div class="tl-year">1988</div><div class="tl-desc">Eli Harari、Sanjay Mehrotra、Jack Yuan在硅谷创立SunDisk。Harari发明浮栅EEPROM技术，证明了半导体存储的实用性、可靠性和耐久性，为闪存产业奠定理论基础。</div></li>
+    <li><div class="tl-year">1991</div><div class="tl-desc">SunDisk为IBM生产首款基于闪存的固态硬盘（SSD），采用2.5英寸硬盘形态，容量20MB，售价约$1,000——这是闪存首次以SSD形式进入商用市场。</div></li>
+    <li><div class="tl-year">1994–1995</div><div class="tl-desc">联合开发CompactFlash（CF）卡标准，广泛应用于数码相机等便携电子设备；1995年更名为SanDisk并完成IPO（发行1600万股，每股$10）。</div></li>
+    <li><div class="tl-year">2006</div><div class="tl-desc">收购M-Systems，扩展闪存技术和产品能力，加强在企业级和嵌入式闪存市场的布局。</div></li>
+    <li><div class="tl-year">2011–2014</div><div class="tl-desc">通过收购Pliant Technology、SMART Storage Systems、Fusion-io等公司，新增企业级闪存能力，为后续数据中心业务奠定基础。</div></li>
+    <li><div class="tl-year">2016年5月</div><div class="tl-desc"><strong>被西部数据以约$190亿收购</strong>（因中国清华紫光集团的竞购导致估值一度承压后完成）。SanDisk并入西部数据，形成"介质无关"的综合存储技术公司，融合闪存与硬盘技术。此后近9年，SanDisk作为西部数据的闪存业务部门运营，不再是独立上市公司。</div></li>
+    <li><div class="tl-year">2023年10月</div><div class="tl-desc">西部数据董事会宣布计划将闪存业务与硬盘业务分拆为两家独立上市公司，以应对两类存储技术周期特性和资本配置需求的结构性差异——硬盘业务资本开支强度低、现金流稳定；闪存业务资本开支强度极高、周期性剧烈，两者共用一套资本配置逻辑效率低下。</div></li>
+    <li><div class="tl-year">2025年2月21日</div><div class="tl-desc"><strong>Sandisk从西部数据分拆完成，重新成为独立上市公司</strong>。西部数据股东按1:3比例获得Sandisk股份（每3股WDC股票获1股Sandisk股票），分拆后Sandisk以"轻资产、纯闪存"的独立身份运营，首日交易价约$52/股（2025年2月24日）。分拆前财务数据按西部数据carve-out基础编制，与分拆后完全合并口径的可比性存在一定局限。这一时点恰逢NAND行业开始从多年下行周期向AI驱动的上行周期转折，为其后的估值重估提供了时间窗口。</div></li>
+    <li><div class="tl-year">2025年内</div><div class="tl-desc">分拆首年（对应FY2025，截至2025年6月）Sandisk仍处于周期底部：全年收入$7.36bn，GAAP净亏损$1.64bn（含$18.3亿商誉减值）。管理层在此阶段开始与关键客户探讨长期协议（NBM）框架，为后续业务模式转型埋下伏笔。2026年2月，西部数据通过S-3ASR注册转售其持有的约751.3万股Sandisk普通股，这部分股份构成潜在的二级市场供给。</div></li>
+    <li><div class="tl-year">2025年底至2026年</div><div class="tl-desc"><strong>NAND supercycle与"New Business Model"战略落地：</strong>随着AI基础设施对高容量企业级SSD需求激增，叠加行业供给纪律（含Sandisk自身产能控制），NAND价格自2025年四季度起快速上涨。管理层自2026年4月起陆续签署NBM多年期协议，将定价、数量和期限固定化。FY2026全年收入同比增长175%至$20.25bn（未经审计），GAAP净利润由上年同期净亏损$16.41亿转为净利润$114.33亿。2026年1月，Sandisk与Kioxia将Yokkaichi工厂合资协议延长至2034年（追加约$11.65亿制造服务费用）。2026年8月13日投资者日，公司发布2028–2030长期financial model，股价单日上涨13.67%。</div></li>
+  </ul>
+</section>
+
+<!-- 02 产品 -->
+<section id="products" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">02</span><span class="sec-title">业务结构与核心产品：垂直整合的NAND闪存全栈供应商</span></div>
+  <p>Sandisk定位为"垂直整合解决方案提供商"，拥有从芯片级设计和IP、前后端制造，到系统工程和设计的完整能力链条。公司按三大终端市场披露收入：Datacenter（数据中心）、Edge（边缘设备，含智能手机、PC、汽车、工业）、Consumer（消费级零售产品）。</p>
+  <div class="product-grid">
+    <div class="product-card"><h4>Datacenter（数据中心）</h4><p>企业级SSD（eSSD），面向超大规模云服务商和企业客户的AI训练与推理基础设施。FY2026收入$5,153m（同比+437%），是当前收入增长的核心引擎。QLC Stargate平台已开始出货，管理层称Datacenter占总bit组合已从约12%（一年前）提升至FY2026末约38%。</p><span class="tag">FY2026收入占比~25%</span></div>
+    <div class="product-card"><h4>Edge（边缘设备）</h4><p>面向智能手机、PC、汽车电子、工业设备的嵌入式存储和可移动存储产品。FY2026收入$12,160m（同比+195%），是当前收入规模最大的板块，受益于高端智能手机和PC配置升级、AI PC存储需求提升。行业数据显示手机与PC合计仍占全行业NAND bit需求近40%，是该板块最重要的终端需求来源。</p><span class="tag">FY2026收入占比~60%</span></div>
+    <div class="product-card"><h4>Consumer（消费级）</h4><p>存储卡、U盘、零售SSD等面向个人消费者的产品线。FY2026收入$2,935m（同比+29%），增速最低但仍为正增长；Q4环比下降32%，管理层将其归因于价格上涨对该细分市场需求的抑制，而非份额流失——该板块历史上波动性较低，"需要闪存的人，我们生产闪存"（CEO原话）。</p><span class="tag">FY2026收入占比~15%</span></div>
+  </div>
+  <h3 class="sub">终端市场收入趋势（Q4 2026实际数据，公司披露）</h3>
+  <table class="th-light">
+    <thead><tr><th>终端市场</th><th>Q4 2026</th><th>Q3 2026</th><th>Q4 2025</th><th>环比（Q/Q）</th><th>同比（Y/Y）</th><th>FY2026全年</th><th>FY2025全年</th></tr></thead>
+    <tbody>
+      <tr class="row-dc"><td>Datacenter</td><td>$2,977m</td><td>$1,467m</td><td>$213m</td><td class="pos">+103%</td><td class="pos">N/M（大幅增长）</td><td>$5,153m</td><td>$960m</td></tr>
+      <tr class="row-edge"><td>Edge</td><td>$5,432m</td><td>$3,663m</td><td>$1,103m</td><td class="pos">+48%</td><td class="pos">+392%</td><td>$12,160m</td><td>$4,127m</td></tr>
+      <tr class="row-cons"><td>Consumer</td><td>$556m</td><td>$820m</td><td>$585m</td><td class="neg">-32%</td><td class="neg">-5%</td><td>$2,935m</td><td>$2,268m</td></tr>
+      <tr class="row-total"><td>合并</td><td>$8,965m</td><td>$5,950m</td><td>$1,901m</td><td class="pos">+51%</td><td class="pos">+372%</td><td>$20,248m</td><td>$7,355m</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--faint);">公司披露Q4环比增长约三分之一来自出货量提升、约三分之二来自价格上涨——该归因仅适用于该季度，不应外推为长期收入增长结构。Consumer板块Q4环比下降的"非份额流失"解释目前主要依赖管理层定性表述，尚无独立第三方数据佐证。</p>
+</section>
+
+<!-- 03 行业格局 -->
+<section id="industry" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">03</span><span class="sec-title">行业格局：NAND寡头结构与AI驱动的需求重塑</span></div>
+  <p>NAND闪存行业是资本高度密集、技术壁垒极高的寡头垄断市场。据行业机构统计，2025Q3–2026Q1区间前五大厂商合计占据约90%以上的市场收入份额：三星电子（约29–32%）、SK海力士（约18–19%，含Solidigm）、铠侠Kioxia（约14–15%）、Sandisk（约12–13%）、美光（个位数至约10%区间，各机构口径不同）。这一集中度在过去五年基本稳定，新进入者（如YMTC）份额虽有提升但仍主要局限于中国内需市场。</p>
+
+  <h3 class="sub">NAND市场份额（按收入，2025Q3–2026Q1区间，多来源交叉核对）</h3>
+  <table class="th-light">
+    <thead><tr><th>厂商</th><th>市场份额（约）</th><th>关键定位</th><th>与Sandisk关系</th></tr></thead>
+    <tbody>
+      <tr><td>三星电子（Samsung）</td><td style="text-align:right">29–32%</td><td style="text-align:left">行业龙头，全制程自主研发，多元化半导体业务分摊风险</td><td style="text-align:left">最大竞争对手</td></tr>
+      <tr><td>SK海力士（SK hynix）</td><td style="text-align:right">18–19%</td><td style="text-align:left">依托Solidigm加强企业级SSD布局；同时是DRAM/HBM龙头</td><td style="text-align:left">竞争对手，同时是HBF联合开发伙伴</td></tr>
+      <tr><td>铠侠（Kioxia）</td><td style="text-align:right">14–15%</td><td style="text-align:left">2024年12月于东京上市；专注纯闪存业务</td><td style="text-align:left"><strong>Yokkaichi/Kitakami合资制造伙伴</strong>（25年+合作历史）</td></tr>
+      <tr class="row-highlight"><td>Sandisk</td><td style="text-align:right">12–13%</td><td style="text-align:left">垂直整合系统级方案商，聚焦企业级SSD与嵌入式存储</td><td style="text-align:left">本报告标的</td></tr>
+      <tr><td>美光（Micron）</td><td style="text-align:right">~8–10%</td><td style="text-align:left">DRAM为主业，NAND为第二增长曲线；美国本土产能布局</td><td style="text-align:left">竞争对手</td></tr>
+      <tr><td>YMTC（长江存储）等中国厂商</td><td style="text-align:right">约8–13%</td><td style="text-align:left">中国内需驱动，受出口管制影响国际扩张受限</td><td style="text-align:left">主要在中国市场竞争</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-violet">
+    <strong>Kioxia合资关系是理解Sandisk制造模式的核心：</strong>Sandisk自身不独立运营晶圆制造厂，其NAND晶圆产能完全依赖与Kioxia在日本Yokkaichi和Kitakami工厂的合资制造安排（Flash Ventures）——两工厂约80%产能由双方对半分享，其余20%归Kioxia独有，据此推算约60%的两厂总产量分配给Kioxia、40%分配给Sandisk。这一延续超25年的合作关系已延长至2034年，2026年1月的续约中，Sandisk承诺在2026–2029年间向Kioxia支付约$11.65亿的制造服务费用。<br><br>
+    这一结构的双重含义：<strong>正面</strong>——避免了独立建厂的巨额资本开支和执行风险，产能扩张与Kioxia协同进行，双方技术路线保持同步（如BiCS10已于两家Kitakami Fab2同步投产）；<strong>负面</strong>——Sandisk的产能供给能力本质上受Kioxia的资本开支决策和双方谈判结果制约，不完全自主可控，这是与三星、SK海力士（自有晶圆厂）等竞争对手相比的结构性差异。
+  </div>
+
+  <h3 class="sub">行业需求结构的转变：AI数据中心成为最大边际需求源，但消费电子权重仍不容忽视</h3>
+  <p>管理层在Q4电话会中表示，NAND总可寻址市场（TAM）中数据中心份额预计将从2025日历年约30%扩大至2026日历年约50%，这是行业需求结构的重要转变——传统上，NAND需求主要由消费电子（手机、PC存储升级）驱动，具有较强的季节性和价格敏感性；AI数据中心的存储需求则与超大规模云服务商的资本开支周期绑定，规模更大、单笔合同金额更高。但据第三方行业机构测算，截至2026年年中，服务器（含AI数据中心）已占NAND bit需求40%以上，而智能手机与笔记本电脑合计仍接近40%——消费电子端的需求强弱，仍将对行业整体供需平衡产生重要影响，不宜因数据中心叙事而忽视。</p>
+
+  <div class="callout c-warn">
+    <strong>行业规模预测存在显著分歧，且供需平衡展望本身具有双向不确定性：</strong>管理层在电话会中援引的行业预测认为，全球NAND行业规模将从2026日历年约$3,000亿增长至2027日历年约$5,000亿——这一数字系管理层引用的市场估计，而非独立验证的行业共识，隐含了约67%的年度行业规模增长，主要反映当前现货和合约价格的大幅上涨，而非纯粹的出货量（bit）增长。<br><br>
+    与此同时，第三方行业研究机构TrendForce在2026年7月的分析中提出了一个方向不同的中期展望：2026年NAND供给因AI需求、有限扩产和企业级SSD拉动仍偏紧（供给缺口估计约4–5%），但随着主要厂商工艺迁移（更高层数堆叠）逐步放量、新增产能陆续爬坡，叠加消费电子（手机、PC）需求持续疲弱，2027年下半年市场供需平衡可能向更宽松方向转移。<br><br>
+    这两种情景——"AI需求持续超预期、供给纪律延续"与"2027年下半年供给转松、价格承压"——在当前时点均有一定依据支持，尚无法明确判断孰者更接近现实。本报告在风险和估值章节中对两种情景给予同等权重的量化考量，而非默认前者必然兑现。
+  </div>
+
+  <h3 class="sub">历史周期性回顾：NAND高毛利率尚未经历完整下行周期验证</h3>
+  <p>NAND行业过去15年经历过多轮显著的价格周期（2016–2018年上行、2018–2019年下行、2021年短暂反弹、2022–2023年历史性下行、2025–2026年当前上行）。在既往周期顶部，行业毛利率普遍达到40–50%区间；在2023年周期底部，包括Sandisk（时为西部数据部门）在内的主要厂商均出现毛利率大幅承压甚至转负的情况。当前84.6%的毛利率水平，以任何可获得的历史同口径数据衡量，都处于极为罕见的高位区间，其可持续性尚未经历完整价格下行周期的检验——这是本报告估值分析中最重要的审慎前提，而非对"毛利率必然快速回落"的确定性判断。
+  </p>
+</section>
+
+<!-- 04 Q4业绩 -->
+<section id="q4" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">04</span><span class="sec-title">FY2026 Q4（财年末）业绩：历史性季度，指引隐含毛利率环比区间基本持平</span></div>
+  <p>Sandisk财年截止日为每年6月底附近（FY2026 Q4截至2026年7月3日）。Q4收入$8,965m，环比增长51%，同比增长372%；GAAP净利润$6,903m（稀释每股$43.97），Non-GAAP稀释每股收益$39.25。全年FY2026收入$20,248m（同比+175%），GAAP净利润$11,433m（稀释每股$73.76），Non-GAAP稀释每股收益$70.88。需特别说明：截至本报告完成时，FY2026 Form 10-K尚未提交，公司在新闻稿中明确标注上述财务数据为未经审计口径，正式10-K完成审计与结账程序后，最终数字可能与本报告引用数据存在调整。</p>
+
+  <h3 class="sub">季度财务趋势（Q3/Q4为公司直接披露；更早季度数据披露有限）</h3>
+  <table class="th-light">
+    <thead><tr><th>财季</th><th>收入</th><th>环比</th><th>GAAP毛利率</th><th>GAAP净利润</th><th>GAAP稀释EPS</th><th>Non-GAAP EPS</th></tr></thead>
+    <tbody>
+      <tr><td>FY2025 Q4（2025-06-27）</td><td>$1,901m</td><td>—</td><td>26.2%（26.4% Non-GAAP）</td><td>$(23)m</td><td>$(0.16)</td><td>$0.29</td></tr>
+      <tr><td>FY2026 Q3（2026-04-03）</td><td>$5,950m</td><td class="pos">—</td><td>78.4%</td><td>$3,615m</td><td>$23.03</td><td>$23.41</td></tr>
+      <tr class="row-latest"><td><strong>FY2026 Q4（2026-07-03）</strong></td><td><strong>$8,965m</strong></td><td class="pos"><strong>+51%</strong></td><td><strong>84.6%</strong></td><td><strong>$6,903m</strong></td><td><strong>$43.97</strong></td><td><strong>$39.25</strong></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:var(--faint);">公司在本次搜索范围内未单独详细披露FY2026 Q1/Q2数据，故本报告仅呈现有公司直接披露口径支撑的Q3/Q4/FY2025 Q4三个季度数据，不做未经证实的中间季度估算。核心趋势清晰：Q3至Q4收入环比大幅上升，毛利率同步上升6.2个百分点，为NAND价格上涨在财务报表上最充分体现的阶段。</p>
+
+  <div class="callout c-warn">
+    <strong>FY2027 Q1毛利率指引区间基本涵盖Q4实际水平，不构成明确的环比下滑信号：</strong>公司FY2027 Q1指引毛利率区间为GAAP 83.0%–84.9%（Non-GAAP 83.0%–85.0%），区间上沿（84.9%）与Q4实际84.6%基本持平甚至略高。在电话会Q&A环节，有分析师提问"定价环比温和上涨，为何毛利率指引区间中值低于Q4实际值"，管理层回应称公司关注的是利润率的持久性（durability）而非单一季度的极致化，中80%区间的毛利率已是公允回报——这一回应更适合理解为管理层对长期定价理念的说明，而非对Q1毛利率将确定性下滑的直接确认。是否环比下降，仍需以FY2027 Q1实际披露数据为准。
+  </div>
+
+  <div class="callout c-good">
+    <strong>NBM协议是本季度最重要的结构性进展，但需准确区分其构成要素：</strong>自4月财报电话会宣布首批5份NBM协议以来，公司又新增5份协议（含3份新客户、2份现有协议扩展），<strong>合计10份协议，覆盖8家客户</strong>（协议数量与客户数量不同，部分客户签署了多份协议）。管理层披露：这些协议在floor pricing（底价保护）情形下的<strong>最低预期收入（minimum expected revenue）</strong>总额达$93.9bn，覆盖FY2027逾50%、FY2028约三分之二的<strong>bit出货量</strong>（而非收入的确定百分比）。其中，具备正式金融担保（financial guarantees）性质的部分为$16.5bn，与$93.9bn的"floor pricing下最低预期收入"是不同概念——后者是基于底价假设的预期值，并非对该等收入的无条件担保。据部分卖方测算，相关协议底价约为每GB $0.29，与Q4实际ASP大致相当，这意味着底价本身已设定在历史高位，而非传统意义上具有显著缓冲空间的"保底价格"。
+  </div>
+</section>
+
+<!-- 05 管理层 -->
+<section id="mgmt" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">05</span><span class="sec-title">管理层电话会与投资者日洞察：从"周期商品"到"结构性平台"的叙事转型</span></div>
+
+  <div class="callout c-violet">
+    <strong>阅读须知：</strong>本节引语和前瞻性表述来自公司FY2026 Q4电话会（2026-08-05）及2026 Investor Day（2026-08-13）。所有长期目标均为管理层前瞻性陈述，公司在官方新闻稿中明确声明"这些目标基于多种估计和假设，受风险和不确定性影响，不应被视为对未来结果的必然指示"。
+  </div>
+
+  <h3 class="sub">① "AI本质上是存储密集型问题"——核心叙事定调</h3>
+  <blockquote>"AI is fundamentally a memory-centric storage-intensive problem."<cite>— David Goeckeler，Chairman and CEO，Q4 2026电话会</cite></blockquote>
+  <p>管理层将AI基础设施建设重新定义为存储问题而非单纯算力问题，这是Sandisk对自身在AI供应链中定位的核心论述。随着模型规模扩大、上下文长度延长、Agentic AI应用普及，管理层认为NAND需求将持续增长，且KV缓存（KV-cache）等新应用场景可能带来额外的结构性需求层——但管理层也承认这些新场景"高度依赖具体用例（use-case dependent）"，目前仍处于与客户共同探索阶段，尚未形成规模化的收入贡献。</p>
+
+  <h3 class="sub">② 2028–2030长期财务模型：结构性去周期化的核心主张</h3>
+  <table class="th-mid">
+    <thead><tr><th>指标</th><th>FY2028–2030目标（管理层）</th></tr></thead>
+    <tbody>
+      <tr><td>收入增长</td><td style="text-align:left">中高双位数（mid-to-high teens），与bit出货增长一致</td></tr>
+      <tr><td>Non-GAAP毛利率</td><td style="text-align:left">约80%</td></tr>
+      <tr><td>Non-GAAP营业利润率</td><td style="text-align:left">约75%</td></tr>
+      <tr><td>营业费用占收入比</td><td style="text-align:left">约5%</td></tr>
+      <tr><td>调整后自由现金流利润率</td><td style="text-align:left">约50%（扣除税、资本开支、营运资本后）</td></tr>
+      <tr><td>资本配置政策</td><td style="text-align:left">超额自由现金流100%返还股东</td></tr>
+    </tbody>
+  </table>
+  <p>这一模型的核心主张是：通过NBM多年期协议锁定定价和数量，Sandisk的收入和利润率将比历史周期更加平滑和可预测——这是一个重要的商业模式转型尝试，也确实可能降低部分交易性波动。需要审慎评估的是，80%毛利率和50%调整后FCF利润率目标本身就设定在历史周期顶部区间的水平，而非行业历史平均水平（历史平均毛利率区间大致为30–50%）。管理层的核心论点是"这次不一样"——AI驱动的需求结构性变化叠加供给纪律，使得高利润率具备可持续性；但正如行业格局章节所述，这一论点尚未经过完整的价格下行周期验证，NBM协议提供的实际下行保护力度也需要由履约、续约和floor条款的真实执行情况来证明，而非仅凭协议文本推定。</p>
+
+  <h3 class="sub">③ KV缓存与Agentic AI：尚处早期探索阶段的期权价值</h3>
+  <blockquote>"The KV cache opportunity continues to mature... it's very use case dependent. As AI models get bigger, context lengths get longer, and agentic AI multiplies demand, the requirements for NAND continue to grow."<cite>— David Goeckeler，回答Citi分析师提问，Q4 2026电话会</cite></blockquote>
+  <p>KV缓存（用于存储AI推理过程中的中间注意力状态，以避免重复计算）被管理层视为NAND在AI推理阶段的潜在新增用例，但目前仍处于与客户共同探索、尚未形成标准化产品和规模化收入的阶段。这与公司同时披露的High Bandwidth Flash（HBF，与SK海力士联合开发，目标2026下半年提供首批样品、2027年初提供首批AI推理设备样品）共同构成了公司面向未来的期权价值，但均不应计入近期（FY2027–2028）财务模型的确定性收入。</p>
+
+  <h3 class="sub">④ 关于行业规模增长与自身增速的关键问答</h3>
+  <blockquote>"You have an industry forecast of the NAND industry growing to $500 billion in '27 from $300 billion in '26... is the assumption that there is going to be any price normalization... and would you outgrow, undergrow, or grow in line with the market?"<cite>— Wamsi Mohan，分析师提问，Q4 2026电话会</cite></blockquote>
+  <blockquote>"We want to grow with the market. We plan to grow with the market... we're transitioning our business into a more predictable business where we're working on pricing and predictability and duration."<cite>— David Goeckeler，回应</cite></blockquote>
+  <p>这段问答值得特别关注：分析师明确追问是否会出现"价格正常化"（即价格回落），管理层的回应聚焦于"与市场同步增长"和业务模式的可预测性转型，<strong>未对价格是否会正常化给出量化的直接答复</strong>。最严谨的解读是：管理层未量化其价格正常化假设，这既不能证明价格不会回落，也不能证明公司内部预期价格将下行——这一细节应被客观陈述，而非过度解读为管理层"回避"或"暗示"某一特定结论。</p>
+
+  <h3 class="sub">⑤ 消费级业务：结构性稳定但非增长引擎</h3>
+  <p>关于Consumer业务Q4环比下降32%，管理层解释主要是价格上涨对该细分市场总需求的抑制效应，而非公司份额流失，并强调"消费级市场不会以交易性市场的节奏波动"。这一解释具有一定合理性（消费级需求价格弹性通常高于企业级刚性需求），但截至本报告完成时，公司未提供独立的消费级市场份额数据佐证这一论断。</p>
+</section>
+
+<!-- 06 现金流 -->
+<section id="cashflow" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">06</span><span class="sec-title">现金流与资产负债表：净现金转正，完整营运资本桥呈现现金质量全貌</span></div>
+  <p>Sandisk的资产负债表在过去一年发生了根本性转变：现金从FY2025 Q4末的$1,481m增长至FY2026 Q4末的$4,762m；长期债务从$1,829m降至$0（FY2026全年偿还$1,900m债务）；净现金头寸由此转为显著正值。同时，公司在Q4进行了大规模股票回购（$4,524m），并将回购授权扩大至总计$15.5bn剩余额度。</p>
+
+  <table class="th-dark">
+    <thead><tr><th>现金流（USD m）</th><th>FY2025全年</th><th>FY2026 Q3</th><th>FY2026 Q4</th><th>FY2026全年</th></tr></thead>
+    <tbody>
+      <tr><td>经营活动现金流（CFO）</td><td>$84</td><td>$3,038</td><td>$7,126</td><td>$11,671</td></tr>
+      <tr><td>资本支出（PP&amp;E净额）</td><td class="neg">$(204)</td><td class="neg">$(45)</td><td class="neg">$(43)</td><td class="neg">$(177)</td></tr>
+      <tr class="row-sub"><td><strong>自由现金流（FCF，公司定义）</strong></td><td class="neg"><strong>$(120)</strong></td><td><strong>$2,993</strong></td><td><strong>$7,083</strong></td><td><strong>$11,494</strong></td></tr>
+      <tr><td>Flash Ventures相关活动净额</td><td>$358</td><td>$(38)</td><td>$(110)</td><td>$(275)</td></tr>
+      <tr><td>NBM预付款/押金净影响</td><td>$0</td><td>$(538)</td><td>$(1,938)</td><td>$(2,476)</td></tr>
+      <tr class="row-sub"><td><strong>调整后自由现金流（Adjusted FCF，公司定义）</strong></td><td><strong>$238</strong></td><td><strong>$2,417</strong></td><td><strong>$5,035</strong></td><td><strong>$8,743</strong></td></tr>
+      <tr><td>调整后FCF利润率</td><td>3.2%</td><td>40.6%</td><td>56.2%</td><td>43.2%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-warn">
+    <strong>完整营运资本桥：CFO的构成远不止NBM预付款一项。</strong>公司定义的"Free Cash Flow"（CFO减资本支出）与"Adjusted Free Cash Flow"（进一步剔除Flash Ventures相关现金流和NBM预付款/押金影响）之间存在差异，但要完整理解FY2026 CFO $11,671m的构成，需要看到全部主要营运资本变动项，而不仅是NBM预付款：
+    <br><br>
+    <strong>现金流入项（除净利润和非现金项目外）：</strong>退款负债（Refund Liabilities）增加$1,374m；合同负债（Contract Liabilities）增加$1,217m；应付所得税增加约$1,370m；NBM相关预付款/押金流入$2,476m（已被公司在Adjusted FCF中主动剔除）。<br>
+    <strong>现金流出项（占用现金）：</strong>应收账款增加$3,640m；存货增加$619m。<br><br>
+    公司主动将NBM预付款从"调整后FCF"中剔除是审慎且值得认可的会计透明度实践，但退款负债、合同负债、应付所得税等其他大额营运资本项目同样对当期CFO产生了重要影响，其中部分（如应付所得税）具有明确的时点性质（不代表永久性经营现金创造能力），投资者在评估FY2026现金流质量时，应将这些项目作为一个整体的营运资本变化来看待，而非仅聚焦于NBM预付款。
+  </div>
+
+  <table class="th-light">
+    <thead><tr><th>资产负债表关键项（USD m）</th><th>2025-06-27</th><th>2026-07-03</th><th>变化</th></tr></thead>
+    <tbody>
+      <tr><td>现金及等价物</td><td style="text-align:right">$1,481</td><td style="text-align:right">$4,762</td><td class="pos">+$3,281</td></tr>
+      <tr><td>应收账款</td><td style="text-align:right">$1,068</td><td style="text-align:right">$4,708</td><td class="pos">+$3,640</td></tr>
+      <tr><td>存货</td><td style="text-align:right">$2,079</td><td style="text-align:right">$2,698</td><td class="pos">+$619</td></tr>
+      <tr><td>长期债务</td><td style="text-align:right">$1,829</td><td style="text-align:right">$0</td><td class="pos">-$1,829（已全部偿还）</td></tr>
+      <tr><td>退款负债（Refund Liabilities）</td><td style="text-align:right">$126</td><td style="text-align:right">$1,500</td><td class="neg">+$1,374</td></tr>
+      <tr><td>合同负债（Contract Liabilities）</td><td style="text-align:right">$25</td><td style="text-align:right">$849（+非流动$393）</td><td class="neg">+$1,217</td></tr>
+      <tr><td>库存股（Treasury Stock）</td><td style="text-align:right">$0</td><td style="text-align:right">$(4,537)</td><td class="neg">大规模回购启动</td></tr>
+      <tr><td>股东权益总额</td><td style="text-align:right">$9,216</td><td style="text-align:right">$15,736</td><td class="pos">+$6,520</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-good">
+    <strong>应收账款绝对额上升符合收入规模扩张的正常规律，同口径分析未发现账期拉长迹象。</strong>应收账款从$1,068m增至$4,708m（+341%），单看绝对增速快于收入增速（FY2026全年+175%）容易引发"账期拉长"的直觉判断，但这一判断需要用一致的口径核实：以期末应收账款除以当季收入作为简单代理，FY2025 Q4该比例为56.2%（$1,068m/$1,901m），FY2026 Q4为52.5%（$4,708m/$8,965m）——<strong>比例实际下降，而非上升</strong>。按91天季度近似换算的期末应收账款天数（DSO代理），FY2025 Q4约51.1天，FY2026 Q4约47.8天，同样呈改善而非恶化趋势。<br><br>
+    这意味着，应收账款绝对额的大幅增长主要是收入规模扩张4.7倍（Q4同比+372%）的直接结果，而非信用政策放松或客户付款能力恶化的信号。当然，更精确的DSO计算（基于平均应收账款而非期末余额）、账龄结构和坏账准备情况，仍需等待FY2026 10-K正式披露后进一步核实，但现有数据不支持"账期存在拉长迹象"这一结论。
+  </div>
+
+  <div class="callout">
+    <strong>资产负债表实质性改善是可验证的正面事实：</strong>零债务、净现金约$47.6亿，加上$15.5bn的巨额回购授权（约占当前市值约6.4%），为公司提供了充分的财务弹性和抗周期能力，这与FY2023–2024周期底部时（彼时西部数据整体承受高杠杆压力）形成鲜明对比。即使NAND价格出现均值回归，公司当前的资产负债表结构也具备较强的抗冲击能力。
+  </div>
+</section>
+
+<!-- 07 护城河 -->
+<section id="moat" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">07</span><span class="sec-title">护城河评估：技术积累与客户关系构筑的中等强度壁垒</span></div>
+  <div class="moat-grid">
+    <div class="moat-card"><h4>🔬 37年NAND技术积累与专利组合</h4><p>Sandisk拥有超过37年的NAND研发历史和数百亿美元的累计研发投入（管理层语），BiCS系列3D NAND架构（现已发展至BiCS10）技术代际领先。浮栅EEPROM等底层专利虽已过保护期，但持续的工艺代际迭代（层数、密度）本身构成动态技术壁垒——落后一代技术在成本曲线上处于明显劣势。</p></div>
+    <div class="moat-card"><h4>🤝 Kioxia合资制造关系（25年+）</h4><p>与Kioxia的Yokkaichi/Kitakami合资制造安排是行业内独一无二的深度绑定关系，已延长至2034年。这一关系既是护城河（稳定获得先进制程产能，共担资本开支压力），也是潜在脆弱点——本质上是与竞争对手共享部分产能所有权的独特商业安排，在整个半导体行业中较为罕见。</p></div>
+    <div class="moat-card"><h4>📜 New Business Model：转向长期合约锁定</h4><p>10份NBM协议、8家客户，floor pricing下最低预期收入达$93.9bn（其中$16.5bn具备正式金融担保），覆盖FY2027逾50%、FY2028约三分之二bit出货量，是公司主动构建的新型护城河——试图将客户关系从"现货交易"转变为"战略伙伴"。若这一模式成功推广至更大比例的客户基础，将显著提升收入可预测性和客户转换成本。但该模式尚处早期，多年期协议在价格大幅下行情景下的真实约束力和执行效果，仍待观察。</p></div>
+    <div class="moat-card"><h4>🖥️ 系统级垂直整合能力</h4><p>公司拥有从芯片级设计、IP、前后端制造到系统工程的完整能力链条，这使其能够针对特定客户需求（如超大规模云服务商的定制化eSSD规格）提供端到端解决方案，而非仅出售标准化裸片，提升了客户粘性和产品附加值。</p></div>
+    <div class="moat-card"><h4>🏆 品牌与渠道优势（消费级）</h4><p>Sandisk品牌在消费级存储市场（存储卡、U盘）拥有极高的品牌认知度和零售渠道覆盖，这是数十年消费者心智积累的结果，为公司提供了一个波动性较低、现金流相对稳定的业务基石，尽管其增长贡献有限。</p></div>
+    <div class="moat-card"><h4>⚠️ 护城河的结构性局限</h4><p>与逻辑芯片（如台积电的制程领先）或存储控制器IP不同，NAND闪存本质上是一种规模化生产的大宗半导体产品，行业内五大厂商的核心技术路线（3D堆叠层数、TLC/QLC）差距并不悬殊。护城河更多体现在制造规模效应、客户关系深度和资本纪律，而非难以复制的独占技术。三星、SK海力士等竞争对手拥有自主晶圆厂和更强的资本实力，理论上具备更快追赶的能力。</p></div>
+  </div>
+</section>
+
+<!-- 08 估值 -->
+<section id="valuation" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">08</span><span class="sec-title">估值分析：统一价格日与股数口径下的可复算三情景框架</span></div>
+
+  <div class="callout c-warn">
+    <strong>估值方法论说明：</strong>Sandisk当前面临的估值挑战是审慎分析中最需要透明处理的部分——TTM GAAP EPS $73.76大部分产生于最近两个季度（Q3+Q4贡献约$67.00，占全年约90.8%），意味着当前TTM市盈率本质上是"年化最新季度盈利能力"的近似值，而非跨越完整周期的稳健盈利水平。本报告在以下估值计算中，统一使用<strong>2026年8月14日（最近正式交易日）官方收盘价$1,641.11</strong>，并明确区分点时已发行股数（149m，2026-07-03）与前瞻性每股价值计算所用的稀释加权股数（155m，与公司FY2026全年稀释口径及FY2027 Q1指引假设一致），避免口径混用。
+  </div>
+
+  <h3 class="sub">当前市场数据（基准日：2026-08-14，最近正式交易日收盘）</h3>
+  <table class="th-light">
+    <thead><tr><th>指标</th><th>数据</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>参考股价</td><td style="text-align:right">$1,641.11</td><td>2026-08-14官方收盘（LSEG/公司IR历史价格页）；52周区间$43.20–$2,354.39</td></tr>
+      <tr><td>期末已发行股数（点时）</td><td style="text-align:right">149m</td><td>2026-07-03，公司资产负债表披露</td></tr>
+      <tr><td>FY2026稀释加权平均股数</td><td style="text-align:right">155m</td><td>公司全年口径；Q4单季稀释加权平均为157m</td></tr>
+      <tr><td>市值（按已发行股数）</td><td style="text-align:right">约$244.5bn</td><td>$1,641.11×149m</td></tr>
+      <tr><td>净现金（现金-总债务）</td><td style="text-align:right">约$4.76bn</td><td>零债务；2026-07-03</td></tr>
+      <tr><td>非经营性可市场化证券及应收款</td><td style="text-align:right">约$2.46bn</td><td>marketable equity securities约$1.78bn + Flash Ventures相关notes receivable/investments约$0.68bn（估算，供EV调整参考）</td></tr>
+      <tr><td>企业价值（EV，保守口径，仅扣净现金）</td><td style="text-align:right">约$239.7bn</td><td>市值-净现金；未进一步扣除非经营性证券以保持保守</td></tr>
+      <tr><td>TTM GAAP净利润</td><td style="text-align:right">$11,433m</td><td>FY2026全年，未经审计</td></tr>
+      <tr><td>TTM GAAP EPS（按155m稀释股数）</td><td style="text-align:right">$73.76</td><td>公司披露口径</td></tr>
+      <tr><td>当前TTM GAAP P/E</td><td style="text-align:right"><strong>约22.25x</strong></td><td>$1,641.11÷$73.76</td></tr>
+      <tr><td>TTM调整后FCF</td><td style="text-align:right">$8,743m</td><td>调整后FCF收益率：$8,743m÷$244.5bn≈3.58%</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub">三情景估值（FY2028E，对应管理层长期模型窗口起点）</h3>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">情景设计逻辑：管理层FY2028–2030目标本身即代表"官方乐观情景"的锚点，本报告将其作为基准情景的参照上限，同时构建一个反映NAND历史周期规律及TrendForce 2027年下半年供给转松观点的下行情景，以及一个"部分实现"的中间基准情景。桥接公式：每股价值=（FY2028E净利润÷155m稀释股数）×目标P/E，股数口径与TTM P/E计算保持一致。</p>
+
+  <table class="th-light">
+    <thead><tr><th>推导项</th><th>悲观（25%）</th><th>基准（50%）</th><th>乐观/管理层目标情景（25%）</th></tr></thead>
+    <tbody>
+      <tr class="row-bear"><td><strong>核心假设</strong></td><td>2027年下半年供给转松（呼应TrendForce观点），NAND价格显著均值回归，NBM协议部分未能完全执行或续约困难</td><td>价格温和回落但维持高于历史均值，NBM协议提供部分下行保护，收入增长放缓至中个位数至低双位数</td><td>管理层长期模型基本兑现，AI存储需求持续超预期，供给纪律维持，2027年下半年供给未如TrendForce预期转松</td></tr>
+      <tr class="row-bear"><td><strong>FY2028E收入</strong></td><td>$19,000m（低于FY2026）</td><td>$26,000m</td><td>$34,000m（对应中高双位数复合增长）</td></tr>
+      <tr class="row-bear"><td><strong>Non-GAAP毛利率</strong></td><td>45%（回归历史周期中段）</td><td>60%</td><td>80%（管理层目标）</td></tr>
+      <tr class="row-bear"><td><strong>Non-GAAP净利率</strong></td><td>18%</td><td>35%</td><td>58%（对应约75%营业利润率减税后）</td></tr>
+      <tr class="row-bear"><td><strong>FY2028E Non-GAAP净利润</strong></td><td>$3,420m</td><td>$9,100m</td><td>$19,720m</td></tr>
+      <tr class="row-bear"><td><strong>FY2028E每股收益（÷155m股）</strong></td><td>$22.06</td><td>$58.71</td><td>$127.23</td></tr>
+      <tr class="row-bear"><td><strong>目标P/E</strong></td><td>14x（周期底部倍数）</td><td>20x</td><td>26x（对标高质量成长半导体股）</td></tr>
+      <tr><td><strong>复算每股价值</strong></td><td class="p-big row-bear">$309</td><td class="p-big row-base">$1,174</td><td class="p-big row-bull">$3,308</td></tr>
+      <tr class="row-wtd"><td><strong>概率加权每股价值</strong></td><td colspan="3" style="text-align:center">$309×25%+$1,174×50%+$3,308×25% = $77.3+$587.0+$827.0 = <span class="p-big">$1,491</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-warn">
+    <strong>估值区间的极端宽度本身就是核心结论，参考价值以概率加权结果为准，不做额外上调：</strong>三情景每股价值从$309到$3,308，跨度超过10倍，直接反映了NAND周期性的固有特征——在需求和价格的双重不确定性下，即使是理性的概率加权框架也无法收窄至一个具有精确指导意义的窄区间。<br><br>
+    概率加权值约$1,491，低于基准日股价$1,641.11（约-9.2%）。本报告不对这一概率加权结果做任何未经解释的上调，直接以其作为参考目标值——这与本报告"中性偏谨慎"的评级方向一致。由于极端的情景分散度，任何权重假设的微小调整（例如将乐观情景权重从25%上调至35%）都会显著改变结论，这正是本报告将评级设定为"中性"而非给出高置信度精确目标价的核心原因：<strong>在如此宽的分布下，精确点估计的置信度本身就很低，诚实的分析应承认这种不确定性，而非用虚假精确度掩盖它。</strong>投资者应重点关注情景假设本身（尤其是2027年下半年供给情景的实际演变）而非单一数字。
+  </div>
+
+  <h3 class="sub">同业估值参照（数据日期2026-08-14；预测为分析师独立估算）</h3>
+  <table class="th-dark">
+    <thead><tr><th>公司</th><th>市值</th><th>TTM P/E</th><th>TTM毛利率</th><th>净现金/净债务</th><th>NAND占比</th></tr></thead>
+    <tbody>
+      <tr class="peer-sndk"><td>Sandisk（SNDK）</td><td>约$244.5bn</td><td class="hot">约22.3x</td><td class="hot">84.6%（Q4）</td><td class="pos">净现金$4.76bn</td><td>100%</td></tr>
+      <tr><td>美光科技（MU）</td><td>约$180bn</td><td>约20x</td><td>约45–50%</td><td>净现金为主</td><td>约30–35%（DRAM为主）</td></tr>
+      <tr><td>三星电子（005930.KS）</td><td>约$450bn+（综合业务）</td><td>约14–16x</td><td>综合毛利率不可比</td><td>净现金充裕</td><td>约10–15%（存储为多元业务之一）</td></tr>
+      <tr><td>铠侠（Kioxia，285A.T）</td><td>约$20–25bn</td><td>约15–20x</td><td>约50–60%</td><td>中等杠杆</td><td>100%</td></tr>
+      <tr><td>SK海力士（000660.KS）</td><td>约$150bn+</td><td>约10–12x</td><td>约50%+（含HBM）</td><td>中等杠杆</td><td>约40%（NAND部分，含DRAM/HBM）</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:var(--faint);">注：非美股同业（三星、铠侠、SK海力士）市值和倍数为分析师基于公开信息的粗略估算，汇率和会计准则差异可能导致可比性有限，仅供方向性参考。Sandisk作为"纯NAND标的"且当前毛利率显著高于同业，其相对溢价部分反映了产品组合差异（企业级SSD占比更高）和市场对NBM模式的定价，但也可能反映短期动量效应。</p>
+</section>
+
+<!-- 09 风险 -->
+<section id="risks" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">09</span><span class="sec-title">风险矩阵：周期性、估值弹性与合资依赖的多维考量</span></div>
+  <table class="th-dark" style="font-size:13px;">
+    <thead><tr><th style="width:16%">风险</th><th style="width:7%">级别</th><th style="width:35%">当前状态</th><th style="width:28%">对估值影响</th><th style="width:14%">缓解因素</th></tr></thead>
+    <tbody>
+      <tr class="row-risk-h"><td><strong>NAND价格均值回归（2027年下半年供给转松情景）</strong></td><td><span class="pill pill-h">高</span></td><td>84.6%毛利率处于行业历史极高位，尚未经历完整下行周期检验。第三方行业机构TrendForce预计2027年下半年随工艺迁移放量、新增产能爬坡及消费电子需求持续疲弱，供需平衡可能转向更宽松方向。这一情景与管理层"结构性去周期化"的乐观叙事方向相反，两者均有一定依据，需要同等重视。</td><td>悲观情景（25%概率）对应每股$309，较基准日股价潜在下行超80%；即使部分回归也将大幅压缩当前估值倍数基础。</td><td>NBM协议提供部分底价保护（但底价本身处于历史高位）；零债务资产负债表提供抗冲击缓冲</td></tr>
+      <tr class="row-risk-h"><td><strong>估值倍数与股价动量的自我强化</strong></td><td><span class="pill pill-h">高</span></td><td>股价过去12个月上涨超3,000%，波动率极高。当前价格已从6月高点$2,354回撤逾30%后再度反弹，显示市场情绪本身是价格的重要驱动因素，而非仅由基本面主导。</td><td>若市场情绪逆转（如宏观流动性收紧、AI资本支出预期降温），高波动特性可能导致股价跌幅显著超过基本面恶化幅度。</td><td>公司基本面改善是真实的，非纯粹叙事驱动；机构持仓和分析师覆盖趋于成熟</td></tr>
+      <tr class="row-risk-m"><td><strong>NBM协议的真实约束力尚未经历下行周期检验</strong></td><td><span class="pill pill-m">中</span></td><td>10份协议、8家客户的floor pricing最低预期收入$93.9bn（其中仅$16.5bn具正式金融担保），在极端价格下行情景中的实际执行力（客户是否寻求重新谈判、违约成本高低）未经历史验证。多年期协议在半导体行业历史上曾出现被重新协商或部分违约的先例（如DRAM/NAND现货价格暴跌时期）。</td><td>若NBM协议保护力度弱于预期，基准情景的收入可预测性假设需要下修，影响中性情景的估值锚点。</td><td>协议已从5份扩展至10份，客户主动寻求更多供应也是正面信号；管理层强调"selective, long-duration agreements with strategic buyers"</td></tr>
+      <tr class="row-risk-m"><td><strong>Kioxia合资关系的执行与治理风险</strong></td><td><span class="pill pill-m">中</span></td><td>Sandisk自身不运营独立晶圆厂，NAND产能100%依赖与Kioxia的Yokkaichi/Kitakami合资安排。任何双方在资本开支节奏、技术路线选择、产能分配上的分歧，均可能影响Sandisk的供给能力。2026年1月续约至2034年缓解了短期终止风险，但长期治理协调仍是结构性依赖。</td><td>若合资关系出现摩擦或Kioxia资本开支决策不同步，可能限制Sandisk承接NBM订单的产能弹性。</td><td>25年+合作历史，双方技术路线高度协同（BiCS10同步投产）；已延长至2034年</td></tr>
+      <tr class="row-risk-m"><td><strong>二级市场股权供给（WDC剩余持股）</strong></td><td><span class="pill pill-m">中</span></td><td>西部数据于2026年2月通过S-3ASR注册转售其持有的约751.3万股Sandisk普通股（约占当前已发行股数的5%）。这部分股份的后续实际处置节奏和规模，构成潜在的二级市场供给压力，尤其是在当前股价大幅上涨、西部数据具备较强获利了结动机的背景下。</td><td>若集中减持，可能对股价形成阶段性压力，尤其在流动性较薄弱的时段。</td><td>注册转售不等于立即或全部出售；具体处置节奏由西部数据自主决定，市场可提前消化预期</td></tr>
+      <tr class="row-risk-m"><td><strong>财务数据审计状态</strong></td><td><span class="pill pill-m">中</span></td><td>截至本报告完成时，FY2026 Form 10-K尚未提交，公司新闻稿中的FY2026 Q4及全年财务数据均为未经审计口径。分拆后作为独立公司的内部控制体系和审计流程仍处于相对早期阶段，正式10-K可能对已披露数字进行调整。</td><td>若审计后数字出现重大调整，可能影响TTM P/E等估值指标的准确性。</td><td>公司为纳斯达克上市公司，需遵守SEC信息披露和审计要求；历史上分拆后企业的审计调整通常幅度有限</td></tr>
+      <tr class="row-risk-l"><td><strong>竞争对手产能扩张追赶</strong></td><td><span class="pill pill-l">低</span></td><td>三星、SK海力士拥有自主晶圆厂和更强资本实力，理论上可通过加速扩产追赶Sandisk在企业级SSD市场的份额提升。但NAND扩产周期通常需要2–3年，短期内竞争格局变化有限。</td><td>中长期（2028年以后）若竞争对手大幅扩产，可能压制价格和份额，影响乐观情景的实现概率。</td><td>Sandisk的BiCS技术代际优势和客户关系粘性提供一定缓冲期</td></tr>
+      <tr class="row-risk-l"><td><strong>上行反证：需求持续超预期的可能性</strong></td><td><span class="pill pill-l">低</span></td><td>作为对下行风险的平衡，需承认若AI推理规模化、KV缓存等新用例的实际存储吸收量显著超出当前预期，而新增供给爬坡不及预期（如先进制程良率不达标），价格和利润率上行周期也可能延续更久，即乐观情景的实现概率可能被低估。</td><td>若此情景兑现，乐观情景（25%概率，每股$3,308）的权重理应上调，当前估值将显得更为合理甚至保守。</td><td>数据中心资本开支持续增长的宏观趋势提供一定支撑</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 10 监测 -->
+<section id="monitor" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">10</span><span class="sec-title">关键监测指标：验证周期方向的核心数据点</span></div>
+  <div class="two-col">
+    <div class="two-card">
+      <h4>支持评级上调（转向积极）的信号</h4>
+      <ul>
+        <li><span class="b-up">↑</span>FY2027 Q1实际毛利率落在指引区间上半段（83.9%以上），验证利润率韧性</li>
+        <li><span class="b-up">↑</span>NBM协议数量、客户数或最低预期收入总额进一步扩大，且金融担保比例（当前$16.5bn/$93.9bn）同步提升</li>
+        <li><span class="b-up">↑</span>应收账款/收入比例（DSO代理）保持当前改善趋势或进一步下降，排除现金转化质量恶化风险</li>
+        <li><span class="b-up">↑</span>KV缓存或HBF等新场景出现首个可量化的商业化收入贡献</li>
+        <li><span class="b-up">↑</span>NAND现货价格在2027年上半年继续上涨或维持高位，2027年下半年供给转松的行业预期未兑现</li>
+      </ul>
+    </div>
+    <div class="two-card">
+      <h4>触发评级下调（转向谨慎/卖出）的信号</h4>
+      <ul>
+        <li><span class="b-down">↓</span>FY2027 Q1毛利率低于83.0%指引下限，或后续季度毛利率环比持续下降超过200bps</li>
+        <li><span class="b-down">↓</span>NAND现货价格出现连续两个月以上的下跌，尤其是若在2027年下半年提前显现TrendForce预期的供给转松迹象</li>
+        <li><span class="b-down">↓</span>主要竞争对手（三星、SK海力士）宣布大幅扩产计划，威胁供给纪律</li>
+        <li><span class="b-down">↓</span>任何一份NBM协议出现客户寻求重新谈判、延期或违约的迹象</li>
+        <li><span class="b-down">↓</span>超大规模云服务商公开下修AI基础设施资本开支指引</li>
+        <li><span class="b-down">↓</span>西部数据加速处置其注册转售的约751.3万股，对股价形成明显压制</li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="sub">优先级排序（未来两个季度最重要的五个验证点）</h3>
+  <ol class="monitor-list">
+    <li><strong>FY2027 Q1实际毛利率 vs 指引区间（83.0%–84.9%）：</strong>这是验证Q4 84.6%是否为可持续水平还是短期峰值的最直接数据点。若实际值落在指引区间上沿甚至超越Q4水平，将强化"结构性去周期化"命题；若明显低于指引下限，则提示均值回归压力已经显现。</li>
+    <li><strong>NAND现货及合约价格走势（第三方数据，如TrendForce、DRAMeXchange）：</strong>由于NBM协议仅覆盖部分bit出货量，现货和合约价格的边际变化仍是判断整体供需平衡最敏感的先行指标，应保持季度乃至月度追踪，尤其关注2027年下半年是否出现TrendForce预期的供给转松信号。</li>
+    <li><strong>应收账款/收入比例及FY2026 10-K正式DSO数据：</strong>初步同口径分析显示该比例实际改善（56.2%→52.5%），但更精确的平均应收账款法DSO、账龄结构和坏账准备情况需等待FY2026 10-K正式披露后进一步核实。</li>
+    <li><strong>NBM协议新增数量、客户数与金融担保比例：</strong>管理层已从5份扩展至10份协议、8家客户，后续财报电话会中若继续新增协议且金融担保占比（当前约17.6%）同步提升，将强化收入可见度的可信度；反之若协议扩展停滞，需重新评估。</li>
+    <li><strong>超大规模云服务商（Microsoft、Google、Amazon、Meta等）资本开支指引：</strong>作为Datacenter收入的终端需求来源，主要云厂商的季度资本开支指引变化将直接影响市场对NAND需求持续性的预期，是宏观层面最重要的领先指标。</li>
+  </ol>
+</section>
+
+<div class="disclosure">
+  <strong>重要披露与方法论说明。</strong>
+  本报告由Snail-Bird Investment Research就Sandisk Corporation（NASDAQ: SNDK）独立撰写，为首次覆盖，不构成个性化投资建议或买卖邀约。鉴于标的股价呈现极端波动性（12个月涨幅超3,000%），本报告采用宽区间概率加权估值框架而非高置信度单点目标价，以诚实反映当前基本面和估值的不确定性水平。截至本报告完成时，FY2026 Form 10-K尚未提交，公司FY2026 Q4及全年财务数据均为公司自愿披露的未经审计口径，正式审计完成后相关数字可能调整。
+  <strong>数据来源：</strong>Sandisk Corporation FY2026 Q4财报新闻稿及财务报表（SEC EDGAR Form 8-K，2026-08-05）；FY2026 Q4电话会纪要（The Globe and Mail / The Motley Fool转录，2026-08-05）；2026 Investor Day新闻稿及长期财务模型（公司官网投资者关系页，2026-08-13）；NAND行业市场份额数据（TrendForce、行业机构数据经多方交叉核对，2025Q3–2026Q1区间）；NAND供需展望（TrendForce，2026-07-21发布）；Kioxia合资协议公告（公司新闻稿及Kioxia官网，2026-01-29）；西部数据S-3ASR转售注册（SEC EDGAR，2026-02-17）；历史沿革信息综合自公开来源（公司官方历史资料、西部数据2016/2025年SEC文件）；股价数据（公司官方历史价格查询页/LSEG数据源，2026-08-14官方收盘价）。
+  <strong>口径说明：</strong>Free Cash Flow为公司定义（经营活动现金流减资本支出）；Adjusted Free Cash Flow为FCF加Flash Ventures相关活动净额减NBM预付款/押金影响（公司定义）；企业价值（EV）=市值-净现金，本报告采取保守处理，未进一步扣除约$2.46bn的非经营性可市场化证券及应收款项，如扣除则EV和相应倍数会略低；估值计算统一使用155m稀释加权股数（与公司FY2026全年及FY2027 Q1指引口径一致），点时已发行股数149m仅用于市值计算；由于分拆时间较短（2025年2月），历史季度数据的完整可比性有限，本报告仅呈现有公司直接披露口径支撑的季度数据。
+  <strong>估值说明：</strong>三情景估值框架的输入假设均为分析师独立判断，不依赖任何卖方一致预期；情景权重（25%/50%/25%）反映分析师对NAND周期不确定性的主观评估，非精算或统计模型输出；鉴于情景间跨度超过10倍，本报告采用概率加权结果（约$1,491）作为参考价值，不做任何未经解释的额外上调，明确提示这一数字的置信区间较宽，投资者应重点关注情景假设本身而非单一数字的精确性。
+  <strong>利益冲突：</strong>Snail-Bird Investment声明目前对SNDK无持仓，本报告不受任何外部机构委托或赞助。
+  投资者应独立进行尽职调查，并咨询专业财务顾问后作出投资决定。本报告中的前瞻性陈述涉及重大不确定性，尤其是NAND行业历史周期性的存在及FY2026财务数据尚未经审计等因素，可能导致实际结果与预期有实质性差异。
+  © 2026 Snail-Bird Investment Research. 保留所有权利。
+</div>
+
+</div>
+</body>
+</html>
