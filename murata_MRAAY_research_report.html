@@ -1,684 +1,465 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>村田制作所 (MRAAY) 深度投研报告 — Snail-bird Investment</title>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Murata Manufacturing (MRAAY / 6981.T) — 投资分析更新 | Snail-Bird Investment</title>
 <style>
-:root {
-  --ink:#0d1117;--ink-2:#1c2533;--ink-3:#2d3f52;
-  --rule:#c8d4df;--rule-light:#e4ecf2;--page:#f7f9fb;--white:#ffffff;
-  --accent:#0046ad;--accent-2:#0062e0;--accent-light:#e8f0fb;
-  --gold:#b8860b;--gold-light:#fef9e7;
-  --red:#b91c1c;--red-light:#fef2f2;
-  --green:#166534;--green-light:#f0fdf4;
-  --amber:#92400e;--amber-light:#fffbeb;
-  --font-serif:'Libre Baskerville',Georgia,serif;
-  --font-sans:'IBM Plex Sans',system-ui,sans-serif;
-  --font-mono:'IBM Plex Mono',monospace;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;600;700&family=IBM+Plex+Serif:wght@400;600;700&display=swap');
+:root{
+  --ink:#14171c;--ink-2:#22262e;--ink-3:#343a45;--steel:#4a5261;--muted:#697181;--faint:#9aa2b0;
+  --rule:#dcd6c8;--paper:#faf7f0;--white:#ffffff;
+  --vermil:#c33d1f;--vermil-2:#e8562f;--vermil-bg:#fdece5;
+  --gold:#a8791f;--gold-bg:#fbf1de;
+  --green:#166b47;--green-bg:#e8f5ee;
+  --red:#b3261e;--red-bg:#fcecea;
+  --amber:#8a5a00;--amber-bg:#fdf3e0;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--font-sans);background:var(--page);color:var(--ink);font-size:13.5px;line-height:1.65}
-
-/* MASTHEAD */
-.mh{background:var(--ink);color:#fff;padding:0}
-.mh-top{height:3px;background:linear-gradient(90deg,var(--accent) 0%,#3b82f6 40%,var(--gold) 70%,#e53e3e 100%)}
-.mh-inner{max-width:1120px;margin:0 auto;padding:32px 48px 36px}
-.mh-brand{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.12)}
-.b-name{font-family:var(--font-serif);font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#60a5fa}
-.b-sub{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:1px;font-weight:300;margin-top:2px}
-.b-right{font-family:var(--font-mono);font-size:10.5px;color:rgba(255,255,255,.4);text-align:right;line-height:1.9}
-.ticker{font-family:var(--font-mono);font-size:11.5px;color:#60a5fa;letter-spacing:2px;margin-bottom:8px}
-.headline{font-family:var(--font-serif);font-size:27px;font-weight:700;line-height:1.22;color:#fff;max-width:820px;margin-bottom:10px}
-.deck{font-size:13px;color:rgba(255,255,255,.52);max-width:720px;line-height:1.65;margin-bottom:28px}
-
-/* RATING BAND */
-.rb{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.rc{background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:13px 15px}
-.rc.buy{background:rgba(22,101,52,.25);border-color:rgba(34,197,94,.3)}
-.rl{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:5px;font-weight:500}
-.rv{font-family:var(--font-serif);font-size:20px;font-weight:700;color:#fff;line-height:1}
-.rv.buy{color:#4ade80;font-size:24px}
-.rv.tp{color:#fbbf24}
-.rs{font-size:10px;color:rgba(255,255,255,.38);margin-top:3px}
-
-/* LAYOUT */
-.wrap{max-width:1120px;margin:0 auto;padding:36px 48px;display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start}
-.main{min-width:0} .aside{min-width:0}
-
-/* SECTION CARD */
-.card{background:var(--white);border:1px solid var(--rule);margin-bottom:22px;border-radius:2px;overflow:hidden;animation:rise .4s ease both}
-.card:nth-child(1){animation-delay:.04s}.card:nth-child(2){animation-delay:.08s}
-.card:nth-child(3){animation-delay:.12s}.card:nth-child(4){animation-delay:.16s}
-.card:nth-child(5){animation-delay:.20s}.card:nth-child(6){animation-delay:.24s}
-.card:nth-child(7){animation-delay:.28s}
-.ch{background:var(--ink);padding:9px 20px;display:flex;align-items:center;gap:10px}
-.cn{font-family:var(--font-mono);font-size:9.5px;color:#60a5fa;letter-spacing:1px}
-.ct{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.82);font-weight:500}
-.ctag{margin-left:auto;font-size:9px;padding:2px 8px;border-radius:2px;letter-spacing:.8px;font-weight:600;text-transform:uppercase}
-.ctag.buy{background:rgba(34,197,94,.15);color:#4ade80}
-.ctag.key{background:rgba(251,191,36,.15);color:#fbbf24}
-.cb{padding:20px 22px}
-
-/* THESIS */
-.ti{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--rule-light);align-items:flex-start}
-.ti:first-child{padding-top:0}.ti:last-child{border-bottom:none;padding-bottom:0}
-.tn{flex-shrink:0;width:22px;height:22px;background:var(--accent);color:#fff;font-family:var(--font-mono);font-size:9.5px;display:flex;align-items:center;justify-content:center;border-radius:2px;margin-top:1px}
-.tn.r{background:var(--red)}.tn.g{background:var(--green)}.tn.a{background:var(--amber)}
-.tl{font-size:12px;font-weight:600;color:var(--ink);margin-bottom:3px}
-.tl.g{color:var(--green)}.tl.a{color:var(--amber)}.tl.r{color:var(--red)}
-.tb{font-size:12.5px;color:var(--ink-3);line-height:1.65}
-.src{font-family:var(--font-mono);font-size:10px;color:#94a3b8;font-style:italic}
-
-/* CALLOUT */
-.co{border-left:3px solid var(--accent);background:var(--accent-light);padding:11px 14px;margin:11px 0;border-radius:0 2px 2px 0}
-.co.warn{background:var(--amber-light);border-left-color:var(--gold)}
-.co.risk{background:var(--red-light);border-left-color:var(--red)}
-.co.pos{background:var(--green-light);border-left-color:#16a34a}
-.co p{font-size:12.5px;line-height:1.6;margin:0;color:var(--ink-2)}
-.co strong{color:var(--ink)}
-
-/* ANALYSIS BLOCKS */
-.ab{margin-bottom:18px}.ab:last-child{margin-bottom:0}
-.ab h3{font-family:var(--font-serif);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid var(--accent);display:inline-block}
-.ab h3.r{border-bottom-color:var(--red);color:var(--red)}
-.ab h3.a{border-bottom-color:var(--gold);color:var(--amber)}
-.ab h3.g{border-bottom-color:#16a34a;color:var(--green)}
-.ab p{font-size:13px;color:var(--ink-3);line-height:1.72;margin-bottom:10px}
-.ab p:last-child{margin-bottom:0}
-
-/* TABLES */
-table{width:100%;border-collapse:collapse;font-size:12px}
-thead tr{background:var(--page);border-bottom:2px solid var(--ink)}
-th{padding:8px 11px;text-align:right;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-3);font-weight:600;font-family:var(--font-sans)}
-th:first-child{text-align:left}
-td{padding:8px 11px;text-align:right;border-bottom:1px solid var(--rule-light);color:var(--ink-2);font-family:var(--font-mono);font-size:11.5px}
-td:first-child{text-align:left;font-family:var(--font-sans);font-weight:500;font-size:12px;color:var(--ink)}
-tr:last-child td{border-bottom:none}
-.pos{color:var(--green);font-weight:600}.neg{color:var(--red);font-weight:600}.warn{color:var(--amber);font-weight:600}
-.row-total td{font-weight:700;background:var(--page);border-top:2px solid var(--ink);color:var(--ink);font-family:var(--font-mono)}
-.row-total td:first-child{font-family:var(--font-sans)}
-
-/* SCENARIO */
-.sg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid var(--rule);border-radius:2px;overflow:hidden;margin-top:14px}
-.sc{padding:15px 14px;border-right:1px solid var(--rule)}
-.sc:last-child{border-right:none}
-.sc.base{background:var(--accent-light);border-left:2px solid var(--accent);border-right:2px solid var(--accent)}
-.sl{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-bottom:6px}
-.sl.bear{color:var(--red)}.sl.base{color:var(--accent)}.sl.bull{color:var(--green)}
-.sv{font-family:var(--font-serif);font-size:26px;font-weight:700;line-height:1;margin-bottom:5px}
-.sv.bear{color:var(--red)}.sv.base{color:var(--accent)}.sv.bull{color:var(--green)}
-.sp{font-family:var(--font-mono);font-size:10.5px;color:#64748b;margin-bottom:8px}
-.st{font-size:11px;color:var(--ink-3);line-height:1.55}
-
-/* RISK */
-.ri{display:grid;grid-template-columns:24px 1fr auto;gap:11px;align-items:start;padding:11px 0;border-bottom:1px solid var(--rule-light)}
-.ri:last-child{border-bottom:none}
-.ri-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;margin-top:1px}
-.ri-icon.h{background:#fee2e2;color:var(--red)}.ri-icon.m{background:#fef3c7;color:var(--amber)}
-.ri h4{font-size:12px;font-weight:600;color:var(--ink);margin-bottom:2px}
-.ri p{font-size:11.5px;color:#64748b;line-height:1.5;margin:0}
-.rsev{font-family:var(--font-mono);font-size:9.5px;font-weight:600;padding:2px 7px;border-radius:2px;white-space:nowrap}
-.rsev.h{background:#fee2e2;color:var(--red)}.rsev.m{background:#fef3c7;color:var(--amber)}
-
-/* SIDEBAR */
-.ac{background:var(--white);border:1px solid var(--rule);margin-bottom:14px;border-radius:2px;overflow:hidden;animation:rise .4s ease .3s both}
-.ach{background:var(--ink-2);padding:8px 14px;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);font-weight:600}
-.ach.g{background:var(--green)}.ach.a{background:var(--amber);color:#fff}
-.acb{padding:13px 14px}
-.mr{display:flex;justify-content:space-between;align-items:baseline;padding:5.5px 0;border-bottom:1px solid var(--rule-light);gap:6px}
-.mr:last-child{border-bottom:none}
-.mn{font-size:11px;color:#64748b;flex:1}
-.mv{font-family:var(--font-mono);font-size:11.5px;font-weight:500;color:var(--ink);text-align:right}
-.mv.g{color:var(--green)}.mv.r{color:var(--red)}.mv.a{color:var(--amber)}.mv.b{color:var(--accent)}
-
-/* BUY / TP BOX */
-.buy-box{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1.5px solid #16a34a;border-radius:3px;padding:14px;text-align:center;margin-bottom:12px}
-.buy-r{font-family:var(--font-serif);font-size:32px;font-weight:700;color:var(--green);line-height:1}
-.buy-s{font-size:10.5px;color:#166534;margin-top:3px}
-.tp-box{background:linear-gradient(135deg,#fefce8,#fef9c3);border:1.5px solid var(--gold);border-radius:3px;padding:13px;text-align:center;margin-bottom:12px}
-.tp-l{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:4px}
-.tp-v{font-family:var(--font-serif);font-size:36px;font-weight:700;color:var(--amber);line-height:1}
-.tp-s{font-size:10.5px;color:#92400e;margin-top:3px}
-
-/* PROGRESS */
-.pbw{margin-bottom:10px}
-.pbl{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink-3);margin-bottom:3px;font-weight:500}
-.pbt{height:5px;background:var(--rule-light);border-radius:3px;overflow:hidden}
-.pbf{height:100%;border-radius:3px}
-.pbf.b{background:linear-gradient(90deg,var(--accent),#60a5fa)}
-.pbf.g{background:var(--green)}.pbf.a{background:var(--gold)}
-
-/* PEER */
-.pr{display:grid;grid-template-columns:1fr auto auto auto;gap:8px;padding:6px 0;border-bottom:1px solid var(--rule-light);align-items:center}
-.pr:last-child{border-bottom:none}.pr.hdr{border-bottom:2px solid var(--ink);padding-bottom:5px}
-.pn{font-size:11.5px;font-weight:500}.pn.mi{color:var(--accent);font-weight:700}
-.pm{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-3);text-align:right}
-.ph{font-size:9.5px;letter-spacing:.5px;color:#94a3b8;font-weight:600;text-align:right}
-
-/* MISC */
-.sotp-note{background:var(--accent-light);border:1px solid #bfdbfe;border-radius:2px;padding:11px 14px;margin-top:13px;font-size:12px;color:var(--ink-2);line-height:1.6}
-.footnote{font-family:var(--font-mono);font-size:10px;color:#94a3b8;margin-top:12px;padding-top:10px;border-top:1px solid var(--rule-light)}
-.divider{height:1px;background:var(--rule-light);margin:16px 0}
-.disc{max-width:1120px;margin:0 auto;padding:12px 48px 36px;border-top:1px solid var(--rule)}
-.disc-inner{background:var(--white);border:1px solid var(--rule);padding:14px 18px;border-radius:2px}
-.disc-inner p{font-size:10.5px;color:#94a3b8;line-height:1.6;margin-bottom:5px}
-.disc-inner p:last-child{margin-bottom:0}
-
-@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:900px){
-  .mh-inner{padding:22px 20px 26px}
-  .wrap{grid-template-columns:1fr;padding:18px}
-  .rb{grid-template-columns:repeat(3,1fr)}
-  .disc{padding:12px 18px 26px}
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+.masthead{background:var(--ink);position:relative;overflow:hidden;}
+.masthead::before{content:'';position:absolute;inset:0;
+  background-image:
+    repeating-radial-gradient(circle at 20% 30%, rgba(200,61,31,.06) 0px, rgba(200,61,31,.06) 1px, transparent 1px, transparent 34px);
+  pointer-events:none;}
+.masthead::after{content:'';position:absolute;top:0;right:0;width:420px;height:100%;
+  background:linear-gradient(125deg,transparent 45%,rgba(200,61,31,.14) 100%);pointer-events:none;}
+.masthead-inner{max-width:1160px;margin:0 auto;padding:48px 56px 44px;position:relative;z-index:1;}
+.brand-row{display:flex;align-items:center;gap:10px;margin-bottom:38px;}
+.brand-mark{width:32px;height:32px;border:1.5px solid var(--vermil-2);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:var(--vermil-2);flex-shrink:0;}
+.brand-text{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.38);}
+.masthead-type{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--vermil-2);margin-bottom:10px;}
+.masthead-company{display:flex;align-items:baseline;gap:16px;margin-bottom:4px;flex-wrap:wrap;}
+.company-name{font-family:'IBM Plex Serif',serif;font-size:34px;font-weight:700;color:var(--white);line-height:1;}
+.ticker-chip{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;background:var(--vermil);color:var(--white);padding:3px 10px;border-radius:2px;letter-spacing:.06em;}
+.co-desc{font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(255,255,255,.38);margin-bottom:18px;letter-spacing:.04em;}
+.masthead-sub{font-size:14.5px;font-weight:300;color:rgba(255,255,255,.58);line-height:1.65;max-width:740px;margin-bottom:36px;}
+.masthead-meta{display:flex;flex-wrap:wrap;gap:16px 32px;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.07em;color:rgba(255,255,255,.32);}
+.masthead-meta strong{color:rgba(255,255,255,.68);font-weight:600;}
+.vermil-rule{height:4px;background:linear-gradient(90deg,var(--vermil) 0%,var(--vermil-2) 35%,transparent 100%);}
+nav{background:var(--white);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:100;box-shadow:0 1px 6px rgba(20,23,28,.07);}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 56px;display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.nav-inner a{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:14px 12px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;}
+.nav-inner a:hover{color:var(--ink);border-bottom-color:var(--vermil);}
+.page-body{max-width:1160px;margin:0 auto;padding:0 56px 80px;}
+.verdict-banner{background:var(--white);border-left:4px solid var(--vermil);padding:22px 26px;margin:36px 0 28px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:0 1px 4px rgba(20,23,28,.06);}
+.verdict-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:7px;}
+.verdict-body{font-family:'IBM Plex Serif',serif;font-size:15px;line-height:1.65;color:var(--ink);}
+.rating-block{text-align:center;flex-shrink:0;min-width:92px;}
+.r-word{display:block;font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;color:var(--gold);letter-spacing:.03em;}
+.r-tp{display:block;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-3);margin-top:5px;}
+.r-note{display:block;font-size:11px;color:var(--muted);margin-top:3px;font-family:'IBM Plex Mono',monospace;line-height:1.4;}
+.kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin-bottom:44px;}
+.kpi-cell{background:var(--white);padding:17px 18px;}
+.kpi-label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:7px;line-height:1.4;}
+.kpi-val{font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:var(--ink);display:block;line-height:1.1;}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.4;}
+.kpi-up .kpi-val{color:var(--green);}.kpi-down .kpi-val{color:var(--red);}.kpi-warn .kpi-val{color:var(--amber);}.kpi-hot .kpi-val{color:var(--vermil);}
+.section{margin-bottom:52px;}
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--rule);}
+.sec-accent{width:4px;height:20px;background:var(--vermil);border-radius:2px;flex-shrink:0;}
+.sec-num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--vermil);font-weight:600;letter-spacing:.06em;flex-shrink:0;}
+.sec-title{font-family:'IBM Plex Serif',serif;font-size:20px;font-weight:700;color:var(--ink);}
+p{margin-bottom:14px;color:var(--ink-3);line-height:1.8;}p:last-child{margin-bottom:0;}
+h3.sub{font-family:'IBM Plex Serif',serif;font-size:16px;font-weight:600;color:var(--ink);margin:26px 0 12px;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0 22px;}
+.th-dark th{background:var(--ink);color:rgba(255,255,255,.75);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;text-align:right;}
+.th-dark th:first-child{text-align:left;}
+.th-dark td{padding:10px 12px;border-bottom:1px solid var(--rule);text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-3);}
+.th-dark td:first-child{text-align:left;color:var(--ink);}
+.th-light th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;border-bottom:2px solid var(--ink);text-align:right;color:var(--muted);}
+.th-light th:first-child{text-align:left;}
+.th-light td{padding:10px 12px;border-bottom:1px solid var(--rule);text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-3);}
+.th-light td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.th-mid th{background:var(--ink-2);color:rgba(255,255,255,.85);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;text-align:left;}
+.th-mid td{padding:10px 14px;border-bottom:1px solid var(--rule);color:var(--ink-3);}
+.th-mid td:last-child{text-align:right;font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--ink);}
+.pos{color:var(--green);font-weight:600;}.neg{color:var(--red);font-weight:600;}.hot{color:var(--vermil);font-weight:600;}
+.row-highlight td{background:#fdf0ec;font-weight:700;}
+.row-highlight td:first-child{border-left:3px solid var(--vermil);}
+.row-latest td{background:#fdf0ec;}
+.row-latest td:first-child{border-left:3px solid var(--vermil);}
+.row-total td{background:#f5f1e6;font-weight:700;border-left:3px solid var(--ink);}
+.row-sub td{background:#f5f1e6;font-weight:700;border-top:1px solid var(--ink);}
+.row-bear{background:#fdf1f0;}.row-base{background:#f9f7f1;}.row-bull{background:#eef8f1;}.row-wtd{background:var(--vermil-bg);}
+.row-wtd td{font-weight:700;border-top:2px solid var(--ink);}
+.row-risk-h{background:#fdeeec;}.row-risk-m{background:#fdf5e3;}.row-risk-l{background:#eef7f1;}
+.peer-mraay td{background:#fdf0ec;font-weight:700;}.peer-mraay td:first-child{border-left:3px solid var(--vermil);}
+.p-big{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;}
+.row-bear .p-big{color:var(--red);}.row-base .p-big{color:var(--ink-3);}.row-bull .p-big{color:var(--green);}.row-wtd .p-big{color:var(--vermil);}
+.callout{border-left:3px solid var(--vermil);background:var(--vermil-bg);padding:15px 19px;margin:16px 0;font-size:13.5px;line-height:1.72;color:var(--ink-3);}
+.callout strong{color:var(--ink);}
+.c-good{border-left-color:var(--green);background:var(--green-bg);}
+.c-risk{border-left-color:var(--red);background:var(--red-bg);}
+.c-warn{border-left-color:var(--amber);background:var(--amber-bg);}
+.c-gold{border-left-color:var(--gold);background:var(--gold-bg);}
+blockquote{margin:18px 0;padding:13px 18px;border-left:3px solid var(--ink-3);background:var(--white);font-family:'IBM Plex Serif',serif;font-size:13.5px;color:var(--steel);font-style:italic;line-height:1.7;}
+blockquote cite{display:block;margin-top:7px;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--faint);letter-spacing:.06em;}
+.timeline{list-style:none;margin:16px 0;padding:0;border-left:2px solid var(--rule);}
+.timeline li{position:relative;padding:0 0 20px 24px;}
+.timeline li::before{content:'';position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--vermil);border:2px solid var(--white);box-shadow:0 0 0 1px var(--vermil);}
+.timeline li:last-child{padding-bottom:0;}
+.tl-date{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--vermil);letter-spacing:.06em;margin-bottom:3px;}
+.tl-desc{font-size:13px;color:var(--ink-3);line-height:1.6;}
+.moat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+.moat-card{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--ink-3);padding:18px 18px 14px;border-radius:2px;}
+.moat-card h4{font-family:'IBM Plex Serif',serif;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+.moat-card p{font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:0;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.two-card{background:var(--white);border:1px solid var(--rule);padding:18px 18px 14px;}
+.two-card h4{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.two-card ul{list-style:none;padding:0;}
+.two-card ul li{padding:6px 0;border-bottom:1px solid var(--rule);font-size:13px;color:var(--ink-3);display:flex;gap:8px;align-items:flex-start;line-height:1.55;}
+.two-card ul li:last-child{border-bottom:none;}
+.b-up{color:var(--green);font-weight:700;flex-shrink:0;}.b-down{color:var(--red);font-weight:700;flex-shrink:0;}
+.monitor-list{list-style:none;margin:14px 0;counter-reset:mon;}
+.monitor-list li{counter-increment:mon;display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:13px;color:var(--ink-3);line-height:1.6;align-items:flex-start;}
+.monitor-list li::before{content:counter(mon,decimal-leading-zero);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--vermil);flex-shrink:0;margin-top:2px;}
+.monitor-list li strong{color:var(--ink);}
+.pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;padding:3px 7px;border-radius:2px;}
+.pill-h{background:#fbd6d1;color:var(--red);}.pill-m{background:#f8e4b8;color:var(--amber);}.pill-l{background:#c8e9d6;color:var(--green);}
+.disclosure{margin-top:56px;padding-top:22px;border-top:1px solid var(--rule);font-size:11px;color:var(--faint);line-height:1.75;}
+.disclosure strong{color:var(--muted);}
+@media(max-width:900px){.masthead-inner,.page-body,.nav-inner{padding-left:20px;padding-right:20px;}.kpi-strip{grid-template-columns:repeat(2,1fr);}.moat-grid{grid-template-columns:1fr 1fr;}.two-col{grid-template-columns:1fr;}.company-name{font-size:24px;}}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<div class="mh">
-  <div class="mh-top"></div>
-  <div class="mh-inner">
-    <div class="mh-brand">
-      <div>
-        <div class="b-name">Snail-bird Investment &nbsp;·&nbsp; 精品研究部</div>
-        <div class="b-sub">半导体与电子元器件 — 亚太科技股覆盖</div>
-      </div>
-      <div class="b-right">
-        报告日期：2026年6月7日<br>
-        数据截至：FY2025年报（截至2026年3月31日）<br>
-        美股OTC代码：MRAAY &nbsp;|&nbsp; 东证代码：6981.T
-      </div>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="brand-row"><div class="brand-mark">SB</div><span class="brand-text">Snail-Bird Investment · 电子元器件与AI硬件供应链研究</span></div>
+    <div class="masthead-type">深度研究报告 · 首次覆盖 · FY2026 Q1业绩后</div>
+    <div class="masthead-company"><span class="company-name">Murata Manufacturing</span><span class="ticker-chip">OTC: MRAAY · TSE: 6981</span></div>
+    <div class="co-desc">全球MLCC（多层陶瓷电容器）龙头 · 陶瓷材料与被动元件技术平台 · 总部：日本京都府长冈京市</div>
+    <p class="masthead-sub">村田制作所是全球领先的电子元器件供应商，核心产品为多层陶瓷电容器（MLCC），并延伸至电感、EMI滤波器、通信模块、传感器等被动元件与高频器件全品类。公司2026年7月31日披露的FY2026 Q1财报显示，营业利润同比大幅增长59.8%，并同步将全年营业利润指引上修至同比+52.6%——AI服务器与数据中心对高端MLCC的需求已从产业预期转化为财务报表上的实际验证。本报告以东京证券交易所主要上市地（6981.T）作为估值分析的主要锚点，并明确采用官方存托凭证机构确认的换算比例（1 MRAAY = 0.5股6981.T）给出对应的ADR参考区间。</p>
+    <div class="masthead-meta">
+      <span><strong>报告类型</strong> 首次覆盖 + 季度业绩深度</span>
+      <span><strong>报告日期</strong> 2026-08-17</span>
+      <span><strong>业绩截止</strong> 2026-06-30（FY2026 Q1）</span>
+      <span><strong>参考股价</strong> 6981.T ¥7,129（2026-08-04收盘）</span>
+      <span><strong>分析师</strong> Snail-Bird Investment Research</span>
     </div>
+  </div>
+</header>
+<div class="vermil-rule"></div>
 
-    <div class="ticker">MRAAY &nbsp;·&nbsp; MURATA MANUFACTURING &nbsp;·&nbsp; 村田制作所</div>
-    <h1 class="headline">供应链结构性紧缺与银价飙涨触发MLCC重定价周期下的高端被动元器件龙头</h1>
-    <p class="deck">AI服务器每台用量是传统服务器的20-30倍，高端MLCC供货周期从4周拉长至20周；村田主导行业提价15-35%，FY2026指引经营利润跳增34.8%。当前MRAAY对应约21倍NTM PE，处于历史区间低位，估值修复路径清晰。</p>
+<nav>
+  <div class="nav-inner">
+    <a href="#verdict">评级结论</a><a href="#overview">公司概览</a><a href="#adr">ADR机制</a>
+    <a href="#q1">Q1业绩</a><a href="#structure">利润结构</a><a href="#moat">护城河</a>
+    <a href="#industry">行业格局</a>
+    <a href="#valuation">估值分析</a><a href="#risks">风险矩阵</a><a href="#monitor">监测指标</a>
+  </div>
+</nav>
 
-    <div class="rb">
-      <div class="rc buy">
-        <div class="rl">投资评级</div>
-        <div class="rv buy">买入</div>
-        <div class="rs">Overweight / Buy</div>
-      </div>
-      <div class="rc">
-        <div class="rl">12M 目标价（MRAAY）</div>
-        <div class="rv tp">$38</div>
-        <div class="rs">当前$28.8；潜在涨幅+32%</div>
-      </div>
-      <div class="rc">
-        <div class="rl">当前股价（6/5收盘）</div>
-        <div class="rv">$28.80</div>
-        <div class="rs">来源：Yahoo Finance OTC粉单市场</div>
-      </div>
-      <div class="rc">
-        <div class="rl">美股ADR市值</div>
-        <div class="rv">$389亿</div>
-        <div class="rs">OTC粉单口径</div>
-      </div>
-      <div class="rc">
-        <div class="rl">东证6981现价</div>
-        <div class="rv">¥9,695</div>
-        <div class="rs">市值约¥17.65万亿日元</div>
-      </div>
+<div class="page-body">
+
+<!-- VERDICT -->
+<div id="verdict" class="verdict-banner">
+  <div>
+    <div class="verdict-label">独立投资评级 — 首次覆盖，FY2026 Q1业绩后（参考价6981.T ¥7,129，2026-08-04）</div>
+    <div class="verdict-body">
+      <strong>中性偏多（回调布局）。</strong>
+      村田制作所FY2026 Q1业绩显示出清晰的结构性改善：营收同比+20.7%，营业利润同比+59.8%，营业利润率从14.8%大幅提升至19.6%；公司同步将FY2026全年营业利润指引由此前+34.8%的预期大幅上修至+52.6%，归母净利润指引对应EPS上修至¥185.68。核心驱动力是Components分部（电容器/电感/EMI滤波器）在AI服务器与数据中心需求拉动下的持续扩张——该分部营业利润率已突破30%，且占集团收入比重持续提升至约66%；与此同时，Devices &amp; Modules分部（通信模块/高频器件）持续收缩，构成公司整体利润结构的重要再平衡。<br><br>
+      本报告采用标准化/中周期盈利能力框架（而非简单套用当前峰值盈利乘以固定倍数）对公司价值进行情景分析，并以东京主要上市地（6981.T）作为估值锚点，按官方确认的ADS比例（1 MRAAY = 0.5股）换算得出对应的美股OTC参考区间。当前隐含估值水平（约38倍FY2026上修后EPS）已反映相当程度的乐观预期，基准情景相对当前价格空间有限，需要等待更明确的盈利可持续性验证或价格回调后再行加仓。
     </div>
+  </div>
+  <div class="rating-block">
+    <span class="r-word">中性偏多</span>
+    <span class="r-tp">见估值分析</span>
+    <span class="r-note">基准¥5,550-6,825<br>MRAAY $17.9-22.0</span>
   </div>
 </div>
 
-<!-- BODY -->
-<div class="wrap">
-<div class="main">
-
-  <!-- 01 INVESTMENT THESIS -->
-  <div class="card">
-    <div class="ch"><span class="cn">01</span><span class="ct">核心投资论点 — Investment Thesis</span><span class="ctag buy">买入理由</span></div>
-    <div class="cb">
-
-      <div class="ti">
-        <div class="tn g">1</div>
-        <div>
-          <div class="tl g">AI服务器引爆MLCC供需缺口，村田为最大结构性受益方</div>
-          <div class="tb">AI服务器对MLCC的用量需求是传统服务器的20-30倍——英伟达GB300系列每台约需45万颗，新发布的VR200 NVL72平台约60万颗，远超普通服务器约2万颗。<span class="src">（来源：TrendForce 2026年2月报告；Semicone 2026年5月分析）</span> 村田于2026年4月1日正式通知客户对四类产品提价15%-35%。<span class="src">（来源：Bloomberg 2026年4月报道）</span> 高端产能利用率80%以上，BB Ratio（订单出货比）FY2025 Q4达1.24，供给端定价权极强。</div>
-        </div>
-      </div>
-
-      <div class="ti">
-        <div class="tn g">2</div>
-        <div>
-          <div class="tl g">FY2026官方指引超预期：经营利润+34.8%，ROIC冲刺12.3%</div>
-          <div class="tb">公司官方指引FY2026营收1.96万亿日元（+7.1%）、经营利润3,800亿日元（+34.8%）、股东净利润2,930亿日元（+25.3%）、EPS ¥160.96（+26.1%），ROIC目标12.3%（较FY2025的9.7%提升2.6pct）。<span class="src">（来源：村田制作所FY2025年报，2026年4月30日）</span> 指引内置"产品销售价格下降"的保守假设，若AI涨价效应充分兑现，利润上行空间显著。</div>
-        </div>
-      </div>
-
-      <div class="ti">
-        <div class="tn g">3</div>
-        <div>
-          <div class="tl g">订单积压激增89.5%，Components分部ROIC领跑行业</div>
-          <div class="tb">FY2025电容器订单积压同比激增89.5%至2,692亿日元，整体未交货积压446亿日元（同比+55.2%）。<span class="src">（来源：村田制作所FY2025年报分部数据）</span> Components分部（电容器+电感/EMI）ROIC（税前）从21.2%升至22.4%，是集团整体ROIC的2倍以上，显示高附加值产品占比持续提升。</div>
-        </div>
-      </div>
-
-      <div class="ti">
-        <div class="tn a">4</div>
-        <div>
-          <div class="tl a">汽车+计算机形成双引擎，通信模块拖累持续收窄</div>
-          <div class="tb">FY2025计算机（含AI服务器）应用营收同比+28.4%至3,104亿日元，汽车应用同比+4.8%至4,745亿日元，两者合计占总营收43%，同比提升4个百分点。<span class="src">（来源：村田制作所FY2025年报应用分类）</span> 通信（手机模块）营收占比已降至35.7%（同比-3.1%），对整体业绩的拖累被大幅稀释。</div>
-        </div>
-      </div>
-
-      <div class="ti">
-        <div class="tn a">5</div>
-        <div>
-          <div class="tl a">估值处于历史低位，股东回报持续强化</div>
-          <div class="tb">当前MRAAY对应约21倍NTM PE（基于FY2026E EPS $0.54/ADR），处于近5年历史估值区间（约18-40倍）的偏低端，明显低于全球MLCC龙头历史均值约25倍。FY2025自由现金流约1,806亿日元，公司宣布回购1,500亿日元股份，FY2026年度股息70日元/股（+7.7%）。<span class="src">（来源：村田制作所FY2025现金流量表；股东回报政策披露）</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- 02 FINANCIALS -->
-  <div class="card">
-    <div class="ch"><span class="cn">02</span><span class="ct">关键财务数据 — FY2025全年年报摘要</span></div>
-    <div class="cb">
-
-      <table>
-        <thead>
-          <tr><th>指标</th><th>FY2023A</th><th>FY2024A</th><th>FY2025A</th><th>FY2026E（官方指引）</th><th>同比变化</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>总营收（亿日元）</td><td>16,401</td><td>17,434</td><td>18,309</td><td>19,600</td><td class="pos">▲ +7.1%（FY26E）</td></tr>
-          <tr><td>毛利润（亿日元）</td><td>—</td><td>7,177</td><td>7,748</td><td>~8,500E</td><td class="pos">▲ +7.9%（FY25实际）</td></tr>
-          <tr><td>毛利率</td><td>—</td><td>41.2%</td><td>42.3%</td><td>~43-45%E</td><td class="pos">▲ +1.1pct（FY25）</td></tr>
-          <tr><td>经营利润（亿日元）</td><td>2,286</td><td>2,797</td><td>2,818</td><td>3,800</td><td class="pos">▲ +34.8%（FY26E）</td></tr>
-          <tr><td>经营利润率</td><td>13.9%</td><td>16.0%</td><td>15.4%</td><td>19.4%</td><td class="warn">FY25微降；FY26E大幅跃升</td></tr>
-          <tr><td>股东净利润（亿日元）</td><td>1,808</td><td>2,338</td><td>2,339</td><td>2,930</td><td class="pos">▲ +25.3%（FY26E）</td></tr>
-          <tr><td>基本EPS（日元/股）</td><td>—</td><td>125.08</td><td>127.66</td><td>160.96</td><td class="pos">▲ +26.1%</td></tr>
-          <tr><td>EPS（美元/ADR，约）</td><td>—</td><td>~$0.42</td><td>~$0.43</td><td>~$0.54</td><td class="pos">▲ +26.1%（汇率150假设）</td></tr>
-          <tr><td>经营现金流（亿日元）</td><td>—</td><td>4,519</td><td>4,252</td><td>—</td><td class="warn">▼ -5.9%（税款增加所致）</td></tr>
-          <tr><td>自由现金流（亿日元）</td><td>—</td><td>~2,714</td><td>~1,806</td><td>—</td><td class="warn">▼ 资本开支大幅扩张</td></tr>
-          <tr><td>资本开支（亿日元）</td><td>—</td><td>1,805</td><td>2,478</td><td>2,500</td><td class="pos">▲ +37.3%；扩产节奏加速</td></tr>
-          <tr><td>研发费用（亿日元）</td><td>—</td><td>1,493</td><td>1,589</td><td>1,670</td><td class="pos">▲ +5.1%；占营收8.7%</td></tr>
-          <tr><td>ROIC（税后）</td><td>—</td><td>10.0%</td><td>9.7%</td><td>12.3%</td><td class="pos">▲ FY26E大幅跃升+2.6pct</td></tr>
-          <tr class="row-total"><td>期末现金及等价物（亿日元）</td><td>—</td><td>6,251</td><td>6,537</td><td>—</td><td class="pos">净现金充裕，财务稳健</td></tr>
-        </tbody>
-      </table>
-      <div class="footnote">数据来源：村田制作所FY2025年报（日本IFRS准则，截至2026年3月31日，2026年4月30日官网披露）；EPS美元换算假设汇率150日元/美元，1 MRAAY ADR = 0.5普通股。</div>
-
-      <div style="margin-top:18px">
-        <table>
-          <thead>
-            <tr><th>按应用分类营收</th><th>FY2024A（亿日元）</th><th>占比</th><th>FY2025A（亿日元）</th><th>占比</th><th>同比增长</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>通信（手机/模组）</td><td>6,791</td><td>39.0%</td><td>6,580</td><td>35.9%</td><td class="neg">-3.1%</td></tr>
-            <tr><td>汽车（Mobility）</td><td>4,527</td><td>26.0%</td><td>4,745</td><td>25.9%</td><td class="pos">+4.8%</td></tr>
-            <tr><td>计算机（含AI服务器）</td><td>2,418</td><td>13.9%</td><td>3,104</td><td>16.9%</td><td class="pos">+28.4% ★最快</td></tr>
-            <tr><td>电子设备/工业</td><td>2,241</td><td>12.8%</td><td>2,285</td><td>12.5%</td><td class="pos">+2.0%</td></tr>
-            <tr><td>医疗/健康</td><td>1,170</td><td>6.7%</td><td>1,275</td><td>7.0%</td><td class="pos">+9.0%</td></tr>
-            <tr><td>其他</td><td>287</td><td>1.6%</td><td>320</td><td>1.8%</td><td class="pos">+11.5%</td></tr>
-            <tr class="row-total"><td>集团总营收</td><td>17,434</td><td>100%</td><td>18,309</td><td>100%</td><td class="pos">+5.0%</td></tr>
-          </tbody>
-        </table>
-        <div class="footnote">数据来源：村田制作所FY2025年报应用分类营收表。注：应用分类与产品分类口径不同，通信类含SAW滤波器等高频模块。</div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- 03 SUPPLY CHAIN -->
-  <div class="card">
-    <div class="ch"><span class="cn">03</span><span class="ct">供应链全景 — 高端产能紧缺与原材料成本博弈</span><span class="ctag key">核心模块</span></div>
-    <div class="cb">
-
-      <div class="ab">
-        <h3>上游原材料：银价飙涨是触发剂，成本压力在寡头格局下有效传导</h3>
-        <p>MLCC的核心原材料包括内电极用镍（低端）和银/钯（高端RF、汽车级），以及陶瓷粉体（BaTiO₃基）。2025年以来，银价受太阳能电池板、电动汽车、AI设备多重需求驱动，当前约35-40美元/盎司，较2024年均值涨幅超40%。<span class="src">（来源：BigGo Finance 2026年3月综合报道）</span></p>
-        <div class="co pos">
-          <p><strong>成本可有效转嫁的关键逻辑：</strong>村田+SEMCO+TDK合计市占率超70%（MLCC市场高度集中）。村田主导提价后，三星电机（SEMCO）跟进5-10%调价，太阳诱电（Taiyo Yuden）对中国市场提价6-13%，验证了寡头集体定价权。在AI基础设施强制采购的需求刚性背景下，原材料成本上升不再是利润侵蚀因子，而是定价重构的触发器。<span class="src">（来源：TrendForce 2026年Q2 MLCC市场报告；Bloomberg 2026年4月报道）</span></p>
-        </div>
-        <p>村田垂直整合的陶瓷粉体自研能力（BST基、PLZT基材料）是另一道隐性护城河——全球仅少数几家MLCC厂商具备此能力，在原材料紧缺期有效缓冲外采成本压力，同时构成高端产品技术差异化壁垒。</p>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="ab">
-        <h3>高端产能结构性紧缺：供货周期拉长至20周，订单积压激增</h3>
-        <p>AI服务器对MLCC用量呈指数级增长：英伟达VR200 NVL72每台约需60万颗，GB300系列约45万颗，传统服务器约2万颗，智能手机约1,000颗。<span class="src">（来源：Semicone 2026年4月/5月分析；TrendForce 2026年2月）</span></p>
-        <div class="co warn">
-          <p><strong>供需缺口量化：</strong>高容值、高电压AI服务器专用MLCC交货周期从正常4周拉长至20周，部分规格出现缺货。村田总裁中岛规宏明确表示"高端MLCC产能无法快速扩张，供给紧张可能持续至2026年及以后"。登米市新工厂（投资97亿日元，2026年5月破土）预计2027年底建成，产能正式输出不早于2026年Q4。<span class="src">（来源：Semicone 2026年4月；村田制作所官方公告）</span></p>
-        </div>
-
-        <div class="pbw" style="margin-top:12px">
-          <div class="pbl"><span>AI服务器/高端车规MLCC产能利用率（村田/SEMCO/TDK）</span><span style="color:var(--green)">80%以上</span></div>
-          <div class="pbt"><div class="pbf g" style="width:84%"></div></div>
-        </div>
-        <div class="pbw">
-          <div class="pbl"><span>消费电子通用MLCC产能利用率（行业平均）</span><span style="color:var(--amber)">约55-65%</span></div>
-          <div class="pbt"><div class="pbf a" style="width:60%"></div></div>
-        </div>
-        <div class="pbw">
-          <div class="pbl"><span>FY2025电容器分部积压订单同比增长</span><span style="color:var(--accent)">+89.5%</span></div>
-          <div class="pbt"><div class="pbf b" style="width:90%"></div></div>
-        </div>
-
-        <p style="margin-top:12px">FY2025资本开支2,478亿日元（同比+37%），FY2026计划维持2,500亿日元，重点扩张高端AI服务器MLCC产能。管理层扩产节奏相对克制，有意维持供给偏紧以支撑价格升级空间。<span class="src">（来源：村田制作所FY2025年报资本配置说明）</span></p>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="ab">
-        <h3 class="a">下游需求分化：AI/汽车强劲；消费电子复苏温和且存在修正风险</h3>
-        <p>FY2025计算机（含AI服务器）应用营收同比+28.4%，汽车同比+4.8%，两者合计占总营收43%。2026年"具身AI元年"——AI向边缘设备（机器人、自动驾驶、AR/VR）快速渗透，将进一步扩张MLCC用量。TrendForce预测MLCC市场规模将从2026年约190亿美元增至2031年422亿美元，CAGR约17%。<span class="src">（来源：TrendForce/Mordor Intelligence 2026年）</span></p>
-        <div class="co risk">
-          <p><strong>需审慎的风险：</strong>消费电子复苏缓慢且不稳定，手机（通信）应用营收FY2025同比-3.1%。PC品牌（戴尔、惠普等）的关税前抢购行为可能制造虚假需求，下半年存在库存修正风险，届时将短期拉低通信分部订单能见度。<span class="src">（来源：BigGo Finance 2026年4月分析）</span></p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- 04 MANAGEMENT -->
-  <div class="card">
-    <div class="ch"><span class="cn">04</span><span class="ct">管理层战略评估 — 地缘政治、资本配置与研发护城河</span></div>
-    <div class="cb">
-
-      <div class="ab">
-        <h3>供应链重构：双轨布局是必要成本，中国区AI需求构成独立增长引擎</h3>
-        <p>大中华区是村田最大单一市场（FY2025占比47.2%，营收8,650亿日元），美国关税政策、出口管制风险均构成潜在扰动。但从结构看，中国区客户以消费电子、汽车Tier 1为主，且中国本土AI服务器建设（DeepSeek驱动的国产大模型基础设施）正成为高端MLCC需求的独立增长驱动。<span class="src">（来源：村田制作所FY2025年报地区营收数据）</span></p>
-        <p>村田"去风险"措施包括：亚洲（中国以外）区营收FY2025同比+12.6%，增速远高于大中华区的+4.0%；日本本土新工厂建设提速（登米工厂2026年5月破土，97亿日元投资）。供应链双轨化的隐性成本（运营低效、库存冗余、认证周期延长）将持续压制短期ROIC。</p>
-        <div class="co">
-          <p><strong>值得关注的或有风险：</strong>村田于2026年3月6日披露遭受"未经授权访问IT环境及信息被获取"的网络安全事件，生产和销售活动目前未受影响，但潜在财务影响仍在评估中，后续进展值得持续追踪。<span class="src">（来源：村田制作所FY2025年报或有负债说明）</span></p>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="ab">
-        <h3 class="r">Devices & Modules分部亏损：SAW商誉减值437亿，结构性拖累已暴露</h3>
-        <p>FY2025 Devices & Modules分部ROIC（税前）从+1.2%骤降至-3.5%，经营亏损264.91亿日元。核心原因是SAW滤波器相关商誉减值437.98亿日元——"电信市场向更高频率技术迁移速度慢于预期"。<span class="src">（来源：村田制作所FY2025年报，减值测试折现率12.0%，长期增长率1.5%）</span></p>
-        <div class="co risk">
-          <p><strong>风险评估：</strong>减值已完成"清洁表报"，后续增量亏损风险降低。但SAW滤波器在5G毫米波和6G前驱技术迁移中竞争对手（Qorvo、Skyworks）压力持续，Devices & Modules分部盈利修复时间表较长，FY2026仍将是整体利润的结构性拖累项。</p>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="ab">
-        <h3>研发护城河：超薄层陶瓷技术领先，固态电池是隐含期权</h3>
-        <p>FY2025研发费用1,589亿日元（占营收8.7%），FY2026计划增至1,670亿日元。核心方向：①超薄层（0.3μm以下）陶瓷薄膜技术；②下一代功能陶瓷材料；③固态电池陶瓷隔离层（已与QuantumScape签署联合开发协议）；④医疗健康传感器。<span class="src">（来源：StockAnalysis 2025年报道；村田制作所中期发展方向2027）</span></p>
-        <p>固态电池是高价值隐含期权：若2030年代固态电池进入规模量产，村田作为核心陶瓷隔离材料供应商的潜在受益规模不容忽视。当前不纳入基准估值，作为情景上行弹性处理。</p>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- 05 VALUATION -->
-  <div class="card">
-    <div class="ch"><span class="cn">05</span><span class="ct">估值建模 — SOTP分部估值与目标价推导</span></div>
-    <div class="cb">
-
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-        <p style="font-family:var(--font-serif);font-size:15px;color:var(--ink);font-weight:700;margin:0">SOTP分部估值 — 12个月目标价：MRAAY $38</p>
-        <span style="background:var(--green);color:#fff;font-size:9.5px;letter-spacing:1px;padding:3px 10px;border-radius:2px;font-weight:600">BUY</span>
-      </div>
-
-      <table>
-        <thead>
-          <tr><th>业务分部</th><th>估值方法</th><th>FY2026E基准</th><th>乘数</th><th>估值（亿日元）</th><th>每股（日元）</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Components（电容/电感/EMI）</td><td>EV/EBITDA</td><td>EBITDA约3,800亿</td><td>16x（产能周期溢价）</td><td>60,800</td><td>~3,344</td></tr>
-          <tr><td>Devices & Modules（高频/电池）</td><td>EV/Sales</td><td>营收约7,000亿</td><td>0.8x（亏损折价）</td><td>5,600</td><td>~308</td></tr>
-          <tr><td>功能器件（传感器/天线）</td><td>EV/Sales</td><td>营收约1,200亿</td><td>2.0x</td><td>2,400</td><td>~132</td></tr>
-          <tr><td>固态电池期权价值</td><td>概率折现</td><td>定性估算</td><td>—</td><td>1,500</td><td>~83</td></tr>
-          <tr><td>净现金（现金-净负债）</td><td>账面价值</td><td>约6,537亿日元</td><td>1.0x</td><td>6,537</td><td>~360</td></tr>
-          <tr><td>减：集团运营费用折现</td><td>调整项</td><td>—</td><td>—</td><td>-1,200</td><td>~-66</td></tr>
-          <tr class="row-total"><td>SOTP合计 → 目标市值</td><td colspan="3">¥75,637亿 ÷ 181,900万股</td><td>~75,637亿日元</td><td><strong>约¥4,160 → 目标¥5,700*</strong></td></tr>
-        </tbody>
-      </table>
-
-      <div class="sotp-note">
-        <strong>目标价推导逻辑：</strong>SOTP内在价值约¥4,160（与当前股价¥9,695差距大，主要反映市场已提前计入FY2026预期及AI溢价）。基于12个月PE估值法：FY2026E EPS ¥160.96 × 目标PE 35倍（MLCC涨价周期顶部乘数，参照2021年周期高点）= 约¥5,635，取整为目标价¥5,700，对应MRAAY ADR约<strong>$38</strong>（¥5,700 ÷ 150日元/美元 × 0.5 ADR比率 × 2 = $38）。相比当前$28.8，隐含潜在涨幅约+32%。<br>
-        <span class="src">注：MRAAY东证价格¥9,695远高于本目标价¥5,700，反映机构投资者对FY2026指引的全面定价以及此前AI行情的高溢价；目标价基于ADR流动性较低的OTC粉单市场独立估值，不与东证价格直接可比。各平台美股市值口径存在显著差异（$38.9B至$104.8B），本报告以用户提供的OTC粉单口径市值约$389亿为基准，对应流通ADR股数约13.5亿股，每股$28.8。</span>
-      </div>
-
-      <div style="margin-top:18px">
-        <p style="font-family:var(--font-serif);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:14px">情景分析 — 12个月MRAAY目标价区间</p>
-        <div class="sg">
-          <div class="sc">
-            <div class="sl bear">▼ 悲观情景</div>
-            <div class="sv bear">$22</div>
-            <div class="sp">概率权重：20%</div>
-            <div class="st">银/镍价继续上涨且无法转嫁；Devices&Modules亏损扩大；消费电子全面回落；中国区营收受地缘政治冲击；PE压缩至25x以下。</div>
-          </div>
-          <div class="sc base">
-            <div class="sl base">◼ 基准情景（买入）</div>
-            <div class="sv base">$38</div>
-            <div class="sp">概率权重：55%</div>
-            <div class="st">FY2026指引基本兑现，MLCC涨价充分传导，Components ROIC升至22%+，Devices&Modules亏损收窄；PE修复至35x。</div>
-          </div>
-          <div class="sc">
-            <div class="sl bull">▲ 乐观情景</div>
-            <div class="sv bull">$52</div>
-            <div class="sp">概率权重：25%</div>
-            <div class="st">AI服务器采购超预期，MLCC追加涨价；汽车MLCC超级周期；具身AI边缘侧需求爆发；固态电池量产提速；PE扩张至42x+。</div>
-          </div>
-        </div>
-        <p style="font-size:11.5px;color:#64748b;margin-top:9px">概率加权目标价 = 22×20% + 38×55% + 52×25% = <strong style="color:var(--accent)">约$38.3，取整为$38。</strong></p>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- 06 RISKS -->
-  <div class="card">
-    <div class="ch"><span class="cn">06</span><span class="ct">风险提示矩阵</span></div>
-    <div class="cb">
-
-      <div class="ri">
-        <div class="ri-icon h">▲</div>
-        <div>
-          <h4>上游原材料价格失控（银/镍/钯）</h4>
-          <p>银价持续大幅上涨（太阳能+AI+EV需求共振），超出MLCC提价速度，直接侵蚀毛利率；镍、钯供给受地缘政治干扰（俄罗斯供应风险）形成额外BOM压力。<span class="src">（来源：EE News Europe 2026年5月）</span></p>
-        </div>
-        <span class="rsev h">高 / 持续</span>
-      </div>
-
-      <div class="ri">
-        <div class="ri-icon h">▲</div>
-        <div>
-          <h4>中国区营收地缘政治风险（占比47%）</h4>
-          <p>中美科技博弈升级、关税壁垒扩大或出口管制范围扩大，可能冲击中国AI服务器及消费电子对高端MLCC的采购，供应链"去日本化"趋势压力不容忽视。</p>
-        </div>
-        <span class="rsev h">高</span>
-      </div>
-
-      <div class="ri">
-        <div class="ri-icon h">▲</div>
-        <div>
-          <h4>Devices & Modules分部持续亏损</h4>
-          <p>SAW滤波器向高频迁移进展迟缓，若高频模块市场份额进一步流失（竞争对手：Qorvo、Skyworks），FY2026分部亏损有扩大风险，显著拖累集团利润。<span class="src">（来源：村田制作所FY2025年报减值说明）</span></p>
-        </div>
-        <span class="rsev h">高</span>
-      </div>
-
-      <div class="ri">
-        <div class="ri-icon m">●</div>
-        <div>
-          <h4>消费电子复苏乏力 / PC库存修正</h4>
-          <p>PC品牌关税前抢购可能引发下半年库存修正，短期降低通信分部订单能见度；智能手机大盘若无实质性复苏，高频模块业务持续承压。<span class="src">（来源：BigGo Finance 2026年4月）</span></p>
-        </div>
-        <span class="rsev m">中</span>
-      </div>
-
-      <div class="ri">
-        <div class="ri-icon m">●</div>
-        <div>
-          <h4>高端产能扩张进度不及预期</h4>
-          <p>登米新工厂2026年底完工、Q4开始出产的节点存在不确定性；超薄层新产品良率爬坡延迟，在需求旺盛期无法充分供货将损失重大商业机会。</p>
-        </div>
-        <span class="rsev m">中</span>
-      </div>
-
-      <div class="ri">
-        <div class="ri-icon m">●</div>
-        <div>
-          <h4>日元大幅升值侵蚀营收与利润</h4>
-          <p>FY2025汇率约150.78日元/美元，若日元升值至130以下，以日元报告的营收因换算损失大幅承压。汇率敏感性：每1日元/美元变化影响约4.5亿日元/年。<span class="src">（来源：村田制作所FY2025财报汇率敏感性披露）</span></p>
-        </div>
-        <span class="rsev m">中</span>
-      </div>
-
-      <div class="ri">
-        <div class="ri-icon m">●</div>
-        <div>
-          <h4>IT系统网络安全事件后续影响</h4>
-          <p>2026年3月披露的未授权访问事件，潜在的客户信息泄露或系统脆弱性可能对合规和客户关系造成后续影响，当前财务损失尚无法估算。<span class="src">（来源：村田制作所FY2025年报或有负债说明）</span></p>
-        </div>
-        <span class="rsev m">中</span>
-      </div>
-
-    </div>
-  </div>
-
-</div><!-- end main -->
-
-<!-- SIDEBAR -->
-<div class="aside">
-
-  <div class="ac">
-    <div class="ach g">评级与目标价</div>
-    <div class="acb">
-      <div class="buy-box">
-        <div class="buy-r">买 入</div>
-        <div class="buy-s">Overweight / Buy</div>
-      </div>
-      <div class="tp-box">
-        <div class="tp-l">12M 目标价（MRAAY ADR）</div>
-        <div class="tp-v">$38</div>
-        <div class="tp-s">对应东证目标约¥5,700/股</div>
-      </div>
-      <div class="mr"><span class="mn">MRAAY当前股价（6/5）</span><span class="mv">$28.80</span></div>
-      <div class="mr"><span class="mn">潜在涨幅</span><span class="mv g">+31.9%</span></div>
-      <div class="mr"><span class="mn">悲观目标价</span><span class="mv r">$22</span></div>
-      <div class="mr"><span class="mn">乐观目标价</span><span class="mv g">$52</span></div>
-      <div class="mr"><span class="mn">MRAAY 52周区间</span><span class="mv">$6.80–$35.50</span></div>
-      <div class="mr"><span class="mn">美股ADR市值</span><span class="mv">约$389亿（OTC粉单）</span></div>
-      <div class="mr"><span class="mn">东证6981现价（6/5）</span><span class="mv">¥9,695</span></div>
-      <div class="mr"><span class="mn">东证市值</span><span class="mv">约¥17.65万亿日元</span></div>
-    </div>
-  </div>
-
-  <!-- VALUATION CAVEAT -->
-  <div class="ac">
-    <div class="ach a">⚠ OTC市值差异说明</div>
-    <div class="acb">
-      <p style="font-size:11.5px;color:var(--ink-3);line-height:1.68;margin:0">
-        MRAAY是粉单（Pink Sheet）OTC市场，各平台计算市值时所用"流通ADR股数"口径差异显著：Yahoo Finance引用约$104.8B，MacroTrends约$47.9B，用户提供数据$38.9B。<br><br>
-        本报告统一采用用户核实的 <strong>$28.80 / 市值约$389亿</strong> 作为MRAAY估值基准。东证6981的实际公司总市值约¥17.65万亿日元（约$1,177亿），两者差异来源于ADR流通份额的计算口径，并非公司基本面差异。<br><br>
-        目标价$38基于ADR口径独立计算，不与东证价格¥9,695直接可比。
-      </p>
-    </div>
-  </div>
-
-  <div class="ac">
-    <div class="ach">关键财务指标（FY2025实际）</div>
-    <div class="acb">
-      <div class="mr"><span class="mn">总营收</span><span class="mv">¥1.83万亿（+5.0%）</span></div>
-      <div class="mr"><span class="mn">毛利润/毛利率</span><span class="mv g">¥7,748亿 / 42.3%</span></div>
-      <div class="mr"><span class="mn">经营利润率</span><span class="mv a">15.4%（FY26E:19.4%）</span></div>
-      <div class="mr"><span class="mn">股东净利润</span><span class="mv">¥2,339亿（+0.03%）</span></div>
-      <div class="mr"><span class="mn">基本EPS</span><span class="mv">¥127.66 / ADR~$0.43</span></div>
-      <div class="mr"><span class="mn">ROIC（税后）</span><span class="mv a">9.7%（目标12.3%）</span></div>
-      <div class="mr"><span class="mn">经营现金流</span><span class="mv">¥4,252亿</span></div>
-      <div class="mr"><span class="mn">自由现金流</span><span class="mv">约¥1,806亿</span></div>
-      <div class="mr"><span class="mn">资本开支</span><span class="mv">¥2,478亿（+37%）</span></div>
-      <div class="mr"><span class="mn">研发费用</span><span class="mv">¥1,589亿（8.7%/Rev）</span></div>
-      <div class="mr"><span class="mn">期末现金</span><span class="mv">¥6,537亿</span></div>
-      <div class="mr"><span class="mn">员工人数</span><span class="mv">74,302人</span></div>
-      <div class="mr"><span class="mn">年度股息/股</span><span class="mv">¥65（FY25）→¥70（FY26E）</span></div>
-    </div>
-  </div>
-
-  <div class="ac">
-    <div class="ach">FY2026官方指引</div>
-    <div class="acb">
-      <div class="mr"><span class="mn">营收目标</span><span class="mv b">¥1.96万亿（+7.1%）</span></div>
-      <div class="mr"><span class="mn">经营利润</span><span class="mv g">¥3,800亿（+34.8%）</span></div>
-      <div class="mr"><span class="mn">税前利润</span><span class="mv g">¥3,900亿（+26.4%）</span></div>
-      <div class="mr"><span class="mn">股东净利润</span><span class="mv g">¥2,930亿（+25.3%）</span></div>
-      <div class="mr"><span class="mn">EPS目标</span><span class="mv g">¥160.96（+26.1%）</span></div>
-      <div class="mr"><span class="mn">ROIC（税后）</span><span class="mv g">12.3%（+2.6pct）</span></div>
-      <div class="mr"><span class="mn">资本开支</span><span class="mv">¥2,500亿</span></div>
-      <div class="mr"><span class="mn">研发费用</span><span class="mv">¥1,670亿</span></div>
-      <div class="mr"><span class="mn">汇率假设</span><span class="mv">150日元/美元</span></div>
-    </div>
-  </div>
-
-  <div class="ac">
-    <div class="ach">可比公司估值对比（NTM PE）</div>
-    <div class="acb">
-      <div class="pr hdr">
-        <span class="ph">公司</span><span class="ph">NTM PE</span><span class="ph">评级</span>
-      </div>
-      <div class="pr">
-        <span class="pn mi">村田（MRAAY）</span>
-        <span class="pm" style="color:var(--accent)">~21x</span>
-        <span class="pm" style="color:var(--green)">买入</span>
-      </div>
-      <div class="pr">
-        <span class="pn">TDK（6762.T）</span>
-        <span class="pm">~22x</span>
-        <span class="pm" style="color:var(--amber)">持有</span>
-      </div>
-      <div class="pr">
-        <span class="pn">Taiyo Yuden（6976.T）</span>
-        <span class="pm">~18x</span>
-        <span class="pm" style="color:var(--amber)">持有</span>
-      </div>
-      <div class="pr">
-        <span class="pn">Samsung Electro（009150）</span>
-        <span class="pm">~17x</span>
-        <span class="pm" style="color:var(--amber)">持有</span>
-      </div>
-      <div class="pr">
-        <span class="pn">Yageo（2327.TW）</span>
-        <span class="pm">~16x</span>
-        <span class="pm" style="color:var(--amber)">持有</span>
-      </div>
-      <p style="font-size:10.5px;color:#94a3b8;margin-top:8px">村田NTM PE约21x（基于FY2026E EPS¥161），低于历史均值约25x及龙头溢价区间，FY2026E利润跳增+26%，存在估值修复空间。</p>
-    </div>
-  </div>
-
-  <div class="ac">
-    <div class="ach">机构评级汇总（东证6981）</div>
-    <div class="acb">
-      <div class="pr hdr">
-        <span class="ph">来源</span><span class="ph">评级</span><span class="ph">目标价</span>
-      </div>
-      <div class="pr"><span class="pn">机构均值目标</span><span class="pm" style="color:var(--green)">买入</span><span class="pm">¥5,691</span></div>
-      <div class="pr"><span class="pn">最高目标价</span><span class="pm">—</span><span class="pm">¥11,600</span></div>
-      <div class="pr"><span class="pn">最低目标价</span><span class="pm">—</span><span class="pm">¥3,900</span></div>
-      <div class="pr"><span class="pn">买入/卖出数量</span><span class="pm" style="color:var(--green)">12家</span><span class="pm">卖出0家</span></div>
-      <div class="pr"><span class="pn">Goldman Sachs</span><span class="pm" style="color:var(--green)">买入</span><span class="pm">APAC首推</span></div>
-      <div class="pr"><span class="pn">Jefferies</span><span class="pm" style="color:var(--green)">买入</span><span class="pm">¥3,400</span></div>
-      <p style="font-size:10.5px;color:#94a3b8;margin-top:8px">来源：Investing.com / StockAnalysis，2026年6月5日。机构均值目标¥5,691低于当前东证股价¥9,695，反映覆盖时间差及AI行情溢价；目标价区间差异极大（¥3,400-¥11,600），市场对村田估值存在高度分歧。</p>
-    </div>
-  </div>
-
-</div><!-- end aside -->
-</div><!-- end wrap -->
-
-<div class="disc">
-  <div class="disc-inner">
-    <p><strong>数据来源说明：</strong>核心财务数据均来源于村田制作所FY2025年报（日本IFRS准则，截至2026年3月31日，2026年4月30日在村田官网及日本证券交易所披露）；行业供需数据来源于TrendForce（2026年Q2报告）、Semicone（2026年4月/5月）、BigGo Finance（2026年3月/4月）、EE News Europe（2026年5月）；股价数据来源：MRAAY收盘价$28.80来自Yahoo Finance（2026年6月5日），东证6981价格¥9,695来自Investing.com（2026年6月5日）；如不同渠道数据存在差异，以官方披露文件为准。</p>
-    <p><strong>重要声明：</strong>本报告由 Snail-bird Investment 精品研究部基于公开数据独立撰写，不构成任何投资建议。目标价及评级系独立分析判断，存在重大不确定性。投资者应独立评估风险，并咨询持牌财务顾问。股票投资存在亏损风险，过往业绩不代表未来表现。© 2026 Snail-bird Investment Research.</p>
-  </div>
+<!-- KPI -->
+<div class="kpi-strip">
+  <div class="kpi-cell kpi-hot"><div class="kpi-label">Q1 FY2026营收</div><span class="kpi-val">¥502.3B</span><div class="kpi-sub">同比+20.7%；历史同期最高</div></div>
+  <div class="kpi-cell kpi-up"><div class="kpi-label">Q1营业利润率</div><span class="kpi-val">19.6%</span><div class="kpi-sub">去年同期14.8%；Components分部超30%</div></div>
+  <div class="kpi-cell kpi-hot"><div class="kpi-label">全年营业利润指引</div><span class="kpi-val">¥430B</span><div class="kpi-sub">同比+52.6%（2026年7月31日修订）</div></div>
+  <div class="kpi-cell kpi-warn"><div class="kpi-label">ADR换算比例</div><span class="kpi-val">1:0.5</span><div class="kpi-sub">1 MRAAY = 0.5股6981.T；花旗官方确认</div></div>
+  <div class="kpi-cell kpi-down"><div class="kpi-label">6981.T 52周区间</div><span class="kpi-val">¥2,283–12,895</span><div class="kpi-sub">波动率极高，Beta约2.09（TradingView）</div></div>
 </div>
 
+<!-- 01 公司概览 -->
+<section id="overview" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">01</span><span class="sec-title">公司概览：全球被动元件龙头，正在经历业务结构再平衡</span></div>
+  <p>村田制作所（Murata Manufacturing）总部位于日本京都府长冈京市，是全球电子元器件行业的核心供应商之一，尤其在多层陶瓷电容器（MLCC）领域占据全球领先市场地位。公司业务覆盖电容器、电感器、EMI滤波器、传感器、通信模块、高频器件等多个品类，产品广泛应用于智能手机、个人电脑、汽车电子、工业设备，以及近年增长最为迅速的数据中心与AI服务器市场。</p>
+  <p>公司在东京证券交易所主板上市（代码6981），同时通过非公司发起（Unsponsored）存托凭证在美国OTC市场以MRAAY代码交易。村田的核心竞争力建立在陶瓷材料配方、超薄介质层堆叠工艺、精密烧结制程，以及数十年积累的大客户认证体系之上，这套综合能力构成了公司在高端MLCC规格上保持技术和价格领先地位的基础。</p>
+
+  <div class="callout">
+    <strong>当前最重要的产业背景：</strong>AI服务器和数据中心对高容量、高电压、高可靠性MLCC的需求正在快速增长，单台AI服务器（尤其是搭载高功率GPU集群的机型）所需的电容器数量和规格显著高于传统服务器。这一需求结构性变化正在推动村田Components分部（电容器、电感、EMI滤波器）加速扩张，并成为拉动公司整体盈利能力提升的核心引擎，同时公司传统的手机通信模块、高频器件业务（Devices &amp; Modules分部）则面临持续的结构性调整压力。理解这两条业务线的此消彼长，是把握村田当前投资价值的关键。
+  </div>
+</section>
+
+<!-- 02 ADR机制 -->
+<section id="adr" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">02</span><span class="sec-title">ADR交易机制：MRAAY与6981.T的换算关系</span></div>
+  <p>MRAAY是村田制作所在美国OTC市场交易的非公司发起（Unsponsored）美国存托凭证（ADR），由花旗银行（Citibank, N.A.）担任存托机构。经查花旗银行官方存托凭证公告确认，现行ADS存托比例为：</p>
+
+  <div class="callout c-gold">
+    <strong>1份MRAAY ADR = 0.5股东京证券交易所上市普通股（6981.T）</strong><br>
+    该比例自2023年10月2日起生效（因公司同年10月1日实施1股拆3股，存托比例相应调整），存托机构为Citibank, N.A.，ADS的ISIN代码为US6264251025。
+  </div>
+
+  <p>对于这类非公司发起、于OTC市场交易的存托凭证，本报告采纳以下方法论原则：<strong>以标的公司主要上市地（本例为东京证券交易所6981.T）的股价和市值作为估值分析的主要锚点，在分析末端将结论按官方确认的存托比例换算为ADR价格</strong>。这一原则一方面因为主要上市地的流动性、分析师覆盖密度和信息效率通常更高，另一方面也有助于确保跨市场换算的准确性。全文涉及MRAAY价格的部分，均按此比例并结合公司官方FY2026指引所采用的日元兑美元汇率假设（¥155/USD）计算得出。</p>
+</section>
+
+<!-- 03 Q1业绩 -->
+<section id="q1" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">03</span><span class="sec-title">FY2026 Q1业绩：AI服务器需求已进入财报验证阶段</span></div>
+  <p>2026年7月31日披露的FY2026 Q1（2026年4-6月）财报，清晰展示了AI服务器需求对公司盈利能力的实质性拉动。</p>
+
+  <table class="th-light">
+    <thead><tr><th>财务指标</th><th>Q1 FY2025</th><th>Q1 FY2026实际</th><th>同比变化</th></tr></thead>
+    <tbody>
+      <tr><td>营业收入</td><td>约¥416.2B</td><td>¥502.3B</td><td class="pos">+20.7%（剔除汇率影响+12.6%）</td></tr>
+      <tr><td>营业利润</td><td>约¥61.6B（隐含14.8%利润率）</td><td>¥98.5B</td><td class="pos">+59.8%（剔除汇率影响+32.6%）</td></tr>
+      <tr class="row-highlight"><td><strong>营业利润率</strong></td><td>14.8%</td><td><strong>19.6%</strong></td><td class="pos">+4.8个百分点</td></tr>
+      <tr><td>税前利润</td><td>—</td><td>¥109.2B</td><td class="pos">+75.3%</td></tr>
+      <tr><td>归母净利润</td><td>—</td><td>¥81.4B</td><td class="pos">+63.7%</td></tr>
+      <tr><td>每股收益（EPS）</td><td>¥26.83</td><td>¥44.71</td><td class="pos">+66.6%</td></tr>
+      <tr><td>毛利润</td><td>¥172.7B</td><td>¥229.9B</td><td class="pos">毛利率同步改善</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-good">
+    <strong>Components分部是本季度最核心的亮点：</strong>据公司财报披露，Components（电容器、电感、EMI滤波器）分部营收同比+27.5%，营业利润从上年同期¥71.2B大幅提升至¥113.6B，营业利润率突破30%。公司明确将电容器需求增长归因于数据中心和AI服务器应用的强劲拉动，这一分部级别的验证数据是判断"AI服务器MLCC需求"这一逻辑是否落地的最直接证据。
+  </div>
+
+  <h3 class="sub">利润驱动因素的官方拆解：不宜简单归因于"涨价"</h3>
+  <p>据公司财报会材料，公司官方将Q1利润增长的驱动因素明确拆解为：<strong>产量提升带来的稼动率改善、日元贬值的汇兑正面影响</strong>为主要正面因素；同时存在<strong>价格下调（负¥15B）、原材料成本上升、固定费用增加</strong>等负面因素；美国关税豁免带来约¥4B的正面贡献。这一官方拆解清晰表明：<strong>公司利润改善的主要驱动是稼动率提升和产品结构改善，而非普遍性提价</strong>——价格因素在Q1实际上是负贡献，这一细节对理解本轮盈利改善的性质至关重要。</p>
+
+  <div class="callout c-warn">
+    <strong>关于原材料成本与定价权的关系：</strong>银、镍、钯等原材料价格上涨是MLCC生产的真实成本压力，但Q1财报显示价格调整对利润是负贡献而非正贡献。更准确的因果链条应为：<strong>AI/数据中心需求增强→高端MLCC供需趋紧→龙头产能稼动率提升→产品结构向高附加值品类倾斜→议价能力增强，而原材料成本上涨是对这一结构性改善的持续考验，而非本轮利润增长的直接触发因素</strong>。这一区分对判断未来毛利率能否持续改善具有重要意义——真正需要跟踪的是公司向下游转嫁成本压力的实际能力，而非简单假设"原材料涨价=公司涨价=利润提升"这一线性逻辑。
+  </div>
+</section>
+
+<!-- 04 利润结构 -->
+<section id="structure" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">04</span><span class="sec-title">利润结构再平衡：从"手机周期型元件商"到"AI服务器+汽车电子高ROIC平台"</span></div>
+  <p>理解村田当前投资价值的核心，不在于单一的"MLCC涨价"叙事，而在于<strong>公司整体利润结构正在发生系统性迁移——Components分部持续扩张，Devices &amp; Modules分部持续收缩，两者此消彼长推动集团整体盈利能力和资本回报率（ROIC）系统性提升</strong>。这一结构性视角是把握公司价值重估逻辑的关键。</p>
+
+  <h3 class="sub">全年指引：2026年7月31日修订后</h3>
+  <table class="th-light">
+    <thead><tr><th>FY2026（2027年3月止）指引项目</th><th>修订后指引</th><th>同比变化</th></tr></thead>
+    <tbody>
+      <tr><td>营业收入</td><td>¥2,110.0B</td><td class="pos">+15.2%</td></tr>
+      <tr class="row-highlight"><td><strong>营业利润</strong></td><td><strong>¥430.0B</strong></td><td class="pos"><strong>+52.6%</strong></td></tr>
+      <tr><td>税前利润</td><td>¥451.0B</td><td class="pos">—</td></tr>
+      <tr><td>归母净利润</td><td>¥338.0B</td><td class="pos">+44.5%</td></tr>
+      <tr><td>每股收益（EPS）</td><td>¥185.68</td><td class="pos">—</td></tr>
+      <tr><td>假设汇率（USD/JPY）</td><td>¥155（自Q2起）</td><td>—</td></tr>
+      <tr><td>资本开支计划</td><td>¥255.0B</td><td>扩产态度整体仍属克制</td></tr>
+      <tr><td>年度股息（每股）</td><td>¥70</td><td>—</td></tr>
+      <tr><td>股票回购计划</td><td>¥150.0B</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub">Components与Devices &amp; Modules的结构性分化（FY2027公司预测口径）</h3>
+  <table class="th-light">
+    <thead><tr><th>分部</th><th>FY2027预测收入</th><th>同比</th><th>集团占比</th><th>结构性趋势</th></tr></thead>
+    <tbody>
+      <tr class="row-highlight"><td><strong>Components（电容器/电感/EMI滤波器）</strong></td><td>¥1,293.0B</td><td class="pos">+11.5%</td><td>66.0%</td><td class="pos">持续扩张，核心增长引擎</td></tr>
+      <tr><td>其中：Computers应用（数据中心/AI服务器）</td><td>¥448.6B</td><td class="pos">+44.5%</td><td>—</td><td class="pos">增速最快的终端应用</td></tr>
+      <tr><td>Devices &amp; Modules（通信模块/高频器件/电池）</td><td>¥648.3B</td><td class="neg">-1.2%</td><td>33.1%</td><td class="neg">持续收缩，结构性拖累</td></tr>
+      <tr><td>其中：高频器件与通信模块</td><td>—</td><td class="neg">约-4.3%</td><td>—</td><td class="neg">SAW滤波器等业务持续承压</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-good">
+    <strong>这是村田真正值得重估的核心逻辑：</strong>Components分部收入占比达66.0%，Computers（数据中心/AI服务器）应用收入预计同比+44.5%，而Devices &amp; Modules占比降至33.1%、高频通信模块收入还在同比下降约4.3%。村田正在经历一场清晰的<strong>业务结构迁移</strong>：从"手机通信模块+MLCC+电池+高频器件"的传统组合，逐步转向"AI服务器+高端被动元件+汽车电子"的高ROIC组合。Components分部的盈利质量和资本回报率明显优于D&amp;M，这一结构性转变本身，比单纯讨论"MLCC提价多少"更接近公司价值重估的本质驱动力。
+  </div>
+
+  <div class="callout c-warn">
+    <strong>但Devices &amp; Modules的拖累是持续性风险，不应被低估：</strong>FY2025公司曾就SAW滤波器相关业务计提约¥43.8B商誉减值，Devices &amp; Modules分部当期经营亏损约¥26.5B。需要明确的是：<strong>商誉减值只是账面价值的重新调整，并不等同于该分部竞争力问题、客户流失或高频技术路线困境的实质性解决</strong>。据公司FY2027预测，高频器件与通信模块业务收入仍预计同比下降约4.3%，Q1财报显示Devices &amp; Modules分部经营亏损进一步扩大至约¥12.9B（含约¥3B的电源模块项目退出损失）。村田未来的整体盈利表现，本质上是"Components强劲增长"与"D&amp;M持续收缩甚至恶化"两股力量的净额，而非全公司整体性的超级周期，这一区分应当贯穿于对公司未来盈利路径的所有判断中。
+  </div>
+</section>
+
+<!-- 05 护城河 -->
+<section id="moat" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">05</span><span class="sec-title">护城河评估：材料与制造工艺的综合壁垒</span></div>
+  <div class="moat-grid">
+    <div class="moat-card"><h4>🔬 材料与制造工艺的综合壁垒</h4><p>村田的核心竞争力并非单一专利或品牌，而是陶瓷配方设计、超薄介质层堆叠技术、精密烧结制程、高良率量产能力，以及数十年积累的客户认证体系共同构成的综合壁垒。这套体系难以在短期内被复制，是村田在高端MLCC规格上保持定价权的根本原因，Q1财报中Components分部营业利润率突破30%，为这一判断提供了最新的财务验证。</p></div>
+    <div class="moat-card"><h4>🏭 克制的资本开支纪律</h4><p>FY2027资本开支计划维持在约¥255.0B区间，研发投入约¥167.0B，公司并未因AI需求旺盛而进行激进扩产。MLCC行业历史上最大的风险之一是"景气→集体扩产→供需反转→价格崩塌"的周期规律，村田相对克制的资本开支态度，是维持长期ROIC和避免重演历史周期陷阱的重要正面信号。</p></div>
+    <div class="moat-card"><h4>🚗 汽车电子与工业应用的多元化</h4><p>除AI服务器外，村田在汽车电子（尤其是电动化和智能化带来的车规级MLCC/电感需求增长）领域同样具备深厚积累，为公司提供了不完全依赖单一AI服务器周期的收入多元化基础，降低了业务对单一终端市场波动的敏感性。</p></div>
+  </div>
+
+  <div class="callout c-warn">
+    <strong>关于"单机MLCC用量"估算的方法论提示：</strong>行业内常见的AI服务器BOM估算（例如高端GPU集群机型相较传统服务器所需MLCC颗数可能高出一个数量级）在方向上具有一定参考价值，但不应被直接用于简单的倍数外推来预测公司收入增长。原因包括：<strong>①不同服务器平台的BOM设计存在显著差异；②不同规格MLCC的价值量差异巨大，颗数增长不等于收入等比例增长；③村田在任何细分市场都不占据100%供应份额；④终端服务器出货量本身的增长曲线会影响最终总需求；⑤客户会持续进行规格优化和成本工程，长期用量倍数存在收敛压力</strong>。"单机用量提升"这一方向性判断是成立的，但由此推导出的具体收入倍数应被视为粗略的方向性参考，而非精确的预测依据。
+  </div>
+
+  <div class="callout">
+    <strong>定价权 ≠ 无限提价权：</strong>村田在高端规格MLCC上具备较强的议价能力，但TDK、太阳诱电、三星电机、国巨（Yageo）等厂商同样是重要供应商，大型客户普遍执行多供应商认证策略以分散供应链风险。因此更准确的表述是：村田拥有的是<strong>相对更强的价格纪律和供应保障能力</strong>，而非不受约束的定价自由，这一区分对理解公司长期盈利能力的合理上限具有重要意义。
+  </div>
+</section>
+
+
+<!-- 06 MLCC行业格局 -->
+<section id="industry" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">06</span><span class="sec-title">MLCC行业格局与竞争环境：寡头垄断结构下的AI驱动超级景气周期</span></div>
+  <p>MLCC（多层陶瓷电容器）被称为"电子工业的大米"，是几乎所有电子设备电路中不可或缺的被动元件，用于去耦、滤波和储能。理解全球MLCC市场的竞争结构和当前景气周期的性质，是评估村田核心竞争力和护城河可持续性的必要前提。</p>
+
+  <h3 class="sub">全球市场格局：日韩双寡头主导，呈现"金字塔三级"结构</h3>
+  <table class="th-light">
+    <thead><tr><th>厂商</th><th>综合MLCC市场份额（约）</th><th>AI服务器MLCC份额（约）</th><th>技术定位</th></tr></thead>
+    <tbody>
+      <tr class="row-highlight"><td><strong>村田制作所（Murata）</strong></td><td style="text-align:right"><strong>40–45%</strong></td><td style="text-align:right"><strong>45%左右</strong></td><td style="text-align:left">综合市场绝对龙头；小型化、超薄层堆叠技术全球领先</td></tr>
+      <tr><td>三星电机（Samsung Electro-Mechanics）</td><td style="text-align:right">约20–25%</td><td style="text-align:right">40%以上，与村田分庭抗礼</td><td style="text-align:left">依托半导体制造经验加速追赶，在AI服务器细分市场差距显著小于综合市场</td></tr>
+      <tr><td>太阳诱电（Taiyo Yuden）</td><td style="text-align:right">约11–13%</td><td style="text-align:right">—</td><td style="text-align:left">全球第三，MLCC占其自身业务比重高达约64%</td></tr>
+      <tr><td>TDK</td><td style="text-align:right">合计约10–20%（与太阳诱电、国巨）</td><td style="text-align:right">—</td><td style="text-align:left">电子元件综合厂商，MLCC为多元产品线之一</td></tr>
+      <tr><td>国巨（Yageo，台湾）</td><td style="text-align:right">商品化通用型MLCC约25%产能份额</td><td style="text-align:right">—</td><td style="text-align:left">主打中低端通用规格，价格竞争激烈的商品化市场领先者</td></tr>
+      <tr><td>中国厂商（风华高科、三环集团等）</td><td style="text-align:right">合计约10%</td><td style="text-align:right">—</td><td style="text-align:left">聚焦中低端市场，与第一梯队仍存在技术代际差距</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-good">
+    <strong>AI服务器细分市场是理解当前竞争态势的关键：在综合市场，村田对三星电机保持明显领先（40-45% vs 20-25%）；但在增长最快的AI服务器专用MLCC细分市场，两者份额已高度接近（约45% vs 40%以上），三星电机正在通过重点资源投入实现结构性追赶。</strong>据韩国经济日报等媒体报道，三星电机已连续签署多笔AI服务器MLCC长期供应协议（2026年6月约¥4,540亿韩元、7月约¥2,951亿韩元），累计长期协议金额已达约¥2.3万亿韩元规模。这一细分市场的份额趋近，是本报告在风险矩阵中持续关注"竞争格局"这一变量的核心依据——AI服务器MLCC虽然当前对村田贡献了最快的收入增速，但并非村田独占的市场，三星电机凭借其半导体制造经验和资本实力，正在这一高价值细分领域快速缩小差距。
+  </div>
+
+  <h3 class="sub">当前行业景气度：史上最紧供需，产能利用率逼近上限</h3>
+  <table class="th-mid">
+    <thead><tr><th>行业指标</th><th>数据</th></tr></thead>
+    <tbody>
+      <tr><td>行业整体Book-to-Bill比率（2026年6月末，TrendForce）</td><td style="text-align:right">约1.04</td></tr>
+      <tr><td>村田BB Ratio（同期）</td><td style="text-align:right">约1.30</td></tr>
+      <tr><td>三星电机BB Ratio（同期）</td><td style="text-align:right">约1.31</td></tr>
+      <tr><td>太阳诱电BB Ratio（同期）</td><td style="text-align:right">约1.25（三者均为疫情以来最高水平）</td></tr>
+      <tr><td>高端产线产能利用率</td><td style="text-align:right">90–95%，部分调研显示接近95%</td></tr>
+      <tr><td>高容量规格交期</td><td style="text-align:right">从历史正常约8-10周延长至20-24周，部分规格达26-40周</td></tr>
+      <tr><td>高容量MLCC现货价格月度环比波动</td><td style="text-align:right">部分规格单月涨幅300%-560%（局部现货市场，非合约价）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-warn">
+    <strong>供需紧张的结构性特征：这不是一场"全面短缺"，而是集中在高容量、大尺寸、高电压规格的结构性紧缺。</strong>据行业分析，普通规格MLCC（如手机、消费电子常用的小尺寸低容量型号）供应总体仍属正常，真正紧缺的是AI服务器电源网络所依赖的高容量、大尺寸、高电压规格产品——这类产品新增产能建设周期长达12-24个月，2026年新投产的产线要到2027年才能形成有意义的产出爬坡，这是供给端短期内无法快速响应需求激增的根本原因。这一"结构性而非全面性"的紧缺特征，也解释了为何消费电子相关MLCC价格表现相对温和，而AI服务器专用规格价格涨幅可达50%-60%甚至更高。
+  </div>
+
+  <h3 class="sub">2026年价格上涨周期：行业性集体调价，村田并非孤例</h3>
+  <table class="th-light">
+    <thead><tr><th>厂商</th><th>调价时间</th><th>涨价幅度</th><th>覆盖品类</th></tr></thead>
+    <tbody>
+      <tr class="row-highlight"><td>村田制作所</td><td>2026年4月、7月两轮</td><td>15%–40%</td><td>AI服务器高容量MLCC、高端车规级MLCC、RF/微波MLCC</td></tr>
+      <tr><td>三星电机</td><td>2026年8月1日起</td><td>约30%（Markup Business Code全线产品）</td><td>全品类MLCC，公司明确表示"供应链压力已超出自身可承受范围"</td></tr>
+      <tr><td>太阳诱电</td><td>2026年5月起；9月1日拟再次上调</td><td>约6%–13%（首轮）</td><td>中低容量消费级MLCC、部分车规级MLCC</td></tr>
+      <tr><td>国巨（Yageo）</td><td>2026年内多次</td><td>最高达80%（部分型号）</td><td>通用型商品化MLCC</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>这一轮涨价的行业性质，印证了此前判断的合理性——价格上涨是供需结构改善的结果，而非单一厂商的机会主义定价。</strong>从村田、三星电机、太阳诱电到国巨，全行业主要厂商在2026年内均实施了不同程度的调价，且时间点相对集中（4月至8月）。这一行业普遍性调价格局表明，当前的价格上涨更多反映的是<strong>全行业性的供需失衡</strong>，而非村田单方面利用市场地位进行的机会主义提价——这与本报告此前强调的"定价权≠无限提价权"、"稼动率提升和产品结构改善才是利润增长核心驱动"的判断相互印证：即便在全行业集体涨价的背景下，村田Q1财报中价格因素仍是负贡献，说明公司在实际执行层面的提价传导仍相对克制。
+  </div>
+
+  <h3 class="sub">上游材料壁垒：日本厂商的材料科学优势是护城河的深层来源</h3>
+  <p>村田及其他日本MLCC厂商的竞争优势不仅体现在终端产品制造环节，更根植于上游关键材料的自主可控能力。MLCC核心介质材料钛酸钡（Barium Titanate）粉体，以及内电极所需的镍粉/镍浆材料，日本化工企业（如堺化学工业、TAYCA、昭荣化学等）在全球范围内占据重要甚至主导地位。这种<strong>从原材料到终端制造的垂直技术积累</strong>，是日本厂商在超薄介质层（部分产品已实现单层厚度低于1微米）和高层数堆叠（最新产品已达800层）等前沿领域保持1-2代技术领先优势的深层原因，也是韩国、台湾竞争对手即便加大资本开支也难以在短期内完全弥合的壁垒。</p>
+
+  <div class="callout c-risk">
+    <strong>但材料端同样面临成本压力：</strong>MLCC生产所需的银、镍、钯等贵金属价格上涨，以及MLCC隔离膜所需原油类原材料因中东地缘政治局势推高的成本，正在从上游挤压全行业厂商的成本控制空间。这与本报告财务分析章节中"Q1价格因素为负贡献、原材料成本转嫁能力有待验证"的发现相互呼应——上游材料壁垒确保了村田的技术领先地位和长期议价能力，但并不意味着公司可以完全免疫于原材料成本上涨的短期压力。
+  </div>
+
+  <h3 class="sub">历史周期镜鉴：MLCC行业的反复繁荣-调整规律</h3>
+  <p>MLCC行业历史上曾多次经历供需极端错配的周期：2017-2018年（iPhone X世代换机潮叠加早期电动车需求，日本厂商退出低利润通用产品线，导致重复下单和价格失控）、随后2019-2020年的反向调整、以及2022年下半年至2024年长达约四年的库存去化周期（通用型产品陷入低利润竞争）。2025年行业整体BB Ratio重新突破1.0，标志着景气反转的起点，2026年当前周期在强度和驱动因素（AI基础设施而非单一消费电子产品周期）上均与历史周期存在显著差异，但<strong>行业反复出现"繁荣→集体扩产→供需反转→价格回落"规律这一历史经验本身，仍是评估当前周期能持续多久的重要参照</strong>，这一视角已纳入本报告风险矩阵及估值情景框架的悲观情景假设中。</p>
+</section>
+
+<!-- 07 估值分析 -->
+<section id="valuation" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">07</span><span class="sec-title">估值分析：标准化盈利能力框架 + 官方ADR比例换算</span></div>
+
+  <div class="callout c-warn">
+    <strong>方法论说明：</strong>村田当前估值处于历史相对高位，简单套用"当前峰值盈利×固定高倍数"的方法容易产生双重乐观叠加的风险。本报告采用<strong>标准化/中周期盈利能力（Normalized/Mid-cycle EPS）×周期位置调整后倍数</strong>的框架构建三情景分析，倍数选取与该盈利能力所处的周期位置直接相关联，而非独立设定一个固定倍数，力求估值逻辑内部一致、可复算。
+  </div>
+
+  <h3 class="sub">当前市场数据</h3>
+  <table class="th-light">
+    <thead><tr><th>指标</th><th>数据</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>6981.T参考股价</td><td style="text-align:right">¥7,129</td><td>2026-08-04收盘（Investing.com）；日内区间¥6,770–7,332</td></tr>
+      <tr><td>52周区间</td><td style="text-align:right">¥2,282.5–¥12,895</td><td>ATH为2026年6月22日；波动幅度极端，反映AI叙事驱动下的高Beta特征（约2.09）</td></tr>
+      <tr><td>公司最新汇率假设（自Q2起）</td><td style="text-align:right">¥155/USD</td><td>公司官方FY2026指引所采用假设，本报告估值换算统一采用此汇率</td></tr>
+      <tr><td>FY2026上修后EPS指引</td><td style="text-align:right">¥185.68</td><td>公司官方口径（截至2027年3月止财年）</td></tr>
+      <tr><td>当前隐含P/E（按¥7,129÷¥185.68）</td><td style="text-align:right">约38.4x</td><td>基于最新指引EPS；显著高于电子元件行业历史平均区间（传统多为15-25倍）</td></tr>
+      <tr><td>分析师一致目标价（东证口径）</td><td style="text-align:right">均值¥10,797.1，区间¥4,200–15,750</td><td>16家机构覆盖，评级Strong Buy（Investing.com）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>关于约38倍隐含P/E的解读：</strong>这一水平显著高于电子元件行业历史平均估值区间，需要结合两点理解：一是市场可能已在为"Components占比持续提升、D&amp;M拖累逐步收窄"这一结构性改善预期定价，而非单纯线性外推当前峰值盈利；二是公司股价自身波动幅度极大（52周区间跨度近6倍），当前¥7,129这一快照已从6月ATH ¥12,895大幅回落约45%，市场本身也在持续消化对"AI服务器MLCC超级周期"能持续多久这一问题的分歧。本报告不对这一隐含倍数的"合理性"做单一方向的确定性判断，而是在下方情景框架中呈现区间供投资者参考。
+  </div>
+
+  <h3 class="sub">三情景框架：标准化盈利能力 × 周期位置调整倍数</h3>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">框架核心：<strong>盈利能力假设本身即反映了对Components/D&amp;M结构性变化及AI服务器需求持续性的不同判断，倍数选取与该盈利能力所处的周期位置相关联</strong>。</p>
+
+  <table class="th-light">
+    <thead><tr><th>情景</th><th>概率</th><th>核心假设</th><th>FY2027E EPS</th><th>倍数</th><th>6981.T价格</th></tr></thead>
+    <tbody>
+      <tr class="row-bear"><td><strong>悲观</strong></td><td>20%</td><td>AI服务器资本开支增速见顶回落，MLCC价格出现均值回归压力，消费电子需求继续疲弱，日元升值削弱汇兑正面贡献，D&amp;M亏损进一步扩大</td><td>¥165–175</td><td>25–28x</td><td class="p-big" style="color:var(--red)">¥4,100–4,900</td></tr>
+      <tr class="row-base"><td><strong>基准</strong></td><td>55%</td><td>AI服务器/数据中心需求延续当前增长态势，Components维持强势但价格降幅低于历史平均，D&amp;M亏损逐步收窄，FY2027盈利基本达到公司最新指引</td><td>¥185–195</td><td>30–35x</td><td class="p-big" style="color:var(--ink-3)">¥5,550–6,825</td></tr>
+      <tr class="row-bull"><td><strong>乐观</strong></td><td>25%</td><td>AI服务器MLCC需求持续超预期，高端规格供给持续紧张，ASP/产品结构进一步改善，Components利润率继续扩张，D&amp;M亏损明显收窄，市场持续给予AI基础设施核心零部件商估值溢价</td><td>¥200–215</td><td>38–42x</td><td class="p-big" style="color:var(--green)">¥7,600–9,000</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-warn">
+    <strong>关于固态电池等远期期权价值的处理：</strong>固态电池量产提速等远期催化剂，应作为超出乐观情景之外的长期期权价值单独看待，<strong>不应作为支撑乐观情景（12个月框架内）权重的核心条件之一</strong>，以避免"用远期故事支撑短期估值"的方法论问题，本报告的三情景框架均未将固态电池商业化进度纳入基准假设。
+  </div>
+
+  <h3 class="sub">ADR参考区间（按官方存托比例换算）</h3>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">换算公式：MRAAY价格 = 6981.T价格 × 0.5 ÷ 155（公司最新汇率假设）</p>
+
+  <table class="th-light">
+    <thead><tr><th>情景</th><th>6981.T价格区间</th><th>MRAAY参考区间</th></tr></thead>
+    <tbody>
+      <tr class="row-bear"><td><strong>悲观</strong></td><td>¥4,100–4,900</td><td class="p-big" style="color:var(--red)">$13.2–15.8</td></tr>
+      <tr class="row-base"><td><strong>基准</strong></td><td>¥5,550–6,825</td><td class="p-big" style="color:var(--ink-3)">$17.9–22.0</td></tr>
+      <tr class="row-bull"><td><strong>乐观</strong></td><td>¥7,600–9,000</td><td class="p-big" style="color:var(--green)">$24.5–29.0</td></tr>
+      <tr class="row-wtd"><td><strong>概率加权中枢</strong></td><td>¥4,500×20%+¥6,188×55%+¥8,300×25% ≈ ¥6,428</td><td class="p-big">约$20.7</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub">与市场分析师一致预期的交叉验证</h3>
+  <p>东证口径分析师一致目标价均值¥10,797.1（16家机构，Strong Buy评级），高于本报告基准情景上沿（¥6,825），更接近本报告乐观情景区间（¥7,600-9,000）的上半段。这一差异提示：<strong>市场机构层面的预期本身已经相当乐观</strong>，本报告的基准情景相对市场一致预期偏审慎，这一差异既可能反映本报告对周期位置和盈利可持续性的判断更为保守，也可能反映本报告尚未充分捕捉市场已经消化的某些积极因素（如更快的D&amp;M减亏路径或更持久的AI资本开支周期）。本报告保留独立判断，同时明确披露这一差异供投资者参考，不简单跟随分析师一致预期上调基准情景。</p>
+</section>
+
+<!-- 08 风险矩阵 -->
+<section id="risks" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">08</span><span class="sec-title">风险矩阵</span></div>
+  <table class="th-dark" style="font-size:13px;">
+    <thead><tr><th style="width:17%">风险</th><th style="width:7%">级别</th><th style="width:35%">当前状态</th><th style="width:27%">对估值影响</th><th style="width:14%">缓解因素</th></tr></thead>
+    <tbody>
+      <tr class="row-risk-h"><td><strong>AI服务器资本开支周期性回落</strong></td><td><span class="pill pill-h">高</span></td><td>Components分部当前的强劲表现高度依赖超大规模云厂商的AI基础设施资本开支持续性。若相关资本开支增速出现可见放缓，MLCC需求和ASP将首当其冲承压，尤其是Computers应用（FY2027预测+44.5%）这一最快增速板块的假设最容易被证伪。</td><td>悲观情景（20%概率）对应6981.T约¥4,100-4,900，较当前价格有显著下行空间。</td><td>汽车电子等其他应用提供一定收入多元化缓冲</td></tr>
+      <tr class="row-risk-h"><td><strong>股价及估值的极端波动性</strong></td><td><span class="pill pill-h">高</span></td><td>6981.T过去52周区间¥2,282.5–12,895，跨度近6倍，Beta约2.09。当前¥7,129价格已较6月ATH ¥12,895回落约45%，说明市场对"AI+MLCC超级周期"的定价本身极不稳定，情绪驱动特征明显。</td><td>若市场情绪进一步逆转，即便基本面本身未恶化，股价也可能面临与基本面变化不成比例的下跌，反之亦然。</td><td>基本面确有真实业绩支撑，非纯粹叙事炒作，与部分主题概念股存在本质区别</td></tr>
+      <tr class="row-risk-m"><td><strong>Devices &amp; Modules持续拖累</strong></td><td><span class="pill pill-m">中</span></td><td>Q1经营亏损进一步扩大至约¥12.9B，FY2027高频器件与通信模块收入预计仍同比下降约4.3%。商誉减值不等于业务问题已解决，SAW滤波器等技术路线的竞争力问题仍待验证改善路径。</td><td>若D&amp;M亏损持续扩大而非收窄，将部分抵消Components分部的增长贡献，压制整体EPS增速。</td><td>公司已进行部分业务退出（如电源模块项目），显示管理层正主动收缩低效业务</td></tr>
+      <tr class="row-risk-m"><td><strong>日元汇率波动</strong></td><td><span class="pill pill-m">中</span></td><td>公司已将全年指引汇率假设从¥150上调至¥155（Q2起），日元贬值是Q1利润增长的正面贡献因素之一。若日元升值趋势逆转当前假设，将对以日元计价的营业利润构成负面影响，这也是本报告估值统一采用公司最新¥155假设的原因。</td><td>汇率每偏离假设5%，对营业利润的影响幅度需结合海外收入占比具体测算，是财报季需要持续关注的变量。</td><td>公司国际化程度高，海外收入占比高，具备一定天然对冲能力</td></tr>
+      <tr class="row-risk-m"><td><strong>原材料成本压力（银、镍、钯等）</strong></td><td><span class="pill pill-m">中</span></td><td>贵金属等原材料价格上涨是MLCC生产的真实成本压力。Q1财报显示价格因素对利润是负贡献（-¥15B），说明当前公司尚未能将成本压力完全转嫁至终端价格，这一转嫁能力的强弱是未来毛利率能否持续改善的关键考验。</td><td>若原材料成本压力持续上升而转嫁能力跟不上，可能压缩Components分部的利润率扩张空间。</td><td>公司在高端规格上具备相对更强的议价能力和产品结构优化空间</td></tr>
+      <tr class="row-risk-l"><td><strong>竞争格局：TDK、太阳诱电、三星电机等同业追赶</strong></td><td><span class="pill pill-l">低</span></td><td>MLCC市场并非村田独占，主要竞争对手同样在积极布局高端产能。若竞争对手在先进制程或产能规模上加速追赶，可能压缩村田在高端规格上的份额和定价权。</td><td>中长期若竞争格局生变，可能影响乐观情景的实现概率，但短期内技术代际差距预计仍将维持。</td><td>材料/制造工艺的综合壁垒需要长期积累，短期难以被完全复制</td></tr>
+      <tr class="row-risk-l"><td><strong>非公司发起ADR的固有局限</strong></td><td><span class="pill pill-l">低</span></td><td>MRAAY作为Unsponsored ADR，流动性、信息披露同步性通常弱于主要上市地（6981.T），跨市场价差和套利效率也可能受限。</td><td>MRAAY价格短期可能偏离6981.T理论平价，投资者应以东京主要上市地数据作为基本面判断的主要依据。</td><td>本报告已明确以6981.T为估值分析主要锚点，降低这一局限对分析结论的影响</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 09 监测指标 -->
+<section id="monitor" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">09</span><span class="sec-title">关键监测指标</span></div>
+  <ol class="monitor-list">
+    <li><strong>Q2 FY2026财报（预计10-11月披露）中Components分部营业利润率能否维持30%以上：</strong>这是验证Q1强劲表现是否具备持续性、而非单季度脉冲的最直接指标。</li>
+    <li><strong>价格因素对利润贡献的正负变化：</strong>Q1价格因素为负贡献（-¥15B），需持续追踪后续季度这一因素是否转正，判断公司向下游转嫁原材料成本压力的实际能力。</li>
+    <li><strong>Devices &amp; Modules分部亏损收窄节奏：</strong>FY2027预测该分部收入仍同比下降约4.3%，需观察实际亏损是否如预期收窄，还是持续扩大，这直接影响整体EPS增速能否达到公司最新指引。</li>
+    <li><strong>Computers应用收入增速能否达到+44.5%的预测：</strong>这是AI服务器/数据中心需求可持续性最直接的量化验证指标，也是区分基准情景与乐观情景的关键分水岭。</li>
+    <li><strong>股价相对分析师一致目标价（均值¥10,797.1）的收敛路径：</strong>当前价格与分析师一致预期之间的较大差距，需要通过后续财报验证来判断是市场过度乐观还是价格尚未充分反映基本面改善。</li>
+  </ol>
+</section>
+
+<div class="disclosure">
+  <strong>重要披露与方法论说明。</strong>
+  本报告由Snail-Bird Investment Research就Murata Manufacturing Co., Ltd.（OTC: MRAAY / TSE: 6981）独立撰写，为首次覆盖，聚焦2026年7月31日披露的FY2026 Q1财报及同步上修的全年指引，不构成个性化投资建议或买卖邀约。
+  <strong>数据来源：</strong>Murata Manufacturing官方FY2026 Q1财报及决算说明会资料（corporate.murata.com，2026-07-31）；Q1财报电话会纪要及汇率假设披露（Murata IR，2026-07-31）；财务数据交叉核对（Quartr、TradingView、BigGo Finance、Kabutan/株探，2026-07-31至08-08）；ADS存托比例官方公告（Citibank, N.A.《NOTICE OF ADS RATIO CHANGE AND STOCK DISTRIBUTION》，2023-08-28发布，2023-10-02生效，经Citi Depositary Receipt Services官网核实）；SEC Form F-6EF存托凭证注册文件（SEC EDGAR）；股价数据（Investing.com，2026-08-04；TradingView、Yahoo Finance多源交叉核对，2026-08-14至08-17）。
+  <strong>口径说明：</strong>日元兑美元汇率统一采用公司官方FY2026指引所披露的最新假设（¥155/USD，自Q2起生效）；ADS存托比例为1 MRAAY = 0.5股6981.T普通股（花旗银行官方确认，2023年10月2日生效，为现行有效比例）；本报告主要以6981.T（东京主要上市地）作为估值分析锚点，仅在情景框架末端换算为MRAAY参考区间。
+  <strong>估值说明：</strong>三情景框架的输入假设（标准化EPS、周期位置调整倍数、概率权重）均为分析师独立判断，不依赖任何卖方一致预期作为唯一依据，但已将分析师一致目标价（¥10,797.1均值）作为外部交叉验证纳入讨论；本报告基准情景相对分析师一致预期偏审慎，这一差异已在正文中明确披露，投资者应结合自身研究独立判断。
+  <strong>利益冲突：</strong>Snail-Bird Investment声明目前对Murata Manufacturing（MRAAY/6981.T）无持仓，本报告不受任何外部机构委托或赞助。
+  投资者应独立进行尽职调查，并咨询专业财务顾问后作出投资决定。本报告中的前瞻性陈述涉及重大不确定性，尤其是AI基础设施资本开支周期的持续性、日元汇率走势及原材料成本转嫁能力等因素，可能导致实际结果与本报告预期产生重大偏差。
+  © 2026 Snail-Bird Investment Research. 保留所有权利。
+</div>
+
+</div>
 </body>
 </html>
