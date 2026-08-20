@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nu Holdings (NU) 深度投资分析报告 | Snail-bird Investment</title>
+    <style>
+:root{
+  --bg:#0a1424; --card:#101f36; --ink:#e8eef8; --sub:#9fb1cc; --line:#223349;
+  --brand:#6ea8fe; --brand2:#b794f6; --green:#3ecf8e; --red:#ff7a7a; --amber:#f0b429;
+  --chip:#16294a; --navy:#8ab4f8; --soft:#0c1a2e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.7; color: var(--ink); max-width: 1180px; margin: 0 auto; padding: 40px 30px; background: var(--bg); }
+.brand-top { font-size: 12px; letter-spacing: .08em; color: var(--brand); border-bottom: 1px solid var(--line); padding-bottom: 10px; margin-bottom: 18px; }
+.report-header { border-bottom: 3px solid var(--navy); padding-bottom: 20px; margin-bottom: 30px; }
+.report-title { font-size: 28px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.report-meta { color: var(--sub); font-size: 14px; display: flex; gap: 24px; flex-wrap: wrap; }
+.rating-box { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin: 25px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+.rating-item { text-align: center; }
+.rating-label { font-size: 13px; color: var(--sub); margin-bottom: 4px; }
+.rating-value { font-size: 20px; font-weight: 700; color: var(--ink); }
+.rating-value.buy { color: var(--green); }
+h2 { font-size: 22px; color: var(--ink); margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--line); }
+h3 { font-size: 17px; color: var(--navy); margin: 22px 0 10px; }
+h4 { font-size: 15px; color: var(--sub); margin: 16px 0 8px; }
+p { margin-bottom: 12px; text-align: justify; color: #c8d4e4; }
+table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+th, td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; }
+th { background: var(--chip); font-weight: 600; color: var(--ink); }
+tr:nth-child(even) { background: var(--soft); }
+ul { margin: 10px 0 15px 24px; color: #c8d4e4; }
+ol { margin: 10px 0 15px 24px; color: #c8d4e4; }
+li { margin-bottom: 6px; }
+.section-card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 768px) { .two-column { grid-template-columns: 1fr; } }
+.risk-bull, .risk-bear { padding: 16px; border-radius: 6px; margin: 10px 0; }
+.risk-bull { background: #0e2b1f; border-left: 4px solid var(--green); }
+.risk-bear { background: #2b1414; border-left: 4px solid var(--red); }
+.conclusion-box { background: linear-gradient(135deg, #0f2040, #1e3a5c); color: var(--ink); padding: 24px; border-radius: 8px; margin: 30px 0; border: 1px solid var(--line); }
+.conclusion-box h3 { color: var(--ink); }
+.dcf-formula { background: var(--soft); border: 1px solid var(--line); padding: 14px; border-radius: 6px; font-family: "Courier New", monospace; margin: 12px 0; font-size: 14px; color: var(--sub); }
+.note { font-size: 13px; color: var(--sub); margin-top: 8px; font-style: italic; }
+.footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12px; color: #5a6b86; text-align: center; }
+.flywheel-box { background: var(--soft); border-radius: 8px; padding: 18px; margin: 12px 0; border-left: 4px solid var(--brand); }
+.metric-trend th, .metric-trend td { text-align: center; font-size: 13px; }
+.metric-trend .up { color: var(--green); font-weight: 600; }
+.metric-trend .down { color: var(--red); font-weight: 600; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; margin-left: 6px; }
+.tag-ifrs { background: var(--chip); color: var(--brand); }
+.tag-mgt { background: #1c1a2e; color: var(--brand2); }
+.tag-est { background: #2a2316; color: #f0a040; }
+.foot { margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 12px; color: var(--sub); text-align: center; }
+strong { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="brand-top">🐌 Snail-bird Investment · 数字银行 / 金融科技深度研究 · 拉美市场</div>
+
+<div class="report-header">
+    <div class="report-title">Nu Holdings Ltd. (NYSE: NU) 深度投资分析报告</div>
+    <div class="report-meta">
+        <span>出品：Snail-bird Investment</span>
+        <span>报告日期：2026-08-20</span>
+        <span>覆盖周期：基于 2026 Q2 IFRS财报（截至6/30，8/13披露）</span>
+        <span>行业：数字银行 / 拉美金融科技</span>
+    </div>
+</div>
+
+<div class="rating-box">
+    <div class="rating-item">
+        <div class="rating-label">投资评级</div>
+        <div class="rating-value buy">BUY</div>
+    </div>
+    <div class="rating-item">
+        <div class="rating-label">12个月目标价</div>
+        <div class="rating-value">$18.0（中枢）</div>
+    </div>
+    <div class="rating-item">
+        <div class="rating-label">合理价值区间</div>
+        <div class="rating-value">$16.0–19.0</div>
+    </div>
+    <div class="rating-item">
+        <div class="rating-label">当前股价</div>
+        <div class="rating-value">$14.61</div>
+    </div>
+    <div class="rating-item">
+        <div class="rating-label">总市值</div>
+        <div class="rating-value">$70.6B</div>
+    </div>
+    <div class="rating-item">
+        <div class="rating-label">Forward P/E</div>
+        <div class="rating-value">15.2x</div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2>投资摘要</h2>
+    <p>Nu Holdings（Nubank）是拉丁美洲最大的数字银行，也是全球用户规模最大的纯数字银行之一，核心业务覆盖巴西、墨西哥、哥伦比亚三国，截至2026年Q2末总客户数达1.389亿。公司以零费率信用卡切入市场，逐步构建起集存款、信贷、支付、保险、投资于一体的全品类金融平台，凭借极致的运营效率与AI驱动的风控能力，实现了用户规模与盈利质量的双重高增长。</p>
+    <p>2026年第二季度公司IFRS口径净利润10.61亿美元，首次单季破10亿；管理层口径ROE达33%，风险调整后净息差12.4%，盈利能力显著超越传统银行与同业数字银行。2026年7-8月，巴西与墨西哥全银行牌照相继落地，为后续存款获取与信贷扩张打开空间。</p>
+    <p><strong>核心投资逻辑</strong>：巴西本土主账户渗透与单客价值提升仍有空间，墨西哥全银行牌照落地开启第二增长曲线，AI技术持续释放运营杠杆，资产质量整体稳健。主要风险在于巴西利率周期下行、信贷组合风险敞口扩大、监管资本消耗与拉美地缘政策不确定性。</p>
+</div>
+
+<div class="section-card">
+    <h2>一、公司概况与发展历程</h2>
+    
+    <h3>1.1 公司简介</h3>
+    <p>Nubank成立于2013年，总部位于巴西圣保罗，由前红杉资本合伙人David Vélez、巴西银行家Cristina Junqueira与工程师Edward Wible联合创立。公司成立初衷是颠覆巴西传统银行业高费率、低效率、强官僚的市场格局，通过纯数字化模式为用户提供低成本、透明、便捷的金融服务。</p>
+    <p>2021年12月公司于纽交所上市，股票代码NU，采用IFRS会计准则编制财务报表。截至2026年，公司已从单一信用卡服务商成长为全牌照综合金融平台，服务覆盖拉美超1.3亿用户，是巴西第二大银行（按客户数计）。</p>
+
+    <h3>1.2 发展里程碑</h3>
+    <table>
+        <tr><th>时间</th><th>关键事件</th></tr>
+        <tr><td>2013年</td><td>公司于巴西圣保罗成立，定位数字信用卡服务商</td></tr>
+        <tr><td>2014年</td><td>推出首张零年费国际信用卡，两年内用户突破100万</td></tr>
+        <tr><td>2018年</td><td>估值突破10亿美元，跻身独角兽行列；推出数字账户NuConta</td></tr>
+        <tr><td>2019年</td><td>进入墨西哥市场，推出个人贷款业务</td></tr>
+        <tr><td>2020年</td><td>拓展哥伦比亚市场，上线保险、中小企业账户、投资理财业务</td></tr>
+        <tr><td>2021年</td><td>纽交所上市，市值达450亿美元；巴西客户数突破5000万</td></tr>
+        <tr><td>2024年</td><td>巴西客户数突破1亿，首次实现全年规模化盈利</td></tr>
+        <tr><td>2026年Q2末</td><td>总客户数达1.389亿；单季净利润首破10亿美元；管理层ROE达33%</td></tr>
+        <tr><td>2026年7-8月（Q2后）</td><td>巴西、墨西哥全银行牌照相继获批落地，开启全功能银行运营阶段</td></tr>
+    </table>
+</div>
+
+<div class="section-card">
+    <h2>二、管理层、治理与股东结构</h2>
+
+    <h3>2.1 核心管理团队</h3>
+    <p>公司核心管理团队兼具创投视野、本土银行经验与技术能力，创始人团队稳定且持股比例较高，与股东利益高度一致。</p>
+    <ul>
+        <li><strong>David Vélez</strong>：创始人兼CEO，哥伦比亚人，前红杉资本合伙人，主导公司全球战略与长期扩张。</li>
+        <li><strong>Cristina Junqueira</strong>：联合创始人，首席增长官兼美国业务CEO，负责美国银行牌照申请与业务筹备，业务启动后将出任美国业务CEO。</li>
+        <li><strong>Edward Wible</strong>：联合创始人兼CTO，负责技术架构与AI平台建设，构建了公司核心的分布式银行系统与风控模型。</li>
+        <li><strong>Rob Livingston</strong>：全球CFO，2026年7月13日正式就任，负责全球财务与资本配置。</li>
+        <li><strong>Livia Chanes</strong>：巴西CEO兼拉美业务CEO，2026年7月15日起兼任拉美业务负责人，墨西哥、哥伦比亚业务负责人向其汇报，保留本地运营自主性。</li>
+    </ul>
+
+    <h3>2.2 股东结构与投票权安排</h3>
+    <p>公司采用AB股双层股权结构，Class B股每股享有20票投票权，由创始人团队持有，确保战略决策权稳定。截至2025年末，普通股合计约48.56亿股。</p>
+
+    <h4>核心股东与持股结构</h4>
+    <table>
+        <tr><th>股东名称</th><th>持股数量</th><th>持股比例</th><th>投票权比例</th><th>股东性质</th></tr>
+        <tr><td>David Vélez（创始人）</td><td>约9.06亿股</td><td>约18.6%</td><td>约74.4%</td><td>创始人/管理层（Class B）</td></tr>
+        <tr><td>贝莱德（BlackRock）</td><td>约2.66亿股</td><td>约5.5%</td><td>-</td><td>被动指数+主动管理</td></tr>
+        <tr><td>Baillie Gifford</td><td>2.30亿股</td><td>5.99%</td><td>-</td><td>成长型长线机构</td></tr>
+        <tr><td>Cristina Junqueira（联合创始人）</td><td>约1.31亿股</td><td>约2.7%</td><td>约9.9%</td><td>创始人/管理层（Class B）</td></tr>
+        <tr><td>道富集团（State Street）</td><td>约0.93亿股</td><td>约1.9%</td><td>-</td><td>被动指数</td></tr>
+        <tr><td>FMR（富达）</td><td>约0.76亿股</td><td>约1.6%</td><td>-</td><td>主动管理</td></tr>
+    </table>
+    <p class="note">数据来源：公司2025年20-F年报、2026年8月Baillie Gifford 13G/A披露；投票权数据为2026年3月口径。</p>
+
+    <h4>股权结构评价</h4>
+    <ul>
+        <li><strong>治理优势</strong>：创始人团队掌握超84%的投票权，决策链条短，可坚定执行长期战略，不受短期股价波动与激进投资者干扰，符合科技公司与成长型企业的典型治理模式。</li>
+        <li><strong>机构认可度高</strong>：全球头部资管机构均为长期股东，体现主流资金对公司基本面的认可。</li>
+        <li><strong>潜在风险</strong>：AB股结构导致公众股东话语权较弱，创始人战略偏差缺乏制衡机制。</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2>三、业务框架与生意模式深度解析</h2>
+    <p>公司本质是<strong>持牌技术型银行</strong>，而非普通金融科技公司——用互联网的极致成本结构，服务被传统银行高费率覆盖不足的数亿拉美长尾客群，核心盈利来自广义息差与手续费，核心壁垒来自四大飞轮形成的自我强化网络效应。</p>
+
+    <h3>3.1 整体业务版图</h3>
+    <div class="two-column">
+        <div>
+            <h4>三大业务板块</h4>
+            <ul>
+                <li><strong>信贷业务</strong>：信用卡循环贷、个人消费贷、担保贷，为核心利润来源</li>
+                <li><strong>存款与财富</strong>：数字账户、理财、保险，沉淀低成本资金并提升客户粘性</li>
+                <li><strong>支付与增值服务</strong>：转账、账单支付、交换费、中小企业服务，贡献轻资本收入</li>
+            </ul>
+        </div>
+        <div>
+            <h4>三大区域市场</h4>
+            <ul>
+                <li><strong>巴西</strong>：成熟变现市场，贡献绝大多数收入与利润</li>
+                <li><strong>墨西哥</strong>：第二增长曲线，全银行牌照落地后进入快速放量期</li>
+                <li><strong>哥伦比亚</strong>：早期培育市场，复制巴西模式</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>3.2 赚钱逻辑：三大收入来源拆解</h3>
+    <p>公司盈利并非单一依赖贷款息差，而是「信贷息差+浮存金投资收益+手续费佣金」的三层收入结构，其中前两者均属于广义息差收入，合计贡献约75%的毛利润。</p>
+    <ol>
+        <li><strong>信贷息差收入（核心，约41%毛利润）</strong>
+            <p>向用户发放信用卡循环贷、个人消费贷，收取贷款利息；资金来源为客户存款与市场融资，赚取<strong>贷款利率 - 资金成本 - 信用成本</strong>的差价。这是公司最核心的利润来源，也是风控能力的直接体现。</p>
+        </li>
+        <li><strong>浮存金投资收益（第二支柱，约34%毛利润）</strong>
+            <p>客户存入的活期/短期存款，大部分投资于巴西国债、央行存款等无风险高息资产，赚取<strong>资产收益率 - 存款利率</strong>的无风险息差。这部分收入信用风险极低，是盈利的稳定器，高利率环境下贡献显著。</p>
+        </li>
+        <li><strong>手续费与佣金（轻资本，约25%毛利润）</strong>
+            <p>包括信用卡交换费、转账手续费、保险代销佣金、理财服务费等。这部分收入不消耗资本金，边际成本几乎为零，是运营杠杆的核心载体，规模越大利润率越高。</p>
+        </li>
+    </ol>
+
+    <h3>3.3 持续赚钱的核心：四大飞轮效应</h3>
+    <p>公司能持续扩大优势、拉开与同行差距，本质是四个环节形成了自我强化的闭环，越转越快，竞争对手难以复制。</p>
+    
+    <div class="flywheel-box">
+        <h4>飞轮1：极低获客成本 → 海量用户基础</h4>
+        <p>纯线上模式+口碑传播，单客获客成本仅5-7美元，是传统银行的1/10。80%以上新客户来自老用户推荐，几乎不需要大额广告投放。用户越多，品牌越强，获客成本越低，进一步吸引更多用户。</p>
+    </div>
+    
+    <div class="flywheel-box">
+        <h4>飞轮2：海量用户 → 极低单位运营成本</h4>
+        <p>无网点、纯数字化，所有系统一次研发可服务亿级用户。用户规模越大，单客月均运营成本越低，当前仅约0.8美元/月，是传统银行的1/5。成本优势可以让公司用更低的费率、更高的存款利率回馈用户，进一步吸引用户。</p>
+    </div>
+    
+    <div class="flywheel-box">
+        <h4>飞轮3：海量数据 → 更精准的风控能力</h4>
+        <p>1.39亿用户的交易、行为数据持续喂养AI风控模型，数据越多，模型越准，坏账率越低，就能服务更多传统银行不敢碰的次级客群，同时维持合理的信用成本。风控优势又能支撑更高的息差，反哺盈利。</p>
+    </div>
+    
+    <div class="flywheel-box">
+        <h4>飞轮4：低成本资金 → 更高的资产收益</h4>
+        <p>用户越多、主账户占比越高，沉淀的低成本存款就越多。当前综合存款成本约为巴西基准利率的88%，远低于普通金融科技公司的110-120%。低成本资金既可以放贷赚息差，也可以买国债赚无风险收益，盈利弹性极强。</p>
+    </div>
+
+    <p>四个环节环环相扣：便宜获客带来海量用户→海量用户摊薄成本+沉淀资金+喂养风控→成本与风控优势反过来进一步吸引用户，最终形成强者恒强的马太效应，这就是Nu能持续赚钱的底层逻辑。</p>
+
+    <h3>3.4 与传统银行的成本结构对比</h3>
+    <table>
+        <tr><th>维度</th><th>Nubank</th><th>巴西传统大行（如Itaú）</th><th>差异本质</th></tr>
+        <tr><td>获客成本CAC</td><td>$5-7</td><td>$50-100</td><td>纯线上口碑 vs 网点+地推</td></tr>
+        <tr><td>单客月服务成本</td><td>~$0.8</td><td>$4-6</td><td>无网点 vs 重网点人力</td></tr>
+        <tr><td>效率比率（成本收入比）</td><td>~20%</td><td>35-40%</td><td>数字化运营杠杆 vs 刚性成本</td></tr>
+        <tr><td>资金成本（相对基准利率）</td><td>88% of CDI</td><td>~60% of CDI</td><td>活期存款占比低，传统行对公存款更便宜</td></tr>
+        <tr><td>品牌NPS</td><td>>90</td><td>普遍<40</td><td>用户体验的代际差距</td></tr>
+    </table>
+
+    <h3>3.5 核心竞争壁垒总结</h3>
+    <ul>
+        <li><strong>规模效应与运营效率</strong>：单客月运营成本约0.8美元，效率比处于全球银行业顶尖水平。</li>
+        <li><strong>AI风控能力</strong>：自研风控模型覆盖传统银行服务不足的次级客群，在高息环境下实现风险与收益的平衡。</li>
+        <li><strong>品牌与用户心智</strong>：在巴西数字银行领域品牌认知度第一，用户推荐率与活跃度显著领先同业。</li>
+        <li><strong>全牌照合规能力</strong>：巴西、墨西哥均已获取全银行牌照，资金成本下降，产品边界拓宽，构建监管护城河。</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2>四、行业与区域环境</h2>
+
+    <h3>4.1 巴西金融科技市场：全球数字银行标杆</h3>
+    <p>巴西是全球数字银行最成功的市场之一，传统银行业长期高度集中且费率高昂，叠加高智能手机渗透率与Pix即时支付系统的普及，为数字银行崛起提供了肥沃土壤。</p>
+    <ul>
+        <li>市场格局呈现"Nubank领先、多模式并存"的态势：Nubank以信用卡切入占据规模优势，Banco Inter走超级应用路线，C6 Bank主打抵押贷与高端客群，PagBank依托支付场景延伸金融服务。</li>
+        <li>巴西银行账户渗透率已处高位，但主账户切换、钱包份额提升仍有巨大空间；开放金融（Open Finance）政策持续推进，数据互通进一步提升头部平台的获客与变现效率，行业马太效应增强。</li>
+    </ul>
+
+    <h3>4.2 拉美市场长期增长逻辑</h3>
+    <p>拉丁美洲总人口超6.5亿，金融深度显著低于发达市场，大量长尾客群未被传统银行充分服务。数字银行凭借低门槛、低成本、好体验实现快速替代，是长期坡长雪厚的赛道。</p>
+    <ul>
+        <li>墨西哥人口超1.2亿，金融渗透率低于巴西，是拉美第二大黄金市场，全银行牌照落地后头部数字银行将进入快速复制期。</li>
+        <li>高利率环境阶段性提升息差收益，但也伴随信贷违约率上升风险；头部平台凭借风控优势可在周期中抢占市场份额。</li>
+        <li>支付、信贷、保险、财富管理的交叉销售空间巨大，单客价值提升是未来5年的核心增长来源。</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2>五、财务与现金流深度分析</h2>
+
+    <h3>5.1 营收与盈利总览及Q2分部拆解</h3>
+    <p>2026年Q2公司营收与盈利均超市场预期，净利润首次单季破10亿美元，盈利增速显著快于营收增速，运营杠杆持续释放。</p>
+
+    <h4>整体业绩概览（IFRS口径）<span class="tag tag-ifrs">IFRS</span></h4>
+    <table>
+        <tr><th>财务指标</th><th>2025全年</th><th>2026 Q1</th><th>2026 Q2</th><th>2026 H1</th><th>Q2同比变动</th></tr>
+        <tr><td>总营收（亿美元）</td><td>157.75</td><td>49.68</td><td>55.13</td><td>104.81</td><td>+50% YoY</td></tr>
+        <tr><td>毛利润（亿美元）</td><td>-</td><td>-</td><td>23.47</td><td>-</td><td>-</td></tr>
+        <tr><td>净利润（亿美元）</td><td>28.69</td><td>8.71</td><td>10.61</td><td>19.32</td><td>+67% YoY</td></tr>
+        <tr><td>基本EPS（美元）</td><td>0.5936</td><td>0.1796</td><td>0.2183</td><td>0.3979</td><td>+58% YoY</td></tr>
+        <tr><td>稀释EPS（美元）</td><td>-</td><td>-</td><td>0.2162</td><td>-</td><td>-</td></tr>
+        <tr><td>管理层ROE（年化）<span class="tag tag-mgt">管理层口径</span></td><td>~28%</td><td>~29%</td><td>33%</td><td>-</td><td>持续提升</td></tr>
+        <tr><td>效率比率（管理层口径）<span class="tag tag-mgt">管理层口径</span></td><td>~22%</td><td>17.6%</td><td>19.5%</td><td>-</td><td>同比改善，环比上升</td></tr>
+    </table>
+    <p class="note">效率比Q2环比上升主要受国际扩张投入、房地产费用时点回转与营销费用波动影响，并非长期趋势逆转。</p>
+
+    <h4>Q2 按业务线拆分（毛利润贡献，分析师推算）<span class="tag tag-est">分析师估算</span></h4>
+    <p>公司披露管理层口径毛利润中，信用业务贡献41%、浮存金业务贡献34%、手续费业务贡献25%。以下为基于总毛利的比例拆分，非公司直接披露的绝对值。</p>
+    <table>
+        <tr><th>业务板块</th><th>毛利润贡献占比</th><th>对应估算金额（亿美元）</th><th>核心驱动</th></tr>
+        <tr><td>信贷业务</td><td>41%</td><td>~10.0</td><td>信贷组合规模同比+37%，风险调整后净息差12.4%</td></tr>
+        <tr><td>浮息与存款收入</td><td>34%</td><td>~8.3</td><td>客户存款环比+6%至453亿，高利率环境下投资收益增厚</td></tr>
+        <tr><td>手续费与佣金</td><td>25%</td><td>~6.1</td><td>总交易额同比+16%，交叉销售率提升</td></tr>
+    </table>
+
+    <h4>Q2 信贷组合结构</h4>
+    <table>
+        <tr><th>品类</th><th>规模（亿美元）</th><th>占比</th><th>同比增速</th></tr>
+        <tr><td>信用卡</td><td>260</td><td>66%</td><td>+28%</td></tr>
+        <tr><td>无担保个人贷款</td><td>103</td><td>26%</td><td>+65%</td></tr>
+        <tr><td>担保贷款</td><td>31</td><td>8%</td><td>快速增长</td></tr>
+        <tr><td>合计</td><td>394</td><td>100%</td><td>+37%</td></tr>
+    </table>
+    <p class="note">无担保贷款增速显著高于整体，是公司主动拓展高收益客群的结果，同时也带来一定的风险敞口上升。</p>
+
+    <h4>5.1.2 核心经营指标多季度趋势跟踪（2024Q2-2026Q2）</h4>
+    <p>以下为信贷、利差、资产质量、用户、效率五大维度的季度趋势数据，直观展示公司经营轨迹。</p>
+    <table class="metric-trend">
+        <tr>
+            <th>指标</th>
+            <th>2024Q2</th>
+            <th>2024Q4</th>
+            <th>2025Q1</th>
+            <th>2025Q2</th>
+            <th>2025Q4</th>
+            <th>2026Q1</th>
+            <th>2026Q2</th>
+            <th>趋势说明</th>
+        </tr>
+        <tr>
+            <td>总客户数（百万）</td>
+            <td>85.1</td>
+            <td>107.3</td>
+            <td>112.6</td>
+            <td>118.1</td>
+            <td>131.0</td>
+            <td>135.0</td>
+            <td>138.9</td>
+            <td class="up">持续稳步增长</td>
+        </tr>
+        <tr>
+            <td>月度ARPAC（美元）</td>
+            <td>$10.2</td>
+            <td>$13.5</td>
+            <td>$14.1</td>
+            <td>$13.5</td>
+            <td>$15.9</td>
+            <td>$15.8</td>
+            <td>$17.1</td>
+            <td class="up">震荡上行</td>
+        </tr>
+        <tr>
+            <td>总信贷组合（亿美元）</td>
+            <td>~180</td>
+            <td>~270</td>
+            <td>~290</td>
+            <td>~310</td>
+            <td>~340</td>
+            <td>~375</td>
+            <td>394</td>
+            <td class="up">快速扩张</td>
+        </tr>
+        <tr>
+            <td>账面净息差NIM</td>
+            <td>~17.5%</td>
+            <td>~19.2%</td>
+            <td>~19.8%</td>
+            <td>~18.5%</td>
+            <td>~20.5%</td>
+            <td>~21.1%</td>
+            <td>22.9%</td>
+            <td class="up">利率周期上行</td>
+        </tr>
+        <tr>
+            <td>风险调整后净息差</td>
+            <td>~8.2%</td>
+            <td>~9.5%</td>
+            <td>~9.8%</td>
+            <td>~9.1%</td>
+            <td>~10.7%</td>
+            <td>~9.5%</td>
+            <td>12.4%</td>
+            <td class="up">Q2创历史新高</td>
+        </tr>
+        <tr>
+            <td>15-90天早期逾期率</td>
+            <td>~5.5%</td>
+            <td>~5.2%</td>
+            <td>~5.4%</td>
+            <td>~5.6%</td>
+            <td>~5.1%</td>
+            <td>5.2%</td>
+            <td>4.8%</td>
+            <td class="up">环比改善（季节性）</td>
+        </tr>
+        <tr>
+            <td>90+天逾期率NPL</td>
+            <td>~6.2%</td>
+            <td>~6.5%</td>
+            <td>~6.8%</td>
+            <td>~7.0%</td>
+            <td>~6.7%</td>
+            <td>~6.8%</td>
+            <td>6.9%</td>
+            <td class="down">环比小幅上升</td>
+        </tr>
+        <tr>
+            <td>拨备覆盖率（90+NPL）</td>
+            <td>~210%</td>
+            <td>~225%</td>
+            <td>~230%</td>
+            <td>~235%</td>
+            <td>~240%</td>
+            <td>~242%</td>
+            <td>244%</td>
+            <td class="up">缓冲垫较厚</td>
+        </tr>
+        <tr>
+            <td>效率比率（管理层口径）</td>
+            <td>~28%</td>
+            <td>~22%</td>
+            <td>~21.5%</td>
+            <td>~21%</td>
+            <td>19.9%</td>
+            <td>17.6%</td>
+            <td>19.5%</td>
+            <td>长期改善，短期波动</td>
+        </tr>
+        <tr>
+            <td>季度年化ROE（管理层口径）</td>
+            <td>~18%</td>
+            <td>~25%</td>
+            <td>~26%</td>
+            <td>~27%</td>
+            <td>~28%</td>
+            <td>~29%</td>
+            <td>33%</td>
+            <td class="up">持续超预期</td>
+        </tr>
+    </table>
+    <p class="note">数据来源：公司各季管理层损益表、财报运营指标；风险调整后净息差=净息差-信用成本率。</p>
+
+    <h3>5.2 增长动因深度拆解</h3>
+    <p>Nu的高增长并非单一因素驱动，而是「客户数量扩张×单客价值提升×业务结构优化×运营效率释放」的四重共振，四大动因均具备中期可持续性。</p>
+
+    <h4>动因一：客户基数持续扩张，渗透率仍有空间</h4>
+    <p>客户增长是增长的基础盘，2026Q2全球客户达1.389亿，单季新增约370万，同比增长约13%。</p>
+    <ul>
+        <li><strong>巴西市场</strong>：1.18亿客户，覆盖巴西约55%的成年人口，但主账户占比仅60%，钱包份额仍有翻倍空间；剩余无银行账户与次级客群仍可渗透，预计客户数峰值约1.4-1.5亿。</li>
+        <li><strong>墨西哥市场</strong>：1580万客户，仅覆盖墨西哥约18%的成年人口，全银行牌照落地后获客与变现速度有望加快，3年内目标突破3000万，是中期客户增长的核心来源。</li>
+        <li><strong>哥伦比亚市场</strong>：500万+客户，尚处早期培育阶段，长期可贡献1000-1500万增量。</li>
+        <li><strong>获客成本优势</strong>：纯数字化+口碑传播获客成本仅为传统银行的1/5-1/10，用户自然增长动力充足，无需依赖高额营销补贴。</li>
+    </ul>
+
+    <h4>动因二：ARPAC持续提升，交叉销售红利释放</h4>
+    <p>单活跃客户月均收入（ARPAC）是衡量变现能力的核心指标，2026Q2达17.1美元，环比+8%，同比+27%，连续多个季度环比提升。</p>
+    <ul>
+        <li><strong>信贷渗透率提升</strong>：从早期单一信用卡，到消费贷、工资贷、中小企业贷逐步渗透，单客信贷余额持续上升，是ARPAC提升的第一驱动力。</li>
+        <li><strong>产品矩阵丰富</strong>：保险、理财、支付、订阅服务等非信贷收入占比提升，单客贡献点从1个增加到3-5个，交叉销售率持续上行。</li>
+        <li><strong>客群结构上移</strong>：Croma高端品牌推出后，高净值客群占比提升，单客收入显著高于大众客群，拉动整体ARPAC中枢上移。</li>
+        <li><strong>活跃度提升</strong>：巴西活跃率突破86%，客户将Nu作为主账户后，交易频次与资金沉淀增加，浮息收入与手续费收入同步增长。</li>
+    </ul>
+
+    <h4>动因三：收入结构多元化，盈利质量提升</h4>
+    <p>公司收入结构从早期的"信贷一枝独秀"逐步转向"信贷、浮息、手续费"三足鼎立，盈利稳定性显著增强。</p>
+    <ul>
+        <li><strong>浮息收入占比提升</strong>：存款规模快速增长，高利率环境下投资收益增厚，成为信贷之外的第二稳定器。</li>
+        <li><strong>下游业务延伸</strong>：中小企业银行、跨境支付、财富管理等B端与轻资本业务占比上升，降低对资本消耗型信贷业务的依赖。</li>
+        <li><strong>区域结构优化</strong>：墨西哥与哥伦比亚收入占比逐步提升，降低对巴西单一市场的依赖，分散国别政策与经济周期风险。</li>
+    </ul>
+
+    <h4>动因四：AI驱动运营杠杆，利润增速快于收入</h4>
+    <p>运营杠杆是数字银行超越传统银行的核心优势，Nu的利润增速持续高于收入增速，体现极强的规模效应。</p>
+    <ul>
+        <li><strong>AI替代人工</strong>：nuFormer大模型应用于客服、风控、营销、产品决策，单客运营成本持续下降；长期效率比仍有下行空间。</li>
+        <li><strong>风控效率提升</strong>：AI风控模型在扩大信贷敞口的同时维持不良率可控，风险调整后净息差持续扩张。</li>
+        <li><strong>技术复用性强</strong>：巴西研发的技术与模型可低成本复制到墨西哥、哥伦比亚，边际扩张成本极低，海外市场盈利爬坡速度快于巴西本土。</li>
+    </ul>
+
+    <h3>5.3 资产负债表深度拆解</h3>
+    <p>银行股分析的核心在于资产负债表的质量与结构，而非单纯利润表。截至2026年Q2末，公司总资产827.53亿美元，总负债695.02亿美元，股东权益132.52亿美元，权益乘数约6.2倍，符合银行类企业杠杆特征。</p>
+
+    <h4>多季度资产负债表明细（单位：亿美元）</h4>
+    <table>
+        <tr><th>项目</th><th>2025Q1</th><th>2025Q2</th><th>2025Q3</th><th>2025Q4</th><th>2026Q1</th><th>2026Q2</th></tr>
+        <tr><td>现金及等价物</td><td>1028.4</td><td>1326.9</td><td>1289.6</td><td>1500.4</td><td>1392.0</td><td>1355.2</td></tr>
+        <tr><td>信贷资产净额</td><td>~2300</td><td>~2700</td><td>~3100</td><td>~3400</td><td>~3700</td><td>~3940</td></tr>
+        <tr><td>其他资产</td><td>~2091</td><td>~2246</td><td>~2447</td><td>~2589</td><td>~2654</td><td>~2980</td></tr>
+        <tr><td>总资产</td><td>5419.3</td><td>6273.0</td><td>6836.3</td><td>7489.4</td><td>7745.6</td><td>8275.3</td></tr>
+        <tr><td>客户存款</td><td>~3100</td><td>~3500</td><td>~3800</td><td>~4000</td><td>4240</td><td>4530</td></tr>
+        <tr><td>有息总债务</td><td>171</td><td>228</td><td>338</td><td>440</td><td>~450</td><td>~460</td></tr>
+        <tr><td>总负债</td><td>4558.4</td><td>5315.4</td><td>5780.9</td><td>6357.2</td><td>6486.5</td><td>6950.2</td></tr>
+        <tr><td>股东权益</td><td>860.9</td><td>957.6</td><td>1055.4</td><td>1132.2</td><td>1259.2</td><td>1325.2</td></tr>
+    </table>
+    <p class="note">数据来源：公司各季IFRS财报；信贷资产净额为基于总信贷组合与拨备的估算值。</p>
+
+    <h4>监管资本充足率（2026Q2末）</h4>
+    <table>
+        <tr><th>区域</th><th>资本充足率（CAR）</th><th>较2025年末变动</th><th>监管最低要求</th><th>超额资本缓冲</th></tr>
+        <tr><td>巴西（审慎并表）</td><td>15.7%</td><td>-0.9pct</td><td>~10.5%</td><td>+5.2pct</td></tr>
+        <tr><td>墨西哥</td><td>14.9%</td><td>-0.5pct</td><td>~10.5%</td><td>+4.4pct</td></tr>
+        <tr><td>哥伦比亚</td><td>15.3%</td><td>-1.6pct</td><td>~10.5%</td><td>+4.8pct</td></tr>
+    </table>
+    <p class="note">资本充足率环比下降主要受信贷快速扩张带动风险加权资产（RWA）增长影响，目前仍显著高于监管最低要求，具备较强缓冲空间。</p>
+
+    <h4>资产负债表核心评价</h4>
+    <ul>
+        <li><strong>资产端质量稳健</strong>：信贷资产是第一大资产，占总资产约48%；现金及高流动性资产占比16%，流动性储备充足；商誉规模极小，几乎无商誉减值风险。</li>
+        <li><strong>负债结构健康</strong>：客户存款是核心负债来源，占总负债约65%，成本低且稳定性强；有息债务仅460亿美元，占比极低，债务压力远小于传统银行。</li>
+        <li><strong>资本约束可控</strong>：当前资本充足率可支撑中期信贷增长，但若维持30%+的高速扩张，资本消耗速度会加快，需持续跟踪RWA增速与CAR变化。</li>
+        <li><strong>扩张节奏有序</strong>：总资产同比增长约32%，与信贷增速基本匹配，资产扩张未脱离盈利支撑，属于健康的成长型扩张。</li>
+    </ul>
+
+    <h3>5.4 现金流与资本回报说明</h3>
+    <p><strong>重要提示：传统实体企业的FCF（经营现金流-资本开支）框架不适用于银行类企业。</strong>银行的核心经营行为是吸存放贷，信贷投放属于经营活动现金流出，高速增长期经营现金流为负是正常现象，不能用负现金流判断经营恶化。</p>
+
+    <h4>现金流核心特征</h4>
+    <ul>
+        <li><strong>经营现金流波动本质</strong>：2026年上半年IFRS经营活动净现金流为-12.42亿美元，负现金流并非经营恶化，而是信贷高速投放的主动选择——新增贷款属于经营现金流出，增速越快，现金流流出越多。这是成长型银行的典型特征。</li>
+        <li><strong>真实现金创造能力</strong>：衡量银行价值创造应看净利润、拨备前利润与净资产收益率，而非经营现金流。2025全年净利润28.69亿美元，现金含量充足；当前信贷扩张对应的资产，未来将转化为持续的利息现金流入。</li>
+        <li><strong>筹资现金流趋势</strong>：2025年筹资现金流为正，主要是债务融资支撑信贷扩张；2026年内生盈利贡献增厚，同时启动股份回购，财务自主性增强。</li>
+    </ul>
+
+    <h4>股份回购情况</h4>
+    <ul>
+        <li>2026年上半年公司回购股份金额约5.004亿美元，主要用于对冲股权激励带来的股本稀释。</li>
+        <li>当前阶段公司处于高速成长期，资本优先用于业务扩张与区域拓展，回购规模相对有限；未来增长放缓后，股东回报力度有望提升。</li>
+    </ul>
+
+    <h3>5.5 经营效率与资本回报深度</h3>
+    
+    <h4>5.5.1 ROE长期趋势与驱动拆解</h4>
+    <p>公司管理层ROE从2023年的盈亏平衡快速提升至2026Q2的33%，提升速度远超市场预期，核心驱动来自三方面：</p>
+    <ol>
+        <li><strong>运营杠杆释放</strong>：效率比从2023年的36%降至当前20%左右，规模效应摊薄了固定研发与运营成本，是ROE提升的第一来源。</li>
+        <li><strong>净息差扩张</strong>：巴西高利率周期叠加存款规模增长，账面NIM从17%升至22.9%，风险调整后NIM从8%升至12.4%，直接增厚盈利。</li>
+        <li><strong>财务杠杆稳健提升</strong>：随着盈利积累与信贷扩张，权益乘数稳步提升，资本使用效率提高，同时资本充足率仍远高于监管红线。</li>
+    </ol>
+
+    <h4>5.5.2 拨备与盈利质量</h4>
+    <p>公司拨备计提整体审慎，拨备覆盖率达244%，风险缓冲垫较厚。需要说明的是：</p>
+    <ul>
+        <li>IFRS 9准则下，新增贷款首日即需计提12个月预期信用损失，而利息收入按期间确认，因此信贷高速扩张期会阶段性压低账面利润，这是会计规则导致的时间差，并非真实盈利损失。</li>
+        <li>若未来信贷增速放缓、资产质量保持稳定，预期损失与实际核销逐步收敛，存在拨备反哺利润的潜在空间，但该空间受监管规则与信贷周期影响，存在不确定性，不应视为确定性的"隐藏利润蓄水池"。</li>
+    </ul>
+
+    <h3>5.6 资产质量与风险控制</h3>
+    <ul>
+        <li>Q2 90+天逾期率6.9%，环比小幅上升，主要受一季度早期逾期跨期迁移、以及信贷组合向无抵押高收益客群倾斜影响，整体仍处于可控区间。</li>
+        <li>15-90天早期逾期率环比下降至4.8%，存在季节性改善因素，预示后续90+逾期大幅恶化的概率较低。</li>
+        <li>拨备覆盖率达244%，显著高于行业平均水平，风险缓冲垫厚实，即便不良率小幅上升也不会对利润造成重大冲击。</li>
+        <li>风控采用"Low-and-Grow"策略：初始授信额度极低，AI算法实时监控，数小时内即可调整额度，敏捷度远超传统银行的月度复审模式。</li>
+        <li>公司主动提升高风险高收益客群敞口，是风险调整后净息差扩张的原因之一，后续需持续跟踪资产质量变化，验证风控模型的有效性。</li>
+    </ul>
+
+    <h3>5.7 2026Q2财报官方指引与电话会核心纪要</h3>
+    <h4>官方明确指引要点</h4>
+    <ul>
+        <li>全年效率比（成本收入比）中枢约<strong>20%</strong>，AI投入对效率比的拖累小于100bp，长期仍有下行空间。</li>
+        <li>风险调整后净息差预计在可预见未来维持在相近区间，12.4%并非硬性底部，也不承诺持续扩张。</li>
+        <li>内生资本可支撑业务增长，无需外部股权融资。</li>
+        <li>墨西哥业务：全银行牌照落地后，2026下半年启动存款与信贷全面放量，预计2027年贡献显著利润增量。</li>
+    </ul>
+
+    <h4>管理层电话会核心观点</h4>
+    <ul>
+        <li><strong>David Vélez（CEO）</strong>：强调"AI重构银行"战略，nuFormer基础模型已落地巴西与墨西哥的信贷审批，是过去一年信贷规模扩张的核心驱动力；巴西市场仍有巨大存量变现空间，60%的客户将Nu作为主账户，但钱包份额仍远低于传统银行。</li>
+        <li><strong>Rob Livingston（CFO）</strong>：Q2信贷成本环比下降主要来自季节性因素与风控优化；90+天逾期率环比上升主要是信贷组合结构向无抵押贷倾斜所致，并非整体信用恶化；拨备覆盖率处于充足水平。</li>
+        <li><strong>墨西哥业务</strong>：当前单客服务成本低于巴西同期，存款基础更优，盈利爬坡速度有望快于巴西；1580万客户基础上，信贷渗透率提升是未来2年核心增长来源。</li>
+        <li><strong>美国业务</strong>：项目仍处于监管与能力建设阶段，当地模型需要12-30个月的验证周期，初期以测试和数据积累为主。</li>
+    </ul>
+
+    <h3>5.8 管理层靠谱度评估</h3>
+    <p>综合历史业绩兑现、战略执行力与资本纪律，我们对管理层可信度给予<strong>较高评价</strong>，核心依据如下：</p>
+    <ul>
+        <li><strong>战略目标兑现率高</strong>：2021年上市时提出的"5年破亿用户、实现全年盈利"目标均提前完成；墨西哥盈亏平衡时点早于市场预期；内生增长目标兑现度高。</li>
+        <li><strong>资本纪律严明</strong>：始终将效率比控制在20%左右的行业顶尖水平，未盲目烧钱换规模；盈利后优先夯实资本充足率，再推进回购，未进行过度激进的股东回报透支增长。</li>
+        <li><strong>言行一致性强</strong>：连续多个季度强调"先巴西深耕、再墨西哥复制、最后哥伦比亚培育"的扩张节奏，实际执行严格遵循该路径，未出现盲目跨界或多元化失控的情况。</li>
+        <li><strong>利益高度绑定</strong>：创始人团队大量持股且长期未大额减持，薪酬结构以股权激励为主，与长期股东利益高度一致。</li>
+        <li><strong>待观察点</strong>：美国市场拓展与高端客群渗透属于新战略方向，执行力尚未验证；新任CFO的资本分配理念仍需后续季度观察。</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2>六、资本分配与股东回报</h2>
+    <p>公司当前处于高速成长期，资本分配优先级为：业务扩张与产品研发 > 区域拓展与牌照投入 > 夯实监管资本 > 股东回报。</p>
+    <ul>
+        <li><strong>股息政策</strong>：目前暂不派息，符合高增长金融科技公司的普遍策略，盈利全部再投入业务扩张与技术迭代。</li>
+        <li><strong>回购情况</strong>：2026年上半年实施约5亿美元股份回购，规模相对较小，主要用于对冲股权激励稀释。</li>
+        <li><strong>未来回报预期</strong>：随着巴西市场进入成熟期、墨西哥实现规模化盈利，市场普遍预期公司有望在2027-2028年启动正式股息政策，进一步提升估值吸引力。</li>
+        <li><strong>资本效率</strong>：33%的ROE意味着留存收益再投资可实现高复利增长，当前阶段不分红对股东长期价值更优。</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2>七、估值分析与利率敏感性测算</h2>
+
+    <h3>7.1 相对估值</h3>
+    <p><strong>核心估值方法：P/E、P/TBV</strong>；EV/Sales、EV/EBITDA因金融机构资本结构特殊性，仅作非核心参考。</p>
+    <table>
+        <tr><th>估值指标</th><th>数值</th><th>同业对比参考</th><th>评价</th></tr>
+        <tr><td>总市值</td><td>$705.8亿</td><td>-</td><td>拉美最大金融科技公司</td></tr>
+        <tr><td>TTM P/E</td><td>19.9x</td><td>全球数字银行中位数28x</td><td>低于行业中位数</td></tr>
+        <tr><td>Forward P/E (2026E)</td><td>15.2x</td><td>拉美传统银行10-12x，全球金融科技20-25x</td><td>成长股中偏低</td></tr>
+        <tr><td>PEG比率</td><td>~0.4-0.5</td><td>成长股合理区间0.8-1.2</td><td>显著低估</td></tr>
+        <tr><td>P/TBV（市净率）</td><td>~5.3x</td><td>巴西传统银行1.5-2.5x</td><td>反映高ROE溢价</td></tr>
+        <tr><td>EV/Sales（非核心）</td><td>7.26x</td><td>同业中位数4.0x</td><td>反映高盈利质量溢价</td></tr>
+    </table>
+    <p>横向对比：与美国数字银行SOFI、Affirm相比，NU盈利确定性更强、ROE更高、用户规模更大，估值却显著更低；与拉美传统银行相比，NU增速是其3-5倍，估值溢价具备合理性且仍有扩张空间。</p>
+
+    <h3>7.2 DCF估值模型（可验算审计版）</h3>
+    <p>本模型采用两阶段增长股权自由现金流（FCFE）框架，所有参数与计算步骤完整披露，可直接验算复核。模型核心假设基于公司历史增速、行业空间与管理层指引，采用中性偏审慎原则。</p>
+
+    <h4>一、核心假设前提</h4>
+    <ul>
+        <li>估值基准日：2026年6月30日（Q2期末）</li>
+        <li>估值对象：Nu Holdings全部股权价值（合并口径）</li>
+        <li>现金流口径：股权自由现金流（FCFE），基于净利润调整资本占用</li>
+        <li>增长阶段：高速增长期4年（2026-2029），2030年起进入稳态增长期</li>
+        <li>资本约束假设：基于巴西主体15%左右的目标监管资本充足率，结合RWA增速，测算可分配现金流约为净利润的65%-75%，基准情形取70%</li>
+    </ul>
+
+    <h4>二、折现率（股权成本）参数与计算</h4>
+    <div class="dcf-formula">
+        股权成本 = 无风险利率 + β × 股权风险溢价 + 新兴市场风险溢价
+    </div>
+    <table>
+        <tr><th>参数</th><th>取值</th><th>取值依据</th></tr>
+        <tr><td>无风险利率（美国10年期国债）</td><td>4.5%</td><td>2026年8月市场中枢水平</td></tr>
+        <tr><td>股权风险溢价（ERP）</td><td>5.5%</td><td>美股市场长期历史均值</td></tr>
+        <tr><td>Beta系数</td><td>1.0</td><td>公司Beta约0.95，取整1.0偏审慎</td></tr>
+        <tr><td>新兴市场风险溢价</td><td>0.5%</td><td>巴西/墨西哥国别风险调整</td></tr>
+        <tr><td>最终股权成本</td><td>10.5%</td><td>4.5% + 1.0×5.5% + 0.5% = 10.5%</td></tr>
+    </table>
+
+    <h4>三、盈利与现金流预测（2026-2030）</h4>
+    <div class="dcf-formula">
+        基准简化公式：FCFE ≈ 净利润 × 70%
+        <br>逻辑：30%净利润留存用于补充监管资本，支撑RWA增长与资本缓冲；70%为可自由分配现金流
+    </div>
+    <table>
+        <tr><th>年份</th><th>净利润（亿美元）</th><th>同比增速</th><th>FCFE（亿美元）</th><th>折现因子（10.5%）</th><th>折现后FCFE（亿美元）</th></tr>
+        <tr><td>2026E</td><td>46.5</td><td>62%</td><td>32.55</td><td>0.950</td><td>30.92</td></tr>
+        <tr><td>2027E</td><td>60.5</td><td>30%</td><td>42.35</td><td>0.860</td><td>36.42</td></tr>
+        <tr><td>2028E</td><td>75.6</td><td>25%</td><td>52.92</td><td>0.778</td><td>41.17</td></tr>
+        <tr><td>2029E</td><td>90.7</td><td>20%</td><td>63.49</td><td>0.704</td><td>44.70</td></tr>
+        <tr><td>高速增长期合计</td><td>-</td><td>-</td><td>-</td><td>-</td><td>153.21</td></tr>
+        <tr><td>2030E（稳态首年）</td><td>98.0</td><td>8%</td><td>68.60</td><td>-</td><td>-</td></tr>
+    </table>
+    <p class="note">增速依据：2026年基于H1业绩年化+下半年温和回落；2027-2029年逐步从30%回落至20%，匹配巴西成熟+墨西哥常规爬坡的节奏；2030年进入稳态，增速8%。</p>
+
+    <h4>四、终值计算与基准价值推导</h4>
+    <div class="dcf-formula">
+        终值（Terminal Value） = FCFE_2030 / (股权成本 - 永续增长率g)
+        <br>其中永续增长率 g = 3%（匹配拉美金融行业长期名义增速）
+    </div>
+    <ul>
+        <li>终值 = 68.60 / (10.5% - 3%) = 68.60 / 0.075 = <strong>914.67亿美元</strong></li>
+        <li>终值折现到2026年中 = 914.67 × 0.704 = <strong>643.93亿美元</strong></li>
+        <li><strong>基准DCF总股权价值</strong> = 高速增长期折现FCFE + 折现终值 = 153.21 + 643.93 = <strong>797.14亿美元</strong></li>
+        <li><strong>基准每股内在价值</strong> = 797.14 / 48.57亿股（基本股数） ≈ <strong>$16.40</strong></li>
+        <li>终值现值占总价值比例约80.8%，估值对永续增速与股权成本高度敏感，属于长久期资产。</li>
+    </ul>
+
+    <h4>五、目标价的形成逻辑</h4>
+    <p>16.40美元为<strong>现有业务中性情景的基准DCF价值</strong>，仅包含巴西存量变现+墨西哥常规爬坡+哥伦比亚培育的预期。12个月中枢目标价18.00美元，是在基准价值基础上，叠加审慎的情景溢价得出，具体构成如下：</p>
+    <table>
+        <tr><th>价值构成</th><th>每股价值</th><th>溢价幅度</th><th>溢价说明</th></tr>
+        <tr><td>DCF基准价值（中性情景）</td><td>$16.40</td><td>-</td><td>现有业务稳态现金流，确定性较高</td></tr>
+        <tr><td>墨西哥业务超预期溢价（乐观情景）</td><td>~$1.2</td><td>~7%</td><td>全银行牌照落地后，存款获取与信贷投放速度可能快于基准假设；属于上行情景，非确定性收益</td></tr>
+        <tr><td>美国牌照长期期权价值</td><td>~$0.4</td><td>~2%</td><td>美国市场拓展处于早期，最终落地与盈利均存在不确定性，仅给予少量看涨期权价值</td></tr>
+        <tr><td>12个月中枢目标价</td><td><strong>$18.00</strong></td><td>~10%</td><td>基准+审慎情景溢价，同时与2027年15倍Forward P/E形成交叉验证</td></tr>
+    </table>
+    <p class="note">合理价值区间为16.0-19.0美元：下端对应基准DCF下沿，上端对应乐观情景下的估值上沿。中枢目标价18美元为中性偏乐观的判断，存在不达预期的可能。</p>
+
+    <h4>六、DCF敏感性矩阵（每股价值，美元）</h4>
+    <table>
+        <tr><th>股权成本 \ 永续增速</th><th>2%</th><th>3%（基准）</th><th>4%</th></tr>
+        <tr><td>9.5%</td><td>17.1</td><td>19.0</td><td>21.7</td></tr>
+        <tr><td>10.0%</td><td>15.6</td><td>17.3</td><td>19.6</td></tr>
+        <tr><td>10.5%（基准）</td><td>14.3</td><td>16.4</td><td>18.5</td></tr>
+        <tr><td>11.0%</td><td>13.2</td><td>15.1</td><td>16.9</td></tr>
+        <tr><td>11.5%</td><td>12.2</td><td>13.9</td><td>15.5</td></tr>
+    </table>
+    <p class="note">验算说明：所有参数均可替换后重新计算；若认为永续增速应为2%、股权成本为11%，则基准价值约13.2美元，对应下行风险约10%。</p>
+
+    <h3>7.3 巴西利率下行对盈利的敏感性测算</h3>
+    <p><strong>说明：以下为分析师情景测算，仅供方向性参考，不构成精确盈利预测。</strong>巴西基准利率（Selic）是影响公司净息差与盈利的核心宏观变量，当前处于高位，市场预期未来存在降息周期。</p>
+
+    <h4>传导逻辑与核心假设</h4>
+    <ul>
+        <li><strong>资产端</strong>：国债投资收益随Selic即时调整；信贷利率调整有滞后性，且高收益客群占比提升可部分对冲降息影响。</li>
+        <li><strong>负债端</strong>：存款利率随Selic下行，资金成本同步下降，且存款利率下调通常快于贷款利率。</li>
+        <li><strong>对冲因素</strong>：降息周期通常伴随经济复苏，信贷需求上升、信用成本下降，可部分抵消息差收窄影响。</li>
+    </ul>
+
+    <h4>情景测算（基于2026年全年基准盈利）</h4>
+    <table>
+        <tr><th>情景</th><th>Selic累计变动</th><th>账面NIM变动</th><th>风险调整后NIM变动</th><th>全年净利润变动</th><th>对应EPS变动</th></tr>
+        <tr><td>基准情景</td><td>0bp（维持高位）</td><td>~22.5%</td><td>~11.8%</td><td>46.5亿美元（基准）</td><td>$0.957（基准）</td></tr>
+        <tr><td>温和降息</td><td>-100bp</td><td>-40bp</td><td>-30bp</td><td>约-3%</td><td>约-3美分</td></tr>
+        <tr><td>中性降息</td><td>-200bp</td><td>-90bp</td><td>-70bp</td><td>约-8%</td><td>约-7美分</td></tr>
+        <tr><td>大幅降息</td><td>-300bp</td><td>-150bp</td><td>-120bp</td><td>约-14%</td><td>约-13美分</td></tr>
+        <tr><td>极端降息</td><td>-400bp</td><td>-220bp</td><td>-180bp</td><td>约-20%</td><td>约-19美分</td></tr>
+    </table>
+
+    <h4>测算结论</h4>
+    <ul>
+        <li><strong>降息影响整体可控</strong>：即便累计降息200bp，净利润仅下降约8%，公司仍能维持25%以上的利润增速，因为信贷规模扩张与ARPAC提升可以对冲息差收窄的影响。</li>
+        <li><strong>真正的风险点</strong>：若出现300bp以上的大幅快速降息，浮存金收益会快速下滑，对净利润的冲击会超过10%，这是需要重点跟踪的宏观风险。</li>
+        <li><strong>长期视角</strong>：公司的核心成长逻辑是用户渗透与单客价值提升，利率周期只是短期波动因素，不改变长期成长轨迹。</li>
+    </ul>
+
+    <h3>7.4 估值结论</h3>
+    <p>中性DCF基准价值约16.4美元，叠加墨西哥与美国市场的审慎情景溢价后，12个月合理价值区间16.0-19.0美元，中枢目标价18美元，对应约23%上行空间。利率下行风险可控，当前股价14.61美元处于估值偏低区间，具备配置价值。</p>
+</div>
+
+<div class="section-card">
+    <h2>八、多空逻辑与风险因素</h2>
+
+    <div class="two-column">
+        <div class="risk-bull">
+            <h4>多头核心逻辑</h4>
+            <ul>
+                <li>巴西本土单客价值仍有翻倍空间，交叉销售红利远未释放完毕</li>
+                <li>墨西哥全银行牌照落地，复制巴西成功路径，开启第二增长曲线</li>
+                <li>33%高ROE+内生增长，无需股权稀释即可维持30%+利润增速</li>
+                <li>AI技术持续优化风控与运营，效率比长期仍有下降空间</li>
+                <li>拨备计提审慎，信贷增速放缓后存在盈利释放弹性</li>
+                <li>PEG显著低于成长股合理区间，估值性价比突出</li>
+            </ul>
+        </div>
+        <div class="risk-bear">
+            <h4>空头核心逻辑与风险</h4>
+            <ul>
+                <li>巴西利率下行周期将压缩净息差，影响盈利增速</li>
+                <li>主动拓展高风险客群，信贷周期下行可能导致不良率超预期</li>
+                <li>传统银行数字化反击加剧市场竞争</li>
+                <li>高速扩张下资本消耗加快，CAR持续下行</li>
+                <li>拉美地缘政治与监管政策不确定性</li>
+                <li>汇率波动影响美元计价报表业绩</li>
+                <li>AB股结构下创始人权力过度集中，治理风险</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>核心跟踪与证伪指标</h4>
+    <ul>
+        <li>90+天NPL持续高于9%且无改善迹象</li>
+        <li>收入增速持续跌破25%</li>
+        <li>效率比率回升至25%以上</li>
+        <li>巴西监管资本充足率跌破13%</li>
+        <li>核心创始人David Vélez离职</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2>九、催化剂日历</h2>
+    <table>
+        <tr><th>时间</th><th>事件</th><th>潜在影响</th></tr>
+        <tr><td>2026年11月（预计）</td><td>Q3 2026 业绩发布</td><td>验证信贷质量与墨西哥牌照落地后的增长动能</td></tr>
+        <tr><td>2026下半年</td><td>墨西哥全银行业务全面放量</td><td>第二增长曲线数据验证，提振估值</td></tr>
+        <tr><td>2026下半年-2027初</td><td>美国银行牌照审批进展</td><td>长期增长空间打开，期权价值重估</td></tr>
+        <tr><td>持续</td><td>巴西利率政策、通胀数据</td><td>影响息差与信贷需求的核心宏观变量</td></tr>
+        <tr><td>2027年</td><td>潜在股息政策启动预期</td><td>吸引价值型资金，估值体系重构</td></tr>
+    </table>
+</div>
+
+<div class="conclusion-box">
+    <h3>十、投资结论与操作建议</h3>
+    <p><strong>评级：BUY（买入），12个月合理价值区间$16.0-19.0，中枢目标价$18.0</strong></p>
+    <p>Nu Holdings是全球数字银行赛道的标杆性资产，兼具规模壁垒、盈利质量与成长空间。公司已证明纯数字化银行模式不仅能获客，更能实现超越传统银行的ROE与风险控制能力，四大飞轮形成的护城河具备长期可持续性。</p>
+    <p>当前估值对应2026年约15倍市盈率，在30%+的利润增速下性价比突出，PEG显著低于成长股合理区间。墨西哥全银行牌照落地提供中期增长弹性，巴西利率下行风险整体可控，不会改变公司长期成长逻辑。</p>
+    <p><strong>操作建议：</strong></p>
+    <ul>
+        <li>当前价位可建立底仓，回调至13美元以下加仓，长期持有分享拉美金融数字化红利。</li>
+        <li>核心跟踪指标：客户活跃率、风险调整后净息差、90+天逾期率、墨西哥存款与信贷增速、巴西监管CAR、Selic利率。</li>
+        <li>适合配置周期：1-3年中长线，不适合短期交易；核心逻辑是估值修复+业绩兑现的戴维斯双击。</li>
+    </ul>
+</div>
+
+<div class="footer">
+    <p>本报告基于公开披露信息与行业研究，部分分析为分析师情景判断，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+    <p>Snail-bird Investment · 个股深度研究系列 · 数据截至2026年8月</p>
+</div>
+
+<div class="foot">出品机构：Snail-bird Investment ｜ 数据截至 2026-08 ｜ 个股深度研究系列</div>
+</body>
+</html>
