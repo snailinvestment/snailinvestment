@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全球宏观周报 | 2026年8月第3周复盘与第4周展望 | 蜗牛鸟投资</title>
+<style>
+  :root{
+    --bg:#f7f5f1; --card:#ffffff; --ink:#1f2420; --ink-soft:#5b6058;
+    --line:#e4e0d8; --accent:#8a6d3b; --accent-2:#3d5a4c; --red:#b5453c;
+    --green:#3d7a56; --amber:#c08a2e; --navy:#2f4457;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:"Songti SC","STSong","Noto Serif SC",serif, "PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.7; font-size:15px;
+  }
+  .masthead{
+    background:linear-gradient(135deg,#22301f 0%,#2f4437 60%,#3d5a4c 100%);
+    color:#f2efe6; padding:34px 6vw 26px;
+    border-bottom:4px solid var(--accent);
+  }
+  .masthead-top{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px;}
+  .brand{font-size:13px; letter-spacing:3px; opacity:.85; text-transform:uppercase;}
+  .brand b{color:#e7d7b0;}
+  .masthead h1{font-size:clamp(22px,3vw,32px); margin:10px 0 6px; font-weight:700; letter-spacing:1px;}
+  .masthead .sub{font-size:14px; opacity:.88; max-width:760px;}
+  .masthead-meta{text-align:right; font-size:12.5px; opacity:.8; line-height:1.6;}
+  .alert-banner{
+    margin-top:18px; background:rgba(181,69,60,.16); border:1px solid rgba(231,145,130,.5);
+    border-radius:6px; padding:12px 16px; font-size:13.5px; display:flex; gap:10px; align-items:flex-start;
+  }
+  .alert-banner .tag{
+    background:var(--red); color:#fff; font-size:11px; padding:2px 8px; border-radius:3px;
+    font-weight:700; letter-spacing:1px; flex-shrink:0; margin-top:2px;
+  }
+
+  nav.sticky{
+    position:sticky; top:0; z-index:50; background:#fdfcfa; border-bottom:1px solid var(--line);
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+  }
+  nav.sticky .wrap{display:flex; gap:2px; overflow-x:auto; padding:0 6vw;}
+  nav.sticky a{
+    white-space:nowrap; padding:13px 14px; font-size:13px; color:var(--ink-soft); text-decoration:none;
+    border-bottom:3px solid transparent; font-weight:600;
+  }
+  nav.sticky a:hover{color:var(--accent); border-bottom-color:var(--accent);}
+
+  main{max-width:1120px; margin:0 auto; padding:0 6vw 60px;}
+  section{padding-top:34px; scroll-margin-top:52px;}
+  h2.sec-title{
+    font-size:20px; margin:0 0 4px; color:var(--navy); display:flex; align-items:center; gap:10px;
+  }
+  h2.sec-title .num{
+    background:var(--navy); color:#fff; width:26px; height:26px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;
+  }
+  .sec-desc{color:var(--ink-soft); font-size:13.5px; margin:0 0 18px; padding-left:36px;}
+  h3{font-size:16px; color:var(--accent-2); margin:22px 0 10px;}
+
+  .kpi-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:6px;
+  }
+  .kpi{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px 14px 12px;
+    border-top:3px solid var(--accent);
+  }
+  .kpi .label{font-size:11.5px; color:var(--ink-soft); letter-spacing:.5px;}
+  .kpi .value{font-size:20px; font-weight:700; margin:4px 0 2px; color:var(--ink);}
+  .kpi .delta{font-size:12px; font-weight:600;}
+  .up{color:var(--red);} .down{color:var(--green);} .flat{color:var(--ink-soft);}
+
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px; background:var(--card);}
+  caption{text-align:left; font-size:12px; color:var(--ink-soft); margin-bottom:6px;}
+  th{
+    background:#eef0e9; color:var(--navy); text-align:left; padding:9px 10px; font-weight:700;
+    border-bottom:2px solid var(--line); white-space:nowrap;
+  }
+  td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tr:hover td{background:#faf9f5;}
+  .tag-beat{background:#e3efe6; color:var(--green); font-size:11px; padding:1px 7px; border-radius:10px; font-weight:700;}
+  .tag-miss{background:#f7e6e4; color:var(--red); font-size:11px; padding:1px 7px; border-radius:10px; font-weight:700;}
+  .tag-inline{background:#f0eee7; color:var(--ink-soft); font-size:11px; padding:1px 7px; border-radius:10px; font-weight:700;}
+
+  .callout{
+    background:#fbf8f0; border-left:4px solid var(--amber); padding:12px 16px; border-radius:4px;
+    font-size:13.5px; margin:14px 0;
+  }
+  .callout.risk{border-left-color:var(--red); background:#fbf1ef;}
+  .callout.data{border-left-color:var(--navy); background:#eef2f5;}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin:14px 0;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media (max-width:820px){.grid2,.grid3{grid-template-columns:1fr;}}
+
+  .scenario{border-radius:10px; padding:16px 18px; border:1px solid var(--line);}
+  .scenario.bull{border-top:4px solid var(--green);}
+  .scenario.base{border-top:4px solid var(--navy);}
+  .scenario.bear{border-top:4px solid var(--red);}
+  .scenario h4{margin:0 0 6px; display:flex; justify-content:space-between; align-items:center; font-size:15px;}
+  .prob{font-size:13px; font-weight:800; padding:2px 9px; border-radius:12px; color:#fff;}
+  .bull .prob{background:var(--green);} .base .prob{background:var(--navy);} .bear .prob{background:var(--red);}
+  .scenario ul{margin:8px 0 0; padding-left:18px; font-size:13px;}
+  .scenario li{margin-bottom:5px;}
+
+  .driver-header{
+    display:flex; align-items:center; gap:10px; background:#f0eee2; padding:10px 16px; border-radius:8px 8px 0 0;
+    border:1px solid var(--line); border-bottom:none;
+  }
+  .driver-header .icon{font-size:20px;}
+  .driver-body{border:1px solid var(--line); border-radius:0 0 8px 8px; padding:16px; background:var(--card); margin-bottom:18px;}
+
+  .footer-disclaimer{
+    margin-top:50px; padding-top:22px; border-top:1px solid var(--line); font-size:11.5px; color:var(--ink-soft); line-height:1.8;
+  }
+  .footer-disclaimer .fname{font-weight:700; color:var(--accent-2);}
+
+  .src{font-size:11.5px; color:#8b9186;}
+  .badge-row{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0;}
+  .badge{background:#eef0e9; color:var(--navy); font-size:11.5px; padding:4px 10px; border-radius:6px; font-weight:600;}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div>
+      <div class="brand">蜗牛鸟投资 <b>Snail-Bird Investment</b> · 全球宏观研究组</div>
+      <h1>全球宏观周报：财政部扩大长期国债流动性支持回购，长端期限溢价短暂回落后重新走高</h1>
+      <div class="sub">2026年8月第3周（8.17–8.23）复盘 ｜ 2026年8月第4周（8.24–8.30）展望 —— 四维驱动·三层传导框架</div>
+    </div>
+    <div class="masthead-meta">
+      发布日期：2026年8月22日<br>
+      数据截至：2026年8月21日收盘<br>
+      数据源：BLS、CME FedWatch、美国财政部、Fed、BEA、OPEC、中国国家统计局、中国外汇交易中心、World Gold Council、LME
+    </div>
+  </div>
+  <div class="alert-banner">
+    <span class="tag">本周焦点</span>
+    <div>
+      （1）美国财政部8/19宣布扩大对10-20年期及20-30年期国债的"流动性支持回购"规模（单次上限由20亿美元提高至至少40亿美元，9月9日至11月4日执行）；公告后长端收益率短暂回落，两日内基本回吐；（2）财长贝森特与美联储主席沃什在国债市场政策边界上的公开讨论增多，市场关注8月27-29日杰克逊霍尔年会（沃什讲话定于8月28日）的相关表态；（3）油价连续第二周上涨逾5%，Brent周五交投于$94附近，美国拟于8/24公布对伊朗新一轮制裁细节，同时伊朗总统释放"愿意结束冲突"信号；（4）现货黄金本周上涨约5%，周五收报$4,604.53，为5月中旬以来新高，财政可持续性担忧、美元走弱与实际利率预期共同支撑本轮涨势；（5）铜价因LME现货短期挤仓（8/19现货升水达$545/吨，现货价触及$14,912/吨纪录）大幅波动；（6）比特币本周暴涨逾20%至$76,000-77,500附近，ETF净流入创年内单周新高，与同期美股周度下跌形成分化；（7）美股三大指数本周均录得周度下跌（标普500周跌约1.4%，为三周来首次），周五反弹但未能完全收复失地；（8）中国7月经济数据公布：社零同比+0.6%（较6月1.0%放缓），固定资产投资前7月同比-6.7%，但工业增加值、出口、服务零售、高技术产业投资均保持较快增长，呈现结构分化而非全面走弱；（9）A股本周宽幅震荡，人民币汇率维持相对平稳。
+    </div>
+  </div>
+</header>
+
+
+
+<nav class="sticky">
+  <div class="wrap">
+    <a href="#kpi">KPI速览</a>
+    <a href="#treasury">① 财政部回购与收益率</a>
+    <a href="#gold">② 黄金驱动因子拆解</a>
+    <a href="#geo">③ 油价与伊朗制裁</a>
+    <a href="#crossasset">④ 铜/比特币/美股</a>
+    <a href="#china">⑤ 中国宏观</a>
+    <a href="#scenario">情景矩阵</a>
+    <a href="#levels">资产关键点位</a>
+    <a href="#alloc">配置建议</a>
+    <a href="#risk">风险register</a>
+    <a href="#outlook">下周展望</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="kpi">
+  <h2 class="sec-title"><span class="num">•</span>本周KPI速览（2026.8.17–8.21）</h2>
+  <p class="sec-desc">四大驱动因子的核心量化指标，环比上周（8.10–8.16）变化</p>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">美财政部长端流动性支持回购规模</div><div class="value">≥$40亿/次</div><div class="delta up">较此前$20亿上限翻倍，9/9-11/4执行</div></div>
+    <div class="kpi"><div class="label">美10年期国债收益率（8/21）</div><div class="value">~4.70–4.74%</div><div class="delta up">口径见下方说明，周内先降后升</div></div>
+    <div class="kpi"><div class="label">美30年期国债收益率（8/21）</div><div class="value">~5.27%</div><div class="delta up">接近19-20年高位</div></div>
+    <div class="kpi"><div class="label">美2年期国债收益率</div><div class="value">~4.185%</div><div class="delta flat">短端相对平稳</div></div>
+    <div class="kpi"><div class="label">美国联邦公共债务规模</div><div class="value">~$40万亿</div><div class="delta up">Treasury Fiscal Data口径，本周成为市场焦点话题</div></div>
+    <div class="kpi"><div class="label">现货黄金（8/21收盘价）</div><div class="value">$4,604.53</div><div class="delta up">周内涨幅约5%，5月中旬以来新高</div></div>
+    <div class="kpi"><div class="label">现货白银（8/21）</div><div class="value">~$69.6</div><div class="delta up">金银比压缩至~65.9</div></div>
+    <div class="kpi"><div class="label">LME铜现货（8/19纪录）</div><div class="value">$14,912/吨</div><div class="delta up">现货对3个月升水达$545/吨，五年最大逼仓</div></div>
+    <div class="kpi"><div class="label">比特币（8/21）</div><div class="value">$76,000–77,500</div><div class="delta up">周涨幅逾20%，两年最佳单周表现</div></div>
+    <div class="kpi"><div class="label">标普500（8/21收盘）</div><div class="value">7,674.37</div><div class="delta down">周跌约1.4%，三周来首次周度下跌</div></div>
+    <div class="kpi"><div class="label">Brent原油（8/21）</div><div class="value">~$93.5–94.4</div><div class="delta up">连续第二周上涨逾5%</div></div>
+    <div class="kpi"><div class="label">上证指数（8/21收盘）</div><div class="value">3,905.2</div><div class="delta down">8/19重挫后8/20-21震荡修复</div></div>
+    <div class="kpi"><div class="label">中国7月社零同比</div><div class="value">+0.6%</div><div class="delta down">较6月1.0%放缓</div></div>
+    <div class="kpi"><div class="label">中国1-7月固定资产投资同比</div><div class="value">-6.7%</div><div class="delta down">降幅较1-6月继续扩大，主要受地产拖累</div></div>
+  </div>
+  <div class="callout data">
+    <b>数据口径：</b>美10年期国债收益率采用FRED不变期限收益率序列（H.15口径），8月21日为4.69%；日内可交易报价一度触及4.73%附近。黄金采用8月21日现货收盘价$4,604.53。上证指数采用8月21日收盘价3,905.2。
+  </div>
+</section>
+
+<!-- ============ DRIVER 1: TREASURY BUYBACK & YIELDS ============ -->
+<section id="treasury">
+  <h2 class="sec-title"><span class="num">1</span>驱动一：财政部"以量压价"式国债回购失灵，长端收益率两日内完全回吐跌幅</h2>
+  <p class="sec-desc">传导层：财政部干预国债市场 → 收益率曲线短期扭转/长期结构性压力未解 → 美元与全球资产定价</p>
+
+  <div class="driver-header"><span class="icon">🏦</span><b>核心事件：8月19日财政部宣布扩大长端流动性支持回购规模</b></div>
+  <div class="driver-body">
+    <h3>政策定性：官方口径为"流动性支持"，而非收益率目标或QE</h3>
+    <div class="callout data">
+      财政部官方公告将此次操作定性为对10年至20年期及20年至30年期名义国债的<b>流动性支持回购（liquidity support buyback）</b>，理由是市场参与者对该类操作持续提交大量高质量报价，反映这部分久期市场存在交易摩擦。公告本身未设定收益率目标，未使用"收益率曲线控制"或"量化宽松"等表述。流动性支持回购可以改善特定券种的交易摩擦与回购市场流动性，但不等同于永久性降低国债净供给，也不直接承诺压低整条收益率曲线。单次40亿美元的操作规模，相对于美国国债市场存量及季度净融资规模而言相对有限。
+    </div>
+    <p>本周该操作出台的背景是国债市场长久期部分持续承压。<cite index="24-1">美国财政部周三宣布将大幅扩大政府债务回购规模，在市场承压、收益率升至近20年未见水平之际，此举旨在缓解市场压力；随着固定收益市场承压、收益率飙升至近20年未见的水平，此次公告聚焦于国债市场中最为敏感的长久期部分</cite>。<cite index="24-1">在扩大后的回购操作中，财政部（由财长贝森特领导）将把回购操作的最大规模"至少翻倍"，从20亿美元提升至"至少"40亿美元，目标覆盖10年期至20年期以及20年期至30年期的国债市场——该市场自6月末以来一直呈现"买家罢工"状态；此项调整将于9月9日开始，持续至11月4日</cite>。</p>
+
+    <h3>公告日：收益率应声暴跌，但仅维持约一天</h3>
+    <p>政策公告初期效果显著：<cite index="24-1">公告发布后收益率应声暴跌，股指期货大幅上扬；基准10年期国债收盘下跌5.7个基点至4.647%，30年期"长期"国债大幅下跌9个基点至5.196%</cite>。<cite index="24-1">特朗普总统当天在被问及美国民众是否应对债券市场感到担忧时表示："不，我不这么认为"</cite>。但这一乐观情绪极为短暂：<cite index="23-1">交易迅速逆转，周四收益率转为走高，市场开始消化这一举措以及固定收益市场面临的更深层次结构性问题；贝森特随后表示，回购操作规模最终可能超过已宣布的40亿美元；摩根大通高级研究分析师Maia Crook在客户报告中指出，这些干预措施"掩盖了潜在的结构性挑战，但并未真正解决这些问题"</cite>。</p>
+
+    <h3>周四-周五：涨势明显收窄，长端收益率回升至公告前附近水平</h3>
+    <table>
+      <caption>2026年8月19-21日美债收益率路径</caption>
+      <thead><tr><th>日期</th><th>10年期收益率</th><th>30年期收益率</th><th>2年期收益率</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>8/19（周三，公告日）</td><td>4.647%（-5.7bp）<cite index="24-1"></cite></td><td>5.196%（-9bp）<cite index="24-1"></cite></td><td>-</td><td>财政部宣布扩大回购规模</td></tr>
+        <tr><td>8/20（周四）</td><td>4.704%（+5bp以上）<cite index="23-1"></cite></td><td>5.248%（+5bp以上）<cite index="23-1"></cite></td><td>4.185%（+不足1bp）<cite index="23-1"></cite></td><td>收益率超过公告前水平</td></tr>
+        <tr><td>8/21（周五）</td><td>~4.70%</td><td>~5.273%<cite index="19-1">（30年期国债收益率上涨逾3个基点至5.273%，一周前为5.21%）</cite></td><td>-</td><td>长端收益率进一步走高</td></tr>
+      </tbody>
+    </table>
+    <p>本周长端收益率呈现"公告日下行—后两日回升"的路径，回升幅度大体抹平了公告当日的下行。<cite index="21-1">10年期美债收益率周五交投于约4.7%附近，此前一交易日大幅反弹，市场担忧政府降低借贷成本的计划可能只是权宜之计；30年期收益率也攀升至约5.25%附近，几乎抹平周三宣布扩大债务回购规模后的跌幅</cite>。财政部扩大长端流动性支持回购后，期限溢价出现短暂回落，但在操作实际开始执行（9月9日）之前，市场已重新计入通胀、供给、地缘风险与久期需求等因素，收益率回升至接近公告前水平；这一流动性支持操作能否在实际执行期内改善市场流动性与期限溢价，仍需等待9月后的执行数据加以检验。</p>
+
+    <h3>结构性根源：AI资本开支债务发行与联邦赤字规模的双重压力</h3>
+    <p>本轮收益率飙升并非单纯的短期交易现象，而是有明确的结构性根源：<cite index="21-1">长端国债收益率自7月以来持续攀升，一方面源于AI企业债务发行规模的不断增加，另一方面是联邦政府赤字支出的持续上升；与此同时，油价因美国正筹备对伊朗实施全面新一轮经济制裁而走高，进一步加剧了通胀担忧</cite>。<cite index="36-1">据美国国会预算办公室数据，2026财年前10个月，联邦政府净利息支出已达9,630亿美元，债务偿付支出约占财政支出的15%</cite>——这一利息负担规模已逼近美国国防基础拨款规模，是理解财政部为何如此急迫地试图压低长端利率的核心背景。</p>
+
+    <div class="callout risk">
+      <b>政策悖论：压低长端利率的举措本身可能助长通胀，进而迫使美联储维持更高利率：</b>本周分析指出了这一操作中潜藏的深层次矛盾。<cite index="36-1">当联邦债务的期限结构更多倾向于短期时，利息支出对利率涨跌的敏感度会相应提高——如果美联储选择加息，将迅速推高政府利息支出；分析师Khurana指出，贝森特通过增加短期债务发行的方式压低长端利率，这一决策"可能适得其反"</cite>；<cite index="36-1">同时，压低长端利率本身也可能刺激经济活动、加剧通胀风险，"这会增加通胀具有粘性的可能性，进而迫使美联储将利率维持在更高水平"；此外，回购公告当天美元兑一篮子货币下跌近0.8%，这也可能通过推高进口成本而加剧通胀压力</cite>。这意味着，财政部试图通过压低长端收益率来减轻政府融资成本的努力，可能在中期内通过"美元走弱→进口通胀→美联储被迫维持高利率→长端收益率再度承压"的循环，部分抵消甚至反噬其政策初衷。
+    </div>
+
+    <h3>市场讨论：贝森特与沃什在国债市场政策边界上的公开讨论</h3>
+    <h3>财政部与美联储在国债市场政策边界上的讨论</h3>
+    <p><cite index="31-1">贝森特试图影响债券市场的举措，可能会增加市场对沃什的关注压力，促使其明确美联储在国债市场政策中的角色；美联储历史上仅在明确的危机时期才会干预债券市场，目前没有迹象表明美联储计划采取行动；沃什曾主张修订财政部-美联储关系，赋予财政部在资产负债表决策上更多话语权，他可能会在美联储杰克逊霍尔研讨会上就此发表看法，届时市场将密切关注有关长端收益率及美联储独立性的线索</cite>。<cite index="35-1">这一干预标志着贝森特领导下的财政部转向一种全新的积极姿态；当财政部积极出手压低国债收益率时，实际上是在与（或对冲）美联储试图向金融市场传递的利率信号相竞争或相矛盾，沃什领导的美联储现在面临一个更为复杂的操作环境，财政部正扮演着一股平行力量的角色</cite>。这一讨论预计将成为杰克逊霍尔年会（8/27-29，沃什讲话定于8/28）的重要看点。
+    </div>
+  </div>
+</section>
+
+<!-- ============ DRIVER 2: GOLD - DEBT CRISIS TRADE ============ -->
+<section id="gold">
+  <h2 class="sec-title"><span class="num">2</span>驱动二：黄金——多因子共同支撑本轮涨势</h2>
+  <p class="sec-desc">传导层：财政/美元/实际利率/官方购金/地缘风险等因子共同作用 → 黄金定价</p>
+
+  <div class="driver-body">
+    <h3>价格走势：本周最强势的大类资产之一</h3>
+    <p>黄金本周延续强势，且涨速较此前两周进一步加快。<cite index="47-1">黄金已录得自1月以来最强劲的单月涨幅，8月累计上涨超过10%，升至每盎司$4,400上方</cite>。价格路径：<cite index="51-1">周四黄金价格升至$4,530/盎司，维持周三涨势并触及6月以来最高水平，美国财政部对债券市场的干预压低了美元并重新点燃了"货币贬值交易"</cite>；<cite index="51-1">周五黄金升破$4,600/盎司，为5月中旬以来最高水平，周涨幅扩大至约5%，涨势由美国财政部意外增加长期国债购买计划后重燃的财政可持续性担忧所支撑，该干预措施引发了对华盛顿能否管控不断攀升的借贷成本的质疑，并强化了将贵金属视为价值替代储存手段的需求</cite>。周五收盘价为<b>$4,604.53/盎司</b>，<cite index="50-1">当日盘中交投于$4,590.51/盎司时点上涨$74.51（+1.65%）；现货白银交投于$69.63/盎司，单日上涨$1.51（+2.22%），金银比降至约65.9附近，其本周的压缩态势表明白银正全面参与本轮上涨，而非滞后于金价</cite>。<span class="tag-beat">月内涨幅超10%，逼近历史高位区间</span></p>
+
+    <h3>驱动因子一览</h3>
+    <p>本周金价上涨由多个因子共同支撑，各因子相对贡献难以在周度频率上精确分解。下表列出主要候选因子及对应证据：</p>
+    <table>
+      <caption>黄金定价驱动因子与本周证据</caption>
+      <thead><tr><th>因子</th><th>本周证据</th></tr></thead>
+      <tbody>
+        <tr><td>实际利率</td><td>10年期TIPS实际收益率此前一期（8/12）录得2.42%</td></tr>
+        <tr><td>美元</td><td><cite index="24-1">财政部回购公告当天美元兑一篮子货币下跌近0.8%</cite>；<cite index="51-1">周五金价上涨伴随美元走弱</cite></td></tr>
+        <tr><td>财政/期限溢价</td><td><cite index="48-1">联邦公共债务约39.89万亿美元，CBO预计2026财年净利息支出约1万亿美元</cite></td></tr>
+        <tr><td>官方部门购金</td><td><cite index="47-1">人民银行7月增持20吨，连续21个月增持</cite>；全球央行2026年第二季度净购金288.9吨</td></tr>
+        <tr><td>地缘风险</td><td>本周油价同步上涨（详见"驱动三"）</td></tr>
+      </tbody>
+    </table>
+    <p>财政可持续性担忧、美元走弱与实际利率预期共同支持了本周黄金上涨。<cite index="50-1">本周美国联邦债务规模成为市场热议话题，市场对政府债务的担忧与走弱的美元共同吸引买盘重新进入金市</cite>。<span class="tag-inline">降息预期与财政/债务担忧两条叙事在本周同时存在</span></p>
+
+    <h3>官方部门购金</h3>
+    <p><cite index="55-1">世界黄金协会（WGC）数据显示，2026年第二季度全球央行净购金达288.9吨，较2025年同期177.9吨增长62%，为季度记录；这一数字于7月30日随WGC《Gold Demand Trends Q2 2026》报告发布</cite>。<cite index="60-1">人民银行2026年二季度增持33吨，为2023年四季度以来最大单季度增持，使其官方黄金储备达到2,346吨</cite>，是当前黄金需求结构中持续性最强的支撑力量之一。</p>
+
+    <h3>结构性背景：主权债务再融资压力</h3>
+    <p>本轮黄金上涨与美国财政的中长期结构性压力密切相关。<cite index="48-1">美国公共债务规模约为39.89万亿美元（据财政部财政数据），国会预算办公室预计2026财年净利息支出将达到约1万亿美元，与国防基础拨款规模首次持平；每上调25个基点利率，都将为这笔年度利息支出增加数百亿美元</cite>。<cite index="48-1">这一约束并不体现在任何通胀读数中，这意味着美联储管理的不仅是物价，还有一个没有轻松退出路径的主权资产负债表再融资风险</cite>。</p>
+
+    <h3>杰克逊霍尔年会：金价能否延续本轮涨势的关键窗口</h3>
+    <p>下周即将召开的杰克逊霍尔全球央行年会（8/27-29）被市场视为决定金价短期方向的核心变量。<cite index="48-1">沃什将于5月22日就任以来首次以美联储主席身份发表年会演讲；在沃什治下，美联储不再提前透露政策意图，因此本次重要演讲具有真实的信息增量价值；他在7月29日告诉记者，其演讲将聚焦长期结构性问题而非短期指引，但同时明确表示美联储将独立于市场当前定价行事；当前39%的9月加息概率并不能约束他的决策；7月29日FOMC投票为9-3维持利率不变，三名投票委员（Beth Hammack、Neel Kashkari、Lorie Logan）投下异议票，主张立即加息，这一分歧水平在沃什任内第二次会议上出现已属罕见</cite>。<cite index="48-1">市场目前对沃什基准立场缺乏清晰判断，这正是8月27日演讲成为本月最重要数据点的原因</cite>。若沃什讲话进一步强化"美联储独立于财政部压低利率诉求"的立场，可能通过收益率二次上行的路径继续支撑黄金；反之若释放配合财政部稳定收益率的信号，则可能触发金价阶段性回调。</p>
+
+    <div class="callout data">
+      <b>技术面与UBS展望：</b><cite index="50-1">CNBC市场评论标题"黄金因债市紧张、债务担忧及美元走弱而反弹"，将本周走势与结构性资金流联系；UBS大宗商品分析师Giovanni Staunovo向该媒体表示，全球债务攀升与美元持续疲软"预计将在未来12个月内将金价推升至5,400美元/盎司"，这与去年推动金价上涨的驱动力相同，如今正卷土重来</cite>。这一预测较此前本文所引述UBS的$5,000目标价（8/3-9期报告）进一步上调，反映机构对"债务驱动型金价上行"逻辑信心的持续增强。
+    </div>
+  </div>
+</section>
+
+<!-- ============ DRIVER 3: OIL / IRAN SANCTIONS ============ -->
+<section id="geo">
+  <h2 class="sec-title"><span class="num">3</span>驱动三：油价连续第二周上涨逾5%，美国"史上最严厉对伊制裁"与伊朗"结束冲突"信号并存</h2>
+  <p class="sec-desc">传导层：地缘政策威慑升级 vs. 外交缓和信号 → 油价双向拉锯 → 通胀预期与收益率联动</p>
+
+  <div class="driver-body">
+    <h3>价格路径：连续第二周显著上涨</h3>
+    <p>油价本周延续了此前两周的企稳后重新走高的趋势，且涨幅进一步扩大。<cite index="41-1">布伦特原油周五交投于$94美元下方，即将录得连续第二周约6%的周涨幅；过去4周布伦特累计涨幅为0.02%，过去12个月累计上涨38.92%</cite>。具体节点：<cite index="39-1">周四布伦特原油盘中突破$93/桶，欧洲早盘上涨1.95%至$93.48，WTI原油突破$85/桶心理关口，上涨2%至$86.12</cite>；<cite index="44-1">布伦特原油期货收涨2.4%至$93.78/桶，WTI原油10月合约上涨2.7%至$86.64/桶</cite>；<cite index="37-1">周五布伦特原油期货上涨18美分至$93.96/桶，WTI原油期货上涨11美分至$86.94/桶，本周迄今累计涨幅超过5%</cite>。</p>
+
+    <h3>核心矛盾：美国"经济D-Day"式制裁威胁 vs. 伊朗释放缓和信号</h3>
+    <p>本周油价的持续上涨主要由美国不断升级的对伊制裁威胁驱动。<cite index="44-1">财长贝森特接受CNBC采访时表示，"我们已经实施了封锁，并且即将实施史上最严厉的制裁""这（策略）在委内瑞拉曾经奏效，目前在古巴也正在奏效，在伊朗也将奏效，我们要让这个政权垮台"；贝森特表示，他将于周一召开新闻发布会，阐述特朗普总统对伊朗发起"经济战"的具体计划</cite>。<cite index="41-1">美国正推动孤立伊朗经济，特朗普将此形容为"经济D-Day"，具体细节将于下周一公布；拟议措施可能旨在切断德黑兰与国际金融和商业渠道的联系，包括银行、企业、航运登记机构、现金转移及走私网络；华盛顿方面意图通过加大对伊朗的经济压力，推动德黑兰就冲突、其核计划及霍尔木兹海峡控制权展开谈判；拟议措施可能波及仍与德黑兰保持贸易关系的国家，包括伊朗原油最大买家中国；北京方面已拒绝经济施压，呼吁通过外交途径解决</cite>。</p>
+
+    <div class="callout risk">
+      <b>制裁威胁与油价反向背离：</b><cite index="37-1">贝森特向CNBC表示，他不理解为何原油价格在总统言论发布后仍在上涨，因为"最大程度经济施压"意味着"很可能"不会重新回到大规模军事打击</cite>。市场当前的油价定价逻辑并非简单的"军事风险溢价"，而更多包含了对制裁升级本身可能导致伊朗采取非对称反制（如加大对霍尔木兹海峡的骚扰阻断行动）的担忧，即经济制裁与军事冲突之间并非此消彼长的替代关系，制裁强化也可能被市场解读为局势复杂化的信号。
+    </div>
+
+    <h3>周五：伊朗释放"愿意结束冲突"信号，油价涨势暂缓</h3>
+    <p>周五市场收到了自地缘局势恶化以来较为罕见的缓和信号。<cite index="42-1">伊朗总统佩泽希齐扬表示，德黑兰更愿意在自身仍处于"实力和尊严地位"时结束这场战争，称"今天结束战争会更好"，并将与美国签署的谅解备忘录称为伊斯兰共和国的胜利；该备忘录已于6月17日由美伊双方签署，允许德黑兰通过与阿曼及其他海湾国家的谈判来决定霍尔木兹海峡的管理方式</cite>。<cite index="43-1">受此影响，油价在周五交投于$94美元附近波动不大，投资者正评估伊朗可能寻求结束与美国冲突的迹象；这一表态在贝森特此前宣布美国将对德黑兰实施史上最严厉制裁、并加大对伊朗政权经济压力后，为市场提供了一定程度的缓解</cite>。<cite index="43-1">与此同时，美军方面表示，自5月初以来，已协助超过6.6亿桶原油通过霍尔木兹海峡运输，表明尽管存在冲突及地缘政治风险升级，仍有大量原油维持通行</cite>——这一数据为此前几周报告中反复讨论的"海峡实际通行量 vs. 官方风险叙事"的落差提供了进一步的量化支撑。</p>
+
+    <h3>供需基本面background：IEA需求展望与Goldman年末目标价</h3>
+    <p><cite index="38-1">IEA预计2026年全球石油需求将下降约160万桶/日，部分原因是供应链中断及油品价格高企正对经济活动构成拖累</cite>；<cite index="40-1">高盛分析师在报告中指出，若霍尔木兹海峡"完全重新开放"，布伦特原油有望在年末回落至$80/桶，但红海航运中断及沙特石油基础设施遭袭的风险，可能对原油及成品油价格构成新的上行风险</cite>。这一"基本面看空、地缘看多"的分歧结构预计将持续主导油价的双向波动特征。</p>
+  </div>
+</section>
+
+<!-- ============ CROSS-ASSET: COPPER / BTC / EQUITIES ============ -->
+<section id="crossasset">
+  <h2 class="sec-title"><span class="num">4</span>跨资产验证：铜、比特币、美股——检验本周宏观叙事在不同资产上是否自洽</h2>
+  <p class="sec-desc">补充铜、比特币、美股三类资产，检验本周财政部干预、美元与黄金这条主线逻辑在其他市场的表现</p>
+
+  <div class="driver-body">
+    <h3>铜：LME现货短期挤仓，与中国实体需求信号分开解读</h3>
+    <p><cite index="62-1">铜价8月19日创下纪录，因LME库存偏低、大额近期头寸及来自美国市场的竞争，共同造成短期供应挤压；8月19日，现货铜对三个月合约的升水达到每吨545美元，这是自2021年以来最大的现货升水（逼仓）；铜的现货价格同样创下纪录，升至每吨14,912美元；这一压力在"隔夜"价差（反映将交易头寸展期一天的成本）中表现尤为剧烈</cite>。</p>
+    <div class="callout data">
+      本轮挤仓的成因具有明显的金融微观结构特征，而非单纯的实体需求信号——<cite index="66-1">全球总库存并非特别紧张，但库存高度集中在美国（因交易商押注特朗普政府可能对精炼铜加征关税）；同时中国需求本身并未被视为特别强劲，但当地冶炼厂因原料供应问题而面临增加进口的压力；LME追踪的库存目前刚超过20万吨，为2月以来最低水平，此前经历了42个交易日的连续下降，为2014年以来最长连续下降纪录</cite>。本周铜价创纪录高位，更多反映的是LME交易所库存位置分布失衡与对美国潜在关税政策的套利性囤货，而非中国实体需求转强或全球制造业周期上行的直接证据。
+    </div>
+    <p>需要持续跟踪的验证指标包括：LME/COMEX/SHFE库存及注销仓单变化、COMEX-LME跨市场价差（反映关税预期强弱）、中国精炼铜净进口数据，以及智利/秘鲁等主要产地的供给扰动情况。</p>
+
+    <h3>比特币：本周表现与美股背离，指向流动性/美元交易而非风险偏好交易</h3>
+    <p><cite index="76-1">比特币周五（8/21）交投于$77,511附近，为5月以来最高水平，此前一度触及$79,400，得益于美国财政部的债券回购计划持续提振风险偏好；美国现货比特币ETF周四净流入约6.06亿美元，为5月1日以来最大单日流入</cite>。<cite index="75-1">比特币过去一周累计上涨逾23%，至周五约$77,500附近，同期美国现货比特币ETF自周一至周四累计净流入约16亿美元，为2026年迄今最强单周表现；这一规模的空头强制平仓（逾43亿美元加密货币空头头寸被强制平仓）与持续增长的ETF资金流相叠加，市场开始讨论本轮反弹是否正从"空头挤仓驱动"转向"ETF资金驱动"这一可能更具持续性的模式</cite>。</p>
+    <div class="callout risk">
+      <cite index="76-1">CoinShares研究主管James Butterfill表示，"这轮反弹主要是一个宏观故事，而非单纯的加密货币行业事件"</cite>。同期美股主要指数（标普500、纳指、道指）本周均录得<b>周度下跌</b>（详见下文美股模块），比特币却大幅上涨逾20%——这一背离表明本周比特币走势更多反映了财政部回购操作带来的美元走弱预期与流动性宽松预期，与黄金的部分驱动逻辑（美元/流动性通道）存在共性，但与传统"风险资产 vs. 避险资产"的二元框架不完全吻合。比特币在本周同时展现出"类黄金"（美元对冲）与"高贝塔风险资产"（ETF资金驱动、杠杆挤仓）的双重特征。
+    </div>
+
+    <h3>美股：周度指数下跌，长端利率与油价上行对估值构成压制</h3>
+    <p><cite index="80-1">标普500本周累计下跌1.4%，结束此前三周连续上涨的态势；截至周五，该指数较8月13日创下的历史收盘高点低1.6%</cite>。周五当日出现反弹：<cite index="70-1">美股周五上涨，为波动的一周画上句号，比特币价格飙升，投资者等待特朗普总统对伊朗"经济战"计划的更多细节；道琼斯工业平均指数上涨约1%，标普500指数上涨0.4%，纳斯达克综合指数在前一交易日收跌后同样上涨0.4%；尽管周五上涨，主要股指本周仍全线收跌，此前债券市场抛售给风险资产带来压力</cite>。<cite index="79-1">信息技术板块过去五个交易日下跌超过3%，是拖累标普500的主要行业，Amkor Technology与Credo Technology跌幅居前（五日跌幅分别接近15%和11%），Meta Platforms同期下跌近7%</cite>。</p>
+    <div class="callout data">
+      标普500周五收盘报7,674.37，纳斯达克综合指数收报约26,180附近。本周下跌的主要驱动是信息技术板块及个别权重股（Meta、沃尔玛财报不及预期）的拖累，而非普遍性的估值重定价。
+    </div>
+  </div>
+</section>
+
+<!-- ============ DRIVER 4: CHINA MACRO ============ -->
+<section id="china">
+  <h2 class="sec-title"><span class="num">5</span>驱动五：中国宏观 —— 7月数据呈现结构分化：地产/传统投资收缩，外需与服务消费保持韧性</h2>
+  <p class="sec-desc">传导层：7月经济数据发布（多指标交叉验证）→ 国内需求修复节奏验证 → A股风险偏好与人民币汇率</p>
+
+  <div class="driver-body">
+    <h3>社会消费品零售总额：增速较6月放缓，消费呈"弱企稳"格局</h3>
+    <p>国家统计局8月17日公布的7月经济数据显示，消费端增速出现边际放缓。<cite index="55-1">2026年7月份，社会消费品零售总额39022亿元，同比增长0.6%；除汽车以外的消费品零售额35892亿元，同比增长2.5%；1—7月份，社会消费品零售总额287744亿元，同比增长1.2%</cite>。<cite index="55-1">从近3个月来看，社会消费品零售总额同比增速从5月的-0.6%转正到6月的1.0%，再下降到7月的0.6%，未形成持续的上行或下行趋势，消费整体处于"弱企稳"状态</cite>。</p>
+
+    <div class="callout data">
+      <b>结构亮点：服务消费与必需消费展现出更强韧性</b>
+      <p style="margin-top:8px;">国家统计局新闻发言人王冠华在发布会上指出，<cite index="64-1">7月台风、暴雨、高温等极端天气频发，给部分地区的线下消费造成了一些影响；但总的来看，服务消费增长仍然表现出较强的稳定性，增速持续快于商品零售额，1—7月份服务零售额增长5.0%，快于商品零售额3.9个百分点，居民消费重点从"买商品"到"享服务、重体验"转变</cite>。分品类看，<cite index="55-1">限额以上粮油食品类零售总额同比增幅达5.3%，饮料类同比增长3.5%，烟酒类同比涨幅为6.0%，均高于社会消费品零售总额整体增速，表明相较于整体消费，必需消费展现出更为显著的稳定性；今年以来限额以上汽车类零售总额出现较大跌幅，对社会零售数据持续形成较大拖累</cite>；<cite index="55-1">乡村消费增速持续快于城镇——7月份城镇消费品零售额同比增长0.5%，乡村消费品零售额同比增长1.6%</cite>。
+    </div>
+
+    <h3>固定资产投资：降幅继续扩大，但结构质量持续优化</h3>
+    <p>投资端数据延续了此前几个月的下行趋势，且降幅进一步扩大。<cite index="57-1">从前7个月的情况来看，固定资产投资同比下降6.7%，降幅继续扩大，既有部分地区高温暴雨对项目施工的短期扰动，也有外部环境复杂严峻、国内经济转型调整的阶段性影响</cite>。国家统计局投资司负责人付凌晖对此给出了较为积极的结构性解读：<cite index="57-1">看待当前的投资形势，不能仅看投资增速的变化，更多还要关注投资对经济社会发展的促进作用，关注投资的结构、质量和效益；今年以来，随着创新引领作用的增强、政策效能的释放，投资在促转型、强基础、惠民生方面的关键作用日益凸显</cite>，<cite index="64-1">具体表现为新赛道投资扩围提质、重点领域投资持续增加和惠民生投入力度加大，我国投资结构持续优化</cite>。</p>
+
+    <h3>多指标交叉验证：结构分化而非全面走弱</h3>
+    <div class="callout data">
+      国家统计局同期公布的其他指标显示出与社零、投资截然不同的景气度：<b>7月规模以上工业增加值同比增长4.5%；货物出口同比增长17.8%，进口同比增长21.2%；1-7月服务零售额同比增长5.0%，高技术产业投资同比增长5.0%；而房地产开发投资同比下降19.2%</b>，是拖累固定资产投资总量增速的主要因素。国内经济呈现"地产与传统投资收缩、商品消费偏弱、服务与高技术仍具韧性、外需强劲"的结构分化格局，投资总量走弱主要受地产拖累，不能直接等同于全部投资或工业需求同步下行。这一判断与政治局会议强调结构、质量和效益而非单纯追求投资增速的政策表述逻辑相印证。
+    </div>
+    <p class="src">社零和固定资产投资均为名义同比数据，固定资产投资还存在可比口径修订及房地产权重调整的影响。</p>
+
+    <h3>A股：8/19单日重挫后连续两日收红，全周未收复失地</h3>
+    <table>
+      <caption>2026年8月第3周A股主要指数逐日表现</caption>
+      <thead><tr><th>日期</th><th>上证指数</th><th>市场特征</th></tr></thead>
+      <tbody>
+        <tr><td>8/17（周一）</td><td>收涨1.41%报3982.65点</td><td>半导体、电子化学品领涨，政策面（集成电路税收优惠）与产业面（SK海力士"存储荒"预警、英伟达CPO交换机量产）共振，主力净流入近495亿元</td></tr>
+        <tr><td>8/18（周二）</td><td>收涨0.19%报3990.30点，盘中最高3994.18点</td><td>三大指数低开后探底回升，沪指盘中一度逼近4000点整数关口未能突破，收盘沪指上涨，深指、创业板指收跌，农业股大幅上涨</td></tr>
+        <tr><td>8/19（周三）</td><td>跳空低开后进一步下探，收跌2.4%报3894.42点，盘中最低触及3879.58点</td><td><cite index="66-1">A股三大指数集体低开，市场早盘低开低走，呈现"指数集体重挫、个股普跌、煤炭房地产等防御性板块相对抗跌"格局</cite>；<cite index="66-1">中金研报指出，8月19日A股市场明显回调，上证指数年内收益再度转负，市场回调主要由外部多项利空因素触发</cite>；深证成指跌5.01%，创业板指跌6.26%，科创50重挫6.89%，逾5000只个股下跌、逾百股跌停</td></tr>
+        <tr><td>8/20（周四）</td><td>收涨0.24%报3903.72点</td><td><cite index="66-1">A股高开后冲高回落、涨幅收窄，三大指数小幅收红</cite>；同日<cite index="66-1">亚洲股市全面走强，美国财政部宣布扩大长期国债回购规模，有效缓解了全球收益率上行压力，半导体板块</cite>受益，盘中一度试探此前高点未能突破</td></tr>
+        <tr><td>8/21（周五）</td><td>开盘跌0.18%，收涨0.04%报3905.20点</td><td>三大指数震荡收涨，沪指窄幅横盘守住3900点，创业板指领涨（+1.43%），贵金属、能源金属、通信设备等板块领涨，种植业、化学制药等板块回调，两市成交缩量至约1.88万亿元</td></tr>
+      </tbody>
+    </table>
+    <p>8/17-18连续两日上涨、盘中一度逼近4000点整数关口后，8/19出现全周唯一一次大幅下挫，上证指数收跌2.4%，深证成指、创业板指、科创50跌幅更深（分别为5.01%、6.26%、6.89%），全市场逾5000只个股下跌。<cite index="66-1">周三亚洲股市大幅下挫，韩国股市领跌，跌幅接近6%，日本股市跌逾3%，半导体股新一轮抛售潮、居高不下的美债收益率是主要拖累因素</cite>，与A股当日的重挫存在共振。8/20、8/21两个交易日指数连续收红（分别+0.24%、+0.04%），8/20受益于美国财政部回购公告带来的全球收益率短暂回落，8/21进一步小幅收涨、守住3900点关口，但两日累计涨幅有限，收盘点位仍未收复8/19下跌前的水平。中国基本面数据本周呈现结构分化，A股短期走势更多受到全球流动性与风险偏好摆动的直接影响，国内数据的传导相对滞后。</p>
+
+    <h3>人民币汇率：维持相对平稳</h3>
+    <p>面对本周美债收益率剧烈波动、美元指数因财政部回购操作而走弱的外部环境，人民币汇率延续了此前几周报告中反复观察到的"相对韧性"特征，中间价维持窄幅波动，未跟随美元弱势方向出现大幅调整，也未因A股8/19的重挫而出现明显贬值压力，这与此前报告中"国内核心CPI结构性改善为汇率提供边际支撑"的判断保持一致。</p>
+  </div>
+</section>
+
+<!-- ============ SCENARIO MATRIX ============ -->
+<section id="scenario">
+  <h2 class="sec-title"><span class="num">✓</span>情景矩阵：8月24日–8月30日</h2>
+  <p class="sec-desc">主观权重情景（非市场定价或期权隐含分布推导），聚焦下周核心变量：杰克逊霍尔年会沃什讲话（8/28）、美国对伊朗制裁细节（周一公布）、8月26日PCE数据、长端收益率能否企稳</p>
+  <div class="callout data">
+    以下三个情景的概率标注为研究团队的主观权重，未经市场定价或历史频率统计推导。每个情景补充了可观察的触发/失效指标，便于读者在下周数据公布后自行验证情景是否成立。
+  </div>
+  <div class="grid3">
+    <div class="scenario bull">
+      <h4>情景A（偏乐观） <span class="prob">主观权重 ~20%</span></h4>
+      <p style="font-size:13px;">沃什讲话释放温和信号，长端收益率企稳回落；美国对伊制裁相对温和，伊朗未强硬反制；Brent回落。</p>
+      <p style="font-size:12.5px; margin-top:8px;"><b>触发指标：</b>10年期实际利率下行、30年期标售尾部收窄、Brent回落至$85-88、VIX下降、信用利差（HY OAS）收窄。</p>
+    </div>
+    <div class="scenario base">
+      <h4>情景B（基准） <span class="prob">主观权重 ~45%</span></h4>
+      <p style="font-size:13px;">沃什讲话聚焦长期结构性问题，避免对短期利率路径明确表态；美国对伊制裁后伊朗"口头强硬、实际克制"；油价、收益率高位震荡。</p>
+      <p style="font-size:12.5px; margin-top:8px;"><b>触发指标：</b>10年期收益率维持4.6-4.75%区间、Brent维持$88-95区间、8/26 PCE数据符合预期（意外幅度<0.1pct）、比特币ETF资金流与铜现货价差保持当前水平附近。</p>
+    </div>
+    <div class="scenario bear">
+      <h4>情景C（偏悲观） <span class="prob">主观权重 ~35%</span></h4>
+      <p style="font-size:13px;">沃什释放强调美联储独立性的信号；对伊制裁涉及对华次级制裁，伊朗强硬反制；长端收益率与油价同步走高。</p>
+      <p style="font-size:12.5px; margin-top:8px;"><b>触发指标：</b>30年期收益率突破5.3%且期限溢价上行、Brent冲高突破$96-100、美元与实际利率同步上行、信用利差（HY OAS）走阔。</p>
+    </div>
+  </div>
+  <p class="src" style="margin-top:10px;">以上权重为研究团队主观判断，非精确统计模型输出或市场隐含概率，仅供研究参考，不构成投资建议。</p>
+</section>
+
+<!-- ============ ASSET KEY LEVELS ============ -->
+<section id="levels">
+  <h2 class="sec-title"><span class="num">📊</span>资产关键点位</h2>
+  <p class="sec-desc">下表按资产列出周五价格及来源</p>
+  <table>
+    <thead><tr><th>资产</th><th>8/21收盘/交投水平</th><th>来源</th><th>关注信号</th></tr></thead>
+    <tbody>
+      <tr><td>现货黄金</td><td>$4,604.53</td><td>USAGOLD收盘价；技术区间参考前期高低点，非期权持仓模型</td><td>ETF流转负、实际利率与美元同步上行、期货净多头过度拥挤</td></tr>
+      <tr><td>现货白银</td><td>~$69.6</td><td>USAGOLD收盘价；金银比~65.9</td><td>金银比重新走阔，反映白银滞后</td></tr>
+      <tr><td>LME铜（现货）</td><td>$14,912/吨（8/19纪录）</td><td>Reuters/Mining.com，现货对3个月升水$545/吨</td><td>LME库存回升、现货-3M价差收窄至历史均值</td></tr>
+      <tr><td>比特币</td><td>$76,000–77,500</td><td>CoinDesk/多信源快照，存在数十分钟内的价格差异</td><td>ETF流转负、资金费率过热、美元与实际利率同步上行</td></tr>
+      <tr><td>标普500</td><td>7,674.37（收盘）</td><td>Advisor Perspectives/CNBC，周跌1.4%</td><td>EPS下修、信用利差走阔、市场广度进一步恶化</td></tr>
+      <tr><td>Brent原油</td><td>~$93.96–94.4</td><td>CNBC/TradingEconomics，期货合约</td><td>霍尔木兹实际通行数据恢复、制裁细则明朗后风险溢价消退</td></tr>
+      <tr><td>美10年期国债收益率</td><td>~4.70%</td><td>FRED不变期限收益率序列</td><td>长端标售需求改善、期限溢价回落</td></tr>
+      <tr><td>美30年期国债收益率</td><td>~5.27%</td><td>CNBC，逼近19-20年高位</td><td>同上</td></tr>
+      <tr><td>上证指数</td><td>3,905.20</td><td>收盘价，周内运行区间约3,879.58（8/19盘中低点）-3,994.18（8/18盘中高点）</td><td>海外收益率企稳、国内政策落地节奏明朗化</td></tr>
+    </tbody>
+  </table>
+  <p class="src">点位数据截至8月21日，仅供参考，日内高频波动请以实时行情为准。技术区间为价格行为观察，非基于期权最大持仓或量化模型的精确推导。</p>
+</section>
+
+<!-- ============ ALLOCATION ============ -->
+<section id="alloc">
+  <h2 class="sec-title"><span class="num">💼</span>大类资产配置建议：条件—传导—失效信号框架</h2>
+  <p class="sec-desc">以下表述采用"条件性研究语言"而非方向性结论，并列出使判断失效的观测信号</p>
+  <table>
+    <thead><tr><th>资产</th><th>条件性研究判断</th><th>失效/反转监测信号</th></tr></thead>
+    <tbody>
+      <tr><td>黄金</td><td>若财政担忧、实际利率预期与美元走弱的组合维持当前状态，黄金的风险溢价可能延续；UBS给出的12个月目标价（$5,400）反映机构层面的乐观情景，非本文独立验证的预测</td><td>实际利率上行、美元走强、黄金ETF资金流转负、期货净多头持仓过度拥挤</td></tr>
+      <tr><td>长端美债</td><td>流动性支持回购改善特定券种交易摩擦，但不等价于永久性改善净供给或期限溢价；长端波动预计维持在较高水平，直至9月后实际执行数据可供检验</td><td>标售认购倍数改善、期限溢价回落、通胀预期下降</td></tr>
+      <tr><td>原油</td><td>制裁细节（8/24公布）及霍尔木兹海峡实际通行数据将决定地缘风险溢价能否持续，而非单一制裁威胁本身</td><td>实际出口未受扰动、海峡通行恢复、原油库存回升、远期曲线走弱</td></tr>
+      <tr><td>铜</td><td>当前高价包含明显的LME现货挤仓与跨市场库存迁移成分，尚不足以单独证明全球实体需求全面再加速，需结合现货价差与库存位置解读</td><td>挤仓缓解、LME库存回升、COMEX-LME价差收窄</td></tr>
+      <tr><td>比特币</td><td>本周反弹更多体现流动性预期、美元走弱与ETF资金流的高贝塔表达，与黄金的避险属性不应简单混同</td><td>ETF资金流转负、资金费率过热、实际利率与美元同步上行</td></tr>
+      <tr><td>美股</td><td>估值对长端实际利率保持敏感，本周下跌需结合行业结构（信息技术板块拖累、个股财报冲击）与盈利修正共同验证，而非单纯归因于收益率上行</td><td>12个月前瞻EPS下修、信用利差（HY OAS）走阔、市场广度进一步恶化</td></tr>
+      <tr><td>人民币</td><td>延续窄幅波动的相对韧性格局，本周外部扰动（美债收益率、A股波动）未对汇率形成明显冲击</td><td>国内基本面数据持续恶化、资本流动数据出现异常</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ RISK REGISTER ============ -->
+<section id="risk">
+  <h2 class="sec-title"><span class="num">⚠</span>风险登记册</h2>
+  <table>
+    <thead><tr><th>风险事件</th><th>主观权重</th><th>潜在冲击</th><th>监测指标</th></tr></thead>
+    <tbody>
+      <tr><td>杰克逊霍尔年会沃什讲话释放超预期鹰派或美联储独立性信号</td><td>中</td><td>长端收益率进一步走高，市场对政策协调性的解读产生分歧，风险资产承压</td><td>8/28讲话具体内容、市场对财政部流动性支持操作后续定性的解读</td></tr>
+      <tr><td>美国对伊制裁涉及对华次级制裁</td><td>中</td><td>中美经贸摩擦风险上升，全球原油贸易流向重构，Brent大幅走高</td><td>周一（8/24）制裁细节公告、中方官方回应</td></tr>
+      <tr><td>财政部长端流动性支持回购在9月实际执行后效果不及预期</td><td>中低</td><td>30年期收益率持续高位运行，全球利率敏感资产（成长股、REITs、新兴市场）承压</td><td>9/9-11/4回购操作实际执行数据、下一次回购公告细节</td></tr>
+      <tr><td>黄金/比特币本周涨幅过快后出现技术性大幅回调</td><td>中低</td><td>贵金属及高贝塔资产承压，本周"背离美股"的持续性受考验</td><td>杰克逊霍尔年会后美元/实际利率走势、ETF资金流、CFTC持仓数据</td></tr>
+      <tr><td>LME铜逼仓风险外溢至更广泛的工业金属及关税预期交易</td><td>中低</td><td>铜价剧烈波动可能通过跨市场价差传导至其他基本金属，扰乱正常的需求信号解读</td><td>LME库存变化、COMEX-LME价差、美国关税政策决定</td></tr>
+      <tr><td>8/26 PCE数据超预期走高，重新推升9月加息担忧</td><td>中</td><td>收益率、美元反弹，黄金/比特币等资产承压</td><td>核心PCE环比/同比读数、CME FedWatch概率变化</td></tr>
+      <tr><td>中国8月先行指标显示结构分化进一步扩大（地产持续拖累）</td><td>中低</td><td>市场对"全面企稳"叙事的信心受限，A股风险偏好承压</td><td>8月PMI、地产销售高频数据、下次高层会议表态</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ NEXT WEEK OUTLOOK ============ -->
+<section id="outlook">
+  <h2 class="sec-title"><span class="num">🔭</span>下周展望：8月24日–8月30日关键日程</h2>
+  <table>
+    <thead><tr><th>日期</th><th>事件/数据</th><th>重要性</th></tr></thead>
+    <tbody>
+      <tr><td>8/24（周一）</td><td>贝森特新闻发布会，公布特朗普政府对伊朗新一轮制裁具体细节</td><td>极高</td></tr>
+      <tr><td>8/26（周三）</td><td>美国7月个人消费支出（PCE）物价指数——美联储偏好的通胀指标，对收益率、美元、黄金、比特币及高估值美股的直接影响不亚于部分政策评论，此前报告曾遗漏该数据点，本期予以补充</td><td>极高</td></tr>
+      <tr><td>8/26（周三）</td><td>英伟达（NVDA）财报，AI资本开支叙事的关键验证窗口</td><td>高</td></tr>
+      <tr><td>8/24–8/27（全周前段）</td><td>杰克逊霍尔年会前瞻交易持续升温，市场对沃什讲话基调的预期博弈</td><td>高</td></tr>
+      <tr><td>8/27–8/29（周四-周六）</td><td>杰克逊霍尔全球央行年会，沃什以美联储主席身份于8/28发表首次年会演讲</td><td>极高</td></tr>
+      <tr><td>全周</td><td>财政部长端流动性支持回购操作后续效果持续跟踪，验证8/19-21"公告日回落-两日内回升"的模式是否延续</td><td>高</td></tr>
+      <tr><td>全周</td><td>伊朗官方对美国新一轮制裁的正式回应，及霍尔木兹海峡实际通行数据</td><td>高</td></tr>
+      <tr><td>全周</td><td>LME铜库存及现货-3月价差变化，验证本周挤仓是否缓解</td><td>中</td></tr>
+      <tr><td>全周</td><td>比特币ETF资金流方向，验证本周反弹是ETF驱动还是空头挤仓驱动的主导权切换</td><td>中</td></tr>
+      <tr><td>全周</td><td>中国8月中上旬经济先行指标观察窗口，验证7月工业/出口韧性与地产/投资收缩的结构分化是否延续</td><td>中</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <b>下周核心研判：</b>下周是过去一个月宏观交易中信息密度最高的一周，三个事件——周一的美国对伊制裁细节、周三的PCE物价数据与英伟达财报、周四至周六的杰克逊霍尔年会（沃什8/28演讲）——预计将共同决定8月最后一周乃至9月初的市场基调。就制裁而言，核心待验证点在于是否涉及对中国等伊朗原油主要买家的次级制裁，这将直接影响油价能否维持本周的上涨趋势。就年会而言，市场目前对沃什的政策倾向缺乏清晰判断，其讲话对长端收益率、美元及黄金的影响预计将是下周最大的单一变量。黄金、比特币本周的同步上涨与美股的周度下跌构成了一组值得持续验证的背离现象——若这一背离在下周延续，将进一步支持流动性/美元通道而非传统风险偏好通道是本轮市场定价主线的判断；若背离收敛（如美股企稳且黄金/比特币回落），则需要重新评估当前的多因子归因框架。中国资产层面，7月数据的结构分化（地产/传统投资收缩 vs. 工业/出口/服务韧性）预计将持续制约市场对"经济全面走弱"或"全面企稳"两种简单叙事的形成，更细颗粒度的8月先行指标是下周验证这一结构性判断的关键。
+  </div>
+</section>
+
+<div class="footer-disclaimer">
+  <p><span class="fname">蜗牛鸟投资 Snail-Bird Investment</span> · 全球宏观研究组</p>
+  <p>本报告基于公开信息及第三方数据源整理编写，数据截至2026年8月21日收盘。力求准确但不保证完整性与实时性。财政部长端流动性支持回购操作按官方公告口径呈现；美国对伊朗制裁细节及杰克逊霍尔年会内容均为本报告发布时尚未发生的前瞻性事件，文中相关表述为基于当前信息的前瞻性分析，非既成事实。情景矩阵中的概率为研究团队主观权重，非市场定价或统计模型推导。本报告不构成任何投资建议，市场有风险，投资需谨慎。</p>
+</div>
+
+</main>
+</body>
+</html>
