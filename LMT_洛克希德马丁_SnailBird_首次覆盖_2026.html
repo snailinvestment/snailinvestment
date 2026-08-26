@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>洛克希德马丁 (LMT) — 深度投研报告 | Snail-Bird Investment</title>
+<style>
+:root{
+  --ink:#10161a;--ink-2:#1b2529;--ink-3:#2c3a3f;--steel:#425257;--muted:#5f7278;--faint:#8fa1a6;
+  --rule:#cdd8d4;--paper:#f5f7f4;--white:#ffffff;
+  --olive:#4a6b3a;--olive-2:#6b9153;--olive-bg:#eef4e9;
+  --steelblue:#2c6e8e;--steelblue-bg:#e7f2f7;
+  --gold:#96731a;--gold-bg:#fbf3de;
+  --green:#1a6e4e;--green-bg:#e8f5ef;
+  --red:#a5322a;--red-bg:#fceceb;
+  --amber:#8a5a00;--amber-bg:#fdf3e0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+.masthead{background:var(--ink);position:relative;overflow:hidden;}
+.masthead::before{content:'';position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 44px,rgba(107,145,83,.06) 44px,rgba(107,145,83,.06) 45px),
+    repeating-linear-gradient(90deg,transparent,transparent 44px,rgba(44,110,142,.05) 44px,rgba(44,110,142,.05) 45px);
+  pointer-events:none;}
+.masthead::after{content:'';position:absolute;top:0;right:0;width:420px;height:100%;
+  background:linear-gradient(125deg,transparent 45%,rgba(74,107,58,.16) 100%);pointer-events:none;}
+.masthead-inner{max-width:1160px;margin:0 auto;padding:48px 56px 44px;position:relative;z-index:1;}
+.brand-row{display:flex;align-items:center;gap:10px;margin-bottom:38px;}
+.brand-mark{width:32px;height:32px;border:1.5px solid var(--olive-2);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:var(--olive-2);flex-shrink:0;}
+.brand-text{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.38);}
+.masthead-type{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--olive-2);margin-bottom:10px;}
+.masthead-company{display:flex;align-items:baseline;gap:16px;margin-bottom:4px;flex-wrap:wrap;}
+.company-name{font-family:'IBM Plex Serif',serif;font-size:34px;font-weight:700;color:var(--white);line-height:1;}
+.ticker-chip{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;background:var(--olive);color:var(--white);padding:3px 10px;border-radius:2px;letter-spacing:.06em;}
+.co-desc{font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(255,255,255,.38);margin-bottom:18px;letter-spacing:.04em;}
+.masthead-sub{font-size:14.5px;font-weight:300;color:rgba(255,255,255,.58);line-height:1.65;max-width:740px;margin-bottom:36px;}
+.masthead-meta{display:flex;flex-wrap:wrap;gap:16px 32px;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.07em;color:rgba(255,255,255,.32);}
+.masthead-meta strong{color:rgba(255,255,255,.68);font-weight:600;}
+.olive-rule{height:4px;background:linear-gradient(90deg,var(--olive) 0%,var(--olive-2) 35%,transparent 100%);}
+nav{background:var(--white);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:100;box-shadow:0 1px 6px rgba(16,22,26,.07);}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 56px;display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.nav-inner a{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:14px 11px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;}
+.nav-inner a:hover{color:var(--ink);border-bottom-color:var(--olive);}
+.page-body{max-width:1160px;margin:0 auto;padding:0 56px 80px;}
+.verdict-banner{background:var(--white);border-left:4px solid var(--olive);padding:22px 26px;margin:36px 0 28px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:0 1px 4px rgba(16,22,26,.06);}
+.verdict-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:7px;}
+.verdict-body{font-family:'IBM Plex Serif',serif;font-size:15px;line-height:1.65;color:var(--ink);}
+.rating-block{text-align:center;flex-shrink:0;min-width:92px;}
+.r-word{display:block;font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:var(--amber);letter-spacing:.03em;}
+.r-tp{display:block;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-3);margin-top:5px;}
+.r-note{display:block;font-size:11px;color:var(--muted);margin-top:3px;font-family:'IBM Plex Mono',monospace;line-height:1.4;}
+.kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin-bottom:44px;}
+.kpi-cell{background:var(--white);padding:17px 18px;}
+.kpi-label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:7px;line-height:1.4;}
+.kpi-val{font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:var(--ink);display:block;line-height:1.1;}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.4;}
+.kpi-up .kpi-val{color:var(--green);}.kpi-down .kpi-val{color:var(--red);}.kpi-warn .kpi-val{color:var(--amber);}.kpi-hot .kpi-val{color:var(--olive);}
+.section{margin-bottom:52px;}
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--rule);}
+.sec-accent{width:4px;height:20px;background:var(--olive);border-radius:2px;flex-shrink:0;}
+.sec-num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--olive);font-weight:600;letter-spacing:.06em;flex-shrink:0;}
+.sec-title{font-family:'IBM Plex Serif',serif;font-size:20px;font-weight:700;color:var(--ink);}
+p{margin-bottom:14px;color:var(--ink-3);line-height:1.8;}p:last-child{margin-bottom:0;}
+h3.sub{font-family:'IBM Plex Serif',serif;font-size:16px;font-weight:600;color:var(--ink);margin:26px 0 12px;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0 22px;}
+.th-dark th{background:var(--ink);color:rgba(255,255,255,.75);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;text-align:right;}
+.th-dark th:first-child{text-align:left;}
+.th-dark td{padding:10px 12px;border-bottom:1px solid var(--rule);text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-3);}
+.th-dark td:first-child{text-align:left;color:var(--ink);}
+.th-light th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;border-bottom:2px solid var(--ink);text-align:right;color:var(--muted);}
+.th-light th:first-child{text-align:left;}
+.th-light td{padding:10px 12px;border-bottom:1px solid var(--rule);text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-3);}
+.th-light td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.th-mid th{background:var(--ink-2);color:rgba(255,255,255,.85);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;text-align:left;}
+.th-mid td{padding:10px 14px;border-bottom:1px solid var(--rule);color:var(--ink-3);}
+.th-mid td:last-child{text-align:right;font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--ink);}
+.pos{color:var(--green);font-weight:600;}.neg{color:var(--red);font-weight:600;}.hot{color:var(--olive);font-weight:600;}
+.row-highlight td{background:#eef4e9;font-weight:700;}
+.row-highlight td:first-child{border-left:3px solid var(--olive);}
+.row-aero td{border-left:3px solid var(--olive);}
+.row-mfc td{border-left:3px solid var(--steelblue);}
+.row-rms td{border-left:3px solid var(--gold);}
+.row-space td{border-left:3px solid var(--muted);}
+.row-total td{background:#eef2f0;font-weight:700;border-left:3px solid var(--ink);}
+.row-bear{background:#fdf1f0;}.row-base{background:#f7f9f7;}.row-bull{background:#eef7f1;}.row-wtd{background:var(--olive-bg);}
+.row-wtd td{font-weight:700;border-top:2px solid var(--ink);}
+.row-risk-h{background:#fdeeec;}.row-risk-m{background:#fdf5e3;}.row-risk-l{background:#eef7f1;}
+.peer-lmt td{background:#eef4e9;font-weight:700;}.peer-lmt td:first-child{border-left:3px solid var(--olive);}
+.p-big{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;}
+.row-bear .p-big{color:var(--red);}.row-base .p-big{color:var(--ink-3);}.row-bull .p-big{color:var(--green);}.row-wtd .p-big{color:var(--olive);}
+.callout{border-left:3px solid var(--olive);background:var(--olive-bg);padding:15px 19px;margin:16px 0;font-size:13.5px;line-height:1.72;color:var(--ink-3);}
+.callout strong{color:var(--ink);}
+.c-good{border-left-color:var(--green);background:var(--green-bg);}
+.c-risk{border-left-color:var(--red);background:var(--red-bg);}
+.c-warn{border-left-color:var(--amber);background:var(--amber-bg);}
+.c-steel{border-left-color:var(--steelblue);background:var(--steelblue-bg);}
+blockquote{margin:18px 0;padding:13px 18px;border-left:3px solid var(--ink-3);background:var(--white);font-family:'IBM Plex Serif',serif;font-size:13.5px;color:var(--steel);font-style:italic;line-height:1.7;}
+blockquote cite{display:block;margin-top:7px;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--faint);letter-spacing:.06em;}
+.timeline{list-style:none;margin:16px 0;padding:0;border-left:2px solid var(--rule);}
+.timeline li{position:relative;padding:0 0 20px 24px;}
+.timeline li::before{content:'';position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--olive);border:2px solid var(--white);box-shadow:0 0 0 1px var(--olive);}
+.timeline li:last-child{padding-bottom:0;}
+.tl-date{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--olive);letter-spacing:.06em;margin-bottom:3px;}
+.tl-desc{font-size:13px;color:var(--ink-3);line-height:1.6;}
+.moat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+.moat-card{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--steelblue);padding:18px 18px 14px;border-radius:2px;}
+.moat-card h4{font-family:'IBM Plex Serif',serif;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+.moat-card p{font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:0;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.two-card{background:var(--white);border:1px solid var(--rule);padding:18px 18px 14px;}
+.two-card h4{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.two-card ul{list-style:none;padding:0;}
+.two-card ul li{padding:6px 0;border-bottom:1px solid var(--rule);font-size:13px;color:var(--ink-3);display:flex;gap:8px;align-items:flex-start;line-height:1.55;}
+.two-card ul li:last-child{border-bottom:none;}
+.b-up{color:var(--green);font-weight:700;flex-shrink:0;}.b-down{color:var(--red);font-weight:700;flex-shrink:0;}
+.monitor-list{list-style:none;margin:14px 0;counter-reset:mon;}
+.monitor-list li{counter-increment:mon;display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:13px;color:var(--ink-3);line-height:1.6;align-items:flex-start;}
+.monitor-list li::before{content:counter(mon,decimal-leading-zero);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--olive);flex-shrink:0;margin-top:2px;}
+.monitor-list li strong{color:var(--ink);}
+.pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;padding:3px 7px;border-radius:2px;}
+.pill-h{background:#fbd4d1;color:var(--red);}.pill-m{background:#f8e4b8;color:var(--amber);}.pill-l{background:#c8e9d6;color:var(--green);}
+.disclosure{margin-top:56px;padding-top:22px;border-top:1px solid var(--rule);font-size:11px;color:var(--faint);line-height:1.75;}
+.disclosure strong{color:var(--muted);}
+@media(max-width:900px){.masthead-inner,.page-body,.nav-inner{padding-left:20px;padding-right:20px;}.kpi-strip{grid-template-columns:repeat(2,1fr);}.moat-grid{grid-template-columns:1fr 1fr;}.two-col{grid-template-columns:1fr;}.company-name{font-size:24px;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="brand-row"><div class="brand-mark">SB</div><span class="brand-text">Snail-Bird Investment · 军工与国防工业研究</span></div>
+    <div class="masthead-type">深度投研报告 · 首次覆盖（机构版）· Q2 2026业绩后</div>
+    <div class="masthead-company"><span class="company-name">Lockheed Martin Corporation</span><span class="ticker-chip">NYSE: LMT</span></div>
+    <div class="co-desc">全球最大军工承包商 · F-35战斗机总承包商 · 总部：马里兰州贝塞斯达</div>
+    <p class="masthead-sub">洛克希德马丁于2026年7月23日披露Q2业绩：营收$20.1B（+11%），GAAP每股收益$7.94，积压订单达创纪录的$230B，公司同步将FY2026全年指引大幅上调至营收$797.5-817.5亿、稀释每股收益$29.95-30.65。本报告在系统梳理公司历史沿革、管理层可信度（含2025年多起未决股东诉讼）、行业供需、业务护城河、多季度盈利质量与现金流波动、资产负债表结构、订单积压、股东回报及可审计估值模型的基础上，力求给出数据准确、逻辑清晰、客观审慎的投资判断。</p>
+    <div class="masthead-meta">
+      <span><strong>报告类型</strong> 首次覆盖（机构版）+ 季度业绩深度</span>
+      <span><strong>报告日期</strong> 2026-08-24</span>
+      <span><strong>业绩截止</strong> 2026-06-28（Q2 2026）</span>
+      <span><strong>参考股价</strong> $563.57（2026-08-21收盘）</span>
+      <span><strong>分析师</strong> Snail-Bird Investment Research</span>
+    </div>
+  </div>
+</header>
+<div class="olive-rule"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#verdict">评级结论</a><a href="#history">历史沿革</a><a href="#mgmt">管理层可信度</a>
+    <a href="#industry">行业供需</a><a href="#business">业务与护城河</a><a href="#quality">盈利质量与FCF</a>
+    <a href="#balance">资产负债表</a><a href="#backlog">订单分析</a><a href="#guidance">管理层指引</a>
+    <a href="#returns">股东回报</a><a href="#valuation">估值分析</a><a href="#risks">风险矩阵</a><a href="#monitor">监测指标</a>
+  </div>
+</nav>
+
+<div class="page-body">
+
+<!-- VERDICT -->
+<div id="verdict" class="verdict-banner">
+  <div>
+    <div class="verdict-label">独立投资评级 — 首次覆盖，Q2 2026业绩后（参考价$563.57，2026-08-21收盘）</div>
+    <div class="verdict-body">
+      <strong>中性，目标价区间$450-580（12个月）。</strong>
+      洛克希德马丁作为全球最大军工承包商，受益于美国及盟友国防预算的历史性扩张周期——FY2027美国国防预算提案较FY2026大幅增长，NATO成员国装备采购比例持续提升，全球弹药和导弹防御系统需求处于多年上行通道。公司Q2业绩创纪录（营收$20.1B、积压订单$230B），并将FY2026全年指引大幅上调至营收$797.5-817.5亿、稀释EPS $29.95-30.65——按此指引中值计算，当前股价对应约18.6倍FY2026E市盈率，<strong>处于军工板块历史均值的中性偏低区间</strong>。<br><br>
+      但本报告在深入核查后认为，两方面因素要求维持中性而非乐观评级：<strong>其一</strong>，公司在过去两年的Aeronautics保密项目及RMS国际直升机项目（加拿大CMHP、土耳其TUHP）上产生了显著的成本超支和减值，2025年Q2单季冲销达$16.15亿（$9.5亿分类项目+$5.7亿CMHP+$0.95亿TUHP），管理层的项目风险评估曾被后续更深入的审查推翻，且公司面临多起于2025年7月至2026年5月期间提起的证券集体诉讼及股东衍生诉讼（指控内容尚未经法院裁定）；<strong>其二</strong>，公司已被排除在美国空军NGAD（F-47，授予波音）和海军F/A-XX两大六代机项目之外，长期战斗机产品线面临青黄不接的战略风险，同时通过联合发射联盟（ULA）合资企业为其提供的最高达$5亿履约担保，构成一项需要持续跟踪、此前未被充分评估的或有负债敞口。<br><br>
+      本报告认为，公司的需求端确定性和F-35项目的数十年现金流可见度是真实且宝贵的资产，当前估值本身并不极端，但管理层执行记录的瑕疵、未决诉讼的不确定性，以及季度间现金流的显著波动性，要求投资者在当前价位附近保持审慎而非追高，中性评级及$450-580目标区间反映这一"需求确定、估值合理、执行风险需持续验证"的平衡判断。
+    </div>
+  </div>
+  <div class="rating-block">
+    <span class="r-word">中性</span>
+    <span class="r-tp">TP $450-580</span>
+    <span class="r-note">隐含18.6x FY26E EPS<br>vs 军工板块历史均值区间</span>
+  </div>
+</div>
+
+<!-- KPI -->
+<div class="kpi-strip">
+  <div class="kpi-cell kpi-hot"><div class="kpi-label">Q2 2026营收</div><span class="kpi-val">$20.1B</span><div class="kpi-sub">+11%；超预期约3.8%</div></div>
+  <div class="kpi-cell kpi-up"><div class="kpi-label">积压订单（季末）</div><span class="kpi-val">$230B</span><div class="kpi-sub">创纪录；含$35B THAAD多年期合同</div></div>
+  <div class="kpi-cell kpi-hot"><div class="kpi-label">FY2026E EPS指引（上修后）</div><span class="kpi-val">$29.95-30.65</span><div class="kpi-sub">对应当前股价约18.6倍P/E</div></div>
+  <div class="kpi-cell kpi-warn"><div class="kpi-label">Q1→Q2 FCF摆动</div><span class="kpi-val">-$2.91亿→$29亿</span><div class="kpi-sub">季度间现金流波动剧烈</div></div>
+  <div class="kpi-cell kpi-hot"><div class="kpi-label">连续股息增长年数</div><span class="kpi-val">24年</span><div class="kpi-sub">股息贵族，年化股息$13.80</div></div>
+</div>
+
+<!-- 01 历史沿革 -->
+<section id="history" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">01</span><span class="sec-title">历史沿革：两大航空先驱的百年合流</span></div>
+  <ul class="timeline">
+    <li><div class="tl-date">1912年</div><div class="tl-desc">Allan与Malcolm Loughead兄弟在旧金山创立Alco Hydro-Aeroplane Company（后更名为洛克希德），同年Glenn L. Martin在洛杉矶创立Glenn L. Martin Company——两大血脉的起点。</div></li>
+    <li><div class="tl-date">1926年</div><div class="tl-desc">Loughead兄弟公司重组为Lockheed Aircraft Company。</div></li>
+    <li><div class="tl-date">1932年</div><div class="tl-desc">Robert Gross以$4万美元的价格收购破产的洛克希德，成为公司现代发展的真正起点。</div></li>
+    <li><div class="tl-date">1961年</div><div class="tl-desc">Martin Company与American-Marietta Corporation合并为Martin Marietta，成为航空航天与国防制造领域的重要力量。</div></li>
+    <li><div class="tl-date">1970-1980年代</div><div class="tl-desc">洛克希德"臭鼬工厂"（Skunk Works）先后研发出U-2侦察机、SR-71黑鸟侦察机、F-117夜鹰隐形战斗机，奠定公司在隐身和高性能军机领域的技术声誉。</div></li>
+    <li><div class="tl-date">1995年3月</div><div class="tl-desc"><strong>洛克希德公司与马丁·玛丽埃塔以约$100亿的对等合并方式组建洛克希德马丁公司</strong>，成为当时全球最大的军工承包商。</div></li>
+    <li><div class="tl-date">2001年</div><div class="tl-desc">在与波音的激烈竞标中赢得<strong>联合攻击战斗机（JSF）项目，即后来的F-35闪电II战斗机项目</strong>——这是有史以来规模最大的军事装备项目，成为公司此后二十余年最重要的收入和利润支柱。</div></li>
+    <li><div class="tl-date">2020年代</div><div class="tl-desc">公司在CEO Jim Taiclet领导下持续推进战略转型，但同时在多个Aeronautics分类项目及RMS国际直升机项目上遭遇设计、集成和测试挑战，导致2024-2025年连续计提数十亿美元损失（详见管理层可信度章节）。</div></li>
+    <li><div class="tl-date">2025年3月</div><div class="tl-desc">在美国空军新一代空中优势（NGAD）六代机项目竞标中<strong>败给波音</strong>（项目命名为F-47），同期公司退出海军F/A-XX六代机项目竞标——公司在两大下一代载人战斗机项目上均出局。</div></li>
+    <li><div class="tl-date">2026年</div><div class="tl-desc">公司将战略重心转向"F-35 5代+"升级方案，同时受益于美国国防预算历史性扩张周期及全球弹药、导弹防御系统需求激增，Q2业绩创纪录反弹，积压订单达$230B历史新高，全年指引大幅上调。</div></li>
+  </ul>
+</section>
+
+<!-- 02 管理层可信度 -->
+<section id="mgmt" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">02</span><span class="sec-title">管理层及靠谱程度：项目管理存在可验证的执行瑕疵，叠加多起未决诉讼</span></div>
+  <p>现任董事长、总裁兼CEO为Jim Taiclet（自2020年起任职），CFO为Evan Scott（2025年新任）。评估管理层可信度，本报告重点梳理公司近两年在重大项目成本控制上暴露出的问题，并对相关未决法律程序采用中立、准确的表述。</p>
+
+  <h3 class="sub">近两年主要项目成本超支记录（准确分类）</h3>
+  <table class="th-light">
+    <thead><tr><th>时间</th><th>项目性质</th><th>损失金额（税前）</th><th>涉及分部</th></tr></thead>
+    <tbody>
+      <tr><td>2024年Q3</td><td>分类（保密）项目意外成本</td><td>$8,000万</td><td>Aeronautics</td></tr>
+      <tr><td>2024年Q4/全年</td><td>分类项目工程成本超预期</td><td>合计约$20亿</td><td>MFC、Aeronautics</td></tr>
+      <tr class="row-highlight"><td><strong>2025年Q2</strong></td><td><strong>三项独立损失：①Aeronautics分类项目设计/集成/测试问题；②加拿大海事直升机项目（CMHP）合同重新协商；③土耳其通用直升机项目（TUHP）范围调整——后两项为非保密的国际直升机项目，性质与①不同</strong></td><td><strong>①$9.50亿（税后$7.13亿/每股$3.04）②$5.70亿（税后$4.28亿/每股$1.83）③$0.95亿（税后$0.71亿/每股$0.30），三项合计$16.15亿；另有$0.66亿资产减值及税务准备金调整</strong></td><td>Aeronautics（①）、RMS（②③）</td></tr>
+      <tr><td>截至2026年Q2（10-Q披露口径）</td><td>累计reach-forward损失</td><td>Aeronautics分类项目累计约$18亿；MFC相关项目累计约$15亿</td><td>Aeronautics、MFC</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-warn">
+    <strong>2025年Q2的$16.15亿损失并非单一性质，而是一项Aeronautics分类项目损失与两项非保密的国际直升机项目（RMS分部）损失的组合。</strong>CMHP和TUHP的问题更多与国际客户合同条款重新协商、任务能力范围调整相关，与"保密项目技术执行风险"是性质不同的两类问题，两者共同说明公司在<strong>常规国际军售合同的定价和范围管理</strong>上同样存在薄弱环节，这一风险特征与保密项目的技术不确定性并不相同，需要分别评估、分别监测。
+  </div>
+
+  <div class="callout c-risk">
+    <strong>2025年7月的财报电话会上，分析师对管理层评估可信度提出了直接质疑，这一细节值得投资者重视。</strong>据Breaking Defense报道，多位分析师追问"为何这次审查与2024年底的审查结果不同"，CEO Taiclet将本次更彻底的审查归因于新任CFO Evan Scott在2025年初上任后的重新评估。审查结果反复被后续更深入的审查推翻这一模式，是对管理层项目管理和财务预测能力的负面信号。
+  </div>
+
+  <h3 class="sub">未决法律程序：应采用中立、准确的法律表述</h3>
+  <p>据公开披露信息，公司目前面临以下未决法律程序：<strong>①一起证券集体诉讼</strong>，于2025年7月28日提起，2026年1月12日修订诉状；<strong>②两起股东衍生诉讼</strong>，分别于2025年9月11日及2026年5月18日提起。相关诉状中包含以下指控：管理层在获悉保密项目问题前减持公司股票；公司在特定期间以诉状认为"价格被人为推高"的水平实施了股票回购；公司在2024-2025年度股东委托书中提供的信息存在误导性。<strong>本报告在此明确强调：以上均为诉状中的原告主张，尚未经法院审理或裁定，不构成对被告（公司及相关高管）任何不当行为的认定，投资者应将其作为需要持续跟踪的法律不确定性，而非已经证实的事实。</strong></p>
+
+  <h3 class="sub">NGAD/F-47竞标失利：战略判断的另一个警示信号</h3>
+  <p>2025年3月，美国空军将新一代空中优势（NGAD）六代机项目（命名为F-47）授予波音，公司同期退出海军F/A-XX竞标。管理层随后将战略重心转向"F-35 5代+"升级方案，这一策略调整虽有商业合理性，但也客观反映公司在下一代战斗机技术路线竞争中已经掉队。</p>
+
+  <div class="callout c-warn">
+    <strong>综合评估：管理层在需求把握和资本配置纪律方面展现出一定能力（详见股东回报章节），但在重大项目的成本预测和风险评估上，近两年展现出反复出现的执行瑕疵，叠加多起尚处早期阶段的未决法律程序，本报告认为管理层执行记录应被评为"中等偏下"，这是本报告在估值部分要求相对同业更高安全边际的重要依据之一，但不应被解读为对公司或管理层存在不当行为的确定性判断。</strong>
+  </div>
+</section>
+
+<!-- 03 行业供需 -->
+<section id="industry" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">03</span><span class="sec-title">行业发展与供需情况：历史性国防预算扩张周期，但政治不确定性不容忽视</span></div>
+  <p>洛克希德马丁约73%的收入来自美国政府（主要是国防部），其余来自国际盟友政府及少量商业/NASA业务，这一收入结构意味着理解美国及盟友国防预算周期，是评估公司需求端确定性的核心前提。</p>
+
+  <table class="th-light">
+    <thead><tr><th>年度</th><th>国防预算规模</th><th>关键说明</th></tr></thead>
+    <tbody>
+      <tr><td>FY2026（已批准）</td><td>约$9,010亿（基础国防拨款约$8,387亿）</td><td>已实现历史性$1万亿整体国防topline（含协调法案资金）</td></tr>
+      <tr class="row-highlight"><td><strong>FY2027（总统预算提案）</strong></td><td><strong>约$1.15万亿基础裁量性拨款+$3,500亿强制性拨款=约$1.5万亿总资源</strong></td><td class="pos">若落地将是二战以来最大增幅之一</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-warn">
+    <strong>FY2027预算提案的落地存在显著不确定性，不应线性外推为确定性收入增长。</strong>该提案采用"常规拨款+预算协调程序（reconciliation）"的混合融资结构，其中协调程序部分（约$3,500亿，覆盖多年期弹药采购协议等关键项目）需要国会通过额外的协调法案，若该法案未能如期通过或规模被大幅削减，将直接影响包括洛克希德在内的军工承包商的订单可见度——尤其是Golden Dome导弹防御系统等高度依赖协调资金的项目。
+  </div>
+
+  <p>全球需求端，北约盟国装备采购比例（Wales 2014年设定的20%阈值）达标率持续提升，德国、法国等主要盟国显著增加对美式装备的采购，这一趋势对F-35国际订单和导弹防御系统出口具有直接利好。行业整体（RTX、L3Harris等同业2026年Q2财报电话会均有类似表态）弹药产能扩张和多年期采购协议的国会两党支持度较高，基础弹药需求的政治共识相对稳固。</p>
+
+  <div class="callout c-steel">
+    <strong>行业供需的核心结论：需求端处于历史性扩张周期，但供给端（产能爬坡）和资金端（协调预算能否如期落地）均存在执行摩擦，这一"需求确定、落地存疑"的行业特征，与本报告对洛克希德公司层面"需求确定、执行待证"的判断高度一致。</strong>
+  </div>
+</section>
+
+<!-- 04 业务与护城河 -->
+<section id="business" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">04</span><span class="sec-title">业务发展情况及护城河：F-35支撑的深厚壁垒，与执行短板并存</span></div>
+  <p>公司下辖四大业务分部：航空（Aeronautics，含F-35）、导弹与火控（Missiles and Fire Control，MFC）、旋翼与任务系统（Rotary and Mission Systems，RMS，主要为西科斯基直升机业务）、航天（Space）。</p>
+
+  <table class="th-light">
+    <thead><tr><th>分部</th><th>Q2 2026同比</th><th>核心项目</th></tr></thead>
+    <tbody>
+      <tr class="row-aero"><td><strong>Aeronautics</strong></td><td>营收增长，F-35为核心贡献</td><td>F-35（占该分部收入三分之二以上）、F-22升级、F-16</td></tr>
+      <tr class="row-mfc"><td><strong>Missiles and Fire Control（MFC）</strong></td><td class="pos">销售+19%，利润+24%</td><td>PAC-3、THAAD、HIMARS、精确制导弹药</td></tr>
+      <tr class="row-rms"><td><strong>Rotary and Mission Systems（RMS）</strong></td><td>营收增长</td><td>西科斯基直升机（CH-53K、战斗搜救直升机）、雷达、海军作战系统</td></tr>
+      <tr class="row-space"><td><strong>Space</strong></td><td>—</td><td>卫星、导弹防御、联合发射联盟（ULA）合资权益</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-good">
+    <strong>MFC是本季度最强劲的分部，弹药产能爬坡是核心驱动力。</strong>MFC上半年销售同比增长14%，Q2单季加速至19%，利润增速24%，管理层在电话会中明确"MFC是我们增长最明显的引擎"。公司同时将资本开支指引下调至$20-24亿，管理层将其归因于"在MFC弹药产能建设中实现的效率提升"。
+  </div>
+
+  <div class="callout c-warn">
+    <strong>Space分部通过ULA合资企业存在需要独立关注的或有负债敞口。</strong>公司在Q2向ULA（与波音各持50%股权的合资公司）提供了最高达$5亿的履约担保，并已确认约$6,400万的担保负债，这一负债与Vulcan火箭发射异常的技术调查相关。这一或有负债此前在多数分析中容易被忽视，本报告将其在风险矩阵章节中列为中等级别、而非低级别风险。
+  </div>
+
+  <h3 class="sub">护城河评估</h3>
+  <div class="moat-grid">
+    <div class="moat-card"><h4>✈️ F-35项目的深度联结：数十年现金流可见度</h4><p>F-35是有史以来规模最大的军事装备项目，已有超过1,100架交付全球用户，占Aeronautics分部收入三分之二以上。项目已进入生产+全生命周期维保阶段，为公司提供长达数十年的稳定现金流。</p></div>
+    <div class="moat-card"><h4>🔒 政府关系与保密资质壁垒</h4><p>作为处理美国最高密级项目的少数几家承包商之一，公司拥有的安全资质、设施认证和长期客户信任关系，构成极高的新进入者壁垒。</p></div>
+    <div class="moat-card"><h4>🎯 弹药与导弹防御的规模化产能</h4><p>PAC-3、THAAD等导弹防御系统在全球地缘政治紧张背景下需求激增，公司在Camden（阿肯色州）等地的产能扩张建立起竞争对手短期内难以匹敌的规模化产能基础。</p></div>
+    <div class="moat-card"><h4>🌍 全球盟友网络与出口管制优势</h4><p>F-35已获得包括英国、意大利、日本、韩国、澳大利亚等在内的十余个盟国采购，这一出口网络本身就是护城河——盟国一旦选择F-35体系，后续几十年的备件、培训、软件升级都将持续锁定在这一生态内。</p></div>
+    <div class="moat-card"><h4>🏭 复杂系统集成能力</h4><p>公司在Skunk Works等部门积累的复杂项目管理和系统集成经验，理论上构成技术壁垒，但如前述章节所示，这一能力在近年的重大项目执行中暴露出明显短板，护城河的"质量"打了折扣。</p></div>
+    <div class="moat-card"><h4>⚠️ 护城河的结构性脆弱点</h4><p>公司已被排除在美国空军和海军两大六代机项目之外，长期战斗机产品线存在青黄不接的风险；重大项目的连续成本超支说明，即便在核心能力领域，公司的执行力也存在系统性瑕疵；ULA合资企业的或有负债敞口是另一项非直接控制的风险来源。</p></div>
+  </div>
+</section>
+
+<!-- 05 盈利质量与FCF -->
+<section id="quality" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">05</span><span class="sec-title">多季度盈利质量与自由现金流分析：剧烈波动是常态，不宜以单季度数据外推</span></div>
+  <p>本节梳理近六个报告季度（Q1 2025至Q2 2026）的核心财务数据，这一多期视角揭示的最重要事实是：<strong>洛克希德的季度盈利和现金流表现存在极端波动性，任何单一季度的"爆表"或"暴雷"都需要放在这一波动序列中理解，而非孤立看待</strong>。</p>
+
+  <table class="th-light">
+    <thead><tr><th>季度</th><th>营收</th><th>净利润</th><th>稀释EPS</th><th>经营现金流</th><th>自由现金流</th><th>关键备注</th></tr></thead>
+    <tbody>
+      <tr><td>Q1 2025</td><td>$18.0B</td><td>$17.1亿</td><td>$7.28</td><td>$14.1亿</td><td>$9.55亿</td><td>正常经营季度</td></tr>
+      <tr class="row-highlight"><td><strong>Q2 2025</strong></td><td>$18.2B</td><td><strong>$3.42亿</strong></td><td><strong>$1.46</strong></td><td>$2.01亿</td><td class="neg"><strong>-$1.50亿</strong></td><td class="neg">含$16.15亿三项目损失（分类项目+CMHP+TUHP）+$0.66亿其他费用</td></tr>
+      <tr><td>Q3 2025</td><td>$18.6B</td><td>$16.0亿</td><td>$6.95</td><td>$37.0亿</td><td>$33.0亿</td><td class="pos">强劲反弹</td></tr>
+      <tr><td>Q4 2025（推算）</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>FY2025全年：营收$75.0B，净利润$50.2亿，EPS $21.56</td></tr>
+      <tr class="row-highlight"><td><strong>Q1 2026</strong></td><td>$18.0B</td><td><strong>$14.9亿</strong></td><td><strong>$6.44</strong></td><td class="neg">$2.20亿</td><td class="neg"><strong>-$2.91亿</strong></td><td class="neg">积压订单环比降至$186.4B</td></tr>
+      <tr class="row-highlight"><td><strong>Q2 2026</strong></td><td>$20.1B</td><td><strong>$18.4亿</strong></td><td><strong>$7.94</strong></td><td class="pos">$32.0亿</td><td class="pos"><strong>$29.0亿</strong></td><td class="pos">积压订单反弹至$230B创纪录（含$35B THAAD多年期合同）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-warn">
+    <strong>Q1→Q2 2026自由现金流从-$2.91亿骤升至+$29亿，摆动幅度超过$31亿，这一波动需要审慎解读，而非简单归因于"经营改善"。</strong>公司在Q2财报中将现金流大幅改善归因于"客户回款时点"及"较低的税款支付"，而非单纯的经营性利润提升。与此同时，合同资产（已完成工作但尚未开票的应收部分）从FY2025年末的$130.0亿升至Q1 2026末的$158.9亿，这类营运资本的大幅波动，是解释季度间现金流剧烈起伏的关键会计因素。
+  </div>
+
+  <div class="callout c-risk">
+    <strong>2025年Q2的现金流危机（经营现金流仅$2.01亿，去年同期为$19亿）是投资者最容易忽视、但最值得警惕的历史案例。</strong>这一现金流骤降与同期$16.15亿的三项目损失同步发生，说明公司的现金流质量与重大项目执行风险高度绑定。这一历史先例意味着，若公司在未来任何季度再次披露类似规模的项目损失，投资者应预期同期现金流同样会显著恶化。
+  </div>
+</section>
+
+<!-- 06 资产负债表分析 -->
+<section id="balance" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">06</span><span class="sec-title">资产负债表分析：股东权益占比偏低，采用Q2 2026季末一致口径</span></div>
+  <table class="th-light">
+    <thead><tr><th>指标（USD百万）</th><th>FY2024末</th><th>FY2025末</th><th>Q2 2026末</th></tr></thead>
+    <tbody>
+      <tr><td>现金及等价物</td><td>2,483</td><td>4,121</td><td>3,791</td></tr>
+      <tr><td>合同资产（未开票应收）</td><td>12,957</td><td>13,001</td><td>约15,885（Q1 2026末数据，Q2末未独立核实）</td></tr>
+      <tr><td>长期债务净额</td><td>19,627</td><td>20,532</td><td>20,538</td></tr>
+      <tr><td>当期到期长期债务</td><td>643</td><td>1,168</td><td>0</td></tr>
+      <tr><td>应计养老金负债</td><td>4,791</td><td>3,915</td><td>持续下降趋势</td></tr>
+      <tr><td>总资产</td><td>55,617</td><td>59,840</td><td>62,450</td></tr>
+      <tr class="row-highlight"><td><strong>股东权益总额</strong></td><td><strong>6,333</strong></td><td><strong>6,721</strong></td><td><strong>约8,770</strong></td></tr>
+      <tr><td>股东权益/总资产比例</td><td>11.4%</td><td>11.2%</td><td>约14.0%</td></tr>
+      <tr><td>稀释股数（2026-07-20，公司披露口径）</td><td>—</td><td>—</td><td><strong>230.791百万股</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-warn">
+    <strong>股东权益仅占总资产的11-14%，这一极薄的权益缓冲是评估公司财务风险时的重要结构性发现。</strong>据Stock Analysis on Net的多期趋势分析，公司股东权益占总负债和权益比例已从2021年3月的约23%持续下降至2025年6月的约9%低点（2026年3月回升至约12.6%），主要由持续大规模股票回购及累计其他综合损失（FY2025末达-$75.42亿，主要源于历史养老金精算损失）两方面驱动。<strong>Q2 2026当期到期长期债务已降至$0，短期偿债压力实际有所缓解。</strong>
+  </div>
+
+  <div class="callout">
+    <strong>正面因素：养老金负债持续改善。</strong>应计养老金负债从FY2024末的$47.91亿降至FY2025末的$39.15亿，主要受益于2025年内实施的养老金结算，是公司资本结构层面为数不多的正面进展。
+  </div>
+
+  <p><strong>净债务计算（Q2 2026口径，本报告估值模型统一采用）：</strong>长期债务$205.38亿 + 当期到期$0 − 现金$37.91亿 = <strong>净债务约$167.47亿</strong>。公司维持投资级信用评级，债务对现金流的覆盖倍数仍处合理范围。</p>
+</section>
+
+<!-- 07 订单分析 -->
+<section id="backlog" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">07</span><span class="sec-title">订单分析：积压订单创纪录反弹，THAAD为主要驱动，PAC-3合同为季后事件</span></div>
+  <table class="th-light">
+    <thead><tr><th>季度末</th><th>积压订单（Backlog）</th><th>环比变化</th><th>关键新增合同</th></tr></thead>
+    <tbody>
+      <tr><td>FY2025末（2025-12-31）</td><td>$193.6B</td><td>—</td><td>年度基准</td></tr>
+      <tr class="row-highlight"><td><strong>Q1 2026末</strong></td><td><strong>$186.4B</strong></td><td class="neg">-$7.2B（环比下降）</td><td>季度确认收入快于新签订单</td></tr>
+      <tr class="row-highlight"><td><strong>Q2 2026末（2026-06-28）</strong></td><td><strong>$230B</strong></td><td class="pos">+$43.6B（创纪录反弹）</td><td>主要驱动为<strong>$35B THAAD多年期合同</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-warn">
+    <strong>七年期PAC-3 MSE合同（总价值约$58.62亿）由美国陆军于2026年7月29日授予，晚于Q2财报季度截止日（2026年6月28日），因此该合同不构成Q2季末积压订单反弹的驱动因素，而是Q3的增量事件；Q2积压订单的主要驱动应归因于THAAD多年期合同。</strong>这一时点区分对准确评估各季度订单动能的真实来源具有重要意义，避免将Q3的利好提前计入Q2的解释框架。
+  </div>
+
+  <div class="callout c-good">
+    <strong>THAAD合同是当前订单质量中最具确定性和长期现金流可见度的部分。</strong>THAAD（末段高空区域防御系统）是美国及盟友导弹防御体系的核心组成部分，在当前全球地缘政治紧张、多国加速采购防空反导系统的背景下，这一合同的多年期属性为MFC分部提供了远超单一年度的收入可见度，这与"MFC是增长最明显引擎"的判断相互印证。随后7月末获得的PAC-3七年期合同（$58.62亿）进一步强化了这一趋势，是Q3值得关注的增量正面因素。
+  </div>
+
+  <h3 class="sub">订单结构的分层理解：确定性收入 vs 潜在收入</h3>
+  <p>$230B的积压订单本身是一个笼统的加总数字，需要理解其内部构成的确定性差异：<strong>已签署、经国会拨款确认的正式合同（Firm Orders）</strong>具有最高的收入确定性；而部分订单可能包含<strong>选择权（Options）或框架协议下尚未行使的采购意向</strong>，这部分订单的最终转化率存在一定不确定性。公司未在公开财报材料中对积压订单进行这一细分披露，是需要在后续财报中进一步要求管理层澄清的信息缺口。</p>
+</section>
+
+<!-- 08 管理层指引 -->
+<section id="guidance" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">08</span><span class="sec-title">管理层指引：全年指引大幅上调</span></div>
+  <table class="th-light">
+    <thead><tr><th>指引项目</th><th>2026年4月（Q1后）指引</th><th>2026年7月23日（Q2后）更新指引</th><th>变化</th></tr></thead>
+    <tbody>
+      <tr><td>全年营业收入</td><td>此前区间较低</td><td><strong>$797.5-817.5亿</strong></td><td class="pos">显著上调</td></tr>
+      <tr><td>全年GAAP稀释每股收益</td><td>此前区间较低</td><td><strong>$29.95-30.65</strong></td><td class="pos">显著上调</td></tr>
+      <tr><td>全年经营活动现金流</td><td>—</td><td><strong>$92-94亿</strong></td><td class="pos">上调</td></tr>
+      <tr><td>全年自由现金流</td><td>—</td><td><strong>$70-72亿</strong></td><td class="pos">上调</td></tr>
+      <tr><td>全年资本开支</td><td>更高区间</td><td>$20-24亿</td><td class="pos">下调，管理层归因于MFC产能建设效率提升</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-good">
+    <strong>按公司官方更新指引，全年EPS中值约$30.30，对应当前股价$563.57隐含约18.6倍前瞻市盈率，处于军工板块历史估值区间的中性偏低端。</strong>详见下文估值分析章节的完整测算。
+  </div>
+
+  <div class="callout c-warn">
+    <strong>指引大幅上调的可持续性仍需H2实际业绩验证。</strong>基于Q1（-$2.91亿FCF）与Q2（+$29亿FCF）的巨大反差，投资者应对H2能否维持强劲现金流转化保持审慎关注，尤其需要跟踪Q2现金流改善中"客户回款时点"这一因素在H2是否会逆转，全年FCF指引$70-72亿隐含H2需要产生约$41-44亿的自由现金流（H1实际约为-$2.91亿+$29亿≈$26.1亿，故H2隐含约需$44-46亿），这一测算本身即提示H2仍需延续Q2的强劲现金流转化节奏，而非单纯依靠H1已实现部分。
+  </div>
+</section>
+
+<!-- 09 股东回报 -->
+<section id="returns" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">09</span><span class="sec-title">股东回报：24年连续增长的股息贵族，但Q2 2026未实施常规回购</span></div>
+  <table class="th-mid">
+    <thead><tr><th>股东回报指标</th><th>数据</th></tr></thead>
+    <tbody>
+      <tr><td>连续股息增长年数</td><td style="text-align:right">24年（"股息贵族"梯队）</td></tr>
+      <tr><td>当前年化股息</td><td style="text-align:right">$13.80/股（季度股息$3.45）</td></tr>
+      <tr><td>股息收益率（按$563.57股价计）</td><td style="text-align:right">约2.45%</td></tr>
+      <tr><td>2025年10月董事会决议</td><td style="text-align:right">在现有回购授权基础上追加$20亿</td></tr>
+      <tr><td>FY2025末剩余回购授权</td><td style="text-align:right">约$83亿</td></tr>
+      <tr><td>Q2 2026末剩余回购授权</td><td style="text-align:right">约$83.24亿（与FY2025末基本持平）</td></tr>
+      <tr class="row-highlight"><td><strong>Q2 2026实际回购活动</strong></td><td style="text-align:right"><strong>公司未在Q2 2026实施常规股票回购；期内仅有357股因员工税务代扣而被动注销</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-warn">
+    <strong>2025年10月董事会在现有回购授权基础上追加$20亿，FY2025末剩余授权约$83亿；更值得关注的是，Q2 2026单季度公司实际上并未实施常规股票回购</strong>，账面变化仅反映357股的员工税务代扣性质的注销，剩余授权额度（约$83.24亿）与年初基本持平，说明近期资本配置的重心并未体现为回购加速。
+  </div>
+
+  <div class="callout c-good">
+    <strong>24年连续股息增长的记录本身是公司资本配置纪律的重要正面证据。</strong>即便在2025年Q2出现$16.15亿项目损失、现金流骤降至$2.01亿的困难季度，公司仍未中断或削减股息，这一"逆周期维持股东承诺"的表现，为公司股息可持续性提供了压力测试下的历史验证。$83亿以上的剩余回购授权额度，也为公司在认为估值具备吸引力时重启回购保留了充分弹性。
+  </div>
+
+  <div class="callout c-risk">
+    <strong>股东诉讼中关于"回购定价"的指控仍需独立看待。</strong>如前述管理层可信度章节所述，未决诉讼中包含"公司在特定历史期间以价格被指控为人为推高的水平实施回购"这一主张，这一指控针对的是<strong>历史时段</strong>（2025年内特定时期）的回购行为，而非当前（Q2 2026暂停回购）的资本配置决策。两者应分别评估：历史回购定价的诚信度问题属于未决法律程序，需等待司法程序进展；而Q2 2026暂停常规回购这一当期事实，则更可能反映管理层在当前阶段选择保留现金弹性、或对短期股价缺乏足够信心进行回购，两种解读均有可能，本报告不做单一确定性判断。
+  </div>
+
+  <p><strong>股东回报的综合评估：</strong>公司的股息政策具备长期可持续性的历史证据支撑；回购政策方面，Q2 2026呈现"授权充足但未实际动用"的状态，叠加历史回购定价的未决诉讼，投资者在评估管理层"资本配置是否始终以股东利益最大化为出发点"这一问题时，应保持审慎，持续关注后续季度是否恢复回购节奏及诉讼进展。</p>
+</section>
+
+<!-- 10 估值分析 -->
+<section id="valuation" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">10</span><span class="sec-title">估值分析：可审计三阶段DCF模型</span></div>
+
+  <div class="callout c-risk">
+    <strong>方法论说明：本节估值模型已基于公司官方Q2 2026更新指引的准确数字（EPS $29.95-30.65、FCF $70-72亿）完全重建，采用与资产负债表章节一致的Q2 2026季末口径（净债务、股数），确保模型输入的期间一致性。</strong>所有假设条件均明确列示并附来源说明，读者可自行代入不同假设重新验证结果。
+  </div>
+
+  <h3 class="sub">关键输入数据（均有明确来源标注，期间口径统一为Q2 2026季末）</h3>
+  <table class="th-mid">
+    <thead><tr><th>输入项</th><th>数值</th><th>来源/推导方式</th></tr></thead>
+    <tbody>
+      <tr><td>FY2026E自由现金流指引中值</td><td style="text-align:right">$71亿</td><td style="text-align:left">公司Q2 2026官方更新指引（区间$70-72亿）中值</td></tr>
+      <tr><td>FY2026E稀释EPS指引中值</td><td style="text-align:right">$30.30</td><td style="text-align:left">公司Q2 2026官方更新指引（区间$29.95-30.65）中值</td></tr>
+      <tr><td>Q2 2026季末净债务</td><td style="text-align:right">$167.47亿</td><td style="text-align:left">= 长期债务$205.38亿+当期到期$0−现金$37.91亿（公司Q2 2026 10-Q）</td></tr>
+      <tr><td>稀释股数</td><td style="text-align:right">230.791百万股</td><td style="text-align:left">公司披露口径（截至2026年7月20日）</td></tr>
+      <tr><td>当前股价</td><td style="text-align:right">$563.57</td><td style="text-align:left">2026-08-21收盘（Yahoo Finance）</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub">三情景DCF模型</h3>
+  <table class="th-light">
+    <thead><tr><th>假设/步骤</th><th>悲观情景</th><th>基准情景</th><th>乐观情景</th></tr></thead>
+    <tbody>
+      <tr><td>核心假设</td><td>Aeronautics/RMS重大项目损失再次出现，NGAD落败长期侵蚀战机业务，协调预算未能落地，H2现金流不及Q2水平</td><td>H2执行基本平稳，无重大项目意外，协调预算部分落地，MFC维持当前增长节奏</td><td>协调预算超预期落地，MFC/导弹防御持续加速，管理层执行问题彻底解决</td></tr>
+      <tr><td>Y1(FY2026E) FCF</td><td>$71亿</td><td>$71亿</td><td>$71亿</td></tr>
+      <tr><td>Y2-Y5年化FCF增速</td><td>3%</td><td>6%</td><td>9%</td></tr>
+      <tr><td>WACC</td><td>9.5%（governance风险溢价）</td><td>8.5%</td><td>7.5%（风险溢价下降）</td></tr>
+      <tr><td>永续增长率</td><td>2.0%</td><td>2.5%</td><td>3.0%</td></tr>
+      <tr><td>预测期FCF现值合计</td><td>$288.0亿</td><td>$312.6亿</td><td>$339.5亿</td></tr>
+      <tr><td>终值现值</td><td>$689.9亿</td><td>$1,019.4亿</td><td>$1,596.6亿</td></tr>
+      <tr><td>企业价值EV</td><td>$977.9亿</td><td>$1,332.0亿</td><td>$1,936.1亿</td></tr>
+      <tr><td>减：净债务</td><td>$167.5亿</td><td>$167.5亿</td><td>$167.5亿</td></tr>
+      <tr><td>股权价值</td><td>$810.4亿</td><td>$1,164.5亿</td><td>$1,768.6亿</td></tr>
+      <tr class="row-wtd"><td><strong>每股价值（÷230.791百万股）</strong></td><td class="p-big" style="color:var(--red)"><strong>$351.2</strong></td><td class="p-big"><strong>$504.6</strong></td><td class="p-big" style="color:var(--green)"><strong>$766.4</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-good">
+    <strong>当前股价$563.57略高于本模型基准情景（$504.6）约12%，但显著低于乐观情景（$766.4），大致处于基准至乐观情景之间的中段偏下位置。</strong>这意味着当前估值对基准情景假设了小幅溢价，这一溢价大致对应市场对国防预算超级周期延续性的正面预期，但尚未透支至乐观情景所要求的"管理层执行问题彻底解决"这一更高确定性假设。
+  </div>
+
+  <h3 class="sub">市盈率交叉校验（基于修正后EPS指引）</h3>
+  <table class="th-light">
+    <thead><tr><th>目标P/E（基于FY2026E指引EPS中值$30.30）</th><th>对应每股价值</th><th>参照基准</th></tr></thead>
+    <tbody>
+      <tr><td>16x</td><td>$484.8</td><td>反映治理折价的保守区间</td></tr>
+      <tr class="row-highlight"><td>18.6x（当前隐含）</td><td class="hot">$563.6</td><td>当前股价对应倍数，处于军工板块历史均值中性偏低区间</td></tr>
+      <tr><td>22x</td><td>$666.6</td><td>军工板块历史均值上沿</td></tr>
+      <tr><td>25x</td><td>$757.5</td><td>反映国防超级周期主题溢价</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-warn">
+    <strong>市盈率交叉校验与DCF模型的结论存在一定张力，需要如实呈现而非强行统一：</strong>P/E交叉校验显示当前18.6倍隐含倍数本身"不贵"，若给予22倍这一板块历史均值，对应价值达$666.6，高于当前股价；但DCF模型基准情景（$504.6）低于当前股价。这一张力反映了两种方法论的本质差异——P/E交叉校验隐含"维持当前盈利能力水平不变"的静态假设，而DCF模型显式纳入了对"H2执行验证"和"管理层可信度折价"的动态判断（体现为相对保守的FCF增速和相对更高的WACC假设）。本报告认为，在管理层执行记录存在可验证瑕疵、且多起法律程序尚未了结的背景下，<strong>DCF模型中隐含的治理及执行风险折价是审慎且必要的</strong>，因此本报告最终目标区间的设定，将适度向DCF模型结果倾斜，同时参考P/E交叉校验为上沿提供支撑。
+  </div>
+
+  <h3 class="sub">最终目标价区间确定</h3>
+  <div class="callout c-good">
+    <strong>综合DCF三情景（$351.2-766.4）及市盈率交叉校验（$484.8-757.5），本报告将12个月目标价区间设定为<strong>$450-580</strong>，中枢约$515，较当前股价$563.57基本持平略低（约-8.6%至+2.9%）。</strong>这一区间的下沿（$450）接近DCF基准情景与悲观情景之间的位置，反映对执行风险的审慎定价；上沿（$580）略高于当前股价，反映若H2顺利验证管理层指引且无新增负面意外，估值存在温和修复空间。区间设定与"中性"评级的定性判断相一致。
+  </div>
+
+  <h3 class="sub">与市场分析师一致预期的交叉参考</h3>
+  <p>市场分析师一致目标价区间参考约$629附近（不同数据源存在差异），部分机构（如Citi于2026年8月15日）上调目标价至$691。这一分析师群体的乐观程度高于本报告目标区间上沿，可能更多建立在国防预算历史性扩张这一宏观叙事之上，相对较少纳入本报告所强调的管理层执行记录瑕疵和未决诉讼这类治理层面的折价因素。本报告在充分核实指引数字后，仍倾向于保持相对分析师一致预期更为审慎的独立判断。</p>
+</section>
+
+<!-- 11 风险矩阵 -->
+<section id="risks" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">11</span><span class="sec-title">风险矩阵</span></div>
+  <table class="th-dark" style="font-size:13px;">
+    <thead><tr><th style="width:17%">风险</th><th style="width:7%">级别</th><th style="width:35%">当前状态</th><th style="width:27%">对估值影响</th><th style="width:14%">缓解因素</th></tr></thead>
+    <tbody>
+      <tr class="row-risk-h"><td><strong>重大项目成本超支复发风险</strong></td><td><span class="pill pill-h">高</span></td><td>2024-2025年连续多个报告期出现Aeronautics分类项目及RMS国际直升机项目损失，2025年Q2单季冲销$16.15亿，管理层评估结果曾被后续更深入审查推翻。</td><td>若再次出现类似规模损失，对应本模型悲观情景（$351.2），较当前股价有显著下行空间，且历史先例显示现金流将同步大幅恶化。</td><td>新任CFO Evan Scott已进行更彻底审查；MFC分部执行相对稳健</td></tr>
+      <tr class="row-risk-h"><td><strong>未决法律程序的治理不确定性</strong></td><td><span class="pill pill-h">高</span></td><td>面临一起证券集体诉讼（2025年7月提起，2026年1月修订）及两起股东衍生诉讼（2025年9月、2026年5月提起），指控内容涉及高管减持时点、历史回购定价及委托书信息披露。均为未决主张，尚未经法院裁定。</td><td>若指控被证实，可能引发监管调查、高管问责甚至和解赔付，对股价和管理层可信度构成额外压力；若被驳回，则相应不确定性解除。</td><td>公司为大型上市公司，具备成熟的合规和法务应对体系</td></tr>
+      <tr class="row-risk-m"><td><strong>六代机项目缺位的长期战略风险</strong></td><td><span class="pill pill-m">中</span></td><td>已被排除在美国空军NGAD/F-47及海军F/A-XX两大下一代载人战斗机项目之外，转向"F-35 5代+"升级方案作为替代。</td><td>长期（10年以上）战斗机产品线可能面临青黄不接，若F-35升级方案未能获得足够市场认可，将影响Aeronautics分部远期增长曲线。</td><td>F-35现有机队规模庞大，维保和升级收入具备数十年可见度</td></tr>
+      <tr class="row-risk-m"><td><strong>ULA合资企业或有负债</strong></td><td><span class="pill pill-m">中</span></td><td>公司为ULA提供最高达$5亿履约担保，已确认约$6,400万担保负债，与Vulcan火箭发射异常技术调查相关，这一或有负债敞口不宜被简单归为低风险。</td><td>若ULA问题扩大化，可能进一步侵蚀Space分部权益法核算收益，并触发担保负债的追加确认。</td><td>ULA由波音和洛克希德各持50%，风险由双方共担；担保规模相对公司整体资产有限</td></tr>
+      <tr class="row-risk-m"><td><strong>协调预算能否如期落地的不确定性</strong></td><td><span class="pill pill-m">中</span></td><td>FY2027预算提案中约$3,500亿依赖国会预算协调程序，多位防务政策专家对其落地持怀疑态度，Golden Dome等项目高度依赖这一资金来源。</td><td>若协调预算大幅缩水或延迟，可能影响导弹防御系统等新增订单的确认节奏，压制订单和收入增速。</td><td>基础国防拨款的政治共识相对稳固，弹药类项目两党支持度较高</td></tr>
+      <tr class="row-risk-m"><td><strong>季度间现金流剧烈波动</strong></td><td><span class="pill pill-m">中</span></td><td>Q1 2026 FCF为-$2.91亿，Q2骤升至+$29亿，全年指引隐含H2需产生约$44-46亿FCF，需持续验证。</td><td>若H2现金流不及指引隐含水平，可能引发市场对全年指引可信度的重新评估。</td><td>公司现金流的年度总量historically保持相对稳定，季度波动更多是时点性因素</td></tr>
+      <tr class="row-risk-m"><td><strong>股东权益占比持续下滑</strong></td><td><span class="pill pill-m">中</span></td><td>股东权益/总资产比例仅约11-14%，且长期呈下滑趋势，主因持续大规模回购历史及养老金相关的累计综合损失。</td><td>财务杠杆水平上升，在极端不利情景下权益缓冲空间有限。</td><td>投资级信用评级；Q2 2026当期到期长期债务已降至$0，短期偿债压力缓解；养老金负债近年持续改善</td></tr>
+      <tr class="row-risk-l"><td><strong>当前估值定位</strong></td><td><span class="pill pill-l">低（估值层面）</span></td><td>经核实后，当前股价对应约18.6倍FY2026E EPS，处于军工板块历史均值中性偏低区间，DCF基准情景较当前价格低约12%。</td><td>估值本身不构成主要风险来源，上下行空间相对均衡，主要风险仍集中于执行和治理层面。</td><td>国防预算超级周期的宏观背景为估值提供一定支撑</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 12 监测指标 -->
+<section id="monitor" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">12</span><span class="sec-title">关键监测指标</span></div>
+  <ol class="monitor-list">
+    <li><strong>Q3/Q4 2026是否再次出现重大项目成本超支：</strong>这是验证管理层"审查已彻底"这一表态可信度的最直接指标，任何新增的重大减值都将是对本报告悲观情景的直接验证。</li>
+    <li><strong>未决法律程序的进展：</strong>持续跟踪证券集体诉讼及两起股东衍生诉讼的审理进展，任何和解、驳回或进一步指控升级都将是重要的治理风险信号。</li>
+    <li><strong>H2现金流能否达到指引隐含的$44-46亿区间：</strong>需要拆分经营性现金流贡献与客户回款时点等一次性因素的相对比例，验证全年现金流指引的真实含金量。</li>
+    <li><strong>Q3是否恢复常规股票回购：</strong>验证公司资本配置节奏是否从Q2的"授权充足但未动用"状态恢复常态化。</li>
+    <li><strong>FY2027国防预算协调法案的国会表决进展：</strong>直接影响约$3,500亿协调预算能否落地，是判断Golden Dome等新项目订单确定性的关键宏观变量。</li>
+    <li><strong>ULA/Vulcan技术调查的后续进展：</strong>持续跟踪是否需要追加确认担保负债，或对Space分部权益法收益造成进一步影响。</li>
+  </ol>
+</section>
+
+<div class="disclosure">
+  <strong>重要披露与方法论说明。</strong>
+  本报告由Snail-Bird Investment Research就Lockheed Martin Corporation（NYSE: LMT）独立撰写，为首次覆盖（机构版），聚焦2026年7月23日披露的Q2 2026财报及截至2026年8月24日的公开信息，不构成个性化投资建议或买卖邀约。
+  <strong>数据来源：</strong>公司官方Q2 2026及历史季度财报新闻稿（lockheedmartin.com投资者关系页，2026-07-23）；Q2 2026及历史电话会文字稿（Motley Fool、Insider Monkey、StockTitan、Quartr、Investing.com转引，2025年7月至2026年7月）；FY2025年报及Q2 2026 10-Q财务数据（SEC EDGAR；Stock Analysis on Net多期趋势分析）；2025年Q2项目损失分项披露（公司官方新闻稿PRNewswire原始表格）；管理层可信度及NGAD竞标失利相关报道（Breaking Defense，2024年10月至2025年7月）；未决法律程序相关报道（法律信息服务转引，诉状提起日期及修订日期）；PAC-3合同授予时点（美国陆军官方合同公告，2026-07-29）；美国国防预算相关报道（Air & Space Forces Magazine、Breaking Defense，2025-2026年）；股价及分析师目标价数据（Yahoo Finance、TipRanks、Simply Wall St，2026年7-8月）。
+  <strong>口径说明：</strong>净债务、股东权益比例、稀释股数等资产负债表指标统一采用Q2 2026季末口径（截至2026年6月28日及2026年7月20日披露数据），避免跨期间混用导致的口径不一致；FY2026E指引数字（营收、EPS、经营现金流、自由现金流、资本开支）均直接引自公司2026年7月23日官方新闻稿，已经过独立信息源交叉核实。
+  <strong>估值模型说明：</strong>本报告自建的三阶段DCF模型所有假设（FCF增速、WACC、永续增长率）均为分析师独立判断，已完整列示计算步骤以支持读者自行复算验证；模型结果（悲观$351.2、基准$504.6、乐观$766.4）已通过市盈率交叉校验，两种方法论间存在的张力已在正文中如实呈现；最终目标价区间$450-580综合两种方法论确定；分析师一致目标价已作为外部参考纳入讨论，本报告的评级判断基于独立研究，与市场一致预期存在差异属于正常现象。
+  <strong>关于未决法律程序的表述说明：</strong>本报告中涉及的所有股东诉讼及衍生诉讼指控均为原告在法律程序中的一方主张，尚未经法院最终审理或裁定，不代表对被告任何不当行为的认定，本报告在全文引用时均已采用中立表述，不应被解读为对相关指控真实性的确认或否认。
+  <strong>利益冲突：</strong>Snail-Bird Investment声明目前对Lockheed Martin Corporation无持仓，本报告不受任何外部机构委托或赞助。
+  投资者应独立进行尽职调查，并咨询专业财务顾问后作出投资决定。本报告中的前瞻性陈述涉及重大不确定性，尤其是重大项目执行风险、未决法律程序进展、国防预算协调程序能否落地等因素，可能导致实际结果与本报告预期产生重大偏差。
+  © 2026 Snail-Bird Investment Research. 保留所有权利。
+</div>
+
+</div>
+</body>
+</html>
