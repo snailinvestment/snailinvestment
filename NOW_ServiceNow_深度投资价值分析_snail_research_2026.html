@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ServiceNow (NOW) - FY2026 Q2 深度投资价值分析</title>
+<style>
+* { box-sizing: border-box; }
+body { margin:0; font-family:"Segoe UI","Microsoft YaHei",Helvetica,Arial,sans-serif;
+  color:#1A202C; background:#fff; line-height:1.7; }
+.wrap { max-width:1040px; margin:0 auto; background:#fff; }
+nav.bar { position:sticky; top:0; background:rgba(255,255,255,0.96); box-shadow:0 1px 4px rgba(0,0,0,0.08);
+  z-index:50; padding:12px 28px; display:flex; justify-content:space-between; align-items:center; }
+nav.bar .brand { font-size:20px; font-weight:800; color:#00A1E4; }
+nav.bar .brand small { font-size:12px; color:#6b7280; font-weight:500; margin-left:8px; }
+nav.bar .links a { color:#374151; text-decoration:none; margin-left:22px; font-size:14px; }
+nav.bar .links a:hover { color:#00A1E4; }
+header.cover { background:linear-gradient(135deg,#003366 0%,#00A1E4 100%); color:#fff;
+  padding:46px 46px 40px; }
+header.cover .brand { font-size:13px; letter-spacing:3px; color:#FFD9B0; font-weight:700; }
+header.cover h1 { font-size:32px; margin:10px 0 4px; font-weight:800; }
+header.cover .sub { font-size:17px; color:#e3f1fb; font-weight:300; }
+header.cover .lead { font-size:14.5px; color:#dbeefb; margin-top:14px; max-width:620px; }
+.kpis { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+.kpi { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.35);
+  border-radius:10px; padding:12px 16px; min-width:130px; }
+.kpi .v { font-size:19px; font-weight:800; color:#fff; }
+.kpi .l { font-size:11px; color:#cfe6f5; margin-top:2px; }
+.mktbox { margin-top:20px; background:rgba(255,255,255,0.10); border-radius:10px; padding:14px 18px; }
+.mktbox .row { display:flex; flex-wrap:wrap; gap:18px 30px; }
+.mktbox .row div { font-size:13px; color:#dbeefb; }
+.mktbox .row b { color:#fff; font-size:14px; }
+section { padding:30px 46px 12px; border-bottom:1px solid #eef2f7; }
+.bg-neutral { background:#F5F7FA; }
+h2 { font-size:23px; color:#003366; border-left:6px solid #FF6B00; padding-left:13px;
+  margin:4px 0 16px; font-weight:800; }
+h3 { font-size:17px; color:#003366; margin:20px 0 8px; font-weight:700; }
+h4 { font-size:15px; color:#1f3a5f; margin:14px 0 6px; font-weight:700; }
+p { margin:8px 0; font-size:14.5px; color:#374151; }
+.chart { margin:16px 0 8px; }
+.chart svg { max-width:680px; width:100%; height:auto; }
+table { border-collapse:collapse; width:100%; margin:12px 0; font-size:13px; }
+th,td { border:1px solid #d8dee8; padding:7px 9px; text-align:right; }
+th { background:#003366; color:#fff; font-weight:600; }
+td:first-child,th:first-child { text-align:left; }
+tbody tr:nth-child(even) { background:#f6f9fc; }
+.dtag { display:inline-block; color:#fff; font-size:11px; font-weight:700;
+  padding:1px 7px; border-radius:10px; margin-left:4px; vertical-align:middle; }
+.note { font-size:12.5px; color:#6b7280; margin:6px 0; }
+ul { margin:8px 0 8px 4px; padding-left:20px; }
+li { font-size:14.5px; color:#374151; margin:5px 0; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin:14px 0; }
+.card { background:#fff; border:1px solid #e6ebf2; border-radius:12px; padding:16px 18px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+.card .ic { width:34px; height:34px; border-radius:8px; background:rgba(0,161,228,0.12);
+  display:flex; align-items:center; justify-content:center; margin-bottom:8px; color:#00A1E4; font-weight:800; font-size:16px; }
+.card h4 { margin:0 0 6px; color:#003366; }
+.card p { font-size:13.5px; color:#4b5563; margin:0; }
+.verdict { background:#fff; border:1px solid #d4e4f0; border-left:6px solid #FF6B00;
+  border-radius:8px; padding:16px 20px; margin:16px 0; }
+.verdict b { color:#003366; }
+.kpi2 { display:flex; flex-wrap:wrap; gap:14px; margin:14px 0; }
+.kpi2 .box { flex:1; min-width:140px; background:#F5F7FA; border-radius:10px; padding:14px 16px; text-align:center; }
+.kpi2 .box .v { font-size:22px; font-weight:800; color:#003366; }
+.kpi2 .box .l { font-size:12px; color:#6b7280; margin-top:2px; }
+.footer { padding:26px 46px 44px; font-size:12px; color:#6b7280; background:#1A202C; }
+.footer p { color:#cbd5e1; }
+.grad-cta { background:linear-gradient(135deg,#003366 0%,#00A1E4 100%); color:#fff; padding:30px 46px; text-align:center; }
+.grad-cta h2 { color:#fff; border:none; display:inline-block; }
+.grad-cta .row { display:flex; justify-content:center; gap:18px; margin-top:16px; flex-wrap:wrap; }
+.grad-cta .row .b { background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.3); border-radius:10px; padding:14px 22px; }
+.grad-cta .row .b .v { font-size:22px; font-weight:800; }
+.grad-cta .row .b .l { font-size:12px; color:#dbeefb; margin-top:2px; }
+.taglegend { display:flex; flex-wrap:wrap; gap:10px; margin:8px 0 4px; }
+.taglegend span { font-size:11.5px; color:#374151; }
+.taglegend i { display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:5px; vertical-align:middle; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="bar">
+  <div class="brand">ServiceNow <small>NYSE: NOW</small></div>
+  <div class="links">
+    <a href="#summary">摘要</a>
+    <a href="#business">公司业务</a>
+    <a href="#finance">财务分析</a>
+    <a href="#guide">指引与纪要</a>
+    <a href="#valuation">估值</a>
+    <a href="#risks">风险</a>
+  </div>
+</nav>
+
+<header class="cover">
+  <div class="brand">SNAIL-BIRD INVESTMENT · 个股深度</div>
+  <h1>ServiceNow (NOW)</h1>
+  <div class="sub">企业级 AI 工作流与"AI 控制塔"领导者 — FY2026 Q2 深度投资价值分析</div>
+  <div class="lead">Q2 FY2026 营收 $39.9 亿（+24% YoY）再超指引高端，AI ACV 跨过 $10 亿里程碑；
+  Rule of 56 已兑现，管理层给出 2030 年订阅收入 $300 亿+、Rule of 60+ 的长期路线。但增长由 24% 放缓至 21%（指引），
+  且 H1'26 通过举债 $75 亿完成 Armis/Moveworks/Veza 收购，短期利润率与 SBC 稀释需持续跟踪。</div>
+  <div class="kpis">
+    <div class="kpi"><div class="v">持有 (HOLD)</div><div class="l">投资评级</div></div>
+    <div class="kpi"><div class="v">$165</div><div class="l">12M 目标价</div></div>
+    <div class="kpi"><div class="v">+19%</div><div class="l">上行空间</div></div>
+    <div class="kpi"><div class="v">$138.43</div><div class="l">当前股价</div></div>
+    <div class="kpi"><div class="v">~28x</div><div class="l">远期 P/E(FY27E)</div></div>
+    <div class="kpi"><div class="v">Rule of 56</div><div class="l">增长+自由现金</div></div>
+  </div>
+  <div class="mktbox">
+    <div class="row">
+      <div>市值 <b>~$1,426 亿</b></div>
+      <div>52周区间 <b>$81.24 – $194.73</b></div>
+      <div>TTM P/S <b>~9.9x</b></div>
+      <div>远期 P/S(FY27E) <b>~7.3x</b></div>
+      <div>流通股本 <b>~10.3 亿股</b></div>
+      <div>净债务 <b>~$8.1 亿</b></div>
+    </div>
+  </div>
+</header>
+
+<!-- 一、投资摘要 -->
+<section id="summary">
+<h2>一、投资摘要</h2>
+<p>ServiceNow 是全球企业工作流自动化的平台型龙头，正从传统 IT 服务管理（ITSM）扩展为横跨 IT、客户、员工、
+安全运营的"业务重塑 AI 控制塔"。FY2026 Q2（截至 2026-06-30，7 月 22 日披露）交出全面超预期的业绩：
+营收 $39.87 亿（同比 +24%、超指引高端 150bps），Non-GAAP 营业利润率 29.5%，Non-GAAP EPS $0.90（超预期约 5%）。
+订阅收入占比 97.3%，cRPO $132 亿（+21%）、RPO $290 亿（+21%），收入可预测性极强。<span class="dtag" style="background:#2c4d78">事实</span></p>
+<div class="cards">
+  <div class="card"><div class="ic">AI</div><h4>AI 进入拐点</h4>
+  <p>ServiceNow AI 在 Q2 年化合同价值（ACV）跨过 $10 亿，管理层预计年末达 $15 亿；
+  agentic AI 部署 9 个月内增长 9 倍；AI 预计 2030 年贡献 30% ACV。<span class="dtag" style="background:#2c4d78">事实</span><span class="dtag" style="background:#FF6B00">指引</span></p></div>
+  <div class="card"><div class="ic">◎</div><h4>Rule of 56 已兑现</h4>
+  <p>FY2026 订阅收入增速（CC）+ 自由现金流利润率 ≈ 56；管理层目标 2030 年达 Rule of 60+，
+  订阅收入 $300 亿+。增长与现金生成兼具。<span class="dtag" style="background:#FF6B00">指引</span></p></div>
+  <div class="card"><div class="ic">⛨</div><h4>安全生态补齐</h4>
+  <p>通过 Armis（设备安全）、Moveworks（AI 代理）、Veza（身份治理）收购，
+  构建"记录系统 + AI 工作流 + 权限与风险治理"完整技术栈，强化安全与风险业务。<span class="dtag" style="background:#2c4d78">事实</span></p></div>
+  <div class="card"><div class="ic">↻</div><h4>高粘性客户基础</h4>
+  <p>续约率 98%；658 家客户 ACV 超 $500 万（+23% YoY）；123 笔净新增 ACV 超 $100 万交易（+40% YoY）；
+  全球大型企业与公共部门渗透深。<span class="dtag" style="background:#2c4d78">事实</span></p></div>
+  <div class="card"><div class="ic">⇅</div><h4>增速节奏波动</h4>
+  <p>全年订阅收入指引<b>金额小幅上修</b>至 $157.60–157.80 亿（中点 +$0.15 亿；Q1 时为 $157.35–157.75 亿），
+  隐含全年 <b>+21%（CC）</b>，略高于 FY2025 的约 +19%——<b>年度口径是温和再加速而非降速</b>。
+  但 Q2'26 的 +24.5% 含 Armis 并表（约 125bps）与联邦 on-prem 提前确认的一次性加持，Q3 指引回落至 +20.5%；
+  剔除两项扰动后内生增速约 <b>19–20%</b>，估值已隐含较高可见度。<span class="dtag" style="background:#FF6B00">指引</span><span class="dtag" style="background:#16a34a">预测</span></p></div>
+  <div class="card"><div class="ic">$</div><h4>举债并购加杠杆</h4>
+  <p>H1'26 发债约 $75 亿，对应 Veza（2026-03-02 交割）与 Armis（2026-04-20 交割，$77.5 亿）两项收购，
+  半年并购现金净流出 $87.8 亿；资产负债表由净现金 $86 亿转为净债务 ~$8.1 亿。
+  Moveworks 已于 2025-12-15 完成交割，计入 FY2025。整合成本与 SBC（占收 16.4%）压制 GAAP 利润率。<span class="dtag" style="background:#2c4d78">事实</span></p></div>
+</div>
+<div class="verdict">
+<b>核心结论：</b>ServiceNow 是质量最高的企业软件复合型成长股之一，平台护城河、RPO 可见度与 AI 拐点构成长期多头基石；
+但当前估值（~28x 远期 P/E、~7.3x 远期 P/S）已较充分反映 21% 增长与 Rule of 56，且增速换挡、并购整合与 SBC 稀释
+构成中短期逆风。给予<b>持有（HOLD）</b>评级，12 个月目标价 <b>$165</b>（约 +19%，由 SOTP/EV-FCF/DCF 交叉验证），
+建议存量持有、回调至 $125 以下再积极增持。<span class="dtag" style="background:#16a34a">预测</span><span class="dtag" style="background:#8a6d1f">情景</span>
+</div>
+<div class="taglegend">
+  <span><i style="background:#2c4d78"></i>事实</span>
+  <span><i style="background:#FF6B00"></i>指引</span>
+  <span><i style="background:#16a34a"></i>预测</span>
+  <span><i style="background:#8a6d1f"></i>情景</span>
+  <span><i style="background:#7a4fb0"></i>选项</span>
+</div>
+</section>
+
+<!-- 二、公司业务与产品介绍 -->
+<section id="business" class="bg-neutral">
+<h2>二、公司业务与产品介绍</h2>
+<p>ServiceNow 最初从 IT 服务管理（ITSM）起步，现已成长为以"记录系统（CMDB）+ 工作流引擎 + AI 代理"为核心的
+企业数字化平台。其商业模式以订阅收入为主（占比 97%+），客户通过多年期合同预购 SaaS 席位与用量；
+平台越深入企业运营，客户切换成本越高，续约率长期维持在 98% 左右。<span class="dtag" style="background:#2c4d78">事实</span></p>
+<h3>2.1 核心产品矩阵</h3>
+<ul>
+<li><b>Otto</b>：2026 年 5 月 Knowledge 大会发布的统一 AI 体验，整合 Now Assist、Moveworks 与 AI Experience，
+可理解意图、路由至正确代理并在企业护栏内执行任务到完成。<span class="dtag" style="background:#2c4d78">事实</span></li>
+<li><b>AI Control Tower</b>：治理、观测、安全能力扩围，覆盖企业内所有 AI 系统/代理/工作流；
+被管理层定位为"企业部署 AI 的治理层标准"，并整合进 NVIDIA Enterprise AI Factory Validated Design。<span class="dtag" style="background:#2c4d78">事实</span></li>
+<li><b>Autonomous Workforce</b>：面向 IT、CRM、员工服务、安全与风险的自主 AI 专员；
+安全与风险专员融合 Armis + Veza + AI Control Tower。<span class="dtag" style="background:#2c4d78">事实</span></li>
+<li><b>Action Fabric</b>：让 ServiceNow 与第三方 AI（Anthropic Claude 为首位设计伙伴）经工作流安全执行动作。<span class="dtag" style="background:#2c4d78">事实</span></li>
+</ul>
+<h3>2.2 生态与收入模式</h3>
+<p>ServiceNow 采用开放生态策略：NVIDIA（Project Arc 桌面代理）、Microsoft（Agent 365 治理）、AWS（Marketplace 交易破 $10 亿）、
+OpenAI（首选模型引擎）、Accenture（迁移遗留安全平台）均为其扩大市场覆盖的杠杆。
+收入模式上，传统订阅按席位/模块收费，AI 功能逐步引入"授权+用量"的混合定价，既提升单客户价值（ARPU），
+也带来毛利率与现金流的季节性波动。<span class="dtag" style="background:#2c4d78">事实</span></p>
+
+<h3>2.3 AI 冲击：机遇与风险</h3>
+<p>AI 对 ServiceNow 既是核心增长变量，也是潜在颠覆变量，需分两面看：</p>
+<ul>
+<li><b>机遇</b>：企业 AI 部署需要"治理层"统一管理模型、代理与数据权限，ServiceNow 的 AI Control Tower 定位正是这一层；
+agentic AI 将工作流从"人驱动"升级为"代理自主执行"，提升平台不可替代性；AI ACV 已跨 $10 亿，年末目标 $15 亿，
+2030 年目标占 ACV 30%，构成明确的第二增长曲线。<span class="dtag" style="background:#2c4d78">事实</span><span class="dtag" style="background:#FF6B00">指引</span></li>
+<li><b>风险</b>：通用大模型与低代码/无代码 AI 工具可能绕开传统 ITSM/工作流流程，削弱企业购买专用平台的必要性；
+微软、谷歌、Salesforce 正将 AI 代理深度嵌入自身生态，可能以捆绑方式侵蚀 ServiceNow 的客户预算；
+AI 功能的混合定价若不能有效传导成本，将长期压制毛利率。<span class="dtag" style="background:#16a34a">预测</span></li>
+</ul>
+<p class="note">短期看，AI 更多是增量需求（企业需要治理与执行框架）；长期看，若通用 AI 直接替代大量规则型工作流，
+ServiceNow 必须持续向上游（CMDB、数据治理、跨系统执行）迁移，才能维持平台溢价。当前判断：AI 利大于弊，但竞争格局将显著加剧。<span class="dtag" style="background:#16a34a">预测</span><span class="dtag" style="background:#8a6d1f">情景</span></p>
+</section>
+
+<!-- 三、财务与业务分析 -->
+<section id="finance">
+<h2>三、财务与业务分析</h2>
+
+<h3>3.1 盈利质量：GAAP 与 Non-GAAP 分层</h3>
+<table>
+<tr><th>指标（Q2 FY2026）</th><th>GAAP</th><th>Non-GAAP</th><th>差异来源</th></tr>
+<tr><td>毛利率</td><td>70.5%</td><td><b>78.0%</b></td><td>剔除计入营业成本的 SBC($109M)、无形资产摊销($177M)、遣散($3M)</td></tr>
+<tr><td>营业利润率</td><td>4.0%</td><td><b>29.5%</b></td><td>在毛利调整基础上，再加回计入营业费用的 SBC($546M)、无形资产摊销($42M)、并购相关($75M)、重组($59M)</td></tr>
+<tr><td>净利润</td><td>$298M</td><td><b>$930M</b></td><td>Non-GAAP 净利率 23.3%</td></tr>
+<tr><td>稀释 EPS</td><td>$0.29</td><td><b>$0.90</b></td><td>含 5:1 拆股（2025-12-17 生效）调整</td></tr>
+<tr><td>经营现金流</td><td colspan="2">$587M</td><td>占营收 14.5%（上年同期 22.5% / $716M），金额同比 −18.0%</td></tr>
+<tr><td>自由现金流（FCF）</td><td colspan="2">$634M</td><td>FCF 利润率 16%（Q2 季节性偏弱）</td></tr>
+</table>
+<p class="note">无形资产摊销存在两个层面：<b>毛利层面 $177M</b>（计入营业成本，影响毛利率）＋<b>营业费用层面 $42M</b>＝营业利润层面合计 <b>$219M</b>；
+SBC 同理（营业成本 $109M ＋ 营业费用 $546M ＝ 合计 $655M）。二者均具持续性经济成本。
+估值须以 Non-GAAP 为主、同时用 GAAP 与 FCF 校验现金真实性；SBC 仍是大额稀释来源（管理层承诺 2029 年降至 &lt;10% 营收）。<span class="dtag" style="background:#2c4d78">事实</span></p>
+
+<h3>3.2 营收与盈利趋势（连续 6 季度）</h3>
+<div class="chart"><svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img"><rect width="680" height="340" fill="#ffffff"/><text x="0" y="20" font-size="16" font-weight="700" fill="#003366">季度营收趋势（$B）</text><line x1="58" y1="52.0" x2="662" y2="52.0" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="56.0" font-size="12" fill="#6b7280" text-anchor="end">4.16</text><line x1="58" y1="112.5" x2="662" y2="112.5" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="116.5" font-size="12" fill="#6b7280" text-anchor="end">3.83</text><line x1="58" y1="173.0" x2="662" y2="173.0" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="177.0" font-size="12" fill="#6b7280" text-anchor="end">3.50</text><line x1="58" y1="233.5" x2="662" y2="233.5" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="237.5" font-size="12" fill="#6b7280" text-anchor="end">3.17</text><line x1="58" y1="294.0" x2="662" y2="294.0" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="298.0" font-size="12" fill="#6b7280" text-anchor="end">2.83</text><polyline points="108.3,247.6 209.0,224.5 309.7,205.4 410.3,188.6 511.0,123.5 611.7,84.0" fill="none" stroke="#00A1E4" stroke-width="2.5"/><circle cx="108.3" cy="247.6" r="3.5" fill="#00A1E4"/><line x1="108.3" y1="247.6" x2="108.3" y2="242.6" stroke="#00A1E4" stroke-width="1" stroke-opacity="0.6"/><text x="108.3" y="234.6" font-size="11" font-weight="700" fill="#00A1E4" text-anchor="middle">3.09</text><circle cx="209.0" cy="224.5" r="3.5" fill="#00A1E4"/><line x1="209.0" y1="224.5" x2="209.0" y2="219.5" stroke="#00A1E4" stroke-width="1" stroke-opacity="0.6"/><text x="209.0" y="211.5" font-size="11" font-weight="700" fill="#00A1E4" text-anchor="middle">3.21</text><circle cx="309.7" cy="205.4" r="3.5" fill="#00A1E4"/><line x1="309.7" y1="205.4" x2="309.7" y2="200.4" stroke="#00A1E4" stroke-width="1" stroke-opacity="0.6"/><text x="309.7" y="192.4" font-size="11" font-weight="700" fill="#00A1E4" text-anchor="middle">3.32</text><circle cx="410.3" cy="188.6" r="3.5" fill="#00A1E4"/><line x1="410.3" y1="188.6" x2="410.3" y2="183.6" stroke="#00A1E4" stroke-width="1" stroke-opacity="0.6"/><text x="410.3" y="175.6" font-size="11" font-weight="700" fill="#00A1E4" text-anchor="middle">3.41</text><circle cx="511.0" cy="123.5" r="3.5" fill="#00A1E4"/><line x1="511.0" y1="123.5" x2="511.0" y2="118.5" stroke="#00A1E4" stroke-width="1" stroke-opacity="0.6"/><text x="511.0" y="110.5" font-size="11" font-weight="700" fill="#00A1E4" text-anchor="middle">3.77</text><circle cx="611.7" cy="84.0" r="3.5" fill="#00A1E4"/><line x1="611.7" y1="84.0" x2="611.7" y2="79.0" stroke="#00A1E4" stroke-width="1" stroke-opacity="0.6"/><text x="611.7" y="71.0" font-size="11" font-weight="700" fill="#00A1E4" text-anchor="middle">3.99</text><polyline points="108.3,262.0 209.0,243.0 309.7,220.9 410.3,203.7 511.0,141.5 611.7,104.0" fill="none" stroke="#003366" stroke-width="2.5"/><circle cx="108.3" cy="262.0" r="3.5" fill="#003366"/><line x1="108.3" y1="262.0" x2="108.3" y2="267.0" stroke="#003366" stroke-width="1" stroke-opacity="0.6"/><text x="108.3" y="277.0" font-size="11" font-weight="700" fill="#003366" text-anchor="middle">3.01</text><circle cx="209.0" cy="243.0" r="3.5" fill="#003366"/><line x1="209.0" y1="243.0" x2="209.0" y2="248.0" stroke="#003366" stroke-width="1" stroke-opacity="0.6"/><text x="209.0" y="258.0" font-size="11" font-weight="700" fill="#003366" text-anchor="middle">3.11</text><circle cx="309.7" cy="220.9" r="3.5" fill="#003366"/><line x1="309.7" y1="220.9" x2="309.7" y2="225.9" stroke="#003366" stroke-width="1" stroke-opacity="0.6"/><text x="309.7" y="235.9" font-size="11" font-weight="700" fill="#003366" text-anchor="middle">3.23</text><circle cx="410.3" cy="203.7" r="3.5" fill="#003366"/><line x1="410.3" y1="203.7" x2="410.3" y2="208.7" stroke="#003366" stroke-width="1" stroke-opacity="0.6"/><text x="410.3" y="218.7" font-size="11" font-weight="700" fill="#003366" text-anchor="middle">3.33</text><circle cx="511.0" cy="141.5" r="3.5" fill="#003366"/><line x1="511.0" y1="141.5" x2="511.0" y2="146.5" stroke="#003366" stroke-width="1" stroke-opacity="0.6"/><text x="511.0" y="156.5" font-size="11" font-weight="700" fill="#003366" text-anchor="middle">3.67</text><circle cx="611.7" cy="104.0" r="3.5" fill="#003366"/><line x1="611.7" y1="104.0" x2="611.7" y2="109.0" stroke="#003366" stroke-width="1" stroke-opacity="0.6"/><text x="611.7" y="119.0" font-size="11" font-weight="700" fill="#003366" text-anchor="middle">3.88</text><text x="108.3" y="309.0" font-size="12" fill="#6b7280" text-anchor="middle">Q1'25</text><text x="209.0" y="309.0" font-size="12" fill="#6b7280" text-anchor="middle">Q2'25</text><text x="309.7" y="309.0" font-size="12" fill="#6b7280" text-anchor="middle">Q3'25</text><text x="410.3" y="309.0" font-size="12" fill="#6b7280" text-anchor="middle">Q4'25</text><text x="511.0" y="309.0" font-size="12" fill="#6b7280" text-anchor="middle">Q1'26</text><text x="611.7" y="309.0" font-size="12" fill="#6b7280" text-anchor="middle">Q2'26</text><rect x="58" y="32" width="11" height="11" fill="#00A1E4" rx="2"/><text x="74" y="42" font-size="11.5" fill="#003366">总营收</text><rect x="208" y="32" width="11" height="11" fill="#003366" rx="2"/><text x="224" y="42" font-size="11.5" fill="#003366">订阅营收</text><text x="58" y="336" font-size="11" fill="#6b7280" font-style="italic">来源：ServiceNow 各季 8-K（官方口径）；FY=日历年</text></svg></div>
+<table>
+<tr><th>季度</th><th>总营收($B)</th><th>YoY</th><th>订阅($B)</th><th>Non-GAAP OPM</th></tr>
+<tr><td>Q1'25</td><td>3.088</td><td>—</td><td>3.009</td><td>—</td></tr>
+<tr><td>Q2'25</td><td>3.215</td><td>—</td><td>3.113</td><td>29.5%</td></tr>
+<tr><td>Q3'25</td><td>3.320</td><td>—</td><td>3.235</td><td>—</td></tr>
+<tr><td>Q4'25</td><td>3.412</td><td>—</td><td>3.329</td><td>—</td></tr>
+<tr><td>Q1'26</td><td>3.770</td><td>+22%（CC +19%）</td><td>3.671</td><td>31.8%</td></tr>
+<tr><td><b>Q2'26</b></td><td><b>3.987</b></td><td><b>+24%（CC +22.5%）</b></td><td><b>3.877</b></td><td><b>29.5%</b></td></tr>
+</table>
+<p class="note">营收由 Q1'25 $30.9 亿增至 Q2'26 $39.9 亿，累计增长 29.1%；FY2025 全年 $130.4 亿（较 FY2024 $109.8 亿 +18.7%）。
+FY2025 分季同比基数未在同等颗粒度披露，故以"—"标注；FY2026 各季为官方口径。
+订阅同比增速 Q1'26 +22%（CC +19%）→ Q2'26 +24.5%（CC +23%），而 Q3'26 指引回落至 +20.5%（CC +20%）、
+全年指引约 +22.5%（CC +21%）——呈"H1 回升、H2 回落"的节奏。
+订阅占比稳定在 97%+。Non-GAAP 营业利润率 Q1'26 31.8% → Q2'26 29.5%，环比回落主因 hyperscaler/AI 消费分摊与并购整合成本，
+全年指引 31.5% 隐含下半年回升。<span class="dtag" style="background:#2c4d78">事实</span><span class="dtag" style="background:#FF6B00">指引</span></p>
+<p><b>增速节奏归因（Q2 高增 → Q3 回落）</b>：① <b>口径差异</b>——Q2'26 的 +24.5% 含 Armis 并表贡献（管理层披露约 125bps）
+与美国联邦 on-prem 收入由 Q3 提前确认的一次性加持，Q3 无此两项，指引同比回落至 +20.5%；
+② <b>预算结构</b>——客户 IT 预算向 AI 项目集中，传统工作流席位扩容放缓，增量更多来自 AI 模块的净新增 ACV 而非席位增长；
+③ <b>公共部门节奏</b>——联邦与部分海外项目确认时点波动（Q1 曾因中东冲突延迟约 75bps）；
+④ <b>存量渗透</b>——ACV&gt;$500 万客户已达 658 家，存量钱包份额较高，进一步扩张需依赖新模块（AI/安全）渗透。
+需要说明的是，<b>全年口径并未降速</b>：FY2026 指引 +21%（CC）略高于 FY2025 的约 +19%（CC），
+降速主要体现在 Q3 起的单季节奏而非年度趋势。<span class="dtag" style="background:#2c4d78">事实</span><span class="dtag" style="background:#16a34a">预测</span></p>
+
+<h4>cRPO 与 RPO：业务定义与趋势</h4>
+<p><b>cRPO（Current Remaining Performance Obligations）</b>是未来 12 个月内将确认为收入的已签约未履约合同金额，
+相当于 SaaS 企业的"短期收入蓄水池"；<b>RPO（Remaining Performance Obligations）</b>是全部未确认履约义务，
+反映更长周期的订单储备与平台锁定度。两者持续上升且 cRPO 增速（21%）与营收增速匹配，说明订单未被透支、
+未来收入可见度较高。<span class="dtag" style="background:#2c4d78">事实</span></p>
+<div class="chart"><svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img"><rect width="680" height="340" fill="#ffffff"/><text x="0" y="20" font-size="16" font-weight="700" fill="#003366">cRPO 与 RPO（$B）</text><line x1="58" y1="52.0" x2="662" y2="52.0" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="56.0" font-size="12" fill="#6b7280" text-anchor="end">33.3</text><line x1="58" y1="109.0" x2="662" y2="109.0" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="113.0" font-size="12" fill="#6b7280" text-anchor="end">25.0</text><line x1="58" y1="166.0" x2="662" y2="166.0" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="170.0" font-size="12" fill="#6b7280" text-anchor="end">16.7</text><line x1="58" y1="223.0" x2="662" y2="223.0" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="227.0" font-size="12" fill="#6b7280" text-anchor="end">8.3</text><line x1="58" y1="280.0" x2="662" y2="280.0" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="284.0" font-size="12" fill="#6b7280" text-anchor="end">0.0</text><rect x="70.1" y="209.4" width="38.3" height="70.6" fill="#00A1E4" rx="2"/><text x="89.2" y="205.4" font-size="11" font-weight="600" fill="#00A1E4" text-anchor="middle">10.3</text><rect x="112.3" y="128.5" width="38.3" height="151.5" fill="#003366" rx="2"/><text x="131.5" y="124.5" font-size="11" font-weight="600" fill="#003366" text-anchor="middle">22.2</text><text x="110.3" y="295.0" font-size="12" fill="#6b7280" text-anchor="middle">Q1'25</text><rect x="170.7" y="205.8" width="38.3" height="74.2" fill="#00A1E4" rx="2"/><text x="189.9" y="201.8" font-size="11" font-weight="600" fill="#00A1E4" text-anchor="middle">10.8</text><rect x="213.0" y="119.2" width="38.3" height="160.8" fill="#003366" rx="2"/><text x="232.1" y="115.2" font-size="11" font-weight="600" fill="#003366" text-anchor="middle">23.5</text><text x="211.0" y="295.0" font-size="12" fill="#6b7280" text-anchor="middle">Q2'25</text><rect x="271.4" y="201.9" width="38.3" height="78.1" fill="#00A1E4" rx="2"/><text x="290.5" y="197.9" font-size="11" font-weight="600" fill="#00A1E4" text-anchor="middle">11.4</text><rect x="313.7" y="110.0" width="38.3" height="170.0" fill="#003366" rx="2"/><text x="332.8" y="106.0" font-size="11" font-weight="600" fill="#003366" text-anchor="middle">24.9</text><text x="311.7" y="295.0" font-size="12" fill="#6b7280" text-anchor="middle">Q3'25</text><rect x="372.1" y="197.9" width="38.3" height="82.1" fill="#00A1E4" rx="2"/><text x="391.2" y="193.9" font-size="11" font-weight="600" fill="#00A1E4" text-anchor="middle">12.0</text><rect x="414.3" y="100.7" width="38.3" height="179.3" fill="#003366" rx="2"/><text x="433.5" y="96.7" font-size="11" font-weight="600" fill="#003366" text-anchor="middle">26.2</text><text x="412.3" y="295.0" font-size="12" fill="#6b7280" text-anchor="middle">Q4'25</text><rect x="472.7" y="193.6" width="38.3" height="86.4" fill="#00A1E4" rx="2"/><text x="491.9" y="189.6" font-size="11" font-weight="600" fill="#00A1E4" text-anchor="middle">12.6</text><rect x="515.0" y="90.6" width="38.3" height="189.4" fill="#003366" rx="2"/><text x="534.1" y="86.6" font-size="11" font-weight="600" fill="#003366" text-anchor="middle">27.7</text><text x="513.0" y="295.0" font-size="12" fill="#6b7280" text-anchor="middle">Q1'26</text><rect x="573.4" y="189.8" width="38.3" height="90.2" fill="#00A1E4" rx="2"/><text x="592.5" y="185.8" font-size="11" font-weight="600" fill="#00A1E4" text-anchor="middle">13.2</text><rect x="615.7" y="81.7" width="38.3" height="198.3" fill="#003366" rx="2"/><text x="634.8" y="77.7" font-size="11" font-weight="600" fill="#003366" text-anchor="middle">29.0</text><text x="613.7" y="295.0" font-size="12" fill="#6b7280" text-anchor="middle">Q2'26</text><rect x="402" y="42" width="11" height="11" fill="#00A1E4" rx="2"/><text x="418" y="52" font-size="11.5" fill="#003366">cRPO（未来12月）</text><rect x="537" y="42" width="11" height="11" fill="#003366" rx="2"/><text x="553" y="52" font-size="11.5" fill="#003366">RPO（全周期）</text><text x="58" y="336" font-size="11" fill="#6b7280" font-style="italic">来源：ServiceNow 各季 8-K</text></svg></div>
+<table>
+<tr><th>季度</th><th>cRPO($B)</th><th>cRPO YoY</th><th>RPO($B)</th><th>RPO YoY</th></tr>
+<tr><td>Q1'25</td><td>10.32</td><td>—</td><td>22.16</td><td>—</td></tr>
+<tr><td>Q2'25</td><td>10.85</td><td>—</td><td>23.52</td><td>—</td></tr>
+<tr><td>Q3'25</td><td>11.43</td><td>—</td><td>24.87</td><td>—</td></tr>
+<tr><td>Q4'25</td><td>12.01</td><td>—</td><td>26.23</td><td>—</td></tr>
+<tr><td>Q1'26</td><td>12.64</td><td>+22.5%</td><td>27.70</td><td><b>+25.0%</b></td></tr>
+<tr><td><b>Q2'26</b></td><td><b>13.20</b></td><td><b>+21%</b></td><td><b>29.00</b></td><td><b>+21%</b></td></tr>
+</table>
+<p class="note">FY2025 各季的同比基数未在同等披露颗粒度下给出，故以"—"标注而不做推算；
+Q1'26 / Q2'26 为官方口径（cRPO +22.5%/+21%、RPO +25%/+21%，均为名义增速；
+固定汇率口径分别为 cRPO +21%/+21.5%、RPO +23.5%/+22%）。<span class="dtag" style="background:#2c4d78">事实</span></p>
+
+<h4>客群与转化指标</h4>
+<table>
+<tr><th>客群/转化指标</th><th>Q2 FY2026</th><th>同比</th><th>含义</th></tr>
+<tr><td>订阅收入占比</td><td>97.3%</td><td>—</td><td>收入质量高、可预测</td></tr>
+<tr><td>净新增 ACV &gt;$100 万交易</td><td>123 笔</td><td>+40%</td><td>大单动能强</td></tr>
+<tr><td>ACV &gt;$500 万客户</td><td>658 家</td><td>+23%</td><td>头部客户扩张</td></tr>
+<tr><td>续约率</td><td>98%</td><td>—</td><td>粘性极强</td></tr>
+<tr><td>ServiceNow AI ACV</td><td>&gt;$10 亿（年化）</td><td>—</td><td>年末目标 $15 亿</td></tr>
+<tr><td>agentic AI 部署</td><td>9 个月内 9 倍</td><td>—</td><td>生产化加速</td></tr>
+</table>
+<p class="note">RPO $290 亿相当于未来约 7.3 个季度营收；电话会披露 40+ 客户已部署 Level 1 AI 专员，
+部分将 80–85% 服务请求自动化、解决时间由天级降至约 20 分钟，首次购买 agentic 产品客户同比 +45%。<span class="dtag" style="background:#2c4d78">事实</span></p>
+
+<h4>敏感性：AI 渗透 × 增长双因子</h4>
+<table>
+<tr><th>情景</th><th>FY2027E 订阅收入</th><th>隐含 YoY</th><th>AI ACV 占比</th><th>对 EPS 含义</th></tr>
+<tr><td>保守</td><td>~$180 亿</td><td>+14%</td><td>20%</td><td>增速换挡、估值承压</td></tr>
+<tr><td><b>基准</b></td><td><b>~$191 亿</b></td><td><b>+21%</b></td><td><b>25%</b></td><td>与当前指引一致，P/E ~28x</td></tr>
+<tr><td>乐观</td><td>~$205 亿</td><td>+30%</td><td>30%</td><td>AI 加速，重估至 P/E ~30x+</td></tr>
+<tr><td>2030 管理层目标</td><td>$300 亿+</td><td>CAGR &gt;20%</td><td>30%</td><td>Rule of 60+，长期市值期权</td></tr>
+</table>
+<p class="note">短期股价对"增速是否守住 20%"高度敏感：若 FY2027 增速跌破 15%，当前 ~28x 远期 P/E 将显贵；
+若 AI ACV 如期 2030 年达 30% 占比，则平台溢价可维持。管理层 2030 年 $300 亿订阅目标为条件性上行期权，
+不应全额计入基准。<span class="dtag" style="background:#8a6d1f">情景</span><span class="dtag" style="background:#FF6B00">指引</span></p>
+
+<h4>季度利润与费用结构</h4>
+<table>
+<tr><th>季度</th><th>GAAP 净利润($M)</th><th>GAAP EPS</th><th>Non-GAAP 净利润($M)</th><th>Non-GAAP EPS</th><th>Non-GAAP OPM</th></tr>
+<tr><td>Q2'25</td><td>385</td><td>$0.37</td><td>851</td><td>$0.81</td><td>29.5%</td></tr>
+<tr><td>Q1'26</td><td>469</td><td>$0.45</td><td>1,012</td><td>$0.97</td><td>31.8%</td></tr>
+<tr><td><b>Q2'26</b></td><td><b>298</b></td><td><b>$0.29</b></td><td><b>930</b></td><td><b>$0.90</b></td><td><b>29.5%</b></td></tr>
+</table>
+<p>Q2'26 GAAP 净利润 $2.98 亿（净利率 7.5%）、营业利润率 4.0%，显著低于 Non-GAAP。下表列示 Q2'26 vs Q2'25 费用结构，
+从数据本身可以看出 GAAP 利润率承压的主要来源。<span class="dtag" style="background:#2c4d78">事实</span></p>
+<table>
+<tr><th>费用项目（$M / % 营收）</th><th>Q2'25</th><th>Q2'26</th><th>YoY 变化</th></tr>
+<tr><td>销售与营销 S&M</td><td>$1,128 (35.1%)</td><td><b>$1,372 (34.4%)</b></td><td>+21.6% / −0.7pp</td></tr>
+<tr><td>研发 R&D</td><td>$734 (22.8%)</td><td><b>$915 (22.9%)</b></td><td>+24.7% / +0.1pp</td></tr>
+<tr><td>一般行政 G&A</td><td>$271 (8.4%)</td><td><b>$369 (9.3%)</b></td><td>+36.2% / +0.9pp</td></tr>
+<tr><td>股票薪酬 SBC</td><td>$499 (15.5%)</td><td><b>$655 (16.4%)</b></td><td>+31.3% / +0.9pp</td></tr>
+<tr><td>无形资产摊销（营业利润层面合计）</td><td>$25 (0.8%)</td><td><b>$219 (5.5%)</b></td><td>+776% / +4.7pp</td></tr>
+<tr><td>并购/整合相关</td><td>$14 (0.4%)</td><td><b>$75 (1.9%)</b></td><td>+436% / +1.5pp</td></tr>
+<tr><td>重组/遣散</td><td>$29 (0.9%)</td><td><b>$62 (1.6%)</b></td><td>+114% / +0.7pp</td></tr>
+</table>
+<p class="note">Non-GAAP 营业利润率同比持平 29.5%：毛利率由 81% 降至 78%（hyperscaler/AI 消费、并购无形资产摊销），
+但被运营杠杆（S&M 占比 −0.7pp）部分抵消。SBC (+16.4%)、无形资产摊销 (+5.5%)、并购整合 (+1.9%)、遣散 (+1.6%)
+合计从毛利中扣减约 25.4 个百分点，使 GAAP 营业利润率从 Non-GAAP 的 29.5% 跌至 4.0%。<span class="dtag" style="background:#2c4d78">事实</span></p>
+
+<h3>3.3 现金流与自由现金流（重点）</h3>
+<div class="chart"><svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img"><rect width="680" height="300" fill="#ffffff"/><text x="0" y="20" font-size="16" font-weight="700" fill="#003366">季度自由现金流 FCF（$M）</text><line x1="58" y1="44.0" x2="662" y2="44.0" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="48.0" font-size="12" fill="#6b7280" text-anchor="end">1,915</text><line x1="58" y1="96.5" x2="662" y2="96.5" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="100.5" font-size="12" fill="#6b7280" text-anchor="end">1,436</text><line x1="58" y1="149.0" x2="662" y2="149.0" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="153.0" font-size="12" fill="#6b7280" text-anchor="end">957</text><line x1="58" y1="201.5" x2="662" y2="201.5" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="205.5" font-size="12" fill="#6b7280" text-anchor="end">479</text><line x1="58" y1="254.0" x2="662" y2="254.0" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="258.0" font-size="12" fill="#6b7280" text-anchor="end">0</text><rect x="100.3" y="195.3" width="116.8" height="58.7" fill="#00A1E4" rx="2"/><text x="158.7" y="190.3" font-size="12" font-weight="600" fill="#003366" text-anchor="middle">535</text><text x="158.7" y="269.0" font-size="12" fill="#6b7280" text-anchor="middle">Q2'25</text><rect x="301.6" y="71.4" width="116.8" height="182.6" fill="#00A1E4" rx="2"/><text x="360.0" y="66.4" font-size="12" font-weight="600" fill="#003366" text-anchor="middle">1,665</text><text x="360.0" y="269.0" font-size="12" fill="#6b7280" text-anchor="middle">Q1'26</text><rect x="502.9" y="184.5" width="116.8" height="69.5" fill="#00A1E4" rx="2"/><text x="561.3" y="179.5" font-size="12" font-weight="600" fill="#003366" text-anchor="middle">634</text><text x="561.3" y="269.0" font-size="12" fill="#6b7280" text-anchor="middle">Q2'26</text><text x="58" y="296" font-size="11" fill="#6b7280" font-style="italic">来源：ServiceNow 8-K 现金流量表（FCF=OCF−Capex+并购相关现金成本）</text></svg></div>
+<table>
+<tr><th>项目</th><th>Q2'25</th><th>Q1'26</th><th>Q2'26</th><th>H1'26</th></tr>
+<tr><td>经营现金流 OCF</td><td>$716M</td><td>$1,670M</td><td>$587M</td><td>$2,257M</td></tr>
+<tr><td>资本开支 Capex</td><td>$190M</td><td>$141M</td><td>$114M</td><td>$255M</td></tr>
+<tr><td>自由现金流 FCF</td><td>$535M</td><td>$1,665M</td><td>$634M</td><td>$2,299M</td></tr>
+<tr><td>FCF 利润率</td><td>16.5%</td><td>~40.6%</td><td>16.0%</td><td>29.5%</td></tr>
+<tr><td>股票薪酬 SBC</td><td>$499M</td><td>$558M</td><td>$655M</td><td>$1,213M</td></tr>
+<tr><td>FCF / SBC 覆盖</td><td>1.07x</td><td>2.98x</td><td>0.97x</td><td>1.90x</td></tr>
+</table>
+<p class="note">FCF 季节性极强（Q1 为大客户年度预付高峰，利润率 ~40%；Q2 回落至 16%）。H1'26 FCF $22.99 亿、利润率 29.5%，
+全年指引 FCF 利润率 35%（=$56.7 亿）。需注意 Q2 FCF（$634M）低于 SBC（$655M），单季现金生成被股票薪酬稀释；
+全年维度 FCF 对 SBC 覆盖率约 1.9x，仍为正但安全垫不宽。<span class="dtag" style="background:#2c4d78">事实</span></p>
+
+<h3>3.4 资产负债表：期末 vs 期初（2025-12-31）</h3>
+<table>
+<tr><th>科目（$M）</th><th>2025-12-31</th><th>2026-06-30</th><th>变动</th><th>说明</th></tr>
+<tr><td>现金及等价物</td><td>$3,726</td><td>$2,503</td><td>−$1,223</td><td>发债并购消耗</td></tr>
+<tr><td>有价证券（流动+长期）</td><td>$6,329</td><td>$4,204</td><td>−$2,125</td><td>—</td></tr>
+<tr><td>应收账款</td><td>$2,627</td><td>$2,201</td><td>−$426</td><td>—</td></tr>
+<tr><td>商誉</td><td>$3,578</td><td>$9,837</td><td>+$6,259</td><td>Armis/Moveworks/Veza</td></tr>
+<tr><td>无形资产（净额）</td><td>$1,121</td><td>$3,781</td><td>+$2,660</td><td>并购 PPA</td></tr>
+<tr><td><b>总资产</b></td><td><b>$26,038</b></td><td><b>$31,666</b></td><td><b>+$5,628</b></td><td>—</td></tr>
+<tr><td>短期债务</td><td>$0</td><td>$2,082</td><td>+$2,082</td><td>新发商业票据/短期债</td></tr>
+<tr><td>长期债务</td><td>$1,491</td><td>$5,435</td><td>+$3,944</td><td>新发优先票据/定期贷款</td></tr>
+<tr><td>递延收入（流动）</td><td>$8,314</td><td>$8,057</td><td>−$257</td><td>—</td></tr>
+<tr><td><b>总负债</b></td><td><b>$13,074</b></td><td><b>$19,150</b></td><td><b>+$6,076</b></td><td>—</td></tr>
+<tr><td><b>股东权益</b></td><td><b>$12,964</b></td><td><b>$12,516</b></td><td>−$448</td><td>—</td></tr>
+</table>
+<div class="kpi2">
+  <div class="box"><div class="v">~$8.1 亿</div><div class="l">净债务（债 $75.2 亿 − 现金及证券 $67.1 亿）</div></div>
+  <div class="box"><div class="v">60.5%</div><div class="l">资产负债率（19,150 / 31,666）</div></div>
+  <div class="box"><div class="v">$8.6 亿→$0.8 亿</div><div class="l">净现金→净债务（半年变动）</div></div>
+  <div class="box"><div class="v">+58%</div><div class="l">商誉+无形资产占总资产比（期初 18% → 期末 43%）</div></div>
+</div>
+<p class="note">H1'26 通过优先票据 $39.4 亿、定期贷款 $39.9 亿、商业票据 $35.3 亿（偿还 $40 亿旧定贷）筹集约 $75 亿，
+对应期内两笔交割：<b>Veza（2026-03-02）与 Armis（2026-04-20，$77.5 亿现金）</b>，
+半年并购现金净流出合计 $87.8 亿（8-K 口径：六个月 $8,776M，其中 Q2 单季 $7,451M）。
+Moveworks 已于 2025-12-15 完成交割并计入 FY2025，不属于 H1'26 现金流支出。
+资产负债表由净现金 $86 亿转为净债务 ~$8.1 亿——杠杆仍低（净债务/权益 ~6%），
+但商誉+无形资产占比升至 43%，未来减值测试与摊销对 GAAP 盈利的拖累将持续。<span class="dtag" style="background:#2c4d78">事实</span></p>
+
+<h4>并购交割时点与对价</h4>
+<table>
+<tr><th>标的</th><th>交割日</th><th>对价</th><th>归属期间</th><th>战略定位</th></tr>
+<tr><td>Moveworks</td><td>2025-12-15</td><td>$28.5 亿</td><td>FY2025 Q4</td><td>企业级 AI 代理与企业搜索，AI 原生前台入口</td></tr>
+<tr><td>Veza</td><td>2026-03-02</td><td>约 $10 亿</td><td>FY2026 Q1</td><td>身份安全与访问图谱（Access Graph）</td></tr>
+<tr><td>Armis</td><td>2026-04-20</td><td>$77.5 亿（现金）</td><td>FY2026 Q2</td><td>网络暴露面管理，覆盖 OT/IoT/医疗设备</td></tr>
+<tr><td colspan="2"><b>H1'26 并购现金净流出</b></td><td colspan="3"><b>$87.8 亿（8-K 口径：六个月 $8,776M）</b></td></tr>
+</table>
+<p class="note">三笔收购中仅 Veza 与 Armis 发生在 H1'26，Moveworks 已于 FY2025 完成交割，其商誉已包含在 2025-12-31 资产负债表的 $35.78 亿商誉中。
+因此 H1'26 商誉增加 $62.59 亿主要来自 Armis 与 Veza 两笔交易。<span class="dtag" style="background:#2c4d78">事实</span></p>
+</section>
+
+<!-- 四、管理层指引与纪要 -->
+<section id="guide" class="bg-neutral">
+<h2>四、管理层指引与电话会纪要</h2>
+<h3>4.1 最新指引（2026-07-22 披露）</h3>
+<table>
+<tr><th>指标</th><th>Q3 FY2026 指引</th><th>FY2026 全年指引</th><th>隐含/口径</th></tr>
+<tr><td>订阅收入</td><td>$3,975–3,980M（~20% CC）</td><td><b>$15,760–15,780M</b>（~21% CC）</td><td>较此前上修 $15M 中点</td></tr>
+<tr><td>cRPO 增速</td><td>~20%（CC）</td><td>—</td><td>—</td></tr>
+<tr><td>订阅毛利率（Non-GAAP）</td><td>—</td><td>81%</td><td>hyperscaler/AI 消费分摊压制</td></tr>
+<tr><td>营业利润率（Non-GAAP）</td><td>31%</td><td><b>31.5%</b></td><td>GAAP 约 10%</td></tr>
+<tr><td>自由现金流利润率</td><td>—</td><td><b>35%</b></td><td>全年 FCF ~$56.7 亿</td></tr>
+<tr><td>稀释股数</td><td>~10.5 亿</td><td>~10.4 亿</td><td>含 SBC 与并购增发</td></tr>
+</table>
+<p class="note">管理层坦言 Q2 超指引部分来自<b>美国联邦客户需求将部分本地部署订阅收入由 Q3 提前至 Q2</b>（timing），
+强调全年上修主要来自净新增 ACV 强度而非单纯 timing；并提示 hyperscaler/AI 消费 ramp 带来近期毛利率压力。
+这种透明度降低了"beat 质量"的质疑。<span class="dtag" style="background:#FF6B00">指引</span><span class="dtag" style="background:#2c4d78">事实</span></p>
+
+<h3>4.2 Analyst Day（2026-05-04）长期目标</h3>
+<ul>
+<li>订阅收入 <b>$300 亿+</b>（2030 年），隐含 2025→2030 收入 CAGR &gt;20%。<span class="dtag" style="background:#FF6B00">指引</span></li>
+<li>AI 占 ACV 比重 <b>30%</b>（2030 年）；当前 AI ACV 已跨 $10 亿、年末目标 $15 亿。<span class="dtag" style="background:#FF6B00">指引</span></li>
+<li><b>Rule of 60+</b>（订阅增速 CC + FCF 利润率 &gt;60）于 2030 年达成；当前 Rule of 56。<span class="dtag" style="background:#FF6B00">指引</span></li>
+<li>股票薪酬降至 <b>&lt;10% 营收</b>（2029 年）；当前约 15.5%。<span class="dtag" style="background:#FF6B00">指引</span></li>
+</ul>
+
+<h3>4.3 电话会关键信号</h3>
+<ul>
+<li>AI 采用仍处早期：40+ 客户部署 Level 1 AI 专员，部分自动化 80–85% 服务请求，解决时间天级→约 20 分钟。<span class="dtag" style="background:#2c4d78">事实</span></li>
+<li>首次购买 agentic AI 产品客户同比 <b>+45%</b>，混合（授权+用量）定价获企业认可并支撑提价。<span class="dtag" style="background:#2c4d78">事实</span></li>
+<li>安全与风险为最快增长业务之一；ITOM 受 CMDB 治理需求拉动。<span class="dtag" style="background:#2c4d78">事实</span></li>
+<li>近景风险：并购整合与人员影响、hyperscaler 消费带来的毛利率波动、竞争与宏观噪音。<span class="dtag" style="background:#2c4d78">事实</span></li>
+</ul>
+
+<h3>4.4 管理层执行力与治理</h3>
+<p>从公开记录看，ServiceNow 管理层具备较强的战略执行力与资本市场沟通纪律：</p>
+<ul>
+<li><b>指引兑现</b>：连续多个季度营收、cRPO 与利润率均达到或超过指引高端；Q2 上修全年指引的同时明确披露 timing 因素（联邦 on-prem 提前），避免"粉饰 beat"。<span class="dtag" style="background:#2c4d78">事实</span></li>
+<li><b>资本配置</b>：H1'26 回购 $22.25 亿（另有新授权 $50 亿与 $20 亿加速回购安排），
+同时分期收购补齐安全能力——Moveworks $28.5 亿（2025-12-15 交割）、Veza（2026-03-02 交割）、Armis $77.5 亿（2026-04-20 交割）；
+H1'26 举债约 $75 亿后净债务/权益仍仅约 6%，杠杆控制审慎。<span class="dtag" style="background:#2c4d78">事实</span></li>
+<li><b>SBC 治理</b>：股票薪酬占收 15.5% 仍偏高，但管理层已给出 2029 年降至 &lt;10% 的明确目标；并购稀释股本有限（稀释股数从约 10.4 亿微增），未出现大规模摊薄式并购。<span class="dtag" style="background:#FF6B00">指引</span></li>
+<li><b>关键人风险</b>：CEO Bill McDermott 主导战略与生态合作，CFO Gina Mastantuono 负责执行与资本市场沟通；两人任职稳定，但 McDermott 年近 70，需关注继任计划披露。<span class="dtag" style="background:#2c4d78">事实</span><span class="dtag" style="background:#7a4fb0">选项</span></li>
+</ul>
+<p class="note">整体而言，管理层在增长换挡期保持了较高的透明度与执行纪律，资本配置方向正确（平台能力补强 + 股东返还），
+主要扣分项是 SBC 稀释仍高与并购整合的短期不确定性。若 AI 货币化与 SBC 下降路径如期兑现，可信度将进一步提升。<span class="dtag" style="background:#16a34a">预测</span></p>
+</section>
+
+<!-- 五、估值 -->
+<section id="valuation">
+<h2>五、估值</h2>
+<p>ServiceNow 为高增长、高毛利、强 FCF 的稀缺平台型资产，估值应以<b>远期收入/现金流倍数</b>为主、
+P/E 为辅（SBC 使 GAAP 利润失真）。当前价 $138.43 对应：TTM P/S ~9.9x、远期 FY2027E P/S ~7.3x、
+远期 Non-GAAP P/E（FY2027E ~$4.95，推导见 5.4）~28.0x、EV/FCF（FY2027E）~20.9x。<span class="dtag" style="background:#16a34a">预测</span></p>
+
+<h3>5.1 同业对比（远期 P/S，NTM）</h3>
+<div class="chart"><svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img"><rect width="680" height="300" fill="#ffffff"/><text x="0" y="20" font-size="16" font-weight="700" fill="#003366">同业估值对比：NTM P/S（x）</text><line x1="58" y1="44.0" x2="662" y2="44.0" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="48.0" font-size="12" fill="#6b7280" text-anchor="end">34</text><line x1="58" y1="96.5" x2="662" y2="96.5" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="100.5" font-size="12" fill="#6b7280" text-anchor="end">26</text><line x1="58" y1="149.0" x2="662" y2="149.0" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="153.0" font-size="12" fill="#6b7280" text-anchor="end">17</text><line x1="58" y1="201.5" x2="662" y2="201.5" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="205.5" font-size="12" fill="#6b7280" text-anchor="end">9</text><line x1="58" y1="254.0" x2="662" y2="254.0" stroke="#e2e8f0" stroke-width="1"/><text x="50" y="258.0" font-size="12" fill="#6b7280" text-anchor="end">0</text><rect x="79.1" y="193.7" width="58.4" height="60.3" fill="#00A1E4" rx="2"/><text x="108.3" y="188.7" font-size="12" font-weight="600" fill="#003366" text-anchor="middle">9.9</text><text x="108.3" y="269.0" font-size="12" fill="#6b7280" text-anchor="middle">ServiceNow</text><rect x="179.8" y="212.6" width="58.4" height="41.4" fill="#00A1E4" rx="2"/><text x="209.0" y="207.6" font-size="12" font-weight="600" fill="#003366" text-anchor="middle">6.8</text><text x="209.0" y="269.0" font-size="12" fill="#6b7280" text-anchor="middle">Salesforce</text><rect x="280.5" y="205.3" width="58.4" height="48.7" fill="#00A1E4" rx="2"/><text x="309.7" y="200.3" font-size="12" font-weight="600" fill="#003366" text-anchor="middle">8.0</text><text x="309.7" y="269.0" font-size="12" fill="#6b7280" text-anchor="middle">Adobe</text><rect x="381.1" y="210.2" width="58.4" height="43.8" fill="#00A1E4" rx="2"/><text x="410.3" y="205.2" font-size="12" font-weight="600" fill="#003366" text-anchor="middle">7.2</text><text x="410.3" y="269.0" font-size="12" fill="#6b7280" text-anchor="middle">Workday</text><rect x="481.8" y="208.3" width="58.4" height="45.7" fill="#00A1E4" rx="2"/><text x="511.0" y="203.3" font-size="12" font-weight="600" fill="#003366" text-anchor="middle">7.5</text><text x="511.0" y="269.0" font-size="12" fill="#6b7280" text-anchor="middle">Oracle</text><rect x="582.5" y="71.4" width="58.4" height="182.6" fill="#00A1E4" rx="2"/><text x="611.7" y="66.4" font-size="12" font-weight="600" fill="#003366" text-anchor="middle">30.0</text><text x="611.7" y="269.0" font-size="12" fill="#6b7280" text-anchor="middle">Palantir</text><text x="58" y="296" font-size="11" fill="#6b7280" font-style="italic">来源：各公司披露与市场一致预期（2026-08）；单位 x</text></svg></div>
+<p class="note">ServiceNow 较传统 SaaS 同业（CRM/ADBE/WDAY/ORCL 约 7–8x P/S）溢价约 30–40%，
+但增速（21% vs 同业 10–15%）与 Rule of 56 质量支撑溢价；Palantir 的 30x 反映纯 AI 稀缺溢价，非常规可比。<span class="dtag" style="background:#16a34a">预测</span></p>
+
+<h3>5.2 估值足球场（目标价区间）</h3>
+<div class="chart"><svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img"><rect width="680" height="360" fill="#ffffff"/><text x="0" y="20" font-size="16" font-weight="700" fill="#003366">估值方法足球场（目标价 $）</text><line x1="150.0" y1="46" x2="150.0" y2="326.0" stroke="#e2e8f0" stroke-width="1"/><text x="150.0" y="342.0" font-size="12" fill="#6b7280" text-anchor="middle">$100</text><line x1="235.0" y1="46" x2="235.0" y2="326.0" stroke="#e2e8f0" stroke-width="1"/><text x="235.0" y="342.0" font-size="12" fill="#6b7280" text-anchor="middle">$120</text><line x1="320.0" y1="46" x2="320.0" y2="326.0" stroke="#e2e8f0" stroke-width="1"/><text x="320.0" y="342.0" font-size="12" fill="#6b7280" text-anchor="middle">$140</text><line x1="405.0" y1="46" x2="405.0" y2="326.0" stroke="#e2e8f0" stroke-width="1"/><text x="405.0" y="342.0" font-size="12" fill="#6b7280" text-anchor="middle">$160</text><line x1="490.0" y1="46" x2="490.0" y2="326.0" stroke="#e2e8f0" stroke-width="1"/><text x="490.0" y="342.0" font-size="12" fill="#6b7280" text-anchor="middle">$180</text><line x1="575.0" y1="46" x2="575.0" y2="326.0" stroke="#e2e8f0" stroke-width="1"/><text x="575.0" y="342.0" font-size="12" fill="#6b7280" text-anchor="middle">$200</text><line x1="660.0" y1="46" x2="660.0" y2="326.0" stroke="#e2e8f0" stroke-width="1"/><text x="660.0" y="342.0" font-size="12" fill="#6b7280" text-anchor="middle">$220</text><line x1="313.3" y1="40.0" x2="313.3" y2="326.0" stroke="#dc2626" stroke-width="2" stroke-dasharray="4 3"/><text x="317.3" y="44.0" font-size="11" fill="#dc2626" font-weight="700">现价 $138.43</text><rect x="400.8" y="65.0" width="80.8" height="18" fill="#00A1E4" rx="3" opacity="0.88"/><text x="394.8" y="78.0" font-size="12.5" fill="#003366" text-anchor="end">EV/Sales(FY27E)</text><text x="487.5" y="78.0" font-size="11" fill="#6b7280">$159–178</text><rect x="277.5" y="121.0" width="106.2" height="18" fill="#00A1E4" rx="3" opacity="0.88"/><text x="271.5" y="134.0" font-size="12.5" fill="#003366" text-anchor="end">P/E(FY27E)</text><text x="389.8" y="134.0" font-size="11" fill="#6b7280">$130–155</text><rect x="281.8" y="177.0" width="85.0" height="18" fill="#00A1E4" rx="3" opacity="0.88"/><text x="275.8" y="190.0" font-size="12.5" fill="#003366" text-anchor="end">EV/FCF(FY27E)</text><text x="372.8" y="190.0" font-size="11" fill="#6b7280">$131–151</text><rect x="383.8" y="233.0" width="148.8" height="18" fill="#00A1E4" rx="3" opacity="0.88"/><text x="377.8" y="246.0" font-size="12.5" fill="#003366" text-anchor="end">SOTP 分部</text><text x="538.5" y="246.0" font-size="11" fill="#6b7280">$155–190</text><rect x="341.2" y="289.0" width="148.8" height="18" fill="#00A1E4" rx="3" opacity="0.88"/><text x="335.2" y="302.0" font-size="12.5" fill="#003366" text-anchor="end">DCF(可审计)</text><text x="496.0" y="302.0" font-size="11" fill="#6b7280">$145–180</text><text x="660" y="42.0" font-size="11" fill="#6b7280" text-anchor="end">中枢≈$157</text><text x="150" y="357" font-size="11" fill="#6b7280" font-style="italic">来源：Snail-Bird 测算（详见 5.3–5.4）</text></svg></div>
+
+<h3>5.3 估值模型与可审计 DCF</h3>
+<table>
+<tr><th>方法</th><th>关键假设</th><th>隐含股价</th><th>说明</th></tr>
+<tr><td>EV/Sales（FY2027E）</td><td>营收 $196 亿 × 8.5–9.5x − 净债务 ÷ 10.4 亿股</td><td>$159–178</td><td>较同业 7–8x 溢价，反映 21% 增速与 Rule of 56</td></tr>
+<tr><td>P/E（FY2027E）</td><td>非GAAP EPS ~$4.95 × 26–31x</td><td>$129–153</td><td>EPS 推导见 5.4，28x 为增速 21% 的合理中枢</td></tr>
+<tr><td>EV/FCF（FY2027E）</td><td>FCF $68.6 亿 × 20–23x − 净债务</td><td>$131–151</td><td>FCF 利润率 35%（公司指引口径）</td></tr>
+<tr><td>SOTP 分部</td><td>四分部差异化倍数加总</td><td>$155–190</td><td>基准 EV $1,704 亿 → 每股 $163（见 5.4）</td></tr>
+<tr><td>DCF（可审计）</td><td>WACC 9%、永续 3.5%、5 年 FCF 增速 21%→10%</td><td>$161</td><td>详见下表，所有参数可复核</td></tr>
+</table>
+
+<h4>DCF 可审计假设与测算</h4>
+<table>
+<tr><th>参数</th><th>假设</th><th>依据</th></tr>
+<tr><td>折现率 WACC</td><td>9.0%</td><td>大型成长型 SaaS 合理折现率</td></tr>
+<tr><td>永续增长率</td><td>3.5%</td><td>接近长期名义 GDP+通胀，保守</td></tr>
+<tr><td>流通股数</td><td>10.34 亿股</td><td>Q2'26 稀释加权平均</td></tr>
+<tr><td>净债务</td><td>$0.81B</td><td>债务 $7.52B − 现金及证券 $6.71B</td></tr>
+<tr><td>FCF 预测路径</td><td>FY26 $5.67B → FY27 $6.86B → +15% → +13% → +11% → +10%</td><td>与 FY26 指引 35% FCF margin 及 21% 增长匹配</td></tr>
+</table>
+<table>
+<tr><th>财年</th><th>FCF（$B）</th><th>增长率</th><th>折现因子（9%）</th><th>现值（$B）</th></tr>
+<tr><td>FY2027</td><td>6.86</td><td>21%</td><td>0.917</td><td>6.29</td></tr>
+<tr><td>FY2028</td><td>7.89</td><td>15%</td><td>0.842</td><td>6.64</td></tr>
+<tr><td>FY2029</td><td>8.92</td><td>13%</td><td>0.772</td><td>6.89</td></tr>
+<tr><td>FY2030</td><td>9.90</td><td>11%</td><td>0.708</td><td>7.01</td></tr>
+<tr><td>FY2031</td><td>10.89</td><td>10%</td><td>0.650</td><td>7.08</td></tr>
+<tr><td>终值</td><td>205.0</td><td>g=3.5%</td><td>0.650</td><td>133.2</td></tr>
+<tr><td colspan="4"><b>企业价值 EV 合计</b></td><td><b>$167.1</b></td></tr>
+<tr><td colspan="4">减：净债务</td><td>−0.8</td></tr>
+<tr><td colspan="4"><b>股权价值</b></td><td><b>$166.3</b></td></tr>
+<tr><td colspan="4"><b>每股价值（÷10.34 亿股）</b></td><td><b>$161</b></td></tr>
+</table>
+<p class="note">上表每个数字均可由 FCF 路径、WACC 和终值公式独立复核；终值 = FY2031 FCF × 1.035 / (9% − 3.5%)。
+DCF 对永续增速与 WACC 高度敏感，故下表提供敏感性矩阵：<span class="dtag" style="background:#16a34a">预测</span></p>
+<table>
+<tr><th>每股价值</th><th>永续 g = 3.0%</th><th>永续 g = 3.5%</th><th>永续 g = 4.5%</th></tr>
+<tr><td>WACC 8.0%</td><td>$181</td><td>$198</td><td>$247</td></tr>
+<tr><td>WACC 9.0%（基准）</td><td>$150</td><td>$161</td><td>$191</td></tr>
+<tr><td>WACC 10.0%</td><td>$127</td><td>$135</td><td>$155</td></tr>
+</table>
+
+<h3>5.4 FY2026E / FY2027E 推导路径与 SOTP 分部拆分</h3>
+<h4>盈利预测推导</h4>
+<table>
+<tr><th>项目</th><th>FY2026E</th><th>FY2027E</th><th>推导依据</th></tr>
+<tr><td>订阅收入（$M）</td><td>15,770</td><td>19,082</td><td>FY26 取指引中点；FY27 按 ~21% CC 增长</td></tr>
+<tr><td>总营收（$M）</td><td>16,196</td><td>19,597</td><td>订阅 ×(1＋专业服务占比 2.7%，依 H1'26 实际)</td></tr>
+<tr><td>非GAAP 营业利润率</td><td>31.5%</td><td>33.0%</td><td>FY26 为公司指引；FY27 假设整合成效带来温和扩张</td></tr>
+<tr><td>非GAAP 营业利润（$M）</td><td>5,102</td><td>6,467</td><td>总营收 × 营业利润率</td></tr>
+<tr><td>非GAAP 净利润（$M）</td><td>4,082</td><td>5,149</td><td>营业利润 × 0.80（H1'26 实际比率 81.9% 打折）</td></tr>
+<tr><td>稀释股数（M）</td><td>1,040</td><td>1,040</td><td>公司 FY26 指引口径；暂不考虑回购带来的进一步缩减</td></tr>
+<tr><td><b>非GAAP EPS（$）</b></td><td><b>3.92</b></td><td><b>4.95</b></td><td>净利润 ÷ 稀释股数</td></tr>
+<tr><td>自由现金流（$M）</td><td>5,669</td><td>6,859</td><td>FCF 利润率 35%（公司 FY26 指引）</td></tr>
+</table>
+<p class="note">按此推导，当前价 $138.43 对应 FY2026E P/E 约 35x、FY2027E P/E 约 28x。
+若 FY2027 回购使稀释股数降至 10.2 亿股，EPS 可提升至约 $5.05，P/E 降至约 27x——回购力度是影响估值兑现的次要变量。<span class="dtag" style="background:#16a34a">预测</span></p>
+
+<h4>SOTP 分部拆分（FY2027E 收入基数）</h4>
+<table>
+<tr><th>分部</th><th>FY2027E 收入（$B）</th><th>给予 EV/S 倍数</th><th>分部 EV（$B）</th><th>倍数依据</th></tr>
+<tr><td>核心工作流（ITSM/ITOM/CSM/HR/SPM）</td><td>13.7</td><td>8.5x</td><td>116.5</td><td>成熟业务，增速中双位数，参照同业 7–8x 上浮</td></tr>
+<tr><td>AI 平台（Now Assist / Otto / Control Tower / agentic）</td><td>2.4</td><td>12.0x</td><td>28.8</td><td>高增长且为估值溢价核心来源</td></tr>
+<tr><td>安全与风险（Armis / Veza / SecOps）</td><td>2.5</td><td>9.0x</td><td>22.5</td><td>新并表、高增速，但整合尚未验证</td></tr>
+<tr><td>专业服务与其他</td><td>1.0</td><td>2.0x</td><td>2.0</td><td>低毛利、非经常性，给低倍数</td></tr>
+<tr><td colspan="3"><b>企业价值 EV 合计</b></td><td><b>169.8</b></td><td>—</td></tr>
+<tr><td colspan="3">减：净债务</td><td>−0.8</td><td>—</td></tr>
+<tr><td colspan="3"><b>股权价值</b></td><td><b>169.0</b></td><td>—</td></tr>
+<tr><td colspan="3"><b>每股价值（÷10.4 亿股）</b></td><td><b>$163</b></td><td>区间 $155–190（分部倍数上下浮动 ±15%）</td></tr>
+</table>
+<p class="note">SOTP 的核心敏感点是 AI 平台分部的收入确认与倍数：若 AI 收入仅 $15 亿且倍数降至 9x，每股价值将回落约 $12；
+若 AI 收入达 $30 亿且维持 12x，每股价值可上浮约 $13。分部收入为按产品线估算，公司未单独披露该拆分。<span class="dtag" style="background:#16a34a">预测</span><span class="dtag" style="background:#8a6d1f">情景</span></p>
+
+<div class="verdict">
+<b>目标价 $165（持有）</b>：五种方法区间为 $129–190，等权中枢约 $157；取 SOTP（$163）与 DCF 基准（$161）
+加权、并参考 EV/Sales 上沿，给出 <b>$165</b>——较等权中枢略高，反映对 AI 期权与 Rule of 60 路径的部分认可。
+熊市情景（增速跌破 15%、P/S 回落至 ~6x）下探 $110；牛市情景（AI ACV 加速、Rule of 60 提前）上看 $200。
+当前估值合理偏贵，不构成强 BUY 安全边际。<span class="dtag" style="background:#16a34a">预测</span><span class="dtag" style="background:#8a6d1f">情景</span>
+</div>
+</section>
+
+<!-- 六、多空观点 -->
+<section id="bullbear" class="bg-neutral">
+<h2>六、多空观点</h2>
+<div class="cards">
+  <div class="card"><div class="ic" style="background:rgba(22,163,74,0.12);color:#16a34a">↑</div><h4>多头论点</h4>
+  <p>① 平台护城河深（CMDB+工作流+AI 代理三位一体），98% 续约率与 $290 亿 RPO 锁定可见度；
+  ② AI 进入货币化拐点（ACV &gt;$10 亿、agentic 9 倍、2030 占 30%）；
+  ③ Rule of 56、FCF 利润率 35% 的现金质量；④ 生态绑定 NVIDIA/Microsoft/AWS/OpenAI；
+  ⑤ 大型企业与公共部门渗透率仍有空间，安全业务新引擎。<span class="dtag" style="background:#16a34a">预测</span></p></div>
+  <div class="card"><div class="ic" style="background:rgba(220,38,38,0.12);color:#dc2626">↓</div><h4>空头论点</h4>
+  <p>① 增速由 24% 降至 21% 指引，估值已隐含高可见度，降速即杀估值；
+  ② SBC 占收 ~15.5%、GAAP 利润率仅 4%，真实盈利稀释明显；
+  ③ H1'26 举债 $75 亿并购，商誉+无形资产占资产 43%，整合与减值风险；
+  ④ 微软/谷歌/Salesforce 在 AI 工作流正面竞争；⑤ 宏观走弱或联邦支出波动影响大单节奏。<span class="dtag" style="background:#16a34a">预测</span></p></div>
+</div>
+</section>
+
+<!-- 七、催化剂 -->
+<section id="catalysts">
+<h2>七、催化剂</h2>
+<ul>
+<li><b>近期会议</b>：Deutsche Bank 科技大会（2026-08-27，CFO）、Citi Global TMT（2026-09-09）、
+Goldman Sachs Communacopia（2026-09-09，CEO 主题演讲）——关注 FY2027 早期指引与 AI ACV 更新。<span class="dtag" style="background:#2c4d78">事实</span></li>
+<li><b>Q3 FY2026 业绩</b>（预计 2026-10 下旬）：验证 cRPO ~20% 与营业利润率 31% 指引，及联邦 timing 影响消退。<span class="dtag" style="background:#FF6B00">指引</span></li>
+<li><b>AI Control Tower / Otto 采用指标</b>：Level 1 专员客户数、agentic 部署量、ACV 占比的季度披露。<span class="dtag" style="background:#2c4d78">事实</span></li>
+<li><b>并购整合进展</b>：Armis/Moveworks/Veza 交叉销售与利润率贡献；SBC 下降路径（目标 2029 &lt;10%）。<span class="dtag" style="background:#FF6B00">指引</span></li>
+<li><b>2030 路线图年度细化</b>：通常在 1–2 月给出 FY2027 正式指引与 AI 收入占比更新。<span class="dtag" style="background:#FF6B00">指引</span></li>
+</ul>
+</section>
+
+<!-- 八、风险 -->
+<section id="risks" class="bg-neutral">
+<h2>八、风险</h2>
+<div class="cards">
+  <div class="card"><div class="ic" style="background:rgba(220,38,38,0.12);color:#dc2626">⚠</div><h4>增速换挡</h4>
+  <p>若 FY2027 订阅增速跌破 15%，当前 ~28x 远期 P/E 与 ~7x 远期 P/S 将显贵，估值压缩风险大。</p></div>
+  <div class="card"><div class="ic" style="background:rgba(220,38,38,0.12);color:#dc2626">⚠</div><h4>并购整合</h4>
+  <p>Armis/Moveworks/Veza 整合不及预期、协同延迟；商誉+无形资产 $136 亿减值测试压力。</p></div>
+  <div class="card"><div class="ic" style="background:rgba(220,38,38,0.12);color:#dc2626">⚠</div><h4>SBC 稀释</h4>
+  <p>股票薪酬占收 15.5%，GAAP 盈利与每股现金被稀释；降至 &lt;10% 需至 2029 年。</p></div>
+  <div class="card"><div class="ic" style="background:rgba(220,38,38,0.12);color:#dc2626">⚠</div><h4>竞争加剧</h4>
+  <p>微软（Copilot/Agent 365）、Salesforce、谷歌在 AI 工作流的正面竞争与平台切换风险。</p></div>
+  <div class="card"><div class="ic" style="background:rgba(220,38,38,0.12);color:#dc2626">⚠</div><h4>宏观/支出</h4>
+  <p>企业 IT 与联邦预算波动、汇率（USD 走强约 $35M Q3 cRPO 逆风）影响大单与续约。</p></div>
+  <div class="card"><div class="ic" style="background:rgba(220,38,38,0.12);color:#dc2626">⚠</div><h4>AI 替代</h4>
+  <p>通用 AI 模型若直接替代部分工作流功能，或削弱平台粘性（当前概率低但需跟踪）。</p></div>
+</div>
+</section>
+
+<!-- 九、评级与目标价 -->
+<section class="grad-cta">
+<h2>九、评级与目标价</h2>
+<p style="max-width:760px;margin:0 auto;color:#e3f1fb;">ServiceNow 是企业软件中最具防御性的高成长平台之一：RPO 可见度、AI 拐点与 Rule of 56 现金质量构成长期多头基石。
+但当前估值已较充分反映 21% 增长与并购预期，且 SBC 稀释、增速换挡与整合风险构成中短期逆风。
+据此给予<b>持有（HOLD）</b>评级，12 个月目标价 <b>$165</b>（约 +19%，由 SOTP/EV-FCF/DCF 交叉验证）；
+建议存量持有，回调至 $125 以下再积极增持。</p>
+<div class="row">
+  <div class="b"><div class="v">持有</div><div class="l">投资评级</div></div>
+  <div class="b"><div class="v">$165</div><div class="l">12M 目标价</div></div>
+  <div class="b"><div class="v">$110 / $200</div><div class="l">熊市 / 牛市</div></div>
+  <div class="b"><div class="v">~28x</div><div class="l">远期 P/E(FY27E)</div></div>
+</div>
+</section>
+
+<footer class="footer">
+  <p>数据来源：ServiceNow Q2 FY2026 8-K（2026-07-22）、Q1 FY2026 8-K、FY2025 10-K、Analyst Day（2026-05-04）、
+  电话会纪要、SEC 文件及公开市场交叉核验。当前股价取 2026-08-27 收盘 $138.43（NYSE: NOW）。</p>
+  <p>出版人：Snail-Bird Investment。本报告基于公开资料研究，数据经官方文件核验；五级标签：事实/指引/预测/情景/选项。
+  部分前瞻性陈述存在不确定性，可能与实际结果重大差异。</p>
+  <p>免责声明：本报告仅供研究参考，不构成个人投资建议。投资有风险，决策需谨慎。非持牌金融顾问意见，
+  输出仅为公开资料研究与分析，不构成保证性投资建议。</p>
+</footer>
+</div>
+</body>
+</html>
