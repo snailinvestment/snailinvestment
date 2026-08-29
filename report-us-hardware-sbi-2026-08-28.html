@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美国硬件/半导体板块 SBI 泡沫指数日报 · 2026-08-28</title>
+
+<style>
+  :root{
+    --navy:#1e3a5f; --navy2:#24344e; --gold:#c8a24a; --ink:#e2e8f0; --muted:#94a3b8;
+    --line:#1e293b; --bg:#0b1120; --card:#0f172a; --green:#2e9e6b; --amber:#e8943a;
+    --orange:#e8703a; --red:#d64545; --soft:#16203a;
+    --panel:#0f172a; --yellow:#e8943a; --gray:#94a3b8;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;}
+  .wrap{max-width:980px;margin:0 auto;padding:24px 18px 60px;}
+  header{background:linear-gradient(135deg,var(--gold),var(--gold));color:#e2e8f0;border-radius:14px;padding:22px 26px;box-shadow:0 6px 22px rgba(26,58,107,.25);}
+  header h1{margin:0 0 6px;font-size:23px;letter-spacing:.5px;}
+  header .sub{font-size:13px;opacity:.9;}
+  header .badge{display:inline-block;background:var(--gold);color:#1a2238;font-weight:700;padding:2px 10px;border-radius:20px;font-size:12px;margin-right:8px;}
+  .note{background:#1c2940;border:1px solid #f0dca0;border-left:5px solid var(--gold);border-radius:8px;padding:12px 16px;margin:18px 0;font-size:13px;color:#6b5a1e;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:18px 0;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:0 2px 8px rgba(26,58,107,.06);}
+  .card .k{font-size:12px;color:var(--gray);}
+  .card .v{font-size:22px;font-weight:800;margin-top:4px;}
+  .card .d{font-size:12px;margin-top:2px;}
+  .up{color:var(--red);} .down{color:var(--green);} .flat{color:var(--gray);}
+  .gauge-wrap{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;margin:18px 0;box-shadow:0 2px 8px rgba(26,58,107,.06);text-align:center;}
+  .gauge-wrap h2{font-size:16px;margin:0 0 6px;color:var(--gold);}
+  .chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:760px){.chart-grid{grid-template-columns:1fr;}}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(26,58,107,.06);}
+  .panel h2{font-size:16px;margin:0 0 10px;color:var(--gold);border-bottom:2px solid var(--gold);padding-bottom:6px;display:inline-block;}
+  .canvas-box{position:relative;height:300px;overflow:hidden;display:flex;justify-content:center;align-items:center;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px;}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:center;}
+  th{background:#1e293b;color:var(--ink);font-weight:700;}
+  td.l{text-align:left;}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:11px;font-weight:700;}
+  .t-warn{background:#fff3cd;color:#8a6d00;} .t-danger{background:#fde2dd;color:#a5281b;} .t-ok{background:#dcf3e4;color:#1c7a45;}
+  .sec{margin:22px 0;}
+  .sec h2{font-size:18px;color:var(--gold);border-left:5px solid var(--gold);padding-left:12px;margin-bottom:10px;}
+  ul.concl{margin:0;padding-left:20px;}
+  ul.concl li{margin:7px 0;font-size:14px;}
+  .rec{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:8px;padding:14px 18px;font-size:14px;}
+  .bullbear{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px;}
+  @media(max-width:760px){.bullbear{grid-template-columns:1fr;}}
+  .bb-col{border-radius:10px;padding:14px;font-size:13.5px;}
+  .bb-bull{background:#0f2922;border:1px solid #2e9e6b;color:#e2e8f0;}
+  .bb-bear{background:#2a1a1a;border:1px solid #d64545;color:#e2e8f0;}
+  .bb-col h3{margin:0 0 8px;font-size:15px;}
+  .bb-col ul{margin:0;padding-left:18px;} .bb-col li{margin:6px 0;}
+  footer{margin-top:30px;font-size:12px;color:var(--gray);text-align:center;border-top:1px solid var(--line);padding-top:14px;}
+  .tag-line{font-size:13px;color:var(--gray);}
+  .preview{background:#16203a;border:1px solid #1e3a5f;border-left:5px solid var(--gold);border-radius:8px;padding:14px 18px;font-size:14px;margin:18px 0;color:#e2e8f0;}
+  .events{background:#f4f1fb;border:1px solid #d9cdf0;border-left:5px solid #7d5bbf;border-radius:8px;padding:14px 18px;font-size:13.5px;margin:18px 0;}
+  .events h3{margin:0 0 8px;font-size:15px;color:#5a3d99;}
+  .events ul{margin:0;padding-left:18px;} .events li{margin:6px 0;}
+  .table2{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;}
+  .table2 th,.table2 td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;}
+  .table2 th{background:#eef2f8;color:var(--gold);}
+  .table2 td.l{text-align:left;}
+.total-num{position:absolute;left:0;right:0;top:58%;transform:translateY(-50%);text-align:center;font-size:42px;font-weight:800;color:var(--amber);line-height:1;pointer-events:none;}
+.total-label{position:absolute;left:0;right:0;top:calc(58% + 40px);text-align:center;font-size:13px;color:var(--muted);pointer-events:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>美国硬件 / 半导体板块 · SBI 泡沫指数日报</h1>
+  <div class="sub">
+    <span class="badge">SBI 62.8</span>
+    分析日期：2026年8月28日（星期五）　|　美股数据截止：2026年8月27日（周四）收盘（自动化 8/28 运行，北京时间 10:24 GMT+8 = 美东 8/27 22:24，<b>周四已收盘</b>，最新交易日为 8/27）— SOX 收 11,882.17（+2.33%）；<b>头号事件：NVDA 8/27 全天大涨 +8.74%（收 227.98、市值 $5.49T、单日市值 +$4,415 亿，美股史上第二大单日市值增幅）确认 8/26 盘后 beat&raise</b>，费半跟涨、AVGO +4.49%/INTC +4.36%/TSM ADR +2.30%，AI 硬件"业绩兑现"维获市场背书；8/28 杰克逊霍尔（沃什主旨演讲）为下一波动点
+  </div>
+</header>
+
+<div class="note">""  <b>数据时效说明：</b>今日为<b>周五 8/28</b>，自动化于北京时间 10:24 运行（美东 8/27 22:24，<b>美国周四交易日已收盘</b>），<b>最新已收盘交易日为 8/27（周四）</b>，故本期为<b>真实新交易日驱动更新</b>（非前报 8/24 的"事件驱动持平"）。<b>SBI = 62.8（环比前报 8/27 的 62.6 为 +0.2）</b>，<b>连续低于 65 危险线（自 8/19 起），警惕区运行</b>，仍稳居 8/19 回落通道以来的警惕区（62–63 区间）；NVDA 8/27 大涨 +8.74% 使拥挤维（NVDA 权重升至 ~8.0%）微升，但 forward PE 压缩至 ~17.9x 使估值维微降，两相抵消后 SBI 持平微升。核心变化：① <b>估值维微降 −0.3 至 43.1</b>——SOX 8/27 收 11,882.17（+2.33%），偏离 200MA（≈9,608）由 +21.0%（8/26）升至 <b>+23.8%</b>（逼近 +25% 警戒线，抬升风险）；但 NVDA 财报后 forward 盈利预期大幅上修，fwd PE 由 ~22.4x 压缩至 <b>~17.9x</b>（Reuters，显著低于 AMD 37.2x/INTC 46.2x），拉低风险；两相抵消后估值维基本持平微降。② <b>资金维持平 52.0</b>——8/27 NVDA 引爆的 +2.33% 费半反弹属"财报利好买盘"，但半导体 ETF"越涨越赎"趋势未逆转（周度 SMH 仍净赎、SOXL 杠杆 ETF 月度 +$4.53B 黏性投机为波动放大器）；资金转向 QQQ/黄金的结构未改，NVDA 单日天量（2.93 亿股、超 3 月均值 106%）更多是事件驱动而非趋势性回流。③ <b>杠杆(90) 持平、拥挤(70.7→71.5) 因 NVDA 权重升至 ~8.0% 微升；业绩(66) 维持（8/26 beat&raise 已在 8/27 获市场背书、16+ 机构上调目标价）；外部(55) 持平（10Y ~4.67%、沃什杰克逊霍尔演讲前 Schmid 放鹰、但油价因霍尔木兹缓和续跌对冲）</b>：FINRA 7 月 $1.42T（4.45% GDP/99 分位）沿用、8 月读数 9 月第三周才公布；NVDA 8/27 收 227.98（+8.74%）、市值 $5.49T（单日 +$4,415 亿、美股史上第二大单日市值增幅），使 S&P 500 单票最大权重升至 ~8.0%，拥挤维硬伤微升；10Y 8/27 收 4.674%、30Y 5.191%（较前 +2~3bp，杰克逊霍尔鹰派前奏），但 WTI ~$82/布伦特 ~$86.7 续跌缓和通胀尾部。④ <b>杠杆 + 拥挤合计贡献 ~31.7 分（占 SBI 50%+）结构硬伤零改善</b>。SBI 62.8 反映"NVDA 大涨确认业绩、但风险在维度间轮动"——估值因 forward PE 压缩至 17.9x 而微降，拥挤因 NVDA 权重升至 ~8.0% 而微升，两相抵消；杠杆(90)与拥挤(71.5)两条危险线纹丝未动，SBI 仍稳居警惕区。</div>
+
+<div class="cards">  <div class="card"><div class="k">SBI 总分</div><div class="v" style="color:var(--yellow)">62.8</div><div class="d flat">低于危险线 2.2 分，警惕区</div></div>
+  <div class="card"><div class="k">环比前次(8/27报告)</div><div class="v flat">+0.2</div><div class="d flat">62.6 → 62.8，连续低于 65</div></div>
+  <div class="card"><div class="k">SOX 8/27 收盘</div><div class="v">11,882.17</div><div class="d up">+2.33% / NVDA 财报引爆反弹</div></div>
+  <div class="card"><div class="k">偏离 200MA</div><div class="v" style="color:var(--yellow)">+23.8%</div><div class="d up">8/26 +21.0% → +23.8%（逼近+25%警戒）</div></div>
+  <div class="card"><div class="k">10Y / 30Y 美债</div><div class="v" style="font-size:18px">~4.67% / ~5.19%</div><div class="d down">杰克逊霍尔鹰派前奏、利率升</div></div>
+  <div class="card"><div class="k">FINRA 7月融资余额</div><div class="v" style="font-size:18px">$1.42T</div><div class="d down">占 GDP 4.45%、99 分位</div></div></div>
+
+<div class="preview">  <b>今日（8/28，数据截至 8/27 周四收盘，最新交易日驱动更新）</b>五个要点：① <b>SBI 62.8（环比前报 8/27 的 62.6 为 +0.2），连续低于 65 危险线（自 8/19 起），警惕区运行</b>——NVDA 8/27 大涨 +8.74% 确认业绩兑现，但风险在维度间轮动（估值因 fwd PE 压缩微降、拥挤因 NVDA 权重升至 ~8.0% 微升），整体持平微升，维持"NVDA 确认业绩、结构未拆"的定性。六维：<b>估值 43.1（−0.3）/ 拥挤 71.5（+0.8）/ 杠杆 90.0（0.0）/ 业绩 66.0（0.0）/ 资金 52.0（0.0）/ 外部 55.0（0.0）</b>。<b>结论：NVDA +8.74% 使拥挤维升至 71.5（单票权重 ~8.0% 创纪录），但 forward PE 压缩至 17.9x 使估值维降至 43.1，两相抵消；结构硬伤（杠杆+拥挤合计 ~31.7 分、占 SBI 50%+）零改善，拥挤/杠杆两条危险线纹丝未动。</b>② <b>8/27 盘面：NVDA 引爆费半反弹、AI 叙事重燃</b>——道指 +0.20%（53,569.44）、标普 +0.72%（7,730.99）、纳指 +1.57%（26,541.35），<b>SOX +2.33% 收 11,882.17</b> 领涨；NVDA 收 227.98（+8.74%、单日市值 +$4,415 亿、美股史上第二大单日市值增幅、成交量 2.93 亿股超 3 月均值 106%）；AVGO +4.49%、INTC +4.36%、TSM ADR +2.30%；AMD −0.89%、迈威尔 −1.49%（存储/ASIC 链分化），属"财报利好买盘"而非全面抱团回归。③ <b>估值维微降的逻辑（风险维度间轮动）</b>：SOX 8/27 收 11,882.17（+2.33%），自 8/17 高点 12,621 累计回撤收窄至 −5.9%，偏离 200MA（≈9,608）由 +21.0%（8/26）升至 <b>+23.8%</b>（逼近 +25% 警戒线、抬升风险）；但 NVDA 8/27 收 227.98（+8.74%），FY28 +70% 指引使 forward 盈利预期大幅上修、<b>fwd PE 由 ~22.4x 压缩至 ~17.9x</b>（拉低风险）；两相抵消后估值维微降 −0.3。④ <b>资金维持平</b>：8/27 NVDA 天量反弹属事件驱动买盘，半导体 ETF"越涨越赎"结构未逆转（周度 SMH 仍净赎、SOXL 杠杆 ETF 月度 +$4.53B 黏性投机为波动放大器）；资金转向 QQQ/黄金趋势未改，NVDA 单日天量（2.93 亿股、超 3 月均值 106%）更多是事件驱动而非趋势性回流。⑤ <b>8/27 NVDA 已定价业绩、下一验证窗口转向宏观与结构</b>——① <b>8/28 Jackson Hole（沃什主旨演讲，利率路径定调）</b>；② 9 月第三周 FINRA 8 月融资余额（验证 7 月 −$85B 去杠杆延续性）；③ 后续 NVDA 能否守住 227+ 高位、费半拥挤是否重新聚集；④ hyperscaler capex 兑现节奏（NVDA 披露云厂商未完订单 >$2 万亿、2027 近 $1.3 万亿）。</div>
+
+<div class="gauge-wrap">
+  <h2>SBI 泡沫指数仪表盘</h2>
+  <div style="position:relative;width:100%;max-width:440px;margin:0 auto"><svg viewBox="0 0 380 210" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block"><path d="M 12.0 198.0 A 178.0 178.0 0 0 1 135.0 28.7 L 155.9 93.0 A 110.4 110.4 0 0 0 79.6 198.0 Z" fill="#16a34a"/><path d="M 135.0 28.7 A 178.0 178.0 0 0 1 270.8 39.4 L 240.1 99.7 A 110.4 110.4 0 0 0 155.9 93.0 Z" fill="#eab308"/><path d="M 270.8 39.4 A 178.0 178.0 0 0 1 334.0 93.4 L 279.3 133.1 A 110.4 110.4 0 0 0 240.1 99.7 Z" fill="#f97316"/><path d="M 334.0 93.4 A 178.0 178.0 0 0 1 368.0 198.0 L 300.4 198.0 A 110.4 110.4 0 0 0 279.3 133.1 Z" fill="#dc2626"/><line x1="190.0" y1="198.0" x2="249.9" y2="57.1" stroke="#f8fafc" stroke-width="4" stroke-linecap="round"/><circle cx="190.0" cy="198.0" r="6" fill="#f8fafc"/></svg><div class="total-num" id="sbiNum">62.8</div><div class="total-label">SBI 泡沫指数（0–100，越高越危险）</div></div>
+  <div class="tag-line">绿&lt;40 安全　|　黄 40–65 警惕　|　橙 65–80 危险　|　红 &gt;80 极端危险</div>
+</div>
+
+<div class="sec">
+  <h2>六维度评分明细</h2>
+  <div class="chart-grid">
+    <div class="panel">
+      <h2>六维度雷达（本次 vs 前次）</h2>
+      <div class="canvas-box"><svg viewBox="0 0 380 340" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block"><polygon points="190.0,207.0 216.8467875173176,191.5 216.8467875173176,160.5 190.0,145.0 163.1532124826824,160.5 163.1532124826824,191.5" fill="none" stroke="#334155" stroke-width="1"/><polygon points="190.0,238.0 243.69357503463522,207.0 243.69357503463522,145.0 190.0,114.0 136.30642496536478,145.0 136.3064249653648,207.0" fill="none" stroke="#334155" stroke-width="1"/><polygon points="190.0,269.0 270.5403625519528,222.5 270.5403625519528,129.5 190.0,83.0 109.4596374480472,129.5 109.4596374480472,222.5" fill="none" stroke="#334155" stroke-width="1"/><polygon points="190.0,300.0 297.38715006927043,238.0 297.38715006927043,114.0 190.0,52.0 82.6128499307296,114.0 82.61284993072961,238.0" fill="none" stroke="#334155" stroke-width="1"/><line x1="190.0" y1="176.0" x2="190.0" y2="300.0" stroke="#334155" stroke-width="1"/><text x="190.0" y="328.0" text-anchor="middle" font-size="12" fill="#94a3b8">估值</text><line x1="190.0" y1="176.0" x2="297.4" y2="238.0" stroke="#334155" stroke-width="1"/><text x="318.2" y="254.0" text-anchor="start" font-size="12" fill="#94a3b8">拥挤度</text><line x1="190.0" y1="176.0" x2="297.4" y2="114.0" stroke="#334155" stroke-width="1"/><text x="318.2" y="106.0" text-anchor="start" font-size="12" fill="#94a3b8">杠杆</text><line x1="190.0" y1="176.0" x2="190.0" y2="52.0" stroke="#334155" stroke-width="1"/><text x="190.0" y="32.0" text-anchor="middle" font-size="12" fill="#94a3b8">业绩兑现</text><line x1="190.0" y1="176.0" x2="82.6" y2="114.0" stroke="#334155" stroke-width="1"/><text x="61.8" y="106.0" text-anchor="end" font-size="12" fill="#94a3b8">资金流向</text><line x1="190.0" y1="176.0" x2="82.6" y2="238.0" stroke="#334155" stroke-width="1"/><text x="61.8" y="254.0" text-anchor="end" font-size="12" fill="#94a3b8">外部环境</text><polygon points="190.0,229.44400000000002 266.7818122995283,220.32999999999998 286.64843506234337,120.2 190.0,94.16 134.1586819639794,143.76 130.93706746190128,210.10000000000002" fill="rgba(59,130,246,.20)" stroke="#3b82f6" stroke-width="2" /><circle cx="190.0" cy="229.4" r="2.5" fill="#3b82f6"/><circle cx="266.8" cy="220.3" r="2.5" fill="#3b82f6"/><circle cx="286.6" cy="120.2" r="2.5" fill="#3b82f6"/><circle cx="190.0" cy="94.2" r="2.5" fill="#3b82f6"/><circle cx="134.2" cy="143.8" r="2.5" fill="#3b82f6"/><circle cx="130.9" cy="210.1" r="2.5" fill="#3b82f6"/><polygon points="190.0,229.816 265.9227150989742,219.834 286.64843506234337,120.2 190.0,94.16 134.1586819639794,143.76 130.93706746190128,210.10000000000002" fill="rgba(148,163,184,.10)" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,4" /><circle cx="190.0" cy="229.8" r="2.5" fill="#94a3b8"/><circle cx="265.9" cy="219.8" r="2.5" fill="#94a3b8"/><circle cx="286.6" cy="120.2" r="2.5" fill="#94a3b8"/><circle cx="190.0" cy="94.2" r="2.5" fill="#94a3b8"/><circle cx="134.2" cy="143.8" r="2.5" fill="#94a3b8"/><circle cx="130.9" cy="210.1" r="2.5" fill="#94a3b8"/></svg></div>
+    </div>
+    <div class="panel">
+      <h2>评分明细与预警状态</h2>
+      <table>
+        <thead><tr><th>维度</th><th>权重</th><th>本次</th><th>前次(8/24报告)</th><th>环比</th><th>状态</th></tr></thead>
+        <tbody><tr><td class='l'>估值</td><td>25%</td><td><b>43.1</b></td><td>43.4</td><td class='down'>-0.3</td><td><span class="tag t-ok">中性</span></td></tr>
+<tr><td class='l'>拥挤度</td><td>25%</td><td><b>71.5</b></td><td>70.7</td><td class='up'>+0.8</td><td><span class="tag t-danger">危险</span></td></tr>
+<tr><td class='l'>杠杆</td><td>15%</td><td><b>90.0</b></td><td>90.0</td><td class='flat'>0.0</td><td><span class="tag t-danger">危险</span></td></tr>
+<tr><td class='l'>业绩兑现</td><td>15%</td><td><b>66.0</b></td><td>66.0</td><td class='flat'>0.0</td><td><span class="tag t-ok">中性</span></td></tr>
+<tr><td class='l'>资金流向</td><td>10%</td><td><b>52.0</b></td><td>52.0</td><td class='flat'>0.0</td><td><span class="tag t-warn">预警</span></td></tr>
+<tr><td class='l'>外部环境</td><td>10%</td><td><b>55.0</b></td><td>55.0</td><td class='flat'>0.0</td><td><span class="tag t-warn">预警</span></td></tr></tbody>
+      </table>
+      <p class="tag-line" style="margin-top:8px">加权：43.1×25% + 71.5×25% + 90.0×15% + 66.0×15% + 52.0×10% + 55.0×10% = 10.775 + 17.875 + 13.50 + 9.90 + 5.20 + 5.50 = 62.75 ≈ 62.8</p>
+      <p class="tag-line" style="margin-top:4px;color:#8a93a3">各维变动依据（本期对照 8/27 报告，数据由 8/26 收盘推进至 8/27 收盘）：<b>估值 −0.3</b>——SOX 8/27 收 11,882.17（+2.33%）、偏离 200MA(≈9,608) 由 +21.0% 升至 <b>+23.8%</b>（逼近 +25% 警戒线），估值风险抬升；但 NVDA 收 227.98（+8.74%）、FY28 +70% 指引使 forward 盈利预期上修、<b>fwd PE 由 ~22.4x 压缩至 ~17.9x</b>，估值维 43.4→43.1；SOX 近 1 年 +103.0%、PEG ~0.32 维持。<b>资金 0.0</b>——8/27 NVDA 天量反弹属事件驱动买盘，半导体 ETF 延续"越涨越赎"（周度 SMH 净赎、SOXL 月度 +$4.53B 黏性投机）、资金转向 QQQ/黄金，资金维维持 52.0。<b>拥挤度 +0.8</b>——NVDA 收 227.98（市值 $5.49T、单日 +$4,415 亿）、S&P 500 单票最大权重升至 <b>~8.0%</b>（创纪录），拥挤维 70.7→71.5。<b>杠杆 0.0</b>——FINRA 7 月 $1.42T（占 GDP 4.45%、99 分位，杠杆维 90）沿用；8 月读数 9 月第三周公布。<b>业绩兑现 0.0</b>——NVDA beat&raise 已在 8/27 获市场背书（16+ 机构上调目标价），无新增基本面事件，业绩维维持 66.0；Capex 吸收率极高、循环融资隐忧未变。<b>外部 0.0</b>——10Y/30Y ~4.67%/5.19%（较前 +2~3bp、杰克逊霍尔鹰派前奏）、油价因霍尔木兹缓和续跌（WTI ~$82/布伦特 ~$86.7）对冲，外部维维持 55.0。</p>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>估值维子指标插值明细（本期 估值维 43.1，环比 −0.3）</h2>
+  <div class="panel"><table class="table2">
+    <thead><tr><th>子指标</th><th>权重</th><th>8/24 值</th><th>警戒(45)</th><th>危险(70)</th><th>本次得分</th><th>前次得分</th></tr></thead>
+    <tbody><tr><td class='l'>SOX 偏离 200MA</td><td>40%</td><td><b>+23.8%</b></td><td>+25%</td><td>+40%</td><td><b>43.0</b></td><td>38.3</td></tr>
+<tr><td class='l'>SOX 近 1 年涨幅</td><td>25%</td><td>+103.0%</td><td>+40%</td><td>+100%</td><td><b>71.3</b></td><td>73.7</td></tr>
+<tr><td class='l'>NVDA Forward PE</td><td>20%</td><td>~17.9x</td><td>30x</td><td>45x</td><td><b>24.8</b></td><td>32.3</td></tr>
+<tr><td class='l'>NVDA PEG</td><td>15%</td><td>~0.32（FY28 +70% 指引后）</td><td>1.5</td><td>2.5</td><td><b>21.0</b></td><td>21.3</td></tr></tbody>
+  </table>
+  <p class="tag-line" style="margin-top:6px">加权计算：43.0×40% + 71.3×25% + 24.8×20% + 21.0×15% = 17.20 + 17.825 + 4.96 + 3.15 = <b>43.11 ≈ 43.1</b>（前报 43.4，环比 −0.3）。<b>估值维微降的逻辑（风险在维度间轮动）：</b>SOX 8/27 收 11,882.17（+2.33%），使偏离 200MA（≈9,608）由 +21.0%（8/26）升至 <b>+23.8%</b>，对应得分 38.3→43.0（逼近 +25% 警戒线、抬升风险）；但 NVDA 8/27 收 227.98（+8.74%）后，forward 盈利预期因 FY28 +70% 指引大幅上修，<b>Forward PE 由 ~22.4x 压缩至 ~17.9x</b>（Reuters，显著低于 AMD 37.2x/INTC 46.2x），得分 32.3→24.8（拉低风险）；SOX 近 1 年涨幅由 +108.8% 回落至 +103.0%（MarketWatch），得分 73.7→71.3；PEG 维持 ~0.32（地板）。净效应：偏离上升（+4.7 子分）被 fwd PE 压缩（−7.5 子分）与 1 年涨幅回落（−2.4 子分）抵消，估值维微降。注意：+23.8% 偏离仍低于 +25% 警戒线、高于 +10% 常态，泡沫定价证据依旧偏弱——NVDA 越涨越"便宜"（forward 盈利增速快于股价）是本轮最反直觉的结构特征。</p></div>
+</div>
+
+<div class="sec">
+  <h2>8/27 盘面回顾 + 头号事件：NVDA 大涨 +8.74% 确认 beat&raise、费半跟涨</h2>
+  <div class="events"><h3>头号变量：<b>NVDA 8/27 全天大涨 +8.74%（收 227.98、市值 $5.49T、单日市值 +$4,415 亿，美股史上第二大单日市值增幅、仅次于微软 $4,500 亿纪录）确认 8/26 盘后 beat&raise</b>——Q2 营收 $96.221B（+106% YoY、+18% QoQ）、Non-GAAP EPS $2.22、毛利率 75.0%；Q3 指引 $108.0B（±2%）；<b>FY2028 营收 +70% 指引（远超市场 ~45%）</b>使 forward 盈利预期大幅上修、fwd PE 压缩至 ~17.9x；16+ 机构上调目标价（花旗 315、小摩 320、大摩 300、瑞银 300、瑞杰 515）；成交量 2.93 亿股（超 3 月均值 106%）。这是 SOX 权重最高单一事件，直接为"AI capex 消化期/需求见顶"空头叙事提供最强市场背书。</h3>
+  <ul>    <li><b>【头号事件】NVDA 8/27 全天大涨 +8.74%（收 227.98、市值 $5.49T）确认 8/26 盘后 beat&raise</b>——Q2 FY2027（截至 7/26）营收 $96.221B（<b>+106% YoY、+18% QoQ</b>），超指引 $91.0B（±2%）中值逾 $50 亿；Non-GAAP EPS $2.22、毛利率 75.0%（双 75%）；数据中心收入 $89.0B（+117% YoY）。<b>Q3 指引 $108.0B（±2%，史上首破千亿美元）</b>；CFO 更给出 <b>FY2028 营收 +70% 指引（远超市场 ~45% 预期）</b>，Vera Rubin 全面量产。8/27 全天收 227.98（+8.74%）、单日市值 +$4,415 亿（美股史上第二大单日市值增幅、仅次于微软 $4,500 亿），成交量 2.93 亿股（超 3 月均值 106%）；16+ 机构上调目标价（花旗 315、小摩 320、大摩 300、瑞银 300、瑞杰 515）。forward 盈利预期因 FY28 +70% 指引大幅上修、fwd PE 压缩至 ~17.9x。这是 SOX 权重最高单一事件，为"AI capex 消化期/需求见顶"空头叙事提供最强市场背书。</li>
+    <li><b>8/27 盘面回顾（最新交易日）：NVDA 引爆费半反弹、AI 叙事重燃</b>——道指 +0.20%（53,569.44）、标普 +0.72%（7,730.99）、纳指 +1.57%（26,541.35），<b>SOX +2.33% 收 11,882.17</b> 领涨；NVDA +8.74%、AVGO +4.49%、INTC +4.36%、TSM ADR +2.30%；AMD −0.89%、迈威尔 −1.49%（存储/ASIC 链分化）；属"财报利好买盘"，费半整体由 NVDA 单票拉动，非全面抱团回归。</li>
+    <li><b>Jackson Hole 前夕、美债收益率走高、鹰派前奏</b>——8/27 10Y 收 4.674%（+2.58bp）、30Y 5.191%（+2.18bp）；堪萨斯城联储主席 Schmid（年会主办方）放鹰："3.5-3.75% 或仍具宽松性、我们还有工作要做"，被视为沃什 8/28 主旨演讲的鹰派前奏；初请失业金 20.3 万（低于预期 20.8 万）支撑 higher-for-longer。沃什 9/16 会议 65% 概率按兵不动（3.50-3.75%）。外部维维持 55.0。</li>
+    <li><b>油价因霍尔木兹缓和续跌、对冲利率尾部</b>——伊朗-阿曼就霍尔木兹临时航运通道磋商，WTI 收 ~$81.91（−0.55%）、布伦特 ~$86.70（−0.65%）；现货金 ~$4,647.80（−0.99%，避险溢价消退+加息预期压制）；能源股走弱（埃克森 −1.11%）。地缘供应中断担忧缓解部分对冲鹰派利率。</li>
+    <li><b>资金面：半导体"越涨越赎"延续、SOXL 仍吸金</b>——周度 SMH 仍净赎（8/17-21 周 SMH −$1.86B）、SOXL 杠杆 ETF 月度 +$4.53B 黏性投机（波动放大器）；8/27 NVDA 天量（2.93 亿股）属财报事件买盘，非趋势性回流半导体；整体权益轮动至黄金/债券未改。资金维维持 52.0。</li>
+    <li><b>下一验证窗口转向宏观与结构</b>——① <b>8/28 Jackson Hole（沃什主旨演讲，利率路径定调）</b>；② 9 月第三周 FINRA 8 月融资余额（验证 7 月 −$85B 去杠杆延续性）；③ NVDA 能否守住 227+ 高位、费半拥挤是否重新聚集（决定偏离 200MA 是否再穿 +25%）；④ hyperscaler capex 兑现节奏（NVDA 披露云厂商未完订单 >$2 万亿、2027 近 $1.3 万亿）。</ul>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>龙头估值速览（数据截至 2026-08-24 收盘）</h2>
+  <div class="panel"><table class="table2">
+    <thead><tr><th>标的</th><th>市值</th><th>Forward PE</th><th>TTM PE</th><th>备注</th></tr></thead>
+    <tbody><tr><td class='l'>NVIDIA (NVDA)</td><td><b>~$5.49T</b></td><td><b>~17.9</b></td><td><b>~32</b></td><td>收 227.98（8/27 +8.74%、单日市值 +$4,415 亿、美股史上第二大单日市值增幅）；<b>fwd PE 压缩至 ~17.9x（Reuters，因 FY28 +70% 指引大幅上修 forward 盈利、显著低于 AMD 37.2x/INTC 46.2x）</b>、动态 PEG ~0.32；越涨越"便宜"为本轮最反直觉特征</td></tr>
+<tr><td class='l'>台积电 (TSM)</td><td>~$2.20T</td><td>19–26</td><td>~30</td><td>ADR 8/27 +2.30%（NVDA 业绩利好 CoWoS 产能、Vera Rubin 量产）；先进制程 + CoWoS 瓶颈、AI 订单满载，fwd PE ~19.6</td></tr>
+<tr><td class='l'>博通 (AVGO)</td><td>~$1.78T</td><td>~69</td><td>~58</td><td>收 371.54（8/27 +4.49%、NVDA 业绩提振定制芯片需求预期）；AI 半导体营收同比 +143%、2027 财年目标破 $100B，客户集中于六大 hyperscaler</td></tr>
+<tr><td class='l'>AMD</td><td>~$775B</td><td>~29–43</td><td>~83–122</td><td>收 476.67（8/27 −0.89%、跑输 NVDA）；与微软合推 Helios 机架 AI 平台，TTM PE 仍居高位（~37.2x fwd per Reuters），NVDA 业绩印证 AI GPU 需求外溢但市场更偏好龙头</td></tr>
+<tr><td class='l'>美光 (MU)</td><td>~$1.0T</td><td>—</td><td>~22</td><td>8/24 存储链普跌（美光 −5.8%、闪迪 −6.4%）；HBM 涨价逻辑未变但价格已高、前期领涨后获利了结</td></tr>
+<tr><td class='l'>SK 海力士</td><td>—</td><td>—</td><td>—</td><td>8/24 ADR −4.9%；Q2 历史新高 + 40 万亿韩元回购，但"高开低走"延续</td></tr></tbody>
+  </table>
+  <p class="tag-line" style="margin-top:6px"><b>龙头估值仍是多头核心论据，8/27 收盘显"越涨越便宜"的反直觉结构：</b>NVDA Forward PE <b>~17.9x</b>（Reuters，因 FY28 +70% 指引上修 forward 盈利，显著低于 AMD 37.2x/INTC 46.2x）、动态 PEG ~0.32、TTM 营收 +106%——以传统标准远非"泡沫定价"。但结构性风险不在龙头市盈率，而在：① 板块价格相对自身均线的拉伸（SOX 偏离 200MA 升至 +23.8%、逼近 +25% 警戒线）；② 筹码集中度（Top10 ~40-43%、NVDA 权重升至 ~8.0% 创纪录）；③ 杠杆（融资余额占 GDP 4.45% 99 分位）；④ 客户端现金流质量（hyperscaler Capex 吸收率极高、NVDA 披露云厂商未完订单 >$2 万亿、循环融资隐忧）。<b>NVDA 8/27 +8.74% 是本轮 AI 硬件叙事的最强市场背书</b>，但"卖事实"风险与抱团松动未逆转（AMD −0.89%、迈威尔 −1.49% 跑输，存储链分化）；且 forward PE 压缩源于盈利预期上修而非股价下跌，若后续指引不及预期将快速反抽。注：TSM/AVGO/AMD 市值为 8/27 收盘推算约数。</p></div>
+</div>
+
+<div class="sec">
+  <h2>SOX 费城半导体指数 · 近 6 周走势与 200MA（含 8/27 +2.33% 反弹 + NVDA 业绩确认）</h2>
+  <div class="panel"><div class="canvas-box" style="height:320px"><svg viewBox="0 0 620 320" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block"><line x1="46" y1="276.0" x2="606" y2="276.0" stroke="#334155" stroke-width="1"/><text x="40" y="279.0" text-anchor="end" font-size="9" fill="#94a3b8">9000</text><line x1="46" y1="224.0" x2="606" y2="224.0" stroke="#334155" stroke-width="1"/><text x="40" y="227.0" text-anchor="end" font-size="9" fill="#94a3b8">9800</text><line x1="46" y1="172.0" x2="606" y2="172.0" stroke="#334155" stroke-width="1"/><text x="40" y="175.0" text-anchor="end" font-size="9" fill="#94a3b8">10600</text><line x1="46" y1="120.0" x2="606" y2="120.0" stroke="#334155" stroke-width="1"/><text x="40" y="123.0" text-anchor="end" font-size="9" fill="#94a3b8">11400</text><line x1="46" y1="68.0" x2="606" y2="68.0" stroke="#334155" stroke-width="1"/><text x="40" y="71.0" text-anchor="end" font-size="9" fill="#94a3b8">12200</text><line x1="46" y1="16.0" x2="606" y2="16.0" stroke="#334155" stroke-width="1"/><text x="40" y="19.0" text-anchor="end" font-size="9" fill="#94a3b8">13000</text><text x="46.0" y="308" text-anchor="middle" font-size="9" fill="#94a3b8" transform="rotate(40 46.0 308)">7/17</text><text x="103.9" y="308" text-anchor="middle" font-size="9" fill="#94a3b8" transform="rotate(40 103.9 308)">7/22</text><text x="161.9" y="308" text-anchor="middle" font-size="9" fill="#94a3b8" transform="rotate(40 161.9 308)">7/27</text><text x="219.8" y="308" text-anchor="middle" font-size="9" fill="#94a3b8" transform="rotate(40 219.8 308)">7/30</text><text x="277.7" y="308" text-anchor="middle" font-size="9" fill="#94a3b8" transform="rotate(40 277.7 308)">8/4</text><text x="335.7" y="308" text-anchor="middle" font-size="9" fill="#94a3b8" transform="rotate(40 335.7 308)">8/7</text><text x="393.6" y="308" text-anchor="middle" font-size="9" fill="#94a3b8" transform="rotate(40 393.6 308)">8/12</text><text x="451.5" y="308" text-anchor="middle" font-size="9" fill="#94a3b8" transform="rotate(40 451.5 308)">8/17</text><text x="509.4" y="308" text-anchor="middle" font-size="9" fill="#94a3b8" transform="rotate(40 509.4 308)">8/20</text><text x="567.4" y="308" text-anchor="middle" font-size="9" fill="#94a3b8" transform="rotate(40 567.4 308)">8/25</text><text x="606.0" y="308" text-anchor="middle" font-size="9" fill="#94a3b8" transform="rotate(40 606.0 308)">8/27</text><polygon points="46,276.0 46.0,102.19715000000005 65.3103448275862,97.64974999999997 84.62068965517241,57.849599999999995 103.93103448275862,54.3071 123.24137931034483,58.65039999999999 142.55172413793105,92.77215000000005 161.86206896551724,109.93280000000004 181.17241379310346,143.68079999999998 200.48275862068965,181.91315000000003 219.79310344827587,126.30565000000001 239.10344827586206,125.7798 258.41379310344826,118.02724999999998 277.7241379310345,69.34809999999999 297.0344827586207,80.42280000000005 316.3448275862069,77.83514999999997 335.6551724137931,57.80864999999993 354.9655172413793,81.39909999999996 374.2758620689655,74.59945000000005 393.58620689655174,55.04030000000004 412.8965517241379,51.36 432.2068965517241,53.89175000000005 451.51724137931035,40.63435 470.82758620689657,81.49010000000007 490.13793103448273,98.01570000000005 509.44827586206895,93.99869999999997 528.7586206896551,97.87594999999995 548.0689655172414,118.49394999999998 567.3793103448276,107.77739999999994 586.6896551724138,106.26940000000003 606.0,88.65895 606,276.0" fill="rgba(59,130,246,.12)" stroke="none"/><polyline points="46.0,102.19715000000005 65.3103448275862,97.64974999999997 84.62068965517241,57.849599999999995 103.93103448275862,54.3071 123.24137931034483,58.65039999999999 142.55172413793105,92.77215000000005 161.86206896551724,109.93280000000004 181.17241379310346,143.68079999999998 200.48275862068965,181.91315000000003 219.79310344827587,126.30565000000001 239.10344827586206,125.7798 258.41379310344826,118.02724999999998 277.7241379310345,69.34809999999999 297.0344827586207,80.42280000000005 316.3448275862069,77.83514999999997 335.6551724137931,57.80864999999993 354.9655172413793,81.39909999999996 374.2758620689655,74.59945000000005 393.58620689655174,55.04030000000004 412.8965517241379,51.36 432.2068965517241,53.89175000000005 451.51724137931035,40.63435 470.82758620689657,81.49010000000007 490.13793103448273,98.01570000000005 509.44827586206895,93.99869999999997 528.7586206896551,97.87594999999995 548.0689655172414,118.49394999999998 567.3793103448276,107.77739999999994 586.6896551724138,106.26940000000003 606.0,88.65895" fill="none" stroke="#3b82f6" stroke-width="2" /><circle cx="46.0" cy="102.2" r="2" fill="#3b82f6"/><circle cx="65.3" cy="97.6" r="2" fill="#3b82f6"/><circle cx="84.6" cy="57.8" r="2" fill="#3b82f6"/><circle cx="103.9" cy="54.3" r="2" fill="#3b82f6"/><circle cx="123.2" cy="58.7" r="2" fill="#3b82f6"/><circle cx="142.6" cy="92.8" r="2" fill="#3b82f6"/><circle cx="161.9" cy="109.9" r="2" fill="#3b82f6"/><circle cx="181.2" cy="143.7" r="2" fill="#3b82f6"/><circle cx="200.5" cy="181.9" r="2" fill="#3b82f6"/><circle cx="219.8" cy="126.3" r="2" fill="#3b82f6"/><circle cx="239.1" cy="125.8" r="2" fill="#3b82f6"/><circle cx="258.4" cy="118.0" r="2" fill="#3b82f6"/><circle cx="277.7" cy="69.3" r="2" fill="#3b82f6"/><circle cx="297.0" cy="80.4" r="2" fill="#3b82f6"/><circle cx="316.3" cy="77.8" r="2" fill="#3b82f6"/><circle cx="335.7" cy="57.8" r="2" fill="#3b82f6"/><circle cx="355.0" cy="81.4" r="2" fill="#3b82f6"/><circle cx="374.3" cy="74.6" r="2" fill="#3b82f6"/><circle cx="393.6" cy="55.0" r="2" fill="#3b82f6"/><circle cx="412.9" cy="51.4" r="2" fill="#3b82f6"/><circle cx="432.2" cy="53.9" r="2" fill="#3b82f6"/><circle cx="451.5" cy="40.6" r="2" fill="#3b82f6"/><circle cx="470.8" cy="81.5" r="2" fill="#3b82f6"/><circle cx="490.1" cy="98.0" r="2" fill="#3b82f6"/><circle cx="509.4" cy="94.0" r="2" fill="#3b82f6"/><circle cx="528.8" cy="97.9" r="2" fill="#3b82f6"/><circle cx="548.1" cy="118.5" r="2" fill="#3b82f6"/><circle cx="567.4" cy="107.8" r="2" fill="#3b82f6"/><circle cx="586.7" cy="106.3" r="2" fill="#3b82f6"/><circle cx="606.0" cy="88.7" r="2" fill="#3b82f6"/><polyline points="46.0,261.05 65.3103448275862,260.075 84.62068965517241,259.1 103.93103448275862,258.125 123.24137931034483,257.15 142.55172413793105,256.17499999999995 161.86206896551724,255.20000000000002 181.17241379310346,254.225 200.48275862068965,253.25 219.79310344827587,252.27499999999998 239.10344827586206,251.3 258.41379310344826,250.325 277.7241379310345,249.35 297.0344827586207,248.375 316.3448275862069,247.4 335.6551724137931,246.42499999999998 354.9655172413793,245.775 374.2758620689655,245.45000000000002 393.58620689655174,245.32 412.8965517241379,245.125 432.2068965517241,243.63 451.51724137931035,241.68 470.82758620689657,240.38 490.13793103448273,239.6 509.44827586206895,239.6 528.7586206896551,238.625 548.0689655172414,237.0 567.3793103448276,237.0 586.6896551724138,237.0 606.0,236.48" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,4" /></svg></div>
+    <p class="tag-line" style="margin-top:8px"><b>技术面：</b>SOX 8/27 收 11,882.17（+2.33%），自 8/17 收盘历史新高 12,621.01 累计回撤收窄至 <b>−5.9%</b>；200MA ≈ <b>9,608</b>（8/21 为 9,575 按滚动增量推进），<b>偏离由 +21.0%（8/26）升至 +23.8%</b>，逼近 +25% 警戒线、仍在 +15%–+25% 区间上沿。交叉验证：SOX 当前低于 60 日均线约 5%、低于 50 日均线约 4%，较 8/26 偏空结构缓解，但仍处于"中期/短期均线下方、长期均线上方"。SOX 年内约 +68%、近 1 年约 +103%。<b>关键解读：</b>8/27 的 +2.33% 发生在纳指 +1.57% 日，是"费半领涨、强于大盘"——NVDA +8.74% 引爆的财报利好买盘，AVGO +4.49%/INTC +4.36%/TSM ADR +2.30% 跟涨；但 AMD −0.89%、迈威尔 −1.49%、存储链（MU −0.32%/SNDK −0.96%/WDC −1.47%）分化，显示"买龙头、弃二线"的精选交易而非全面抱团回归。<b>偏离 200MA 升至 +23.8% 使估值维的"再拉伸"风险重新抬头</b>——若后续 SOX 站稳并再穿 +25% 警戒线，估值维将迅速弹回 45+；但 NVDA fwd PE 压缩至 17.9x 从盈利端弱化了泡沫叙事，指数层面呈"价格拉伸、盈利更拉伸"的对冲格局。<b>杠杆(90)与拥挤(71.5)两条结构性风险零改善，整体仍是"NVDA 确认业绩、风险维度间轮动"。</b></p>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>业绩兑现维：Capex 吸收率 99% 仍是结构性硬伤（本期持平）</h2>
+  <div class="panel"><table class="table2">
+    <thead><tr><th>指标</th><th>读数</th><th>含义</th></tr></thead>
+    <tbody><tr><td class='l'>Capex 吸收率（Capex / 经营现金流）</td><td><b>99.0%</b>（Q2 2026，GOOGL+AMZN+META+MSFT 合计）</td><td class='l'>资本开支已几乎吃掉全部经营现金流；边际扩张只能靠债务或减少回购</td></tr>
+<tr><td class='l'>四大云厂 2026 capex 指引合计</td><td><b>$775-800B</b>（亚马逊~$220B、谷歌$195-205B、微软~$175B、Meta$130-145B、甲骨文$55.7B）</td><td class='l'>同比约 +77~80%（部分来源上看 ~$860B），Q2 再度上修；对半导体是需求利好，对客户资产负债表是压力</td></tr>
+<tr><td class='l'>Meta Q2 自由现金流</td><td><b>$7.84 亿（同比 −91.31%）</b>；长期债务 $836.6 亿</td><td class='l'>EPS $6.18 不及一致预期 $7.22，终结连续 6 季超预期</td></tr>
+<tr><td class='l'>亚马逊 TTM 自由现金流</td><td><b>−$76 亿</b></td><td class='l'>已转负；管理层称即便 ~$220B capex 仍不足以满足 2026 年全部需求</td></tr>
+<tr><td class='l'>谷歌单季自由现金流</td><td><b>−$59 亿</b></td><td class='l'>但 Google Cloud 营收 +82%、待履约 backlog $5,140 亿（单季 +$500 亿以上）</td></tr>
+<tr><td class='l'>AI 需求侧兑现（对冲项）</td><td>Azure 年营收破 $1,000 亿、AWS +36.7%、Copilot 付费席位 3,000 万、MSFT 商业 RPO $6,250 亿、Anthropic 年化 $116 亿（首超 OpenAI）</td><td class='l'>需求是真的，兑现也是真的——问题在于出钱方的现金流能撑多久</td></tr>
+<tr><td class='l'>杠杆信号（沿用）</td><td>FINRA 7 月融资余额 $1.42T，环比 −$85B = <b>史上最大单月降幅</b>、3 月以来首次下降</td><td class='l'>历史伴随信号（2000/2007/2021 顶）；绝对水平仍占 GDP 4.45%（99 分位）</td></tr></tbody>
+  </table>
+  <p class="tag-line" style="margin-top:6px"><b>这一维本期维持 66.0——NVDA 8/26 盘后 beat&raise 已在 8/27 获市场背书（收 227.98/+8.74%、16+ 机构上调目标价、FY28 +70% 指引使 forward 盈利大幅上修），为指数龙头提供史上最强单季业绩确认；本期无新增基本面事件，业绩维持平，市场验证本身不改变已计入的业绩评分。</b>核心判断不变：需求不假，资金来源在变质。四大云厂 Q2 Capex 吸收率 99% 意味着再增加一美元资本开支必须来自举债、变卖资产或削减股东回报；贝森特称"AI 使得许多企业发债时对收益率近乎不敏感"，点破算力扩张正被金融工程化、债务风险被利率压低所掩盖。杠杆信号沿用：FINRA 7 月融资余额环比 −$85B 为史上最大单月降幅（3 月以来首次下降），与半导体近期回调相互印证——去杠杆与去泡沫同步发生；但这同时是历史上"市场顶"的伴随特征，需警惕 8/9 月去杠杆是否延续（下一份 FINRA 数据 9 月第三周公布）。利率端：10Y ~4.70%、30Y ~5.22%（较前回落），美财政部或动用 ~$9,500 亿 TGA 支持国债回购，对长端构成潜在压制；若 30Y 再冲 5.35%+ 且财政部回购不及预期，客户现金流压力将显性化。</p></div>
+</div>
+
+<div class="sec">
+  <h2>多空论点对比</h2>
+  <div class="panel"><div class="canvas-box" style="height:300px"><svg viewBox="0 0 680 300" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block"><rect x="110" y="11" width="12" height="12" fill="#2e9e6b"/><text x="128" y="21" font-size="11" fill="#e2e8f0">多头支撑</text><rect x="202" y="11" width="12" height="12" fill="#d64545"/><text x="220" y="21" font-size="11" fill="#e2e8f0">空头压力</text><text x="100" y="59.3" text-anchor="end" font-size="11" fill="#e2e8f0">估值</text><rect x="110" y="37.8" width="335.4" height="15" fill="#2e9e6b" rx="2"/><text x="450.4" y="49.8" font-size="10.5" fill="#e2e8f0">64</text><rect x="110" y="57.8" width="188.6" height="15" fill="#d64545" rx="2"/><text x="303.6" y="69.8" font-size="10.5" fill="#e2e8f0">36</text><text x="100" y="102.0" text-anchor="end" font-size="11" fill="#e2e8f0">拥挤度</text><rect x="110" y="80.5" width="62.9" height="15" fill="#2e9e6b" rx="2"/><text x="177.9" y="92.5" font-size="10.5" fill="#e2e8f0">12</text><rect x="110" y="100.5" width="461.1" height="15" fill="#d64545" rx="2"/><text x="576.1" y="112.5" font-size="10.5" fill="#e2e8f0">88</text><text x="100" y="144.7" text-anchor="end" font-size="11" fill="#e2e8f0">杠杆</text><rect x="110" y="123.2" width="52.4" height="15" fill="#2e9e6b" rx="2"/><text x="167.4" y="135.2" font-size="10.5" fill="#e2e8f0">10</text><rect x="110" y="143.2" width="471.6" height="15" fill="#d64545" rx="2"/><text x="586.6" y="155.2" font-size="10.5" fill="#e2e8f0">90</text><text x="100" y="187.3" text-anchor="end" font-size="11" fill="#e2e8f0">业绩兑现</text><rect x="110" y="165.8" width="398.2" height="15" fill="#2e9e6b" rx="2"/><text x="513.2" y="177.8" font-size="10.5" fill="#e2e8f0">76</text><rect x="110" y="185.8" width="125.8" height="15" fill="#d64545" rx="2"/><text x="240.8" y="197.8" font-size="10.5" fill="#e2e8f0">24</text><text x="100" y="230.0" text-anchor="end" font-size="11" fill="#e2e8f0">资金流向</text><rect x="110" y="208.5" width="220.1" height="15" fill="#2e9e6b" rx="2"/><text x="335.1" y="220.5" font-size="10.5" fill="#e2e8f0">42</text><rect x="110" y="228.5" width="303.9" height="15" fill="#d64545" rx="2"/><text x="418.9" y="240.5" font-size="10.5" fill="#e2e8f0">58</text><text x="100" y="272.7" text-anchor="end" font-size="11" fill="#e2e8f0">外部环境</text><rect x="110" y="251.2" width="288.2" height="15" fill="#2e9e6b" rx="2"/><text x="403.2" y="263.2" font-size="10.5" fill="#e2e8f0">55</text><rect x="110" y="271.2" width="209.6" height="15" fill="#d64545" rx="2"/><text x="324.6" y="283.2" font-size="10.5" fill="#e2e8f0">40</text></svg></div></div>
+  <div class="bullbear">    <div class="bb-col bb-bull"><h3>多头因子（支撑）</h3><ul>
+      <li><b>龙头估值"越涨越便宜"，泡沫定价证据弱</b>：NVDA fwd PE 压缩至 <b>~17.9x</b>（Reuters，FY28 +70% 指引上修 forward 盈利、显著低于 AMD 37.2x/INTC 46.2x）、动态 PEG ~0.32、TTM 营收 +106%；估值维 43.1（中性），SOX 偏离 200MA 升至 +23.8%（逼近 +25% 警戒线）；NVDA 8/27 +8.74% 使基本面端泡沫叙事弱化，但指数价格拉伸风险重新抬头。</li>
+      <li><b>AI 需求侧持续兑现且指引上修</b>：hyperscaler 2026 capex ~$775-800B（亚马逊~$220B、谷歌$195-205B、微软~$175B、Meta$130-145B），同比 +77~80%；Azure 年营收破 $1,000 亿、Anthropic 年化 $116 亿（首超 OpenAI）、MSFT 商业 RPO $6,250 亿——需求侧与供给侧均给出正向信号。</li>
+      <li><b>杠杆堰塞湖开始主动泄洪，缓释尾部风险</b>：FINRA 7 月融资余额环比 −$85B（史上最大单月降幅、3 月以来首次下降），虽绝对水平仍占 GDP 4.45%（99 分位），但去杠杆启动降低了"杠杆顶满→强制平仓"的链式风险。</li>
+      <li><b>利率端边际缓和，财政部回购托底长端</b>：10Y ~4.70%/30Y ~5.22% 较前回落；美财政部或动用 ~$9,500 亿 TGA 支持国债回购，若落地将压制长端、缓解 Capex 融资链条成本，对久期长的半导体估值构成支撑。</li>
+      <li><b>黄金/加密的避险叙事对半导体并非直接利空</b>：现货金 ATH ~$4,651、比特币逼近 $79,800 反映的是"去主权货币 + 避险"资金再配置，而非半导体基本面恶化；利率若受回购受控，估值压缩压力边际缓和。</li>
+    </ul></div>
+    <div class="bb-col bb-bear"><h3>空头因子（压力）</h3><ul>
+      <li><b>"反弹即减仓"序列延续，抱团松动未逆转</b>：8/20 逆势独强 → 8/21 逆势独弱 → 8/24 独崩（−2.70% 而纳指仅 −0.76%）→ 8/25 跟涨（+1.44%，属 8/24 暴跌后空头回补），NVDA 终结七连跌（+2.19%）、存储/光通信/设备链随大盘修复；但资金仍轮动至黄金/加密/防御，拥挤交易松动特征未逆转，"死亡轮动"风险上升。</li>
+      <li><b>结构硬伤零改善，根基未动</b>：杠杆(90.0)+拥挤度(70.7)合计贡献 31.5 分（占 SBI 50%），FINRA 7 月 $1.42T 仍占 GDP 4.45%（99 分位）、Top10 ~40%、NVDA ~7.4%；"火源"未被拆除，仅 7 月环比出现罕见降幅。</li>
+      <li><b>资金持续逃离半导体、杠杆 ETF 放大波动</b>：周度 SOXX −$3.7B、SMH −$1.8B 净流出延续（"越涨越赎"），资金涌向 QQQ（单周 +$10.2B）/黄金；但 SOXL 杠杆 ETF 仍吸金（月度 +$4.53B）——这类资金在下跌时放大踩踏，是波动放大器而非稳定器；8/25 SOX 反弹属空头回补而非资金回流半导体，轮动迹象延续。</li>
+      <li><b>外部利率尾部风险未解除，债务叙事未消</b>：10Y/30Y 虽回落但仍处高位（30Y ~5.22%），美债破 $40T 逼近上限；贝森特称 AI 使企业发债"对收益率近乎不敏感"——掩盖而非消除债务风险；若 30Y 再冲 5.35%+ 且 TGA 回购不及预期，Capex 融资链条成本将显性化。</li>
+      <li><b>NVDA 财报 + 伊朗制裁是双高波动催化</b>：8/26 NVDA 盘后财报（SOX 权重最高单一事件）前 NVDA 已七连跌、空头兴趣薄、缓冲有限；贝森特伊朗制裁落地（次级制裁扩大、霍尔木兹断供威胁）推升地缘溢价；任一不及预期都足以让 SBI 双向跳变。</li>
+    </ul></div></div>
+</div>
+
+<div class="sec">
+  <h2>核心结论</h2>
+  <ul class="concl">    <li><b>SBI 62.8（环比前报 8/27 的 62.6 为 +0.2），连续低于 65 危险线（自 8/19 起），警惕区运行</b>——并创 8/19 回落通道以来实际交易数据新低（前报 8/24 为事件驱动持平）。六维：<b>估值 43.1（−0.3）/ 拥挤 71.5（+0.8）/ 杠杆 90.0（0.0）/ 业绩 66.0（0.0）/ 资金 52.0（0.0）/ 外部 55.0（0.0）</b>。结论：NVDA 8/27 大涨 +8.74% 确认业绩兑现（16+ 机构上调目标价），但风险在维度间轮动——估值维因 forward PE 压缩至 ~17.9x 微降 −0.3（至 43.1），拥挤维因 NVDA 权重升至 ~8.0% 微升 +0.8（至 71.5），两相抵消；结构硬伤（杠杆+拥挤合计 ~31.7 分、占 SBI 50%+）零改善。</li>
+    <li><b>NVDA 业绩获市场背书，但"买龙头、弃二线"显示抱团未全面回归</b>——NVDA 8/27 +8.74%（收 227.98、市值 $5.49T、单日 +$4,415 亿、美股史上第二大单日市值增幅）直接证伪"AI capex 消化期/需求见顶"空头叙事，16+ 机构上调目标价、FY28 +70% 指引使 forward 盈利大幅上修；但 8/27 盘面呈"买龙头、弃二线"——AMD −0.89%、迈威尔 −1.49%、存储链（MU/SNDK/WDC 普跌）分化，费半整体 +2.33% 由 NVDA 单票拉动，并非全面抱团回归；资金仍轮动至黄金/加密/防御，警惕"业绩好但股价不涨"的边际疲劳在二线蔓延。</li>
+    <li><b>估值维微降至 43.1，呈"价格拉伸、盈利更拉伸"的对冲格局</b>——SOX 8/27 收 11,882.17，偏离 200MA（≈9,608）升至 <b>+23.8%</b>（逼近 +25% 警戒线、抬升风险）；但 NVDA 收 227.98（+8.74%）后，FY28 +70% 指引使 forward 盈利预期大幅上修、<b>Forward PE 压缩至 ~17.9x</b>（Reuters，显著低于 AMD 37.2x/INTC 46.2x），动态 PEG ~0.32；"越涨越便宜"使泡沫定价证据依旧偏弱——但偏离 200MA 逼近警戒线意味着指数层面的价格拉伸风险重新抬头，二者对冲后估值维微降。</li>
+    <li><b>杠杆维底层"史上最大单月融资降幅"延续，去杠杆与去泡沫同步</b>——FINRA 7 月 $1.42T（占 GDP 4.45%、99 分位），环比 −$85B 为有记录以来最大单月降幅、3 月以来首次下降；既是历史上"市场顶"伴随信号（2000/2007/2021），也缓释"杠杆顶满到强制平仓"链式风险。绝对水平仍极值，不构成安全证据；8 月读数 9 月第三周公布。</li>
+    <li><b>资金维持 52.0，NVDA 天量反弹属事件驱动、未逆转"越涨越赎"</b>——8/27 NVDA 成交量 2.93 亿股（超 3 月均值 106%）是财报事件买盘，半导体 ETF"越涨越赎"结构未逆转（周度 SMH 仍净赎、SOXL 杠杆 ETF 月度 +$4.53B 黏性投机为波动放大器）；资金涌向 QQQ/黄金（现货金 ~$4,647、高位震荡）趋势未改；NVDA 大涨后若费半重夺相对强势、拥挤交易或重新聚集，但单日天量更可能是情绪脉冲而非趋势性回流。</li>
+    <li><b>NVDA 业绩已定价，下一验证窗口转向宏观与结构</b>——① <b>8/28 Jackson Hole（沃什主旨演讲，利率路径定调，Schmid 8/27 已放鹰"3.5-3.75% 或仍宽松"）</b>；② 9 月第三周 FINRA 8 月融资余额（验证 7 月 −$85B 去杠杆延续性）；③ NVDA 能否守住 227+ 高位、费半拥挤是否重新聚集（决定估值维偏离 200MA 是否再穿 +25%）；④ hyperscaler capex 兑现节奏（NVDA 披露云厂商未完订单 >$2 万亿、2027 近 $1.3 万亿）。</li></ul>
+</div>
+
+<div class="sec">
+  <h2>操作建议（警惕区 62.8 · NVDA 确认业绩后维持纪律）</h2>
+  <div class="rec">风险等级：<b>警惕区（62.8，低于 65 危险线 2.2 分，连续低于 65 自 8/19 起）</b>。定性判断：<b>"NVDA 确认业绩、风险维度间轮动"——NVDA 8/27 +8.74% 确认 beat&raise（FY28 +70% 指引使 forward PE 压缩至 17.9x），SBI 微升至 62.8；但风险在维度间轮动（估值因 fwd PE 压缩微降、拥挤因 NVDA 权重升至 ~8.0% 微升），杠杆(90)+拥挤(71.5)两条危险线零改善（占 SBI 50%+）；操作维持"反弹即减仓 + 稳步降杠杆"纪律，不因单日天量反弹放松对拥挤/杠杆硬伤的警惕——NVDA 越涨越便宜是结构性特征，但指数偏离 200MA 逼近 +25% 警戒线意味着价格拉伸风险重新抬头。</b>执行框架：<br>① <b>NVDA 业绩获背书，但减仓纪律不变、天量反弹更是减仓窗口</b>——NVDA +8.74% 创史上第二大单日市值增幅，是情绪脉冲而非趋势反转信号；2.93 亿股天量（超 3 月均值 106%）常为阶段性情绪顶部特征，任何 SOX 反抽都是更优减仓/再平衡窗口，勿把单季业绩与天量反弹当作反转信号（高盛：仅靠 beat+raise 不足以驱动股价持续上行）。<br>② <b>NVDA 底仓保留、对冲维持、关注"卖事实"与二线分化</b>——NVDA forward PEG ~0.32 显"贵但非泡沫"，保留底仓分享 AI 硬件长周期；但 8/27 盘面"买龙头、弃二线"（AMD −0.89%、迈威尔 −1.49%、存储链普跌）提示抱团未全面回归，原对冲头寸维持、不急于了结；警惕后续若指引不及预期 forward PE 快速反抽。<br>③ <b>不盲目追高半导体、等 SOX 站稳 200MA 上方再评估加回</b>——SOX 偏离 200MA 升至 +23.8%（逼近 +25% 警戒线），费半整体 +2.33% 由 NVDA 单票拉动；不追高存储链（前期领涨即熄火），等 SOX 站稳 200MA 上方并连续两日放量、板块重夺相对强势后再评估加回；若偏离再穿 +25%，估值维将弹回 45+，但那恰是更贵而非更安全。<br>④ <b>Jackson Hole（8/28 沃什演讲）+ 利率为外部关键变量，监控金价</b>——Schmid 8/27 放鹰（"3.5-3.75% 或仍宽松、我们还有工作要做"）、初请 20.3 万低于预期、10Y ~4.67%/30Y ~5.19%；若沃什偏鹰或 PCE 续热，长端利率反抽将压制半导体估值（尤其高杠杆 SOXL）。黄金因避险与去主权货币叙事高位震荡（~$4,647）。<br>⑤ <b>借 7 月融资创纪录降幅继续稳步降杠杆</b>——FINRA 7 月 $1.42T 仍占 GDP 4.45%（99 分位），绝对水平极值；去杠杆启动是缓释而非安全，继续稳步降仓位、清杠杆。<br>⑥ <b>监控四个节点</b>：8/28 Jackson Hole（沃什主旨演讲、利率路径定调）、9 月第三周 FINRA 8 月融资余额（验证 7 月 −$85B 去杠杆延续性）、NVDA 能否守住 227+ 高位、hyperscaler capex 兑现节奏（云厂商未完订单 >$2 万亿）。</div>
+</div>
+
+<div class="sec">
+  <h2>数据口径说明与来源披露</h2>
+  <div class="note" style="border-left-color:var(--red);background:#fdeef0;color:#6b1f17"><b>本期口径与不确定性披露：</b><br>① <b>本期为真实新交易日驱动更新（8/27 周四收盘），NVDA 8/27 全天 +8.74% 确认 8/26 盘后 beat&raise。</b>今日 8/28 运行于北京时间 10:24（美东 8/27 22:24），美国周四交易日已收盘，最新数据为 8/27 收盘；SBI 62.8 中 NVDA 权重升至 ~8.0% 使拥挤维微升（+0.8），forward PE 压缩至 17.9x 使估值维微降（−0.3），整体持平微升。<br>② <b>SOX 8/27 收盘</b>：Nasdaq 官方 / MarketWatch / 富途牛牛三源互证 <b>11,882.17（+2.33%）</b>（Nasdaq 11,882.17 +265.31 +2.33%、富途 11,882.169 +270.931 +2.33%、MarketWatch 11,882.17 +270.93 +2.33%），采用主值 11,882.17；偏离 200MA（≈9,608）为 +23.8%。<br>③ <b>FINRA 融资余额沿用 7 月数据</b>：7 月读数 = <b>$1.42T</b>（FINRA 8/19 公布），占 GDP <b>4.45%</b>（99 分位）；环比 <b>−$85B</b> 为有记录以来最大单月降幅、3 月以来首次下降。杠杆维维持 <b>90</b>。下一份 FINRA 数据预计 9 月第三周公布（8 月读数）。<br>④ <b>200MA 为估算值</b>：SOX 8/27 的 200MA 以 8/21 实测推进值 9,575 按滚动增量估算至 约 <b>9,608</b>，偏离 +23.8%。<br>⑤ <b>10Y/30Y 为 8/27 收盘附近读数</b>：新华财经 8/27 10Y <b>4.674%</b>、30Y <b>5.191%</b>（较前 +2~3bp，杰克逊霍尔鹰派前奏、初请 20.3 万低于预期）；联邦基金 target 3.50-3.75%（沃什 9/16 会议 65% 概率按兵不动）；VIX ~15。7月 PCE headline +3.7%（超预期）、核心 +3.3%（符合），加息概率 ~35%；油价因霍尔木兹缓和 WTI ~$81.91/布伦特 ~$86.70（续跌）。<br>⑥ <b>NVDA 估值口径</b>：8/27 收盘口径 NVDA fwd PE <b>~17.9x</b>（收盘 227.98、市值 $5.49T，Reuters 8/27 直接引用、显著低于 AMD 37.2x/INTC 46.2x）、TTM ~32x；<b>FY28 +70% 指引使 forward 盈利预期大幅上修、fwd PE 由 ~22.4x 压缩至 17.9x</b>，动态 forward PEG ~0.32；8/27 单日 +8.74%、市值 +$4,415 亿（美股史上第二大单日市值增幅）。<br>⑦ <b>ETF 流向</b>：Yahoo 周度 SOXX −$3.7B、SMH −$1.8B 净流出延续（"越涨越赎"）；月度 SOXL +$4.53B 吸金（edgen/longbridge）；资金涌向 QQQ（单周 +$10.2B）/黄金。资金维降至 52.0。<br>⑧ <b>S&P 500 Top 10 集中度沿用约 40-43%</b>；Mag7 ~31.8-34%（8 月 Motley Fool ~33.9% / 月初 31.8%）；<b>NVDA 权重升至 ~8.0%（8/27 收 227.98、市值 $5.49T，创 S&P 500 单票最大权重纪录）</b>，拥挤维硬伤微升。<br>⑨ <b>hyperscaler capex</b> 采用 Q2 CY2026 指引（合计 ~$725-760B，同比 +77~85%；谷歌 $195-205B、亚马逊 ~$220B、微软 ~$190B、Meta $130-145B）。<br>⑩ 历史更正（SOX 8/13 真实收盘 12,456.00、8/18 真实收盘 11,992.46）继续有效。</div>
+</div>
+
+<footer>Snail-bird Investment 针对网络内容的整合分享。数据来源：东方财富 / 财联社 / 新浪财经 / 腾讯新闻 / 证券时报 / 中证网 / 智通财经 / 腾讯行情 / 汇通财经 / 券商中国 / CMoney / StockAnalysis / Yahoo Finance / MarketWatch / Barchart / SlickCharts（Treasury.gov 口径）/ Cboe（VIX）/ CME FedWatch / TrendForce / ETF.com / etfaction / trefis / systemtrader.co / CNBC / TradingView / Washington Trust / FINRA / 各公司公告与 capex 指引（市场数据截至 2026-08-27 周四收盘；NVDA 8/27 全天 +8.74% 确认 8/26 盘后 beat&raise）。SBI 为基于六维度框架的主观风险评分（0–100，越高越泡沫 / 危险），仅供研究参考，不构成投资建议。报告仅存本地工作区，未上传网站、未改 index.html。</footer>
+</div>
+
+
+</body>
+</html>
