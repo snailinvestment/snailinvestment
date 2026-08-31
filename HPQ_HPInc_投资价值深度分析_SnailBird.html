@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>HP Inc. (NYSE: HPQ) | Equity Research | 蜗牛鸟投资</title>
+
+<style>
+  :root{
+    --ink:#0a0a0a; --paper:#f7f5ef; --panel:#ffffff; --rule:#0a0a0a;
+    --navy:#0c1f3d; --gold:#a67c1e; --gold-lt:#c79b3d;
+    --green:#1c6b3f; --red:#9c2b21; --grey:#6b6b62; --hair:#d8d4c6;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:Georgia,"Noto Serif SC","Songti SC",serif; line-height:1.65;}
+  .num{font-family:"Courier New",ui-monospace,monospace;}
+  .wrap{max-width:1060px; margin:0 auto; padding:0 26px 70px;}
+
+  .masthead{background:var(--navy); color:#f2ede1; border-bottom:6px solid var(--gold);}
+  .masthead .bar{max-width:1060px; margin:0 auto; padding:10px 26px; display:flex; justify-content:space-between; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-lt); border-bottom:1px solid rgba(255,255,255,.15);}
+  .masthead .main{max-width:1060px; margin:0 auto; padding:22px 26px 26px;}
+  .masthead h1{font-size:31px; margin:6px 0 4px; font-weight:400; letter-spacing:.5px;}
+  .masthead .ticker{font-family:"Courier New",monospace; font-size:16px; color:var(--gold-lt); letter-spacing:1px;}
+  .masthead .dek{font-size:14px; color:#cfd3da; margin-top:8px; font-style:italic;}
+  .masthead .row{display:flex; gap:0; margin-top:20px; border-top:1px solid rgba(255,255,255,.2); flex-wrap:wrap;}
+  .masthead .cell{flex:1; min-width:130px; padding:12px 16px; border-right:1px solid rgba(255,255,255,.15);}
+  .masthead .cell:last-child{border-right:none;}
+  .masthead .cell .l{font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold-lt);}
+  .masthead .cell .v{font-family:"Courier New",monospace; font-size:18px; margin-top:4px;}
+  .masthead .cell .v.pos{color:#6fd19a;} .masthead .cell .v.neg{color:#e08b83;}
+
+  .rating-strip{display:flex; flex-wrap:wrap; background:#f0ede2; border-bottom:1px solid var(--hair); font-size:12.5px;}
+  .rating-strip .r{padding:10px 20px; border-right:1px solid var(--hair);}
+  .rating-strip b{color:var(--navy);}
+
+  nav.toc{background:var(--panel); border:1px solid var(--hair); margin-top:26px; padding:18px 24px;}
+  nav.toc .t{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); border-bottom:1px solid var(--hair); padding-bottom:8px; margin-bottom:10px;}
+  nav.toc ol{margin:0; padding-left:18px; columns:2; column-gap:30px; font-size:13px;}
+  nav.toc li{margin-bottom:5px;}
+  nav.toc a{color:var(--navy); text-decoration:none; border-bottom:1px dotted var(--hair);}
+
+  section{margin-top:40px;}
+  .sec-head{display:flex; align-items:baseline; gap:14px; border-bottom:3px solid var(--ink); padding-bottom:8px; margin-bottom:16px;}
+  .sec-num{font-family:"Courier New",monospace; font-size:13px; color:var(--gold); background:var(--navy); padding:3px 9px;}
+  h2{font-size:20px; margin:0; font-weight:400; letter-spacing:.3px;}
+  h3{font-size:15px; color:var(--navy); margin:26px 0 10px; border-left:4px solid var(--gold); padding-left:10px;}
+  p{margin:10px 0; font-size:14px;}
+  .panel{background:var(--panel); border:1px solid var(--hair); padding:20px 24px; margin-bottom:16px;}
+
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:12.5px; background:var(--panel);}
+  caption{caption-side:top; text-align:left; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); padding-bottom:6px;}
+  th,td{border:1px solid var(--hair); padding:7px 9px; text-align:right; font-family:"Courier New",monospace;}
+  th{background:var(--navy); color:#f2ede1; font-weight:400; text-align:center; font-family:Georgia,serif; letter-spacing:.5px;}
+  td:first-child, th:first-child{text-align:left; font-family:Georgia,serif;}
+  tr:nth-child(even) td{background:#f5f3ea;}
+  .pos{color:var(--green); font-weight:700;} .neg{color:var(--red); font-weight:700;}
+  .tag{display:inline-block; font-size:10.5px; padding:2px 8px; border:1px solid; margin-right:6px; margin-bottom:4px; letter-spacing:.5px; text-transform:uppercase;}
+  .tag.g{color:var(--green); border-color:var(--green);}
+  .tag.r{color:var(--red); border-color:var(--red);}
+  .tag.n{color:var(--navy); border-color:var(--navy);}
+
+  .chart-box{background:var(--panel); border:1px solid var(--hair); padding:18px 20px; margin:16px 0;}
+  .chart-box .cap{font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; border-bottom:1px solid var(--hair); padding-bottom:6px;}
+  .chart-grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  canvas{max-height:280px;}
+
+  .kpi-row{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--hair); border:1px solid var(--hair); margin:16px 0;}
+  .kpi{background:var(--panel); padding:16px 14px; text-align:center;}
+  .kpi .num{font-family:"Courier New",monospace; font-size:20px; color:var(--navy); font-weight:700;}
+  .kpi .lbl{font-size:10.5px; color:var(--grey); margin-top:6px; letter-spacing:.3px;}
+
+  .quote-box{border-left:4px solid var(--gold); background:#fbf6e8; padding:12px 18px; font-size:13px; color:#5a4519; margin:14px 0;}
+  .risk-box{border-left:4px solid var(--red); background:#fbeeec; padding:12px 18px; font-size:13px; margin:14px 0;}
+  .fix-box{border-left:4px solid var(--navy); background:#eef1f6; padding:10px 16px; font-size:12px; color:#33465e; margin:12px 0;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .grid3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;}
+  @media(max-width:760px){.grid2,.grid3,.chart-grid2,.kpi-row{grid-template-columns:1fr;} nav.toc ol{columns:1;}}
+
+  .scen-card{border:1px solid var(--hair); padding:16px 18px;}
+  .scen-card .h{font-size:13px; letter-spacing:1px; text-transform:uppercase; padding-bottom:8px; border-bottom:1px solid var(--hair); margin-bottom:10px;}
+  .scen-card.bear .h{color:var(--red);} .scen-card.base .h{color:var(--navy);} .scen-card.bull .h{color:var(--green);}
+  .scen-card .tp{font-family:"Courier New",monospace; font-size:24px; font-weight:700; margin:8px 0;}
+  .scen-card ul{margin:6px 0 0; padding-left:18px; font-size:12px; color:var(--grey);}
+
+  .verdict{background:var(--navy); color:#f2ede1; padding:28px 30px; margin-top:16px; border-top:5px solid var(--gold);}
+  .verdict h3{color:var(--gold-lt); border-color:var(--gold-lt); margin-top:0;}
+  .verdict .score{font-family:"Courier New",monospace; font-size:28px; font-weight:700; color:var(--gold-lt); margin-top:14px; letter-spacing:1px;}
+  footer{margin-top:50px; padding-top:20px; border-top:2px solid var(--ink); font-size:11.5px; color:var(--grey);}
+  .disc{background:#f0ede2; border:1px solid var(--hair); padding:14px 18px; font-size:11.5px; color:#54503f; margin-top:20px;}
+  .small{font-size:11.5px; color:var(--grey);}
+  .src{font-size:10.5px; color:var(--grey);}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="bar"><span>蜗牛鸟投资 · SNAIL-BIRD INVESTMENT</span><span>EQUITY RESEARCH — TECHNOLOGY HARDWARE</span></div>
+  <div class="main">
+    <div class="ticker">NYSE: HPQ</div>
+    <h1>HP Inc. 投资价值深度分析报告</h1>
+    <div class="dek">基于2026财年三季度业绩（截至2026年7月31日）、10-Q披露细节及管理层交流纪要的全面复盘 — ASP-成本-利润率传导链、多季度趋势、分部同期对比与FY27情景估值</div>
+    <div class="row">
+      <div class="cell"><div class="l">Rating</div><div class="v">HOLD</div></div>
+      <div class="cell"><div class="l">Close (2026-08-28)</div><div class="v">$30.52</div></div>
+      <div class="cell"><div class="l">Market Cap</div><div class="v">≈$27.5B</div></div>
+      <div class="cell"><div class="l">Fwd P/E (Headline)</div><div class="v">≈9.4x</div></div>
+      <div class="cell"><div class="l">Fwd P/E (常态化)</div><div class="v">≈10.0x</div></div>
+      <div class="cell"><div class="l">12M目标价(Base)</div><div class="v pos">≈$29–30</div></div>
+    </div>
+  </div>
+</div>
+<div class="rating-strip">
+  <div class="r">报告日期：<b>2026-08-31</b></div>
+  <div class="r">数据基准日：<b>2026-08-28</b></div>
+  <div class="r">覆盖行业：<b>PC / 打印硬件与耗材</b></div>
+  <div class="r">分析师：<b>科技行业研究组</b></div>
+</div>
+
+<div class="wrap">
+
+<nav class="toc">
+  <div class="t">Contents</div>
+  <ol>
+    <li><a href="#s1">历史沿革与业务结构演变</a></li>
+    <li><a href="#s2">管理层评估与治理可靠度</a></li>
+    <li><a href="#s3">行业格局：供需与竞争</a></li>
+    <li><a href="#s4">业务发展与护城河（分部同期对比）</a></li>
+    <li><a href="#s5">多季度盈利质量与现金流分析</a></li>
+    <li><a href="#s6">资产负债表分析</a></li>
+    <li><a href="#s7">订单与需求信号分析（ASP-销量传导）</a></li>
+    <li><a href="#s8">管理层指引解读</a></li>
+    <li><a href="#s9">股东回报分析</a></li>
+    <li><a href="#s10">估值分析与FY27情景测算（可审计）</a></li>
+    <li><a href="#s11">风险清单（按边际影响排序）</a></li>
+    <li><a href="#s12">结论与投资建议</a></li>
+  </ol>
+</nav>
+
+<!-- 1 -->
+<section id="s1">
+  <div class="sec-head"><span class="sec-num">§01</span><h2>历史沿革与业务结构演变</h2></div>
+  <div class="panel">
+    <p>惠普现代业务边界形成于2015年"分拆"：原Hewlett-Packard Company拆分为聚焦企业级基础设施的Hewlett Packard Enterprise（HPE）与聚焦个人电脑、打印机的HP Inc.（HPQ）。此后公司战略主线始终围绕两大成熟现金流业务——<strong>个人系统（Personal Systems, PS）</strong>与<strong>打印（Printing）</strong>——展开，并通过并购持续补强外围能力：公司于<strong>2016年</strong>推出商业化的Multi Jet Fusion 3D打印系统，正式将3D打印业务规模化；于<strong>2022年3月</strong>宣布以每股40美元、总企业价值约33亿美元收购协作办公设备厂商Poly，并于<strong>2022年8月29日完成交割</strong>，以强化混合办公外围设备与"工作体验平台"（WXP, Work Experience Platform）能力。</p>
+    <p>公司近年经历显著管理层动荡：任职36年、任CEO满7年的Enrique Lores于2026年2月2日离任；董事会成员Bruce Broussard自2026年2月3日起出任<strong>临时CEO</strong>，董事会同步成立CEO遴选委员会。这是近年公司治理层面最重大的变化。</p>
+    <p>2026财年起，公司业务分部口径调整："打印即服务"业务由公司投资（Corporate Investments）分部并入Printing分部，历史数据已按可比口径追溯调整，对合并层面财务数据无影响。</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+  <div class="sec-head"><span class="sec-num">§02</span><h2>管理层评估与治理可靠度</h2></div>
+  <div class="panel">
+    <h3>2.1 领导层现状：临时CEO过渡期是治理层面的核心变量</h3>
+    <p>2026年2月3日，惠普宣布Enrique Lores辞去总裁、CEO及董事职务，Bruce Broussard（自2021年起任董事、拥有超30年上市公司管理经验、此前长期执掌Humana）出任临时CEO。公告同步重申了当季及全年业绩指引，说明此次变动并非源于业绩恶化的紧急应对。截至2026年8月，CEO遴选委员会尚未公布最终人选。</p>
+    <div class="quote-box">评估要点：目前<strong>没有直接证据表明</strong>临时CEO治理结构已导致公司资本配置效率下降——观察期内公司回购、分红均延续既定节奏，FY26指引也维持并两次上调。临时CEO状态更准确地应被理解为<strong>估值层面的折价变量与战略连续性的潜在不确定性</strong>，而非当前已经兑现的经营效率损失，本报告在风险排序中相应给予其中后位权重（详见§11）。</div>
+    <h3>2.2 财务团队执行力：CFO指引兑现记录良好</h3>
+    <p>CFO Karen Parkhill在近三个季度的"指引—兑现"记录中展现出较高一致性：Q3非GAAP EPS 0.83美元高于此前0.61~0.71美元指引上限；公司同步上调全年non-GAAP EPS及FCF指引。需注意近两季度EPS均含约0.11美元/股关税退款一次性有利影响，管理层对此单独披露，透明度较高。</p>
+    <h3>2.3 治理可靠度小结</h3>
+    <table>
+      <tr><th>维度</th><th style="text-align:left">评估</th></tr>
+      <tr><td>CEO稳定性</td><td style="text-align:left"><span class="tag r">偏弱</span>临时CEO在位逾半年，继任人选未定，构成估值折价因素</td></tr>
+      <tr><td>指引可信度</td><td style="text-align:left"><span class="tag g">较强</span>连续多季度达成或超预期，费用/现金流披露透明</td></tr>
+      <tr><td>信息披露质量</td><td style="text-align:left"><span class="tag g">较强</span>GAAP/non-GAAP调节表详尽，一次性因素单独列示</td></tr>
+      <tr><td>资本配置纪律</td><td style="text-align:left"><span class="tag n">中性</span>回购与分红节奏延续，未见激进并购或战略摇摆的实证</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+  <div class="sec-head"><span class="sec-num">§03</span><h2>行业格局：供需与竞争分析</h2></div>
+  <div class="panel">
+    <h3>3.1 PC行业：存储器结构性短缺主导2026年供需</h3>
+    <p><strong>IDC于2026年6月的预测</strong>显示，2026年全球PC出货量预计同比下降<strong>11.3%</strong>（较2025年11月的-2.4%大幅下修），Q4出货量预计同比下滑达20%。核心驱动因素是DRAM与NAND存储器短缺——AI数据中心对HBM及高密度DDR5的需求持续挤占消费电子产能，IDC预计2026年DRAM、NAND供给增速分别仅为16%、17%。<span class="small">（提示：该预测形成于6月，此后IDC及各机构陆续发布更新数据，例如IDC披露2026年二季度全球PC出货量实际同比下降约4.9%，投资者应结合最新一期跟踪数据滚动校准，不宜将6月预测视为最终结论。）</span></p>
+    <p>该短缺的直接后果是"量跌价升"：IDC预计2026年全球PC市场总价值仍将增长约1.6%至2740亿美元，悲观情景下平均售价最高上涨6%~8%，短缺预计持续至2027年。<strong>需要明确的逻辑是：行业ASP上涨主要源于存储器成本上涨的被动转嫁，而非厂商主动提价获取超额利润——市场总价值增长并不等同于厂商毛利率同步改善</strong>，这一点在惠普自身财报中已得到验证（详见§5、§7）。</p>
+    <div class="kpi-row">
+      <div class="kpi"><div class="num">-11.3%</div><div class="lbl">IDC(2026年6月)预测2026全年PC出货量同比</div></div>
+      <div class="kpi"><div class="num">+6~8%</div><div class="lbl">悲观情景下PC平均售价涨幅</div></div>
+      <div class="kpi"><div class="num">16%/17%</div><div class="lbl">2026年DRAM/NAND供给增速</div></div>
+      <div class="kpi"><div class="num">2027+</div><div class="lbl">IDC预计短缺持续至此</div></div>
+    </div>
+    <h3>3.2 打印行业：结构性收缩中的现金牛特征依旧稳固</h3>
+    <p>打印硬件与耗材处于长期温和结构性收缩通道，但竞争格局高度集中（惠普、佳能、爱普生三足鼎立），耗材与服务化转型（Instant Ink订阅、Print-as-a-Service）持续提供较强现金流粘性，这是Printing分部长期维持15%~19%营业利润率（远高于PS个位数利润率）的核心原因。</p>
+    <div class="risk-box"><strong>风险提示：</strong>存储器短缺是双刃剑——短期利好收入表观增长，但若消费者因高价推迟换机，可能对2027年PC出货量及PS分部营业杠杆构成压力。管理层已明确预计下半年（日历年）PC出货量同比降幅达15%~19%。</div>
+  </div>
+</section>
+
+<!-- 4 护城河 + 同期对比 -->
+<section id="s4">
+  <div class="sec-head"><span class="sec-num">§04</span><h2>业务发展情况及护城河分析（分部同期对比）</h2></div>
+  <div class="panel">
+    <h3>4.1 分部收入与利润率：近五个季度同比（YoY）全景对比</h3>
+    <table>
+      <caption>Personal Systems 分部 — 季度收入、营业利润率及YoY同比</caption>
+      <tr><th>季度</th><th>PS收入($B)</th><th>YoY收入增速</th><th>商用PS YoY</th><th>消费PS YoY</th><th>总出货量YoY</th><th>营业利润率</th></tr>
+      <tr><td>Q3 FY25 (2025-07)</td><td>9.93</td><td>—</td><td>—</td><td>—</td><td>—</td><td>5.4%</td></tr>
+      <tr><td>Q1 FY26 (2026-01)</td><td>10.30</td><td class="pos">+11%</td><td class="pos">+9%</td><td class="pos">+16%</td><td class="pos">+12%</td><td>5.0%</td></tr>
+      <tr><td>Q2 FY26 (2026-04)</td><td>10.20</td><td class="pos">+13%</td><td class="pos">+14%</td><td class="pos">+10%</td><td class="neg">-7%</td><td>5.2%</td></tr>
+      <tr><td>Q3 FY26 (2026-07)</td><td>11.77</td><td class="pos">+18%</td><td class="pos">+22%</td><td class="pos">+10%</td><td class="neg">-16%</td><td>4.6%</td></tr>
+    </table>
+    <p class="small">关键信号：PS收入增速自Q1至Q3持续加快（+11%→+13%→+18%），但同期总出货量增速由正转负且降幅持续扩大（+12%→-7%→-16%），"以价补量"特征逐季强化，营业利润率则呈现先升后降（5.0%→5.2%→4.6%），Q3利润率同比下滑0.8个百分点。下节§4.2将给出经10-Q原始披露口径核实的ASP/销量精确分解。</p>
+
+    <table>
+      <caption>Printing 分部 — 季度收入、营业利润率及YoY同比</caption>
+      <tr><th>季度</th><th>Printing收入($B)</th><th>YoY收入增速</th><th>商用打印YoY</th><th>消费打印YoY</th><th>硬件出货量YoY</th><th>Supplies(耗材)YoY</th><th>营业利润率</th></tr>
+      <tr><td>Q3 FY25 (2025-07)</td><td>4.00</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>17.0%</td></tr>
+      <tr><td>Q1 FY26 (2026-01)</td><td>4.20</td><td class="neg">-2%</td><td class="neg">-3%</td><td class="neg">-8%</td><td class="neg">-6%</td><td class="neg">-1%</td><td>18.3%</td></tr>
+      <tr><td>Q2 FY26 (2026-04)</td><td>4.20</td><td class="n">持平</td><td class="n">持平</td><td class="neg">-10%</td><td class="neg">-7%</td><td class="pos">+1%</td><td>18.3%</td></tr>
+      <tr><td>Q3 FY26 (2026-07)</td><td>3.91</td><td class="neg">-2%</td><td class="neg">-1%</td><td class="neg">-2%</td><td class="neg">-7%</td><td class="neg">-3%</td><td>18.1%</td></tr>
+    </table>
+    <p class="small">Printing分部呈现典型"缓慢结构性收缩+稳定高利润率"特征：三个季度营业利润率均稳定在18%左右，收入端受硬件出货量持续下滑（-6%至-7%区间）拖累。<strong>Supplies（耗材）收入三个季度呈现-1%/+1%/-3%的窄幅波动，并未出现单边趋势性下滑</strong>，说明installed base（存量装机基础）在观察期内仍保持基本稳定，但耗材收入增速本身也未能跑赢通胀或抵消硬件收入下滑，尚不足以支撑"耗材永续增长"的强假设，Printing更准确的定位是"现金流稳定但非增长引擎的资产"。</p>
+
+    <div class="chart-box">
+      <div class="cap">Chart 1 · 分部收入构成趋势（近4个季度，$B）</div>
+      <svg viewBox="0 0 620 320" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block;max-height:300px"><rect x="54.0" y="11.0" width="11" height="11" fill="#0c1f3d"/><text x="69.0" y="21.0" font-size="11" fill="#0a0a0a">Personal Systems</text><rect x="181.8" y="11.0" width="11" height="11" fill="#a67c1e"/><text x="196.8" y="21.0" font-size="11" fill="#0a0a0a">Printing</text><line x1="54" y1="270.0" x2="604" y2="270.0" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="273.0" text-anchor="end" font-size="11" fill="#6b6b62">0</text><line x1="54" y1="224.4" x2="604" y2="224.4" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="227.4" text-anchor="end" font-size="11" fill="#6b6b62">3.2</text><line x1="54" y1="178.8" x2="604" y2="178.8" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="181.8" text-anchor="end" font-size="11" fill="#6b6b62">6.4</text><line x1="54" y1="133.2" x2="604" y2="133.2" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="136.2" text-anchor="end" font-size="11" fill="#6b6b62">9.6</text><line x1="54" y1="87.6" x2="604" y2="87.6" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="90.6" text-anchor="end" font-size="11" fill="#6b6b62">12.8</text><line x1="54" y1="42.0" x2="604" y2="42.0" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="45.0" text-anchor="end" font-size="11" fill="#6b6b62">16</text><text transform="rotate(-90 13 156)" x="13" y="156" text-anchor="middle" font-size="10" fill="#6b6b62">$B</text><line x1="54" y1="42" x2="54" y2="270" stroke="#0a0a0a" stroke-width="1"/><line x1="54" y1="270" x2="604" y2="270" stroke="#0a0a0a" stroke-width="1"/><rect x="90.8" y="128.5" width="64.0" height="141.5" fill="#0c1f3d"/><text x="122.8" y="202.2" text-anchor="middle" font-size="10" fill="#ffffff">9.93</text><rect x="90.8" y="71.5" width="64.0" height="57.0" fill="#a67c1e"/><text x="122.8" y="103.0" text-anchor="middle" font-size="10" fill="#ffffff">4.00</text><text x="122.8" y="286.0" text-anchor="middle" font-size="11" fill="#0a0a0a">Q3 FY25</text><rect x="228.2" y="123.2" width="64.0" height="146.8" fill="#0c1f3d"/><text x="260.2" y="199.6" text-anchor="middle" font-size="10" fill="#ffffff">10.30</text><rect x="228.2" y="63.4" width="64.0" height="59.9" fill="#a67c1e"/><text x="260.2" y="96.3" text-anchor="middle" font-size="10" fill="#ffffff">4.20</text><text x="260.2" y="286.0" text-anchor="middle" font-size="11" fill="#0a0a0a">Q1 FY26</text><rect x="365.8" y="124.7" width="64.0" height="145.3" fill="#0c1f3d"/><text x="397.8" y="200.3" text-anchor="middle" font-size="10" fill="#ffffff">10.20</text><rect x="365.8" y="64.8" width="64.0" height="59.9" fill="#a67c1e"/><text x="397.8" y="97.7" text-anchor="middle" font-size="10" fill="#ffffff">4.20</text><text x="397.8" y="286.0" text-anchor="middle" font-size="11" fill="#0a0a0a">Q2 FY26</text><rect x="503.2" y="102.3" width="64.0" height="167.7" fill="#0c1f3d"/><text x="535.2" y="189.1" text-anchor="middle" font-size="10" fill="#ffffff">11.77</text><rect x="503.2" y="46.6" width="64.0" height="55.7" fill="#a67c1e"/><text x="535.2" y="77.4" text-anchor="middle" font-size="10" fill="#ffffff">3.91</text><text x="535.2" y="286.0" text-anchor="middle" font-size="11" fill="#0a0a0a">Q3 FY26</text></svg>
+    </div>
+    <div class="chart-box">
+      <div class="cap">Chart 2 · 分部营业利润率趋势对比（近4个季度，%）</div>
+      <svg viewBox="0 0 620 300" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block;max-height:300px"><rect x="54.0" y="11.0" width="11" height="11" fill="#0c1f3d"/><text x="69.0" y="21.0" font-size="11" fill="#0a0a0a">Personal Systems营业利润率</text><rect x="236.8" y="11.0" width="11" height="11" fill="#a67c1e"/><text x="251.8" y="21.0" font-size="11" fill="#0a0a0a">Printing营业利润率</text><line x1="54" y1="244.0" x2="604" y2="244.0" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="247.0" text-anchor="end" font-size="11" fill="#6b6b62">0</text><line x1="54" y1="193.5" x2="604" y2="193.5" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="196.5" text-anchor="end" font-size="11" fill="#6b6b62">5</text><line x1="54" y1="143.0" x2="604" y2="143.0" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="146.0" text-anchor="end" font-size="11" fill="#6b6b62">10</text><line x1="54" y1="92.5" x2="604" y2="92.5" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="95.5" text-anchor="end" font-size="11" fill="#6b6b62">15</text><line x1="54" y1="42.0" x2="604" y2="42.0" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="45.0" text-anchor="end" font-size="11" fill="#6b6b62">20</text><text transform="rotate(-90 13 143)" x="13" y="143" text-anchor="middle" font-size="10" fill="#6b6b62">%</text><line x1="54" y1="42" x2="54" y2="244" stroke="#0a0a0a" stroke-width="1"/><line x1="54" y1="244" x2="604" y2="244" stroke="#0a0a0a" stroke-width="1"/><text x="54.0" y="263.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q3 FY25</text><text x="237.3" y="263.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q1 FY26</text><text x="420.7" y="263.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q2 FY26</text><text x="604.0" y="263.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q3 FY26</text><polyline points="54.0,189.46 237.33333333333334,193.5 420.6666666666667,191.48 604.0,197.54" fill="none" stroke="#0c1f3d" stroke-width="2.2" /><circle cx="54.0" cy="189.5" r="2.6" fill="#0c1f3d"/><text x="54.0" y="182.5" text-anchor="middle" font-size="10" fill="#0a0a0a">5.4</text><circle cx="237.3" cy="193.5" r="2.6" fill="#0c1f3d"/><text x="237.3" y="186.5" text-anchor="middle" font-size="10" fill="#0a0a0a">5.0</text><circle cx="420.7" cy="191.5" r="2.6" fill="#0c1f3d"/><text x="420.7" y="184.5" text-anchor="middle" font-size="10" fill="#0a0a0a">5.2</text><circle cx="604.0" cy="197.5" r="2.6" fill="#0c1f3d"/><text x="604.0" y="190.5" text-anchor="middle" font-size="10" fill="#0a0a0a">4.6</text><polyline points="54.0,72.30000000000001 237.33333333333334,59.169999999999995 420.6666666666667,59.169999999999995 604.0,61.19" fill="none" stroke="#a67c1e" stroke-width="2.2" /><circle cx="54.0" cy="72.3" r="2.6" fill="#a67c1e"/><text x="54.0" y="65.3" text-anchor="middle" font-size="10" fill="#0a0a0a">17.0</text><circle cx="237.3" cy="59.2" r="2.6" fill="#a67c1e"/><text x="237.3" y="52.2" text-anchor="middle" font-size="10" fill="#0a0a0a">18.3</text><circle cx="420.7" cy="59.2" r="2.6" fill="#a67c1e"/><text x="420.7" y="52.2" text-anchor="middle" font-size="10" fill="#0a0a0a">18.3</text><circle cx="604.0" cy="61.2" r="2.6" fill="#a67c1e"/><text x="604.0" y="54.2" text-anchor="middle" font-size="10" fill="#0a0a0a">18.1</text></svg>
+    </div>
+
+    <h3>4.2 护城河要素拆解</h3>
+    <p>以下将惠普的竞争优势明确拆分为"真正具备护城河属性"与"不具备明显护城河"两类，避免笼统地将所有业务特征都称为"护城河"：</p>
+    <div class="grid2">
+      <div class="panel" style="margin-bottom:0;">
+        <strong style="color:var(--green)">✓ 真正的优势来源</strong>
+        <ul style="font-size:12.5px; color:var(--grey); padding-left:18px; margin:8px 0 0;">
+          <li>全球商用PC渠道与品牌网络（180+国家运营）</li>
+          <li>打印机存量装机基础（installed base）及由此衍生的耗材经销体系</li>
+          <li>耗材业务的高毛利商业模式（Supplies及Print-as-a-Service订阅）</li>
+          <li>面向大客户的设备生命周期管理与规模化采购/供应链管理能力</li>
+        </ul>
+      </div>
+      <div class="panel" style="margin-bottom:0;">
+        <strong style="color:var(--red)">✗ 不具备明显护城河的环节</strong>
+        <ul style="font-size:12.5px; color:var(--grey); padding-left:18px; margin:8px 0 0;">
+          <li>CPU / GPU / NPU等核心计算芯片——完全依赖英特尔、AMD、英伟达等供应商</li>
+          <li>DRAM / NAND存储器——本轮成本冲击已充分证明惠普对上游缺乏定价权</li>
+          <li>PC操作系统——依赖微软Windows生态</li>
+          <li>核心AI模型能力——AI PC的模型层价值更多由芯片厂商与软件生态商掌握</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote-box"><strong>关于"商用客户粘性"的限定说明：</strong>Q3商用PS收入同比增长22%中，ASP上涨约41.1%贡献了绝大部分，而销量实际下降13.6%（详见§7），因此<strong>仅凭收入增长不足以证明客户粘性本身在提升</strong>。惠普在商用PC市场具备较强的品牌、渠道与设备管理服务基础，但客户粘性的强弱需结合留存率、服务收入占比、设备管理软件渗透率等指标进一步验证，本报告对此持中性态度，不将其作为护城河的核心论据单独强调。</div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+  <div class="sec-head"><span class="sec-num">§05</span><h2>多季度盈利质量和现金流（自由现金流）分析</h2></div>
+  <div class="panel">
+    <h3>5.1 近六个季度损益表关键指标趋势</h3>
+    <table>
+      <caption>合并损益表 — 季度趋势（FY25 Q1 → FY26 Q3，毛利率为根据10-Q披露同比变动百分点倒算的约数）</caption>
+      <tr><th>季度</th><th>总收入($B)</th><th>收入YoY</th><th>毛利率(约)</th><th>GAAP营业利润率</th><th>Non-GAAP营业利润率</th><th>GAAP稀释EPS</th><th>Non-GAAP稀释EPS</th></tr>
+      <tr><td>Q1 FY25 (2025-01)</td><td>13.50</td><td>—</td><td>≈21.0%</td><td>—</td><td>—</td><td>$0.59</td><td>$0.74</td></tr>
+      <tr><td>Q2 FY25 (2025-04)</td><td>13.20</td><td>—</td><td>≈20.7%</td><td>4.9%</td><td>7.3%</td><td>$0.42</td><td>$0.71</td></tr>
+      <tr><td>Q3 FY25 (2025-07)</td><td>13.93</td><td>—</td><td>≈20.5%</td><td>5.1%</td><td>7.1%</td><td>$0.80</td><td>$0.75</td></tr>
+      <tr><td>Q4 FY25 (2025-10)</td><td>14.60</td><td>+4.2%</td><td>—</td><td>—</td><td>—</td><td>$0.84</td><td>$0.93</td></tr>
+      <tr><td>Q1 FY26 (2026-01)</td><td>14.40</td><td>+6.9%</td><td>19.6%</td><td>—</td><td>6.9%</td><td>$0.58</td><td>$0.81</td></tr>
+      <tr><td>Q2 FY26 (2026-04)</td><td>14.41</td><td>+9.0%</td><td>20.9%</td><td>4.2%</td><td>7.5%</td><td>$0.49</td><td>$0.86</td></tr>
+      <tr><td>Q3 FY26 (2026-07)</td><td>15.68</td><td>+12.5%</td><td>18.8%</td><td>5.7%</td><td>6.5%</td><td>$0.71</td><td>$0.83</td></tr>
+    </table>
+    <div class="chart-box">
+      <div class="cap">Chart 3 · 毛利率季度趋势（%）— 存储器成本传导的最直接观测指标</div>
+      <svg viewBox="0 0 620 300" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block;max-height:300px"><rect x="54.0" y="11.0" width="11" height="11" fill="#9c2b21"/><text x="69.0" y="21.0" font-size="11" fill="#0a0a0a">合并毛利率（约数）</text><line x1="54" y1="244.0" x2="604" y2="244.0" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="247.0" text-anchor="end" font-size="11" fill="#6b6b62">17</text><line x1="54" y1="203.6" x2="604" y2="203.6" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="206.6" text-anchor="end" font-size="11" fill="#6b6b62">18</text><line x1="54" y1="163.2" x2="604" y2="163.2" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="166.2" text-anchor="end" font-size="11" fill="#6b6b62">19</text><line x1="54" y1="122.8" x2="604" y2="122.8" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="125.8" text-anchor="end" font-size="11" fill="#6b6b62">20</text><line x1="54" y1="82.4" x2="604" y2="82.4" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="85.4" text-anchor="end" font-size="11" fill="#6b6b62">21</text><line x1="54" y1="42.0" x2="604" y2="42.0" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="45.0" text-anchor="end" font-size="11" fill="#6b6b62">22</text><text transform="rotate(-90 13 143)" x="13" y="143" text-anchor="middle" font-size="10" fill="#6b6b62">%</text><line x1="54" y1="42" x2="54" y2="244" stroke="#0a0a0a" stroke-width="1"/><line x1="54" y1="244" x2="604" y2="244" stroke="#0a0a0a" stroke-width="1"/><text x="54.0" y="263.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q1 FY25</text><text x="164.0" y="263.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q2 FY25</text><text x="274.0" y="263.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q3 FY25</text><text x="384.0" y="263.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q1 FY26</text><text x="494.0" y="263.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q2 FY26</text><text x="604.0" y="263.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q3 FY26</text><polygon points="54,244.0 54.0,82.39999999999999 164.0,94.52000000000002 274.0,102.60000000000001 384.0,138.95999999999995 494.0,86.44000000000005 604.0,171.27999999999997 604,244.0" fill="rgba(156,43,33,.15)" stroke="none"/><polyline points="54.0,82.39999999999999 164.0,94.52000000000002 274.0,102.60000000000001 384.0,138.95999999999995 494.0,86.44000000000005 604.0,171.27999999999997" fill="none" stroke="#9c2b21" stroke-width="2.2" /><circle cx="54.0" cy="82.4" r="2.6" fill="#9c2b21"/><text x="54.0" y="75.4" text-anchor="middle" font-size="10" fill="#0a0a0a">21.0</text><circle cx="164.0" cy="94.5" r="2.6" fill="#9c2b21"/><text x="164.0" y="87.5" text-anchor="middle" font-size="10" fill="#0a0a0a">20.7</text><circle cx="274.0" cy="102.6" r="2.6" fill="#9c2b21"/><text x="274.0" y="95.6" text-anchor="middle" font-size="10" fill="#0a0a0a">20.5</text><circle cx="384.0" cy="139.0" r="2.6" fill="#9c2b21"/><text x="384.0" y="132.0" text-anchor="middle" font-size="10" fill="#0a0a0a">19.6</text><circle cx="494.0" cy="86.4" r="2.6" fill="#9c2b21"/><text x="494.0" y="79.4" text-anchor="middle" font-size="10" fill="#0a0a0a">20.9</text><circle cx="604.0" cy="171.3" r="2.6" fill="#9c2b21"/><text x="604.0" y="164.3" text-anchor="middle" font-size="10" fill="#0a0a0a">18.8</text></svg>
+    </div>
+    <p><strong>毛利率是比营业利润率更敏感的观测窗口：</strong>Q3 FY26毛利率约18.8%，较去年同期的约20.5%下滑约1.7个百分点，是六个季度中的最低值，公司在业绩会上明确将其归因于更高的商品成本（commodity costs）及Personal Systems收入占比提升带来的不利结构变化。相较营业利润率5.7%(GAAP)/6.5%(non-GAAP)的相对温和变化，毛利率的下滑更直接地反映了"ASP上涨未能完全覆盖BOM（物料清单）成本上涨"这一核心矛盾，是本报告认为最值得持续跟踪的单一指标。</p>
+
+    <h3>5.2 收入—毛利率—盈利传导链（Q3 FY26 vs Q3 FY25 完整拆解）</h3>
+    <table>
+      <caption>惠普核心经营指标同比变化全景（Q3 FY25 → Q3 FY26）</caption>
+      <tr><th>指标</th><th>Q3 FY25</th><th>Q3 FY26</th><th>变化</th></tr>
+      <tr><td>总收入</td><td>$13.93B</td><td>$15.68B</td><td class="pos">+12.5%</td></tr>
+      <tr><td>PS分部ASP（10-Q披露口径）</td><td>—</td><td>—</td><td class="neg">+40.8%</td></tr>
+      <tr><td>PS分部销量（10-Q披露口径）</td><td>—</td><td>—</td><td class="neg">-15.8%</td></tr>
+      <tr><td>合并毛利率（约数）</td><td>≈20.5%</td><td>18.8%</td><td class="neg">-1.7ppt</td></tr>
+      <tr><td>PS分部营业利润率</td><td>5.4%</td><td>4.6%</td><td class="neg">-0.8ppt</td></tr>
+      <tr><td>Non-GAAP合并营业利润率</td><td>7.1%</td><td>6.5%</td><td class="neg">-0.6ppt</td></tr>
+      <tr><td>Non-GAAP稀释EPS</td><td>$0.75</td><td>$0.83</td><td class="pos">+10.7%</td></tr>
+    </table>
+    <div class="quote-box"><strong>这张表揭示了惠普当前经营状态最核心的逻辑：</strong>公司通过大幅提价（PS分部ASP+40.8%）远超销量降幅（-15.8%）实现了收入增长，但由于存储器成本（BOM占比已从15%~18%升至约35%，据公司管理层在Q1业绩会披露）上涨速度快于提价幅度，毛利率仍同比收窄1.7个百分点。EPS之所以仍能实现两位数增长，主要依靠：(1) 收入基数扩大带来的费用率摊薄；(2) 关税退款等一次性因素（详见§8）；(3) 股份回购对每股口径的机械性增厚（详见§9.2）。<strong>这是一种"收入增长掩盖利润率压力"的典型硬件成本周期状态，而非需求或定价权驱动的健康增长。</strong></div>
+
+    <h3>5.3 自由现金流分析（近六个季度）</h3>
+    <table>
+      <caption>自由现金流构成趋势</caption>
+      <tr><th>季度</th><th>经营现金流($M)</th><th>资本开支($M)</th><th>自由现金流($M)</th></tr>
+      <tr><td>Q3 FY25</td><td>1,661</td><td>(215)</td><td>≈1,470</td></tr>
+      <tr><td>Q4 FY25</td><td>≈1,600</td><td>(197)</td><td>≈1,500</td></tr>
+      <tr><td>Q1 FY26</td><td>383</td><td>(233)</td><td>175</td></tr>
+      <tr><td>Q2 FY26</td><td>900</td><td>(170)</td><td>800</td></tr>
+      <tr><td>Q3 FY26</td><td>1,735</td><td>(187)</td><td>≈1,570</td></tr>
+    </table>
+    <div class="chart-box">
+      <div class="cap">Chart 4 · 经营现金流 vs 自由现金流季度趋势（$M）</div>
+      <svg viewBox="0 0 620 340" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block;max-height:320px"><rect x="54.0" y="11.0" width="11" height="11" fill="#0c1f3d"/><text x="69.0" y="21.0" font-size="11" fill="#0a0a0a">经营活动现金流($M)</text><rect x="186.2" y="11.0" width="11" height="11" fill="#a67c1e"/><text x="201.2" y="21.0" font-size="11" fill="#0a0a0a">自由现金流($M)</text><line x1="54" y1="284.0" x2="604" y2="284.0" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="287.0" text-anchor="end" font-size="11" fill="#6b6b62">0</text><line x1="54" y1="230.2" x2="604" y2="230.2" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="233.2" text-anchor="end" font-size="11" fill="#6b6b62">400</text><line x1="54" y1="176.4" x2="604" y2="176.4" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="179.4" text-anchor="end" font-size="11" fill="#6b6b62">800</text><line x1="54" y1="122.7" x2="604" y2="122.7" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="125.7" text-anchor="end" font-size="11" fill="#6b6b62">1200</text><line x1="54" y1="68.9" x2="604" y2="68.9" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="71.9" text-anchor="end" font-size="11" fill="#6b6b62">1600</text><text transform="rotate(-90 13 163)" x="13" y="163" text-anchor="middle" font-size="10" fill="#6b6b62">$M</text><line x1="54" y1="42" x2="54" y2="284" stroke="#0a0a0a" stroke-width="1"/><line x1="54" y1="284" x2="604" y2="284" stroke="#0a0a0a" stroke-width="1"/><text x="109.0" y="300.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q3 FY25</text><rect x="72.5" y="60.7" width="34.0" height="223.3" fill="#0c1f3d"/><text x="89.5" y="56.7" text-anchor="middle" font-size="10" fill="#0a0a0a">1661</text><rect x="111.5" y="86.4" width="34.0" height="197.6" fill="#a67c1e"/><text x="128.5" y="82.4" text-anchor="middle" font-size="10" fill="#0a0a0a">1470</text><text x="219.0" y="300.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q4 FY25</text><rect x="182.5" y="68.9" width="34.0" height="215.1" fill="#0c1f3d"/><text x="199.5" y="64.9" text-anchor="middle" font-size="10" fill="#0a0a0a">1600</text><rect x="221.5" y="82.3" width="34.0" height="201.7" fill="#a67c1e"/><text x="238.5" y="78.3" text-anchor="middle" font-size="10" fill="#0a0a0a">1500</text><text x="329.0" y="300.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q1 FY26</text><rect x="292.5" y="232.5" width="34.0" height="51.5" fill="#0c1f3d"/><text x="309.5" y="228.5" text-anchor="middle" font-size="10" fill="#0a0a0a">383</text><rect x="331.5" y="260.5" width="34.0" height="23.5" fill="#a67c1e"/><text x="348.5" y="256.5" text-anchor="middle" font-size="10" fill="#0a0a0a">175</text><text x="439.0" y="300.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q2 FY26</text><rect x="402.5" y="163.0" width="34.0" height="121.0" fill="#0c1f3d"/><text x="419.5" y="159.0" text-anchor="middle" font-size="10" fill="#0a0a0a">900</text><rect x="441.5" y="176.4" width="34.0" height="107.6" fill="#a67c1e"/><text x="458.5" y="172.4" text-anchor="middle" font-size="10" fill="#0a0a0a">800</text><text x="549.0" y="300.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q3 FY26</text><rect x="512.5" y="50.7" width="34.0" height="233.3" fill="#0c1f3d"/><text x="529.5" y="46.7" text-anchor="middle" font-size="10" fill="#0a0a0a">1735</text><rect x="551.5" y="72.9" width="34.0" height="211.1" fill="#a67c1e"/><text x="568.5" y="68.9" text-anchor="middle" font-size="10" fill="#0a0a0a">1570</text></svg>
+    </div>
+    <p><strong>现金流节奏的季节性特征：</strong>Q1FY26自由现金流仅1.75亿美元，为六季度低点，主因是存货备货带来的营运资本占用；Q2、Q3逐季修复至8亿、15.7亿美元。前九个月FY26经营现金流合计30.44亿美元，同比FY25的20.73亿美元大幅提升，主要受应付账款周转天数拉长驱动。需要提示的是，截至2026年7月31日，公司在<strong>供应商融资计划（Supplier Finance Program）下已确认但尚未支付的义务达约109亿美元</strong>（较2025财年末的89亿美元增加），约占应付账款总额21,383百万美元的51%左右；同时公司披露供应商已出售给金融机构的应付账款余额基本为零（较2025财年末的1亿美元进一步下降），说明目前该计划尚未构成实质性的"隐藏融资"负担，但其绝对规模已相当可观，是评估经营性现金流可持续性时不可忽略的结构性因素。</p>
+    <div class="quote-box">管理层已将2026财年自由现金流指引由28~30亿美元上调至<strong>30~32亿美元</strong>，隐含Q4自由现金流指引中值约6~7亿美元区间，处于历史正常水平。</div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+  <div class="sec-head"><span class="sec-num">§06</span><h2>资产负债表分析</h2></div>
+  <div class="panel">
+    <table>
+      <caption>合并资产负债表关键科目</caption>
+      <tr><th>项目($M)</th><th>2025-10-31</th><th>2026-07-31</th><th>变化</th></tr>
+      <tr><td>现金及等价物</td><td>3,705</td><td>4,169</td><td class="pos">+464</td></tr>
+      <tr><td>应收账款净额</td><td>5,692</td><td>7,168</td><td class="neg">+1,476</td></tr>
+      <tr><td>存货</td><td>8,512</td><td>10,322</td><td class="neg">+1,810</td></tr>
+      <tr><td>流动资产合计</td><td>22,453</td><td>26,746</td><td>+4,293</td></tr>
+      <tr><td>总资产</td><td>41,769</td><td>45,701</td><td>+3,932</td></tr>
+      <tr><td>应付账款</td><td>18,051</td><td>21,383</td><td class="neg">+3,332</td></tr>
+      <tr><td>流动负债合计</td><td>29,258</td><td>33,963</td><td>+4,705</td></tr>
+      <tr><td>长期债务</td><td>8,821</td><td>7,868</td><td class="pos">-953</td></tr>
+      <tr><td>股东权益（赤字）</td><td>(346)</td><td>(92)</td><td class="pos">改善254</td></tr>
+    </table>
+    <div class="risk-box"><strong>股东权益长期为负：</strong>截至2026年7月31日为-9,200万美元（较2025财年末的-3.46亿美元收窄）。这一结构源于历史大规模股票回购持续侵蚀留存收益，属于资本回报政策与累计财务结构的结果，<strong>不宜简单等同于公司资产价值为负或经营出现重大问题</strong>；传统市净率(P/B)估值方法在此失效，投资者应更多关注净债务规模、利息保障倍数、自由现金流及流动性指标，而非账面净资产。</div>
+
+    <h3>6.1 债务期限结构与流动性缓冲</h3>
+    <table>
+      <tr><th>指标</th><th>2026-07-31（约）</th></tr>
+      <tr><td>短期借款（含一年内到期长期债务）</td><td>约$1.29B（其中一年内到期长期债务部分加权平均利率约3.5%~3.6%）</td></tr>
+      <tr><td>长期债务</td><td>约$7.87B</td></tr>
+      <tr><td>未动用循环信用额度</td><td>$5.0B（5年期可持续发展挂钩循环信贷，可用至2029年8月）</td></tr>
+      <tr><td>商业票据授权额度（未动用）</td><td>$6.0B</td></tr>
+      <tr><td>剩余股份回购授权</td><td>约$7.69B（2024年8月董事会将总授权提升至100亿美元）</td></tr>
+    </table>
+    <p>公司近12个月到期债务规模相对可控（约13亿美元），且拥有充裕的未动用流动性缓冲（50亿美元循环信贷+60亿美元商业票据额度均未使用），短期再融资风险总体较低。净债务较2025财年末下降约17%至约49.9亿美元，负债表边际改善。</p>
+
+    <h3>6.2 营运资本周转效率趋势</h3>
+    <table>
+      <caption>营运资本周转天数趋势（近三个季度）</caption>
+      <tr><th>指标</th><th>Q1 FY26</th><th>Q2 FY26</th><th>Q3 FY26</th></tr>
+      <tr><td>应收账款周转天数(DSO)</td><td>33天</td><td>38天</td><td>41天</td></tr>
+      <tr><td>存货周转天数(DIO)</td><td>68天</td><td>73天</td><td>73天</td></tr>
+      <tr><td>应付账款周转天数(DPO)</td><td>141天</td><td>151天</td><td>151天</td></tr>
+    </table>
+    <p>惠普长期维持负现金转换周期，主要得益于较高的应付账款周转天数及供应商融资计划等供应链资金安排，这构成其营运资本效率优势，<strong>但该优势并非完全等同于对供应商的绝对议价能力</strong>，其中部分账期结构与供应商融资计划安排相关（见§5.3）。存货与应付账款周转天数自Q1至Q2显著拉长后在Q3维持高位，应收账款周转天数持续走高（33→38→41天），反映营运资本效率边际有所下降，需持续跟踪。</p>
+
+    <h3>6.3 流动性比率</h3>
+    <table>
+      <tr><th>指标</th><th>2025-10-31</th><th>2026-07-31</th></tr>
+      <tr><td>流动比率</td><td>0.77x</td><td>0.79x</td></tr>
+      <tr><td>净债务</td><td>≈$5.96B</td><td>≈$4.99B</td></tr>
+    </table>
+    <p>流动比率长期低于1倍，是硬件分销型企业依靠高应付账款周转运营的典型特征；结合近12个月到期债务规模可控及充裕的未动用信贷额度，本报告判断公司短期流动性风险总体可控。</p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="s7">
+  <div class="sec-head"><span class="sec-num">§07</span><h2>订单分析：ASP-销量传导链的完整拆解</h2></div>
+  <div class="panel">
+    <p>惠普未披露传统意义上的"在手订单"（backlog）指标，本部分以10-Q原始披露的ASP（平均销售单价）与销量数据作为需求趋势的核心证据。</p>
+    <table>
+      <caption>Personal Systems ASP × 销量精确分解（10-Q披露口径，同比）</caption>
+      <tr><th>季度</th><th>PS总收入YoY</th><th>PS ASP YoY</th><th>PS销量YoY</th><th>驱动结构</th></tr>
+      <tr><td>Q1 FY26</td><td>+11.1%</td><td>-0.2%</td><td>+12.1%</td><td>销量驱动为主（Windows刷新周期+提前备货）</td></tr>
+      <tr><td>Q2 FY26</td><td>+13.2%</td><td>+22.3%</td><td>-7.0%</td><td>转向价格驱动，销量转负</td></tr>
+      <tr><td>Q3 FY26</td><td>+18.5%</td><td>+40.8%</td><td>-15.8%</td><td>完全由价格驱动，销量降幅显著扩大</td></tr>
+    </table>
+    <table>
+      <caption>Q3 FY26 商用/消费PS进一步细分（10-Q口径）</caption>
+      <tr><th>细分市场</th><th>收入YoY</th><th>ASP YoY</th><th>销量YoY</th></tr>
+      <tr><td>Commercial PS（商用）</td><td>+21.9%</td><td>+41.1%</td><td>-13.6%</td></tr>
+      <tr><td>Consumer PS（消费）</td><td>+10.1%</td><td>≈+36.6%（推算）</td><td>-19.4%</td></tr>
+    </table>
+    <div class="chart-box">
+      <div class="cap">Chart 5 · PS分部ASP与销量剪刀差趋势（%，YoY）</div>
+      <svg viewBox="0 0 620 300" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block;max-height:300px"><rect x="54.0" y="11.0" width="11" height="11" fill="#9c2b21"/><text x="69.0" y="21.0" font-size="11" fill="#0a0a0a">PS分部ASP同比(%)</text><rect x="177.4" y="11.0" width="11" height="11" fill="#0c1f3d"/><text x="192.4" y="21.0" font-size="11" fill="#0a0a0a">PS分部销量同比(%)</text><rect x="304.6" y="11.0" width="11" height="11" fill="#a67c1e"/><text x="319.6" y="21.0" font-size="11" fill="#0a0a0a">PS分部收入同比(%)</text><line x1="54" y1="244.0" x2="604" y2="244.0" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="247.0" text-anchor="end" font-size="11" fill="#6b6b62">-20</text><line x1="54" y1="212.9" x2="604" y2="212.9" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="215.9" text-anchor="end" font-size="11" fill="#6b6b62">-10</text><line x1="54" y1="181.8" x2="604" y2="181.8" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="184.8" text-anchor="end" font-size="11" fill="#6b6b62">0</text><line x1="54" y1="150.8" x2="604" y2="150.8" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="153.8" text-anchor="end" font-size="11" fill="#6b6b62">10</text><line x1="54" y1="119.7" x2="604" y2="119.7" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="122.7" text-anchor="end" font-size="11" fill="#6b6b62">20</text><line x1="54" y1="88.6" x2="604" y2="88.6" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="91.6" text-anchor="end" font-size="11" fill="#6b6b62">30</text><line x1="54" y1="57.5" x2="604" y2="57.5" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="60.5" text-anchor="end" font-size="11" fill="#6b6b62">40</text><text transform="rotate(-90 13 143)" x="13" y="143" text-anchor="middle" font-size="10" fill="#6b6b62">YoY %</text><line x1="54" y1="42" x2="54" y2="244" stroke="#0a0a0a" stroke-width="1"/><line x1="54" y1="244" x2="604" y2="244" stroke="#0a0a0a" stroke-width="1"/><text x="54.0" y="263.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q1 FY26</text><text x="329.0" y="263.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q2 FY26</text><text x="604.0" y="263.0" text-anchor="middle" font-size="10" fill="#6b6b62">Q3 FY26</text><polyline points="54.0,182.46769230769232 329.0,112.54461538461538 604.0,55.05230769230769" fill="none" stroke="#9c2b21" stroke-width="2.2" /><circle cx="54.0" cy="182.5" r="2.6" fill="#9c2b21"/><text x="54.0" y="175.5" text-anchor="middle" font-size="10" fill="#0a0a0a">-0.2</text><circle cx="329.0" cy="112.5" r="2.6" fill="#9c2b21"/><text x="329.0" y="105.5" text-anchor="middle" font-size="10" fill="#0a0a0a">22.3</text><circle cx="604.0" cy="55.1" r="2.6" fill="#9c2b21"/><text x="604.0" y="48.1" text-anchor="middle" font-size="10" fill="#0a0a0a">40.8</text><polyline points="54.0,144.24307692307693 329.0,203.60000000000002 604.0,230.9476923076923" fill="none" stroke="#0c1f3d" stroke-width="2.2" /><circle cx="54.0" cy="144.2" r="2.6" fill="#0c1f3d"/><text x="54.0" y="137.2" text-anchor="middle" font-size="10" fill="#0a0a0a">12.1</text><circle cx="329.0" cy="203.6" r="2.6" fill="#0c1f3d"/><text x="329.0" y="196.6" text-anchor="middle" font-size="10" fill="#0a0a0a">-7.0</text><circle cx="604.0" cy="230.9" r="2.6" fill="#0c1f3d"/><text x="604.0" y="223.9" text-anchor="middle" font-size="10" fill="#0a0a0a">-15.8</text><polyline points="54.0,147.35076923076923 329.0,140.82461538461536 604.0,124.35384615384615" fill="none" stroke="#a67c1e" stroke-width="2.2" stroke-dasharray="5,4" /><circle cx="54.0" cy="147.4" r="2.6" fill="#a67c1e"/><text x="54.0" y="140.4" text-anchor="middle" font-size="10" fill="#0a0a0a">11.1</text><circle cx="329.0" cy="140.8" r="2.6" fill="#a67c1e"/><text x="329.0" y="133.8" text-anchor="middle" font-size="10" fill="#0a0a0a">13.2</text><circle cx="604.0" cy="124.4" r="2.6" fill="#a67c1e"/><text x="604.0" y="117.4" text-anchor="middle" font-size="10" fill="#0a0a0a">18.5</text></svg>
+    </div>
+    <p><strong>这组数据是本报告的核心发现之一：</strong>季度演变清晰显示惠普PS分部的增长动力已从Q1的"销量驱动"（Windows刷新周期+提前备货）完全转向Q3的"价格驱动"（ASP+40.8%对冲销量-15.8%）。管理层将ASP上涨归因于"应对更高商品成本的提价措施、有利汇率影响及产品结构升级"三项因素叠加，<strong>而非单纯的产品力提升或需求超预期</strong>。这意味着当前的收入增长本质上是一次"价格传导能力测试"：惠普能否在存储器成本高企的窗口期内，通过提价维持收入规模，同时不过度侵蚀销量与市场份额，是决定其FY26下半年及FY27经营表现的关键变量。</p>
+    <div class="quote-box">管理层在Q3业绩会上表示存储器供给正获得"有意义的改善"及更高订单履约率(fulfillment rates)；但CFO同时给出前瞻性负面信号——预计下半年（日历年）PC行业出货量同比下降15%~19%，且趋势或延续至2027财年（FY27具体指引将于Q4电话会公布）。管理层还披露存储器与存储成本目前约占PC物料清单（BOM）的35%左右，较此前的15%~18%大幅提升，是理解ASP大幅上涨背后成本驱动本质的关键数据点。</div>
+    <p><strong>结论性判断：</strong>当前"量跌价升"增长模式本质是供给侧成本冲击向下游被动传导的产物，而非需求端真实扩张或惠普自身定价权提升。其可持续性高度依赖存储器价格能否维持高位而不引发需求进一步萎缩的"甜蜜点"。若2027年供给修复、价格回落，惠普能否维持已提升的ASP同时不发生量的进一步流失，是决定中期收入与利润可持续性的关键变量，也是§10情景估值的核心假设来源。</p>
+  </div>
+</section>
+
+<!-- 8 -->
+<section id="s8">
+  <div class="sec-head"><span class="sec-num">§08</span><h2>管理层指引解读</h2></div>
+  <div class="panel">
+    <table>
+      <caption>FY26 指引演变（三次上调轨迹）</caption>
+      <tr><th>指引项目</th><th>Q1时点指引</th><th>Q2时点指引</th><th>Q3时点最新指引</th></tr>
+      <tr><td>FY26 Non-GAAP EPS</td><td>$2.90~$3.20（预计靠近下限）</td><td>$2.90~$3.10（收窄）</td><td class="pos">$3.19~$3.29（上调）</td></tr>
+      <tr><td>FY26 自由现金流</td><td>$2.8B~$3.0B（预计靠近下限）</td><td>$2.8B~$3.0B</td><td class="pos">$3.0B~$3.2B（上调）</td></tr>
+      <tr><td>下季度 Non-GAAP EPS 指引</td><td>—</td><td>Q3指引：$0.61~$0.71</td><td>Q4指引：$0.69~$0.79（含0.08美元关税退款）</td></tr>
+    </table>
+
+    <h3>8.1 关税退款剔除后的"常态化"盈利口径</h3>
+    <table>
+      <caption>Headline EPS vs 常态化（Ex-Tariff-Refund）EPS</caption>
+      <tr><th>口径</th><th>FY26指引中值</th><th>对应P/E（收盘价$30.52）</th></tr>
+      <tr><td>Headline Non-GAAP EPS（含关税退款）</td><td>$3.24</td><td>≈9.4x</td></tr>
+      <tr><td>剔除约$0.19/股关税退款后</td><td>≈$3.05</td><td>≈10.0x</td></tr>
+    </table>
+    <div class="quote-box">Headline指引中值$3.24对应9.4倍前瞻P/E；剔除约0.19美元/股的关税退款一次性有利影响后，常态化Non-GAAP EPS约为3.05美元，对应约10.0倍前瞻P/E。两者差异有限，惠普当前估值总体处于"合理偏低"区间。</div>
+
+    <h3>8.2 Non-GAAP调整项分析：restructuring的"半经常性"特征</h3>
+    <table>
+      <caption>FY26前九个月 Non-GAAP调整明细（每股影响）</caption>
+      <tr><th>调整项目</th><th>金额($M)</th><th>每股影响</th></tr>
+      <tr><td>重组及其他费用</td><td>539</td><td>$0.58</td></tr>
+      <tr><td>无形资产摊销</td><td>220</td><td>$0.24</td></tr>
+      <tr><td>特定诉讼费用</td><td>63</td><td>$0.07</td></tr>
+      <tr><td>并购及剥离费用</td><td>6</td><td>$0.01</td></tr>
+      <tr><td>非经营性退休相关收益</td><td>(31)</td><td>($0.04)</td></tr>
+      <tr><td>税务调整</td><td>(136)</td><td>($0.15)</td></tr>
+      <tr><td>合计调整</td><td>—</td><td>$0.71</td></tr>
+    </table>
+    <p><strong>重组费用是GAAP与Non-GAAP EPS差距（前九个月约0.71美元/股）中最大的单项（0.58美元/股），且惠普近三个财年均有重组费用发生</strong>（FY26 Plan仍在执行中，涉及员工优化EER计划等），这意味着将其100%视为"非经常性"存在一定争议。审慎的投资者应认识到：Non-GAAP EPS $3.24并非严格意义上的"经常性经营利润"，而是管理层定义下排除特定项目后的调整口径，其与GAAP EPS（FY26指引中值约$2.57）之间约0.67美元/股的差距中，相当一部分（重组费用）具有一定的持续性特征。</p>
+
+    <h3>8.3 指引解读要点</h3>
+    <p>1) 隐含Q4 non-GAAP EPS指引中值约0.74美元，环比Q3的0.83美元下降，反映管理层对Q4存储器成本压力及PC出货量下滑（行业口径Q4预计同比降幅达20%）的审慎预期，指引呈现"前高后稳"特征。</p>
+    <p>2) 自由现金流指引中值31亿美元，对应当前市值（约275亿美元）隐含FCF收益率约11.3%，是本报告估值部分的重要参照。</p>
+    <div class="risk-box">管理层尚未给出FY27指引，明确表示将于2026年11月Q4财报电话会披露，当前市场对2027年盈利能力缺乏官方锚定，是近期分析师目标价差异巨大的重要原因（详见§10.4）。</div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section id="s9">
+  <div class="sec-head"><span class="sec-num">§09</span><h2>股东回报分析</h2></div>
+  <div class="panel">
+    <h3>9.1 股东回报趋势</h3>
+    <table>
+      <caption>股东回报趋势（近三季度）</caption>
+      <tr><th>指标</th><th>Q1 FY26</th><th>Q2 FY26</th><th>Q3 FY26</th></tr>
+      <tr><td>股息支付($M)</td><td>277</td><td>274</td><td>274</td></tr>
+      <tr><td>股份回购($M)</td><td>325</td><td>100</td><td>300</td></tr>
+      <tr><td>股东回报合计($M)</td><td>602</td><td>374</td><td>574</td></tr>
+      <tr><td>回购股数(百万股)</td><td>13.3</td><td>5.2</td><td>12.2</td></tr>
+    </table>
+    <p>公司维持稳定季度分红（$0.30/股），TTM股息率约3.9%，股息支付率（相对non-GAAP EPS）约40%，具备安全边际。截至2026年7月，公司在100亿美元回购总授权下剩余约<strong>76.9亿美元</strong>可用额度，为持续回购提供充足空间。前九个月约合计15亿美元用于股东回报（股息8.25亿美元+回购7.25亿美元），未见因CEO过渡期收缩回购的迹象。</p>
+
+    <h3>9.2 回购对EPS的增厚效应量化</h3>
+    <table>
+      <caption>前九个月FY26 净利润与每股收益变动拆解</caption>
+      <tr><th>指标</th><th>前九个月FY25</th><th>前九个月FY26</th><th>变化</th></tr>
+      <tr><td>GAAP净利润</td><td>$1,734M</td><td>$1,656M</td><td class="neg">-4.5%</td></tr>
+      <tr><td>GAAP稀释EPS</td><td>$1.82</td><td>$1.79</td><td class="neg">-1.6%</td></tr>
+      <tr><td>稀释加权平均股数</td><td>955M</td><td>927M</td><td class="pos">-2.9%</td></tr>
+    </table>
+    <div class="quote-box">这组数据清楚显示：<strong>惠普前九个月GAAP净利润实际同比下降4.5%，但由于股份数量同比减少2.9%，稀释EPS的降幅被压缩至仅1.6%</strong>——回购对每股口径的机械性增厚效应显著抵消了利润端的下滑压力。投资者在评估惠普"EPS增长"叙事时，应将其拆解为"经营性利润变化"与"股本收缩贡献"两部分，不宜将全部EPS增长直接归因于经营改善。</div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section id="s10">
+  <div class="sec-head"><span class="sec-num">§10</span><h2>估值分析与FY27情景测算（可审计）</h2></div>
+  <div class="panel">
+    <h3>10.1 基础数据（基准日：2026-08-28正式收盘）</h3>
+    <table>
+      <tr><th>指标</th><th>数值</th><th>计算方式/来源</th></tr>
+      <tr><td>正式收盘价</td><td>$30.52</td><td>NYSE 2026-08-28正式收盘价（$30.48为当日盘后价，不用于估值计算）</td></tr>
+      <tr><td>实际流通股数</td><td>901,790,969股</td><td>公司10-Q封面披露，截至2026年8月19日的实际发行在外普通股数（非加权平均稀释股数）</td></tr>
+      <tr><td>市值</td><td>≈$27.53B</td><td>=$30.52 × 901,790,969股</td></tr>
+      <tr><td>净债务（2026-07-31）</td><td>≈$4.99B</td><td>=短期借款$1,292M+长期债务$7,868M-现金$4,169M</td></tr>
+      <tr><td>企业价值EV</td><td>≈$32.52B</td><td>=市值+净债务</td></tr>
+    </table>
+    <div class="fix-box">方法论说明：市值计算采用公司10-Q封面披露的实际发行在外普通股数（901.79M），而非用于计算EPS的稀释加权平均股数（914.5M），口径符合机构估值惯例——EPS计算用加权平均股数，市值计算用实际流通股数。</div>
+
+    <h3>10.2 盈利与现金流估值倍数</h3>
+    <table>
+      <tr><th>估值指标</th><th>计算方式</th><th>数值</th></tr>
+      <tr><td>FY26E Headline Non-GAAP EPS（指引中值）</td><td>($3.19+$3.29)/2</td><td>$3.24</td></tr>
+      <tr><td>前瞻P/E（Headline）</td><td>$30.52/$3.24</td><td>≈9.4x</td></tr>
+      <tr><td>前瞻P/E（剔除关税退款后常态化）</td><td>$30.52/$3.05</td><td>≈10.0x</td></tr>
+      <tr><td>FY26E自由现金流（指引中值）</td><td>($3.0B+$3.2B)/2</td><td>$3.1B</td></tr>
+      <tr><td>FCF收益率</td><td>$3.1B/$27.53B</td><td>≈11.3%</td></tr>
+      <tr><td>EV/FCF（FY26E）</td><td>$32.52B/$3.1B</td><td>≈10.5x</td></tr>
+      <tr><td>股息率</td><td>$1.20（年化）/$30.52</td><td>≈3.93%</td></tr>
+    </table>
+
+    <h3>10.3 FY27 Bear/Base/Bull情景测算（本报告内部估算，非公司指引）</h3>
+    <div class="fix-box">重要说明：公司尚未公布FY27指引（预计于2026年11月Q4财报电话会披露）。以下情景测算基于本报告对ASP/销量/毛利率传导链的分析框架自行构建，核心假设为内部估计，<strong>不代表管理层预测或市场一致预期</strong>，仅供投资者理解不同情景下潜在的价值区间，实际结果可能存在重大偏差。</div>
+    <div class="grid3">
+      <div class="scen-card bear">
+        <div class="h">Bear 情景</div>
+        <div class="tp">≈$22</div>
+        <ul>
+          <li>PC全球出货量继续下滑约10%，存储器成本维持高位不缓解</li>
+          <li>PS营业利润率承压至约4%左右</li>
+          <li>Printing延续温和收缩</li>
+          <li>FY27 Non-GAAP EPS估算约$2.70，按8倍P/E</li>
+        </ul>
+      </div>
+      <div class="scen-card base">
+        <div class="h">Base 情景</div>
+        <div class="tp">≈$29–30</div>
+        <ul>
+          <li>PC出货量降幅收窄至个位数，存储器成本增速放缓但未回落</li>
+          <li>PS营业利润率温和修复至约4.7%</li>
+          <li>Printing现金流保持稳定</li>
+          <li>FY27 Non-GAAP EPS估算约$3.10，按9.5倍P/E</li>
+        </ul>
+      </div>
+      <div class="scen-card bull">
+        <div class="h">Bull 情景</div>
+        <div class="tp">≈$36</div>
+        <ul>
+          <li>存储器价格于2027年下半年开始回落，供给逐步修复</li>
+          <li>PS营业利润率回升至5.3%以上，ASP韧性得以保持</li>
+          <li>AI PC渗透率提升带动结构性溢价</li>
+          <li>FY27 Non-GAAP EPS估算约$3.45，按10.5倍P/E</li>
+        </ul>
+      </div>
+    </div>
+    <div class="chart-box">
+      <div class="cap">Chart 6 · FY26指引区间演变 vs FY27情景测算（Non-GAAP EPS，$/股）</div>
+      <svg viewBox="0 0 660 360" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block;max-height:320px"><rect x="54.0" y="11.0" width="11" height="11" fill="#c79b3d"/><text x="69.0" y="21.0" font-size="9" fill="#0a0a0a">区间下限/单点</text><rect x="143.9" y="11.0" width="11" height="11" fill="#0c1f3d"/><text x="158.9" y="21.0" font-size="9" fill="#0a0a0a">区间上限</text><line x1="54" y1="116.9" x2="644" y2="116.9" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="119.9" text-anchor="end" font-size="9" fill="#6b6b62">2.5</text><line x1="54" y1="98.1" x2="644" y2="98.1" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="101.1" text-anchor="end" font-size="9" fill="#6b6b62">2.75</text><line x1="54" y1="79.4" x2="644" y2="79.4" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="82.4" text-anchor="end" font-size="9" fill="#6b6b62">3</text><line x1="54" y1="60.7" x2="644" y2="60.7" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="63.7" text-anchor="end" font-size="9" fill="#6b6b62">3.25</text><line x1="54" y1="42.0" x2="644" y2="42.0" stroke="#d8d4c6" stroke-width="1"/><text x="48" y="45.0" text-anchor="end" font-size="9" fill="#6b6b62">3.5</text><text transform="rotate(-90 13 173)" x="13" y="173" text-anchor="middle" font-size="8" fill="#6b6b62">Non-GAAP EPS $/股</text><line x1="54" y1="42" x2="54" y2="304" stroke="#0a0a0a" stroke-width="1"/><line x1="54" y1="304" x2="644" y2="304" stroke="#0a0a0a" stroke-width="1"/><text x="103.2" y="322.0" text-anchor="end" font-size="8" fill="#6b6b62" transform="rotate(-30 103.2 322.0)">FY26 Q1指引</text><rect x="70.2" y="86.9" width="30.5" height="217.1" fill="#c79b3d"/><text x="85.4" y="82.9" text-anchor="middle" font-size="8" fill="#0a0a0a">3</text><rect x="105.7" y="64.5" width="30.5" height="239.5" fill="#0c1f3d"/><text x="120.9" y="60.5" text-anchor="middle" font-size="8" fill="#0a0a0a">3</text><text x="201.5" y="322.0" text-anchor="end" font-size="8" fill="#6b6b62" transform="rotate(-30 201.5 322.0)">FY26 Q2指引</text><rect x="168.5" y="86.9" width="30.5" height="217.1" fill="#c79b3d"/><text x="183.8" y="82.9" text-anchor="middle" font-size="8" fill="#0a0a0a">3</text><rect x="204.0" y="71.9" width="30.5" height="232.1" fill="#0c1f3d"/><text x="219.2" y="67.9" text-anchor="middle" font-size="8" fill="#0a0a0a">3</text><text x="299.8" y="322.0" text-anchor="end" font-size="8" fill="#6b6b62" transform="rotate(-30 299.8 322.0)">FY26 Q3最新指引</text><rect x="266.9" y="65.2" width="30.5" height="238.8" fill="#c79b3d"/><text x="282.1" y="61.2" text-anchor="middle" font-size="8" fill="#0a0a0a">3</text><rect x="302.3" y="57.7" width="30.5" height="246.3" fill="#0c1f3d"/><text x="317.6" y="53.7" text-anchor="middle" font-size="8" fill="#0a0a0a">3</text><text x="398.2" y="322.0" text-anchor="end" font-size="8" fill="#6b6b62" transform="rotate(-30 398.2 322.0)">FY27 Bear(内部估算)</text><rect x="382.9" y="101.9" width="30.5" height="202.1" fill="#c79b3d"/><text x="398.2" y="97.9" text-anchor="middle" font-size="8" fill="#0a0a0a">3</text><text x="496.5" y="322.0" text-anchor="end" font-size="8" fill="#6b6b62" transform="rotate(-30 496.5 322.0)">FY27 Base(内部估算)</text><rect x="481.3" y="71.9" width="30.5" height="232.1" fill="#c79b3d"/><text x="496.5" y="67.9" text-anchor="middle" font-size="8" fill="#0a0a0a">3</text><text x="594.8" y="322.0" text-anchor="end" font-size="8" fill="#6b6b62" transform="rotate(-30 594.8 322.0)">FY27 Bull(内部估算)</text><rect x="579.6" y="45.7" width="30.5" height="258.3" fill="#c79b3d"/><text x="594.8" y="41.7" text-anchor="middle" font-size="8" fill="#0a0a0a">3</text></svg>
+    </div>
+
+    <h3>10.4 分析师目标价与市场分歧（更新至2026年8月28日）</h3>
+    <table>
+      <caption>近期主要卖方分析师目标价（截至2026年8月27/28日更新）</caption>
+      <tr><th>机构</th><th>最新目标价</th><th>评级方向</th></tr>
+      <tr><td>Bernstein</td><td>$32（上调自$27）</td><td>—</td></tr>
+      <tr><td>Evercore ISI</td><td>$32（上调自$25）</td><td>—</td></tr>
+      <tr><td>TD Cowen</td><td>$30（上调自$26）</td><td>—</td></tr>
+      <tr><td>UBS</td><td>$28（上调自$26）</td><td>Neutral</td></tr>
+      <tr><td>Barclays</td><td>$23（上调自$19）</td><td>—</td></tr>
+      <tr><td>Goldman Sachs</td><td>$21（上调自$19）</td><td>—</td></tr>
+      <tr><td>BofA</td><td>$21（上调自$18）</td><td>Underperform</td></tr>
+      <tr><td>Morgan Stanley</td><td>$19（上调自$17）</td><td>Underweight</td></tr>
+    </table>
+    <p class="small">上述目标价区间跨度达$19~$32，反映市场对惠普FY27盈利路径的判断存在实质性分歧，核心分歧点集中于存储器成本能否在2027年缓解、以及PS营业利润率的中枢水平。本报告Base情景目标价$29~30与当前市场目标价中位数大体接近。</p>
+
+    <h3>10.5 估值区间与操作建议带</h3>
+    <table>
+      <tr><th>价格区间</th><th>本报告判断</th></tr>
+      <tr><td>&lt; $25</td><td>已较充分计入悲观情景，风险收益比相对占优</td></tr>
+      <tr><td>$25 – $29</td><td>中性区间，对应Base情景估值下沿</td></tr>
+      <tr><td>$29 – $33</td><td>已较充分反映FY26业绩及现金流预期，性价比有限（当前股价$30.52处于此区间）</td></tr>
+      <tr><td>&gt; $35</td><td>需要FY27盈利指引明确上修或存储器成本拐点确认方可支撑</td></tr>
+    </table>
+    <p>当前股价$30.52已运行至本报告估值区间的"中上端"，隐含性价比相较年初已明显收窄，与市场分析师目标价中位数基本持平，进一步上行需要FY27盈利能见度改善作为催化。</p>
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="s11">
+  <div class="sec-head"><span class="sec-num">§11</span><h2>风险清单（按对盈利的边际影响重新排序）</h2></div>
+  <div class="panel">
+    <p class="small">以下风险按对公司盈利的边际影响程度排序，存储器成本与PC需求弹性风险列于首位，治理风险列于中后位（详见§2.1说明）。</p>
+    <p><span class="tag r">① 存储器成本与ASP-销量弹性风险</span>PS分部ASP同比+40.8%已伴随销量-15.8%的显著下滑，若进一步提价，需求弹性恶化的风险将上升；DRAM/NAND短缺预计持续至2027年，毛利率已连续承压（Q3同比-1.7ppt）。</p>
+    <p><span class="tag r">② PC行业需求下行风险</span>IDC(6月预测)预计2026年PC出货量同比-11.3%，Q4或达-20%，且管理层预计该趋势延续至FY27上半年。</p>
+    <p><span class="tag r">③ FY27盈利能见度缺失</span>公司尚未给出FY27指引，市场目标价分歧巨大（$19~$32），本报告FY27情景测算存在较大不确定性。</p>
+    <p><span class="tag n">④ Printing结构性收缩</span>硬件出货量持续下滑，Supplies收入增速未能形成稳定正向趋势，长期看是稳定但非增长的现金流来源。</p>
+    <p><span class="tag n">⑤ 治理不确定性</span>临时CEO在位逾半年，永久继任者未定，构成估值折价因素，但现有证据未显示已实质影响经营执行。</p>
+    <p><span class="tag n">⑥ Non-GAAP盈利质量</span>重组费用具有一定持续性特征，Headline Non-GAAP EPS不宜简单等同于"常态化经营利润"。</p>
+    <p><span class="tag n">⑦ 资产负债表结构性特征</span>股东权益长期为负，流动比率低于1倍，但近期到期债务规模可控且流动性缓冲充裕。</p>
+    <p><span class="tag n">⑧ 营运资本与供应商融资计划</span>经营现金流改善部分依赖应付账款账期拉长，供应商融资计划下确认义务已达109亿美元，规模值得持续关注。</p>
+  </div>
+</section>
+
+<!-- 12 -->
+<section id="s12">
+  <div class="sec-head"><span class="sec-num">§12</span><h2>结论与投资建议</h2></div>
+  <div class="verdict">
+    <h3>综合结论：中性（HOLD），12个月目标价约$29–30（Base情景）</h3>
+    <p>惠普的核心投资逻辑应被理解为：<strong>"低利润率PC增长业务 + 高利润率但非增长的打印现金流业务 + 持续股东回报"的混合型资产</strong>，而非单纯的"AI PC成长股"或"高股息公用事业型资产"。2026财年三季度的表面强劲业绩（收入+12.5%、Non-GAAP EPS超指引）背后，是一次由存储器成本冲击驱动的"价格传导能力测试"：PS分部ASP同比大涨40.8%，销量同步下滑15.8%，合并毛利率同比收窄1.7个百分点，公司通过提价、费用摊薄、关税退款及股份回购的多重因素叠加，勉力维持了EPS的两位数增长，但这一增长结构的可持续性高度依赖存储器价格能否维持高位而不进一步侵蚀销量。</p>
+    <p>估值层面，剔除一次性关税退款后的常态化前瞻P/E约10.0倍、FCF收益率约11.3%、股息率约3.9%，属于"合理偏低"而非"极端低估"，当前股价已运行至本报告估值区间中上端，与卖方分析师目标价中位数基本持平。公司治理层面的临时CEO状态构成估值折价因素，但现有证据不足以支持"已实质损害经营执行"的强判断。建议投资者将惠普定位为<strong>现金流稳健、盈利弹性中性偏谨慎的价值型持仓</strong>，维持HOLD评级，密切跟踪：(1) 存储器价格与PC出货量在2026年四季度至2027年初的边际变化；(2) 2026年11月Q4财报会首次披露的FY27指引；(3) 永久CEO人选的确定及其战略连续性信号。</p>
+    <div class="score">RATING: HOLD ｜ 12M TARGET: ≈$29–30（Base）／$22（Bear）／$36（Bull）</div>
+  </div>
+
+  <div class="disc">
+    <strong>免责声明与方法论说明：</strong>本报告由蜗牛鸟投资科技行业研究组基于HP Inc.官方披露的2026财年一至三季度财务报表及10-Q原始文件（未经审计）、公司新闻稿、管理层业绩电话会议纪要、IDC等第三方行业研究机构公开预测数据，以及公开分析师目标价整理撰写，关键数据均已标注计算方式或来源以便审计复核。§10.3的FY27情景测算为本报告基于自建分析框架的内部估计，不代表公司指引或市场一致预期，仅供参考。本报告不构成投资建议，历史业绩不代表未来表现，请读者结合最新披露信息独立判断。
+  </div>
+
+  <footer>
+    <p><strong>主要数据来源</strong></p>
+    <p class="src">
+    1. HP Inc. Form 10-Q（截至2026年7月31日、2026年4月30日、2026年1月31日各季度，SEC EDGAR）<br>
+    2. HP Inc. Reports Fiscal 2026 First / Second / Third Quarter Results（GlobeNewswire / SEC 8-K，2026年2月/5月/8月）<br>
+    3. HP Inc. Reports Fiscal 2025 Full Year and Fourth Quarter Results（HP官网，2025年11月）<br>
+    4. HP Inc. Announces Leadership Transition（HP Investor Relations，2026年2月3日）<br>
+    5. HP Inc. to Acquire Poly / HP Inc. Completes Acquisition of Poly（HP Investor Relations，2022年3月/8月）<br>
+    6. HP Inc (HPQ) Q1/Q2/Q3 2026 Earnings Call Highlights（GuruFocus/Yahoo Finance）<br>
+    7. IDC Worldwide Quarterly Personal Computing Device Tracker 相关博客与新闻稿（IDC官网，2026年6月）<br>
+    8. HPQ市场数据与分析师目标价（stockanalysis.com、TipRanks/TheFly，基准日2026-08-27/28）
+    </p>
+    <p style="margin-top:14px;">© 2026 蜗牛鸟投资（Snail-Bird Investment）· 内部研究报告 · 未经授权不得转载</p>
+  </footer>
+</div>
+</div>
+
+
+
+<p class="small" style="text-align:center;margin-top:8px;color:#6b6b62">本报告 6 张图表均由原始配置转换为内联 SVG 渲染（自包含，无外部依赖）。</p>
+</body>
+</html>
