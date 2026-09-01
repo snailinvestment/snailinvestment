@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股半导体板块SBI泡沫指数日报 · 2026-09-01</title>
+<style>
+  :root{
+    --bg:#0f1420; --panel:#161d2e; --panel2:#1c2740; --line:#2a3650;
+    --txt:#e8eef7; --sub:#9fb0c8; --accent:#4ea1ff; --warn:#ffb74d;
+    --danger:#ff5c5c; --ok:#4cd07d; --purple:#b388ff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;
+    background:var(--bg);color:var(--txt);line-height:1.65;padding:28px 16px 60px}
+  .wrap{max-width:1060px;margin:0 auto}
+  header{text-align:center;margin-bottom:8px}
+  h1{font-size:25px;letter-spacing:.5px;font-weight:700}
+  .sub{color:var(--sub);font-size:13.5px;margin-top:6px}
+  .badge{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;
+    font-weight:600;margin:6px 4px 0}
+  .b-danger{background:rgba(255,92,92,.16);color:var(--danger);border:1px solid var(--danger)}
+  .b-warn{background:rgba(255,183,77,.16);color:var(--warn);border:1px solid var(--warn)}
+  .grid{display:grid;gap:18px;margin-top:22px}
+  .g3{grid-template-columns:1.05fr 1fr 1.15fr}
+  .g2{grid-template-columns:1fr 1fr}
+  @media(max-width:880px){.g3,.g2{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .card h2{font-size:15.5px;margin-bottom:12px;color:var(--accent);font-weight:700;
+    display:flex;align-items:center;gap:8px}
+  .card h2::before{content:"";width:4px;height:16px;background:var(--accent);border-radius:3px}
+  .gauge-wrap{position:relative;text-align:center}
+  .gauge-val{position:absolute;top:40%;left:0;right:0;font-size:42px;font-weight:800;color:#ef6f53}
+  .gauge-val small{font-size:15px;color:var(--sub);font-weight:600}
+  .gauge-tag{margin-top:2px;font-size:13px;color:var(--danger);font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+  th{color:var(--sub);font-weight:600;font-size:12px}
+  td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .up{color:var(--danger)} .down{color:var(--ok)}
+  .dim-bar{height:7px;border-radius:4px;background:var(--panel2);overflow:hidden;margin-top:4px}
+  .dim-bar i{display:block;height:100%;border-radius:4px}
+  .concl{background:var(--panel2);border-left:3px solid var(--accent);border-radius:8px;
+    padding:12px 16px;margin:10px 0;font-size:13.5px}
+  .concl b{color:var(--accent)}
+  .note{font-size:12px;color:var(--sub);margin-top:14px;line-height:1.6}
+  .src{font-size:11.5px;color:#6f80a0;margin-top:8px;line-height:1.7}
+  .pill{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11.5px;
+    background:var(--panel2);color:var(--sub);margin:2px 3px}
+  .delta-neg{color:var(--ok);font-weight:700}
+  .delta-pos{color:var(--danger);font-weight:700}
+  .delta-flat{color:var(--sub);font-weight:700}
+  .foot{text-align:center;color:#5e6e8c;font-size:11px;margin-top:28px}
+  .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:6px}
+  .kpi{background:var(--panel2);border-radius:9px;padding:10px 12px}
+  .kpi .k{font-size:11.5px;color:var(--sub)}
+  .kpi .v{font-size:18px;font-weight:700;margin-top:2px}
+  .chart-box{position:relative;width:100%}
+  .evt{background:rgba(179,136,255,.10);border-left:3px solid var(--purple);border-radius:8px;
+    padding:12px 16px;margin:10px 0;font-size:13.5px}
+  .evt b{color:var(--purple)}
+</style></head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>A股半导体板块 SBI 泡沫指数日报</h1>
+    <div class="sub">分析日期：2026-09-01（星期二）　|　数据基准：2026-08-31（星期一）收盘　|　申万半导体（801081.SI）</div>
+    <div>
+      <span class="badge b-danger">风险等级：危险区间（≥65）</span>
+      <span class="badge b-danger">SBI 65.4　较上次（08-31报 63.5）▲ +1.9</span>
+    </div>
+  </header>
+
+  <!-- ===== 第一行：三栏 ===== -->
+  <div class="grid g3">
+
+    <!-- 左：SBI仪表盘 -->
+    <div class="card gauge-wrap">
+      <h2>SBI 总仪表盘</h2>
+      <div style="position:relative;width:260px;height:172px;margin:6px auto 0">
+        <svg viewBox="0 0 260 180" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block;max-height:100%"><path d="M 12.0 168.0 A 118.0 118.0 0 0 1 111.5 51.5 L 118.6 95.7 A 73.2 73.2 0 0 0 56.8 168.0 Z" fill="rgba(76,208,125,.85)"/><path d="M 111.5 51.5 A 118.0 118.0 0 0 1 183.6 62.9 L 163.2 102.8 A 73.2 73.2 0 0 0 118.6 95.7 Z" fill="rgba(255,183,77,.85)"/><path d="M 183.6 62.9 A 118.0 118.0 0 0 1 225.5 98.6 L 189.2 125.0 A 73.2 73.2 0 0 0 163.2 102.8 Z" fill="rgba(239,111,83,.9)"/><path d="M 225.5 98.6 A 118.0 118.0 0 0 1 248.0 168.0 L 203.2 168.0 A 73.2 73.2 0 0 0 189.2 125.0 Z" fill="rgba(226,60,60,.95)"/><line x1="130.0" y1="168.0" x2="177.2" y2="78.2" stroke="#ef6f53" stroke-width="4" stroke-linecap="round"/><circle cx="130.0" cy="168.0" r="6" fill="#ef6f53"/></svg>
+        <div class="gauge-val" style="color:#ff5c5c">65.4<small> / 100</small></div>
+        <div class="gauge-tag" style="position:absolute;left:0;right:0;top:74%;color:var(--warn)">● 危险区间（≥65）</div>
+      </div>
+      <div class="note" style="text-align:center">
+        08-31 半导体板块低开高走全线反弹：申万半导体 +1.85%（收 10088.57，成交 2616 亿、换手率 3.56%），科创50 +1.34%、创业板指 +0.42%，全市场成交 2.13–2.15 万亿、涨停 89 只。
+        板块主力净流出收窄至 −17.0 亿（前次 −122.6 亿），瑞芯微、博通集成涨停，融资买入 182.74 亿连续 19 日居全市场第一；ETF 小幅净流入。
+        受沃什 Jackson Hole 鹰派及美债利率上行压制，SBI 自临界区（63.5）微弹至危险边界（65.4）；估值仍处历史极值（5y 分位约 96%）构成核心压舱。
+      </div>
+    </div>
+
+    <!-- 中：六维度得分表 -->
+    <div class="card">
+      <h2>六维度得分（08-31）</h2>
+      <table>
+        <thead><tr><th>维度</th><th class="num">得分</th><th class="num">权重</th><th>环比(上次)</th></tr></thead>
+        <tbody>
+          <tr><td>估值</td><td class="num"><b>90</b></td><td class="num">25%</td><td class="delta-flat">▬ 0</td></tr>
+          <tr><td colspan="4" style="padding:0 10px 8px;border:0"><div class="dim-bar"><i style="width:90%;background:#e23c3c"></i></div></td></tr>
+
+          <tr><td>拥挤度</td><td class="num"><b>54</b></td><td class="num">25%</td><td class="delta-pos">▲ +6</td></tr>
+          <tr><td colspan="4" style="padding:0 10px 8px;border:0"><div class="dim-bar"><i style="width:54%;background:#ef6f53"></i></div></td></tr>
+
+          <tr><td>杠杆</td><td class="num"><b>56</b></td><td class="num">15%</td><td class="delta-pos">▲ +1</td></tr>
+          <tr><td colspan="4" style="padding:0 10px 8px;border:0"><div class="dim-bar"><i style="width:56%;background:#ef6f53"></i></div></td></tr>
+
+          <tr><td>业绩兑现</td><td class="num"><b>66</b></td><td class="num">15%</td><td class="delta-flat">▬ 0</td></tr>
+          <tr><td colspan="4" style="padding:0 10px 8px;border:0"><div class="dim-bar"><i style="width:66%;background:#ef6f53"></i></div></td></tr>
+
+          <tr><td>资金流向</td><td class="num"><b>51</b></td><td class="num">10%</td><td class="delta-pos">▲ +5</td></tr>
+          <tr><td colspan="4" style="padding:0 10px 8px;border:0"><div class="dim-bar"><i style="width:51%;background:#ef6f53"></i></div></td></tr>
+
+          <tr><td>外部环境</td><td class="num"><b>60</b></td><td class="num">10%</td><td class="delta-neg">▼ −2</td></tr>
+          <tr><td colspan="4" style="padding:0 10px 8px;border:0"><div class="dim-bar"><i style="width:60%;background:#ef6f53"></i></div></td></tr>
+        </tbody>
+      </table>
+      <div class="note">预警线 45 / 危险线 70。▲涨（风险升）　▼跌（风险降）。本次对比基准为 08-31 报（SBI 63.5，数据基准 08-28）；本次数据基准 08-31。</div>
+    </div>
+
+    <!-- 右：关键市场指标 -->
+    <div class="card">
+      <h2>关键市场指标（08-31）</h2>
+      <div class="kpis">
+        <div class="kpi"><div class="k">半导体涨跌幅</div><div class="v up">+1.85%</div></div>
+        <div class="kpi"><div class="k">板块成交额</div><div class="v">2616亿</div></div>
+        <div class="kpi"><div class="k">涨停家数</div><div class="v">2 只</div></div>
+        <div class="kpi"><div class="k">主力净流向</div><div class="v down">−17.0亿</div></div>
+        <div class="kpi"><div class="k">两融余额</div><div class="v">26302.50亿</div></div>
+        <div class="kpi"><div class="k">北向净流向</div><div class="v down">净卖·谨慎</div></div>
+      </div>
+      <div class="src">板块口径：申万半导体(01801081) +1.85%（收 10088.57，成交 2616 亿、换手率 3.56%，PE 158.0 / PB 10.32）。
+        科创50 +1.34%、创业板指 +0.42%、沪指 +0.86%、沪深300 +0.35%。
+        全市场成交 2.13–2.15 万亿（放量 293 亿），涨停 89 只、跌停 13 只；板块内瑞芯微、博通集成涨停，力芯微 +18.21%、寒武纪 +6.26%。
+        主力净流出 −17.0 亿（前次 −122.6 亿，显著收窄）；北向龙虎榜样本净卖 2.5 亿、态度谨慎；半导体类 ETF 小幅净流入（科创半导体ETF华夏 +0.54 亿、国联安半导体 +0.29 亿）。
+        两融余额 26,302.50 亿（截至 08-28，月 +400 亿）；半导体融资买入 182.74 亿连续 19 日居全市场第一。</div>
+    </div>
+  </div>
+
+  <!-- ===== 第二行：雷达图 + 趋势线 ===== -->
+  <div class="grid g2">
+    <div class="card">
+      <h2>六维度雷达图（本次 09-01 vs 上次 08-31报）</h2>
+      <svg viewBox="0 0 380 340" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block;max-height:100%"><polygon points="190.0,207.0 216.8467875173176,191.5 216.8467875173176,160.5 190.0,145.0 163.1532124826824,160.5 163.1532124826824,191.5" fill="none" stroke="#2a3650" stroke-width="1"/><polygon points="190.0,238.0 243.69357503463522,207.0 243.69357503463522,145.0 190.0,114.0 136.30642496536478,145.0 136.3064249653648,207.0" fill="none" stroke="#2a3650" stroke-width="1"/><polygon points="190.0,269.0 270.5403625519528,222.5 270.5403625519528,129.5 190.0,83.0 109.4596374480472,129.5 109.4596374480472,222.5" fill="none" stroke="#2a3650" stroke-width="1"/><polygon points="190.0,300.0 297.38715006927043,238.0 297.38715006927043,114.0 190.0,52.0 82.6128499307296,114.0 82.61284993072961,238.0" fill="none" stroke="#2a3650" stroke-width="1"/><line x1="190.0" y1="176.0" x2="190.0" y2="300.0" stroke="#2a3650" stroke-width="1"/><text x="190.0" y="328.0" text-anchor="middle" font-size="12" fill="#e8eef7">估值</text><line x1="190.0" y1="176.0" x2="297.4" y2="238.0" stroke="#2a3650" stroke-width="1"/><text x="318.2" y="254.0" text-anchor="start" font-size="12" fill="#e8eef7">拥挤度</text><line x1="190.0" y1="176.0" x2="297.4" y2="114.0" stroke="#2a3650" stroke-width="1"/><text x="318.2" y="106.0" text-anchor="start" font-size="12" fill="#e8eef7">杠杆</text><line x1="190.0" y1="176.0" x2="190.0" y2="52.0" stroke="#2a3650" stroke-width="1"/><text x="190.0" y="32.0" text-anchor="middle" font-size="12" fill="#e8eef7">业绩兑现</text><line x1="190.0" y1="176.0" x2="82.6" y2="114.0" stroke="#2a3650" stroke-width="1"/><text x="61.8" y="106.0" text-anchor="end" font-size="12" fill="#e8eef7">资金流向</text><line x1="190.0" y1="176.0" x2="82.6" y2="238.0" stroke="#2a3650" stroke-width="1"/><text x="61.8" y="254.0" text-anchor="end" font-size="12" fill="#e8eef7">外部环境</text><polygon points="190.0,287.6 247.98906103740603,209.48 250.13680403879144,141.28 190.0,94.16 135.2325534646721,144.38 125.56770995843777,213.2" fill="rgba(239,111,83,.22)" stroke="#ef6f53" stroke-width="2" /><circle cx="190.0" cy="287.6" r="2.5" fill="#ef6f53"/><circle cx="248.0" cy="209.5" r="2.5" fill="#ef6f53"/><circle cx="250.1" cy="141.3" r="2.5" fill="#ef6f53"/><circle cx="190.0" cy="94.2" r="2.5" fill="#ef6f53"/><circle cx="135.2" cy="144.4" r="2.5" fill="#ef6f53"/><circle cx="125.6" cy="213.2" r="2.5" fill="#ef6f53"/><polygon points="190.0,287.6 241.54583203324978,205.76 249.06293253809872,141.9 190.0,94.16 140.60191096813563,147.48000000000002 123.41996695705237,214.44" fill="rgba(159,176,200,.10)" stroke="#9fb0c8" stroke-width="2" stroke-dasharray="5,4" /><circle cx="190.0" cy="287.6" r="2.5" fill="#9fb0c8"/><circle cx="241.5" cy="205.8" r="2.5" fill="#9fb0c8"/><circle cx="249.1" cy="141.9" r="2.5" fill="#9fb0c8"/><circle cx="190.0" cy="94.2" r="2.5" fill="#9fb0c8"/><circle cx="140.6" cy="147.5" r="2.5" fill="#9fb0c8"/><circle cx="123.4" cy="214.4" r="2.5" fill="#9fb0c8"/></svg>
+      <div class="src">红=本次（09-01）　灰=上次（08-31 报）。拥挤度(48→54)、资金流向(46→51)、杠杆(55→56)回升是 SBI 微弹主因；估值(90→90)持平仍处极值、外部环境(62→60)略弱。</div>
+    </div>
+
+    <div class="card">
+      <h2>近30日 SBI 趋势</h2>
+      <svg viewBox="0 0 620 320" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block;max-height:100%"><line x1="46" y1="276.0" x2="606" y2="276.0" stroke="rgba(42,54,80,.5)" stroke-width="1"/><text x="40" y="279.0" text-anchor="end" font-size="9" fill="#6f80a0">50</text><line x1="46" y1="224.0" x2="606" y2="224.0" stroke="rgba(42,54,80,.5)" stroke-width="1"/><text x="40" y="227.0" text-anchor="end" font-size="9" fill="#6f80a0">57</text><line x1="46" y1="172.0" x2="606" y2="172.0" stroke="rgba(42,54,80,.5)" stroke-width="1"/><text x="40" y="175.0" text-anchor="end" font-size="9" fill="#6f80a0">64</text><line x1="46" y1="120.0" x2="606" y2="120.0" stroke="rgba(42,54,80,.5)" stroke-width="1"/><text x="40" y="123.0" text-anchor="end" font-size="9" fill="#6f80a0">71</text><line x1="46" y1="68.0" x2="606" y2="68.0" stroke="rgba(42,54,80,.5)" stroke-width="1"/><text x="40" y="71.0" text-anchor="end" font-size="9" fill="#6f80a0">78</text><line x1="46" y1="16.0" x2="606" y2="16.0" stroke="rgba(42,54,80,.5)" stroke-width="1"/><text x="40" y="19.0" text-anchor="end" font-size="9" fill="#6f80a0">85</text><text x="46.0" y="308" text-anchor="middle" font-size="9" fill="#6f80a0" transform="rotate(40 46.0 308)">06-17</text><text x="103.9" y="308" text-anchor="middle" font-size="9" fill="#6f80a0" transform="rotate(40 103.9 308)">06-21</text><text x="161.9" y="308" text-anchor="middle" font-size="9" fill="#6f80a0" transform="rotate(40 161.9 308)">06-25</text><text x="219.8" y="308" text-anchor="middle" font-size="9" fill="#6f80a0" transform="rotate(40 219.8 308)">06-29</text><text x="277.7" y="308" text-anchor="middle" font-size="9" fill="#6f80a0" transform="rotate(40 277.7 308)">07-03</text><text x="335.7" y="308" text-anchor="middle" font-size="9" fill="#6f80a0" transform="rotate(40 335.7 308)">07-10</text><text x="393.6" y="308" text-anchor="middle" font-size="9" fill="#6f80a0" transform="rotate(40 393.6 308)">07-15</text><text x="451.5" y="308" text-anchor="middle" font-size="9" fill="#6f80a0" transform="rotate(40 451.5 308)">07-21</text><text x="509.4" y="308" text-anchor="middle" font-size="9" fill="#6f80a0" transform="rotate(40 509.4 308)">07-27</text><text x="567.4" y="308" text-anchor="middle" font-size="9" fill="#6f80a0" transform="rotate(40 567.4 308)">08-28</text><text x="606.0" y="308" text-anchor="middle" font-size="9" fill="#6f80a0" transform="rotate(40 606.0 308)">09-01</text><polygon points="46,276.0 46.0,143.7714285714286 65.3103448275862,142.2857142857143 84.62068965517241,99.20000000000002 103.93103448275862,98.45714285714281 123.24137931034483,102.91428571428574 142.55172413793105,114.05714285714288 161.86206896551724,81.37142857142855 181.17241379310346,63.542857142857194 200.48275862068965,55.37142857142855 219.79310344827587,61.31428571428568 239.10344827586206,99.94285714285711 258.41379310344826,110.34285714285718 277.7241379310345,148.2285714285714 297.0344827586207,120.7428571428571 316.3448275862069,126.68571428571431 335.6551724137931,115.54285714285719 354.9655172413793,144.5142857142857 374.2758620689655,176.45714285714288 393.58620689655174,169.02857142857138 412.8965517241379,180.17142857142858 432.2068965517241,189.0857142857143 451.51724137931035,215.08571428571426 470.82758620689657,131.88571428571424 490.13793103448273,163.82857142857148 509.44827586206895,163.82857142857148 528.7586206896551,156.40000000000003 548.0689655172414,206.1714285714286 567.3793103448276,122.97142857142862 586.6896551724138,175.71428571428572 606.0,161.59999999999997 606,276.0" fill="rgba(78,161,255,.12)" stroke="none"/><polyline points="46.0,143.7714285714286 65.3103448275862,142.2857142857143 84.62068965517241,99.20000000000002 103.93103448275862,98.45714285714281 123.24137931034483,102.91428571428574 142.55172413793105,114.05714285714288 161.86206896551724,81.37142857142855 181.17241379310346,63.542857142857194 200.48275862068965,55.37142857142855 219.79310344827587,61.31428571428568 239.10344827586206,99.94285714285711 258.41379310344826,110.34285714285718 277.7241379310345,148.2285714285714 297.0344827586207,120.7428571428571 316.3448275862069,126.68571428571431 335.6551724137931,115.54285714285719 354.9655172413793,144.5142857142857 374.2758620689655,176.45714285714288 393.58620689655174,169.02857142857138 412.8965517241379,180.17142857142858 432.2068965517241,189.0857142857143 451.51724137931035,215.08571428571426 470.82758620689657,131.88571428571424 490.13793103448273,163.82857142857148 509.44827586206895,163.82857142857148 528.7586206896551,156.40000000000003 548.0689655172414,206.1714285714286 567.3793103448276,122.97142857142862 586.6896551724138,175.71428571428572 606.0,161.59999999999997" fill="none" stroke="#4ea1ff" stroke-width="2" /><circle cx="46.0" cy="143.8" r="2" fill="#4ea1ff"/><circle cx="65.3" cy="142.3" r="2" fill="#4ea1ff"/><circle cx="84.6" cy="99.2" r="2" fill="#4ea1ff"/><circle cx="103.9" cy="98.5" r="2" fill="#4ea1ff"/><circle cx="123.2" cy="102.9" r="2" fill="#4ea1ff"/><circle cx="142.6" cy="114.1" r="2" fill="#4ea1ff"/><circle cx="161.9" cy="81.4" r="2" fill="#4ea1ff"/><circle cx="181.2" cy="63.5" r="2" fill="#4ea1ff"/><circle cx="200.5" cy="55.4" r="2" fill="#4ea1ff"/><circle cx="219.8" cy="61.3" r="2" fill="#4ea1ff"/><circle cx="239.1" cy="99.9" r="2" fill="#4ea1ff"/><circle cx="258.4" cy="110.3" r="2" fill="#4ea1ff"/><circle cx="277.7" cy="148.2" r="2" fill="#4ea1ff"/><circle cx="297.0" cy="120.7" r="2" fill="#4ea1ff"/><circle cx="316.3" cy="126.7" r="2" fill="#4ea1ff"/><circle cx="335.7" cy="115.5" r="2" fill="#4ea1ff"/><circle cx="355.0" cy="144.5" r="2" fill="#4ea1ff"/><circle cx="374.3" cy="176.5" r="2" fill="#4ea1ff"/><circle cx="393.6" cy="169.0" r="2" fill="#4ea1ff"/><circle cx="412.9" cy="180.2" r="2" fill="#4ea1ff"/><circle cx="432.2" cy="189.1" r="2" fill="#4ea1ff"/><circle cx="451.5" cy="215.1" r="2" fill="#4ea1ff"/><circle cx="470.8" cy="131.9" r="2" fill="#4ea1ff"/><circle cx="490.1" cy="163.8" r="2" fill="#4ea1ff"/><circle cx="509.4" cy="163.8" r="2" fill="#4ea1ff"/><circle cx="528.8" cy="156.4" r="2" fill="#4ea1ff"/><circle cx="548.1" cy="206.2" r="2" fill="#4ea1ff"/><circle cx="567.4" cy="123.0" r="2" fill="#4ea1ff"/><circle cx="586.7" cy="175.7" r="2" fill="#4ea1ff"/><circle cx="606.0" cy="161.6" r="2" fill="#4ea1ff"/><polyline points="46.0,164.57142857142856 65.3103448275862,164.57142857142856 84.62068965517241,164.57142857142856 103.93103448275862,164.57142857142856 123.24137931034483,164.57142857142856 142.55172413793105,164.57142857142856 161.86206896551724,164.57142857142856 181.17241379310346,164.57142857142856 200.48275862068965,164.57142857142856 219.79310344827587,164.57142857142856 239.10344827586206,164.57142857142856 258.41379310344826,164.57142857142856 277.7241379310345,164.57142857142856 297.0344827586207,164.57142857142856 316.3448275862069,164.57142857142856 335.6551724137931,164.57142857142856 354.9655172413793,164.57142857142856 374.2758620689655,164.57142857142856 393.58620689655174,164.57142857142856 412.8965517241379,164.57142857142856 432.2068965517241,164.57142857142856 451.51724137931035,164.57142857142856 470.82758620689657,164.57142857142856 490.13793103448273,164.57142857142856 509.44827586206895,164.57142857142856 528.7586206896551,164.57142857142856 548.0689655172414,164.57142857142856 567.3793103448276,164.57142857142856 586.6896551724138,164.57142857142856 606.0,164.57142857142856" fill="none" stroke="#ef6f53" stroke-width="2" stroke-dasharray="6,4" /><polyline points="46.0,53.14285714285715 65.3103448275862,53.14285714285715 84.62068965517241,53.14285714285715 103.93103448275862,53.14285714285715 123.24137931034483,53.14285714285715 142.55172413793105,53.14285714285715 161.86206896551724,53.14285714285715 181.17241379310346,53.14285714285715 200.48275862068965,53.14285714285715 219.79310344827587,53.14285714285715 239.10344827586206,53.14285714285715 258.41379310344826,53.14285714285715 277.7241379310345,53.14285714285715 297.0344827586207,53.14285714285715 316.3448275862069,53.14285714285715 335.6551724137931,53.14285714285715 354.9655172413793,53.14285714285715 374.2758620689655,53.14285714285715 393.58620689655174,53.14285714285715 412.8965517241379,53.14285714285715 432.2068965517241,53.14285714285715 451.51724137931035,53.14285714285715 470.82758620689657,53.14285714285715 490.13793103448273,53.14285714285715 509.44827586206895,53.14285714285715 528.7586206896551,53.14285714285715 548.0689655172414,53.14285714285715 567.3793103448276,53.14285714285715 586.6896551724138,53.14285714285715 606.0,53.14285714285715" fill="none" stroke="#e23c3c" stroke-width="2" stroke-dasharray="6,4" /></svg>
+      <div class="src">蓝线为 SBI 历史（自 06-17 起）。橙虚线=危险线 65，红虚线=极端危险 80。末点 09-01（65.4）较 08-31（63.5）微弹 1.9 分，回到危险边界。</div>
+    </div>
+  </div>
+
+  <!-- ===== 估值分位 ===== -->
+  <div class="card" style="margin-top:18px">
+    <h2>估值与估值分位（中证半导体ETF / 东方财富 / 巨丰 2026/08/31）</h2>
+    <div class="grid g2" style="gap:14px;margin-top:4px">
+      <table>
+        <thead><tr><th>指标</th><th class="num">数值</th><th class="num">历史分位</th></tr></thead>
+        <tbody>
+          <tr><td>TTM 市盈率（中证半导体 ETF 512480，08/31）</td><td class="num">158.0</td><td class="num">高估（红）</td></tr>
+          <tr><td>市净率 PB（中证半导体 ETF 512480，08/31）</td><td class="num">10.32</td><td class="num">高估（红）</td></tr>
+          <tr><td>5 年分位 PE（巨丰 8 月底）</td><td class="num">96.53%</td><td class="num">10 年分位 85.63%</td></tr>
+          <tr><td>5 年分位 PB（巨丰 8 月底）</td><td class="num">67.95%</td><td class="num">10 年分位 81.58%</td></tr>
+          <tr><td>美股费城半导体 PE（SOX，8 月底）</td><td class="num">28–35×</td><td class="num">A股溢价畸高</td></tr>
+        </tbody>
+      </table>
+      <div class="concl" style="margin:0">
+        中证半导体 ETF 口径 PE 158.0×、PB 10.32；巨丰 8 月底 5y 分位 PE 96.53%、PB 67.95%，10y 分位 PE 85.63%、PB 81.58%。
+        不论口径，分位均 &gt;90%，<b>泡沫未实质消化</b>，是 SBI 估值维度维持 90 分的核心原因。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 核心结论 ===== -->
+  <div class="card" style="margin-top:18px">
+    <h2>核心结论（5条）</h2>
+    <div class="concl"><b>1. SBI 65.4，危险区间（≥65），环比 ▲ +1.9（上次 08-31 报 63.5）。</b>
+      08-31 半导体低开高走全线反弹：申万半导体 +1.85%（前次 −2.12%）、主力净流出收窄至 −17.0 亿（前次 −122.6 亿）、瑞芯微/博通集成涨停；融资买入 182.74 亿连续 19 日居首。受沃什鹰派及美债利率上行压制，SBI 自临界区微弹至危险边界。</div>
+    <div class="concl"><b>2. 反弹日拥挤度与资金流向修复——SBI 微弹主因。</b>
+      板块主力净流出由 −122.6 亿大幅收窄至 −17.0 亿，涨停由 1 只回升至 2 只，半导体类 ETF 小幅净流入；融资买入 182.74 亿连续 19 日居首。拥挤度(48→54)、资金流向(46→51)合计推升 SBI 约 +1.1 分。</div>
+    <div class="concl"><b>3. 估值极端仍是核心压舱（90分），泡沫未实质消化。</b>
+      中证半导体 ETF 口径 PE 158.0×、PB 10.32；巨丰 8 月底 5y 分位 PE 96.53%、10y 85.63%；较美股费半（28–35×）溢价畸高。</div>
+    <div class="concl"><b>4. 杠杆温和（56分）；业绩强劲（66分）。</b>
+      两融余额 26,302.50 亿（截至 08-28，月 +400 亿），杠杆压力 2.27% 处 7 月以来低位；1-7 月电子利润同比 +1.1 倍，半导体中报显著增长、8 月板块 +27.22%。</div>
+    <div class="concl"><b>5. 外部环境略弱（60分，▼−2）。</b>
+      沃什 JH 放鹰持续发酵→9 月加息概率升至 57.5%–62%、2Y 美债突破 5.10%、10Y 美债 4.72%→4.75%（创 2025 年 1 月新高）、布油突破 90 美元；国产替代加速（英伟达停 H20、前 7 月集成电路出口超去年全年 +99.5%、封装设备订单排至 2028）部分对冲。</div>
+  </div>
+
+  <!-- ===== 重大事件 ===== -->
+  <div class="card" style="margin-top:18px">
+    <h2>本期重大事件：08-31 半导体反弹 · 中报收官 · 沃什鹰派延续</h2>
+    <div class="evt"><b>2026-08-31（周一）：A股 8 月收官，半导体低开高走领涨科创：</b>
+      申万半导体 +1.85%（收 10088.57、成交 2616 亿）、科创50 +1.34%、创业板指 +0.42%、沪指 +0.86%、沪深300 +0.35%。全市场成交 2.13–2.15 万亿（放量 293 亿），涨停 89 只、跌停 13 只，8 月沪指月涨 4.02%。
+      <br><b>资金修复：</b>→半导体主力净流出收窄至 −17.0 亿（前次 −122.6 亿）　→瑞芯微/博通集成涨停、力芯微 +18.21%、寒武纪 +6.26%　→半导体类 ETF 小幅净流入（科创半导体ETF华夏 +0.54 亿、国联安 +0.29 亿）　→融资买入 182.74 亿连续 19 日居全市场第一
+      <br><b>外部压制（延续）：</b>沃什 Jackson Hole 鹰派持续发酵，9 月加息概率升至 57.5%–62%、2Y 美债突破 5.10%、10Y 美债 4.72%→4.75%（创 2025 年 1 月新高）、布油突破 90 美元、美股半导体英伟达 −4%。
+      <br><b>中报收官：</b>8/31 为中报最后披露日，半导体板块业绩分化落地；前 7 月集成电路出口超去年全年 +99.5%，存储/先进封装订单充足，国产替代逻辑延续。</div>
+  </div>
+
+  <!-- ===== 操作建议 ===== -->
+  <div class="card" style="margin-top:18px">
+    <h2>操作建议</h2>
+    <div class="concl"><b>仓位与节奏：</b>SBI 65.4 已由临界区（63.5）微弹至危险边界（≥65），反弹量能温和、沃什鹰派未消，<b>短期防御为主、不追高、控仓防回撤</b>。未同时满足“两融回补 + 缩量企稳 + 北向净买 + 鹰派被消化”四信号前不判反转。</div>
+    <div class="concl"><b>分化应对：</b>规避 PEG&gt;3 纯题材小票。沿<b>设备/存储/先进封装双主线</b>分批低吸，但须等板块缩量企稳、主线明确后再动手。</div>
+    <div class="concl"><b>右侧确认信号：</b>→两融结束去化并回补　→缩量企稳（成交占比回落、涨停家数修复）　→北向持续净买　→沃什鹰派被市场消化（美债 10Y 高位回落）。未同时满足不判反转。</div>
+    <div class="concl"><b>风险监控：</b>→9 月加息概率已 &gt;50%，沃什鹰派为最大外部变量　→估值 5y 分位 &gt;90% 下任何利空可能触发踩踏　→若反弹无量 + ETF 持续减，警惕二次回踩至 55 附近。<b>中期：</b>SBI 回落至 60 下方可关注设备/存储主线低吸；8/31 中报收官、9/24 中美元首会晤为后续关键节点。</div>
+  </div>
+
+  <!-- ===== 数据来源 ===== -->
+  <div class="card" style="margin-top:18px">
+    <h2>数据时效与来源</h2>
+    <div class="src">
+      <span class="pill">东方财富 板块行情（2026/08/31 收：申万半导体 +1.85%、收 10088.57、成交 2616 亿、换手率 3.56%、主力净流出 −17.0亿）</span>
+      <span class="pill">东方财富研究中心/证券时报/21财经（2026/08/31 收评：沪指+0.86%、成交2.13–2.15万亿、涨停89、半导体活跃）</span>
+      <span class="pill">巨丰财经（2026/08：8月半导体 +27.22%、5y 分位 PE 96.53% / PB 67.95%、10y PE 85.63% / PB 81.58%）</span>
+      <span class="pill">每日收盘·估值与折溢价监测（2026/08/31：中证半导体512480 PE 158.0 / PB 10.32，高估）</span>
+      <span class="pill">陆股通（2026/08/31：北向成交 3259.57 亿占两市 15.30%；龙虎榜样本净卖 2.5 亿、态度谨慎）</span>
+      <span class="pill">国泰海通/东方财富（截至 2026/08/28：两融余额 26,591.11 亿、融资余额 26,302.50 亿；8 月全月融资 +400 亿）</span>
+      <span class="pill">券商中国/腾讯/汇通（2026/08/31-09/01：沃什鹰派延续、9月加息概率 57.5%–62%、2Y 美债破 5.10%、10Y 4.75%、布油破 90）</span>
+      <span class="pill">国家统计局/巨丰（2026/08：1-7月电子利润 +1.1 倍、8月半导体 +27.22%）</span>
+      <br><br>
+      数据时效说明：指数/资金为 <b>2026-08-31 收盘</b>；估值为 2026-08-31 收盘（中证半导体 ETF 口径）与巨丰 8 月底分位；两融截至 2026-08-28（最新交易日披露）；北向为 2026-08-31 龙虎榜样本。<br>
+      环比对比基准：<b>08-31 报告</b>（SBI 63.5，数据基准 08-28）。两融口径：国泰海通/东方财富报融资余额 26,302.50 亿（截至 08-28），与 21 财经周报 26,219 亿（截至 08-28 周）口径一致，趋势参考。<br><br>
+      <b>免责声明：</b>本报告为基于公开数据的量化监测产物，SBI 泡沫指数为风险度量工具而非投资建议。市场有风险，投资需谨慎。
+    </div>
+  </div>
+
+  <div class="foot">A股半导体板块 SBI 泡沫指数日报 · 自动化生成 · 2026-09-01 · 数据基准 2026-08-31 收盘 · 内联 SVG 渲染（自包含）</div>
+</div>
+
+
+</body>
+</html>
