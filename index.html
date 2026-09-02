@@ -4248,8 +4248,10 @@ window.addEventListener('hashchange', ()=>{
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    filterSBICards("cn", "2026-09");
-    filterSBICards("us", "2026-09");
+    var cnSel = document.querySelector('select[onchange*="filterSBICards(\'cn\'"]');
+    var usSel = document.querySelector('select[onchange*="filterSBICards(\'us\'"]');
+    if (cnSel && cnSel.value) filterSBICards("cn", cnSel.value);
+    if (usSel && usSel.value) filterSBICards("us", usSel.value);
   });
 </script>
 </body>
