@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Astera Labs (ALAB) | 全面覆盖 | 蜗牛鸟投资</title>
+<style>
+  :root{
+    --ink:#0a0a0a; --paper:#f7f5ef; --panel:#ffffff;
+    --navy:#0c1f3d; --gold:#a67c1e; --gold-lt:#c79b3d;
+    --green:#1c6b3f; --red:#9c2b21; --grey:#6b6b62; --hair:#d8d4c6;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:Georgia,"Noto Serif SC","Songti SC",serif; line-height:1.65;}
+  .wrap{max-width:1060px; margin:0 auto; padding:0 26px 70px;}
+  .masthead{background:var(--navy); color:#f2ede1; border-bottom:6px solid var(--gold);}
+  .masthead .bar{max-width:1060px; margin:0 auto; padding:10px 26px; display:flex; justify-content:space-between; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-lt); border-bottom:1px solid rgba(255,255,255,.15);}
+  .masthead .main{max-width:1060px; margin:0 auto; padding:22px 26px 26px;}
+  .masthead h1{font-size:30px; margin:6px 0 4px; font-weight:400;}
+  .masthead .ticker{font-family:"Courier New",monospace; font-size:16px; color:var(--gold-lt); letter-spacing:1px;}
+  .masthead .dek{font-size:14px; color:#cfd3da; margin-top:8px; font-style:italic;}
+  .masthead .row{display:flex; gap:0; margin-top:20px; border-top:1px solid rgba(255,255,255,.2); flex-wrap:wrap;}
+  .masthead .cell{flex:1; min-width:135px; padding:12px 16px; border-right:1px solid rgba(255,255,255,.15);}
+  .masthead .cell:last-child{border-right:none;}
+  .masthead .cell .l{font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold-lt);}
+  .masthead .cell .v{font-family:"Courier New",monospace; font-size:17px; margin-top:4px;}
+  .masthead .cell .v.pos{color:#6fd19a;} .masthead .cell .v.neg{color:#e08b83;}
+  .rating-strip{display:flex; flex-wrap:wrap; background:#f0ede2; border-bottom:1px solid var(--hair); font-size:12.5px;}
+  .rating-strip .r{padding:10px 20px; border-right:1px solid var(--hair);}
+  .rating-strip b{color:var(--navy);}
+  nav.toc{background:var(--panel); border:1px solid var(--hair); margin-top:26px; padding:18px 24px;}
+  nav.toc .t{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); border-bottom:1px solid var(--hair); padding-bottom:8px; margin-bottom:10px;}
+  nav.toc ol{margin:0; padding-left:18px; columns:2; column-gap:30px; font-size:13px;}
+  nav.toc li{margin-bottom:5px;}
+  nav.toc a{color:var(--navy); text-decoration:none; border-bottom:1px dotted var(--hair);}
+  section{margin-top:40px;}
+  .sec-head{display:flex; align-items:baseline; gap:14px; border-bottom:3px solid var(--ink); padding-bottom:8px; margin-bottom:16px;}
+  .sec-num{font-family:"Courier New",monospace; font-size:13px; color:var(--gold); background:var(--navy); padding:3px 9px;}
+  h2{font-size:20px; margin:0; font-weight:400;}
+  h3{font-size:15px; color:var(--navy); margin:26px 0 10px; border-left:4px solid var(--gold); padding-left:10px;}
+  p{margin:10px 0; font-size:14px;}
+  .panel{background:var(--panel); border:1px solid var(--hair); padding:20px 24px; margin-bottom:16px;}
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:12.3px; background:var(--panel);}
+  caption{caption-side:top; text-align:left; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); padding-bottom:6px;}
+  th,td{border:1px solid var(--hair); padding:7px 9px; text-align:right; font-family:"Courier New",monospace;}
+  th{background:var(--navy); color:#f2ede1; font-weight:400; text-align:center; font-family:Georgia,serif;}
+  td:first-child, th:first-child{text-align:left; font-family:Georgia,serif;}
+  tr:nth-child(even) td{background:#f5f3ea;}
+  .pos{color:var(--green); font-weight:700;} .neg{color:var(--red); font-weight:700;}
+  .tag{display:inline-block; font-size:10.5px; padding:2px 8px; border:1px solid; margin-right:6px; margin-bottom:4px; letter-spacing:.5px; text-transform:uppercase;}
+  .tag.g{color:var(--green); border-color:var(--green);}
+  .tag.r{color:var(--red); border-color:var(--red);}
+  .tag.n{color:var(--navy); border-color:var(--navy);}
+  .chart-box{background:var(--panel); border:1px solid var(--hair); padding:18px 20px; margin:16px 0;}
+  .chart-box .cap{font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; border-bottom:1px solid var(--hair); padding-bottom:6px;}
+  .chart-grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  canvas{max-height:280px;}
+  .kpi-row{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--hair); border:1px solid var(--hair); margin:16px 0;}
+  .kpi{background:var(--panel); padding:16px 14px; text-align:center;}
+  .kpi .num{font-family:"Courier New",monospace; font-size:19px; color:var(--navy); font-weight:700;}
+  .kpi .lbl{font-size:10.5px; color:var(--grey); margin-top:6px;}
+  .quote-box{border-left:4px solid var(--gold); background:#fbf6e8; padding:12px 18px; font-size:13px; color:#5a4519; margin:14px 0;}
+  .risk-box{border-left:4px solid var(--red); background:#fbeeec; padding:12px 18px; font-size:13px; margin:14px 0;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .grid3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;}
+  @media(max-width:760px){.grid2,.grid3,.chart-grid2,.kpi-row{grid-template-columns:1fr;} nav.toc ol{columns:1;}}
+  .scen-card{border:1px solid var(--hair); padding:16px 18px;}
+  .scen-card .h{font-size:13px; letter-spacing:1px; text-transform:uppercase; padding-bottom:8px; border-bottom:1px solid var(--hair); margin-bottom:10px;}
+  .scen-card.bear .h{color:var(--red);} .scen-card.base .h{color:var(--navy);} .scen-card.bull .h{color:var(--green);}
+  .scen-card .tp{font-family:"Courier New",monospace; font-size:24px; font-weight:700; margin:8px 0;}
+  .scen-card ul{margin:6px 0 0; padding-left:18px; font-size:12px; color:var(--grey);}
+  .flow-diagram{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin:16px 0; font-size:12.5px;}
+  .flow-node{background:var(--panel); border:1px solid var(--navy); border-radius:6px; padding:10px 14px; text-align:center; flex:1; min-width:120px;}
+  .flow-node.hl{border:2px solid var(--gold); background:#fbf6e8; font-weight:700;}
+  .flow-arrow{font-size:18px; color:var(--gold); padding:0 4px;}
+  .verdict{background:var(--navy); color:#f2ede1; padding:28px 30px; margin-top:16px; border-top:5px solid var(--gold);}
+  .verdict h3{color:var(--gold-lt); border-color:var(--gold-lt); margin-top:0;}
+  .verdict .score{font-family:"Courier New",monospace; font-size:22px; font-weight:700; color:var(--gold-lt); margin-top:14px;}
+  footer{margin-top:50px; padding-top:20px; border-top:2px solid var(--ink); font-size:11.5px; color:var(--grey);}
+  .disc{background:#f0ede2; border:1px solid var(--hair); padding:14px 18px; font-size:11.5px; color:#54503f; margin-top:20px;}
+  .small{font-size:11.5px; color:var(--grey);}
+  .src{font-size:10.5px; color:var(--grey);}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="bar"><span>蜗牛鸟投资 · SNAIL-BIRD INVESTMENT</span><span>EQUITY RESEARCH — AI互联基础设施 / 半导体</span></div>
+  <div class="main">
+    <div class="ticker">NASDAQ: ALAB</div>
+    <h1>Astera Labs, Inc. 深度投研报告</h1>
+    <div class="dek">基于2026年第二季度财报（2026年8月4日发布）、10-Q/10-K原始文件、管理层业绩电话会议纪要及最新同行披露的全面覆盖 — 产业链定位、财务与营运资本分析、客户集中度、同行估值对比与三变量估值框架</div>
+    <div class="row">
+      <div class="cell"><div class="l">Rating</div><div class="v">买入（高波动，附条件）</div></div>
+      <div class="cell"><div class="l">Price (2026-09-01)</div><div class="v">$280.00</div></div>
+      <div class="cell"><div class="l">Market Cap</div><div class="v">≈$48.6B</div></div>
+      <div class="cell"><div class="l">12M目标价（本报告）</div><div class="v pos">$300</div></div>
+      <div class="cell"><div class="l">较现价潜在空间</div><div class="v pos">+7%</div></div>
+      <div class="cell"><div class="l">分析师一致目标价（参考）</div><div class="v">$390（约26家）</div></div>
+    </div>
+  </div>
+</div>
+<div class="rating-strip">
+  <div class="r">报告日期：<b>2026-09-02</b></div>
+  <div class="r">财季：<b>2026 Q2（截至2026-06-30）</b></div>
+  <div class="r">财报发布：<b>2026-08-04盘后</b></div>
+  <div class="r">52周区间：<b>$97.89 – $499.48</b></div>
+</div>
+
+<div class="wrap">
+
+<nav class="toc">
+  <div class="t">Contents</div>
+  <ol>
+    <li><a href="#s1">核心结论</a></li>
+    <li><a href="#s2">公司概况与产品矩阵</a></li>
+    <li><a href="#s3">AI产业链定位：产品是什么、用在哪里</a></li>
+    <li><a href="#s4">财务全景：连续八个季度超预期</a></li>
+    <li><a href="#s5">毛利率波动：产品结构切换期的压力，而非确认的长期下降</a></li>
+    <li><a href="#s6">客户集中度：事实、推断与待验证</a></li>
+    <li><a href="#s7">产品路线图：从设计中标到收入贡献的距离</a></li>
+    <li><a href="#s8">资产负债表、营运资本与供应链集中度</a></li>
+    <li><a href="#s9">内部人交易</a></li>
+    <li><a href="#s10">竞争格局、平台依赖与同行估值对比</a></li>
+    <li><a href="#s11">估值（三变量框架，可审计）</a></li>
+    <li><a href="#s12">风险清单</a></li>
+    <li><a href="#s13">结论与投资建议</a></li>
+  </ol>
+</nav>
+
+<!-- 1 -->
+<section id="s1">
+  <div class="sec-head"><span class="sec-num">§01</span><h2>核心结论</h2></div>
+  <div class="panel">
+    <p>Astera Labs是AI机架级互联基础设施（信号完整性再生、AI Fabric交换、内存扩展、光互连）的核心供应商，产品在英伟达GPU集群及其生态中占据关键地位。公司2026年第二季度业绩延续了自IPO以来的高速增长与持续超预期节奏：收入3.924亿美元，同比增长104%，环比增长27%，为连续第八个季度超越市场一致预期；Q3 2026收入指引中值达5.5亿美元，环比增速指引高达40%，主要由Scorpio X-Series高密度AI Fabric交换机进入量产驱动。这一执行记录体现了管理层较强的预测与交付能力，但历史超预期本身不能作为下一阶段Scorpio X放量必然顺利的证据，两者应分开评估。</p>
+    <p>本报告识别出四项需要审慎评估的结构性变量。<strong>第一</strong>，非GAAP毛利率已从Q1的76.4%连续两个季度下滑至Q2的73.7%，Q3指引进一步降至约72%；管理层将其归因于产品组合向Scorpio等系统级产品迁移，但并未明确表示Scorpio本身是"低毛利产品"——不同应用场景和lane count利用率下Scorpio的毛利率存在较大差异，公司也重申长期毛利率目标约78%。因此更准确的定性是"产品结构切换期的阶段性压力"，其能否如期收敛仍待观察，而非已经确认的长期下降趋势。<strong>第二</strong>，公司2025年度报告披露，单一终端客户贡献了超过70%的营收，前三大终端客户合计约86%——这是一个基于FY2025数据的已确认事实，公司尚未在2026年各季度10-Q中以同口径重新披露，因此"2026年是否仍维持这一集中度"属于合理推断而非已证实的当期数据。<strong>第三</strong>，应收账款和存货在2026上半年分别增长131%和93%，增速明显快于同期收入增速（+99%），需要持续跟踪其是否会收敛于收入增长节奏。<strong>第四</strong>，2026年8月中旬，CEO与COO在同一天各自减持约3,080万美元股票，其中相当部分属于税款代扣的强制性变现；过去三个月内部人合计净卖出规模已达数亿美元量级且未见任何买入，这一现象不应作为估值或评级的直接依据，但其一致性模式值得纳入观察。</p>
+    <p>截至2026年9月1日，ALAB股价报280.00美元，较52周高点499.48美元已回撤约44%，市值约486亿美元。综合收入增长动能、上述结构性变量及与同业Marvell、Credo、Broadcom的横向对比，本报告给予<strong>买入（高波动，附条件）</strong>评级，12个月目标价<strong>$300</strong>（基准情景），并在§11、§13详细说明支撑该目标价的三变量假设及情景区间。</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+  <div class="sec-head"><span class="sec-num">§02</span><h2>公司概况与产品矩阵</h2></div>
+  <div class="panel">
+    <table>
+      <tr><td>公司名称</td><td style="text-align:left">Astera Labs, Inc.</td></tr>
+      <tr><td>成立时间</td><td style="text-align:left">2017年10月，由三位前德州仪器信号完整性工程师创立（Jitendra Mohan、Sanjay Gajendra、Casey Morrison）</td></tr>
+      <tr><td>上市时间</td><td style="text-align:left">2024年3月20日，IPO发行价$36/股</td></tr>
+      <tr><td>总部</td><td style="text-align:left">美国加利福尼亚州圣何塞，另在台湾持续扩大工程与商务团队规模，并已开设以色列研发中心</td></tr>
+      <tr><td>商业模式</td><td style="text-align:left">Fabless半导体设计公司，依托台积电等晶圆代工及ASE、Amkor等封测厂</td></tr>
+      <tr><td>员工数</td><td style="text-align:left">约756人（2025年末口径）</td></tr>
+    </table>
+    <h3>2.1 产品矩阵</h3>
+    <p>公司的"智能互联平台"（Intelligent Connectivity Platform）整合CXL、以太网、NVLink Fusion、PCIe、UALink等多种协议，配合COSMOS软件套件提供统一的链路管理与诊断能力，主要产品线包括：</p>
+    <table>
+      <tr><th>产品线</th><th style="text-align:left">定位与最新进展</th></tr>
+      <tr><td>Aries（PCIe/CXL Retimer）</td><td style="text-align:left">信号再生核心芯片，Q2创单季收入历史新高；PCIe 6.0世代渗透率快速提升，Q2收入占比已超过50%（Q1约为三分之一）</td></tr>
+      <tr><td>Scorpio（智能Fabric交换机）</td><td style="text-align:left">P-Series（PCIe Switch）与X-Series（320通道高密度Scale-Up Fabric交换机）。X-Series已于Q2进入量产，管理层指引Q3将成为公司最大产品线，较原计划提前一个季度；目前已有10余家客户（涵盖超大规模云厂商、Neocloud及企业级客户）参与验证与部署</td></tr>
+      <tr><td>Taurus（智能线缆模块）</td><td style="text-align:left">面向Scale-Out以太网组网，近期扩展至3.2T以太网智能Retimer/Redriver产品，新增OCP标准兼容封装，公司将其潜在市场规模上调至2030年逾40亿美元</td></tr>
+      <tr><td>Leo（CXL内存控制器）</td><td style="text-align:left">面向下一代内存扩展与"内存墙"问题；Q2新增一家美国超大规模云厂商的设计中标（含标准及定制版本），预计2027年开始批量出货</td></tr>
+    </table>
+    <p class="small">需要说明的是，公司官方财报及监管文件<strong>并未披露各产品线的具体收入占比或分部毛利率</strong>，仅在业绩会上给出"PCIe 6产品占比超50%""Scorpio将成为最大产品线"等定性/部分定量表述。市场上流传的各产品线精确收入占比多为第三方或分析师的估算，本报告对此类未经官方证实的具体百分比持保留态度，仅采用公司已明确披露的定性排序与部分量化指标。</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+  <div class="sec-head"><span class="sec-num">§03</span><h2>AI产业链定位：产品是什么、用在哪里</h2></div>
+  <div class="panel">
+    <h3>3.1 要解决的物理问题：信号在高速传输中会衰减和失真</h3>
+    <p>现代AI服务器内部与服务器之间需要传输海量数据——GPU与GPU之间、GPU与CPU之间、GPU与内存之间、服务器与服务器之间都依靠高速电信号或光信号连接。但信号在铜线或PCB电路板上传输超过一定距离后，会因电阻、电容、串扰等物理效应产生<strong>衰减和失真</strong>，导致接收端读取数据出错。这个问题在AI集群中被急剧放大，原因是：(1) 单机内GPU数量从个位数增至8~72颗甚至更多（如GB200/GB300机架级设计），信号走线距离显著拉长；(2) PCIe协议本身也在快速升代（4.0→5.0→6.0），每一代速率翻倍，对信号完整性的容忍度反而更低；(3) 机架级、多机柜互连（Scale-Up/Scale-Out）进一步拉长了物理连接距离。Astera Labs的核心产品，本质上就是在信号"跑不动"或"跑不准"的链路中间插入一颗芯片，把信号重新整形、放大、再生，确保数据在长距离、高速率传输后依然能被正确解读——这正是"Retimer"（重定时器）这一产品名称的含义。</p>
+
+    <h3>3.2 产品在AI服务器/数据中心中的具体位置</h3>
+    <div class="flow-diagram">
+      <div class="flow-node">GPU芯片<br><span class="small">(如NVIDIA Blackwell/Rubin)</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node hl">Aries Retimer<br><span class="small">信号再生/整形</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">PCIe总线 / 交换网络</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node hl">Scorpio交换机<br><span class="small">多GPU互连Fabric</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">CPU / 内存 / 存储 / 其他GPU</div>
+    </div>
+    <table>
+      <caption>各产品线对应的AI基础设施环节</caption>
+      <tr><th>产品线</th><th style="text-align:left">在数据中心中的位置</th><th style="text-align:left">类比作用</th></tr>
+      <tr><td>Aries（PCIe/CXL Retimer）</td><td style="text-align:left">插在GPU、CPU、SSD等设备与PCIe总线之间的信号链路上，常见于服务器主板、GPU基板及PCIe扩展卡上，每台AI服务器可能需要多颗</td><td style="text-align:left">相当于长途电话线路中的"信号放大中继站"，防止信号衰减导致通话失真</td></tr>
+      <tr><td>Scorpio（Fabric交换机）</td><td style="text-align:left">位于机柜/机架内，将多颗GPU、多台服务器通过PCIe或UALink协议互连成一个更大的"计算池"（Scale-Up），使它们可以像单台超级计算机一样协同工作</td><td style="text-align:left">相当于机场的"航班调度中枢"，决定不同GPU之间的数据如何最优路由</td></tr>
+      <tr><td>Taurus（智能线缆模块/以太网Retimer）</td><td style="text-align:left">用于服务器与服务器之间、机柜与机柜之间的以太网连接（Scale-Out组网），是数据中心内部"局域网"层面的信号整形器件</td><td style="text-align:left">相当于城市之间的高速公路中继站，让机柜与机柜之间的长距离数据传输不失真</td></tr>
+      <tr><td>Leo（CXL内存控制器）</td><td style="text-align:left">让GPU/CPU可以访问额外的、独立于本机内存插槽之外的内存资源池，解决大模型训练/推理时"内存不够用"（内存墙）的问题</td><td style="text-align:left">相当于给电脑外接一块"云端硬盘"，突破本机存储/内存容量的物理限制</td></tr>
+    </table>
+
+    <h3>3.3 在AI产业链中的角色定位</h3>
+    <p>如果把AI算力产业链粗略划分为"算力芯片层"（GPU/AI加速器，如NVIDIA、AMD、谷歌TPU）、"互连层"（负责让算力芯片之间高效通信，Astera Labs所在的环节）、"网络层"（数据中心间/跨地域的骨干网络，如光模块、交换机厂商）、"整机与云服务层"（服务器OEM、超大规模云厂商），Astera Labs处于<strong>"互连层"中偏"机架内/机柜内"（board-level和rack-level）的信号完整性与Fabric交换环节</strong>，是GPU集群能够被有效"拼接"成更大算力单元的必要基础设施，但本身不生产算力芯片，也不直接参与数据中心之间的长距离网络传输（后者更多是光模块、路由交换机厂商如Lumentum、Coherent等的领域，两者在光电转换环节存在一定的生态协同而非直接竞争）。</p>
+    <p>更长期看，公司的真实增长函数并非单纯是"AI服务器出货量"，而更接近"<strong>单机架的互连复杂度（connectivity content per rack）</strong>"——如果每台AI服务器/每个机架内的GPU数量持续增加、协议代际持续升级（PCIe 5→6、Scale-Up向多机柜Scale-Out延伸）、内存扩展需求持续上升，那么理论上单位算力所需要搭载的Astera Labs芯片数量和单价也会同步提升。公司未公开披露"每机架含量"（content per rack）或"每GPU平均搭载金额"等精确指标，市场上流传的相关测算均为第三方推演，本报告不采用未经证实的具体数值，仅将其作为定性的产业逻辑呈现。</p>
+    <div class="quote-box">用一句话概括其产业链角色：<strong>Astera Labs不制造"算力"，而是让已经制造出来的算力芯片能够以接近理论上限的效率互相"对话"</strong>——GPU集群的规模越大、单颗GPU算力越强、信号速率越高，对信号完整性和智能Fabric交换的需求就越刚性，这也是公司过去两年收入随英伟达Blackwell/Rubin平台放量而同步爆发式增长的底层逻辑。</div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+  <div class="sec-head"><span class="sec-num">§04</span><h2>财务全景：连续八个季度超预期</h2></div>
+  <div class="panel">
+    <div class="kpi-row">
+      <div class="kpi"><div class="num">$392.4M</div><div class="lbl">Q2收入，同比+104%，环比+27%</div></div>
+      <div class="kpi"><div class="num">73.7%</div><div class="lbl">Q2 Non-GAAP毛利率</div></div>
+      <div class="kpi"><div class="num">39.1%</div><div class="lbl">Q2 Non-GAAP营业利润率，环比+290bps</div></div>
+      <div class="kpi"><div class="num">$0.80</div><div class="lbl">Q2 Non-GAAP稀释EPS，超市场一致预期约14~16%</div></div>
+    </div>
+    <table>
+      <caption>季度营收趋势（2025 Q1 → 2026 Q3指引）</caption>
+      <tr><th>季度</th><th>收入($M)</th><th>收入YoY</th><th>收入QoQ</th></tr>
+      <tr><td>2025 Q1</td><td>159.7</td><td>—</td><td>—</td></tr>
+      <tr><td>2025 Q2</td><td>191.9</td><td>+150%</td><td>+20%</td></tr>
+      <tr><td>2025 Q3</td><td>230.6</td><td>—</td><td>+20%</td></tr>
+      <tr><td>2025 Q4</td><td>270.6</td><td>+92%</td><td>+17%</td></tr>
+      <tr><td>2026 Q1</td><td>308.4</td><td>+93%</td><td>+14%</td></tr>
+      <tr><td>2026 Q2</td><td>392.4</td><td>+104%</td><td>+27%</td></tr>
+      <tr><td>2026 Q3（指引中值）</td><td>≈550.0</td><td>—</td><td>+40%（指引）</td></tr>
+      <tr><td><strong>2025全年</strong></td><td><strong>852.5</strong></td><td><strong>+115%</strong></td><td>—</td></tr>
+    </table>
+    <p>2026年上半年累计收入700.8百万美元，同比增长99%；GAAP净利润233.4百万美元，同比增长181%；GAAP营业利润151.1百万美元，同比增长196%。<strong>2025全年GAAP净利润2.191亿美元，每股收益基本口径为$1.32，稀释口径为$1.22</strong>（两者差异主要来自可转换优先股转普通股、股票期权及RSU等潜在稀释性证券的影响），较2024年的净亏损8,342万美元（基本及稀释EPS均为-$0.64）实现扭亏为盈，反映公司在收入规模突破8亿美元关口后，经营杠杆开始充分释放。本报告后续涉及历史EPS比较时统一采用稀释口径。</p>
+
+    <div class="chart-box">
+      <div class="cap">Chart 1 · 季度收入趋势（$M）— 含Q3 2026指引区间</div>
+<svg viewBox="0 0 680 360" width="100%" style="display:block;max-height:300px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="季度收入趋势">
+<line x1="48" y1="302.0" x2="662" y2="302.0" stroke="#d8d4c6" stroke-width="1"/>
+<text x="42" y="306.0" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">0</text>
+<line x1="48" y1="233.0" x2="662" y2="233.0" stroke="#d8d4c6" stroke-width="1"/>
+<text x="42" y="237.0" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">150</text>
+<line x1="48" y1="164.0" x2="662" y2="164.0" stroke="#d8d4c6" stroke-width="1"/>
+<text x="42" y="168.0" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">300</text>
+<line x1="48" y1="95.0" x2="662" y2="95.0" stroke="#d8d4c6" stroke-width="1"/>
+<text x="42" y="99.0" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">450</text>
+<line x1="48" y1="26.0" x2="662" y2="26.0" stroke="#d8d4c6" stroke-width="1"/>
+<text x="42" y="30.0" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">600</text>
+<rect x="65.5" y="228.5" width="52.6" height="73.5" fill="#0c1f3d"/>
+<text x="91.9" y="222.5" text-anchor="middle" font-size="11.5" fill="#0c1f3d" font-family="Georgia,'Noto Serif SC','Songti SC',serif">159.7</text>
+<text x="91.9" y="320.0" text-anchor="middle" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">25 Q1</text>
+<rect x="153.3" y="213.7" width="52.6" height="88.3" fill="#0c1f3d"/>
+<text x="179.6" y="207.7" text-anchor="middle" font-size="11.5" fill="#0c1f3d" font-family="Georgia,'Noto Serif SC','Songti SC',serif">191.9</text>
+<text x="179.6" y="320.0" text-anchor="middle" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">25 Q2</text>
+<rect x="241.0" y="195.9" width="52.6" height="106.1" fill="#0c1f3d"/>
+<text x="267.3" y="189.9" text-anchor="middle" font-size="11.5" fill="#0c1f3d" font-family="Georgia,'Noto Serif SC','Songti SC',serif">230.6</text>
+<text x="267.3" y="320.0" text-anchor="middle" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">25 Q3</text>
+<rect x="328.7" y="177.5" width="52.6" height="124.5" fill="#0c1f3d"/>
+<text x="355.0" y="171.5" text-anchor="middle" font-size="11.5" fill="#0c1f3d" font-family="Georgia,'Noto Serif SC','Songti SC',serif">270.6</text>
+<text x="355.0" y="320.0" text-anchor="middle" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">25 Q4</text>
+<rect x="416.4" y="160.1" width="52.6" height="141.9" fill="#0c1f3d"/>
+<text x="442.7" y="154.1" text-anchor="middle" font-size="11.5" fill="#0c1f3d" font-family="Georgia,'Noto Serif SC','Songti SC',serif">308.4</text>
+<text x="442.7" y="320.0" text-anchor="middle" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">26 Q1</text>
+<rect x="504.1" y="121.5" width="52.6" height="180.5" fill="#0c1f3d"/>
+<text x="530.4" y="115.5" text-anchor="middle" font-size="11.5" fill="#0c1f3d" font-family="Georgia,'Noto Serif SC','Songti SC',serif">392.4</text>
+<text x="530.4" y="320.0" text-anchor="middle" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">26 Q2</text>
+<rect x="591.8" y="49.0" width="52.6" height="253.0" fill="#c79b3d"/>
+<text x="618.1" y="43.0" text-anchor="middle" font-size="11.5" fill="#0c1f3d" font-family="Georgia,'Noto Serif SC','Songti SC',serif">550</text>
+<text x="618.1" y="320.0" text-anchor="middle" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">26 Q3E</text>
+<text x="48" y="16" font-size="11.5" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">$M</text>
+</svg>
+    </div>
+    <div class="chart-grid2">
+      <div class="chart-box">
+        <div class="cap">Chart 2 · Non-GAAP毛利率与营业利润率趋势（%）</div>
+<svg viewBox="0 0 680 360" width="100%" style="display:block;max-height:300px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="毛利率与营业利润率">
+<line x1="46" y1="310.0" x2="662" y2="310.0" stroke="#d8d4c6" stroke-width="1"/>
+<text x="40" y="314.0" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">30%</text>
+<line x1="46" y1="253.6" x2="662" y2="253.6" stroke="#d8d4c6" stroke-width="1"/>
+<text x="40" y="257.6" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">40%</text>
+<line x1="46" y1="197.2" x2="662" y2="197.2" stroke="#d8d4c6" stroke-width="1"/>
+<text x="40" y="201.2" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">50%</text>
+<line x1="46" y1="140.8" x2="662" y2="140.8" stroke="#d8d4c6" stroke-width="1"/>
+<text x="40" y="144.8" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">60%</text>
+<line x1="46" y1="84.4" x2="662" y2="84.4" stroke="#d8d4c6" stroke-width="1"/>
+<text x="40" y="88.4" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">70%</text>
+<line x1="46" y1="28.0" x2="662" y2="28.0" stroke="#d8d4c6" stroke-width="1"/>
+<text x="40" y="32.0" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">80%</text>
+<polyline points="148.7,48.3 354.0,63.5 559.3,73.1" fill="none" stroke="#9c2b21" stroke-width="2.4"/>
+<circle cx="148.7" cy="48.3" r="3.6" fill="#9c2b21"/>
+<circle cx="354.0" cy="63.5" r="3.6" fill="#9c2b21"/>
+<circle cx="559.3" cy="73.1" r="3.6" fill="#9c2b21"/>
+<polyline points="148.7,275.0 354.0,258.7 559.3,236.7" fill="none" stroke="#1c6b3f" stroke-width="2.4"/>
+<circle cx="148.7" cy="275.0" r="3.6" fill="#1c6b3f"/>
+<circle cx="354.0" cy="258.7" r="3.6" fill="#1c6b3f"/>
+<circle cx="559.3" cy="236.7" r="3.6" fill="#1c6b3f"/>
+<text x="148.7" y="328.0" text-anchor="middle" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">26 Q1</text>
+<text x="354.0" y="328.0" text-anchor="middle" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">26 Q2</text>
+<text x="559.3" y="328.0" text-anchor="middle" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">26 Q3E</text>
+<rect x="54" y="29" width="12" height="4" fill="#9c2b21"/>
+<text x="72" y="35" font-size="11.5" fill="#0c1f3d" font-family="Georgia,'Noto Serif SC','Songti SC',serif">Non-GAAP毛利率</text>
+<rect x="54" y="45" width="12" height="4" fill="#1c6b3f"/>
+<text x="72" y="51" font-size="11.5" fill="#0c1f3d" font-family="Georgia,'Noto Serif SC','Songti SC',serif">Non-GAAP营业利润率</text>
+</svg>
+      </div>
+      <div class="chart-box">
+        <div class="cap">Chart 3 · Non-GAAP稀释EPS趋势（$/股）— 含Q3指引区间</div>
+<svg viewBox="0 0 680 360" width="100%" style="display:block;max-height:300px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="稀释EPS趋势">
+<line x1="48" y1="302.0" x2="662" y2="302.0" stroke="#d8d4c6" stroke-width="1"/>
+<text x="42" y="306.0" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">0</text>
+<line x1="48" y1="233.0" x2="662" y2="233.0" stroke="#d8d4c6" stroke-width="1"/>
+<text x="42" y="237.0" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">0.3</text>
+<line x1="48" y1="164.0" x2="662" y2="164.0" stroke="#d8d4c6" stroke-width="1"/>
+<text x="42" y="168.0" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">0.6</text>
+<line x1="48" y1="95.0" x2="662" y2="95.0" stroke="#d8d4c6" stroke-width="1"/>
+<text x="42" y="99.0" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">0.9</text>
+<line x1="48" y1="26.0" x2="662" y2="26.0" stroke="#d8d4c6" stroke-width="1"/>
+<text x="42" y="30.0" text-anchor="end" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">1.2</text>
+<rect x="88.9" y="161.7" width="122.8" height="140.3" fill="#0c1f3d"/>
+<text x="150.3" y="155.7" text-anchor="middle" font-size="11.5" fill="#0c1f3d" font-family="Georgia,'Noto Serif SC','Songti SC',serif">0.61</text>
+<text x="150.3" y="320.0" text-anchor="middle" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">26 Q1</text>
+<rect x="293.6" y="118.0" width="122.8" height="184.0" fill="#0c1f3d"/>
+<text x="355.0" y="112.0" text-anchor="middle" font-size="11.5" fill="#0c1f3d" font-family="Georgia,'Noto Serif SC','Songti SC',serif">0.8</text>
+<text x="355.0" y="320.0" text-anchor="middle" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">26 Q2</text>
+<rect x="498.3" y="29.4" width="122.8" height="272.6" fill="#c79b3d"/>
+<text x="559.7" y="23.4" text-anchor="middle" font-size="11.5" fill="#0c1f3d" font-family="Georgia,'Noto Serif SC','Songti SC',serif">1.185</text>
+<text x="559.7" y="320.0" text-anchor="middle" font-size="11" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">26 Q3E(中值)</text>
+<text x="48" y="16" font-size="11.5" fill="#6b6b62" font-family="Georgia,'Noto Serif SC','Songti SC',serif">$/股</text>
+</svg>
+      </div>
+    </div>
+
+    <h3>4.1 超预期记录：管理层执行力的证据，而非未来业绩的保证</h3>
+    <p>公司过去连续八个季度非GAAP EPS超越市场一致预期，本季度Q3指引（收入中值5.5亿美元、非GAAP EPS $1.16~$1.21）较财报发布前的分析师一致预期高出约30%以上，反映管理层对Scorpio X放量节奏的信心显著强于此前市场定价。<strong>这一记录应被理解为管理层预测与交付能力的历史证据，而非下一阶段业绩确定性的保证</strong>——Scorpio X是一款刚进入量产、复杂度高于以往任何产品的系统级方案，Q3指引隐含的40%环比增速在公司历史上尚属首次出现的量级，其兑现情况仍需以实际季度数据检验，不宜将过去的执行记录简单外推为对本次指引的背书。</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+  <div class="sec-head"><span class="sec-num">§05</span><h2>毛利率波动：产品结构切换期的压力，而非确认的长期下降</h2></div>
+  <div class="panel">
+    <table>
+      <caption>毛利率与营业利润率趋势</caption>
+      <tr><th>季度</th><th>Non-GAAP毛利率</th><th>环比变化</th><th>Non-GAAP营业利润率</th><th>环比变化</th></tr>
+      <tr><td>2026 Q1</td><td>76.4%</td><td>—</td><td>36.2%</td><td>—</td></tr>
+      <tr><td>2026 Q2</td><td>73.7%</td><td class="neg">-270bps</td><td>39.1%</td><td class="pos">+290bps</td></tr>
+      <tr><td>2026 Q3（指引）</td><td>≈72%</td><td class="neg">≈-170bps</td><td>≈43%</td><td class="pos">≈+390bps</td></tr>
+    </table>
+    <p>管理层在业绩会上的表述比"Scorpio拉低毛利率"更为精细：不同应用场景与lane count利用率下，Scorpio的毛利率存在较大差异，公司整体判断Scorpio的平均毛利率大致处于公司整体水平附近，而非明确低于公司平均水平的"结构性低毛利产品"。公司同时重申长期毛利率目标约为78%，暗示管理层将当前的波动定位为产品组合扩展期的阶段性现象。</p>
+    <div class="quote-box"><strong>本报告的判断是：目前三个连续季度的数据显示毛利率处于下行区间，这一趋势本身是确凿的，但其背后的性质——究竟是"产品结构切换期的暂时性压力，未来可随规模效应和结构优化收敛"，还是"新产品线的毛利率中枢确实低于历史水平，长期难以回到78%目标"——尚不能仅凭三个季度数据下定论。</strong>这是一个需要持续观察、而非已经盖棺定论的变量：如果后续季度显示毛利率在72%附近企稳甚至回升，将验证"暂时性压力"的判断；如果毛利率持续下探，则需要重新评估78%长期目标的可信度。本报告在§11估值模型中对这一不确定性做了显式的情景区分，不采用单一确定性假设。</div>
+    <p>营业利润率的扩张目前主要由研发和销售管理费用增速慢于收入增速驱动（Q3指引隐含非GAAP运营费用1.56~1.60亿美元，仅较Q2小幅增长，而收入指引环比增长40%），这是典型的规模经济效应，但费用端的杠杆空间并非无限——公司近期仍在加速研发投入（含以色列新研发中心、光互连与定制硅相关团队扩张），若毛利率下滑速度超过费用杠杆释放速度，营业利润率的扩张趋势可能出现拐点。</p>
+    <h3>5.1 一个分析框架（非公司披露数据）</h3>
+    <p>为了更系统地理解不同产品线对毛利率的潜在拉动方向，本报告构建以下定性分析框架，<strong>其中的"高/中/低"评级均为分析师主观判断，并非公司披露的量化数据，仅供理解产品结构变化的方向性影响，不应作为精确测算的输入</strong>：</p>
+    <table>
+      <caption>产品线毛利率驱动因素定性框架（分析师估计，非公司数据）</caption>
+      <tr><th>产品线</th><th>Silicon含量占比</th><th>系统/模组集成度</th><th>当前商业化阶段</th></tr>
+      <tr><td>Aries</td><td>高</td><td>低</td><td>成熟放量</td></tr>
+      <tr><td>Scorpio P-Series</td><td>高</td><td>中</td><td>放量</td></tr>
+      <tr><td>Scorpio X-Series</td><td>中</td><td>高</td><td>放量初期</td></tr>
+      <tr><td>Taurus</td><td>中</td><td>高</td><td>放量</td></tr>
+      <tr><td>Leo</td><td>高</td><td>中</td><td>设计中标阶段</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+  <div class="sec-head"><span class="sec-num">§06</span><h2>客户集中度：事实、推断与待验证</h2></div>
+  <div class="panel">
+    <p>为避免将不同置信度的信息混为一谈，本报告将客户集中度相关内容明确分为三个层级：</p>
+    <table>
+      <tr><th>层级</th><th style="text-align:left">内容</th></tr>
+      <tr><td><span class="tag g">已确认事实</span></td><td style="text-align:left">2025年度10-K披露：<strong>单一终端客户贡献超过70%营收，前三大终端客户合计约86%</strong>。这是基于FY2025全年数据的官方披露，口径明确、可审计。</td></tr>
+      <tr><td><span class="tag n">分析判断</span></td><td style="text-align:left">由于公司业务与英伟达GPU平台的放量节奏高度绑定，且尚未观察到2026年上半年的终端客户结构出现实质性变化的公开证据，本报告判断2026年客户集中度<strong>可能仍处于较高水平</strong>，但这是基于业务逻辑的合理推断，而非官方重新披露的当期数据。</td></tr>
+      <tr><td><span class="tag r">尚待验证</span></td><td style="text-align:left">Scorpio在非英伟达生态客户（通过UALink、NVLink Fusion等）中的独立放量能否带来终端客户结构的实质性分散，需要等待2026年度10-K或后续披露的同口径数据加以验证，目前尚无法下定论。</td></tr>
+    </table>
+    <h3>6.1 直接客户口径与终端客户口径的差异</h3>
+    <table>
+      <caption>直接客户收入集中度（10-Q披露，占总收入比例）</caption>
+      <tr><th>客户</th><th>2026 Q1</th><th>2025 Q1（同比）</th></tr>
+      <tr><td>Customer A</td><td>29%</td><td>12%</td></tr>
+      <tr><td>Customer B</td><td>21%</td><td>26%</td></tr>
+      <tr><td>Customer C</td><td>16%</td><td>N/A</td></tr>
+      <tr><td>Customer D</td><td>12%</td><td>23%</td></tr>
+      <tr><td>Customer E</td><td>12%</td><td>N/A</td></tr>
+    </table>
+    <p>公司在10-Q中明确注释：上表所列部分"客户"实为代表终端客户采购的制造合作伙伴（如ODM代工厂），终端客户可能在不同制造伙伴之间调配生产订单，导致直接客户口径下的集中度百分比出现较大波动，且这种波动不一定代表终端真实需求结构发生了变化。Customer A占比从去年同期的12%骤升至今年的29%，很可能就是订单在不同代工/制造伙伴之间转移的结果。将这一现象与10-K披露的"单一终端客户超70%"对照可以推断：<strong>公司实际的终端需求集中度可能显著高于直接客户口径所展示的分散程度</strong>，"前五大客户各占12%以上"这类表述容易给投资者造成"客户结构较为分散"的误导性印象。</p>
+    <h3>6.2 与英伟达平台的依赖关系：无法精确量化，但可定性讨论</h3>
+    <p>公司未披露"来自英伟达平台相关收入占比"这一具体数字，市场普遍基于产品定位、直接客户中ODM厂商的构成（这些ODM厂商是英伟达GPU系统的主要代工方）推测终端集中的大客户与英伟达Blackwell/Rubin平台高度相关。这里存在两种不同性质的风险，需要投资者加以区分：其一，如果终端大客户本身也高度依赖英伟达GPU（即"终端客户集中"与"英伟达平台集中"高度重叠），则公司面临的是双重集中风险；其二，如果Scorpio等产品能够通过UALink联盟、NVLink Fusion等路径逐步服务于非英伟达AI芯片生态（如AMD、谷歌TPU、亚马逊Trainium、微软Maia等自研芯片平台），则公司的风险敞口可能从"英伟达供应链公司"逐步过渡为更广义的"AI基础设施连接平台"。<strong>目前尚无公开数据支持对这一过渡进度做精确量化判断</strong>，这是公司长期估值逻辑中最关键、但目前信息最不充分的变量之一。</p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="s7">
+  <div class="sec-head"><span class="sec-num">§07</span><h2>产品路线图：从设计中标到收入贡献的距离</h2></div>
+  <div class="panel">
+    <p>半导体行业的产品商业化通常经历"设计中标→样品验证→量产认证→产能爬坡→形成实质性收入贡献"多个阶段，且<strong>设计中标不等于收入，量产爬坡初期也不等于形成对公司整体业绩有实质影响的收入规模</strong>。本报告将公司披露的各条新产品线路线图按此框架重新梳理，避免将"故事"提前计入基准情景估值：</p>
+    <table>
+      <caption>产品路线图阶段与2027年收入贡献概率评估（分析师判断，非公司披露）</caption>
+      <tr><th>项目</th><th>当前阶段</th><th>预期时间表</th><th>2027年形成实质收入贡献的概率（分析师判断）</th></tr>
+      <tr><td>Scorpio X-Series</td><td>量产爬坡</td><td>已于2026 Q2进入量产，Q3成为最大产品线</td><td>高</td></tr>
+      <tr><td>CXL Leo定制版</td><td>设计中标</td><td>2027年开始批量出货</td><td>中低</td></tr>
+      <tr><td>NVLink Fusion定制方案</td><td>设计中标/联合研发</td><td>预计2027年贡献收入</td><td>中低</td></tr>
+      <tr><td>NPO（近封装光学）</td><td>早期研发/样品阶段</td><td>目标2027年量产</td><td>低</td></tr>
+      <tr><td>CPO赋能Scorpio交换机</td><td>路线图/早期规划</td><td>目标2028年及以后</td><td>很低（不应计入2027年基准情景）</td></tr>
+    </table>
+    <p>上述路线图显示，公司当前的收入增长动能几乎完全集中于Scorpio X的放量，其他新业务线（CXL Leo、NVLink Fusion、NPO/CPO光互连）在2027年之前对财务数字的贡献预计有限，属于"设计中标"到"量产爬坡"之间的过渡阶段，不宜提前计入基准情景的收入模型——本报告§11的FY2027E估算主要建立在Aries、Scorpio的延续性增长之上，CXL Leo等新业务线仅作为乐观情景的上行催化剂，不构成基准假设的一部分。</p>
+  </div>
+</section>
+
+<!-- 8 -->
+<section id="s8">
+  <div class="sec-head"><span class="sec-num">§08</span><h2>资产负债表、营运资本与供应链集中度</h2></div>
+  <div class="panel">
+    <h3>8.1 资产负债表：财务杠杆风险低，但这不等同于估值下行的安全边际</h3>
+    <table>
+      <caption>资产负债表关键科目（2026 Q1末 → 2026 Q2末）</caption>
+      <tr><th>项目</th><th>2026-03-31</th><th>2026-06-30</th><th>变化</th></tr>
+      <tr><td>总资产</td><td>—</td><td>$1,932M</td><td>较2025年末+26.1%</td></tr>
+      <tr><td>总负债</td><td>$165.3M</td><td>$205.8M</td><td class="neg">+24.5%（环比）</td></tr>
+      <tr><td>股东权益</td><td>$1,493.9M</td><td>$1,725.7M</td><td class="pos">+15.5%</td></tr>
+      <tr><td>留存收益</td><td>$90.6M</td><td>$243.7M</td><td class="pos">已转正并持续累积</td></tr>
+      <tr><td>期末发行在外普通股股数</td><td>171.28M</td><td>173.49M</td><td class="neg">+2.21M（股权激励及期权行权）</td></tr>
+      <tr><td>现金+有价证券合计</td><td>—</td><td>$1.25B</td><td>约占当前市值的2.6%</td></tr>
+    </table>
+    <div class="quote-box">需要向投资者明确区分两个不同的概念：<strong>公司的财务偿付风险（financial solvency risk）很低</strong>——几乎无有息负债、流动比率高、现金及有价证券充裕，短期内不存在流动性或再融资压力；但<strong>这并不等同于当前486亿美元市值存在"估值安全边际"</strong>——12.5亿美元的现金及有价证券仅占市值的约2.6%，在极端下行情景中，账面现金资产对股价的支撑作用非常有限，公司股价的主要波动来源是盈利预期和估值倍数的变化，而非资产负债表的清算价值。这一区分在§11估值与§12风险清单中会进一步体现。</div>
+    <p class="small">关于"173.49M流通普通股"的口径说明：该数字为2026年6月30日的期末实际发行在外普通股股数（shares outstanding），用于计算市值等指标；而Q3指引中管理层假设的约185M稀释股数，是用于计算非GAAP每股收益的<strong>加权平均稀释股数</strong>（计入未行权期权、未归属RSU及可转换证券的潜在稀释影响），两者概念不同，不可混用。</p>
+
+    <h3>8.2 营运资本：应收账款与存货增速明显快于收入，是需要持续跟踪的信号</h3>
+    <table>
+      <caption>营运资本关键科目变化（2025年末 → 2026 Q2末）</caption>
+      <tr><th>项目</th><th>2025-12-31</th><th>2026-06-30</th><th>增幅</th><th>同期收入增幅（H1 YoY）</th></tr>
+      <tr><td>应收账款</td><td>$83.2M</td><td>$192.0M</td><td class="neg">+131%</td><td>+99%</td></tr>
+      <tr><td>存货</td><td>$59.0M</td><td>$114.0M</td><td class="neg">+93%</td><td>+99%</td></tr>
+      <tr><td>预付款项及其他资产</td><td>$31.0M</td><td>$92.7M</td><td class="neg">+199%</td><td>—</td></tr>
+    </table>
+    <div class="risk-box">应收账款增速（+131%）明显快于收入增速（+99%），存货增速（+93%）与收入增速大体相当。应收账款的超收入增速扩张，可能反映：(1) 收入确认在季度末更集中（存在季度间收入节奏波动的可能）；(2) 部分大客户的回款周期有所拉长；(3) 为配合Q3的大幅放量指引，出货已提前进行但回款尚未到账。存货的同步扩张则更可能是为兑现Q3 40%环比增长指引而进行的主动备货。<strong>这些变化本身在收入高速增长阶段具有一定合理性，但如果应收账款增速持续显著超过收入增速，需要警惕坏账风险上升或收入确认质量的问题，是本报告在后续季度重点跟踪的营运资本指标</strong>，公司在10-Q中对此的解释是"产品销售增加及客户付款时点变化"，属于较为常规的表述，尚不构成明确的负面信号，但也不能因为现金流量表口径的经营性现金流为正就忽略这一趋势。</p>
+
+    <h3>8.3 股权激励费用（SBC）：Non-GAAP盈利质量需要结合SBC规模理解</h3>
+    <p>公司Q2单季度股权激励费用约6,399万美元，占当季收入比重约16.3%，是Non-GAAP净利润与GAAP净利润之间调节的最主要单项。<strong>公司经营性现金流强劲，但这并不意味着Non-GAAP EPS对应的是"无稀释成本的现金盈利"</strong>——SBC虽然是非现金费用，但代表着股东经济价值向员工的真实转移，最终会通过股本持续扩张体现为对每股价值的稀释（公司流通股本过去一年增长约10%以上，主要来自股权激励发放）。投资者在将Non-GAAP EPS用于估值时，应当意识到这一指标未扣除股权激励的稀释成本，是一个偏乐观的盈利口径。</p>
+
+    <h3>8.4 供应链集中风险：Fabless模式下的"隐性"风险敞口</h3>
+    <div class="risk-box">公司资产负债表干净、几乎无财务杠杆，但这并不等同于公司整体运营风险低。作为Fabless设计公司，Astera Labs<strong>高度依赖台积电进行晶圆制造，并依赖ASE、Amkor等少数外部OSAT厂商进行先进封装与测试</strong>，同时对模组、基板等物料供应商也存在一定的集中依赖。这类供应链集中风险与财务杠杆风险的性质完全不同——即便公司账面没有一分钱债务，一旦晶圆产能分配、先进封装产能（尤其是AI相关的高端封装产能在当前全行业都处于紧张状态）出现瓶颈，同样可能直接限制公司的收入兑现能力，这是评估公司整体风险时不应被"资产负债表干净"这一表述所掩盖的独立风险维度，详见§12风险清单。</div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section id="s9">
+  <div class="sec-head"><span class="sec-num">§09</span><h2>内部人交易</h2></div>
+  <div class="panel">
+    <p>2026年8月17日，CEO Jitendra Mohan与总裁兼COO Sanjay Gajendra分别减持约86,180~90,630股，各自套现约3,080万美元。公开披露文件显示，<strong>这笔大额交易属于"sell to cover"性质——即为满足此前授予的限制性股票单位（RSU）归属结算所产生的个人所得税代扣义务而自动出售，并非管理层的主动性择时减持决策，Rule 10b5-1复选框在披露中也未被标记为该类交易</strong>。</p>
+    <p>与此同时，公开记录也显示CEO通过其个人信托账户，在2025年12月建立的10b5-1预设交易计划下，于2026年4月、5月等多个时间点执行了真实的、经过提前排期但仍属主动性质的公开市场减持（如5月7日减持139,951股，价值约2,800万美元）。综合第三方数据源统计，过去三个月内部人合计减持规模已达数亿美元量级，期间未发现任何内部人买入。<strong>本报告的立场是：内部人交易不应作为公司估值模型的输入变量，也不应成为买入/持有评级的主要依据——创始人在公司股价大幅上涨后基于提前排期的计划进行部分变现，是相当常见且可以理解的个人财务行为，不宜被简单解读为对公司基本面的负面判断</strong>。本报告仅将其列为一项中性偏谨慎的辅助观察指标，纳入风险清单作为补充信息，但明确不将其权重计入§11的估值模型。</p>
+  </div>
+</section>
+
+<!-- 10 -->
+<section id="s10">
+  <div class="sec-head"><span class="sec-num">§10</span><h2>竞争格局、平台依赖与同行估值对比</h2></div>
+  <div class="panel">
+    <h3>10.1 竞争与技术替代风险</h3>
+    <p>公司面临的竞争压力可以分为三个层次，性质各不相同：<strong>(1) 直接产品竞争</strong>——Marvell、Broadcom、Credo Technology等厂商在PCIe/CXL Retimer及AI Fabric交换领域持续追赶，产品性能和客户导入节奏是核心竞争变量；<strong>(2) 平台内部整合风险</strong>——NVIDIA自身掌控NVLink、NVSwitch及参考架构设计，若其GPU集群参考设计进一步向内部方案倾斜，可能压缩Astera Labs在部分环节（尤其是PCIe Switch）的渗透率，管理层在业绩会上也承认需要持续应对这一维度；<strong>(3) 协议生态竞争</strong>——UALink、NVLink Fusion、PCIe、以太网等多种互连协议之间的长期生态格局尚未完全确定，公司选择在多个协议阵营中保持技术覆盖，但也意味着尚无法确定哪一种协议路径会成为长期主流；<strong>(4) 技术路线迁移风险</strong>——若数据中心互连从电信号（copper）加速向光互连（optical/CPO）迁移，公司需要证明自身能够成功地从电互连能力延伸至光互连能力，目前NPO/CPO仍处于早期阶段（详见§07）。UALink联盟已发布2.0规范，为公司在非NVIDIA生态中建立标准化地位提供了机会，但该生态的商业化进度仍处于早期。受限于公开信息的深度，本报告未能对上述竞争对手的产品性能、市场份额变化做完整的量化对比。</p>
+
+    <h3>10.2 同行横向对比：ALAB vs. Marvell / Credo / Broadcom</h3>
+    <p>本报告选取三家可比公司进行横向对比，数据已更新至各公司最新一期实际披露的财报（而非仅指引）：<strong>Marvell（MRVL，数据中心定制硅与互连巨头，2026年8月27日发布Q2 FY2027实际业绩）、Credo Technology（CRDO，光电与电互连纯正对标标的，产品线与ALAB高度重叠，2026年9月1日发布Q1 FY2027实际业绩）、Broadcom（AVGO，AI网络/定制硅超大盘龙头，作为规模与增速的参照系，因业务结构高度多元化不纳入精确倍数对比）</strong>。</p>
+    <table>
+      <caption>同行估值与经营指标对比（基准日：2026年9月1-2日，均采用各公司最新一期实际披露数据）</caption>
+      <tr><th>指标</th><th>ALAB</th><th>CRDO</th><th>MRVL</th><th>AVGO（参照）</th></tr>
+      <tr><td>股价</td><td>$280.00</td><td>$206.63</td><td>$204.41</td><td>—</td></tr>
+      <tr><td>市值</td><td>≈$48.6B</td><td>≈$42.2B</td><td>≈$180.9B</td><td>≈$1.75T</td></tr>
+      <tr><td>最新实际季度收入</td><td>$392.4M(Q2FY26)</td><td>$479M(Q1FY27,+114.7%YoY)</td><td>$2,739M(Q2FY27,+37%YoY)</td><td>$22,190M(Q2FY26,+47.9%YoY)</td></tr>
+      <tr><td>最新实际季度Non-GAAP毛利率</td><td>73.7%</td><td>68%</td><td>58.9%</td><td>—</td></tr>
+      <tr><td>最新实际季度Non-GAAP EPS</td><td>$0.80</td><td>$1.20</td><td>$0.94</td><td>—</td></tr>
+      <tr><td>下一财年/下季度增速指引</td><td>Q3+40%环比(指引)</td><td>FY27全年&gt;85%(指引)</td><td>FY27全年+40%(约$11.5B,较年初上修)</td><td>AI半导体收入同比+143%</td></tr>
+      <tr><td>披露的客户集中度</td><td>终端客户超70%(单一,FY2025)/86%(前三)</td><td>直接客户33%(单一)/84%(前四)</td><td>数据中心占收入约76%，客户结构相对多元</td><td>高度多元化</td></tr>
+    </table>
+    <p class="small">数据来源与口径说明：MRVL Q2 FY2027（截至2026年8月）、CRDO Q1 FY2027（截至2026年8月/发布于9月1日）为两家公司最新实际披露季度，与ALAB Q2 FY2026（截至2026年6月）在财年周期上并非完全同步对齐，读者比较时应注意此时间错位。P/E、P/S等前瞻倍数因三家公司财年结束月份不同、市场对各自下一财年的一致预期更新时点不同，本报告不再给出单一"前瞻P/E"数字直接横向排序，而是呈现已实际发生的收入增速、毛利率及客户集中度等更具可比性的经营指标，倍数层面的比较结论请参见§10.3的定性判断。AVGO因业务结构高度多元化（AI半导体+企业软件+宽带/无线），与纯AI互连标的不完全可比，仅作为规模与增速的参照系。</p>
+
+    <h3>10.3 对比结论</h3>
+    <div class="quote-box">横向对比可以得出几个较为清晰的结论：<strong>(1)</strong> 从已实际发生的收入增速看，CRDO（Q1FY27 +114.7%）与ALAB（Q2FY26 +104%）处于同一梯队，均显著快于规模更大的MRVL（+37%）；这与两家公司更小的营收基数、更集中的产品线定位一致。<strong>(2)</strong> 就客户集中度而言，ALAB与CRDO均处于极端集中水平（单一客户占比在30%~70%区间，取决于统计口径），而MRVL、AVGO凭借更大的业务规模和更广泛的产品矩阵，客户结构相对分散——这意味着ALAB、CRDO这类"细分单点技术龙头"在获得更高增速的同时，也承担着更集中的客户结构性风险，市场愿意给予两者更高的估值倍数，本质上是用更高的估值交换更快的增长，但代价是更集中的收入来源和更高的业绩波动性。<strong>(3)</strong> ALAB的Non-GAAP毛利率（73.7%）仍高于CRDO（68%）和MRVL（58.9%），即便处于下行趋势中，公司的绝对盈利能力在同组中仍属最优，这为§05中"毛利率压力是阶段性而非结构性恶化"的判断提供了一定的交叉验证——若毛利率进一步下探至CRDO或MRVL的水平，则需要重新评估公司的产品定位与议价能力。<strong>(4)</strong> 从资产负债表质量看，ALAB的几乎零杠杆状态在四家公司中相对占优，但如§08.1所述，这一优势更多反映为下行情景中的估值缓冲有限性的补充信息，而非独立的估值上行催化剂。</div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="s11">
+  <div class="sec-head"><span class="sec-num">§11</span><h2>估值（三变量框架，可审计）</h2></div>
+  <div class="panel">
+    <h3>11.1 基础数据（基准日：2026年9月1日）</h3>
+    <table>
+      <tr><th>指标</th><th>数值</th></tr>
+      <tr><td>股价</td><td>$280.00</td></tr>
+      <tr><td>期末实际发行在外普通股股数</td><td>≈173.49M（2026-06-30）</td></tr>
+      <tr><td>市值</td><td>≈$48.6B</td></tr>
+      <tr><td>52周区间</td><td>$97.89 – $499.48</td></tr>
+      <tr><td>Q3指引隐含加权平均稀释股数</td><td>≈185M</td></tr>
+    </table>
+
+    <h3>11.2 为什么不直接用"EPS×P/E"：三变量框架</h3>
+    <p>对于一家当前前瞻P/E已处于60~70倍区间的高速增长公司，"给一个目标P/E乘以EPS"式的估值方法容易掩盖真正的问题——<strong>投资者实际上是在对公司未来数年能否维持高速增长做隐含判断，而不仅仅是在判断"当前估值贵不贵"</strong>。本报告因此采用三变量框架：<strong>收入复合增速（Revenue CAGR）× 长期营业利润率中枢（Operating Margin）× 终端估值倍数（Terminal Multiple）</strong>，将三个变量的假设显式列出，避免用单一模糊的"合理估值倍数"掩盖背后的增长假设。</p>
+    <table>
+      <caption>三变量情景假设与隐含FY2027E每股收益、目标价</caption>
+      <tr><th>情景</th><th>FY2027E收入假设</th><th>长期Non-GAAP营业利润率假设</th><th>隐含FY2027E Non-GAAP EPS（本报告估算）</th><th>终端P/E假设</th><th>隐含目标价</th></tr>
+      <tr><td>悲观</td><td>≈$1.7B~1.9B（收入增速降至30%附近，Scorpio放量不及预期）</td><td>≈35%</td><td>≈$3.3~3.6</td><td>40~50x</td><td>≈$150~$220（区间下限对应更剧烈的估值倍数压缩）</td></tr>
+      <tr><td>基准</td><td>≈$2.3B~2.5B（收入增速约45%，Q3指引基本兑现后逐季放缓）</td><td>≈41~43%</td><td>≈$4.6~5.0</td><td>55~65x</td><td>≈$280~$320</td></tr>
+      <tr><td>乐观</td><td>≈$2.8B以上（收入增速约60%，Scorpio超预期+CXL Leo/NVLink Fusion提前贡献）</td><td>≈46~48%</td><td>≈$6.0~6.8</td><td>65~75x</td><td>≈$420~$480</td></tr>
+    </table>
+    <div class="quote-box">这一框架清楚地显示：<strong>当前约$280的股价，若对应基准情景假设（收入CAGR约45%、长期营业利润率约42%、终端P/E约55~65倍），大致处于合理区间的中枢附近，而非明显低估或高估</strong>；65~70倍的终端P/E需要建立在"毛利率企稳且客户结构实质性分散"这一尚未验证的前提上，本报告将其归入乐观情景假设，而非基准情景。若毛利率下探压力未如期收敛，或Scorpio放量不及预期导致收入增速大幅低于假设，估值倍数与EPS将同步承压，悲观情景下股价存在下探至$150~$220区间的可能。</div>
+
+    <h3>11.3 与当前估值倍数的交叉核对</h3>
+    <table>
+      <tr><th>指标</th><th>数值</th></tr>
+      <tr><td>FY2026E Non-GAAP EPS（本报告估算，基于Q1+Q2实际值+Q3指引+Q4估算，中值）</td><td>≈$3.90 – $4.05</td></tr>
+      <tr><td>对应FY2026E P/E</td><td>$280/$3.98 ≈ 70.4x</td></tr>
+      <tr><td>FY2026E收入（本报告估算）</td><td>≈$1.90B – $1.95B</td></tr>
+      <tr><td>对应FY2026E P/S</td><td>≈24.9x – 25.6x</td></tr>
+      <tr><td>对应FY2027E P/E（基于基准情景EPS中值$4.8）</td><td>$280/$4.8 ≈ 58.3x</td></tr>
+    </table>
+    <p class="small">需要特别说明：部分第三方数据源（如Zacks）在本报告撰写时点仍显示FY2026一致预期EPS约$2.97，明显低于Q1+Q2实际值加Q3指引已隐含的水平，本报告判断这类滞后的一致预期数据尚未完全消化Q3指引的大幅上修，读者引用第三方一致预期时应注意数据更新时点。本报告采用自建的季度拼接模型作为FY2026E估算基础，但需承认Q4部分仍属自上而下的粗略外推，而非完整的分产品线利润表模型推导，存在相应的不确定性，建议投资者以此为参考区间而非精确预测。</p>
+
+    <h3>11.4 分析师目标价：市场预期参考</h3>
+    <table>
+      <caption>Q2财报后主要卖方分析师目标价更新（截至2026年8月下旬）</caption>
+      <tr><th>机构</th><th>最新目标价</th><th>较此前变化</th><th>评级</th></tr>
+      <tr><td>RBC Capital</td><td>$500</td><td>上调自$425</td><td>Outperform</td></tr>
+      <tr><td>JPMorgan</td><td>$465</td><td>上调自$280</td><td>Overweight</td></tr>
+      <tr><td>Evercore ISI</td><td>$452</td><td>上调自$297</td><td>Outperform</td></tr>
+      <tr><td>Jefferies</td><td>$450</td><td>上调自$270</td><td>Buy</td></tr>
+      <tr><td>Roth Capital</td><td>$450</td><td>上调自$275</td><td>Buy</td></tr>
+      <tr><td>Citi</td><td>$430</td><td>上调自$315</td><td>Buy</td></tr>
+      <tr><td>UBS</td><td>$425</td><td>上调自$400</td><td>Neutral</td></tr>
+      <tr><td>Morgan Stanley</td><td>$382</td><td>上调自$335</td><td>Overweight</td></tr>
+      <tr><td>Northland</td><td>$350</td><td>上调，评级由Market Perform调升至Outperform</td><td>Outperform</td></tr>
+      <tr><td>TD Cowen</td><td>$375</td><td>下调自$425</td><td>Hold</td></tr>
+      <tr><td>一致预期（约26家）</td><td>$389.95</td><td>+39%较现价，区间$190~$500</td><td>Buy（一致）</td></tr>
+    </table>
+    <p class="small">分析师目标价区间跨度达$190~$500，反映出市场对Scorpio X放量的可持续性、终端客户集中度风险及长期毛利率企稳能力存在显著不同判断。本报告$300的基准目标价低于卖方一致预期中位数，主要差异在于本报告对终端P/E倍数采取了更审慎的假设（55~65倍 vs 隐含于一致目标价中的更高倍数），这一差异的合理性需要留待FY27实际业绩逐步验证。上述一致目标价应被理解为市场预期的分布参考，而非本报告目标价的独立验证。</p>
+  </div>
+</section>
+
+<!-- 12 -->
+<section id="s12">
+  <div class="sec-head"><span class="sec-num">§12</span><h2>风险清单</h2></div>
+  <div class="panel">
+    <p><span class="tag r">估值对高速增长的依赖度高</span>当前FY2026E前瞻P/E约70倍，隐含市场对未来数年收入CAGR维持40%以上、营业利润率持续扩张的较高确定性预期，任何季度环比增速的明显放缓都可能引发估值大幅重估。</p>
+    <p><span class="tag r">终端客户集中度高（基于FY2025已确认数据）</span>单一终端客户2025年贡献超70%营收，前三大终端客户合计约86%；2026年是否延续这一水平尚待官方同口径数据验证，但基于业务逻辑判断集中度大概率仍处于高位。</p>
+    <p><span class="tag r">毛利率处于下行趋势，性质尚未确认</span>非GAAP毛利率已连续两个季度下滑，能否如管理层长期目标回升至78%尚未得到验证；本报告不确认这是长期结构性下降，但下行趋势本身是确凿的，需要持续跟踪。</p>
+    <p><span class="tag n">应收账款与存货增速快于收入</span>2026上半年应收账款、存货分别增长131%、93%，快于同期99%的收入增速，需要跟踪是否收敛于收入增长节奏，警惕潜在的坏账或收入确认质量问题。</p>
+    <p><span class="tag n">供应链集中风险</span>作为Fabless公司，高度依赖台积电晶圆代工及少数OSAT封测厂商，先进封装产能紧张可能直接限制收入兑现能力，这一风险与资产负债表的低杠杆状态相互独立，不应被后者掩盖。</p>
+    <p><span class="tag n">股权激励持续稀释</span>公司流通股本近一年增长逾10%，Q2单季SBC费用约占收入16%，Non-GAAP EPS未扣除这一稀释成本，长期对每股价值存在压力。</p>
+    <p><span class="tag n">Scorpio X执行风险</span>Q3指引隐含的40%环比增速主要押注于一款新产品的产能爬坡与良率表现，是公司历史上最大幅度的单季度指引上修，存在不及预期的执行风险。</p>
+    <p><span class="tag n">竞争与生态位风险</span>Marvell、Broadcom、Credo等厂商持续追赶，NVIDIA自身NVLink生态的进一步内部整合可能长期压缩公司在部分环节的渗透率，光互连技术路线迁移也构成中长期不确定性。</p>
+    <p><span class="tag n">出口管制与地缘政治</span>公司产品广泛用于全球AI数据中心建设，美国对华及其他地区的半导体出口管制政策变化可能影响部分客户订单节奏。</p>
+    <p><span class="tag n">内部人持续净卖出（辅助观察，非核心依据）</span>过去三个月内部人合计净卖出规模达数亿美元量级且无买入，相当比例为税款代扣的强制性变现及提前排期的10b5-1计划，本报告不将其作为估值或评级的直接依据。</p>
+    <p><span class="tag g">财务杠杆风险低，但不等同于估值安全边际</span>公司几乎零负债、现金及有价证券约12.5亿美元、经营性现金流健康，短期流动性无虞；但该现金规模仅占市值约2.6%，对股价下行的缓冲作用有限，投资者不应将"资产负债表干净"直接等同于"股价有安全边际"。</p>
+  </div>
+</section>
+
+<!-- 13 -->
+<section id="s13">
+  <div class="sec-head"><span class="sec-num">§13</span><h2>结论与投资建议</h2></div>
+  <div class="verdict">
+    <h3>综合结论：买入（高波动，附条件），12个月目标价$300（基准情景）</h3>
+    <p>Astera Labs处于AI机架级互联基础设施这一结构性高增长赛道的核心位置——公司产品让GPU集群内部及机架之间的高速信号能够在不失真的前提下传输，是AI算力能够被有效"拼接"成更大规模计算单元的必要基础设施。Q2业绩与Q3指引均显示公司增长动能未见放缓迹象，连续八个季度超预期的记录体现了管理层较强的执行能力，PCIe 6.0渗透与Scorpio X放量构成清晰的收入驱动逻辑。资产负债表几乎零杠杆、经营性现金流健康，公司不存在短期财务风险。</p>
+    <p>但对于一家当前FY2026E前瞻P/E约70倍的公司，真正需要回答的问题不是"公司好不好"，而是<strong>"当前估值所隐含的未来数年高速增长假设，兑现的确定性有多高"</strong>。本报告采用三变量框架（收入CAGR×营业利润率×终端估值倍数）显式拆解这一问题后判断：$280左右的当前股价大致对应基准情景的合理区间，而非明显低估——支撑更高目标价（接近卖方一致预期的$390）需要毛利率企稳、终端客户结构实质性分散、Scorpio持续超预期这三个条件同时兑现，这更接近于乐观情景假设，而非中性基准假设。同时，本报告识别的毛利率下行趋势性质未定、终端客户集中度高企、应收账款/存货增速快于收入、供应链集中于台积电及少数OSAT厂商等因素，均要求投资者以审慎的仓位管理应对这只高Beta成长股的波动性——52周内股价已从约$500回落至约$98后再回升至当前$280附近，本身即是市场对增长预期高度敏感的直接证据。</p>
+    <p>建议投资者在买入或加仓前重点确认以下条件：<strong>Q3实际业绩能否验证40%环比增速指引、非GAAP毛利率是否在72%附近企稳而非继续下探、后续10-K/10-Q中终端客户集中度是否出现实质性分散信号，以及应收账款增速能否收敛至与收入增速相匹配的水平</strong>。若上述条件逐步兑现，目标价存在向乐观情景（$420~$480）修正的空间；若毛利率持续下探或Scorpio放量不及预期，则应参照悲观情景（$150~$220）相应下修仓位。本报告的评级为"高波动、附条件"的买入，而非无条件的强力买入，请投资者结合自身风险承受能力审慎决策。</p>
+    <div class="score">RATING: BUY（高波动，附条件）｜ 12M TARGET: $300（Base）／$150~$220（Bear）／$420~$480（Bull）</div>
+  </div>
+
+  <div class="disc">
+    <strong>免责声明与方法论说明：</strong>本报告基于Astera Labs, Inc.官方披露的2025年度及2026年一、二季度财报、SEC 10-K/10-Q/8-K/Form 4原始文件、公司投资者关系材料、业绩电话会议纪要及公开分析师报告整理撰写，关键数据均已标注计算方式或来源以便审计复核。同行对比数据（MRVL、CRDO、AVGO）取自各公司最新一期实际披露财报及公开市场数据源在2026年9月1-2日的快照，与ALAB在财年周期上存在错位，比较时已在正文注明。§11的三变量估值框架及情景测算为本报告基于自建分析框架的内部估计，涉及对FY2027收入、营业利润率及终端估值倍数的主观假设，未经过完整DCF或概率加权分产品线收入建模验证，不代表公司指引或市场一致预期，仅供参考。本报告不构成投资建议，历史业绩不代表未来表现，股票投资涉及本金损失风险，请读者结合最新披露信息独立判断。
+  </div>
+
+  <footer>
+    <p><strong>主要数据来源</strong></p>
+    <p class="src">
+    1. Astera Labs Reports Second Quarter 2026 Financial Results（Astera Labs投资者关系，2026年8月4日）<br>
+    2. Astera Labs Reports First Quarter 2026 Financial Results（2026年5月5日）；Fourth Quarter and Full Year 2025 Financial Results（2026年2月10日）<br>
+    3. Astera Labs, Inc. Form 10-Q（截至2026年3月31日、6月30日各季度，SEC EDGAR）；Form 10-K（截至2025年12月31日财年，SEC EDGAR）<br>
+    4. Astera Labs, Inc. Form 8-K系列财务指引附件及Form 4系列内部人交易披露（SEC EDGAR，2025-2026年）<br>
+    5. Astera Labs Q2 2026 Earnings Call Transcript（The Motley Fool / Investing.com，2026年8月4-11日）<br>
+    6. 卖方分析师目标价更新（RBC、JPMorgan、Evercore ISI、Jefferies、Roth Capital、Citi、UBS、Morgan Stanley、Northland、TD Cowen，经stockanalysis.com/TipRanks汇总，2026年8月）<br>
+    7. Marvell Technology Reports Second Quarter of Fiscal Year 2027 Financial Results（2026年8月27日）；Credo Technology Group Holding Ltd Reports First Quarter of Fiscal Year 2027 Financial Results（2026年9月1日）；Broadcom Inc. Announces Second Quarter Fiscal Year 2026 Financial Results<br>
+    8. ALAB/MRVL/CRDO市场数据（Robinhood、stockanalysis.com、Investing.com，基准日2026-09-01/02）
+    </p>
+    <p style="margin-top:14px;">© 2026 蜗牛鸟投资（Snail-Bird Investment）· 内部研究报告 · 未经授权不得转载</p>
+  </footer>
+</div>
+</div>
+
+</body>
+</html>
