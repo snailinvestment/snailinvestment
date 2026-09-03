@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>赛轮轮胎 601058.SH 首次覆盖 — Snail-Bird Investment</title>
+<style>
+:root{
+  --bg:#f4f4f2;
+  --bg-panel:#ffffff;
+  --bg-alt:#ececea;
+  --ink:#1c1c1c;
+  --ink-soft:#57585c;
+  --ink-faint:#8a8b8f;
+  --line:#dddddb;
+  --navy:#0d3b66;
+  --navy-soft:#1c5c92;
+  --gold:#a8791a;
+  --gold-soft:#c99b3f;
+  --green:#1c7a4d;
+  --amber:#9c6a13;
+  --red:#8a1f1f;
+  --mono:'IBM Plex Mono','Courier New',monospace;
+  --sans:'IBM Plex Sans','Noto Sans SC',sans-serif;
+  --serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--gold);}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(244,244,242,0.96);backdrop-filter:blur(6px);border-bottom:2px solid var(--navy);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.5px;color:var(--navy);}
+.brand .bird{font-size:18px;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--navy);border:1px solid var(--navy);padding:3px 8px;border-radius:3px;}
+
+header.hero{padding:60px 0 40px;border-bottom:2px solid var(--navy);background:linear-gradient(180deg,#f8f7f2 0%,var(--bg) 100%);}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:18px;font-weight:700;}
+h1.title{font-family:var(--serif);font-size:36px;font-weight:700;margin:0 0 10px;line-height:1.35;color:var(--navy);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:800px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+
+.rating-panel{display:flex;gap:1px;background:var(--navy);border:1px solid var(--navy);margin-top:30px;}
+.rating-box{background:var(--navy);color:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;min-width:180px;}
+.rating-box .rlabel{font-family:var(--mono);font-size:11px;opacity:.8;text-transform:uppercase;letter-spacing:1px;}
+.rating-box .rvalue{font-family:var(--serif);font-size:26px;font-weight:700;margin-top:6px;}
+.target-box{background:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;flex:1;}
+.target-box .tlabel{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:1px;}
+.target-box .tvalue{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--navy);margin-top:6px;}
+
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:19px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--gold);font-weight:700;}
+h2{font-family:var(--serif);font-size:26px;margin:0;color:var(--navy);}
+h3{font-family:var(--sans);font-size:16px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--gold);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--navy);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);background:#fdf3f2;}
+.callout.gold{border-left-color:var(--gold);}
+
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:13.5px;color:var(--navy);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:var(--navy);font-family:var(--mono);font-size:11.5px;color:#fff;font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:#f9f8f2;}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#e9f3ec;color:var(--green);}
+.tag.miss{background:#f6eae8;color:var(--red);}
+.tag.line{background:#fbf3e3;color:var(--gold);}
+
+.seg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0;}
+.seg-card{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--navy);}
+.seg-card .sname{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.seg-card .sval{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.seg-card .sgrowth{font-family:var(--mono);font-size:12px;margin-bottom:8px;}
+.seg-card .sgrowth.pos{color:var(--green);}
+.seg-card .sgrowth.neg{color:var(--red);}
+.seg-card p{font-size:11.5px;margin:0;}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--navy);border:1px solid var(--navy);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:24px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--navy);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--amber);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#f6eae8;color:var(--red);}
+.risk-item.mid .rlevel{background:#fbf3e3;color:var(--amber);}
+.risk-item.low .rlevel{background:#e9f3ec;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+.risk-item .src{font-size:10.5px;color:var(--ink-faint);margin-top:6px;}
+
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+.ownership-bar{display:flex;height:34px;border-radius:3px;overflow:hidden;margin:14px 0;border:1px solid var(--line);}
+.ob-seg{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:#fff;}
+
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--navy);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .seg-grid{grid-template-columns:repeat(2,1fr);}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .rating-panel{flex-direction:column;}
+  h1.title{font-size:26px;}
+}
+
+.chart-box{overflow-x:auto}
+.chart-box svg{display:block;width:100%;height:auto;max-width:1180px;min-width:820px;margin:0 auto}
+.two-charts .chart-box svg{min-width:0}
+@media(max-width:860px){.chart-box svg{min-width:820px}}
+.tag-rm{display:inline-block;padding:1px 7px;font-size:10.5px;border-radius:3px;font-family:var(--mono);background:#fbf3e3;color:var(--gold);}
+.tag-hk{display:inline-block;padding:1px 7px;font-size:10.5px;border-radius:3px;font-family:var(--mono);background:#e9f3ec;color:var(--green);}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><div class="brand"><span class="bird">◆</span> SNAIL-BIRD INVESTMENT</div><div class="navlinks"><a href="#s1" style="color:#57585c;text-decoration:none">§1 投资摘要</a><a href="#s2" style="color:#57585c;text-decoration:none">§2 公司与业务</a><a href="#s3" style="color:#57585c;text-decoration:none">§3 财务质量</a><a href="#s4" style="color:#57585c;text-decoration:none">§4 原材料成本</a><a href="#s5" style="color:#57585c;text-decoration:none">§5 行业</a><a href="#s6" style="color:#57585c;text-decoration:none">§6 产能</a><a href="#s7" style="color:#57585c;text-decoration:none">§7 估值</a><a href="#s8" style="color:#57585c;text-decoration:none">§8 多空</a><a href="#s9" style="color:#57585c;text-decoration:none">§9 催化剂与风险</a><a href="#s10" style="color:#57585c;text-decoration:none">§10 评级</a></div><span class="navtag">601058.SH</span></div></nav><header class="hero"><div class="wrap">
+<div class="eyebrow">Initiating Coverage · 轮胎制造 · A 股</div>
+<h1 class="title">赛轮轮胎（601058.SH）：全球化产能进入收获期，<br/>原材料涨价是对这份盈利韧性最实在的一次压力测试</h1>
+<p class="subtitle">2026 年上半年营业收入 200.27 亿元（+13.88%）、归母净利润 21.60 亿元（+17.97%），
+轮胎产销量双双创历史同期新高，综合毛利率逆势提升 2.45 个百分点至 26.99%。这份增长的特别之处在于，
+它发生在天然橡胶现货较年初上涨 28.50%、公司四项主材综合采购价环比上涨 15.85% 的背景下——
+提价尚未完全落地，利润却已经先行走高。真正托住利润率的是海外产能：越南与柬埔寨两家工厂上半年合计贡献归母净利润
+17.74 亿元，占公司归母净利润的 82.1%，其 19.60% 的净利率是国内基地难以企及的。
+当前 PE(TTM) 13.27×、PB 2.25×、ROE(TTM) 16.99%；同业 PE 中位 16.31× 对应 ROE 中位仅
+6.18%，赛轮以 2.7 倍的 ROE 只换到 81% 的 PE，
+这是本覆盖给出买入评级的起点。而这份判断最脆弱的一环，也正是原材料——毛利率对原材料综合采购价的敏感性高达
+每 10% 价格变动对应 5.54 个百分点的毛利率，相当于 2026E 每股收益的 44%。</p>
+<div class="meta-row">
+<div><b>出版人</b> Snail-Bird Investment</div>
+<div><b>数据截至</b> 2026-09-03</div>
+<div><b>报告类型</b> 首次覆盖</div>
+<div><b>标的</b> 601058.SH（申万：汽车—汽车零部件—轮胎轮毂）</div>
+<div><b>数据来源</b> 公司定期报告与经营数据公告、ANRPC 月报、海关统计、米其林年报、行情接口</div>
+</div>
+<div class="rating-panel">
+<div class="rating-box"><div class="rlabel">Rating</div><div class="rvalue">买入 BUY</div></div>
+<div class="target-box"><div class="tlabel">Target Price · 12 个月</div>
+<div class="tvalue">¥19.70　（现价 ¥15.54，上行 +26.77%）</div></div>
+<div class="target-box"><div class="tlabel">Total Return（含股息）</div>
+<div class="tvalue">+29.38%　（前瞻股息率 2.61%）</div></div>
+</div>
+<div class="kpi-strip">
+<div class="kpi"><div class="label">现价</div><div class="value ">¥15.54</div><div class="sub">2026-09-03 盘中</div></div>
+<div class="kpi"><div class="label">目标价</div><div class="value pos">¥19.70</div><div class="sub">上行 +26.77%</div></div>
+<div class="kpi"><div class="label">2026H1 营收</div><div class="value pos">200.27 亿</div><div class="sub">同比 +13.88%</div></div>
+<div class="kpi"><div class="label">2026H1 归母</div><div class="value pos">21.60 亿</div><div class="sub">同比 +17.97%</div></div>
+<div class="kpi"><div class="label">PE(TTM)</div><div class="value ">13.27×</div><div class="sub">同业中位 16.31×</div></div>
+<div class="kpi"><div class="label">2026H1 毛利率</div><div class="value pos">26.99%</div><div class="sub">同比 +2.45pct</div></div>
+</div>
+</div></header><section id="s1"><div class="wrap">
+<div class="sec-head"><span class="sec-num">§1</span><h2>投资摘要</h2></div>
+<div class="grid-2">
+<div>
+<h3>一句话逻辑</h3>
+<p>赛轮是中国轮胎企业中海外产能布局最广、单位盈利最高的一家。2026 年上半年，越南与柬埔寨工厂合计贡献了公司
+82.1% 的归母净利润，净利率 19.60%；印尼与墨西哥工厂在二季度先后实现毛利转正；埃及基地已规划
+3,600 万条半钢、330 万条全钢与 2 万吨非公路轮胎的产能。这条全球化路径对冲了两个
+原本会压垮国内同行的变量——贸易壁垒与原材料涨价。市场当前给它的 13.27× PE(TTM)，隐含的是「周期见顶」而非
+「产能兑现」的定价。</p>
+
+<h3>三处与市场共识不同的判断</h3>
+<p><b>第一，海外产能的价值不是产能本身，而是它改变了成本曲线的位置。</b>国内基地在原材料涨价时需要靠提价传导，
+海外基地同时享受更低的关税成本、更高的产品结构和更靠近客户的市场定价。上半年越南与柬埔寨两家工厂的净利率
+19.60%，明显高于公司整体 10.79% 的归母净利率。海外资产的这一属性，在原材料上行周期里会被放大。</p>
+<p><b>第二，原材料涨价对赛轮的冲击被显著低估，也被显著高估——取决于看哪个数字。</b>看现货，天然橡胶较年初
+上涨 28.50%；看公司采购价，二季度四项主材综合采购价同比只上涨 6.81%。两者之间
+22 个百分点的差距，来自长约、备货周期与套期保值。这不是会计技巧，而是真实的缓冲垫；
+但缓冲不是免疫，二季度采购价环比 15.85% 的涨幅会在三、四季度陆续进入成本。</p>
+<p><b>第三，有效税率的单向抬升是比原材料更确定的逆风。</b>公司有效所得税率从 2023 年的 6.97% 一路升至
+2025 年的 13.39%，2026 年上半年进一步到 14.68%（〔模〕倒算）。全球最低税率规则下，海外低税率
+红利正在被系统性压缩。这一项每年侵蚀约 0.51 亿元量级的净利（按每 1 个百分点税率计），且不会
+在任何一个季度出现反转。</p>
+</div>
+<div>
+<div class="callout gold"><b>核心判断（〔判〕）</b>
+<ul style="margin:10px 0 0;padding-left:18px">
+<li><b>增长确定性高。</b>2026H1 轮胎销量 4,501.4 万条（+14.99%），均价 431.85 元/条基本持平——
+增量来自产能而非提价，这种增长的质量更高，也更难被贸易壁垒掐断。</li>
+<li><b>盈利韧性已被验证一次。</b>毛利率从 24.54% 提升至 26.99%，同期原材料采购价同比 +6.81%、
+环比 +15.85%。扣非归母 20.58 亿元，占归母 95.28%，利润结构干净。</li>
+<li><b>估值与盈利能力错配。</b>ROE(TTM) 16.99% 是同业中位 6.18% 的
+2.7 倍，PE(TTM) 却只有同业中位的 81%。
+与 ROE 几乎相同的中策橡胶（16.99%）相比，后者 PE 仅 10.36×，但其中报归母增速只有
+5.09%，而赛轮是 17.97%。</li>
+<li><b>最大的单点风险是原材料，不是关税。</b>原材料占营业成本约 75%，毛利率对采购价的敏感性是
+每变动 10% 对应 5.54 个百分点。提价 3% 只能修复约 2.15 个百分点，提价 5% 修复约
+3.51 个百分点——顺价永远慢于涨价。</li>
+<li><b>杠杆在上升，但仍在可控区间。</b>有息负债从 2025 年末的 120.56 亿元升至 146.75 亿元，资产负债率
+从 50.06% 升至 52.46%，净债务 94.68 亿元。造血能力（2025 年经营现金流 41.79 亿元）
+能够覆盖，但埃及与董家口两个项目同时推进会持续占用现金。</li>
+</ul></div>
+<div class="callout "><b>评级与目标价</b><br/>
+评级 <b>买入 BUY</b>；12 个月目标价 <b>¥19.70</b>，对应上行 <b>+26.77%</b>，加上
+2.61% 的前瞻股息率，含息总回报 <b>+29.38%</b>，超过本报告 15% 的买入门槛。<br/>
+四法估值：相对 PE 法 ¥20.16、PB-ROE 法 ¥16.80、DCF(FCFF) ¥21.83、情景加权 ¥19.97，
+均值 ¥19.69。悲观情景 ¥12.17（-21.72%），
+乐观情景 ¥27.37（+76.14%）。</div>
+</div>
+</div>
+</div></section><section id="s2"><div class="wrap">
+<div class="sec-head"><span class="sec-num">§2</span><h2>公司与业务：中国轮胎企业里，全球化走得最深的一家</h2></div>
+
+<h3>2.1 产业链位置与产品矩阵</h3>
+<p>赛轮位于轮胎产业链的中游制造环节：上游是天然橡胶、合成橡胶、炭黑、钢丝帘线与帘子布，下游分为配套市场（新车
+原配）与替换市场（存量车更换）。公司产品覆盖半钢子午胎（轿车、轻卡）、全钢子午胎（客车、货车）与非公路轮胎
+（工程与特种车辆），轮胎产品占主营业务收入的 98.94%，其余 1.06% 为贸易与
+循环利用等业务〔事 2026 半年报〕。</p>
+<p>公司 4 大研发中心、9 个生产基地（含在建），产品销往 180 多个国家和地区。
+技术标签上，自主研发的 63 吋巨型工程子午线轮胎达到国际领先水平，采用世界首创新材料的液体黄金轮胎获得欧盟标签
+法规最高等级认证，公司也是首个进入国际汽联赛事轮胎供应商名单的中国轮胎品牌〔事 公司官网／年报〕。品牌端，
+2026 年品牌价值 12.39 亿美元，位列全球轮胎品牌第 10 位；同年以 1251.89 亿元
+首次进入中国最具价值品牌百强（第 97 位）〔事 公司公告〕。</p>
+
+<h3>2.2 产能版图：在产、爬坡、在建三个梯队</h3>
+<p><table><thead><tr><th>基地</th><th>国家／地区</th><th>状态</th><th>定位与进展</th></tr></thead><tbody><tr><td>青岛</td><td>中国</td><td>在产</td><td>总部与研发基地，董家口新基地在建</td></tr><tr><td>东营</td><td>中国</td><td>在产</td><td>半钢胎主力基地</td></tr><tr><td>沈阳</td><td>中国</td><td>在产</td><td>全钢胎基地</td></tr><tr><td>潍坊</td><td>中国</td><td>在产</td><td>全钢胎与非公路胎</td></tr><tr><td>越南</td><td>越南</td><td>稳定高产</td><td>东南亚核心枢纽，供应北美与欧洲</td></tr><tr><td>柬埔寨</td><td>柬埔寨</td><td>稳定高产</td><td>CART TIRE，2026H1 归母 9.52 亿元</td></tr><tr><td>印尼</td><td>印尼</td><td>产能爬坡</td><td>2026 年 4 月毛利转正，供应本地及海外</td></tr><tr><td>墨西哥</td><td>墨西哥</td><td>产能爬坡</td><td>2026 年 5 月毛利转正，贴近北美市场</td></tr><tr><td>埃及</td><td>埃及</td><td>在建</td><td>2026 年 8 月首胎下线，规划 3,600 万条半钢 + 330 万条全钢 + 2 万吨非公路</td></tr></tbody></table></p>
+<p>把九个基地按成熟度分层，比把它们加总更有意义。第一梯队（越南、柬埔寨）已进入稳定高产期，是利润的主要来源；
+第二梯队（印尼、墨西哥）在 2026 年二季度先后实现毛利转正，从亏损转为贡献；第三梯队（埃及、青岛董家口）仍在建设期，
+短期只产生折旧与开办费，不产生利润。分层的意义在于：市场容易把「在建产能」当成「即将兑现的利润」，而两者之间
+隔着一整个爬坡周期。</p>
+
+<h3>2.3 分地区：出口导向，海外贡献八成利润</h3>
+<p><table><thead><tr><th>地区</th><th>2025 主营业务收入（亿元）</th><th>同比</th><th>占比</th></tr></thead><tbody><tr><td>境外</td><td>282.26</td><td>+18.54%</td><td>77.5%</td></tr><tr><td>境内</td><td>81.77</td><td>+8.28%</td><td>22.5%</td></tr><tr><td>合计</td><td>364.03</td><td>—</td><td>100.0%</td></tr></tbody></table></p>
+<p>2025 年境外主营业务收入 282.26 亿元（+18.54%），占主营业务收入的
+77.5%；境内 81.77 亿元（+8.28%）。境外增速高出境内
+10.26 个百分点。2026 年上半年延续这一结构，境外收入约
+152.42 亿元，占比 76.1%；海外资产占总资产的 62.88%
+〔事 2026 半年报〕。</p>
+<div class="callout "><b>海外子公司：真正的利润压舱石〔事 2026 半年报〕</b><br/>
+赛轮越南上半年营业收入 46.45 亿元、归母净利润 8.22 亿元；CART TIRE（柬埔寨）营业收入
+44.05 亿元、归母净利润 9.52 亿元。两家合计营业收入 90.50 亿元、归母净利润
+17.74 亿元（+40.33%），合计净利率 <b>19.60%</b>，占公司归母净利润的
+<b>82.1%</b>。这一比例是理解赛轮全部盈利逻辑的关键数字——海外产能贡献的不只是增量，而是利润的
+绝大部分。</div>
+
+<h3>2.4 股东结构与治理</h3>
+<p>截至 2026-06-30，公司总股本 32.88 亿股且全流通，股东总数 73,427 户，较一季度末增加
+27.13%，户均持股市值相应下降，筹码趋于分散。前十大股东合计持股 35.20%。</p>
+<p><table><thead><tr><th>股东名称</th><th>持股比例</th><th>持股数量（股）</th><th>备注</th></tr></thead><tbody><tr><td>瑞元鼎实投资有限公司</td><td>16.92%</td><td>556,365,180</td><td>实际控制人袁仲雪一致行动人；质押 2.163 亿股</td></tr><tr><td>袁仲雪</td><td>6.83%</td><td>224,690,895</td><td>创始人、名誉董事长；质押 7,669 万股</td></tr><tr><td>青岛煜明投资中心（有限合伙）</td><td>2.35%</td><td>77,418,000</td><td>执行事务合伙人为袁仲雪</td></tr><tr><td>香港中央结算有限公司</td><td>2.35%</td><td>77,371,079</td><td>北向资金，季度减持 4,502 万股</td></tr><tr><td>基本养老保险基金八零二组合</td><td>1.54%</td><td>50,485,881</td><td>长期资金</td></tr><tr><td>全国社保基金一一三组合</td><td>1.53%</td><td>50,410,050</td><td>长期资金</td></tr><tr><td>易方达消费行业股票型基金</td><td>1.30%</td><td>42,812,471</td><td>季度增持 463 万股</td></tr><tr><td>澳门金融管理局—自有资金</td><td>0.84%</td><td>27,541,738</td><td>季度减持 510 万股</td></tr><tr><td>全国社保基金一一一组合</td><td>0.78%</td><td>25,653,330</td><td>长期资金</td></tr><tr><td>科威特政府投资局—自有资金</td><td>0.75%</td><td>24,723,732</td><td>季度减持 449 万股</td></tr></tbody></table></p>
+<p>实际控制人袁仲雪通过瑞元鼎实投资有限公司（16.92%）、本人直接持股（6.83%）
+与青岛煜明投资中心（2.35%）合计控制 <b>26.10%</b> 的股份，控制权稳固。需要注意的
+是质押：瑞元鼎实质押 2.163 亿股、袁仲雪质押 7,669 万股，合计 2.93 亿股，占总股本的
+<b>8.91%</b>〔事 2026 半年报摘要〕。这一比例在制造业民营上市公司中处于中高水平，是股价下行时
+需要跟踪的放大变量。</p>
+<p><table><thead><tr><th>姓名</th><th>职务</th><th>背景与分工</th></tr></thead><tbody><tr><td>袁仲雪</td><td>名誉董事长、董事</td><td>创始人，青岛科技大学背景，主导全球化产能布局</td></tr><tr><td>刘燕华</td><td>董事长</td><td>法定代表人，战略与可持续发展委员会召集人</td></tr><tr><td>谢小红</td><td>总裁</td><td>负责日常经营</td></tr><tr><td>耿明</td><td>职工董事、常务副总裁、财务总监</td><td>财务与资本运作</td></tr><tr><td>李吉庆</td><td>董事、董事会秘书</td><td>信息披露与投资者关系</td></tr></tbody></table></p>
+
+<h3>2.5 贸易壁垒：为什么海外产能是护城河而非成本</h3>
+<p>全球轮胎贸易的壁垒在过去两年密集抬升：2026-07-07，欧盟委员会对原产于中国的新乘用车和轻型卡车充气橡胶
+轮胎作出反倾销肯定性终裁，适用税率 4.3%—45.3%；美国依据 232 条款对进口轮胎全球加征 25%，美国商务部对越南乘用车及轻卡轮胎（PVLT）反补贴税（CVD）终裁中赛轮越南税率为 6.23%〔事 美国商务部 2025 终裁〕；
+2026-06-23 美国维持对华轮胎双反措施；欧盟《零毁林法规》（EUDR）于 2026 年 5 月落地〔事 欧盟委员会／美国商务部〕。</p>
+<p>这些措施的共同特点是按<b>原产地</b>而非企业归属征收。赛轮对欧美市场的供应主要由越南、柬埔寨等海外基地承担，
+原产地不在中国，因此不受中欧反倾销税直接约束。这正是海外产能从「成本优化选项」升级为「市场准入条件」的原因。
+反过来说，这也意味着任何一个海外基地遭遇针对性的贸易救济措施，冲击会比对国内同行更直接。</p>
+</div></section><section id="s3"><div class="wrap">
+<div class="sec-head"><span class="sec-num">§3</span><h2>财务与盈利质量</h2></div>
+
+<h3>3.1 三年与十个季度：2025 年是一次盈利回撤，2026 年上半年是一次修复</h3>
+<div class="chart-box"><svg viewBox="0 0 680 300" width="100%" style="display:block;width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="年度营收归母与毛利率"><rect x="0" y="0" width="680" height="300" fill="#ffffff"/><text x="60.0" y="24.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="15.3" fill="#0d3b66" text-anchor="start" font-weight="700">营业收入（亿元，柱）与综合毛利率（%，线）</text><line x1="60.0" y1="210.0" x2="560.00" y2="210.0" stroke="#dddddb" stroke-width="1"/><rect x="76.0" y="107.3" width="42.5" height="102.7" fill="#0d3b66" opacity="0.9"/><text x="97.2" y="101.3" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="middle" font-weight="400">260</text><rect x="126.5" y="197.8" width="42.5" height="12.2" fill="#1c7a4d" opacity="0.85"/><text x="147.8" y="191.8" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="middle" font-weight="400">30.9</text><text x="122.5" y="230.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.6" fill="#1c1c1c" text-anchor="middle" font-weight="400">2023</text><rect x="201.0" y="84.3" width="42.5" height="125.7" fill="#0d3b66" opacity="0.9"/><text x="222.2" y="78.3" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="middle" font-weight="400">318</text><rect x="251.5" y="193.9" width="42.5" height="16.1" fill="#1c7a4d" opacity="0.85"/><text x="272.8" y="187.9" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="middle" font-weight="400">40.6</text><text x="247.5" y="230.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.6" fill="#1c1c1c" text-anchor="middle" font-weight="400">2024</text><rect x="326.0" y="64.5" width="42.5" height="145.5" fill="#0d3b66" opacity="0.9"/><text x="347.2" y="58.5" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="middle" font-weight="400">368</text><rect x="376.5" y="196.1" width="42.5" height="13.9" fill="#1c7a4d" opacity="0.85"/><text x="397.8" y="190.1" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="middle" font-weight="400">35.2</text><text x="372.5" y="230.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.6" fill="#1c1c1c" text-anchor="middle" font-weight="400">2025</text><rect x="451.0" y="45.9" width="42.5" height="164.1" fill="#1c5c92" opacity="0.55"/><text x="472.2" y="39.9" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="middle" font-weight="400">415</text><rect x="501.5" y="193.0" width="42.5" height="17.0" fill="#1c7a4d" opacity="0.5"/><text x="522.8" y="187.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="middle" font-weight="400">43.0</text><text x="497.5" y="230.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.6" fill="#1c1c1c" text-anchor="middle" font-weight="400">2026E</text><polyline points="122.5,93.3 247.5,92.8 372.5,105.1 497.5,98.6" fill="none" stroke="#a8791a" stroke-width="2.2"/><circle cx="122.5" cy="93.3" r="4" fill="#a8791a" stroke="#ffffff" stroke-width="1.5"/><text x="122.5" y="81.3" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.0" fill="#a8791a" text-anchor="middle" font-weight="400">27.5%</text><circle cx="247.5" cy="92.8" r="4" fill="#a8791a" stroke="#ffffff" stroke-width="1.5"/><text x="247.5" y="80.8" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.0" fill="#a8791a" text-anchor="middle" font-weight="400">27.6%</text><circle cx="372.5" cy="105.1" r="4" fill="#a8791a" stroke="#ffffff" stroke-width="1.5"/><text x="372.5" y="93.1" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.0" fill="#a8791a" text-anchor="middle" font-weight="400">24.7%</text><circle cx="497.5" cy="98.6" r="4" fill="#a8791a" stroke="#ffffff" stroke-width="1.5"/><text x="497.5" y="86.6" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.0" fill="#a8791a" text-anchor="middle" font-weight="400">26.2%</text><rect x="80.0" y="258.0" width="12.0" height="12.0" fill="#0d3b66" opacity="0.9"/><text x="98.0" y="268.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="start" font-weight="400">营业收入</text><rect x="190.0" y="258.0" width="12.0" height="12.0" fill="#1c7a4d" opacity="0.85"/><text x="208.0" y="268.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="start" font-weight="400">归母净利润</text><rect x="318.0" y="258.0" width="12.0" height="12.0" fill="#a8791a" opacity="1.0"/><text x="336.0" y="268.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="start" font-weight="400">综合毛利率（右刻度）</text><text x="560.0" y="288.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.8" fill="#8a8b8f" text-anchor="end" font-weight="400">2026E 为本报告测算，非公司指引</text></svg></div>
+<p><table><thead><tr><th>年度</th><th>营业收入（亿元）</th><th>归母净利润（亿元）</th><th>扣非归母（亿元）</th><th>综合毛利率</th><th>期间费用率</th><th>有效所得税率</th><th>加权 ROE</th></tr></thead><tbody><tr><td>2023A</td><td>259.78</td><td>30.91</td><td>29.60</td><td>27.46%</td><td>12.86%</td><td>6.97%</td><td>20.50%*</td></tr><tr><td>2024A</td><td>318.02</td><td>40.63</td><td>39.99</td><td>27.58%</td><td>12.29%</td><td>11.52%</td><td>22.81%</td></tr><tr><td>2025A</td><td>367.92</td><td>35.22</td><td>34.58</td><td>24.68%</td><td>12.75%</td><td>13.39%</td><td>17.04%</td></tr><tr><td>2026H1</td><td>200.27</td><td>21.60</td><td>20.58</td><td>26.99%</td><td>13.28%</td><td>14.68%*</td><td>9.63%**</td></tr><tr><td>2026E〔模〕</td><td>415.00</td><td>43.00</td><td>—</td><td>26.20%</td><td>—</td><td>15.00%</td><td>18.73%</td></tr></tbody><tfoot><tr><td colspan="8" style="text-align:left;font-size:11.5px;color:#8a8b8f">* 2023 年 ROE 与 2026H1 有效所得税率为本报告按期末归母净资产、利润总额与净利润近似测算，未经加权口径重述；** 2026H1 ROE 为半年口径，未年化。2026E 为本报告测算，非公司指引。</td></tr></tfoot></table></p>
+<p>2025 年是赛轮近三年唯一的一次盈利回撤：营业收入 +15.69%，归母净利润却 -13.30%，综合毛利率
+27.58% → 24.68%，下滑 2.90 个百分点。回撤的来源有三条，且都属于
+一次性或结构性而非经营性：美国加征关税导致的毛利下滑、海外新基地投产带来的费用抬升（四项期间费用合计
+46.90 亿元，同比增加 7.82 亿元）、以及全球最低税率规则下的税负增加〔事 2025 年报／券商点评〕。</p>
+<p>2026 年上半年三条逆风同时缓解：关税影响被海外产能的原产地切换消化，印尼与墨西哥基地先后实现毛利转正，
+毛利率则回升至 26.99%。</p>
+<div class="chart-box"><svg viewBox="0 0 680 345" width="100%" style="display:block;width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="季度营收与归母净利润"><rect x="0" y="0" width="680" height="345" fill="#ffffff"/><text x="46.0" y="22.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="15.3" fill="#0d3b66" text-anchor="start" font-weight="700">季度营业收入（亿元）</text><text x="46.0" y="192.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="15.3" fill="#0d3b66" text-anchor="start" font-weight="700">季度归母净利润（亿元）</text><line x1="46.0" y1="148.0" x2="652.00" y2="148.0" stroke="#dddddb" stroke-width="1"/><line x1="46.0" y1="306.0" x2="652.00" y2="306.0" stroke="#dddddb" stroke-width="1"/><rect x="56.9" y="79.0" width="38.8" height="69.0" fill="#1c5c92" opacity="0.9"/><text x="76.3" y="74.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">73</text><rect x="56.9" y="216.4" width="38.8" height="89.6" fill="#1c7a4d" opacity="0.9"/><text x="76.3" y="211.4" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">10.34</text><text x="76.3" y="333.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">24Q1</text><rect x="117.5" y="73.7" width="38.8" height="74.3" fill="#1c5c92" opacity="0.9"/><text x="136.9" y="68.7" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">79</text><rect x="117.5" y="209.1" width="38.8" height="96.9" fill="#1c7a4d" opacity="0.9"/><text x="136.9" y="204.1" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">11.18</text><text x="136.9" y="333.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">24Q2</text><rect x="178.1" y="67.9" width="38.8" height="80.1" fill="#1c5c92" opacity="0.9"/><text x="197.5" y="62.9" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">85</text><rect x="178.1" y="211.4" width="38.8" height="94.6" fill="#1c7a4d" opacity="0.9"/><text x="197.5" y="206.4" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">10.92</text><text x="197.5" y="333.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">24Q3</text><rect x="238.7" y="70.7" width="38.8" height="77.3" fill="#1c5c92" opacity="0.9"/><text x="258.1" y="65.7" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">82</text><rect x="238.7" y="235.0" width="38.8" height="71.0" fill="#9c6a13" opacity="0.9"/><text x="258.1" y="230.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">8.19</text><text x="258.1" y="333.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">24Q4</text><rect x="299.3" y="68.5" width="38.8" height="79.5" fill="#1c5c92" opacity="0.9"/><text x="318.7" y="63.5" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">84</text><rect x="299.3" y="216.0" width="38.8" height="90.0" fill="#1c7a4d" opacity="0.9"/><text x="318.7" y="211.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">10.39</text><text x="318.7" y="333.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">25Q1</text><rect x="359.9" y="61.3" width="38.8" height="86.7" fill="#1c5c92" opacity="0.9"/><text x="379.3" y="56.3" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">92</text><rect x="359.9" y="237.4" width="38.8" height="68.6" fill="#9c6a13" opacity="0.9"/><text x="379.3" y="232.4" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">7.92</text><text x="379.3" y="333.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">25Q2</text><rect x="420.5" y="53.5" width="38.8" height="94.5" fill="#1c5c92" opacity="0.9"/><text x="439.9" y="48.5" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">100</text><rect x="420.5" y="215.8" width="38.8" height="90.2" fill="#1c7a4d" opacity="0.9"/><text x="439.9" y="210.8" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">10.41</text><text x="439.9" y="333.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">25Q3</text><rect x="481.1" y="61.0" width="38.8" height="87.0" fill="#1c5c92" opacity="0.9"/><text x="500.5" y="56.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">92</text><rect x="481.1" y="249.6" width="38.8" height="56.4" fill="#9c6a13" opacity="0.9"/><text x="500.5" y="244.6" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">6.51</text><text x="500.5" y="333.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">25Q4</text><rect x="541.7" y="58.6" width="38.8" height="89.4" fill="#1c5c92" opacity="0.9"/><text x="561.1" y="53.6" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">95</text><rect x="541.7" y="214.5" width="38.8" height="91.5" fill="#1c7a4d" opacity="0.9"/><text x="561.1" y="209.5" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">10.56</text><text x="561.1" y="333.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">26Q1</text><rect x="602.3" y="48.1" width="38.8" height="99.9" fill="#1c5c92" opacity="0.9"/><text x="621.7" y="43.1" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">106</text><rect x="602.3" y="210.4" width="38.8" height="95.6" fill="#1c7a4d" opacity="0.9"/><text x="621.7" y="205.4" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">11.03</text><text x="621.7" y="333.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">26Q2</text><text x="652.0" y="22.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.8" fill="#8a8b8f" text-anchor="end" font-weight="400">数据来源：公司定期报告</text></svg></div>
+<p>十个季度的节奏里有两个值得注意的节点。一是 2025Q2 与 2025Q4，单季归母分别只有 7.92 亿元与
+6.51 亿元，构成 2025 年的低基数；二是 2026Q2 单季营收首次突破百亿至 105.66 亿元、
+归母 11.03 亿元（+39.26%），创单季新高。低基数与真实改善叠加，是上半年 +17.97%
+这一增速的完整解释——其中低基数的贡献不可复制，这一点在预测 2027 年时需要扣除。</p>
+
+<h3>3.2 盈利质量审计：扣非占比、非经常性损益与有效税率</h3>
+<p><table><thead><tr><th>项目</th><th>2026H1</th><th>2025H1</th><th>同比</th><th>说明</th></tr></thead><tbody><tr><td>归母净利润（亿元）</td><td>21.60</td><td>18.31</td><td>+17.97%</td><td>—</td></tr><tr><td>扣非归母净利润（亿元）</td><td>20.58</td><td>18.25</td><td>+12.75%</td><td>—</td></tr><tr><td>扣非／归母</td><td>95.28%</td><td>99.67%</td><td>-4.39pct</td><td>利润结构健康度</td></tr><tr><td>非经常性损益（亿元）</td><td>1.02</td><td>0.06</td><td>—</td><td>主要来自套期保值业务公允变动收益</td></tr><tr><td>利润总额（亿元）</td><td>25.74</td><td>21.48</td><td>+19.83%</td><td>—</td></tr><tr><td>有效所得税率</td><td>14.68%*</td><td>—</td><td>—</td><td>〔模〕由利润总额与净利润倒算</td></tr><tr><td>销售净利率</td><td>10.97%</td><td>10.71%</td><td>+0.26pct</td><td>—</td></tr><tr><td>归母净利率</td><td>10.79%</td><td>10.41%</td><td>+0.37pct</td><td>—</td></tr><tr><td>加权 ROE（半年）</td><td>9.63%</td><td>8.97%</td><td>+0.66pct</td><td>未年化</td></tr><tr><td>基本每股收益（元）</td><td>0.66</td><td>0.56</td><td>+17.86%</td><td>—</td></tr></tbody></table></p>
+<p>扣非归母占归母的 95.28%，非经常性损益合计仅 1.02 亿元，主要来自套期保值业务的
+公允价值变动收益〔事 2026 半年报〕。套保收益本身是真实的经济对冲结果，而非政府补助或资产处置——这与靠补助
+平滑利润的报表有本质区别。</p>
+<div class="callout warn"><b>有效税率的单向抬升〔事 定期报告／〔模〕2026H1 倒算〕</b><br/>
+有效所得税率从 2023 年的 6.97% 升至 2024 年的 11.52%、2025 年的 13.39%，
+2026 年上半年进一步到 <b>14.68%</b>，三年半累计上行 7.71 个百分点。
+驱动因素是全球最低税率规则对海外低税率辖区利润的补征。按 2026E 归母 43.0 亿元的口径，
+税率每抬升 1 个百分点，静态影响归母净利润约 <b>0.51 亿元</b>。
+这一项与原材料价格不同，它不会周期性反转。</div>
+
+<h3>3.3 费用结构：财务费用是唯一的失血点</h3>
+<p><table><thead><tr><th>费用项</th><th>2026H1（亿元）</th><th>2025H1（亿元）</th><th>同比</th><th>费用率</th><th>上年费用率</th></tr></thead><tbody><tr><td>销售费用</td><td>9.54</td><td>8.26</td><td>+15.57%</td><td>4.76%</td><td>4.70%</td></tr><tr><td>管理费用</td><td>6.57</td><td>5.15</td><td>+27.61%</td><td>3.28%</td><td>2.93%</td></tr><tr><td>研发费用</td><td>5.90</td><td>5.37</td><td>+9.84%</td><td>2.95%</td><td>3.05%</td></tr><tr><td>财务费用</td><td>4.57</td><td>0.86</td><td>+429.74%</td><td>2.28%</td><td>0.49%</td></tr><tr><td>期间费用合计</td><td>26.59</td><td>19.65</td><td>+6.94 亿元</td><td>13.28%</td><td>11.17%</td></tr></tbody></table></p>
+<p>期间费用率从 11.17% 升至 13.28%，上行 2.10 个百分点，
+其中财务费用一项贡献了 1.85 个百分点——几乎全部涨幅都来自这里。
+销售、管理、研发三项合计费用率 10.99%，
+上年同期 10.68%，基本持平。</p>
+<p>财务费用的暴增来自汇兑：2026 年上半年人民币兑美元、欧元整体阶段性升值，公司录得汇兑损失 2.42 亿元，
+而上年同期为汇兑收益 1.36 亿元，同比反向变动 3.78 亿元〔事 2026 半年报〕。这是典型的报表口径扰动，
+不改经营实质。公司常态化开展远期外汇合约、利率互换与外汇期权业务，上半年套期保值实际损益 2,861.53 万元，
+部分平滑了汇率波动〔事 2026 半年报〕。</p>
+
+<h3>3.4 资产负债表：杠杆在上升，结构仍健康</h3>
+<p><table><thead><tr><th>项目</th><th>2026-06-30</th><th>2025-12-31</th><th>变动</th></tr></thead><tbody><tr><td>总资产（亿元）</td><td>513.59</td><td>467.70</td><td>+9.81%</td></tr><tr><td>总负债（亿元）</td><td>269.43</td><td>234.13</td><td>+15.08%</td></tr><tr><td>资产负债率</td><td>52.46%</td><td>50.06%</td><td>+2.40pct</td></tr><tr><td>归母净资产（亿元）</td><td>226.62</td><td>216.15</td><td>+4.84%</td></tr><tr><td>少数股东权益（亿元）</td><td>17.54</td><td>17.53</td><td>期初期末同口径</td></tr><tr><td>每股净资产（元）</td><td>6.89</td><td>6.57</td><td>+4.81%</td></tr><tr><td>有息负债（亿元）</td><td>146.75</td><td>120.56</td><td>+21.72%</td></tr><tr><td>货币资金（亿元）</td><td>52.07</td><td>45.79</td><td>+13.71%</td></tr><tr><td>净债务（亿元）</td><td>94.68</td><td>74.77</td><td>+26.63%</td></tr><tr><td>应收账款（亿元）</td><td>74.23</td><td>61.47</td><td>+20.76%</td></tr><tr><td>存货（亿元）</td><td>81.85</td><td>71.39</td><td>+14.65%</td></tr><tr><td>固定资产（亿元）</td><td>172.34</td><td>165.58</td><td>+4.08%</td></tr></tbody><tfoot><tr><td colspan="4" style="text-align:left;font-size:11.5px;color:#8a8b8f">净债务＝有息负债－货币资金；应收账款、存货、固定资产为资产负债表主要科目，按公司定期报告口径列示。</td></tr></tfoot></table></p>
+<p>半年内有息负债增加 26.19 亿元，资产负债率上行 2.40 个百分点，
+是埃及与董家口两个项目同步推进的直接结果。以 94.68 亿元的净债务对 43.0 亿元的
+2026E 归母净利润，净债务／EBITDA 仍处于制造业的舒适区间。应收账款与存货较年初分别增加
+12.76 亿元与 10.46 亿元，与海外产能扩张带来的营运资本占用一致。真正需要跟踪的不是
+当前杠杆水平，而是资本开支的持续时间——如果埃及项目按规划在 2028 年前后达产而不再追加新基地，自由现金流会
+出现一次明显的台阶式改善。</p>
+
+<p><b>应收账款增速快于营收，周转天数边际拉长〔判〕。</b>2026 年上半年应收账款 74.23 亿元，较年初（61.47 亿元）增加 12.76 亿元、增幅 +20.76%，显著快于同期营收增幅（13.88%）。以「365 × 应收 ÷ 营收」近似，应收账款周转天数由 2025 年的约 61 天升至 2026H1 的约 67 天（按半年营收年化），提示信用政策边际放宽。在行业价格战与海外客户账期拉长的背景下，需跟踪回款质量与坏账计提的充分性——这是资产负债表当前最值得关注的边际变化。</p>
+
+<p><b>杜邦拆解：2025 年 ROE 下滑几乎全部来自净利率压缩〔模〕。</b><table><thead><tr><th>驱动因子</th><th>2025A</th><th>说明</th></tr></thead><tbody><tr><td>净利率</td><td>9.57%</td><td>归母 35.22 亿元 ÷ 营收 367.92 亿元</td></tr><tr><td>总资产周转率（次）</td><td>0.79</td><td>营收 ÷ 总资产 467.70 亿元</td></tr><tr><td>权益乘数（×）</td><td>2.16</td><td>总资产 ÷ 归母净资产 216.15 亿元</td></tr><tr><td>杜邦 ROE（年末口径）</td><td>16.29%</td><td>三因子连乘；加权口径 ROE 为 17.04%</td></tr></tbody></table></p>
+<p>三因子连乘的年末口径 ROE（16.29%）与加权口径（17.04%）的差异，来自采用年末而非平均净资产。杜邦拆解的意义在于结构：2024→2025 的 ROE 由 22.81% 降至 17.04%，几乎全部由净利率从 12.78% 压缩至 9.57% 贡献——即原材料涨价与有效税率抬升，而非杠杆或周转恶化。这与「增收不增利」的利润表特征一致，也意味着 ROE 的修复将首先取决于毛利率而非资产负债表去杠杆。</p>
+
+<h3>3.5 现金流与资本开支</h3>
+<p><table><thead><tr><th>项目</th><th>2026H1</th><th>2025H1</th><th>2025A</th><th>说明</th></tr></thead><tbody><tr><td>经营活动现金流净额（亿元）</td><td>10.33</td><td>8.84</td><td>41.79</td><td>2026H1 同比 +16.89%</td></tr><tr><td>购建固定资产／无形资产等（亿元）</td><td>25.98</td><td>17.50</td><td>48.18</td><td>即资本开支，现金流量表「投资活动」子项</td></tr><tr><td>自由现金流（亿元）</td><td>-15.65</td><td>-8.66</td><td>-6.39</td><td>FCF＝经营活动净额－购建长期资产现金</td></tr><tr><td>净利润现金含量</td><td>47.8%</td><td>48.3%</td><td>118.7%</td><td>经营净额 ÷ 归母净利润</td></tr><tr><td>在建工程（亿元）</td><td>28.27</td><td>—</td><td>—</td><td>2026-06-30 余额</td></tr></tbody></table></p>
+<p>自由现金流按本报告统一定义计算：<b>FCF＝经营活动现金流净额 − 购建固定资产、无形资产和其他长期资产支付的现金</b>。
+2025 年经营活动现金流净额 41.79 亿元，购建长期资产现金 48.18 亿元，自由现金流
+-6.39 亿元，净利润现金含量 118.7%。自由现金流为负，是资本开支高强度的
+直接结果——这正是全球化产能布局的现金代价。2026 年上半年经营现金流 10.33 亿元（+16.89%），
+资本开支 25.98 亿元、自由现金流 -15.65 亿元，半年口径与年度不可比，本报告不做年化外推。
+在建工程余额 28.27 亿元，较年初的扩张仍在继续。</p>
+
+<p><b>未来资本开支年度拆分（基于 DCF 假设，〔模〕）。</b><table><thead><tr><th>年度</th><th>计划资本开支（亿元）</th><th>主要投向</th></tr></thead><tbody><tr><td>2026E</td><td>50</td><td>埃及一期、青岛董家口、印尼／墨西哥爬坡配套</td></tr><tr><td>2027E</td><td>55</td><td>埃及二／三期、董家口续建</td></tr><tr><td>2028E</td><td>50</td><td>埃及收尾、存量基地技改</td></tr><tr><td>2029E</td><td>35</td><td>维护性资本开支为主</td></tr><tr><td>2030E</td><td>28</td><td>进入稳态维护性资本开支</td></tr><tr><td>合计</td><td>218</td><td>五年累计</td></tr></tbody></table></p>
+<p>2026 年上半年实际资本开支 25.98 亿元，全年预计接近 50 亿元；资本开支高峰集中在 2026—2028 年，与埃及、董家口两个基地的建设周期吻合。这正是自由现金流为负、净债务上升的直接原因，也是 2028 年之后 FCF 有望阶跃式改善的前提。</p>
+</div></section><section id="s4"><div class="wrap">
+<div class="sec-head"><span class="sec-num">§4</span><h2>原材料成本变动分析</h2></div>
+<p>对轮胎制造企业而言，原材料不是一个背景变量，而是决定利润表的第一变量。本章按「成本结构—价格走势—供需源头—
+传导机制—敏感性测算—同业对比」六个层次展开，目的是回答一个问题：如果原材料价格继续上涨，赛轮的利润会掉多少，
+以及公司手上有多少对冲工具。</p>
+
+<h3>4.1 成本结构：原材料占营业成本约四分之三</h3>
+<div class="chart-box"><svg viewBox="0 0 680 232" width="100%" style="display:block;width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="原材料成本结构"><rect x="0" y="0" width="680" height="232" fill="#ffffff"/><text x="10.0" y="20.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="15.3" fill="#0d3b66" text-anchor="start" font-weight="700">轮胎营业成本的原材料构成（%）</text><text x="10.0" y="53.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="start" font-weight="400">半钢子午胎</text><rect x="118.0" y="38.0" width="135.2" height="24.0" fill="#0d3b66" opacity="0.92"/><text x="185.6" y="55.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#ffffff" text-anchor="middle" font-weight="700">天然橡胶 26%</text><rect x="253.2" y="38.0" width="135.2" height="24.0" fill="#1c5c92" opacity="0.92"/><text x="320.8" y="55.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#ffffff" text-anchor="middle" font-weight="700">合成橡胶 26%</text><rect x="388.4" y="38.0" width="72.8" height="24.0" fill="#9c6a13" opacity="0.92"/><text x="424.8" y="55.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#ffffff" text-anchor="middle" font-weight="700">炭黑 14%</text><rect x="461.2" y="38.0" width="176.8" height="24.0" fill="#8a8b8f" opacity="0.92"/><text x="549.6" y="55.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#ffffff" text-anchor="middle" font-weight="700">其他 34%</text><text x="10.0" y="91.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="start" font-weight="400">全钢子午胎</text><rect x="118.0" y="76.0" width="161.2" height="24.0" fill="#0d3b66" opacity="0.92"/><text x="198.6" y="93.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#ffffff" text-anchor="middle" font-weight="700">天然橡胶 31%</text><rect x="279.2" y="76.0" width="46.8" height="24.0" fill="#1c5c92" opacity="0.92"/><rect x="326.0" y="76.0" width="93.6" height="24.0" fill="#9c6a13" opacity="0.92"/><text x="372.8" y="93.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#ffffff" text-anchor="middle" font-weight="700">炭黑 18%</text><rect x="419.6" y="76.0" width="218.4" height="24.0" fill="#8a8b8f" opacity="0.92"/><text x="528.8" y="93.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#ffffff" text-anchor="middle" font-weight="700">其他 42%</text><text x="10.0" y="129.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="start" font-weight="400">原材料／营业成本</text><rect x="118.0" y="114.0" width="520.0" height="24.0" fill="#ececea" opacity="1.0"/><rect x="118.0" y="114.0" width="390.0" height="24.0" fill="#0d3b66" opacity="0.9"/><text x="130.0" y="131.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#ffffff" text-anchor="start" font-weight="700">75%（行业区间 70%—80%，本报告测算取中值）</text><text x="118.0" y="220.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#8a8b8f" text-anchor="start" font-weight="400">以 2026H1 营业成本 146.23 亿元计，原材料成本约 109.7 亿元，相当于营业收入的 54.8%</text></svg></div>
+<p>轮胎生产的营业成本中，原材料占比在 <b>70%—80%</b> 区间（本报告测算统一取中值 75%），
+其余为人工、能源与制造费用〔事 行业统计〕。分品类看，半钢胎与全钢胎的原料结构差异明显：半钢胎对合成橡胶
+的依赖度更高（26%），全钢胎则更依赖天然橡胶（31%）与炭黑
+（18%）。这一差异在 2026 年尤其重要——因为这一年涨价最猛的恰恰是天然橡胶与炭黑，
+全钢胎承受的成本压力理论上大于半钢胎。</p>
+<div class="callout "><b>换算到赛轮的报表〔模〕</b><br/>
+2026H1 营业成本 <b>146.23 亿元</b>，按 75% 折算，原材料成本约
+<b>109.7 亿元</b>，相当于营业收入的 <b>54.8%</b>。作为对照，同期的归母净利润只有
+21.60 亿元——<b>原材料成本每变动 1%，影响毛利 1.10 亿元，相当于归母净利润的
+5.1%</b>。这个比值是所有后续敏感性分析的起点。</div>
+
+<h3>4.2 价格走势：现货大涨，公司采购价温和——差距就是缓冲垫</h3>
+<div class="two-charts">
+<div class="chart-box"><svg viewBox="0 0 680 208" width="100%" style="display:block;width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="原材料现货年初至今涨幅"><rect x="0" y="0" width="680" height="208" fill="#ffffff"/><text x="10.0" y="20.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="15.3" fill="#0d3b66" text-anchor="start" font-weight="700">主要原材料现货价格：较 2025 年末涨幅（%）</text><text x="10.0" y="38.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#8a8b8f" text-anchor="start" font-weight="400">截至 2026-08-31</text><text x="10.0" y="67.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="start" font-weight="400">天然橡胶</text><rect x="128.0" y="52.0" width="334.9" height="22.0" fill="#8a1f1f" opacity="0.88"/><text x="454.9" y="68.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.6" fill="#ffffff" text-anchor="end" font-weight="700">+28.50%</text><text x="136.0" y="68.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#ffffff" text-anchor="start" font-weight="400">2,453 美元/吨</text><text x="10.0" y="99.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="start" font-weight="400">丁苯橡胶</text><rect x="128.0" y="84.0" width="332.9" height="22.0" fill="#8a1f1f" opacity="0.88"/><text x="452.9" y="100.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.6" fill="#ffffff" text-anchor="end" font-weight="700">+28.33%</text><text x="136.0" y="100.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#ffffff" text-anchor="start" font-weight="400">14,950 元/吨</text><text x="10.0" y="131.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="start" font-weight="400">顺丁橡胶</text><rect x="128.0" y="116.0" width="344.4" height="22.0" fill="#8a1f1f" opacity="0.88"/><text x="464.4" y="132.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.6" fill="#ffffff" text-anchor="end" font-weight="700">+29.31%</text><text x="136.0" y="132.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#ffffff" text-anchor="start" font-weight="400">15,000 元/吨</text><text x="10.0" y="163.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="start" font-weight="400">炭黑 N330</text><rect x="128.0" y="148.0" width="397.4" height="22.0" fill="#8a1f1f" opacity="0.88"/><text x="517.4" y="164.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.6" fill="#ffffff" text-anchor="end" font-weight="700">+33.82%</text><text x="136.0" y="164.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#ffffff" text-anchor="start" font-weight="400">9,100 元/吨</text></svg></div>
+<div class="chart-box"><svg viewBox="0 0 680 208" width="100%" style="display:block;width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="三季度以来原材料均价环比"><rect x="0" y="0" width="680" height="208" fill="#ffffff"/><text x="10.0" y="20.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="15.3" fill="#0d3b66" text-anchor="start" font-weight="700">三季度以来均价较二季度环比（%）</text><text x="10.0" y="38.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#8a8b8f" text-anchor="start" font-weight="400">合成胶随油价回落，天然橡胶仍在高位</text><line x1="540.0" y1="46.0" x2="540.00" y2="176.0" stroke="#57585c" stroke-width="1" stroke-dasharray="3,3"/><text x="10.0" y="67.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="start" font-weight="400">天然橡胶</text><rect x="540.0" y="52.0" width="19.4" height="22.0" fill="#8a1f1f" opacity="0.88"/><text x="567.4" y="68.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.6" fill="#1c1c1c" text-anchor="start" font-weight="700">+1.21%</text><text x="10.0" y="99.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="start" font-weight="400">丁苯橡胶</text><rect x="343.2" y="84.0" width="196.8" height="22.0" fill="#1c7a4d" opacity="0.88"/><text x="335.2" y="100.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.6" fill="#1c1c1c" text-anchor="end" font-weight="700">-12.30%</text><text x="10.0" y="131.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="start" font-weight="400">顺丁橡胶</text><rect x="385.9" y="116.0" width="154.1" height="22.0" fill="#1c7a4d" opacity="0.88"/><text x="377.9" y="132.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.6" fill="#1c1c1c" text-anchor="end" font-weight="700">-9.63%</text><text x="10.0" y="163.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="start" font-weight="400">炭黑 N330</text><rect x="540.0" y="148.0" width="37.6" height="22.0" fill="#8a1f1f" opacity="0.88"/><text x="585.6" y="164.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.6" fill="#1c1c1c" text-anchor="start" font-weight="700">+2.35%</text></svg></div>
+</div>
+<p>截至 2026-08-31，四类主要原材料的现货价格较 2025 年末全线大幅上涨：天然橡胶 2,453 美元/吨（+28.50%）、
+丁苯橡胶 14,950 元/吨（+28.33%）、顺丁橡胶 15,000 元/吨（+29.31%）、
+炭黑 9,100 元/吨（+33.82%）〔事 券商测算〕。四类涨幅集中在 28%—34% 的窄区间，说明这是一次
+由共同宏观因素驱动的成本冲击，而非某个品种的孤立行情。</p>
+<p>但把镜头切到公司口径，画面完全不同：</p>
+<p><table><thead><tr><th>口径</th><th>期间</th><th>同比</th><th>环比</th><th>数据来源</th></tr></thead><tbody><tr><td>四项主材综合采购价</td><td>2025Q4</td><td>-12.76%</td><td>+0.63%</td><td>公司经营数据公告</td></tr><tr><td>四项主材综合采购价</td><td>2026Q2</td><td>+6.81%</td><td>+15.85%</td><td>公司经营数据公告</td></tr><tr><td>天然橡胶现货</td><td>年初至 08-31</td><td>—</td><td>+28.50%（较年初）</td><td>券商测算</td></tr><tr><td>炭黑现货</td><td>年初至 08-31</td><td>—</td><td>+33.82%（较年初）</td><td>券商测算</td></tr></tbody></table></p>
+<div class="callout gold"><b>本节最关键的观察〔事〕</b><br/>
+2026Q2 公司四项主材综合采购价<b>同比仅上涨 6.81%</b>，而同期天然橡胶现货较年初已上涨
+<b>28.50%</b>。两者相差约 22 个百分点。这一差距不是统计口径造成的，
+而是三项机制共同作用的结果：长约采购锁价、原料备货周期（公司在投资者交流中披露备货可覆盖 2—3 个季度 的
+生产需求〔管〕）、以及套期保值。<br/><br/>
+这个差距既说明公司的成本缓冲是真实的，也说明它是<b>有时间限制的</b>。二季度采购价环比已经
++15.85%，这一批高价原料将在三、四季度陆续进入营业成本。真正的检验窗口不是二季度，
+而是 2026Q4 到 2027Q1。</div>
+
+<h3>4.3 天然橡胶供需：缺口与厄尔尼诺</h3>
+<div class="chart-box"><svg viewBox="0 0 680 290" width="100%" style="display:block;width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="全球天然橡胶供需"><rect x="0" y="0" width="680" height="290" fill="#ffffff"/><text x="10.0" y="20.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="15.3" fill="#0d3b66" text-anchor="start" font-weight="700">全球天然橡胶供需（万吨，ANRPC 2026 年预测）</text><line x1="70.0" y1="200.0" x2="640.00" y2="200.0" stroke="#dddddb" stroke-width="1"/><rect x="96.0" y="60.3" width="88.0" height="139.7" fill="#8a8b8f" opacity="0.9"/><text x="140.0" y="76.3" font-family="'IBM Plex Mono','Courier New',monospace" font-size="14.2" fill="#ffffff" text-anchor="middle" font-weight="700">1,497.1</text><text x="140.0" y="220.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#1c1c1c" text-anchor="middle" font-weight="400">2025 产量</text><rect x="248.0" y="56.9" width="88.0" height="143.1" fill="#0d3b66" opacity="0.9"/><text x="292.0" y="72.9" font-family="'IBM Plex Mono','Courier New',monospace" font-size="14.2" fill="#ffffff" text-anchor="middle" font-weight="700">1,533.7</text><text x="292.0" y="220.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#1c1c1c" text-anchor="middle" font-weight="400">2026E 产量</text><rect x="400.0" y="54.9" width="88.0" height="145.1" fill="#9c6a13" opacity="0.9"/><text x="444.0" y="70.9" font-family="'IBM Plex Mono','Courier New',monospace" font-size="14.2" fill="#ffffff" text-anchor="middle" font-weight="700">1,555.0</text><text x="444.0" y="220.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#1c1c1c" text-anchor="middle" font-weight="400">2026E 消费</text><rect x="552.0" y="60.4" width="88.0" height="139.6" fill="#8a1f1f" opacity="0.9"/><text x="596.0" y="76.4" font-family="'IBM Plex Mono','Courier New',monospace" font-size="14.2" fill="#ffffff" text-anchor="middle" font-weight="700">1,495.4</text><text x="596.0" y="220.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#1c1c1c" text-anchor="middle" font-weight="400">厄尔尼诺下产量</text><text x="596.0" y="235.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#1c1c1c" text-anchor="middle" font-weight="400">（降 2.0%—2.5%）</text><line x1="336.0" y1="54.9" x2="400.00" y2="54.9" stroke="#a8791a" stroke-width="1.6" stroke-dasharray="4,3"/><text x="368.0" y="40.9" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#a8791a" text-anchor="middle" font-weight="700">缺口 21.3 万吨</text><text x="70.0" y="260.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.8" fill="#8a8b8f" text-anchor="start" font-weight="400">若厄尔尼诺在 2026 年 11 月—2027 年 1 月 达到强强度（概率 63%），</text><text x="70.0" y="276.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.8" fill="#8a8b8f" text-anchor="start" font-weight="400">成员国产量或降 2.0%—2.5%，缺口扩大至 52—60 万吨</text></svg></div>
+<p>天然橡胶是本轮成本冲击的核心，其价格走势取决于一个相对清晰的供需框架。ANRPC（天然橡胶生产国协会）预测
+2026 年全球产量 1,533.7 万吨（+2.40%），消费量 1,555.0 万吨（+1.30%），
+<b>供需缺口约 21.3 万吨</b>〔事 ANRPC 月报〕。缺口本身不大，但两个变量会显著放大它。</p>
+<p>第一个变量是单月产量与消费的背离。2026 年 6 月全球产量 120 万吨（-3.70% 同比），
+同期消费 130 万吨（+3.30%）〔事 ANRPC 7 月月报〕。减产来自东南亚与南亚的
+季节性停割叠加异常高温与降雨紊乱，泰国南部橡胶病害扩散已拉响产区预警。第二个变量是厄尔尼诺：多个机构已
+正式确认厄尔尼诺事件形成，<b>有 63% 的概率在 2026 年 11 月—2027 年 1 月 达到「very strong」强度</b>，
+若发生，ANRPC 成员国产量可能下降 2.0%—2.5%，缺口将扩大至
+<b>52—60 万吨</b>，即基准情形的 2.4—2.8 倍。</p>
+<p>需求侧则有一条结构性增量：新能源车因电池增重与瞬时高扭矩，单车天然橡胶消耗量较燃油车高约
+15%，2025 年全球贡献增量约 30 万吨；2026 年 5 月中国新能源车渗透率已达
+56.9%，这批车辆将在未来 3—4 年集中进入替换周期〔事 行业研究／ANRPC〕。这意味着即便汽车
+总量不增长，天胶需求仍有独立增量。</p>
+
+<h3>4.4 传导机制：提价已启动，但顺价永远慢于涨价</h3>
+<p><table><thead><tr><th>传导环节</th><th>时滞</th><th>2026 年的实际情况</th></tr></thead><tbody><tr><td>现货价格 → 公司采购价</td><td>3 个月左右</td><td>现货较年初 +28.50%，Q2 采购价同比仅 +6.81%</td></tr><tr><td>采购价 → 营业成本</td><td>约 2—3 个季度</td><td>Q2 环比 +15.85% 的采购价将在 Q3—Q4 进入成本</td></tr><tr><td>成本上升 → 产品提价</td><td>1—2 个季度</td><td>3 月以来多家企业发布涨价函，部分连续提价 2—3 轮；公司境内全钢胎上调 3%—5%、工程胎上调 7%—9%</td></tr><tr><td>提价 → 报表毛利率</td><td>1 个季度</td><td>Q2 毛利率环比仍 +0.23pct，提价效果主要落在 Q3—Q4</td></tr></tbody></table></p>
+<p>顺价链条上每一环都有时滞，而时滞的方向是单向的：成本先涨，价格后跟。2026 年 3 月以来国内多家轮胎企业
+连续发布 2—3 轮涨价函，公司在境内市场对全钢胎上调 3%—5%、
+对工程胎上调 7%—9%〔事 公司调价函／渠道〕。新签订单执行新价，
+存量订单与渠道库存需要消化，因此提价的报表效果集中体现在三、四季度。</p>
+<p>公司手上另有三重缓冲。第一是产品结构：液体黄金等高附加值系列占比提升，结构性抬高均价。第二是海外产能：
+越南与柬埔寨基地 19.60% 的净利率显著高于整体，海外占比提升本身就在改善毛利。第三是套期保值：
+上半年套保实际损益 2,861.53 万元，同时远期外汇合约部分对冲了汇兑损失〔事 2026 半年报〕。</p>
+
+<p><b>液体黄金的定量贡献〔事 太平洋证券研报／券商测算〕。</b>液体黄金（EcoPoint³ 化学炼胶技术）轮胎是公司差异化核心载体，已从替换市场进入比亚迪、吉利、一汽大众等 OE 配套。券商测算其销量约占总销量 20%（约 1,600 万条）、收入占比约 30%，毛利率约 30%—35%（高于公司整体 24%—27% 约 5—10 个百分点），单价较普通胎溢价 1.5—2 倍；2025 年液体黄金销量同比 +40%、品牌价值升至 9.05 亿美元（同比 +13%）〔事 公司公告／券商测算〕。需提示：公司未单独披露该板块收入，上述为外部测算区间，应将「年报是否单独披露液体黄金收入占比」作为估值重估的催化剂跟踪。</p>
+
+<h3>4.5 敏感性测算：毛利率对原材料价格到底有多敏感</h3>
+<div class="chart-box"><svg viewBox="0 0 680 340" width="100%" style="display:block;width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="毛利率敏感性曲线"><rect x="0" y="0" width="680" height="340" fill="#ffffff"/><text x="10.0" y="20.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="15.3" fill="#0d3b66" text-anchor="start" font-weight="700">2026E 综合毛利率对原材料综合采购价的敏感性</text><text x="10.0" y="38.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#8a8b8f" text-anchor="start" font-weight="400">三条曲线分别为不提价、提价 3%、提价 5% 的情形</text><line x1="66.0" y1="244.0" x2="636.00" y2="244.0" stroke="#f0f0ee" stroke-width="1"/><text x="58.0" y="248.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">12%</text><line x1="66.0" y1="215.7" x2="636.00" y2="215.7" stroke="#f0f0ee" stroke-width="1"/><text x="58.0" y="219.7" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">16%</text><line x1="66.0" y1="187.4" x2="636.00" y2="187.4" stroke="#f0f0ee" stroke-width="1"/><text x="58.0" y="191.4" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">20%</text><line x1="66.0" y1="159.1" x2="636.00" y2="159.1" stroke="#f0f0ee" stroke-width="1"/><text x="58.0" y="163.1" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">24%</text><line x1="66.0" y1="130.9" x2="636.00" y2="130.9" stroke="#f0f0ee" stroke-width="1"/><text x="58.0" y="134.9" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">28%</text><line x1="66.0" y1="102.6" x2="636.00" y2="102.6" stroke="#f0f0ee" stroke-width="1"/><text x="58.0" y="106.6" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">32%</text><line x1="66.0" y1="74.3" x2="636.00" y2="74.3" stroke="#f0f0ee" stroke-width="1"/><text x="58.0" y="78.3" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">36%</text><line x1="66.0" y1="46.0" x2="636.00" y2="46.0" stroke="#f0f0ee" stroke-width="1"/><text x="58.0" y="50.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">40%</text><line x1="66.0" y1="46.0" x2="66.00" y2="244.0" stroke="#dddddb" stroke-width="1"/><line x1="66.0" y1="244.0" x2="636.00" y2="244.0" stroke="#dddddb" stroke-width="1"/><line x1="66.0" y1="244.0" x2="66.00" y2="249.0" stroke="#57585c" stroke-width="1"/><text x="66.0" y="264.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">-20%</text><line x1="137.2" y1="244.0" x2="137.25" y2="249.0" stroke="#57585c" stroke-width="1"/><text x="137.2" y="264.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">-15%</text><line x1="208.5" y1="244.0" x2="208.50" y2="249.0" stroke="#57585c" stroke-width="1"/><text x="208.5" y="264.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">-10%</text><line x1="279.8" y1="244.0" x2="279.75" y2="249.0" stroke="#57585c" stroke-width="1"/><text x="279.8" y="264.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">-5%</text><line x1="351.0" y1="244.0" x2="351.00" y2="249.0" stroke="#57585c" stroke-width="1"/><text x="351.0" y="264.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">0</text><line x1="422.2" y1="244.0" x2="422.25" y2="249.0" stroke="#57585c" stroke-width="1"/><text x="422.2" y="264.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">+5%</text><line x1="493.5" y1="244.0" x2="493.50" y2="249.0" stroke="#57585c" stroke-width="1"/><text x="493.5" y="264.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">+10%</text><line x1="564.8" y1="244.0" x2="564.75" y2="249.0" stroke="#57585c" stroke-width="1"/><text x="564.8" y="264.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">+15%</text><line x1="636.0" y1="244.0" x2="636.00" y2="249.0" stroke="#57585c" stroke-width="1"/><text x="636.0" y="264.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">+20%</text><text x="351.0" y="284.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="middle" font-weight="400">原材料综合采购价变动</text><circle cx="351.0" cy="143.6" r="5" fill="#a8791a" stroke="#ffffff" stroke-width="1.5"/><text x="351.0" y="159.6" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#a8791a" text-anchor="middle" font-weight="700">基准 26.2%</text><polyline points="66.0,65.3 123.0,81.0 180.0,96.6 237.0,112.3 294.0,127.9 351.0,143.6 408.0,159.2 465.0,174.9 522.0,190.6 579.0,206.2 636.0,221.9" fill="none" stroke="#8a1f1f" stroke-width="2.2"/><circle cx="66.0" cy="65.3" r="2.8" fill="#8a1f1f" stroke="#ffffff" stroke-width="1.5"/><circle cx="123.0" cy="81.0" r="2.8" fill="#8a1f1f" stroke="#ffffff" stroke-width="1.5"/><circle cx="180.0" cy="96.6" r="2.8" fill="#8a1f1f" stroke="#ffffff" stroke-width="1.5"/><circle cx="237.0" cy="112.3" r="2.8" fill="#8a1f1f" stroke="#ffffff" stroke-width="1.5"/><circle cx="294.0" cy="127.9" r="2.8" fill="#8a1f1f" stroke="#ffffff" stroke-width="1.5"/><circle cx="351.0" cy="143.6" r="2.8" fill="#8a1f1f" stroke="#ffffff" stroke-width="1.5"/><circle cx="408.0" cy="159.2" r="2.8" fill="#8a1f1f" stroke="#ffffff" stroke-width="1.5"/><circle cx="465.0" cy="174.9" r="2.8" fill="#8a1f1f" stroke="#ffffff" stroke-width="1.5"/><circle cx="522.0" cy="190.6" r="2.8" fill="#8a1f1f" stroke="#ffffff" stroke-width="1.5"/><circle cx="579.0" cy="206.2" r="2.8" fill="#8a1f1f" stroke="#ffffff" stroke-width="1.5"/><circle cx="636.0" cy="221.9" r="2.8" fill="#8a1f1f" stroke="#ffffff" stroke-width="1.5"/><polyline points="66.0,52.4 123.0,67.6 180.0,82.8 237.0,98.0 294.0,113.2 351.0,128.4 408.0,143.6 465.0,158.8 522.0,174.0 579.0,189.2 636.0,204.4" fill="none" stroke="#9c6a13" stroke-width="2.2"/><circle cx="66.0" cy="52.4" r="2.8" fill="#9c6a13" stroke="#ffffff" stroke-width="1.5"/><circle cx="123.0" cy="67.6" r="2.8" fill="#9c6a13" stroke="#ffffff" stroke-width="1.5"/><circle cx="180.0" cy="82.8" r="2.8" fill="#9c6a13" stroke="#ffffff" stroke-width="1.5"/><circle cx="237.0" cy="98.0" r="2.8" fill="#9c6a13" stroke="#ffffff" stroke-width="1.5"/><circle cx="294.0" cy="113.2" r="2.8" fill="#9c6a13" stroke="#ffffff" stroke-width="1.5"/><circle cx="351.0" cy="128.4" r="2.8" fill="#9c6a13" stroke="#ffffff" stroke-width="1.5"/><circle cx="408.0" cy="143.6" r="2.8" fill="#9c6a13" stroke="#ffffff" stroke-width="1.5"/><circle cx="465.0" cy="158.8" r="2.8" fill="#9c6a13" stroke="#ffffff" stroke-width="1.5"/><circle cx="522.0" cy="174.0" r="2.8" fill="#9c6a13" stroke="#ffffff" stroke-width="1.5"/><circle cx="579.0" cy="189.2" r="2.8" fill="#9c6a13" stroke="#ffffff" stroke-width="1.5"/><circle cx="636.0" cy="204.4" r="2.8" fill="#9c6a13" stroke="#ffffff" stroke-width="1.5"/><polyline points="66.0,44.2 123.0,59.1 180.0,74.0 237.0,88.9 294.0,103.8 351.0,118.7 408.0,133.6 465.0,148.6 522.0,163.5 579.0,178.4 636.0,193.3" fill="none" stroke="#1c7a4d" stroke-width="2.2"/><circle cx="66.0" cy="44.2" r="2.8" fill="#1c7a4d" stroke="#ffffff" stroke-width="1.5"/><circle cx="123.0" cy="59.1" r="2.8" fill="#1c7a4d" stroke="#ffffff" stroke-width="1.5"/><circle cx="180.0" cy="74.0" r="2.8" fill="#1c7a4d" stroke="#ffffff" stroke-width="1.5"/><circle cx="237.0" cy="88.9" r="2.8" fill="#1c7a4d" stroke="#ffffff" stroke-width="1.5"/><circle cx="294.0" cy="103.8" r="2.8" fill="#1c7a4d" stroke="#ffffff" stroke-width="1.5"/><circle cx="351.0" cy="118.7" r="2.8" fill="#1c7a4d" stroke="#ffffff" stroke-width="1.5"/><circle cx="408.0" cy="133.6" r="2.8" fill="#1c7a4d" stroke="#ffffff" stroke-width="1.5"/><circle cx="465.0" cy="148.6" r="2.8" fill="#1c7a4d" stroke="#ffffff" stroke-width="1.5"/><circle cx="522.0" cy="163.5" r="2.8" fill="#1c7a4d" stroke="#ffffff" stroke-width="1.5"/><circle cx="579.0" cy="178.4" r="2.8" fill="#1c7a4d" stroke="#ffffff" stroke-width="1.5"/><circle cx="636.0" cy="193.3" r="2.8" fill="#1c7a4d" stroke="#ffffff" stroke-width="1.5"/><line x1="78.0" y1="296.0" x2="96.00" y2="296.0" stroke="#8a1f1f" stroke-width="2.6"/><text x="102.0" y="300.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="start" font-weight="700">不提价</text><line x1="228.0" y1="296.0" x2="246.00" y2="296.0" stroke="#9c6a13" stroke-width="2.6"/><text x="252.0" y="300.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="start" font-weight="700">提价 3%</text><line x1="378.0" y1="296.0" x2="396.00" y2="296.0" stroke="#1c7a4d" stroke-width="2.6"/><text x="402.0" y="300.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="start" font-weight="700">提价 5%</text><line x1="576.9" y1="46.0" x2="576.86" y2="244.0" stroke="#1c5c92" stroke-width="1.4" stroke-dasharray="5,4"/><text x="570.9" y="60.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#1c5c92" text-anchor="end" font-weight="400">26Q2 采购价环比 +15.85%</text><text x="10.0" y="328.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.8" fill="#8a8b8f" text-anchor="start" font-weight="400">测算基准：2026E 营收 415 亿元、营业成本 306.3 亿元、原材料占成本 75%</text></svg></div>
+<p><table><thead><tr><th>原材料综合采购价变动</th><th>不提价</th><th>提价 3%</th><th>提价 5%</th></tr></thead><tbody><tr><td>-20%</td><td>37.27%</td><td>39.10%</td><td>40.26%</td></tr><tr><td>-10%</td><td>31.74%</td><td>33.72%</td><td>34.99%</td></tr><tr><td>基准 0（26.20% 基准）</td><td>26.20%</td><td>28.35%</td><td>29.71%</td></tr><tr><td>+10%</td><td>20.66%</td><td>22.98%</td><td>24.44%</td></tr><tr><td>+15%</td><td>17.90%</td><td>20.29%</td><td>21.81%</td></tr><tr><td>+20%</td><td>15.13%</td><td>17.60%</td><td>19.17%</td></tr></tbody><tfoot><tr><td colspan="4" style="text-align:left;font-size:11.5px;color:#8a8b8f">测算基准（〔模〕）：2026E 营业收入 415 亿元、营业成本 306.3 亿元、综合毛利率 26.20%、原材料占营业成本 75%。提价按营收同比例上浮、营业成本不变计算。</td></tr></tfoot></table></p>
+<div class="callout warn"><b>三条可以直接引用的敏感性结论〔模〕</b>
+<ul style="margin:10px 0 0;padding-left:18px">
+<li><b>单位敏感性：</b>原材料综合采购价每变动 <b>10%</b>，影响营业成本 <b>22.97 亿元</b>、
+综合毛利率 <b>5.54 个百分点</b>、归母净利润约 <b>19.13 亿元</b>、
+每股收益约 <b>0.58 元</b>，相当于 2026E 每股收益的
+<b>44%</b>。</li>
+<li><b>提价的对冲力：</b>在 2026E 基准下，提价 3% 修复毛利率约 <b>2.15 个百分点</b>，提价 5% 修复约
+<b>3.51 个百分点</b>。要完全对冲原材料涨价 10%（毛利率 -5.54pct），
+需要提价约 <b>7.9%</b>——远超公司已落地的 3%—9% 区间。</li>
+<li><b>最坏情形：</b>若原材料在 2026Q4 至 2027Q1 再涨 15% 且提价只落地 3%，2026E 综合毛利率将降至
+<b>20.29%</b>（基准 26.20%）；若同时提价 5%，则为 <b>21.81%</b>。
+这是悲观情景（2027E 归母 40 亿元）的量化基础。</li>
+</ul></div>
+
+<h3>4.6 与同业的成本传导能力对比</h3>
+<p><table><thead><tr><th>公司</th><th>2026H1 毛利率</th><th>同比变动</th><th>2026H1 归母同比</th><th>结构性差异</th></tr></thead><tbody><tr><td>赛轮轮胎</td><td>26.99%</td><td>+2.45pct</td><td>+17.97%</td><td>无低毛利两轮车业务；海外产能贡献归母 82.1%</td></tr><tr><td>中策橡胶</td><td>20.84%</td><td>-2.19pct</td><td>+5.09%</td><td>含两轮车轮胎业务，拉低综合毛利；海外基地仍在爬坡</td></tr></tbody></table></p>
+<p>中策橡胶是规模最接近的可比公司，2026 年上半年营业收入 234.74 亿元（+7.41%）、归母净利润 24.40 亿元
+（+5.09%）、毛利率 20.84%（-2.19pct）、ROE 9.53%
+〔事 中策橡胶 2026 半年报〕。同样的原料涨价环境，赛轮毛利率 +2.45pct，
+中策 -2.19pct，差距 4.64 个百分点。</p>
+<p>差距的来源有两条，性质不同。第一条是结构性的：中策含两轮车轮胎业务（低毛利），赛轮产品线集中在
+半钢、全钢、非公路与液体黄金，毛利率基数原本就高出 6.15 个百分点。
+第二条是地理性的：赛轮上半年 82.1% 的归母净利润来自越南与柬埔寨，而中策的海外基地仍在爬坡，
+内外销大致各占一半。</p>
+<div class="callout "><b>韧性来源的拆解，以及它隐含的风险〔判〕</b><br/>
+赛轮的毛利率韧性主要不是来自提价，而是来自海外产能的地理套利与产品结构。这一点可以通过净利率对照看出：
+越南与柬埔寨两厂合计净利率 <b>19.60%</b>，公司整体归母净利率 <b>10.79%</b>，
+国内基地的盈利能力显著低于两者。<br/><br/>
+这带来一个必须说清的推论：<b>如果海外基地遭遇针对性的贸易救济、爬坡不及预期或当地成本上升，赛轮的成本
+压力会比同行更直接地暴露在报表上</b>——因为它没有「提价能力」这个备用的缓冲层。海外产能既是它上半年的
+护城河，也是它在成本周期里唯一倚重的护城河。</div>
+</div></section><section id="s5"><div class="wrap">
+<div class="sec-head"><span class="sec-num">§5</span><h2>行业：需求稳、出口量增价跌、集中度向中国头部集中</h2></div>
+
+<h3>5.1 全球与中国的需求底盘</h3>
+<p><table><thead><tr><th>指标</th><th>2025 年数值</th><th>同比</th><th>对轮胎需求的意义</th></tr></thead><tbody><tr><td>全球汽车销量</td><td>9,647 万辆</td><td>+5.00%</td><td>决定配套市场容量</td></tr><tr><td>全球乘用车胎 + 卡客车胎销量</td><td>18.94 亿条</td><td>+1.38%</td><td>连续三年增长，存量替换为主</td></tr><tr><td>欧洲占全球轮胎销售比重</td><td>27.60%</td><td>+0.54%</td><td>欧洲销量微增，仍为最大单一区域市场</td></tr><tr><td>北美占全球轮胎销售比重</td><td>22.87%</td><td>-0.57%</td><td>北美小幅下滑，但单价与利润水平最高</td></tr><tr><td>中国乘用车胎 + 卡客车胎销量</td><td>3.82 亿条</td><td>+5.00%</td><td>全球增量的重要来源</td></tr><tr><td>中国汽车产量 / 销量</td><td>3,453.1 / 3,440 万辆</td><td>+10.40% / +9.40%</td><td>配套需求支撑</td></tr><tr><td>中国汽车保有量</td><td>3.66 亿辆</td><td>+3.68%</td><td>替换市场的长期基本盘</td></tr><tr><td>中国新能源汽车销量</td><td>1,649 万辆</td><td>+28.20%</td><td>低滚阻、高承载带来结构性升级</td></tr></tbody></table></p>
+<p>轮胎需求的特殊性在于它是双轮驱动：新车配套跟随汽车产销，替换需求跟随保有量。后者占全球轮胎销量的
+大部分且波动更小，这解释了为什么全球轮胎销量在 2025 年只增长 +1.38% 却依然构成稳定的需求底盘
+〔事 米其林年报／中国汽车工业协会〕。中国市场的增速（+5.00%）显著高于全球平均，是近年全球增量的
+主要来源之一。</p>
+
+<h3>5.2 出口：量增价跌的剪刀差</h3>
+<p><table><thead><tr><th>出口口径</th><th>2026H1 数量</th><th>同比</th><th>2026H1 金额</th><th>金额同比</th></tr></thead><tbody><tr><td>橡胶轮胎合计</td><td>494 万吨</td><td>+4.90%</td><td>826 亿元</td><td>-1.00%</td></tr><tr><td>半钢胎（乘用车胎）</td><td>1.77 亿条</td><td>+3.10%</td><td>44.4 亿美元</td><td>-1.20%</td></tr><tr><td>全钢胎（卡客车胎）</td><td>6,559 万条</td><td>+4.10%</td><td>50.12 亿美元</td><td>+1.60%</td></tr></tbody></table></p>
+<p>2026 年上半年中国橡胶轮胎出口 494 万吨（+4.90%），出口金额 826 亿元
+（-1.00%）——量在增长，金额却在下滑，单价被压缩。半钢胎出口 1.77 亿条（+3.10%）、
+44.4 亿美元（-1.20%）；全钢胎 6,559 万条（+4.10%）、
+50.12 亿美元（+1.60%）〔事 海关统计〕。</p>
+<p>这组数据解释了一个看似矛盾的现象：为什么出口量在增长，多数国内轮胎企业的利润却在下滑。在原材料涨价
+与出口单价下行的双重挤压下，纯出口型企业的毛利被两头挤压。赛轮的应对是把生产基地搬到消费市场附近——
+这不是产能复制，而是把原产地从中国切换到越南、柬埔寨、墨西哥、埃及，从而在关税与运价两个维度上重构
+贸易路径。这一战略的直接证据是：在行业出口单价下行的同一时期，公司的综合毛利率反而提升了
+2.45 个百分点。</p>
+
+<h3>5.3 竞争格局：中国头部集中的趋势仍在延续</h3>
+<p>全球轮胎行业的格局正在重构。海外头部企业受成本压力与竞争加剧影响，战略收缩、剥离低毛利率业务板块，
+向高附加值领域集中；中国轮胎企业则在国内竞争白热化与贸易壁垒复杂化的双重驱动下，加速全球化产能布局与
+本地化运营，上游供应链同步出海，形成产业链协同〔事 2025 年报〕。在这一过程中，具备规模化海外产能的
+头部企业获得的不只是份额，还有份额带来的定价权。</p>
+
+<p><b>「量增价跌」的深层原因：国内产能过剩与价格战向外溢出〔判〕。</b>出口量增、金额下滑的反差，根源在供给端：国内轮胎产能持续扩张而需求增速放缓，行业陷入「内卷」，企业被迫以降价维持产能利用率，并将过剩产能推向出口市场，进一步压低全球贸易单价。袁仲雪本人亦公开警示防止「内卷」蔓延至「外卷」〔管 公司交流〕。对赛轮而言，单纯依赖国内产能出口会直接掉进这条价格战链条；其破解路径是把产能搬到消费地（越南、柬埔寨、墨西哥、埃及），用原产地切换规避关税与运价，同时以液体黄金等高附加值系列结构性抬升均价。赛轮的毛利率韧性并非来自行业 β，而是来自产能布局与产品结构的 α。</p>
+<div class="chart-box"><svg viewBox="0 0 680 350" width="100%" style="display:block;width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="同业估值与盈利能力对照"><rect x="0" y="0" width="680" height="350" fill="#ffffff"/><text x="10.0" y="20.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="15.3" fill="#0d3b66" text-anchor="start" font-weight="700">同业估值与盈利能力对照（2026-09-03）</text><text x="196.0" y="42.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#0d3b66" text-anchor="middle" font-weight="400">PE(TTM) 倍</text><text x="452.0" y="42.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c7a4d" text-anchor="middle" font-weight="400">ROE(TTM) %</text><text x="10.0" y="70.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="start" font-weight="700">赛轮轮胎</text><rect x="96.0" y="56.0" width="98.3" height="18.0" fill="#0d3b66" opacity="0.9"/><text x="203.3" y="70.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">13.27</text><rect x="360.0" y="56.0" width="174.3" height="18.0" fill="#1c7a4d" opacity="0.9"/><text x="543.3" y="70.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">16.96%</text><text x="678.0" y="70.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">511 亿</text><text x="10.0" y="101.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="start" font-weight="400">中策橡胶</text><rect x="96.0" y="87.0" width="76.7" height="18.0" fill="#1c5c92" opacity="0.62"/><text x="181.7" y="101.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">10.36</text><rect x="360.0" y="87.0" width="174.6" height="18.0" fill="#9c6a13" opacity="0.62"/><text x="543.6" y="101.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">16.99%</text><text x="678.0" y="101.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">442 亿</text><text x="10.0" y="132.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="start" font-weight="400">玲珑轮胎</text><rect x="96.0" y="118.0" width="189.9" height="18.0" fill="#1c5c92" opacity="0.62"/><text x="294.9" y="132.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">25.64</text><rect x="360.0" y="118.0" width="28.1" height="18.0" fill="#9c6a13" opacity="0.62"/><text x="397.1" y="132.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">2.73%</text><text x="678.0" y="132.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">158 亿</text><text x="10.0" y="163.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="start" font-weight="400">森麒麟</text><rect x="96.0" y="149.0" width="120.8" height="18.0" fill="#1c5c92" opacity="0.62"/><text x="225.8" y="163.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">16.31</text><rect x="360.0" y="149.0" width="66.2" height="18.0" fill="#9c6a13" opacity="0.62"/><text x="435.2" y="163.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">6.44%</text><text x="678.0" y="163.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">142 亿</text><text x="10.0" y="194.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="start" font-weight="400">三角轮胎</text><rect x="96.0" y="180.0" width="85.0" height="18.0" fill="#1c5c92" opacity="0.62"/><text x="190.0" y="194.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">11.48</text><rect x="360.0" y="180.0" width="63.5" height="18.0" fill="#9c6a13" opacity="0.62"/><text x="432.5" y="194.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">6.18%</text><text x="678.0" y="194.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">100 亿</text><text x="10.0" y="225.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="start" font-weight="400">贵州轮胎</text><rect x="96.0" y="211.0" width="69.0" height="18.0" fill="#1c5c92" opacity="0.62"/><text x="174.0" y="225.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">9.31</text><rect x="360.0" y="211.0" width="81.7" height="18.0" fill="#9c6a13" opacity="0.62"/><text x="450.7" y="225.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">7.95%</text><text x="678.0" y="225.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">68 亿</text><text x="10.0" y="256.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="start" font-weight="400">通用股份</text><rect x="96.0" y="242.0" width="169.1" height="18.0" fill="#1c5c92" opacity="0.62"/><text x="274.1" y="256.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">22.83</text><rect x="360.0" y="242.0" width="47.3" height="18.0" fill="#9c6a13" opacity="0.62"/><text x="416.3" y="256.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">4.60%</text><text x="678.0" y="256.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">63 亿</text><text x="10.0" y="287.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#1c1c1c" text-anchor="start" font-weight="400">风神股份</text><rect x="96.0" y="273.0" width="145.9" height="18.0" fill="#1c5c92" opacity="0.62"/><text x="250.9" y="287.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">19.70</text><rect x="360.0" y="273.0" width="52.7" height="18.0" fill="#9c6a13" opacity="0.62"/><text x="421.7" y="287.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#1c1c1c" text-anchor="start" font-weight="400">5.13%</text><text x="678.0" y="287.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="end" font-weight="400">47 亿</text><text x="10.0" y="308.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#8a8b8f" text-anchor="start" font-weight="400">同业中位 PE 16.31×｜同业中位 ROE 6.18%｜赛轮 ROE 为同业中位的 2.7 倍，PE 仅为中位的 81%</text><text x="10.0" y="328.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.8" fill="#8a8b8f" text-anchor="start" font-weight="400">ROE(TTM) 由 PB ÷ PE(TTM) 反推；市值为总市值（亿元）</text></svg></div>
+<p><table><thead><tr><th>公司</th><th>代码</th><th>收盘价（元）</th><th>PE(TTM)</th><th>PB</th><th>总市值（亿元）</th><th>ROE(TTM)</th><th>单位 ROE 的 PB 定价</th></tr></thead><tbody><tr><td>赛轮轮胎</td><td>601058.SH</td><td>15.54</td><td>13.27</td><td>2.25</td><td>510.97</td><td>16.96%</td><td>0.133</td></tr><tr><td>中策橡胶</td><td>603049.SH</td><td>50.55</td><td>10.36</td><td>1.76</td><td>442.05</td><td>16.99%</td><td>0.104</td></tr><tr><td>玲珑轮胎</td><td>601966.SH</td><td>10.79</td><td>25.64</td><td>0.70</td><td>157.91</td><td>2.73%</td><td>0.256</td></tr><tr><td>森麒麟</td><td>002984.SZ</td><td>13.74</td><td>16.31</td><td>1.05</td><td>142.39</td><td>6.44%</td><td>0.163</td></tr><tr><td>三角轮胎</td><td>601163.SH</td><td>12.44</td><td>11.48</td><td>0.71</td><td>99.52</td><td>6.18%</td><td>0.115</td></tr><tr><td>贵州轮胎</td><td>000589.SZ</td><td>4.37</td><td>9.31</td><td>0.74</td><td>67.93</td><td>7.95%</td><td>0.093</td></tr><tr><td>通用股份</td><td>601500.SH</td><td>3.97</td><td>22.83</td><td>1.05</td><td>62.85</td><td>4.60%</td><td>0.228</td></tr><tr><td>风神股份</td><td>600469.SH</td><td>5.29</td><td>19.70</td><td>1.01</td><td>47.08</td><td>5.13%</td><td>0.197</td></tr><tr><td>同业中位（剔除赛轮）</td><td>—</td><td>—</td><td>16.31</td><td>1.01</td><td>—</td><td>6.18%</td><td>0.163</td></tr></tbody><tfoot><tr><td colspan="8" style="text-align:left;font-size:11.5px;color:#8a8b8f">行情为 2026-09-03 数据；ROE(TTM) 由 PB ÷ PE(TTM) 反推，属会计恒等式，故「单位 ROE 的 PB 定价」在数值上等于 PE(TTM)——该比较不提供超出 PE 的额外信息。赛轮真实 ROE 以独立口径衡量：2025 年加权 17.04%、2026E 约 18.73%，均显著高于同业中位 6.18%。中策橡胶取 A 股主板代码 603049.SH（2025 年 6 月上市），为本报告口径。</td></tr></tfoot></table></p>
+<p>剔除赛轮后的同业 PE(TTM) 中位为 16.31×，区间 9.31×—25.64×；
+PB 中位 1.01×；ROE(TTM) 中位 6.18%。需注意：表中 ROE(TTM) 由 PB÷PE 反推，
+属恒等式，因此「单位 ROE 的 PB 定价」在数值上等于 PE(TTM)，两列信息等价、不提供独立定价结论。真正有信息量
+的是：赛轮以 13.27× 的 PE 对应 18.73% 的独立口径 ROE（2026E），在相近甚至更低的 PE 下享有显著高于
+同业 6.18% 的 ROE 中位——即市场为赛轮每单位盈利支付的价格低于盈利更差的同行，估值尚未体现其 ROE 优势。</p>
+</div></section><section id="s6"><div class="wrap">
+<div class="sec-head"><span class="sec-num">§6</span><h2>产能全球化：三个梯队的增量含义</h2></div>
+
+<h3>6.1 从「出口」到「在消费地生产」</h3>
+<p>中国轮胎企业的全球化经历了两个阶段。第一阶段是产品出口：在国内生产，运往海外销售。它带来了规模，
+但关税、海运价格与区域贸易政策的每一次变化都会直接冲击利润。第二阶段是在主要消费市场附近建厂：
+把生产基地、供应链、渠道和服务一起迁移。赛轮是目前在海外布局产能最大的中国轮胎企业，越南与柬埔寨
+已进入稳定高产期，印尼与墨西哥在爬坡，埃及在建〔事 2026 半年报／券商点评〕。</p>
+<p><table><thead><tr><th>梯队</th><th>基地</th><th>当前状态</th><th>利润贡献</th><th>估值含义</th></tr></thead><tbody><tr><td>第一梯队</td><td>越南、柬埔寨</td><td>稳定高产期</td><td>2026H1 合计归母 17.74 亿元，占 82.1%</td><td>已进入现金流回收期，可直接给估值</td></tr><tr><td>第二梯队</td><td>印尼、墨西哥</td><td>产能爬坡，2026Q2 毛利先后转正</td><td>上半年以减亏为主，下半年起贡献增量</td><td>按爬坡进度分步计入，不宜按满产估值</td></tr><tr><td>第三梯队</td><td>埃及、青岛董家口</td><td>在建</td><td>短期只产生折旧与开办费</td><td>作为期权处理，仅在乐观情景中部分计入</td></tr></tbody></table></p>
+
+<h3>6.2 埃及项目：产能规模与推进节奏</h3>
+<p>2026 年 04-21，公司投资建设埃及年产 705 万条子午线轮胎扩建项目；同年
+06-18，公司进一步投资建设埃及轮胎产能提升项目。两个项目全部建成后，公司在埃及将具备
+年产 <b>3,600 万条半钢子午线轮胎、330 万条全钢子午线轮胎及 2 万吨非公路轮胎</b>
+的生产能力〔事 公司公告 临 2026-006 号、020 号〕。埃及基地已于 2026 年 8 月 实现首胎下线
+〔管 公司交流〕。</p>
+<div class="callout "><b>奠基、首胎下线、完全达产是三件不同的事〔判〕</b><br/>
+把三个节点混为一谈，是产能型成长故事最容易失真的地方。首胎下线意味着产线打通，不意味着良率、产能利用率
+与单位成本达到设计水平；完全达产则需要经历爬坡、客户认证、渠道铺设与本地供应链配套的完整周期，通常以年
+而非季度计。<br/><br/>
+本报告的基准预测只把埃及产能按「2028 年前后开始贡献」处理，且未对其达产后的单位盈利做任何优于越南基地的
+假设。乐观情景中给予部分提前贡献的权重，但概率只给 25%。</div>
+
+<h3>6.3 增量释放的盈利含义</h3>
+<p>把三个梯队的产能增量放回利润表，逻辑链条是这样的：越南与柬埔寨贡献当前 82.1% 的归母净利润，
+印尼与墨西哥从减亏转向贡献，埃及提供 2028 年之后的增量。单位盈利上，海外基地的净利率显著高于国内——
+越南与柬埔寨两厂合计 19.60%，公司整体归母净利率 10.79%。因此海外产能占比的每一次提升，
+都在结构上抬高公司的利润率中枢，而不只是增加销量。</p>
+<p>这条逻辑的反面同样成立：海外基地的单位盈利高度依赖当地关税环境。一旦某个基地所在国被纳入新的贸易
+救济调查，其成本优势会被一次性抹去。欧盟对原产于中国轮胎的反倾销终裁税率为 4.3%—45.3%，
+范围覆盖新乘用车与轻型卡车充气橡胶轮胎；美国 232 条款对进口轮胎全球加征 25%。
+公司对这些市场的供应由海外基地承担，原产地不在中国，但贸易政策的边界在持续移动。</p>
+</div></section><section id="s7"><div class="wrap">
+<div class="sec-head"><span class="sec-num">§7</span><h2>估值</h2></div>
+
+<h3>7.1 估值快照</h3>
+<p><table><thead><tr><th>指标</th><th>数值</th><th>口径与来源</th></tr></thead><tbody><tr><td>现价</td><td>¥15.54</td><td>2026-09-03 行情接口</td></tr><tr><td>总市值</td><td>510.97 亿元</td><td>32.88 亿股全流通</td></tr><tr><td>企业价值 EV</td><td>605.65 亿元</td><td>市值 + 净债务 94.68 亿元</td></tr><tr><td>PE(TTM)</td><td>13.27×</td><td>TTM 归母 38.51 亿元</td></tr><tr><td>PB</td><td>2.25×</td><td>每股净资产 6.89 元</td></tr><tr><td>PS(TTM)</td><td>1.30×</td><td>TTM 营收 392.32 亿元</td></tr><tr><td>EV/EBIT（2026E）</td><td>10.06×</td><td>〔模〕2026E EBIT 60.17 亿元</td></tr><tr><td>ROE(TTM)</td><td>16.99%</td><td>由 PB ÷ PE(TTM) 反推</td></tr><tr><td>ROE（2026E）</td><td>18.73%</td><td>〔模〕归母 43.0 亿元 ÷ 平均归母净资产</td></tr><tr><td>2025 年度股息率</td><td>2.12%</td><td>每股派现 0.33 元（中期 0.15 + 年末 0.18）</td></tr><tr><td>前瞻股息率（2026E）</td><td>2.61%</td><td>〔模〕每股派现 0.41 元</td></tr></tbody></table></p>
+
+<h3>7.2 本报告盈利预测与卖方一致预期的差异</h3>
+<p><table><thead><tr><th>年度</th><th>卖方一致预期归母（亿元）</th><th>卖方 EPS（元）</th><th>本报告归母（亿元）</th><th>本报告 EPS（元）</th><th>差异</th></tr></thead><tbody><tr><td>2026</td><td>47.56</td><td>1.45</td><td>43.00</td><td>1.31</td><td>-9.6%</td></tr><tr><td>2027</td><td>58.17</td><td>1.77</td><td>51.00</td><td>1.55</td><td>-12.3%</td></tr><tr><td>2028</td><td>64.80</td><td>1.97</td><td>57.00</td><td>1.73</td><td>-12.0%</td></tr></tbody></table></p>
+<p>本报告 2026E 归母 43.0 亿元，较卖方一致预期低
+9.6%；2027E 低
+12.3%。差异集中在两点：一是二季度环比
++15.85% 的原材料采购价将在三、四季度进入成本，提价的对冲力度（3%—5%）不足以完全覆盖；
+二是 2025Q2 与 2025Q4 的低基数效应在 2027 年不再存在，而卖方预期中部分增速隐含了基数的延续。
+卖方一致预期（开源证券 2026-09-01 给出 2026—2028E 归母 48.99 / 59.07 / 65.54 亿元）。</p>
+
+<h3>7.3 方法一：相对 PE 法——目标 PE 的三条推导路径</h3>
+<p><table><thead><tr><th>路径</th><th>推导过程</th><th>隐含目标 PE</th></tr></thead><tbody><tr><td>路径 1（PEG）</td><td>2026—2028E 归母 CAGR 15.13%，目标 PEG 倍数取 0.85（用于倒推目标 PE，非当前市场交易 PEG）</td><td>12.86×</td></tr><tr><td>路径 2（同业增速归一化）</td><td>中策橡胶 PE(TTM) 10.36×、ROE 16.99%（与赛轮 16.99% 基本持平）；中报归母增速 5.09% vs 赛轮 17.97%，增速差 12.88pct，给予 25% 溢价</td><td>12.95×</td></tr><tr><td>路径 3（同业 PE 中位折让）</td><td>同业 PE(TTM) 中位 16.31× 建立在同业 ROE 中位 6.18% 的周期底部之上，直接套用会高估，折让 20%</td><td>13.05×</td></tr><tr><td>三条路径均值</td><td>取三条路径的算术平均后四舍五入</td><td><b>13.0×</b></td></tr></tbody></table></p>
+<p>目标 PE 取 <b>13.0×</b>，应用于 2027E 每股收益 1.55 元
+（归母 51.0 亿元 ÷ 32.88 亿股），得每股价值 <b>¥20.16</b>。
+作为交叉验证：若改用卖方 2027E 每股收益 1.77 元，同一目标 PE 下对应每股价值
+¥23.01，与本报告口径相差
+14.1%。</p>
+
+<h3>7.4 方法二：PB-ROE 法</h3>
+<p><table><thead><tr><th>参数</th><th>取值</th><th>依据</th></tr></thead><tbody><tr><td>无风险利率</td><td>1.80%</td><td>10 年期国债收益率</td></tr><tr><td>Beta</td><td>1.20</td><td>轮胎制造，盈利周期性强于市场平均</td></tr><tr><td>股权风险溢价</td><td>6.50%</td><td>A 股长期股权风险溢价</td></tr><tr><td>股权成本 Ke</td><td>9.60%</td><td>1.80% + 1.20 × 6.50%</td></tr><tr><td>税前债务成本</td><td>3.80%</td><td>有息负债综合成本</td></tr><tr><td>税后债务成本 Kd</td><td>3.23%</td><td>按 15% 所得税调整</td></tr><tr><td>D/(D+E)</td><td>22.31%</td><td>有息负债 146.75 亿元 ÷（市值 510.97 + 有息负债）</td></tr><tr><td>基础 WACC</td><td>8.18%</td><td>按上述权重加权</td></tr><tr><td>执行风险溢价</td><td>+1.30pct</td><td>埃及、印尼、墨西哥三地同步建设与地缘风险</td></tr><tr><td>长期增长 g</td><td>3.00%</td><td>全球轮胎销量增速叠加单价与份额提升</td></tr><tr><td>周期中枢 ROE</td><td>18.00%</td><td>2024 22.81% / 2025 17.04% / 2026E 18.73%，取中枢并保守下修</td></tr><tr><td>合理 PB</td><td>2.2727×</td><td>（18.00% − 3.00%）÷（9.60% − 3.00%）</td></tr><tr><td>2026E 每股净资产</td><td>7.39 元</td><td>（226.62 + 21.40 − 中期分红 4.93）÷ 32.88 亿股</td></tr></tbody></table></p>
+<p>PB-ROE 法得每股价值 <b>¥16.80</b>（7.39 元 × 2.2727×）。这一法的含义是：
+在 18.00% 的周期中枢 ROE 与 9.60% 的股权成本下，市场愿意为每 1 元净资产支付
+2.27 元是合理的。当前市净率 2.25× 已略高于这一水平，这也是四法中该方法给出最低值的原因。</p>
+
+<h3>7.5 方法三：DCF（FCFF）</h3>
+<p><table><thead><tr><th>年度</th><th>营业收入（亿元）</th><th>EBIT 率</th><th>EBIT（亿元）</th><th>NOPAT（亿元）</th><th>折旧摊销</th><th>资本开支</th><th>营运资本增加</th><th>FCFF（亿元）</th><th>折现值</th></tr></thead><tbody><tr><td>2026</td><td>415</td><td>14.5%</td><td>60.17</td><td>49.34</td><td>30</td><td>50</td><td>8</td><td>21.34</td><td>19.49</td></tr><tr><td>2027</td><td>470</td><td>15.0%</td><td>70.50</td><td>57.81</td><td>33</td><td>55</td><td>7</td><td>28.81</td><td>24.03</td></tr><tr><td>2028</td><td>520</td><td>15.0%</td><td>78.00</td><td>63.96</td><td>36</td><td>50</td><td>5</td><td>44.96</td><td>34.24</td></tr><tr><td>2029</td><td>555</td><td>14.5%</td><td>80.47</td><td>65.99</td><td>38</td><td>35</td><td>3</td><td>65.99</td><td>45.90</td></tr><tr><td>2030</td><td>585</td><td>14.0%</td><td>81.90</td><td>67.16</td><td>40</td><td>28</td><td>3</td><td>76.16</td><td>48.38</td></tr><tr><td>终值</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>1,036</td><td>657.94</td></tr></tbody><tfoot><tr><td colspan="10" style="text-align:left;font-size:11.5px;color:#8a8b8f">折现率 WACC 9.5%，永续增长 2.0%，所得税率 18%。企业价值 830 亿元，减去净债务 94.68 亿元与少数股东权益 17.54 亿元后，股权价值 718 亿元，对应每股 ¥21.83。</td></tr></tfoot></table></p>
+<p><table><thead><tr><th>WACC ＼ 永续增长</th><th>1.0%</th><th>2.0%</th><th>3.0%</th></tr></thead><tbody><tr><td>8.5%</td><td>¥22.73</td><td>¥26.16</td><td>¥30.84</td></tr><tr><td>9.5%</td><td>¥19.30</td><td>¥21.83</td><td>¥25.13</td></tr><tr><td>10.5%</td><td>¥16.61</td><td>¥18.53</td><td>¥20.97</td></tr></tbody><tfoot><tr><td colspan="4" style="text-align:left;font-size:11.5px;color:#8a8b8f">基准格（WACC 9.5%、g 2.0%）对应 ¥21.83。终值现值占企业价值的 79%，DCF 结果对永续假设高度敏感，故本报告将其与其余三法等权平均。</td></tr></tfoot></table></p>
+
+<h3>7.6 方法四：情景分析</h3>
+<div class="scenario-grid">
+<div class="scenario pess">
+<div class="stitle">悲观情景</div><div class="starget">¥12.17</div>
+<div class="prob">概率 25%　｜　2027E 归母 40 亿元 × 10× PE</div>
+<p>天然橡胶在厄尔尼诺下减产、原料价格全年维持高位；欧盟反倾销与美国 232 升级；埃及项目延期，2027 综合毛利率回落至 22%</p></div><div class="scenario base">
+<div class="stitle">基准情景</div><div class="starget">¥20.16</div>
+<div class="prob">概率 50%　｜　2027E 归母 51 亿元 × 13× PE</div>
+<p>原料价格在 2026Q4 见顶回落，提价在 Q3—Q4 落地；印尼／墨西哥满产、埃及按期投产，2027 综合毛利率维持 26% 上下</p></div><div class="scenario opt">
+<div class="stitle">乐观情景</div><div class="starget">¥27.37</div>
+<div class="prob">概率 25%　｜　2027E 归母 60 亿元 × 15× PE</div>
+<p>合成胶随油价下行、天胶缺口不及预期；海外四地产能全部达产，液体黄金占比提升，2027 综合毛利率升至 28%</p></div>
+</div>
+<div class="chart-box"><svg viewBox="0 0 680 272" width="100%" style="display:block;width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="情景每股价值"><rect x="0" y="0" width="680" height="272" fill="#ffffff"/><text x="10.0" y="20.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="15.3" fill="#0d3b66" text-anchor="start" font-weight="700">情景每股价值（基于 2027E 归母净利润 × 情景目标 PE）</text><line x1="70.0" y1="186.0" x2="640.00" y2="186.0" stroke="#dddddb" stroke-width="1"/><rect x="110.0" y="126.8" width="110.0" height="59.2" fill="#8a1f1f" opacity="0.9"/><text x="165.0" y="115.8" font-family="'IBM Plex Mono','Courier New',monospace" font-size="15.3" fill="#1c1c1c" text-anchor="middle" font-weight="700">¥12.17</text><text x="165.0" y="206.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="14.8" fill="#1c1c1c" text-anchor="middle" font-weight="700">悲观</text><text x="165.0" y="224.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">概率 25%</text><text x="165.0" y="240.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="middle" font-weight="400">40 亿 × 10×</text><rect x="285.0" y="87.9" width="110.0" height="98.1" fill="#0d3b66" opacity="0.9"/><text x="340.0" y="76.9" font-family="'IBM Plex Mono','Courier New',monospace" font-size="15.3" fill="#1c1c1c" text-anchor="middle" font-weight="700">¥20.16</text><text x="340.0" y="206.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="14.8" fill="#1c1c1c" text-anchor="middle" font-weight="700">基准</text><text x="340.0" y="224.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">概率 50%</text><text x="340.0" y="240.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="middle" font-weight="400">51 亿 × 13×</text><rect x="460.0" y="52.8" width="110.0" height="133.2" fill="#1c7a4d" opacity="0.9"/><text x="515.0" y="41.8" font-family="'IBM Plex Mono','Courier New',monospace" font-size="15.3" fill="#1c1c1c" text-anchor="middle" font-weight="700">¥27.37</text><text x="515.0" y="206.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="14.8" fill="#1c1c1c" text-anchor="middle" font-weight="700">乐观</text><text x="515.0" y="224.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12.4" fill="#57585c" text-anchor="middle" font-weight="400">概率 25%</text><text x="515.0" y="240.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.8" fill="#57585c" text-anchor="middle" font-weight="400">60 亿 × 15×</text><text x="10.0" y="260.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.0" fill="#0d3b66" text-anchor="start" font-weight="700">概率加权每股价值 ¥19.97（对应 2027E 归母 50.5 亿元）</text></svg></div>
+<p>概率加权每股价值 <b>¥19.97</b>，对应加权 2027E 归母净利润 50.5 亿元。
+三档情景的核心分野不在销量，而在毛利率：悲观情景假设 2027 年综合毛利率回落至 22%，基准为 26% 上下，
+乐观为 28%。这一区间的宽度，本质上就是原材料价格与提价落地进度之间的赛跑。</p>
+
+<p><b>情景权重的设定依据〔判〕。</b>三档权重取 25%／50%／25%：基准情景（50%）对应「原材料 Q4 见顶 + 提价落地」的模态路径，即本报告认为概率最高的中心情形；悲观与乐观各 25% 为围绕中心情形的对称尾部分配，用于吸收原材料价格与贸易政策的双向偏差，而非对极端情形的点预测。该权重是概率意义上的风险敞口映射，并非对任一情景发生概率的精确估计；若 Q3—Q4 验证条件未兑现，基准权重所依赖的中心路径即被证伪，届时应整体下修而非仅调整单档。</p>
+
+<h3>7.7 目标价推导</h3>
+<div class="chart-box"><svg viewBox="0 0 680 300" width="100%" style="display:block;width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="四法估值汇总"><rect x="0" y="0" width="680" height="300" fill="#ffffff"/><text x="10.0" y="20.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="15.3" fill="#0d3b66" text-anchor="start" font-weight="700">四法估值汇总（元／股）</text><line x1="50.0" y1="218.0" x2="640.00" y2="218.0" stroke="#dddddb" stroke-width="1"/><rect x="76.0" y="80.0" width="100.0" height="138.0" fill="#0d3b66" opacity="0.9"/><text x="126.0" y="69.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="14.8" fill="#1c1c1c" text-anchor="middle" font-weight="700">¥20.16</text><text x="126.0" y="238.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="middle" font-weight="400">相对 PE 法</text><rect x="221.0" y="103.0" width="100.0" height="115.0" fill="#1c5c92" opacity="0.9"/><text x="271.0" y="92.0" font-family="'IBM Plex Mono','Courier New',monospace" font-size="14.8" fill="#1c1c1c" text-anchor="middle" font-weight="700">¥16.80</text><text x="271.0" y="238.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="middle" font-weight="400">PB-ROE 法</text><rect x="366.0" y="68.6" width="100.0" height="149.4" fill="#c99b3f" opacity="0.9"/><text x="416.0" y="57.6" font-family="'IBM Plex Mono','Courier New',monospace" font-size="14.8" fill="#1c1c1c" text-anchor="middle" font-weight="700">¥21.83</text><text x="416.0" y="238.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="middle" font-weight="400">DCF(FCFF)</text><rect x="511.0" y="81.3" width="100.0" height="136.7" fill="#1c7a4d" opacity="0.9"/><text x="507.0" y="70.3" font-family="'IBM Plex Mono','Courier New',monospace" font-size="14.8" fill="#1c1c1c" text-anchor="end" font-weight="700">¥19.97</text><text x="561.0" y="238.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#1c1c1c" text-anchor="middle" font-weight="400">情景加权</text><line x1="50.0" y1="83.2" x2="640.00" y2="83.2" stroke="#0d3b66" stroke-width="1.6" stroke-dasharray="6,4"/><text x="50.0" y="103.2" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#0d3b66" text-anchor="start" font-weight="700">四法均值 ¥19.69</text><line x1="50.0" y1="83.1" x2="640.00" y2="83.1" stroke="#a8791a" stroke-width="1.6"/><text x="665.0" y="75.1" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#a8791a" text-anchor="end" font-weight="700">目标价 ¥19.70</text><line x1="50.0" y1="111.6" x2="640.00" y2="111.6" stroke="#8a1f1f" stroke-width="1.6" stroke-dasharray="3,3"/><text x="665.0" y="103.6" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="13.6" fill="#8a1f1f" text-anchor="end" font-weight="700">现价 ¥15.54</text><text x="10.0" y="288.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="12.4" fill="#8a8b8f" text-anchor="start" font-weight="400">四法区间 ¥16.80—¥21.83；DCF 终值占企业价值 79%，为四法中终值依赖度最高的一法</text></svg></div>
+<p><table><thead><tr><th>估值方法</th><th>每股价值（元）</th><th>相对现价</th><th>方法说明</th></tr></thead><tbody><tr><td>方法一：相对 PE 法</td><td>¥20.16</td><td>+29.76%</td><td>2027E EPS 1.55 元 × 目标 PE 13.0×</td></tr><tr><td>方法二：PB-ROE 法</td><td>¥16.80</td><td>+8.13%</td><td>2026E BPS 7.39 元 × 合理 PB 2.273×</td></tr><tr><td>方法三：DCF（FCFF）</td><td>¥21.83</td><td>+40.47%</td><td>WACC 9.5%、g 2.0%</td></tr><tr><td>方法四：情景加权</td><td>¥19.97</td><td>+28.48%</td><td>悲观 25% / 基准 50% / 乐观 25%</td></tr><tr><td><b>四法等权均值</b></td><td><b>¥19.69</b></td><td>+26.71%</td><td>四法等权，不设主观权重</td></tr><tr><td>摊薄调整</td><td>无</td><td>—</td><td>当前无增发、可转债或股权激励摊薄事项</td></tr><tr><td><b>12 个月目标价</b></td><td><b>¥19.70</b></td><td>+26.77%</td><td>四法均值四舍五入至 0.1 元</td></tr></tbody></table></p>
+<div class="callout "><b>目标价与回报测算</b><br/>
+目标价 <b>¥19.70</b>，对应上行 <b>+26.77%</b>。叠加 2026E 每股派现 0.41 元
+（派息率 31%）对应的前瞻股息率 <b>2.61%</b>，含息总回报 <b>+29.38%</b>，
+超过本报告 15% 的买入门槛。<br/><br/>
+隐含估值：目标价对应 2027E 市盈率 <b>12.7×</b>（本报告口径）、
+<b>11.1×</b>（卖方口径），对应 2026E 市净率
+<b>2.66×</b>。</div>
+
+<h3>7.8 股东回报与股息率三口径</h3>
+<p><table><thead><tr><th>口径</th><th>每股派现（元）</th><th>股息率</th><th>说明</th></tr></thead><tbody><tr><td>2025 年度实际</td><td>0.33</td><td>2.12%</td><td>中期 0.15 元 + 年末 0.18 元</td></tr><tr><td>2026 年中期已公告</td><td>0.15</td><td>0.97%</td><td>合计派现 4.93 亿元</td></tr><tr><td>2026E 全年〔模〕</td><td>0.41</td><td>2.61%</td><td>归母 43.0 亿元 × 派息率 31%</td></tr></tbody></table></p>
+<p>2025 年度公司现金分红总额 10.85 亿元，占归母净利润的 30.80%，处于制造业的中等水平。
+这一派息率与公司的资本开支强度直接相关：在埃及与董家口两个项目同步推进的阶段，留存收益的机会成本
+高于分红。股东回报的兑现形式目前仍以每股收益增长为主，而非现金分红——这一点决定了赛轮更适合
+成长型而非收益型的配置需求。</p>
+</div></section><section id="s8"><div class="wrap">
+<div class="sec-head"><span class="sec-num">§8</span><h2>多空观点</h2></div>
+<div class="grid-2">
+<div class="card"><h4 style="color:#1c7a4d">看多的五条理由</h4><ul>
+<li><b>海外产能已进入收获期。</b>越南与柬埔寨两厂 2026H1 合计归母 17.74 亿元
+（+40.33%），占公司归母 82.1%，净利率 19.60%。这不是在建产能的
+故事，而是已经在报表上的现金。</li>
+<li><b>增长来自产能而非提价。</b>上半年销量 +14.99%，均价 431.85 元/条基本持平。
+这种增长的质量更高，也更难被贸易壁垒掐断。</li>
+<li><b>毛利率在成本上行周期里逆势扩张。</b>24.54% → 26.99%，同期原材料采购价
+同比 +6.81%、环比 +15.85%。顺价能力已在最不利的环境下得到一次验证。</li>
+<li><b>估值与盈利能力错配。</b>ROE(TTM) 16.99% 是同业中位 6.18% 的
+2.7 倍，PE 却只有同业中位的 81%；
+单位 ROE 的 PB 定价 0.133 低于同业中位 0.163。</li>
+<li><b>利润结构干净。</b>扣非占归母 95.28%，非经常性损益仅 1.02 亿元且来自套保，
+不存在依靠补助或资产处置平滑利润的情形。</li>
+</ul></div>
+<div class="card"><h4 style="color:#8a1f1f">看空的五条理由</h4><ul>
+<li><b>原材料是最大的单点风险。</b>原材料占营业成本约 75%，采购价每变动 10% 影响
+每股收益约 0.58 元，占 2026E 每股收益的
+44%。提价 3% 只能修复 2.15 个百分点。</li>
+<li><b>厄尔尼诺尚未兑现。</b>有 63% 概率在 2026 年 11 月—2027 年 1 月 达到强强度，若发生，
+天然橡胶缺口将从 21.3 万吨扩大至 52—60 万吨。</li>
+<li><b>有效税率单向抬升。</b>6.97%（2023）→ 14.68%（2026H1），
+全球最低税率规则下低税率红利不可逆。</li>
+<li><b>杠杆与资本开支同步上行。</b>有息负债半年增加 26.19 亿元至 146.75 亿元，
+资产负债率 50.06% → 52.46%；自由现金流 2025 年仅 -6.39 亿元。</li>
+<li><b>筹码分散与质押。</b>股东户数半年增加 27.13%，控股股东一致行动人合计质押
+8.91% 的股份，是下行时的放大变量。</li>
+</ul></div>
+</div>
+<div class="callout gold"><b>多空如何取舍〔判〕</b><br/>
+五条看空理由中，原材料与厄尔尼诺属于周期性变量，会反转；有效税率与杠杆属于结构性变量，不会反转但幅度
+可控；质押属于尾部变量。而五条看多理由中，海外产能的利润贡献、销量驱动的增长、以及估值与 ROE 的错配，
+都是已经在报表或行情中兑现的事实，而非预测。<br/><br/>
+因此本报告的取舍是：<b>把周期性变量放进情景分析的概率权重里（悲观 25%），把结构性变量放进制约
+估值倍数的参数里（目标 PE 折让 20%、DCF 加 130bp 执行溢价），把尾部变量放进风险矩阵而非目标价。</b></div>
+</div></section><section id="s9"><div class="wrap">
+<div class="sec-head"><span class="sec-num">§9</span><h2>催化剂与风险</h2></div>
+
+<h3>9.1 12 个月催化剂</h3>
+<p><table><thead><tr><th>时点</th><th>事件</th><th>观察要点</th><th>对估值的潜在影响</th></tr></thead><tbody><tr><td>2026Q3—Q4</td><td>提价落地与三季报、年报</td><td>综合毛利率能否维持 26.99% 附近；提价 3%—5% 的对冲效果</td><td>正面，验证顺价能力</td></tr><tr><td>2026Q4—2027Q1</td><td>原材料价格见顶回落</td><td>天然橡胶现货（当前 2,453 美元/吨）与合成胶（已较 Q2 环比回落 12.30%）</td><td>正面，直接修复毛利率</td></tr><tr><td>2026Q4</td><td>印尼、墨西哥产能利用率</td><td>两地能否从毛利转正走向净利贡献</td><td>正面，增量兑现</td></tr><tr><td>2027H1</td><td>埃及基地投产进度</td><td>首胎下线后 12 个月内的产能利用率与客户认证</td><td>中性偏正面，已在乐观情景中部分计入</td></tr><tr><td>持续</td><td>海外新基地贸易救济调查</td><td>欧盟、美国、英国、巴西等对越南／柬埔寨／墨西哥轮胎的调查动向</td><td>负面，单点冲击大</td></tr><tr><td>持续</td><td>品牌与配套突破</td><td>液体黄金系列占比、国际赛事与主机厂配套进展</td><td>正面，抬高估值中枢</td></tr></tbody></table></p>
+
+<h3>9.2 风险矩阵</h3>
+<div class="risk-matrix">
+<div class="risk-item high"><div class="rt"><b>原材料价格持续上行</b><span class="rlevel">高概率 · 高影响</span></div><p>厄尔尼诺有 63% 概率在 2026 年 11 月—2027 年 1 月 达到强强度，若发生则天然橡胶缺口从 21.3 万吨扩大至 52—60 万吨。公司采购价每变动 10% 影响每股收益 约 0.58 元。提价 3% 仅能修复 2.15 个百分点的毛利率。</p><div class="src">ANRPC 月报；公司经营数据公告；本报告测算</div></div>
+<div class="risk-item high"><div class="rt"><b>海外基地遭遇贸易救济</b><span class="rlevel">中概率 · 高影响</span></div><p>公司 82.1% 的归母净利润来自越南与柬埔寨。若任一基地所在国被纳入新的反倾销或反补贴调查，其关税优势会被一次性抹去。欧盟对华轮胎反倾销终裁税率已达 4.3%—45.3%，美国 232 条款全球加征 25%。</p><div class="src">欧盟委员会公告；美国商务部；公司 2026 半年报</div></div>
+<div class="risk-item mid"><div class="rt"><b>有效税率继续抬升</b><span class="rlevel">高概率 · 中影响</span></div><p>有效所得税率从 2023 年的 6.97% 升至 2026H1 的 14.68%。全球最低税率规则下，海外低税率辖区的利润将被持续补征。按 2026E 归母 43.0 亿元计，税率每抬升 1 个百分点影响 归母约 0.51 亿元。</p><div class="src">公司定期报告；OECD 全球最低税率规则</div></div>
+<div class="risk-item mid"><div class="rt"><b>海外新基地爬坡不及预期</b><span class="rlevel">中概率 · 中影响</span></div><p>印尼、墨西哥在 2026Q2 才实现毛利转正，埃及仍在建设期。爬坡涉及良率、客户认证、渠道铺设与本地供应链配套，任一环节延后都会推迟利润兑现时点。</p><div class="src">公司 2026 半年报；券商点评</div></div>
+<div class="risk-item mid"><div class="rt"><b>资本开支与杠杆同步上行</b><span class="rlevel">高概率 · 中影响</span></div><p>有息负债半年增加 26.19 亿元至 146.75 亿元，资产负债率 50.06% → 52.46%。2025 年自由现金流为 -6.39 亿元，埃及与董家口两个项目同时推进会持续占用现金。</p><div class="src">公司 2026 半年报；2025 年报财务指标</div></div>
+<div class="risk-item mid"><div class="rt"><b>汇率波动</b><span class="rlevel">中概率 · 中影响</span></div><p>2026H1 财务费用 4.57 亿元（+429.74%），其中汇兑损失 2.42 亿元，上年同期为汇兑收益 1.36 亿元，反向变动 3.78 亿元。公司已常态化开展远期外汇合约、利率互换与外汇期权对冲，上半年套保实际损益 2,861.53 万元。需新增关注埃及镑敞口：埃及基地尚在建设期、尚未产生报表利润，历史财务数据不含埃及镑风险；但埃及镑于 2024-03-06 官方自由浮动，官方汇率单日从约 30.85 贬至约 49.5 兑 1 美元（单日贬值约 38%），2025 年中稳定在 49—50 区间〔事 埃及央行／IMF〕。一旦 2027—2028 年埃及基地产出，本币贬值将直接压低以人民币计价的归母盈利，且当地高通胀推升人工与运营成本。</p><div class="src">公司 2026 半年报；埃及央行；IMF 2025 国别报告</div></div>
+<div class="risk-item low"><div class="rt"><b>控股股东质押</b><span class="rlevel">低概率 · 中影响</span></div><p>瑞元鼎实质押 2.163 亿股、袁仲雪质押 7,669 万股，合计占总股本 8.91%。在股价大幅下行的情形下存在被动减持压力，但当前质押比例对应的预警线尚有余量。</p><div class="src">公司 2026 半年报摘要</div></div>
+<div class="risk-item low"><div class="rt"><b>需求端失速</b><span class="rlevel">低概率 · 中影响</span></div><p>全球轮胎需求以替换市场为主（2025 年全球乘用车胎与卡客车胎销量 18.94 亿条，+1.38%），波动远小于汽车产销。中国汽车保有量 3.66 亿辆（+3.68%）构成长期基本盘。</p><div class="src">米其林年报；公安部统计</div></div>
+</div>
+
+<h3>9.3 关键变量的敏感性</h3>
+<p><table><thead><tr><th>变量</th><th>变动幅度</th><th>对 2026E 归母的影响</th><th>对每股价值的影响</th></tr></thead><tbody><tr><td>原材料综合采购价</td><td>±10%</td><td>∓19.13 亿元</td><td>∓0.58 元</td></tr><tr><td>综合毛利率</td><td>±1 个百分点</td><td>±3.46 亿元</td><td>±0.105 元</td></tr><tr><td>产品均价（提价）</td><td>+3% / +5%</td><td>+10.37 / +17.28 亿元</td><td>+0.32 / +0.53 元</td></tr><tr><td>有效所得税率</td><td>+1 个百分点</td><td>−0.51 亿元</td><td>−0.015 元</td></tr><tr><td>WACC</td><td>±1 个百分点</td><td>—</td><td>+4.33 / -3.30 元</td></tr><tr><td>永续增长率</td><td>±1 个百分点</td><td>—</td><td>-2.53 / +3.30 元</td></tr></tbody></table></p>
+</div></section><section id="s10"><div class="wrap">
+<div class="sec-head"><span class="sec-num">§10</span><h2>评级、目标价与关键问答</h2></div>
+
+<h3>10.1 四项验证条件与检查时点</h3>
+<p><table><thead><tr><th>#</th><th>验证条件</th><th>通过标准</th><th>检查时点</th><th>不通过时的处理</th></tr></thead><tbody><tr><td>1</td><td>提价落地</td><td>2026Q3—Q4 综合毛利率维持 26% 以上</td><td>2026 年三季报、年报</td><td>下调 2027E 归母至 40 亿元以下，目标价向 ¥12.17 靠拢</td></tr><tr><td>2</td><td>原材料见顶</td><td>天然橡胶现货回落至 2,200 美元/吨以下，或连续两个月环比下行</td><td>月度跟踪</td><td>维持基准，但推迟估值修复的时点判断</td></tr><tr><td>3</td><td>海外爬坡</td><td>印尼、墨西哥在 2026Q4 前实现单月净利转正</td><td>2026 年三季报、年报</td><td>下修 2027—2028E 增量，目标 PE 从 13.0× 下调至 12.0×</td></tr><tr><td>4</td><td>杠杆可控</td><td>有息负债控制在 169 亿元以内、资产负债率不超过 55%</td><td>2026 年年报</td><td>DCF 执行风险溢价从 130bp 上调至 180bp</td></tr></tbody></table></p>
+
+<h3>10.2 关键问答</h3>
+<p><b>Q1：原材料涨价这么猛，为什么二季度毛利率反而环比提升？</b><br/>
+三个原因叠加。第一，公司采购价与现货价之间存在约 3 个月的传导时滞，二季度进入成本的还是相对低价的库存；
+第二，海外高毛利产能占比提升——越南与柬埔寨两厂净利率 19.60%，显著高于公司整体；
+第三，印尼与墨西哥在二季度先后实现毛利转正，减亏本身就是利润率的正贡献。权重上，本报告认为第一项
+（时滞）解释了大部分，这也意味着三、四季度是真正的检验窗口。</p>
+
+<p><b>Q2：公司备货能覆盖多久？这个缓冲什么时候用完？</b><br/>
+公司在投资者交流中披露备货可覆盖 2—3 个季度 的生产需求〔管〕。二季度采购价环比已
++15.85%，这批高价原料会在三、四季度陆续进入营业成本。缓冲不是免疫，它只是把冲击从
+二季度推迟到三、四季度。本报告 2026E 归母 43.0 亿元（低于卖方 47.56 亿元）
+已经反映了这一推迟。</p>
+
+<p><b>Q3：和中策橡胶相比，赛轮凭什么享受更高的估值？</b><br/>
+两家的 ROE(TTM) 几乎相同（赛轮 16.99%、中策 16.99%），但增速差距明显：
+2026H1 归母同比 +17.97% 对 +5.09%，毛利率 26.99% 对
+20.84%。中策的低毛利来自两轮车轮胎业务，赛轮的产品线更集中；中策内外销大致各半，
+赛轮 82.1% 的利润来自海外基地。以 PEG 归一化，赛轮当前 13.27× 对应
+15.13% 的三年 CAGR，PEG 约 0.88，而中策
+10.36× 对 2026H1 的 5.09% 增速。
+需说明两点：其一，此处 PEG 约 0.88 为当前市场交易 PEG（PE_TTM ÷ CAGR），与前文推导目标 PE 所用的 0.85 目标 PEG 倍数并非同一概念——前者是市场当下定价，后者是倒推合理 PE 的假设；
+其二，表中「两家 ROE(TTM) 几乎相同」是 PB÷PE 恒等式的结果，赛轮的真实 ROE（2026E 约 18.73%）实际高于中策，两家估值差异的核心在增速与海外利润结构，而非账面 ROE。</p>
+
+<p><b>Q4：目标 PE 取 13.0× 的依据是什么？会不会太主观？</b><br/>
+三条独立路径交叉验证：PEG 路径给 12.86×，同业增速归一化路径给 12.95×，
+同业 PE 中位折让路径给 13.05×，三条的算术平均 12.95×。
+三条路径的离散度只有 0.18×，
+交叉验证的收敛性本身构成约束。作为对照，卖方 2027E 每股收益 1.77 元在
+13.0× 下对应每股 ¥23.01，与本报告口径的 ¥20.16 相差
+14.1%。</p>
+
+<p><b>Q5：DCF 给出 ¥21.83，是四法中最高的一档，可信度如何？</b><br/>
+DCF 的终值现值占企业价值的 79%，对永续假设高度敏感：WACC 上下 1 个百分点对应每股价值
++4.33 元 / -3.30 元，
+永续增长率上下 1 个百分点对应 -2.53 元 /
++3.30 元。这是结构性缺陷，无法通过在 DCF 内部调参解决。
+本报告的处置是四法等权平均，让 DCF 只占 25% 权重；如果把 DCF 剔除，其余三法均值为
+¥18.98，与四法均值 ¥19.69 相差
+-3.6%。</p>
+
+<p><b>Q6：最大的单点风险是什么？</b><br/>
+原材料。毛利率对综合采购价的敏感性是每 10% 对应 5.54 个百分点、
+每股收益 0.58 元（占 2026E 每股收益的
+44%）。而公司的对冲工具（提价 3%—5%）
+只能修复 2.15—3.51 个百分点。这个不对称性在悲观情景中体现为每股价值
+¥12.17（-21.72%）。</p>
+
+<p><b>Q7：什么情况下会改变评级？</b><br/>
+三条触发线。一是 2026 年三季报或年报显示综合毛利率跌破 25%，意味着提价完全失效；
+二是海外任一主力基地（越南或柬埔寨）被纳入新的贸易救济调查；三是有息负债突破
+169 亿元且经营现金流未能同步改善。任一情形发生，本报告将把评级从
+买入 下调至持有，并把目标价向悲观情景 ¥12.17 与基准情景 ¥20.16 之间靠拢。</p>
+
+<div class="callout warn"><b>评级逻辑的关键张力〔判〕</b><br/>
+本报告「买入」结论的成立前提，恰恰是报告自身判定的最大不确定性——原材料综合采购价在 2026Q4 见顶、且提价在 Q3—Q4 顺利落地。这两点目前均<b>未被证实</b>，而是作为基准情景的假设存在。<br/><br/>
+目标价 ¥19.70 的含息总回报 +29.38%，来自四法等权与情景权重（悲观／基准／乐观 = 25%／50%／25%）的折中，反映的是<b>概率加权</b>而非<b>确定性</b>。安全边际建立在情景权重与四法交叉之上，而非已实现的经营兑现。首要跟踪指标是三、四季度毛利率与原材料价格走势：若 Q3—Q4 综合毛利率跌破 §10.1 条件 1 的验证阈值，评级与目标价将按既定规则下修。投资者应以 §10.1 四条验证条件的兑现进度，而非目标价本身，作为持仓决策的核心依据。</div>
+
+<div class="callout gold"><b>评级结论</b><br/>
+<b>买入 BUY</b>　｜　12 个月目标价 <b>¥19.70</b>　｜　现价 ¥15.54<br/>
+上行空间 <b>+26.77%</b>　｜　前瞻股息率 <b>2.61%</b>　｜　含息总回报
+<b>+29.38%</b>（买入门槛：含息总回报 &gt; 15%）<br/><br/>
+四法估值区间 ¥16.80—¥21.83，
+等权均值 ¥19.69。现价对应 2027E 市盈率 10.0×（本报告口径）、
+8.8×（卖方口径），市净率 2.25×。<br/><br/>
+<b>本评级的隐含假设：</b>原材料综合采购价在 2026Q4 至 2027Q1 见顶，提价在 3%—5% 区间落地，
+印尼与墨西哥在 2026Q4 前实现单月净利转正，埃及项目按规划推进。四项均已列入 §10.1 的验证条件。</div>
+</div></section><footer><div class="wrap">
+<div class="foot-grid">
+<div>
+<h5>Snail-Bird Investment</h5>
+<p style="font-size:12px;color:#8a8b8f;margin:0">
+本报告为赛轮轮胎（601058.SH）首次覆盖，采用相对 PE、PB-ROE、DCF(FCFF) 与情景分析四法交叉估值，
+并设原材料成本变动分析专章。所有事实性数据均标注来源，预测与测算标注为〔模〕，分析师判断标注为〔判〕，
+管理层表述标注为〔管〕，市场一致预期标注为〔共〕。未披露或无法取得可靠来源的数据，本报告在正文中说明
+而不做金额假设。</p>
+</div>
+<div>
+<h5>标注体系</h5>
+<ul class="src-list"><li>〔事〕事实：公司定期报告、公告、行业协会与官方统计</li><li>〔管〕管理层表述：公司交流、业绩说明与公开指引</li><li>〔共〕市场一致预期：卖方盈利预测中位数</li><li>〔判〕分析师判断：本报告的分析结论</li><li>〔模〕本报告测算：估值模型与敏感性测算结果</li></ul>
+</div>
+<div>
+<h5>主要数据来源</h5>
+<ul class="src-list"><li>赛轮集团股份有限公司 2026 年半年度报告及摘要（2026-08-31）</li><li>赛轮集团股份有限公司 2025 年年度报告及摘要（2026-04-28）</li><li>公司季度经营数据公告（原材料采购价格与产销量）</li><li>ANRPC 天然橡胶月度统计报告（2026 年 5 月、7 月）</li><li>中国海关橡胶轮胎出口统计（2026 年上半年）</li><li>米其林年报、中国汽车工业协会、公安部统计数据</li><li>欧盟委员会反倾销终裁公告（2026-07-07）</li><li>行情数据：腾讯行情接口，2026-09-03</li></ul>
+</div>
+</div>
+<div class="disclaimer">
+<p style="margin:0 0 8px"><b>评级体系：</b>买入（预期 12 个月含息总回报 &gt; 15%）／增持（5%—15%）／
+持有（−10%—5%）／减持（&lt; −10%）。目标价为 12 个月期限，含预期股息。</p>
+<p style="margin:0 0 8px"><b>本报告基于公开资料编制</b>，包括公司定期报告与公告、行业协会统计、监管文件与
+公开行情数据。报告中的预测、估值与判断均为基于上述资料的分析结果，可能与实际结果存在重大差异。
+公司未参与本报告的编制，报告亦未考虑任何特定读者的投资目标、财务状况或特殊需求。</p>
+<p style="margin:0"><b>本报告仅供研究参考，不构成个人投资建议。</b>市场有风险，决策需谨慎，
+据此操作风险自担。</p>
+</div>
+</div></footer>
+</body>
+</html>
