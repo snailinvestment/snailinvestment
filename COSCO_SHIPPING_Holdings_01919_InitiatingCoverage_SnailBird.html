@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>中远海控 01919.HK 首次覆盖 —— Snail-Bird Investment</title>
+<style>
+:root{
+  --bg:#f4f4f2;
+  --bg-panel:#ffffff;
+  --bg-alt:#ececea;
+  --ink:#1c1c1c;
+  --ink-soft:#57585c;
+  --ink-faint:#8a8b8f;
+  --line:#dddddb;
+  --navy:#0d3b66;
+  --navy-soft:#1c5c92;
+  --gold:#a8791a;
+  --gold-soft:#c99b3f;
+  --green:#1c7a4d;
+  --amber:#9c6a13;
+  --red:#8a1f1f;
+  --mono:'IBM Plex Mono','Courier New',monospace;
+  --sans:'IBM Plex Sans','Noto Sans SC',sans-serif;
+  --serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--gold);}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(244,244,242,0.96);backdrop-filter:blur(6px);border-bottom:2px solid var(--navy);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.5px;color:var(--navy);}
+.brand .bird{font-size:18px;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--navy);border:1px solid var(--navy);padding:3px 8px;border-radius:3px;}
+
+header.hero{padding:60px 0 40px;border-bottom:2px solid var(--navy);background:linear-gradient(180deg,#f8f7f2 0%,var(--bg) 100%);}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:18px;font-weight:700;}
+h1.title{font-family:var(--serif);font-size:36px;font-weight:700;margin:0 0 10px;line-height:1.35;color:var(--navy);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:800px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+
+.rating-panel{display:flex;gap:1px;background:var(--navy);border:1px solid var(--navy);margin-top:30px;}
+.rating-box{background:var(--navy);color:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;min-width:180px;}
+.rating-box .rlabel{font-family:var(--mono);font-size:11px;opacity:.8;text-transform:uppercase;letter-spacing:1px;}
+.rating-box .rvalue{font-family:var(--serif);font-size:26px;font-weight:700;margin-top:6px;}
+.target-box{background:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;flex:1;}
+.target-box .tlabel{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:1px;}
+.target-box .tvalue{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--navy);margin-top:6px;}
+
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:19px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--gold);font-weight:700;}
+h2{font-family:var(--serif);font-size:26px;margin:0;color:var(--navy);}
+h3{font-family:var(--sans);font-size:16px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--gold);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--navy);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);background:#fdf3f2;}
+.callout.gold{border-left-color:var(--gold);}
+
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:13.5px;color:var(--navy);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:var(--navy);font-family:var(--mono);font-size:11.5px;color:#fff;font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:#f9f8f2;}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#e9f3ec;color:var(--green);}
+.tag.miss{background:#f6eae8;color:var(--red);}
+.tag.line{background:#fbf3e3;color:var(--gold);}
+
+.seg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0;}
+.seg-card{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--navy);}
+.seg-card .sname{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.seg-card .sval{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.seg-card .sgrowth{font-family:var(--mono);font-size:12px;margin-bottom:8px;}
+.seg-card .sgrowth.pos{color:var(--green);}
+.seg-card .sgrowth.neg{color:var(--red);}
+.seg-card p{font-size:11.5px;margin:0;}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--navy);border:1px solid var(--navy);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:24px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--navy);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.scenario .prob{font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--amber);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#f6eae8;color:var(--red);}
+.risk-item.mid .rlevel{background:#fbf3e3;color:var(--amber);}
+.risk-item.low .rlevel{background:#e9f3ec;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+.risk-item .src{font-size:10.5px;color:var(--ink-faint);margin-top:6px;}
+
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+.ownership-bar{display:flex;height:34px;border-radius:3px;overflow:hidden;margin:14px 0;border:1px solid var(--line);}
+.ob-seg{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:#fff;}
+
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--navy);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .seg-grid{grid-template-columns:repeat(2,1fr);}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .rating-panel{flex-direction:column;}
+  h1.title{font-size:26px;}
+}
+
+.fig-title{margin-top:18px}
+table.alt td:nth-child(n+2){font-family:var(--mono)}
+.note{font-size:11.5px;color:var(--ink-faint);margin-top:8px}
+.hl{background:linear-gradient(transparent 62%,#f6e6bd 62%)}
+.big-num{font-family:var(--mono);font-weight:700}
+.dual-col{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+ul.tight{margin:0 0 14px;padding-left:20px;color:var(--ink-soft);font-size:14px}
+ul.tight li{margin-bottom:8px}
+.verdict{background:var(--navy);color:#fff;padding:26px 30px;margin:22px 0}
+.verdict h4{margin:0 0 12px;font-family:var(--mono);font-size:13px;letter-spacing:1px;opacity:.85}
+.verdict p{margin:0 0 10px;color:#e8eef4;font-size:14.5px}
+.verdict b{color:#f5d98a}
+@media(max-width:900px){.dual-col{grid-template-columns:1fr}}
+</style></head><body>
+
+<nav><div class="wrap">
+  <div class="brand"><span class="bird">&#127757;</span> SNAIL-BIRD INVESTMENT</div>
+  <div class="navlinks">
+    <span>港股研究</span><span>交通运输 / 集运</span>
+    <span class="navtag">首次覆盖</span>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">INITIATING COVERAGE &nbsp;|&nbsp; CONTAINER SHIPPING</div>
+  <h1 class="title">中远海控：运价在涨，但涨的不是欧线</h1>
+  <p class="subtitle">
+    全球第四大班轮公司、控制约 10.6% 全球集装箱运力。SCFI 连涨六周创两年新高，
+    结构性行情却集中在美线与近洋，作为核心干线之一的亚欧已连续九周下跌。
+    本轮运价的边际支撑主要来自港口拥堵、运河限航与节前抢运等临时摩擦，需求端则展现出韧性；
+    与此同时，占全球船队 38.8% 的在手订单与苏伊士复航构成了 2027—2029 年的供给闸门。
+  </p>
+  <div class="meta-row">
+    <span><b>股票代码</b> 01919.HK / 601919.SH</span>
+    <span><b>定价基准</b> 2026-09-07 收盘</span>
+    <span><b>现价</b> HK$16.27</span>
+    <span><b>总股本</b> 152.68 亿股</span>
+    <span><b>52 周区间</b> HK$11.11 — 18.04</span>
+    <span><b>出版人</b> Snail-Bird Investment</span>
+  </div>
+
+  <div class="rating-panel">
+    <div class="rating-box"><div class="rlabel">蜗牛鸟评级</div><div class="rvalue">持有 HOLD</div></div>
+    <div class="target-box"><div class="tlabel">12 个月目标价（概率加权）</div><div class="tvalue">HK$16.8　｜　资本利得 +3.3%</div></div>
+    <div class="target-box"><div class="tlabel">FY2026E 股息率（基准情景）</div><div class="tvalue">7.2%　｜　含息总回报 +10.5%</div></div>
+  </div>
+
+  <div class="kpi-strip">
+    <div class="kpi"><div class="label">营业收入 H1</div><div class="value pos">￥1,119 亿</div><div class="sub">同比 +2.59%</div></div>
+    <div class="kpi"><div class="label">归母净利 H1</div><div class="value neg">￥134.2 亿</div><div class="sub">同比 -23.48%</div></div>
+    <div class="kpi"><div class="label">Q2 单季归母</div><div class="value pos">￥75.4 亿</div><div class="sub">同比 +29.11%（转正）</div></div>
+    <div class="kpi"><div class="label">P/E (TTM)</div><div class="value">7.25×</div><div class="sub">FY2026E 6.9×</div></div>
+    <div class="kpi"><div class="label">市净率</div><div class="value">0.92×</div><div class="sub">每股净资产 HK$18.22</div></div>
+    <div class="kpi"><div class="label">股息率 TTM</div><div class="value pos">6.96%</div><div class="sub">FY2026E 约 7.2%</div></div>
+  </div>
+</div></header>
+<section id="s1"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">01</span><h2>投资摘要</h2></div>
+
+  <p>中远海控是全球集装箱航运第一梯队中唯一具备"航运 + 港口 + 全链物流"一体化结构的中国央企平台。
+  按 Alphaliner 口径，公司船队规模位列全球第四，控制全球约 10.6% 的集装箱运力；
+  旗下中远海运港口在全球 40 个港口运营及管理 394 个泊位。</p>
+
+  <p>本次覆盖的核心问题只有一个：<b>近期集运运价的上涨，是否构成中远海控的新一轮上行周期起点？</b></p>
+
+  <p>答案倾向于否定，但需要区分两个层面。第一个层面是<b>短期盈利</b>——2025 年下半年的极低基数
+  （FY2025 第四季度归母仅 ￥37.99 亿元，为全年最差季度）叠加 2026 年 5 月以来运价同比转正，
+  使得 2026 年下半年利润同比改善的确定性较高，这在 Q2 已初现端倪（单季归母同比 +29.11%，环比 +28.33%）。
+  第二个层面是<b>中期景气</b>——本轮运价上行的驱动力集中在供给端的临时摩擦，
+  而其三大支柱（红海绕行、港口拥堵、巴拿马限航）均非可持续变量。</p>
+
+  <div class="fig-title" style="font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin:14px 0 6px">图 1　关键价格坐标：现价已运行至公开可见分析师目标附近　〔事〕行情数据；〔模〕情景目标</div>
+  <div class="chart-box"><svg viewBox="0 0 680 300" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif"><rect x="178.0" y="24.0" width="406.0" height="268.0" fill="#fafaf7" opacity="1" stroke="#dddddb"/><text x="168.0" y="51.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.5" fill="#1c1c1c" text-anchor="end" font-weight="600">52 周低点</text><line x1="178.0" y1="46.0" x2="584.0" y2="46.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="2,3"/><circle cx="211.7" cy="46.0" r="5" fill="#8a8b8f"/><text x="592.0" y="50.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11" fill="#8a8b8f" text-anchor="start" font-weight="600">HK$11.11</text><text x="182.0" y="40.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="9.5" fill="#8a8b8f" text-anchor="start" font-weight="400">2025-09 前后</text><text x="168.0" y="87.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.5" fill="#1c1c1c" text-anchor="end" font-weight="600">悲观情景目标</text><line x1="178.0" y1="82.0" x2="584.0" y2="82.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="2,3"/><circle cx="326.1" cy="82.0" r="5" fill="#8a1f1f"/><text x="592.0" y="86.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11" fill="#8a1f1f" text-anchor="start" font-weight="600">HK$13.50</text><text x="182.0" y="76.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="9.5" fill="#8a8b8f" text-anchor="start" font-weight="400">本报告 25% 概率</text><text x="168.0" y="123.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.5" fill="#1c1c1c" text-anchor="end" font-weight="600">当前股价</text><line x1="178.0" y1="118.0" x2="584.0" y2="118.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="2,3"/><circle cx="458.4" cy="118.0" r="6.5" fill="#0d3b66"/><circle cx="458.4" cy="118.0" r="10.5" fill="none" stroke="#0d3b66" stroke-width="1.2" opacity="0.5"/><text x="592.0" y="122.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11" fill="#0d3b66" text-anchor="start" font-weight="600">HK$16.27</text><text x="182.0" y="112.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="9.5" fill="#8a8b8f" text-anchor="start" font-weight="400">2026-09-07 收盘</text><text x="168.0" y="159.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.5" fill="#1c1c1c" text-anchor="end" font-weight="600">公开可见分析师目标</text><line x1="178.0" y1="154.0" x2="584.0" y2="154.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="2,3"/><circle cx="469.4" cy="154.0" r="5" fill="#1c5c92"/><text x="592.0" y="158.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11" fill="#1c5c92" text-anchor="start" font-weight="600">HK$16.50</text><text x="182.0" y="148.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="9.5" fill="#8a8b8f" text-anchor="start" font-weight="400">富途 1 位分析师</text><text x="168.0" y="195.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.5" fill="#1c1c1c" text-anchor="end" font-weight="600">本报告目标价</text><line x1="178.0" y1="190.0" x2="584.0" y2="190.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="2,3"/><circle cx="483.7" cy="190.0" r="6.5" fill="#a8791a"/><circle cx="483.7" cy="190.0" r="10.5" fill="none" stroke="#a8791a" stroke-width="1.2" opacity="0.5"/><text x="592.0" y="194.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11" fill="#a8791a" text-anchor="start" font-weight="600">HK$16.80</text><text x="182.0" y="184.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="9.5" fill="#8a8b8f" text-anchor="start" font-weight="400">概率加权</text><text x="168.0" y="231.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.5" fill="#1c1c1c" text-anchor="end" font-weight="600">管理层回购上限</text><line x1="178.0" y1="226.0" x2="584.0" y2="226.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="2,3"/><circle cx="527.2" cy="226.0" r="5" fill="#57585c"/><text x="592.0" y="230.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11" fill="#57585c" text-anchor="start" font-weight="600">HK$17.71</text><text x="182.0" y="220.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="9.5" fill="#8a8b8f" text-anchor="start" font-weight="400">A 股 15.40 元折算</text><text x="168.0" y="267.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.5" fill="#1c1c1c" text-anchor="end" font-weight="600">52 周高点</text><line x1="178.0" y1="262.0" x2="584.0" y2="262.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="2,3"/><circle cx="542.9" cy="262.0" r="5" fill="#8a8b8f"/><text x="592.0" y="266.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11" fill="#8a8b8f" text-anchor="start" font-weight="600">HK$18.04</text><text x="182.0" y="256.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="9.5" fill="#8a8b8f" text-anchor="start" font-weight="400">2026-09-01 触及</text><text x="168.0" y="16.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#8a8b8f" text-anchor="end" font-weight="400">关键价格坐标</text></svg></div>
+  <div class="note">A 股新一轮回购授权的价格上限为人民币 15.40 元/股，而 A 股参考价约 ￥16.88，
+  已高于该上限；H 股折人民币约 ￥14.15，相对 A 股折价 16.2%，仍在管理层设定的价值区间之内。</div>
+
+  <div class="callout gold"><b>核心判断（变异认知）：</b>
+  市场倾向于把 SCFI 六连涨、创两年新高解读为新一轮景气周期的起点。但分航线数据显示，
+  这一轮上涨同时包含了：美线与近洋线上涨、欧线与地中海线连续九周下跌。
+  <b>亚欧是中远海控的核心干线之一</b>（H1 2026 亚欧货运量同比 +12.44%，增幅居四大航线之首），
+  欧线运价的持续走弱直接压制了公司的盈利弹性。  更关键的是，本轮上涨的主导力量是
+  台风导致的港口拥堵、巴拿马运河吃水限制与国庆前抢运——这些是<b>摩擦性、暂时性</b>的供给收缩；
+  需求端（H1 四大航线货运量全正增长、全球贸易预计增 3%—4%）并非坍塌，而是温和增长。
+  一旦供给摩擦消退，占全球船队 38.8% 的在手订单（其中 55.2% 为 10,000 TEU 以上、
+  恰好投放于亚欧与跨太平洋的大船）将成为主导定价的力量。〔判〕</div>
+
+  <div class="grid-3">
+    <div class="card"><h4>为什么不是"买入"</h4><p>现价 HK$16.27 已从 52 周低点 HK$11.11 上行
+    46%；公开可见分析师目标价 HK$16.50 相对现价仅剩 1.4% 空间；
+    汇丰研究已于 2026-09-03 对全球集运股转为审慎。短期盈利上行的利好已较多反映在股价中。</p></div>
+    <div class="card"><h4>为什么不是"减持"</h4><p>P/B 0.92× 低于账面净资产，FY2026E 股息率约 7.2%，
+    资产负债率降至 41.01%，2026 年 6 月末金融资产净额约 ￥692.71 亿元。
+    估值底部与现金回报提供了明确的安全垫，周期下行的表达方式更可能是盈利回落而非估值崩塌。</p></div>
+    <div class="card"><h4>我们的结论</h4><p>给予 <b>持有（HOLD）</b>，12 个月目标价
+    <b>HK$16.8</b>，对应资本利得 +3.3%、含息总回报约 10.5%。
+    更好的介入位置在 <b>HK$13.5—14.5</b>（对应 FY2026E 约 6.3× P/E、约 7.5% 股息率）。</p></div>
+  </div>
+</div></section>
+<section id="s2"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">02</span><h2>业务概览：航运 + 港口 + 全链物流</h2></div>
+
+  <p>中远海控的业务可拆为两大板块，H1 2026 收入占比约为集装箱航运（含供应链物流）约 96% / 控股码头约 6%（供应链收入已并入航运板块）。
+  集装箱航运是绝对主体，同时也是盈利波动的核心来源；码头业务则以相对稳定的吞吐量与
+  25.9% 的毛利率（FY2025）充当利润稳定器。</p>
+
+  <table class=""><thead><tr><th>板块（H1 2026）</th><th>规模</th><th>同比</th><th>收入（￥亿元）</th><th>收入同比</th></tr></thead><tbody><tr><td>集装箱航运</td><td>1427.95 万 TEU</td><td>+7.52%</td><td>1072.98</td><td>+2.38%</td></tr><tr><td>控股码头</td><td>1689.36 万 TEU</td><td>+2.50%</td><td>63.27</td><td>+8.30%</td></tr><tr><td>其中：除海运外供应链</td><td>—</td><td>—</td><td>240.90</td><td>+11.61%</td></tr></tbody><tr><td colspan="5" style="text-align:left;color:#8a8b8f;font-size:11.5px">〔事〕2026 年半年度报告；供应链收入已包含在集装箱航运板块内，此处单列以显示全链延伸进展</td></tr></table>
+
+  <h3>2.1 船队与网络</h3>
+  <p>截至 2026 年 7 月末，公司自营集装箱船队 606 艘、约 366 万标准箱；
+  叠加在手新造船订单与租赁订单（在建），现有运力与订单运力合计突破 530 万标准箱。
+  公司共经营 305 条国际航线，挂靠全球约 146 个国家和地区的 666 个港口。
+  绿色运力方面，通过改造及新订造的新能源动力船舶已达 70 艘、122 万标准箱，其中 9 艘已投入运营。</p>
+
+  <div class="callout"><b>2026 年是公司的扩表之年。</b>8 月 28 日董事会批准订造 12 艘 22,000 TEU 型
+  LNG 双燃料动力船（每艘约 2.24 亿美元）及 6 艘 3,200 TEU 新型宽体船（每艘 ￥3.398 亿元），
+  交易总价折合人民币 202.74 亿元，预计 2028—2030 年交付，其中不超过 70% 依赖外部债务融资。
+  按第三方统计，公司 2026 年内已累计签约 48 艘、约 676,800 TEU 船舶。<br><br>
+  这一举动具有双重含义：战略上是运力换代与绿色合规的必然投入，
+  财务上则是自由现金流的确定性流出，并在行业层面加剧了本已沉重的供给口径。〔判〕</div>
+
+  <h3>2.2 港航一体的协同价值</h3>
+  <p>与纯班轮公司相比，公司拥有钱凯（秘鲁）、比雷埃夫斯（希腊）、阿布扎比、洋浦等核心枢纽，
+  形成"干线直达 + 保税陆桥 + 支线分拨"的网络结构。H1 2026 钱凯码头完成集装箱吞吐量 20 万 TEU，
+  同比 +70.94%；散杂货 98.7 万吨，同比 +41.2%。这类枢纽在公司直面贸易政策波动时提供了货流的替代路径，
+  也是区别于纯航运同业的结构性优势。〔判〕</p>
+</div></section>
+<section id="s3"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">03</span><h2>财务与业务分析</h2></div>
+
+  <h3>3.1 四年盈利轨迹：一轮完整的周期下行</h3>
+  <p>理解中远海控的前提是承认其<b>极强的周期属性</b>。FY2022 归母净利 ￥1,095.9 亿元，
+  到 FY2023 骤降至 ￥238.6 亿元（−78%），FY2024 回升至 ￥491.0 亿元，FY2025 营业收入 ￥2,195.04 亿元、
+  归母净利再度回落至 ￥308.68 亿元（同比 −37.13%）。
+  公司营收与盈利的三年复合增长率分别为 −17.51% 与 −34.5%，这不是成长股的曲线，而是典型的运价周期。</p>
+
+  <p>2026 年上半年，公司实现营业收入 ￥1,119.22 亿元（同比 +2.59%）、息税前利润 ￥196.26 亿元、
+  净利润 ￥157.00 亿元、归属于上市公司股东的净利润 ￥134.19 亿元（同比 −23.48%），
+  扣非归母净利润 ￥133.87 亿元（同比 −23.35%）。收入创近四年同期新高，利润则受运价、油价与汇率三重压制。</p>
+
+  <div class="fig-title" style="font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin:14px 0 6px">图 2　年度营业收入与归母净利润（含 FY2026E 情景区间）　〔事〕FY2022—FY2025 年报；〔模〕FY2026E 情景</div>
+  <div class="chart-box"><svg viewBox="0 0 680 282" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif"><line x1="62.0" y1="234.0" x2="646.0" y2="234.0" stroke="#999" stroke-width="1"/><line x1="62.0" y1="234.0" x2="646.0" y2="234.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="238.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">0</text><line x1="62.0" y1="211.8" x2="646.0" y2="211.8" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="215.8" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">500</text><line x1="62.0" y1="189.5" x2="646.0" y2="189.5" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="193.5" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">1000</text><line x1="62.0" y1="167.2" x2="646.0" y2="167.2" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="171.2" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">1500</text><line x1="62.0" y1="145.0" x2="646.0" y2="145.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="149.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">2000</text><line x1="62.0" y1="122.8" x2="646.0" y2="122.8" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="126.8" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">2500</text><line x1="62.0" y1="100.5" x2="646.0" y2="100.5" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="104.5" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">3000</text><line x1="62.0" y1="78.2" x2="646.0" y2="78.2" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="82.2" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">3500</text><line x1="62.0" y1="56.0" x2="646.0" y2="56.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="60.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">4000</text><text x="54.0" y="46.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">人民币亿元</text><rect x="78.4" y="60.0" width="40.0" height="174.0" fill="#c3d3e0" opacity="1.0"/><text x="98.4" y="54.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c5c92" text-anchor="middle" font-weight="600">3910</text><rect x="122.4" y="185.2" width="40.0" height="48.8" fill="#0d3b66" opacity="1.0"/><text x="142.4" y="179.2" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="middle" font-weight="600">1096</text><rect x="195.2" y="155.9" width="40.0" height="78.1" fill="#c3d3e0" opacity="1.0"/><text x="215.2" y="149.9" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c5c92" text-anchor="middle" font-weight="600">1755</text><rect x="239.2" y="223.4" width="40.0" height="10.6" fill="#0d3b66" opacity="1.0"/><text x="259.2" y="217.4" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="middle" font-weight="600">239</text><rect x="312.0" y="129.9" width="40.0" height="104.1" fill="#c3d3e0" opacity="1.0"/><text x="332.0" y="123.9" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c5c92" text-anchor="middle" font-weight="600">2339</text><rect x="356.0" y="212.2" width="40.0" height="21.8" fill="#0d3b66" opacity="1.0"/><text x="376.0" y="206.2" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="middle" font-weight="600">491</text><rect x="428.8" y="136.3" width="40.0" height="97.7" fill="#c3d3e0" opacity="1.0"/><text x="448.8" y="130.3" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c5c92" text-anchor="middle" font-weight="600">2195</text><rect x="472.8" y="220.3" width="40.0" height="13.7" fill="#0d3b66" opacity="1.0"/><text x="492.8" y="214.3" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="middle" font-weight="600">309</text><rect x="541.6" y="221.4" width="28.0" height="12.6" fill="#c3d3e0" opacity="1.0"/><text x="555.6" y="216.4" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#1c5c92" text-anchor="middle" font-weight="600">284</text><rect x="573.6" y="220.1" width="28.0" height="13.9" fill="#7fa3c4" opacity="1.0"/><text x="587.6" y="215.1" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#1c5c92" text-anchor="middle" font-weight="600">312</text><rect x="605.6" y="218.9" width="28.0" height="15.1" fill="#3a6f9e" opacity="1.0"/><text x="619.6" y="213.9" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#3a6f9e" text-anchor="middle" font-weight="600">339</text><rect x="525.6" y="259.0" width="9.0" height="9.0" fill="#c3d3e0" opacity="1.0" stroke="#9aa7b5"/><text x="538.6" y="267.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="9.5" fill="#1c1c1c" text-anchor="start" font-weight="400">悲观</text><rect x="572.6" y="259.0" width="9.0" height="9.0" fill="#7fa3c4" opacity="1.0" stroke="#9aa7b5"/><text x="585.6" y="267.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="9.5" fill="#1c1c1c" text-anchor="start" font-weight="400">基准</text><rect x="619.6" y="259.0" width="9.0" height="9.0" fill="#3a6f9e" opacity="1.0" stroke="#9aa7b5"/><text x="632.6" y="267.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="9.5" fill="#1c1c1c" text-anchor="start" font-weight="400">乐观</text><text x="120.4" y="252.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">FY2022</text><text x="237.2" y="252.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">FY2023</text><text x="354.0" y="252.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">FY2024</text><text x="470.8" y="252.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">FY2025</text><text x="587.6" y="252.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="600">FY2026E</text><line x1="470.8" y1="48.0" x2="470.8" y2="234.0" stroke="#a8791a" stroke-width="1.4" stroke-dasharray="5,4"/><text x="470.8" y="42.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="9.5" fill="#a8791a" text-anchor="middle" font-weight="600">预测起点</text><rect x="66.0" y="22.0" width="14.0" height="3.0" fill="#c3d3e0" opacity="1.0"/><text x="84.0" y="27.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="start" font-weight="400">营业收入</text><rect x="158.0" y="22.0" width="14.0" height="3.0" fill="#0d3b66" opacity="1.0"/><text x="176.0" y="27.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="start" font-weight="400">归母净利</text></svg></div>
+  <div class="note">FY2026E 三档情景（悲观 / 基准 / 乐观）对应归母净利
+  ￥284 / 312 / 339 亿元，
+  详见 §6.3。2022 年的高基数源于疫情时期的运价异常，不宜作为常态锚点。</div>
+
+  <h3>3.2 季度维度：拐点已在 Q2 出现</h3>
+  <p>年度数据掩盖了拐点。分季度看，2025 年归母净利逐季走低（116.95 → 58.42 → 95.33 → 37.99 亿元），
+  2026 年 Q1 触及 ￥58.77 亿元（同比 −49.75%）后，Q2 回升至 ￥75.42 亿元——
+  <b>单季同比由负转正至 +29.11%，环比 +28.33%</b>。这是本轮下行周期中首次出现同比转正。</p>
+
+  <div class="fig-title" style="font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin:14px 0 6px">图 3　分季度归母净利润与单季同比　〔事〕公司季报；柱上数字为单季同比</div>
+  <div class="chart-box"><svg viewBox="0 0 680 268" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif"><line x1="62.0" y1="204.0" x2="646.0" y2="204.0" stroke="#999" stroke-width="1"/><line x1="62.0" y1="204.0" x2="646.0" y2="204.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="208.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">0</text><line x1="62.0" y1="183.3" x2="646.0" y2="183.3" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="187.3" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">20</text><line x1="62.0" y1="162.6" x2="646.0" y2="162.6" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="166.6" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">40</text><line x1="62.0" y1="141.9" x2="646.0" y2="141.9" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="145.9" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">60</text><line x1="62.0" y1="121.2" x2="646.0" y2="121.2" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="125.2" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">80</text><line x1="62.0" y1="100.6" x2="646.0" y2="100.6" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="104.6" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">100</text><line x1="62.0" y1="79.9" x2="646.0" y2="79.9" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="83.9" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">120</text><line x1="62.0" y1="59.2" x2="646.0" y2="59.2" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="63.2" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">140</text><text x="66.0" y="14.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#8a8b8f" text-anchor="start" font-weight="400">归母净利（亿元）　柱上＝单季同比</text><rect x="86.3" y="83.0" width="48.7" height="121.0" fill="#0d3b66" opacity="1.0"/><text x="110.7" y="77.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="middle" font-weight="600">117.0</text><text x="110.7" y="62.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a1f1f" text-anchor="middle" font-weight="600">+73.1%</text><text x="110.7" y="222.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">25Q1</text><rect x="183.7" y="143.6" width="48.7" height="60.4" fill="#0d3b66" opacity="1.0"/><text x="208.0" y="137.6" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="middle" font-weight="600">58.4</text><text x="208.0" y="122.6" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#1c7a4d" text-anchor="middle" font-weight="600">-42.2%</text><text x="208.0" y="222.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">25Q2</text><rect x="281.0" y="105.4" width="48.7" height="98.6" fill="#0d3b66" opacity="1.0"/><text x="305.3" y="99.4" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="middle" font-weight="600">95.3</text><text x="305.3" y="84.4" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#1c7a4d" text-anchor="middle" font-weight="600">-55.1%</text><text x="305.3" y="222.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">25Q3</text><rect x="378.3" y="164.7" width="48.7" height="39.3" fill="#0d3b66" opacity="1.0"/><text x="402.7" y="158.7" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="middle" font-weight="600">38.0</text><text x="402.7" y="143.7" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#1c7a4d" text-anchor="middle" font-weight="600">-65.4%</text><text x="402.7" y="222.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">25Q4</text><rect x="475.7" y="143.2" width="48.7" height="60.8" fill="#a8791a" opacity="1.0"/><text x="500.0" y="137.2" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#a8791a" text-anchor="middle" font-weight="600">58.8</text><text x="500.0" y="122.2" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#1c7a4d" text-anchor="middle" font-weight="600">-49.8%</text><text x="500.0" y="222.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">26Q1</text><rect x="573.0" y="126.0" width="48.7" height="78.0" fill="#a8791a" opacity="1.0"/><text x="597.3" y="120.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#a8791a" text-anchor="middle" font-weight="600">75.4</text><text x="597.3" y="105.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a1f1f" text-anchor="middle" font-weight="600">+29.1%</text><text x="597.3" y="222.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">26Q2</text><line x1="451.3" y1="48.0" x2="451.3" y2="204.0" stroke="#a8791a" stroke-width="1.4" stroke-dasharray="5,4"/><text x="457.3" y="68.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#a8791a" text-anchor="start" font-weight="600">2026 年</text><rect x="66.0" y="32.0" width="14.0" height="3.0" fill="#0d3b66" opacity="1.0"/><text x="84.0" y="37.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="start" font-weight="400">2025 年季度</text><rect x="180.0" y="32.0" width="14.0" height="3.0" fill="#a8791a" opacity="1.0"/><text x="198.0" y="37.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="start" font-weight="400">2026 年季度</text><text x="646.0" y="37.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">柱上＝单季同比（红涨绿跌）</text></svg></div>
+  <div class="note">2025 年前两个季度的同比基于 2024 年重述后基数（Q1 ￥67.55 亿元、Q2 ￥101.15 亿元）：
+  25Q1 同比 +73.1%（当期运价仍处高位），25Q2 同比 −42.25%。此后降幅在 25Q4 触底（−65.4%），
+  2026 年逐季收窄并于 26Q2 转正（+29.1%）。2025 年 Q3、Q4 的低基数（尤其 Q4 仅 ￥37.99 亿元）
+  决定了 2026 年下半年同比读数将显著走高，这一改善在较大程度上由基数效应贡献，
+  解读时需与绝对盈利水平区分。〔事〕各期定期报告</div>
+
+  <div class="callout"><b>利润下滑的三重来源。</b>据券商对中报的拆解，2025 年 12 月—2026 年 5 月期间，CCFI 综合指数同比 −9.34%、SCFI 综合指数同比 −5.16%；同期布伦特原油现货均价同比 +23.94% 抬升成本，美元兑人民币汇率下行 3.46% 带来汇兑损失。2026 年 5—8 月，CCFI 同比转为 +39.27%、SCFI 同比 +85.22%，两项压制因素同时反转，这是 Q3 利润改善的直接来源。〔事〕券商中报点评　〔判〕归因为本报告整理</div>
+
+  <h3>3.3 现金流与自由现金流（重点）</h3>
+  <p>对重资产、高折旧的重资产航运企业而言，现金流质量比利润表更值得关注。
+  FY2025 经营活动现金流净额 ￥455.46 亿元，净利润现金含量 129.29%，显示利润的现金实现度良好。
+  但同期资本开支约 ￥250 亿元，对应自由现金流约 ￥205 亿元（港股报表口径）。</p>
+
+  <div class="fig-title" style="font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin:14px 0 6px">图 4　经营活动现金流、资本开支与自由现金流　〔事〕年报现金流量表；〔模〕自由现金流＝经营活动现金流－资本开支（含船队投资）</div>
+  <div class="chart-box"><svg viewBox="0 0 680 262" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif"><line x1="62.0" y1="214.0" x2="646.0" y2="214.0" stroke="#999" stroke-width="1"/><line x1="62.0" y1="214.0" x2="646.0" y2="214.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="218.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">0</text><line x1="62.0" y1="194.0" x2="646.0" y2="194.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="198.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">275</text><line x1="62.0" y1="174.0" x2="646.0" y2="174.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="178.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">550</text><line x1="62.0" y1="154.0" x2="646.0" y2="154.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="158.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">825</text><line x1="62.0" y1="134.0" x2="646.0" y2="134.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="138.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">1100</text><line x1="62.0" y1="114.0" x2="646.0" y2="114.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="118.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">1375</text><line x1="62.0" y1="94.0" x2="646.0" y2="94.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="98.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">1650</text><line x1="62.0" y1="74.0" x2="646.0" y2="74.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="78.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">1925</text><line x1="62.0" y1="54.0" x2="646.0" y2="54.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="58.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">2200</text><text x="54.0" y="44.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">人民币亿元</text><rect x="66.4" y="71.0" width="52.0" height="143.0" fill="#c3d3e0" opacity="1.0"/><text x="92.4" y="65.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c5c92" text-anchor="middle" font-weight="600">1966</text><rect x="122.4" y="198.0" width="52.0" height="16.0" fill="#d8c9a8" opacity="1.0"/><text x="148.4" y="192.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#8a6a1a" text-anchor="middle" font-weight="600">220</text><text x="120.4" y="51.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c7a4d" text-anchor="middle" font-weight="700">FCF 1746</text><rect x="183.2" y="197.5" width="52.0" height="16.5" fill="#c3d3e0" opacity="1.0"/><text x="209.2" y="191.5" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c5c92" text-anchor="middle" font-weight="600">227</text><rect x="239.2" y="191.8" width="52.0" height="22.2" fill="#d8c9a8" opacity="1.0"/><text x="265.2" y="185.8" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#8a6a1a" text-anchor="middle" font-weight="600">305</text><text x="237.2" y="171.8" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#8a1f1f" text-anchor="middle" font-weight="700">FCF -78</text><rect x="300.0" y="163.6" width="52.0" height="50.4" fill="#c3d3e0" opacity="1.0"/><text x="326.0" y="157.6" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c5c92" text-anchor="middle" font-weight="600">693</text><rect x="356.0" y="193.3" width="52.0" height="20.7" fill="#d8c9a8" opacity="1.0"/><text x="382.0" y="187.3" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#8a6a1a" text-anchor="middle" font-weight="600">285</text><text x="354.0" y="143.6" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c7a4d" text-anchor="middle" font-weight="700">FCF 408</text><rect x="416.8" y="180.9" width="52.0" height="33.1" fill="#c3d3e0" opacity="1.0"/><text x="442.8" y="174.9" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c5c92" text-anchor="middle" font-weight="600">455</text><rect x="472.8" y="195.8" width="52.0" height="18.2" fill="#d8c9a8" opacity="1.0"/><text x="498.8" y="189.8" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#8a6a1a" text-anchor="middle" font-weight="600">250</text><text x="470.8" y="160.9" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c7a4d" text-anchor="middle" font-weight="700">FCF 205</text><rect x="533.6" y="197.0" width="52.0" height="17.0" fill="#c3d3e0" opacity="1.0"/><text x="559.6" y="191.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c5c92" text-anchor="middle" font-weight="600">233</text><text x="120.4" y="232.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">FY2022</text><text x="237.2" y="232.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">FY2023</text><text x="354.0" y="232.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">FY2024</text><text x="470.8" y="232.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">FY2025</text><text x="587.6" y="232.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="400">H1 2026</text><rect x="66.0" y="22.0" width="14.0" height="3.0" fill="#c3d3e0" opacity="1.0"/><text x="84.0" y="27.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="start" font-weight="400">经营活动现金流</text><rect x="202.0" y="22.0" width="14.0" height="3.0" fill="#d8c9a8" opacity="1.0"/><text x="220.0" y="27.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="start" font-weight="400">资本开支</text><text x="646.0" y="27.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">柱上＝自由现金流</text></svg></div>
+  <div class="note">H1 2026 经营现金流净流入 ￥233.30 亿元。资本开支口径存在 A 股 / 港股报表差异
+  （FY2025 自由现金流分别约 ￥155 亿与 ￥205 亿元），本图统一采用"经营现金流－资本开支"的简化口径，
+  并以港股报表列示，以保持跨期可比。</div>
+
+  <table class="alt"><thead><tr><th>自由现金流拆解（￥亿元）</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>H1 2026</th></tr></thead><tbody><tr><td>经营活动现金流</td><td>227.0</td><td>693.0</td><td>455.5</td><td>233.3</td></tr><tr><td>减：资本开支</td><td>305.0</td><td>285.0</td><td>250.2</td><td>未披露</td></tr><tr><td>自由现金流（简化口径）</td><td>-78.0</td><td>408.0</td><td>205.3</td><td>—</td></tr><tr><td>股东回报（现金分红）</td><td>—</td><td>—</td><td>153</td><td>65.7</td></tr><tr><td>自由现金流／股东回报覆盖</td><td>—</td><td>—</td><td>1.34×</td><td>—</td></tr></tbody><tr><td colspan="5" style="text-align:left;color:#8a8b8f;font-size:11.5px">〔事〕公司报告；〔模〕自由现金流为简化口径测算。FY2025 另发生股份回购，实际股东回报高于现金分红口径</td></tr></table>
+
+  <p>FY2025 自由现金流对现金分红的覆盖倍数为 1.34×，
+  即便叠加回购（近三年累计回购注销 6.87 亿股、耗资逾 ￥74.68 亿元），整体仍处于自筹可覆盖的区间。
+  但随着新船订单陆续进入付款周期，未来 2—3 年资本开支大概率上行，自由现金流对股东回报的覆盖倍数存在下行压力。</p>
+
+  <h3>3.4 资产负债表与净现金结构（2026 年 6 月末）</h3>
+
+  <h4 style="font-size:14px;color:var(--navy);margin:18px 0 8px">（一）期初期末对比：去杠杆延续，但现金不升反降</h4>
+  <p>截至 2026 年 6 月末，公司总资产 ￥4836.30 亿元，较年初（2025-12-31）的 ￥4837.58 亿元基本持平；
+  总负债由 ￥2003.52 亿元降至 ￥1983.19 亿元，资产负债率由 FY2025 末的 41.42% 微降至 41.01%——
+  2026 年一季度曾低至 40.90%，年中略有回升，整体仍处压降通道。〔事〕
+  归母权益由 ￥2322.65 亿元升至 ￥2337.62 亿元：半年归母净利 ￥134.19 亿元在覆盖 FY2025 末期股息（￥67.18 亿元）与股份回购注销后，仍使权益净增厚约 ￥14.97 亿元。〔事〕〔模〕</p>
+  <p>资产、负债两端同步收缩，去杠杆是真实的负债偿还而非资产膨胀的摊薄效应；但<b>现金在半年内减少了 ￥100.45 亿元</b>，
+  降幅 6.7%——分红、回购与新船付款正在消耗账面现金，是下文回购与估值需正视的约束。〔判〕</p>
+
+  <table class="alt"><thead><tr><th>资产负债表期初期末对比（人民币亿元）</th><th>2025-12-31</th><th>2026-06-30</th><th>变动</th><th>评注</th></tr></thead><tbody><tr><td>总资产</td><td>4837.58</td><td>4836.30</td><td>-1.28</td><td>基本持平〔事〕</td></tr><tr><td>总负债</td><td>2003.52</td><td>1983.19</td><td>-20.33</td><td>净偿付为主〔事〕</td></tr><tr><td>归母权益</td><td>2322.65</td><td>2337.62</td><td>+14.97</td><td>盈利覆盖分红后仍增〔事〕</td></tr><tr><td>流动资产</td><td>1733.16</td><td>1707.07</td><td>-26.09</td><td>存货上升〔事〕</td></tr><tr><td>现金及现金等价物</td><td>1508.82</td><td>1408.37</td><td>-100.45</td><td>半年减少 ￥100.45 亿〔事〕</td></tr><tr><td>有息负债</td><td>765.59</td><td>715.66</td><td>-49.93</td><td>主动净偿付〔事〕</td></tr><tr><td>金融资产净额</td><td>743.23</td><td>692.71</td><td>-50.52</td><td>净现金不升反降〔模〕</td></tr><tr><td>资产负债率</td><td>41.42%</td><td>41.01%</td><td>-0.41pct</td><td>连续下行〔事〕</td></tr><tr><td>流动比率</td><td>1.51</td><td>1.45</td><td>−0.06</td><td>短期偿付充裕〔事〕</td></tr><tr><td>产权比率（总负债／权益总额）</td><td>0.71</td><td>0.70</td><td>−0.01</td><td>低于 1〔事〕</td></tr><tr><td>股本（亿股）</td><td>154.90</td><td>152.68</td><td>−2.22</td><td>回购注销〔事〕</td></tr></tbody><tr><td colspan="5" style="text-align:left;color:#8a8b8f;font-size:11.5px">〔事〕港交所 2026 中期业绩公告。现金及现金等价物 ￥1408.37 亿元不含限制性银行存款及以公允价值/摊销成本计量的金融资产（后两者在流动资产中单列）；有息负债＝短期借款＋长期借款（含即期部分）＋租赁负债；金融资产净额＝现金及现金等价物－有息负债；产权比率＝总负债／权益总额。</td></tr></table>
+
+  <h4 style="font-size:14px;color:var(--navy);margin:18px 0 8px">（二）净现金：利息收入已反超利息支出，但"可分配"需分层</h4>
+  <p>2026 年 6 月末，公司现金及现金等价物 ￥1408.37 亿元，对应有息负债 ￥715.66 亿元，
+  <b>金融资产净额 ￥692.71 亿元</b>。按 H 股市值折人民币约 ￥2160 亿元计算，
+  净现金约占市值的 <b>32.1%</b>——即市场当前定价中，约三分之一对应的是账上净现金而非经营业务。〔判〕</p>
+  <p>这一结构的直接财务后果是：<b>公司的利息收入已经超过利息支出</b>。FY2025 投资收益及财务净收益为
+  ￥79.42 亿元（净收益），相当于当期归母净利润的 25.7%。这意味着即便经营层面盈亏平衡，
+  现有净现金头寸本身也能贡献可观的利润与现金流。这既是分红与回购的底气，也是估值下方的安全垫。〔判〕</p>
+  <p>需要同时指出的约束：<b>这笔现金并不全部"可分配"</b>。其一，集运是营运资金密集行业，
+  应付账款周转天数约 201 天（FY2025），账面沉淀了大量的经营性负债；其二，手持新造船订单
+  （82 艘／118 万 TEU，2026 年内又签约 48 艘）进入付款期后将持续抽取现金；
+  其三，公司业务高度国际化，境外现金的归集存在合规与时间成本。因此估值中我们对净现金做了分层折算（见下表），
+  而非按面值直接加回。</p>
+
+  <div class="fig-title" style="font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin:14px 0 6px">图 5　现金与有息负债结构：期初期末对比　〔事〕港交所 2026 中期业绩公告</div>
+  <div class="chart-box"><svg viewBox="0 0 680 276" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif"><line x1="62.0" y1="206.0" x2="646.0" y2="206.0" stroke="#999" stroke-width="1"/><line x1="62.0" y1="206.0" x2="646.0" y2="206.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="210.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">0</text><line x1="62.0" y1="181.0" x2="646.0" y2="181.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="185.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">300</text><line x1="62.0" y1="156.0" x2="646.0" y2="156.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="160.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">600</text><line x1="62.0" y1="131.0" x2="646.0" y2="131.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="135.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">900</text><line x1="62.0" y1="106.0" x2="646.0" y2="106.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="110.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">1200</text><line x1="62.0" y1="81.0" x2="646.0" y2="81.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="85.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">1500</text><line x1="62.0" y1="56.0" x2="646.0" y2="56.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="60.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">1800</text><text x="54.0" y="46.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">人民币亿元</text><rect x="112.0" y="80.3" width="84.0" height="125.7" fill="#0d3b66" opacity="1.0"/><text x="154.0" y="72.3" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11.5" fill="#0d3b66" text-anchor="middle" font-weight="700">现金 1509</text><text x="154.0" y="224.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="middle" font-weight="400">现金</text><rect x="220.0" y="142.2" width="84.0" height="63.8" fill="#b07a7a" opacity="1.0"/><text x="262.0" y="134.2" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11.5" fill="#8a1f1f" text-anchor="middle" font-weight="700">有息负债 766</text><text x="262.0" y="224.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="middle" font-weight="400">有息负债</text><text x="208.0" y="244.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="700">2025-12-31</text><text x="208.0" y="264.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#a8791a" text-anchor="middle" font-weight="700">金融资产净额 743 亿（净现金）</text><rect x="404.0" y="88.6" width="84.0" height="117.4" fill="#0d3b66" opacity="1.0"/><text x="446.0" y="80.6" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11.5" fill="#0d3b66" text-anchor="middle" font-weight="700">现金 1408</text><text x="446.0" y="224.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="middle" font-weight="400">现金</text><rect x="512.0" y="146.4" width="84.0" height="59.6" fill="#b07a7a" opacity="1.0"/><text x="554.0" y="138.4" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11.5" fill="#8a1f1f" text-anchor="middle" font-weight="700">有息负债 716</text><text x="554.0" y="224.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="middle" font-weight="400">有息负债</text><text x="500.0" y="244.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="700">2026-06-30</text><text x="500.0" y="264.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#a8791a" text-anchor="middle" font-weight="700">金融资产净额 693 亿（净现金）</text><text x="646.0" y="46.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="9.5" fill="#8a8b8f" text-anchor="end" font-weight="400">〔事〕港交所 2026 中期业绩公告；〔模〕净现金＝现金－有息负债</text></svg></div>
+
+  <p>按本报告一贯采用的<b>净现金分层</b>方法，资产负债表的"净现金"必须分层后才能计入估值：
+  ① 广义金融资产（现金及现金等价物 ￥1408.37 亿元）
+  → ② 扣除有息负债（约 ￥716 亿元）＝ 金融资产净额约 ￥692.71 亿元
+  → ③ 再扣除三项占用：营运所需现金（按营业收入 3% / 5% / 8% 计提）、
+  未来造船资本开支预留、以及境外现金的合规与调度折扣。〔模〕</p>
+
+  <table class="alt"><thead><tr><th>净现金分层折算（￥亿元）</th><th>谨慎档</th><th>基准档</th><th>宽松档</th></tr></thead><tbody><tr><td>① 现金及现金等价物</td><td>1408.37</td><td>1408.37</td><td>1408.37</td></tr><tr><td>② 减：有息负债</td><td>−716</td><td>−716</td><td>−716</td></tr><tr><td>＝ 金融资产净额</td><td>692.71</td><td>692.71</td><td>692.71</td></tr><tr><td>③ 减：营运所需现金</td><td>−176</td><td>−110</td><td>−66</td></tr><tr><td>③ 减：造船资本开支预留</td><td>−300</td><td>−250</td><td>−200</td></tr><tr><td>③ 减：境外现金折扣（15% / 10% / 5%）</td><td>−104</td><td>−69</td><td>−35</td></tr><tr><td>可分配超额现金</td><td>113</td><td>264</td><td>392</td></tr><tr><td>折合每股（港元）</td><td>0.85</td><td>1.99</td><td>2.95</td></tr></tbody><tr><td colspan="4" style="text-align:left;color:#8a8b8f;font-size:11.5px">〔模〕本报告测算。造船资本开支预留参考 FY2025 资本开支水平及在手订单付款节奏；境外现金折扣反映跨境调度的合规与时间成本。基准档每股约 HK$1.99，已在 §6.2 剔净现金核心 P/E 法中采用</td></tr></table>
+
+  <h3>3.5 分部与航线：量的增长跑赢了价</h3>
+  <p>H1 2026 四大核心航线货运量全部实现同比增长，其中亚欧航线增幅居首。
+  但同期集装箱航运板块收入仅同比增长 2.38%，明显低于箱量增幅——
+  <b>单箱收入的下滑吞噬了量增的贡献</b>。</p>
+
+  <div class="fig-title" style="font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin:14px 0 6px">图 6　H1 2026 四大航线货运量同比增速　〔事〕2026 年半年度报告</div>
+  <div class="chart-box"><svg viewBox="0 0 680 182" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif"><line x1="152.0" y1="30.0" x2="152.0" y2="158.0" stroke="#999" stroke-width="1"/><text x="122.0" y="49.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="end" font-weight="400">跨太平洋</text><rect x="152.0" y="37.0" width="313.8" height="18.0" fill="#0d3b66" opacity="1.0"/><text x="471.8" y="50.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="start" font-weight="600">+9.72%</text><text x="122.0" y="83.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="end" font-weight="400">亚欧</text><rect x="152.0" y="71.0" width="401.6" height="18.0" fill="#0d3b66" opacity="1.0"/><text x="559.6" y="84.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="start" font-weight="600">+12.44%</text><text x="122.0" y="117.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="end" font-weight="400">亚洲区域内</text><rect x="152.0" y="105.0" width="172.4" height="18.0" fill="#0d3b66" opacity="1.0"/><text x="330.4" y="118.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="start" font-weight="600">+5.34%</text><text x="122.0" y="151.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="end" font-weight="400">中国大陆</text><rect x="152.0" y="139.0" width="321.9" height="18.0" fill="#0d3b66" opacity="1.0"/><text x="479.9" y="152.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="start" font-weight="600">+9.97%</text></svg></div>
+
+  <h3>3.6 单位经济：三口径对照与底部暂企稳</h3>
+  <p>把盈利折算到单箱口径后，图景更清晰，但需先厘清口径。本报告测算的"单箱归母"是<b>集团合并口径</b>，
+  内含港口、供应链物流与财务净收益及少数股东损益，并非纯航运板块的单位经济；
+  衡量航运主业的单位经济应以<b>航运板块单箱收入</b>与<b>航运板块单箱毛利</b>为准。下表并列三口径：</p>
+
+  <table class="alt"><thead><tr><th>单箱经济（元/TEU）</th><th>H1 2025</th><th>H2 2025</th><th>H1 2026</th><th>口径说明</th></tr></thead><tbody><tr><td>单箱航运收入</td><td>7891</td><td>7484</td><td>7514</td><td>〔模〕航运板块收入/箱量</td></tr><tr><td>单箱航运毛利（推算）</td><td>1534</td><td>1455</td><td>1461</td><td>〔模〕单箱收入×板块毛利率 19.4%</td></tr><tr><td>单箱归母（集团口径）</td><td>1320</td><td>942</td><td>940</td><td>〔模〕归母净利/箱量，含非航运贡献</td></tr></tbody><tr><td colspan="5" style="text-align:left;color:#8a8b8f;font-size:11.5px">〔模〕本报告测算。航运板块毛利率取 FY2025 披露的 19.4%（H1 2026 未单独披露），单箱航运毛利为近似量级参考，非板块 EBIT/TEU；纯航运单位经济需以年报分部数据为准。</td></tr></table>
+
+  <p>H1 2025 单箱归母 ￥1320 / TEU，H2 2025 降至 ￥942 / TEU，
+  H1 2026 为 ￥940 / TEU——<b>H2 2025 与 H1 2026 的集团口径单箱盈利几乎完全一致</b>，
+  说明单位盈利在 2025 年下半年见底后<b>暂时企稳</b>，但尚不足以判断其为穿越周期的长期底部。〔判〕</p>
+
+  <div class="fig-title" style="font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin:14px 0 6px">图 7　单箱收入、单箱航运毛利与单箱归母（集团口径）　〔模〕本报告依据各期航线收入与箱量测算</div>
+  <div class="chart-box"><svg viewBox="0 0 680 280" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif"><line x1="62.0" y1="206.0" x2="646.0" y2="206.0" stroke="#999" stroke-width="1"/><line x1="62.0" y1="206.0" x2="646.0" y2="206.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="210.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">0</text><line x1="62.0" y1="180.7" x2="646.0" y2="180.7" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="184.7" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">1500</text><line x1="62.0" y1="155.3" x2="646.0" y2="155.3" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="159.3" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">3000</text><line x1="62.0" y1="130.0" x2="646.0" y2="130.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="134.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">4500</text><line x1="62.0" y1="104.7" x2="646.0" y2="104.7" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="108.7" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">6000</text><line x1="62.0" y1="79.3" x2="646.0" y2="79.3" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="83.3" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">7500</text><line x1="62.0" y1="54.0" x2="646.0" y2="54.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="58.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">9000</text><text x="54.0" y="44.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">元 / TEU</text><rect x="79.3" y="72.7" width="78.0" height="133.3" fill="#c3d3e0" opacity="1.0"/><text x="118.3" y="66.7" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c5c92" text-anchor="middle" font-weight="600">7891</text><rect x="161.3" y="183.7" width="78.0" height="22.3" fill="#0d3b66" opacity="1.0"/><text x="200.3" y="177.7" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="middle" font-weight="600">1320</text><text x="159.3" y="224.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="600">H1 2025</text><rect x="274.0" y="79.6" width="78.0" height="126.4" fill="#c3d3e0" opacity="1.0"/><text x="313.0" y="73.6" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c5c92" text-anchor="middle" font-weight="600">7484</text><rect x="356.0" y="190.1" width="78.0" height="15.9" fill="#0d3b66" opacity="1.0"/><text x="395.0" y="184.1" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="middle" font-weight="600">942</text><text x="354.0" y="224.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="600">H2 2025</text><rect x="468.7" y="79.1" width="78.0" height="126.9" fill="#c3d3e0" opacity="1.0"/><text x="507.7" y="73.1" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c5c92" text-anchor="middle" font-weight="600">7514</text><rect x="550.7" y="190.1" width="78.0" height="15.9" fill="#0d3b66" opacity="1.0"/><text x="589.7" y="184.1" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="middle" font-weight="600">940</text><text x="548.7" y="224.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="middle" font-weight="600">H1 2026</text><line x1="208.0" y1="207.1" x2="694.7" y2="207.1" stroke="#a8791a" stroke-width="1" stroke-dasharray="4,3"/><text x="354.0" y="244.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#a8791a" text-anchor="middle" font-weight="700">单位盈利暂时企稳（942 ≈ 940 元/TEU）</text><rect x="66.0" y="22.0" width="14.0" height="3.0" fill="#c3d3e0" opacity="1.0"/><text x="84.0" y="27.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="start" font-weight="400">单箱收入</text><rect x="158.0" y="22.0" width="14.0" height="3.0" fill="#0d3b66" opacity="1.0"/><text x="176.0" y="27.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="start" font-weight="400">单箱归母（集团口径）</text></svg></div>
+  <div class="note">单箱航运收入：H1 2025 ￥7891 → H2 2025 ￥7484 → H1 2026 ￥7514／TEU；
+  单箱航运毛利（推算）：￥1534 → ￥1455 → ￥1461／TEU；
+  单箱归母（集团口径）：￥1320 → ￥942 → ￥940／TEU。〔模〕</div>
+
+  <h3>3.7 敏感性：FY2026E 盈利对运价与箱量高度敏感</h3>
+  <p>航运是典型的经营杠杆行业。以 H2 2025 为基准（单箱收入 ￥7484、单箱归母 ￥942），
+  在假设单箱成本传导系数 30% 的前提下，单箱收入每变动 1%，单箱归母的变动幅度约为 5.6%
+  ——这意味着 H2 运价的微小差异会被显著放大到利润端。</p>
+  <p>传导链条为：<b>即期运价 → 单箱收入 → 单箱毛利 → 单箱归母 → EPS</b>。班轮公司普遍采用合约＋现货双轨定价，
+  合约货量比例越高，盈利对即期运价的敏感度越低、现金流越平滑；现货占比越高，则盈利弹性越大、波动也越大。
+  因此同一运价涨幅，对不同合约结构的航次带来的利润增量并不相同。〔判〕</p>
+
+  <table class=""><thead><tr><th>H2 单箱收入变动 ＼ 箱量变动</th><th>箱量 −5%</th><th>箱量持平</th><th>箱量 +5%</th></tr></thead><tbody><tr><td>-10%（对比 H2 2025）</td><td>190 亿 / EPS ￥1.25</td><td>193 亿 / EPS ￥1.27</td><td>196 亿 / EPS ￥1.29</td></tr><tr><td>+0%（对比 H2 2025）</td><td>261 亿 / EPS ￥1.71</td><td>268 亿 / EPS ￥1.75</td><td>274 亿 / EPS ￥1.80</td></tr><tr><td>+10%（对比 H2 2025）</td><td>331 亿 / EPS ￥2.17</td><td>342 亿 / EPS ￥2.24</td><td>352 亿 / EPS ￥2.31</td></tr><tr><td>+20%（对比 H2 2025）</td><td>402 亿 / EPS ￥2.63</td><td>416 亿 / EPS ￥2.72</td><td>430 亿 / EPS ￥2.82</td></tr><tr><td>+30%（对比 H2 2025）</td><td>472 亿 / EPS ￥3.09</td><td>490 亿 / EPS ￥3.21</td><td>508 亿 / EPS ￥3.33</td></tr></tbody><tr><td colspan="4" style="text-align:left;color:#8a8b8f;font-size:11.5px">〔模〕以 H2 2025 单箱收入 7484 元、单箱归母 942 元为基准，假设单箱成本的传导系数为 30%；经营杠杆使单箱收入的变动被放大约 5.6 倍传导至单箱归母。仅供参考，非盈利预测。</td></tr></table>
+  <div class="note">表中可见：若 H2 单箱收入相对 H2 2025 持平、箱量持平，FY2026E 归母约 ￥267 亿元；
+  若单箱收入提高 20%，同一箱量假设下升至约 ￥416 亿元。<b>盈利预测的区间宽度远大于通常意义下的"预测精度"</b>，
+  这也是本报告采用概率加权情景而非单点预测的原因。〔模〕</div>
+
+  <h4 style="font-size:14px;color:var(--navy);margin:18px 0 8px">成本传导系数的敏感性：盈利弹性取决于成本吸收比例</h4>
+  <p>上表以单箱成本传导系数 30% 为基准。若成本随单箱收入上行的吸收比例不同，
+  同样的运价涨幅对应的盈利弹性将明显分化（下表以 H2 单箱收入 +10%、箱量 −5% / 0 / +5% 测算）：</p>
+  <table class=""><thead><tr><th>成本传导系数 ＼ H2 单箱收入 +10%</th><th>箱量 −5%</th><th>箱量持平</th><th>箱量 +5%</th></tr></thead><tbody><tr><td>20%</td><td>341 亿</td><td>352 亿</td><td>363 亿</td></tr><tr><td>30%</td><td>331 亿</td><td>342 亿</td><td>352 亿</td></tr><tr><td>40%</td><td>321 亿</td><td>331 亿</td><td>341 亿</td></tr></tbody><tr><td colspan="4" style="text-align:left;color:#8a8b8f;font-size:11.5px">〔模〕以 H2 2025 为基准，假设 H2 单箱收入 +10%、箱量 −5%/0/+5%，比较成本传导系数 20% / 30% / 40% 下 FY2026E 归母。传导系数越高，单箱收入上行越被成本吸收，盈利弹性越小。</td></tr></table>
+</div></section>
+<section id="s4"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">04</span><h2>管理层指引与股东回报</h2></div>
+
+  <h3>4.1 分红政策</h3>
+  <p>公司执行 2025-2027 年股东分红回报规划，年度分红比例约 50%。2022—2025 年连续四年分红率均超过 49%，政策的可信度较高。
+  FY2025 全年每股股利 ￥1.00 元（中期 ￥0.56 + 末期 ￥0.44），其中末期现金红利 ￥67.18 亿元已于 2026 年 6 月 26 日派发完毕。
+  H1 2026 董事会宣布中期每股派息 ￥0.43 元（含税），合计约 ￥65.65 亿元，
+  占当期归母净利润的 49%——较上年中期每股 ￥0.56 元下降约 23%，与归母净利 −23.48% 的降幅一致。</p>
+
+  <h3>4.2 股份回购：一个被忽略的估值信号</h3>
+  <p>截至 2026 年 8 月 14 日，公司累计回购 A 股 3.05 亿股、H 股 6.43 亿股。H1 2026（3 月 23 日—5 月 22 日）
+  H 股回购 0.45 亿股、耗资 HK$6.66 亿，<b>均价 HK$14.85/股</b>（约 ￥12.91/股）。
+  A 股与 H 股回购分属上交所与港交所两套披露体系，币种与价格区间不同，不宜合并为单一均价。〔事〕</p>
+  <p>近三年累计注销 6.87 亿股（A 股 2.12 亿 + H 股 4.75 亿）、耗资 ￥74.68 亿元，
+  注销口径均价约 ￥10.86 元/股。〔事〕〔模〕</p>
+  <p>7 月 6 日董事会批准新一轮 A 股回购方案：拟于三个月内、以<b>人民币 15.40 元/股的价格上限</b>回购 0.5—1.0 亿股，全部用于注销并减少注册资本。
+  截至 2026 年 8 月 28 日，新一轮已回购 0.37 亿股、耗资 ￥5.46 亿元，<b>本轮 A 股均价约 ￥14.69 元/股</b>——
+  已逼近 15.40 元上限，说明执行窗口正随 A 股股价上行而收窄。〔事〕〔判〕</p>
+
+  <div class="callout gold"><b>回购上限是执行约束，而非价值锚。</b>管理层设定的 A 股回购价格上限 15.40 元/股，是董事会授权的执行边界，反映监管与章程对回购价格的合规限制，本身不构成对内在价值的判断。A 股参考价约 ￥16.88 已高于该上限，意味着按现价，本轮 A 股回购授权在 8 月之后已难以再大规模执行；而 H 股折人民币约 ￥14.15，相对 A 股折价 16.2%，仍在授权区间内——H 股回购依据 2025 年度股东周年大会一般性授权同步推进，7 月 7 日即完成首笔买入。注销式回购与分红共同构成净现金向股东返还的通道，是观察资本配置意愿的硬信息，而非估值锚点。〔事〕回购公告　〔判〕归因为本报告解读</div>
+
+  <h4 style="font-size:14px;color:var(--navy);margin:18px 0 8px">回购机制：A 股集中竞价注销 + H 股一般性授权注销</h4>
+  <p>两套回购并行、均指向<b>注销减资</b>，直接提升每股收益与净资产收益率：</p>
+  <ul class="tight">
+    <li><b>A 股回购</b>：通过上海证券交易所集中竞价交易实施，价格上限人民币 15.40 元/股，数量 0.5—1.0 亿股，
+        期限自董事会审议通过之日起三个月内，回购股份全部用于注销并减少注册资本。</li>
+    <li><b>H 股回购</b>：依据 2025 年度股东周年大会授予的<b>一般性授权</b>（不超过已发行 H 股总数的 10%）于香港联交所场内回购，
+        同样予以注销；2026 年 7 月 6 日 A 股方案获董事会批准后 H 股同步启动，7 月 7 日即完成首笔买入（300 万股），
+        至 8 月中旬累计 H 股回购已达 6.43 亿股。</li>
+  </ul>
+  <p>对估值的含义：注销式回购与分红互为补充，是净现金向股东返还的两条通道；H1 2026 股本由年初 154.90 亿股降至 152.68 亿股，
+  减少 2.22 亿股（−1.43%），正是回购注销的直接结果。〔判〕</p>
+
+  <h3>4.3 管理层下半年展望</h3>
+  <p>公司对下半年的定性表述为"机遇与挑战并存的复杂格局"：一方面全球贸易量预计延续温和增长，
+  新兴市场与区域市场仍是重要增长引擎，人工智能、先进制造、能源转型有望催生新的贸易需求；
+  另一方面地缘政治博弈升级、主要经济体关税政策加码，对供应链韧性提出更高要求。〔管〕</p>
+
+  <p>公司并未给出量化的全年业绩或运力指引，这一处理方式本身符合行业惯例——
+  集运是高度价格接受型业务，收入取决于行业运价而非企业自身能动性。<b>缺乏量化指引不应解读为管理层信心不足，
+  但也不构成对盈利预测的支撑。</b>〔判〕</p>
+
+  <table class="alt"><thead><tr><th>管理层承诺事项</th><th>内容</th><th>状态</th></tr></thead><tbody><tr><td>2025—2027 年分红回报规划</td><td>年度现金分红比例约 50%</td><td>执行中，连续四年 &gt;49%〔管〕</td></tr><tr><td>2025 年末期股息</td><td>每股 ￥0.44，合计 ￥67.18 亿元</td><td>已于 2026-06-26 派发〔事〕</td></tr><tr><td>2026 年中期股息</td><td>每股 ￥0.43，合计 ￥65.65 亿元</td><td>占归母净利 49%〔事〕</td></tr><tr><td>累计 A 股回购</td><td>3.05 亿股</td><td>注销式回购〔事〕</td></tr><tr><td>累计 H 股回购</td><td>6.43 亿股（H1 2026 回购 0.45 亿股，均价 HK$14.85/股）</td><td>注销式回购〔事〕</td></tr><tr><td>新一轮 A 股回购</td><td>上限 ￥15.40/股，0.5—1.0 亿股；至 8/28 已回购 0.37 亿股、均价 ￥14.69/股</td><td>实施中，窗口随股价上行收窄〔管〕〔事〕</td></tr><tr><td>新船订造</td><td>18 艘，总价 ￥202.74 亿元</td><td>2028—2030 年交付〔管〕</td></tr></tbody></table>
+</div></section>
+<section id="s5"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">05</span><h2>行业：运价回溯与供给闸门</h2></div>
+
+  <h3>5.1 运价：综合指数创新高，航线走势分化</h3>
+  <p>先看事实。截至 2026 年 9 月 4 日，SCFI 综合指数报 3590.05 点，周环比 +2.29%，
+  实现六连涨，创 2024 年 7 月中旬以来新高。与去年同期相比，涨幅极为可观。</p>
+
+  <div class="fig-title" style="font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin:14px 0 6px">图 8　SCFI 与 CCFI 综合指数：当期对比去年同期　〔事〕上海航运交易所</div>
+  <div class="chart-box"><svg viewBox="0 0 680 272" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif"><line x1="62.0" y1="226.0" x2="646.0" y2="226.0" stroke="#999" stroke-width="1"/><line x1="62.0" y1="226.0" x2="646.0" y2="226.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="230.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">0</text><line x1="62.0" y1="205.0" x2="646.0" y2="205.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="209.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">500</text><line x1="62.0" y1="184.0" x2="646.0" y2="184.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="188.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">1000</text><line x1="62.0" y1="163.0" x2="646.0" y2="163.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="167.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">1500</text><line x1="62.0" y1="142.0" x2="646.0" y2="142.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="146.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">2000</text><line x1="62.0" y1="121.0" x2="646.0" y2="121.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="125.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">2500</text><line x1="62.0" y1="100.0" x2="646.0" y2="100.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="104.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">3000</text><line x1="62.0" y1="79.0" x2="646.0" y2="79.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="83.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">3500</text><line x1="62.0" y1="58.0" x2="646.0" y2="58.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="62.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">4000</text><text x="54.0" y="48.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">指数点位</text><rect x="143.8" y="165.4" width="62.2" height="60.6" fill="#b9b9b4" opacity="1.0"/><text x="174.9" y="159.4" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#b9b9b4" text-anchor="middle" font-weight="600">1444</text><rect x="215.7" y="75.2" width="62.2" height="150.8" fill="#0d3b66" opacity="1.0"/><text x="246.8" y="69.2" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#0d3b66" text-anchor="middle" font-weight="600">3590</text><text x="208.0" y="244.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.5" fill="#1c1c1c" text-anchor="middle" font-weight="600">SCFI 综合</text><text x="208.0" y="259.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">去年同期 1444</text><text x="246.8" y="101.2" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#ffffff" text-anchor="middle" font-weight="700">+148.6%</text><rect x="435.8" y="177.7" width="62.2" height="48.3" fill="#b9b9b4" opacity="1.0"/><text x="466.9" y="171.7" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#b9b9b4" text-anchor="middle" font-weight="600">1149</text><rect x="507.7" y="149.0" width="62.2" height="77.0" fill="#a8791a" opacity="1.0"/><text x="538.8" y="143.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#a8791a" text-anchor="middle" font-weight="600">1834</text><text x="500.0" y="244.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.5" fill="#1c1c1c" text-anchor="middle" font-weight="600">CCFI 综合</text><text x="500.0" y="259.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">去年同期 1149</text><text x="538.8" y="175.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#ffffff" text-anchor="middle" font-weight="700">+59.6%</text><rect x="66.0" y="32.0" width="14.0" height="3.0" fill="#b9b9b4" opacity="1.0"/><text x="84.0" y="37.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="start" font-weight="400">2025 年 9 月初</text><rect x="202.0" y="32.0" width="14.0" height="3.0" fill="#0d3b66" opacity="1.0"/><text x="220.0" y="37.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="start" font-weight="400">2026 年 9 月初</text><text x="646.0" y="37.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">柱内百分比＝同比</text></svg></div>
+  <div class="note">SCFI 2026-09-04 报 3590.05 点 vs 2025-09-05 的 1444 点（同比 +148.6%）；
+  CCFI 2026-09-02 报 1834 点 vs 2025-09-05 的 1149 点（同比 +59.6%）。
+  2025 年全年 SCFI 均值仅 1639.76 点，最低触及 1198.21 点——
+  极低的基数是同比读数放大的主要原因。</div>
+
+  <p>但把指数拆到航线层面，图景完全不同。</p>
+
+  <div class="fig-title" style="font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin:14px 0 6px">图 9　主要航线运价周度变动（2026-09-04）　〔事〕上海航运交易所；红涨绿跌</div>
+  <div class="chart-box"><svg viewBox="0 0 680 250" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif"><line x1="290.5" y1="30.0" x2="290.5" y2="226.0" stroke="#999" stroke-width="1"/><text x="152.0" y="49.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="end" font-weight="400">美西 (US$/FEU)</text><rect x="290.5" y="37.0" width="104.9" height="18.0" fill="#8a1f1f" opacity="1.0"/><text x="401.4" y="50.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#8a1f1f" text-anchor="start" font-weight="600">+4.35%</text><text x="152.0" y="83.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="end" font-weight="400">美东 (US$/FEU)</text><rect x="290.5" y="71.0" width="66.8" height="18.0" fill="#8a1f1f" opacity="1.0"/><text x="363.3" y="84.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#8a1f1f" text-anchor="start" font-weight="600">+2.77%</text><text x="152.0" y="117.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="end" font-weight="400">欧洲 (US$/TEU)</text><rect x="225.6" y="105.0" width="64.9" height="18.0" fill="#1c7a4d" opacity="1.0"/><text x="219.6" y="118.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c7a4d" text-anchor="end" font-weight="600">-2.69%</text><text x="152.0" y="151.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="end" font-weight="400">地中海 (US$/TEU)</text><rect x="212.6" y="139.0" width="77.9" height="18.0" fill="#1c7a4d" opacity="1.0"/><text x="206.6" y="152.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#1c7a4d" text-anchor="end" font-weight="600">-3.23%</text><text x="152.0" y="185.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="end" font-weight="400">东南亚 (US$/TEU)</text><rect x="290.5" y="173.0" width="289.4" height="18.0" fill="#8a1f1f" opacity="1.0"/><text x="585.9" y="186.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#8a1f1f" text-anchor="start" font-weight="600">+12.00%</text><text x="152.0" y="219.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#1c1c1c" text-anchor="end" font-weight="400">澳新 (US$/TEU)</text><rect x="290.5" y="207.0" width="164.0" height="18.0" fill="#8a1f1f" opacity="1.0"/><text x="460.5" y="220.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#8a1f1f" text-anchor="start" font-weight="600">+6.80%</text></svg></div>
+  <div class="note">同一周内：美西 +4.35%、美东 +2.77%、东南亚 +12.0%、澳新 +6.8%；
+  而欧洲 −2.69%（连续 9 周下跌）、地中海 −3.23%。
+  截至 2026-09-07 的 SCFIS 结算运价指数亦呈同一格局：美西航线 4183.70 点（+6.7%），
+  欧洲航线 2882.69 点（-5.4%）。</div>
+
+  <div class="callout warn"><b>为什么这个分化至关重要。</b>中远海控的收入结构中，亚欧与跨太平洋同为核心干线，H1 2026 亚欧航线货运量同比增长 12.44%，是四大航线中增幅最快的一条。欧线连续九周下行，意味着公司在增速最快的航线上承受的是价格下行的压力，其结果是「量的增长跑赢了价」——这一点已在 H1 的单箱数据上得到验证：箱量同比 +7.52%，而航运收入仅同比 +2.38%。欧洲线运力过剩的成因具有结构性：近年大量 20,000 TEU 级船舶投放于该航线，在货量增长有限的条件下，船公司推动涨价的难度显著高于美线。</div>
+
+  <h3>5.2 本轮上涨：需求有韧性，但供给摩擦是主因</h3>
+  <p>本轮上涨由供给摩擦主导，但需求端并非疲弱。H1 2026 四大核心航线货运量全部正增长（见 3.5 节），
+  全球集装箱贸易量预计增长 3%—4%（3.5% 取区间中值），与历年常态一致。
+  真正决定边际运价方向的，是<b>有效供给的阶段性收缩</b>：以下三项摩擦把名义运力转化为实际可用舱位的效率压低，
+  使供需在边际上偏紧。</p>
+
+  <table class="alt"><thead><tr><th>供给摩擦（有效运力收缩因素）</th><th>对有效运力的影响</th><th>性质</th></tr></thead><tbody><tr><td>红海绕行</td><td>每年额外吸收约 2 百万 TEU 名义运力</td><td>可逆</td></tr><tr><td>港口拥堵与延误</td><td>占用全球深海运力约 5%（超出历史基线约 1.7 个百分点）</td><td>可逆</td></tr><tr><td>节前空班与跳港</td><td>周转率下降，舱位收紧</td><td>季节性</td></tr></tbody></table>
+
+  <ul class="tight">
+    <li><b>港口拥堵与天气扰动。</b>东亚台风频发，多地港口拥堵未完全缓解，船舶跳港、空班、延误常态化，
+      周转效率下降导致有效舱位收紧。</li>
+    <li><b>巴拿马运河限制。</b>受降雨不足与干旱影响，运河管理局限制每日通行量，
+      9 月 4 日降至 34 艘、15 日进一步降至 32 艘，加剧美东航线运力压力。</li>
+    <li><b>节前集中出货。</b>国庆黄金周临近，工厂加快节前出货，短期货量抬升。</li>
+  </ul>
+  <p>上海航交所与市场机构的普遍看法是：三季度传统旺季与节前集中出货仍可对运价形成一定支撑，
+  但随着季节性需求回落，若新增货量不足以消化运力，四季度运价可能面临进一步下行压力。〔共〕</p>
+
+  <h3>5.3 真正的闸门：供给</h3>
+  <p>这是本次覆盖中唯一确定性较高的中期变量。截至 2026 年 6 月 30 日，全球集装箱船在手订单约
+  13.1 百万 TEU，对应现役船队 33.8 百万 TEU 的 38.8%——
+  海事数据机构 MSI 口径为 39.1%，Alphaliner 口径为 38.3%。2026 年全年船队运力预计增长 4.2%，
+  而集装箱贸易量预计增长 3%—4%。<b>供给增速高于需求增速。</b></p>
+
+  <div class="fig-title" style="font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin:14px 0 6px">图 10　全球集装箱运力：船队、订单与有效运力的隐性缓冲　〔事〕Alphaliner / BIMCO / MSI / Sea-Intelligence</div>
+  <div class="chart-box"><svg viewBox="0 0 680 258" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif"><line x1="62.0" y1="210.0" x2="646.0" y2="210.0" stroke="#999" stroke-width="1"/><line x1="62.0" y1="210.0" x2="646.0" y2="210.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="214.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">0</text><line x1="62.0" y1="183.7" x2="646.0" y2="183.7" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="187.7" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">6</text><line x1="62.0" y1="157.3" x2="646.0" y2="157.3" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="161.3" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">12</text><line x1="62.0" y1="131.0" x2="646.0" y2="131.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="135.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">18</text><line x1="62.0" y1="104.7" x2="646.0" y2="104.7" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="108.7" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">24</text><line x1="62.0" y1="78.3" x2="646.0" y2="78.3" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="82.3" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">30</text><line x1="62.0" y1="52.0" x2="646.0" y2="52.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="56.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">36</text><text x="54.0" y="42.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">百万 TEU</text><rect x="91.2" y="61.7" width="58.4" height="148.3" fill="#0d3b66" opacity="1.0"/><text x="120.4" y="54.7" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11" fill="#0d3b66" text-anchor="middle" font-weight="700">33.8</text><text x="120.4" y="227.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="600">全球船队</text><text x="120.4" y="240.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="400">运力</text><rect x="208.0" y="152.5" width="58.4" height="57.5" fill="#a8791a" opacity="1.0"/><text x="237.2" y="145.5" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11" fill="#a8791a" text-anchor="middle" font-weight="700">13.1</text><text x="237.2" y="227.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="600">在手订单</text><text x="237.2" y="240.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="400">运力</text><rect x="324.8" y="201.2" width="58.4" height="8.8" fill="#8a8b8f" opacity="1.0"/><text x="354.0" y="194.2" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11" fill="#8a8b8f" text-anchor="middle" font-weight="700">2.0</text><text x="354.0" y="227.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="600">红海绕行</text><text x="354.0" y="240.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="400">吸收</text><rect x="441.6" y="210.0" width="58.4" height="0.0" fill="#b07a7a" opacity="1.0"/><text x="470.8" y="203.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11" fill="#b07a7a" text-anchor="middle" font-weight="700">2.2</text><text x="470.8" y="227.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="600">苏伊士复航</text><text x="470.8" y="240.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="400">或释放</text><rect x="558.4" y="200.4" width="58.4" height="9.6" fill="#a08ab0" opacity="1.0"/><text x="587.6" y="193.4" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11" fill="#a08ab0" text-anchor="middle" font-weight="700">1.7</text><text x="587.6" y="227.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="600">港口延误</text><text x="587.6" y="240.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="400">占用</text><text x="354.0" y="38.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11" fill="#a8791a" text-anchor="middle" font-weight="700">在手订单＝全球船队的 38.8%</text></svg></div>
+  <div class="note">港口延误一项按全球深海运力的 5.0% 列示（约 170 万 TEU），
+  历史基线（2011—2019 年）约为 2.2%，超出基线部分约 100 万 TEU 属于临时性缓冲。
+  〔事〕Sea-Intelligence 2026 年 8 月数据</div>
+
+  <div class="grid-2">
+    <div class="card"><h4>订单结构：大船过剩集中于主干航线</h4>
+      <p>订单中 55.2% 为 10,000 TEU 及以上船舶，2026 年 3 月口径下 12,000 TEU 以上占订单 TEU 的 65%。
+      这类船舶主要投放于亚欧与跨太平洋——恰好是中远海控的核心战场。
+      新船入役后将置换出的中小型船舶推向区域市场，形成二次供给压力。〔事〕〔判〕</p></div>
+    <div class="card"><h4>苏伊士复航：最大的不确定性</h4>
+      <p>红海绕行自 2023 年起每年额外吸收超过 200 万 TEU 运力。一旦主要航线回归苏伊士，
+           Sea-Intelligence 估算将释放约 210 万 TEU 名义运力（约全球船队 6.5%），
+           MPC 按 TEU-英里口径估算可达约 12%。马士基管理层表示约三分之一的正常经运河流向已恢复，
+           且年内多家班轮公司已重建部分红海航线。〔事〕〔共〕</p></div>
+  </div>
+
+  <h4 style="font-size:14px;color:var(--navy);margin:18px 0 8px">名义运力 → 有效运力：被摩擦吃掉的缓冲</h4>
+  <table class="alt"><thead><tr><th>环节</th><th>对有效运力的影响</th><th>性质</th></tr></thead><tbody><tr><td>名义船队增长（2026 年）</td><td>+4.2%</td><td>不可逆</td></tr><tr><td>红海绕行吸收</td><td>−2 百万 TEU/年（等效运力收缩）</td><td>可逆</td></tr><tr><td>港口延误占用</td><td>−约 5% 全球运力（超出基线约 1.7 个百分点）</td><td>可逆</td></tr><tr><td>空班 / 跳港（季节性）</td><td>阶段性收缩有效舱位</td><td>可逆</td></tr><tr><td>老旧船舶拆解</td><td>温和抵消新增</td><td>结构性</td></tr><tr><td>净效应</td><td>名义宽松、有效偏紧</td><td>脆弱平衡</td></tr></tbody><tr><td colspan="3" style="text-align:left;color:#8a8b8f;font-size:11.5px">〔事〕Alphaliner / BIMCO / Sea-Intelligence；〔判〕净效应为本报告归纳</td></tr></table>
+
+  <h4 style="font-size:14px;color:var(--navy);margin:18px 0 8px">苏伊士通航恢复：分档而非二元</h4>
+  <p>红海绕行自 2023 年起每年额外吸收超过 200 万 TEU 运力。市场常以"复航／不复航"二元框架讨论，
+  但现实是渐进的：马士基管理层表示约三分之一的正常经运河流向已恢复。更合理的框架是按恢复比例分档评估有效运力释放：</p>
+  <table class="alt"><thead><tr><th>苏伊士恢复比例</th><th>等效释放全球运力</th><th>对本报告情景的含义</th></tr></thead><tbody><tr><td>0%（维持绕行）</td><td>0</td><td>基准情景偏乐观，有效运力最紧</td></tr><tr><td>25%</td><td>约 1.6% 全球运力</td><td>边际宽松</td></tr><tr><td>50%</td><td>约 3.2% 全球运力</td><td>接近悲观情景触发线</td></tr><tr><td>75%</td><td>约 4.9% 全球运力</td><td>悲观情景权重上升</td></tr><tr><td>100%（完全复航）</td><td>约 6.5% 全球运力（TEU-英里口径约 12%）</td><td>显著压低运价中枢</td></tr></tbody><tr><td colspan="3" style="text-align:left;color:#8a8b8f;font-size:11.5px">〔事〕Sea-Intelligence / MPC 估算 100% 复航释放约 210 万 TEU 名义运力（全球船队 6.5%，TEU-英里口径约 12%）；〔判〕分档为本报告设定</td></tr></table>
+
+  <p>综合以上，行业目前处在一种<b>"名义运力过剩、有效运力偏紧"的脆弱平衡</b>之中。
+  支撑当前运价的三股力量——红海绕行、港口拥堵、临时空班——全部属于可逆变量，
+  而新增运力是不可逆的。这个组合决定了 2027—2029 年运价中枢的方向性压力。</p>
+</div></section>
+<section id="s6"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">06</span><h2>估值</h2></div>
+
+  <p><b>7.25× 的 TTM 市盈率不等同于便宜</b>。周期股的经验规律是低市盈率出现在盈利高点、
+  高市盈率（乃至亏损）出现在盈利低点。若以 FY2026E 的盈利测算，现价对应约
+  6.9× P/E——同样处在偏低区间，但反映的是市场对"盈利可持续性"的折价，
+  而非对公司价值的低估。</p>
+
+  <h3>6.1 同业对标</h3>
+  <div class="fig-title" style="font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin:14px 0 6px">图 11　全球主要集运班轮估值对比　〔事〕公开市场估值；倍数取同一时点可得口径，仅供参考</div>
+  <div class="chart-box"><svg viewBox="0 0 680 258" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif"><line x1="62.0" y1="212.0" x2="646.0" y2="212.0" stroke="#999" stroke-width="1"/><line x1="62.0" y1="212.0" x2="646.0" y2="212.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="216.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">0</text><line x1="62.0" y1="180.4" x2="646.0" y2="180.4" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="184.4" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">2</text><line x1="62.0" y1="148.8" x2="646.0" y2="148.8" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="152.8" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">4</text><line x1="62.0" y1="117.2" x2="646.0" y2="117.2" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="121.2" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">6</text><line x1="62.0" y1="85.6" x2="646.0" y2="85.6" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="89.6" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">8</text><line x1="62.0" y1="54.0" x2="646.0" y2="54.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="54.0" y="58.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">10</text><text x="54.0" y="44.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">倍数（×）</text><rect x="86.3" y="97.5" width="23.4" height="114.5" fill="#0d3b66" opacity="1.0"/><text x="98.0" y="91.5" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#0d3b66" text-anchor="middle" font-weight="700">7.2</text><rect x="111.7" y="197.5" width="23.4" height="14.5" fill="#a8791a" opacity="1.0"/><text x="123.3" y="191.5" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#a8791a" text-anchor="middle" font-weight="700">0.92</text><text x="110.7" y="229.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="700">中远海控</text><text x="110.7" y="243.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">股息 7.0%</text><rect x="183.6" y="115.6" width="23.4" height="96.4" fill="#c3d3e0" opacity="1.0"/><text x="195.3" y="109.6" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#c3d3e0" text-anchor="middle" font-weight="600">6.1</text><rect x="209.0" y="199.7" width="23.4" height="12.3" fill="#d8c9a8" opacity="1.0"/><text x="220.7" y="193.7" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#d8c9a8" text-anchor="middle" font-weight="600">0.78</text><text x="208.0" y="229.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="400">东方海外</text><text x="208.0" y="243.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">股息 7.9%</text><rect x="281.0" y="63.5" width="23.4" height="148.5" fill="#c3d3e0" opacity="1.0"/><text x="292.7" y="57.5" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#c3d3e0" text-anchor="middle" font-weight="600">9.4</text><rect x="306.3" y="201.7" width="23.4" height="10.3" fill="#d8c9a8" opacity="1.0"/><text x="318.0" y="195.7" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#d8c9a8" text-anchor="middle" font-weight="600">0.65</text><text x="305.3" y="229.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="400">马士基</text><text x="305.3" y="243.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">股息 4.1%</text><rect x="378.3" y="82.4" width="23.4" height="129.6" fill="#c3d3e0" opacity="1.0"/><text x="390.0" y="76.4" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#c3d3e0" text-anchor="middle" font-weight="600">8.2</text><rect x="403.7" y="198.1" width="23.4" height="13.9" fill="#d8c9a8" opacity="1.0"/><text x="415.3" y="192.1" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#d8c9a8" text-anchor="middle" font-weight="600">0.88</text><text x="402.7" y="229.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="400">赫伯罗特</text><text x="402.7" y="243.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">股息 5.3%</text><rect x="475.6" y="104.6" width="23.4" height="107.4" fill="#c3d3e0" opacity="1.0"/><text x="487.3" y="98.6" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#c3d3e0" text-anchor="middle" font-weight="600">6.8</text><rect x="501.0" y="195.4" width="23.4" height="16.6" fill="#d8c9a8" opacity="1.0"/><text x="512.7" y="189.4" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#d8c9a8" text-anchor="middle" font-weight="600">1.05</text><text x="500.0" y="229.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="400">长荣海运</text><text x="500.0" y="243.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">股息 8.4%</text><rect x="573.0" y="99.8" width="23.4" height="112.2" fill="#c3d3e0" opacity="1.0"/><text x="584.7" y="93.8" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#c3d3e0" text-anchor="middle" font-weight="600">7.1</text><rect x="598.3" y="199.0" width="23.4" height="13.0" fill="#d8c9a8" opacity="1.0"/><text x="610.0" y="193.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#d8c9a8" text-anchor="middle" font-weight="600">0.82</text><text x="597.3" y="229.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#1c1c1c" text-anchor="middle" font-weight="400">阳明海运</text><text x="597.3" y="243.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">股息 7.2%</text><rect x="66.0" y="22.0" width="14.0" height="3.0" fill="#0d3b66" opacity="1.0"/><text x="84.0" y="27.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="start" font-weight="400">P/E (TTM)</text><rect x="182.0" y="22.0" width="14.0" height="3.0" fill="#a8791a" opacity="1.0"/><text x="200.0" y="27.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10.5" fill="#1c1c1c" text-anchor="start" font-weight="400">P/B</text><text x="646.0" y="27.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">深蓝／金＝中远海控</text></svg></div>
+  <div class="note">同业取数存在会计准则差异（IFRS 与 US GAAP）与结算时点差异，倍数仅作横向参照，不作为精确比较。
+  中远海控的 P/B 0.92× 与 6.96% 股息率在同业中处于中位偏优水平。〔判〕</div>
+
+  <h3>6.2 四种估值表达（同源）</h3>
+  <p>与我们对科技龙头的处理一致，四种方法均基于<b>同一套 FY2026E 盈利与资产假设</b>，
+  差异仅来自倍数与折现口径的选择，因此彼此之间是<b>相互印证</b>而非独立的交叉验证。
+  这也是为什么所得区间的收窄不能被解读为估值置信度的提升。</p>
+
+  <table class="alt"><thead><tr><th>估值方法</th><th>计算式</th><th>隐含价值（HK$）</th></tr></thead><tbody><tr><td>穿越周期 P/E</td><td>2.35 港元 × 7.0×</td><td>16.46</td></tr><tr><td>P/B–ROE（正常化）</td><td>每股净资产 18.22 港元 × 0.91×</td><td>16.58</td></tr><tr><td>股息率法</td><td>FY2026E DPS 1.176 港元 ÷ 6.9%</td><td>17.04</td></tr><tr><td>剔净现金核心 P/E</td><td>核心 5.6× + 折算净现金 HK$1.99</td><td>15.15</td></tr><tr><td>区间中值</td><td>四法算术平均</td><td>16.31</td></tr><tr><td>现价</td><td>2026-09-07 收盘</td><td>16.27</td></tr></tbody><tr><td colspan="3" style="text-align:left;color:#8a8b8f;font-size:11.5px">〔模〕四法区间 HK$15.15 — 17.04，中值 HK$16.31。P/B–ROE 法采用穿越周期的正常化 ROE（约 10%）而非 FY2025 的 13.17%；剔净现金核心 P/E 采用 §3.4 基准档折算后的每股超额现金 HK$1.99。</td></tr></table>
+
+  <h4 style="font-size:14px;color:var(--navy);margin:18px 0 8px">正常化 ROE 与 P/B 的对应关系</h4>
+  <p>P/B–ROE 法的倍数并非固定，而是随正常化 ROE 线性对应。穿越周期视角下，不同 ROE 水平对应的合理 P/B 如下：</p>
+  <table class="alt"><thead><tr><th>正常化 ROE</th><th>合理 P/B（穿越周期）</th><th>对应逻辑</th></tr></thead><tbody><tr><td>8%</td><td>0.7×</td><td>低景气常态，折价</td></tr><tr><td>10%</td><td>0.9×</td><td>本报告基准（接近当前 0.92×）</td></tr><tr><td>12%</td><td>1.1×</td><td>景气修复</td></tr><tr><td>15%</td><td>1.3×</td><td>高景气</td></tr></tbody><tr><td colspan="3" style="text-align:left;color:#8a8b8f;font-size:11.5px">〔模〕本报告基于集运周期属性设定，P/B ≈ ROE / 要求回报率（约 11%—12%）的近似映射；当前 0.92× 隐含正常化 ROE 约 10%—11%。</td></tr></table>
+
+  <h3>6.3 情景与概率加权目标价</h3>
+  <div class="fig-title" style="font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin:14px 0 6px">图 12　情景目标价与概率分布　〔模〕本报告情景与倍数假设</div>
+  <div class="chart-box"><svg viewBox="0 0 680 232" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif"><rect x="118.0" y="26.0" width="412.0" height="168.0" fill="#fafaf7" opacity="1" stroke="#dddddb"/><line x1="118.0" y1="26.0" x2="118.0" y2="194.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="118.0" y="210.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">0</text><line x1="186.7" y1="26.0" x2="186.7" y2="194.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="186.7" y="210.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">4</text><line x1="255.3" y1="26.0" x2="255.3" y2="194.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="255.3" y="210.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">8</text><line x1="324.0" y1="26.0" x2="324.0" y2="194.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="324.0" y="210.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">12</text><line x1="392.7" y1="26.0" x2="392.7" y2="194.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="392.7" y="210.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">16</text><line x1="461.3" y1="26.0" x2="461.3" y2="194.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="461.3" y="210.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">20</text><line x1="530.0" y1="26.0" x2="530.0" y2="194.0" stroke="#dddddb" stroke-width="1" stroke-dasharray="3,3"/><text x="530.0" y="210.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="9.5" fill="#8a8b8f" text-anchor="middle" font-weight="400">24</text><text x="108.0" y="44.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.5" fill="#1c1c1c" text-anchor="end" font-weight="600">悲观情景</text><circle cx="349.8" cy="40.0" r="6" fill="#8a1f1f"/><text x="540.0" y="44.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11.5" fill="#8a1f1f" text-anchor="start" font-weight="700">HK$13.5</text><text x="339.8" y="44.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">25%</text><text x="108.0" y="84.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.5" fill="#1c1c1c" text-anchor="end" font-weight="600">基准情景</text><circle cx="401.2" cy="80.0" r="6" fill="#0d3b66"/><text x="540.0" y="84.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11.5" fill="#0d3b66" text-anchor="start" font-weight="700">HK$16.5</text><text x="391.2" y="84.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">45%</text><text x="108.0" y="124.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.5" fill="#1c1c1c" text-anchor="end" font-weight="600">乐观情景</text><circle cx="461.3" cy="120.0" r="6" fill="#1c7a4d"/><text x="540.0" y="124.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11.5" fill="#1c7a4d" text-anchor="start" font-weight="700">HK$20.0</text><text x="451.3" y="124.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="end" font-weight="400">30%</text><text x="108.0" y="164.0" font-family="'IBM Plex Sans','Noto Sans SC',sans-serif" font-size="11.5" fill="#1c1c1c" text-anchor="end" font-weight="600">概率加权</text><circle cx="406.4" cy="160.0" r="6" fill="#a8791a"/><text x="540.0" y="164.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="11.5" fill="#a8791a" text-anchor="start" font-weight="700">HK$16.8</text><text x="416.4" y="164.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10" fill="#8a8b8f" text-anchor="start" font-weight="400">加权</text><line x1="397.3" y1="26.0" x2="397.3" y2="194.0" stroke="#333" stroke-width="1.6" stroke-dasharray="5,4"/><text x="397.3" y="18.0" font-family="'IBM Plex Mono','Consolas',monospace" font-size="10.5" fill="#333" text-anchor="middle" font-weight="700">现价 HK$16.27</text></svg></div>
+
+  <div class="scenario-grid">
+    <div class="scenario pess"><div class="stitle">悲观情景</div><div class="starget">HK$13.5</div><div class="prob">概率 25%　|　FY2026E EPS HK$2.14　|　目标 P/E 6.3×</div><p>苏伊士运河通航量进一步恢复，四季度货量季节性回落叠加油价维持高位，FY2026E 归母约 284 亿元。</p></div><div class="scenario base"><div class="stitle">基准情景</div><div class="starget">HK$16.5</div><div class="prob">概率 45%　|　FY2026E EPS HK$2.35　|　目标 P/E 7.0×</div><p>下半年低基数效应兑现，2027 年新船交付压力渐进释放，FY2026E 归母约 312 亿元。</p></div><div class="scenario opt"><div class="stitle">乐观情景</div><div class="starget">HK$20.0</div><div class="prob">概率 30%　|　FY2026E EPS HK$2.55　|　目标 P/E 7.8×</div><p>红海绕行长期化叠加老船拆解加速，新兴市场货量超预期，FY2026E 归母约 339 亿元。</p></div>
+  </div>
+
+  <p>概率加权后目标价 <b>HK$16.8</b>，相对现价 HK$16.27 的资本利得为 +3.3%。
+  叠加基准情景下 7.2% 的 FY2026E 股息率，12 个月含息总回报约 <b>10.5%</b>。</p>
+
+  <p>同时必须明确风险的不对称：乐观情景相对现价的上行空间为 +22.9%，
+  悲观情景的下行空间为 -17.0%。<b>上下行之比为 1.35 : 1</b>，
+  仅略偏向正面，不足以构成在现价追高的理由。</p>
+</div></section>
+<section id="s7"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">07</span><h2>多空观点</h2></div>
+  <div class="dual-col">
+    <div>
+      <h3>多头论据</h3>
+      <ul class="tight">
+        <li><b>盈利拐点已确认。</b>Q2 2026 单季归母同比 +29.11%、环比 +28.33%，是本轮下行周期首次同比转正；
+          单箱归母（集团口径）在 H2 2025 与 H1 2026 连续两期稳定于 ￥940—942 / TEU，暂时企稳。</li>
+        <li><b>低基数的确定性红利。</b>FY2025 H2 归母仅 ￥133.31 亿元，其中 Q4 仅 ￥37.99 亿元。
+          2026 年 5—8 月 CCFI 同比 +39.27%，下半年业绩同比改善的确定性较高。</li>
+        <li><b>现金回报托底。</b>FY2026E 股息率约 7.2%，
+          分红政策的连续性由 2025—2027 年股东分红回报规划锁定（连续四年分红率 &gt;49%）；
+          2026 年 6 月末金融资产净额约 ￥692.71 亿元。</li>
+        <li><b>估值处于历史低位。</b>P/B 0.92× 低于账面净资产，P/E（TTM）7.25×。</li>
+        <li><b>H 股相对便宜。</b>H 股相对 A 股折价 16.2%，且仍在管理层回购上限之内。</li>
+        <li><b>绿色运力与枢纽优势。</b>钱凯港 H1 吞吐量同比 +70.94%，全链供应链收入同比 +11.61%。</li>
+      </ul>
+    </div>
+    <div>
+      <h3>空头论据</h3>
+      <ul class="tight">
+        <li><b>供给闸门已经打开。</b>在手订单占全球船队 38.8%，2026 年运力增长 4.2%
+          高于需求增长的 3%—4%；订单中 55.2% 为大型船舶，集中于亚欧与跨太平洋。</li>
+        <li><b>苏伊士复航的可怕数学。</b>复航可能释放全球船队 6.5%（TEU-英里口径约 12%）的有效运力，
+          而约三分之一的流向已经恢复，方向性趋势明确。</li>
+        <li><b>本轮涨价由需求韧性与供给摩擦共同驱动，但供给摩擦权重更高。</b>台风、港口拥堵、巴拿马限航、节前抢运等供给端摩擦是边际运价的主因；需求端并非坍塌，而是温和增长。</li>
+        <li><b>欧线持续走弱。</b>欧洲线连续 9 周下跌，而亚欧是公司增速最快的核心干线。</li>
+        <li><b>利多已反映。</b>股价自 52 周低点 HK$11.11 已上行 46%；
+          公开可见分析师目标价 HK$16.50 相对现价仅剩 1.4%；汇丰研究 2026-09-03 转为审慎。</li>
+        <li><b>逆势扩表。</b>2026 年签约 48 艘／676,800 TEU 船舶，自由现金流承压，并加剧行业供给。</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+<section id="s8"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">08</span><h2>催化剂日历</h2></div>
+  <table class="alt"><thead><tr><th>时间</th><th>事件</th><th>对本报告判断的意义</th></tr></thead><tbody><tr><td>2026-09-23</td><td>中期股息除权（HK$0.497/股）</td><td>落地确认每股 ￥0.43 的派息，短期不改变结论〔管〕</td></tr><tr><td>2026-10 下旬</td><td>Q3 2026 业绩发布</td><td>低基数下同比大概率显著改善，为主要的上行催化〔事〕</td></tr><tr><td>2026 Q4</td><td>旺季过后的运价走向</td><td>关键的验证点：若 SCFI 维持在 3,000 点以上，基准假设偏保守〔判〕</td></tr><tr><td>2026-10-07 前后</td><td>新一轮回购期限届满</td><td>若实际回购规模低于 0.5 亿股区间下限，反映价格约束〔管〕</td></tr><tr><td>2027 年内</td><td>新船集中交付启动</td><td>供给压力从预期转为现实的分水岭〔判〕</td></tr><tr><td>持续跟踪</td><td>苏伊士运河通航量</td><td>马士基已恢复约 3 分之 1 流向；进一步恢复将触发悲观情景〔判〕</td></tr></tbody></table>
+  <div class="callout"><b>最值得盯的是 Q4 运价，而不是 Q3 业绩。</b>Q3 的亮眼同比几乎是确定的，
+  市场多半也会提前定价；真正区分情景的是 Q4 运价在节后货量回落后能否站住。
+  若 SCFI 在 11 月跌回 2,500 点以下，说明本轮上涨确属摩擦性，悲观情景的权重应上调。〔判〕</div>
+</div></section>
+<section id="s9"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">09</span><h2>风险矩阵</h2></div>
+  <div class="risk-matrix">
+    <div class="risk-item high"><div class="rt"><b>苏伊士运河渐进复航</b><span class="rlevel">概率 中高 · 影响 高</span></div>
+      <p>红海绕行自 2023 年起每年额外吸收超过 200 万 TEU 运力。复航并非二元事件——
+      马士基已恢复约三分之一的正常经运河流向，剩余流向的回归将分档释放约全球船队 6.5%（TEU-英里口径约 12%）的有效运力。
+      每提升一个恢复档位，运价中枢的下移压力便增加一档，方向明确但节奏渐进。</p>
+      <div class="src">〔事〕Sea-Intelligence / MPC / 马士基管理层表述</div></div>
+    <div class="risk-item high"><div class="rt"><b>2027—2029 新船交付潮</b><span class="rlevel">概率 高 · 影响 高</span></div>
+      <p>在手订单 13.1 百万 TEU，占现有船队 38.8%；2026 年运力增长 4.2%
+      超需求增速。这是可预见性最高的风险，差别只在兑现时点。</p>
+      <div class="src">〔事〕Alphaliner / BIMCO / MSI</div></div>
+    <div class="risk-item mid"><div class="rt"><b>油价与汇率</b><span class="rlevel">概率 中 · 影响 中高</span></div>
+      <p>H1 布油现货均价同比 +23.94%、美元兑人民币下行 3.46%，两者合计显著压缩了 margin。
+      油价若维持高位，运价上涨向利润的传导将被削弱。</p>
+      <div class="src">〔事〕券商中报点评</div></div>
+    <div class="risk-item mid"><div class="rt"><b>贸易政策与关税</b><span class="rlevel">概率 中高 · 影响 中高</span></div>
+      <p>主要经济体关税政策加码与地缘博弈升级，可能重塑全球贸易格局，
+      对跨太平洋航线的货量与结构影响最为直接。</p>
+      <div class="src">〔管〕管理层展望　〔判〕影响评估为本报告判断</div></div>
+    <div class="risk-item mid"><div class="rt"><b>欧线与地中海持续走弱</b><span class="rlevel">概率 中高 · 影响 中</span></div>
+      <p>欧洲经济需求偏弱叠加超大型船舶运力投放，涨价难度高于美线。
+      该航线是公司 H1 增速最快的干线，占比较高。</p>
+      <div class="src">〔事〕上海航运交易所</div></div>
+    <div class="risk-item mid"><div class="rt"><b>资本开支侵蚀自由现金流</b><span class="rlevel">概率 高 · 影响 中</span></div>
+      <p>新船订单进入付款周期后，自由现金流对股东回报的覆盖倍数可能下行，
+      进而影响分红与回购的可持续性。</p>
+      <div class="src">〔管〕订单公告　〔模〕覆盖倍数为本报告测算</div></div>
+    <div class="risk-item mid"><div class="rt"><b>航运联盟重组</b><span class="rlevel">概率 中 · 影响 中</span></div>
+      <p>2025 年启用的新联盟格局（Gemini、Premier、Ocean）重塑了主干航线的舱位与挂靠结构，
+      联盟内部的运力调配与航线重组可能在局部航线放大或平抑价格波动，增加运价预测的不确定性。〔判〕</p>
+      <div class="src">〔判〕</div></div>
+    <div class="risk-item mid"><div class="rt"><b>碳合规成本（EU ETS / FuelEU / IMO）</b><span class="rlevel">概率 高 · 影响 中</span></div>
+      <p>欧盟碳排放交易体系（EU ETS）与 FuelEU Maritime 已对进港船舶征收碳成本，
+      IMO 的全球燃料标准与碳定价框架亦在推进。合规成本最终通过附加费转嫁货主，
+      但会抬高单箱成本并改变绿色运力的相对竞争力，对老旧船舶占比高的运营商构成结构性压力。〔判〕</p>
+      <div class="src">〔判〕</div></div>
+    <div class="risk-item low"><div class="rt"><b>数据口径风险</b><span class="rlevel">概率 低 · 影响 中</span></div>
+      <p>本报告 FY2025 资本开支采用 A 股／港股报表差异区间的偏保守口径；
+      2026 年 H1 的详细资产负债表项目尚未逐项披露，部分科目为推算值。</p>
+      <div class="src">〔判〕</div></div>
+    <div class="risk-item low"><div class="rt"><b>估值方法敏感性</b><span class="rlevel">概率 高 · 影响 中</span></div>
+      <p>本报告四种估值方法同源，区间的收敛不代表置信度提升；正常化 ROE 与成本传导系数的选择
+      对结论的影响显著（见 §3.7 敏感性表）。</p>
+      <div class="src">〔模〕</div></div>
+  </div>
+</div></section>
+<section id="s10"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">10</span><h2>评级与操作建议</h2></div>
+
+  <div class="verdict">
+    <h4>蜗牛鸟结论</h4>
+    <p><b>评级：持有（HOLD）　|　12 个月目标价：HK$16.8　|　
+    现价：HK$16.27　|　资本利得：+3.3%　|　含息总回报：约 10.5%</b></p>
+    <p>中远海控是一家治理清晰、财务稳健、愿意回馈股东的龙头班轮公司，
+    当前估值确实不贵。但"运价在涨"这一现象本身不构成买入理由：涨的是美线与近洋，
+    跌的是公司增速最快的亚欧线；推动上涨的是临时性供给摩擦，而非需求扩张。
+    在占全球船队 38.8% 的在手订单与苏伊士复航这两道闸门同时悬于 2027—2029 年的情况下，
+    现价 HK$16.27 距离公开可见分析师目标已无空间，风险回报比仅 1.35 : 1。</p>
+    <p><b>操作框架：</b>持有者可继续持有并收取 7.2% 的股息；
+    空仓者<b>不建议在现价追入</b>，宜等待股价回落至 <b>HK$13.5—14.5</b>
+    （对应 FY2026E 约 6.3× P/E、约 7.5% 股息率）或 Q4 运价验证后的更明确信号。
+    优先选择 H 股：相对 A 股折价 16.2%，且仍在管理层
+    15.40 元的回购授权区间之内。</p>
+    <p><b>会让我们改变看法的是：</b>其一，Q4 运价在节后仍站稳 SCFI 3,000 点以上，
+    说明需求而非摩擦在驱动；其二，苏伊士复航显著推迟或新船拆解规模超预期；
+    其三，公司宣布提高分红比例或扩大回购规模。</p>
+  </div>
+
+  <p>最后提示一个统计陷阱：2026 年下半年利润的同比高增长，很大程度上源自 2025 年下半年的极低基数。
+  如果仅以"同比大幅改善"作为买入依据，等于把一次基数效应误读为景气反转。
+  更具信息量的是 Q4 单季的绝对盈利水平与届时 SCFI 的绝对点位。〔判〕</p>
+</div></section><footer><div class="wrap">
+  <div class="foot-grid">
+    <div>
+      <h5>出版人</h5>
+      <p>Snail-Bird Investment<br>
+      本报告基于公开资料整理与分析，仅供研究参考，
+      不构成对任何证券的买卖要约或投资建议。</p>
+    </div>
+    <div>
+      <h5>标的</h5>
+      <p>中远海运控股股份有限公司<br>COSCO SHIPPING Holdings<br>
+      01919.HK ／ 601919.SH<br>
+      交通运输 — 集装箱航运与港口运营</p>
+    </div>
+    <div>
+      <h5>数据标注体系</h5>
+      <p>〔事〕事实　〔管〕管理层指引<br>
+      〔模〕本报告测算　〔判〕本报告判断<br>
+      〔共〕市场共识</p>
+    </div>
+  </div>
+  <div class="src-list" style="margin-top:26px">
+    <h5 style="color:var(--navy);font-family:var(--mono);font-size:12px;margin:0 0 10px">来源清单</h5>
+    <ul>
+      <li>中远海控 2026 年半年度报告及业绩公告（上交所／港交所，2026-08-28）〔事〕</li>
+      <li>中远海控 2025 年年度报告（2026-03-19）及 2025-2027 年股东分红回报规划〔事〕〔管〕</li>
+      <li>中远海控关于订造 18 艘集装箱船的公告（2026-08-28）〔事〕</li>
+      <li>上海航运交易所 SCFI／CCFI／SCFIS 指数（截至 2026-09-07）〔事〕</li>
+      <li>Alphaliner、BIMCO、Maritime Strategies International、Sea-Intelligence 运力与订单统计〔事〕</li>
+      <li>马士基管理层关于苏伊士航线恢复进展的公开表述〔管〕</li>
+      <li>券商交通运输行业周报与中远海控 2026 中报点评（2026-08 至 2026-09）〔共〕</li>
+      <li>汇丰研究全球集装箱航运股研报观点摘要（2026-09-03）〔共〕</li>
+      <li>腾讯财经、富途证券、雅虎财经行情数据（2026-09-07 收盘）〔事〕</li>
+    </ul>
+  </div>
+  <div class="disclaimer">
+    编制说明：本报告所有财务数据除特别注明外均以人民币列示，2026 年半年度报告未经审计；
+    涉及港股的部分已按 1 元人民币＝1.150 港元折算。FY2026E 及以后年度数据为本报告基于情景假设的测算，
+    不代表公司的盈利预测或承诺。投资者应以公司正式公告为准。<br>
+    本报告由 Snail-Bird Investment 编制，基于对上述公开资料的整理与分析，
+    不构成对任何证券的买卖要约，也不构成针对个人的投资建议。
+    证券价格可能波动，历史表现不预示未来结果。读者据此操作，风险自担。
+  </div>
+</div></footer>
+</body></html>
