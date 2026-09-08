@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美国铝业 (AA) 深度投研报告 · 2026年9月版 — Snail-bird Investment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1d29; --paper:#faf7f0; --paper2:#f2ede1; --line:#e2dccb;
+    --masthead:#12151f; --masthead2:#1c2032;
+    --gold:#b8873a; --gold-d:#8a6428;
+    --red:#a13a2f; --red-bg:#fbeeeb;
+    --green:#2f6b4f; --green-bg:#ecf5ef;
+    --amber:#a3721c; --amber-bg:#fbf1de;
+    --blue:#2b4e7a; --blue-bg:#eaf1f8;
+    --muted:#6b6558;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'IBM Plex Sans SC','IBM Plex Sans',sans-serif; line-height:1.65; font-size:15.5px;}
+  h1,h2,h3,h4{font-family:'IBM Plex Sans SC','IBM Plex Sans',sans-serif; font-weight:700; letter-spacing:.2px;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:var(--gold-d);}
+  .masthead{background:linear-gradient(135deg,var(--masthead),var(--masthead2)); color:#eee7d6; padding:14px 6vw;}
+  .masthead-top{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;}
+  .brand{display:flex; align-items:center; gap:10px; font-size:20px; font-weight:700; color:#f3ead2;}
+  .brand .bird{font-size:22px;}
+  .brand small{display:block; font-weight:400; font-size:11px; color:#a9a08a; letter-spacing:.5px;}
+  nav{display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px;}
+  nav a{color:#cfc6ab; text-decoration:none; border-bottom:1px solid transparent; padding-bottom:2px;}
+  nav a:hover{border-color:var(--gold); color:#f3ead2;}
+  .sticky{position:sticky; top:0; z-index:50; box-shadow:0 2px 10px rgba(0,0,0,.25);}
+  .hero{background:linear-gradient(180deg,#1c2032,#232841); color:#eee7d6; padding:38px 6vw 30px;}
+  .kicker{font-size:12.5px; letter-spacing:1.5px; color:var(--gold); text-transform:uppercase; margin-bottom:10px; font-weight:600;}
+  .hero h1{font-size:28px; margin:0 0 14px; color:#f6efdc; max-width:920px;}
+  .hero p.lead{max-width:900px; color:#cfc6ab; font-size:15px;}
+  .tags{display:flex; gap:8px; flex-wrap:wrap; margin:16px 0;}
+  .tag{background:rgba(184,135,58,.18); border:1px solid rgba(184,135,58,.5); color:#e8d4a8; padding:4px 11px; border-radius:20px; font-size:12px;}
+  .meta-line{font-size:12px; color:#95907c; margin-top:14px;}
+  .rating-row{display:flex; gap:16px; flex-wrap:wrap; margin-top:22px;}
+  .rating-card{background:#f6f1e4; color:var(--ink); border-radius:10px; padding:16px 20px; flex:1; min-width:230px; border:1px solid var(--line);}
+  .rating-card .r-label{font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--muted);}
+  .rating-badge{display:inline-block; background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber); font-weight:700; padding:5px 14px; border-radius:6px; font-size:16px; margin-top:4px;}
+  .rating-card .r-value{font-size:22px; font-weight:700; margin-top:4px;}
+  .rating-card .r-sub{font-size:12px; color:var(--muted); margin-top:2px;}
+  .section{padding:34px 6vw; max-width:1180px; margin:0 auto;}
+  .section h2{font-size:22px; border-bottom:3px solid var(--gold); display:inline-block; padding-bottom:6px; margin-bottom:18px;}
+  .section h3{font-size:17px; color:var(--gold-d); margin-top:28px;}
+  .kpi-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr)); gap:10px; margin:18px 0;}
+  .kpi{background:#fff; border:1px solid var(--line); border-radius:8px; padding:11px 13px;}
+  .kpi .k-label{font-size:11.5px; color:var(--muted);}
+  .kpi .k-value{font-size:19px; font-weight:700; margin-top:3px; font-family:'IBM Plex Mono',monospace;}
+  .kpi .k-sub{font-size:11px; color:var(--muted); margin-top:2px;}
+  .kpi.warn{border-color:var(--red); background:var(--red-bg);}
+  .kpi.warn .k-value{color:var(--red);}
+  .kpi.good{border-color:var(--green); background:var(--green-bg);}
+  .kpi.good .k-value{color:var(--green);}
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.8px; background:#fff;}
+  th,td{border:1px solid var(--line); padding:7px 9px; text-align:left;}
+  th{background:var(--paper2); font-weight:600; font-size:12.8px;}
+  td.num{font-family:'IBM Plex Mono',monospace; text-align:right;}
+  tr:nth-child(even) td{background:#fdfcf8;}
+  .note-box{background:var(--blue-bg); border-left:4px solid var(--blue); padding:12px 16px; border-radius:4px; margin:16px 0; font-size:14px;}
+  .warn-box{background:var(--red-bg); border-left:4px solid var(--red); padding:12px 16px; border-radius:4px; margin:16px 0; font-size:14px;}
+  .good-box{background:var(--green-bg); border-left:4px solid var(--green); padding:12px 16px; border-radius:4px; margin:16px 0; font-size:14px;}
+  .gold-box{background:var(--amber-bg); border-left:4px solid var(--amber); padding:12px 16px; border-radius:4px; margin:16px 0; font-size:14px;}
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media(max-width:760px){.two-col{grid-template-columns:1fr;} .hero h1{font-size:22px;}}
+  .pill{display:inline-block; padding:2px 9px; border-radius:12px; font-size:11.5px; font-weight:600;}
+  .pill.hold{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber);}
+  .pill.buy{background:var(--green-bg); color:var(--green); border:1px solid var(--green);}
+  .pill.sell{background:var(--red-bg); color:var(--red); border:1px solid var(--red);}
+  footer{background:var(--masthead); color:#8f8975; padding:28px 6vw; font-size:12px; line-height:1.8;}
+  footer a{color:#c9b98a;}
+  .scenario-card{border:1px solid var(--line); border-radius:8px; padding:16px; background:#fff;}
+  .scenario-card h4{margin:0 0 8px;}
+  .bull{border-top:4px solid var(--green);}
+  .bear{border-top:4px solid var(--red);}
+  .base{border-top:4px solid var(--gold);}
+  ul{padding-left:20px;} li{margin-bottom:4px;}
+  .cite{font-size:11.5px; color:var(--muted);}
+  .divider{height:1px; background:var(--line); margin:28px 0;}
+  .qbox{border:1px solid var(--line); border-radius:8px; padding:14px 16px; margin-bottom:10px; background:#fff;}
+  .qbox b{color:var(--gold-d);}
+</style>
+</head>
+<body>
+
+<div class="masthead sticky">
+  <div class="masthead-top">
+    <div class="brand">🐦 <div>Snail-bird Investment<small>蜗牛鸟投资 · 大宗商品与工业金属研究组</small></div></div>
+    <nav>
+      <a href="#recap">复盘</a>
+      <a href="#thesis">核心论点</a>
+      <a href="#company">公司概况</a>
+      <a href="#industry">铝业周期</a>
+      <a href="#financials">财务分析</a>
+      <a href="#guidance">管理层指引</a>
+      <a href="#deal">South32并购</a>
+      <a href="#valuation">估值分析</a>
+      <a href="#risk">风险管理</a>
+      <a href="#rating">操作建议</a>
+    </nav>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="kicker">Snail-bird Investment — Equity Research · 深度投研报告 · 更新版</div>
+  <h1>美国铝业：估值已修复至中周期区间，South32并购是决定下一步方向的核心变量</h1>
+  <p class="lead">继本组2026年6月21日《美国铝业深度投研报告》发布以来，AA股价已由$59.37回落至约$50（-15.8%）。驱动因素并非铝价崩跌——LME铝价在此期间大体维持在$3,200-3,360区间，本组此前设想的"深度回调"情形并未出现——而主要是6月30日公告的South32铝业资产收购交易引发的估值重估：前置对价约41亿美元（现金31亿+股票约10亿），另有最高7.5亿美元或有对价（CVR），公司披露的隐含企业价值约47亿美元；交易公告当日股价单日下跌9%。与此同时，Q2财报显示氧化铝产量指引因Pinjarra精炼厂运营中断而下调，但铝业务盈利能力创纪录、自由现金流大幅转正。当前估值（TTM P/E 10.4x、EV/EBITDA约6.4x）已较6月的15.2x/9.1x显著回落，三法估值模型显示股价已基本回归中周期公允区间（约$51/股）。</p>
+  <div class="tags">
+    <span class="tag">大宗商品周期股</span>
+    <span class="tag">并购整合期</span>
+    <span class="tag">估值已回归中枢</span>
+    <span class="tag">上游资源 · 一体化平台</span>
+  </div>
+  <div class="meta-line">基于 Alcoa Q1/Q2 2026 财报、10-Q、South32交易8-K/Form 425文件、IAI/SMM/AlCircle行业数据 | 数据基准日：2026年9月8日 | 上一版报告：2026年6月21日</div>
+
+  <div class="rating-row">
+    <div class="rating-card">
+      <div class="r-label">评级</div>
+      <div class="rating-badge">HOLD 持有</div>
+      <div class="r-sub">6月评级：HOLD（维持不变）</div>
+    </div>
+    <div class="rating-card">
+      <div class="r-label">当前股价（2026/9/4收盘）</div>
+      <div class="r-value">$49.97</div>
+      <div class="r-sub">较6/21报告日 $59.37 累计下跌 -15.8%</div>
+    </div>
+    <div class="rating-card">
+      <div class="r-label">12个月目标价</div>
+      <div class="r-value">$56.00</div>
+      <div class="r-sub">较当前价 +12.1%；较6月版目标价 $65.00 下调</div>
+    </div>
+    <div class="rating-card">
+      <div class="r-label">分析师一致目标（参考）</div>
+      <div class="r-value">$62.98</div>
+      <div class="r-sub">13家机构 · Buy · 近期多家（JPMorgan、BMO、Argus）下调目标价</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ RECAP ============ -->
+<div class="section" id="recap">
+  <h2>0 复盘：6月判断与市场实际演变的对照</h2>
+  <table>
+    <tr><th>6月21日报告的核心判断</th><th>实际演变（截至2026年9月8日）</th><th>对照结论</th></tr>
+    <tr>
+      <td>当前价格已充分反映铝价强势，上行空间有限，下行风险不对称——评级HOLD，目标$65（+9.5%）</td>
+      <td>股价从$59.37回落至约$50，累计下跌-15.8%，一度跌至$47.41（South32交易公告日）；52周高点$84.38至今回撤约-41%</td>
+      <td><span class="pill hold">方向一致</span></td>
+    </tr>
+    <tr>
+      <td>Q2财报（7/16）是关键压力测试——若FCF仍为负，是强烈卖出信号</td>
+      <td>Q2 FCF转正至+$4.22亿（经营现金流+$6.08亿，资本开支$1.86亿），较Q1明显改善</td>
+      <td><span class="pill sell">该假设情形未触发</span></td>
+    </tr>
+    <tr>
+      <td>若铝价均值回归至$3,000以下，目标价应下调至$35-40（空头情景$28，概率20%）</td>
+      <td>LME铝价并未大幅下跌，期间在$3,200-3,360区间波动，9月初约$3,290-3,300</td>
+      <td><span class="pill buy">情景未触发</span></td>
+    </tr>
+    <tr>
+      <td>Altman Z-Score 1.76需要密切监测</td>
+      <td>最新约1.75，基本持平；但同期股东权益由$6.12B增至$7.37B，净债务/权益降至约0.30x，资产负债表实质在改善</td>
+      <td><span class="pill hold">指标未变，但基本面证据更全面</span></td>
+    </tr>
+    <tr>
+      <td>（未覆盖）</td>
+      <td>6月30日公告South32资产收购，成为影响未来12-24个月资本结构与估值的最主要变量</td>
+      <td>本次更新重点补充，见第6章</td>
+    </tr>
+  </table>
+  <div class="note-box">
+    股价回调的驱动路径与6月报告设想的"铝价掉头向下"情形并不一致——铝价本身保持了相当的韧性，回调更多是<b>并购公告触发的估值重估</b>：市场对South32交易的融资结构、约6%的股权稀释与整合执行风险重新定价，叠加氧化铝板块运营中断，共同压低了估值倍数，而非经营基本面恶化。
+  </div>
+</div>
+
+<!-- ============ THESIS ============ -->
+<div class="section" id="thesis">
+  <h2>1 执行摘要与投资论点</h2>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="k-label">当前股价</div><div class="k-value">$49.97</div><div class="k-sub">2026/9/4收盘</div></div>
+    <div class="kpi"><div class="k-label">TTM P/E</div><div class="k-value">10.36x</div><div class="k-sub">前次 15.16x</div></div>
+    <div class="kpi"><div class="k-label">Forward P/E</div><div class="k-value">8.55x</div><div class="k-sub">前次 6.97x</div></div>
+    <div class="kpi"><div class="k-label">EV/EBITDA (TTM)</div><div class="k-value">~6.4x</div><div class="k-sub">前次 9.07x；口径见4.4节</div></div>
+    <div class="kpi"><div class="k-label">P/B</div><div class="k-value">~1.79x</div><div class="k-sub">BVPS $27.93（2026/6/30）</div></div>
+    <div class="kpi good"><div class="k-label">Q2自由现金流</div><div class="k-value">+$422M</div><div class="k-sub">CFO−Capex口径，见4.2节</div></div>
+    <div class="kpi"><div class="k-label">股息率</div><div class="k-value">0.80%</div><div class="k-sub">$0.40/股/年</div></div>
+    <div class="kpi warn"><div class="k-label">Altman Z-Score</div><div class="k-value">~1.75</div><div class="k-sub">仍低于1.81阈值</div></div>
+    <div class="kpi good"><div class="k-label">H1 2026 ROE</div><div class="k-value">26.4%</div><div class="k-sub">2022年以来最高</div></div>
+    <div class="kpi"><div class="k-label">52周区间</div><div class="k-value">$30.6–$84.4</div><div class="k-sub">Beta 1.63</div></div>
+    <div class="kpi warn"><div class="k-label">South32前置对价</div><div class="k-value">~$4.1B</div><div class="k-sub">另有最高$0.75B CVR，见第6章</div></div>
+    <div class="kpi"><div class="k-label">下次财报</div><div class="k-value">10/21/26</div><div class="k-sub">Q3 2026</div></div>
+  </div>
+
+  <h3>核心投资论点</h3>
+  <p>美国铝业当前呈现"周期盈利＋大型并购整合"的双变量特征。铝业务基本面持续强劲：Q2铝业务分部调整后EBITDA达创纪录的约$1.1B，分部利润率32.3%；管理层在多座冶炼厂实现产量创纪录、劳资协议顺利续签至2030年、San Ciprián冶炼厂重启完成。与此同时，氧化铝板块因Pinjarra精炼厂运营中断（草酸盐积累及气旋"Narelle"），2026年产量指引下调20-30万吨。真正主导近期市场情绪的是South32资产收购——前置对价约$4.1B（现金$3.1B以过桥贷款融资＋约1,700万股新股，约6%稀释），另有最高$0.75B或有对价（CVR），公司披露的隐含企业价值约$4.7B；市场首日反应负面（股价-9%），核心担忧集中在融资结构、稀释节奏与整合时间表（预计2027年上半年完成，尚待South32股东批准及多国监管许可）。</p>
+
+  <p>用本组建立的中周期三法估值框架重新测算，加权公允价值约<b>$51/股</b>，与当前股价$49.97已高度接近——这意味着市场此前隐含的"周期顶部溢价"已基本消化。<b>但这一测算本身建立在将当前$3,300附近的LME铝价视为"中周期基准价格"的假设之上；若铝价目前实际仍处于本轮周期的相对高位而非中枢水平，则该模型可能仍然偏乐观（详见7.1节的方法论限定）。</b>在此基础上，我们将12个月目标价设为$56.00，较三法模型结果上调约$5/股，理由和每股贡献拆分见第7章估值调整桥。</p>
+
+  <p><b>维持HOLD而非上调至BUY的原因：</b>(1) 估值已修复但未进入明显低估区间，缺乏安全边际；(2) South32交易存在多重执行风险——股东投票（预计2026年10-11月）、多国监管审批、过桥贷款再融资利率敞口；(3) Altman Z-Score未随基本面改善而修复；(4) 氧化铝板块的运营执行问题显示公司在多资产、多地域运营中仍存在阶段性摩擦，这与其即将新增的南非、巴西资产形成风险叠加；(5) 全球原铝市场2026年预计仅维持小幅供给缺口（约14-20万吨，较2025年收窄），2027年供给格局取决于印尼新增产能的实际兑现节奏——部分项目（中资水电背景为主）推进相对确定，另一些项目（如印尼国有Inalum扩产、Adaro一期）面临电力配套或融资经济性方面的具体执行风险，铝价的持续性本身存在不确定性，详见第3章。<b>本报告不构成个人投资建议，具体仓位应由投资者根据自身风险承受能力与组合约束决定。</b></p>
+</div>
+
+<!-- ============ COMPANY ============ -->
+<div class="section" id="company">
+  <h2>2 公司概况——South32交易将如何重塑资产版图</h2>
+  <p>美国铝业的三大业务板块（铝土矿、氧化铝、原铝）与全球资产分布与6月报告披露的基本一致，此处仅更新South32交易完成后的增量资产版图。</p>
+  <table>
+    <tr><th>资产/地区</th><th>交易内容</th><th>战略意义与需要关注的问题</th></tr>
+    <tr><td>西澳大利亚 Worsley氧化铝</td><td>收购South32持有的86%权益</td><td>与Alcoa现有Kwinana、Pinjarra、Wagerup资产形成区域整合；但Worsley的矿石品位、矿山寿命、单位现金成本等项目级数据尚未在公开交易文件中充分披露，本组尚无法独立验证"低成本优质资产"的表述</td></tr>
+    <tr><td>南非 Hillside冶炼厂</td><td>收购100%权益，为全新市场进入</td><td>据称为具备成本竞争力的冶炼资产，但南非电网（Eskom）供电可靠性历史上是当地铝冶炼行业的结构性风险点，需持续跟踪电力合同条款与供电稳定性</td></tr>
+    <tr><td>巴西 Alumar等合资权益</td><td>整合South32在巴西氧化铝/冶炼合资权益</td><td>与Alcoa现有巴西资产形成协同，简化合资治理结构，但Alcoa对合资资产的实际控制权、分红政策及资本开支决策权仍需在交易完成后进一步明确</td></tr>
+  </table>
+  <div class="note-box">
+    Wood Mackenzie的独立评估认为，该资产组合按其内部测算的基准情形净资产价值约为$10.9B，本次交易隐含企业价值（约$4.7B）较该基准折价约49%；但按近期同业交易倍数衡量，定价与上市同业大致相当。这提示折价可能更多反映South32方面较为保守的定价假设与部分资产的下游整合难度，而非单纯的"低价捡漏"——两种解读均缺乏进一步的项目级现金流数据支撑，本组倾向于对该判断保持中性，待交易完成后的资产层面披露进一步验证。<span class="cite">来源：Wood Mackenzie, 2026年7月6日</span>
+  </div>
+</div>
+
+<!-- ============ INDUSTRY ============ -->
+<div class="section" id="industry">
+  <h2>3 铝产业链与周期分析</h2>
+  <p>本节在6月报告的基础上补充全球供需平衡表、事件级别的供给扰动核实，以及Alcoa利润结构对LME价格之外变量的敏感性框架，以回应"只用LME铝价线性解释利润不够"的合理关切。</p>
+
+  <h3>3.1 全球原铝供需平衡（补充数据支撑）</h3>
+  <table>
+    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+    <tr><td>2025年全球原铝产量</td><td>约7,378万吨</td><td>同比温和增长，为近5年最低增速</td></tr>
+    <tr><td>2025年中国原铝产量</td><td>约4,502万吨</td><td>触及4,500万吨产能天花板，产能利用率约97%</td></tr>
+    <tr><td>2026年6月全球原铝产量（IAI）</td><td>598万吨（同比-1.5%）</td><td>其中中国371.2万吨</td></tr>
+    <tr><td>2026年全球原铝供需缺口（多家机构估计）</td><td>约14万-20万吨（供给缺口）</td><td>较2025年缺口收窄；不同机构估计存在差异，本报告如实列出区间而非取单一数值</td></tr>
+    <tr><td>2026年内新增运行产能（SMM预测）</td><td>约2,090万吨（至2026年末）</td><td>逾半数增量来自中国以外，以印尼为主</td></tr>
+    <tr><td>周期展望</td><td>2026年维持偏紧；2027年供给格局取决于印尼新增产能的实际兑现节奏——中资水电背景项目确定性较高，Inalum与Adaro项目存在滞后风险（见下方3.1a分项核实）</td><td>供给紧张的持续性与印尼产能的实际爬坡进度直接相关</td></tr>
+  </table>
+  <p class="cite">数据来源：International Aluminium Institute (IAI)月度产量报告、SMM（上海有色网）、AlCircle，2026年2-8月各期发布数据。</p>
+
+  <h3>3.1a 印尼新增产能能否如期兑现——分项目核实</h3>
+  <p>印尼是2026-2027年全球原铝新增产能的最主要来源，但不同项目的确定性差异很大，笼统假设"印尼产能集中投产"会掩盖项目层面的分化。以下按已知的公开进度分项列示：</p>
+  <table>
+    <tr><th>项目</th><th>投资方</th><th>规划产能</th><th>进度状态（截至2026年9月可查信息）</th></tr>
+    <tr><td>Nanshan Indonesia一期</td><td>中国南山集团</td><td>40万吨（远期至100万吨）</td><td>预计2026年内投产，属于确定性相对较高的项目</td></tr>
+    <tr><td>Kaltara（Adaro-Lygend合资）一期</td><td>Adaro（印尼）/Lygend（中国）</td><td>50万吨一期</td><td>已于2025年四季度启动一期生产，计划2026年10月前爬坡至满产</td></tr>
+    <tr><td>Juwan、Taijing</td><td>Tsingshan、Xinfa（中国）</td><td>合计约43万吨</td><td>Juwan计划2026年一季度达满产25万吨；Taijing计划2026年三季度投产，年化约18万吨</td></tr>
+    <tr><td>Inalum扩产（国有）</td><td>印尼国家铝业公司</td><td>规划从27.5万吨扩至60万吨</td><td>据行业分析（Petromindo，2026年8月），此前规划的3×300MW燃煤配套电源已取消，扩产所需的增量电力来源尚未明确落实，短期内不应计入新增产能</td></tr>
+    <tr><td>Adaro Aluminium一期（North Kalimantan）</td><td>Adaro Energy/宁波力勤</td><td>规划一期50万吨（远期至150万吨）</td><td>IEEFA分析指出该项目经济性依赖持续高铝价，且煤电配套面临融资机构"退煤"政策的资金压力，投产及爬坡节奏存在不确定性</td></tr>
+  </table>
+  <div class="note-box">
+    综合来看，本组未发现印尼政府出台专门针对铝冶炼行业的产业政策性延期措施（不同于此前镍产业链的原矿出口禁令类政策）；印尼新增产能面临的更多是<b>项目层面的电力配套、融资及爬坡进度风险</b>，而非统一的政策性障碍。其中，以中资背景、水电配套为主的项目（Nanshan、Kaltara、Juwan、Taijing）推进相对确定，2026年内合计约130-150万吨新增产能具备较高可信度；而国有Inalum扩产及Adaro一期等项目则分别面临电力方案未定、融资经济性承压的具体执行风险，可能部分延后至2027年甚至更晚。<b>本组将2027年全球原铝供给转向宽松视为一个概率情景，而非基准假设——其时点和幅度取决于上述项目组合的实际执行进度，中资水电背景项目部分兑现即可对冲部分供给缺口，但Inalum、Adaro项目的延后将使宽松节奏显著慢于市场普遍预期。</b></div>
+
+  <h3>3.2 氧化铝市场：本身处于宽松，但近期出现集中供给扰动</h3>
+  <table>
+    <tr><th>指标</th><th>数值</th></tr>
+    <tr><td>2026年全球氧化铝市场平衡（行业估计）</td><td>过剩约160万吨；2027年预计收窄至过剩约50万吨</td></tr>
+    <tr><td>氧化铝/铝价比价</td><td>近期约10%，低于14%-16%的历史平均区间，反映氧化铝相对铝价偏弱</td></tr>
+  </table>
+  <div class="warn-box">
+    <b>Alunorte是Norsk Hydro（挪威海德鲁）位于巴西帕拉州的氧化铝精炼厂，与Alcoa无股权关系</b>；其2026年8月的减产（降至50%产能）源于当地天然气供应商CELBA的供气中断，与中东局势无直接关联，Hydro预计该事件对其自身Q3 2026鲍克斯矿与氧化铝分部造成约$7,500万-1亿美元的负面影响。作为全球氧化铝市场的重要供给方，Alunorte减产在氧化铝本身处于过剩的背景下起到收窄过剩、支撑价格的作用，从而<b>间接利好Alcoa自身氧化铝业务的销售价格</b>，但不构成对Alcoa自身产量的直接影响，二者应予区分。
+  </div>
+
+  <h3>3.3 中东地区供给扰动——分资产、分时间线核实</h3>
+  <table>
+    <tr><th>资产/事件</th><th>性质</th><th>时间线</th><th>状态（截至9月）</th></tr>
+    <tr><td>Qatalum（卡塔尔，Qatar Petroleum/Norsk Hydro合资原铝冶炼厂）</td><td>因天然气供应中断而减产/停产</td><td>2026年3月起，随QatarEnergy因伊朗导弹袭击对Ras Laffan设施declare不可抗力而恶化</td><td>供给中断持续时间及恢复进度未见公开明确披露，本组标注为待核实项</td></tr>
+    <tr><td>Bahrain Alba冶炼厂</td><td>受能源供应影响，主动实施约19%产能的受控减产并宣布不可抗力</td><td>2026年3月起</td><td>据行业报告，属逻辑/供应约束性减产，而非物理损毁</td></tr>
+    <tr><td>阿联酋 EGA Al Taweelah冶炼厂</td><td>据行业风险评估机构报告，遭受导弹袭击物理损毁</td><td>2026年3月冲突升级阶段</td><td>该信息来自第三方风险咨询机构（Exiger），本组未能从EGA官方渠道独立交叉验证损毁程度及修复时间表，建议读者将其视为未完全证实的信息，谨慎使用</td></tr>
+  </table>
+  <p>QatarEnergy证实，导弹袭击对Ras Laffan两条LNG生产线及一座气制油设施造成损毁，影响约17%（约1,290万吨/年）的出口能力，修复预计需3-5年。<span class="cite">来源：QatarEnergy公开声明、Fox Business、GIS Reports，2026年3月</span> 这一事件是Q1-Q2铝价维持相对高位的重要背景，但截至9月初，随中东局势阶段性缓和，其对铝价的边际支撑效应有所减弱。</p>
+
+  <h3>3.4 中国铝材出口的构成与影响</h3>
+  <div class="note-box">
+    "中国出口同比+18.7%"对应<b>中国海关总署统计的"未锻轧铝及铝材"（HS76合并口径）2026年7月单月出口量64万吨，同比增长18.7%；1-7月累计404万吨，同比增长16.7%</b>。该口径混合了原铝锭与铝加工材（板带、箔材等半制成品），并非单纯的原铝供给增量——铝材出口增加更多反映中国加工产能对海外半成品市场的持续渗透，其对LME原铝定价的直接冲击弱于原铝净出口本身。SMM对铝板带出口的追踪显示7月环比实际小幅回落（-9.1%），预计下半年月均出口将回落至26-30万吨区间，整体呈高位运行、边际增速放缓的态势。
+  </div>
+
+  <h3>3.5 从LME价格到Alcoa利润的敏感度框架</h3>
+  <p>铝业务利润可拆解为以下驱动链条；各环节的量化仍依赖公司未完全按项目级别披露的内部数据，"每吨铝价变动$100对应EPS约$0.50"这一此前使用的单一敏感度是基于全年铝销量、有效税率及少数股东权益的近似估算，未经公司确认，实际利润受下表列出的多个变量共同影响：</p>
+  <table>
+    <tr><th>驱动变量</th><th>已知信息／待完善项</th></tr>
+    <tr><td>LME铝价</td><td>Alcoa未单独披露每吨LME价格变动对应的EPS敏感度系数；此前使用的$0.50/股（每$100/吨）敏感度是基于全年铝销量、有效税率及少数股东权益的近似估算，未经公司确认，应视为粗略参考而非精确弹性</td></tr>
+    <tr><td>Midwest/区域溢价</td><td>管理层Q2电话会确认，区域交付溢价与增值产品溢价在铝价走低期间保持独立走强，但未披露溢价具体拆分为关税、供需缺口或物流成本的比重</td></tr>
+    <tr><td>增值产品</td><td>Q2增值产品出货量环比增加约3万吨，2026年订单簿同比强于上年；订单可见度延伸至何时、是否为一次性结构性改善，公司未披露</td></tr>
+    <tr><td>氧化铝内部转移价格</td><td>公司披露铝分部内氧化铝成本环比变化（如Q3指引中的约-$1,000万），但未公开内部转移定价机制的具体公式</td></tr>
+    <tr><td>Section 232关税转嫁</td><td>管理层称当前中西部溢价已覆盖对加拿大进口铝的关税成本；这一转嫁关系依赖于中西部溢价维持高位，若溢价回落，关税可能重新变为利润侵蚀项</td></tr>
+  </table>
+</div>
+
+<!-- ============ FINANCIALS ============ -->
+<div class="section" id="financials">
+  <h2>4 财务深度分析</h2>
+
+  <h3>4.1 Q2 2026 损益表核心数据</h3>
+  <table>
+    <tr><th>指标</th><th>Q1 2026</th><th>Q2 2026</th><th>环比/说明</th></tr>
+    <tr><td>营收</td><td>$3.19B</td><td>$3.97B（近10年单季新高）</td><td>+24%，但低于市场一致预期约$4.12-4.16B</td></tr>
+    <tr><td>GAAP净利润（归母）</td><td>$425M</td><td>$407M</td><td>受Ma'aden股权公允价值损失（约$123M）及能源合约按市值计价损失拖累</td></tr>
+    <tr><td>GAAP EPS（稀释）</td><td>$1.60</td><td>$1.53</td><td>——</td></tr>
+    <tr><td>调整后净利润</td><td>约$373M</td><td>$562M</td><td>+51%</td></tr>
+    <tr><td>调整后EPS</td><td>$1.40</td><td>$2.12</td><td>Q1较市场预期$1.47低4.8%；Q2低于市场一致预期约$0.07-0.20（不同数据源估计区间为$2.19-2.32）</td></tr>
+    <tr><td>调整后EBITDA（合并口径，excluding special items）</td><td>$595M</td><td>$901M</td><td>+51%；此为公司对外沟通的主要EBITDA指标</td></tr>
+  </table>
+  <p class="cite">数据来源：Alcoa Corporation 2026年Q2财报（2026年7月16日）、10-Q文件、财报电话会议记录。</p>
+
+  <h3>4.2 自由现金流——口径澄清与现金流量表桥接</h3>
+  <div class="note-box">
+    <b>Alcoa对"自由现金流"的定义是经营活动现金流减资本开支</b>（Q2：$608M − $186M = $422M），这是公司口径而非"扣除全部投资活动后的自由现金流"。Q1末现金余额为$1.4B（公司口径；10-Q中"现金、现金等价物及受限现金"合计口径为$1,447M），Q2末降至$1,352M，降幅约$48-95M，远小于FCF本身的波动幅度——这印证了现金余额小幅下降与FCF大幅转正并不矛盾，二者衡量的是不同的现金流层面。已识别的Q2非经营性现金流出包括赎回剩余$219M 2028年到期6.125%票据、股息支付（约$26M）及约$40M的股权投资出资等投资活动项目，合计约$285M；据此推算另有约$185M的现金变动未能从本组可获取的公开摘要中逐项拆分（可能涉及其他融资活动细项或受限现金分类调整），完整数字请以公司10-Q现金流量表原表为准。
+  </div>
+  <table>
+    <tr><th>现金流量表项目（近似，$M）</th><th>Q1 2026</th><th>Q2 2026</th></tr>
+    <tr><td>经营活动现金流（CFO）</td><td>-179</td><td>+608</td></tr>
+    <tr><td>资本开支（Capex）</td><td>119</td><td>186</td></tr>
+    <tr><td>公司口径FCF（CFO−Capex）</td><td>约-298</td><td>+422</td></tr>
+    <tr><td>其他投资活动现金流出（如权益出资等）</td><td>——</td><td>约-40</td></tr>
+    <tr><td>已识别融资活动现金流出（债务赎回$219M+股息约$26M）</td><td>——</td><td>约-245</td></tr>
+    <tr><td>未拆分的其他现金流变动（残差项）</td><td>——</td><td>约-185（详见上方说明）</td></tr>
+    <tr><td>期末现金余额</td><td>$1,400</td><td>$1,352</td></tr>
+  </table>
+
+  <h3>4.3 EBITDA口径桥接——避免不同层级指标混用</h3>
+  <div class="warn-box">
+    报告需要明确区分三个经常被并列引用、但计算口径不同的EBITDA/利润率指标：<br>
+    ① <b>合并调整后EBITDA（excluding special items）</b>——公司对外沟通的核心指标，Q2为$901M；<br>
+    ② <b>分部合计调整后EBITDA（Total Segment Adjusted EBITDA）</b>——各分部EBITDA简单加总，未扣除公司总部费用及分部间抵销调整项，Q2为$977M；<br>
+    ③ <b>铝业务分部EBITDA及其32.3%的利润率</b>——分母为铝业务分部收入（含向其他分部的内部销售），而非公司合并收入。<br>
+    三者不可直接相加或互相替代；"铝业务利润率32.3%"不能被解读为公司整体经营利润率（公司整体调整后EBITDA利润率约为$901M/$3,966M≈22.7%）。
+  </div>
+  <table>
+    <tr><th>指标（$M）</th><th>Q1 2026</th><th>Q2 2026</th><th>H1 2026</th><th>H1 2025</th></tr>
+    <tr><td>分部合计调整后EBITDA</td><td>654</td><td>977</td><td>1,631</td><td>1,034（+58% YoY）</td></tr>
+    <tr><td>其中：铝业务分部EBITDA</td><td>——</td><td>约1,100（利润率32.3%，以分部收入为分母）</td><td>——</td><td>——</td></tr>
+    <tr><td>合并调整后EBITDA（公司口径）</td><td>595</td><td>901</td><td>1,496</td><td>——</td></tr>
+    <tr><td>利息费用</td><td>35</td><td>36</td><td>71</td><td>109（同比-35%）</td></tr>
+    <tr><td>其他收入/费用净额</td><td>+126</td><td>-200</td><td>-74</td><td>+138</td></tr>
+    <tr><td>税前利润</td><td>499</td><td>482</td><td>981</td><td>829</td></tr>
+  </table>
+
+  <h3>4.4 资产负债表与信用状况</h3>
+  <table>
+    <tr><th>指标</th><th>2026年6月末（Q2）</th><th>2026年3月末（Q1）</th><th>2025年末（FY25）</th></tr>
+    <tr><td>现金及等价物</td><td>$1,352M</td><td>$1,400M</td><td>$1,600M</td></tr>
+    <tr><td>总资产</td><td>$16,853M</td><td>$16,640M</td><td>$16,129M</td></tr>
+    <tr><td>股东权益总额</td><td><b>$7,370M</b></td><td>$6,826M</td><td>$6,118M</td></tr>
+    <tr><td>每股账面价值（BVPS）</td><td><b>$27.93</b>（$7,370M÷263.91M股）</td><td>$25.87</td><td>约$23.18</td></tr>
+    <tr><td>P/B（对应各期股价）</td><td>约1.79x（现价$49.97）</td><td>2.30x（6/21报告日$59.37）</td><td>数据不足，未追踪2025年12月31日精确收盘价，暂缺</td></tr>
+    <tr><td>长期债务（不含流动部分）</td><td>$2,224M</td><td>约$2,578M</td><td>——（未见分项披露，仅有总债务口径，见下行）</td></tr>
+    <tr><td>短期借款</td><td>约$1M</td><td>——（未见分项披露）</td><td>——（未见分项披露）</td></tr>
+    <tr><td>总债务（合计，口径见下方说明）</td><td>约$2.22-2.44B</td><td>约$2.55B</td><td>$2.4B</td></tr>
+    <tr><td>调整后净债务（公司口径）</td><td>$1.4B</td><td>$1.8B</td><td>$1.5B（达当时目标区间上限）</td></tr>
+    <tr><td>净债务/合并调整后TTM EBITDA</td><td>约0.6x（交易前口径）</td><td>——（未见公司披露对应TTM EBITDA口径）</td><td>约0.76x（$1.5B÷FY25调整后EBITDA约$1.98B）</td></tr>
+    <tr><td>债务/权益</td><td>约0.30x</td><td>0.37x</td><td>约0.39x（$2.4B÷$6.118B，与GuruFocus披露的10年历史中位数0.39x基本一致）</td></tr>
+    <tr><td>ROE</td><td>26.4%（H1年化）</td><td>约26.3%（Q1单季年化，以Q1净利润$425M×4÷期初期末平均权益估算，与"H1年化"为不同概念，不可直接对比）</td><td>16.4%（FY25全年）</td></tr>
+    <tr><td>Altman Z-Score</td><td>约1.75</td><td>1.76</td><td>——（未见公司披露对应期末数值）</td></tr>
+  </table>
+  <p class="cite">数据来源：Alcoa 10-Q（2026年3月31日、6月30日）、8-K财务报表附注（2026年Q1/Q2/FY25财报新闻稿）、GuruFocus。Q1末调整后净债务$1.8B、总债务约$2.55B两项数字之间存在约$0.75B的差额未能从本组可获取的公开摘要中完全对应拆分——"调整后净债务"是公司自定义的非GAAP指标，其具体构成（是否net off全部现金、是否计入部分租赁或环境负债）未见完整方法论披露，本报告不强行拼凑一致，如实标注该差异。总债务在不同数据源间还存在$2.22-2.44B（Q2）的口径差异。上述净债务/EBITDA、债务/权益均为<b>South32交易前（交易尚未完成交割）</b>的口径，不能直接代表交易完成后的杠杆水平——完成后的情景测算见6.4节。</p>
+
+  <h3>4.5 债务结构、信用评级与流动性</h3>
+  <table>
+    <tr><th>维度</th><th>信息</th></tr>
+    <tr><td>债务到期结构</td><td>公司在10-Q中披露，截至目前无重大债务到期直至2029年（不含即将为South32交易新增的过桥贷款）</td></tr>
+    <tr><td>养老金义务</td><td>公司同时披露无重大养老金计划现金缴款要求</td></tr>
+    <tr><td>Fitch评级</td><td>BB+，展望由"稳定"上调至"正面"（2026年3月11日）</td></tr>
+    <tr><td>S&amp;P评级</td><td>由BB上调至BB+，展望由"正面"调整为"稳定"（2026年3月3日）</td></tr>
+    <tr><td>Moody's评级</td><td>Ba1，展望"稳定"（2026年2月6日）</td></tr>
+    <tr><td>South32交易后评级动作</td><td>管理层在Q2电话会中说明，Moody's与S&amp;P已基于并表后（pro forma）资本结构重新确认现有评级和展望——评级机构未将该并购视为触发下调的信用负面事件，但这不等同于对交易本身价值的背书，仅反映当前测算的杠杆水平仍在评级容忍区间内</td></tr>
+    <tr><td>并购后杠杆目标</td><td>管理层表示，$3.1B现金对价的规模是按"交易完成后净债务/EBITDA不超过2.0倍"的上限反向设定的</td></tr>
+  </table>
+
+  <div class="note-box">
+    <b>关于Z-Score持续偏低：</b>该指标在本案例中主要受"资产周转率"与"留存收益/总资产"两个历史性存量指标驱动——Alcoa此前多年周期低谷造成的累计亏损尚未完全被本轮景气修复，短期经营改善难以快速拉动。结合净债务/EBITDA约0.6x（交易前）、债务/权益0.30x、无重大债务到期至2029年、评级机构维持评级及展望等证据，该指标更适合作为长期结构性观察指标，而非近期违约风险的直接代理——但交易完成后的杠杆变化、周期下行情景以及养老金/环境负债仍应纳入重新评估，不应简单认为"违约风险低"就此定论。
+  </div>
+</div>
+
+<!-- ============ GUIDANCE ============ -->
+<div class="section" id="guidance">
+  <h2>5 管理层指引与Q2业绩电话会核心信息</h2>
+  <p>以下内容整理自2026年7月16日Q2财报电话会（CEO William Oplinger、CFO Molly Beerman）及配套文件，均以转述/改写形式呈现。</p>
+
+  <h3>Q3 2026 分部业绩指引</h3>
+  <table>
+    <tr><th>分部/项目</th><th>Q3 2026 环比指引</th><th>驱动因素</th></tr>
+    <tr><td>氧化铝分部调整后EBITDA</td><td>环比有利约$1,000万</td><td>Pinjarra运营企稳 + 柴油/燃料油等能源成本下降</td></tr>
+    <tr><td>铝业务分部调整后EBITDA</td><td>预计基本持平</td><td>产量效率提升被更高碳排放成本及巴西季节性第三方能源销售下降抵消</td></tr>
+    <tr><td>Section 232关税成本（加拿大进口铝）</td><td>环比预计下降约$1,000万</td><td>基于近期定价及预计出货量下降；管理层强调当前关税成本已被中西部溢价收入覆盖</td></tr>
+    <tr><td>铝业务分部内氧化铝成本</td><td>环比预计不利约$1,000万</td><td>内部氧化铝采购成本变化</td></tr>
+    <tr><td>经营性税费</td><td>预计$8,000万-9,000万</td><td>管理层提示存在波动可能</td></tr>
+  </table>
+
+  <h3>FY2026全年指引</h3>
+  <table>
+    <tr><th>指引项目</th><th>Q1财报时点</th><th>Q2财报最新</th><th>变化</th></tr>
+    <tr><td>氧化铝产量</td><td>970-990万吨</td><td>950-960万吨</td><td>下调20-30万吨（Pinjarra运营中断）</td></tr>
+    <tr><td>氧化铝出货量</td><td>1,180-1,200万吨</td><td>1,150-1,160万吨</td><td>同步下调</td></tr>
+    <tr><td>铝产量</td><td>240-260万吨</td><td>240-260万吨</td><td>维持不变</td></tr>
+    <tr><td>铝出货量</td><td>260-280万吨</td><td>260-280万吨</td><td>维持不变</td></tr>
+    <tr><td>维持性资本开支</td><td>——</td><td>约$6.75亿</td><td>新增披露</td></tr>
+    <tr><td>转型成本对EBITDA影响</td><td>——</td><td>约-$1亿</td><td>新增披露</td></tr>
+  </table>
+
+  <h3>需求端与运营端评论</h3>
+  <ul>
+    <li>北美与欧洲市场结构性偏紧，需求保持韧性；欧洲增值铸造产能利用率接近95%</li>
+    <li>北美铸造合金与铝坯需求边际走强；欧洲包装用铝需求最稳健；欧洲汽车用铝板需求相对疲软</li>
+    <li>管理层表示2026年订单簿在所有主要区域和产品类别均强于上年同期，但未披露订单可见度延伸的具体月份</li>
+    <li>预计除中国以外的全球氧化铝市场下半年逐步趋于平衡，驱动力包括印尼新增冶炼产能投产及中东产能重启带来的需求增量</li>
+    <li>完成覆盖西澳大利亚、美国、加拿大主要资产的多年期集体谈判协议续签，部分延展至2030年</li>
+    <li>San Ciprián已于4月8日完成重启，公司同时推进恢复对该资产的完全所有权</li>
+  </ul>
+
+  <h3>资本配置优先级与资产盘活计划</h3>
+  <div class="gold-box">
+    管理层披露计划在2030年前通过非核心资产盘活实现$5亿-$10亿资金回笼，其中Massena East冶炼资产相关谈判据称已基本完成，但交易对价、买方及时间表尚未正式披露。这是独立于South32并购之外的一条资本运作线索，若能兑现将部分对冲South32交易的融资与稀释压力，本组将其列为待跟踪催化剂，暂不计入估值模型。
+  </div>
+  <p>结合历史惯例（2025年Q3电话会中管理层曾将"债务削减"列为资本配置首要优先级，并全额提前偿还AWAC相关定期贷款），本组判断公司当前资本配置排序大概率仍是：去杠杆/维持信用评级 &gt; 维持性资本开支 &gt; 股息 &gt; South32交易整合 &gt; 股票回购。</p>
+</div>
+
+<!-- ============ DEAL DEEP DIVE ============ -->
+<div class="section" id="deal">
+  <h2>6 South32并购交易深度解析</h2>
+
+  <h3>6.1 交易对价的四种口径</h3>
+  <table>
+    <tr><th>口径</th><th>金额</th><th>构成/适用场景</th></tr>
+    <tr><td><b>前置对价（Upfront Consideration）</b></td><td>约$4.1B</td><td>现金$3.1B + 约1,700万股Alcoa新股（约值$1.0B，按2026年6月26日前10日成交量加权均价$58.79计算）——评估稀释与现金流出规模时使用该口径</td></tr>
+    <tr><td><b>隐含企业价值（Implied EV）</b></td><td>约$4.7B</td><td>前置对价 + 承接的融资租赁等净债务/负债（约$0.6-0.75B）——与同业EV/EBITDA倍数比较时使用该口径</td></tr>
+    <tr><td><b>最大名义对价（含CVR，不含承接负债）</b></td><td>约$4.85B</td><td>前置对价$4.1B + 最高CVR $0.75B</td></tr>
+    <tr><td><b>Wood Mackenzie"全口径"交易价值</b></td><td>最高$5.6B</td><td>前置对价$4.1B + 承接债务/租赁负债约$0.75B + 最高CVR $0.75B，即EV与或有对价相加——媒体报道中的"$56亿"多来自此处，与前三项口径不是同一概念</td></tr>
+  </table>
+  <p>本报告涉及交易规模时使用"前置对价约$4.1B"，涉及倍数比较时使用"隐含EV约$4.7B"，涉及CVR潜在最大支付时使用"最高$0.75B"。</p>
+
+  <h3>6.2 交易结构要点</h3>
+  <table>
+    <tr><th>要素</th><th>条款</th></tr>
+    <tr><td>标的资产</td><td>South32旗下铝土矿、氧化铝精炼、原铝冶炼资产组合，涵盖西澳大利亚Worsley（86%权益）、巴西Alumar等合资权益、南非Hillside冶炼厂（100%权益）</td></tr>
+    <tr><td>CVR（或有价值权）</td><td>最高$0.75B，分四个年度（自2026年7月1日起），触发条件为氧化铝或铝均价超过约定执行价——具体触发价格未在本组可获取的公开文件中找到详细披露</td></tr>
+    <tr><td>Ticking Fee（计息补偿）</td><td>现金对价部分按年化5%计息，计息期间为股东投票通过至交易完成日；管理层估计交割时需支付约$8,000万-1亿美元</td></tr>
+    <tr><td>融资安排</td><td>$3.1B现金对价由高盛提供的最高$3.1B、364天期限过桥贷款承诺融资，计划在交割前以永久性债务/股权工具置换</td></tr>
+    <tr><td>Locked Box机制</td><td>标的资产自2026年4月1日起产生的现金流归属Alcoa，用于抵扣交割时应付现金对价；截至2026年6月30日，管理层估计该"锁箱"金额已超过$2亿</td></tr>
+    <tr><td>South32股东回报安排</td><td>South32计划将约一半股票对价以实物形式（in specie）作为特别股息分配给其股东（约值$500M），剩余部分由South32在市场上有序出售</td></tr>
+    <tr><td>协同效应</td><td>Alcoa管理层预期净现值约$0.9B；South32另表示自身可实现约$1.25亿/年的管理费用节约（这是South32自身的运营成本节约，与Alcoa的$0.9B协同NPV是两个独立的数字，不应相加或混淆）</td></tr>
+    <tr><td>交易条件与时间表</td><td>需经South32股东大会批准（预计2026年10-11月）及澳大利亚、南非、巴西等多国监管机构批准，预计2027年上半年完成交割</td></tr>
+    <tr><td>市场反应</td><td>公告当日（2026年6月30日）AA股价下跌约9%至$47.41</td></tr>
+  </table>
+
+  <h3>6.3 South32股票对价的潜在市场供给压力</h3>
+  <div class="warn-box">
+    交易结构中约一半股票对价将以实物形式直接分配给South32股东（而非由South32公司层面持有），这部分股东获得Alcoa股票后没有法定锁定期限制，理论上可自由选择在公开市场卖出；South32公司层面持有的剩余股票对价则计划"有序出售"。这一机制可能在交易完成后一段时间内对AA股价形成阶段性的技术性供给压力，其严重程度取决于South32股东群体的持有意愿与二级市场承接能力——本组认为，这一因素很可能是6月30日公告当日股价下跌9%的部分解释，也应作为独立风险项列入风险清单（见第8章）。
+  </div>
+
+  <h3>6.4 交易完成后的Pro Forma杠杆——情景测算</h3>
+  <p>管理层设定的杠杆纪律是"交易完成后净债务/EBITDA不超过2.0倍"。本组基于以下假设做情景测算，测算所需的South32标的资产独立EBITDA未见公开详细披露，本组以Wood Mackenzie测算的隐含EV（约$4.7B）除以行业近期同业交易的典型倍数区间（约6-7x EV/EBITDA）反推，得到标的资产EBITDA约$0.67B-0.78B的估计区间，该反推方法本身存在误差，仅供情景参考：</p>
+  <table>
+    <tr><th>情景</th><th>假设</th><th>Pro Forma净债务</th><th>Pro Forma合并EBITDA（估计）</th><th>隐含杠杆</th></tr>
+    <tr><td>全现金/全债务融资</td><td>$3.1B现金对价全部以新增债务（永久债务置换过桥贷款）融资，不考虑资产处置</td><td>约$1.4B（交易前）+ $3.1B ≈ $4.5B</td><td>约$2.5B（Alcoa中周期估计，见第7章）+ $0.67-0.78B（标的资产估计）≈ $3.2-3.3B</td><td>约1.4x，低于2.0x上限</td></tr>
+    <tr><td>债务+部分资产处置</td><td>假设Massena East等资产盘活的$0.5-1.0B在交割前后到位，部分用于偿债</td><td>约$3.5-4.0B</td><td>约$3.2-3.3B</td><td>约1.1-1.2x</td></tr>
+    <tr><td>股价大幅下行压力情景</td><td>若铝价周期下行导致标的与自身EBITDA同步收缩30%</td><td>约$4.5B（不变）</td><td>约$2.2-2.3B</td><td>约2.0x，触及管理层设定的上限</td></tr>
+  </table>
+  <p class="cite">以上测算基于本组对标的资产EBITDA的反推估计，存在较大不确定性，实际杠杆水平将取决于交割时点的融资结构、资产处置进度及届时的周期位置，仅供情景参考，不构成对实际财务结果的预测。</p>
+
+  <h3>6.5 CVR的或有价值——概率与价格路径示意</h3>
+  <p>CVR最高$0.75B，按四个年度分期、与氧化铝/铝均价挂钩，触发价格未见详细公开披露。以下为示意性（非公司披露）的支付概率情景，用以说明CVR不应被简单当作确定性负债，也不应被忽略：</p>
+  <table>
+    <tr><th>情景</th><th>假设铝价路径</th><th>CVR支付比例（示意）</th><th>名义支付额</th><th>每股影响（÷263.91M股，未贴现）</th></tr>
+    <tr><td>价格维持当前区间或走弱</td><td>LME维持$3,000-3,300</td><td>0%</td><td>$0</td><td>$0.00</td></tr>
+    <tr><td>价格温和上行</td><td>部分年度触发</td><td>约50%</td><td>约$0.375B</td><td>约$1.42</td></tr>
+    <tr><td>价格持续高景气</td><td>四个年度均触发</td><td>100%</td><td>$0.75B</td><td>约$2.84</td></tr>
+  </table>
+  <p class="cite">上表为本组基于交易条款框架构建的示意性情景，触发价格阈值未见公开详细披露，故无法给出精确概率加权值；若考虑4年期限的资金时间价值（假设贴现率约8%），全额触发情景下的现值约为$0.60-0.62B，对应每股约$2.3-2.4，供读者理解量级参考，不应视为精确测算。</p>
+</div>
+
+<!-- ============ VALUATION ============ -->
+<div class="section" id="valuation">
+  <h2>7 估值分析</h2>
+
+  <h3>7.1 方法论限定——"中周期"定义的边界</h3>
+  <div class="warn-box">
+    本框架将当前LME铝价（约$3,300）作为P/E情景加权法的"中周期基准价格"，但这一假设本身存在争议：若以更长期的实际（通胀调整后）铝价与历史边际成本曲线衡量，$3,300可能仍处于本轮周期的相对高位，而非真正的中枢价格。本组未独立构建长期实际铝价序列或边际成本曲线模型，因此下述估值结果应被理解为"以当前价格环境为锚点的情景加权"，而非严格意义上跨越完整周期的中周期估值——这是本框架当前最主要的方法论局限，读者在使用目标价时应对此保持警惕。</p>
+  </div>
+
+  <h3>7.2 方法一：P/E情景加权法（权重40%）</h3>
+  <table>
+    <tr><th>情景</th><th>假设LME铝价（$/吨）</th><th>隐含EPS</th><th>目标P/E</th><th>推导值</th><th>概率</th></tr>
+    <tr><td>深度衰退</td><td>$2,500</td><td>$2.00</td><td>10x</td><td>$20.00</td><td>10%</td></tr>
+    <tr><td>中周期（低端）</td><td>$3,000</td><td>$4.50</td><td>9x</td><td>$40.50</td><td>25%</td></tr>
+    <tr><td>接近当前价格</td><td>$3,300</td><td>$6.85</td><td>9x</td><td>$61.65</td><td>40%</td></tr>
+    <tr><td>高景气延续</td><td>$3,800</td><td>$8.50</td><td>8x</td><td>$68.00</td><td>20%</td></tr>
+    <tr><td>极度景气</td><td>$4,200+</td><td>$10.00</td><td>7x</td><td>$70.00</td><td>5%</td></tr>
+    <tr><td colspan="4"><b>加权目标价</b></td><td colspan="2"><b>$53.89</b></td></tr>
+  </table>
+  <p>基准情景EPS假设$6.85，取自多家机构对FY2026一致预期的区间上沿（区间为$6.05-$6.85，不同数据源存在分歧，如实披露），与H1 2026调整后EPS run-rate（约$3.72，年化约$7.4）大致吻合，但铝价到EPS的完整推导（权益股本、销量、税率、少数股东权益、氧化铝联动等分项）未经公司确认，模型内部一致性有限，属近似估算。</p>
+
+  <h3>7.3 方法二：EV/EBITDA法（权重35%）</h3>
+  <table>
+    <tr><th>项目</th><th>H1 2026实际</th><th>H2基准假设</th><th>FY2026中周期估计</th></tr>
+    <tr><td>合并调整后EBITDA</td><td>$1,496M</td><td>假设H2较H1温和放缓（Pinjarra企稳部分抵消铝价高位震荡风险）</td><td>约$2,500M（较H1年化的$2,992M人为折让约$492M，折让理由见下）</td></tr>
+  </table>
+  <p>折让的具体理由：(1) 氧化铝板块Q3恢复但爬坡曲线存在不确定性；(2) 铝价存在高位震荡回落风险；(3) South32交易相关一次性整合成本可能在H2部分体现。目标EV/EBITDA倍数取6.5x（接近当前实际约6.4x，反映市场估值已消化此前的周期顶部溢价）。</p>
+  <p>目标EV = $2,500M × 6.5x = $16,250M；权益价值 = $16,250M − 净债务$1,400M = $14,850M ÷ 263.91M股 = <b>$56.27</b></p>
+
+  <h3>7.4 方法三：P/B-ROE法（权重25%，交叉验证参考，非严格独立估值）</h3>
+  <div class="note-box">
+    合理P/B = ROE/CoE是剩余收益模型的简化版本，严格而言合理P/B还应取决于长期增长率与股利支付率，该方法更适合作为交叉验证参考，而非与前两种方法并列的独立估值方法；由于Alcoa是明显的周期性公司，账面价值还可能受资产减值、外币折算及权益法投资公允价值波动影响。本组保留该方法但相应下调其可信度。
+  </div>
+  <p>当前BVPS $27.93。H1 2026年化ROE 26.4%不具可持续性；采用中周期ROE假设14%，CoE 10%不变，合理P/B = 1.4x。</p>
+  <p>目标价 = $27.93 × 1.4x = <b>$39.10</b></p>
+
+  <h3>7.5 三法加权与目标价调整桥</h3>
+  <table>
+    <tr><th>估值方法</th><th>推导值</th><th>权重</th><th>加权贡献</th></tr>
+    <tr><td>P/E情景加权法</td><td>$53.89</td><td>40%</td><td>$21.56</td></tr>
+    <tr><td>EV/EBITDA法</td><td>$56.27</td><td>35%</td><td>$19.69</td></tr>
+    <tr><td>P/B-ROE法（交叉验证）</td><td>$39.10</td><td>25%</td><td>$9.78</td></tr>
+    <tr><td colspan="3"><b>三法加权目标价</b></td><td><b>$51.03</b></td></tr>
+  </table>
+
+  <p>本组在三法加权$51.03的基础上，通过以下调整项得到最终12个月目标价$56.00，每项调整均为定性判断转化的粗略量化，而非精确模型输出：</p>
+  <table>
+    <tr><th>调整项</th><th>方向</th><th>每股影响（估计）</th><th>依据</th></tr>
+    <tr><td>三法加权目标价（基准）</td><td>——</td><td>$51.03</td><td>见上表</td></tr>
+    <tr><td>溢价结构韧性</td><td>+</td><td>约+$2.0</td><td>Q2显示区域/增值溢价在LME走弱期间独立走强，可能支撑EPS高于P/E法基准情景假设</td></tr>
+    <tr><td>资产负债表改善</td><td>+</td><td>约+$1.5</td><td>BVPS、债务/权益、评级展望等指标均较6月改善，P/B-ROE法的25%权重可能低估了权益质量的边际改善</td></tr>
+    <tr><td>South32协同期权价值</td><td>+</td><td>约+$2.5</td><td>若交易顺利落地且部分协同兑现，对中期每股价值有正向贡献；未计入基准情形，作为期权价值近似（未做正式期权定价，为主观赋值）</td></tr>
+    <tr><td>交易执行/稀释/融资折价</td><td>−</td><td>约−$1.0</td><td>对冲上述期权价值，反映监管、股东投票、桥贷再融资及股票供给压力等未决风险</td></tr>
+    <tr><td colspan="2"><b>最终12个月目标价</b></td><td colspan="2"><b>约$56.0</b></td></tr>
+  </table>
+  <p>需要明确的表述：上述调整是<b>相对三法模型基准值（$51.03）的上调</b>，而<b>相对本组6月发布的前一版目标价（$65.00），本次是下调$9.00（约-13.8%）</b>——这是两个不同的比较基准，不应混用"上修"一词笼统概括。目标价$56.00对应当前股价$49.97的上行空间约为+12.1%。</p>
+
+  <div class="note-box">
+    情景概率加权价格（见第9章，$53.80）与三法模型基准值（$51.03）量级接近但并非严格独立的交叉验证——两套框架共享部分相同的铝价与盈利假设，其一致性更多反映输入假设的一致性，而非两种独立方法论互证。若South32交易出现重大延期、条款恶化或再融资成本大幅上升，目标价应下修至$42-45区间；若氧化铝板块连续两个季度改善且铝价维持$3,300以上，同时South32交易审批顺利推进，可考虑上修至$62-65并重新评估评级。
+  </div>
+</div>
+
+<!-- ============ RISK ============ -->
+<div class="section" id="risk">
+  <h2>8 风险因素</h2>
+  <table>
+    <tr><th>#</th><th>风险</th><th>严重度</th><th>概率</th><th>说明</th></tr>
+    <tr><td>1</td><td>South32交易执行风险</td><td>高</td><td>中</td><td>股东投票、多国监管审批、桥贷再融资成本上升；5%年化ticking fee使延迟本身产生实质性成本</td></tr>
+    <tr><td>2</td><td>South32股票对价的市场供给压力</td><td>中</td><td>中高</td><td>约一半股票对价以实物形式无锁定期分配给South32股东，可能形成阶段性技术性抛压</td></tr>
+    <tr><td>3</td><td>氧化铝板块运营中断持续</td><td>中高</td><td>中</td><td>Pinjarra已致本季度指引下调；南非、巴西新增资产整合可能放大类似风险</td></tr>
+    <tr><td>4</td><td>铝价下行</td><td>高</td><td>中低</td><td>全球原铝市场2026年供给缺口有限（约14-20万吨）；2027年若印尼多个项目（尤其是中资水电背景项目）集中兑现产能，可能转向宽松，但目前部分项目（Inalum扩产、Adaro一期）存在电力/融资层面的执行不确定性，实际释放节奏有待观察</td></tr>
+    <tr><td>5</td><td>股权稀释累积</td><td>中高</td><td>已发生/持续中</td><td>South32交易新增约6%股份，叠加既有股权激励相关稀释</td></tr>
+    <tr><td>6</td><td>氧化铝与原铝价格错配</td><td>中</td><td>持续存在</td><td>Alcoa在不同地区、不同时间以不同价格销售氧化铝、采购能源及内部转移氧化铝，LME上涨未必同比转化为铝分部利润</td></tr>
+    <tr><td>7</td><td>能源合约与权益法投资按市值计价波动</td><td>中</td><td>持续存在</td><td>Q2已现能源合约及Ma'aden股权公允价值损失，属经济对冲与会计损益的差异，未来油气价格、碳成本波动仍将持续影响GAAP利润</td></tr>
+    <tr><td>8</td><td>碳成本与脱碳资本开支</td><td>中</td><td>中</td><td>欧洲、加拿大碳成本及潜在的碳边境调节机制可能影响区域资产竞争力</td></tr>
+    <tr><td>9</td><td>关税转嫁失效</td><td>中</td><td>中低</td><td>中西部溢价目前覆盖加拿大进口铝关税，若溢价回落，关税可能重新变为利润侵蚀项</td></tr>
+    <tr><td>10</td><td>南非/新兴市场国别与外汇风险</td><td>中</td><td>中低</td><td>Hillside冶炼厂新增南非电网可靠性及兰特汇率敞口；澳元、雷亚尔波动同样影响成本与汇兑损益</td></tr>
+    <tr><td>11</td><td>少数股东与合资治理复杂度</td><td>中低</td><td>中</td><td>South32新增资产多为合资权益，Alcoa实际控制权、分红及资本开支决策能力需在交易完成后进一步明确</td></tr>
+    <tr><td>12</td><td>Altman Z-Score持续偏弱</td><td>中低</td><td>已发生</td><td>净债务/EBITDA约0.6x（交易前），实际短期违约风险看似可控，但交易完成后的杠杆变化、周期下行及养老金/环境负债需重新评估，不宜简单定论为"低风险"</td></tr>
+    <tr><td>13</td><td>贸易政策不确定性</td><td>中</td><td>中</td><td>据近期报道，美加贸易谈判一度陷入停滞，对北美铝溢价及跨境供应链构成不确定性，具体政策走向需持续跟踪</td></tr>
+  </table>
+</div>
+
+<!-- ============ SCENARIOS ============ -->
+<div class="section" id="scenarios">
+  <h2>9 多空情景分析</h2>
+  <div class="two-col">
+    <div class="scenario-card bull">
+      <h4>🐂 多头情景 — $70（+40%）</h4>
+      <ul>
+        <li>铝价维持$3,300+并延续走强至$3,600-3,800</li>
+        <li>South32交易顺利推进，监管审批无重大阻碍</li>
+        <li>氧化铝板块连续两季度企稳</li>
+        <li>FY2026 EPS达$8.00-8.50</li>
+        <li>概率：20%</li>
+      </ul>
+    </div>
+    <div class="scenario-card base">
+      <h4>⚖️ 基准情景 — $56（+12%）</h4>
+      <ul>
+        <li>铝价维持当前区间$3,200-3,400震荡</li>
+        <li>South32交易按计划推进，2027上半年完成</li>
+        <li>氧化铝板块温和改善，铝板块继续保持较强溢价结构</li>
+        <li>FY2026 EPS约$6.50-7.00</li>
+        <li>概率：50%</li>
+      </ul>
+    </div>
+    <div class="scenario-card bear">
+      <h4>🐻 空头情景 — $36（-28%）</h4>
+      <ul>
+        <li>中国铝材出口维持高位叠加印尼中资背景新增产能超预期集中兑现，压制铝价至$2,800以下</li>
+        <li>South32交易遭遇监管障碍或条款恶化，桥贷再融资成本上升</li>
+        <li>氧化铝板块问题蔓延至South32新增资产整合阶段</li>
+        <li>FY2026 EPS降至$3.00-3.50</li>
+        <li>概率：30%</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:16px;">概率加权隐含价格 ≈ 0.20×$70 + 0.50×$56 + 0.30×$36 = $53.80。如第7.5节所述，该结果与三法模型基准值$51.03量级接近，但两者共享部分相同输入假设，不构成严格独立的交叉验证。</p>
+</div>
+
+<!-- ============ RATING ============ -->
+<div class="section" id="rating">
+  <h2>10 评级与操作建议</h2>
+  <div class="rating-card" style="max-width:420px;">
+    <div class="r-label">评级</div>
+    <div class="rating-badge">HOLD 持有（维持）</div>
+    <div class="r-sub" style="margin-top:8px;">12个月目标价：<b>$56.00</b>（较三法模型基准$51.03上调，较6月版前次目标$65.00下调）</div>
+    <div class="r-sub">上行空间：<b>+12.1%</b>（相对当前价$49.97）</div>
+    <div class="r-sub">股息率：0.80%</div>
+  </div>
+
+  <h3>PM 七问框架检验</h3>
+  <div class="qbox"><b>1. 什么被错误定价了？</b> 市场对South32交易的首日反应（-9%）可能过度线性外推了稀释与融资风险，部分未区分"前置对价$4.1B"与被媒体广泛引用的"最高$56亿"这一综合口径，后者容易被误读为实际现金支出规模而放大担忧；但反过来，部分维持较高目标价（如$71）的分析师也可能未充分计入氧化铝板块的持续执行风险及交易的时间跨度不确定性。</div>
+  <div class="qbox"><b>2. 当前价格已反映什么？</b> 大致反映了铝价维持当前$3,200-3,400区间、South32交易按计划但无显著超预期协同兑现、氧化铝板块温和改善的中性路径。</div>
+  <div class="qbox"><b>3. 什么能证明论点？</b> Q3财报（10月21日）显示氧化铝板块环比改善兑现指引；South32交易监管审批顺利推进；铝价维持或温和上行。</div>
+  <div class="qbox"><b>4. 什么能推翻论点？</b> South32交易被监管否决、大幅延期或条款重大恶化；氧化铝板块问题在Q3继续恶化；铝价跌破$2,800并呈趋势性下行；印尼多个项目产能释放节奏显著快于当前分项评估。</div>
+  <div class="qbox"><b>5. 为什么是现在？</b> 股价已从6月高位显著回调，估值已修复至三法框架测算的公允区间附近，是重新评估的合适窗口，但不构成深度低估的强力买入信号。</div>
+  <div class="qbox"><b>6. 什么会改变评级/目标价？</b> 上调至BUY：South32交易监管审批顺利过半 + Q3氧化铝企稳 + 铝价维持$3,300以上 → 目标价上修至$62-65。下调至SELL：South32交易遭遇重大监管障碍或条款重议 + 氧化铝板块连续恶化 + 全球供需转向宽松 → 目标价下修至$38-42。</div>
+  <div class="qbox"><b>7. 还缺少什么证据？</b> (1) South32股东投票及各国监管审批的具体时间表与条件；(2) Q3财报中Pinjarra实际改善幅度；(3) 永久性再融资安排的具体条款（利率、期限）；(4) South32标的资产的项目级成本曲线、矿山寿命及独立EBITDA数据（目前依赖反推估计）；(5) CVR的具体触发价格阈值；(6) 美加贸易谈判后续进展。</div>
+
+  <div class="divider"></div>
+  <p><b>结论：维持HOLD。</b>相较6月，风险收益结构已趋于更加平衡——下行风险因估值消化而收窄，但South32交易的融资、稀释、股票供给压力与整合执行风险替代了此前的"纯周期顶部"风险，成为新的不确定性来源，且本报告的估值框架本身依赖若干未经公司完全披露的反推假设（标的资产EBITDA、CVR触发条件、铝价到EPS的精确弹性），存在进一步修正的空间。已持有者可继续持有并密切关注10月21日Q3财报及South32交易监管进展；考虑新建仓位者，建议等待更明确信号（South32交易关键审批节点或Q3财报对氧化铝板块修复的验证）后再做决策。具体仓位大小应由投资者根据自身风险承受能力、组合集中度约束及研究置信度自行决定，本报告不提供统一的仓位比例建议。</p>
+</div>
+
+<div class="section">
+  <h2>11 数据来源与免责声明</h2>
+  <p style="font-size:13.5px; color:var(--muted);">
+  数据来源：Alcoa Corporation 2026年Q1、Q2财报（8-K，分别于2026年4月16日、7月16日发布）及10-Q文件；Alcoa关于收购South32资产的官方新闻稿（2026年6月30日）及SEC 8-K/Form 425文件（2026年7月2日）；StockAnalysis.com（截至2026年9月4-5日快照）；Wood Mackenzie分析（2026年7月6日）；International Aluminium Institute (IAI)月度产量数据；SMM（上海有色网）、AlCircle、中国海关总署统计数据；QatarEnergy公开声明、Exiger风险评估报告（中东供给扰动部分，标注为未完全独立验证）；Norsk Hydro官方公告（Alunorte事件）；公开分析师报告摘要（JPMorgan、BMO Capital、Argus、Wells Fargo，2026年7-8月）。部分远期盈利预测（如FY2026 EPS一致预期）在不同数据源间存在$6.05-$6.85的分歧，South32标的资产独立EBITDA、CVR触发价格阈值等数据未见公开详细披露，本报告以反推估计或区间形式呈现并明确标注，不以单一精确数值掩盖不确定性。
+  </p>
+  <div class="warn-box">
+  <b>本报告由 Snail-bird Investment Research 编制，仅供参考，不构成个人投资建议。</b>美国铝业作为大宗商品周期股叠加并购整合期公司，其盈利与估值对铝价及South32交易执行进度均高度敏感。报告中部分测算（EBITDA反推、CVR情景、Pro Forma杠杆）依赖公开信息未完全覆盖的假设，存在被后续披露修正的可能。投资者应结合自身研究、风险承受能力及专业顾问意见独立判断，自行承担投资决策的相应风险。
+  </div>
+</div>
+
+<footer>
+  © 2026 Snail-bird Investment（蜗牛鸟投资）. 保留所有权利。<br>
+  Produced by <b>Snail-bird Investment — 大宗商品与工业金属研究组</b> — Independent Equity Research — 2026年9月8日（首次覆盖：2026年6月21日）
+</footer>
+
+</body>
+</html>
