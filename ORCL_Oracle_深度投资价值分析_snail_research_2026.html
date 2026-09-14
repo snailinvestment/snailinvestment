@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>甲骨文公司(ORCL)深度投资价值分析 | 蜗牛鸟投资</title>
+<style>
+
+:root{
+  --navy:#0B1E33;
+  --navy-2:#132C47;
+  --oracle-red:#C74634;
+  --gold:#C99A3B;
+  --paper:#F7F3EC;
+  --paper-2:#FFFFFF;
+  --ink:#1B2430;
+  --ink-soft:#4B5768;
+  --line:#DDD5C4;
+  --green:#2E7D5B;
+  --red:#B3392C;
+  --amber:#B4831E;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; font-family:'IBM Plex Sans',-apple-system,sans-serif;
+  background:var(--paper); color:var(--ink); line-height:1.65; font-size:15.5px;
+}
+h1,h2,h3,h4{font-family:'IBM Plex Sans',sans-serif; font-weight:600; letter-spacing:.2px;}
+.serif-num{font-family:'IBM Plex Mono',monospace;}
+a{color:var(--oracle-red);}
+
+.masthead{
+  background:linear-gradient(135deg,var(--navy) 0%, var(--navy-2) 60%, #1a3654 100%);
+  color:#EFE9DD; padding:34px 6vw 26px; position:relative; overflow:hidden;
+}
+.masthead::after{
+  content:""; position:absolute; right:-60px; top:-60px; width:320px; height:320px;
+  border-radius:50%; background:radial-gradient(circle, rgba(199,70,52,.28), transparent 70%);
+}
+.brand-row{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px; position:relative; z-index:2;}
+.brand{display:flex; align-items:center; gap:10px; font-size:15px; letter-spacing:.5px; color:#D9CBAE;}
+.brand .bird{font-size:19px;}
+.brand b{color:#F4EDE0; font-weight:600;}
+.team-tag{
+  font-size:11.5px; color:#B9C6D6; border:1px solid rgba(255,255,255,.22);
+  padding:4px 10px; border-radius:20px; letter-spacing:.4px;
+}
+.title-block{margin-top:22px; position:relative; z-index:2;}
+.eyebrow{color:var(--gold); font-size:12.5px; letter-spacing:2px; text-transform:uppercase; font-weight:600;}
+h1.report-title{font-size:clamp(24px,3.4vw,36px); margin:8px 0 6px; color:#FBF7EF; line-height:1.25;}
+.subtitle{color:#C6D0DC; font-size:14.5px; max-width:760px;}
+.meta-line{margin-top:14px; font-size:12.5px; color:#9FB0C2; display:flex; gap:18px; flex-wrap:wrap;}
+
+.kpi-strip{
+  display:grid; grid-template-columns:repeat(6,1fr); gap:0; background:#0E2338;
+  border-top:1px solid rgba(255,255,255,.08); position:relative; z-index:2; margin-top:24px;
+  border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,.1);
+}
+.kpi{padding:14px 14px; border-right:1px solid rgba(255,255,255,.08);}
+.kpi:last-child{border-right:none;}
+.kpi .lab{font-size:10.5px; color:#8FA1B5; text-transform:uppercase; letter-spacing:.6px; margin-bottom:5px;}
+.kpi .val{font-size:19px; font-weight:600; color:#F5EFE3; font-family:'IBM Plex Mono',monospace;}
+.kpi .val.rating{color:var(--gold); font-family:'IBM Plex Sans',sans-serif; font-size:16px;}
+.kpi .sub{font-size:11px; color:#7C90A6; margin-top:2px;}
+.kpi .sub.up{color:#6FCF97;}
+.kpi .sub.down{color:#EB8B7F;}
+
+.nav-wrap{position:sticky; top:0; z-index:50; background:var(--paper-2); border-bottom:1px solid var(--line); box-shadow:0 2px 10px rgba(20,30,45,.05);}
+nav.toc{display:flex; gap:2px; overflow-x:auto; padding:0 6vw; scrollbar-width:thin;}
+nav.toc a{
+  white-space:nowrap; font-size:12.5px; color:var(--ink-soft); text-decoration:none;
+  padding:12px 12px; border-bottom:2.5px solid transparent; font-weight:500;
+}
+nav.toc a:hover{color:var(--oracle-red); border-bottom-color:var(--gold);}
+
+main{max-width:1000px; margin:0 auto; padding:38px 6vw 90px;}
+section{margin-bottom:52px; scroll-margin-top:52px;}
+.sec-head{display:flex; align-items:baseline; gap:12px; border-bottom:2px solid var(--navy); padding-bottom:8px; margin-bottom:18px;}
+.sec-num{font-family:'IBM Plex Mono',monospace; color:var(--oracle-red); font-weight:600; font-size:14px;}
+h2{font-size:21px; margin:0; color:var(--navy);}
+h3{font-size:16px; color:var(--navy-2); margin:22px 0 8px;}
+p{margin:10px 0;}
+.lede{font-size:16px; color:var(--ink); font-weight:500; border-left:3px solid var(--oracle-red); padding-left:14px; margin:16px 0 20px; background:rgba(199,70,52,.04); padding:12px 16px; border-radius:0 4px 4px 0;}
+
+table{width:100%; border-collapse:collapse; margin:14px 0 20px; font-size:13.5px; background:var(--paper-2);}
+th,td{padding:8px 10px; border-bottom:1px solid var(--line); text-align:right;}
+th{background:var(--navy); color:#EFE9DD; font-weight:500; font-size:12px; text-align:right; letter-spacing:.2px;}
+th:first-child,td:first-child{text-align:left; font-weight:500;}
+tr:nth-child(even) td{background:#FBF8F2;}
+td.num{font-family:'IBM Plex Mono',monospace;}
+.pos{color:var(--green); font-weight:600;}
+.neg{color:var(--red); font-weight:600;}
+.tbl-note{font-size:11.5px; color:var(--ink-soft); margin-top:-8px; margin-bottom:18px; line-height:1.5;}
+
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0;}
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:16px 0;}
+.card{background:var(--paper-2); border:1px solid var(--line); border-radius:8px; padding:16px 18px;}
+.card h4{margin:0 0 8px; font-size:13.5px; color:var(--navy); text-transform:uppercase; letter-spacing:.4px;}
+.card .big{font-size:24px; font-weight:700; font-family:'IBM Plex Mono',monospace; color:var(--navy-2);}
+.card .cap{font-size:11.5px; color:var(--ink-soft); margin-top:4px;}
+.badge{display:inline-block; font-size:11px; padding:2px 9px; border-radius:12px; font-weight:600; letter-spacing:.3px;}
+.badge.hold{background:#EFE1C0; color:#7A5A0C;}
+.badge.buy{background:#D9EEE2; color:var(--green);}
+.badge.sell{background:#F3D9D5; color:var(--red);}
+.badge.risk{background:#F3D9D5; color:var(--red);}
+.badge.neutral{background:#E4E9EF; color:#39516B;}
+
+blockquote{
+  border-left:3px solid var(--gold); margin:16px 0; padding:8px 16px; font-style:italic;
+  color:var(--ink-soft); background:#FBF6EA; font-size:14px;
+}
+ul,ol{padding-left:20px;}
+li{margin:5px 0;}
+.divider{height:1px; background:var(--line); margin:30px 0;}
+
+.rating-box{
+  display:flex; gap:18px; align-items:center; background:var(--navy); color:#F1EBDC;
+  border-radius:10px; padding:22px 26px; margin:18px 0; flex-wrap:wrap;
+}
+.rating-box .rbig{font-size:30px; font-weight:700; color:var(--gold);}
+.rating-box .rlabel{font-size:12px; color:#9FB0C2; text-transform:uppercase; letter-spacing:.5px;}
+.rating-box .rcol{min-width:130px;}
+
+.risk-item{border:1px solid var(--line); border-left:4px solid var(--red); border-radius:0 6px 6px 0; padding:10px 14px; margin:8px 0; background:var(--paper-2);}
+.risk-item.med{border-left-color:var(--amber);}
+.risk-item h5{margin:0 0 4px; font-size:13.5px; color:var(--navy);}
+.risk-item p{margin:0; font-size:13px; color:var(--ink-soft);}
+
+.chart-box{background:var(--paper-2); border:1px solid var(--line); border-radius:8px; padding:10px 6px 4px; margin:16px 0;}
+.chart-box svg{width:100%; height:auto; display:block;}
+.chart-cap{font-size:11.5px; color:var(--ink-soft); padding:2px 14px 10px; line-height:1.5;}
+.chart-grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+
+.two-oracle{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0;}
+.oracle-a{background:#EFEAE0; border:1px solid var(--line); border-radius:8px; padding:16px 18px;}
+.oracle-b{background:#132C47; color:#EAE3D2; border-radius:8px; padding:16px 18px;}
+.oracle-b h4{color:#E7C877;}
+.oracle-a h4{color:var(--navy);}
+
+footer{background:var(--navy); color:#9FB0C2; padding:34px 6vw; font-size:12px; line-height:1.8;}
+footer b{color:#E7DFCC;}
+footer a{color:#E0A99A;}
+.ratingtbl td, .ratingtbl th{text-align:center;}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="brand-row">
+    <div class="brand"><span class="bird">&#x1F426;</span> <b>蜗牛鸟投资</b> &nbsp;SNAIL-BIRD INVESTMENT</div>
+    <div class="team-tag">全球科技研究组 &middot; Global Technology &amp; AI Infrastructure Research</div>
+  </div>
+  <div class="title-block">
+    <div class="eyebrow">深度公司研究 &middot; Company Deep Dive</div>
+    <h1 class="report-title">甲骨文公司(Oracle Corporation, NYSE: ORCL)<br>投资价值深度分析报告</h1>
+    <div class="subtitle">基于FY2027第一季度业绩(截至2026年8月31日)及管理层电话会议纪要——历史沿革、管理层、行业供需、业务护城河、盈利质量与自由现金流、资产负债表、订单(RPO)、指引、股东回报与估值的系统性评估</div>
+    <div class="meta-line">
+      <span>发布日期:2026年9月14日</span>
+      <span>覆盖行业:全球科技 / AI云基础设施</span>
+      <span>数据来源:公司公告、SEC文件、评级机构公开行动、第三方市场数据(详见文末注释)</span>
+    </div>
+  </div>
+
+  <div class="kpi-strip">
+    <div class="kpi"><div class="lab">收盘价(2026.9.11)</div><div class="val">$150.28</div><div class="sub down">52周区间 $114.5&ndash;$329.5</div></div>
+    <div class="kpi"><div class="lab">市值(约)</div><div class="val">~$454B</div><div class="sub">约3.06B股流通(含Q1 ATM增发)</div></div>
+    <div class="kpi"><div class="lab">评级</div><div class="val rating">持有 / Hold</div><div class="sub">风险调整后上行有限,尾部风险不对称</div></div>
+    <div class="kpi"><div class="lab">目标价(12&ndash;18个月)</div><div class="val">$173</div><div class="sub up">双方法混合概率加权,较现价+15%</div></div>
+    <div class="kpi"><div class="lab">FY2027E P/E</div><div class="val">~18.6x</div><div class="sub">基于指引Non-GAAP EPS $8.10</div></div>
+    <div class="kpi"><div class="lab">信用评级</div><div class="val" style="font-size:16px;">S&amp;P BBB- / Moody's Baa2</div><div class="sub down">投资级下限,一为稳定/一为负面展望</div></div>
+  </div>
+</div>
+
+<div class="nav-wrap">
+<nav class="toc">
+  <a href="#s1">01 历史沿革</a>
+  <a href="#s2">02 管理层与治理</a>
+  <a href="#s3">03 行业与供需</a>
+  <a href="#s4">04 业务与护城河</a>
+  <a href="#s5">05 盈利质量与FCF</a>
+  <a href="#s6">06 资产负债表</a>
+  <a href="#s7">07 订单(RPO)分析</a>
+  <a href="#s8">08 管理层指引</a>
+  <a href="#s9">09 股东回报</a>
+  <a href="#s10">10 估值分析</a>
+  <a href="#s11">11 风险因素</a>
+  <a href="#s12">12 结论与评级</a>
+</nav>
+</div>
+
+<main>
+
+<section id="s1">
+  <div class="sec-head"><span class="sec-num">01</span><h2>公司历史沿革</h2></div>
+  <p>甲骨文公司由Larry Ellison、Bob Miner与Ed Oates于1977年创立(初名Software Development Laboratories),1979年推出全球首个商用关系型数据库产品,是"关系型数据库"商业化的开创者。此后近半个世纪,公司经历了三次清晰的战略转型:</p>
+  <ol>
+    <li><b>数据库与企业软件时代(1977&ndash;2000年代)</b>:凭借Oracle Database确立数据库领域的技术与市场领导地位,并通过一系列并购(PeopleSoft、Siebel、Hyperion、BEA Systems等)向企业应用软件(ERP/CRM/HCM)扩张。</li>
+    <li><b>云转型时代(2010年代)</b>:面对AWS、Salesforce等云原生厂商的冲击,甲骨文启动"云优先"战略,推出Fusion Cloud应用套件与Oracle Cloud Infrastructure(OCI,第二代云基础设施架构),并以NetSuite(2016年)等并购强化SaaS布局。这一阶段公司常被市场视为"云计算追赶者",股价与估值长期落后于超大规模云厂商(Hyperscalers)。</li>
+    <li><b>AI基础设施时代(2023年至今)</b>:随着生成式AI训练与推理需求爆发,OCI凭借其RDMA高性能网络架构与相对灵活的算力交付模式,成为AI初创公司与大型科技公司採购GPU算力的重要供应商,与OpenAI、xAI、Meta、Nvidia、AMD等签订多笔数十亿美元级合同,公司战略重心自此显著转向"AI云基础设施建设者"。这一转型也是当前投资价值判断的核心矛盾所在(详见第03、06、07节)。</li>
+  </ol>
+  <p>公司总部位于美国德克萨斯州奥斯汀(此前长期位于加州红木城,2020年迁址)。创始人Larry Ellison目前仍担任董事会执行主席兼首席技术官(CTO),是公司战略与技术路线的最终决策者。</p>
+
+  <h3>1.1 理解当前的Oracle:两家公司叠加在一起</h3>
+  <p>在深入具体财务数据前,有必要先建立一个贯穿全文的分析框架——当前的甲骨文实质上是<b>两家经济特征截然不同的公司的叠加体</b>,后续各节的许多"看似矛盾"的结论(例如"营收增长很快但估值折价""订单饱满但评级下调"),本质上都是这两家公司权重此消彼长的结果。</p>
+  <div class="two-oracle">
+    <div class="oracle-a">
+      <h4>公司A:传统Oracle</h4>
+      <p style="font-size:13px; margin:6px 0;">数据库(License+Support)、Fusion/NetSuite应用软件、传统服务与硬件。</p>
+      <p style="font-size:13px; margin:6px 0;">特征:高利润率、高客户粘性(迁移成本高)、增长中低速(个位数至低双位数)、现金流稳定且强劲,是公司数十年来的"现金牛"。</p>
+    </div>
+    <div class="oracle-b">
+      <h4>公司B:AI基础设施Oracle</h4>
+      <p style="font-size:13px; margin:6px 0;">OCI云基础设施、GPU算力租赁、数据中心与电力资产、大型AI云合同(RPO主体)。</p>
+      <p style="font-size:13px; margin:6px 0;">特征:高增长(三位数)、高资本强度、高融资依赖、执行与交易对手方风险高,现金流当前为显著负值,是公司当前估值波动性与信用风险的主要来源。</p>
+    </div>
+  </div>
+  <p style="font-size:13.5px; color:var(--ink-soft);">本报告第04&ndash;10节的分析,凡涉及"增长""护城河"部分时更多指向公司B;凡涉及"现金流质量""资产负债表""估值折价"部分时则更多是公司A的稳定性与公司B的风险敞口相互权衡的结果。这一框架有助于避免将Oracle简单化为单一叙事(纯粹看多"AI云"或纯粹看空"负FCF")。</p>
+</section>
+
+<section id="s2">
+  <div class="sec-head"><span class="sec-num">02</span><h2>管理层及靠谱程度评估</h2></div>
+  <p class="lede">甲骨文于2025年9月经历了11年来最重大的管理层变更——由单一CEO架构转为"双CEO"架构,叠加创始人对股票减持计划的临时取消,构成本轮研究中对管理层可信度评估的两个关键观测点。</p>
+
+  <h3>2.1 领导层结构</h3>
+  <table>
+    <tr><th style="text-align:left;">职位</th><th style="text-align:left;">姓名</th><th style="text-align:left;">背景与评述</th></tr>
+    <tr><td>执行主席 &amp; CTO</td><td>Larry Ellison</td><td>公司联合创始人,持续担任技术与战略最终拍板人,与Safra Catz搭档长达26年。</td></tr>
+    <tr><td>联席CEO(基础设施)</td><td>Clay Magouyrk</td><td>2014年自AWS加入,OCI第二代架构核心缔造者,此前任云基础设施业务总裁,负责基础设施建设执行。</td></tr>
+    <tr><td>联席CEO(行业应用)</td><td>Mike Sicilia</td><td>通过收购Primavera Systems加入甲骨文,此前任行业事业部总裁,负责AI应用与垂直行业解决方案。</td></tr>
+    <tr><td>执行副主席</td><td>Safra Catz</td><td>2014&ndash;2025年担任CEO(此前与已故Mark Hurd共同掌舵),任内公司市值增长逾5倍;转任董事会执行副主席,据其本人说明仍为公司雇员并继续参与战略指导。</td></tr>
+    <tr><td>首席财务官</td><td>Hilary Maxson</td><td>负责资本开支节奏、融资结构与信用评级维护的对外沟通,在近两个季度电话会议中为资本市场沟通的核心发言人。</td></tr>
+  </table>
+
+  <h3>2.2 治理与可信度评估</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>正面信号</h4>
+      <ul>
+        <li>双CEO架构分工清晰(基础设施 vs. 应用/行业),避免了"一人身兼技术与商业决策"的传统风险,且两人均为内部提拔、深谙公司AI战略执行细节,减少外部空降高管的磨合期。</li>
+        <li>股权激励设计将两位新任CEO与2029年的长期业绩绑定(据公开报道,股票期权价值约3.5亿美元需持续任职并达成营收/股价目标方可完全归属),激励结构指向长期主义。</li>
+        <li>Co-CEO Clay Magouyrk在近期电话会议中明确表态"致力于维持公司投资级评级",管理层已将信用评级维护作为对外沟通的明确优先项,而非回避议题。</li>
+        <li>创始人Larry Ellison于2026年9月12日(季报公布后两天)主动取消原定出售至多5000万股(约合75亿美元)的10b5-1减持计划,可解读为管理层对短期股价疲软下的信心表态,但也应注意此类信号存在一定的公关属性,不宜单独作为投资决策依据。</li>
+        <li>季度指引连续兑现:FY2027 Q1营收、EPS及RPO均超出此前公司自身给出的指引区间(详见第08节),显示管理层近两个季度的预测纪律尚可,尤其Non-GAAP EPS实际值较指引上限仍有明显超越,不排除存在指引偏保守化的倾向(对投资者而言总体是正面因素)。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>需要警惕的信号</h4>
+      <ul>
+        <li>Safra Catz在卸任CEO前的2025年出售了逾25亿美元公司股票,时点引发部分投资者对高管股权套现节奏的关注,需结合其"从CEO转为非执行治理角色"的合理性综合判断,不宜简单定性。</li>
+        <li>双CEO模式历史上在大型上市公司中的成功案例有限,市场仍需通过更长时间验证Magouyrk与Sicilia的协同效率,尤其是在资本开支决策与信用评级维护这类需要高度统一对外口径的议题上。</li>
+        <li>管理层在"自由现金流何时转正"这一核心问题上,截至最新一次电话会议仍未给出明确时间表,仅强调预付款/客户自带硬件模式对资本需求的缓释作用(参见第05、06节),对投资者而言透明度仍有提升空间。</li>
+        <li>管理层将"预计约50%的RPO将在未来36个月内转化为收入"作为核心沟通口径,但对单一客户(OpenAI)集中度、以及若干笔预付款/客户供货型合同的具体条款并未在公司层面主动、完整披露——市场对OpenAI相关RPO占比的认知主要来自标普(S&amp;P)等评级机构的独立测算(约占RPO总额一半),而非公司官方口径,这一披露落差本身即是治理透明度层面值得关注的问题。</li>
+      </ul>
+    </div>
+  </div>
+  <p><b>综合结论:</b>本轮管理层过渡尚属平稳,新任联席CEO团队具备扎实的内部履历与技术背景,治理结构本身不构成短期风险点;但资本配置纪律(尤其是自由现金流转正路径与客户集中度的主动披露)仍是决定管理层"靠谱程度"能否维持市场信任的关键变量,建议持续跟踪未来2&ndash;3个季度的现金流指引兑现情况。</p>
+</section>
+
+<section id="s3">
+  <div class="sec-head"><span class="sec-num">03</span><h2>所处行业发展及供需情况</h2></div>
+  <p class="lede">甲骨文当前的核心叙事已从"传统企业软件供应商"切换为"AI云基础设施供应商",行业比较基准也应相应地从Salesforce、SAP等软件同业,切换为微软Azure、亚马逊AWS、谷歌云、Meta等超大规模算力建设者(Hyperscalers)。</p>
+
+  <h3>3.1 需求端:结构性供不应求,但需辩证看待</h3>
+  <p>公司在最新10-Q文件中明确表示:客户对AI云训练与推理服务的需求持续快于供给增长。这一判断在多项运营指标中得到印证:Q1 FY2027 GPU利用率高达97.9%,几乎满负荷运转;公司在GPU续约与转售中实现约20%的平均溢价,反映出算力供给的稀缺性溢价仍然存在。管理层预计约半数RPO将在未来36个月内转化为收入,暗示需求端能见度较高。</p>
+  <p>但作为独立研究机构,本报告认为也应完整呈现需求端的潜在降温证据,而非单方面采信管理层的乐观表述:(1)模型训练效率持续提升(参数效率、推理成本下降的技术趋势)理论上可能降低单位算力需求的增速;(2)微软、谷歌等同业也在积极扩大自研芯片(TPU等)与自建产能,长期看不排除对外部算力採购需求形成一定替代;(3)AI应用层的商业化变现速度若持续滞后于基础设施投入速度,不能排除下游客户在未来1&ndash;2年内阶段性削减算力採购规模的可能性。上述因素目前均未在Oracle的订单数据中体现(RPO仍在加速增长),但作为审慎研究机构,应将其列为需要持续跟踪的供需反转风险,而非默认需求将线性外推。</p>
+
+  <div class="chart-box">
+    <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif">
+<text x="55" y="20" font-size="13" font-weight="600" fill="#0B1E33">剩余履约义务(RPO)季度趋势 ($B)</text>
+<line x1="55" y1="36.0" x2="620" y2="36.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="90.5" x2="620" y2="90.5" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="145.0" x2="620" y2="145.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="199.5" x2="620" y2="199.5" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="254.0" x2="620" y2="254.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="254.0" x2="620" y2="254.0" stroke="#B7AD92" stroke-width="1.2"/>
+<rect x="80.4" y="104.6" width="62.2" height="149.4" fill="#0B1E33" rx="2"/>
+<text x="111.5" y="98.6" font-size="11" text-anchor="middle" fill="#1B2430" font-weight="600">455</text>
+<text x="111.5" y="272.0" font-size="10.5" text-anchor="middle" fill="#4B5768">FY26 Q1</text>
+<rect x="193.4" y="82.3" width="62.2" height="171.7" fill="#0B1E33" rx="2"/>
+<text x="224.5" y="76.3" font-size="11" text-anchor="middle" fill="#1B2430" font-weight="600">523</text>
+<text x="224.5" y="272.0" font-size="10.5" text-anchor="middle" fill="#4B5768">FY26 Q2</text>
+<rect x="306.4" y="72.4" width="62.2" height="181.6" fill="#0B1E33" rx="2"/>
+<text x="337.5" y="66.4" font-size="11" text-anchor="middle" fill="#1B2430" font-weight="600">553</text>
+<text x="337.5" y="272.0" font-size="10.5" text-anchor="middle" fill="#4B5768">FY26 Q3</text>
+<rect x="419.4" y="44.5" width="62.2" height="209.5" fill="#0B1E33" rx="2"/>
+<text x="450.5" y="38.5" font-size="11" text-anchor="middle" fill="#1B2430" font-weight="600">638</text>
+<text x="450.5" y="272.0" font-size="10.5" text-anchor="middle" fill="#4B5768">FY26 Q4</text>
+<rect x="532.4" y="36.0" width="62.2" height="218.0" fill="#0B1E33" rx="2"/>
+<text x="563.5" y="30.0" font-size="11" text-anchor="middle" fill="#1B2430" font-weight="600">664</text>
+<text x="563.5" y="272.0" font-size="10.5" text-anchor="middle" fill="#4B5768">FY27 Q1</text>
+</svg>
+    <div class="chart-cap">数据来源:公司各季度财报新闻稿。</div>
+  </div>
+
+  <h3>3.2 供给端:全行业资本开支竞赛</h3>
+  <p>微软、亚马逊、谷歌、Meta及甲骨文2026年合计资本开支已达到约7000&ndash;7450亿美元量级(较2025年的约4100亿美元增长逾77%),行业进入"资本开支竞赛"阶段:微软2026自然年资本开支约1900亿美元,亚马逊约2000亿美元,谷歌1750&ndash;1850亿美元,Meta 1150&ndash;1350亿美元。甲骨文FY2027财年总资本开支指引为900&ndash;950亿美元(净开支约700亿美元,扣除客户预付款及客户自带硬件后的口径),规模上已跻身Meta量级、逼近微软与谷歌——但与上述同业相比,甲骨文的核心差异在于<b>资金来源结构</b>:谷歌、微软、Meta主要依靠自身庞大的经营性自由现金流自我造血支持资本开支(谷歌TTM自由现金流约530亿美元),而甲骨文的自由现金流当前为显著负值,资本开支高度依赖债务与股权融资(详见第05、06节)。</p>
+  <p>值得指出的是,"资本开支相对营收规模过高"并非甲骨文独有的问题——市场研究同样估算包括甲骨文在内的五家主要科技公司,其未在资产负债表上确认的数据中心租赁承诺(经营性租赁、尚未开始的长期合同)合计规模可能高达约1.65万亿美元,这是全行业AI基础设施建设普遍採用的表外融资模式。但甲骨文与同业的关键差异在于:大型同业的资产负债表与信用评级(AAA至AA+区间)具备远高于甲骨文(BBB-/Baa2区间)的风险缓冲能力,能够更从容地消化这类表外承诺,而甲骨文的缓冲垫明显更薄(详见第06节)。</p>
+
+  <div class="chart-box">
+    <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif">
+<text x="55" y="20" font-size="13" font-weight="600" fill="#0B1E33">资本开支/营收比率对比(同期或近期可比季度,%)</text>
+<line x1="55" y1="36.0" x2="620" y2="36.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="90.5" x2="620" y2="90.5" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="145.0" x2="620" y2="145.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="199.5" x2="620" y2="199.5" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="254.0" x2="620" y2="254.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="254.0" x2="620" y2="254.0" stroke="#B7AD92" stroke-width="1.2"/>
+<rect x="86.8" y="36.0" width="77.7" height="218.0" fill="#C74634" rx="2"/>
+<text x="125.6" y="30.0" font-size="11" text-anchor="middle" fill="#1B2430" font-weight="600">147%</text>
+<text x="125.6" y="272.0" font-size="10.5" text-anchor="middle" fill="#4B5768">ORCL
+Q1FY27</text>
+<rect x="228.0" y="193.2" width="77.7" height="60.8" fill="#C74634" rx="2"/>
+<text x="266.9" y="187.2" font-size="11" text-anchor="middle" fill="#1B2430" font-weight="600">41%</text>
+<text x="266.9" y="272.0" font-size="10.5" text-anchor="middle" fill="#4B5768">MSFT
+(近似)</text>
+<rect x="369.3" y="206.5" width="77.7" height="47.5" fill="#C74634" rx="2"/>
+<text x="408.1" y="200.5" font-size="11" text-anchor="middle" fill="#1B2430" font-weight="600">32%</text>
+<text x="408.1" y="272.0" font-size="10.5" text-anchor="middle" fill="#4B5768">GOOGL
+Q1'26</text>
+<rect x="510.5" y="216.9" width="77.7" height="37.1" fill="#C74634" rx="2"/>
+<text x="549.4" y="210.9" font-size="11" text-anchor="middle" fill="#1B2430" font-weight="600">25%</text>
+<text x="549.4" y="272.0" font-size="10.5" text-anchor="middle" fill="#4B5768">AMZN
+Q1'26</text>
+</svg>
+    <div class="chart-cap">数据来源:公司公告及第三方报道整理,ORCL/GOOGL/AMZN数据点为对应季度SEC文件披露口径;MSFT数据为综合市场公开报道的近似估算(标注为"近似"),因未能获取与Oracle完全同period、同口径的原始收入数据,该项存在一定测算误差,仅供方向性参考。四家公司资本开支/营收比率的绝对可比性受财年起止日期、云/非云业务占比差异影响,不宜做过度精确的横向解读,但比率量级差异本身(Oracle显著高于三家同业)具有较强的方向性意义。</div>
+  </div>
+
+  <h3>3.3 竞争格局</h3>
+  <table>
+    <tr><th style="text-align:left;">维度</th><th style="text-align:left;">甲骨文(OCI)</th><th style="text-align:left;">微软 Azure</th><th style="text-align:left;">谷歌云 / AWS</th></tr>
+    <tr><td>云基础设施市场地位</td><td>行业"第四朵云",增速最快但基数最小</td><td>第二大份额,AI原生集成(OpenAI/Copilot)领先</td><td>AWS份额第一;谷歌云拥有TPU全栈自研优势</td></tr>
+    <tr><td>近期同比增速(云基础设施/云部门)</td><td class="num pos">OCI +121%(FY27 Q1)</td><td class="num">Azure约+40%区间(市场数据)</td><td>谷歌云约+63%;AWS约+28%(市场数据)</td></tr>
+    <tr><td>自由现金流状况</td><td class="num neg">显著为负</td><td>正,规模大幅收窄但仍为正</td><td>谷歌:正且规模领先同业(TTM约$53B)</td></tr>
+    <tr><td>信用评级</td><td>BBB-/Baa2(投资级下限)</td><td>AAA区间</td><td>谷歌AA+区间 / 亚马逊AA区间</td></tr>
+  </table>
+  <p class="tbl-note">数据来源:公司公告、第三方市场数据聚合(见文末注释)。微软/谷歌/AWS增速为市场公开报道口径,存在统计区间与货币调整差异,仅作方向性比较,非严格同期可比数据。</p>
+  <p><b>结论:</b>甲骨文在AI云基础设施细分赛道的相对增速具备明显优势(基数效应叠加GPU容量释放),但在"资产负债表实力"这一维度处于绝对弱势地位——这决定了公司在行业资本开支竞赛中承受的边际融资成本与信用风险显著高于其超大规模同业,是理解甲骨文股价波动性(52周区间达$114.5&ndash;$329.5)远高于同业的核心原因。</p>
+</section>
+
+<section id="s4">
+  <div class="sec-head"><span class="sec-num">04</span><h2>业务发展情况及护城河</h2></div>
+  <h3>4.1 分部收入结构(FY2027 Q1)</h3>
+  <table>
+    <tr><th style="text-align:left;">业务分部</th><th>本季度收入</th><th>同比增速</th><th>占总收入比重</th></tr>
+    <tr><td>云基础设施(IaaS/OCI)</td><td class="num">$7.4B</td><td class="num pos">+121%</td><td class="num">38%</td></tr>
+    <tr><td>云应用(SaaS)</td><td class="num">$4.2B</td><td class="num pos">+10%</td><td class="num">22%</td></tr>
+    <tr><td>软件许可(License)</td><td class="num">$5.5B</td><td class="num neg">-3%</td><td class="num">28%</td></tr>
+    <tr><td>服务(Services)</td><td class="num">$1.4B</td><td class="num pos">+5%</td><td class="num">7%</td></tr>
+    <tr><td>硬件(Hardware)</td><td class="num">$0.8B</td><td class="num pos">+15%</td><td class="num">4%</td></tr>
+    <tr><td><b>总收入</b></td><td class="num"><b>$19.35B</b></td><td class="num pos"><b>+30%</b></td><td class="num"><b>100%</b></td></tr>
+  </table>
+  <p class="tbl-note">数据来源:Oracle Q1 FY27 财报新闻稿(2026年9月10日)。软件许可收入同比下滑反映客户持续从本地部署向云端迁移,属于公司主动引导的业务结构转型,而非需求萎缩。</p>
+
+  <div class="chart-box">
+    <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif">
+<text x="55" y="20" font-size="13" font-weight="600" fill="#0B1E33">同比对比:总营收 / 云收入 / OCI收入 ($B, Q1财季)</text>
+<line x1="55" y1="244.0" x2="620" y2="244.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="192.0" x2="620" y2="192.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="140.0" x2="620" y2="140.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="88.0" x2="620" y2="88.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="36.0" x2="620" y2="36.0" stroke="#E4DCC9" stroke-width="1"/>
+<rect x="108.7" y="104.7" width="50.2" height="139.3" fill="#0B1E33" rx="2"/>
+<text x="133.8" y="99.7" font-size="9.6" text-anchor="middle" fill="#1B2430" font-weight="600">14.9</text>
+<rect x="167.1" y="176.7" width="50.2" height="67.3" fill="#C99A3B" rx="2"/>
+<text x="192.2" y="171.7" font-size="9.6" text-anchor="middle" fill="#1B2430" font-weight="600">7.2</text>
+<rect x="225.4" y="212.8" width="50.2" height="31.2" fill="#C74634" rx="2"/>
+<text x="250.5" y="207.8" font-size="9.6" text-anchor="middle" fill="#1B2430" font-weight="600">3.3</text>
+<text x="196.2" y="262.0" font-size="10.5" text-anchor="middle" fill="#4B5768">FY26 Q1</text>
+<rect x="391.2" y="63.1" width="50.2" height="180.9" fill="#0B1E33" rx="2"/>
+<text x="416.3" y="58.1" font-size="9.6" text-anchor="middle" fill="#1B2430" font-weight="600">19.4</text>
+<rect x="449.6" y="135.6" width="50.2" height="108.4" fill="#C99A3B" rx="2"/>
+<text x="474.7" y="130.6" font-size="9.6" text-anchor="middle" fill="#1B2430" font-weight="600">11.6</text>
+<rect x="507.9" y="174.8" width="50.2" height="69.2" fill="#C74634" rx="2"/>
+<text x="533.0" y="169.8" font-size="9.6" text-anchor="middle" fill="#1B2430" font-weight="600">7.4</text>
+<text x="478.8" y="262.0" font-size="10.5" text-anchor="middle" fill="#4B5768">FY27 Q1</text>
+<rect x="55.0" y="275.0" width="10" height="10" fill="#0B1E33" rx="2"/>
+<text x="69.0" y="284.0" font-size="10.5" fill="#4B5768">总营收</text>
+<rect x="109.8" y="275.0" width="10" height="10" fill="#C99A3B" rx="2"/>
+<text x="123.8" y="284.0" font-size="10.5" fill="#4B5768">云收入(IaaS+SaaS)</text>
+<rect x="248.2" y="275.0" width="10" height="10" fill="#C74634" rx="2"/>
+<text x="262.2" y="284.0" font-size="10.5" fill="#4B5768">云基础设施(OCI)</text>
+</svg>
+    <div class="chart-cap">数据来源:公司财报新闻稿。FY26 Q1 OCI收入数值为第三方行业报道整理的季度拆分数据。</div>
+  </div>
+
+  <h3>4.2 护城河分析:细分到具体来源</h3>
+  <p>"OCI具备护城河"这一判断过于笼统,机构投资研究应尽量拆解其具体来源,并如实区分"已被验证"与"尚待验证"的部分:</p>
+  <div class="grid3">
+    <div class="card">
+      <h4>数据库不可替代性(已验证)</h4>
+      <p style="font-size:13px; color:var(--ink-soft);">Oracle Database在关键任务型企业应用(金融、电信、政府)中的部署基础极深,迁移成本高昂,形成传统企业软件业务的现金流"压舱石"。这是公司历史最悠久、最经受市场检验的护城河。</p>
+    </div>
+    <div class="card">
+      <h4>多云数据库战略(已验证)</h4>
+      <p style="font-size:13px; color:var(--ink-soft);">通过与AWS、谷歌云、微软Azure的多云数据库合作协议,甲骨文将其数据库产品嵌入竞争对手的云生态中,形成"竞合"护城河——既获取新客户,又降低客户完全迁移出甲骨文生态的动机。</p>
+    </div>
+    <div class="card">
+      <h4>合同锁定与RPO(部分验证)</h4>
+      <p style="font-size:13px; color:var(--ink-soft);">大量长期RPO合同为收入可见度提供支撑,形成一定程度的"需求锁定";但锁定的稳固性依赖客户自身的履约能力(尤其是OpenAI等尚未盈利的客户),故只能视为"部分验证"的护城河(详见第07节)。</p>
+    </div>
+  </div>
+  <p>至于市场经常提及的"OCI架构/网络性能优势"(RDMA高性能网络、裸金属算力交付等),本报告认为这更接近一种<b>尚待长期验证的相对优势</b>,而非结构性壁垒:GPU与数据中心本质上是可复制的资本品,单纯的硬件规格差异难以构成长期护城河。若甲骨文的AI基础设施业务存在真正的长期竞争壁垒,更可能来自以下几个尚未被市场充分定价、也难以在公开数据中精确量化的综合能力,建议作为后续跟踪重点,而非本报告当前给出确定性结论:</p>
+  <ul>
+    <li><b>电力获取能力</b>——在全行业电力成为数据中心建设最主要瓶颈的背景下,谁能更快锁定电力容量,可能是比GPU本身更关键的中长期壁垒;</li>
+    <li><b>数据中心建设与交付速度</b>——能否按合同承诺的时间表将GPU算力转化为可计费收入,直接决定RPO的实际转化效率;</li>
+    <li><b>客户迁移成本</b>——AI客户一旦在OCI上完成大规模训练/推理工作流部署后的实际切换成本高低;</li>
+    <li><b>融资成本与渠道</b>——在资本开支竞赛中,谁能以更低成本持续获得资金,本身就是一种竞争优势(而这恰恰是甲骨文相对同业最弱的一环,详见第06节)。</li>
+  </ul>
+  <p><b>关键判断:</b>甲骨文的护城河正处于"新旧交替"阶段——传统数据库/ERP业务(即"公司A")护城河稳固但增长贡献有限,AI云基础设施业务(即"公司B")增长强劲但护城河尚未被完全验证。这意味着公司当前的估值倍数(相对历史)在很大程度上是在为"执行力"而非已经证实的"结构性壁垒"定价。</p>
+</section>
+
+<section id="s5">
+  <div class="sec-head"><span class="sec-num">05</span><h2>多季度盈利质量和现金流(自由现金流)分析</h2></div>
+  <p class="lede">这是本报告评级审慎的核心依据之一:甲骨文的营收与订单增长质量优异,但现金流质量正在经历自2010年代云转型以来最剧烈的恶化,且很大一部分经营性现金流改善来自"融资性质"的客户预付款,而非纯粹的经营性现金转化。</p>
+
+  <h3>5.1 近期业绩速览(GAAP / Non-GAAP对照)</h3>
+  <table>
+    <tr><th style="text-align:left;">指标</th><th>FY2026 Q1<br>(2025.6&ndash;8)</th><th>FY2026全年<br>(2025.6&ndash;2026.5)</th><th>FY2027 Q1<br>(2026.6&ndash;8)</th><th>同比变化(Q1)</th></tr>
+    <tr><td>总营收</td><td class="num">$14.9B</td><td class="num">$67.4B</td><td class="num">$19.35B</td><td class="num pos">+30%</td></tr>
+    <tr><td>云收入(IaaS+SaaS)</td><td class="num">$7.2B</td><td class="num">$34.0B</td><td class="num">$11.6B</td><td class="num pos">+62%</td></tr>
+    <tr><td>GAAP营业利润</td><td class="num">&mdash;</td><td class="num">$20.6B</td><td class="num">$6.7B</td><td class="num pos">+57%</td></tr>
+    <tr><td>Non-GAAP营业利润</td><td class="num">&mdash;</td><td class="num">$28.9B</td><td class="num">$8.2B</td><td class="num pos">+31%</td></tr>
+    <tr><td>GAAP每股收益(EPS)</td><td class="num">$1.01</td><td class="num">$5.83</td><td class="num">$1.56</td><td class="num pos">+55%</td></tr>
+    <tr><td>Non-GAAP EPS</td><td class="num">$1.47</td><td class="num">$7.63</td><td class="num">$1.92</td><td class="num pos">+30%</td></tr>
+    <tr><td>经营性现金流(OCF)</td><td class="num">~$8.0B<sup>*</sup></td><td class="num">$32.0B</td><td class="num">$23.0B</td><td class="num pos">+184% / +约$15.0B</td></tr>
+    <tr><td>资本开支(Capex)</td><td class="num">$8.5B</td><td class="num">$55.7B</td><td class="num">$28.5B</td><td class="num neg">约+235%</td></tr>
+    <tr><td><b>自由现金流(FCF = OCF&minus;Capex)</b></td><td class="num neg"><b>~-$0.5B<sup>*</sup></b></td><td class="num neg"><b>-$23.7B</b></td><td class="num neg"><b>-$5.4B</b></td><td class="num neg"><b>持续为负</b></td></tr>
+  </table>
+  <p class="tbl-note"><sup>*</sup>标注项为本报告根据公司披露的同比变化幅度反推估算(公司10-Q披露"FY27 Q1经营性现金流较FY26 Q1同比增长184%、约合增加150亿美元",据此反推FY26 Q1经营性现金流约80亿美元,FY26 Q1 FCF约为-5亿美元),非公司直接披露的原始数字,特此说明以符合数据披露纪律。FY2026 Q2/Q3单季度详细利润表数据因公开检索资料未能获取完整口径,故未纳入本表;第三方报道显示FY2026 Q2(截至2025年11月30日)现金消耗(经营现金流扣除资本开支后)约为100亿美元,可作为FY2026年内现金流持续承压的旁证。</p>
+
+  <div class="chart-box">
+    <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif">
+<text x="55" y="20" font-size="13" font-weight="600" fill="#0B1E33">经营性现金流 vs. 资本开支 vs. 自由现金流 ($B, Q1财季)</text>
+<line x1="55" y1="244.0" x2="620" y2="244.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="192.0" x2="620" y2="192.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="140.0" x2="620" y2="140.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="88.0" x2="620" y2="88.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="36.0" x2="620" y2="36.0" stroke="#E4DCC9" stroke-width="1"/>
+<rect x="108.7" y="193.2" width="50.2" height="50.8" fill="#2E7D5B" rx="2"/>
+<text x="133.8" y="188.2" font-size="9.6" text-anchor="middle" fill="#1B2430" font-weight="600">8.0</text>
+<rect x="167.1" y="190.1" width="50.2" height="53.9" fill="#0B1E33" rx="2"/>
+<text x="192.2" y="185.1" font-size="9.6" text-anchor="middle" fill="#1B2430" font-weight="600">8.5</text>
+<rect x="225.4" y="247.2" width="50.2" height="-3.2" fill="#B3392C" rx="2"/>
+<text x="250.5" y="242.2" font-size="9.6" text-anchor="middle" fill="#1B2430" font-weight="600">-0.5</text>
+<text x="196.2" y="262.0" font-size="10.5" text-anchor="middle" fill="#4B5768">FY26 Q1(估算)</text>
+<rect x="391.2" y="98.0" width="50.2" height="146.0" fill="#2E7D5B" rx="2"/>
+<text x="416.3" y="93.0" font-size="9.6" text-anchor="middle" fill="#1B2430" font-weight="600">23.0</text>
+<rect x="449.6" y="63.1" width="50.2" height="180.9" fill="#0B1E33" rx="2"/>
+<text x="474.7" y="58.1" font-size="9.6" text-anchor="middle" fill="#1B2430" font-weight="600">28.5</text>
+<rect x="507.9" y="278.3" width="50.2" height="-34.3" fill="#B3392C" rx="2"/>
+<text x="533.0" y="273.3" font-size="9.6" text-anchor="middle" fill="#1B2430" font-weight="600">-5.4</text>
+<text x="478.8" y="262.0" font-size="10.5" text-anchor="middle" fill="#4B5768">FY27 Q1</text>
+<rect x="55.0" y="275.0" width="10" height="10" fill="#2E7D5B" rx="2"/>
+<text x="69.0" y="284.0" font-size="10.5" fill="#4B5768">经营性现金流(OCF)</text>
+<rect x="170.6" y="275.0" width="10" height="10" fill="#0B1E33" rx="2"/>
+<text x="184.6" y="284.0" font-size="10.5" fill="#4B5768">资本开支(Capex)</text>
+<rect x="286.2" y="275.0" width="10" height="10" fill="#B3392C" rx="2"/>
+<text x="300.2" y="284.0" font-size="10.5" fill="#4B5768">自由现金流(FCF)</text>
+</svg>
+    <div class="chart-cap">数据来源:公司公告及本报告基于同比变化幅度的反推估算(FY26 Q1栏标注"估算")。</div>
+  </div>
+
+  <h3>5.2 盈利质量的三个关键观察</h3>
+  <ol>
+    <li><b>营收与利润增长"真实且加速":</b> Q1 FY2027总营收增速(30%)较Q4 FY2026(21%)进一步加速,云基础设施收入增速由Q4的93%进一步提升至121%,营业利润率同比显著扩张(GAAP营业利润增速57%远超营收增速),说明规模效应正在部分抵消数据中心爬坡期的成本压力,这是本报告认为公司基本面"质地本身没有恶化"的核心依据。</li>
+    <li><b>经营性现金流改善"含金量"需要打折看待,但不宜简单定性为负面:</b> 公司在10-Q中明确披露,Q1 FY2027经营性现金流同比增加约150亿美元中,包含114亿美元来自"具有重大融资成分的客户预付款"现金流入。这部分现金流入在会计处理上计入经营活动现金流,但其经济实质更接近客户为未来算力交付提供的"过桥融资"。需要强调的是,这类预付款同时具有<b>双重属性</b>:一方面,它确实降低了这部分经营性现金流的"内生"含金量,不宜与纯粹由利润驱动的现金转化同等看待;另一方面,客户愿意大额预付本身也是一种需求确认信号,并直接降低了甲骨文自身需要对外融资的规模——从这个角度看,预付款模式实际上是甲骨文管理层主动设计、用以部分缓解资产负债表压力的合理商业安排,而非单纯的财务工程或盈利质量瑕疵。综合而言,预付款现金流入应被"部分而非全部"从经营性现金流的质量评估中扣除,并结合其对资本结构的缓释作用一并评估。</li>
+    <li><b>自由现金流的负值目前具有明显的结构性特征,但转正与否最终取决于资本开支周期本身:</b> Q1 FY2027自由现金流约为-54亿美元,叠加FY2026全年-237亿美元的负值,累计过去五个季度自由现金流缺口已达数百亿美元量级,且S&amp;P预测FY2027自由运营现金流缺口可能进一步扩大至约420亿美元。管理层指引FY2027全年资本开支900&ndash;950亿美元(净开支约700亿美元),按当前经营性现金流增速测算,全年自由现金流大概率仍将维持深度负值。但需要审慎指出的是,这一负值的性质更接近"大规模资本开支周期中的阶段性现象",而非永久性的商业模式缺陷——若数据中心建设高峰在FY2028&ndash;FY2029逐步过去、叠加RPO持续转化为收入,OCF存在加速增长并最终覆盖资本开支的可能路径。本报告的审慎立场并非否定这一路径的可能性,而是强调:管理层至今未就"转正时点"给出具体指引,该路径目前仍属于市场预期而非已确认的公司承诺,不应被视为确定性事件提前计入估值。</li>
+  </ol>
+  <blockquote>"预付款与客户自带硬件模式实质性降低了甲骨文为AI数据中心建设所需筹集的资本规模" &mdash; 公司Q1 FY2027财报新闻稿。本报告认为该表述方向正确,是管理层资本结构管理的合理举措之一,但不应掩盖自由现金流绝对值持续为负、且缺口尚未见明确收窄拐点的事实。</blockquote>
+</section>
+
+<section id="s6">
+  <div class="sec-head"><span class="sec-num">06</span><h2>资产负债表分析</h2></div>
+  <p class="lede">甲骨文的资产负债表是当前市场对其估值分歧最大的焦点:公司正在以"投资级评级下限"的融资成本,执行一项同业中相对规模最大、资金自给率最低的资本开支计划,且存在规模可观的表外承诺需要一并纳入评估。</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h4>总借款(FY2026年末,2026年5月31日,10-K口径)</h4>
+      <div class="big">$129.5B</div>
+      <div class="cap">含短期+长期借款,对应现金及有价证券$31.9B,税前净借款约$97.7B(未计入租赁负债)。该季度后借款规模持续上升,第三方数据对Q1 FY2027季末(2026年8月31日)"总债务"口径的测算结果在$117.7B(仅长期借款)至$167B(含全部借款及融资租赁的更宽口径)之间,差异主要源于是否纳入融资租赁负债及数据口径抓取时点不同,本报告如实披露该分歧,不做主观归一化处理。</div>
+    </div>
+    <div class="card">
+      <h4>表外承诺:尚未确认的数据中心租赁</h4>
+      <div class="big neg">~$260B</div>
+      <div class="cap">公司披露存在约2600亿美元的额外租赁承诺(主要为数据中心相关),因租约尚未正式开始而未计入资产负债表,租期普遍为15&ndash;19年。这是理解甲骨文实际资本结构风险时不可忽视的关键项——传统的P/E或简单的资产负债表比率均无法完整反映这部分风险敞口。第三方研究估算,甲骨文与微软、谷歌、亚马逊、Meta合计的此类表外数据中心承诺规模可能高达约1.65万亿美元,这是当前全行业AI基础设施建设普遍採用的融资模式,并非甲骨文独有,但甲骨文因信用评级更低、缓冲垫更薄,对这类承诺的相对敏感度更高。</div>
+    </div>
+  </div>
+
+  <h3>6.1 信用评级轨迹</h3>
+  <div class="chart-box">
+    <svg viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif">
+<text x="30" y="20" font-size="13" font-weight="600" fill="#0B1E33">信用评级行动时间线</text>
+<line x1="30" y1="78" x2="650" y2="78" stroke="#C9BE9F" stroke-width="2"/>
+<circle cx="30.0" cy="78" r="6.5" fill="#B4831E" stroke="#fff" stroke-width="2"/>
+<text x="30.0" y="46.0" font-size="10" text-anchor="middle" fill="#8A7A4E" font-weight="600">2025.9</text>
+<text x="30.0" y="62.0" font-size="10.3" text-anchor="middle" fill="#1B2430">Moody's展望
+稳定→负面(Baa2)</text>
+<circle cx="236.7" cy="78" r="6.5" fill="#39516B" stroke="#fff" stroke-width="2"/>
+<text x="236.7" y="92.0" font-size="10" text-anchor="middle" fill="#8A7A4E" font-weight="600">2026.2</text>
+<text x="236.7" y="108.0" font-size="10.3" text-anchor="middle" fill="#1B2430">发行$5B强制
+可转换优先股</text>
+<circle cx="443.3" cy="78" r="6.5" fill="#B3392C" stroke="#fff" stroke-width="2"/>
+<text x="443.3" y="46.0" font-size="10" text-anchor="middle" fill="#8A7A4E" font-weight="600">2026.7.9</text>
+<text x="443.3" y="62.0" font-size="10.3" text-anchor="middle" fill="#1B2430">S&P下调
+BBB→BBB-</text>
+<circle cx="650.0" cy="78" r="6.5" fill="#39516B" stroke="#fff" stroke-width="2"/>
+<text x="650.0" y="92.0" font-size="10" text-anchor="middle" fill="#8A7A4E" font-weight="600">2026.9</text>
+<text x="650.0" y="108.0" font-size="10.3" text-anchor="middle" fill="#1B2430">Q1 FY27:
+完成$19.9B ATM增发</text>
+</svg>
+    <div class="chart-cap">数据来源:S&amp;P Global Ratings、Moody's Ratings公开评级行动及公司公告。</div>
+  </div>
+  <table>
+    <tr><th style="text-align:left;">评级机构</th><th style="text-align:left;">当前评级</th><th style="text-align:left;">展望</th><th style="text-align:left;">较2025年中变化</th></tr>
+    <tr><td>S&amp;P Global</td><td><span class="badge risk">BBB-</span></td><td>稳定</td><td>2026年7月9日自BBB下调一级,距离"垃圾级"(BB+)仅一步之遥</td></tr>
+    <tr><td>Moody's</td><td><span class="badge risk">Baa2</span></td><td>负面</td><td>2025年7月展望由稳定调整为负面,尚未採取评级下调行动</td></tr>
+    <tr><td>Fitch</td><td colspan="2" style="text-align:left; font-size:12.5px; color:var(--ink-soft);">现有公开资料中未见Fitch近期针对甲骨文的独立评级行动的可核实一手来源,故不在此单列具体评级数值,以避免呈现未经核实的信息;市场公开报道显示Fitch、Moody's、S&amp;P三家机构近期均未回应媒体关于甲骨文评级行动的置评请求,方向上与另两家机构大体一致处于投资级低端,但具体字母评级建议投资者以Fitch官方发布为准。</td></tr>
+  </table>
+  <p>S&amp;P下调评级的核心理由包括:此前显著低估了甲骨文AI资本开支的规模(FY2027资本开支预测由此前600亿美元上修至900&ndash;950亿美元);预计公司调整后杠杆率(Debt/EBITDA)将于FY2027升至4倍中段区间,突破该机构此前认为标准"BBB"评级所能容忍的阈值;同时预计FY2027自由运营现金流缺口可能扩大至约420亿美元(此前预测为240亿美元)。S&amp;P还特别指出,OpenAI约占甲骨文$638&ndash;664B级RPO总额的一半,是本次评级行动中被明确点名的核心信用风险来源之一。Moody's则将甲骨文的数据中心建设模式类比为"全球最大规模的项目融资之一",并特别强调其在传统项目融资中本应具备的"特殊目的实体(SPV)风险隔离机制"在甲骨文的公司层面架构下并不存在,公司信用风险与基础设施建设风险已实质性捆绑。</p>
+
+  <h3>6.2 资本结构与融资计划</h3>
+  <ul>
+    <li>FY2026全年融资:债务融资430亿美元 + 股权融资50亿美元(含2026年2月发行的50亿美元强制可转换优先股)。</li>
+    <li>FY2027计划融资:约400亿美元(债务+股权组合),其中包含此前已宣布的200亿美元"市价发行"(ATM)股权融资计划。该计划已于Q1 FY2027完成:公司通过ATM合计发行<b>1.41亿股</b>普通股,实现净融资<b>$19.9B</b>(10-Q原始披露口径,精确到百万美元)。管理层明确表示<b>2026自然年内不再计划发行新增债务</b>,意味着股权融资(即摊薄)将成为未来数个季度资金缺口的主要弥补方式。</li>
+    <li>甲骨文目前是彭博美国投资级公司债指数中仅次于亚马逊的第二大非金融类发行人(据部分口径统计,其在该指数中的存量债务约1170亿美元),存量债务规模已跻身超大规模科技公司债券发行人前列,但其自由现金流生成能力与亚马逊、谷歌、微软相比存在数量级差距,是市场对其信用利差持续走阔(10年期债券收益率约6.4%&ndash;6.5%,较同评级BBB曲线利差显著走阔约70&ndash;80个基点)的根本原因。</li>
+  </ul>
+
+  <h3>6.3 股权摊薄的量化测算</h3>
+  <p>Q1 FY2027完成的1.41亿股ATM发行,相较FY2026 Q4披露的约29.15亿股摊薄后股本,单季度即带来约<b>4.8%</b>的股本扩张——在净利润未同步增长的假设下,理论上对应约4.6%的EPS摊薄压力(实际EPS仍实现同比增长,系因净利润增速显著超过股本扩张速度所致,但这不代表摊薄效应不存在,只是被更快的盈利增长所掩盖)。此外,2026年2月发行的50亿美元强制可转换优先股将在未来按约定条款转换为普通股,构成进一步的潜在摊薄来源;因具体转股比例、转股价格及强制转换时间表未在现有公开检索资料中完整披露,本报告不对其摊薄幅度做精确量化,仅提示投资者:在评估甲骨文未来每股指标时,应将"总股本持续扩张"作为一个持续变量纳入考量,而非假设当前约30.6亿股(3.06B股)的股本水平保持静态不变。</p>
+
+  <h3>6.4 资产负债表关键指标快照</h3>
+  <table>
+    <tr><th style="text-align:left;">指标</th><th>数值(近似,截至FY2026年末/Q1 FY27)</th><th style="text-align:left;">说明</th></tr>
+    <tr><td>股东权益总额</td><td class="num">~$43.1B</td><td style="text-align:left;">第三方数据聚合口径,较总资产/总负债规模而言权益缓冲相对薄弱</td></tr>
+    <tr><td>总资产</td><td class="num">~$261.8B</td><td style="text-align:left;">同上</td></tr>
+    <tr><td>总负债</td><td class="num">~$218.7B</td><td style="text-align:left;">同上</td></tr>
+    <tr><td>现金及短期投资</td><td class="num">$31.9B(FY26末)</td><td style="text-align:left;">较900亿美元级别的年度资本开支而言,现金缓冲对季度性融资节奏的依赖度高</td></tr>
+    <tr><td>EBIT利息保障倍数</td><td class="num">~5.9x</td><td style="text-align:left;">短期内尚可覆盖,但随利息费用同比+55%的趋势延续,倍数存在收窄压力</td></tr>
+    <tr><td>Debt/Equity</td><td class="num">~300%以上</td><td style="text-align:left;">显著高于微软(约29%)、谷歌(约15&ndash;19%)等同业,资本结构风险的核心量化证据</td></tr>
+  </table>
+  <p class="tbl-note">上述资产负债表快照数据来自第三方财务数据聚合平台对公司SEC文件的整理,具体计算口径(如是否包含经营性租赁负债、递延收入等)可能与公司原始披露存在细微差异,本报告予以如实标注,不做未经核实的精确到个位数的呈现,以符合审慎、可审计的分析原则。</p>
+</section>
+
+<section id="s7">
+  <div class="sec-head"><span class="sec-num">07</span><h2>订单(RPO)分析</h2></div>
+  <p class="lede">剩余履约义务(Remaining Performance Obligations, RPO)是当前市场评估甲骨文AI业务前景的核心先行指标,但其快速增长背后的客户集中度问题与转化质量的异质性,是本报告认为需要审慎对待、而非简单线性外推的关键风险点。</p>
+
+  <h3>7.1 RPO增长轨迹</h3>
+  <table>
+    <tr><th style="text-align:left;">报告期</th><th>RPO</th><th>同比变化</th><th>环比变化</th></tr>
+    <tr><td>FY2026 Q1(2025.8)</td><td class="num">$455B</td><td class="num pos">+359%</td><td>&mdash;</td></tr>
+    <tr><td>FY2026 Q2(2025.11)</td><td class="num">$523B</td><td class="num">&mdash;</td><td class="num pos">+$68B</td></tr>
+    <tr><td>FY2026 Q3(2026.2)</td><td class="num">$553B</td><td class="num">&mdash;</td><td class="num pos">+$30B</td></tr>
+    <tr><td>FY2026 Q4(2026.5)</td><td class="num">$638B</td><td class="num pos">+363%</td><td class="num pos">+$85B</td></tr>
+    <tr><td><b>FY2027 Q1(2026.8)</b></td><td class="num"><b>$664B</b></td><td class="num pos"><b>+$209B(同比增量)</b></td><td class="num pos"><b>+$26B</b></td></tr>
+  </table>
+  <p class="tbl-note">数据来源:公司各季度财报新闻稿。表中"同比变化"一栏统一采用公司披露的绝对增量或百分比原始表述,不做混用,以避免口径混淆。注意环比增量在FY2026 Q4至FY2027 Q1出现明显放缓(由+$85B降至+$26B),管理层将其归因于"新签合同结构变化"(更多为预付款/客户自带硬件模式,不直接放大名义RPO规模),该解释具备一定合理性,但也需要持续观察后续季度是否延续放缓趋势,以判断是新签大单节奏性波动还是需求边际转弱的早期信号。</p>
+
+  <h3>7.2 RPO质量、集中度与转化效率</h3>
+  <ul>
+    <li><b>转化周期:</b> 管理层预计约50%的RPO将在未来36个月内转化为收入,意味着当前$664B的RPO规模对未来3年营收具备较强的支撑力;但据部分研究机构测算,其中可在未来12个月内转化的比例仍相对有限(约一成出头),意味着RPO对短期(1年内)营收的直接拉动作用需要审慎评估,不宜将$664B简单等同于"近期可兑现收入"。</li>
+    <li><b>客户集中度:</b> 据S&amp;P的独立测算,OpenAI相关合同约佔甲骨文RPO总额的一半(基于2025年9月披露的五年期约3000亿美元、4.5吉瓦算力的Stargate相关合同规模)。这一比例来自评级机构的独立研究,而非公司官方分客户口径的主动披露。Moody's与S&amp;P均对此明确提出交易对手方集中度风险的关注,将甲骨文当前的数据中心建设模式类比为"缺乏风险隔离机制的超大规模项目融资",并指出OpenAI自身的融资能力与偿付能力是甲骨文RPO能否顺利转化为实际收入与现金流的关键前提假设——但也应注意,评估这一风险时不应止步于"OpenAI目前尚未盈利"这一静态事实,更应关注OpenAI自身融资能力的动态变化(近年OpenAI已完成多轮大规模融资),这是决定该风险是否会在未来1&ndash;2年内实质兑现的更relevant的变量。</li>
+    <li><b>非OpenAI订单同样在快速增长:</b> 据行业报道,过去一年甲骨文非OpenAI相关的RPO规模已实现翻倍以上增长,一定程度上缓解(但并未消除)单一客户集中度风险。</li>
+    <li><b>预付款/客户供货型合同占比上升:</b> 截至FY2026 Q4,公司大型AI合同中预付款及客户自带硬件部分合计约750亿美元,这类合同结构有利于降低甲骨文自身的资本开支压力,但也意味着RPO的"含金量"存在结构性分层——不同合同对甲骨文资产负债表的实际占用程度并不相同,简单将RPO总额视为同质化的"锁定收入"存在方法论上的简化风险。</li>
+    <li><b>RPO转化为利润与现金流的效率(而非仅收入):</b> 现有公开披露未提供分客户或分合同的毛利率/利润率数据,因此无法精确测算"RPO转化为EBITDA或FCF的效率"。但可以确定的方向是:随着RPO持续转化为收入,相应的GPU折旧、数据中心运营成本、电力成本与利息支出也将同步计入损益表与现金流量表,RPO转化为收入&ne;等比例转化为利润,更不等于转化为自由现金流。这是解读RPO数据时最容易被市场简化甚至忽略的一环,建议投资者将RPO视为"收入可见度"指标,而非"股东价值创造"指标的直接代理。</li>
+  </ul>
+  <p><b>结论:</b> RPO的绝对规模与增速为甲骨文的长期收入能见度提供了强有力支撑,是本报告维持中长期正面基本面判断的核心依据;但客户集中度、合同结构异质性、短期转化比例有限及"收入&rarr;利润&rarr;现金流"传导路径的不确定性,意味着RPO不宜被简单等同于"确定性股东价值",在估值模型中应给予相应的风险折价(详见第10节)。</p>
+</section>
+
+<section id="s8">
+  <div class="sec-head"><span class="sec-num">08</span><h2>管理层指引</h2></div>
+  <div class="grid2">
+    <div class="card">
+      <h4>FY2027 Q2 指引</h4>
+      <ul style="font-size:13.5px; margin:4px 0 0;">
+        <li>总营收增速:30%&ndash;34%</li>
+        <li>云收入增速:65%&ndash;71%(公司口径,不同披露渠道存在64%&ndash;71%的细微差异,已如实披露)</li>
+        <li>Non-GAAP EPS:$1.85&ndash;$1.93(注:因上年同期含一次性投资收益,可比口径下同比或呈现-14%至-19%的表观下降,属基数效应,不代表核心业务转弱)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>FY2027 全年指引(上调后)</h4>
+      <ul style="font-size:13.5px; margin:4px 0 0;">
+        <li>总营收:不低于900亿美元(对应同比增速约34%)</li>
+        <li>Non-GAAP EPS:上调至$8.10(此前为$8.05)</li>
+        <li>资本开支:维持900&ndash;950亿美元(总口径),净开支约700亿美元</li>
+        <li>融资计划:约400亿美元债务+股权组合,不含新增2026自然年内债务发行</li>
+      </ul>
+    </div>
+  </div>
+  <h3>8.1 指引兑现历史(近两个季度)</h3>
+  <table>
+    <tr><th style="text-align:left;">指标</th><th>Q1 FY27指引(2026年6月给出)</th><th>Q1 FY27实际</th><th>是否超预期</th></tr>
+    <tr><td>总营收增速</td><td class="num">27%&ndash;29%</td><td class="num">30%</td><td><span class="badge buy">超预期</span></td></tr>
+    <tr><td>Non-GAAP EPS</td><td class="num">$1.72&ndash;$1.76</td><td class="num">$1.92</td><td><span class="badge buy">显著超预期</span></td></tr>
+  </table>
+  <p>管理层近两个季度的指引均被实际业绩超越,尤其是Non-GAAP EPS的超预期幅度较大(实际值高于指引区间上限约9%),体现出一定的"指引保守化"倾向或执行效率提升,本报告倾向于正面解读,但也提示投资者:管理层是否会在资本开支与现金流指引上採取同样审慎(即倾向于低估支出压力)的沟通方式,是值得关注的潜在不对称风险点——收入与利润指引偏保守是"好消息",但支出与现金流指引若同样偏保守(即实际支出/现金消耗高于指引),则会构成对当前估值的负面冲击。截至本报告发布,尚无充分证据表明后者已经发生,但结构上存在这一可能性,建议持续跟踪。花旗(Citi)等卖方机构在Q1财报后也公开表示,认为管理层当前FY27全年框架"偏保守",预计公司投资者日等后续活动存在上修指引的空间,这与本报告的判断方向一致。</p>
+</section>
+
+<section id="s9">
+  <div class="sec-head"><span class="sec-num">09</span><h2>股东回报</h2></div>
+  <div class="grid3">
+    <div class="card">
+      <h4>股息</h4>
+      <div class="big">$0.50/股/季度</div>
+      <div class="cap">股息率约1.3%&ndash;1.4%(随股价波动);下一除息日为2026年10月9日。历史股息保持稳定增长态势(过去10年年化增长约12.3%,第三方数据)。</div>
+    </div>
+    <div class="card">
+      <h4>股票回购</h4>
+      <div class="big neg">Q1 FY27:无</div>
+      <div class="cap">公司在Q1 FY2027无股票回购活动;回购收益率(Buyback Yield)为负值(约-0.3%),反映公司当前正处于净股权融资(而非净回购)阶段,应被理解为"实际"而非"公告"层面的资本配置行为——即管理层已实际暂停回购,将资本优先投向AI基础设施建设与资产负债表维护。</div>
+    </div>
+    <div class="card">
+      <h4>股权融资(实际已发生)</h4>
+      <div class="big neg">$19.9B</div>
+      <div class="cap">Q1 FY2027通过ATM市价发行计划实际发行1.41亿股,净融资199亿美元,对现有股东构成实质性摊薄(单季度约4.8%股本扩张,详见第06节);另有2026年2月发行的50亿美元强制可转换优先股,其股息将于2026年10月15日支付,在优先股转股前对普通股股东同样构成潜在摊薄压力。</div>
+    </div>
+  </div>
+  <p><b>已公告 vs. 实际支付的资本回报口径区分:</b> 需要特别提示的是,公司股息政策"已公告"层面保持稳定甚至温和增长,但"实际"层面的股东回报净额(股息支出 &minus; 股票回购 + 股权融资摊薄)在最近一个季度为显著的<b>净融资(即净摊薄)</b>状态,而非净现金返还股东状态。这与市场对甲骨文历史上(2010年代)作为大规模回购型公司的印象形成鲜明反差,反映出公司当前正处于"投资优先于股东回报"的资本配置阶段。这一转变本身并非负面信号(符合行业资本开支周期逻辑),但投资者应清楚认识到当前甲骨文并非"现金牛"型股东回报标的,其股东回报吸引力需要等到AI基础设施建设周期进入成熟期、自由现金流转正之后才可能重新评估。</p>
+</section>
+
+<section id="s10">
+  <div class="sec-head"><span class="sec-num">10</span><h2>估值分析(可审计)</h2></div>
+
+  <h3>10.1 当前市场隐含估值快照</h3>
+  <table>
+    <tr><th style="text-align:left;">指标</th><th>数值</th><th style="text-align:left;">口径说明</th></tr>
+    <tr><td>股价(2026年9月11日周五收盘)</td><td class="num">$150.28</td><td style="text-align:left;">较2025年9月峰值$329.50回撤约54%;本报告发布日为周日,美股未交易,故以上一交易日收盘价为基准</td></tr>
+    <tr><td>流通股数(约,Q1 FY27末)</td><td class="num">3.06B股</td><td style="text-align:left;">FY26 Q4摊薄后股本约29.15亿股 + Q1 FY27 ATM新增1.41亿股</td></tr>
+    <tr><td>市值(约)</td><td class="num">$454B</td><td style="text-align:left;">= 股价 &times; 流通股数,与第三方平台数据交叉一致</td></tr>
+    <tr><td>P/E(TTM,GAAP)</td><td class="num">23.6x</td><td style="text-align:left;">基于TTM EPS约$6.38</td></tr>
+    <tr><td>P/E(FY2027E,Non-GAAP指引)</td><td class="num">18.6x</td><td style="text-align:left;">= $150.28 / $8.10指引EPS,与Morningstar披露的"正常化P/E 18.60x"基本吻合,交叉验证一致</td></tr>
+    <tr><td>P/S(TTM)</td><td class="num">6.1x&ndash;6.2x</td><td style="text-align:left;">第三方数据</td></tr>
+    <tr><td>EV/Sales(TTM,估算)</td><td class="num">~6.1x</td><td style="text-align:left;">EV&asymp;市值$454B + 总借款$129.5B &minus; 现金$31.9B &asymp;$552B;除以TTM营收约$90B量级</td></tr>
+  </table>
+
+  <h3>10.2 同业估值对比(横向锚定)</h3>
+  <div class="chart-box">
+    <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif">
+<text x="55" y="20" font-size="13" font-weight="600" fill="#0B1E33">同业前瞻市盈率(Forward P/E)对比</text>
+<line x1="55" y1="36.0" x2="620" y2="36.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="90.5" x2="620" y2="90.5" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="145.0" x2="620" y2="145.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="199.5" x2="620" y2="199.5" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="254.0" x2="620" y2="254.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="254.0" x2="620" y2="254.0" stroke="#B7AD92" stroke-width="1.2"/>
+<rect x="86.8" y="94.4" width="77.7" height="159.6" fill="#0B1E33" rx="2"/>
+<text x="125.6" y="88.4" font-size="11" text-anchor="middle" fill="#1B2430" font-weight="600">18.6x</text>
+<text x="125.6" y="272.0" font-size="10.5" text-anchor="middle" fill="#4B5768">ORCL
+(FY27E)</text>
+<rect x="228.0" y="40.3" width="77.7" height="213.7" fill="#0B1E33" rx="2"/>
+<text x="266.9" y="34.3" font-size="11" text-anchor="middle" fill="#1B2430" font-weight="600">24.9x</text>
+<text x="266.9" y="272.0" font-size="10.5" text-anchor="middle" fill="#4B5768">MSFT</text>
+<rect x="369.3" y="36.0" width="77.7" height="218.0" fill="#0B1E33" rx="2"/>
+<text x="408.1" y="30.0" font-size="11" text-anchor="middle" fill="#1B2430" font-weight="600">25.4x</text>
+<text x="408.1" y="272.0" font-size="10.5" text-anchor="middle" fill="#4B5768">GOOGL</text>
+<rect x="510.5" y="46.3" width="77.7" height="207.7" fill="#0B1E33" rx="2"/>
+<text x="549.4" y="40.3" font-size="11" text-anchor="middle" fill="#1B2430" font-weight="600">24.2x</text>
+<text x="549.4" y="272.0" font-size="10.5" text-anchor="middle" fill="#4B5768">AMZN</text>
+</svg>
+    <div class="chart-cap">数据来源:第三方财务数据平台(StockAnalysis、GuruFocus等),截至2026年9月上中旬。</div>
+  </div>
+  <table>
+    <tr><th style="text-align:left;">公司</th><th>P/E(TTM)</th><th>P/E(Fwd/NTM)</th><th>EV/EBITDA</th><th>自由现金流状态</th><th>信用评级</th></tr>
+    <tr><td><b>Oracle (ORCL)</b></td><td class="num">23.6x</td><td class="num">18.6x</td><td class="num">&mdash;<sup>&dagger;</sup></td><td class="num neg">显著为负</td><td>BBB-/Baa2</td></tr>
+    <tr><td>Microsoft (MSFT)</td><td class="num">27.4x</td><td class="num">24.9x</td><td class="num">19.1x</td><td class="num pos">正,同比收窄</td><td>AAA区间</td></tr>
+    <tr><td>Alphabet (GOOGL)</td><td class="num">17.0x</td><td class="num">25.4x</td><td class="num">23.2x</td><td class="num pos">正,行业领先($53B)</td><td>AA+区间</td></tr>
+    <tr><td>Amazon (AMZN)</td><td class="num">&mdash;</td><td class="num">24.2x</td><td class="num">&mdash;</td><td class="num pos">正</td><td>AA区间</td></tr>
+  </table>
+  <p class="tbl-note">数据来源:第三方财务数据平台,截至2026年9月上中旬,存在数据抓取时点差异,仅作方向性比较。<sup>&dagger;</sup>甲骨文EV/EBITDA因当期EBITDA正处于数据中心折旧大幅爬升与GAAP/Non-GAAP口径差异显著扩大的阶段,直接引用TTM数值可能产生较大误导,本报告不在此处呈现单一数值,避免虚假精确。</p>
+  <p><b>横向解读:</b> 甲骨文当前的FY2027E前瞻P/E(18.6x)低于微软(24.9x)、谷歌(25.4x)、亚马逊(24.2x)等同业,表面上呈现"估值折价",但这一折价在很大程度上是对其显著更弱的资产负债表、持续为负的自由现金流及更高的客户集中度风险的合理定价,而非纯粹的"错误定价"型机会。本报告认为,在自由现金流转正路径明确、信用评级企稳之前,甲骨文相对同业的估值折价大概率将持续存在,不宜简单套用"估值洼地"逻辑给予买入评级。</p>
+
+  <h3>10.3 资本效率横向对比</h3>
+  <table>
+    <tr><th style="text-align:left;">指标(近似,近期可比季度)</th><th>ORCL</th><th>MSFT</th><th>GOOGL</th><th>AMZN</th></tr>
+    <tr><td>Capex/Revenue</td><td class="num neg">147%(Q1 FY27)</td><td class="num">~41%(近似)</td><td class="num">32%(Q1'26)</td><td class="num">25%(Q1'26)</td></tr>
+    <tr><td>自由现金流状态</td><td class="num neg">负</td><td class="num pos">正</td><td class="num pos">正(TTM FCF margin约12%)</td><td class="num pos">正</td></tr>
+    <tr><td>Net Debt/EBITDA(近似)</td><td class="num neg">~4x区间(S&amp;P预测FY27)</td><td class="num pos">显著低于1x</td><td class="num pos">净现金状态</td><td class="num">中低个位数倍数</td></tr>
+  </table>
+  <p class="tbl-note">数据来源:公司SEC文件及第三方报道整理。ORCL的Capex/Revenue使用Q1 FY2027单季度精确数据($28.5B/$19.35B);GOOGL、AMZN使用2026年日历Q1单季度精确数据(源自各公司当季10-Q及Financial Times整理口径);MSFT因未能获取到与其他三家完全同期、同口径的精确季度收入数据,本表所列比率为基于市场公开报道的近似测算,标注"近似"以区别于精确值,避免虚假精确。该表核心结论具有较强稳健性:无论具体数值如何,甲骨文的资本开支强度显著高于三家同业(高出2&ndash;6倍量级),且是四者中唯一自由现金流为负的公司,这一方向性结论不受具体测算误差影响。</p>
+
+  <h3>10.4 情景化目标价测算:方法一——EPS拆解桥梁法(前瞻12&ndash;18个月)</h3>
+  <p>本报告採用完整的自上而下拆解桥梁,将FY2028E每股收益的形成路径逐项列示,所有假设均显式标注,供审计与复核:</p>
+  <table>
+    <tr><th style="text-align:left;">拆解步骤</th><th>悲观情景</th><th>基准情景</th><th>乐观情景</th></tr>
+    <tr><td>FY2028E营收(假设增速)</td><td class="num">$100B(+16%)</td><td class="num">$108B(+20%)</td><td class="num">$115B(+28%)</td></tr>
+    <tr><td>Non-GAAP营业利润率假设</td><td class="num">39%</td><td class="num">43%</td><td class="num">46%</td></tr>
+    <tr><td>Non-GAAP营业利润</td><td class="num">$39.0B</td><td class="num">$46.4B</td><td class="num">$52.9B</td></tr>
+    <tr><td>净利息费用假设</td><td class="num">-$7.8B</td><td class="num">-$6.0B</td><td class="num">-$4.8B</td></tr>
+    <tr><td>税前利润</td><td class="num">$31.2B</td><td class="num">$40.4B</td><td class="num">$48.1B</td></tr>
+    <tr><td>有效税率假设(约15%)后净利润</td><td class="num">$26.5B</td><td class="num">$34.3B</td><td class="num">$40.9B</td></tr>
+    <tr><td>减:优先股股息(约$0.3B)</td><td class="num">$26.2B</td><td class="num">$34.0B</td><td class="num">$40.6B</td></tr>
+    <tr><td>FY2028E摊薄股本假设</td><td class="num">3.40B</td><td class="num">3.20B</td><td class="num">3.10B</td></tr>
+    <tr><td><b>FY2028E Non-GAAP EPS</b></td><td class="num"><b>$7.71</b></td><td class="num"><b>$10.63</b></td><td class="num"><b>$13.10</b></td></tr>
+    <tr><td>目标前瞻P/E假设</td><td class="num">14.0x</td><td class="num">17.5x</td><td class="num">21.0x</td></tr>
+    <tr><td><b>目标价(方法一)</b></td><td class="num neg"><b>$108</b></td><td class="num"><b>$186</b></td><td class="num pos"><b>$275</b></td></tr>
+  </table>
+  <p class="tbl-note">全部营收增速、利润率、利息费用、税率、股本及目标倍数均为本报告基于当前已知信息做出的前瞻性假设,非公司预测或披露数据,特此明确标注,避免与公司官方指引混淆。营业利润率假设的区间设定参考管理层当前约42%的Non-GAAP营业利润率表述,并结合各情景下数据中心爬坡效率差异做上下调整;利息费用假设与各情景下的债务/评级路径相绑定(悲观情景对应评级下调后更高融资成本及更大股权依赖度)。</p>
+
+  <h3>10.5 情景化目标价测算:方法二——EV/Sales交叉验证法(完整EV&rarr;股权价值&rarr;每股价值桥梁)</h3>
+  <p>本报告在此完整走通"企业价值(EV)&rarr;净债务调整&rarr;股权价值&rarr;每股价值"的全部步骤:</p>
+  <table>
+    <tr><th style="text-align:left;">拆解步骤</th><th>悲观情景</th><th>基准情景</th><th>乐观情景</th></tr>
+    <tr><td>FY2028E营收</td><td class="num">$100B</td><td class="num">$108B</td><td class="num">$115B</td></tr>
+    <tr><td>EV/Sales目标倍数假设</td><td class="num">4.75x</td><td class="num">5.75x</td><td class="num">6.75x</td></tr>
+    <tr><td>隐含企业价值(EV)</td><td class="num">$475.0B</td><td class="num">$621.0B</td><td class="num">$776.3B</td></tr>
+    <tr><td>FY2028E净债务假设(总债务&minus;现金)</td><td class="num">-$155.0B</td><td class="num">-$115.0B</td><td class="num">-$90.0B</td></tr>
+    <tr><td><b>隐含股权价值</b></td><td class="num"><b>$320.0B</b></td><td class="num"><b>$506.0B</b></td><td class="num"><b>$686.3B</b></td></tr>
+    <tr><td>FY2028E摊薄股本假设</td><td class="num">3.40B</td><td class="num">3.20B</td><td class="num">3.10B</td></tr>
+    <tr><td><b>目标价(方法二)</b></td><td class="num neg"><b>$94</b></td><td class="num"><b>$158</b></td><td class="num pos"><b>$221</b></td></tr>
+  </table>
+  <p class="tbl-note">EV/Sales目标倍数区间参考同业当前估值水平并结合甲骨文资产负债表风险溢价折让设定;净债务假设与各情景下的资本开支/融资节奏相绑定(悲观情景对应持续依赖债务与更高杠杆,乐观情景对应FCF改善后净债务增速放缓)。</p>
+
+  <div class="chart-box">
+    <svg viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif">
+<text x="55" y="20" font-size="13" font-weight="600" fill="#0B1E33">情景目标价对比(概率加权法 vs. EV/Sales交叉验证法)</text>
+<line x1="55" y1="234.0" x2="620" y2="234.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="184.5" x2="620" y2="184.5" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="135.0" x2="620" y2="135.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="85.5" x2="620" y2="85.5" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="36.0" x2="620" y2="36.0" stroke="#E4DCC9" stroke-width="1"/>
+<line x1="55" y1="137.4" x2="620" y2="137.4" stroke="#C74634" stroke-width="1.6" stroke-dasharray="5,4"/>
+<text x="620" y="131.4" font-size="10.5" text-anchor="end" fill="#C74634" font-weight="600">现价 $150.28</text>
+<rect x="78.5" y="164.6" width="47.1" height="69.4" fill="#B3392C" rx="3"/>
+<text x="102.1" y="156.6" font-size="12" text-anchor="middle" fill="#1B2430" font-weight="700">$108</text>
+<text x="102.1" y="252.0" font-size="10.5" text-anchor="middle" fill="#4B5768">悲观(P/E法)</text>
+<rect x="172.7" y="173.6" width="47.1" height="60.4" fill="#D98A80" rx="3"/>
+<text x="196.3" y="165.6" font-size="12" text-anchor="middle" fill="#1B2430" font-weight="700">$94</text>
+<text x="196.3" y="252.0" font-size="10.5" text-anchor="middle" fill="#4B5768">悲观(EV/S法)</text>
+<rect x="266.9" y="114.4" width="47.1" height="119.6" fill="#0B1E33" rx="3"/>
+<text x="290.4" y="106.4" font-size="12" text-anchor="middle" fill="#1B2430" font-weight="700">$186</text>
+<text x="290.4" y="252.0" font-size="10.5" text-anchor="middle" fill="#4B5768">基准(P/E法)</text>
+<rect x="361.0" y="132.4" width="47.1" height="101.6" fill="#5C7590" rx="3"/>
+<text x="384.6" y="124.4" font-size="12" text-anchor="middle" fill="#1B2430" font-weight="700">$158</text>
+<text x="384.6" y="252.0" font-size="10.5" text-anchor="middle" fill="#4B5768">基准(EV/S法)</text>
+<rect x="455.2" y="57.2" width="47.1" height="176.8" fill="#2E7D5B" rx="3"/>
+<text x="478.8" y="49.2" font-size="12" text-anchor="middle" fill="#1B2430" font-weight="700">$275</text>
+<text x="478.8" y="252.0" font-size="10.5" text-anchor="middle" fill="#4B5768">乐观(P/E法)</text>
+<rect x="549.4" y="91.9" width="47.1" height="142.1" fill="#8FC4A6" rx="3"/>
+<text x="572.9" y="83.9" font-size="12" text-anchor="middle" fill="#1B2430" font-weight="700">$221</text>
+<text x="572.9" y="252.0" font-size="10.5" text-anchor="middle" fill="#4B5768">乐观(EV/S法)</text>
+</svg>
+    <div class="chart-cap">图中六根柱形自左至右依次为方法一(EPS拆解&#8594;前瞻P/E法)与方法二(EV/Sales法)在悲观、基准、乐观三种情景下测算的目标价(对应第10.4、10.5节表格中的数值);红色虚线为2026年9月11日收盘价$150.28,作为对照当前股价的参考基准线。两种方法在同一情景下的结果存在系统性差异(基准情景下方法二较方法一低约15%),原因在于方法二将资产负债表风险显式地体现在净债务调整环节,而方法一主要通过压低目标P/E倍数间接反映同一风险,两种方法对风险的"计入方式"不同、但方向一致,不宜简单宣称二者"完全验证"彼此,而应将二者的差异本身作为估值不确定性区间的参考。</div>
+  </div>
+
+  <h3>10.6 最终目标价:双方法混合概率加权</h3>
+  <table>
+    <tr><th style="text-align:left;">情景</th><th>概率权重</th><th style="text-align:left;">触发条件(概率权重设定依据)</th><th>方法一目标价</th><th>方法二目标价</th><th>混合目标价(简单平均)</th></tr>
+    <tr><td>悲观情景</td><td class="num">25%</td><td style="text-align:left; font-size:12px;">信用评级降至BB+(垃圾级)、OpenAI相关合同出现实质性延迟或重新谈判、FY28自由现金流缺口未见收窄——三者中任一发生即可能触发该情景,鉴于S&amp;P已明确将杠杆率与OpenAI集中度列为下调观察项,该情景概率不宜设定过低</td><td class="num">$108</td><td class="num">$94</td><td class="num neg">$101</td></tr>
+    <tr><td>基准情景</td><td class="num">50%</td><td style="text-align:left; font-size:12px;">指引大致兑现、评级维持BBB-/Baa2不变、FCF缺口温和收窄——这是当前管理层公开指引与近两季度执行纪律所指向的最可能路径,故赋予最高权重</td><td class="num">$186</td><td class="num">$158</td><td class="num">$172</td></tr>
+    <tr><td>乐观情景</td><td class="num">25%</td><td style="text-align:left; font-size:12px;">RPO转化加速且客户结构多元化取得可验证进展、评级展望转为稳定、FY2029前FCF转正路径明确——需要多个积极信号同时兑现方可实现,故与悲观情景赋予对称权重,而非更高权重</td><td class="num">$275</td><td class="num">$221</td><td class="num pos">$248</td></tr>
+  </table>
+  <p style="font-size:13.5px;"><b>概率加权最终目标价 = 25%&times;$101 + 50%&times;$172 + 25%&times;$248 &asymp; <span style="font-size:16px; color:var(--navy);">$173</span></b>,较当前股价$150.28存在约<b>+15%</b>的上行空间。双方法混合的处理方式更为审慎,能够同时反映资产负债表风险在"目标倍数压缩"与"净债务调整"两条不同传导路径下的一致性影响,避免单一估值方法的结构性盲点。</p>
+
+  <h3>10.7 评级判定框架:收益率区间与评级的映射关系</h3>
+  <table class="ratingtbl">
+    <tr><th>预期收益率区间</th><th>对应评级</th></tr>
+    <tr><td class="num">&lt; 0%</td><td>卖出 / 减持</td></tr>
+    <tr><td class="num">0% &ndash; 10%</td><td>减持倾向的持有</td></tr>
+    <tr><td class="num">10% &ndash; 20%</td><td>持有(Hold)</td></tr>
+    <tr><td class="num">20% &ndash; 35%</td><td>增持(Accumulate/Buy)</td></tr>
+    <tr><td class="num">&gt; 35%</td><td>强烈买入</td></tr>
+  </table>
+  <p>混合概率加权后的预期收益率约+15%,落于本机构"持有(Hold)"评级区间的中段,评级判断由此直接从收益率区间导出,无需依赖额外的定性折让即可说明"为何存在正向上行空间却不给予增持评级"。同时应指出,情景分布并非完全对称:悲观情景对应约-33%的下行,乐观情景对应约+65%的上行,概率权重虽然对称(25%/25%),但悲观情景一旦兑现(即评级降至垃圾级),其冲击路径(强制减持、融资成本飙升、潜在流动性压力)在严重程度上大于乐观情景带来的正向弹性,这种"尾部风险不对称"是本报告在收益率已处于Hold区间中段的基础上,进一步不倾向于上调评级的附加考量。</p>
+</section>
+
+<section id="s11">
+  <div class="sec-head"><span class="sec-num">11</span><h2>风险因素</h2></div>
+  <div class="risk-item">
+    <h5>&#9312; 信用评级进一步下调风险(高)</h5>
+    <p>S&amp;P当前评级BBB-已距离垃圾级仅一步之遥,Moody's展望为负面。若FY2027自由现金流缺口扩大至S&amp;P预测的约420亿美元区间上限,或杠杆率突破4倍中段并持续,不排除评级被下调至非投资级的可能性,届时将显著推高再融资成本并可能触发部分机构投资者的强制减持条款。</p>
+  </div>
+  <div class="risk-item">
+    <h5>&#9313; 客户集中度与交易对手方风险(高)</h5>
+    <p>据S&amp;P独立测算,OpenAI相关合同约佔RPO总额一半,而OpenAI自身的长期盈利路径尚未被市场完全验证。Moody's与S&amp;P均已将此列为核心信用关注点。若OpenAI出现融资困难或合同重新谈判,将直接冲击甲骨文RPO转化为实际收入的节奏与确定性;但也应动态跟踪OpenAI自身融资能力的变化,而非静态地以"尚未盈利"一概而论。</p>
+  </div>
+  <div class="risk-item">
+    <h5>&#9314; 表外租赁承诺的潜在风险敞口(中高)</h5>
+    <p>公司披露存在约2600亿美元尚未计入资产负债表的数据中心租赁承诺(15&ndash;19年期限),叠加约1295亿美元的表内借款,构成远超传统资产负债表比率所能反映的实际资本承诺规模。若AI基础设施需求不及预期,这类长期、不可轻易退出的租赁承诺可能转化为实质性的财务负担。</p>
+  </div>
+  <div class="risk-item med">
+    <h5>&#9315; 自由现金流转正时间表不明确(中高)</h5>
+    <p>管理层尚未就FCF转正给出明确指引,当前市场估值(尤其是乐观情景)在很大程度上预设了FY2029前后的现金流拐点,若该拐点持续后移,估值倍数存在进一步压缩风险。</p>
+  </div>
+  <div class="risk-item med">
+    <h5>&#9316; 毛利率与运营利润率的持续承压(中)</h5>
+    <p>管理层已在电话会议中提示FY2027将出现进一步的毛利率"阶梯式下降"(因数据中心爬坡节奏与业务结构变化),Non-GAAP运营利润率能否维持在约42%的水平,依赖成本纪律的持续执行,存在不确定性。</p>
+  </div>
+  <div class="risk-item med">
+    <h5>&#9317; 股权摊薄的持续性(中)</h5>
+    <p>Q1 FY2027单季度ATM发行已带来约4.8%的股本扩张,公司在2026自然年内不再计划新增债务发行的表态意味着未来资本缺口大概率继续通过股权类工具弥补,对现有股东构成持续摊薄压力,直接压制每股指标的改善弹性。</p>
+  </div>
+  <div class="risk-item">
+    <h5>&#9318; 双CEO治理模式的执行验证期(中低)</h5>
+    <p>新任联席CEO团队上任仅一年左右,尚处于市场验证期,尤其是在需要高度统一对外沟通口径的资本市场议题(信用评级维护、现金流指引)上,双头治理结构的协同效率仍待更长时间验证。</p>
+  </div>
+  <div class="risk-item">
+    <h5>&#9319; 宏观与AI需求周期性风险(中低)</h5>
+    <p>若生成式AI应用端商业化进展不及预期,或模型训练效率提升、自研芯片替代等因素导致下游客户削减算力採购计划,将直接冲击RPO转化节奏及后续新签合同规模,是全行业共性风险而非甲骨文特有,但甲骨文因资产负债表缓冲更薄,对该风险的敏感度高于资金实力雄厚的同业。</p>
+  </div>
+</section>
+
+<section id="s12">
+  <div class="sec-head"><span class="sec-num">12</span><h2>结论与评级</h2></div>
+
+  <div class="rating-box">
+    <div class="rcol"><div class="rlabel">投资评级</div><div class="rbig">持有 / Hold</div></div>
+    <div class="rcol"><div class="rlabel">目标价(12&ndash;18个月)</div><div class="rbig">$173</div></div>
+    <div class="rcol"><div class="rlabel">当前价</div><div class="rbig" style="color:#F1EBDC;">$150.28</div></div>
+    <div class="rcol"><div class="rlabel">风险调整后隐含上行空间</div><div class="rbig" style="color:#6FCF97;">+15%</div></div>
+  </div>
+
+  <p>甲骨文正处于公司历史上最具决定性的战略转型期:实质上是"高利润、低增长的传统企业软件公司"(公司A)与"高增长、高资本强度的AI基础设施公司"(公司B)两种经济特征的叠加体。公司B的增长质量(收入增速、营业利润扩张、RPO积累)在过去两个季度持续超越市场与公司自身预期,双CEO治理过渡平稳,管理层指引兑现纪律良好,构成本报告中长期正面基本面判断的坚实基础。</p>
+  <p>但与此同时,公司资产负债表正在以行业内同业中较高的速度加杠杆,信用评级已逼近投资级下限,叠加约2600亿美元的表外数据中心租赁承诺,自由现金流连续多个季度深度为负且未见明确转正时间表,客户集中度(尤其是对OpenAI约佔RPO一半的敞口)带来的交易对手方风险亦经评级机构独立证实——共同构成了一套尚未被市场完全定价、也尚未被管理层充分对外量化沟通的风险矩阵。本报告採用EPS拆解桥梁与EV/Sales两种方法交叉验证后,混合概率加权目标价为$173,隐含约15%的风险调整后上行空间,恰好落于本机构评级框架中"持有"区间的中段。叠加悲观与乐观情景之间存在的下行&mdash;上行严重程度不对称(悲观情景的评级降至垃圾级路径,其冲击烈度大于乐观情景的正向弹性),本报告选择在当前时点维持<b>"持有"</b>评级。</p>
+  <p>建议投资者密切跟踪以下三个关键催化剂,作为评级上调的触发条件:&#9312;管理层就自由现金流转正给出具体时间表;&#9313;信用评级机构展望由"负面"调整为"稳定"或维持现有评级不变超过两个财季;&#9314;RPO客户结构多元化取得可验证的实质性进展(如非OpenAI大单占比进一步提升并有官方口径披露)。反之,若出现评级下调、OpenAI合同重大不利变化或自由现金流缺口超预期扩大,应重新评估评级下调至"减持"的必要性。</p>
+</section>
+
+</main>
+
+<footer>
+  <p><b>数据来源与方法论说明</b><br>
+  本报告数据主要引自:Oracle Corporation官方财报新闻稿(2026年9月10日Q1 FY2027及2026年6月10日Q4/FY2026)、公司SEC文件(10-Q、10-K、8-K,美国证券交易委员会EDGAR系统)、Q1 FY2027财报电话会议纪要;信用评级信息引自S&amp;P Global Ratings、Moody's Ratings公开评级行动报道;同业及行业资本开支数据引自Financial Times、路透社(Reuters)整理口径及StockAnalysis.com、GuruFocus、Morningstar、CNBC等第三方财经数据平台,数据抓取时点集中于2026年9月上中旬,不同平台间口径与抓取时点存在细微差异,本报告已在正文相应位置如实标注,不做未经核实的强行统一处理。文中标注为"本报告假设""本报告测算""本报告估算"的数据点均为分析师基于公开信息做出的前瞻性推导,不代表公司官方预测或披露,已与公司原始披露数据在正文中明确区分。</p>
+  <p><b>重要声明</b><br>
+  本报告由蜗牛鸟投资(Snail-Bird Investment)科技研究团队独立撰写,仅供机构内部研究参考,不构成任何投资要约、招揽或个性化投资建议。报告中涉及的目标价、情景假设及概率权重均为分析师基于公开信息做出的主观判断,存在重大不确定性,实际结果可能与预测存在显著差异。历史业绩不代表未来表现。投资者应结合自身风险承受能力独立判断,必要时咨询专业投资顾问。本报告不对因使用本报告内容而产生的任何直接或间接损失承担责任。</p>
+  <p>&copy; 2026 蜗牛鸟投资 Snail-Bird Investment &middot; 全球科技研究组 &middot; 内部研究文件,请勿对外传播</p>
+</footer>
+
+</body>
+</html>
