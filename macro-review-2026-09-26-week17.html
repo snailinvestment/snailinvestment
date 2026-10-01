@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全球宏观周报 | 2026年9月第4周复盘与10月第1周展望 | 蜗牛鸟投资</title>
+<style>
+  :root{
+    --bg:#f7f5f1; --card:#ffffff; --ink:#1f2420; --ink-soft:#5b6058;
+    --line:#e4e0d8; --accent:#8a6d3b; --accent-2:#3d5a4c; --red:#b5453c;
+    --green:#3d7a56; --amber:#c08a2e; --navy:#2f4457;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:"Songti SC","STSong","Noto Serif SC",serif, "PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.7; font-size:15px;
+  }
+  .masthead{
+    background:linear-gradient(135deg,#22301f 0%,#2f4437 60%,#3d5a4c 100%);
+    color:#f2efe6; padding:34px 6vw 26px;
+    border-bottom:4px solid var(--accent);
+  }
+  .masthead-top{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px;}
+  .brand{font-size:13px; letter-spacing:3px; opacity:.85; text-transform:uppercase;}
+  .brand b{color:#e7d7b0;}
+  .masthead h1{font-size:clamp(22px,3vw,32px); margin:10px 0 6px; font-weight:700; letter-spacing:1px;}
+  .masthead .sub{font-size:14px; opacity:.88; max-width:760px;}
+  .masthead-meta{text-align:right; font-size:12.5px; opacity:.8; line-height:1.6;}
+  .alert-banner{
+    margin-top:18px; background:rgba(181,69,60,.16); border:1px solid rgba(231,145,130,.5);
+    border-radius:6px; padding:12px 16px; font-size:13.5px; display:flex; gap:10px; align-items:flex-start;
+  }
+  .alert-banner .tag{
+    background:var(--red); color:#fff; font-size:11px; padding:2px 8px; border-radius:3px;
+    font-weight:700; letter-spacing:1px; flex-shrink:0; margin-top:2px;
+  }
+
+  nav.sticky{
+    position:sticky; top:0; z-index:50; background:#fdfcfa; border-bottom:1px solid var(--line);
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+  }
+  nav.sticky .wrap{display:flex; gap:2px; overflow-x:auto; padding:0 6vw;}
+  nav.sticky a{
+    white-space:nowrap; padding:13px 14px; font-size:13px; color:var(--ink-soft); text-decoration:none;
+    border-bottom:3px solid transparent; font-weight:600;
+  }
+  nav.sticky a:hover{color:var(--accent); border-bottom-color:var(--accent);}
+
+  main{max-width:1120px; margin:0 auto; padding:0 6vw 60px;}
+  section{padding-top:34px; scroll-margin-top:52px;}
+  h2.sec-title{
+    font-size:20px; margin:0 0 4px; color:var(--navy); display:flex; align-items:center; gap:10px;
+  }
+  h2.sec-title .num{
+    background:var(--navy); color:#fff; width:26px; height:26px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;
+  }
+  .sec-desc{color:var(--ink-soft); font-size:13.5px; margin:0 0 18px; padding-left:36px;}
+  h3{font-size:16px; color:var(--accent-2); margin:22px 0 10px;}
+
+  .kpi-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:6px;
+  }
+  .kpi{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px 14px 12px;
+    border-top:3px solid var(--accent);
+  }
+  .kpi .label{font-size:11.5px; color:var(--ink-soft); letter-spacing:.5px;}
+  .kpi .value{font-size:20px; font-weight:700; margin:4px 0 2px; color:var(--ink);}
+  .kpi .delta{font-size:12px; font-weight:600;}
+  .up{color:var(--red);} .down{color:var(--green);} .flat{color:var(--ink-soft);}
+
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px; background:var(--card);}
+  caption{text-align:left; font-size:12px; color:var(--ink-soft); margin-bottom:6px;}
+  th{
+    background:#eef0e9; color:var(--navy); text-align:left; padding:9px 10px; font-weight:700;
+    border-bottom:2px solid var(--line); white-space:nowrap;
+  }
+  td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tr:hover td{background:#faf9f5;}
+  .tag-beat{background:#e3efe6; color:var(--green); font-size:11px; padding:1px 7px; border-radius:10px; font-weight:700;}
+  .tag-miss{background:#f7e6e4; color:var(--red); font-size:11px; padding:1px 7px; border-radius:10px; font-weight:700;}
+  .tag-inline{background:#f0eee7; color:var(--ink-soft); font-size:11px; padding:1px 7px; border-radius:10px; font-weight:700;}
+
+  .callout{
+    background:#fbf8f0; border-left:4px solid var(--amber); padding:12px 16px; border-radius:4px;
+    font-size:13.5px; margin:14px 0;
+  }
+  .callout.risk{border-left-color:var(--red); background:#fbf1ef;}
+  .callout.data{border-left-color:var(--navy); background:#eef2f5;}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin:14px 0;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media (max-width:820px){.grid2,.grid3{grid-template-columns:1fr;}}
+
+  .scenario{border-radius:10px; padding:16px 18px; border:1px solid var(--line);}
+  .scenario.bull{border-top:4px solid var(--green);}
+  .scenario.base{border-top:4px solid var(--navy);}
+  .scenario.bear{border-top:4px solid var(--red);}
+  .scenario h4{margin:0 0 6px; display:flex; justify-content:space-between; align-items:center; font-size:15px;}
+  .prob{font-size:13px; font-weight:800; padding:2px 9px; border-radius:12px; color:#fff;}
+  .bull .prob{background:var(--green);} .base .prob{background:var(--navy);} .bear .prob{background:var(--red);}
+  .scenario ul{margin:8px 0 0; padding-left:18px; font-size:13px;}
+  .scenario li{margin-bottom:5px;}
+
+  .driver-header{
+    display:flex; align-items:center; gap:10px; background:#f0eee2; padding:10px 16px; border-radius:8px 8px 0 0;
+    border:1px solid var(--line); border-bottom:none;
+  }
+  .driver-header .icon{font-size:20px;}
+  .driver-body{border:1px solid var(--line); border-radius:0 0 8px 8px; padding:16px; background:var(--card); margin-bottom:18px;}
+
+  .footer-disclaimer{
+    margin-top:50px; padding-top:22px; border-top:1px solid var(--line); font-size:11.5px; color:var(--ink-soft); line-height:1.8;
+  }
+  .footer-disclaimer .fname{font-weight:700; color:var(--accent-2);}
+
+  .src{font-size:11.5px; color:#8b9186;}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div>
+      <div class="brand">蜗牛鸟投资 <b>Snail-Bird Investment</b> · 全球宏观研究组</div>
+      <h1>全球宏观周报：10年期美债收益率收于5.11%创2007年以来新高，美伊纽约首次接触，中美元首华盛顿会晤达成八点成果共识</h1>
+      <div class="sub">2026年9月第4周（9.21–9.25）复盘 ｜ 9月28日–10月4日展望 —— 冲击·宏观变量·资产价格三层传导框架</div>
+    </div>
+    <div class="masthead-meta">
+      发布日期：2026年9月26日<br>
+      数据区间：2026年9月18日–9月25日（A股因中秋假期9/25–27休市，9/24为本周最后交易日）<br>
+      数据源：美国财政部/FRED、CME FedWatch、Econ Data Tools、BEA、ICE、中国外汇交易中心、世界黄金协会、State Street、路透社/彭博社/CNBC/央广财经/第一财经
+    </div>
+  </div>
+  <div class="alert-banner">
+    <span class="tag">本周焦点</span>
+    <div>
+      （1）美债长端收益率创多年新高：9月23日10年期par yield收于5.11%，较前一日上行15个基点，盘中最高触及5.13%，为2007年6月以来最高；30年期9月23日升至5.40%，9月24日5.47%，9月25日5.49%，为2004年以来高位。9月21日至25日，10年期由4.96%升至5.17%，全周上行21个基点；较9月18日收盘5.01%上行16个基点。驱动输入包括标普全球9月美国综合PMI初值由56.0升至58.4（2021年7月以来最高）、美联储理事巴尔"进一步政策调整可能仍然必要"的表态、9月23日700亿美元5年期国债标售中标利率5.033%（2006年以来最高）且投标倍数2.21、以及能源价格上行。（2）9月24日财政部20至30年期国债回购计划上限60亿美元，市场报价104.68亿美元，实际购回40.78亿美元。（3）CME FedWatch隐含定价显示10月加息25个基点概率67.5%；12月会议后维持利率不变5.2%、累计加息25个基点38.0%、累计加息50个基点56.8%，即年内至少再加息一次的概率为94.8%。（4）美伊9月22日在联大边会举行三小时间接谈判，卡塔尔居中斡旋，为6月停火破裂以来首次接触；伊朗提交书面路线图，含最长60天区域停火、分阶段重开霍尔木兹海峡、释放240亿美元冻结资金；革命卫队司令礼萨伊同期设定4–5天最后通牒。布伦特原油9月24日升至106.60美元，为本周高点。（5）9月20日贝森特与何立峰在纽约磋商；9月24日习近平抵达华盛顿；9月25日双方达成八点成果共识，经贸团队达成十项重要成果，包括建立贸易理事会、就300亿美元对等降税安排达成共识（各自约90%产品关税对等降至最惠国税率）、设立农业工作组、建立投资理事会、建立中美人工智能对话，并将吉隆坡经贸磋商联合安排延期至2027年1月10日。（6）现货黄金自9月18日盘中4,399.67美元回落至9月25日收盘4,284.97美元，美元指数9月下旬运行于101附近，美国上市黄金ETF 9月净流入38亿美元、延续8月的79亿美元。（7）人民币9月23日中间价6.7468，即期汇率收于6.6996。（8）A股本周四个交易日：9月21日收3,949.91点，9月22日收3,952.13点（+0.06%），9月23日收3,936.52点（-0.39%），9月24日收3,888.37点（-1.22%）失守3900点；9月24日两市成交1.65万亿元，全市场1,120只上涨、4,306只下跌，52只涨停、15只跌停。
+    </div>
+  </div>
+</header>
+
+<nav class="sticky">
+  <div class="wrap">
+    <a href="#yields">① 美债收益率创19年新高</a>
+    <a href="#curve">② 期限结构分解</a>
+    <a href="#iran">③ 美伊纽约首次接触</a>
+    <a href="#china-us">④ 中美元首华盛顿会晤</a>
+    <a href="#gold-cn">⑤ 黄金走弱与A股节前调整</a>
+    <a href="#china-macro">⑥ 中国宏观监测</a>
+    <a href="#scenario">情景矩阵</a>
+    <a href="#levels">资产关键点位</a>
+    <a href="#alloc">条件性资产观点</a>
+    <a href="#risk">风险登记册</a>
+    <a href="#outlook">下周展望</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="kpi">
+  <h2 class="sec-title"><span class="num">•</span>本周KPI速览（2026.9.18–9.25）</h2>
+  <p class="sec-desc">四大驱动因子的核心量化指标，括号内为口径与环比基准</p>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">10年期美债（9/23官方收盘）</div><div class="value">5.11%</div><div class="delta up">较前一日+15bp，2007年6月以来最高</div></div>
+    <div class="kpi"><div class="label">10年期美债（9/25）</div><div class="value">5.17%</div><div class="delta down">较9/24的5.18%回落1bp；全周+21bp</div></div>
+    <div class="kpi"><div class="label">30年期美债（9/25）</div><div class="value">5.49%</div><div class="delta up">9/23为5.40%、9/24为5.47%，2004年以来最高</div></div>
+    <div class="kpi"><div class="label">5年期国债标售（9/23）</div><div class="value">5.033%</div><div class="delta up">规模700亿美元，投标倍数2.21，2006年以来最高中标利率</div></div>
+    <div class="kpi"><div class="label">CME FedWatch 10月加息定价</div><div class="value">67.5%</div><div class="delta up">加息25个基点，维持不变32.5%</div></div>
+    <div class="kpi"><div class="label">CME FedWatch 年内至少再加息一次</div><div class="value">94.8%</div><div class="delta up">12月后累计加息50bp 56.8%、25bp 38.0%</div></div>
+    <div class="kpi"><div class="label">财政部国债回购（9/24）</div><div class="value">40.78亿</div><div class="delta down">计划上限60亿，市场报价104.68亿美元</div></div>
+    <div class="kpi"><div class="label">美元指数（9月下旬）</div><div class="value">约101</div><div class="delta up">美债收益率上行与加息定价同步支撑</div></div>
+    <div class="kpi"><div class="label">现货黄金（9/25收盘）</div><div class="value">$4,284.97</div><div class="delta down">较9/18收盘4,378.39回落2.1%</div></div>
+    <div class="kpi"><div class="label">黄金ETF资金流</div><div class="value">9月+38亿</div><div class="delta flat">美国上市ETF；8月为+79亿美元</div></div>
+    <div class="kpi"><div class="label">WTI原油（9/25收盘）</div><div class="value">$92.41</div><div class="delta down">9/23为92.16、9/24为94.61</div></div>
+    <div class="kpi"><div class="label">布伦特原油（9/25收盘）</div><div class="value">$104.32</div><div class="delta up">9/22低点99.25、9/24高点106.60</div></div>
+    <div class="kpi"><div class="label">USD/CNY中间价（9/23）</div><div class="value">6.7468</div><div class="delta down">即期汇率同日收于6.6996</div></div>
+    <div class="kpi"><div class="label">上证指数（9/23收盘）</div><div class="value">3,936.52</div><div class="delta down">-0.39%</div></div>
+    <div class="kpi"><div class="label">上证指数（9/24收盘，本周最后交易日）</div><div class="value">3,888.37</div><div class="delta down">-1.22%，失守3900点</div></div>
+    <div class="kpi"><div class="label">A股两市成交额（9/24）</div><div class="value">1.65万亿元</div><div class="delta down">较9/23的1.76万亿元减少1,116.19亿元</div></div>
+  </div>
+</section>
+
+<!-- ============ DRIVER 1: TREASURY YIELDS ============ -->
+<section id="yields">
+  <h2 class="sec-title"><span class="num">1</span>驱动一：10年期美债收益率上行15个基点至5.11%，创2007年6月以来新高</h2>
+  <p class="sec-desc">传导层：9月PMI超预期 + 巴尔鹰派表态 + 5年期标售中标利率创20年新高 + 能源价格上行 → 长端收益率抬升 → 期限溢价走阔、财政部回购未达计划上限</p>
+
+  <div class="driver-header"><b>核心事件：9月23日10年期收益率收于5.11%，单日上行15个基点</b></div>
+  <div class="driver-body">
+    <h3>价格路径：官方日度口径下的完整序列</h3>
+    <p>美国财政部日度par yield口径显示，10年期收益率9月18日收于5.01%，9月21日至22日回落至4.96%附近，9月23日上行15个基点至5.11%，9月24日进一步升至5.18%，9月25日小幅回落至5.17%。同日盘中报价源显示9月23日盘中最高触及5.13%，9月24日盘中最高触及5.20%，与官方收盘值存在少量差异，本报告统一采用官方日度par yield作为序列基准，盘中值单独标注。</p>
+    <p>30年期同期走高：9月23日5.40%，9月24日5.47%，9月25日进一步升至5.49%，为2004年以来最高水平。5年期在9月23日标售中中标利率5.033%，为2006年以来最高。按9月21日的4.96%与9月25日的5.17%计算，10年期全周上行21个基点；若以9月18日收盘5.01%为基准，则上行16个基点。从月度维度看，10年期9月累计上行逾45个基点，为约两年来最大单月涨幅。</p>
+
+    <h3>上行输入：四类因素并存，单一边际贡献无法识别</h3>
+    <p>本轮长端上行同时面对四类输入。第一，标普全球9月美国综合PMI初值由8月的56.0升至58.4，为2021年7月以来最高，其中服务业PMI升至58.7、制造业PMI升至57.0，企业投入成本增速升至近四年高位，受燃油及运输费用推升，增长预期与成本压力同时上修。第二，美联储理事巴尔9月23日在住房议题讲话中表示"进一步政策调整可能仍然必要"（further policy adjustments are likely to be needed），并指出过去20个月中仅两个月核心PCE通胀读数与2%目标一致，为9月FOMC加息后的又一次高级别鹰派表态。第三，9月23日5年期国债标售规模700亿美元，中标利率5.033%，投标倍数2.21，低于近期同期限均值，反映该期限的配置需求相对偏弱。第四，能源价格同向上行，WTI原油9月23日收于92.16美元/桶，9月24日升至94.61美元，9月25日回落至92.41美元；布伦特原油同期由9月22日的99.25美元升至9月24日的106.60美元，9月25日收于104.32美元。</p>
+    <p>四类因素在同一交易周内同向作用，但日度数据无法分解各自对收益率的边际贡献。区分其相对权重需要依赖期限结构与通胀定价的横截面差异，见下一节。</p>
+
+    <div class="callout risk">
+      <b>财政部回购未达计划上限：需求端与定价条件需分别看待</b>
+      <p style="margin:8px 0 0;">9月24日财政部实施20至30年期国债回购，计划上限60亿美元，市场提交报价104.68亿美元，实际购回40.78亿美元。<b>市场报价规模高于计划上限，说明该次操作并非无人应标；实际购回量低于上限，反映财政部未全额接受市场报价，即部分报价的价格条件未达到财政部设定的回购标准。</b>这与"需求不足"是两种不同的判断。此前9月11日一次操作市场报价约105亿美元、实际购回51.87亿美元，同样低于60亿美元上限，两次操作连续未达上限，更直接的指向是财政部在长端的价格容忍度有限，而非市场对长端国债缺乏承接意愿。</p>
+    </div>
+
+    <h3>政策路径定价：期货隐含值上修，但不等于政策路径预测</h3>
+    <p>CME FedWatch隐含定价显示，10月会议加息25个基点的概率为67.5%，维持利率不变的概率为32.5%；12月会议后，维持利率不变的概率为5.2%，累计加息25个基点的概率为38.0%，累计加息50个基点的概率为56.8%，即年内至少再加息一次的概率为94.8%。该工具反映的是联邦基金利率期货的隐含定价，属于市场对短端利率路径的估值，不等同于美联储的政策指引，也不等同于市场参与者对基本面的预测。该定价对通胀、就业与能源价格的后续数据高度敏感，9月30日公布的8月PCE通胀数据是最近的检验点。</p>
+  </div>
+</section>
+
+<!-- ============ DRIVER 2: TERM STRUCTURE ============ -->
+<section id="curve">
+  <h2 class="sec-title"><span class="num">2</span>期限结构分解：三日内长端利差走阔，月度维度仍以政策路径为主导</h2>
+  <p class="sec-desc">传导层：区分"短端上移"与"长端利差走阔" → 判断5%以上的收益率水平由什么支撑 → 决定对成长股、黄金、新兴市场与人民币的含义</p>
+
+  <div class="driver-header"><b>核心观察：本周三日长端利差走阔3个基点，与月度累计变化的方向不同</b></div>
+  <div class="driver-body">
+    <h3>可观测的曲线形态</h3>
+    <table>
+      <caption>2026年9月23–25日美债收益率（%，官方日度par yield；5年期取自9/23标售中标利率）</caption>
+      <thead><tr><th>期限</th><th>9/23</th><th>9/24</th><th>9/25</th><th>9/23–9/25变化</th></tr></thead>
+      <tbody>
+        <tr><td>5年期</td><td>5.03%</td><td>不适用</td><td>不适用</td><td>不适用</td></tr>
+        <tr><td>10年期</td><td>5.11%</td><td>5.18%</td><td>5.17%</td><td>+6bp</td></tr>
+        <tr><td>30年期</td><td>5.40%</td><td>5.47%</td><td>5.49%</td><td>+9bp</td></tr>
+        <tr><td><b>10Y–30Y利差</b></td><td><b>29bp</b></td><td><b>29bp</b></td><td><b>32bp</b></td><td><b>走阔3bp</b></td></tr>
+      </tbody>
+    </table>
+    <p>三个交易日中，10年期收益率在9月24日见高后于9月25日回落1个基点，30年期则连续三日上行并创2004年以来新高，10年期与30年期利差由29个基点走阔至32个基点。长端在10年期走平的同时继续上行，说明本周的边际调整并未集中在与政策路径关联最紧密的中段。</p>
+
+    <h3>分解框架与两组数据的差异</h3>
+    <p>名义长端收益率可拆为未来短端利率预期、通胀预期、实际利率与期限溢价四项，实际操作中对应观察四组价格：2年期反映政策路径，10年期通胀互换或盈亏平衡通胀反映通胀预期，10年期TIPS收益率反映实际融资成本，长端利差反映期限溢价与供给压力。</p>
+    <p>本周三个交易日的边际变化与9月月度累计变化给出了不同信号。月度维度上，2年期在9月累计上行超过50个基点，10年期累计上行逾45个基点，两者幅度接近，说明政策路径重定价是9月整体上行的主要贡献项；同期30年期与10年期的相对涨幅在月末才明显放大。三日维度上，长端利差走阔而中段走平，供给与期限溢价的边际贡献上升。</p>
+    <div class="callout data">
+      <b>两组数据的判别含义：</b>
+      <p style="margin:8px 0 0;">若上行主要由政策路径重定价驱动，2年期应与长端同幅或更大幅度上行，长端利差保持稳定；若主要由期限溢价与财政供给驱动，则长端利差走阔而中段相对稳定。9月的月度累计数据更接近第一种形态，本周三日数据更接近第二种形态。因此本周5.1%以上的收益率水平由两条渠道共同支撑：月度累计涨幅的主要来源是政策路径重定价，本周三日的边际增量更多来自长端的期限溢价与供给因素。2年期与通胀互换的日度序列尚未纳入本次观察窗口，该拆分需在下一期以完整曲线数据复核。</p>
+    </div>
+
+    <h3>对其他资产的含义</h3>
+    <p>期限溢价驱动的长端上行，对资产价格的传导路径与加息路径重定价不同：前者主要通过折现率与财政可持续性预期压制长久期权益与黄金，同时对美元形成支撑；后者主要通过政策利率预期影响短端利率与汇率利差。本周美元指数运行于101附近、黄金自4,399.67美元回落、美国上市黄金ETF仍录得38亿美元净流入，与长端实际利率上行的方向一致。这一区分对后续判断的价值在于：若通胀数据回落而长端利差维持走阔，利率敏感资产的压制难以通过加息预期降温而解除。</p>
+  </div>
+</section>
+
+<!-- ============ DRIVER 3: IRAN-US TALKS ============ -->
+<section id="iran">
+  <h2 class="sec-title"><span class="num">3</span>驱动二：美伊纽约首次接触，伊朗提出60天停火路线图</h2>
+  <p class="sec-desc">传导层：联大边会首次间接谈判 → 伊朗提交书面路线图 → 革命卫队设定最后通牒 → 油价对缓和信号反应有限</p>
+
+  <div class="driver-header"><b>核心事件：6月停火破裂以来首次接触，公开威胁与积极评价并存</b></div>
+  <div class="driver-body">
+    <h3>谈判形态：卡塔尔斡旋的三小时间接接触</h3>
+    <p>美国与伊朗9月22日在纽约联合国大会边会举行三小时间接谈判，由卡塔尔官员居中斡旋，为6月停火协议破裂以来两国首次接触。伊朗外交部长阿拉格齐与美方谈判特使史蒂夫·维特科夫、贾里德·库什纳出席。会谈未公布实质性突破。同日特朗普在联合国大会发言中表示，若无法达成和平协议，正考虑"消灭伊朗"（annihilate Iran）；会谈结束后则将此次接触形容为"非常富有成效"，并暗示可能很快进行更多讨论。公开威胁与私下积极评价并存的表态组合，与谈判仍处早期姿态性博弈阶段的特征一致。</p>
+
+    <h3>伊朗路线图：可拆分的执行顺序</h3>
+    <p>据阿联酋《国民报》援引地区消息人士，伊朗已向美方提交结束冲突的路线图，内容包括最长60天的区域性停火、分阶段重新开放霍尔木兹海峡、终止美方对伊朗的封锁，并寻求在停火生效期间就结束冲突的具体时间表展开谈判；路线图另含停止对阿拉伯邻国发动袭击的条款。伊朗同时通过斡旋方向美方传达，若美方解除海军封锁、释放冻结资产并停止敌对行动，伊朗可在七日内重开霍尔木兹海峡。与本轮冲突以来的历次表态相比，该方案首次给出执行顺序而非先决条件清单：分阶段重开海峡与固定停火期限均可部分履行，是其中最具谈判基础的两个要素。伊朗同时要求停火与解除对也门胡塞武装控制地区的封锁挂钩，并立即释放在美冻结的240亿美元资金。</p>
+
+    <div class="callout risk">
+      <b>革命卫队最后通牒与路线图之间存在张力</b>
+      <p style="margin:8px 0 0;">伊朗革命卫队司令礼萨伊同期设定4至5天最后通牒，并重申"在条件被接受之前，谈判不会推进"，与该路线图"在停火期间进行谈判"的前提直接冲突。这一张力存在两种可能来源：一是谈判策略上的施压安排，最后期限落在联合国大会周结束前后（约9月27日至28日），到期后可能被后续进展消化；二是反映伊朗外交系统与革命卫队在谈判路径上存在分歧，可能削弱路线图的可执行性。两种解释目前均缺乏决定性证据，观察点为最后通牒到期前后伊朗方面的实际行动。</p>
+    </div>
+
+    <h3>油价：地缘缓和的定价权重有限</h3>
+    <p>WTI原油9月23日收于92.16美元，较前一交易日上涨1.81%，9月24日升至94.61美元，9月25日回落至92.41美元（以上均为11月合约结算价；9月22日的94.59美元为10月合约口径，跨合约月份不可直接比较）。布伦特原油走势更陡：9月22日收于本周低点99.25美元，9月23日上涨3.86%至103.08美元，9月24日升至106.60美元的本周高点，9月25日收于104.32美元，全周较前一周末上涨0.4%。布伦特与WTI价差扩大至12美元附近，反映霍尔木兹海峡通行受限对海运原油的影响大于对北美内陆基准的影响。</p>
+    <p>外交接触推进的一周内油价并未单向下行，与"缓和压低油价"的直觉不完全一致：9月23日伊朗方面拒绝美方条件后油价单日跳涨近4%，9月25日伊朗提出七日内重开海峡的临时安排后油价才回落。当周PMI报告特别指出燃油及运输成本推升整体投入成本，显示能源价格本身仍是通胀读数中的活跃变量；同期市场消化了特朗普可能限制美国柴油出口的报道。油价的短期定价同时受美国国内能源政策、全球成品油供需、库存与炼厂利润等因素影响，美伊谈判进展只是其中一个输入。霍尔木兹海峡的实际通行量、沙特替代出口能力与美国原油产量，是判断供给端风险溢价的关键可观测指标。</p>
+  </div>
+</section>
+
+<!-- ============ DRIVER 4: XI VISIT & US-CHINA TALKS ============ -->
+<section id="china-us">
+  <h2 class="sec-title"><span class="num">4</span>驱动三：中美元首华盛顿会晤，经贸磋商达成十项重要成果</h2>
+  <p class="sec-desc">传导层：贝森特–何立峰纽约磋商 → 习近平抵达华盛顿 → 元首会晤达成八点成果共识 → 贸易理事会、300亿美元对等降税安排与吉隆坡安排延期落地</p>
+
+  <div class="driver-header"><b>核心事件：中国国家主席三年来首次访美，经贸磋商机制由危机应对转向常设安排</b></div>
+  <div class="driver-body">
+    <h3>访问背景：贸易团队先期铺垫</h3>
+    <p>美国财政部长贝森特与中国国务院副总理何立峰9月20日在纽约举行会谈，为随后的元首会晤作准备。两人过去18个月已多次会晤，此前多选择在第三国举行，此次移师纽约。磋商议题集中于伊朗战争导致的能源中断、人工智能，以及原定11月到期的关税休战协议是否延期。中方考虑安排比亚迪等企业派代表随行参加峰会相关活动；特朗普则表示若中国车企在美国建厂并雇佣美国工人，可能允许其进入美国市场。中方将台湾问题、尤其美方计划中的对台军售列为优先关切。</p>
+
+    <h3>会晤与结果：八点成果共识与十项经贸成果</h3>
+    <p>习近平9月24日抵达华盛顿。此次访问是中国国家主席三年来首次访美，也是11年来再次以国事访问形式访问华盛顿。9月25日元首会晤后，双方达成八点成果共识，其中双边关系定位更新为"构建基于尊重、公平、对等的建设性战略稳定关系"。</p>
+    <p>经贸层面的成果清单包含十项内容，可归为四类。第一类是关税安排：双方同意在经贸磋商机制下建立贸易理事会，并在理事会框架下就300亿美元对等降税安排达成共识，各自约90%产品的关税将对等降至最惠国税率水平。第二类是常设机制：除贸易理事会外，双方在磋商机制下建立投资理事会，作为投资促进与投资障碍解决的常态化对话平台；双方同意建立中美人工智能对话；双方同意相互支持对方办好亚太经合组织领导人非正式会议和二十国集团领导人峰会。第三类是具体品类：在理事会框架下设立农业工作组，就推动解决部分农产品非关税壁垒与市场准入达成共识，并推动扩大煤炭贸易。第四类是期限安排：双方同意将吉隆坡经贸磋商联合安排延期至2027年1月10日。</p>
+
+    <div class="callout data">
+      <b>对市场定价的含义：</b>
+      <p style="margin:8px 0 0;">这批成果的增量不止于关税休战延续。300亿美元对等降税安排给出了可量化的减税规模与覆盖率（约90%产品降至最惠国税率），贸易理事会与投资理事会属于常设对话机制，两者的可执行性高于一次性的期限延长。人民币9月23日中间价报6.7468、即期汇率收于6.6996，为近三个月最强水平，境内私募机构加仓意愿同期回升，市场对会晤的积极预期已部分计入资产价格。在制度性安排确认之后，价格的下一个驱动来自机制的具体落地节奏：贸易理事会与投资理事会的首次会议安排、农业工作组的商品清单与时间表、人工智能对话的启动节点、以及台湾相关议题的后续处理，构成下一步观察清单。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DRIVER 5: GOLD & A-SHARES ============ -->
+<section id="gold-cn">
+  <h2 class="sec-title"><span class="num">5</span>驱动四：黄金回落但ETF资金维持净流入，A股节前缩量调整</h2>
+  <p class="sec-desc">传导层：美元走强 + 长端实际利率上行 → 金价回落；节前风险偏好收缩 → A股缩量下行</p>
+
+  <div class="driver-header"><b>核心事件：金价与ETF资金流分化；A股9月24日普跌，跌涨家数比3.84倍</b></div>
+  <div class="driver-body">
+    <h3>黄金：价格回落，资金流未同步转负</h3>
+    <p>现货黄金本周延续自9月18日以来的回落。9月18日收于4,378.39美元，盘中最高4,399.67美元；9月23日单日下跌1.75%至4,287.41美元，盘中最低4,274.75美元；9月24日收于4,273.80美元；9月25日反弹0.24%收于4,284.97美元，当日区间4,254.58至4,315.80美元。以8月31日收盘4,449.24美元为基准，9月前18个交易日累计下跌3.7%。白银同步走弱，9月23日单日下跌3.88%至64.45美元，盘中最低64.22美元。美元指数9月下旬运行于101附近。</p>
+    <p>与价格回落形成对照，黄金ETF的资金流仍在净流入区间。美国上市黄金ETF 9月净流入约38亿美元，延续8月的79亿美元；全球范围看，8月黄金ETF净流入180亿美元，为有记录以来第二大单月流入。价格与实际利率、美元同步变动，而ETF资金流未同步转负，说明本周的调整集中在动量与算法交易层面：摩根士丹利商品策略主管Amy Gower指出，8月金价上涨期间建立的趋势性头寸在技术信号转弱后反向平仓，而配置型资金与央行购金保持稳定，中国央行已连续22个月增持黄金。这一分化的后续方向取决于资金流本身是否延续：世界黄金协会的月度ETF流量数据、COMEX持仓结构、10年期TIPS收益率与盈亏平衡通胀，是判断配置资金是否跟随价格调整的直接指标。仅凭单月净流入，不足以判断长期配置意愿在收益率持续上行的环境下可以维持。</p>
+
+    <h3>A股：9月24日普跌，跌涨家数比3.84倍</h3>
+    <table>
+      <caption>2026年9月第4周A股主要指数逐日表现（9/21–9/24，本周四个交易日）</caption>
+      <thead><tr><th>日期</th><th>上证指数</th><th>市场特征</th></tr></thead>
+      <tbody>
+        <tr><td>9/21（周一）</td><td>收3,949.91点（+0.97%）</td><td>窄幅整理，量能温和</td></tr>
+        <tr><td>9/22（周二）</td><td>收3,952.13点（+0.06%）</td><td>震荡分化，深市与创业板窄幅整理</td></tr>
+        <tr><td>9/23（周三）</td><td>收3,936.52点（-0.39%）</td><td>深证成指跌0.64%、创业板指跌0.6%；两市成交1.76万亿元，较上一交易日减少3,706亿元，全市场下跌个股超过3,500只；PCB板块领涨，澳弘电子9个交易日录得7个涨停，大亚圣象4连板，依顿电子、中一科技、江南新材涨停；CRO板块义翘神州、奥浦迈、益诺思涨幅均超10%；量子科技概念天奥电子涨停；地产板块内部显著分化，我爱我家、华远控股收获3连板而万科A等炸板回落；传媒影视板块为当日主要下跌方向，中信出版跌超12%，华媒控股、龙版传媒、中视传媒跌停</td></tr>
+        <tr><td>9/24（周四，本周最后交易日）</td><td>收3,888.37点（-1.22%），失守3900点</td><td>深证成指跌2.34%报13,316.97点，创业板指跌2.68%报3,288.95点，沪深300跌1.73%报4,439.14点，科创50跌2.35%，万得全A跌1.83%，中证A500跌1.97%，北证50跌1.7%；全市场1,120只上涨、4,306只下跌，52只涨停、15只跌停，跌涨家数比3.84倍；两市成交1.65万亿元（16,533.57亿元），较9月23日缩量1,116.19亿元；板块方面风电设备、纺织制造、教育、煤炭涨幅居前，贵金属、元件、能源金属、PCB、CPO跌幅居前</td></tr>
+      </tbody>
+    </table>
+    <p>9月24日恰逢2024年"一行一局一会"政策组合拳发布两周年。2024年9月24日上证指数单日上涨4.15%收于2,863.13点，至2026年9月24日收于3,888.37点，两年累计上涨35.8%。同期沪深300指数收于4,439.14点，与2024年10月4,450.37点的阶段高点相比基本持平，指数层面的涨幅主要由上证综指覆盖的科技权重贡献。</p>
+    <p>市值层面的集中度更为明显。A股总市值由2024年9月24日的81.67万亿元增至2026年9月18日的129.49万亿元，增加47.82万亿元，增幅58.5%；其中电子行业总市值由6.12万亿元增至24.81万亿元，增幅305%，超越银行成为A股第一大市值行业，单行业贡献18.69万亿元增量，占全市场增量的39.1%。银行以35%的增幅贡献4.16万亿元，机械设备、通信、有色金属分别贡献3.79万亿、3.58万亿、3.00万亿元，上述五个行业合计贡献超过33万亿元，占全市场增量近七成。另一端，食品饮料市值回落13%，房地产基本持平，煤炭、钢铁、交通运输仅温和跟涨。指数涨幅与行业分布的这种集中度，意味着多数个股并未同步受益于市值总量的扩张。</p>
+    <p>9月24日的调整同时叠加中秋长假前的交易特征。9月23日至24日两市成交额连续收缩，全市场跌涨家数比达3.84倍。成交额下降与长假前风险偏好收缩、交易意愿降低的组合一致，但仅凭成交量无法判断卖压是否已充分释放——成交收缩同样可能来自买盘不足或流动性下降。同期宽基ETF出现承接迹象：9月23日股票型ETF净流入35.91亿元，宽基ETF整体净流入超60亿元，沪深300方向显著吸金；9月21日至24日一周内，沪深300指数相关ETF合计净流入69.53亿元，位居全市场指数净流入首位。这一资金结构反映部分资金在普遍谨慎中承接宽基指数，可作为观察点，但不足以支持"抛压衰竭"的判断。</p>
+  </div>
+</section>
+
+<!-- ============ CHINA MACRO MONITOR ============ -->
+<section id="china-macro">
+  <h2 class="sec-title"><span class="num">6</span>中国宏观监测：价格信号之外的实体与信用变量</h2>
+  <p class="sec-desc">市场类指标（汇率、成交、ETF资金）反映风险偏好，实体与信用变量决定中期盈利与政策空间，二者需并读</p>
+
+  <table>
+    <caption>中国宏观核心监测清单与最新发布节奏</caption>
+    <thead><tr><th>类别</th><th>指标</th><th>发布时间</th><th>本周/近期读数</th><th>观察要点</th></tr></thead>
+    <tbody>
+      <tr><td>信用</td><td>社融存量增速、新增人民币贷款、政府债融资</td><td>9月中旬已发布8月数据</td><td>本期未纳入</td><td>政府债融资对社融的支撑是否延续、企业中长期贷款是否回升</td></tr>
+      <tr><td>货币</td><td>M1、M2同比</td><td>9月中旬已发布8月数据</td><td>本期未纳入</td><td>M1与M2剪刀差变化，反映资金活化程度</td></tr>
+      <tr><td>景气</td><td>制造业与非制造业PMI</td><td>9月30日发布9月数据</td><td>9月30日更新</td><td>新订单与出厂价格分项、生产与新订单差值</td></tr>
+      <tr><td>价格</td><td>CPI、PPI同比</td><td>10月中旬发布9月数据</td><td>本期未纳入</td><td>PPI环比能否转正，决定工业企业利润修复斜率</td></tr>
+      <tr><td>利润</td><td>规模以上工业企业利润</td><td>9月下旬发布8月数据</td><td>本期未纳入</td><td>上游与中下游利润分配、库存周期位置</td></tr>
+      <tr><td>地产</td><td>商品房销售面积、房地产开发投资</td><td>9月中旬已发布8月数据</td><td>本期未纳入</td><td>销售面积同比降幅是否收窄、到位资金改善情况</td></tr>
+      <tr><td>财政</td><td>一般公共预算支出增速、专项债发行进度</td><td>9月中旬已发布8月数据</td><td>本期未纳入</td><td>支出进度与专项债资金落地节奏</td></tr>
+      <tr><td>利率</td><td>10年期中国国债收益率、1年期LPR</td><td>连续交易/每月20日</td><td>本期未纳入</td><td>中美10年期利差变化，与人民币汇率压力直接相关</td></tr>
+      <tr><td>汇率</td><td>USD/CNY中间价、实际有效汇率</td><td>连续交易</td><td>中间价6.7468、即期6.6996（9/23）</td><td>中间价与即期汇率的偏离度、CFETS一篮子指数</td></tr>
+      <tr><td>资金</td><td>股票ETF净流入、两融余额、私募仓位</td><td>连续</td><td>9/23股票型ETF净流入35.91亿元</td><td>宽基ETF承接与两融变化是否同向</td></tr>
+    </tbody>
+  </table>
+  <p class="src">注：本表为中国宏观监测的标准清单，标注"本期未纳入"的指标将在后续周报中按期更新。中美10年期国债利差是连接美债长端上行与人民币汇率、A股风险偏好的关键中间变量，需在下一期补充完整。</p>
+
+  <div class="callout data">
+    <b>与本周美债走势的连接：</b>美债10年期收益率本周上行21个基点，而中国10年期国债收益率与政策利率同期保持稳定，中美利差被动走阔。在人民币汇率仍处升值方向的背景下，利差走阔与汇率走强并存，说明人民币短期走势主要由资本流动与合作预期驱动，而非利差本身。若后续利差进一步走阔而结汇意愿减弱，汇率的支撑将转弱，这一组合值得持续跟踪。
+  </div>
+</section>
+
+<!-- ============ SCENARIO MATRIX ============ -->
+<section id="scenario">
+  <h2 class="sec-title"><span class="num">✓</span>情景矩阵：9月28日–10月4日</h2>
+  <p class="sec-desc">按基准、上行、下行三种情景列示触发条件与失效条件，不设主观概率权重</p>
+  <div class="callout data">
+    三个情景的划分依据为可观测条件，而非概率分布。任一情景的触发条件成立或失效条件出现时，下一期报告相应切换基准情景的归属。
+  </div>
+  <div class="grid3">
+    <div class="scenario bull">
+      <h4>上行情景</h4>
+      <p style="font-size:13px;"><b>触发条件：</b>美伊路线图被双方正式采纳并出现霍尔木兹海峡分阶段重开的具体安排；中美在贸易理事会、农业工作组与人工智能对话的落地节奏上给出明确时间表；9月30日8月PCE低于预期，10月加息定价自67.5%回落至50%以下。</p>
+      <p style="font-size:13px;"><b>资产表现：</b>10年期美债收益率回落至5%以下，30年期同步下行；黄金自4,250–4,320美元区间企稳回升；美元指数自101附近回落；A股9月28日至30日区间放量修复。</p>
+      <p style="font-size:12.5px; margin-top:8px;"><b>失效条件：</b>能源价格再度上行，或PCE超预期，或中美机制落地节奏推迟。</p>
+    </div>
+    <div class="scenario base">
+      <h4>基准情景</h4>
+      <p style="font-size:13px;"><b>触发条件：</b>中美经贸成果进入机制化落地阶段但首次会议安排在假期后；美伊维持"路线图存在、未正式生效"的状态，最后通牒到期未引发局势升级；8月PCE与预期接近，加息定价维持现有区间。</p>
+      <p style="font-size:13px;"><b>资产表现：</b>10年期美债收益率在5.0%–5.2%区间反复，30年期维持5.4%以上高位；黄金在4,200–4,350美元区间盘整；布伦特原油维持100–107美元区间；美元指数在100–102区间；A股9月28日至30日延续缩量与结构分化。</p>
+      <p style="font-size:12.5px; margin-top:8px;"><b>失效条件：</b>10年期单周突破5.25%，或回落到4.95%以下，或跌涨家数比连续两个交易日超过5倍。</p>
+    </div>
+    <div class="scenario bear">
+      <h4>下行情景</h4>
+      <p style="font-size:13px;"><b>触发条件：</b>革命卫队最后通牒到期后重启军事行动，霍尔木兹海峡通行受限加深，布伦特原油突破110美元或WTI突破100美元；或中美在台湾相关议题上出现公开分歧、经贸机制落地停滞；或8月PCE显著高于预期，年内累计加息定价自94.8%进一步上修。</p>
+      <p style="font-size:13px;"><b>资产表现：</b>10年期美债收益率突破5.2%创本轮新高，30年期逼近5.5%；美元指数进一步走强；黄金加速下行且ETF资金流转为净流出；A股10月8日复市后补跌。</p>
+      <p style="font-size:12.5px; margin-top:8px;"><b>失效条件：</b>能源供给恢复、通胀数据回落、或中美恢复技术性沟通。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ASSET KEY LEVELS ============ -->
+<section id="levels">
+  <h2 class="sec-title"><span class="num">📊</span>资产关键点位</h2>
+  <p class="sec-desc">最新可得交易日价格及口径来源</p>
+  <table>
+    <thead><tr><th>资产</th><th>价格/交投水平</th><th>口径与来源</th><th>关注信号</th></tr></thead>
+    <tbody>
+      <tr><td>美10年期国债收益率</td><td>5.17%（9/25）</td><td>官方日度par yield；9/23为5.11%、9/24为5.18%</td><td>2年期与盈亏平衡通胀、10月FOMC前瞻定价</td></tr>
+      <tr><td>美5年期国债收益率</td><td>5.033%（9/23标售中标利率）</td><td>Econ Data Tools；2006年以来最高中标利率</td><td>后续同期限标售的投标倍数与尾部利差</td></tr>
+      <tr><td>美30年期国债收益率</td><td>5.49%（9/25）</td><td>官方日度par yield；9/23为5.40%、9/24为5.47%</td><td>长端标售需求、财政部回购的接受比例</td></tr>
+      <tr><td>现货黄金</td><td>$4,284.97（9/25收盘）</td><td>9/23收4,287.41、9/24收4,273.80；9/25区间4,254.58–4,315.80</td><td>美元指数、10年期TIPS收益率、ETF资金流向</td></tr>
+      <tr><td>WTI原油</td><td>$92.41（9/25收盘）</td><td>近月合约结算价；9/23为92.16、9/24为94.61</td><td>霍尔木兹海峡通行量、美国柴油出口政策</td></tr>
+      <tr><td>布伦特原油</td><td>$104.32（9/25收盘）</td><td>ICE近月合约结算价；9/22低点99.25、9/24高点106.60</td><td>布伦特与WTI价差、海运原油运费</td></tr>
+      <tr><td>美元指数</td><td>约101（9月下旬）</td><td>美联储紧缩定价与美债收益率上行的同步结果</td><td>加息定价、中美利差</td></tr>
+      <tr><td>USD/CNY</td><td>中间价6.7468、即期6.6996（9/23）</td><td>中国外汇交易中心；即期为近三个月最强水平</td><td>中间价与即期偏离度、中美10年利差</td></tr>
+      <tr><td>上证指数</td><td>3,888.37（9/24收盘）</td><td>-1.22%；9/21–9/23依次为3,949.91、3,952.13、3,936.52</td><td>9月28日至30日成交量能与两融变化</td></tr>
+    </tbody>
+  </table>
+  <p class="src">价格截至9月25日。日内高频波动以实时行情为准。</p>
+</section>
+
+<!-- ============ ALLOCATION ============ -->
+<section id="alloc">
+  <h2 class="sec-title"><span class="num">💼</span>条件性资产观点</h2>
+  <div class="callout data">
+    以下为条件性研究观点，不构成统一仓位建议，也不针对特定风险偏好或投资期限。
+  </div>
+  <table>
+    <thead><tr><th>资产</th><th>条件性研究判断</th><th>失效/反转监测信号</th></tr></thead>
+    <tbody>
+      <tr><td>美债</td><td>9月月度累计上行中，2年期与10年期涨幅接近，政策路径重定价是主要来源；本周三日10年期与30年期利差走阔3个基点、30年期连续三日创2004年以来新高，边际增量更接近期限溢价与供给因素。5年期标售中标利率创2006年以来最高，财政部20至30年期回购连续两次未达计划上限，指向长端供给的持续压力。10月加息定价67.5%、年内至少再加息一次94.8%已计入较充分，若后续通胀数据低于该定价隐含水平，长端存在回落空间</td><td>2年期与盈亏平衡通胀的相对变化、9月30日8月PCE、后续标售需求</td></tr>
+      <tr><td>黄金</td><td>价格回落与美元、长端实际利率上行方向一致，但美国上市黄金ETF 9月仍净流入38亿美元、8月净流入79亿美元，配置层资金未同步转负，8月全球净流入180亿美元为有记录以来第二大单月流入。回落压力集中在8月建立的多头趋势头寸平仓。价格调整是否扩展为配置资金流出，取决于ETF流量的月度延续性与TIPS收益率</td><td>ETF是否转为持续净流出、美元指数是否突破102</td></tr>
+      <tr><td>原油</td><td>本周布伦特与WTI走势分化，布伦特全周上涨0.4%而WTI波动更大，两者价差扩大至12美元附近，反映霍尔木兹海峡通行受限对海运基准的影响大于北美内陆基准。美国柴油出口政策、PMI显示的运输成本、全球成品油供需与库存同时发挥作用。供给端风险溢价的关键可观测变量是霍尔木兹海峡实际通行量而非谈判表态</td><td>海峡通行量数据、美国能源出口政策、OPEC+供应调整</td></tr>
+      <tr><td>人民币与中美关系相关资产</td><td>经贸磋商成果已由"期限延长"升级为"机制建立+量化降税"，300亿美元对等降税安排与贸易理事会、投资理事会属可执行性更高的制度性安排，人民币即期汇率已升至近三个月最强水平并部分反映该预期。价格的下一个驱动来自机制落地的节奏与范围，而非成果清单本身</td><td>理事会首次会议安排、农业工作组商品清单、人工智能对话启动节点、台湾议题处理</td></tr>
+      <tr><td>A股</td><td>9月24日调整伴随成交连续收缩与跌涨家数比3.84倍，与长假前交易意愿降低的特征一致；9月23日股票型ETF净流入35.91亿元、9月21日至24日沪深300相关ETF净流入69.53亿元，承接迹象可作资金结构观察点，但不足以判断卖压释放程度。9月28日至30日三个交易日的量能与结构，是判断四季度开局基调的直接依据</td><td>成交量能、两融余额、北向资金流向</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ RISK REGISTER ============ -->
+<section id="risk">
+  <h2 class="sec-title"><span class="num">⚠</span>风险登记册</h2>
+  <table>
+    <thead><tr><th>风险事件</th><th>等级</th><th>潜在冲击</th><th>监测指标</th></tr></thead>
+    <tbody>
+      <tr><td>革命卫队最后通牒（约9月27–28日到期）后局势升级</td><td>高</td><td>油价上行，通胀预期二次抬升，10月加息定价上修</td><td>到期前后伊朗方面实际行动、霍尔木兹通行量</td></tr>
+      <tr><td>中美经贸机制落地节奏推迟，或台湾议题出现公开分歧</td><td>中</td><td>已计入的积极预期面临修正，人民币与A股风险偏好承压</td><td>理事会与工作组会议安排、稀土与技术限制安排</td></tr>
+      <tr><td>10年期收益率突破5.2%，长端利差进一步走阔</td><td>中</td><td>成长股、REITs、新兴市场估值承压，全球风险偏好走弱</td><td>30年期走势、10月FOMC前瞻定价</td></tr>
+      <tr><td>财政部回购持续未达计划上限，长端供给压力延续</td><td>中低</td><td>30年期维持高位，压制利率敏感型权益资产</td><td>后续回购的报价与接受比例</td></tr>
+      <tr><td>黄金ETF资金流跟随价格转为净流出</td><td>中低</td><td>贵金属价格存在超调下行风险</td><td>ETF月度资金流、COMEX持仓、美元指数</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ NEXT WEEK OUTLOOK ============ -->
+<section id="outlook">
+  <h2 class="sec-title"><span class="num">🔭</span>下周展望：9月28日–10月4日关键日程</h2>
+  <table>
+    <thead><tr><th>日期</th><th>事件/数据</th><th>重要性</th></tr></thead>
+    <tbody>
+      <tr><td>9/30（周三）</td><td>美国8月个人收入与支出数据发布，含8月PCE与核心PCE通胀。这是10月FOMC前最直接的通胀检验点，也是本周定价（10月加息67.5%、年内至少再加息一次94.8%）的首个数据验证</td><td>极高</td></tr>
+      <tr><td>9/28–10/4</td><td>10年期美债收益率能否在5.17%附近稳定。观察项包括2年期与长端利差的相对变化、盈亏平衡通胀与10年期TIPS收益率，用以判断月度累计涨幅与本周边际变化之间的主导渠道归属</td><td>极高</td></tr>
+      <tr><td>9/28–10/4</td><td>中美经贸机制的落地安排：贸易理事会与投资理事会的首次会议时间、农业工作组的商品清单、人工智能对话的启动节点、300亿美元对等降税安排的实施细则，以及台湾相关议题</td><td>高</td></tr>
+      <tr><td>约9/27–28</td><td>革命卫队设定的4–5天最后通牒到期，观察局势是否升级，以及霍尔木兹海峡实际通行数据</td><td>高</td></tr>
+      <tr><td>全周</td><td>美国国债标售与财政部回购操作的后续安排，长端供给压力的直接观测窗口</td><td>中高</td></tr>
+      <tr><td>9/28（周一）–9/30（周三）</td><td>A股节前三个交易日（10月1日起进入国庆假期，10月8日恢复交易）。假期内两条地缘线索的演化将在这三个交易日的量能与结构中体现</td><td>高</td></tr>
+      <tr><td>9/30</td><td>中国9月制造业与非制造业PMI。新订单与出厂价格分项是判断实体需求与价格压力的直接依据</td><td>中高</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <b>下周核心研判：</b>下周三条线索同时进入验证窗口。第一条是通胀与利率：9月30日公布的8月PCE是10月FOMC前最直接的通胀检验点；9月月度累计45个基点以上的收益率上行中政策路径重定价是主要来源，而本周三日30年期连续创新高、10年期与30年期利差走阔至32个基点，显示长端供给与期限溢价的边际权重上升，若PCE低于预期而长端利差仍维持走阔，利率敏感资产的压制难以通过加息预期降温解除。第二条是中美：经贸磋商成果已落地为贸易理事会、投资理事会与300亿美元对等降税安排等制度性内容，价格的下一个驱动来自机制落地的节奏与范围，农业工作组商品清单与人工智能对话的启动节点是关键观察点。第三条是伊朗：革命卫队最后通牒约在9月27日至28日到期，与中美会晤后的政策窗口高度重叠，油价与通胀预期的边际变化主要取决于霍尔木兹海峡的实际通行数据而非表态。中国方面，A股9月28日至30日仅三个交易日，10月8日才恢复完整交易，量能与两融数据在假期前后存在断裂，节前三个交易日的结构特征对四季度开局基调的指示意义强于指数点位本身。
+  </div>
+</section>
+
+<div class="footer-disclaimer">
+  <p><span class="fname">蜗牛鸟投资 Snail-Bird Investment</span> · 全球宏观研究组</p>
+  <p>本报告基于公开信息及第三方数据源整理编写，数据区间为2026年9月18日至9月25日。美债收益率统一采用美国财政部日度par yield口径，盘中报价单独标注；原油采用ICE与NYMEX近月合约结算价；贵金属采用现货收盘价；A股采用交易所收盘价；黄金ETF资金流采用State Street与市场公开数据整理。情景矩阵按触发条件划分，不含概率权重。美伊谈判、伊朗路线图与革命卫队最后通牒均基于公开报道整理，相关表态及局势发展迅速，细节可能随后续报道调整。本报告仅供研究参考，不构成个人投资建议。市场有风险，投资需谨慎。</p>
+</div>
+
+</main>
+</body>
+</html>
