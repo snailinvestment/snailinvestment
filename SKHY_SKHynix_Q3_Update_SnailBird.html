@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SK Hynix Inc. (SKHY) — Q3 2026 投资分析更新 | Snail-Bird Investment</title>
+<style>
+:root{
+  --ink:#111827;--ink-2:#1f2937;--ink-3:#374151;--steel:#4b5563;--muted:#6b7280;--faint:#9ca3af;
+  --rule:#e0dcd3;--paper:#faf8f4;--white:#ffffff;
+  --coral:#e0483e;--coral-2:#ff6b5e;--coral-bg:#fdeceb;
+  --navy:#1e3a5f;--navy-bg:#eaf1f8;
+  --green:#15803d;--green-bg:#eafaf0;
+  --red:#b91c1c;--red-bg:#fdecec;
+  --amber:#92400e;--amber-bg:#fdf3e3;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+.masthead{background:var(--ink);position:relative;overflow:hidden;}
+.masthead::before{content:'';position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(45deg,transparent,transparent 22px,rgba(224,72,62,.05) 22px,rgba(224,72,62,.05) 23px),
+    repeating-linear-gradient(-45deg,transparent,transparent 22px,rgba(224,72,62,.035) 22px,rgba(224,72,62,.035) 23px);
+  pointer-events:none;}
+.masthead::after{content:'';position:absolute;top:0;right:0;width:420px;height:100%;
+  background:linear-gradient(125deg,transparent 45%,rgba(224,72,62,.15) 100%);pointer-events:none;}
+.masthead-inner{max-width:1160px;margin:0 auto;padding:48px 56px 44px;position:relative;z-index:1;}
+.brand-row{display:flex;align-items:center;gap:10px;margin-bottom:38px;}
+.brand-mark{width:32px;height:32px;border:1.5px solid var(--coral-2);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:var(--coral-2);flex-shrink:0;}
+.brand-text{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.38);}
+.masthead-type{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-2);margin-bottom:10px;}
+.masthead-company{display:flex;align-items:baseline;gap:16px;margin-bottom:4px;flex-wrap:wrap;}
+.company-name{font-family:'IBM Plex Serif',serif;font-size:36px;font-weight:700;color:var(--white);line-height:1;}
+.ticker-chip{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;background:var(--coral);color:var(--white);padding:3px 10px;border-radius:2px;letter-spacing:.06em;}
+.co-desc{font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(255,255,255,.38);margin-bottom:18px;letter-spacing:.04em;}
+.masthead-sub{font-size:14.5px;font-weight:300;color:rgba(255,255,255,.58);line-height:1.65;max-width:740px;margin-bottom:36px;}
+.masthead-meta{display:flex;flex-wrap:wrap;gap:16px 32px;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.07em;color:rgba(255,255,255,.32);}
+.masthead-meta strong{color:rgba(255,255,255,.68);font-weight:600;}
+.coral-rule{height:4px;background:linear-gradient(90deg,var(--coral) 0%,var(--coral-2) 35%,transparent 100%);}
+nav{background:var(--white);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:100;box-shadow:0 1px 6px rgba(17,24,39,.07);}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 56px;display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.nav-inner a{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:14px 12px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;}
+.nav-inner a:hover{color:var(--ink);border-bottom-color:var(--coral);}
+.page-body{max-width:1160px;margin:0 auto;padding:0 56px 80px;}
+.verdict-banner{background:var(--white);border-left:4px solid var(--coral);padding:22px 26px;margin:36px 0 28px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:0 1px 4px rgba(17,24,39,.06);}
+.verdict-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:7px;}
+.verdict-body{font-family:'IBM Plex Serif',serif;font-size:15px;line-height:1.65;color:var(--ink);}
+.rating-block{text-align:center;flex-shrink:0;min-width:92px;}
+.r-word{display:block;font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:var(--green);letter-spacing:.03em;}
+.r-tp{display:block;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-3);margin-top:5px;}
+.r-note{display:block;font-size:11px;color:var(--muted);margin-top:3px;font-family:'IBM Plex Mono',monospace;line-height:1.4;}
+.kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin-bottom:44px;}
+.kpi-cell{background:var(--white);padding:17px 18px;}
+.kpi-label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:7px;line-height:1.4;}
+.kpi-val{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:600;color:var(--ink);display:block;line-height:1.1;}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.4;}
+.kpi-up .kpi-val{color:var(--green);}.kpi-down .kpi-val{color:var(--red);}.kpi-warn .kpi-val{color:var(--amber);}.kpi-hot .kpi-val{color:var(--coral);}
+.section{margin-bottom:52px;}
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--rule);}
+.sec-accent{width:4px;height:20px;background:var(--coral);border-radius:2px;flex-shrink:0;}
+.sec-num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral);font-weight:600;letter-spacing:.06em;flex-shrink:0;}
+.sec-title{font-family:'IBM Plex Serif',serif;font-size:20px;font-weight:700;color:var(--ink);}
+p{margin-bottom:14px;color:var(--ink-3);line-height:1.8;}p:last-child{margin-bottom:0;}
+h3.sub{font-family:'IBM Plex Serif',serif;font-size:16px;font-weight:600;color:var(--ink);margin:26px 0 12px;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0 22px;}
+.th-dark th{background:var(--ink);color:rgba(255,255,255,.75);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;text-align:right;}
+.th-dark th:first-child{text-align:left;}
+.th-dark td{padding:10px 12px;border-bottom:1px solid var(--rule);text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-3);}
+.th-dark td:first-child{text-align:left;color:var(--ink);}
+.th-light th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;border-bottom:2px solid var(--ink);text-align:right;color:var(--muted);}
+.th-light th:first-child{text-align:left;}
+.th-light td{padding:10px 12px;border-bottom:1px solid var(--rule);text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-3);}
+.th-light td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.th-mid th{background:var(--navy);color:rgba(255,255,255,.85);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;text-align:left;}
+.th-mid td{padding:10px 14px;border-bottom:1px solid var(--rule);color:var(--ink-3);}
+.th-mid td:last-child{text-align:right;font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--ink);}
+.pos{color:var(--green);font-weight:600;}.neg{color:var(--red);font-weight:600;}.hot{color:var(--coral);font-weight:600;}
+.row-highlight td{background:#fdf3f2;font-weight:700;}
+.row-highlight td:first-child{border-left:3px solid var(--coral);}
+.row-latest td{background:#fdf3f2;}
+.row-latest td:first-child{border-left:3px solid var(--coral);}
+.row-total td{background:#f4f1ea;font-weight:700;border-left:3px solid var(--ink);}
+.row-sub td{background:#f4f1ea;font-weight:700;border-top:1px solid var(--ink);}
+.row-bear{background:#fdf1f1;}.row-base{background:#f8f7f4;}.row-bull{background:#eefaf1;}.row-wtd{background:var(--coral-bg);}
+.row-wtd td{font-weight:700;border-top:2px solid var(--ink);}
+.row-risk-h{background:#fdeeee;}.row-risk-m{background:#fdf4e3;}.row-risk-l{background:#eef8f1;}
+.peer-skhy td{background:#fdf3f2;font-weight:700;}.peer-skhy td:first-child{border-left:3px solid var(--coral);}
+.p-big{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;}
+.row-bear .p-big{color:var(--red);}.row-base .p-big{color:var(--ink-3);}.row-bull .p-big{color:var(--green);}.row-wtd .p-big{color:var(--coral);}
+.callout{border-left:3px solid var(--coral);background:var(--coral-bg);padding:15px 19px;margin:16px 0;font-size:13.5px;line-height:1.72;color:var(--ink-3);}
+.callout strong{color:var(--ink);}
+.c-good{border-left-color:var(--green);background:var(--green-bg);}
+.c-risk{border-left-color:var(--red);background:var(--red-bg);}
+.c-warn{border-left-color:var(--amber);background:var(--amber-bg);}
+.c-navy{border-left-color:var(--navy);background:var(--navy-bg);}
+blockquote{margin:18px 0;padding:13px 18px;border-left:3px solid var(--ink-3);background:var(--white);font-family:'IBM Plex Serif',serif;font-size:13.5px;color:var(--steel);font-style:italic;line-height:1.7;}
+blockquote cite{display:block;margin-top:7px;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--faint);letter-spacing:.06em;}
+.timeline{list-style:none;margin:16px 0;padding:0;border-left:2px solid var(--rule);}
+.timeline li{position:relative;padding:0 0 20px 24px;}
+.timeline li::before{content:'';position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--coral);border:2px solid var(--white);box-shadow:0 0 0 1px var(--coral);}
+.timeline li:last-child{padding-bottom:0;}
+.tl-date{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--coral);letter-spacing:.06em;margin-bottom:3px;}
+.tl-desc{font-size:13px;color:var(--ink-3);line-height:1.6;}
+.moat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+.moat-card{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--ink-3);padding:18px 18px 14px;border-radius:2px;}
+.moat-card h4{font-family:'IBM Plex Serif',serif;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+.moat-card p{font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:0;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.two-card{background:var(--white);border:1px solid var(--rule);padding:18px 18px 14px;}
+.two-card h4{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.two-card ul{list-style:none;padding:0;}
+.two-card ul li{padding:6px 0;border-bottom:1px solid var(--rule);font-size:13px;color:var(--ink-3);display:flex;gap:8px;align-items:flex-start;line-height:1.55;}
+.two-card ul li:last-child{border-bottom:none;}
+.b-up{color:var(--green);font-weight:700;flex-shrink:0;}.b-down{color:var(--red);font-weight:700;flex-shrink:0;}
+.monitor-list{list-style:none;margin:14px 0;counter-reset:mon;}
+.monitor-list li{counter-increment:mon;display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:13px;color:var(--ink-3);line-height:1.6;align-items:flex-start;}
+.monitor-list li::before{content:counter(mon,decimal-leading-zero);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--coral);flex-shrink:0;margin-top:2px;}
+.monitor-list li strong{color:var(--ink);}
+.pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;padding:3px 7px;border-radius:2px;}
+.pill-h{background:#fbd4d4;color:var(--red);}.pill-m{background:#fbe6b8;color:var(--amber);}.pill-l{background:#c5e9d5;color:var(--green);}
+.disclosure{margin-top:56px;padding-top:22px;border-top:1px solid var(--rule);font-size:11px;color:var(--faint);line-height:1.75;}
+.disclosure strong{color:var(--muted);}
+.svg-chart{margin:18px 0;border:1px solid var(--rule);background:var(--white);padding:14px 16px;border-radius:4px;}
+.svg-cap{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--faint);margin-top:6px;letter-spacing:.05em;}
+@media(max-width:900px){.masthead-inner,.page-body,.nav-inner{padding-left:20px;padding-right:20px;}.kpi-strip{grid-template-columns:repeat(2,1fr);}.moat-grid{grid-template-columns:1fr 1fr;}.two-col{grid-template-columns:1fr;}.company-name{font-size:26px;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="brand-row"><div class="brand-mark">SB</div><span class="brand-text">Snail-Bird Investment · 半导体与AI基础设施研究</span></div>
+    <div class="masthead-type">投资分析更新 · 覆盖延续 · Q3 2026业绩及后续动态后（含LTA至2029产能规划高度预订与ADR溢价重估）</div>
+    <div class="masthead-company"><span class="company-name">SK Hynix Inc.</span><span class="ticker-chip">NASDAQ: SKHY · KRX: 000660</span></div>
+    <div class="co-desc">全球HBM市场龙头 · AI存储全栈平台（HBM+服务器DRAM+企业级SSD）· 总部：韩国京畿道利川 · 2026年7月10日纳斯达克ADR上市</div>
+    <p class="masthead-sub">本报告是对Snail-Bird Investment 2026年7月14日首次覆盖报告、以及2026年8月17日第二次更新（Q2 2026业绩）的<strong>第三次更新</strong>，聚焦2026年10月28日披露的Q3 2026财报及业绩电话会。Q3单季营收首次突破₩100万亿、营业利润率升至80%，同时管理层披露LTA已锁定2027—2028年50%以上产能、至2029年产能规划高度预订（sold-out on a planning basis，2029部分仍待洽谈需求兑现）、FY2026股东回报约₩100万亿正式落地——需求可见度与回报力度均较Q2时大幅强化。但与之形成鲜明对照的是：该股自9月峰值（KRX隐含约₩2,987,000 / ADR $199.87）已回撤约59%，20个交易日内外资净卖出约₩17.1万亿，ADR相对KRX平价溢价重新走阔至约60—62%历史极端区间。本更新在确认基本面景气高度的同时，对上述"基本面峰值 vs 股价已大幅去风险"的张力做系统性再评估。</p>
+    <div class="masthead-meta">
+      <span><strong>报告类型</strong> 覆盖更新（第三次，含LTA与ADR溢价重估）</span>
+      <span><strong>更新日期</strong> 2026-10-28</span>
+      <span><strong>上次报告日期</strong> 2026-08-17</span>
+      <span><strong>参考股价</strong> KRX ₩1,223,000 / ADR $136.36（2026-10-22，Q3披露前最后一个干净收盘价）</span>
+      <span><strong>分析师</strong> Snail-Bird Investment</span>
+    </div>
+  </div>
+</header>
+<div class="coral-rule"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#verdict">评级结论</a><a href="#changes">关键变化</a><a href="#q3">Q3业绩</a>
+    <a href="#capacity">产能扩张</a><a href="#hbm">竞争格局</a><a href="#returns">股东回报</a>
+    <a href="#balance">资产负债表</a><a href="#valuation">估值框架</a><a href="#risks">风险矩阵</a><a href="#monitor">监测指标</a>
+  </div>
+</nav>
+
+<div class="page-body">
+
+<div id="verdict" class="verdict-banner">
+  <div>
+    <div class="verdict-label">独立投资评级更新 — Q3 2026业绩及LTA至2029产能规划高度预订、ADR溢价重估后</div>
+    <div class="verdict-body">
+      <strong>KRX 000660：维持买入，当前价格的风险回报优于9月峰值。NASDAQ SKHY（ADR）：维持中性偏谨慎，ADR溢价重回约60—62%历史极端，不宜追高。</strong>
+      Q3业绩确认了超级周期叙事的核心——单季营收₩104.6万亿（+32% QoQ）、营业利润率80%、净现金₩98.7万亿。本次更新最重要的增量信息是管理层明确：LTA已锁定2027—2028年50%以上产能，叠加洽谈需求后至2029年产能规划高度预订（sold-out on a planning basis，2029部分仍待洽谈需求兑现）、客户需求量为当前供应能力2倍以上（管理层口径的客户采购计划）。这把"周期股"叙事实质性地推向"可见度+定价权"叙事，并显著抬高了基准/乐观情景的概率权重。<br><br>
+      但市场并未因此进一步上修估值，反而自9月峰值大幅回撤：KRX从隐含约₩2,987,000回落至₩1,223,000（约-59%），20个交易日内外资净卖出约₩17.1万亿。这意味着<strong>股价已经在为周期均值回归、2027年资本开支飙升与自由现金流压力定价</strong>，与基本面峰值形成反差。我们的判断是：需求侧因LTA被大幅去风险，使KRX在当前位置的下行有限、上行不对称；而ADR因约60—62%的溢价重回历史极端，仍应作为独立的高波动敞口对待，不宜与KRX混同。
+    </div>
+  </div>
+  <div class="rating-block">
+    <span class="r-word">KRX买入</span>
+    <span class="r-tp">ADR中性</span>
+    <span class="r-note">溢价约60-62%<br>见估值框架章节</span>
+  </div>
+</div>
+
+<div class="kpi-strip">
+  <div class="kpi-cell kpi-hot"><div class="kpi-label">Q3 2026营收</div><span class="kpi-val">₩104.6万亿</span><div class="kpi-sub">环比+32%、同比+328%；史上首破₩100万亿；营业利润超市场预期，净利润受非经营损益拖累低于一致预期</div></div>
+  <div class="kpi-cell kpi-up"><div class="kpi-label">Q3营业利润率</div><span class="kpi-val">80%</span><div class="kpi-sub">历史新高；环比+4pct（Q2为76.3%），单季OP ₩83.3万亿</div></div>
+  <div class="kpi-cell kpi-up"><div class="kpi-label">Q3末净现金</div><span class="kpi-val">₩98.7万亿</span><div class="kpi-sub">环比+₩29.3万亿；资产负债率降至5%</div></div>
+  <div class="kpi-cell kpi-warn"><div class="kpi-label">DRAM/HBM预订至</div><span class="kpi-val">2029年</span><div class="kpi-sub">LTA锁2027-28产能>50%；客户需求为供应能力2倍以上（管理层口径）</div></div>
+  <div class="kpi-cell kpi-down"><div class="kpi-label">ADR相对KRX平价溢价</div><span class="kpi-val">约60-62%</span><div class="kpi-sub">较Q2的30-45%走阔，重回历史极端区间</div></div>
+</div>
+
+<section id="changes" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">01</span><span class="sec-title">自2026年8月17日Q2更新以来的关键变化汇总</span></div>
+  <p>本节汇总自上次报告以来两个多月内发生的核心事件，作为理解后续各章节的时间线索引。最显著的变化是：Q2时的"不及预期"叙事被Q3的"历史级beat"完全反转，但股价却在此期间冲高后大幅回撤——基本面与市场定价出现罕见背离。</p>
+  <ul class="timeline">
+    <li><div class="tl-date">2026年8月17日</div><div class="tl-desc">上次报告（Q2更新）完成时：Q2营收₩79.32万亿、营业利润₩60.54万亿但不及市场预期（HBM4部分出货延后），评级为"KRX买入、ADR中性偏谨慎"；已提示传统DRAM份额回落至26%、ADR溢价30-45%、股东回报方案待Q3公布。</div></li>
+    <li><div class="tl-date">2026年8月至9月上旬</div><div class="tl-desc">超级周期 euphoria 推动股价冲顶：ADR于2026年9月9日触及$199.87盘中高点（52周最高），KRX隐含价位约₩2,987,000（52周最高）。市场彼时将"售罄""供应受限至2030"等叙事充分定价。</div></li>
+    <li><div class="tl-date">2026年9月21日至10月22日</div><div class="tl-desc"><strong>急剧回撤与去风险：</strong>自9月峰值（KRX隐含₩2,987,000 / ADR $199.87）至10月22日，KRX累计回撤约59%（至₩1,223,000）、ADR累计回撤约32%（至$136.36）；近20个交易日内外资净卖出约₩17,149.7亿（约$12.9B，为831只KOSPI标的之首），外资持股比例由一年前的55.13%降至48.79%。回撤主因是对AI资本开支可持续性、2027年存储价格见顶、以及估值过高的担忧，而非Q3基本面恶化。</div></li>
+    <li><div class="tl-date">2026年10月28日</div><div class="tl-desc"><strong>Q3 2026正式财报与电话会：</strong>营收₩104.6万亿（环比+32%、同比+328%，首破₩100万亿），营业利润₩83.3万亿（环比+38%、同比+632%），营业利润率80%创历史新高；净利润₩39.8万亿（净利率38%，不含Q2的铠侠一次性收益，但受营业外净支出拖累低于分析师一致预期）；净现金₩98.7万亿、资产负债率5%。管理层披露LTA锁定2027-2028年50%以上产能、至2029年产能规划高度预订（sold-out on a planning basis，2029部分仍待洽谈需求兑现）、FY2026股东回报约₩100万亿正式落地、2027年资本开支将显著高于2026、终止Solidigm IPO、并以铠侠收益派发特别股息。</div></li>
+  </ul>
+
+  <div class="callout c-navy">
+    <strong>本报告三项关键变量的处理口径：</strong>①股东回报₩100万亿以公司已正式公告且部分执行（40万亿回购已完成）的口径，计入基准情景的现金回报支撑；②ADR溢价以当前约60-62%为评估基准，据此维持ADR与KRX的拆分评级；③情景框架中，LTA将2027-2028年需求可见度抬升，相应上调基准/乐观情景概率权重、压缩悲观情景触发条件，同时新增2027年资本开支跳升与自由现金流压力作为情景变量。上述口径均基于公司正式披露与业绩电话会核实。
+  </div>
+</section>
+
+<section id="q3" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">02</span><span class="sec-title">Q3 2026业绩深度解读：史上首破₩100万亿，营收与营业利润显著超预期</span></div>
+  <p>Q3 2026在绝对值与利润率上同时刷新公司历史纪录，且与Q2"创纪录但不及预期"形成对照。本季营收₩104.6万亿与营业利润₩83.3万亿显著超预期，由HBM4放量、ASP上涨与产品结构升级的经营杠杆驱动；但净利润₩39.8万亿环比下降约58%、低于分析师一致预期的约₩59.67万亿，受营业外净支出₩32.6万亿拖累。因此本季业绩应分三层（营收、营业利润、净利润）看待，而非以单一"beat"概括。</p>
+
+  <table class="th-light">
+    <thead><tr><th>财务指标（万亿韩元）</th><th>Q3 2025</th><th>Q2 2026</th><th>Q3 2026实际</th><th>QoQ</th><th>YoY</th></tr></thead>
+    <tbody>
+      <tr><td>营业收入</td><td>₩24.45</td><td>₩79.32</td><td><strong>₩104.6</strong></td><td class="pos">+32%</td><td class="pos">+328%</td></tr>
+      <tr><td>营业利润</td><td>₩11.38</td><td>₩60.54</td><td><strong>₩83.3</strong></td><td class="pos">+38%</td><td class="pos">+632%</td></tr>
+      <tr class="row-highlight"><td><strong>营业利润率</strong></td><td>47%</td><td>76.3%</td><td><strong>80%</strong></td><td class="pos">+4pct</td><td class="pos">+33pct</td></tr>
+      <tr><td>EBITDA</td><td>—</td><td>—</td><td>₩87.7</td><td>—</td><td>—</td></tr>
+      <tr><td>EBITDA利润率</td><td>—</td><td>—</td><td>84%</td><td>—</td><td>—</td></tr>
+      <tr><td>净利润（核心，不含一次性）</td><td>—</td><td>₩93.92（含铠侠₩63.3）</td><td><strong>₩39.8</strong></td><td class="neg">环比口径不可比</td><td>—</td></tr>
+      <tr class="row-latest"><td><strong>净现金</strong></td><td>—</td><td>₩69.4</td><td><strong>₩98.7</strong></td><td class="pos">+₩29.3</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-good">
+    <strong>为何Q3经营质量高于Q2：</strong>Q2净利润₩93.92万亿中约₩63.3万亿来自铠侠股权出售的一次性投资收益，核心经营层面实则低于市场预期；Q3净利润₩39.8万亿虽不含此类一次性收益，但受营业外净支出₩32.6万亿（外汇损失与投资组合估值损失）显著拖累，低于分析师一致预期的约₩59.67万亿。因此本季的"beat"应分三层看待：营收₩104.6万亿与营业利润₩83.3万亿显著超预期、由经营杠杆驱动，而净利润受非经营损益拖累低于预期——营业利润才是衡量经营景气的核心锚点。
+  </div>
+
+  <div class="callout c-warn">
+    <strong>营业外损益对净利润的拖累：</strong>Q3计入营业外净支出₩32.6万亿，其中外汇相关净损失₩11.6万亿、投资资产估值损失₩22.9万亿，抵减其他非营业净收益₩1.9万亿（净额）后合计₩32.6万亿；据此税前利润₩50.7万亿、净利润₩39.8万亿，显著低于营业利润₩83.3万亿。该等损益主要为市值计价与汇兑性质，多数不影响经营现金流，但汇兑损益是否实际影响现金流取决于具体项目的现金结算，需以正式现金流量表分项为准。注：非营业外损益明细依据业绩电话会披露口径，完整分项以正式利润表为准。
+  </div>
+
+  <div class="svg-chart">
+<svg viewBox="0 0 680 320" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif">
+  <line x1="60" y1="270" x2="640" y2="270" stroke="#9ca3af" stroke-width="1"/>
+  <line x1="60" y1="70" x2="60" y2="270" stroke="#9ca3af" stroke-width="1"/>
+  <line x1="60" y1="213" x2="640" y2="213" stroke="#e0dcd3" stroke-width="1"/>
+  <line x1="60" y1="156" x2="640" y2="156" stroke="#e0dcd3" stroke-width="1"/>
+  <line x1="60" y1="99" x2="640" y2="99" stroke="#e0dcd3" stroke-width="1"/>
+  <text x="54" y="274" text-anchor="end" font-size="10" fill="#6b7280">0</text>
+  <text x="54" y="217" text-anchor="end" font-size="10" fill="#6b7280">40</text>
+  <text x="54" y="160" text-anchor="end" font-size="10" fill="#6b7280">80</text>
+  <text x="54" y="103" text-anchor="end" font-size="10" fill="#6b7280">120</text>
+  <text x="18" y="170" font-size="10" fill="#374151" transform="rotate(-90 18 170)">营收(万亿韩元)</text>
+  <rect x="90" y="235" width="56" height="35" fill="#1e3a5f"/>
+  <rect x="206" y="195" width="56" height="75" fill="#1e3a5f"/>
+  <rect x="322" y="157" width="56" height="113" fill="#1e3a5f"/>
+  <rect x="438" y="121" width="56" height="149" fill="#1e3a5f"/>
+  <rect x="554" y="89" width="56" height="181" fill="#9bb3d1" stroke="#1e3a5f" stroke-dasharray="4 3"/>
+  <text x="118" y="229" text-anchor="middle" font-size="10" fill="#1e3a5f" font-weight="700">24.5</text>
+  <text x="234" y="189" text-anchor="middle" font-size="10" fill="#1e3a5f" font-weight="700">52.6</text>
+  <text x="350" y="151" text-anchor="middle" font-size="10" fill="#1e3a5f" font-weight="700">79.3</text>
+  <text x="466" y="115" text-anchor="middle" font-size="10" fill="#1e3a5f" font-weight="700">104.6</text>
+  <text x="582" y="83" text-anchor="middle" font-size="10" fill="#6b7280" font-weight="700">~127</text>
+  <polyline points="118,192 234,148 350,141 466,134 582,132" fill="none" stroke="#e0483e" stroke-width="2.5"/>
+  <circle cx="118" cy="192" r="3.5" fill="#e0483e"/>
+  <circle cx="234" cy="148" r="3.5" fill="#e0483e"/>
+  <circle cx="350" cy="141" r="3.5" fill="#e0483e"/>
+  <circle cx="466" cy="134" r="3.5" fill="#e0483e"/>
+  <circle cx="582" cy="132" r="3.5" fill="#e0483e" stroke="#fff" stroke-width="1"/>
+  <text x="118" y="187" text-anchor="middle" font-size="9" fill="#e0483e">47%</text>
+  <text x="234" y="143" text-anchor="middle" font-size="9" fill="#e0483e">72%</text>
+  <text x="350" y="136" text-anchor="middle" font-size="9" fill="#e0483e">76%</text>
+  <text x="466" y="129" text-anchor="middle" font-size="9" fill="#e0483e">80%</text>
+  <text x="582" y="127" text-anchor="middle" font-size="9" fill="#e0483e">~81%</text>
+  <text x="118" y="288" text-anchor="middle" font-size="10" fill="#374151">Q3'25</text>
+  <text x="234" y="288" text-anchor="middle" font-size="10" fill="#374151">Q1'26</text>
+  <text x="350" y="288" text-anchor="middle" font-size="10" fill="#374151">Q2'26</text>
+  <text x="466" y="288" text-anchor="middle" font-size="10" fill="#374151">Q3'26</text>
+  <text x="582" y="288" text-anchor="middle" font-size="10" fill="#374151">Q4'26E</text>
+  <text x="648" y="274" font-size="9" fill="#9ca3af">0%</text>
+  <text x="648" y="99" font-size="9" fill="#9ca3af">100%</text>
+  <text x="668" y="170" font-size="10" fill="#e0483e" transform="rotate(90 668 170)">营业利润率</text>
+  <rect x="408" y="20" width="12" height="12" fill="#1e3a5f"/><text x="424" y="30" font-size="10" fill="#374151">营收(实)</text>
+  <rect x="496" y="20" width="12" height="12" fill="#9bb3d1" stroke="#1e3a5f"/><text x="512" y="30" font-size="10" fill="#374151">营收(E)</text>
+  <rect x="584" y="20" width="12" height="12" fill="#e0483e"/><text x="600" y="30" font-size="10" fill="#374151">OPM</text>
+</svg>
+    <div class="svg-cap">图：SK Hynix单季营收（柱）与营业利润率（线）趋势。Q4 2026E为基于管理层指引区间中值的分析师推算示意（非公司正式指引），假设DRAM位元环比mid-20%、ASP延续上涨、OPM约81%；2025Q3起历史数据按公司正式财报校准。</div>
+  </div>
+
+  <h3 class="sub">分业务：HBM4全面量产，ASP普涨，结构升级是利润率核心驱动</h3>
+  <table class="th-mid">
+    <thead><tr><th>业务线</th><th>Q3 2026要点（管理层口径）</th></tr></thead>
+    <tbody>
+      <tr><td>DRAM</td><td style="text-align:left">以AI服务器为核心，位元出货环比约+10%；<strong>HBM4于Q3全面启动大规模量产与出货</strong>；服务器DDR5出货环比+40%以上；DRAM ASP环比上涨20%高段（high-20%）。</td></tr>
+      <tr><td>NAND</td><td style="text-align:left">聚焦321层TLC企业级SSD，位元出货环比略降（策略性调结构）；ASP环比上涨20%中段（mid-20%），受整体价格坚挺与SSD占比提升共同推动。</td></tr>
+      <tr><td>盈利质量判断</td><td style="text-align:left">80%营业利润率反映供需极度紧张+HBM/服务器产品结构升级；但营业外损失提示汇率与投资组合波动对净利润的拖累不可忽视。</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub">Q4 2026指引：HBM4超越HBM3E成为旗舰，DRAM位元环比中20%段</h3>
+  <p>管理层给出明确的Q4运营方向：受1c先进制程产能扩充与M15X工厂HBM增产共同推动，<strong>DRAM位元出货预计环比增长20%中段（mid-20%）</strong>；12层HBM4按客户时间表顺利出货，M15X年底前满产；Q4 HBM4在HBM总出货量与营收占比均将超过HBM3E，确立旗舰地位；NAND位元出货环比增长中个位数（mid-single digit，约4-6%）。已与主要客户敲定明年HBM供应量与价格，反映HBM4价值提升，且HBM与通用DRAM盈利能力差距将显著收窄。需提示：80%量级的营业利润率能否维持，取决于HBM4相对HBM3E的售价、成本与良率，先进制程折旧与封装成本爬坡，以及通用DRAM ASP上涨的持续性，不能由产品结构改善直接外推为长期常态。</p>
+
+  <h3 class="sub">2027年展望：供应受限持续至2030年，绝对营收与利润显著更高</h3>
+  <p>管理层将当前景气定义为结构性供需失衡而非普通周期：2027年全球CSP资本开支预计增长超60%、锁定电力容量同比超100%，全球AI数据中心基础设施市场预计到2030年保持40% CAGR；AI投资主体从少数科技巨头扩展至企业、主权AI与本地部署，单一公司调整对整体趋势影响下降。公司预计2027年可实现DRAM需求增长中20%段（mid-20%）、NAND高10%段（high-10%），与今年相似，并计划明年绝对值营收与利润均显著更高。需要强调的是，"供应受限至2030年"是管理层强假设，仍需持续验证AI变现与CSP资本开支兑现。</p>
+</section>
+
+<section id="capacity" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">03</span><span class="sec-title">资本开支与产能扩张：M15X年底满产，2027年capex显著跳升，但分阶段执行</span></div>
+  <p>产能扩张是本次更新中需要重新平衡口径的板块。Q3确认M15X（HBM专用）将于2026年底前满产，1c制程产能持续扩充；同时管理层明确<strong>2027年资本开支将较2026年显著增加</strong>——这是未来2-3年自由现金流与股东回报可持续性的核心变量，也是当前股价回撤的重要担忧来源。</p>
+
+  <table class="th-mid">
+    <thead><tr><th>层次</th><th>金额/节奏</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>2026年度资本开支指引（公司口径）</td><td style="text-align:right">高₩40万亿区间（约$280-300亿）</td><td style="text-align:left">Q2电话会披露；Q2单季capex约₩10.67万亿，经营现金流可覆盖</td></tr>
+      <tr class="row-highlight"><td><strong>2027年资本开支（本次新增）</strong></td><td style="text-align:right"><strong>显著高于2026年</strong></td><td style="text-align:left">用于先进制程设备、龙仁第一座晶圆厂投产、国内外基础设施；具体规模待披露，是Q4/年报关键验证点</td></tr>
+      <tr><td>M15X晶圆厂（HBM增产）</td><td style="text-align:right">2026年底前满产</td><td style="text-align:left">本次Q3确认，是HBM4放量的最直接产能支撑</td></tr>
+      <tr><td>龙仁Y2晶圆厂（DRAM/HBM）</td><td style="text-align:right">₩35.2万亿</td><td style="text-align:left">2027年7月动工，2029年6月首个洁净室投产</td></tr>
+      <tr><td>清州M17晶圆厂（NAND）</td><td style="text-align:right">₩19.1万亿</td><td style="text-align:left">2028年12月投产（洁净室）</td></tr>
+      <tr><td>₩1,100万亿多年期整体规划</td><td style="text-align:right">龙仁₩600万亿+清州₩100万亿+西南₩400万亿</td><td style="text-align:left">覆盖至2033年前后；为框架性指引而非已承诺的近期预算，分阶段执行</td></tr>
+      <tr><td>美国印第安纳州West Lafayette封装厂</td><td style="text-align:right">约₩5.2万亿</td><td style="text-align:left">先进封装（含HBM），目标2H2028量产；独立于韩国₩1,100万亿规划</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-warn">
+    <strong>关键权衡：2027年capex跳升 vs 净现金₩98.7万亿的缓冲。</strong>管理层强调"建更多晶圆厂不等于供应成倍增加"——HBM占比提升与工艺复杂度消耗更多资源，微缩提升bit产出日益受限；且投资分阶段：基础基础设施提前准备，设备进场与量产提产紧跟实际需求动态调整，新厂加快壳体施工、洁净室分阶段启用以保留灵活性。在当前净现金₩98.7万亿（资产负债率5%）的资产负债表实力下，短期现金流压力可控；真正的风险节点在2027-2028年后，若存储价格周期出现拐点而capex仍处爬坡高峰，两者错配将对自由现金流构成压力（详见风险矩阵）。
+  </div>
+
+  <h3 class="sub">2027年自由现金流压力测试（情景示意）</h3>
+  <table class="th-light">
+    <thead><tr><th>情景</th><th>2027E营业利润</th><th>2027E资本开支</th><th>2027E股东回报</th><th>示意自由现金流<br>（经营现金流−capex−回报）</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr class="row-bull"><td><strong>乐观</strong></td><td>₩300-330万亿</td><td>₩50-60万亿</td><td>₩80-100万亿</td><td class="pos">+₩120-200万亿</td><td>HBM/DRAM ASP高位，FCF仍厚</td></tr>
+      <tr class="row-base"><td><strong>基准</strong></td><td>₩200-250万亿</td><td>₩55-70万亿</td><td>₩80-100万亿</td><td>约+₩30-115万亿</td><td>价格增速放缓，FCF收窄但仍为正</td></tr>
+      <tr class="row-bear"><td><strong>悲观</strong></td><td>₩130-170万亿</td><td>₩60-75万亿</td><td>₩60-80万亿</td><td class="neg">约−₩10至+₩50万亿</td><td>OPM回归 + capex高峰，FCF承压或转负</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--faint);">示意FCF = 近似经营现金流（以营业利润为代理，未逐项调整营运资本与税） − 资本开支 − 股东回报（分红+注销式回购）。用以说明：即便在基准情景，2027年同步高capex与高回报已显著压缩自由现金流缓冲；悲观情景下FCF可能转负，需动用净现金₩98.7万亿或调整回报节奏。该表为情景示意，非公司指引。</p>
+
+  <blockquote>"增加投资或建设更多晶圆厂，并不等同于供应量会成倍增加……我们的投资将分阶段推进。基础基础设施将针对中长期需求提前准备，而增加供应所需的关键资源——例如设备进场和量产爬坡——将紧跟实际需求动态调整。"<cite>— SK hynix管理层，2026年10月28日Q3电话会</cite></blockquote>
+</section>
+
+<section id="hbm" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">04</span><span class="sec-title">竞争格局：LTA重构"周期股"叙事，但三强寡头与技术路线演变仍是变量</span></div>
+  <p>本季最核心的竞争叙事变化，是LTA把"需求可见度"从口头表述升级为具约束力的产能锁定。但竞争格局的另外两个层次——传统DRAM份额与HBM技术路线演变——仍需独立跟踪。</p>
+
+  <h3 class="sub">① LTA：至2029年产能规划高度预订，是本次电话会最强的增量信息</h3>
+  <table class="th-mid">
+    <thead><tr><th>要素</th><th>管理层口径（Q3电话会）</th></tr></thead>
+    <tbody>
+      <tr><td>签约客户</td><td style="text-align:left">已与包括全球主要CSP在内的14家核心客户签署LTA，通常五年期，部分讨论延长</td></tr>
+      <tr><td>产能锁定比例</td><td style="text-align:left">LTA锁定供应量已占2027年与2028年总产能的<strong>50%以上</strong>，计划中长期保持类似比例</td></tr>
+      <tr class="row-highlight"><td><strong>至2029年产能规划高度预订</strong></td><td style="text-align:left">已签约LTA覆盖2027-2028年产能50%以上（具约束力）；叠加正在洽谈的需求，至2029年的产能规划已高度预订（sold-out on a planning basis）。其中2027-2028为已签约产能占用，2029年部分仍依赖洽谈需求兑现，兑现度低于已签约部分</td></tr>
+      <tr><td>需求强度</td><td style="text-align:left">客户所需采购量（管理层口径）是公司当前供应能力的<strong>2倍以上</strong></td></tr>
+      <tr><td>保障机制</td><td style="text-align:left">设置定金等机制支撑盈利稳定性；非LTA产能用于灵活应对行情与下一代产品</td></tr>
+    </tbody>
+  </table>
+  <div class="callout c-warn">
+    <strong>需清醒认识LTA的边界：</strong>LTA锁定的是"产能比例"而非"收入确定性"——价格条款、定金执行、客户违约风险仍需逐季跟踪；"需求2倍供应"为管理层口径的客户采购计划表述，需以实际出货与履约验证；且LTA不能消除存储周期本身，仅提高需求可见度、降低部分销售不确定性。但即便如此，LTA将2027-2028年的需求可见度从"管理层乐观指引"提升为"具约束力的产能占用"，是把周期股叙事转向可见度+定价权叙事的核心证据，显著抬高了基准/乐观情景的概率权重。
+  </div>
+
+  <h3 class="sub">② 传统DRAM大盘：份额回落至26%的趋势仍需验证</h3>
+  <p>据Counterpoint Research 2026年Q2数据，SK Hynix传统DRAM份额已从2025年Q2的39%（彼时行业第一）回落至26%，三星以39%重夺第一。Q3电话会未提供新的份额数据，该趋势方向未被反转信息推翻。一种合理解释是公司主动将晶圆产能从通用DRAM转移至利润率更高的HBM（HBM4 Q3全面量产、M15X年底满产即是佐证），但这一动机假设仍需管理层进一步置评或后续数据验证。本更新维持Q2的判断：该信号中性偏负面，护城河仍在但变窄。</p>
+
+  <h3 class="sub">③ HBM技术路线：HBM4E、定制HBM、堆叠层数调整、4F²</h3>
+  <ul class="timeline">
+    <li><div class="tl-date">HBM4</div><div class="tl-desc">Q3全面量产出货，前道与后道良率均处行业最高；良率超原定计划并上调目标，HBM3E已超成熟期良率；Q4出货与营收占比将超HBM3E成为旗舰。</div></li>
+    <li><div class="tl-date">HBM4E</div><div class="tl-desc">Q2已完成样品出货，研发与客户验证按客户时间表推进；部分客户调整规格至8层堆叠（相对12层HBM4），管理层解释单die容量提升可抵消部分影响，相同bit需更多cube反而增加base die与后道需求，盈利能力不单由层数决定。</div></li>
+    <li><div class="tl-date">定制HBM</div><div class="tl-desc">针对客户系统与工作负载优化，与主要客户紧密合作，作为关键客户首要供应商延伸竞争优势。</div></li>
+    <li><div class="tl-date">4F² / 3D DRAM</div><div class="tl-desc">策略是先充分发挥6F²潜力（通过EUV微缩与工艺创新延展寿命），再向4F²或3D DRAM过渡；技术研发时机与商业化时机不同，需性能、良率、可靠性、成本、设计、客户验证齐备。</div></li>
+    <li><div class="tl-date">NAND与KV cache</div><div class="tl-desc">Agentic AI与长上下文使KV cache急剧扩大，分层存储（HBM/DRAM/SSD）更重要；开发语义感知生命周期分层与CMM-Hybrid（CXL混合内存，KV cache存SSD、预测预加载DRAM）；中长期以HBF填补HBM与SSD之间新层级。</div></li>
+  </ul>
+
+  <h3 class="sub">④ 同业参照：三星重夺传统DRAM第一，HBM4三强格局延续</h3>
+  <table class="th-dark">
+    <thead><tr><th>公司</th><th>核心敞口与最新动态</th></tr></thead>
+    <tbody>
+      <tr class="peer-skhy"><td>SK Hynix</td><td>HBM绝对领先（仍约50-58%）；传统DRAM份额26%；Q3 OPM 80%；LTA至2029产能规划高度预订；eSSD/Solidigm第二曲线</td></tr>
+      <tr><td>三星电子（存储部门）</td><td>传统DRAM重夺行业第一（39%）；HBM4份额修复中（21-28%），已成为英伟达HBM4首个供应商之一；2026年8月发布新一代HBM4</td></tr>
+      <tr><td>美光科技（Micron）</td><td>HBM份额约20-21%；传统DRAM份额约22%；本土产能地缘政治优势；Citi此前下调目标价，警示"存储价格2027年可能见顶"</td></tr>
+      <tr><td>CXMT（中国长鑫）</td><td>传统DRAM份额约8%（一年前3%）；产品聚焦中低端，受出口管制结构性约束，是商品化DRAM长期价格天花板风险</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:var(--faint);">三星当前市值约$8,000-9,000亿（₩1,150-1,300万亿量级）、SK Hynix约$6,050-6,290亿（₩878-893万亿，2026年10月口径）；三星在常规DRAM与HBM4认证上的追赶，是压制SK Hynix溢价与份额的核心外部变量。</p>
+</section>
+
+<section id="returns" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">05</span><span class="sec-title">股东回报：约₩100万亿正式落地，从"传闻"升级为"已执行"</span></div>
+  <p>股东回报是Q2时"媒体援引、未确认"的项目，至Q3已正式公告且部分执行。这是本次更新中确定性提升最显著的一项，但需同时认识到：约₩100万亿回报与2027年capex显著跳升并行，自由现金流的真实承压程度取决于超级周期盈利的兑现。</p>
+
+  <table class="th-mid">
+    <thead><tr><th>要素</th><th>Q3电话会披露（已确认/执行）</th></tr></thead>
+    <tbody>
+      <tr><td>FY2026总额</td><td style="text-align:left">约₩100万亿：现金分红₩30万亿以上 + 股份回购注销₩60万亿以上（含8月公布的₩40万亿）</td></tr>
+      <tr><td>₩40万亿回购</td><td style="text-align:left">已于Q3前完成，并将于近期注销</td></tr>
+      <tr class="row-highlight"><td>Q3董事会决议</td><td style="text-align:left">现金分红₩14万亿 + 股份回购₩20万亿；其中约₩10万亿库存股用于员工激励（剔除后Q3股东回报约₩24万亿）</td></tr>
+      <tr><td>Q3分红每股</td><td style="text-align:left">₩20,000（₩10,000常规 + ₩10,000铠侠特别分红）；铠侠收益大部分通过特别分红回馈，其余纳入年终分红</td></tr>
+      <tr><td>回报纪律</td><td style="text-align:left">承诺返还50%以上自由现金流；剩余现金用于回购，认为股价被低估</td></tr>
+      <tr><td>Solidigm IPO</td><td style="text-align:left">因金融市场波动与半导体股票回调终止潜在Pre-IPO/IPO评估，Solidigm继续在AI数据中心存储市场寻求增长</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-good">
+    <strong>由"传闻"到"已执行"的口径变化：</strong>Q2时将₩100万亿回报严格限定在乐观情景权重内（不计入基准情景价值支撑）。Q3已确认40万亿回购完成、Q3单季即分红₩14万亿+回购₩20万亿（合计₩34万亿，其中剔除非股东回报的员工激励₩10万亿后，计入股东回报约₩24万亿），本更新将其上调至基准情景的现金回报支撑——但仅针对"已公告且已执行/决议"的部分，对尚未落地的年终分红剩余部分仍保持条件性评估。
+  </div>
+
+  <div class="callout c-warn">
+    <strong>同步高回报 + 高capex的可持续性待验证：</strong>约₩100万亿回报与2027年capex显著跳升同时发生，自由现金流的真实承压取决于HBM/DRAM景气能否维持。管理层承诺"返还50%以上FCF"，但若2027年后价格周期拐点与capex爬坡高峰叠加，回报规模的可维持性需由后续季度现金流验证，不宜将当前回报力度线性外推至整个周期。
+  </div>
+</section>
+
+<section id="balance" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">06</span><span class="sec-title">资产负债表：净现金₩98.7万亿、资产负债率5%，但含一次性与市值计价扰动</span></div>
+
+  <table class="th-dark">
+    <thead><tr><th>关键财务数据（万亿韩元）</th><th>2026 Q2末</th><th>2026 Q3末</th><th>变化</th></tr></thead>
+    <tbody>
+      <tr><td>现金及现金等价物</td><td style="text-align:right">₩88（约）</td><td style="text-align:right">₩114.5</td><td class="pos">+₩26.5</td></tr>
+      <tr><td>付息债务</td><td style="text-align:right">约₩18.6</td><td style="text-align:right">₩15.8</td><td class="pos">-₩2.8</td></tr>
+      <tr class="row-highlight"><td><strong>净现金</strong></td><td style="text-align:right">₩69.4</td><td style="text-align:right"><strong>₩98.7</strong></td><td class="pos">+₩29.3（几乎翻倍于Q1末）</td></tr>
+      <tr><td>资产负债率</td><td style="text-align:right">7%（约）</td><td style="text-align:right">5%</td><td class="pos">-2pct</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-good">
+    <strong>资产负债表实力为周期下行提供缓冲：</strong>净现金₩98.7万亿（资产负债率5%）较2023年下行周期时显著增强。Q3净现金增量主要来自经营现金流积累（本季营业利润₩83.3万亿、EBITDA₩87.7万亿）叠加Q2的ADR上市募资与铠侠收益余流，而非单纯一次性。这一现金实力是Q2即强调的"下行保护"的量化体现。
+  </div>
+
+  <div class="callout c-warn">
+    <strong>需区分两类扰动：</strong>①Q3营业外净支出₩32.6万亿（外汇损失₩11.6万亿+投资资产估值损失₩22.9万亿，抵减其他非营业净收益₩1.9万亿净额）主要为市值计价/汇兑性质，多数不影响经营现金流，但汇兑损益是否实际影响现金流取决于具体项目现金结算，且对净利润形成拖累；②Q3财务数据仍为未经外部审计复核的临时口径（公司开场即声明"provisional in nature"），审计后数字若调整通常幅度有限，但仍需提示。
+  </div>
+</section>
+
+<section id="valuation" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">07</span><span class="sec-title">估值框架重构（第三次）：LTA抬高可见度，但当前定价已隐含去风险</span></div>
+
+  <div class="callout c-risk">
+    <strong>当下的核心张力：基本面峰值 vs 股价已大幅去风险。</strong>截至2026年10月22日（Q3披露前最后一个干净收盘价），KRX报₩1,223,000、ADR报$136.36。KRX自9月峰值（52周高₩2,987,000）回撤约59%，ADR自9月9日$199.87高点回撤约32%。与此同时，市场给出的远期估值极低：KRX 12个月远期P/E约2.74x（39家分析师一致预期）、FY2027E约2.61x，TTM P/E约5.4x，而基于2025年（上一完成财年）的口径P/E约19.7x。这组数字的反差，反映了基本面峰值与股价去风险之间的张力。
+  </div>
+
+  <h3 class="sub">第一层：KRX 000660基本面价值判断</h3>
+  <table class="th-light">
+    <thead><tr><th>指标</th><th>数据（2026-10-22口径）</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>KRX参考股价</td><td style="text-align:right">₩1,223,000</td><td>Q3披露前最后一个干净收盘；52周区间₩468,000–₩2,987,000</td></tr>
+      <tr><td>市值（KRX口径）</td><td style="text-align:right">约₩878-893万亿</td><td>约合$6,050-6,290亿（按1,420-1,450汇率，₩1万亿≈$690万）</td></tr>
+      <tr><td>12M远期P/E（39家一致预期）</td><td style="text-align:right">约2.74x</td><td style="text-align:left">看似极低，但建立在2027E峰值盈利外推之上</td></tr>
+      <tr><td>FY2027E P/E</td><td style="text-align:right">约2.61x</td><td style="text-align:left">同理，为峰值盈利倍数</td></tr>
+      <tr><td>TTM P/E</td><td style="text-align:right">约5.4x</td><td style="text-align:left">TTM EPS约₩227,526（盈利已爆发）</td></tr>
+      <tr><td>2025完成财年P/E</td><td style="text-align:right">约19.7x</td><td style="text-align:left">基于低基数2025年盈利，参考意义有限</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--faint);">关于52周区间₩468,000–₩2,987,000：低点反映2025年景气谷底与分拆/口径因素，高点反映2026年9月超级周期 euphoria 峰值；当前₩1,223,000处于区间约36%分位，即从峰值回撤后、仍显著高于谷底的位置。</p>
+
+  <div class="callout c-warn">
+    <strong>2.74x/2.61x远期P/E的隐含假设：</strong>该倍数建立在"2027年维持80%营业利润率"的市场一致预期之上。存储行业历史上从未在如此高的利润率水平维持数个季度而不均值回归，因此峰值盈利倍数不能直接作为"便宜"的依据。以中周期营业利润率（45-55%）还原后，对应的正常化远期P/E约4.2-5.3x（见下方盈利桥）。当前股价较9月峰值回撤59%，已部分消化峰值盈利假设，但估值结论仍应以中周期盈利为锚，而非峰值倍数。
+  </div>
+
+  <table class="th-light">
+    <thead><tr><th>盈利口径（年化示意）</th><th>假设营业利润率</th><th>示意年化营业利润（万亿韩元）</th><th>示意EPS（韩元）</th><th>当前价₩1,223,000对应P/E</th></tr></thead>
+    <tbody>
+      <tr><td>峰值（2026 Q3实际年化）</td><td>约80%</td><td>₩330</td><td>约₩450,000</td><td class="pos">约2.7x</td></tr>
+      <tr class="row-highlight"><td><strong>中周期（Normalized）</strong></td><td><strong>45-55%</strong></td><td><strong>₩180-220</strong></td><td><strong>约₩230,000-290,000</strong></td><td>约4.2-5.3x</td></tr>
+      <tr><td>悲观（周期回归）</td><td>30-45%</td><td>₩110-170</td><td>约₩130,000-210,000</td><td>约5.8-9.4x</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--faint);">盈利桥为基于当前价格与约7.29亿股本的示意计算：年化营业利润 = 季度营业利润 × 4（峰值）或中周期/悲观情景假设；EPS ≈ 营业利润 ÷ 股本（未逐项扣除税与非经营项，仅作倍数校准用途）。结论：即便以中周期盈利还原，当前P/E仍处低位，支持"回撤后估值不贵"的判断，但峰值倍数（2.7x）显著低估了周期回归风险，不能作为买入的唯一依据。</p>
+
+  <h3 class="sub">第二层：ADR相对KRX平价的溢价重回历史极端</h3>
+  <table class="th-mid">
+    <thead><tr><th>要素</th><th>说明（Q3更新）</th></tr></thead>
+    <tbody>
+      <tr><td>ADS比率</td><td style="text-align:left">10 ADS = 1股KRX普通股（SEC招股书确认）</td></tr>
+      <tr class="row-highlight"><td>当前溢价（2026-10-22）</td><td style="text-align:left"><strong>约60-62%</strong>（ADR $136.36 ×10 ÷ KRX美元等价₩1,223,000/1,450 ≈ $1,364 vs $843，溢价约62%）；较Q2的30-45%显著走阔</td></tr>
+      <tr><td>溢价走阔的驱动</td><td style="text-align:left">自9月峰值以来KRX累计回撤约59%、ADR约32%，KRX受₩17.1万亿外资净卖出拖累跌幅更大，导致ADR相对韩股溢价被动扩大；当前约60-62%处于16%-62%历史区间上沿（样本自2026年7月ADR上市起，区间较短，统计证据有限）</td></tr>
+      <tr><td>投资含义</td><td style="text-align:left">ADR在溢价历史极端时买入，相当于额外承担一个与基本面无关的"跨市场稀缺性溢价"回撤风险；若溢价向历史中位（约30-40%）收敛，即便KRX不变，ADR也可能再承压15-25%</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub">第三层：情景框架（KRX基本面为主视角，采用中周期盈利能力校准）</h3>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">相较Q2，本更新因LTA至2029产能规划高度预订显著抬高需求侧确定性，上调基准/乐观权重、压缩悲观触发条件；新增"2027 capex跳升 + 同步高回报"作为FCF压力变量。以下价值区间为分析师独立判断的锚定示意，非精确模型输出。</p>
+
+  <table class="th-light">
+    <thead><tr><th>情景</th><th>概率</th><th>核心假设（营业利润率路径）</th><th>KRX指示价值区间（₩）</th></tr></thead>
+    <tbody>
+      <tr class="row-bear"><td><strong>悲观</strong></td><td>20%（Q2为25%）</td><td>2027-2028年HBM4供给由三星/美光加速释放 + 自身新产能投产，行业供给曲线右移；传统DRAM份额延续向三星集中；CXMT中低端侵蚀；LTA定价/定金执行不及预期。营业利润率向历史周期中段（30-45%）回归。</td><td class="p-big" style="color:var(--red)">₩800k - 1.1M</td></tr>
+      <tr class="row-base"><td><strong>基准</strong></td><td>55%（Q2为50%）</td><td>LTA支撑2027-2028需求可见度，OPM维持中高（55-65%）但较峰值80%回落；传统DRAM份额企稳；eSSD第二曲线延续；2027 capex跳升但FCF仍为正（LTA地板）。</td><td class="p-big" style="color:var(--ink-3)">₩1.2M - 1.8M</td></tr>
+      <tr class="row-bull"><td><strong>乐观</strong></td><td>25%（Q2为25%）</td><td>HBM4E提前放量、custom HBM与HBF打开新层级；OPM 70%+维持至2029（LTA+供给受限）；供给纪律自律；回报持续。营业利润率接近峰值时间超预期延长。</td><td class="p-big" style="color:var(--green)">₩1.8M - 2.6M</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-navy">
+    <strong>当下风险回报的定性结论：</strong>在当前₩1,223,000位置，基准情景指示价值（₩1.2M-1.8M）已大致覆盖甚至小幅折让当前价，悲观情景下行空间约10-35%但受净现金₩98.7万亿与LTA地板缓冲，乐观情景上行不对称（至₩1.8M-2.6M）。这与9月峰值₩2.987M时"上行有限、下行巨大"的格局恰好相反——<strong>回撤本身改善了KRX的风险回报</strong>，因此我们维持"KRX买入"并对该评级的置信度较Q2提升。ADR因约60-62%溢价处于历史极端，维持"中性偏谨慎"，其定价应包含溢价收敛的独立风险，不宜与KRX混同。
+  </div>
+
+  <h3 class="sub">同业估值参照（交叉验证视角，非本报告主要估值依据）</h3>
+  <table class="th-dark">
+    <thead><tr><th>公司</th><th>市值（2026-10）</th><th>近期动态</th></tr></thead>
+    <tbody>
+      <tr class="peer-skhy"><td>SK Hynix</td><td>约$6,050-6,290亿</td><td>Q3 OPM 80%；LTA锁2027-28产能50%+，至2029产能规划高度预订；约₩100万亿回报；传统DRAM份额26%</td></tr>
+      <tr><td>三星电子（集团）</td><td>约$8,000-9,000亿</td><td>传统DRAM第一（39%）；HBM4认证追赶；估值受非存储业务拖累</td></tr>
+      <tr><td>美光科技（Micron）</td><td>—</td><td>HBM约20-21%；Citi下调目标价，警示2027存储价格见顶</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="risks" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">08</span><span class="sec-title">风险矩阵更新：新增2027 capex/FCF压力与LTA执行风险，ADR溢价升格</span></div>
+  <table class="th-dark" style="font-size:13px;">
+    <thead><tr><th style="width:16%">风险</th><th style="width:7%">级别</th><th style="width:35%">当前状态（较上次更新的变化）</th><th style="width:28%">对估值影响</th><th style="width:14%">缓解因素</th></tr></thead>
+    <tbody>
+      <tr class="row-risk-h"><td><strong>ADR溢价重回约60-62%历史极端</strong>（升格，本次更新最重要发现之一）</td><td><span class="pill pill-h">高</span></td><td>SKHY相对KRX平价溢价由Q2的30-45%走阔至约60-62%（KRX累计跌幅更大，约-59% vs ADR约-32%所致），处于16%-62%历史区间上沿（样本自2026年7月ADR上市起，区间较短），缺乏清晰收敛路径。</td><td>若溢价向历史中位（30-40%）收敛，即便KRX基本面不变，ADR价格也可能再承压15-25%。</td><td>扩大ADS存托比例为潜在的市场结构变量（参照台积电先例），但无证据显示公司计划实施，不应作为已可依赖的缓解机制</td></tr>
+      <tr class="row-risk-h"><td><strong>2027 capex显著跳升 + 同步高回报的FCF压力</strong>（新增）</td><td><span class="pill pill-h">高</span></td><td>管理层明确2027 capex显著高于2026（高₩40万亿区间），且与约₩100万亿股东回报并行；两者叠加对自由现金流构成真实压力，是近期股价回撤的核心担忧之一。</td><td>若2027年后价格周期拐点与capex爬坡高峰叠加，FCF可能转负或回报缩水，压制估值。</td><td>净现金₩98.7万亿、资产负债率5%提供强缓冲；管理层强调分阶段执行与ROIC纪律</td></tr>
+      <tr class="row-risk-h"><td><strong>LTA执行风险</strong>（新增，由"利好"反身审视）</td><td><span class="pill pill-h">高</span></td><td>LTA锁定产能比例而非收入确定性；价格条款、定金执行、客户违约、以及"需求2倍供应"（管理层口径）作为客户陈述需实际履约验证；至2029年产能规划高度预订仍依赖洽谈中需求兑现。</td><td>若关键客户（CSP）削减AI资本开支或违约，LTA支撑的盈利可见度将松动，是基准情景的重要下行触发。</td><td>14家核心客户、五年期、定金机制；多元化投资主体降低单一客户冲击</td></tr>
+      <tr class="row-risk-h"><td><strong>2027-2028年存储周期反转风险</strong>（延续，权重略降）</td><td><span class="pill pill-h">高</span></td><td>三星HBM4份额修复、美光同步增量，叠加自身龙仁/清州新产能2027-2029投产；但LTA已将需求侧确定性显著抬高，悲观情景概率由25%降至20%。Citi下调美光目标价并警示"存储价格2027年可能见顶"提供外部交叉验证。</td><td>悲观情景对应OPM向历史周期中段（30-45%）回归，是对KRX估值最主要下行压制变量。</td><td>净现金₩98.7万亿资产负债表实力；LTA提供2027-2028需求地板</td></tr>
+      <tr class="row-risk-m"><td><strong>传统DRAM份额回落至26%</strong>（延续）</td><td><span class="pill pill-m">中</span></td><td>Counterpoint最新数据确认SK Hynix传统DRAM份额26%、三星39%；Q3未提供反转信息，假设仍为主动产能转移vs被动竞争力变化待验证。</td><td>若为主动转移至HBM则影响有限甚至正面；若为被动竞争力下滑则需重估整体DRAM收入基数。</td><td>高利润率HBM占比提升对冲；需管理层进一步置评</td></tr>
+      <tr class="row-risk-m"><td><strong>股东回报可持续性</strong>（由"传闻"升级为"已公告"，风险未消）</td><td><span class="pill pill-m">中</span></td><td>约₩100万亿已公告/执行（40万亿回购完成），但高回报与高capex并行，2027年后可维持性取决于景气兑现。</td><td>若回报规模低于市场预期或时间表推迟，可能引发失望性抛售。</td><td>净现金基础充足；承诺返还50%以上FCF</td></tr>
+      <tr class="row-risk-m"><td><strong>非经营损益波动</strong>（新增，Q3暴露）</td><td><span class="pill pill-m">中</span></td><td>Q3营业外净支出₩32.6万亿（外汇损失₩11.6万亿+投资资产估值损失₩22.9万亿），为市值计价/汇率性质，使净利润（₩39.8万亿）显著低于营业利润（₩83.3万亿）。</td><td>不改变经营现金流，但会放大净利润的季度波动，影响市场情绪与EPS同比读数。</td><td>非现金性质；韩元走势与投资组合估值具均值回归特征</td></tr>
+      <tr class="row-risk-m"><td><strong>长协锁价限制利润爆发弹性</strong>（延续）</td><td><span class="pill pill-m">中</span></td><td>LTA锁定50%+产能，平滑收入但限制现货上涨阶段的收益捕获；CFO对2027 HBM价格仅表态"进展顺利"，未提供量化路径。</td><td>类似Q2模式（业绩创新高但不及预期）可能反复出现。</td><td>长协同时提供收入可预见性的正面价值，双向属性</td></tr>
+      <tr class="row-risk-m"><td><strong>CXMT等中国厂商的传统DRAM商品化压力</strong>（延续，中长期）</td><td><span class="pill pill-m">中</span></td><td>CXMT份额从3%升至约8%，产品聚焦中低端，受美国出口管制结构性约束；是商品化DRAM长期价格天花板风险。</td><td>若技术能力提升并进入高端，可能压低行业中低端定价。</td><td>出口管制对先进设备获取构成制约</td></tr>
+      <tr class="row-risk-m"><td><strong>韩国股票市场结构性风险</strong>（延续）</td><td><span class="pill pill-m">中</span></td><td>近期韩国KOSPI经历与杠杆ETF相关的剧烈波动；公司股票两地交易，流动性结构差异放大短期波动；外资持股比例一年内由55%降至49%。</td><td>可能导致股价短期波动超出基本面合理区间。</td><td>跨市场流动性与套利机制逐步成熟</td></tr>
+      <tr class="row-risk-l"><td><strong>财务数据未经审计</strong>（延续，技术性）</td><td><span class="pill pill-l">低</span></td><td>Q3财务数据为未经外部审计复核的临时口径（公司开场声明provisional）。</td><td>若审计后重大调整可能影响模型，但历史调整幅度通常有限。</td><td>纳斯达克上市公司，受SEC审计要求约束</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="monitor" class="section">
+  <div class="section-header"><div class="sec-accent"></div><span class="sec-num">09</span><span class="sec-title">关键监测指标：未来一季度最重要的验证点</span></div>
+  <ol class="monitor-list">
+    <li><strong>Q4 HBM4超越HBM3E的兑现度与盈利能力差距收窄幅度：</strong>管理层称Q4 HBM4在出货与营收占比均超HBM3E，需验证实际放量节奏与"HBM vs 通用DRAM盈利能力差距显著收窄"的幅度，这是判断峰值利润率可持续性的第一指标。</li>
+    <li><strong>2027年资本开支具体规模与自由现金流：</strong>管理层仅表态"显著高于2026"，具体数字待Q4/年报披露；需重点跟踪capex跳升后经营现金流覆盖能力，以及约₩100万亿回报与capex并行的净现金流走向。</li>
+    <li><strong>LTA定价与定金执行、客户违约风险及"需求2倍供应"（管理层口径）的履约：</strong>至2029年产能规划高度预订仍依赖洽谈中需求兑现，需逐季验证主要CSP的实际采购与履约，以及价格条款是否随市场调整。</li>
+    <li><strong>ADR相对KRX平价溢价的走势：</strong>当前约60-62%处于历史极端，需持续追踪其是否随ADS存托比例扩大或市场情绪变化而收敛/扩大，是评估SKHY（而非KRX）投资时点的关键独立变量。</li>
+    <li><strong>传统DRAM份额（26%）后续季度数据：</strong>需观察回落是否企稳，以及管理层是否就"主动产能转移 vs 被动竞争力变化"给出解释。</li>
+    <li><strong>三星、美光HBM4及传统DRAM份额的季度实际数据：</strong>Counterpoint等后续数据能否验证三强寡头格局与三星追赶速度，是判断护城河可持续性的最直接量化指标。</li>
+    <li><strong>非经营损益（外汇、投资资产估值）的正常化：</strong>Q3 ₩32.6万亿扰动是否为一次性，需观察后续季度净利润与营业利润的背离是否收敛。</li>
+    <li><strong>HBM4E/定制HBM/4F²/HBF的技术与客户验证进展：</strong>中长期增长层级（HBF填补HBM-SSD之间、KV cache/CMM-Hybrid）的实际商业化节奏，决定2029年后增长曲线的连续性。</li>
+  </ol>
+</section>
+
+<div class="disclosure">
+  <strong>重要披露与方法论说明。</strong>
+  本报告为Snail-Bird Investment针对SK Hynix Inc.（NASDAQ: SKHY / KRX: 000660）的第三次覆盖更新，聚焦2026年10月28日披露的Q3 2026财报及业绩电话会，以及截至2026年10月28日的后续重大事件，不构成个性化投资建议或买卖邀约。<strong>关键处理口径：</strong>①股东回报₩100万亿以公司已正式公告且部分执行（40万亿回购已完成）的口径计入基准情景现金回报支撑；②ADR溢价以当前约60-62%为评估基准，据此维持KRX买入/ADR中性偏谨慎的拆分评级；③情景框架中因LTA将2027-2028需求可见度抬升，上调基准/乐观权重（悲观由25%降至20%），并新增2027 capex跳升与同步高回报的FCF压力变量。截至本报告完成时，公司FY2026 Q3财务数据为公司自愿披露的未经外部审计口径。
+  <strong>数据来源：</strong>SK hynix官方Q3 2026财报新闻稿及电话会纪要（news.skhynix.com / 业绩电话会全文，2026-10-28）；Q2 2026及首次覆盖报告（Snail-Bird Investment，2026-07-14、2026-08-17）；产能与₩1,100万亿规划（SK hynix Newsroom；The Elec；Korea Herald；MLQ News）；ADR溢价与股价数据（koreanstockflows.com；marketcap.company；Barron's；腾讯证券行情，2026-10-22至10-28访问）；HBM/DRAM市场份额（Counterpoint Research Global Memory Tracker Q2 2026；TrendForce；Omdia）；同业动态（Citi下调美光目标价报道；TrendForce；Reuters/LSEG）。
+  <strong>口径说明：</strong>韩元兑美元汇率采用约1,420-1,450 KRW/USD的近似换算区间；市值等市场数据因ADR与KRX流通股口径差异存在不确定性，采用区间呈现；参考股价为2026-10-22（Q3披露前最后一个干净收盘价），Q3业绩为即时催化剂，复盘后的价格反应需以实际交易数据为准；52周区间₩468,000–₩2,987,000分别反映2025年谷底与2026年9月峰值，当前价处于其间约36%分位。
+  <strong>估值说明：</strong>本报告未构建完整的分部盈利模型或独立DCF，情景框架的概率权重与指示价值区间为分析师独立判断；2.74x/2.61x远期P/E为市场一致预期口径，建立在峰值盈利外推之上，本报告以中周期盈利能力（Normalized/Mid-cycle）还原，避免以峰值盈利倍数直接判断估值；分析师一致目标价（KRX均值约₩3,164,332，38-39家机构，Strong Buy）作为外部交叉验证参考，但本报告的方向性判断基于独立研究。
+  <strong>利益冲突：</strong>Snail-Bird Investment声明目前对SK Hynix Inc.无持仓，本报告不受任何外部机构委托或赞助。
+  投资者应独立进行尽职调查，并咨询专业财务顾问后作出投资决定。本报告中的前瞻性陈述涉及重大不确定性，尤其是存储行业历史周期性、多项关键事项（2027 capex具体规模、LTA履约、ADR溢价走势、股东回报可持续性）尚待进一步确认，可能导致实际结果与本报告预期产生重大偏差。
+  © 2026 Snail-Bird Investment. 保留所有权利。
+</div>
+
+</div>
+</body>
+</html>
