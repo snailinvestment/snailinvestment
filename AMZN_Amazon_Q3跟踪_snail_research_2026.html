@@ -160,7 +160,7 @@ footer .pub{color:var(--navy);font-weight:600;}
 <tr><td class="l">股东权益（推算）</td><td>$411.1</td><td>$551.6</td><td class="l">~$570</td><td class="l">+$159</td></tr>
 </table>
 <div class="tblnote">现金/长期债务为 10-Q 披露值；有价证券与股东权益（2026-09-30）为基于现金流与净利的推算，标注 [推算]。长期债务 2026 前三季度新增长期债务融资 $115.1B，其中 Q3 单季 $48.1B。<span class="tag t-fact">事实</span> <span class="tag t-model">推算</span></div>
-<p>三个信号值得关注：<b>(1) 长期债务由 $65.6B 升至 $173.1B</b>（+107.5B），为 $220B 资本开支与 AI 基础设施融资；<b>(2) 现金由 $86.8B 降至 $55.8B</b>，自由现金流转负直接消耗账面流动性；<b>(3) 零回购</b>——Amazon 不派发现金股息，2022 年授权的 $100 亿回购计划执行极为克制（上半年零回购），在巨额 CapEx 下优先保留现金。资产负债率随资产扩张维持在约 50%，但资产端质量已变化：权益中包含 Anthropic 股权账面价值 $97.9B，流动性远低于现金与固定资产。</p>
+<p>资产负债表呈现三个信号：<b>(1) 长期债务由 $65.6B 升至 $173.1B</b>（+107.5B），为 $220B 资本开支与 AI 基础设施融资；<b>(2) 现金由 $86.8B 降至 $55.8B</b>，自由现金流转负直接消耗账面流动性；<b>(3) 零回购</b>——Amazon 不派发现金股息，2022 年授权的 $100 亿回购计划执行极为克制（上半年零回购），在巨额 CapEx 下优先保留现金。资产负债率随资产扩张维持在约 50%，但资产端质量已变化：权益中包含 Anthropic 股权账面价值 $97.9B，流动性远低于现金与固定资产。</p>
 </section>
 
 <section>
@@ -276,10 +276,7 @@ footer .pub{color:var(--navy);font-weight:600;}
 </script>
 <script>
 var NAVY='#1B2A4A',NAVY2='#24365E',GOLD='#C9A227',GRID='#E3E9F2';
-var commonOpts={responsive:true,maintainAspectRatio:false,
-  plugins:{legend:{labels:{color:'#22304A',font:{size:11,weight:'600'}}}},
-  scales:{x:{grid:{display:false},ticks:{color:'#22304A',font:{size:11}}},
-          y:{grid:{color:GRID},ticks:{color:'#22304A',font:{size:11}}}}};
+var AX={color:'#22304A',font:{size:11}};
 var qtr=['Q1\'25','Q2\'25','Q3\'25','Q4\'25','Q1\'26','Q2\'26','Q3\'26'];
 
 // c1: revenue + operating margin
@@ -288,10 +285,11 @@ data:{labels:qtr,datasets:[
 {label:'营收（十亿）',data:[155.6,167.7,180.2,213.4,181.5,200.6,201.9],backgroundColor:NAVY,borderRadius:4,yAxisID:'y'},
 {label:'集团营业利润率（%）',data:[11.8,11.4,9.7,11.7,13.4,13.7,13.9],type:'line',borderColor:GOLD,borderWidth:3,pointBackgroundColor:GOLD,fill:false,yAxisID:'y1'}
 ]},
-options:{...commonOpts,plugins:{...commonOpts.plugins,legend:{display:true,labels:{color:'#22304A',font:{size:11}}}},
-scales:{x:{grid:{display:false},ticks:{color:'#22304A'}},
-y:{position:'left',grid:{color:GRID},title:{display:true,text:'营收（十亿 $）'},ticks:{color:'#22304A'}},
-y1:{position:'right',min:0,max:20,grid:{display:false},title:{display:true,text:'利润率 %'},ticks:{color:GOLD,callback:v=>v+'%'}}}}}});
+options:{responsive:true,maintainAspectRatio:false,
+plugins:{legend:{display:true,labels:AX}},
+scales:{x:{grid:{display:false},ticks:AX},
+y:{position:'left',grid:{color:GRID},title:{display:true,text:'营收（十亿 $）'},ticks:AX},
+y1:{position:'right',min:0,max:20,grid:{display:false},title:{display:true,text:'利润率 %'},ticks:{color:GOLD,callback:function(v){return v+'%';}}}}}});
 
 // c2: AWS revenue + growth
 new Chart(document.getElementById('c2'),{type:'bar',
@@ -299,10 +297,11 @@ data:{labels:qtr,datasets:[
 {label:'AWS 营收（十亿）',data:[29.2,30.9,33.0,35.6,37.6,42.2,46.0],backgroundColor:NAVY2,borderRadius:4,yAxisID:'y'},
 {label:'AWS 同比增速（%）',data:[18,19,20,24,29,37,39.3],type:'line',borderColor:GOLD,borderWidth:3,pointBackgroundColor:GOLD,fill:false,yAxisID:'y1'}
 ]},
-options:{...commonOpts,plugins:{...commonOpts.plugins,legend:{display:true,labels:{color:'#22304A',font:{size:11}}}},
-scales:{x:{grid:{display:false},ticks:{color:'#22304A'}},
-y:{position:'left',grid:{color:GRID},title:{display:true,text:'营收（十亿 $）'},ticks:{color:'#22304A'}},
-y1:{position:'right',min:0,max:50,grid:{display:false},title:{display:true,text:'增速 %'},ticks:{color:GOLD,callback:v=>v+'%'}}}}}});
+options:{responsive:true,maintainAspectRatio:false,
+plugins:{legend:{display:true,labels:AX}},
+scales:{x:{grid:{display:false},ticks:AX},
+y:{position:'left',grid:{color:GRID},title:{display:true,text:'营收（十亿 $）'},ticks:AX},
+y1:{position:'right',min:0,max:50,grid:{display:false},title:{display:true,text:'增速 %'},ticks:{color:GOLD,callback:function(v){return v+'%';}}}}}});
 
 // c3: segment operating income grouped
 new Chart(document.getElementById('c3'),{type:'bar',
@@ -311,8 +310,9 @@ data:{labels:qtr,datasets:[
 {label:'国际',data:[1.0,1.5,1.2,1.0,1.4,1.7,1.6],backgroundColor:'#7C93B8',borderRadius:4},
 {label:'AWS',data:[11.5,10.2,11.4,12.5,14.2,16.6,17.8],backgroundColor:GOLD,borderRadius:4}
 ]},
-options:{...commonOpts,plugins:{...commonOpts.plugins,legend:{display:true,labels:{color:'#22304A',font:{size:11}}}},
-scales:{x:{grid:{display:false},ticks:{color:'#22304A'}},
+options:{responsive:true,maintainAspectRatio:false,
+plugins:{legend:{display:true,labels:AX}},
+scales:{x:{grid:{display:false},ticks:AX},
 y:{beginAtZero:true,grid:{color:GRID},title:{display:true,text:'营业利润（十亿 $）'}}}}});
 
 // c4: cash flow bridge Q2 vs Q3
@@ -322,8 +322,9 @@ data:{labels:['Q2\'26 TTM','Q3\'26 TTM'],datasets:[
 {label:'资本开支 CapEx',data:[161.4,210.7],backgroundColor:'#C0392B',borderRadius:4},
 {label:'自由现金流 FCF',data:[-7.6,-42.4],backgroundColor:GOLD,borderRadius:4}
 ]},
-options:{...commonOpts,plugins:{...commonOpts.plugins,legend:{display:true,labels:{color:'#22304A',font:{size:11}}}},
-scales:{x:{grid:{display:false},ticks:{color:'#22304A'}},
+options:{responsive:true,maintainAspectRatio:false,
+plugins:{legend:{display:true,labels:AX}},
+scales:{x:{grid:{display:false},ticks:AX},
 y:{grid:{color:GRID},title:{display:true,text:'十亿 $'}}}}});
 
 // c5: SOTP
@@ -333,8 +334,9 @@ data:{labels:['AWS','零售+广告','Anthropic 持股','减：净债务','股权
 {label:'基准',data:[1400,1000,250,-196,2454],backgroundColor:NAVY,borderRadius:4},
 {label:'乐观',data:[1600,1150,315,-196,2869],backgroundColor:GOLD,borderRadius:4}
 ]},
-options:{...commonOpts,plugins:{...commonOpts.plugins,legend:{display:true,labels:{color:'#22304A',font:{size:11}}}},
-scales:{x:{grid:{display:false},ticks:{color:'#22304A'}},
+options:{responsive:true,maintainAspectRatio:false,
+plugins:{legend:{display:true,labels:AX}},
+scales:{x:{grid:{display:false},ticks:AX},
 y:{beginAtZero:true,grid:{color:GRID},title:{display:true,text:'十亿 $'}}}}});
 </script>
 </body>
