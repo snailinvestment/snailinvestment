@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cheniere Energy (LNG) | Q3 2026 业绩跟踪 | 蜗牛鸟投资</title>
+<style>
+  :root {
+    --ink:       #0E1820;
+    --ink-mid:   #3A4A57;
+    --ink-light: #6C7F8E;
+    --border:    #D4DDE4;
+    --bg:        #F5F8FA;
+    --surface:   #FFFFFF;
+    --accent:    #005B8E;
+    --accent2:   #00A0B0;
+    --beat:      #1B8C4E;
+    --miss:      #C0392B;
+    --warn:      #D4860A;
+    --raised:    #0057A8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--ink); font-size: 14px; line-height: 1.7; }
+  nav { position: sticky; top: 0; z-index: 100; background: var(--accent); display: flex; align-items: center; gap: 0; padding: 0 32px; height: 44px; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+  nav .brand { color: #fff; font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; margin-right: auto; opacity: .75; }
+  nav a { color: rgba(255,255,255,.8); text-decoration: none; font-size: 12px; padding: 0 14px; height: 44px; display: flex; align-items: center; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .15s, border-color .15s; }
+  nav a:hover { color: #fff; border-bottom-color: var(--accent2); }
+  header { background: var(--surface); border-bottom: 3px solid var(--accent); padding: 32px 48px 28px; }
+  .header-meta { font-size: 10.5px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .header-title { font-size: 28px; font-weight: 600; color: var(--ink); line-height: 1.2; margin-bottom: 6px; }
+  .header-sub { font-size: 14px; color: var(--ink-mid); margin-bottom: 20px; }
+  .header-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 11.5px; font-weight: 500; }
+  .chip-rating { background: #E8F4FD; color: var(--accent); border: 1px solid #B3D6EF; }
+  .chip-beat    { background: #E6F4EC; color: var(--beat); border: 1px solid #A8D9BC; }
+  .chip-raised  { background: #E6EEF8; color: var(--raised); border: 1px solid #A8BFE0; }
+  .chip-warn    { background: #FEF3E2; color: var(--warn); border: 1px solid #EDCC8A; }
+  .kpi-strip { display: grid; grid-template-columns: repeat(5, 1fr); border-bottom: 1px solid var(--border); background: var(--surface); }
+  .kpi { padding: 18px 20px 16px; border-right: 1px solid var(--border); }
+  .kpi:last-child { border-right: none; }
+  .kpi-label { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 4px; }
+  .kpi-val   { font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace; font-size: 22px; font-weight: 500; color: var(--ink); line-height: 1.1; }
+  .kpi-delta { font-size: 11px; margin-top: 4px; font-weight: 500; }
+  .pos { color: var(--beat); }
+  .neg { color: var(--miss); }
+  .neutral { color: var(--ink-light); }
+  .container { max-width: 1080px; margin: 0 auto; padding: 40px 32px; display: flex; flex-direction: column; gap: 36px; }
+  section { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .sec-head { padding: 14px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; background: var(--bg); }
+  .sec-num { font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace; font-size: 10px; color: var(--ink-light); border: 1px solid var(--border); padding: 1px 6px; border-radius: 2px; }
+  .sec-title { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+  .sec-body { padding: 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; font-size: 10.5px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-light); padding: 8px 12px; border-bottom: 2px solid var(--border); background: var(--bg); }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--ink); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .mono { font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace; font-size: 12.5px; }
+  .right { text-align: right; }
+  .beat-tag  { display: inline-block; background: #E6F4EC; color: var(--beat); font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 3px; }
+  .miss-tag  { display: inline-block; background: #FDECEA; color: var(--miss); font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 3px; }
+  .raised-tag { display: inline-block; background: #E6EEF8; color: var(--raised); font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 3px; }
+  .bm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .bm-card { border-radius:4px; padding:16px 18px; }
+  .bm-card.beat { background:#E6F4EC; border:1px solid #A8D9BC; }
+  .bm-card.miss { background:#FEF3E2; border:1px solid #EDCC8A; }
+  .bm-card h4 { font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; margin-bottom:8px; }
+  .bm-card.beat h4 { color: var(--beat); }
+  .bm-card.miss h4 { color: var(--warn); }
+  .bm-card ul { padding-left:16px; }
+  .bm-card li { font-size:13px; margin-bottom:4px; color:var(--ink); }
+  .guidance-update { background:#EBF3FC; border:1px solid #B3D0EA; border-radius:4px; padding:20px 22px; margin-bottom:16px; }
+  .guidance-update h4 { font-size:11px; font-weight:600; color:var(--raised); letter-spacing:.08em; text-transform:uppercase; margin-bottom:12px; }
+  .guidance-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; font-size:13px; }
+  .guidance-row .label { width:220px; color:var(--ink-mid); flex-shrink:0; }
+  .guidance-row .old  { font-family:'SFMono-Regular','Consolas','Liberation Mono','Menlo',monospace; color:var(--ink-light); text-decoration:line-through; font-size:12px; }
+  .guidance-row .arrow { color:var(--raised); font-size:14px; }
+  .guidance-row .new  { font-family:'SFMono-Regular','Consolas','Liberation Mono','Menlo',monospace; font-weight:500; color:var(--raised); font-size:13px; }
+  .guidance-row .delta { font-size:11px; color:var(--beat); font-weight:600; background:#E6F4EC; padding:1px 6px; border-radius:3px; }
+  .proj-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .proj-card { border:1px solid var(--border); border-radius:4px; padding:14px 16px; }
+  .proj-name { font-size:12px; font-weight:600; color:var(--ink); margin-bottom:4px; }
+  .proj-status { font-size:11px; color:var(--ink-mid); margin-bottom:8px; }
+  .prog-bar-bg { height:6px; background:var(--border); border-radius:3px; overflow:hidden; margin-bottom:6px; }
+  .prog-bar-fill { height:100%; border-radius:3px; background:var(--accent2); }
+  .proj-pct { font-family:'SFMono-Regular','Consolas','Liberation Mono','Menlo',monospace; font-size:11px; color:var(--ink-light); }
+  .ctx-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+  .ctx-card { border:1px solid var(--border); border-radius:4px; padding:14px 16px; }
+  .ctx-card h4 { font-size:11px; font-weight:600; color:var(--ink-mid); letter-spacing:.06em; text-transform:uppercase; margin-bottom:8px; }
+  .ctx-card p  { font-size:12.5px; color:var(--ink); line-height:1.6; }
+  .val-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .val-box  { border:1px solid var(--border); border-radius:4px; padding:14px 16px; }
+  .val-box h4 { font-size:11px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-mid); margin-bottom:10px; }
+  .scenario-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-top:12px; }
+  .sc-card { border-radius:4px; padding:12px 14px; text-align:center; }
+  .sc-card.bear { background:#FDECEA; border:1px solid #EBA8A0; }
+  .sc-card.base { background:#EBF3FC; border:1px solid #A8BFE0; }
+  .sc-card.bull { background:#E6F4EC; border:1px solid #A8D9BC; }
+  .sc-card .sc-label { font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px; }
+  .sc-card.bear .sc-label { color:var(--miss); }
+  .sc-card.base .sc-label { color:var(--raised); }
+  .sc-card.bull .sc-label { color:var(--beat); }
+  .sc-card .sc-price { font-family:'SFMono-Regular','Consolas','Liberation Mono','Menlo',monospace; font-size:22px; font-weight:500; color:var(--ink); margin-bottom:2px; }
+  .sc-card .sc-prob  { font-size:10.5px; color:var(--ink-light); margin-bottom:6px; }
+  .sc-card .sc-note  { font-size:11px; color:var(--ink-mid); }
+  .risk-item { padding:12px 0; border-bottom:1px solid var(--border); display:flex; gap:14px; }
+  .risk-item:last-child { border-bottom:none; }
+  .risk-icon { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; margin-top:2px; }
+  .risk-icon.h { background:#FDECEA; }
+  .risk-icon.m { background:#FEF3E2; }
+  .risk-icon.l { background:#E6F4EC; }
+  .risk-body h4 { font-size:13px; font-weight:600; color:var(--ink); margin-bottom:3px; }
+  .risk-body p  { font-size:12.5px; color:var(--ink-mid); }
+  .call-box { background:var(--accent); color:#fff; border-radius:4px; padding:20px 24px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+  .call-left .call-title { font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; opacity:.7; margin-bottom:6px; }
+  .call-left .call-rating { font-size:24px; font-weight:600; line-height:1; }
+  .call-right { border-left:1px solid rgba(255,255,255,.2); padding-left:24px; }
+  .call-right .tp-label { font-size:10px; letter-spacing:.1em; text-transform:uppercase; opacity:.6; margin-bottom:4px; }
+  .call-right .tp-val { font-family:'SFMono-Regular','Consolas','Liberation Mono','Menlo',monospace; font-size:28px; font-weight:500; }
+  .call-right .tp-prev { font-size:11px; opacity:.6; margin-top:2px; }
+  footer { background:var(--ink); color:rgba(255,255,255,.45); font-size:11px; padding:24px 48px; line-height:1.8; margin-top:0; }
+  footer strong { color:rgba(255,255,255,.7); }
+  p { font-size:13.5px; color:var(--ink); line-height:1.75; margin-bottom:10px; }
+  p:last-child { margin-bottom:0; }
+  .highlight { background:#FFF7E0; border-left:3px solid var(--warn); padding:10px 14px; border-radius:0 4px 4px 0; font-size:13px; color:var(--ink-mid); margin:14px 0; }
+  .label-tag { font-size:10px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); background:#EBF3FC; padding:1px 7px; border-radius:3px; vertical-align:middle; margin-left:6px; }
+  .src { font-size:9.5px; color:var(--ink-light); font-weight:600; vertical-align:super; }
+  .sub-box { background:var(--bg); border:1px solid var(--border); border-radius:4px; padding:14px 16px; margin-top:14px; }
+  .sub-box h4 { font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-mid); margin-bottom:10px; }
+  @media (max-width:768px) {
+    .kpi-strip { grid-template-columns:repeat(3,1fr); }
+    .bm-grid,.proj-grid,.ctx-grid,.val-grid,.scenario-grid { grid-template-columns:1fr; }
+    header { padding:20px 20px 18px; }
+    .container { padding:20px 16px; }
+    .call-box { flex-direction:column; }
+    .call-right { border-left:none; border-top:1px solid rgba(255,255,255,.2); padding-left:0; padding-top:14px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="brand">蜗牛鸟投资 · 研究部</span>
+  <a href="#financials">财务</a>
+  <a href="#quality">利润质量</a>
+  <a href="#guidance">指引</a>
+  <a href="#projects">扩产</a>
+  <a href="#market">市场</a>
+  <a href="#valuation">估值</a>
+  <a href="#risks">风险</a>
+</nav>
+
+<header>
+  <div class="header-meta">跟踪报告 · Q3 2026 业绩更新 · 2026年10月30日</div>
+  <div class="header-title">Cheniere Energy, Inc. &nbsp;<span style="color:var(--ink-light);font-weight:300">NYSE: LNG</span></div>
+  <div class="header-sub">全球LNG基础设施龙头 · 量价齐升叠加指引年内第三次上调，业绩后股价跳涨至52周高位</div>
+  <div class="header-chips">
+    <span class="chip chip-rating">评级：谨慎买入（维持）</span>
+    <span class="chip chip-raised">⬆ 指引中枢年内第三调（+$2B）</span>
+    <span class="chip chip-beat">⬆ 股息 +12% 至 $0.625</span>
+    <span class="chip chip-beat">⬆ 信用升级 A-（S&amp;P）</span>
+    <span class="chip chip-warn">⚠ 目标价上调至 $350</span>
+  </div>
+</header>
+
+
+<div class="kpi-strip">
+  <div class="kpi">
+    <div class="kpi-label">Q3 收入</div>
+    <div class="kpi-val">$6.17B</div>
+    <div class="kpi-delta pos">↑ 39% YoY&nbsp;|&nbsp;<span class="beat-tag">季度纪录</span></div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">调整后 EBITDA</div>
+    <div class="kpi-val">$1.90B</div>
+    <div class="kpi-delta pos">↑ 18% YoY&nbsp;|&nbsp;9M $6.04B</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">可分配现金流 DCF</div>
+    <div class="kpi-val">$1.23B</div>
+    <div class="kpi-delta neutral">Q3 单季&nbsp;|&nbsp;9M $4.07B</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">调整后净利润</div>
+    <div class="kpi-val">$0.75B</div>
+    <div class="kpi-delta pos">↑ 27% YoY&nbsp;|&nbsp;剔除衍生品</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">LNG 出口量</div>
+    <div class="kpi-val">684 TBtu</div>
+    <div class="kpi-delta pos">↑ 17% YoY&nbsp;|&nbsp;188 艘货船</div>
+  </div>
+</div>
+
+<div class="container">
+
+
+  <section id="summary">
+    <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">综合评价</span></div>
+    <div class="sec-body">
+      <p>Cheniere Q3 2026 财报在经营口径上属于<strong>连续第三个季度的实质性超预期</strong>：收入 $6.17B（同比 +39%）、合并调整后 EBITDA $1.90B（同比 +18%）、可分配现金流 $1.23B。公司同时将 2026 全年 Adj. EBITDA 指引中枢进一步抬升至 $9.0B（年初 $7.90–8.40B 已两次上调至 $8.75–9.25B），即<strong>较 2 月初始指引中枢上调约 $2B</strong>。值得区分的是，本季上调中有相当部分来自阶段性国际价差走阔与货船交付时点调整，并非全部来自长期合同利润率或产能的永久性提升（详见第三节）。</p>
+      <p>与 Q2 报告时（当时股价约 $258）相比，本季度基本面与信用同步改善：董事会将季度股息上调 12% 至 $0.625/股（Q3 实际派发仍为 $0.555）；S&amp;P 于 10 月将 Corpus Christi Holdings（CCH）评级由 BBB+ 上调至 <strong>A-</strong>（稳定）；期内与 QatarEnergy（至多 4 mtpa，其中 1 mtpa 附 SPL 扩建 FID 条件）及 Petrobras（0.8 mtpa）新签长协；FERC 就 SPL 扩建出具最终环境影响声明（CCL 扩建出具草案 EIS，仍待最终授权）。业绩后股价跳涨 7.11% 至 $318.94（10/29 收盘），年初至今累计 +64%，已处 52 周区间（$186.20–$321.22）高位。</p>
+      <div class="highlight" style="border-left-color:var(--warn);">
+        <strong>⚠ 净利润口径与利润质量</strong><br><br>
+        新闻稿中的 "Net Income" 为<strong>归属于 Cheniere 母公司</strong>口径（脚注1，已扣除非控制性权益 NCI）；合并口径 Q3 净利润为 $1.486B（含 NCI $316M）。Q3 GAAP 基本每股收益 $5.67，但其中含约 <strong>$4.3 亿非现金衍生品公允价值收益</strong>（① 对账表：商品及外汇衍生品变动净额 −$432M，括号表示收益）。<br><br>
+        评估经营质量应优先使用<strong>调整后净利润（$0.75B，剔除衍生品公允值及相应税项/NCI 调整）</strong>、<strong>调整后 EBITDA（$1.90B）</strong>与<strong>DCF（$1.23B）</strong>。9M 母公司 GAAP 净利 $0.736B 偏低，主因 Q1 衍生品损失及 9M NCI 高达 $980M，而不反映主营恶化——9M 调整后净利润为 $2.388B（9M 2025 $1.883B），9M 调整后 EBITDA 为 $6.04B（① 均为公司调节表数据；Q3 新闻稿摘要亦列示 $6.04B）。
+      </div>
+    </div>
+  </section>
+
+
+  <section id="financials">
+    <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">关键财务数据 · 近五季趋势（3Q25–3Q26）</span></div>
+    <div class="sec-body">
+      <table>
+        <thead>
+          <tr><th>指标</th><th class="right">3Q 2025</th><th class="right">4Q 2025</th><th class="right">1Q 2026</th><th class="right">2Q 2026</th><th class="right">3Q 2026</th><th class="right">YoY</th><th>判断</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>总收入</td><td class="right mono">$4.44B</td><td class="right mono">$5.45B</td><td class="right mono">$5.87B</td><td class="right mono">$5.73B</td><td class="right mono">$6.17B</td><td class="right pos">+39%</td><td><span class="beat-tag">季度纪录</span></td></tr>
+          <tr><td>合并调整后 EBITDA</td><td class="right mono">$1.61B</td><td class="right mono">$2.05B</td><td class="right mono">$2.33B</td><td class="right mono">$1.80B</td><td class="right mono">$1.90B</td><td class="right pos">+18%</td><td><span class="beat-tag">BEAT 共识 ~$1.7B</span></td></tr>
+          <tr><td>可分配现金流 DCF</td><td class="right mono">~$1.6B</td><td class="right mono">~$1.49B</td><td class="right mono">~$1.67B</td><td class="right mono">~$1.17B</td><td class="right mono">$1.23B</td><td class="right neutral">—</td><td>9M 合计 $4.07B</td></tr>
+          <tr><td>归母净利润（母公司）<span class="src">1</span></td><td class="right mono">$1.049B</td><td class="right mono">$2.30B</td><td class="right mono" style="color:var(--warn)">-$3.50B</td><td class="right mono">$3.07B</td><td class="right mono">$1.17B</td><td class="right pos">+12%</td><td>各季波动由衍生品公允值主导</td></tr>
+          <tr><td>调整后净利润<span class="src">1</span></td><td class="right mono">$0.591B</td><td class="right mono">—</td><td class="right mono">$1.01B</td><td class="right mono">$0.63B</td><td class="right mono">$0.75B</td><td class="right pos">+27%</td><td>剔除衍生品公允值</td></tr>
+          <tr style="background:#FEF9EE;"><td>稀释 EPS（GAAP）</td><td class="right mono">$4.75</td><td class="right mono">—</td><td class="right mono">-$16.65<span class="src">3</span></td><td class="right mono">$14.65<span class="src">3</span></td><td class="right mono">$5.67</td><td class="right pos">+19%</td><td><span style="font-size:11px;color:var(--warn)">⚠ Q3 含约 $4.3 亿非现金衍生品收益；共识 ~$4.28</span></td></tr>
+          <tr><td>LNG 出口量（TBtu / 艘）</td><td class="right mono">586 / 163</td><td class="right mono">679 / 185</td><td class="right mono">688 / 187</td><td class="right mono">672 / 184</td><td class="right mono">684 / 188</td><td class="right pos">+17%</td><td>Stage 3 逐季爬坡</td></tr>
+          <tr><td>季度股息（宣派口径）</td><td class="right mono">$0.555</td><td class="right mono">$0.555</td><td class="right mono">$0.555</td><td class="right mono">$0.555</td><td class="right mono">$0.625</td><td class="right pos">+12%</td><td>11/17 派发；连续 5 年 ≥10% 增长</td></tr>
+          <tr><td>回购 / 股息支付</td><td colspan="5" class="right mono">9M 2026 合计：回购 $1.8B / 股息 $0.347B</td><td class="right neutral">—</td><td>9M 股东回报 $2.15B</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;color:var(--ink-light);margin-top:8px;">各季度数据均为公司业绩新闻稿/业绩演示直接披露（①）：3Q 2025 及其稀释 EPS $4.75 取自 Q3 2026 新闻稿对照列，DCF ~$1.6B 取自 Q3 2025 业绩资料；4Q 2025 摘自 4Q &amp; FY 2025 业绩资料（2026-02-26），1Q 2026 摘自 Q1 新闻稿（2026-05-07），2Q 2026 摘自 2Q 业绩资料（2026-08-06）。1Q 2026 净亏损 $3.50B 源于约 $4.8B 衍生品公允值不利变动（IPM 长约，税前及非控制性权益前，①）。1Q/2Q 稀释 EPS 为第三方按官方净利润与股本折算（③）；共识 EPS ~$4.28 为第三方汇总（③），与 GAAP 口径不完全可比。调整后净利润（① 公司净利润调节表，剔除商品及外汇衍生品公允值变动及相应税项/非控制性权益调整）：Q3 2026 $0.750B（Q3 2025 $0.591B）；9M 2026 $2.388B（9M 2025 $1.883B）。股息为宣派口径：3Q 内实际派发 $0.555（对应 2Q 宣派），3Q 宣派 $0.625 于 11/17 派发。</p>
+      <br>
+      <div class="bm-grid">
+        <div class="bm-card beat">
+          <h4>✓ 超预期 / 强化项</h4>
+          <ul>
+            <li>收入 +39% YoY，创单季纪录</li>
+            <li>调整后 EBITDA +18% YoY，全年口径上移至 $9B 区间</li>
+            <li>出口量 684 TBtu / 188 艘，同比 +17%</li>
+            <li>全年指引中枢年内第三次上调（较 2 月 +$2B）</li>
+            <li>股息 +12%、9M 回购 $1.8B、信用升级 A-</li>
+            <li>新签 QatarEnergy + Petrobras 长协约 4.8 mtpa（1 mtpa 附条件）</li>
+          </ul>
+        </div>
+        <div class="bm-card miss">
+          <h4>⚠ 需区分 / 注意项</h4>
+          <ul>
+            <li>GAAP EPS $5.67 含约 $4.3 亿非现金衍生品收益</li>
+            <li>9M 母公司净利偏低（Q1 衍生品损失 + NCI $980M）</li>
+            <li>指引上调含阶段性价差与时点因素，非全结构性</li>
+            <li>年末净回值已升至 &gt;$20/MMBtu，高位不可线性外推</li>
+            <li>股价已处 52 周高位，共识目标略低于现价</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="quality">
+    <div class="sec-head"><span class="sec-num">02b</span><span class="sec-title">利润质量 · 现金流与 DCF 口径</span></div>
+    <div class="sec-body">
+      <p>对仍处扩建期的基础设施企业，GAAP 净利润与可分配现金流（DCF）之间存在多重口径差异，必须分层看待，避免将一次性或会计性项目误读为经营趋势。</p>
+      <table>
+        <thead>
+          <tr><th>指标（9M 2026）</th><th class="right">金额</th><th>口径说明</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>经营现金流 CFO<span class="src">1</span></td><td class="right mono">$5.124B</td><td>同比 +$1.6B；含供应商付款 / LNG 货款回收时点差异及量价提升</td></tr>
+          <tr><td>资本开支现金支出<span class="src">1</span></td><td class="right mono">$2.648B</td><td>现金流量表口径（含增长 capex）</td></tr>
+          <tr><td>CFO − 资本开支（粗略）</td><td class="right mono">$2.476B</td><td>传统"资本开支后现金流"概念</td></tr>
+          <tr style="background:#FEF9EE;"><td>可分配现金流 DCF<span class="src">3</span></td><td class="right mono">$4.07B</td><td>公司非 GAAP 定义，加回部分非现金项并剔除增长 capex，<strong>并非</strong> CFO 减全部资本开支</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight">重要区分：公司定义的 DCF（$4.07B 9M）高于 CFO−资本开支（$2.476B 9M），因为 DCF 在经营现金流基础上加回了折旧摊销等非现金项、并剔除了用于扩建的增长性资本开支（其回报体现在未来）。因此 DCF 衡量的是"当前可分配"的现金流，而 CFO−资本开支更接近"当期留存的再投资后现金"。两者都应与 Adj. EBITDA 结合使用，不能相互替代。</div>
+      <div class="sub-box">
+        <h4>盈利来源结构（④ 示意，公司未拆分披露）</h4>
+        <table>
+          <thead>
+            <tr><th>来源</th><th>主要驱动</th><th>盈利特点</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>长期 SPA</td><td>固定液化费、合同量、履约率（Take-or-pay）</td><td>相对最稳定，是估值核心基础</td></tr>
+            <tr><td>IPM 业务</td><td>Henry Hub 及国际气指数 − 液化费 − 运费</td><td>有一定市场风险，部分已转 NPNS 会计</td></tr>
+            <tr><td>CMI 营销优化</td><td>JKM / TTF / HH 价差、运费、交付时点</td><td>弹性高、波动大，是阶段性上调主因</td></tr>
+            <tr><td>其他（运输 / 再气化）</td><td>合同与服务结构</td><td>辅助，规模有限</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:11.5px;color:var(--ink-mid);margin-top:8px;">三者的盈利含义并不相同：SPA 提供可观测的固定费底仓；IPM 与 CMI 则随国际价差波动。本季指引上调中，CMI 货船时点调整与价差走阔贡献了相当部分，故 $9B 中枢不应直接外推为永久盈利基准。</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="guidance">
+    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">2026 全年指引更新 · 年内第三次上调 + 2027 初展望</span></div>
+    <div class="sec-body">
+      <div class="guidance-update">
+        <h4>📈 2026 全年指引调整（Q3 财报后，10月29日）</h4>
+        <div class="guidance-row">
+          <span class="label">调整后 EBITDA（consolidated）</span>
+          <span class="old">$7.90B – $8.40B</span>
+          <span class="arrow">→</span>
+          <span class="new">$8.75B – $9.25B</span>
+          <span class="delta">中枢 ↑ $0.85B（较2月初始 +$2B）</span>
+        </div>
+        <div class="guidance-row">
+          <span class="label">可分配现金流 DCF</span>
+          <span class="old">$5.30B – $5.80B</span>
+          <span class="arrow">→</span>
+          <span class="new">$6.05B – $6.55B</span>
+          <span class="delta">中枢 ↑ $0.75B</span>
+        </div>
+        <div class="guidance-row">
+          <span class="label">全年 LNG 产量预测</span>
+          <span class="old">53 – 54 百万吨</span>
+          <span class="arrow">→</span>
+          <span class="new">53 – 54 百万吨（维持）</span>
+          <span class="delta">不变</span>
+        </div>
+        <div class="guidance-row">
+          <span class="label">CQP 分配指引</span>
+          <span class="old">$3.10 – $3.40/单位</span>
+          <span class="arrow">→</span>
+          <span class="new">$3.30 – $3.40/单位</span>
+          <span class="delta">收窄，中枢 +$0.10</span>
+        </div>
+        <div class="guidance-row">
+          <span class="label">剩余未售出仓位（2026）</span>
+          <span class="old">—</span>
+          <span class="arrow">→</span>
+          <span class="new">&lt; 1MT / &lt; 50 TBtu</span>
+          <span class="delta">基本锁定</span>
+        </div>
+        <div class="guidance-row">
+          <span class="label">季度股息（新宣布）</span>
+          <span class="old">$0.555（Q3 实际）</span>
+          <span class="arrow">→</span>
+          <span class="new">$0.625（+12%，11/17 派发）</span>
+          <span class="delta">财报后上调</span>
+        </div>
+      </div>
+      <p>上调驱动拆解（CFO Zach Davis 电话会议）<span class="src">2</span>：自上次电话会以来<strong>全球气价差进一步走阔</strong>——年末平衡净回值（netback）从 8 月的 &gt;$10/MMBtu 升至当前的 &gt;$20/MMBtu；Stage 3 Train 7 提前完工；部分年末高毛利 CMI 货船时点调整计入本年；上游/下游优化活动提供额外顺风。公司维持 <strong>$500M 指引区间</strong>（类似 2022 价格环境），因剩余开放仓位极少、但仍可能因单船现货价格（约 $100M EBITDA/船）及产量微幅变动放大波动。</p>
+      <p style="font-size:12px;color:var(--ink-mid);"><strong>口径提示：</strong>年内 $2B 中枢上调中，价差走阔与 CMI 货船时点调整属阶段性因素，产量/设施利用率提升属结构性因素。因此 $9B 中枢应视为"当前运行水平"而非全部永久化的盈利基准，需待 2027 年 2 月正式指引验证其可延续性。</p>
+      <div class="guidance-update" style="margin-top:16px;">
+        <h4>🔭 2027 年初展望（管理层给出，非正式指引）<span class="src">2</span></h4>
+        <div class="guidance-row">
+          <span class="label">2027 产量预测</span>
+          <span class="old">—</span>
+          <span class="arrow">→</span>
+          <span class="new">56 – 58 百万吨（初步展望）</span>
+          <span class="delta">较 2026 +&gt;3 mtpa</span>
+        </div>
+        <div class="guidance-row">
+          <span class="label">2027 长协 contract 量</span>
+          <span class="old">46 – 47 mtpa（2026）</span>
+          <span class="arrow">→</span>
+          <span class="new">~52 mtpa（初步展望）</span>
+          <span class="delta">↑ 约 5–6 mtpa</span>
+        </div>
+        <div class="guidance-row">
+          <span class="label">2027 现货（CMI）空间</span>
+          <span class="old">—</span>
+          <span class="arrow">→</span>
+          <span class="new">~5 mtpa（250 TBtu）</span>
+          <span class="delta">~1 mtpa 仍未售</span>
+        </div>
+        <div class="guidance-row">
+          <span class="label">价差敏感性</span>
+          <span class="old">—</span>
+          <span class="arrow">→</span>
+          <span class="new">$1/MMBtu 变动 → ~$50M EBITDA</span>
+          <span class="delta">合约化平台可视度</span>
+        </div>
+      </div>
+      <p>上述 2027 数字为管理层初步展望（②），<strong>并非正式财务指引</strong>；公司将于 2027 年 2 月电话会给出正式 2027 财务指引。当前 Stage 3 全部中型机组完工、去瓶颈成功、且 2027 无长周期大修计划，是产量展望上修的基础。</p>
+    </div>
+  </section>
+
+
+  <section id="projects">
+    <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">产能扩张项目跟踪 · 进度、监管与回报</span></div>
+    <div class="sec-body">
+      <div class="proj-grid">
+        <div class="proj-card">
+          <div class="proj-name">CCL Midscale Trains 8 &amp; 9 + 去瓶颈 <span class="label-tag">在建</span></div>
+          <div class="proj-status">Corpus Christi 中型模块新增产能 · 约 5 mtpa</div>
+          <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:58.6%;background:var(--warn);"></div></div>
+          <div class="proj-pct">整体完工度 58.6%（①），预计 2028 下半年实质竣工</div>
+          <br>
+          <p style="font-size:12.5px;color:var(--ink-mid);">分项进度（① 10-Q）：工程设计 95.2%、设备采购 84.9%、分包工程 57.9%、<strong>现场施工仅 14.5%</strong>。设计与采购领先不等于施工进入后期，后续仍需观察设备到货安装、调试爬坡与成本是否超预算。</p>
+        </div>
+        <div class="proj-card">
+          <div class="proj-name">SPL 扩建 Phase 1（Train 7） <span class="label-tag">Pre-FID</span></div>
+          <div class="proj-status">Sabine Pass 大型机组扩建 · 峰值 &gt;6 mtpa（含去瓶颈）</div>
+          <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:15%;background:#B0C4D8;"></div></div>
+          <div class="proj-pct">FERC 终评 EIS（9月）；FID 预期 2027 初</div>
+          <br>
+          <p style="font-size:12.5px;color:var(--ink-mid);">与 Bechtel 签署 Train 7 一次性总包 EPC（约 $4.7B<span class="src">4</span>）；CQP 项目贷款覆盖约 50% 一期成本。整体 SPL 扩建规划至多 20 mtpa（三台大型机组）。<strong>注意：FERC 最终 EIS 是环境审查完成，并非最终监管授权或 FID</strong>——FID 仍取决于监管批准、商业安排与融资。</p>
+        </div>
+        <div class="proj-card">
+          <div class="proj-name">CCL 扩建（Stage IV） <span class="label-tag">监管审批</span></div>
+          <div class="proj-status">Corpus Christi 大型扩建 · 峰值至多 24 mtpa</div>
+          <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:10%;background:#B0C4D8;"></div></div>
+          <div class="proj-pct">FERC 草案 EIS（9月）；仍待最终授权</div>
+          <br>
+          <p style="font-size:12.5px;color:var(--ink-mid);">草案 EIS 公众意见征集期截至 2026 年 11 月 9 日；FERC 场址建设运营申请及 DOE 非 FTA 出口申请仍待审。距最终投资决策仍有相当距离，不应在估值中提前赋予过高项目价值。</p>
+        </div>
+        <div class="proj-card">
+          <div class="proj-name">长期产能版图 <span class="label-tag">战略储备</span></div>
+          <div class="proj-status">在运 + 在建 + 许可储备</div>
+          <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:56%;"></div></div>
+          <div class="proj-pct">在运 ~56 mtpa · 在建 ~5 mtpa · 储备 &gt;40 mtpa</div>
+          <br>
+          <p style="font-size:12.5px;color:var(--ink-mid);">若全部开发，总产能有望突破 100 mtpa。管理层对长协利润纪律维持 $2.50–3.00/mmBtu，拒绝参与标准化 20 年协议的"竞底"式竞争。</p>
+        </div>
+      </div>
+      <br>
+      <div class="sub-box">
+        <h4>资本强度与项目回报（④ 估算，项目规划口径）</h4>
+        <table>
+          <thead>
+            <tr><th>项目</th><th class="right">资本开支</th><th class="right">新增产能</th><th class="right">单位 capex</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>CCL Midscale 8&amp;9</td><td class="right mono">~$2.9B</td><td class="right mono">~5 mtpa</td><td class="right mono">~$580M/mtpa</td></tr>
+            <tr><td>CCL Stage 3</td><td class="right mono">$8.0B</td><td class="right mono">~10 mtpa</td><td class="right mono">~$800M/mtpa</td></tr>
+            <tr><td>SPL 扩建（整体至多 20 mtpa）</td><td class="right mono">$13–15.5B</td><td class="right mono">≤20 mtpa</td><td class="right mono">~$650–775M/mtpa</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:var(--ink-mid);margin-top:8px;">对资本密集型基础设施，项目能否建成 ≠ 能否创造足够股东价值。新产能回报取决于：单位 capex、固定液化费对 capex 与债务成本的覆盖、建设期利息与投产前现金流、项目 IRR/ROIC，及其对母公司可分配现金流的贡献。当前长协固定费纪律 $2.50–3.00/mmBtu 为回报提供安全垫，但最终 IRR 仍需待 FID 后逐项验证，不宜在估值中提前计入。</p>
+      </div>
+      <br>
+      <p><strong>资本开支节奏：</strong>2026 前三季度增长 capex 约 $2.8B，其中约 $1.1B 由股权现金流覆盖（①）。下一轮大型扩建（SPL 至多 20 mtpa）全项目资本开支估算约 $13–15.5B<span class="src">4</span>，将通过项目层面债务（如 CQP 贷款覆盖约 50% 一期）+ 股权现金流管控，而非侵蚀母公司分红能力。</p>
+    </div>
+  </section>
+
+
+  <section id="market">
+    <div class="sec-head"><span class="sec-num">05</span><span class="sec-title">LNG 市场与宏观背景 · 价差走阔下的结构性受益</span></div>
+    <div class="sec-body">
+      <div class="ctx-grid">
+        <div class="ctx-card">
+          <h4>🌏 全球价差显著走阔</h4>
+          <p>自 Q2 报告以来，年末 LNG 净回值从 8 月的 &gt;$10/MMBtu 升至当前的 &gt;$20/MMBtu（① 电话会）。JKM/TTF 维持高位地缘风险溢价，Henry Hub 因美国国内基本面良好而稳定——净效果是 Cheniere 营销差价大幅扩张。需强调：该高位由供应冲击 + 冬季需求叠加驱动，<strong>不可线性外推</strong>。</p>
+        </div>
+        <div class="ctx-card">
+          <h4>🇪🇺 欧洲储气（更新至 10/21）</h4>
+          <p>据 ACER（2026-10-27 发布）数据，截至 10 月 21 日欧盟天然气库存约 <strong>75%</strong>，仍低于历史同期均值但已高于夏季"难达 70%"的悲观判断。冬季供应安全仍受中东 LNG 供应扰动、管道流量与天气影响；若霍尔木兹持续受阻，每月或拉低库存数个百分点（④ 情景，非事实）。</p>
+        </div>
+        <div class="ctx-card">
+          <h4>🇨🇳 中国灵活性接近极限（管理层观点）</h4>
+          <p>H1 中国 LNG 进口同比下降约 10%（② 管理层表述）。但这可能源于需求疲弱、管道气/国产气替代或库存调整，未必等于"需求弹性已近极限"。进入冬季后中国或主动维持库存——该判断应作为管理层观点看待，而非独立行业事实。</p>
+        </div>
+      </div>
+      <br>
+      <div class="ctx-grid">
+        <div class="ctx-card">
+          <h4>🇺🇸 美国 LNG 战略地位上升</h4>
+          <p>据 S&amp;P Global Energy（2026 年 7 月）预测，美国 LNG 出口<strong>未来有望成为第二大净出口行业</strong>（仅次于民用飞机及零部件），并非当前已实现。政策环境高度支持，CEO Jack Fusco 与能源部、FERC 高层保持密切接触。</p>
+        </div>
+        <div class="ctx-card">
+          <h4>⚡ 美国至亚洲流向创纪录</h4>
+          <p>受亚洲 JKM 溢价驱动，美国 LNG 出口至亚洲量创季度新高。Cheniere 灵活目的地条款（IPM 合同）再次展现商业优化价值，将货流有效转向更高利润市场。</p>
+        </div>
+        <div class="ctx-card">
+          <h4>📦 长协竞争格局 / 远期供给</h4>
+          <p>2025 年全球 LNG FID 约 68.4 mtpa（IGU）；2026 年 1–10 月另有约 46 bcm/年（≈42 mtpa）宣布 FID（IEA）。更关键的是 IEA 估计：2025–2030 已 FID 且在建项目将新增 &gt;330 bcm/年（≈300 mtpa）出口能力——2027–2030 全球供给将经历一轮大幅扩张，压低现货价差、削弱买方长协议价能力，Cheniere 新项目或需更具竞争力液化费。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="mgmt">
+    <div class="sec-head"><span class="sec-num">06</span><span class="sec-title">电话会议核心表态</span></div>
+    <div class="sec-body">
+      <table>
+        <thead>
+          <tr><th>主题</th><th>管理层表态（Q3 电话会议，10月29日）</th><th>解读</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>2027 产量与合约</strong></td>
+            <td>初步展望 2027 产量 56–58 mtpa（&gt;+3 mtpa YoY），无长周期大修；长协 contract 量 ~52 mtpa（2026 为 46–47 mtpa）；~5 mtpa 现货供 CMI，~1 mtpa 仍未售。</td>
+            <td class="pos">↑ 2027 可见度提高，但属展望非正式指引</td>
+          </tr>
+          <tr>
+            <td><strong>价差敏感性</strong></td>
+            <td>$1/MMBtu 市场利润变动对应全年 EBITDA 约 $50M。强调合约化平台带来的现金流可视度。</td>
+            <td class="neutral">中性：弹性有限但确定性高</td>
+          </tr>
+          <tr>
+            <td><strong>合同锁定进展</strong></td>
+            <td>自上次电话会以来锁定约 $18B 固定利润（近几个月占近 $1B），另有 $2B+ 远期机会性 CMI，及 $15B Petrobras / QatarEnergy 长期固定费（至本世纪下半叶）。</td>
+            <td class="pos">↑ 数十年现金流可视度夯实（固定费≠固定利润，仍须覆盖采购/液化/债务）</td>
+          </tr>
+          <tr>
+            <td><strong>信用升级</strong></td>
+            <td>S&amp;P 于 10 月将 CCH 由 BBB+ 上调至 A-（稳定），反映合约化现金流与持续去杠杆。</td>
+            <td class="pos">↑ 融资成本下降，扩张融资更从容</td>
+          </tr>
+          <tr>
+            <td><strong>资本纪律</strong></td>
+            <td>9M 增长 capex $2.8B（其中 $1.1B 由股权现金流覆盖）；Q3 回购 $731M、Q3 实际股息 $0.555（新宣布 $0.625）；CQP 项目贷款覆盖 SPL 扩建约 50% 成本。</td>
+            <td class="pos">↑ 股东回报与扩张并行，但需跟踪竞争关系</td>
+          </tr>
+          <tr>
+            <td><strong>新长协（附条件）</strong></td>
+            <td>QatarEnergy 至多 4 mtpa（FOB，早期 2030s–2054，<strong>其中 1 mtpa 取决于 SPL 扩建 FID</strong>）；Petrobras 0.8 mtpa（FOB，22 年）。4.8 mtpa 中仅 3.8 mtpa 为无条件锁定。</td>
+            <td class="neutral">中性：区分已确定与附条件合同量</td>
+          </tr>
+          <tr>
+            <td><strong>监管路径</strong></td>
+            <td>FERC 就 SPL 扩建出具最终 EIS（环境审查完成，非最终授权）；CCL 扩建出具草案 EIS（仍待最终审批）；SPL 扩建 FID 预期 2027 初。</td>
+            <td class="neutral">中性：时点风险可控但需跟踪</td>
+          </tr>
+          <tr>
+            <td><strong>IPM 会计处理</strong></td>
+            <td>75% IPM 量改为 NPNS，净利润波动显著收窄（22 季 6 亏 → 约 2 亏）。</td>
+            <td class="pos">↑ 会计质量改善，利于估值稳定</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <section id="valuation">
+    <div class="sec-head"><span class="sec-num">07</span><span class="sec-title">估值更新 · 含 EV 桥接与 NCI 处理</span></div>
+    <div class="sec-body">
+      <div class="val-grid">
+        <div class="val-box">
+          <h4>关键估值参数（更新后）</h4>
+          <table>
+            <tbody>
+              <tr><td>当前股价（10/29 收盘）</td><td class="right mono">$318.94</td></tr>
+              <tr><td>52 周区间</td><td class="right mono">$186.20 – $321.22</td></tr>
+              <tr><td>市值（约 2.06 亿股）</td><td class="right mono">~$66B</td></tr>
+              <tr><td>评级 / 12 个月目标价</td><td class="right mono"><strong>谨慎买入（维持）/ $350</strong></td></tr>
+              <tr><td>2026E Adj. EBITDA（指引中枢）</td><td class="right mono">$9.0B</td></tr>
+              <tr><td>2027E Adj. EBITDA<span class="src">4</span></td><td class="right mono">~$10.5B（估算，非指引）</td></tr>
+              <tr><td>EV（合并口径，含 NCI 估算）</td><td class="right mono">~$104B</td></tr>
+              <tr><td>EV / EBITDA（2026E，合并）</td><td class="right mono">~11.6x</td></tr>
+              <tr><td>EV / EBITDA（2027E，合并）</td><td class="right mono">~9.9x</td></tr>
+              <tr><td>P / DCF（2026E，市值口径）</td><td class="right mono">~10.5x</td></tr>
+              <tr><td>股息收益率</td><td class="right mono">~0.78%（$2.50 年化）</td></tr>
+              <tr><td>共识目标<span class="src">3</span></td><td class="right mono">$314.86（略低于现价）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="val-box">
+          <h4>情景分析（12 个月目标价）</h4>
+          <div class="scenario-grid">
+            <div class="sc-card bear">
+              <div class="sc-label">悲观情景</div>
+              <div class="sc-price">$265</div>
+              <div class="sc-prob">权重 30%</div>
+              <div class="sc-note">中东缓和 + 暖冬 → 价差回归 $2–3；EV/EBITDA 压缩至 ~9x；SPL FID 延迟</div>
+            </div>
+            <div class="sc-card base">
+              <div class="sc-label">基准情景</div>
+              <div class="sc-price">$350</div>
+              <div class="sc-prob">权重 50%</div>
+              <div class="sc-note">EBITDA $9B+ 兑现；SPL FID 2027 初落地；2027 产量 56–58 mtpa</div>
+            </div>
+            <div class="sc-card bull">
+              <div class="sc-label">乐观情景</div>
+              <div class="sc-price">$410</div>
+              <div class="sc-prob">权重 20%</div>
+              <div class="sc-note">价差持续高企 + Midscale 上行 + SPL FID 提前；合约溢价再定价</div>
+            </div>
+          </div>
+          <br>
+          <p style="font-size:12px;color:var(--ink-mid);">概率加权目标价：<strong>~$337</strong>（精确 336.5，约 5.5% 上行空间）。基准目标价由 $308 上调至 $350。</p>
+        </div>
+      </div>
+      <br>
+      <div class="sub-box">
+        <h4>EV 桥接与估值倍数（含 CQP 非控制性权益）</h4>
+        <table>
+          <thead>
+            <tr><th>项目</th><th class="right">金额</th><th>口径 / 来源</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>母公司股权市值</td><td class="right mono">~$66B</td><td>2.06 亿股 × $318.94（① 行情）</td></tr>
+            <tr><td>+ 总债务</td><td class="right mono">$24.14B</td><td>① 10-Q（截至 9/30）</td></tr>
+            <tr><td>− 现金及等价物</td><td class="right mono">$1.66B</td><td>① 10-Q（另有 $0.39B 受限现金，不可自由偿债）</td></tr>
+            <tr><td>+ 非控制性权益（CQP，估算）</td><td class="right mono">~$16B</td><td>④ Cheniere 持 CQP ~48.6%，公众浮约 51.4% × CQP 市值</td></tr>
+            <tr style="background:#FEF9EE;"><td>= 企业价值 EV（合并）</td><td class="right mono">~$104B</td><td>使用 100% 合并 EBITDA 须对应 100% 权益 + NCI</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:var(--ink-mid);margin-top:8px;">简化（母公司口径，不计 NCI）EV ≈ $89B → 2026E EV/EBITDA ~9.9x；合并口径 EV ≈ $104B → ~11.6x。Cheniere 合并 CQP 全部业绩但仅持股 48.6%，故合并 EV/EBITDA 必须计入 NCI，否则会低估倍数。当前合并口径 ~11.6x 2026E、~9.9x 2027E，处于同业 9–12x 区间上沿。</p>
+      </div>
+      <br>
+      <p style="font-size:12px;color:var(--ink-mid);"><strong>2027E EBITDA ~$10.5B 的推导（④，非公司指引）：</strong> = 2026E 中枢 $9.0B + 产量 +3 mtpa（56–58 vs 53–54）对应增量 ~$0.7–0.9B + 长协量 52 vs 46–47 mtpa 费率贡献 ~$0.4–0.6B + 成本/去瓶颈节约 ~$0.1–0.2B ≈ $10.3–10.8B。该数字须经 2027 年 2 月正式指引验证，不能直接视为已确认的"运行率"。</p>
+      <div class="highlight">估值注记：当前股价 $318.94 对应合并口径 2026E EV/EBITDA 约 11.6x、2027E 约 9.9x——对合约化、A- 评级、现金流可视度延伸至本世纪下半叶的基础设施而言处于合理区间（同业 9–12x）上沿，已非显著低估。需正视两点：① 股价处 52 周高位，第三方共识目标 $314.86 略低于现价；② 易得的重估基本完成，后续空间取决于 2027 年 2 月正式指引与 SPL 扩建 FID。基准 TP $350 对应合并 EV ~$109B（2027E ~10.4x，接近区间上沿，需 SPL FID + 2027 指引兑现）。操作上偏向<strong>在 ~$290–300（约 9.0–9.5x 2026E 合并 EV/EBITDA）区间加仓、不追高</strong>。已见 Barclays $279、JPMorgan $334、TD Cowen $280 等公开目标（③）。</div>
+    </div>
+  </section>
+
+
+  <section id="risks">
+    <div class="sec-head"><span class="sec-num">08</span><span class="sec-title">风险因素更新</span></div>
+    <div class="sec-body">
+      <div class="risk-item">
+        <div class="risk-icon h">🔴</div>
+        <div class="risk-body">
+          <h4>价差回归的双向风险</h4>
+          <p>当前高营销差价由供应冲击与冬季需求叠加驱动。若中东局势迅速缓解或暖冬，JKM/TTF 承压，Cheniere 营销差价可能快速回归长期均值（$2–3/mmBtu）。每 $1/MMBtu 市场利润变动对应全年 EBITDA 约 $50M——敏感但合约化平台已大幅对冲。</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-icon m">🟡</div>
+        <div class="risk-body">
+          <h4>LNG 供给竞争与远期过剩</h4>
+          <p>2025 全球 FID 约 68.4 mtpa（IGU），2026 年 1–10 月另有约 42 mtpa 宣布 FID（IEA）；IEA 估计 2025–2030 已 FID 且在建项目将新增 &gt;300 mtpa 出口能力。2027–2030 供给大幅扩张将压低现货价差、削弱买方长协议价能力，Cheniere 新项目或需更具竞争力液化费。</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-icon m">🟡</div>
+        <div class="risk-body">
+          <h4>二叠纪盆地进气氮含量 / 运营</h4>
+          <p>当前稳定在约 1.5%，管理层通过亚冷分离、低氮气混兑、Gregory 电厂燃烧等多手段管控。Gregory 建成后风险降低，但若上游工艺变化致氮含量上升，仍可能影响液化效率与机组可靠性。</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-icon m">🟡</div>
+        <div class="risk-body">
+          <h4>资本开支压力 + 利率 + 股东回报竞争</h4>
+          <p>SPL 扩建（至多 20 mtpa，全项目估算 $13–15.5B）+ CQP 贷款覆盖约 50% 一期 + 股权现金流管控；但利率环境与债务展期需跟踪。若 SPL 超预算或价差回落，回购/股息增速可能放缓，CQP 分配现金与母公司可自由支配现金亦须区分。</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-icon m">🟡</div>
+        <div class="risk-body">
+          <h4>Henry Hub 采购成本与天气/电力/航运</h4>
+          <p>Cheniere 仍需采购天然气并管理 HH 价格、运费与合同价格传导，若 HH 上行而传导滞后将挤压利润率。此外，墨西哥湾沿岸飓风、电力中断、管道故障，以及地缘冲突导致的航线绕行、运费上涨与货物交付延迟，均属高度依赖连续运行设施的核心风险，应纳入核心风险列表。</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-icon l">🟢</div>
+        <div class="risk-body">
+          <h4>会计波动性（已实质性改善）</h4>
+          <p>75% IPM 合约改为 NPNS 处理后，GAAP 净利润季度波动大幅降低。历史 22 个季度中 6 个净亏损季将缩减至约 2 个，投资者解读难度下降，有助于估值稳定。<strong>此前风险已部分消除。</strong></p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-icon m">🟡</div>
+        <div class="risk-body">
+          <h4>监管 / FID 时点</h4>
+          <p>SPL 扩建 FID 预期 2027 年初（取决于 FERC/DOE 审批与融资）；CCL 扩建仍处草案 EIS、申请待审。若审批或融资延迟，下一轮产量增量确认时点将后移，且 FERC 终评 EIS 不等于最终授权。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="sec-head"><span class="sec-num">09</span><span class="sec-title">投资结论</span></div>
+    <div class="sec-body">
+      <div class="call-box">
+        <div class="call-left">
+          <div class="call-title">蜗牛鸟投资 · 评级</div>
+          <div class="call-rating">谨慎买入（维持）</div>
+        </div>
+        <div class="call-right">
+          <div class="tp-label">目标价（12 个月）</div>
+          <div class="tp-val">$350</div>
+          <div class="tp-prev">由 $308 上调 · 较现价（$318.94）上行约 10%</div>
+        </div>
+      </div>
+      <br>
+      <p>本次 Q3 业绩更新<strong>正面强化</strong>了对 Cheniere 的长期投资逻辑：合约化平台在供应冲击下持续兑现对冲价值；Adj. EBITDA 全年中枢上移至 $9B+，且 2027 可见度（56–58 mtpa 产量、~52 mtpa 长协）提高；信用升级至 A-、股息 +12%、持续回购构成股东回报"三件套"；QatarEnergy / Petrobras 新长协夯实下一轮扩建的合约化基础。</p>
+      <p>但须客观看待估值位置：股价已较 Q2 报告时（$258）上涨 24% 至 $318.94，处 52 周高位。按合并口径（含 CQP 非控制性权益）EV ≈ $104B，对应 2026E EV/EBITDA 约 11.6x、2027E 约 9.9x，处于同业 9–12x 区间上沿，已非显著低估；且第三方共识目标 $314.86 略低于现价——<strong>易得的重估已基本完成</strong>。当前高盈利水平不宜直接外推为未来几年持续增速。</p>
+      <p>主要上行催化剂：SPL 扩建 FID 于 2027 初落地；Midscale Trains 8&amp;9 进度超前带来潜在指引上修；冬季价差持续高企；欧洲储气危机加速新长协签订。</p>
+      <p>主要下行风险：中东缓和致 LNG 价差大幅收窄；2025–2030 全球供给扩张压低长协定价能力；监管 / FID 时点延迟；资本开支超预算挤压股东回报。操作上偏向<strong>在 ~$290–300（约 9.0–9.5x 2026E 合并 EV/EBITDA）区间加仓、不追高</strong>。综合判断：维持谨慎买入，12 个月目标价由 $308 上调至 $350，概率加权上行空间约 5.5%。</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <strong>蜗牛鸟投资研究部</strong> &nbsp;|&nbsp; 本报告仅供研究参考，不构成个人投资建议。<br>
+  数据来源：Cheniere Energy Q3 2026 业绩新闻稿及 8-K 附件 Ex-99.1（2026年10月29日）、Q3 2026 10-Q（截至 2026-09-30）、Q3 2026 电话会议记录（2026年10月29日）、Cheniere 投资者关系 / FERC 公告；股价与市值数据来自公开行情（截至 2026年10月29日收盘）；行业数据来自 IGU《World LNG Report 2026》、IEA、ACER（2026-10-27）、S&amp;P Global Energy（2026-07）。<br>
+  来源分级：① 公司披露（业绩公告 / 10-Q / 电话会 / FERC）；② 管理层指引与表态；③ 第三方共识与分析师目标（Barclays $279、JPMorgan $334、TD Cowen $280、共识目标 $314.86）；④ 情景假设 / 估算（2027E EBITDA、EV 桥接中的 NCI 与净债、扩产全项目资本开支）。<br>
+  本报告制作日期：2026年10月30日。
+</footer>
+
+</body>
+</html>
