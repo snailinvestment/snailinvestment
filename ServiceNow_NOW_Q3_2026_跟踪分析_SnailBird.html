@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ServiceNow (NOW) Q3 2026 跟踪分析 | Snail-Bird Investment</title><style>
+:root{
+  --bg:#f4f4f2;--bg-panel:#ffffff;--bg-alt:#ececea;--ink:#1c1c1c;--ink-soft:#57585c;--ink-faint:#8a8b8f;
+  --line:#dddddb;--navy:#0d3b66;--navy-soft:#1c5c92;--gold:#a8791a;--gold-soft:#c99b3f;
+  --green:#1c7a4d;--amber:#9c6a13;--red:#8a1f1f;
+  --mono:'IBM Plex Mono','Courier New',monospace;--sans:'IBM Plex Sans','Noto Sans SC',sans-serif;--serif:'Noto Serif SC', serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;}
+a{color:var(--gold);}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+nav{position:sticky;top:0;z-index:100;background:rgba(244,244,242,0.96);backdrop-filter:blur(6px);border-bottom:2px solid var(--navy);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.5px;color:var(--navy);}
+.brand .bird{font-size:18px;}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-soft);}
+.navtag{font-family:var(--mono);font-size:11px;color:var(--navy);border:1px solid var(--navy);padding:3px 8px;border-radius:3px;}
+header.hero{padding:60px 0 40px;border-bottom:2px solid var(--navy);background:linear-gradient(180deg,#f8f7f2 0%,var(--bg) 100%);}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:18px;font-weight:700;}
+h1.title{font-family:var(--serif);font-size:34px;font-weight:700;margin:0 0 10px;line-height:1.35;color:var(--navy);}
+.subtitle{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:820px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
+.meta-row b{color:var(--ink);}
+.rating-panel{display:flex;gap:1px;background:var(--navy);border:1px solid var(--navy);margin-top:30px;}
+.rating-box{background:var(--navy);color:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;min-width:180px;}
+.rating-box .rlabel{font-family:var(--mono);font-size:11px;opacity:.8;text-transform:uppercase;letter-spacing:1px;}
+.rating-box .rvalue{font-family:var(--serif);font-size:26px;font-weight:700;margin-top:6px;}
+.target-box{background:#fff;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;flex:1;}
+.target-box .tlabel{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:1px;}
+.target-box .tvalue{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--navy);margin-top:6px;}
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1px;}
+.kpi{background:var(--bg-panel);padding:18px 16px;}
+.kpi .label{font-size:11px;color:var(--ink-faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.kpi .value{font-size:19px;font-weight:700;font-family:var(--mono);color:var(--ink);}
+.kpi .value.pos{color:var(--green);}
+.kpi .value.neg{color:var(--red);}
+.kpi .sub{font-size:11px;color:var(--ink-faint);margin-top:4px;}
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--gold);font-weight:700;}
+h2{font-family:var(--serif);font-size:26px;margin:0;color:var(--navy);}
+h3{font-family:var(--sans);font-size:16px;margin:28px 0 12px;color:var(--ink);font-weight:700;border-left:3px solid var(--gold);padding-left:10px;}
+p{color:var(--ink-soft);font-size:14.5px;margin:0 0 14px;}
+.callout{background:var(--bg-panel);border:1px solid var(--line);border-left:3px solid var(--navy);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--ink-soft);}
+.callout b{color:var(--ink);}
+.callout.warn{border-left-color:var(--red);background:#fdf3f2;}
+.callout.gold{border-left-color:var(--gold);}
+.grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);padding:22px;}
+.card h4{margin:0 0 10px;font-size:13.5px;color:var(--navy);font-family:var(--mono);}
+.card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;}
+.card li{margin-bottom:7px;}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;background:var(--bg-panel);}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:right;}
+th{background:var(--navy);font-family:var(--mono);font-size:11.5px;color:#fff;font-weight:600;}
+td:first-child,th:first-child{text-align:left;color:var(--ink);}
+tr:hover td{background:#f9f8f2;}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;border-radius:3px;font-family:var(--mono);}
+.tag.beat{background:#e9f3ec;color:var(--green);}
+.tag.miss{background:#f6eae8;color:var(--red);}
+.tag.line{background:#fbf3e3;color:var(--gold);}
+.seg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0;}
+.seg-card{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--navy);}
+.seg-card .sname{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.seg-card .sval{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--navy);border:1px solid var(--navy);margin:20px 0;}
+.scenario{background:var(--bg-panel);padding:20px;}
+.scenario .stitle{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px;}
+.scenario .starget{font-size:24px;font-weight:700;font-family:var(--mono);margin-bottom:6px;}
+.scenario.pess .starget{color:var(--red);}
+.scenario.base .starget{color:var(--navy);}
+.scenario.opt .starget{color:var(--green);}
+.scenario p{font-size:12.5px;margin:0;}
+.risk-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+.risk-item{background:var(--bg-panel);border:1px solid var(--line);padding:16px 18px;border-top:3px solid var(--ink-faint);}
+.risk-item.high{border-top-color:var(--red);}
+.risk-item.mid{border-top-color:var(--amber);}
+.risk-item.low{border-top-color:var(--green);}
+.risk-item .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.risk-item .rt b{font-size:13.5px;}
+.risk-item .rlevel{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;}
+.risk-item.high .rlevel{background:#f6eae8;color:var(--red);}
+.risk-item.mid .rlevel{background:#fbf3e3;color:var(--amber);}
+.risk-item.low .rlevel{background:#e9f3ec;color:var(--green);}
+.risk-item p{font-size:12.5px;margin:0;}
+.risk-item .src{font-size:10.5px;color:var(--ink-faint);margin-top:6px;}
+.chart-box{background:var(--bg-panel);border:1px solid var(--line);padding:24px;margin:20px 0;}
+.two-charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+footer{padding:40px 0 60px;background:var(--bg-alt);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;font-size:12.5px;color:var(--ink-faint);}
+.foot-grid h5{color:var(--navy);font-family:var(--mono);font-size:12px;margin:0 0 10px;}
+.disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.8;}
+.src-list{font-size:11.5px;color:var(--ink-faint);}
+.src-list li{margin-bottom:5px;}
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .seg-grid{grid-template-columns:repeat(2,1fr);}
+  .scenario-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .two-charts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .rating-panel{flex-direction:column;}
+  h1.title{font-size:26px;}
+}
+</style></head><body>
+<nav><div class="wrap"><div class="brand"><span class="bird">🐌</span> SNAIL-BIRD INVESTMENT</div><div class="navlinks"><span>美股深度</span><span>企业软件</span><span class="navtag">跟踪更新</span></div></div></nav>
+<header class="hero"><div class="wrap">
+<div class="eyebrow">Tracking Update · US Enterprise Software</div>
+<h1 class="title">ServiceNow (NOW)：cRPO 减速下的质量检验，<br>与 AI 货币化的再加速期权</h1>
+<p class="subtitle">Q3 2026 交出订阅收入 $3.988B（+20.5% cc，超指引高端 50bps）、经营利润率 32.5%（non-GAAP，超 150bps）、FY26 FCF 利润率指引升至 36% 的稳健一季。财报后股价大跌，核心触发点是 Q4 cRPO 指引 +18.5%（较 Q3 的 +21% 减速 2.5pct）。管理层将减速归因于"部署专家服务 carved-out、on-prem 占比上升、T4C backlog 排除"等会计口径变动，强调不影响收入与 2027 增长动能。本跟踪分析在原始深度报告框架上，基于业绩会全文重估当下投资价值；实时股价取自 2026-11-03 收盘（US$109.16，+2.97%），估值以倍数框架给出区间并标注敏感性。</p>
+<div class="meta-row"><span>股票代码 <b>NOW</b></span><span>现价 <b>US$109.16</b></span><span>前收 <b>US$106.01</b></span><span>当日 <b>+2.97%</b></span><span>市值 <b>US$113.3B</b></span><span>52 周 <b>$81.24–181.73</b></span><span>财年截止 <b>12月31日</b></span><span>行情日 <b>2026-11-03</b></span></div>
+<div class="rating-panel">
+<div class="rating-box"><div class="rlabel">Rating</div><div class="rvalue">增持（逢低）</div></div>
+<div class="target-box"><div class="tlabel">12 个月目标价区间 / 评级逻辑</div><div class="tvalue">US$118–200（基准 $157）</div></div>
+</div>
+<div class="kpi-strip">
+<div class="kpi"><div class="label">订阅收入</div><div class="value">$3.988B</div><div class="sub">+20.5% cc，超指引</div></div>
+<div class="kpi"><div class="label">cRPO 增速</div><div class="value">+21% cc</div><div class="sub">Q4 指引减速至 18.5%</div></div>
+<div class="kpi"><div class="label">RPO 存量</div><div class="value">$29.7B</div><div class="sub">+22.5% cc</div></div>
+<div class="kpi"><div class="label">经营利润率</div><div class="value">32.5%</div><div class="sub">non-GAAP，超 150bps</div></div>
+<div class="kpi"><div class="label">FCF 利润率</div><div class="value pos">36%</div><div class="sub">FY26 指引（Q3 18.2%）</div></div>
+<div class="kpi"><div class="label">Rule of</div><div class="value">57</div><div class="sub">36% 利润率 + 约 21% 增速</div></div>
+</div>
+</div></header>
+
+<section id="summary"><div class="wrap">
+<div class="sec-head"><span class="sec-num">01</span><h2>投资摘要</h2></div>
+<p>ServiceNow 在 Q3 2026 延续了高质量增长：订阅收入 $3.988B 同比增长 20.5%（恒定汇率），超指引高端 50bps；cRPO 存量 $29.7B 增长 21%，RPO 增长 22.5%，提供未来 12 个月收入可视性；经营利润率 32.5%（non-GAAP）同比扩张约 150bps，订阅毛利率稳定在 81%。现金转化环比改善，Q3 自由现金流 $748M、利润率 18.2%（标准 OCF−Capex 口径），FY26 指引升至 36%；Rule of 60 读数约 57（36% 利润率 + 约 21% 增速），略低于门槛。</p>
+<p>财报后股价重挫，直接催化是 Q4 cRPO 指引 +18.5%（较 Q3 的 +21% 减速 2.5pct）。管理层在业绩会明确将减速拆解为三类会计口径变动——部署专家服务由订阅 carved-out 至专业服务（Q3 约 25bps、Q4 约 50bps 阻力）、on-prem 部署占比上升（不计入 cRPO）、T4C backlog 排除（约 50bps 增量计入收入但不计入 cRPO）。管理层强调 cRPO 是"含噪声的会计指标"，不影响已确认收入与 2027 增长动能。</p>
+<p>AI 货币化是本季最亮眼的一条线：AI net new ACV 同比增长 65%，2026 全年 AI ACV 目标三度上调至 >$1.7B（年初 $1B → 5 月 $1.5B → Q3 $1.7B）；Control Tower net new ACV 超 6 倍、EmployeeWorks 不到 3 个季度达 $100M ACV、$1M+ AI 交易 4.5 倍、生产中 agentic AI 消耗年内 13 倍、Action Fabric 调用环比 +500%。内部 AI 效率年化 >$1B（为 2025 年末的 2 倍）。</p>
+<div class="callout gold"><b>核心判断：</b>本次回调的直接触发是前瞻指标（cRPO）减速，其中部分可由会计口径变动解释，需求与签单节奏是否同向走弱仍需 Q1'27 数据验证。现价 US$109.16 隐含约 7.2x FY26 销售 / 19.9x FY26 FCF，低于悲观情景倍数。H1'26 举债约 $75 亿完成 Armis/Veza/Moveworks 收购，资产负债表已由净现金 $86 亿转为净债务（Q2 末 $8.1 亿、Q3 末 $5.6 亿），股权价值按 EV − 净债务口径计算，基准估值约 $157。评级为"增持（逢低）"，目标价区间 $118–200，基准 $157，时间维度 12 个月。</div>
+</div></section>
+
+<section id="fin"><div class="wrap">
+<div class="sec-head"><span class="sec-num">02</span><h2>财务与业务分析</h2></div>
+<h3>2.1 营收与盈利趋势</h3>
+<p>订阅收入 $3.988B 是本次业绩的锚点：恒定汇率增速 20.5%，超指引高端 50bps；GAAP 稀释股本约 1.04B 股，经营利润率 32.5%（non-GAAP）同比扩张约 150bps，反映规模效应与 AI 带来的运营杠杆。订阅毛利率 81% 维持结构性高位，专业服务占比极小（订阅占总收入约 98%）。</p>
+<div class="chart-box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" style="max-width:100%;height:auto"><text x="10" y="22" font-size="13" fill="#0a3d7a" font-weight="700">季度订阅收入与恒定汇率增速（25Q1–26Q4e，十亿美元）</text><line x1="52" y1="264.0" x2="660" y2="264.0" stroke="#eef1f5"/><text x="46" y="267.0" font-size="8" fill="#9aa6b8" text-anchor="end">0</text><line x1="52" y1="220.8" x2="660" y2="220.8" stroke="#eef1f5"/><text x="46" y="223.8" font-size="8" fill="#9aa6b8" text-anchor="end">1</text><line x1="52" y1="177.6" x2="660" y2="177.6" stroke="#eef1f5"/><text x="46" y="180.6" font-size="8" fill="#9aa6b8" text-anchor="end">2</text><line x1="52" y1="134.4" x2="660" y2="134.4" stroke="#eef1f5"/><text x="46" y="137.4" font-size="8" fill="#9aa6b8" text-anchor="end">3</text><line x1="52" y1="91.2" x2="660" y2="91.2" stroke="#eef1f5"/><text x="46" y="94.2" font-size="8" fill="#9aa6b8" text-anchor="end">4</text><line x1="52" y1="48.0" x2="660" y2="48.0" stroke="#eef1f5"/><text x="46" y="51.0" font-size="8" fill="#9aa6b8" text-anchor="end">5</text><rect x="71.0" y="129.2" width="38.0" height="134.8" fill="#a9c7e0" rx="1"/><text x="90.0" y="124.2" font-size="8" fill="#0a66c2" text-anchor="middle" font-weight="700">3.12</text><text x="90.0" y="278.0" font-size="8" fill="#345" text-anchor="middle">25Q1</text><text x="90.0" y="290.0" font-size="7" fill="#9aa6b8" text-anchor="middle">推算</text><rect x="147.0" y="126.6" width="38.0" height="137.4" fill="#a9c7e0" rx="1"/><text x="166.0" y="121.6" font-size="8" fill="#0a66c2" text-anchor="middle" font-weight="700">3.18</text><text x="166.0" y="278.0" font-size="8" fill="#345" text-anchor="middle">25Q2</text><text x="166.0" y="290.0" font-size="7" fill="#9aa6b8" text-anchor="middle">推算</text><rect x="223.0" y="121.0" width="38.0" height="143.0" fill="#a9c7e0" rx="1"/><text x="242.0" y="116.0" font-size="8" fill="#0a66c2" text-anchor="middle" font-weight="700">3.31</text><text x="242.0" y="278.0" font-size="8" fill="#345" text-anchor="middle">25Q3</text><text x="242.0" y="290.0" font-size="7" fill="#9aa6b8" text-anchor="middle">推算</text><rect x="299.0" y="112.8" width="38.0" height="151.2" fill="#a9c7e0" rx="1"/><text x="318.0" y="107.8" font-size="8" fill="#0a66c2" text-anchor="middle" font-weight="700">3.50</text><text x="318.0" y="278.0" font-size="8" fill="#345" text-anchor="middle">25Q4</text><text x="318.0" y="290.0" font-size="7" fill="#9aa6b8" text-anchor="middle">推算</text><rect x="375.0" y="105.5" width="38.0" height="158.5" fill="#a9c7e0" rx="1"/><text x="394.0" y="100.5" font-size="8" fill="#0a66c2" text-anchor="middle" font-weight="700">3.67</text><text x="394.0" y="278.0" font-size="8" fill="#345" text-anchor="middle">26Q1</text><text x="394.0" y="290.0" font-size="7" fill="#9aa6b8" text-anchor="middle">推算</text><rect x="451.0" y="100.7" width="38.0" height="163.3" fill="#a9c7e0" rx="1"/><text x="470.0" y="95.7" font-size="8" fill="#0a66c2" text-anchor="middle" font-weight="700">3.78</text><text x="470.0" y="278.0" font-size="8" fill="#345" text-anchor="middle">26Q2</text><text x="470.0" y="290.0" font-size="7" fill="#9aa6b8" text-anchor="middle">推算</text><rect x="527.0" y="91.7" width="38.0" height="172.3" fill="#0a66c2" rx="1"/><text x="546.0" y="86.7" font-size="8" fill="#0a66c2" text-anchor="middle" font-weight="700">3.99</text><text x="546.0" y="278.0" font-size="8" fill="#345" text-anchor="middle">26Q3</text><text x="546.0" y="290.0" font-size="7" fill="#9aa6b8" text-anchor="middle">披露</text><rect x="603.0" y="80.4" width="38.0" height="183.6" fill="#7fb3d5" rx="1"/><text x="622.0" y="75.4" font-size="8" fill="#0a66c2" text-anchor="middle" font-weight="700">4.25</text><text x="622.0" y="278.0" font-size="8" fill="#345" text-anchor="middle">26Q4e</text><text x="622.0" y="290.0" font-size="7" fill="#9aa6b8" text-anchor="middle">指引</text><path d="M90.0 134.4 L166.0 134.4 L242.0 156.0 L318.0 134.4 L394.0 134.4 L470.0 134.4 L546.0 156.0 L622.0 112.8 " fill="none" stroke="#c0392b" stroke-width="2.5"/><circle cx="90.0" cy="134.4" r="3" fill="#c0392b"/><circle cx="166.0" cy="134.4" r="3" fill="#c0392b"/><circle cx="242.0" cy="156.0" r="3" fill="#c0392b"/><circle cx="318.0" cy="134.4" r="3" fill="#c0392b"/><circle cx="394.0" cy="134.4" r="3" fill="#c0392b"/><circle cx="470.0" cy="134.4" r="3" fill="#c0392b"/><circle cx="546.0" cy="156.0" r="3" fill="#c0392b"/><text x="546.0" y="149.0" font-size="8" fill="#c0392b" text-anchor="middle" font-weight="600" stroke="#ffffff" stroke-width="2.6" paint-order="stroke">20.5%</text><circle cx="622.0" cy="112.8" r="3" fill="#c0392b"/><text x="622.0" y="105.8" font-size="8" fill="#c0392b" text-anchor="middle" font-weight="600" stroke="#ffffff" stroke-width="2.6" paint-order="stroke">21.5%</text><rect x="62" y="54" width="11" height="9" fill="#0a66c2"/><text x="78" y="63" font-size="9" fill="#345">订阅收入(柱)</text><circle cx="202" cy="59" r="3.5" fill="#c0392b"/><text x="211" y="63" font-size="9" fill="#345">cc 增速(线)</text><text x="656" y="63" font-size="8.5" fill="#c0392b" text-anchor="end">红线为右轴：恒定汇率同比增速（%）</text></svg></div>
+<div class="chart-box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 270" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" style="max-width:100%;height:auto"><text x="10" y="22" font-size="13" fill="#0a3d7a" font-weight="700">经营利润率 (non-GAAP) 与订阅毛利率趋势（%，25Q1–26Q4e）</text><line x1="52" y1="57.5" x2="660" y2="57.5" stroke="#27ae60" stroke-width="2" stroke-dasharray="5,3"/><text x="656" y="52.5" font-size="8" fill="#1e7a44" text-anchor="end">订阅毛利率 81%</text><path d="M90.0 205.1 L166.0 203.7 L242.0 202.2 L318.0 200.8 L394.0 199.4 L470.0 197.9 L546.0 196.5 L622.0 197.9 " fill="none" stroke="#0a66c2" stroke-width="2.5"/><circle cx="90.0" cy="205.1" r="3" fill="#0a66c2"/><text x="90.0" y="232.0" font-size="8" fill="#345" text-anchor="middle">25Q1</text><circle cx="166.0" cy="203.7" r="3" fill="#0a66c2"/><text x="166.0" y="232.0" font-size="8" fill="#345" text-anchor="middle">25Q2</text><circle cx="242.0" cy="202.2" r="3" fill="#0a66c2"/><text x="242.0" y="232.0" font-size="8" fill="#345" text-anchor="middle">25Q3</text><circle cx="318.0" cy="200.8" r="3" fill="#0a66c2"/><text x="318.0" y="232.0" font-size="8" fill="#345" text-anchor="middle">25Q4</text><circle cx="394.0" cy="199.4" r="3" fill="#0a66c2"/><text x="394.0" y="232.0" font-size="8" fill="#345" text-anchor="middle">26Q1</text><circle cx="470.0" cy="197.9" r="3" fill="#0a66c2"/><text x="470.0" y="189.9" font-size="8" fill="#0a66c2" text-anchor="middle" font-weight="600">32.0</text><text x="470.0" y="232.0" font-size="8" fill="#345" text-anchor="middle">26Q2</text><circle cx="546.0" cy="196.5" r="3" fill="#0a66c2"/><text x="546.0" y="188.5" font-size="8" fill="#0a66c2" text-anchor="middle" font-weight="600">32.5</text><text x="546.0" y="232.0" font-size="8" fill="#345" text-anchor="middle">26Q3</text><circle cx="622.0" cy="197.9" r="3" fill="#0a66c2"/><text x="622.0" y="209.9" font-size="8" fill="#0a66c2" text-anchor="middle" font-weight="600">32.0</text><text x="622.0" y="232.0" font-size="8" fill="#345" text-anchor="middle">26Q4e</text><circle cx="62" cy="256" r="3.5" fill="#0a66c2"/><text x="71" y="260" font-size="9" fill="#345">经营利润率(蓝)</text><line x1="202" y1="256" x2="217" y2="256" stroke="#27ae60" stroke-width="2" stroke-dasharray="5,3"/><text x="223" y="260" font-size="9" fill="#345">订阅毛利率(绿虚)</text></svg></div>
+<table><tr><th>指标</th><th>本季值</th><th>增速 / 水平</th><th>vs 指引</th><th>标记</th></tr><tr><td>订阅收入</td><td>$3.988B</td><td>+20.5% cc</td><td>指引高端 +50bps</td><td><span class="tag beat">超预期</span></td></tr><tr><td>总营收（估算）</td><td>$4.106B</td><td>+约 20.5% cc</td><td>订阅占比 ~97%</td><td><span class="tag line">符合/参考</span></td></tr><tr><td>RPO（剩余履约义务）</td><td>$29.7B</td><td>+22.5% cc</td><td>总收入可视性</td><td><span class="tag beat">超预期</span></td></tr><tr><td>cRPO（current RPO，未来 12 个月）</td><td>$13.65B</td><td>+21% cc</td><td>指引 +100bps</td><td><span class="tag beat">超预期</span></td></tr><tr><td>经营利润率 (non-GAAP)</td><td>32.5%</td><td>同比 +150bps</td><td>指引 +150bps</td><td><span class="tag beat">超预期</span></td></tr><tr><td>订阅毛利率</td><td>81%</td><td>持平</td><td>结构性高位</td><td><span class="tag line">符合/参考</span></td></tr><tr><td>Q3 FCF 利润率</td><td>18.2%</td><td>OCF−Capex 口径</td><td>公司口径约 20%；FY 指引 36%</td><td><span class="tag line">符合/参考</span></td></tr><tr><td>续约率</td><td>98%</td><td>水平值</td><td>净留存稳固</td><td><span class="tag beat">超预期</span></td></tr></table>
+<h3>2.2 现金流与自由现金流</h3>
+<p>Q3 经营现金流 $839M、资本开支 $91M，标准口径自由现金流 $748M、利润率 18.2%；9M 累计 OCF $3,096M、Capex $346M、FCF $2,750M（23.2%）。FCF 季节性极强：Q1 为大客户年度预付高峰（利润率 40.6%），Q2 回落至 11.9%，Q3 回升。公司口径的 Q3 FCF 利润率约 20%、FY26 全年指引 36%，高于标准 OCF−Capex 口径，差额来自并购相关现金成本等调整项；本表采用标准口径，与 FY26 指引不完全可比。</p>
+<div class="chart-box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 285" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" style="max-width:100%;height:auto"><text x="10" y="22" font-size="13" fill="#0a3d7a" font-weight="700">季度自由现金流 FCF（$M，OCF − Capex 标准口径）</text><line x1="66" y1="215.0" x2="660" y2="215.0" stroke="#eef1f5"/><text x="60" y="218.0" font-size="8" fill="#9aa6b8" text-anchor="end">0</text><line x1="66" y1="173.2" x2="660" y2="173.2" stroke="#eef1f5"/><text x="60" y="176.2" font-size="8" fill="#9aa6b8" text-anchor="end">400</text><line x1="66" y1="131.5" x2="660" y2="131.5" stroke="#eef1f5"/><text x="60" y="134.5" font-size="8" fill="#9aa6b8" text-anchor="end">800</text><line x1="66" y1="89.8" x2="660" y2="89.8" stroke="#eef1f5"/><text x="60" y="92.8" font-size="8" fill="#9aa6b8" text-anchor="end">1,200</text><line x1="66" y1="48.0" x2="660" y2="48.0" stroke="#eef1f5"/><text x="60" y="51.0" font-size="8" fill="#9aa6b8" text-anchor="end">1,600</text><rect x="125.4" y="55.4" width="79.2" height="159.6" fill="#0a66c2" rx="1"/><text x="165.0" y="49.4" font-size="10" fill="#0a66c2" text-anchor="middle" font-weight="700">1,529</text><text x="165.0" y="230.0" font-size="9" fill="#345" text-anchor="middle">26Q1</text><text x="165.0" y="244.0" font-size="8" fill="#9aa6b8" text-anchor="middle">利润率 40.6%</text><rect x="323.4" y="165.6" width="79.2" height="49.4" fill="#0a66c2" rx="1"/><text x="363.0" y="159.6" font-size="10" fill="#0a66c2" text-anchor="middle" font-weight="700">473</text><text x="363.0" y="230.0" font-size="9" fill="#345" text-anchor="middle">26Q2</text><text x="363.0" y="244.0" font-size="8" fill="#9aa6b8" text-anchor="middle">利润率 11.9%</text><rect x="521.4" y="136.9" width="79.2" height="78.1" fill="#0a66c2" rx="1"/><text x="561.0" y="130.9" font-size="10" fill="#0a66c2" text-anchor="middle" font-weight="700">748</text><text x="561.0" y="230.0" font-size="9" fill="#345" text-anchor="middle">26Q3</text><text x="561.0" y="244.0" font-size="8" fill="#9aa6b8" text-anchor="middle">利润率 18.2%</text><text x="66" y="265.0" font-size="8.5" fill="#5b6b85">Q1 为大客户年度预付高峰（40.6%），Q2 季节性回落，Q3 回升至 18.2%；9M 合计 $2,750M（23.2%）。</text></svg></div>
+<table><tr><th>项目（$M）</th><th>26Q1</th><th>26Q2</th><th>26Q3</th><th>9M 2026</th></tr><tr><td>营业收入</td><td>3,770</td><td>3,987</td><td>4,106</td><td>11,863</td></tr><tr><td>经营现金流 OCF</td><td>1,670</td><td>587</td><td>839</td><td>3,096</td></tr><tr><td>资本开支 Capex</td><td>141</td><td>114</td><td>91</td><td>346</td></tr><tr><td>自由现金流 FCF</td><td>1,529</td><td>473</td><td>748</td><td>2,750</td></tr><tr><td>FCF 利润率</td><td>40.6%</td><td>11.9%</td><td>18.2%</td><td>23.2%</td></tr><tr><td>股票薪酬 SBC</td><td>547</td><td>652</td><td>630</td><td>1,829</td></tr><tr><td>FCF / SBC 覆盖</td><td>2.79x</td><td>0.73x</td><td>1.19x</td><td>1.50x</td></tr></table>
+<p>股票薪酬仍是现金创造的主要稀释项：Q3 SBC $630M，占营收 15.3%，FCF/SBC 覆盖 1.19x（9M 1.50x）。按 FCF 利润率 + 收入增速口径，FY26 的 36% 与约 21% 相加约 57，接近但未达 Rule of 60 门槛。以 FY26 总收入估算 $16.1B 计，36% 隐含 FCF 约 $5.8B；FY27 在收入 +19%、利润率 37% 假设下 FCF 约 $7.1B，此为情景推算而非公司指引。</p>
+<h3>2.3 资产负债表与净债务</h3>
+<div class="callout gold"><b>净头寸由正转负的拐点：</b>H1'26 举债约 $75 亿完成 Armis/Veza/Moveworks 收购后，公司由 2025 年末净现金 $8,564M 转为净债务——2026-06-30 为 $810M，Q3 单季 FCF 偿还后降至 $563M。资产负债率 58.9%（18,734/31,830），商誉加无形资产 $13,606M 占总资产 42.7%（期初 18%）。估值以 2026-09-30 的净债务 $0.56B 为准；若采用 Q2 的 $0.81B，基准价仅差约 $0.2。</div>
+<table><tr><th>科目（$M）</th><th>2025-12-31</th><th>2026-06-30</th><th>2026-09-30</th></tr><tr><td>现金及等价物</td><td>3,726</td><td>2,503</td><td>2,393</td></tr><tr><td>有价证券（流动+非流动）</td><td>6,329</td><td>4,204</td><td>4,568</td></tr><tr><td>短期债务</td><td>0</td><td>2,082</td><td>2,086</td></tr><tr><td>长期债务</td><td>1,491</td><td>5,435</td><td>5,438</td></tr><tr><td>净（现金）/净债务</td><td>(8,564)</td><td>810</td><td>563</td></tr><tr><td>总资产</td><td>26,038</td><td>31,666</td><td>31,830</td></tr><tr><td>总负债</td><td>13,074</td><td>19,150</td><td>18,734</td></tr><tr><td>股东权益</td><td>12,964</td><td>12,516</td><td>13,096</td></tr><tr><td>商誉</td><td>3,578</td><td>9,837</td><td>10,012</td></tr><tr><td>无形资产（净额）</td><td>1,121</td><td>3,781</td><td>3,594</td></tr></table>
+<p style="font-size:12px;color:var(--ink-faint);margin-top:-8px;">数据来源：SEC 10-Q（now-20260930，2026-10-28 归档，accession 0001373715-26-000096）与 10-K。</p>
+<h3>2.4 股东回报</h3>
+<p>Q3 未进行股份回购，也未支付股息，单季股东回报为零。9M 回购 $2,225M 全部发生在 Q1，其后两个季度现金优先用于并购交割与债务偿还。公司在 Q2 已获新授权 $50 亿并安排 $20 亿加速回购，截至 9 月末尚未动用。这一节奏与净现金转为净债务的资产负债表变化一致，也意味着当前股东回报对股价的支撑有限。</p>
+<table><tr><th>项目（$M）</th><th>26Q1</th><th>26Q2</th><th>26Q3</th><th>9M 2026</th></tr><tr><td>股份回购</td><td>2,225</td><td>0</td><td>0</td><td>2,225</td></tr><tr><td>现金股息</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>股东回报合计</td><td>2,225</td><td>0</td><td>0</td><td>2,225</td></tr><tr><td>占当期 FCF 比例</td><td>146%</td><td>不适用（无回报）</td><td>不适用（无回报）</td><td>81%</td></tr></table>
+<div class="callout warn"><b>对每股价值的含义：</b>回购暂停使每股增厚效应缺席，FCF 更多用于去杠杆。若 Q4 重启回购，将对每股价值形成额外支撑；若继续暂停，每股价值增长更依赖内生盈利扩张。</div>
+</div></section>
+
+<section id="guide"><div class="wrap">
+<div class="sec-head"><span class="sec-num">03</span><h2>指引与 cRPO 减速拆解</h2></div>
+<p>Q4 指引：订阅收入 $4.245–4.255B（+21.5% cc）、cRPO +18.5% cc、经营利润率 32%、稀释股本约 1.05B 股。cRPO 由 Q3 的 +21% 减速至 +18.5%，是市场重定价的主要触发点。管理层在问答中将减速拆解为会计口径变动，而非需求走弱。</p>
+<div class="chart-box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 280" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" style="max-width:100%;height:auto"><text x="10" y="22" font-size="13" fill="#0a3d7a" font-weight="700">cRPO 恒定汇率同比增速与 Q4 减速（%，25Q2–26Q4e）</text><line x1="52" y1="228.0" x2="660" y2="228.0" stroke="#eef1f5"/><text x="46" y="231.0" font-size="8" fill="#9aa6b8" text-anchor="end">16</text><line x1="52" y1="183.0" x2="660" y2="183.0" stroke="#eef1f5"/><text x="46" y="186.0" font-size="8" fill="#9aa6b8" text-anchor="end">18</text><line x1="52" y1="138.0" x2="660" y2="138.0" stroke="#eef1f5"/><text x="46" y="141.0" font-size="8" fill="#9aa6b8" text-anchor="end">20</text><line x1="52" y1="93.0" x2="660" y2="93.0" stroke="#eef1f5"/><text x="46" y="96.0" font-size="8" fill="#9aa6b8" text-anchor="end">22</text><line x1="52" y1="48.0" x2="660" y2="48.0" stroke="#eef1f5"/><text x="46" y="51.0" font-size="8" fill="#9aa6b8" text-anchor="end">24</text><rect x="73.7" y="93.0" width="43.4" height="135.0" fill="#0a66c2" rx="1"/><text x="95.4" y="88.0" font-size="8.5" fill="#0a66c2" text-anchor="middle" font-weight="700">22.0</text><text x="95.4" y="242.0" font-size="8" fill="#345" text-anchor="middle">25Q2</text><text x="95.4" y="254.0" font-size="7" fill="#9aa6b8" text-anchor="middle">推算</text><rect x="160.6" y="93.0" width="43.4" height="135.0" fill="#0a66c2" rx="1"/><text x="182.3" y="88.0" font-size="8.5" fill="#0a66c2" text-anchor="middle" font-weight="700">22.0</text><text x="182.3" y="242.0" font-size="8" fill="#345" text-anchor="middle">25Q3</text><text x="182.3" y="254.0" font-size="7" fill="#9aa6b8" text-anchor="middle">推算</text><rect x="247.4" y="104.2" width="43.4" height="123.8" fill="#0a66c2" rx="1"/><text x="269.1" y="99.2" font-size="8.5" fill="#0a66c2" text-anchor="middle" font-weight="700">21.5</text><text x="269.1" y="242.0" font-size="8" fill="#345" text-anchor="middle">25Q4</text><text x="269.1" y="254.0" font-size="7" fill="#9aa6b8" text-anchor="middle">推算</text><rect x="334.3" y="104.2" width="43.4" height="123.8" fill="#0a66c2" rx="1"/><text x="356.0" y="99.2" font-size="8.5" fill="#0a66c2" text-anchor="middle" font-weight="700">21.5</text><text x="356.0" y="242.0" font-size="8" fill="#345" text-anchor="middle">26Q1</text><text x="356.0" y="254.0" font-size="7" fill="#9aa6b8" text-anchor="middle">推算</text><rect x="421.1" y="104.2" width="43.4" height="123.8" fill="#0a66c2" rx="1"/><text x="442.9" y="99.2" font-size="8.5" fill="#0a66c2" text-anchor="middle" font-weight="700">21.5</text><text x="442.9" y="242.0" font-size="8" fill="#345" text-anchor="middle">26Q2</text><text x="442.9" y="254.0" font-size="7" fill="#9aa6b8" text-anchor="middle">推算</text><rect x="508.0" y="115.5" width="43.4" height="112.5" fill="#0a66c2" rx="1"/><text x="529.7" y="110.5" font-size="8.5" fill="#0a66c2" text-anchor="middle" font-weight="700">21.0</text><text x="529.7" y="242.0" font-size="8" fill="#345" text-anchor="middle">26Q3</text><text x="529.7" y="254.0" font-size="7" fill="#9aa6b8" text-anchor="middle">披露</text><rect x="594.9" y="171.8" width="43.4" height="56.2" fill="#c0392b" rx="1"/><text x="616.6" y="166.8" font-size="8.5" fill="#c0392b" text-anchor="middle" font-weight="700">18.5</text><text x="616.6" y="242.0" font-size="8" fill="#345" text-anchor="middle">26Q4e</text><text x="616.6" y="254.0" font-size="7" fill="#9aa6b8" text-anchor="middle">指引</text><text x="62" y="52" font-size="9" fill="#c0392b">— Q4 指引 18.5% 较 Q3 21% 减速 2.5pct, 触发估值重定价</text></svg></div>
+<table><tr><th>项目</th><th>对 cRPO 影响</th><th>说明</th></tr><tr><td>Q3 cRPO 增速（披露）</td><td>+21.0%</td><td>基准</td></tr><tr><td>部署专家服务 carved-out 至专业服务</td><td>−25bps</td><td>Q3 约 25bps、Q4 约 50bps 阻力</td></tr><tr><td>on-prem 部署占比上升</td><td>−25bps</td><td>自有数据中心部署不计入 cRPO 口径</td></tr><tr><td>T4C（Transformation Core）backlog 排除</td><td>−50bps</td><td>约 50bps backlog 增长计入收入但不计入 cRPO</td></tr><tr><td>Q4 cRPO 指引（披露）</td><td>+18.5%</td><td>净减速 2.5pct</td></tr></table>
+<div class="callout"><b>管理层口径：</b>cRPO 是"含噪声的会计指标"（nuanced accounting metric）。三类口径变动——部署服务 carved-out、on-prem 占比、T4C backlog 排除——合计约 1.0–1.25pct 的 cRPO 阻力，对应收入仍计入报表。按此估算，21% 至 18.5% 的 2.5pct 减速中约半数可由口径解释，剩余部分与需求强弱、合同签订节奏相关，尚缺公司原始问答引用与口径调整前后对照，需以 Q1'27 兑现验证。</div>
+<div class="callout warn"><b>反向视角：</b>即便口径变动解释成立，cRPO 持续减速（22%→21%→18.5%）仍会压制估值倍数；投资者对 AI 基建开支与经营杠杆的审视，意味着任何增速进一步下行的信号都会被放大。减速是否纯口径，需 Q1'27 cRPO 兑现来验证。</div>
+</div></section>
+
+<section id="ai"><div class="wrap">
+<div class="sec-head"><span class="sec-num">04</span><h2>AI 货币化进展</h2></div>
+<p>AI 是 NOW 估值溢价的根基。本季 AI net new ACV 同比 +65%，2026 全年 AI ACV 目标三度上调至 >$1.7B。新平台交叉销售强劲：Control Tower net new ACV 超 6 倍、EmployeeWorks 不到 3 个季度达 $100M ACV、$1M+ AI 交易 4.5 倍。用量侧，生产中 agentic AI 消耗年内 13 倍、Action Fabric 调用环比 +500%，印证 AI 从"试点"走向"生产"。</p>
+<div class="chart-box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 250" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" style="max-width:100%;height:auto"><text x="10" y="22" font-size="13" fill="#0a3d7a" font-weight="700">2026 全年 AI ACV 目标演进（十亿美元）</text><line x1="52" y1="194.0" x2="660" y2="194.0" stroke="#eef1f5"/><text x="46" y="197.0" font-size="8" fill="#9aa6b8" text-anchor="end">0.0</text><line x1="52" y1="157.0" x2="660" y2="157.0" stroke="#eef1f5"/><text x="46" y="160.0" font-size="8" fill="#9aa6b8" text-anchor="end">0.5</text><line x1="52" y1="120.0" x2="660" y2="120.0" stroke="#eef1f5"/><text x="46" y="123.0" font-size="8" fill="#9aa6b8" text-anchor="end">1.0</text><line x1="52" y1="83.0" x2="660" y2="83.0" stroke="#eef1f5"/><text x="46" y="86.0" font-size="8" fill="#9aa6b8" text-anchor="end">1.5</text><line x1="52" y1="46.0" x2="660" y2="46.0" stroke="#eef1f5"/><text x="46" y="49.0" font-size="8" fill="#9aa6b8" text-anchor="end">2.0</text><rect x="110.8" y="120.0" width="85.1" height="74.0" fill="#0a66c2" rx="1"/><text x="153.3" y="114.0" font-size="11" fill="#0a66c2" text-anchor="middle" font-weight="700">$1.0B</text><text x="153.3" y="208.0" font-size="8.5" fill="#345" text-anchor="middle">2026-01</text><text x="153.3" y="222.0" font-size="7.5" fill="#9aa6b8" text-anchor="middle">年初目标</text><rect x="313.4" y="83.0" width="85.1" height="111.0" fill="#0a66c2" rx="1"/><text x="356.0" y="77.0" font-size="11" fill="#0a66c2" text-anchor="middle" font-weight="700">$1.5B</text><text x="356.0" y="208.0" font-size="8.5" fill="#345" text-anchor="middle">2026-05 (FAD)</text><text x="356.0" y="222.0" font-size="7.5" fill="#9aa6b8" text-anchor="middle">FAD 上调</text><rect x="516.1" y="68.2" width="85.1" height="125.8" fill="#0a66c2" rx="1"/><text x="558.7" y="62.2" font-size="11" fill="#0a66c2" text-anchor="middle" font-weight="700">$1.7B</text><text x="558.7" y="208.0" font-size="8.5" fill="#345" text-anchor="middle">2026-10 (Q3)</text><text x="558.7" y="222.0" font-size="7.5" fill="#9aa6b8" text-anchor="middle">Q3 再上调, >$1.7B</text><text x="62" y="40" font-size="9" fill="#0a66c2">— 年内三度上调; Q3 新增: AI net new ACV +65% YoY, Control Tower net new 超 6 倍</text></svg></div>
+<table><tr><th>AI 指标</th><th>数值 / 增速</th><th>含义</th></tr><tr><td>AI net new ACV</td><td>+65% YoY</td><td>增量订单加速</td></tr><tr><td>2026 全年 AI ACV 目标</td><td>>$1.7B</td><td>年初 $1B → 5月 $1.5B → Q3 $1.7B</td></tr><tr><td>Control Tower net new ACV</td><td>>6x</td><td>新平台交叉销售强劲</td></tr><tr><td>EmployeeWorks</td><td><3 季达 $100M ACV</td><td>HR 工作流 AI 快速放量</td></tr><tr><td>$1M+ AI 交易</td><td>4.5x</td><td>大单占比提升</td></tr><tr><td>生产中 agentic AI 消耗 (YTD)</td><td>13x</td><td>推理用量指数增长</td></tr><tr><td>Action Fabric assists</td><td>+500% MoM</td><td>代理编排调用爆发</td></tr></table>
+<div class="callout gold"><b>为何重要：</b>AI ACV 目标从 $1B 到 >$1.7B 的年内三连跳，说明 AI 不是增量叙事而是实际订单驱动。Control Tower（跨系统编排）与 EmployeeWorks（HR 工作流）是尚未完全定价的第二增长曲线；若 2027 年 AI ACV 突破 $2.5B，将构成估值重估的期权。</div>
+<div class="callout warn"><b>证据边界：</b>AI ACV 为新增合同的年化合同金额，不等于当期确认收入；其转化为收入、毛利与现金的时点与比例未在业绩会中披露。推理成本、实施服务成本对增量毛利率的影响，以及"agentic AI 消耗 13 倍""Action Fabric 调用 +500%"的基期与绝对规模，均缺可核验数据。因此 AI 指标可支持产品采用与订单增长的方向判断，尚不足以单独支撑估值重估的定量结论。</div>
+</div></section>
+
+<section id="val"><div class="wrap">
+<div class="sec-head"><span class="sec-num">05</span><h2>估值</h2></div>
+<p>NOW 是高 FCF 质量、高增速的稀缺资产，估值应以销售倍数与 FCF 倍数交叉锚定，而非传统 PE（non-GAAP 口径下盈利受 SBC 与AI 投资扭曲）。以下框架以 FY26 总收入 $16.1B、FCF $5.8B、净债务 $0.56B（2026-09-30 10-Q）、稀释股本 1.05B 股为基准，给出 12 个月价区间。</p>
+<div class="chart-box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 250" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" style="max-width:100%;height:auto"><text x="340.0" y="22" font-size="13" fill="#0a3d7a" font-weight="700" text-anchor="middle">12 个月目标价区间（倍数框架，美元）</text><line x1="140" y1="204.0" x2="640" y2="204.0" stroke="#ccd3dd"/><line x1="140.0" y1="204.0" x2="140.0" y2="208.0" stroke="#ccd3dd"/><text x="140.0" y="219.0" font-size="8" fill="#9aa6b8" text-anchor="middle">$80</text><line x1="251.1" y1="204.0" x2="251.1" y2="208.0" stroke="#ccd3dd"/><text x="251.1" y="219.0" font-size="8" fill="#9aa6b8" text-anchor="middle">$120</text><line x1="362.2" y1="204.0" x2="362.2" y2="208.0" stroke="#ccd3dd"/><text x="362.2" y="219.0" font-size="8" fill="#9aa6b8" text-anchor="middle">$160</text><line x1="473.3" y1="204.0" x2="473.3" y2="208.0" stroke="#ccd3dd"/><text x="473.3" y="219.0" font-size="8" fill="#9aa6b8" text-anchor="middle">$200</text><line x1="584.4" y1="204.0" x2="584.4" y2="208.0" stroke="#ccd3dd"/><text x="584.4" y="219.0" font-size="8" fill="#9aa6b8" text-anchor="middle">$240</text><rect x="245.6" y="63.3" width="33.3" height="18" fill="#8a1f1f" rx="3" opacity="0.85"/><circle cx="262.2" cy="72.3" r="3.2" fill="#ffffff" stroke="#1c1c1c" stroke-width="1.3"/><text x="262.2" y="58.3" font-size="10" fill="#8a1f1f" text-anchor="middle" font-weight="700">$122</text><text x="132.0" y="75.3" font-size="10" fill="#345" text-anchor="end">悲观 Bear</text><rect x="340.0" y="116.0" width="27.8" height="18" fill="#0d3b66" rx="3" opacity="0.85"/><circle cx="353.9" cy="125.0" r="3.2" fill="#ffffff" stroke="#1c1c1c" stroke-width="1.3"/><text x="353.9" y="111.0" font-size="10" fill="#0d3b66" text-anchor="middle" font-weight="700">$160</text><text x="132.0" y="128.0" font-size="10" fill="#345" text-anchor="end">基准 Base</text><rect x="431.7" y="168.7" width="41.7" height="18" fill="#1c7a4d" rx="3" opacity="0.85"/><circle cx="452.5" cy="177.7" r="3.2" fill="#ffffff" stroke="#1c1c1c" stroke-width="1.3"/><text x="452.5" y="163.7" font-size="10" fill="#1c7a4d" text-anchor="middle" font-weight="700">$199</text><text x="132.0" y="180.7" font-size="10" fill="#345" text-anchor="end">乐观 Bull</text><line x1="221.0" y1="46.0" x2="221.0" y2="204.0" stroke="#c0392b" stroke-width="2" stroke-dasharray="4,3"/><text x="221.0" y="41.0" font-size="9" fill="#c0392b" text-anchor="middle" font-weight="700">现价 $109</text><text x="50" y="240.0" font-size="8" fill="#5b6b85">净债务状态: 股权价值 = EV − 净债务 $0.56B, EV = 倍数 × FY26 收入 $16.1B, 除 1.05B 股。红线为现价 $109, 隐含约 7.2x FY26 销售 / 19.9x FY26 FCF。</text></svg></div>
+<table><tr><th>估值方法</th><th>悲观</th><th>基准</th><th>乐观</th><th>假设</th></tr><tr><td>EV/Sales（FY26 收入 $16.1B）<br><span style="font-size:11px;color:#8a8b8f">8.0 / 10.5 / 13.0x</span></td><td>$122</td><td>$160</td><td>$199</td><td>倍数 × 收入</td></tr><tr><td>EV/FCF（FY26 FCF $5.8B）<br><span style="font-size:11px;color:#8a8b8f">22 / 28 / 34x</span></td><td>$121</td><td>$154</td><td>$187</td><td>倍数 × FCF</td></tr><tr><td>EV/Sales（FY27 收入 $19.2B）<br><span style="font-size:11px;color:#8a8b8f">8.0 / 11.0 / 14.0x</span></td><td>$146</td><td>$201</td><td>$255</td><td>远月交叉验证</td></tr></table>
+<div class="callout gold"><b>数据分级：</b>披露（业绩会与财报原文）— 订阅收入、经营利润率、RPO/cRPO、AI ACV 目标、净债务 $0.56B；管理层声明 — cRPO 减速的口径解释、2027 动能判断；模型输出 — 倍数框架下的目标价与敏感性；假设 — 历史季度订阅收入序列、FY26 总收入 $16.1B、FCF $5.8B、稀释股 1.05B；判断 — 评级与情景概率。</div>
+<div class="callout"><b>交叉验证：</b>EV/Sales 8.0/10.5/13.0x 与 EV/FCF 22/28/34x 两套口径给出的价格聚合于同一区间（悲观 $121–122、基准 $154–160、乐观 $187–199），框架内部自洽。计算遵循净债务状态下的标准桥接：股权价值 = EV − 净债务 $0.56B，再除以 1.05B 稀释股。基准 $157 为 EV/Sales 10.5x 的 $160 与 EV/FCF 28x 的 $154 的均值。悲观情景假设增速换挡至 low-teens 且倍数压缩至 8x 销售；乐观情景假设 AI 货币化加速、多重扩张至 13x 销售（或 FY27 收入的 14x）。现价 US$109.16 隐含约 7.2x FY26 销售 / 19.9x FY26 FCF，低于悲观情景倍数，对应较基准 $157 约 44% 上行空间；倍数若回升至 11x 以上（约 $168）则已反映基准以上预期。</div>
+</div></section>
+
+<section id="thesis"><div class="wrap">
+<div class="sec-head"><span class="sec-num">06</span><h2>多空逻辑</h2></div>
+<div class="grid-2">
+<div class="card"><h4>看多逻辑</h4><ul>
+<li>订阅收入 +20.5% cc、经营利润率 32.5%，规模效应持续兑现</li>
+<li>FCF 利润率 FY26 指引 36%，现金转化质量高</li>
+<li>RPO $29.7B（+22.5%）提供 12 个月收入可视性，续约率 98%</li>
+<li>AI ACV 目标 >$1.7B（年内三连跳），Control Tower/EmployeeWorks 第二曲线</li>
+<li>净债务仅约 $5.6 亿（净债务/权益 ~4%），杠杆低</li>
+<li>cRPO 减速多为会计口径，管理层重申 2027 动能不变</li>
+</ul></div>
+<div class="card"><h4>看空逻辑</h4><ul>
+<li>cRPO 连续减速（22%→21%→18.5%），即便口径解释成立也压制倍数</li>
+<li>即便回调后仍是双位数销售倍数，容错空间有限</li>
+<li>Q3 回购为零，股东回报对股价缺乏支撑</li>
+<li>SBC 占营收 15.3%，FCF/SBC 覆盖仅 1.19x，稀释压力持续</li>
+<li>商誉加无形资产占总资产 42.7%，减值测试风险上升</li>
+<li>宏观/IT 预算周期若收紧，20% 增速难以为继</li>
+</ul></div>
+</div>
+</div></section>
+
+<section id="catalyst"><div class="wrap">
+<div class="sec-head"><span class="sec-num">07</span><h2>催化剂</h2></div>
+<div class="grid-3">
+<div class="card"><h4>近期</h4><ul>
+<li>Q4'26 业绩：cRPO 是否如指引 +18.5% 兑现</li>
+<li>AI ACV 年末是否突破 $1.7B</li>
+<li>Control Tower / EmployeeWorks 续单节奏</li>
+</ul></div>
+<div class="card"><h4>中期</h4><ul>
+<li>Q1'27 cRPO 是否重回 20%+，验证口径论</li>
+<li>agentic AI 生产消耗能否维持高倍增长</li>
+<li>内部 AI 效率 >$1B 年化对利润率的反哺</li>
+</ul></div>
+<div class="card"><h4>长期</h4><ul>
+<li>2027 年 AI ACV 能否突破 $2.5B</li>
+<li>回购重启对每股价值的增厚（Q2 已获 $50 亿新授权与 $20 亿加速回购，Q3 未动用）</li>
+<li>平台化（跨 IT/HR/客户/财务）渗透深化</li>
+</ul></div>
+</div>
+</div></section>
+
+<section id="risk"><div class="wrap">
+<div class="sec-head"><span class="sec-num">08</span><h2>风险</h2></div>
+<div class="risk-matrix">
+<div class="risk-item high"><div class="rt"><b>cRPO 持续减速</b><span class="rlevel">高</span></div><p>若 Q1'27 cRPO 进一步下破 18%，市场将重新审视 2027 增长动能，倍数继续压缩。</p><div class="src">来源：Q4 指引 +18.5%；业绩会问答</div></div>
+<div class="risk-item high"><div class="rt"><b>估值高倍数脆弱性</b><span class="rlevel">高</span></div><p>即便回调后仍为双位数销售倍数，任何增速或利润率不及预期都会被放大。</p><div class="src">来源：倍数框架（8–13x 销售）</div></div>
+<div class="risk-item mid"><div class="rt"><b>AI 基建开支与杠杆审视</b><span class="rlevel">中</span></div><p>投资者关注 AI 投入回报周期，若利润率扩张放缓将压制估值。</p><div class="src">来源：业绩会 Q&amp;A 投资者关注点</div></div>
+<div class="risk-item mid"><div class="rt"><b>on-prem 部署占比上升</b><span class="rlevel">中</span></div><p>部分大客户偏好自有数据中心部署，影响 cRPO 口径与云收入节奏。</p><div class="src">来源：管理层口径变动说明</div></div>
+<div class="risk-item mid"><div class="rt"><b>宏观 IT 预算周期</b><span class="rlevel">中</span></div><p>企业软件支出若因宏观收紧而延迟，20% 增速难以为继；该项与估值倍数直接相关，触发条件为连续两个季度订阅增速低于 18%。</p><div class="src">来源：行业周期性；增速指引</div></div>
+<div class="risk-item low"><div class="rt"><b>汇率与竞争</b><span class="rlevel">低</span></div><p>恒定汇率口径已剔除汇率；与 hyperscaler 自建平台的竞争长期存在，短期未见份额流失证据。</p><div class="src">来源：口径说明</div></div>
+<div class="risk-item mid"><div class="rt"><b>并购整合与商誉减值</b><span class="rlevel">中</span></div><p>H1'26 举债约 $75 亿完成 Armis/Veza/Moveworks，商誉加无形资产 $13,606M 占总资产 42.7%（期初 18%）；未来减值测试与摊销将持续拖累 GAAP 盈利，资产负债率 58.9%。</p><div class="src">来源：2026-09-30 10-Q</div></div>
+<div class="risk-item mid"><div class="rt"><b>SBC 稀释与现金覆盖</b><span class="rlevel">中</span></div><p>Q3 SBC $630M、占营收 15.3%，FCF/SBC 覆盖 1.19x（9M 1.50x）；Q2 单季覆盖曾降至 0.73x，现金创造对股票薪酬的覆盖并不宽裕。</p><div class="src">来源：2026 Q3 10-Q 现金流量表</div></div>
+</div>
+<p style="font-size:11.5px;color:var(--ink-faint);margin-top:10px;">风险等级定义：高 = 12 个月内可推翻论点且概率较高；中 = 影响显著但时点或概率不确定；低 = 长期存在、短期不构成触发。每项附触发条件与来源。</p>
+</div></section>
+
+<section id="rating"><div class="wrap">
+<div class="sec-head"><span class="sec-num">09</span><h2>评级与目标价</h2></div>
+<div class="scenario-grid">
+<div class="scenario pess"><div class="stitle">悲观情景</div><div class="starget">$118–130</div><p>增速换挡至 low-teens，倍数压缩至 8x 销售 / 22x FCF；AI 期权未兑现，IT 预算收紧。</p></div>
+<div class="scenario base"><div class="stitle">基准情景</div><div class="starget">$152–162</div><p>质量溢价（FCF 利润率 36%、续约率 98%），10–11x 销售 / 26–30x FCF；AI ACV 达 >$1.7B。</p></div>
+<div class="scenario opt"><div class="stitle">乐观情景</div><div class="starget">$185–200</div><p>AI 货币化加速 + 多重扩张至 13x 销售；2027 增速重回 20%+。</p></div>
+</div>
+<div class="callout gold"><b>与原 Q2 深度报告的衔接：</b>本站 2026-07 发布的《ServiceNow (NOW) — FY2026 Q2 深度投资价值分析》给出 HOLD、12 个月目标价 $165（SOTP 基准 $163、可审计 DCF $161，WACC 9%、永续 3.5%），并明确"回调至 $125 以下再积极增持"，熊市情景 $110（约 6x P/S）。Q3 财报后股价回落至 $109.16，已低于当时设定的 $125 增持线、逼近熊市情景 $110。本次跟踪按净债务口径给出基准 $157、区间 $118–200，与原报告 DCF/SOTP 的 $161–165 相差 2–5%，属模型口径差异而非方向逆转。评级由 HOLD 上调为增持（逢低），依据是价格落入原报告设定的增持区，而非基本面改善。</div>
+<p><b>评级：增持（逢低）。</b>财报后回调的直接触发是 cRPO 减速，其中约半数可由会计口径解释，需求与签单节奏仍待 Q1'27 验证。原 Q2 深度报告设定的"回调至 $125 以下再积极增持"条件已触发——现价 US$109.16 低于该线，并接近原报告熊市情景 $110（约 6x P/S）。按净债务口径，现价隐含约 7.2x FY26 销售 / 19.9x FY26 FCF，低于悲观情景倍数，较基准 $157 有约 44% 上行空间、较乐观上沿 $200 约 83%；下行支撑来自 36% FCF 利润率、98% 续约率与低杠杆（净债务/权益 ~4%），而非净现金。当前价位构成逢低布局窗口，宜分批建仓。需保留的审慎是：悲观情景仍假设增速换挡至 low-teens（8x 销售）对应 $118–130；若增长进一步降至低双位数以下、倍数压缩至 5.5–6x，公允值将下移至 $84–91，故不宜一次性满仓。若倍数回升至 11x 以上（约 $168）则已反映基准以上预期，需降低仓位弹性。时间维度 12 个月，目标价区间 $118–200，基准 $157。</p>
+</div></section>
+
+<footer><div class="wrap">
+<div class="foot-grid">
+<div><h5>关于本报告</h5><p>本报告由 Snail-Bird Investment 基于 ServiceNow Q3 2026 业绩会全文及公开框架整理分析，针对网络内容的整合分享，不构成任何投资建议或要约。</p></div>
+<div><h5>数据来源</h5><ul class="src-list">
+<li>ServiceNow Q3 2026 业绩会全文（long_text_quote，2026-10-28）</li>
+<li>SEC 10-Q（accession 0001373715-26-000096，now-20260930，2026-10-28 归档）与 10-K：资产负债表、现金流量表</li>
+<li>原深度报告《ServiceNow (NOW) — FY2026 Q2 深度投资价值分析》（2026-07）</li>
+<li>行情：新浪财经 gb_now / 腾讯 qt.gtimg.cn（2026-11-03 收盘）</li>
+<li>倍数框架推导（EV/Sales、EV/FCF），按净债务状态桥接</li>
+</ul></div>
+<div><h5>重要声明</h5><ul class="src-list">
+<li>资产负债表与净债务已核对 SEC 10-Q/10-K；业绩会内容引自会议全文，引用处以会议日期标注</li>
+<li>历史季度订阅收入序列、FY26 总收入与 FCF、稀释股数为估算/假设，正文已标注</li>
+<li>估值按股权价值 = EV − 净债务 $0.56B 计算，目标价区间 $118–200、基准 $157；现价 US$109.16（2026-11-03 收盘，+2.97%，市值 US$113.3B，52 周 $81.24–181.73）</li>
+<li>市值按当前 1.038B 流通股计；每股估值按 Q4 指引摊薄 1.05B 股计，摊薄差异对每股结果约 −1.2%</li>
+</ul></div>
+</div>
+<div class="disclaimer">免责声明：Snail-Bird Investment 针对网络内容的整合分享。本报告所载内容基于公开业绩会信息与第三方整理框架，仅供研究与教育用途，不构成买卖任何证券的要约或建议。投资有风险，过往业绩不代表未来表现。读者应独立判断并自担风险。报告中"推算""估算""指引"等标注项非公司正式披露，存在误差可能。本机构非持牌金融顾问，输出不构成保证性投资建议。</div>
+</div></footer>
+</body></html>
