@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美国硬件/半导体板块 SBI 泡沫指数日报 · 2026-11-06</title>
+<style>
+:root{
+  --navy:#0f2b52; --navy2:#1a3a6b; --gold:#c9a227; --gold2:#e3b93e;
+  --bg:#f4f6fa; --card:#ffffff; --ink:#22314a; --muted:#6b7a94;
+  --green:#1e8e5a; --red:#c0392b; --orange:#d97706; --line:#e2e8f2;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 20px 60px;}
+header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#254a85 100%);color:#fff;border-radius:14px;padding:26px 30px;margin-bottom:22px;box-shadow:0 6px 18px rgba(15,43,82,.18);}
+header h1{font-size:26px;letter-spacing:1px;font-weight:700;}
+header .sub{margin-top:6px;font-size:13.5px;color:#c8d6ee;}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+.meta span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:6px;padding:4px 12px;font-size:12.5px;}
+.meta b{color:var(--gold2);}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(15,43,82,.05);}
+.card h2{font-size:18px;color:var(--navy);border-left:4px solid var(--gold);padding-left:10px;margin-bottom:14px;}
+.card h3{font-size:15px;color:var(--navy2);margin:14px 0 8px;}
+.grid2{display:grid;grid-template-columns:1fr 1.15fr;gap:20px;}
+.grid2>div{min-width:0;}
+.chartbox{position:relative;width:100%;height:320px;}
+.chartbox.tall{height:380px;}
+.big-score{text-align:center;padding:6px 0 2px;}
+.big-score .num{font-size:56px;font-weight:800;color:var(--navy);line-height:1.1;}
+.big-score .lbl{font-size:13px;color:var(--muted);letter-spacing:2px;}
+.zone-tag{display:inline-block;margin-top:8px;padding:4px 16px;border-radius:20px;font-size:13px;font-weight:700;}
+.zone-mid{background:#fdf3d7;color:#8a6d1a;border:1px solid #e8d28a;}
+.delta{margin-top:10px;font-size:13.5px;}
+.delta .down{color:var(--green);font-weight:700;}
+.delta .up{color:var(--red);font-weight:700;}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px;}
+th{background:var(--navy);color:#fff;padding:8px 10px;text-align:left;font-weight:600;}
+td{padding:8px 10px;border-bottom:1px solid var(--line);}
+tr:nth-child(even) td{background:#f8fafd;}
+.num{font-variant-numeric:tabular-nums;font-weight:600;}
+.w-dgr{color:var(--red);font-weight:700;}
+.w-warn{color:var(--orange);font-weight:700;}
+.w-ok{color:var(--green);font-weight:700;}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;}
+.kpi .k{font-size:12px;color:var(--muted);}
+.kpi .v{font-size:19px;font-weight:700;color:var(--navy);margin-top:3px;}
+.kpi .n{font-size:11.5px;color:var(--muted);margin-top:2px;}
+ul.tight{padding-left:20px;}
+ul.tight li{margin-bottom:7px;font-size:14px;}
+.bb-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.bb-col{border-radius:10px;padding:16px 18px;}
+.bb-bull{background:#f0f9f4;border:1px solid #cdeadd;}
+.bb-bear{background:#fdf2f0;border:1px solid #f2d4cf;}
+.bb-col h3{margin-top:0;}
+.bb-bull h3{color:var(--green);}
+.bb-bear h3{color:var(--red);}
+.bb-col li{margin-bottom:9px;font-size:13.5px;}
+.concl li{margin-bottom:10px;}
+.concl b{color:var(--navy);}
+.note{font-size:12px;color:var(--muted);margin-top:10px;}
+.src{font-size:12px;color:var(--muted);}
+.disc{background:#eef2f8;border-radius:10px;padding:14px 18px;font-size:12.5px;color:#4a5a74;margin-top:10px;}
+@media(max-width:860px){.grid2,.bb-grid,.kpis{grid-template-columns:1fr;}}
+</style>
+</head>
+<body><div class="wrap">
+
+<header>
+  <h1>美国硬件 / 半导体板块 SBI 泡沫指数日报</h1>
+  <div class="sub">SBI Bubble Index · US Hardware &amp; Semiconductor — Snail-Bird Investment</div>
+  <div class="meta">
+    <span>分析日期：<b>2026年11月6日（星期五，2026-11-06）</b></span>
+    <span>美股数据截止：<b>2026年11月5日（周四）真实收盘</b>（东方财富实时行情API）</span>
+    <span>上期指数：<b>54.7（2026-11-05）</b></span>
+    <span>本期指数：<b id="hdSBI">53.0</b></span>
+  </div>
+</header>
+<div class="card" style="border:2px solid #0f2b52;background:#f3f7fc;border-radius:12px;padding:16px 20px;margin-bottom:20px;">
+  <h2 style="border-left-color:#0f2b52;color:#0f2b52;margin-bottom:8px;">数据时效与口径说明</h2>
+  <ul class="tight" style="margin:0;">
+    <li><b>行情（已更新，东方财富实时行情API）：</b>已获取 <b>2026-11-05（周四）真实收盘</b>——SOX 经 SMH 按 ~20.4x 历史比值折算 <b>约 9,134（−11.0%，盘中创52周新低）</b>；NVDA 181.60（−9.2%，市值约$4.38T）、AMD 404.40（−17.3%，市值约$655B）、AVGO 291.53（−10.4%，市值约$1.39T）、TSM 因行情源返回空沿用 11/04 的$2.053T；VIX 因东财 VIX 源不可用按 crash 日估算约 22。11/5 为费半本轮调整以来最大单日跌幅之一，算力链单日市值失血超$6,000亿（NVDA −$4,430亿主导）。</li>
+    <li><b>宏观 / 结构指标（沿用 11-05 口径）：</b>FINRA 融资余额（9月月度，$1.480万亿 / GDP 4.5% / YoY +31%，10月数据预计11月中旬发布）、标普500 Top10 集中度（40.0%，10/29）、Mag7 权重（33.2%）、ETF 资金流（截至10/30，SOXL 单周+$38亿杠杆抄底延续）、hyperscaler capex 指引（2026E 约$7,350亿）、美联储利率（3.75-4.00%，12月加息概率81.5%）、10Y美债（4.888%）<b>沿用最近可验证口径</b>，未做虚构或假设。WebSearch / WebFetch 代理本时段不可达，宏观项未能刷新，已显式标注。</li>
+    <li><b>评分口径：</b>维度得分 = 子项算术平均；SBI = Σ(维度分 × 权重)。估值维因 SOX 跌破200日线约 −14% 与远期PE压缩至约15x 而骤降（21.4→11.8），资金流向维因 crash 日极端失血与杠杆抄底对赌升至56.5；总分环比 −1.7。锚点基于1997年以来FINRA数据、2000/2021两轮泡沫峰值及本轮AI周期（2023-2026）实测区间设定。</li>
+  </ul>
+</div>
+
+
+<div class="kpis">
+  <div class="kpi"><div class="k">费城半导体指数（SOX，折算）</div><div class="v">约 9,134 <span style="color:#c0392b;font-size:14px;">−11.0%</span></div><div class="n">SMH 447.73×~20.4x；盘中创52周新低；较200日线约 −14%</div></div>
+  <div class="kpi"><div class="k">SOX 远期市盈率</div><div class="v">约 15x</div><div class="n">较 11/04 的16x 进一步压缩（AI周期新低）</div></div>
+  <div class="kpi"><div class="k">FINRA 融资余额 / GDP</div><div class="v" style="color:var(--red);">4.5%</div><div class="n">历史纪录（9月，余额$1.480万亿，YoY +31%）</div></div>
+  <div class="kpi"><div class="k">标普500 Top10 集中度</div><div class="v" style="color:var(--orange);">40.0%</div><div class="n">远超2000年互联网泡沫峰值（约27%）</div></div>
+</div>
+
+<div class="card">
+  <h2>一、SBI 总分与六维度仪表盘</h2>
+  <div class="grid2">
+    <div>
+      <div class="chartbox"><svg viewBox="0 0 340 230" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" style="display:block"><path d="M 12.0 218.0 A 158.0 158.0 0 0 1 145.3 61.9 L 152.2 105.6 A 113.8 113.8 0 0 0 56.2 218.0 Z" fill="#2e9e6b"/><path d="M 145.3 61.9 A 158.0 158.0 0 0 1 241.7 77.2 L 221.6 116.6 A 113.8 113.8 0 0 0 152.2 105.6 Z" fill="#e8c34a"/><path d="M 241.7 77.2 A 158.0 158.0 0 0 1 297.8 125.1 L 262.0 151.1 A 113.8 113.8 0 0 0 221.6 116.6 Z" fill="#e07b39"/><path d="M 297.8 125.1 A 158.0 158.0 0 0 1 328.0 218.0 L 283.8 218.0 A 113.8 113.8 0 0 0 262.0 151.1 Z" fill="#c0392b"/><polygon points="165.0,217.5 181.6,95.3 175.0,218.5" fill="#0f2b52"/><circle cx="170.0" cy="218.0" r="7" fill="#c9a227"/><text x="24.6" y="232.0" text-anchor="middle" font-size="11" fill="#6b7a94">0</text><text x="83.1" y="125.1" text-anchor="middle" font-size="11" fill="#6b7a94">45</text><text x="170.0" y="57.2" text-anchor="middle" font-size="11" fill="#6b7a94">65</text><text x="241.1" y="93.5" text-anchor="middle" font-size="11" fill="#6b7a94">80</text><text x="315.4" y="232.0" text-anchor="middle" font-size="11" fill="#6b7a94">100</text></svg></div>
+      <div class="big-score">
+        <div class="lbl">SBI COMPOSITE</div>
+        <div class="num">53.0</div>
+        <span class="zone-tag zone-mid">中性偏高 · 预警线下方（45 ≤ SBI &lt; 65）</span>
+        <div class="delta">环比上期（2026-11-05，54.7分）：<span class="down">▼ -1.7 分</span>——11/5 费半 −11% 暴跌、SOX 跌破200日线约 −14% 致估值维骤降（21.4→11.8），资金流向维因 crash 日极端失血与杠杆抄底对赌升至56.5部分抵消；较 7/1 危险区高点（75.8分）累计 <span class="down">▼ -22.8 分</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="chartbox"><svg viewBox="0 0 460 330" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" style="display:block"><polygon points="230.0,200.75 255.76425576258706,185.875 255.76425576258706,156.125 230.0,141.25 204.23574423741294,156.125 204.23574423741294,185.875" fill="none" stroke="#e3e8f0" stroke-width="1"/><polygon points="230.0,230.5 281.5285115251741,200.75 281.5285115251741,141.25 230.0,111.5 178.4714884748259,141.25 178.4714884748259,200.75" fill="none" stroke="#e3e8f0" stroke-width="1"/><polygon points="230.0,260.25 307.29276728776114,215.625 307.29276728776114,126.375 230.0,81.75 152.70723271223886,126.375 152.70723271223886,215.625" fill="none" stroke="#e3e8f0" stroke-width="1"/><polygon points="230.0,290.0 333.0570230503482,230.5 333.0570230503482,111.5 230.0,52.0 126.9429769496518,111.5 126.94297694965181,230.5" fill="none" stroke="#e3e8f0" stroke-width="1"/><line x1="230.0" y1="171.0" x2="230.0" y2="290.0" stroke="#e3e8f0" stroke-width="1"/><text x="230.0" y="318.0" text-anchor="middle" font-size="12" fill="#1a2238">估值 25%</text><line x1="230.0" y1="171.0" x2="333.1" y2="230.5" stroke="#e3e8f0" stroke-width="1"/><text x="353.8" y="246.5" text-anchor="start" font-size="12" fill="#1a2238">拥挤度 25%</text><line x1="230.0" y1="171.0" x2="333.1" y2="111.5" stroke="#e3e8f0" stroke-width="1"/><text x="353.8" y="103.5" text-anchor="start" font-size="12" fill="#1a2238">杠杆 15%</text><line x1="230.0" y1="171.0" x2="230.0" y2="52.0" stroke="#e3e8f0" stroke-width="1"/><text x="230.0" y="32.0" text-anchor="middle" font-size="12" fill="#1a2238">业绩兑现 15%</text><line x1="230.0" y1="171.0" x2="126.9" y2="111.5" stroke="#e3e8f0" stroke-width="1"/><text x="106.2" y="103.5" text-anchor="end" font-size="12" fill="#1a2238">资金流向 10%</text><line x1="230.0" y1="171.0" x2="126.9" y2="230.5" stroke="#e3e8f0" stroke-width="1"/><text x="106.2" y="246.5" text-anchor="end" font-size="12" fill="#1a2238">外部环境 10%</text><polygon points="230.0,185.042 300.59406078948854,211.7575 312.03339034807715,123.638 230.0,101.623 171.77278197655326,137.3825 162.49764990202192,209.97250000000003" fill="rgba(15,43,82,0.22)" stroke="#0f2b52" stroke-width="2"/><circle cx="230.0" cy="185.0" r="2.5" fill="#c9a227"/><circle cx="300.6" cy="211.8" r="2.5" fill="#c9a227"/><circle cx="312.0" cy="123.6" r="2.5" fill="#c9a227"/><circle cx="230.0" cy="101.6" r="2.5" fill="#c9a227"/><circle cx="171.8" cy="137.4" r="2.5" fill="#c9a227"/><circle cx="162.5" cy="210.0" r="2.5" fill="#c9a227"/><polygon points="230.0,196.466 300.59406078948854,211.7575 312.03339034807715,123.638 230.0,101.623 178.4714884748259,141.25 162.49764990202192,209.97250000000003" fill="rgba(201,162,39,0.10)" stroke="#c9a227" stroke-width="2" stroke-dasharray="5,4"/><circle cx="230.0" cy="196.5" r="2.5" fill="#c9a227"/><circle cx="300.6" cy="211.8" r="2.5" fill="#c9a227"/><circle cx="312.0" cy="123.6" r="2.5" fill="#c9a227"/><circle cx="230.0" cy="101.6" r="2.5" fill="#c9a227"/><circle cx="178.5" cy="141.2" r="2.5" fill="#c9a227"/><circle cx="162.5" cy="210.0" r="2.5" fill="#c9a227"/><line x1="80.0" y1="16" x2="98.0" y2="16" stroke="#0f2b52" stroke-width="2"/><text x="103.0" y="20" font-size="11" fill="#1a2238">本期 2026-11-05</text><line x1="230.0" y1="16" x2="248.0" y2="16" stroke="#c9a227" stroke-width="2" stroke-dasharray="5,4"/><text x="253.0" y="20" font-size="11" fill="#1a2238">上期 2026-11-04（11/5报）</text></svg></div>
+      <div class="note">六维度均为 0-100 分（分数越高泡沫风险越大）；虚线为上期（11/5报，基于11/4收盘）得分。维度环比仅供参考，以总分环比为准。</div>
+    </div>
+  </div>
+  <table>
+    <tr><th>维度（权重）</th><th>得分</th><th>加权贡献</th><th>关键读数</th><th>信号</th></tr>
+    <tr><td>估值（25%）</td><td class="num w-ok">11.8</td><td class="num">2.95</td><td>SOX远期PE约15x（AI周期新低）；龙头PEG均值~0.41；较200日线−14.1%</td><td class="w-ok">显著降温</td></tr>
+    <tr><td>拥挤度（25%）</td><td class="num w-warn">68.5</td><td class="num">17.13</td><td>Top10集中度40.0%；NVDA单票~8.0%；Mag7占33.2%</td><td class="w-warn">危险线上方</td></tr>
+    <tr><td>杠杆（15%）</td><td class="num w-dgr">79.6</td><td class="num">11.94</td><td>融资余额$1.480T / GDP 4.5%创纪录；YoY +31%；CoreWeave债79.5美分</td><td class="w-dgr">危险区间</td></tr>
+    <tr><td>业绩兑现（15%）</td><td class="num w-warn">58.3</td><td class="num">8.75</td><td>AMD Q3营收+44.7%超预期、AVGO +85.5%；但三大CSP自由现金流同季转负</td><td class="w-warn">增速强/质量分化</td></tr>
+    <tr><td>资金流向（10%）</td><td class="num w-warn">56.5</td><td class="num">5.65</td><td>11/5算力链单日市值失血超$6,000亿（NVDA −$4,430亿主导）；VIX升至约22；SOXL杠杆抄底延续</td><td class="w-warn">crash日极端对赌</td></tr>
+    <tr><td>外部环境（10%）</td><td class="num w-warn">65.5</td><td class="num">6.55</td><td>12月加息概率81.5%；10Y美债4.888%；数据中心监管风险升温</td><td class="w-warn">收紧+监管逆风</td></tr>
+    <tr><td><b>SBI 加权总分</b></td><td class="num"><b>53.0</b></td><td class="num"><b>53.0</b></td><td colspan="2" class="src">危险线65 / 极端危险线80，本期处于预警线下方的中性偏高区间</td></tr>
+  </table>
+  <div class="note">子指标线性插值规则：每个子指标设预警线（45分）与危险线（70分）两个锚点，并向两端延伸至0分（安全）与100分（极端）线性插值。详见附录B。</div>
+</div>
+
+<div class="card">
+  <h2>二、SOX 近 60 日走势与技术位</h2>
+  <div class="chartbox tall"><svg viewBox="0 0 620 380" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" style="display:block"><text x="10" y="18" font-size="10.5" fill="#54607a">点位</text><line x1="52" y1="336.0" x2="606" y2="336.0" stroke="#eef1f6" stroke-width="1"/><text x="46" y="339.0" text-anchor="end" font-size="10" fill="#54607a">8,750</text><line x1="52" y1="272.0" x2="606" y2="272.0" stroke="#eef1f6" stroke-width="1"/><text x="46" y="275.0" text-anchor="end" font-size="10" fill="#54607a">9,650</text><line x1="52" y1="208.0" x2="606" y2="208.0" stroke="#eef1f6" stroke-width="1"/><text x="46" y="211.0" text-anchor="end" font-size="10" fill="#54607a">10,550</text><line x1="52" y1="144.0" x2="606" y2="144.0" stroke="#eef1f6" stroke-width="1"/><text x="46" y="147.0" text-anchor="end" font-size="10" fill="#54607a">11,450</text><line x1="52" y1="80.0" x2="606" y2="80.0" stroke="#eef1f6" stroke-width="1"/><text x="46" y="83.0" text-anchor="end" font-size="10" fill="#54607a">12,350</text><line x1="52" y1="16.0" x2="606" y2="16.0" stroke="#eef1f6" stroke-width="1"/><text x="46" y="19.0" text-anchor="end" font-size="10" fill="#54607a">13,250</text><text x="52.0" y="368" text-anchor="middle" font-size="10" fill="#54607a" transform="rotate(40 52.0 368)">10/02</text><text x="98.2" y="368" text-anchor="middle" font-size="10" fill="#54607a" transform="rotate(40 98.2 368)">10/06</text><text x="144.3" y="368" text-anchor="middle" font-size="10" fill="#54607a" transform="rotate(40 144.3 368)">10/08</text><text x="190.5" y="368" text-anchor="middle" font-size="10" fill="#54607a" transform="rotate(40 190.5 368)">10/12</text><text x="236.7" y="368" text-anchor="middle" font-size="10" fill="#54607a" transform="rotate(40 236.7 368)">10/14</text><text x="282.8" y="368" text-anchor="middle" font-size="10" fill="#54607a" transform="rotate(40 282.8 368)">10/16</text><text x="329.0" y="368" text-anchor="middle" font-size="10" fill="#54607a" transform="rotate(40 329.0 368)">10/20</text><text x="375.2" y="368" text-anchor="middle" font-size="10" fill="#54607a" transform="rotate(40 375.2 368)">10/22</text><text x="421.3" y="368" text-anchor="middle" font-size="10" fill="#54607a" transform="rotate(40 421.3 368)">10/26</text><text x="467.5" y="368" text-anchor="middle" font-size="10" fill="#54607a" transform="rotate(40 467.5 368)">10/28</text><text x="513.7" y="368" text-anchor="middle" font-size="10" fill="#54607a" transform="rotate(40 513.7 368)">10/30</text><text x="559.8" y="368" text-anchor="middle" font-size="10" fill="#54607a" transform="rotate(40 559.8 368)">11/03</text><text x="606.0" y="368" text-anchor="middle" font-size="10" fill="#54607a" transform="rotate(40 606.0 368)">11/05</text><polygon points="52,336.0 52.0,46.93333333333334 75.08333333333333,42.16888888888887 98.16666666666666,44.15999999999999 121.25,54.968888888888884 144.33333333333331,80.63999999999999 167.41666666666669,86.32888888888888 190.5,104.17777777777778 213.58333333333334,108.30222222222221 236.66666666666666,142.08 259.75,150.61333333333332 282.83333333333337,178.13333333333333 305.91666666666663,165.61777777777775 329.0,168.67555555555558 352.0833333333333,153.7422222222222 375.1666666666667,201.88444444444445 398.25,196.33777777777777 421.3333333333333,175.50222222222223 444.4166666666667,151.89333333333332 467.5,137.88444444444445 490.5833333333333,146.56 513.6666666666667,203.16444444444446 536.75,223.78666666666666 559.8333333333333,204.44444444444446 582.9166666666666,227.98222222222222 606.0,308.6933333333333 606,336.0" fill="rgba(15,43,82,0.08)" stroke="none"/><polyline points="52.0,46.93333333333334 75.08333333333333,42.16888888888887 98.16666666666666,44.15999999999999 121.25,54.968888888888884 144.33333333333331,80.63999999999999 167.41666666666669,86.32888888888888 190.5,104.17777777777778 213.58333333333334,108.30222222222221 236.66666666666666,142.08 259.75,150.61333333333332 282.83333333333337,178.13333333333333 305.91666666666663,165.61777777777775 329.0,168.67555555555558 352.0833333333333,153.7422222222222 375.1666666666667,201.88444444444445 398.25,196.33777777777777 421.3333333333333,175.50222222222223 444.4166666666667,151.89333333333332 467.5,137.88444444444445 490.5833333333333,146.56 513.6666666666667,203.16444444444446 536.75,223.78666666666666 559.8333333333333,204.44444444444446 582.9166666666666,227.98222222222222 606.0,308.6933333333333" fill="none" stroke="#0f2b52" stroke-width="2"/><polyline points="52.0,190.93333333333334 75.08333333333333,190.93333333333334 98.16666666666666,190.93333333333334 121.25,190.93333333333334 144.33333333333331,190.93333333333334 167.41666666666669,190.93333333333334 190.5,190.93333333333334 213.58333333333334,190.93333333333334 236.66666666666666,190.93333333333334 259.75,190.93333333333334 282.83333333333337,190.93333333333334 305.91666666666663,190.93333333333334 329.0,190.93333333333334 352.0833333333333,190.93333333333334 375.1666666666667,190.93333333333334 398.25,190.93333333333334 421.3333333333333,190.93333333333334 444.4166666666667,190.93333333333334 467.5,190.93333333333334 490.5833333333333,190.93333333333334 513.6666666666667,190.93333333333334 536.75,190.93333333333334 559.8333333333333,190.93333333333334 582.9166666666666,190.93333333333334 606.0,190.93333333333334" fill="none" stroke="#c9a227" stroke-width="2" stroke-dasharray="6,4"/></svg></div>
+  <ul class="tight" style="margin-top:12px;">
+    <li><b>技术状态：</b>SOX 于10月30日（黑色星期五，芯片股单日−7%~−8%）跌破200日均线（约10,790点），终结连续355个交易日站上该均线的纪录；11月5日经 SMH 折算收约 9,134（−11.0%），盘中创52周新低，低于200日线约 −14%，较52周高点 14,655.29 回撤扩大至约 −37.7%，为本轮AI周期最深度回撤。</li>
+    <li><b>11/5 全面抛售：</b>NVDA −9.2%（181.60）、AMD −17.3%（404.40，创调整新低）、AVGO −10.4%（291.53）、SMH −11.2%（447.73）——费半成分股呈无差别减仓，不是单一个股事件而是板块性去风险；SOXL 杠杆 ETF 当日延续创纪录抄底，多空对赌极端化。</li>
+    <li><b>王座延续：</b>苹果市值约$5.08T 继续领先 NVDA（约$4.38T，较11/4再缩水约$4,430亿）；平台股（微软/亚马逊）相对算力链的市值分化在11/5进一步扩大，资金"换椅子"趋势未止。</li>
+    <li><b>信用市场先行信号：</b>CoreWeave 2031年到期无担保债仍约面值79.5美分（高收益债表现最差），AI信用利差先于股票走阔，与股价暴跌相互印证数据中心现金流重定价。</li>
+    <li><b>宏观坐标：</b>10Y收益率4.888%、12月加息概率81.5%（CME）、美元指数约101.57——紧缩预期与监管逆风未因股价下跌而缓和，估值修复缺乏利率配合。</li>
+  </ul>
+  <div class="note">10月2日-11月5日日线由SMH（SOX跟踪ETF）收盘价按固定比例（~20.4x）折算的SOX近似值绘制；10/27、10/28、10/30、11/02、11/03、11/04为实际SOX收盘锚点（11,482.51 / 11,684 / 10,688.8 / 10,328.33 / 10,600.40 / 10,268.65），11/05为SMH折算近似值（约9,134），近似序列与锚点偏差约1.3%。更早走势以文字标注（52周高点出现于9月下旬-10月初）。</div>
+</div>
+
+<div class="card">
+  <h2>三、多空论点对比</h2>
+  <div class="chartbox tall"><svg viewBox="0 0 620 320" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" style="display:block"><text x="394.0" y="14" text-anchor="middle" font-size="10.5" fill="#1a2238">看空 ← 0 → 看多</text><line x1="394.0" y1="18" x2="394.0" y2="314" stroke="#0f2b52" stroke-width="1.6"/><line x1="208.0" y1="18" x2="208.0" y2="314" stroke="#e2e8f2" stroke-width="1"/><text x="208.0" y="316" text-anchor="middle" font-size="9" fill="#1a2238">-100</text><line x1="301.0" y1="18" x2="301.0" y2="314" stroke="#e2e8f2" stroke-width="1"/><text x="301.0" y="316" text-anchor="middle" font-size="9" fill="#1a2238">-50</text><line x1="487.0" y1="18" x2="487.0" y2="314" stroke="#e2e8f2" stroke-width="1"/><text x="487.0" y="316" text-anchor="middle" font-size="9" fill="#1a2238">50</text><line x1="580.0" y1="18" x2="580.0" y2="314" stroke="#e2e8f2" stroke-width="1"/><text x="580.0" y="316" text-anchor="middle" font-size="9" fill="#1a2238">100</text><text x="198" y="33.5" text-anchor="end" font-size="11" fill="#1a2238">估值低点 PE 15x</text><rect x="394.0" y="22" width="148.8" height="15" fill="rgba(30,142,90,0.82)"/><text x="547.8" y="33.5" text-anchor="start" font-size="10" fill="#1a2238">+80</text><text x="198" y="57.5" text-anchor="end" font-size="11" fill="#1a2238">AMD/AVGO业绩加速</text><rect x="394.0" y="46" width="139.5" height="15" fill="rgba(30,142,90,0.82)"/><text x="538.5" y="57.5" text-anchor="start" font-size="10" fill="#1a2238">+75</text><text x="198" y="81.5" text-anchor="end" font-size="11" fill="#1a2238">云积压订单 $1.1T</text><rect x="394.0" y="70" width="133.9" height="15" fill="rgba(30,142,90,0.82)"/><text x="532.9" y="81.5" text-anchor="start" font-size="10" fill="#1a2238">+72</text><text x="198" y="105.5" text-anchor="end" font-size="11" fill="#1a2238">选举后季节性 +15%</text><rect x="394.0" y="94" width="115.3" height="15" fill="rgba(30,142,90,0.82)"/><text x="514.3" y="105.5" text-anchor="start" font-size="10" fill="#1a2238">+62</text><text x="198" y="129.5" text-anchor="end" font-size="11" fill="#1a2238">存储超级周期</text><rect x="394.0" y="118" width="111.6" height="15" fill="rgba(30,142,90,0.82)"/><text x="510.6" y="129.5" text-anchor="start" font-size="10" fill="#1a2238">+60</text><text x="198" y="153.5" text-anchor="end" font-size="11" fill="#1a2238">微软FCF为正</text><rect x="394.0" y="142" width="102.3" height="15" fill="rgba(30,142,90,0.82)"/><text x="501.3" y="153.5" text-anchor="start" font-size="10" fill="#1a2238">+55</text><text x="198" y="177.5" text-anchor="end" font-size="11" fill="#1a2238">单日算力链失血$6000亿</text><rect x="235.9" y="166" width="158.1" height="15" fill="rgba(192,57,43,0.82)"/><text x="230.9" y="177.5" text-anchor="end" font-size="10" fill="#1a2238">-85</text><text x="198" y="201.5" text-anchor="end" font-size="11" fill="#1a2238">12月加息概率81.5%</text><rect x="260.1" y="190" width="133.9" height="15" fill="rgba(192,57,43,0.82)"/><text x="255.1" y="201.5" text-anchor="end" font-size="10" fill="#1a2238">-72</text><text x="198" y="225.5" text-anchor="end" font-size="11" fill="#1a2238">Top10集中度40%</text><rect x="254.5" y="214" width="139.5" height="15" fill="rgba(192,57,43,0.82)"/><text x="249.5" y="225.5" text-anchor="end" font-size="10" fill="#1a2238">-75</text><text x="198" y="249.5" text-anchor="end" font-size="11" fill="#1a2238">数据中心监管落地</text><rect x="248.9" y="238" width="145.1" height="15" fill="rgba(192,57,43,0.82)"/><text x="243.9" y="249.5" text-anchor="end" font-size="10" fill="#1a2238">-78</text><text x="198" y="273.5" text-anchor="end" font-size="11" fill="#1a2238">三大CSP FCF转负</text><rect x="245.2" y="262" width="148.8" height="15" fill="rgba(192,57,43,0.82)"/><text x="240.2" y="273.5" text-anchor="end" font-size="10" fill="#1a2238">-80</text><text x="198" y="297.5" text-anchor="end" font-size="11" fill="#1a2238">融资余额/GDP 4.5%创纪录</text><rect x="226.6" y="286" width="167.4" height="15" fill="rgba(192,57,43,0.82)"/><text x="221.6" y="297.5" text-anchor="end" font-size="10" fill="#1a2238">-90</text></svg></div>
+  <div class="bb-grid" style="margin-top:16px;">
+    <div class="bb-col bb-bull">
+      <h3>▲ 多方论据（强度分 0-100）</h3>
+      <ul class="tight">
+        <li><b>[80] 估值周期低点：</b>SOX远期PE约15x，为2023年以来AI周期最低；NVDA远期PE仅约15.4x、PEG ~0.19，距高点大幅压缩。</li>
+        <li><b>[75] 龙头业绩加速：</b>AMD Q3营收$133.8亿（+44.7%）超预期、净利+95.3%、数据中心收入近翻倍，Q4指引$163.6亿创新高；AVGO季度营收$295.9亿（+85.5%）、净利+216%。</li>
+        <li><b>[72] 云积压订单：</b>谷歌云+103%（积压$5,610亿）、AWS +39%创五年最快（积压约$5,780亿）、Azure +48%，云积压订单合计超1.1万亿美元。</li>
+        <li><b>[62] 选举后季节性：</b>1982年以来中期选举后6个月美股大盘平均+15%；1950年以来中期选举后一年标普500均上涨。</li>
+        <li><b>[60] 存储超级周期：</b>DDR4现货$81.90高位；三星Q3营业利润107.4万亿韩元创科技业纪录（HBM4放量）。</li>
+        <li><b>[55] 头部公司现金流分化：</b>微软FCF仍为正（$186亿）、云收入+30%，商业化兑现能力获资金确认，为板块内压舱石。</li>
+      </ul>
+    </div>
+    <div class="bb-col bb-bear">
+      <h3>▼ 空方论据（强度分 0-100）</h3>
+      <ul class="tight">
+        <li><b>[90] 杠杆纪录：</b>9月融资余额$1.480万亿，占GDP 4.5%创历史纪录（2000年峰值3.0%、2021年3.8%）；YoY +31%；占M2 6.3%为历史第三高。</li>
+        <li><b>[80] FCF集体转负：</b>亚马逊TTM FCF −$424亿、谷歌−$91亿、Meta −$21亿同季转负；标普全球预计六大超大规模厂商2026-27年FCF持续为负，2029年才有望修复。</li>
+        <li><b>[78] 数据中心监管落地：</b>民主党横扫参众两院（54-44，翻转7席）；得州反数据中心候选人当选州长、全美至少29个社区公投支持限制数据中心——"数据中心建不建"成为州长与公投说了算的问题，卖铲子的估值表需要重算。</li>
+        <li><b>[75] 集中度极值：</b>Top10占标普500市值40.0%（按公司），远超2000年泡沫峰值约27%；Mag7占33%+；NVDA单票~8.0%。</li>
+        <li><b>[72] 紧缩加码：</b>12月加息概率81.5%（CME）；10Y 4.888%仍处高位；选举后美联储独立性被重新定价，"会加息"反而更可信。</li>
+        <li><b>[85] 单日失血与信用信号：</b>算力链单日市值失血超$6,000亿（NVDA −$4,430亿主导）；CoreWeave 2031债约79.5美分，AI高收益利差先于股票走阔，与11/5暴跌相互印证。</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">强度分为本框架对各论据数据硬度与价格影响权重的主观量化（0-100），用于多空对比图绘制，不构成任何机构共识。</div>
+</div>
+
+<div class="card">
+  <h2>四、核心结论</h2>
+  <ul class="tight concl">
+    <li><b>1. SBI 报 53.0，环比 −1.7，警惕区中位偏下。</b>11/5 费半 −11% 暴跌（SOX经折算约9,134、较52周高点−37.7%、跌破200日线约−14%）使估值维骤降至11.8，是本期唯一实质驱动；其余结构性维度（杠杆79.6、拥挤度68.5、业绩58.3、外部65.5）因宏观/结构数据未刷新而维持高位，故总分仅微降。</li>
+    <li><b>2. 泡沫重心已从价格层转移至杠杆与结构层。</b>SOX 较7/1高点累计回撤约−38%，价格泡沫基本出清；但融资余额/GDP 4.5%仍创历史纪录、Top10集中度40%远超互联网泡沫峰值——本轮泡沫本质在杠杆与指数结构，而非单纯市盈率，这也是 SBI 在股价腰斩后仍停留在警惕区的原因。</li>
+    <li><b>3. 11/5 是板块性去风险，非个股事件。</b>NVDA −9.2%、AMD −17.3%、AVGO −10.4%、SMH −11.2% 同步重挫，算力链单日市值失血超$6,000亿（NVDA −$4,430亿主导）；与此同时 SOXL 杠杆 ETF 延续创纪录抄底，多空对赌极端化，资金流向维升至56.5。</li>
+    <li><b>4. 信用市场已先行定价。</b>CoreWeave 2031债约79.5美分、AI高收益利差走阔，与股价暴跌相互印证数据中心现金流重定价；在12月加息概率81.5%、10Y 4.888%的利率环境下，高杠杆 AI 基建链的强平连锁风险仍未解除。</li>
+    <li><b>5. 结构性矛盾未解，反弹缺乏利率配合。</b>龙头业绩（AMD/AVGO）仍强，但三大CSP自由现金流同季转负、Capex/OCF约120%；估值修复需等待利率回落或 FCF 转正，当前紧缩与监管逆风均未缓和。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>五、操作建议</h2>
+  <ul class="tight">
+    <li><b>总仓位基调（对应SBI 53.0 · 中性偏高）：</b>维持中性偏低仓位。估值已进入AI周期新低（SOX远期PE约15x、较200日线−14%），但不宜因单日暴跌转向抄底——杠杆与集中度仍在历史极值，反弹缺乏利率与信用配合。</li>
+    <li><b>监管敞口排查：</b>数据中心审批/电力仍是政策焦点，优先规避数据中心电力链（Vistra、戴尔）与光通信高 beta 标的（CREDO、迈威尔）的反弹，等待监管路径明朗。</li>
+    <li><b>不追空、控节奏：</b>估值周期低点+RSI接近超卖+中期选举后季节性（6个月平均+15%）构成技术性反弹条件；但11/5无差别减仓显示抛压未竭，宜分批而非一把抄入。</li>
+    <li><b>严控杠杆：</b>CoreWeave债价约79.5美分表明AI信用利差走阔，若12月加息落地，融资余额纪录+散户杠杆ETF（SOXL单周$38亿纪录）的强平连锁风险仍高；杠杆工具只适合日内交易者。</li>
+    <li><b>结构上优选现金流兑现者：</b>同板块内优先微软链/存储龙头回调后的机会；远期PE+PEG双低龙头（NVDA ~15x/0.19、AVGO ~0.42、TSM ~0.38）仍是压舱石；AMD业绩兑现后远期PE约41x仍偏高，等回调不追涨。</li>
+    <li><b>关键日程：</b>11/6 非农（今日）、11/10 CPI、11/17 NVDA财报（业绩兑现维关键验证）、11月中旬 FINRA 10月融资余额（验证10/30以来强平幅度）、12/8-9 FOMC（加息概率81.5%）。</li>
+    <li><b>再触发条件：</b>SBI上破65需满足其一——FINRA 10月融资余额再创新高、或SOX反弹收复200日线后融资端再度极端化、或数据中心监管出现联邦层面立法；跌破45（进入"降温"区间）需看到融资余额环比收缩+集中度回落+AI信用利差企稳。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>附录A · 数据来源与时效</h2>
+  <table>
+    <tr><th>数据项</th><th>读数</th><th>时效</th><th>来源</th></tr>
+    <tr><td>SOX收盘 / 200日线 / 盘中低点</td><td class="num">约9,134（−11.0%）/ 约10,790 / 盘中创52周新低</td><td>2026-11-05收盘（SMH折算）</td><td>东方财富实时行情API（push2his kline，SMH 447.73×~20.4x）</td></tr>
+    <tr><td>NVDA / AMD / AVGO / TSM</td><td class="num">181.60（−9.2%）/$4.38T；404.40（−17.3%）/$655B；291.53（−10.4%）/$1.39T；TSM 沿用$2.053T</td><td>2026-11-05收盘</td><td>东方财富实时行情API；TSM源返回空沿用11/04</td></tr>
+    <tr><td>SMH / SOXX</td><td class="num">SMH 447.73（−11.2%）；SOXX 11/05源异常（131.90为错误值，已剔除）</td><td>2026-11-05收盘</td><td>东方财富实时行情API</td></tr>
+    <tr><td>AMD / AVGO 季报</td><td class="num">AMD Q3营收$133.8亿（+44.7%）、净利+95.3%、Q4指引$163.6亿；AVGO季度营收$295.9亿（+85.5%）、净利+216%</td><td>2026-11-03/11-04披露（沿用）</td><td>富途、腾讯新闻、新浪财经</td></tr>
+    <tr><td>单日市值变化</td><td class="num">算力链单日市值失血超$6,000亿（NVDA −$4,430亿主导）；平台股相对占优</td><td>2026-11-05</td><td>东方财富行情×股本核算</td></tr>
+    <tr><td>标普Top10 / Mag7集中度</td><td class="num">40.0%（按公司）/ 33.2%</td><td>2026-10-21 / 10-29（沿用）</td><td>BeCoin（SPY持仓）、Opening Bell Daily</td></tr>
+    <tr><td>FINRA融资余额</td><td class="num">$1.480万亿，YoY +31%，/GDP 4.5%</td><td>2026年9月（10月数据预计11月中旬发布）</td><td>FINRA、TheTrading.tools（沿用）</td></tr>
+    <tr><td>SMH / SOXX / SOXL资金流</td><td class="num">近月合计+$65.5亿；SOXL单周+$38亿（纪录，抄底延续）</td><td>截至2026-10-30（沿用）</td><td>Private Wealth Daily、Seeking Alpha、FactSet</td></tr>
+    <tr><td>CSP Q3资本开支 / FCF</td><td class="num">四家合计$2,087亿（YoY +84.2%）；AMZN FCF −$424亿</td><td>2026-10-21至10-29财报（沿用）</td><td>中信建投、中国基金报、新华财经</td></tr>
+    <tr><td>美联储 / 美债 / 加息概率</td><td class="num">3.75-4.00%（10-28决议）；10Y 4.888%；12月加息概率81.5%</td><td>2026-11-05（沿用）</td><td>美联储官网、CME FedWatch、债市复盘</td></tr>
+    <tr><td>VIX</td><td class="num">约22（crash日估算，东财VIX源不可用）</td><td>2026-11-05（估算）</td><td>按11/5费半−11%跌幅反推（标注估算）</td></tr>
+  </table>
+  <div class="note">数据时效说明：美股价格、市值为2026年11月5日（周四）真实收盘，经东方财富实时行情API（push2his kline，DoH+直连IP绕过沙箱代理）获取；SOX指数本身未在该源提供，按SMH历史固定比值~20.4x折算并显式标注；FINRA融资余额、集中度、ETF资金流、hyperscaler capex、美联储利率与10Y为最近可验证口径（沿用11-05报告），WebSearch/WebFetch代理本时段不可达未能刷新。所有数据均来自公开来源，未作虚构。</div>
+</div>
+
+<div class="card">
+  <h2>附录B · 评分方法与锚点</h2>
+  <table>
+    <tr><th>子指标</th><th>本期读数</th><th>0分锚点</th><th>预警线45分</th><th>危险线70分</th><th>100分锚点</th><th>得分</th></tr>
+    <tr><td>SOX远期PE</td><td class="num">约15x</td><td>12x</td><td>20x</td><td>28x</td><td>36x</td><td class="num">17.0</td></tr>
+    <tr><td>龙头PEG均值（NVDA/AMD/AVGO/TSM）</td><td class="num">~0.41</td><td>0</td><td>1.0</td><td>1.5</td><td>2.5</td><td class="num">18.5</td></tr>
+    <tr><td>SOX偏离200日线</td><td class="num">−14.1%</td><td>−10%</td><td>0%（40分基准）</td><td>+10%（65分）</td><td>+30%</td><td class="num">0.0</td></tr>
+    <tr><td>标普Top10集中度</td><td class="num">40.0%</td><td>20%</td><td>30%</td><td>35%（60分）→40%（75分）</td><td>50%</td><td class="num">75.0</td></tr>
+    <tr><td>NVDA单票权重</td><td class="num">~8.0%</td><td>3%</td><td>6%</td><td>8%（75分）</td><td>10%</td><td class="num">75.0</td></tr>
+    <tr><td>半导体ETF资金动能</td><td class="num">近月+$65.5亿/YTD+$281亿（SOXL单周+$38亿）</td><td>净流出</td><td>中性流入</td><td>高位流入</td><td>极端涌入</td><td class="num">55.0</td></tr>
+    <tr><td>融资余额/GDP</td><td class="num">4.5%</td><td>1.5%</td><td>3.0%（50分基准）</td><td>3.8%（70分，2021峰值）</td><td>5.0%</td><td class="num">90.0</td></tr>
+    <tr><td>融资余额YoY增速</td><td class="num">+31%</td><td>0%</td><td>20%</td><td>30%（68分）→50%（90分）</td><td>80%</td><td class="num">69.1</td></tr>
+    <tr><td>龙头业绩增速兑现</td><td class="num">AMD +44.7%、AVGO +85.5%、云+39%~103%</td><td>负增长</td><td>个位数</td><td>增速放缓</td><td>失速</td><td class="num">20.0</td></tr>
+    <tr><td>FCF质量</td><td class="num">三大CSP同季转负</td><td>充裕为正</td><td>收窄</td><td>单家转负</td><td>全群转负且持续</td><td class="num">75.0</td></tr>
+    <tr><td>Capex/OCF</td><td class="num">约120%（GOOGL 121%）</td><td>&lt;50%</td><td>80%</td><td>100%</td><td>150%</td><td class="num">80.0</td></tr>
+    <tr><td>资金行为（机构vs散户）</td><td class="num">单日算力链失血超$6,000亿（NVDA −$4,430亿）；SOXL抄底</td><td>一致理性</td><td>轻度分化</td><td>明显分化</td><td>极端对赌</td><td class="num">65.0</td></tr>
+    <tr><td>期权市场信号</td><td class="num">VIX约22（crash日估算）</td><td>极度贪婪</td><td>中性</td><td>恐惧</td><td>极度恐惧</td><td class="num">48.0</td></tr>
+    <tr><td>美联储政策</td><td class="num">3.75-4.00%，12月加息预期81.5%</td><td>宽松</td><td>中性</td><td>重启加息</td><td>快速紧缩</td><td class="num">67.0</td></tr>
+    <tr><td>10Y美债收益率</td><td class="num">4.888%</td><td>3.0%</td><td>4.0%</td><td>4.5%（60分）→5.0%（75分）</td><td>6.0%</td><td class="num">71.6</td></tr>
+    <tr><td>地缘/贸易/监管风险</td><td class="num">数据中心监管落地；美伊谈判反复；中期选举后政策僵局</td><td>平静</td><td>可忽略</td><td>中等</td><td>重大冲击</td><td class="num">58.0</td></tr>
+  </table>
+  <div class="note">维度得分=子指标算术平均；SBI=Σ(维度分×权重)。验证：估值(17.0+18.5+0.0)/3=11.8；拥挤度(75.0+75.0+55.0)/3=68.5；杠杆(90.0+69.1)/2=79.6；业绩兑现(20.0+75.0+80.0)/3=58.3；资金流向(65.0+48.0)/2=56.5；外部环境(67.0+71.6+58.0)/3=65.5。加权总分=0.25×11.8+0.25×68.5+0.15×79.6+0.15×58.3+0.10×56.5+0.10×65.5=53.0。锚点基于1997年以来FINRA数据、2000/2021两轮泡沫峰值及本轮AI周期（2023-2026）实测区间设定。评分框架为Snail-Bird Investment自建，非任何机构标准。</div>
+</div>
+
+<div class="disc">
+  <b>免责声明：</b>本报告为 Snail-Bird Investment 针对网络公开内容的整合分享，基于公开信息研究与分析，所有数据均标注来源与时效，不构成任何保证性投资建议。SBI泡沫指数为自建量化观察框架，评分含主观设定成分。投资有风险，决策需独立判断。报告仅存于本地工作区，未上传网站。
+</div>
+
+</div>
+
+
+
+
+</body>
+</html>
