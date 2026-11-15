@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shell plc (SHEL) | Q3 2026 业绩更新 · 投资价值重估 | Snail-Bird Investment</title>
+<style>
+/* ── TOKENS ── */
+:root {
+  --shell-y: #FBCE07;   /* Shell yellow */
+  --shell-r: #DD1D21;   /* Shell red */
+  --navy:    #0C1E35;
+  --teal:    #007C89;
+  --green:   #1A6E3A;
+  --green-lt:#DCF0E4;
+  --red:     #C0392B;
+  --red-lt:  #FDECEA;
+  --amber:   #B87800;
+  --amber-lt:#FDF3DC;
+  --ink:     #0D1A26;
+  --ink-mid: #3A4F62;
+  --ink-dim: #6A7F8E;
+  --border:  #D0DBE4;
+  --bg:      #F2F5F8;
+  --surface: #FFFFFF;
+  --blue:    #1A5FA8;
+  --blue-lt: #EBF3FC;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  background:var(--bg);color:var(--ink);font-size:14px;line-height:1.72;
+}
+.mono{font-family:'SFMono-Regular','Consolas','Liberation Mono','Menlo',monospace}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:var(--navy);
+  display:flex;align-items:center;
+  padding:0 36px;height:46px;
+  box-shadow:0 2px 12px rgba(0,0,0,.25);
+  gap:0;
+}
+.nav-brand{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-right:auto;white-space:nowrap}
+nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:12px;padding:0 13px;
+  height:46px;display:flex;align-items:center;
+  border-bottom:2px solid transparent;transition:color .15s,border-color .15s;white-space:nowrap}
+nav a:hover{color:#fff;border-bottom-color:var(--shell-y)}
+
+/* ── HEADER ── */
+header{
+  background:linear-gradient(135deg, var(--navy) 0%, #1A3252 100%);
+  color:#fff;padding:38px 48px 32px;
+  position:relative;overflow:hidden;
+}
+header::before{
+  content:'';position:absolute;right:-60px;top:-80px;
+  width:380px;height:380px;
+  background:radial-gradient(circle,rgba(251,206,7,.10) 0%,transparent 65%);
+  pointer-events:none;
+}
+header::after{
+  content:'';position:absolute;left:0;bottom:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--shell-r) 0%,var(--shell-y) 100%);
+}
+.h-eyebrow{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--shell-y);margin-bottom:10px}
+.h-title{font-size:32px;font-weight:700;line-height:1.15;margin-bottom:6px}
+.h-sub{font-size:13.5px;color:rgba(255,255,255,.6);margin-bottom:22px}
+.h-chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:3px;
+  font-size:11px;font-weight:600;letter-spacing:.03em}
+.chip-beat  {background:rgba(27,110,58,.3); color:#7EDBA2;border:1px solid rgba(27,110,58,.5)}
+.chip-rev   {background:rgba(0,124,137,.25);color:#7CE4F0;border:1px solid rgba(0,124,137,.5)}
+.chip-div   {background:rgba(251,206,7,.2); color:#FDD078;border:1px solid rgba(251,206,7,.4)}
+.chip-ma    {background:rgba(185,76,39,.25);color:#FFA07A;border:1px solid rgba(185,76,39,.5)}
+
+/* ── KPI BAR ── */
+.kpi-bar{display:grid;grid-template-columns:repeat(6,1fr);background:var(--surface);
+  border-bottom:1px solid var(--border)}
+.kpi-cell{padding:18px 18px 15px;border-right:1px solid var(--border)}
+.kpi-cell:last-child{border-right:none}
+.kpi-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:4px}
+.kpi-val{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:21px;
+  font-weight:500;color:var(--ink);line-height:1.1}
+.kpi-meta{font-size:11px;margin-top:4px;color:var(--ink-dim)}
+.pos{color:var(--green);font-weight:600}
+.neg{color:var(--red);font-weight:600}
+.ntr{color:var(--ink-dim)}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1120px;margin:0 auto;padding:40px 32px;display:flex;flex-direction:column;gap:32px}
+
+/* ── SECTION ── */
+section{background:var(--surface);border:1px solid var(--border);border-radius:3px;overflow:hidden}
+.sec-head{padding:12px 24px;background:var(--bg);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px}
+.sec-tag{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:10px;
+  color:var(--ink-dim);background:var(--border);padding:1px 7px;border-radius:2px}
+.sec-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.sec-body{padding:24px}
+
+/* ── TABLE ── */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-dim);padding:8px 12px;border-bottom:2px solid var(--border);background:var(--bg)}
+td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--ink);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+.right{text-align:right}
+.center{text-align:center}
+.tag{display:inline-block;padding:1px 7px;border-radius:3px;font-size:10px;font-weight:700}
+.tag-beat{background:var(--green-lt);color:var(--green)}
+.tag-miss{background:var(--red-lt);color:var(--red)}
+.tag-caution{background:var(--amber-lt);color:var(--amber)}
+.tag-neu{background:var(--border);color:var(--ink-mid)}
+.tag-ma{background:#EDE9FD;color:#5B35C1}
+
+/* ── SEGMENT PANEL ── */
+.seg-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.seg-card{border:1px solid var(--border);border-radius:3px;padding:14px 16px;position:relative}
+.seg-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:0 0 3px 3px}
+.seg-ig::after   {background:var(--teal)}
+.seg-up::after   {background:var(--green)}
+.seg-mkt::after  {background:var(--amber)}
+.seg-cp::after   {background:var(--blue)}
+.seg-res::after  {background:#9B59B6}
+.seg-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:6px}
+.seg-earn{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:22px;font-weight:500;color:var(--ink)}
+.seg-yoy{font-size:11px;margin-top:4px}
+.seg-note{font-size:11px;color:var(--ink-dim);margin-top:6px;line-height:1.5}
+
+/* ── PORTFOLIO TIMELINE ── */
+.port-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.port-card{border:1px solid var(--border);border-radius:3px;padding:14px 16px}
+.port-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;margin-bottom:8px}
+.badge-buy{background:#EDE9FD;color:#5B35C1}
+.badge-sell{background:var(--amber-lt);color:var(--amber)}
+.badge-fid{background:var(--blue-lt);color:var(--blue)}
+.port-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.port-val{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:15px;font-weight:500;color:var(--teal);margin-bottom:5px}
+.port-desc{font-size:12px;color:var(--ink-mid);line-height:1.6}
+
+/* ── MGMT ── */
+.mgmt-row{padding:13px 0;border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:160px 1fr 90px;gap:14px;align-items:start}
+.mgmt-row:last-child{border-bottom:none}
+.mgmt-theme{font-size:11px;font-weight:700;color:var(--ink-mid);text-transform:uppercase;letter-spacing:.06em}
+.mgmt-text{font-size:13px;color:var(--ink);line-height:1.65}
+.mgmt-sig{font-size:11px;font-weight:600;padding:3px 8px;border-radius:3px;text-align:center}
+.sig-bull{background:var(--green-lt);color:var(--green)}
+.sig-bear{background:var(--red-lt);color:var(--red)}
+.sig-neu{background:var(--border);color:var(--ink-mid)}
+.sig-watch{background:var(--amber-lt);color:var(--amber)}
+
+/* ── PEER TABLE SPECIAL ── */
+.peer-highlight td{background:#EBF3FC;font-weight:600}
+.peer-col-best{color:var(--green);font-weight:700}
+.peer-col-worst{color:var(--red)}
+
+/* ── VALUATION ── */
+.val-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.val-box{border:1px solid var(--border);border-radius:3px;padding:16px 18px}
+.val-box h4{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:12px}
+.scenario-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px}
+.sc{border-radius:3px;padding:14px 16px;text-align:center}
+.sc.bear{background:var(--red-lt);border:1px solid #ECA5A0}
+.sc.base{background:var(--blue-lt);border:1px solid #A5C4E8}
+.sc.bull{background:var(--green-lt);border:1px solid #9DD0B5}
+.sc-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.sc.bear .sc-label{color:var(--red)}
+.sc.base .sc-label{color:var(--blue)}
+.sc.bull .sc-label{color:var(--green)}
+.sc-price{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:24px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.sc-prob{font-size:10px;color:var(--ink-dim);margin-bottom:6px}
+.sc-note{font-size:11px;color:var(--ink-mid);line-height:1.5}
+
+/* ── RISKS ── */
+.risk-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.risk-item:last-child{border-bottom:none}
+.risk-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:1px}
+.dot-h{background:var(--red-lt)}
+.dot-m{background:var(--amber-lt)}
+.dot-l{background:var(--green-lt)}
+.risk-body h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.risk-body p{font-size:12.5px;color:var(--ink-mid);line-height:1.65}
+
+/* ── RATING BANNER ── */
+.rating-banner{background:var(--navy);color:#fff;border-radius:3px;padding:22px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px}
+.rb-left .rb-eyebrow{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:6px}
+.rb-left .rb-rating{font-size:26px;font-weight:700}
+.rb-left .rb-sub{font-size:12px;color:rgba(255,255,255,.55);margin-top:4px}
+.rb-right{border-left:1px solid rgba(255,255,255,.18);padding-left:28px;text-align:right}
+.rb-right .rb-tp-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px}
+.rb-right .rb-tp{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:32px;font-weight:600}
+.rb-right .rb-prev{font-size:11px;color:rgba(255,255,255,.5);margin-top:3px}
+
+/* ── CALLOUT ── */
+.callout{border-radius:3px;padding:14px 18px;font-size:13px;line-height:1.7;margin:14px 0}
+.callout:last-child{margin-bottom:0}
+.callout.info{background:var(--blue-lt);border-left:3px solid var(--blue);color:var(--ink-mid)}
+.callout.warn{background:var(--amber-lt);border-left:3px solid var(--amber);color:var(--ink-mid)}
+.callout.pos {background:var(--green-lt);border-left:3px solid var(--green);color:var(--ink-mid)}
+.callout.neg {background:var(--red-lt);border-left:3px solid var(--red);color:var(--ink-mid)}
+
+/* ── PROSE ── */
+p{font-size:13.5px;color:var(--ink);line-height:1.78;margin-bottom:10px}
+p:last-child{margin-bottom:0}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,.4);font-size:11px;padding:24px 48px;line-height:1.9}
+footer strong{color:rgba(255,255,255,.65)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .kpi-bar{grid-template-columns:repeat(3,1fr)}
+  .seg-grid{grid-template-columns:repeat(2,1fr)}
+  .port-grid,.val-grid{grid-template-columns:1fr}
+  .mgmt-row{grid-template-columns:1fr}
+  .scenario-row{grid-template-columns:1fr}
+  header{padding:22px 20px 20px}
+  .wrap{padding:20px 14px}
+  .rating-banner{flex-direction:column}
+  .rb-right{border-left:none;border-top:1px solid rgba(255,255,255,.18);padding-left:0;padding-top:14px;text-align:left}
+}
+
+/* ── SUPPLEMENT: Company intro, history, FCF ── */
+
+/* ── TOKENS ── */
+:root {
+  --shell-y:#FBCE07; --shell-r:#DD1D21;
+  --navy:#0C1E35; --navy-mid:#1A3252;
+  --teal:#007C89; --teal-lt:#C6EBE8;
+  --green:#1A6E3A; --green-lt:#DCF0E4;
+  --red:#C0392B; --red-lt:#FDECEA;
+  --amber:#B87800; --amber-lt:#FDF3DC;
+  --blue:#1A5FA8; --blue-lt:#EBF3FC;
+  --ink:#0D1A26; --ink-mid:#3A4F62; --ink-dim:#6A7F8E;
+  --border:#D0DBE4; --bg:#F2F5F8; --surface:#FFFFFF;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',
+    'Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  background:var(--bg);color:var(--ink);font-size:14px;line-height:1.72;
+}
+.mono{font-family:'SFMono-Regular','Consolas','Liberation Mono','Menlo',monospace}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;background:var(--navy);
+  display:flex;align-items:center;padding:0 36px;height:46px;
+  box-shadow:0 2px 12px rgba(0,0,0,.25);gap:0}
+.nav-brand{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-right:auto;white-space:nowrap}
+nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:12px;padding:0 13px;
+  height:46px;display:flex;align-items:center;border-bottom:2px solid transparent;
+  transition:color .15s,border-color .15s;white-space:nowrap}
+nav a:hover{color:#fff;border-bottom-color:var(--shell-y)}
+
+/* ── HEADER ── */
+header{background:linear-gradient(135deg,var(--navy) 0%,#1A3252 100%);
+  color:#fff;padding:36px 48px 30px;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;right:-60px;top:-80px;width:380px;height:380px;
+  background:radial-gradient(circle,rgba(251,206,7,.10) 0%,transparent 65%);pointer-events:none}
+header::after{content:'';position:absolute;left:0;bottom:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--shell-r) 0%,var(--shell-y) 100%)}
+.h-eyebrow{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--shell-y);margin-bottom:10px}
+.h-title{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px}
+.h-sub{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:0}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1120px;margin:0 auto;padding:40px 32px;display:flex;flex-direction:column;gap:32px}
+
+/* ── SECTION ── */
+section{background:var(--surface);border:1px solid var(--border);border-radius:3px;overflow:hidden}
+.sec-head{padding:12px 24px;background:var(--bg);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px}
+.sec-tag{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:10px;
+  color:var(--ink-dim);background:var(--border);padding:1px 7px;border-radius:2px}
+.sec-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.sec-body{padding:24px}
+
+/* ── TABLES ── */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-dim);padding:8px 12px;border-bottom:2px solid var(--border);background:var(--bg)}
+td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--ink);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+.right{text-align:right} .center{text-align:center}
+.tag{display:inline-block;padding:1px 7px;border-radius:3px;font-size:10px;font-weight:700}
+.tag-pos{background:var(--green-lt);color:var(--green)}
+.tag-neg{background:var(--red-lt);color:var(--red)}
+.tag-neu{background:var(--border);color:var(--ink-mid)}
+.tag-warn{background:var(--amber-lt);color:var(--amber)}
+.pos{color:var(--green);font-weight:600} .neg{color:var(--red);font-weight:600}
+.dim{color:var(--ink-dim)}
+
+/* ── COMPANY OVERVIEW CARDS ── */
+.co-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.co-card{border:1px solid var(--border);border-radius:3px;padding:14px 16px}
+.co-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:5px}
+.co-val{font-size:15px;font-weight:600;color:var(--ink);line-height:1.3}
+.co-sub{font-size:11px;color:var(--ink-dim);margin-top:3px}
+
+/* ── HISTORY TIMELINE ── */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:8px;top:6px;bottom:6px;
+  width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:20px}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-28px;top:3px;width:16px;height:16px;border-radius:50%;
+  background:var(--navy);border:2px solid var(--border);display:flex;align-items:center;
+  justify-content:center}
+.tl-dot.key{background:var(--shell-y);border-color:var(--shell-y)}
+.tl-year{font-size:11px;font-weight:700;color:var(--teal);margin-bottom:3px;letter-spacing:.04em}
+.tl-text{font-size:13px;color:var(--ink-mid);line-height:1.65}
+
+/* ── SEGMENT OVERVIEW ── */
+.seg-overview{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.seg-ov-card{border:1px solid var(--border);border-radius:3px;padding:16px 18px;
+  border-left:4px solid var(--border)}
+.seg-ov-card.ig   {border-left-color:var(--teal)}
+.seg-ov-card.up   {border-left-color:var(--green)}
+.seg-ov-card.mkt  {border-left-color:var(--amber)}
+.seg-ov-card.cp   {border-left-color:var(--blue)}
+.seg-ov-card.res  {border-left-color:#9B59B6}
+.seg-ov-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.seg-ov-sub{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:8px}
+.seg-ov-body{font-size:12.5px;color:var(--ink-mid);line-height:1.65}
+
+/* ── RETURN POLICY BOX ── */
+.policy-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px}
+.policy-card{border:1px solid var(--border);border-radius:3px;padding:16px 18px;text-align:center}
+.policy-icon{font-size:24px;margin-bottom:8px}
+.policy-title{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-mid);margin-bottom:6px}
+.policy-val{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:20px;
+  font-weight:600;color:var(--ink);margin-bottom:4px}
+.policy-note{font-size:11px;color:var(--ink-dim);line-height:1.6}
+
+/* ── BUYBACK TRACKER ── */
+.buyback-row{display:flex;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);gap:12px}
+.buyback-row:last-child{border-bottom:none}
+.bb-q{font-size:12px;font-weight:700;color:var(--ink);width:80px;flex-shrink:0}
+.bb-bar-bg{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.bb-bar-fill{height:100%;border-radius:4px;background:var(--navy)}
+.bb-val{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:12px;
+  color:var(--ink);width:60px;text-align:right;flex-shrink:0}
+.bb-note{font-size:11px;color:var(--ink-dim);width:140px;flex-shrink:0}
+
+/* ── FCF CHART (CSS BAR CHART) ── */
+.fcf-chart{margin:16px 0}
+.chart-title{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:12px}
+.chart-grid{display:grid;grid-template-columns:60px 1fr 70px 90px;gap:8px;align-items:center}
+.chart-label{font-size:12px;font-weight:600;color:var(--ink-mid)}
+.chart-bar-bg{height:22px;background:var(--bg);border-radius:3px;border:1px solid var(--border);
+  overflow:hidden;position:relative}
+.chart-bar-fill{height:100%;border-radius:2px;transition:width .3s}
+.bar-cffo  {background:linear-gradient(90deg,#1A5FA8,#3A8FD8)}
+.bar-capex {background:linear-gradient(90deg,#B87800,#D4A020)}
+.bar-fcf   {background:linear-gradient(90deg,#1A6E3A,#2A9E5A)}
+.bar-wc-neg{background:linear-gradient(90deg,#C0392B,#E05540)}
+.bar-wc-pos{background:linear-gradient(90deg,#007C89,#20ACB9)}
+.chart-val{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:12px;
+  color:var(--ink);text-align:right}
+.chart-note{font-size:11px;color:var(--ink-dim)}
+.chart-divider{grid-column:1/-1;height:1px;background:var(--border);margin:4px 0}
+.chart-legend{display:flex;gap:16px;margin-bottom:12px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-mid)}
+.legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+
+/* ── FCF DECOMPOSITION ── */
+.fcf-decomp{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px}
+.decomp-card{border:1px solid var(--border);border-radius:3px;padding:14px 16px}
+.decomp-title{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:10px}
+.decomp-val{font-family:'SFMono-Regular','Consolas','Menlo',monospace;font-size:22px;
+  font-weight:500;color:var(--ink);margin-bottom:4px}
+.decomp-sub{font-size:11.5px;color:var(--ink-dim);line-height:1.6}
+
+/* ── CALLOUT ── */
+.callout{border-radius:3px;padding:14px 18px;font-size:13px;line-height:1.7;margin:14px 0}
+.callout:last-child{margin-bottom:0}
+.callout.info {background:var(--blue-lt);border-left:3px solid var(--blue);color:var(--ink-mid)}
+.callout.warn {background:var(--amber-lt);border-left:3px solid var(--amber);color:var(--ink-mid)}
+.callout.pos  {background:var(--green-lt);border-left:3px solid var(--green);color:var(--ink-mid)}
+.callout.neg  {background:var(--red-lt);border-left:3px solid var(--red);color:var(--ink-mid)}
+
+/* ── PROSE ── */
+p{font-size:13.5px;color:var(--ink);line-height:1.78;margin-bottom:10px}
+p:last-child{margin-bottom:0}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,.4);font-size:11px;
+  padding:24px 48px;line-height:1.9}
+footer strong{color:rgba(255,255,255,.65)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .co-grid{grid-template-columns:repeat(2,1fr)}
+  .seg-overview,.policy-grid,.fcf-decomp{grid-template-columns:1fr}
+  header{padding:22px 20px 18px}
+  .wrap{padding:20px 14px}
+  .chart-grid{grid-template-columns:50px 1fr 60px}
+  .chart-note{display:none}
+}
+
+
+/* ── 更新报告扩展样式 ── */
+.sec-head h2{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:0}
+h3{font-size:15px;font-weight:700;color:var(--navy);margin:26px 0 10px;padding-left:10px;border-left:3px solid var(--shell-y)}
+h3:first-of-type{margin-top:4px}
+.sec-body p{margin:10px 0;font-size:13.5px;line-height:1.85;color:var(--ink)}
+.sec-body p strong{color:var(--navy)}
+.tbl-wrap{overflow-x:auto;margin:12px 0 6px}
+.tbl-wrap table{min-width:100%;font-size:12.5px;table-layout:auto}
+.tbl-wrap th,.tbl-wrap td{padding:7px 9px;white-space:normal;overflow-wrap:anywhere;vertical-align:top}
+.tbl-wrap td.num{white-space:nowrap}
+.tbl-note{font-size:11px;color:var(--ink-dim);line-height:1.7;margin:6px 0 14px}
+.tbl-note b{color:var(--ink-mid)}
+.tag{display:inline-block;padding:1px 7px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.02em;white-space:nowrap}
+.t-fact{background:#E7F1F3;color:#007C89}
+.t-guide{background:#FDF3DC;color:#B87800}
+.t-call{background:#EDE7F6;color:#6B46A8}
+.t-model{background:#EBF3FC;color:#1A5FA8}
+.t-scen{background:#FDECEA;color:#C0392B}
+.t-third{background:#EEF1F4;color:#4A5F70}
+.t-risk{background:#FBE9E7;color:#A93226}
+.t-cons{background:#E8F4EA;color:#1A6E3A}
+.figure{margin:18px 0 8px;border:1px solid var(--border);border-radius:3px;padding:12px;background:#fff}
+.figure svg{width:100%}
+.figcap{font-size:11px;color:var(--ink-dim);line-height:1.7;margin-top:8px}
+.bullet{margin:10px 0 10px 18px;font-size:13.5px;line-height:1.85}
+.bullet li{margin:5px 0}
+.kpi-bar{grid-template-columns:repeat(6,1fr)}
+.kpi-cell{padding:14px 16px}
+.kpi-val{font-size:20px}
+.sec-body ul{margin:10px 0 10px 20px}
+.mini{font-size:11.5px;color:var(--ink-dim)}
+.hl-row{background:#F7FAFC;font-weight:700}
+.tagline{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 12px}
+footer{font-size:11px}
+@media(max-width:900px){.kpi-bar{grid-template-columns:repeat(2,1fr)}}
+</style></head><body>
+<nav><span class="nav-brand">Snail-Bird Investment · 能源研究部</span>
+<a href="#s1">摘要</a>
+<a href="#s2">公司</a>
+<a href="#s3">财务</a>
+<a href="#s4">组合</a>
+<a href="#s5">指引</a>
+<a href="#s6">股东回报</a>
+<a href="#s7">估值</a>
+<a href="#s8">同业</a>
+<a href="#s9">风险</a>
+<a href="#s10">口径</a>
+</nav>
+<header>
+<div class="h-eyebrow">业绩更新报告 · Q3 2026 财报 · 书面指引 · 电话会纪要 · 估值重算 · 数据截点 2026-11-13</div>
+<div class="h-title">Shell plc &nbsp;<span style="font-weight:300;opacity:.65">NYSE / LSE: SHEL</span></div>
+<div class="h-sub">首次覆盖框架延续 · 综合能源巨头 · Q3 2026 财务与现金流深度分析 · 评级：持有（维持）</div>
+<div class="h-chips">
+<span class="chip chip-beat">调整后收益 $10.814B · 同比 +99.1%</span>
+<span class="chip chip-div">CFFO $21.043B · FCF $16.322B</span>
+<span class="chip chip-ma">ARC 交割 + LNG Canada Phase 2 FID</span>
+<span class="chip chip-rev">净债务 $39.733B · gearing 16.6%</span>
+</div></header>
+<div class="kpi-bar">
+<div class="kpi-cell"><div class="kpi-label">调整后收益</div><div class="kpi-val mono">$10.81B</div><div class="kpi-meta">+99.1% YoY · +9.9% QoQ</div></div>
+<div class="kpi-cell"><div class="kpi-label">调整后 EBITDA</div><div class="kpi-val mono">$22.74B</div><div class="kpi-meta">+53.9% YoY · +9.8% QoQ</div></div>
+<div class="kpi-cell"><div class="kpi-label">经营现金流 CFFO</div><div class="kpi-val mono">$21.04B</div><div class="kpi-meta">+72.4% YoY · −1.8% QoQ</div></div>
+<div class="kpi-cell"><div class="kpi-label">自由现金流 FCF</div><div class="kpi-val mono">$16.32B</div><div class="kpi-meta">+64.0% YoY · −6.9% QoQ</div></div>
+<div class="kpi-cell"><div class="kpi-label">调整后 EPS / ADS</div><div class="kpi-val mono">$3.86</div><div class="kpi-meta">+107.5% YoY · 官方 ADS 口径</div></div>
+<div class="kpi-cell"><div class="kpi-label">净债务 / 杠杆率</div><div class="kpi-val mono">$39.73B</div><div class="kpi-meta">gearing 16.6% · 剔除租赁 2.7%</div></div>
+</div>
+<div class="wrap">
+<section id="s1"><div class="sec-head"><span class="sec-tag">01</span><h2>投资摘要</h2></div><div class="sec-body">
+<div class="rating-banner"><div class="rb-left"><div class="rb-eyebrow">Snail-Bird Investment · 能源研究部 · 业绩更新评级</div><div class="rb-rating">持有（维持）</div><div class="rb-sub">12 个月目标价 $97，现价 $99.08，价格回报 −2.1%，加股息 $3.19 后总回报 +1.1%</div></div><div class="rb-right"><div class="rb-tp-label">目标价（12 个月，ADS）</div><div class="rb-tp mono">$97</div><div class="rb-prev">前次 $94 · 三情景加权 $97.36 · 观察买入区 $86–90</div></div></div>
+<h3>1.1 结论要点</h3>
+<p><span class="tag t-fact">公司披露</span>Q3 2026 调整后收益 <strong>$10.814B</strong>、调整后 EBITDA <strong>$22.736B</strong>、CFFO <strong>$21.043B</strong>、公司口径 FCF <strong>$16.322B</strong>，四项均为 2021 年以来单季次高或最高；调整后每股收益按每 ADS 计 <strong>$3.86</strong>，同比 $1.86 增长 107.5%。同期 Brent 均价 $97/桶、指示炼油利润率 $41.57/桶，构成 2022 年以来最有利的价格组合。</p>
+<p><span class="tag t-guide">书面指引</span>ARC Resources 于 9 月 2 日完成交割，LNG Canada Phase 2 于 9 月作出最终投资决定，FY2026 现金 Capex 指引由 $24–26B 下调至 <strong>$23–25B</strong>（含 ARC 约 $4B），2027–2028 年维持 $20–22B/年；Q4 综合天然气产量指引 1,080–1,180 kboe/d，首次纳入 ARC 完整季度贡献。$5.0B 新回购计划预计在 Q4 业绩公布前完成。</p>
+<p><span class="tag t-model">模型输出</span>四法估值基准点加权 <strong>$98.47</strong>，三情景概率加权目标价<strong>$97.36</strong>，展示取 <strong>$97</strong>。现价 $99.08 已高于前次目标价 $94，价格回报 −2.1%，加上未来 12 个月股息 $3.19/ADS，总回报 +1.1%。按 总回报 ≥15% 为买入；0%–15% 为持有；<0% 为减持，落在「持有」区间。</p>
+<p><span class="tag t-risk">风险判断</span>首次覆盖报告写于 2026 年 8 月，现价约 $90、目标价 $94；Q3 业绩兑现并超出当时的基准情景，但股价同期上行约 10%，把结构性改善一并计入价格。ARC 与 Phase 2 带来的每股现金流增量使基准情景由 $96 上修至 $97.65，幅度小于股价涨幅，安全边际因此收窄。</p>
+<h3>1.2 与前次报告的对照</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>项目</th><th>首次覆盖（2026-08-11）</th><th>本次更新（数据截点 2026-11-13）</th><th>变动来源</th></tr></thead><tbody>
+<tr><td>现价（每 ADS）</td><td class="num">~$90</td><td class="num">$99.08</td><td>2026-11-13 美股收盘，第三方行情</td></tr>
+<tr><td>评级</td><td>持有</td><td>持有（维持）</td><td>总回报 +1.1%，未达买入阈值</td></tr>
+<tr class="hl-row"><td>12 个月目标价</td><td class="num">$94</td><td class="num">$97</td><td>基准情景重算 + 股本缩减</td></tr>
+<tr class="hl-row"><td>基准情景价</td><td class="num">$96</td><td class="num">$97.65</td><td>四法框架替换原先的定性情景</td></tr>
+<tr><td>Q2 / Q3 调整后收益</td><td class="num">$9.836B</td><td class="num">$10.814B</td><td>Q3 官方财报</td></tr>
+<tr><td>FY2026 现金 Capex 指引</td><td class="num">$24–26B</td><td class="num">$23–25B</td><td>Q3 书面指引下调约 $1B（节奏为主）</td></tr>
+<tr><td>ARC 状态</td><td>宣布收购，EV 约 $16.4B</td><td>9 月 2 日交割，股权对价 $14.0B</td><td>QRA Note 8 与组合章节</td></tr>
+<tr><td class="num">LNG Canada Phase 2</td><td>等待 FID</td><td>9 月已 FID，权益新增近 6 mtpa</td><td>公司公告</td></tr>
+<tr><td>净债务 / gearing</td><td class="num">$41.8B / 18.7%</td><td class="num">$39.733B / 16.6%</td><td>Q3 去杠杆 $2.021B</td></tr>
+<tr class="hl-row"><td>估值方法</td><td>定性情景 + 倍数判断，无财务桥接</td><td>四法 + DCF 网格 + 三情景，全部列示输入</td><td>本次建立可复核桥接</td></tr>
+<tr><td>ADS 口径</td><td>标注「需核验」</td><td>Databook 确认 1 ADS = 2 普通股，$3.86/ADS</td><td>官方 EARNINGS AND DIVIDEND PER ADS 表</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>前次报告自述「三个情景价格均无可审计的财务模型桥接」；本次以正常化盈利、正常化 EBITDA、正常化有机 FCF 三套输入分别落到 P/E、EV/EBITDA、DCF，并把 WACC、永续增长、净债务桥、股本口径全部写入 07 章。</div>
+<h3>1.3 定价分歧所在</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>市场容易按常态外推的项目</th><th>一手数据</th><th>本次处理</th></tr></thead><tbody>
+<tr><td>Q3 的 $42/桶炼油利润率</td><td>IRM 由 Q2 $24.27 升至 Q3 $41.57；2025 全年均值 $10.14</td><td>正常化 IRM 取 $12–15，基准情景正常化 EBITDA $58.0B</td></tr>
+<tr><td>$3.4B 衍生品净流入</td><td>新闻稿与 QRA 列为 CFFO 驱动；CFO 称日常风险管理、会有进出波动</td><td>不计入正常化 FCF 基准</td></tr>
+<tr><td>$2.650B 处置收入</td><td>Q3 处置收入主要来自 Jiffy Lube 与 Na Kika；Sprng、Tri Star 尚未交割</td><td>正常化 FCF 使用剔除处置收入的有机口径</td></tr>
+<tr><td>$5.0B 回购可年化</td><td>40–50% 为跨周期目标；Q3 实付分配占 CFFO 25.4%，9M26 为 32.5%</td><td>按跨周期 39.8%（两个 9M 合计）校准，不把补进度回购当未来指引</td></tr>
+<tr><td>含租赁净债务 $39.733B 全部是经济负债</td><td>其中 $34.147B 为租赁负债，9M26 有 $7.684B 是按即期运价重估的非现金增加</td><td>EV 桥以全额净债务为基准，另列剔除租赁口径</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-model">模型输出</span>右侧处理均为模型选择，不是公司指引。</div>
+</div></section>
+<section id="s2"><div class="sec-head"><span class="sec-tag">02</span><h2>公司与业务背景（首次覆盖框架延续）</h2></div><div class="sec-body">
+<h3>2.1 公司档案</h3>
+<div class="co-grid">
+<div class="co-card"><div class="co-label">成立时间</div><div class="co-val">1897 年</div><div class="co-sub">Shell Transport & Trading；1907 年与荷兰皇家石油合并</div></div>
+<div class="co-card"><div class="co-label">注册地 / 总部</div><div class="co-val">英国伦敦</div><div class="co-sub">2022 年 1 月完成迁址与单一股权结构统一</div></div>
+<div class="co-card"><div class="co-label">上市代码</div><div class="co-val">NYSE / LSE: SHEL</div><div class="co-sub">1 ADS = 2 普通股；伦敦主板同步上市</div></div>
+<div class="co-card"><div class="co-label">员工规模</div><div class="co-val">约 82,000 人</div><div class="co-sub">70 多个国家运营；2022 年约 93,000 人</div></div>
+<div class="co-card"><div class="co-label">当前市值</div><div class="co-val">$280.2B</div><div class="co-sub">2026-11-13；ADS 股本 2.8277B</div></div>
+<div class="co-card"><div class="co-label">2025 年营收</div><div class="co-val">约 $264B</div><div class="co-sub">《财富》全球 500 强常年前 15 名</div></div>
+<div class="co-card"><div class="co-label">Q3 2026 油气产量</div><div class="co-val">2,574 kboe/d</div><div class="co-sub">同比 −8.8%，中东资产中断抵消 ARC 增量</div></div>
+<div class="co-card"><div class="co-label">2025 年 LNG 销量</div><div class="co-val">约 67 MT</div><div class="co-sub">全球最大 LNG 贸易商之一</div></div>
+</div>
+<p><span class="tag t-fact">公司披露</span>Shell 的业务横跨油气勘探生产、LNG 液化与贸易、炼油化工、能源零售、润滑油与低碳方案。综合商业模式把上游、中游、贸易与下游放在同一张资产负债表上：高油价时上游与 LNG 长约受益，下游原料成本上升；油价回落时下游炼化利润改善。Q3 2026 是这一对冲的极端样本——卡塔尔资产仍受霍尔木兹制约，同期指示炼油利润率升至 $41.57/桶，化工与产品分部调整后收益由 Q3 2025 的 $550M 升至 $3,855M。</p>
+<p><span class="tag t-fact">公司披露</span>与 ExxonMobil 的上游资本纪律、Chevron 的核心区块策略相比，Shell 的差异化在 LNG 贸易与优化：公司自有船队与长约组合让第三方 LNG 的跨区调度成为可重复收益来源。Databook Guidance 显示 2025 年 LNG 销售量中现货合约占 30%–40%、长约占 60%–70%，长约价格以 JCC-3 为代理、存在最长约 6 个月的价格滞后。</p>
+<h3>2.2 历史沿革要点</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>时间</th><th>事件</th><th>对当期估值的影响</th></tr></thead><tbody>
+<tr><td class="num">1833–1907</td><td>贝壳贸易起家，1892 年 Murex 号运煤油经苏伊士运河赴亚洲；1897 年成立 Shell Transport & Trading，1907 年与荷兰皇家石油按 40:60 合并</td><td>贸易基因与全球航运能力的起点</td></tr>
+<tr><td class="num">1920s–1970s</td><td>中东、委内瑞拉、尼日利亚权益扩张，成为「七姐妹」之一；两次石油危机后降低对单一 OPEC 区域依赖</td><td>当前中东暴露的历史来源</td></tr>
+<tr><td class="num">1990s–2000s</td><td>率先商业化 LNG，建设卡塔尔 Pearl GTL；2004 年储量虚报引发治理重组</td><td>LNG 与 GTL 资产基础；治理风险先例</td></tr>
+<tr><td class="num">2015–2016</td><td>以约 $70B 收购 BG Group，随后遭遇油价暴跌，裁员约 1.2 万人并削减资本开支</td><td>高油价期并购的周期教训</td></tr>
+<tr><td class="num">2020</td><td>疫情中 74 年来首次削减股息 66%（每普通股 $0.47 → $0.16）</td><td>渐进股息政策的历史约束</td></tr>
+<tr><td class="num">2021–2022</td><td>荷兰法院 2030 年减排判决；迁址伦敦、取消 A/B 双重股权、更名 Shell plc</td><td>转型与诉讼风险的制度背景</td></tr>
+<tr><td class="num">2023–2025</td><td>Wael Sawan 任 CEO，推进组合高优化与 $3.1B 成本削减（提前三年达标），追加 $5–7B 目标；LNG Canada Phase 1 投产</td><td>当前资本纪律与成本路径</td></tr>
+<tr><td class="num">2026</td><td>ARC Resources 交割、LNG Canada Phase 2 FID、Tri Star 与多项剥离同步推进</td><td>本次更新的结构性变量</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>沿用首次覆盖报告 A2 章的历史主线，仅保留与当期现金流和估值相关的节点。</div>
+<h3>2.3 五大板块与内部对冲</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>报告分部</th><th>职能</th><th>Q3 2026 调整后收益</th><th>占集团比重</th><th>Q3 关键驱动</th></tr></thead><tbody>
+<tr><td>综合天然气 Integrated Gas</td><td>天然气开采、LNG 液化与销售、GTL、贸易优化</td><td class="num">$3,037M</td><td class="num">28.1%</td><td>气价与 LNG 价格上行、ARC 并表 1 个月</td></tr>
+<tr><td>上游 Upstream</td><td>原油与天然气勘探生产</td><td class="num">$3,189M</td><td class="num">29.5%</td><td>墨西哥湾 8 月产量创 20 余年新高，但实现油价由 $89 降至 $84</td></tr>
+<tr><td>营销 Marketing</td><td>零售加油网络、润滑油、行业与脱碳客户</td><td class="num">$1,164M</td><td class="num">10.8%</td><td>Mobility 单位毛利走弱、润滑油销量下降</td></tr>
+<tr class="hl-row"><td>化工与产品 C&P</td><td>炼油、油品贸易、化工制造</td><td class="num">$3,855M</td><td class="num">35.6%</td><td>IRM $41.57/桶、炼厂开工率 96%，剔除 Rheinland 后高于 100%</td></tr>
+<tr><td>可再生能源与方案 R&ES</td><td>电力销售、管道气终端、可再生能源装机</td><td class="num">$289M</td><td class="num">2.7%</td><td>欧美交易与优化贡献改善</td></tr>
+<tr><td>公司本部与 NCI</td><td>总部、财资、自保险、创新组合；减非控股权益</td><td class="num">−$705M / −$14M</td><td>净费用</td><td>Q4 指引净费用 $600–800M</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>分部调整后收益来自 QRA PERFORMANCE BY SEGMENT；集团合计 $10,814M。Q3 2025 六个分部合计 $5,522M 与集团 $5,432M 相差 $90M，来自非控股权益与四舍五入，均按披露值列示。</div>
+</div></section>
+<section id="s3"><div class="sec-head"><span class="sec-tag">03</span><h2>财务与业务分析</h2></div><div class="sec-body">
+<h3>3.1 盈利质量：报告净利、调整后收益、调整后 EBITDA 与经营现金流</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>口径（US$M）</th><th>Q3 2026</th><th>Q2 2026</th><th>Q3 2025</th><th>定义与差异来源</th></tr></thead><tbody>
+<tr><td>归属股东净利润（IFRS）</td><td class="num">12,057</td><td class="num">10,821</td><td class="num">5,322</td><td>含识别项与当期成本调整</td></tr>
+<tr><td>识别项净额</td><td>+800（净收益）</td><td>+400（净收益）</td><td>−81（净损失）</td><td>含衍生品公允价值、处置损益与减值；Marketing 净减值 $1,904M 被 IG 的 $1,290M 减值转回部分抵消</td></tr>
+<tr><td>当期成本调整 CCS</td><td class="num">+400</td><td class="num">+586</td><td class="num">+29</td><td>存货计价由历史成本调整为当期成本</td></tr>
+<tr class="hl-row"><td>调整后收益</td><td class="num">10,814</td><td class="num">9,836</td><td class="num">5,432</td><td>公司 APM 口径，剔除上述两项</td></tr>
+<tr class="hl-row"><td>调整后 EBITDA</td><td class="num">22,736</td><td class="num">20,710</td><td class="num">14,773</td><td>调整后收益加回 DD&A、井注销、利息、税</td></tr>
+<tr class="hl-row"><td>经营现金流 CFFO</td><td class="num">21,043</td><td class="num">21,432</td><td class="num">12,207</td><td>含衍生品净流入 $3.4B、税付 $3.217B、排放证书时点 $2.2B</td></tr>
+<tr><td>调整后每 ADS 收益</td><td class="num">$3.86</td><td class="num">$3.52</td><td class="num">$1.86</td><td>Databook EARNINGS AND DIVIDEND PER ADS，1 ADS = 2 普通股</td></tr>
+<tr><td class="num">ROACE</td><td class="num">14.4%</td><td class="num">12.4%</td><td class="num">9.4%</td><td>QRA 摘要，调整后收益加 NCI 口径的滚动资本回报率</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>报告净利高于调整后收益，来自 Q3 识别项净收益 $0.8B；把 $1.9B 的 Marketing 减值单独当作集团损失会重复计算，IG 分部同期有 $1,290M 减值转回。</div>
+<div class="figure"><svg viewBox="0 0 680 226" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Q3 2026 四个盈利与现金口径" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="226" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">Q3 2026 四个盈利与现金口径</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：十亿美元｜四个口径分母一致，均为集团合并</text><line x1="176.0" y1="62" x2="176.0" y2="174" stroke="#E3E9F2" stroke-width="1"/><text x="176.0" y="190.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$0B</text><line x1="287.0" y1="62" x2="287.0" y2="174" stroke="#E3E9F2" stroke-width="1"/><text x="287.0" y="190.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$6B</text><line x1="398.0" y1="62" x2="398.0" y2="174" stroke="#E3E9F2" stroke-width="1"/><text x="398.0" y="190.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$12B</text><line x1="509.0" y1="62" x2="509.0" y2="174" stroke="#E3E9F2" stroke-width="1"/><text x="509.0" y="190.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$19B</text><line x1="620.0" y1="62" x2="620.0" y2="174" stroke="#E3E9F2" stroke-width="1"/><text x="620.0" y="190.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$25B</text><text x="166" y="75" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">报告净利</text><rect x="176" y="62" width="214.1" height="17" fill="#0C1E35" rx="2"/><text x="397.1" y="75" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">$12.06B</text><text x="166" y="105" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">调整后收益</text><rect x="176" y="92" width="192.1" height="17" fill="#007C89" rx="2"/><text x="375.1" y="105" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">$10.81B</text><text x="166" y="135" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">调整后 EBITDA</text><rect x="176" y="122" width="403.8" height="17" fill="#C08A1E" rx="2"/><text x="586.8" y="135" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">$22.74B</text><text x="166" y="165" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">经营现金流 CFFO</text><rect x="176" y="152" width="373.7" height="17" fill="#4A8FA0" rx="2"/><text x="556.7" y="165" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">$21.04B</text><text x="0" y="220" font-size="10" fill="#5B6B7A">调整后 EBITDA 与 CFFO 含不同现金时点项目，不作相互替代</text></svg><div class="figcap">图 1 · Q3 2026 四个盈利与现金口径（公司披露）</div></div>
+<h3>3.2 连续八季度营收与盈利趋势</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>季度</th><th>调整后收益<br>（US$M）</th><th>调整后 EBITDA<br>（US$M）</th><th>调整后 EPS<br>/ADS</th><th>经营费用<br>（US$M）</th><th>基础经营费用<br>（US$M）</th><th>IRM<br>（$/bbl）</th><th>油气产量<br>（kboe/d）</th></tr></thead><tbody>
+<tr><td class="num">4Q24</td><td class="num">3,661</td><td class="num">14,281</td><td class="num">$1.20</td><td class="num">9,401</td><td class="num">9,138</td><td class="num">$5.54</td><td class="num">2,816</td></tr>
+<tr><td class="num">1Q25</td><td class="num">5,577</td><td class="num">15,250</td><td class="num">$1.84</td><td class="num">8,575</td><td class="num">8,453</td><td class="num">$6.21</td><td class="num">2,838</td></tr>
+<tr><td class="num">2Q25</td><td class="num">4,264</td><td class="num">13,313</td><td class="num">$1.44</td><td class="num">8,265</td><td class="num">8,145</td><td class="num">$8.86</td><td class="num">2,682</td></tr>
+<tr><td class="num">3Q25</td><td class="num">5,432</td><td class="num">14,773</td><td class="num">$1.86</td><td class="num">9,275</td><td class="num">8,998</td><td class="num">$11.58</td><td class="num">2,821</td></tr>
+<tr><td class="num">4Q25</td><td class="num">3,256</td><td class="num">12,799</td><td class="num">$1.14</td><td class="num">9,559</td><td class="num">9,436</td><td class="num">$13.78</td><td class="num">2,859</td></tr>
+<tr><td class="num">1Q26</td><td class="num">6,915</td><td class="num">17,741</td><td class="num">$2.45</td><td class="num">8,716</td><td class="num">8,585</td><td class="num">$16.88</td><td class="num">2,752</td></tr>
+<tr><td class="num">2Q26</td><td class="num">9,836</td><td class="num">20,710</td><td class="num">$3.52</td><td class="num">8,664</td><td class="num">8,440</td><td class="num">$24.27</td><td class="num">2,455</td></tr>
+<tr class="hl-row"><td class="num">3Q26</td><td class="num">10,814</td><td class="num">22,736</td><td class="num">$3.86</td><td class="num">9,033</td><td class="num">8,836</td><td class="num">$41.57</td><td class="num">2,574</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>全部取自 Q3 2026 Quarterly Databook 的 APM、EPS and EPS ADS、PROD 与 IG / UP 工作表；集团产量为综合天然气 + 上游 + 油砂之和，9M26 均值 2,593 kboe/d 与 QRA 摘要一致。2026 年起油砂产量为 0，Q3 2026 集团产量同比 −8.8%。</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>季度</th><th>CFFO</th><th>CFFO 剔除<br>营运资本</th><th>公司口径<br>FCF</th><th>有机 FCF</th><th>现金 Capex</th><th>处置收入</th><th>净债务</th><th>Gearing</th></tr></thead><tbody>
+<tr><td class="num">4Q24</td><td class="num">13,162</td><td class="num">10,755</td><td class="num">8,731</td><td class="num">8,453</td><td class="num">6,924</td><td class="num">805</td><td class="num">38,809</td><td class="num">17.7%</td></tr>
+<tr><td class="num">1Q25</td><td class="num">9,281</td><td class="num">11,944</td><td class="num">5,322</td><td class="num">4,899</td><td class="num">4,175</td><td class="num">597</td><td class="num">41,521</td><td class="num">18.7%</td></tr>
+<tr><td class="num">2Q25</td><td class="num">11,937</td><td class="num">12,323</td><td class="num">6,531</td><td class="num">7,458</td><td class="num">5,817</td><td class="num">−36</td><td class="num">43,216</td><td class="num">19.1%</td></tr>
+<tr><td class="num">3Q25</td><td class="num">12,207</td><td class="num">12,235</td><td class="num">9,950</td><td class="num">8,263</td><td class="num">4,907</td><td class="num">1,773</td><td class="num">41,204</td><td class="num">18.8%</td></tr>
+<tr><td class="num">4Q25</td><td class="num">9,438</td><td class="num">8,164</td><td class="num">4,249</td><td class="num">5,121</td><td class="num">6,015</td><td class="num">53</td><td class="num">45,687</td><td class="num">20.7%</td></tr>
+<tr><td class="num">1Q26</td><td class="num">6,062</td><td class="num">17,241</td><td class="num">2,927</td><td class="num">2,923</td><td class="num">4,202</td><td class="num">352</td><td class="num">52,606</td><td class="num">23.2%</td></tr>
+<tr><td class="num">2Q26</td><td class="num">21,432</td><td class="num">17,987</td><td class="num">17,524</td><td class="num">17,279</td><td class="num">4,237</td><td class="num">469</td><td class="num">41,754</td><td class="num">18.7%</td></tr>
+<tr class="hl-row"><td class="num">3Q26</td><td class="num">21,043</td><td class="num">21,682</td><td class="num">16,322</td><td class="num">17,043</td><td class="num">7,922</td><td class="num">2,650</td><td class="num">39,733</td><td class="num">16.6%</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>单位 US$M。Q1 2026 营运资本流出 $11.2B 压低报告 CFFO 至 $6,062M，Q2 回流 $3.4B；Q3 2026 现金 Capex $7,922M 含 ARC 现金对价 $3,336M。公司口径 FCF = CFFO + 投资活动现金流；有机 FCF 剔除处置收入并加回无机资本支出。</div>
+<div class="figure"><svg viewBox="0 0 680 300" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="八季度调整后收益与调整后 EBITDA" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="300" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">八季度调整后收益与调整后 EBITDA</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：十亿美元｜柱顶为季度值</text><line x1="72" y1="242.0" x2="660" y2="242.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="246.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">0</text><line x1="72" y1="198.0" x2="660" y2="198.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="202.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">6</text><line x1="72" y1="154.0" x2="660" y2="154.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="158.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">12</text><line x1="72" y1="110.0" x2="660" y2="110.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="114.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">19</text><line x1="72" y1="66.0" x2="660" y2="66.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="70.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">25</text><rect x="76.5" y="216.2" width="30.8" height="25.8" fill="#0C1E35" rx="2"/><text x="91.9" y="211.2" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">3.7</text><rect x="150.0" y="202.7" width="30.8" height="39.3" fill="#0C1E35" rx="2"/><text x="165.4" y="197.7" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">5.6</text><rect x="223.5" y="212.0" width="30.8" height="30.0" fill="#0C1E35" rx="2"/><text x="238.9" y="207.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">4.3</text><rect x="297.0" y="203.8" width="30.8" height="38.2" fill="#0C1E35" rx="2"/><text x="312.4" y="198.8" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">5.4</text><rect x="370.5" y="219.1" width="30.8" height="22.9" fill="#0C1E35" rx="2"/><text x="385.9" y="214.1" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">3.3</text><rect x="444.0" y="193.3" width="30.8" height="48.7" fill="#0C1E35" rx="2"/><text x="459.4" y="188.3" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">6.9</text><rect x="517.5" y="172.8" width="30.8" height="69.2" fill="#0C1E35" rx="2"/><text x="532.9" y="167.8" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">9.8</text><rect x="591.0" y="165.9" width="30.8" height="76.1" fill="#0C1E35" rx="2"/><text x="606.4" y="160.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">10.8</text><rect x="110.2" y="141.5" width="30.8" height="100.5" fill="#C08A1E" rx="2"/><text x="125.6" y="136.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">14.3</text><rect x="183.8" y="134.6" width="30.8" height="107.4" fill="#C08A1E" rx="2"/><text x="199.1" y="129.6" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">15.2</text><rect x="257.2" y="148.3" width="30.8" height="93.7" fill="#C08A1E" rx="2"/><text x="272.6" y="143.3" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">13.3</text><rect x="330.8" y="138.0" width="30.8" height="104.0" fill="#C08A1E" rx="2"/><text x="346.1" y="133.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">14.8</text><rect x="404.2" y="151.9" width="30.8" height="90.1" fill="#C08A1E" rx="2"/><text x="419.6" y="146.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">12.8</text><rect x="477.8" y="117.1" width="30.8" height="124.9" fill="#C08A1E" rx="2"/><text x="493.1" y="112.1" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">17.7</text><rect x="551.2" y="96.2" width="30.8" height="145.8" fill="#C08A1E" rx="2"/><text x="566.6" y="91.2" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">20.7</text><rect x="624.8" y="81.9" width="30.8" height="160.1" fill="#C08A1E" rx="2"/><text x="640.1" y="76.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">22.7</text><text x="108.8" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">4Q24</text><text x="182.2" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">1Q25</text><text x="255.8" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">2Q25</text><text x="329.2" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">3Q25</text><text x="402.8" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">4Q25</text><text x="476.2" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">1Q26</text><text x="549.8" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">2Q26</text><text x="623.2" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">3Q26</text><rect x="72" y="267" width="10" height="10" fill="#0C1E35" rx="2"/><text x="86" y="276" font-size="10" fill="#5B6B7A">调整后收益</text><rect x="147" y="267" width="10" height="10" fill="#C08A1E" rx="2"/><text x="161" y="276" font-size="10" fill="#5B6B7A">调整后 EBITDA</text><text x="0" y="292" font-size="10" fill="#5B6B7A">3Q26 调整后收益 10.8、EBITDA 22.7，均为八季度最高</text></svg><div class="figcap">图 2 · 4Q24–3Q26 调整后收益与调整后 EBITDA（公司披露）</div></div>
+<div class="figure"><svg viewBox="0 0 680 290" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="八季度 CFFO 与剔除营运资本后的 CFFO" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="290" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">八季度 CFFO 与剔除营运资本后的 CFFO</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：十亿美元｜两条线的差即营运资本摆动</text><line x1="72" y1="238.0" x2="660" y2="238.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="242.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">0</text><line x1="72" y1="195.0" x2="660" y2="195.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="199.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">6</text><line x1="72" y1="152.0" x2="660" y2="152.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="156.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">12</text><line x1="72" y1="109.0" x2="660" y2="109.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="113.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">18</text><line x1="72" y1="66.0" x2="660" y2="66.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="70.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">24</text><path d="M72.0,143.7 L156.0,171.5 L240.0,152.5 L324.0,150.5 L408.0,170.4 L492.0,194.6 L576.0,84.4 L660.0,87.2" fill="none" stroke="#0C1E35" stroke-width="2.5" stroke-linejoin="round"/><circle cx="72.0" cy="143.7" r="4" fill="#0C1E35"/><text x="72.0" y="132.7" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">13.2</text><circle cx="156.0" cy="171.5" r="4" fill="#0C1E35"/><text x="156.0" y="160.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">9.3</text><circle cx="240.0" cy="152.5" r="4" fill="#0C1E35"/><text x="240.0" y="141.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">11.9</text><circle cx="324.0" cy="150.5" r="4" fill="#0C1E35"/><text x="324.0" y="139.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">12.2</text><circle cx="408.0" cy="170.4" r="4" fill="#0C1E35"/><text x="408.0" y="159.4" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">9.4</text><circle cx="492.0" cy="194.6" r="4" fill="#0C1E35"/><text x="492.0" y="183.6" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">6.1</text><circle cx="576.0" cy="84.4" r="4" fill="#0C1E35"/><text x="576.0" y="73.4" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">21.4</text><circle cx="660.0" cy="87.2" r="4" fill="#0C1E35"/><text x="660.0" y="76.2" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">21.0</text><path d="M72.0,160.9 L156.0,152.4 L240.0,149.7 L324.0,150.3 L408.0,179.5 L492.0,114.4 L576.0,109.1 L660.0,82.6" fill="none" stroke="#C08A1E" stroke-width="2.5" stroke-linejoin="round"/><circle cx="72.0" cy="160.9" r="4" fill="#C08A1E"/><text x="72.0" y="149.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">10.8</text><circle cx="156.0" cy="152.4" r="4" fill="#C08A1E"/><text x="156.0" y="141.4" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">11.9</text><circle cx="240.0" cy="149.7" r="4" fill="#C08A1E"/><text x="240.0" y="138.7" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">12.3</text><circle cx="324.0" cy="150.3" r="4" fill="#C08A1E"/><text x="324.0" y="139.3" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">12.2</text><circle cx="408.0" cy="179.5" r="4" fill="#C08A1E"/><text x="408.0" y="168.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">8.2</text><circle cx="492.0" cy="114.4" r="4" fill="#C08A1E"/><text x="492.0" y="103.4" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">17.2</text><circle cx="576.0" cy="109.1" r="4" fill="#C08A1E"/><text x="576.0" y="98.1" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">18.0</text><circle cx="660.0" cy="82.6" r="4" fill="#C08A1E"/><text x="660.0" y="71.6" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">21.7</text><text x="72.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">4Q24</text><text x="156.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">1Q25</text><text x="240.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">2Q25</text><text x="324.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">3Q25</text><text x="408.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">4Q25</text><text x="492.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">1Q26</text><text x="576.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">2Q26</text><text x="660.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">3Q26</text><rect x="72" y="273" width="10" height="10" fill="#0C1E35" rx="2"/><text x="86" y="282" font-size="10" fill="#5B6B7A">CFFO</text><rect x="138" y="273" width="10" height="10" fill="#C08A1E" rx="2"/><text x="152" y="282" font-size="10" fill="#5B6B7A">CFFO 剔除营运资本</text></svg><div class="figcap">图 3 · 营运资本对报告经营现金流的扰动（公司披露）</div></div>
+<div class="figure"><svg viewBox="0 0 680 290" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="八季度公司口径 FCF 与有机 FCF" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="290" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">八季度公司口径 FCF 与有机 FCF</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：十亿美元｜3Q26 两条线的差来自处置收入与 ARC 无机资本支出</text><line x1="72" y1="238.0" x2="660" y2="238.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="242.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">0</text><line x1="72" y1="195.0" x2="660" y2="195.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="199.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">5</text><line x1="72" y1="152.0" x2="660" y2="152.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="156.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">10</text><line x1="72" y1="109.0" x2="660" y2="109.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="113.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">15</text><line x1="72" y1="66.0" x2="660" y2="66.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="70.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">20</text><path d="M72.0,162.9 L156.0,192.2 L240.0,181.8 L324.0,152.4 L408.0,201.5 L492.0,212.8 L576.0,87.3 L660.0,97.6" fill="none" stroke="#0C1E35" stroke-width="2.5" stroke-linejoin="round"/><circle cx="72.0" cy="162.9" r="4" fill="#0C1E35"/><text x="72.0" y="151.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">8.7</text><circle cx="156.0" cy="192.2" r="4" fill="#0C1E35"/><text x="156.0" y="181.2" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">5.3</text><circle cx="240.0" cy="181.8" r="4" fill="#0C1E35"/><text x="240.0" y="170.8" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">6.5</text><circle cx="324.0" cy="152.4" r="4" fill="#0C1E35"/><text x="324.0" y="141.4" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">9.9</text><circle cx="408.0" cy="201.5" r="4" fill="#0C1E35"/><text x="408.0" y="190.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">4.2</text><circle cx="492.0" cy="212.8" r="4" fill="#0C1E35"/><text x="492.0" y="201.8" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">2.9</text><circle cx="576.0" cy="87.3" r="4" fill="#0C1E35"/><text x="576.0" y="76.3" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">17.5</text><circle cx="660.0" cy="97.6" r="4" fill="#0C1E35"/><text x="660.0" y="86.6" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">16.3</text><path d="M72.0,165.3 L156.0,195.9 L240.0,173.9 L324.0,166.9 L408.0,194.0 L492.0,212.9 L576.0,89.4 L660.0,91.4" fill="none" stroke="#C08A1E" stroke-width="2.5" stroke-linejoin="round"/><circle cx="72.0" cy="165.3" r="4" fill="#C08A1E"/><text x="72.0" y="154.3" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">8.5</text><circle cx="156.0" cy="195.9" r="4" fill="#C08A1E"/><text x="156.0" y="184.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">4.9</text><circle cx="240.0" cy="173.9" r="4" fill="#C08A1E"/><text x="240.0" y="162.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">7.5</text><circle cx="324.0" cy="166.9" r="4" fill="#C08A1E"/><text x="324.0" y="155.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">8.3</text><circle cx="408.0" cy="194.0" r="4" fill="#C08A1E"/><text x="408.0" y="183.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">5.1</text><circle cx="492.0" cy="212.9" r="4" fill="#C08A1E"/><text x="492.0" y="201.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">2.9</text><circle cx="576.0" cy="89.4" r="4" fill="#C08A1E"/><text x="576.0" y="78.4" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">17.3</text><circle cx="660.0" cy="91.4" r="4" fill="#C08A1E"/><text x="660.0" y="80.4" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">17.0</text><text x="72.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">4Q24</text><text x="156.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">1Q25</text><text x="240.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">2Q25</text><text x="324.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">3Q25</text><text x="408.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">4Q25</text><text x="492.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">1Q26</text><text x="576.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">2Q26</text><text x="660.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">3Q26</text><rect x="72" y="273" width="10" height="10" fill="#0C1E35" rx="2"/><text x="86" y="282" font-size="10" fill="#5B6B7A">公司口径 FCF</text><rect x="182" y="273" width="10" height="10" fill="#C08A1E" rx="2"/><text x="196" y="282" font-size="10" fill="#5B6B7A">有机 FCF</text></svg><div class="figcap">图 4 · 自由现金流的两种口径（Databook APM）</div></div>
+<div class="figure"><svg viewBox="0 0 680 290" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="八季度现金 Capex 与处置收入" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="290" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">八季度现金 Capex 与处置收入</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：十亿美元｜3Q26 Capex 含 ARC 现金对价 3.336</text><line x1="72" y1="232.0" x2="660" y2="232.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="236.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">0</text><line x1="72" y1="190.5" x2="660" y2="190.5" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="194.5" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">2</text><line x1="72" y1="149.0" x2="660" y2="149.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="153.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">4</text><line x1="72" y1="107.5" x2="660" y2="107.5" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="111.5" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">7</text><line x1="72" y1="66.0" x2="660" y2="66.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="70.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">9</text><rect x="76.5" y="104.3" width="30.8" height="127.7" fill="#0C1E35" rx="2"/><text x="91.9" y="99.3" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">6.9</text><rect x="150.0" y="155.0" width="30.8" height="77.0" fill="#0C1E35" rx="2"/><text x="165.4" y="150.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">4.2</text><rect x="223.5" y="124.7" width="30.8" height="107.3" fill="#0C1E35" rx="2"/><text x="238.9" y="119.7" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">5.8</text><rect x="297.0" y="141.5" width="30.8" height="90.5" fill="#0C1E35" rx="2"/><text x="312.4" y="136.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">4.9</text><rect x="370.5" y="121.1" width="30.8" height="110.9" fill="#0C1E35" rx="2"/><text x="385.9" y="116.1" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">6.0</text><rect x="444.0" y="154.5" width="30.8" height="77.5" fill="#0C1E35" rx="2"/><text x="459.4" y="149.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">4.2</text><rect x="517.5" y="153.9" width="30.8" height="78.1" fill="#0C1E35" rx="2"/><text x="532.9" y="148.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">4.2</text><rect x="591.0" y="85.9" width="30.8" height="146.1" fill="#0C1E35" rx="2"/><text x="606.4" y="80.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">7.9</text><rect x="110.2" y="217.2" width="30.8" height="14.8" fill="#C08A1E" rx="2"/><text x="125.6" y="212.2" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.8</text><rect x="183.8" y="221.0" width="30.8" height="11.0" fill="#C08A1E" rx="2"/><text x="199.1" y="216.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.6</text><rect x="257.2" y="232.0" width="30.8" height="0.0" fill="#C08A1E" rx="2"/><text x="272.6" y="227.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">-0.0</text><rect x="330.8" y="199.3" width="30.8" height="32.7" fill="#C08A1E" rx="2"/><text x="346.1" y="194.3" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">1.8</text><rect x="404.2" y="231.0" width="30.8" height="1.0" fill="#C08A1E" rx="2"/><text x="419.6" y="226.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.1</text><rect x="477.8" y="225.5" width="30.8" height="6.5" fill="#C08A1E" rx="2"/><text x="493.1" y="220.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.4</text><rect x="551.2" y="223.3" width="30.8" height="8.7" fill="#C08A1E" rx="2"/><text x="566.6" y="218.3" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.5</text><rect x="624.8" y="183.1" width="30.8" height="48.9" fill="#C08A1E" rx="2"/><text x="640.1" y="178.1" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">2.6</text><text x="108.8" y="248.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">4Q24</text><text x="182.2" y="248.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">1Q25</text><text x="255.8" y="248.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">2Q25</text><text x="329.2" y="248.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">3Q25</text><text x="402.8" y="248.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">4Q25</text><text x="476.2" y="248.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">1Q26</text><text x="549.8" y="248.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">2Q26</text><text x="623.2" y="248.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">3Q26</text><rect x="72" y="257" width="10" height="10" fill="#0C1E35" rx="2"/><text x="86" y="266" font-size="10" fill="#5B6B7A">现金 Capex</text><rect x="180" y="257" width="10" height="10" fill="#C08A1E" rx="2"/><text x="194" y="266" font-size="10" fill="#5B6B7A">处置收入</text><text x="0" y="282" font-size="10" fill="#5B6B7A">3Q26 处置收入 2.650，主要来自 Jiffy Lube 与 Na Kika</text></svg><div class="figcap">图 5 · 资本开支与处置收入的季度节奏（Databook APM）</div></div>
+<div class="figure"><svg viewBox="0 0 680 300" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="八季度指示炼油利润率与集团油气产量" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="300" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">八季度指示炼油利润率与集团油气产量</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">柱：IRM（$/bbl，左轴）｜线：产量（百万桶油当量/日，右轴）</text><line x1="62" y1="242.0" x2="660" y2="242.0" stroke="#E3E9F2" stroke-width="1"/><text x="54" y="246.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">0</text><line x1="62" y1="198.5" x2="660" y2="198.5" stroke="#E3E9F2" stroke-width="1"/><text x="54" y="202.5" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">12</text><line x1="62" y1="155.0" x2="660" y2="155.0" stroke="#E3E9F2" stroke-width="1"/><text x="54" y="159.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">23</text><line x1="62" y1="111.5" x2="660" y2="111.5" stroke="#E3E9F2" stroke-width="1"/><text x="54" y="115.5" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">34</text><line x1="62" y1="68.0" x2="660" y2="68.0" stroke="#E3E9F2" stroke-width="1"/><text x="54" y="72.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">46</text><rect x="79.9" y="221.0" width="33.0" height="21.0" fill="#007C89" rx="2"/><text x="96.4" y="232.0" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">6</text><rect x="148.6" y="218.5" width="33.0" height="23.5" fill="#007C89" rx="2"/><text x="165.1" y="232.0" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">6</text><rect x="217.4" y="208.5" width="33.0" height="33.5" fill="#007C89" rx="2"/><text x="233.9" y="232.0" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">9</text><rect x="286.1" y="198.2" width="33.0" height="43.8" fill="#007C89" rx="2"/><text x="302.6" y="232.0" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">12</text><rect x="354.9" y="189.9" width="33.0" height="52.1" fill="#007C89" rx="2"/><text x="371.4" y="232.0" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">14</text><rect x="423.6" y="178.1" width="33.0" height="63.9" fill="#007C89" rx="2"/><text x="440.1" y="232.0" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">17</text><rect x="492.4" y="150.2" width="33.0" height="91.8" fill="#007C89" rx="2"/><text x="508.9" y="232.0" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">24</text><rect x="561.1" y="84.8" width="33.0" height="157.2" fill="#007C89" rx="2"/><text x="577.6" y="232.0" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">42</text><polyline points="96.4,88.9 165.1,87.7 233.9,96.2 302.6,88.6 371.4,86.5 440.1,92.4 508.9,108.5 577.6,102.0" fill="none" stroke="#C08A1E" stroke-width="2.4"/><circle cx="96.4" cy="88.9" r="3.4" fill="#C08A1E" stroke="#fff" stroke-width="1"/><rect x="82.2" y="67.9" width="28.4" height="13" fill="#FFFFFF" opacity=".82" rx="2"/><text x="96.4" y="77.9" text-anchor="middle" font-size="9" font-weight="700" fill="#8A6A10" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2.82</text><circle cx="165.1" cy="87.7" r="3.4" fill="#C08A1E" stroke="#fff" stroke-width="1"/><rect x="150.9" y="66.7" width="28.4" height="13" fill="#FFFFFF" opacity=".82" rx="2"/><text x="165.1" y="76.7" text-anchor="middle" font-size="9" font-weight="700" fill="#8A6A10" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2.84</text><circle cx="233.9" cy="96.2" r="3.4" fill="#C08A1E" stroke="#fff" stroke-width="1"/><rect x="219.7" y="75.2" width="28.4" height="13" fill="#FFFFFF" opacity=".82" rx="2"/><text x="233.9" y="85.2" text-anchor="middle" font-size="9" font-weight="700" fill="#8A6A10" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2.68</text><circle cx="302.6" cy="88.6" r="3.4" fill="#C08A1E" stroke="#fff" stroke-width="1"/><rect x="288.4" y="67.6" width="28.4" height="13" fill="#FFFFFF" opacity=".82" rx="2"/><text x="302.6" y="77.6" text-anchor="middle" font-size="9" font-weight="700" fill="#8A6A10" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2.82</text><circle cx="371.4" cy="86.5" r="3.4" fill="#C08A1E" stroke="#fff" stroke-width="1"/><rect x="357.2" y="65.5" width="28.4" height="13" fill="#FFFFFF" opacity=".82" rx="2"/><text x="371.4" y="75.5" text-anchor="middle" font-size="9" font-weight="700" fill="#8A6A10" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2.86</text><circle cx="440.1" cy="92.4" r="3.4" fill="#C08A1E" stroke="#fff" stroke-width="1"/><rect x="425.9" y="71.4" width="28.4" height="13" fill="#FFFFFF" opacity=".82" rx="2"/><text x="440.1" y="81.4" text-anchor="middle" font-size="9" font-weight="700" fill="#8A6A10" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2.75</text><circle cx="508.9" cy="108.5" r="3.4" fill="#C08A1E" stroke="#fff" stroke-width="1"/><rect x="494.7" y="87.5" width="28.4" height="13" fill="#FFFFFF" opacity=".82" rx="2"/><text x="508.9" y="97.5" text-anchor="middle" font-size="9" font-weight="700" fill="#8A6A10" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2.46</text><circle cx="577.6" cy="102.0" r="3.4" fill="#C08A1E" stroke="#fff" stroke-width="1"/><rect x="563.4" y="81.0" width="28.4" height="13" fill="#FFFFFF" opacity=".82" rx="2"/><text x="577.6" y="91.0" text-anchor="middle" font-size="9" font-weight="700" fill="#8A6A10" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2.57</text><text x="96.4" y="258.0" text-anchor="middle" font-size="10" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">4Q24</text><text x="165.1" y="258.0" text-anchor="middle" font-size="10" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">1Q25</text><text x="233.9" y="258.0" text-anchor="middle" font-size="10" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2Q25</text><text x="302.6" y="258.0" text-anchor="middle" font-size="10" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">3Q25</text><text x="371.4" y="258.0" text-anchor="middle" font-size="10" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">4Q25</text><text x="440.1" y="258.0" text-anchor="middle" font-size="10" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">1Q26</text><text x="508.9" y="258.0" text-anchor="middle" font-size="10" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2Q26</text><text x="577.6" y="258.0" text-anchor="middle" font-size="10" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">3Q26</text><text x="672.0" y="72.0" text-anchor="end" font-size="10" font-weight="700" fill="#8A6A10" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">油气产量 kboe/d（右轴）</text><text x="62.0" y="60.0" text-anchor="start" font-size="10" font-weight="700" fill="#007C89" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">IRM $/bbl（左轴）</text><text x="0.0" y="292.0" text-anchor="start" font-size="10" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">价与量反向：3Q26 IRM 41.57、产量 2,574 kboe/d</text></svg><div class="figcap">图 6 · 价格与产量的反向关系（Databook PROD / QRA）</div></div>
+<h3>3.3 分部业绩与运营指标</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>分部</th><th>调整后收益<br>3Q26</th><th>2Q26</th><th>3Q25</th><th>调整后 EBITDA<br>3Q26</th><th>2Q26</th><th>3Q25</th></tr></thead><tbody>
+<tr><td>综合天然气 Integrated Gas</td><td class="num">3,037</td><td class="num">2,691</td><td class="num">2,143</td><td class="num">5,184</td><td class="num">4,761</td><td class="num">4,257</td></tr>
+<tr><td>上游 Upstream</td><td class="num">3,189</td><td class="num">3,485</td><td class="num">1,804</td><td class="num">9,269</td><td class="num">8,891</td><td class="num">6,557</td></tr>
+<tr><td>营销 Marketing</td><td class="num">1,164</td><td class="num">1,329</td><td class="num">1,316</td><td class="num">1,986</td><td class="num">2,392</td><td class="num">2,340</td></tr>
+<tr><td>化工与产品 C&P</td><td class="num">3,855</td><td class="num">2,877</td><td class="num">550</td><td class="num">6,201</td><td class="num">4,664</td><td class="num">1,667</td></tr>
+<tr><td>可再生能源与方案 R&ES</td><td class="num">289</td><td class="num">79</td><td class="num">92</td><td class="num">373</td><td class="num">212</td><td class="num">223</td></tr>
+<tr><td>公司本部 Corporate</td><td class="num">−705</td><td class="num">−617</td><td class="num">−383</td><td class="num">−277</td><td class="num">−210</td><td class="num">−272</td></tr>
+<tr><td>减：非控股权益</td><td class="num">−14</td><td class="num">−8</td><td class="num">−6</td><td>不适用</td><td>不适用</td><td>不适用</td></tr>
+<tr class="hl-row"><td>集团合计</td><td class="num">10,814</td><td class="num">9,836</td><td class="num">5,432</td><td class="num">22,736</td><td class="num">20,710</td><td class="num">14,773</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>单位 US$M。各分部 EBITDA 三项之和与集团合计完全勾稽；调整后收益 Q3 2025 六分部合计与集团相差 $90M，按公司披露值列示。</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>分部</th><th>CFFO<br>3Q26</th><th>2Q26</th><th>3Q25</th><th>现金 Capex<br>3Q26</th><th>2Q26</th><th>3Q25</th></tr></thead><tbody>
+<tr><td>综合天然气 Integrated Gas</td><td class="num">4,606</td><td class="num">4,629</td><td class="num">3,038</td><td class="num">4,756</td><td class="num">1,269</td><td class="num">1,169</td></tr>
+<tr><td>上游 Upstream</td><td class="num">7,281</td><td class="num">6,835</td><td class="num">4,841</td><td class="num">1,691</td><td class="num">1,633</td><td class="num">1,885</td></tr>
+<tr><td>营销 Marketing</td><td class="num">−210</td><td class="num">2,547</td><td class="num">1,788</td><td class="num">415</td><td class="num">380</td><td class="num">489</td></tr>
+<tr><td>化工与产品 C&P</td><td class="num">8,527</td><td class="num">7,941</td><td class="num">2,088</td><td class="num">678</td><td class="num">507</td><td class="num">813</td></tr>
+<tr><td>可再生能源与方案 R&ES</td><td class="num">1,558</td><td class="num">−65</td><td class="num">660</td><td class="num">342</td><td class="num">429</td><td class="num">517</td></tr>
+<tr><td>公司本部 Corporate</td><td class="num">−719</td><td class="num">−455</td><td class="num">−208</td><td class="num">40</td><td class="num">19</td><td class="num">16</td></tr>
+<tr class="hl-row"><td>集团合计</td><td class="num">21,043</td><td class="num">21,432</td><td class="num">12,207</td><td class="num">7,922</td><td class="num">4,237</td><td class="num">4,907</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>Marketing 3Q26 CFFO 为 −$210M，来自排放证书与生物燃料项目的时点支付 $1,866M及营运资本流出 $947M；综合天然气 Capex 由 $1,269M 升至 $4,756M，主要是 ARC 现金对价。</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>运营指标</th><th>3Q26</th><th>2Q26</th><th>3Q25</th><th>说明</th></tr></thead><tbody>
+<tr><td>综合天然气产量（kboe/d）</td><td class="num">772</td><td class="num">631</td><td class="num">934</td><td>Q4 指引 1,080–1,180，含 ARC 完整季度</td></tr>
+<tr><td>LNG 液化量（MT）</td><td class="num">7.43</td><td class="num">7.73</td><td class="num">7.29</td><td>Q4 指引 7.3–7.9</td></tr>
+<tr><td>LNG 销售量（MT）</td><td class="num">19.25</td><td class="num">17.96</td><td class="num">18.88</td><td class="num"></td></tr>
+<tr><td>上游产量（kboe/d）</td><td class="num">1,802</td><td class="num">1,824</td><td class="num">1,832</td><td>Q4 指引 1,700–1,900，含墨西哥湾天气影响</td></tr>
+<tr><td>营销销量（kb/d）</td><td class="num">2,581</td><td class="num">2,570</td><td class="num">2,824</td><td>Q4 指引 2,400–2,600</td></tr>
+<tr><td>炼厂开工率（%）</td><td class="num">96</td><td class="num">102</td><td class="num">96</td><td>Q4 指引 92–100；年初至今 99</td></tr>
+<tr><td>化工厂开工率（%）</td><td class="num">83.9</td><td class="num">82.6</td><td class="num">80.1</td><td>Q4 指引 78–86；新闻稿四舍五入为 84 / 83</td></tr>
+<tr><td>集团油气产量（kboe/d）</td><td class="num">2,574</td><td class="num">2,455</td><td class="num">2,821</td><td>同比 −8.8%，受中东资产中断影响</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>QRA 分部表、新闻稿 Q4 outlook 与 Databook PROD / CH 工作表。新闻稿把 IRM 与化工厂开工率四舍五入到整数，表中保留 Databook 原值。</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>宏观价格标记</th><th>3Q26</th><th>2Q26</th><th>说明</th></tr></thead><tbody>
+<tr><td class="num">Brent（$/bbl）</td><td class="num">97</td><td class="num">104</td><td>Q3 环比 −$7</td></tr>
+<tr><td class="num">JCC-3（$/bbl）</td><td class="num">111</td><td class="num">67</td><td>油砂挂钩长约滞后约 6 个月</td></tr>
+<tr><td class="num">EU TTF（$/MMBtu）</td><td class="num">21.5</td><td class="num">15.5</td><td>Q3 环比 +$6.0</td></tr>
+<tr><td class="num">Henry Hub（$/MMBtu）</td><td class="num">2.9</td><td class="num">3.0</td><td class="num"></td></tr>
+<tr><td>指示炼油利润率 IRM（$/bbl）</td><td class="num">41.57</td><td class="num">24.27</td><td>新闻稿取整为 42 / 24；Q3 环比 +$17.30</td></tr>
+<tr><td>指示化工利润率 ICM（$/t）</td><td class="num">208</td><td class="num">270</td><td>Q3 环比 −$62</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>Q3 2026 results slides 第 4 页；均为季度均值。</div>
+<div class="figure"><svg viewBox="0 0 680 300" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="五大分部调整后收益：3Q26 / 2Q26 / 3Q25" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="300" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">五大分部调整后收益：3Q26 / 2Q26 / 3Q25</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：十亿美元｜公司本部为净费用，见上方表格</text><line x1="72" y1="242.0" x2="660" y2="242.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="246.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">0</text><line x1="72" y1="198.0" x2="660" y2="198.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="202.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">1</text><line x1="72" y1="154.0" x2="660" y2="154.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="158.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">2</text><line x1="72" y1="110.0" x2="660" y2="110.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="114.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">3</text><line x1="72" y1="66.0" x2="660" y2="66.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="70.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">4</text><rect x="75.0" y="114.7" width="35.2" height="127.3" fill="#0C1E35" rx="2"/><text x="92.6" y="109.7" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">3.0</text><rect x="192.6" y="108.4" width="35.2" height="133.6" fill="#0C1E35" rx="2"/><text x="210.2" y="103.4" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">3.2</text><rect x="310.2" y="193.2" width="35.2" height="48.8" fill="#0C1E35" rx="2"/><text x="327.8" y="188.2" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">1.2</text><rect x="427.8" y="80.5" width="35.2" height="161.5" fill="#0C1E35" rx="2"/><text x="445.4" y="75.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">3.9</text><rect x="545.4" y="229.9" width="35.2" height="12.1" fill="#0C1E35" rx="2"/><text x="563.0" y="224.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.3</text><rect x="113.2" y="129.2" width="35.2" height="112.8" fill="#C08A1E" rx="2"/><text x="130.8" y="124.2" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">2.7</text><rect x="230.8" y="96.0" width="35.2" height="146.0" fill="#C08A1E" rx="2"/><text x="248.4" y="91.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">3.5</text><rect x="348.4" y="186.3" width="35.2" height="55.7" fill="#C08A1E" rx="2"/><text x="366.0" y="181.3" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">1.3</text><rect x="466.0" y="121.4" width="35.2" height="120.6" fill="#C08A1E" rx="2"/><text x="483.6" y="116.4" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">2.9</text><rect x="583.6" y="238.7" width="35.2" height="3.3" fill="#C08A1E" rx="2"/><text x="601.2" y="233.7" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.1</text><rect x="151.4" y="152.2" width="35.2" height="89.8" fill="#007C89" rx="2"/><text x="169.0" y="147.2" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">2.1</text><rect x="269.0" y="166.4" width="35.2" height="75.6" fill="#007C89" rx="2"/><text x="286.6" y="161.4" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">1.8</text><rect x="386.6" y="186.9" width="35.2" height="55.1" fill="#007C89" rx="2"/><text x="404.2" y="181.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">1.3</text><rect x="504.2" y="219.0" width="35.2" height="23.0" fill="#007C89" rx="2"/><text x="521.8" y="214.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.6</text><rect x="621.8" y="238.1" width="35.2" height="3.9" fill="#007C89" rx="2"/><text x="639.4" y="233.1" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.1</text><text x="130.8" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">综合天然气</text><text x="248.4" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">上游</text><text x="366.0" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">营销</text><text x="483.6" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">化工与产品</text><text x="601.2" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">可再生与方案</text><rect x="72" y="267" width="10" height="10" fill="#0C1E35" rx="2"/><text x="86" y="276" font-size="10" fill="#5B6B7A">3Q26</text><rect x="136" y="267" width="10" height="10" fill="#C08A1E" rx="2"/><text x="150" y="276" font-size="10" fill="#5B6B7A">2Q26</text><rect x="200" y="267" width="10" height="10" fill="#007C89" rx="2"/><text x="214" y="276" font-size="10" fill="#5B6B7A">3Q25</text><text x="0" y="292" font-size="10" fill="#5B6B7A">化工与产品由 0.55 升至 3.86，是本期最大增量来源</text></svg><div class="figcap">图 7 · 分部盈利结构变化（QRA）</div></div>
+<div class="figure"><svg viewBox="0 0 680 300" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="五大分部调整后 EBITDA：3Q26 / 2Q26 / 3Q25" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="300" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">五大分部调整后 EBITDA：3Q26 / 2Q26 / 3Q25</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：十亿美元</text><line x1="72" y1="242.0" x2="660" y2="242.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="246.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">0</text><line x1="72" y1="198.0" x2="660" y2="198.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="202.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">2</text><line x1="72" y1="154.0" x2="660" y2="154.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="158.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">5</text><line x1="72" y1="110.0" x2="660" y2="110.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="114.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">8</text><line x1="72" y1="66.0" x2="660" y2="66.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="70.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">10</text><rect x="75.0" y="150.8" width="35.2" height="91.2" fill="#0C1E35" rx="2"/><text x="92.6" y="145.8" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">5.2</text><rect x="192.6" y="78.9" width="35.2" height="163.1" fill="#0C1E35" rx="2"/><text x="210.2" y="73.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">9.3</text><rect x="310.2" y="207.0" width="35.2" height="35.0" fill="#0C1E35" rx="2"/><text x="327.8" y="202.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">2.0</text><rect x="427.8" y="132.9" width="35.2" height="109.1" fill="#0C1E35" rx="2"/><text x="445.4" y="127.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">6.2</text><rect x="545.4" y="235.4" width="35.2" height="6.6" fill="#0C1E35" rx="2"/><text x="563.0" y="230.4" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.4</text><rect x="113.2" y="158.2" width="35.2" height="83.8" fill="#C08A1E" rx="2"/><text x="130.8" y="153.2" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">4.8</text><rect x="230.8" y="85.5" width="35.2" height="156.5" fill="#C08A1E" rx="2"/><text x="248.4" y="80.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">8.9</text><rect x="348.4" y="199.9" width="35.2" height="42.1" fill="#C08A1E" rx="2"/><text x="366.0" y="194.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">2.4</text><rect x="466.0" y="159.9" width="35.2" height="82.1" fill="#C08A1E" rx="2"/><text x="483.6" y="154.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">4.7</text><rect x="583.6" y="238.3" width="35.2" height="3.7" fill="#C08A1E" rx="2"/><text x="601.2" y="233.3" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.2</text><rect x="151.4" y="167.1" width="35.2" height="74.9" fill="#007C89" rx="2"/><text x="169.0" y="162.1" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">4.3</text><rect x="269.0" y="126.6" width="35.2" height="115.4" fill="#007C89" rx="2"/><text x="286.6" y="121.6" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">6.6</text><rect x="386.6" y="200.8" width="35.2" height="41.2" fill="#007C89" rx="2"/><text x="404.2" y="195.8" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">2.3</text><rect x="504.2" y="212.7" width="35.2" height="29.3" fill="#007C89" rx="2"/><text x="521.8" y="207.7" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">1.7</text><rect x="621.8" y="238.1" width="35.2" height="3.9" fill="#007C89" rx="2"/><text x="639.4" y="233.1" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.2</text><text x="130.8" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">综合天然气</text><text x="248.4" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">上游</text><text x="366.0" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">营销</text><text x="483.6" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">化工与产品</text><text x="601.2" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">可再生与方案</text><rect x="72" y="267" width="10" height="10" fill="#0C1E35" rx="2"/><text x="86" y="276" font-size="10" fill="#5B6B7A">3Q26</text><rect x="136" y="267" width="10" height="10" fill="#C08A1E" rx="2"/><text x="150" y="276" font-size="10" fill="#5B6B7A">2Q26</text><rect x="200" y="267" width="10" height="10" fill="#007C89" rx="2"/><text x="214" y="276" font-size="10" fill="#5B6B7A">3Q25</text><text x="0" y="292" font-size="10" fill="#5B6B7A">上游 EBITDA 9.3 仍为最大单一来源</text></svg><div class="figcap">图 8 · 分部 EBITDA 结构（QRA）</div></div>
+<div class="figure"><svg viewBox="0 0 680 290" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="分部现金 Capex：3Q26 与 2Q26" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="290" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">分部现金 Capex：3Q26 与 2Q26</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：十亿美元｜3Q26 综合天然气含 ARC 现金对价 3.336</text><line x1="72" y1="232.0" x2="660" y2="232.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="236.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">0</text><line x1="72" y1="190.5" x2="660" y2="190.5" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="194.5" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">1</text><line x1="72" y1="149.0" x2="660" y2="149.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="153.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">3</text><line x1="72" y1="107.5" x2="660" y2="107.5" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="111.5" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">4</text><line x1="72" y1="66.0" x2="660" y2="66.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="70.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">5</text><rect x="91.3" y="80.2" width="38.0" height="151.8" fill="#0C1E35" rx="2"/><text x="110.3" y="75.2" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">4.8</text><rect x="208.9" y="178.0" width="38.0" height="54.0" fill="#0C1E35" rx="2"/><text x="227.9" y="173.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">1.7</text><rect x="326.5" y="218.8" width="38.0" height="13.2" fill="#0C1E35" rx="2"/><text x="345.5" y="213.8" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.4</text><rect x="444.1" y="210.4" width="38.0" height="21.6" fill="#0C1E35" rx="2"/><text x="463.1" y="205.4" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.7</text><rect x="561.7" y="221.1" width="38.0" height="10.9" fill="#0C1E35" rx="2"/><text x="580.7" y="216.1" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.3</text><rect x="132.3" y="191.5" width="38.0" height="40.5" fill="#C08A1E" rx="2"/><text x="151.3" y="186.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">1.3</text><rect x="249.9" y="179.9" width="38.0" height="52.1" fill="#C08A1E" rx="2"/><text x="268.9" y="174.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">1.6</text><rect x="367.5" y="219.9" width="38.0" height="12.1" fill="#C08A1E" rx="2"/><text x="386.5" y="214.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.4</text><rect x="485.1" y="215.8" width="38.0" height="16.2" fill="#C08A1E" rx="2"/><text x="504.1" y="210.8" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.5</text><rect x="602.7" y="218.3" width="38.0" height="13.7" fill="#C08A1E" rx="2"/><text x="621.7" y="213.3" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">0.4</text><text x="130.8" y="248.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">综合天然气</text><text x="248.4" y="248.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">上游</text><text x="366.0" y="248.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">营销</text><text x="483.6" y="248.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">化工与产品</text><text x="601.2" y="248.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">可再生与方案</text><rect x="72" y="257" width="10" height="10" fill="#0C1E35" rx="2"/><text x="86" y="266" font-size="10" fill="#5B6B7A">3Q26</text><rect x="136" y="257" width="10" height="10" fill="#C08A1E" rx="2"/><text x="150" y="266" font-size="10" fill="#5B6B7A">2Q26</text><text x="0" y="282" font-size="10" fill="#5B6B7A">单季 Capex 跳升主要来自并购交割，不是有机投资加速</text></svg><div class="figcap">图 9 · ARC 交割对单季资本开支的影响（QRA）</div></div>
+<h3>3.4 现金流与自由现金流</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>层级</th><th>金额（US$M）</th><th>口径说明</th></tr></thead><tbody>
+<tr><td>① 经营活动现金流</td><td class="num">21043</td><td>公司披露，含 3,400 衍生品净流入</td></tr>
+<tr class="hl-row"><td>② 维护性／有机自由现金流</td><td class="num">17043</td><td>公司 APM 口径，剔除处置、加回无机 Capex</td></tr>
+<tr class="hl-row"><td>③ 扣净还债、利息与 NCI 后可供股东回报现金</td><td class="num">10415</td><td>FCF 16,322 − 非股东融资净流出 5,907</td></tr>
+<tr class="hl-row"><td>④ 当期实际股东回报</td><td class="num">5335</td><td>回购 3,183 + 已付股息 2,152</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>公司口径 FCF = CFFO + 投资活动现金流，含处置收入与无机资本支出；有机 FCF 剔除处置收入并加回无机资本支出；第三层再从 FCF 扣除净还债、利息、衍生品与非控股权益相关的 $5,907M 非股东融资净流出。</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Q3 2026 现金来源与用途（US$M）</th><th>金额</th><th>构成</th></tr></thead><tbody>
+<tr><td>经营活动现金流 CFFO</td><td class="num">21043</td><td>含衍生品净流入 3,400、税付 −3,217、排放证书时点 −2,400、营运资本 −600</td></tr>
+<tr><td>投资活动现金流 CFI</td><td class="num">−4721</td><td>现金 Capex −7,922（含 ARC 现金对价 3,336）、处置收入 +2,650、利息收入 +410</td></tr>
+<tr><td>公司口径自由现金流 FCF</td><td class="num">16322</td><td>CFFO + CFI，含处置收入与无机资本支出</td></tr>
+<tr><td>有机自由现金流</td><td class="num">17043</td><td>Databook APM：剔除处置收入、加回无机资本支出</td></tr>
+<tr><td>融资活动现金流 CFF</td><td class="num">−11242</td><td>净还债 −4,685、利息 −954、衍生品 −273、股息 −2,152、回购 −3,183</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>经营 21,043 + 投资 −4,721 = FCF 16,322；再加融资 −11,242 = 5,080；汇率影响 −29 后现金净增 5,051，与现金流量表期末 36,425 / 期初 31,374 完全勾稽。</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>覆盖率口径</th><th>分子（US$M）</th><th>分母（US$M）</th><th>覆盖率</th><th>含义</th></tr></thead><tbody>
+<tr><td>报告 FCF / 当期股东回报</td><td class="num">16,322</td><td class="num">5,335</td><td class="num">306%</td><td>含处置收入与 ARC 支出</td></tr>
+<tr><td>有机 FCF / 当期股东回报</td><td class="num">17,043</td><td class="num">5,335</td><td class="num">319%</td><td>剔除处置、加回无机支出</td></tr>
+<tr><td>可供股东回报现金 / 实际回报</td><td class="num">10,415</td><td class="num">5,335</td><td class="num">195%</td><td>已扣净还债、利息与 NCI</td></tr>
+<tr><td>9M26 报告 FCF / 累计股东回报</td><td class="num">36,773</td><td class="num">15,782</td><td class="num">233%</td><td>累计口径</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-model">模型输出</span>四行分子分母均列示，覆盖率之间不可相互替代。$5.0B 回购按现价约 50.5M ADS、占股本 1.8%，其每股增厚效果已计入估值中的股本口径，不重复计入总回报。</div>
+<p><span class="tag t-call">电话会</span>CFO 在 Q&A 中把 $3.4B 衍生品净流入归入「有效的风险管理」，并称按 IFRS 对指数挂钩船舶租赁必须以即期运价重估、「属会计计量而非经济价值变化」，会随霍尔木兹局势与运价回落而反向变动。Q3 报告 FCF 因此包含 $3.4B 衍生品流入与 $2.650B 处置收入，正常化基准改用 2025 年实际有机 FCF $25.741B 加结构性增量。</p>
+<p><span class="tag t-guide">书面指引</span>QRA Note 7 披露：荷兰设定受益计划将在 2026 年 12 月 31 日转为设定提存计划，终止确认预计在 Q4 产生 <strong>$6.4B 非现金损失</strong>（9 月 30 日估算，仍会按精算重计量调整）。该损失进入 IFRS 报告净利与识别项，不进入调整后收益、不影响现金流。</p>
+<div class="figure"><svg viewBox="0 0 680 226" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Q3 2026 现金流四层" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="226" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">Q3 2026 现金流四层</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：十亿美元｜逐层扣减，非四个独立口径</text><line x1="176.0" y1="62" x2="176.0" y2="174" stroke="#E3E9F2" stroke-width="1"/><text x="176.0" y="190.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$0B</text><line x1="287.0" y1="62" x2="287.0" y2="174" stroke="#E3E9F2" stroke-width="1"/><text x="287.0" y="190.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$6B</text><line x1="398.0" y1="62" x2="398.0" y2="174" stroke="#E3E9F2" stroke-width="1"/><text x="398.0" y="190.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$12B</text><line x1="509.0" y1="62" x2="509.0" y2="174" stroke="#E3E9F2" stroke-width="1"/><text x="509.0" y="190.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$18B</text><line x1="620.0" y1="62" x2="620.0" y2="174" stroke="#E3E9F2" stroke-width="1"/><text x="620.0" y="190.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$24B</text><text x="166" y="75" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">经营现金流 CFFO</text><rect x="176" y="62" width="389.3" height="17" fill="#0C1E35" rx="2"/><text x="572.3" y="75" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">$21.04B</text><text x="166" y="105" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">有机自由现金流</text><rect x="176" y="92" width="315.3" height="17" fill="#007C89" rx="2"/><text x="498.3" y="105" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">$17.04B</text><text x="166" y="135" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">可供股东回报现金</text><rect x="176" y="122" width="192.7" height="17" fill="#C08A1E" rx="2"/><text x="375.7" y="135" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">$10.42B</text><text x="166" y="165" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">实际股东回报</text><rect x="176" y="152" width="98.7" height="17" fill="#4A8FA0" rx="2"/><text x="281.7" y="165" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">$5.34B</text><text x="0" y="220" font-size="10" fill="#5B6B7A">第四层 = 回购 3.183 + 已付股息 2.152</text></svg><div class="figcap">图 10 · 从经营现金流到股东回报的四层扣减（QRA / 现金流量表）</div></div>
+<h3>3.5 资产负债表：期初与期末</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>项目（US$M）</th><th>期初 2025-12-31</th><th>期末 2026-09-30</th><th>变动额</th><th>变动幅度</th></tr></thead><tbody>
+<tr><td>物业、厂房及设备</td><td class="num">185,077</td><td class="num">203,374</td><td class="num">+18,297</td><td class="num">+9.9%</td></tr>
+<tr><td>商誉</td><td class="num">15,662</td><td class="num">16,071</td><td class="num">+409</td><td class="num">+2.6%</td></tr>
+<tr><td>存货</td><td class="num">22,216</td><td class="num">29,773</td><td class="num">+7,557</td><td class="num">+34.0%</td></tr>
+<tr><td>现金及现金等价物</td><td class="num">30,216</td><td class="num">36,425</td><td class="num">+6,209</td><td class="num">+20.5%</td></tr>
+<tr class="hl-row"><td>总资产</td><td class="num">370,350</td><td class="num">420,574</td><td class="num">+50,224</td><td class="num">+13.6%</td></tr>
+<tr class="hl-row"><td>总债务</td><td class="num">75,643</td><td class="num">76,075</td><td class="num">+432</td><td class="num">+0.6%</td></tr>
+<tr class="hl-row"><td>总负债</td><td class="num">195,031</td><td class="num">221,060</td><td class="num">+26,029</td><td class="num">+13.3%</td></tr>
+<tr class="hl-row"><td>归属股东权益</td><td class="num">174,392</td><td class="num">198,435</td><td class="num">+24,043</td><td class="num">+13.8%</td></tr>
+<tr><td>总权益</td><td class="num">175,319</td><td class="num">199,513</td><td class="num">+24,194</td><td class="num">+13.8%</td></tr>
+<tr><td>资产负债率</td><td class="num">52.66%</td><td class="num">52.56%</td><td class="num">−0.10ppt</td><td>总负债 / 总资产</td></tr>
+<tr class="hl-row"><td>净债务</td><td class="num">45,687</td><td class="num">39,733</td><td class="num">−5,954</td><td class="num">−13.0%</td></tr>
+<tr class="hl-row"><td class="num">Gearing</td><td class="num">20.7%</td><td class="num">16.6%</td><td class="num">−4.1ppt</td><td>净债务 / 总资本</td></tr>
+<tr class="hl-row"><td>剔除租赁的净债务</td><td class="num">16,754</td><td class="num">5,586</td><td class="num">−11,168</td><td class="num">−66.7%</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>资产负债表为时点存量，列期初与期末，不设同比列。总资产 +$50.224B 主要来自 PP&E +$18.297B、存货 +$7.557B、应收 +$14.277B 与现金 +$6.209B；权益由 $174.392B 升至 $198.435B，资产负债率由 52.66% 微降至 52.56%。</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>债务拆分（US$M）</th><th>2025-12-31</th><th>2026-09-30</th><th>变动</th></tr></thead><tbody>
+<tr><td>不含租赁的债务</td><td class="num">46,710</td><td class="num">41,928</td><td class="num">−4,782</td></tr>
+<tr><td>租赁负债</td><td class="num">28,933</td><td class="num">34,147</td><td class="num">+5,214</td></tr>
+<tr><td>总债务</td><td class="num">75,643</td><td class="num">76,075</td><td class="num">+432</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>QRA Note 7：指数挂钩船舶租赁按 IFRS 16 以即期运价重估，9M26 因此增加租赁负债 $7,684M，对应 PP&E 中使用权资产等额调整，不涉及现金。剔除全部租赁负债后净债务仅 $5.586B、gearing 2.7%。</div>
+<div class="figure"><svg viewBox="0 0 680 300" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="资产负债表主要科目：期初与期末" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="300" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">资产负债表主要科目：期初与期末</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：十亿美元｜总资产与总负债见上方表格</text><line x1="72" y1="242.0" x2="660" y2="242.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="246.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">0</text><line x1="72" y1="198.0" x2="660" y2="198.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="202.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">55</text><line x1="72" y1="154.0" x2="660" y2="154.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="158.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">110</text><line x1="72" y1="110.0" x2="660" y2="110.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="114.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">165</text><line x1="72" y1="66.0" x2="660" y2="66.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="70.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">220</text><rect x="81.5" y="93.9" width="38.0" height="148.1" fill="#0C1E35" rx="2"/><text x="100.5" y="88.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">185</text><rect x="179.5" y="229.5" width="38.0" height="12.5" fill="#0C1E35" rx="2"/><text x="198.5" y="224.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">16</text><rect x="277.5" y="224.2" width="38.0" height="17.8" fill="#0C1E35" rx="2"/><text x="296.5" y="219.2" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">22</text><rect x="375.5" y="217.8" width="38.0" height="24.2" fill="#0C1E35" rx="2"/><text x="394.5" y="212.8" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">30</text><rect x="473.5" y="181.5" width="38.0" height="60.5" fill="#0C1E35" rx="2"/><text x="492.5" y="176.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">76</text><rect x="571.5" y="102.5" width="38.0" height="139.5" fill="#0C1E35" rx="2"/><text x="590.5" y="97.5" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">174</text><rect x="122.5" y="79.3" width="38.0" height="162.7" fill="#C08A1E" rx="2"/><text x="141.5" y="74.3" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">203</text><rect x="220.5" y="229.1" width="38.0" height="12.9" fill="#C08A1E" rx="2"/><text x="239.5" y="224.1" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">16</text><rect x="318.5" y="218.2" width="38.0" height="23.8" fill="#C08A1E" rx="2"/><text x="337.5" y="213.2" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">30</text><rect x="416.5" y="212.9" width="38.0" height="29.1" fill="#C08A1E" rx="2"/><text x="435.5" y="207.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">36</text><rect x="514.5" y="181.1" width="38.0" height="60.9" fill="#C08A1E" rx="2"/><text x="533.5" y="176.1" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">76</text><rect x="612.5" y="83.3" width="38.0" height="158.7" fill="#C08A1E" rx="2"/><text x="631.5" y="78.3" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">198</text><text x="121.0" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">PP&amp;E</text><text x="219.0" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">商誉</text><text x="317.0" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">存货</text><text x="415.0" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">现金</text><text x="513.0" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">总债务</text><text x="611.0" y="258.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">归属股东权益</text><rect x="72" y="267" width="10" height="10" fill="#0C1E35" rx="2"/><text x="86" y="276" font-size="10" fill="#5B6B7A">2025-12-31</text><rect x="202" y="267" width="10" height="10" fill="#C08A1E" rx="2"/><text x="216" y="276" font-size="10" fill="#5B6B7A">2026-09-30</text><text x="0" y="292" font-size="10" fill="#5B6B7A">总债务几乎持平，增量在权益与资产端</text></svg><div class="figcap">图 11 · 期初与期末主要科目对照（QRA 合并资产负债表）</div></div>
+<div class="figure"><svg viewBox="0 0 680 290" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="八季度净债务与剔除租赁后的净债务" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="290" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">八季度净债务与剔除租赁后的净债务</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：十亿美元｜3Q26 分别为 39.7 与 5.6</text><line x1="72" y1="238.0" x2="660" y2="238.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="242.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">0</text><line x1="72" y1="195.0" x2="660" y2="195.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="199.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">15</text><line x1="72" y1="152.0" x2="660" y2="152.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="156.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">30</text><line x1="72" y1="109.0" x2="660" y2="109.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="113.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">45</text><line x1="72" y1="66.0" x2="660" y2="66.0" stroke="#E3E9F2" stroke-width="1"/><text x="64" y="70.0" text-anchor="end" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">60</text><path d="M72.0,126.7 L156.0,119.0 L240.0,114.1 L324.0,119.9 L408.0,107.0 L492.0,87.2 L576.0,118.3 L660.0,124.1" fill="none" stroke="#0C1E35" stroke-width="2.5" stroke-linejoin="round"/><circle cx="72.0" cy="126.7" r="4" fill="#0C1E35"/><text x="72.0" y="115.7" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">38.8</text><circle cx="156.0" cy="119.0" r="4" fill="#0C1E35"/><text x="156.0" y="108.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">41.5</text><circle cx="240.0" cy="114.1" r="4" fill="#0C1E35"/><text x="240.0" y="103.1" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">43.2</text><circle cx="324.0" cy="119.9" r="4" fill="#0C1E35"/><text x="324.0" y="108.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">41.2</text><circle cx="408.0" cy="107.0" r="4" fill="#0C1E35"/><text x="408.0" y="96.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">45.7</text><circle cx="492.0" cy="87.2" r="4" fill="#0C1E35"/><text x="492.0" y="76.2" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">52.6</text><circle cx="576.0" cy="118.3" r="4" fill="#0C1E35"/><text x="576.0" y="107.3" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">41.8</text><circle cx="660.0" cy="124.1" r="4" fill="#0C1E35"/><text x="660.0" y="113.1" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">39.7</text><path d="M72.0,209.0 L156.0,200.6 L240.0,197.1 L324.0,201.8 L408.0,190.0 L492.0,174.9 L576.0,203.2 L660.0,222.0" fill="none" stroke="#C08A1E" stroke-width="2.5" stroke-linejoin="round"/><circle cx="72.0" cy="209.0" r="4" fill="#C08A1E"/><text x="72.0" y="198.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">10.1</text><circle cx="156.0" cy="200.6" r="4" fill="#C08A1E"/><text x="156.0" y="189.6" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">13.0</text><circle cx="240.0" cy="197.1" r="4" fill="#C08A1E"/><text x="240.0" y="186.1" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">14.3</text><circle cx="324.0" cy="201.8" r="4" fill="#C08A1E"/><text x="324.0" y="190.8" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">12.6</text><circle cx="408.0" cy="190.0" r="4" fill="#C08A1E"/><text x="408.0" y="179.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">16.8</text><circle cx="492.0" cy="174.9" r="4" fill="#C08A1E"/><text x="492.0" y="163.9" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">22.0</text><circle cx="576.0" cy="203.2" r="4" fill="#C08A1E"/><text x="576.0" y="192.2" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">12.1</text><circle cx="660.0" cy="222.0" r="4" fill="#C08A1E"/><text x="660.0" y="211.0" text-anchor="middle" font-size="9.5" fill="#1C1917" font-family="Arial,sans-serif">5.6</text><text x="72.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">4Q24</text><text x="156.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">1Q25</text><text x="240.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">2Q25</text><text x="324.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">3Q25</text><text x="408.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">4Q25</text><text x="492.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">1Q26</text><text x="576.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">2Q26</text><text x="660.0" y="255.0" text-anchor="middle" font-size="10" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">3Q26</text><rect x="72" y="273" width="10" height="10" fill="#0C1E35" rx="2"/><text x="86" y="282" font-size="10" fill="#5B6B7A">净债务（含租赁）</text><rect x="182" y="273" width="10" height="10" fill="#C08A1E" rx="2"/><text x="196" y="282" font-size="10" fill="#5B6B7A">剔除租赁的净债务</text></svg><div class="figcap">图 12 · 含租赁与不含租赁的净债务轨迹（Databook APM）</div></div>
+<h3>3.6 价格敏感性：Brent × 产量双因子</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>公司披露的全年敏感性</th><th>分部影响</th><th>调整后收益合计<br>（US$M / 年）</th><th>CFFO 合计<br>（US$M / 年）</th></tr></thead><tbody>
+<tr><td>Brent / JCC 每 +$10/bbl</td><td>综合天然气 +1,500；上游 +2,200</td><td class="num">+3,700</td><td class="num">+4,000</td></tr>
+<tr><td>JKM / EU TTF 每 +$1/MMBtu</td><td>综合天然气 +400；上游 +100</td><td class="num">+500</td><td class="num">+500</td></tr>
+<tr><td>Henry Hub / AECO 每 +$1/MMBtu</td><td>综合天然气 −500；上游 +100</td><td class="num">−400</td><td class="num">−350</td></tr>
+<tr><td>指示炼油利润率每 +$1/bbl</td><td>化工与产品</td><td class="num">+320</td><td>公司未列示</td></tr>
+<tr><td>指示化工利润率每 +$30/t</td><td>化工与产品</td><td class="num">+575</td><td>公司未列示</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-guide">书面指引</span>Q3 2026 Quarterly Databook「Guidance」工作表。敏感性为全年口径，剔除营运资本、成本调整与衍生品的短期影响，各项可相加。首次覆盖报告写「Brent 每升 $10/桶约带来 $2–3B 年化 CFFO 增量」，按公司披露应为 $4.0B（综合天然气 $1.5B + 上游 $2.5B）。</div>
+<div class="figure"><svg viewBox="0 0 680 286" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="正常化 EBITDA 对油价与产量的双因子敏感性" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="286" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">正常化 EBITDA 对油价与产量的双因子敏感性</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">行：Brent（$/bbl）｜列：集团产量（百万桶油当量/日）｜单元格：正常化 EBITDA（十亿美元）</text><text x="190.0" y="71.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2.4</text><text x="294.0" y="71.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2.6</text><text x="398.0" y="71.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2.8</text><text x="502.0" y="71.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">3.0</text><text x="606.0" y="71.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">3.2</text><text x="128.0" y="103.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$65</text><rect x="140.0" y="84.0" width="100.0" height="30.0" fill="#D3E7EB" rx="3"/><text x="190.0" y="103.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">48.4</text><rect x="244.0" y="84.0" width="100.0" height="30.0" fill="#BCDBE0" rx="3"/><text x="294.0" y="103.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">52.0</text><rect x="348.0" y="84.0" width="100.0" height="30.0" fill="#A4D0D6" rx="3"/><text x="398.0" y="103.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">55.6</text><rect x="452.0" y="84.0" width="100.0" height="30.0" fill="#8DC4CB" rx="3"/><text x="502.0" y="103.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">59.2</text><rect x="556.0" y="84.0" width="100.0" height="30.0" fill="#76B8C0" rx="3"/><text x="606.0" y="103.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">62.8</text><text x="128.0" y="137.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$75</text><rect x="140.0" y="118.0" width="100.0" height="30.0" fill="#BBDBE0" rx="3"/><text x="190.0" y="137.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">52.1</text><rect x="244.0" y="118.0" width="100.0" height="30.0" fill="#A4CFD5" rx="3"/><text x="294.0" y="137.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">55.7</text><rect x="348.0" y="118.0" width="100.0" height="30.0" fill="#8DC4CB" rx="3"/><text x="398.0" y="137.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">59.3</text><rect x="452.0" y="118.0" width="100.0" height="30.0" fill="#76B8C0" rx="3"/><text x="502.0" y="137.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">62.9</text><rect x="556.0" y="118.0" width="100.0" height="30.0" fill="#5FACB5" rx="3"/><text x="606.0" y="137.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">66.5</text><text x="128.0" y="171.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$85</text><rect x="140.0" y="152.0" width="100.0" height="30.0" fill="#A3CFD5" rx="3"/><text x="190.0" y="171.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">55.8</text><rect x="244.0" y="152.0" width="100.0" height="30.0" fill="#8CC3CA" rx="3"/><text x="294.0" y="171.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">59.4</text><rect x="348.0" y="152.0" width="100.0" height="30.0" fill="#75B8C0" rx="3"/><text x="398.0" y="171.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">63.0</text><rect x="452.0" y="152.0" width="100.0" height="30.0" fill="#5EACB5" rx="3"/><text x="502.0" y="171.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">66.6</text><rect x="556.0" y="152.0" width="100.0" height="30.0" fill="#47A0AA" rx="3"/><text x="606.0" y="171.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">70.2</text><text x="128.0" y="205.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$95</text><rect x="140.0" y="186.0" width="100.0" height="30.0" fill="#8BC3CA" rx="3"/><text x="190.0" y="205.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">59.5</text><rect x="244.0" y="186.0" width="100.0" height="30.0" fill="#74B7BF" rx="3"/><text x="294.0" y="205.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">63.1</text><rect x="348.0" y="186.0" width="100.0" height="30.0" fill="#5DABB4" rx="3"/><text x="398.0" y="205.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">66.7</text><rect x="452.0" y="186.0" width="100.0" height="30.0" fill="#46A0AA" rx="3"/><text x="502.0" y="205.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">70.3</text><rect x="556.0" y="186.0" width="100.0" height="30.0" fill="#2F949F" rx="3"/><text x="606.0" y="205.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">73.9</text><text x="128.0" y="239.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$105</text><rect x="140.0" y="220.0" width="100.0" height="30.0" fill="#74B7BF" rx="3"/><text x="190.0" y="239.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">63.2</text><rect x="244.0" y="220.0" width="100.0" height="30.0" fill="#5DABB4" rx="3"/><text x="294.0" y="239.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">66.8</text><rect x="348.0" y="220.0" width="100.0" height="30.0" fill="#469FA9" rx="3"/><text x="398.0" y="239.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">70.4</text><rect x="452.0" y="220.0" width="100.0" height="30.0" fill="#2E949F" rx="3"/><text x="502.0" y="239.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">74.0</text><rect x="556.0" y="220.0" width="100.0" height="30.0" fill="#178894" rx="3"/><text x="606.0" y="239.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">77.6</text><text x="0.0" y="278.0" text-anchor="start" font-size="10" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">锚点：2025 实际 56.1 + ARC 全年 4.0 + 结构性降本 1.0 = $61.1B；油价与产量系数为模型设定</text></svg><div class="figcap">图 13 · Brent × 产量对正常化 EBITDA 的联合影响（公司敏感性 + 模型系数）</div></div>
+<p><span class="tag t-model">模型输出</span>网格以 2025 年实际调整后 EBITDA $56.135B 为底，加 ARC 全年约 $4.0B 与结构性降本 $1.0B，锚定 Brent $80/桶、产量 2.8 百万桶油当量/日。油价系数 $0.370B/桶由公司 CFFO 敏感性折算，产量系数 $18.0B / 百万桶油当量/日为模型设定，不是公司披露。07 章的正常化 EBITDA $58.0B 落在该网格 Brent $75–85、产量 2.8 的区间内。</p>
+</div></section>
+<section id="s4"><div class="sec-head"><span class="sec-tag">04</span><h2>资产组合与未来投产</h2></div><div class="sec-body">
+<h3>4.1 组合动作与交割状态</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>资产 / 交易</th><th>时点</th><th>对价与规模</th><th>现金流与估值处理</th></tr></thead><tbody>
+<tr><td class="num">ARC Resources</td><td>2026-09-02 完成交割</td><td>股权价值 $14.0B；现金 $3.336B + 约 228M 股 Shell 股票 $10.601B；商誉 $2.169B（暂定）</td><td>新增约 370 kboe/d；Q3 仅并表 1 个月；承接净债务与租赁 $2.5B，其中 $1.9B 债务已于 9 月偿还</td></tr>
+<tr><td class="num">LNG Canada Phase 2</td><td class="num">2026-09 FID</td><td>产能 14 → 28 mtpa；Shell 持股 40%，新增近 6 mtpa 权益 LNG</td><td>利用现有设施的扩建，管理层称资本强度低于新建；预计 2030 年代初投产；未计入 ARC 收购论证</td></tr>
+<tr><td class="num">Tri Star Energy</td><td>2026-09 签约，预计年末交割</td><td>持股 33% → 100%，新增 320 座自营便利店 + 552 座经销商供货协议</td><td>尚未交割，不计入 9M 处置/并购现金流</td></tr>
+<tr><td class="num">Sprng Energy</td><td>2026-07 签约，预计年末交割</td><td>作价 $1.8B 出售印度低碳平台</td><td>尚未交割</td></tr>
+<tr><td>Aphrodite 气田</td><td>2026-07 签约，2027 年初交割</td><td>塞浦路斯 12 区块 35% 权益，最高 $720M（含或有对价）</td><td class="num"></td></tr>
+<tr><td class="num">Na Kika / Coulomb</td><td>2026-09 完成</td><td>现金对价约 $840M</td><td>计入 Q3 处置收入</td></tr>
+<tr><td>欧洲陆上新能源组合</td><td>2026-08 签约</td><td>意/荷/西/英约 0.5GW 运营及开发资产</td><td>预计年末完成</td></tr>
+<tr><td class="num">Bay du Nord</td><td>Equinor 运营，2027 年初拟 FID</td><td>加拿大海上项目，Shell 已取得权益</td><td>尚无分项目投资额与 IRR 披露</td></tr>
+<tr><td>尼日利亚 Bonga South West</td><td>评价中</td><td>管理层称若条件齐备，2027 年可能具备 FID 条件</td><td class="num"></td></tr>
+<tr><td>化工资产</td><td>深度洽谈中</td><td>管理层称「不是天然持有者」，可出售、资本市场交易或组合换股</td><td>2030 年前完成，不承诺时点与价格</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>QRA PORTFOLIO DEVELOPMENTS 与 Note 8。ARC 购买对价 $13,937M = 现金 $3,336M + 约 228M 股 Shell 股票公允价值 $10,601M，商誉 $2,169M 为暂定数，购买价格分摊尚未最终确定。首次覆盖报告用的 $16.4B 近似企业价值，等于股权对价加承接的净债务与租赁 $2.5B。</div>
+<h3>4.2 产量桥接</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>项目（kboe/d）</th><th>数值</th><th>口径</th></tr></thead><tbody>
+<tr><td>Q3 2026 综合天然气产量</td><td class="num">772</td><td>公司披露，ARC 仅并表 1 个月</td></tr>
+<tr><td>ARC 完整季度增量（年化铭牌）</td><td class="num">370</td><td>公司披露约 370 kboe/d 即时新增产能</td></tr>
+<tr><td>Q4 2026 综合天然气产量指引中枢</td><td class="num">1,130</td><td>书面指引 1,080–1,180 中值</td></tr>
+<tr><td>Q3 2026 集团油气产量</td><td class="num">2,574</td><td>公司披露，同比 −8.8%</td></tr>
+<tr><td>2027 基准产量（模型）</td><td class="num">2,800</td><td>估值锚，不按铭牌产能全额计入</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>Q3 综合天然气产量 772 只含 ARC 一个月；Q4 书面指引中枢 1,130 才对应完整季度。铭牌产能不直接进估值，2027 年基准产量取 2.8 百万桶油当量/日。</div>
+<h3>4.3 项目管线与资本强度</h3>
+<p><span class="tag t-call">电话会</span>CEO 在 Q&A 中称 LNG Canada Phase 2 是对既有设施的扩建而非新建工厂，承包商报价更有竞争力，且该项目未计入 ARC 收购当时的论证，属于额外上行；更细的 ARC 价值与回报将在 2027 年 2 月 4 日 Capital Markets Update 披露。化工资产方面，管理层称 Shell「不是这些资产的天然持有者」，正在深度洽谈，但拿不到中周期合理价格就不成交，也可能以组合换股、持有少数权益的方式过渡。</p>
+<p><span class="tag t-fact">公司披露</span>公司披露了项目时点、权益比例与铭牌产能，没有给出 Bay du Nord、Bonga South West 等单项目的总投资、单位开发成本或项目 IRR；分项目回报率在 2027–2031 战略计划披露资本开支拆分之前无法从公开数据闭环，本次估值只做产量桥接，不计算单项目 NPV。</p>
+<p><span class="tag t-guide">书面指引</span>FY2026 现金 Capex $23–25B（含 ARC 约 $4B），2027–2028 年 $20–22B/年，公司称 ARC 的后续资本开支将并入现有框架。CFO 在 Q&A 中把本次约 $1B 的指引下调归因于「节奏与阶段安排为主、兼有部分效率」，不是投资规模削减。CMD25 目标为 2024–2030 年每股正常化 FCF 年增超过 10%（价格正常化口径）、2028 年底前累计结构性成本削减 $5–7B。</p>
+</div></section>
+<section id="s5"><div class="sec-head"><span class="sec-tag">05</span><h2>管理层书面指引与电话会</h2></div><div class="sec-body">
+<h3>5.1 Q4 2026 与中期书面指引</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>项目</th><th>前次 / 上季</th><th>最新书面指引</th><th>说明</th></tr></thead><tbody>
+<tr class="hl-row"><td>FY2026 现金 Capex</td><td>$24–26B（首次覆盖时）</td><td class="num">$23–25B</td><td>含 ARC 约 $4B；CFO 称下调约 $1B 主要来自节奏与阶段安排</td></tr>
+<tr><td>FY2027–2028 现金 Capex</td><td>$20–22B/年</td><td>$20–22B/年</td><td>ARC 并入现有框架，不额外上抬</td></tr>
+<tr class="hl-row"><td>Q4 综合天然气产量</td><td class="num">631 kboe/d（Q3）</td><td class="num">1,080–1,180 kboe/d</td><td>含 ARC 完整季度贡献</td></tr>
+<tr class="hl-row"><td>Q4 LNG 液化量</td><td class="num">7.43 MT（Q3）</td><td class="num">7.3–7.9 MT</td><td>卡塔尔资产中断仍影响 Q4</td></tr>
+<tr><td>Q4 上游产量</td><td class="num">1,802 kboe/d（Q3）</td><td class="num">1,700–1,900 kboe/d</td><td>含墨西哥湾天气影响余量</td></tr>
+<tr><td>Q4 营销销量</td><td class="num">2,581 kb/d（Q3）</td><td class="num">2,400–2,600 kb/d</td><td class="num"></td></tr>
+<tr><td>Q4 炼厂开工率</td><td class="num">96%（Q3）</td><td class="num">92–100%</td><td>年初至今 99%</td></tr>
+<tr><td>Q4 化工厂开工率</td><td class="num">84%（Q3）</td><td class="num">78–86%</td><td class="num"></td></tr>
+<tr><td>Q4 公司本部调整后收益</td><td class="num">−$705M（Q3）</td><td>−$600M 至 −$800M</td><td>净费用</td></tr>
+<tr class="hl-row"><td>股东分配</td><td class="num">40–50% CFFO</td><td>40–50% CFFO（跨周期）</td><td>CFO 称 sacrosanct，非单季下限</td></tr>
+<tr><td>渐进股息</td><td>+4%/年</td><td>+4%/年</td><td>过去 12 个月实际 +9.1%</td></tr>
+<tr class="hl-row"><td>新回购</td><td>Q2 宣布 $4.2B</td><td>$5.0B / 3 个月</td><td>预计 Q4 业绩公布前完成</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-guide">书面指引</span>QRA「OUTLOOK FOR THE FOURTH QUARTER 2026」、Q3 新闻稿分部 outlook 表与results slides 第 10、12 页。公司只给运营量与费用区间，未给 Q4 利润或 EPS 指引。</div>
+<p><span class="tag t-fact">公司披露</span>Q4 2026 的 IFRS 净利还会包含荷兰设定受益计划终止确认的约 $6.4B 非现金损失；这是识别项，不进入调整后收益，也不改变现金流。把 Q4 报告净利直接年化会严重低估盈利。</p>
+<h3>5.2 电话会口头表述</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>发言人</th><th>表述</th><th>性质</th></tr></thead><tbody>
+<tr><td class="num">CEO Wael Sawan</td><td>高油价的「结构性稳定性」来自库存快速去化、补库耗时与各国能源安全新增储备需求；避免在周期高点把分配推到区间上限</td><td><span class="tag t-call">电话会</span></td></tr>
+<tr><td class="num">CFO Sinead Gorman</td><td>40–50% CFFO 分配「sacrosanct」但按跨周期理解：周期高点靠近 40%、低点可超过 50%；本次由 $3B 补到 $5B 是为了跟上进度</td><td><span class="tag t-call">电话会</span></td></tr>
+<tr><td class="num">CFO Sinead Gorman</td><td>不指引 Q4；$5B 属于 top-up，不是对未来现金流的信号；分配是「艺术多于科学」</td><td><span class="tag t-call">电话会</span></td></tr>
+<tr><td class="num">CEO Wael Sawan</td><td>炼厂年初至今开工率 99%，来自交易员嵌入资产、单点商业问责、数据 AI 预测性维护；称「还没到应到的位置」</td><td><span class="tag t-call">电话会</span></td></tr>
+<tr><td class="num">CFO Sinead Gorman</td><td>中东至中国航线运费约为 12 个月前的 10 倍，现货成本正压制炼油、化工与油品毛利；公司长期租船组合在可得性与风险管理上占优</td><td><span class="tag t-call">电话会</span></td></tr>
+<tr><td class="num">CFO Sinead Gorman</td><td>10 月综合炼油利润率较 Q3 略降，运费会压低 Q4 实现数字；ARC 回报细节留到 Capital Markets Update</td><td><span class="tag t-call">电话会</span></td></tr>
+<tr><td class="num">CFO Sinead Gorman</td><td>卡塔尔 Pearl GTL 与部分 LNG 影响将延续到 Q4；第二条产线计划 Q1 末重启，仍取决于霍尔木兹开放与产品外运</td><td><span class="tag t-call">电话会</span></td></tr>
+<tr><td class="num">CEO Wael Sawan</td><td>化工资产「不是天然持有者」，若找不到中周期合理价格，可转为组合合并与少数权益；公司不受资本约束但不会让盈余现金烧出口袋</td><td><span class="tag t-call">电话会</span></td></tr>
+<tr><td class="num">CEO Wael Sawan</td><td>当前没有符合高门槛的明显并购标的；委内瑞拉机会在天然气价值链（衔接特立尼达与 Atlantic LNG），不在重油</td><td><span class="tag t-call">电话会</span></td></tr>
+<tr><td class="num">CFO Sinead Gorman</td><td>按 IFRS 必须以即期运价重估指数挂钩船舶租赁，属会计计量而非经济价值变化，会随海峡局势缓解而反向变动</td><td><span class="tag t-call">电话会</span></td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-call">电话会</span>以上内容出自第三方整理的全场逐字稿，角色与数字已按官方 CFO Keynote 文件与 QRA 核对；口头表述不作为公司书面指引使用。</div>
+<h3>5.3 第三方转录与书面披露的十处口径提示</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>议题</th><th>转录 / 早期表述</th><th>一手披露</th><th>报告处理</th></tr></thead><tbody>
+<tr><td>开场发言归属</td><td>转录把整段开场标为 Wael Sawan</td><td>官方 CFO Keynote 文件署名 SINEAD GORMAN, CHIEF FINANCIAL OFFICER</td><td>该段全部数字与表述按 CFO 发言引用；Q&A 才由 CEO 与 CFO 交替回答</td></tr>
+<tr><td>ARC 交易金额</td><td>转录 $14.0B equity value；首次覆盖报告 $16.4B</td><td>QRA：股权价值 $14.0B / 购买对价 $13.937B；承接净债务与租赁 $2.5B</td><td>$14.0B 是股权对价，$16.4B 近似企业价值，两者相差承接的净债务与租赁，不是数据冲突</td></tr>
+<tr><td>综合天然气产量 +22%</td><td>归因于 ARC 收购</td><td>631 → 772 kboe/d（+22.3%）；ARC 9 月 2 日交割、仅并表 1 个月</td><td>单季增量 141 kboe/d 不等于 370 kboe/d 铭牌产能；Q4 指引 1,080–1,180 才含完整季度</td></tr>
+<tr><td>炼厂开工率 99%</td><td>转录摘要列为业绩数据</td><td>官方 Q3 单季 96%、Q2 102%；Databook PROD 显示 9M 累计 99%</td><td>99% 是 CEO 口径的年初至今，不能当 Q3 单季；Q4 指引 92–100%</td></tr>
+<tr><td>Marketing 减值 $1.9B</td><td>转录列为风险项</td><td>QRA Marketing 识别项净减值 $1,904M；集团 Q3 识别项合计为净收益 $0.8B</td><td>综合天然气另有 $1,290M 减值转回，分部减值不等于集团净损失</td></tr>
+<tr><td>处置收入 $3.5B / Sprng $1.8B</td><td>转录并列为已完成交易</td><td>9M26 实际处置收入 $3.471B；Sprng 7 月签约、预计年末交割</td><td>Sprng 与 Tri Star 尚未交割，不计入 9M 现金流</td></tr>
+<tr><td>Capex 指引下调 $1B</td><td>分析师提问口径</td><td>CFO 确认「约 $1B，主要是节奏与阶段安排，兼有部分效率」</td><td>不是削减投资规模；FY2027–28 仍为 $20–22B/年</td></tr>
+<tr><td>租赁负债上升</td><td>分析师提问与 CMD25 表述不一致</td><td>Note 7：9M26 指数挂钩船舶租赁按即期运价重估增加 $7.684B，非现金</td><td>CFO 称属会计计量而非经济价值变化；净债务剔除租赁后仅 $5.586B</td></tr>
+<tr><td>$3.4B 衍生品净流入</td><td>转录列为 CFFO 驱动</td><td>QRA 与新闻稿确认；CFO 称属日常风险管理、会有进出波动</td><td>不计入正常化 FCF 基准</td></tr>
+<tr><td>Pearl GTL 第二条产线</td><td>转录摘要称复产取决于霍尔木兹海峡开放</td><td>CEO 在 Q&A 中说明：一条产线已部分重启、第二条计划 Q1 末、仍受海峡与产品外运制约</td><td>构成 Q4 已披露的经营逆风，不是 Q4 增量利润来源</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>公司文件优先。转录开头的整段业绩介绍由官方 CFO Keynote 署名 SINEAD GORMAN 发表，转录把该段标在 CEO 名下；Q&A 环节才由 CEO 与 CFO 交替作答。</div>
+</div></section>
+<section id="s6"><div class="sec-head"><span class="sec-tag">06</span><h2>股东回报政策与执行</h2></div><div class="sec-body">
+<h3>6.1 政策框架</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>要素</th><th>公司表述</th><th>本期执行 / 数据</th></tr></thead><tbody>
+<tr><td>跨周期分配率</td><td class="num">40–50% CFFO through the cycle</td><td>Q3 实付 25.4%、9M26 32.5%、9M25 50.4%；两个 9M 合计 39.8%</td></tr>
+<tr><td>渐进股息</td><td>每年 +4%</td><td>3Q26 每普通股 $0.3906，较 3Q25 的 $0.3580 增长 9.1%</td></tr>
+<tr><td>新回购</td><td>$5.0B，预计 Q4 业绩前完成</td><td>按 $99.08 约 50.5M ADS，占当前股本 1.8%</td></tr>
+<tr><td>上期回购</td><td>$4.2B，已全部完成</td><td>Q3 现金流量表回购实付 $3,183M</td></tr>
+<tr><td>资本结构</td><td>维持强投资级评级</td><td>gearing 16.6%，剔除租赁 2.7%</td></tr>
+<tr><td>CMD25 目标</td><td>2024–2030 每股正常化 FCF 年增 >10%</td><td>价格正常化口径，非名义承诺</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-guide">书面指引</span>results slides 第 10 页与 CFO Keynote。40–50% 是跨商品周期目标，不是单季或单一年度下限；CFO 明确「不指引 Q4」。</div>
+<h3>6.2 分配执行与现金流覆盖</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>期间</th><th>回购实付</th><th>已付股东股息</th><th>合计分配</th><th>同期 CFFO</th><th>分配 / CFFO</th></tr></thead><tbody>
+<tr><td class="num">3Q26</td><td class="num">$3,183M</td><td class="num">$2,152M</td><td class="num">$5,335M</td><td class="num">$21,043M</td><td class="num">25.4%</td></tr>
+<tr><td class="num">9M26</td><td class="num">$9,366M</td><td class="num">$6,416M</td><td class="num">$15,782M</td><td class="num">$48,538M</td><td class="num">32.5%</td></tr>
+<tr><td class="num">9M25</td><td class="num">$10,454M</td><td class="num">$6,403M</td><td class="num">$16,857M</td><td class="num">$33,425M</td><td class="num">50.4%</td></tr>
+<tr class="hl-row"><td>两个 9M 合计</td><td class="num">$19,820M</td><td class="num">$12,819M</td><td class="num">$32,639M</td><td class="num">$81,963M</td><td class="num">39.8%</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>数据来自 QRA 合并现金流量表。9M25 分配率 50.4%、9M26 32.5%，两段合并 39.8%，落在 40–50% 区间的下沿；这与 CFO 「周期高点靠近 40%、低点可超过 50%」的表述一致。</div>
+<div class="figure"><svg viewBox="0 0 680 256" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="股东分配占 CFFO 的比例" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="256" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">股东分配占 CFFO 的比例</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：%｜灰柱为 40–50% 区间中枢</text><line x1="176.0" y1="62" x2="176.0" y2="204" stroke="#E3E9F2" stroke-width="1"/><text x="176.0" y="220.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">0%</text><line x1="287.0" y1="62" x2="287.0" y2="204" stroke="#E3E9F2" stroke-width="1"/><text x="287.0" y="220.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">15%</text><line x1="398.0" y1="62" x2="398.0" y2="204" stroke="#E3E9F2" stroke-width="1"/><text x="398.0" y="220.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">30%</text><line x1="509.0" y1="62" x2="509.0" y2="204" stroke="#E3E9F2" stroke-width="1"/><text x="509.0" y="220.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">45%</text><line x1="620.0" y1="62" x2="620.0" y2="204" stroke="#E3E9F2" stroke-width="1"/><text x="620.0" y="220.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">60%</text><text x="166" y="75" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">3Q26</text><rect x="176" y="62" width="187.6" height="17" fill="#4A8FA0" rx="2"/><text x="370.6" y="75" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">25.4%</text><text x="166" y="105" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">9M26</text><rect x="176" y="92" width="240.6" height="17" fill="#007C89" rx="2"/><text x="423.6" y="105" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">32.5%</text><text x="166" y="135" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">9M25</text><rect x="176" y="122" width="373.2" height="17" fill="#C08A1E" rx="2"/><text x="556.2" y="135" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">50.4%</text><text x="166" y="165" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">两个 9M 合计</text><rect x="176" y="152" width="294.7" height="17" fill="#0C1E35" rx="2"/><text x="477.7" y="165" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">39.8%</text><text x="166" y="195" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">政策区间中枢</text><rect x="176" y="182" width="333.0" height="17" fill="#8A9AA6" rx="2"/><text x="516.0" y="195" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">45.0%</text><text x="0" y="250" font-size="10" fill="#5B6B7A">跨周期口径而非年度下限</text></svg><div class="figcap">图 14 · 40–50% CFFO 政策的跨周期验证（QRA 现金流量表）</div></div>
+<h3>6.3 每股口径与除息</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>项目</th><th>数值</th><th>换算</th></tr></thead><tbody>
+<tr><td>每普通股季度股息</td><td class="num">$0.3906</td><td>公司按普通股宣派</td></tr>
+<tr><td>每 ADS 季度股息</td><td class="num">$0.7812</td><td>1 ADS = 2 普通股</td></tr>
+<tr><td>年化每 ADS 股息</td><td class="num">$3.1248</td><td>四个季度 × $0.7812</td></tr>
+<tr><td>现价股息率</td><td class="num">3.15%</td><td class="num">$3.1248 ÷ $99.08</td></tr>
+<tr><td>第三方股息率快照</td><td class="num">3.12%</td><td>腾讯行情 2026-11-13，差异来自股息滚动窗口</td></tr>
+<tr><td>未来 12 个月股息（模型）</td><td class="num">$3.19</td><td>按渐进股息政策估算，不改变公司 +4% 目标</td></tr>
+<tr><td>9M26 累计每普通股股息</td><td class="num">$1.1718</td><td>QRA 摘要</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>除息日之后买入的 ADS 不享有已宣派的当期股息；表中股息率按现价与年化股息计算，不代表任一持有人的实际到账。回购不产生现金到账，其效果通过每股指标体现，不叠加进总回报。</div>
+</div></section>
+<section id="s7"><div class="sec-head"><span class="sec-tag">07</span><h2>估值分析</h2></div><div class="sec-body">
+<h3>7.1 估值输入与正常化基准</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>输入</th><th>数值</th><th>来源 / 口径</th></tr></thead><tbody>
+<tr><td>现价（每 ADS）</td><td class="num">$99.08</td><td>NYSE 2026-11-13 收盘，<span class="tag t-third">第三方</span></td></tr>
+<tr><td>52 周区间</td><td class="num">$65.54–$108.59</td><td>第三方行情</td></tr>
+<tr><td>ADS 股本</td><td class="num">2.827657B</td><td>腾讯 2,827,656,981 ADS；Q3 末官方普通股 5,729,497,530 股 = 2.864749B ADS</td></tr>
+<tr><td>市值</td><td class="num">$280.164B</td><td>第三方行情总市值</td></tr>
+<tr><td>净债务（含租赁）</td><td class="num">$39.733B</td><td class="num">QRA / Databook APM</td></tr>
+<tr class="hl-row"><td>企业价值 EV</td><td class="num">$319.897B</td><td>市值 + 净债务</td></tr>
+<tr><td>TTM 归属股东净利</td><td class="num">$32.708B</td><td class="num">9M26 + FY25 − 9M25</td></tr>
+<tr class="hl-row"><td>TTM 市盈率</td><td class="num">8.57x</td><td>自算；第三方快照 8.60x</td></tr>
+<tr><td>TTM 每 ADS 收益</td><td class="num">$11.57</td><td>自算；第三方快照 $11.52</td></tr>
+<tr><td>TTM 调整后 EBITDA</td><td class="num">$73.986B</td><td class="num">9M26 + FY25 − 9M25</td></tr>
+<tr><td class="num">TTM EV/EBITDA</td><td class="num">4.32x</td><td>EV ÷ TTM 调整后 EBITDA</td></tr>
+<tr><td>TTM FCF 收益率</td><td class="num">14.6%</td><td>TTM FCF ÷ 市值；含 2026 周期高点</td></tr>
+<tr class="hl-row"><td>正常化调整后收益</td><td class="num">$21.0B</td><td>2025 实际 $18.529B + ARC 全年与结构性降本 − 周期回归</td></tr>
+<tr><td>正常化每 ADS 收益</td><td class="num">$7.43</td><td class="num">21.0B ÷ 2.8277B ADS</td></tr>
+<tr><td>正常化 EBITDA</td><td class="num">$58.0B</td><td>2025 实际 $56.135B + ARC $4.0B + 降本 $1.0B，落在 3.6 网格区间</td></tr>
+<tr class="hl-row"><td>正常化有机 FCF</td><td class="num">$26.5B</td><td>2025 实际 $25.741B + ARC 与降本增量 − 维护性资本开支</td></tr>
+<tr><td>股权口径 FCF 收益率</td><td class="num">9.5%</td><td class="num">$26.5B ÷ $280.2B</td></tr>
+<tr><td>企业口径 FCF 收益率</td><td class="num">8.3%</td><td class="num">$26.5B ÷ $319.9B</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-model">模型输出</span>TTM 倍数用峰值盈利计算，5 年正常化倍数用右侧正常化输入计算，两组不交叉使用。股本采用最新 ADS 数，Q3 末官方股本与当前股本的差额来自 Q4 回购，所有每股指标统一用当前口径。</div>
+<h3>7.2 四法估值与足球场</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>方法</th><th>下沿</th><th>基准点</th><th>上沿</th><th>权重</th><th>输入</th></tr></thead><tbody>
+<tr><td>股息率法</td><td class="num">$74.4</td><td class="num">$89.3</td><td class="num">$97.7</td><td class="num">20%</td><td>要求股息率 4.2% / 3.5% / 3.2%；年化每 ADS 股息 $3.1248</td></tr>
+<tr><td>正常化 P/E</td><td class="num">$81.7</td><td class="num">$92.8</td><td class="num">$104.0</td><td class="num">25%</td><td>正常化每 ADS 调整后收益 $7.43（21.0B ÷ 2.8277B ADS）× 11.0x / 12.5x / 14.0x</td></tr>
+<tr><td class="num">EV/EBITDA</td><td class="num">$88.5</td><td class="num">$102.9</td><td class="num">$119.3</td><td class="num">25%</td><td>正常化 EBITDA $58.0B × 5.0x / 5.7x / 6.5x，减净债务 $39.733B</td></tr>
+<tr><td class="num">DCF / FCF</td><td class="num">$95.9</td><td class="num">$105.6</td><td class="num">$117.2</td><td class="num">30%</td><td>正常化有机 FCF $26.5B、WACC 10.00% / 9.25% / 8.50%、g 0.5%</td></tr>
+<tr class="hl-row"><td>四法加权基准点</td><td>不适用</td><td class="num">$98.47</td><td>不适用</td><td class="num">100%</td><td>按权重加总</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-model">模型输出</span>四行区间互不替代：股息率法约束要求回报，P/E 与 EV/EBITDA 约束正常化盈利，DCF 约束现金流与资本成本。</div>
+<div class="figure"><svg viewBox="0 0 680 260" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="四法估值区间与现价" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="260" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">四法估值区间与现价</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：美元 / ADS｜金色竖线为基准点，红色虚线为现价 $99.08</text><line x1="156.0" y1="74" x2="156.0" y2="232" stroke="#E3E9F2" stroke-width="1"/><text x="156.0" y="68.0" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$60</text><line x1="254.4" y1="74" x2="254.4" y2="232" stroke="#E3E9F2" stroke-width="1"/><text x="254.4" y="68.0" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$78</text><line x1="352.8" y1="74" x2="352.8" y2="232" stroke="#E3E9F2" stroke-width="1"/><text x="352.8" y="68.0" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$96</text><line x1="451.2" y1="74" x2="451.2" y2="232" stroke="#E3E9F2" stroke-width="1"/><text x="451.2" y="68.0" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$114</text><line x1="549.6" y1="74" x2="549.6" y2="232" stroke="#E3E9F2" stroke-width="1"/><text x="549.6" y="68.0" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$132</text><line x1="648.0" y1="74" x2="648.0" y2="232" stroke="#E3E9F2" stroke-width="1"/><text x="648.0" y="68.0" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$150</text><text x="146.0" y="97.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">股息率法</text><rect x="234.7" y="86.0" width="127.1" height="21.0" fill="#4A8FA0" opacity=".55" rx="3"/><line x1="316.1" y1="83.0" x2="316.1" y2="106.0" stroke="#C08A1E" stroke-width="3"/><text x="367.8" y="97.0" text-anchor="start" font-size="10" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$89.3</text><text x="146.0" y="131.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">正常化 P/E</text><rect x="274.6" y="120.0" width="121.8" height="21.0" fill="#4A8FA0" opacity=".55" rx="3"/><line x1="335.5" y1="117.0" x2="335.5" y2="140.0" stroke="#C08A1E" stroke-width="3"/><text x="402.4" y="131.0" text-anchor="start" font-size="10" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$92.8</text><text x="146.0" y="165.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">EV/EBITDA</text><rect x="311.8" y="154.0" width="168.2" height="21.0" fill="#4A8FA0" opacity=".55" rx="3"/><line x1="390.3" y1="151.0" x2="390.3" y2="174.0" stroke="#C08A1E" stroke-width="3"/><text x="486.0" y="165.0" text-anchor="start" font-size="10" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$102.9</text><text x="146.0" y="199.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">DCF / FCF</text><rect x="352.1" y="188.0" width="116.6" height="21.0" fill="#4A8FA0" opacity=".55" rx="3"/><line x1="405.4" y1="185.0" x2="405.4" y2="208.0" stroke="#C08A1E" stroke-width="3"/><text x="474.7" y="199.0" text-anchor="start" font-size="10" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$105.6</text><line x1="369.6" y1="74" x2="369.6" y2="232" stroke="#C0392B" stroke-width="1.6" stroke-dasharray="5,4"/><text x="369.6" y="234.0" text-anchor="middle" font-size="10" font-weight="700" fill="#C0392B" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">现价 $99.08</text><text x="0.0" y="252.0" text-anchor="start" font-size="10" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">四法加权基准点 $98.47</text></svg><div class="figcap">图 15 · 四法估值足球场（模型输出）</div></div>
+<h3>7.3 DCF 口径、WACC 构成与敏感性</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>WACC 分项</th><th>数值（pp）</th><th>计算</th></tr></thead><tbody>
+<tr><td>美元无风险利率</td><td class="num">4.20</td><td>10 年期美元国债收益率假设</td></tr>
+<tr><td>股权风险溢价 5.00% × Beta 0.90</td><td class="num">4.50</td><td>综合能源巨头 Beta 假设</td></tr>
+<tr><td>股权成本 Ke</td><td class="num">8.70</td><td class="num">4.20 + 4.50</td></tr>
+<tr><td>税后债务成本 Kd</td><td class="num">3.46</td><td class="num">4.80% × (1 − 28%)</td></tr>
+<tr><td>加权基础 WACC</td><td class="num">7.65</td><td>股权权重 80% × 8.70% + 债务权重 20% × 3.46%</td></tr>
+<tr><td>周期、能源转型与政策风险溢价</td><td class="num">1.60</td><td>商品价格、霍尔木兹暴露与转型资本开支</td></tr>
+<tr class="hl-row"><td>美元名义 WACC</td><td class="num">9.25</td><td class="num">7.65 + 1.60</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-model">模型输出</span>现金流以美元计价，折现率用美元名义 WACC，不以英镑或欧元利率代入。9.25% 为基准，网格覆盖 8.50%–10.00%。</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>DCF 口径环节</th><th>处理</th></tr></thead><tbody>
+<tr><td>现金流定义</td><td>公司口径 FCF = CFFO + 投资活动现金流；利息支付列在融资活动，属付息前口径</td></tr>
+<tr><td>折现率</td><td>美元名义 WACC 9.25%，与上述现金流口径匹配</td></tr>
+<tr><td>企业价值</td><td>10 年明确预测期（年增长 2.0%）+ 永续增长 0.5% 的终值</td></tr>
+<tr><td>净债务桥</td><td>EV $338.4B 一次性扣含租赁负债的净债务 $39.733B → 股权价值 $298.6B</td></tr>
+<tr><td>每 ADS 价值</td><td>$298.6B ÷ 2.8277B ADS = $105.62</td></tr>
+<tr><td>租赁本金</td><td>不在 FCF 中重复扣减；已在净债务桥中体现</td></tr>
+<tr><td>剔除租赁情形</td><td>若改用净债务 $5.586B，每 ADS 为 $117.69；9M26 非现金重估 $7.684B 折每 ADS $2.72</td></tr>
+<tr><td>不与 FCFE 混用</td><td>不采用「扣息后现金流 ÷ 股权资本成本」的第二套口径，避免同一模型内两套折现率</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-model">模型输出</span>公司口径 FCF = CFFO + CFI；利息支付列在融资活动，故该现金流为税前付息前口径，用 WACC 折现得 EV，再一次性扣除含租赁负债的净债务；租赁本金不在 FCF 中重复扣减。</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>正常化 FCF ＼ WACC</th><th>8.50%</th><th>9.00%</th><th>9.25%</th><th>9.50%</th><th>10.00%</th></tr></thead><tbody>
+<tr><td class="num">$20.0B</td><td class="num">$85.0</td><td class="num">$79.0</td><td class="num">$76.3</td><td class="num">$73.7</td><td class="num">$68.9</td></tr>
+<tr><td class="num">$23.0B</td><td class="num">$99.9</td><td class="num">$93.0</td><td class="num">$89.8</td><td class="num">$86.8</td><td class="num">$81.4</td></tr>
+<tr><td class="num">$26.5B</td><td class="num">$117.2</td><td class="num">$109.2</td><td class="num">$105.6</td><td class="num">$102.2</td><td class="num">$95.9</td></tr>
+<tr><td class="num">$29.0B</td><td class="num">$129.6</td><td class="num">$120.9</td><td class="num">$116.9</td><td class="num">$113.2</td><td class="num">$106.2</td></tr>
+<tr><td class="num">$32.0B</td><td class="num">$144.4</td><td class="num">$134.8</td><td class="num">$130.5</td><td class="num">$126.3</td><td class="num">$118.7</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-model">模型输出</span>单元格为每 ADS 内在价值（美元）。基准 26.5B / 9.25% 对应 $105.62；网格上下边界为 $68.9–$144.4。</div>
+<div class="figure"><svg viewBox="0 0 680 286" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DCF 每 ADS 价值：WACC × 正常化 FCF" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="286" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">DCF 每 ADS 价值：WACC × 正常化 FCF</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">行：正常化有机 FCF｜列：美元名义 WACC｜单元格：每 ADS 价值（美元）</text><text x="190.0" y="71.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">8.50%</text><text x="294.0" y="71.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">9.00%</text><text x="398.0" y="71.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">9.25%</text><text x="502.0" y="71.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">9.50%</text><text x="606.0" y="71.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">10.00%</text><text x="128.0" y="103.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$20.0B</text><rect x="140.0" y="84.0" width="100.0" height="30.0" fill="#ABD3D9" rx="3"/><text x="190.0" y="103.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$85</text><rect x="244.0" y="84.0" width="100.0" height="30.0" fill="#BADADF" rx="3"/><text x="294.0" y="103.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$79</text><rect x="348.0" y="84.0" width="100.0" height="30.0" fill="#C0DEE3" rx="3"/><text x="398.0" y="103.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$76</text><rect x="452.0" y="84.0" width="100.0" height="30.0" fill="#C7E1E6" rx="3"/><text x="502.0" y="103.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$74</text><rect x="556.0" y="84.0" width="100.0" height="30.0" fill="#D3E7EB" rx="3"/><text x="606.0" y="103.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$69</text><text x="128.0" y="137.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$23.0B</text><rect x="140.0" y="118.0" width="100.0" height="30.0" fill="#86C0C7" rx="3"/><text x="190.0" y="137.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$100</text><rect x="244.0" y="118.0" width="100.0" height="30.0" fill="#97C9CF" rx="3"/><text x="294.0" y="137.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$93</text><rect x="348.0" y="118.0" width="100.0" height="30.0" fill="#9FCDD3" rx="3"/><text x="398.0" y="137.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$90</text><rect x="452.0" y="118.0" width="100.0" height="30.0" fill="#A6D1D6" rx="3"/><text x="502.0" y="137.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$87</text><rect x="556.0" y="118.0" width="100.0" height="30.0" fill="#B4D7DD" rx="3"/><text x="606.0" y="137.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$81</text><text x="128.0" y="171.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$26.5B</text><rect x="140.0" y="152.0" width="100.0" height="30.0" fill="#5BAAB3" rx="3"/><text x="190.0" y="171.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$117</text><rect x="244.0" y="152.0" width="100.0" height="30.0" fill="#6FB4BD" rx="3"/><text x="294.0" y="171.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$109</text><rect x="348.0" y="152.0" width="100.0" height="30.0" fill="#78B9C1" rx="3"/><text x="398.0" y="171.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$106</text><rect x="452.0" y="152.0" width="100.0" height="30.0" fill="#80BDC5" rx="3"/><text x="502.0" y="171.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$102</text><rect x="556.0" y="152.0" width="100.0" height="30.0" fill="#90C5CC" rx="3"/><text x="606.0" y="171.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$96</text><text x="128.0" y="205.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$29.0B</text><rect x="140.0" y="186.0" width="100.0" height="30.0" fill="#3C9BA5" rx="3"/><text x="190.0" y="205.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$130</text><rect x="244.0" y="186.0" width="100.0" height="30.0" fill="#52A6AF" rx="3"/><text x="294.0" y="205.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$121</text><rect x="348.0" y="186.0" width="100.0" height="30.0" fill="#5CABB4" rx="3"/><text x="398.0" y="205.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$117</text><rect x="452.0" y="186.0" width="100.0" height="30.0" fill="#65AFB8" rx="3"/><text x="502.0" y="205.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$113</text><rect x="556.0" y="186.0" width="100.0" height="30.0" fill="#76B8C0" rx="3"/><text x="606.0" y="205.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$106</text><text x="128.0" y="239.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$32.0B</text><rect x="140.0" y="220.0" width="100.0" height="30.0" fill="#178894" rx="3"/><text x="190.0" y="239.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$144</text><rect x="244.0" y="220.0" width="100.0" height="30.0" fill="#2F949F" rx="3"/><text x="294.0" y="239.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$135</text><rect x="348.0" y="220.0" width="100.0" height="30.0" fill="#3A9AA4" rx="3"/><text x="398.0" y="239.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$130</text><rect x="452.0" y="220.0" width="100.0" height="30.0" fill="#449FA9" rx="3"/><text x="502.0" y="239.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$126</text><rect x="556.0" y="220.0" width="100.0" height="30.0" fill="#57A8B2" rx="3"/><text x="606.0" y="239.0" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$119</text><text x="0.0" y="278.0" text-anchor="start" font-size="10" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">基准 26.5B / 9.25% → $106；现价 $99.08 落在网格中下部</text></svg><div class="figcap">图 16 · DCF 双因子敏感性（模型输出）</div></div>
+<h3>7.4 三情景加权目标价</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>情景</th><th>概率</th><th>Brent<br>（$/bbl）</th><th>IRM<br>（$/bbl）</th><th>正常化<br>FCF</th><th>正常化<br>EBITDA</th><th>每 ADS<br>收益</th><th>WACC</th><th>四法均值<br>目标价</th></tr></thead><tbody>
+<tr><td>悲观</td><td class="num">30%</td><td class="num">60–70</td><td class="num">8–10</td><td class="num">$20.0B</td><td class="num">$48.0B</td><td class="num">$5.60</td><td class="num">10.00%</td><td class="num">$68.93</td></tr>
+<tr><td>基准</td><td class="num">45%</td><td class="num">75–85</td><td class="num">12–15</td><td class="num">$26.5B</td><td class="num">$58.0B</td><td class="num">$7.43</td><td class="num">9.25%</td><td class="num">$97.65</td></tr>
+<tr><td>乐观</td><td class="num">25%</td><td>95 以上</td><td>20 以上</td><td class="num">$32.0B</td><td class="num">$68.0B</td><td class="num">$9.50</td><td class="num">8.50%</td><td class="num">$130.97</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-scen">情景假设</span>每档情景都用同一四法框架（股息率、P/E、EV/EBITDA、DCF）等权计算情景价，概率为分析师主观判断，不是公司指引或市场隐含概率。</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>情景</th><th>股息率法</th><th>正常化 P/E</th><th>EV/EBITDA</th><th>DCF</th><th>情景价</th><th>宏观与经营假设</th></tr></thead><tbody>
+<tr><td>悲观</td><td class="num">$74.4</td><td class="num">$61.6</td><td class="num">$70.8</td><td class="num">$68.9</td><td class="num">$68.93</td><td>中东局势缓和、霍尔木兹恢复通行，油价与 LNG 价差回落；化工处置延后；Q4 一次性项目扰动持续</td></tr>
+<tr><td>基准</td><td class="num">$89.3</td><td class="num">$92.8</td><td class="num">$102.9</td><td class="num">$105.6</td><td class="num">$97.65</td><td>ARC 全年并表、LNG Canada Phase 2 按期推进、结构性降本部分兑现；地缘溢价逐步消退但不塌陷</td></tr>
+<tr><td>乐观</td><td class="num">$104.2</td><td class="num">$133.0</td><td class="num">$142.3</td><td class="num">$144.4</td><td class="num">$130.97</td><td>霍尔木兹溢价延续、炼化与 LNG 价差维持高位；化工资产溢价变现；CMD27 上调每股 FCF 路径</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-model">模型输出</span>加权结果 $97.36 = 30% × $68.93 + 45% × $97.65 + 25% × $130.97；展示取整数 $97。</div>
+<div class="figure"><svg viewBox="0 0 680 256" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="三情景四法均值与概率加权目标价" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="256" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">三情景四法均值与概率加权目标价</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：美元 / ADS｜红线为概率加权结果</text><line x1="176.0" y1="62" x2="176.0" y2="204" stroke="#E3E9F2" stroke-width="1"/><text x="176.0" y="220.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$0</text><line x1="287.0" y1="62" x2="287.0" y2="204" stroke="#E3E9F2" stroke-width="1"/><text x="287.0" y="220.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$38</text><line x1="398.0" y1="62" x2="398.0" y2="204" stroke="#E3E9F2" stroke-width="1"/><text x="398.0" y="220.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$75</text><line x1="509.0" y1="62" x2="509.0" y2="204" stroke="#E3E9F2" stroke-width="1"/><text x="509.0" y="220.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$112</text><line x1="620.0" y1="62" x2="620.0" y2="204" stroke="#E3E9F2" stroke-width="1"/><text x="620.0" y="220.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">$150</text><text x="166" y="75" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">悲观（30%）</text><rect x="176" y="62" width="204.0" height="17" fill="#0C1E35" rx="2"/><text x="387.0" y="75" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">$68.9</text><text x="166" y="105" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">基准（45%）</text><rect x="176" y="92" width="289.0" height="17" fill="#C08A1E" rx="2"/><text x="472.0" y="105" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">$97.6</text><text x="166" y="135" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">乐观（25%）</text><rect x="176" y="122" width="387.7" height="17" fill="#007C89" rx="2"/><text x="570.7" y="135" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">$131.0</text><text x="166" y="165" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">概率加权目标价</text><rect x="176" y="152" width="288.2" height="17" fill="#C0392B" rx="2"/><text x="471.2" y="165" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">$97.4</text><text x="166" y="195" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">现价</text><rect x="176" y="182" width="293.3" height="17" fill="#8A9AA6" rx="2"/><text x="476.3" y="195" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">$99.08</text><text x="0" y="250" font-size="10" fill="#5B6B7A">展示目标价 $97，价格回报 −2.1%</text></svg><div class="figcap">图 17 · 三情景与加权目标价（模型输出）</div></div>
+<h3>7.5 评级与观察区间</h3>
+<p><span class="tag t-model">模型输出</span>目标价 $97，现价 $99.08，价格回报 −2.1%；加未来 12 个月股息 $3.19/ADS 后总回报 <strong>+1.1%</strong>。总回报 ≥15% 为买入；0%–15% 为持有；<0% 为减持，落在「持有」。评级由 持有 维持，目标价由 $94 上移 $3，来自基准情景四法重算与股本缩减，幅度小于同期股价涨幅。</p>
+<p><span class="tag t-scen">情景假设</span>观察买入区 <strong>$86–90</strong>，对应要求股息率 3.5%–3.6% 与 3.6 网格中Brent $75 / 产量 2.8 的估值下沿；上限触发为 2027 年 2 月 Capital Markets Update 给出 ARC 分项目回报与上调每股 FCF 路径，或 Brent 稳定于 $95 以上且 Q4 实现利润率不回落；下限触发为中东局势实质缓和、Brent 跌破 $70 或 Q4 FCF 明显低于 3.6 网格下沿。</p>
+</div></section>
+<section id="s8"><div class="sec-head"><span class="sec-tag">08</span><h2>同业相对位置</h2></div><div class="sec-body">
+<h3>8.1 五大能源巨头行情快照</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>代码</th><th>公司</th><th>价格</th><th>总市值<br>（US$B）</th><th>TTM P/E</th><th>TTM EPS</th><th>股息率</th><th>52 周区间</th></tr></thead><tbody>
+<tr class="hl-row"><td class="num">SHEL</td><td class="num">Shell plc</td><td class="num">$99.08</td><td class="num">280.2</td><td class="num">8.60x</td><td class="num">$11.52</td><td class="num">3.12%</td><td class="num">65.54–108.59</td></tr>
+<tr><td class="num">XOM</td><td class="num">ExxonMobil</td><td class="num">$170.59</td><td class="num">695.9</td><td class="num">17.55x</td><td class="num">$9.72</td><td class="num">3.07%</td><td class="num">111.96–188.50</td></tr>
+<tr><td class="num">CVX</td><td class="num">Chevron</td><td class="num">$219.89</td><td class="num">429.1</td><td class="num">16.14x</td><td class="num">$13.62</td><td class="num">3.24%</td><td class="num">142.50–236.48</td></tr>
+<tr><td class="num">BP</td><td class="num">BP plc</td><td class="num">$45.70</td><td class="num">117.7</td><td class="num">13.28x</td><td class="num">$3.44</td><td class="num">4.41%</td><td class="num">31.18–50.97</td></tr>
+<tr><td class="num">TTE</td><td class="num">TotalEnergies</td><td class="num">$90.74</td><td class="num">199.0</td><td class="num">9.06x</td><td class="num">$10.02</td><td class="num">4.44%</td><td class="num">60.05–95.78</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-third">第三方</span>腾讯行情 2026-11-13 美股收盘快照，TTM 口径由第三方计算；各公司会计准则、FCF 定义、回购与分红结构不同，本表只作价格与盈利倍数的横向参照，不是严格同质化比较。SHEL 自算 TTM P/E 8.57x 与第三方 8.60x 一致，误差来自股本与市值取值时点。</div>
+<p><span class="tag t-model">模型输出</span>SHEL 的 TTM P/E 8.60x 相对同业中位数 13.28x 折价 35.2%。折价不是单纯的低估：TTM 每股盈利建立在 Brent $97、IRM $41.57 与 $3.4B 衍生品净流入之上，而同业盈利的周期位置并不相同。07 章因此用正常化盈利而非 TTM 盈利做倍数法。</p>
+<div class="figure"><svg viewBox="0 0 680 286" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="五大能源巨头 TTM 市盈率" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="286" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">五大能源巨头 TTM 市盈率</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">单位：倍｜第三方行情 2026-11-13</text><line x1="176.0" y1="62" x2="176.0" y2="234" stroke="#E3E9F2" stroke-width="1"/><text x="176.0" y="250.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">0x</text><line x1="287.0" y1="62" x2="287.0" y2="234" stroke="#E3E9F2" stroke-width="1"/><text x="287.0" y="250.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">5x</text><line x1="398.0" y1="62" x2="398.0" y2="234" stroke="#E3E9F2" stroke-width="1"/><text x="398.0" y="250.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">10x</text><line x1="509.0" y1="62" x2="509.0" y2="234" stroke="#E3E9F2" stroke-width="1"/><text x="509.0" y="250.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">15x</text><line x1="620.0" y1="62" x2="620.0" y2="234" stroke="#E3E9F2" stroke-width="1"/><text x="620.0" y="250.0" text-anchor="middle" font-size="10" fill="#5B6B7A" font-family="Arial,sans-serif">20x</text><text x="166" y="75" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">SHEL</text><rect x="176" y="62" width="190.9" height="17" fill="#C08A1E" rx="2"/><text x="373.9" y="75" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">8.60x</text><text x="166" y="105" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">XOM</text><rect x="176" y="92" width="389.6" height="17" fill="#007C89" rx="2"/><text x="572.6" y="105" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">17.55x</text><text x="166" y="135" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">CVX</text><rect x="176" y="122" width="358.3" height="17" fill="#007C89" rx="2"/><text x="541.3" y="135" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">16.14x</text><text x="166" y="165" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">BP</text><rect x="176" y="152" width="294.8" height="17" fill="#007C89" rx="2"/><text x="477.8" y="165" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">13.28x</text><text x="166" y="195" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">TTE</text><rect x="176" y="182" width="201.1" height="17" fill="#007C89" rx="2"/><text x="384.1" y="195" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">9.06x</text><text x="166" y="225" text-anchor="end" font-size="10.5" fill="#1C1917" font-family="'Noto Sans SC',Arial,sans-serif">同业中位数</text><rect x="176" y="212" width="294.8" height="17" fill="#8A9AA6" rx="2"/><text x="477.8" y="225" font-size="10.5" fill="#1C1917" font-family="Arial,sans-serif">13.28x</text><text x="0" y="280" font-size="10" fill="#5B6B7A">SHEL 折价 35.2%，需按周期盈利质量调整</text></svg><div class="figcap">图 18 · 同业 TTM 市盈率与折价（第三方数据）</div></div>
+<h3>8.2 折价的四项风险调整</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>折价来源</th><th>证据</th><th>模型处理</th></tr></thead><tbody>
+<tr><td>周期盈利质量</td><td>SHEL TTM EPS 含 2026 高油价与 $42/bbl 炼油利润率</td><td>对 TTM 倍数打折扣，改用正常化盈利</td></tr>
+<tr><td>地区与政治暴露</td><td>卡塔尔 / 霍尔木兹资产中断、尼日利亚与委内瑞拉谈判项目</td><td>悲观情景权重 30%</td></tr>
+<tr><td>会计计量噪声</td><td>净债务 $39.733B 中 $34.147B 为租赁负债，其中 $7.684B 为即期运价重估</td><td>EV 桥同时列示剔除租赁口径</td></tr>
+<tr><td>分配政策弹性</td><td>40–50% CFFO 为跨周期目标，9M26 实付口径 32.5%</td><td>不以 $5B 回购年化外推</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-risk">风险判断</span>折价不直接当作上行空间；四项调整分别落在正常化盈利、情景概率、净债务桥与分配率假设中。</div>
+</div></section>
+<section id="s9"><div class="sec-head"><span class="sec-tag">09</span><h2>风险、催化剂与评级结论</h2></div><div class="sec-body">
+<h3>9.1 风险矩阵</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>风险</th><th>等级</th><th>量化与传导</th></tr></thead><tbody>
+<tr><td>周期回归</td><td>高</td><td>Brent 由 $97 回落至 $65，按官方敏感性每年调整后收益约 −$11.8B（含 IRM/TTF 回归后更多）</td></tr>
+<tr><td>Q4 一次性损失</td><td>中</td><td>荷兰设定受益计划终止确认预计非现金损失 $6.4B，冲击报告净利但不改变现金流</td></tr>
+<tr><td>会计计量</td><td>中</td><td>净债务 $39.733B 含 $34.147B 租赁负债，其中 $7.684B 为即期运价重估；运价回落会反向改写报表</td></tr>
+<tr><td>分配政策</td><td>中</td><td>40–50% CFFO 是跨周期目标；9M26 实付口径 32.5%，$5B 回购属补进度而非 Q4 指引</td></tr>
+<tr><td>地缘与运营</td><td>高</td><td>卡塔尔 Pearl GTL / LNG 中断延续至 Q4，莱茵河低水位、墨西哥湾飓风、运费现货上行</td></tr>
+<tr><td>化工处置</td><td>中</td><td>管理层明确不承诺时点与价格；若换股而非出售，现金回流低于预期</td></tr>
+<tr><td>转型与诉讼</td><td>中</td><td>低碳板块回报未量化，荷兰法院减排判决与各国政策变化</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-risk">风险判断</span>等级为分析判断。Brent 每回落 $10/桶，公司披露的全年调整后收益敏感度约 −$3.7B、CFFO 约 −$4.0B；指示炼油利润率每回落 $1/桶，全年调整后收益约 −$320M。</div>
+<h3>9.2 催化剂日历</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>时点</th><th>事件</th><th>观察重点</th></tr></thead><tbody>
+<tr><td class="num">2027-02-04</td><td>Capital Markets Update 2027 与 Q4 2026 业绩</td><td>ARC 整合里程碑、2027–2031 资本框架、每股 FCF 路径</td></tr>
+<tr><td>2026-12-31 前</td><td>$5.0B 回购完成</td><td>按现价约 50.5M ADS，约占股本 1.8%</td></tr>
+<tr><td>2026 年末</td><td>Sprng / Tri Star / 欧洲陆上新能源交割</td><td>处置与并购现金流的落地时点</td></tr>
+<tr><td>2027 Q1 末</td><td>Pearl GTL 第二条产线计划重启</td><td>以霍尔木兹开放与产品外运为前提</td></tr>
+<tr><td>2027 年初</td><td>Bay du Nord 拟 FID</td><td>Equinor 运营，公司未披露分项目投资额</td></tr>
+<tr><td class="num">2027-03-11</td><td>2026 年报与 Form 20-F</td><td>ARC 购买价格分摊最终化、租赁计量复核</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-guide">书面指引</span>日期来自 Q3 新闻稿 UPCOMING INVESTOR EVENTS 与 QRA FORTHCOMING EVENTS；项目时点为公司计划，可能变动。</div>
+<div class="figure"><svg viewBox="0 0 680 266" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="后续验证节点" style="display:block;max-width:100%;height:auto"><rect x="0" y="0" width="680" height="266" fill="#FFFFFF"/><text x="0" y="18" font-size="14" font-weight="700" fill="#0C1E35" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">后续验证节点</text><text x="0" y="36" font-size="11" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">按时间顺序｜口径标签与正文一致</text><line x1="23" y1="56" x2="23" y2="224" stroke="#E3E9F2" stroke-width="2"/><circle cx="23" cy="59" r="4.5" fill="#007C89"/><text x="114.0" y="62.0" text-anchor="end" font-size="10" font-weight="700" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2026-12-31 前</text><text x="128.0" y="62.0" text-anchor="start" font-size="10.5" font-weight="400" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">$5.0B 回购完成 / 年末交割窗口</text><circle cx="23" cy="89" r="4.5" fill="#C08A1E"/><text x="114.0" y="92.0" text-anchor="end" font-size="10" font-weight="700" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2027-01 至 03</text><text x="128.0" y="92.0" text-anchor="start" font-size="10.5" font-weight="400" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">Pearl GTL 第二条产线计划重启</text><circle cx="23" cy="119" r="4.5" fill="#007C89"/><text x="114.0" y="122.0" text-anchor="end" font-size="10" font-weight="700" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2027-02-04</text><text x="128.0" y="122.0" text-anchor="start" font-size="10.5" font-weight="400" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">Capital Markets Update 2027 与 Q4 业绩</text><circle cx="23" cy="149" r="4.5" fill="#0C1E35"/><text x="114.0" y="152.0" text-anchor="end" font-size="10" font-weight="700" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2027-03-11</text><text x="128.0" y="152.0" text-anchor="start" font-size="10.5" font-weight="400" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2026 年报与 Form 20-F</text><circle cx="23" cy="179" r="4.5" fill="#007C89"/><text x="114.0" y="182.0" text-anchor="end" font-size="10" font-weight="700" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2027-04-29</text><text x="128.0" y="182.0" text-anchor="start" font-size="10.5" font-weight="400" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">1Q27 业绩与股息</text><circle cx="23" cy="209" r="4.5" fill="#C0392B"/><text x="114.0" y="212.0" text-anchor="end" font-size="10" font-weight="700" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">2027 年初</text><text x="128.0" y="212.0" text-anchor="start" font-size="10.5" font-weight="400" fill="#1C1917" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">Bay du Nord 拟 FID</text><text x="0.0" y="258.0" text-anchor="start" font-size="10" font-weight="400" fill="#5B6B7A" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">节点用于评级重审，不构成事件必然发生的判断</text></svg><div class="figcap">图 19 · 后续验证节点（公司日程 + 电话会表述）</div></div>
+<h3>9.3 投资结论</h3>
+<div class="rating-banner"><div class="rb-left"><div class="rb-eyebrow">Snail-Bird Investment · 能源研究部 · 12 个月评级</div><div class="rb-rating">持有（维持）</div><div class="rb-sub">目标价 $97 · 现价 $99.08 · 总回报 +1.1% · 观察买入区 $86–90</div></div><div class="rb-right"><div class="rb-tp-label">目标价（ADS）</div><div class="rb-tp mono">$97</div><div class="rb-prev">前次 $94 · 三情景加权 $97.36</div></div></div>
+<p><span class="tag t-fact">公司披露</span>Q3 2026 在盈利、现金流、去杠杆与组合执行四条线上同时兑现：调整后收益同比近翻倍，净债务由年初 $45.687B 降至 $39.733B，ARC 交割与 LNG Canada Phase 2 FID 落地，FY2026 Capex 指引不升反降。首次覆盖报告当时等待的 H2 验证已经发生。</p>
+<p><span class="tag t-model">模型输出</span>估值没有同步给出更大的空间，原因在价格：现价 $99.08 比首次覆盖时的约 $90 高出约 10%，已经越过前次目标价 $94。正常化有机 FCF $26.5B、WACC 9.25% 的 DCF 基准 $105.62，四法加权 $98.47，三情景加权 $97.36，三个结果都围绕现价上下，没有形成明显折价。</p>
+<p><span class="tag t-risk">风险判断</span>维持持有，不主动止损已有仓位；新资金在 $86–90 之前，风险回报比不足以覆盖霍尔木兹、周期回归与化工处置时点三组不确定性。评级重审以 2027 年 2 月 4 日 Capital Markets Update 的 ARC 回报细节与每股 FCF 路径为主。</p>
+</div></section>
+<section id="s10"><div class="sec-head"><span class="sec-tag">10</span><h2>数据来源与口径</h2></div><div class="sec-body">
+<h3>10.1 数据分层</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>层级</th><th>标签</th><th>来源</th><th>使用规则</th></tr></thead><tbody>
+<tr><td>公司披露</td><td><span class="tag t-fact">公司披露</span></td><td>Q3 2026 与九个月未经审计业绩（QRA 46 页）、Q3 新闻稿、results slides、Q3 Quarterly Databook、CFO Keynote 文件</td><td>所有财务与运营数字以此为准</td></tr>
+<tr><td>书面指引</td><td><span class="tag t-guide">书面指引</span></td><td>QRA OUTLOOK FOR THE FOURTH QUARTER 2026、新闻稿分部 outlook、results slides 财务框架与 CMD25 目标</td><td>只用于已披露区间，不推导未披露利润</td></tr>
+<tr><td>电话会</td><td><span class="tag t-call">电话会</span></td><td>官方 CFO Keynote speech 与第三方整理的全场逐字稿</td><td>口头表述单独标注，与书面指引冲突时以书面为准</td></tr>
+<tr><td>第三方数据</td><td><span class="tag t-third">第三方</span></td><td>腾讯 qt.gtimg.cn、新浪 hq.sinajs.cn（2026-11-13 美股收盘）</td><td>仅用于行情、市值、同业倍数</td></tr>
+<tr><td>模型输出</td><td><span class="tag t-model">模型输出</span></td><td>正常化盈利、WACC、DCF、覆盖率、双因子网格</td><td>全部输入与公式在 07 章列示</td></tr>
+<tr><td>情景假设</td><td><span class="tag t-scen">情景假设</span></td><td>三档宏观与概率权重</td><td>主观判断，不是公司指引或市场隐含概率</td></tr>
+<tr><td>风险判断</td><td><span class="tag t-risk">风险判断</span></td><td>风险等级与评级触发条件</td><td>分析判断</td></tr>
+</tbody></table></div>
+<div class="tbl-note"><span class="tag t-fact">公司披露</span>财务科目一律以公司定期报告为准；第三方转录的角色与数字经一手披露核对后使用。资产负债表按期初 2025-12-31 与期末 2026-09-30 列示，损益表与现金流量表按期间列环比与同比。</div>
+<h3>10.2 口径与出版说明</h3>
+<ul class="bullet"><li><strong>每 ADS 口径</strong>：1 ADS = 2 普通股；公司股息按每普通股宣派，报告内股息、EPS、目标价均按每 ADS 列示。首次覆盖报告标注「ADS 口径需核验」的 $3.52，已由 Databook EARNINGS AND DIVIDEND PER ADS 表确认为 Q2 2026 调整后每 ADS 收益。</li><li><strong>自由现金流</strong>：公司口径 FCF = CFFO + 投资活动现金流，含处置收入与无机资本支出；有机 FCF 剔除处置收入并加回无机资本支出。两者均不等于「可分配现金」。</li><li><strong>净债务</strong>：报告净债务 $39.733B 含租赁负债 $34.147B；剔除租赁后 $5.586B。9M26 的 $7.684B 租赁重估为按即期运价计量的非现金增加。</li><li><strong>总回报</strong>：价格回报 + 未来 12 个月股息，回购的每股增厚已体现在股本口径与目标价中，不重复计入。</li><li><strong>货币</strong>：除特别标注外均为美元；十亿美元写作 US$B，百万美元写作 US$M。</li></ul>
+<div class="tagline">
+<span class="tag t-fact">公司披露</span>
+<span class="tag t-guide">书面指引</span>
+<span class="tag t-call">电话会</span>
+<span class="tag t-model">模型输出</span>
+<span class="tag t-scen">情景假设</span>
+<span class="tag t-third">第三方</span>
+<span class="tag t-risk">风险判断</span>
+<span class="tag t-cons">市场共识</span>
+</div>
+<footer><strong>出版人：Snail-Bird Investment</strong><br>主要数据来源：Shell plc 3rd quarter 2026 and nine months unaudited results（2026-10-29）、Q3 2026 press release、Third quarter 2026 results slides、CFO Keynote speech、Q3 2026 Quarterly Databook、SEC Form 6-K；行情与同业倍数取自腾讯与新浪财经行情接口（2026-11-13 收盘）；电话会逐字稿为第三方整理版本，已按公司文件核对。<br>Snail-Bird Investment针对网络内容的整合分享。本报告仅供研究参考，不构成个人投资建议，也不构成任何保证性收益承诺。数据截点 2026-11-13。</footer>
+</div></section>
+</div></body></html>
