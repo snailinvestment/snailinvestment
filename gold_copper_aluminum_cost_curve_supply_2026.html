@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>黄金、铜、铝：全球生产成本曲线、供给弹性与价格敏感性</title>
+<style>
+:root { --navy:#0f2f52; --gold:#b8860b; --ink:#1f2937; --muted:#64748b; --line:#dbe3ec; --bg:#f4f7fb; --card:#ffffff; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif; line-height:1.75; }
+.wrap { max-width:1120px; margin:0 auto; padding:32px 24px 72px; }
+header { border-bottom:3px solid var(--navy); padding-bottom:20px; margin-bottom:26px; }
+.kicker { color:var(--gold); font-size:12px; letter-spacing:.16em; font-weight:700; }
+h1 { font-size:29px; line-height:1.38; color:var(--navy); margin:10px 0 8px; }
+.sub { color:var(--muted); font-size:13.5px; }
+.byline { font-size:12px; color:var(--muted); margin-top:10px; }
+h2 { font-size:20px; color:var(--navy); margin:38px 0 12px; padding-left:12px; border-left:4px solid var(--gold); }
+h3 { font-size:15.5px; color:var(--navy); margin:24px 0 8px; }
+p { margin:10px 0; font-size:13.5px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:18px 20px; margin:14px 0; box-shadow:0 2px 8px rgba(15,47,82,.04); }
+.cards { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.metric { background:var(--card); border:1px solid var(--line); border-top:4px solid var(--navy); border-radius:8px; padding:16px; }
+.metric.gold { border-top-color:var(--gold); }
+.metric .name { font-size:12.5px; color:var(--muted); }
+.metric .val { font-size:23px; font-weight:700; color:var(--navy); margin:6px 0; }
+.metric .desc { font-size:12.5px; }
+.metric .foot { font-size:11.5px; color:var(--muted); margin-top:8px; }
+table { width:100%; border-collapse:collapse; margin:12px 0 6px; background:var(--card); font-size:12.5px; }
+th { background:var(--navy); color:#fff; text-align:left; padding:10px 12px; font-weight:600; overflow-wrap:anywhere; }
+td { border-bottom:1px solid var(--line); padding:10px 12px; vertical-align:top; word-break:break-word; overflow-wrap:anywhere; }
+tr:nth-child(even) td { background:#fafcff; }
+.chart { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:8px; margin:14px 0; }
+.src { font-size:11.5px; color:var(--muted); margin:6px 0 18px; }
+sup a { color:var(--gold); text-decoration:none; font-weight:700; }
+.tag { display:inline-block; font-size:11px; padding:1px 7px; border-radius:10px; background:var(--blue-light); color:var(--navy); margin-right:6px; }
+.tag.est { background:#f3e6bf; color:#7a5900; }
+.tag.risk { background:#fbe9e7; color:var(--red); }
+.tag.primary { background:#e7f3ed; color:var(--green); }
+ul { margin:8px 0 8px 22px; padding:0; font-size:13.5px; }
+li { margin:5px 0; }
+.small { font-size:11.8px; color:var(--muted); }
+footer { margin-top:44px; border-top:1px solid var(--line); padding-top:18px; font-size:12px; color:var(--muted); }
+a { color:var(--navy); }
+.grade { font-size:11px; font-weight:700; }
+.g1 { color:var(--green); } .g2 { color:var(--gold); } .g3 { color:var(--gray,#64748b); }
+.term-grid th:first-child { width:19%; }
+.term-grid th:nth-child(2) { width:17%; }
+table.term-grid tr.group td { background:#eef3f9; font-weight:700; color:var(--navy); border-bottom:2px solid var(--line); }
+@media (max-width:800px){ .cards{grid-template-columns:1fr;} h1{font-size:23px;} .term-grid th:first-child,.term-grid th:nth-child(2){width:auto;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">SNAIL-BIRD INVESTMENT · COMMODITIES | COST CURVE & SUPPLY ELASTICITY</div>
+  <h1>黄金、铜、铝：成本线约束慢变量供给，不构成同质价格底</h1>
+  <div class="sub">全文锚定 2026-11-25 交易所结算价；盘中价仅在 2.2 节列示，不参与成本比较；成本数据对应 2023–2026Q2 各披露期</div>
+  <div class="byline">出版人：Snail-Bird Investment　|　研究框架：成本曲线 → 供给弹性 → 需求情景 → 价格敏感性</div>
+</header>
+
+<h2>一、执行摘要</h2>
+<div class="card">
+<p><strong>背景：</strong>过去数年，三种金属的成本曲线同步右移。WGC/Metals Focus 数据显示，黄金行业平均 AISC 连续第 29 个年度同比上升，2026Q2 为 1,930 美元/盎司，同比 +22%、环比 +8%。铜矿平均品位由 2003 年约 0.85% 降至 2022 年约 0.42%，新建项目初始资本强度升至约 17,700 美元/吨。电解铝成本中氧化铝与电力合计占约 80%，供给同时受中国合规指标与海外电力长协约束。三者口径与供给响应不同，单一盈亏平衡线难以覆盖。</p>
+<p><strong>目的：</strong>回答三个问题：价格升至何处会激活新增资本与闲置产能，价格跌至何处会压缩资本开支与诱发停产，以及两类响应各需多长时间。报告以价格阈值与供给行为的对应关系为结论，不给出时点价格目标。</p>
+<p><strong>方法：</strong>框架分四层：现金成本、完全成本、新增投资激励、需求与库存结构。数据按证据等级分为一级（交易所、政府、行业协会、公司公告）、二级（Wood Mackenzie、CRU、WGC、券商引用）与三级（模型外推与情景假设）。铜按 2023/2025 年份及副产品抵扣口径分列；黄金 P90 与铝最右端成本标注模型误差。结合矿级实物期权与供给弹性文献，按项目阶段拆分供给时滞，并建立基准、谨慎与乐观情景及验证指标。</p>
+<p><strong>结论：</strong>价格阈值与供给行为之间存在稳定的对应顺序：先改变项目 NPV 与复产意愿，再改变资本开支，最后才体现为产量。三种金属的资本与产量弹性差异集中在最后一段时滞。分品种结论如下。</p>
+<p><strong>1. 黄金：绿地项目激励价 1,800–2,200 美元/盎司，锚定价已高出该区间。</strong>CRU 对澳大利亚绿地露天金矿的历史激励价测算为 1,800–2,200 美元/盎司，地下矿更高；项目级 PEA 显示，2,450 美元/盎司金价下税后 IRR 约 18%，3,600 美元/盎司下升至约 35%。2026Q2 行业平均 AISC 1,930 美元/盎司，锚定价 3,588 美元/盎司对应 1.86 倍，已高于绿地激励区间上沿。价格上行改变项目 NPV 与勘探支出，不改变许可与建设周期；产量兑现滞后 2–4 年（棕地）至 10–20 年（绿地）。下行方向，AISC 1,930 美元/盎司覆盖维持现有产量所需成本，AIC 约 2,619 美元/盎司（WGC 口径为 AISC 加非维持性扩张资本）覆盖维持运营并扩大产能所需成本；锚定价高于该值约 37%，代表行业平均矿山具备扩大再生产的财务条件，但不是个体矿商的统一成本线。P90 情景区间 2,300–2,500 美元/盎司为高成本矿山的现金压力参照。WGC 统计地上存量 201,296 吨、年矿产约 3,300 吨，存量约为产量 61 倍，矿商仅控制约 1.8% 的年度增量，不是边际定价者。<sup><a href="#s30">[30]</a><a href="#s33">[33]</a><a href="#s36">[36]</a></sup></p>
+<p><strong>2. 铜：新建 NPV 平衡价 11,896–14,320 美元/吨，绿地项目门槛可达 15,000 美元/吨。</strong>棕地扩建激励约 7,700–8,800 美元/吨，新建项目 NPV 平衡价 11,896 美元/吨（平均完全成本情形）与 14,320 美元/吨（P90 情形），两者来自报告披露的 NPV 假设。中金以资源禀赋与收益预期测算的基准激励价 12,600 美元/吨，在品位下降与资本超支情景下上移至 13,000–15,000 美元/吨。Friedland 与高盛给出的约 15,000 美元/吨对应大型绿地矿山与需求替代，对应更高的回报门槛。价格高于 14,320 美元/吨表示连 P90 成本的新建项目在模型内都能回本，但 NPV 归零不等于产生投资意愿；需价格持续高于该水平使 NPV 转正、IRR 超过资本成本，矿商才会启动绿地项目，仅略高于时更可能选择扩建与延寿。锚定价 11,758 美元/吨已越过棕地门槛、略低于平均项目 NPV 平衡价。价格跌破 7,700–8,800 美元/吨时棕地扩建先失去回报，跌破 C1 均值 4,350 美元/吨时高成本矿山进入现金亏损，但关停决策受已签合同与品位制约。</p>
+<p><strong>3. 铝：复产门槛是完全成本 3,183 美元/吨叠加长协电价，单一铝价不构成触发条件。</strong>海外最右端完全成本 3,183 美元/吨、现金成本 3,030 美元/吨；2026 年铝价接近 3,418 美元/吨时，约 85 万吨欧美闲置产能仍因电价制约未复产。复产需同时满足 10–20 年长协电价约 40 美元/兆瓦时，AI 数据中心出价超过 115 美元/兆瓦时形成竞争；Slovalco 7.5 万吨复产以政府碳成本补偿与长期购电协议为前提。下行方向，价格低于 3,030 美元/吨使最右端产能现金亏损，但 2026 年完全成本高于 3,000 美元/吨的产量仅约 32 万吨。国内口径下，边际现金成本 15,000–15,500 元/吨为停产观察线，边际完全成本 17,500–19,000 元/吨含折旧摊销，不作为停产判据。</p>
+</div>
+<h3 style="margin-top:22px;">价格阈值与供给行为对照</h3>
+<p class="small">阈值按供给行为的先后顺序排列；同一品种的上行与下行触发价并不对称，中间存在资本开支与产量响应的时滞。</p>
+<table>
+<tr><th>品种</th><th>上行触发价</th><th>被激活的供给行为</th><th>下行触发价</th><th>被抑制的供给行为</th><th>产量响应时滞</th></tr>
+<tr><td>黄金</td><td>绿地激励价 1,800–2,200 美元/盎司（CRU 口径，露天）；项目 PEA：2,450 美元/盎司 IRR 约 18%、3,600 美元/盎司约 35%</td><td>搁置项目重启评估、边界品位下调、并购与勘探支出上升</td><td>AISC 1,930 / AIC 2,619 美元/盎司；P90 情景 2,300–2,500 美元/盎司</td><td>维持性资本压缩、高成本矿山延后投入</td><td>棕地 2–4 年；绿地 10–20 年</td></tr>
+<tr><td>铜</td><td>7,700–8,800 美元/吨（棕地扩建）；11,896–14,320 美元/吨（NPV 平衡价）；12,600 美元/吨（中金基准激励）；15,000 美元/吨（机构测算）</td><td>扩建 FID、资本开支上行、勘探预算增加；绿地 FID 需更高且更持久的价格</td><td>C1 均值 4,350 美元/吨；C3 P90 8,930 美元/吨；棕地激励 7,700–8,800 美元/吨</td><td>先停新增投资，后因现金亏损关停；已签合同与品位制约关停时点</td><td>获批在建 2–4 年；发现到投产平均 17.5 年</td></tr>
+<tr><td>铝</td><td>海外 3,183 美元/吨（完全成本）以上；复产需叠加长协电价约 40 美元/兆瓦时</td><td>闲置产能复产、电力合约谈判推进；铝价单项不构成复产条件</td><td>海外现金成本 3,030 美元/吨；国内边际现金成本 15,000–15,500 元/吨</td><td>最右端产能现金亏损；国内高成本产能减产观察线</td><td>停槽复产 6–12 个月；新增项目 3–5 年</td></tr>
+</table>
+<div class="src">上行阈值来源：中金铜矿激励价测算、Friedland 与高盛结构性激励价、CRU 黄金激励价与项目 PEA、Slovalco 复产协议与 ING 电力门槛；下行阈值来源：WGC/Metals Focus、Wood Mackenzie、CRU、百川盈孚/Mysteel。<sup><a href="#s6">[6]</a><a href="#s25">[25]</a><a href="#s28">[28]</a><a href="#s29">[29]</a><a href="#s30">[30]</a><a href="#s31">[31]</a><a href="#s32">[32]</a></sup></div>
+<h3 style="margin-top:22px;">关键价格锚</h3>
+<p class="small">全文唯一价格锚为 2026-11-25 交易所结算价；其他口径仅在 2.2 节列示差异，不参与成本比较。</p>
+<div class="cards">
+  <div class="metric"><div class="name">黄金 · COMEX 收盘</div><div class="val">3,588 美元/盎司</div><div class="desc">2026Q2 平均 AISC 1,930 美元/盎司，同比 +22%；锚定价/AISC 1.86 倍。</div><div class="foot">地上存量 201,296 吨／年矿产约 3,300 吨，年增量 1.8%；成本对短期价格解释力低。</div></div>
+  <div class="metric gold"><div class="name">铜 · LME 3M 官方结算</div><div class="val">11,758 美元/吨</div><div class="desc">较 2023 年 C3 P90 高约 32%；棕地激励 7,700–8,800 美元/吨。</div><div class="foot">新建 NPV 平衡价 11,896–14,320 美元/吨（含资本回收）；低于该价不等于停产。</div></div>
+  <div class="metric"><div class="name">铝 · LME 3M 官方结算</div><div class="val">2,760 美元/吨</div><div class="desc">全球完成成本 P95 为 2,622 美元/吨；CRU 最右端完全成本为 3,183 美元/吨。</div><div class="foot">中国合规上限 4,543 万吨；增量来自印尼与中东。</div></div>
+</div>
+
+<h2>二、方法论、价格口径与证据等级</h2>
+<div class="card">
+<h3>2.1 四层框架：口径决定供给响应路径</h3>
+<table>
+<tr><th>层级</th><th>核心问题</th><th>对应指标</th><th>局限</th></tr>
+<tr><td>现金成本</td><td>价格跌至何处，边际产能面临现金流失</td><td>黄金现金运营成本/TCC；铜 C1 与 C1+SC；铝网电老槽型现金成本</td><td>停复产成本、债务约束、政府与长期电力合约改变实际决策</td></tr>
+<tr><td>完全成本</td><td>价格跌至何处，折旧、勘探、管理与财务无法覆盖</td><td>黄金 AIC；铜 C3；铝完全成本与 P95/最右端</td><td>会计口径因机构而异；P90/P95 为产量分位，不是关停比例</td></tr>
+<tr><td>新增投资激励</td><td>价格升至何处，新增资本愿意进入</td><td>铜 NPV 激励价；铝海外电力长协回报门槛</td><td>品位、资本强度、税费、融资与 IRR 要求差异较大</td></tr>
+<tr><td>需求与库存结构</td><td>终端需求与库存结构如何改变传导</td><td>终端需求、显性/可用库存、可交割来源、TC/RC</td><td>区域错配与非一手数据可能放大短期波动</td></tr>
+</table>
+</div>
+<div class="card">
+<h3>2.2 价格锚：全文采用 2026-11-25 交易所结算价</h3>
+<table>
+<tr><th>品种</th><th>锚定价（2026-11-25）</th><th>其他口径（仅列示差异）</th><th>口径说明</th></tr>
+<tr><td>铜</td><td><strong>LME 3M 官方结算 11,758 美元/吨</strong></td><td>官方买价 11,755 美元/吨；彭博 LMCADS03 收盘 11,649.50 美元/吨；盘中 11,902 美元/吨（11-26 21:39）</td><td>官方价取第二轮 Ring 最终买卖价中点；成本比较仅用锚定价</td></tr>
+<tr><td>铝</td><td><strong>LME 3M 官方结算 2,760 美元/吨</strong></td><td>官方买价 2,758 美元/吨；盘中 2,795 美元/吨（11-26 16:14）；SMM A00 22,320 元/吨（11-25）</td><td>境内现货含税，不与 LME 直接相减；成本比较仅用锚定价</td></tr>
+<tr><td>黄金</td><td><strong>COMEX 收盘 3,588 美元/盎司</strong></td><td>盘中 3,597 美元/盎司（11-26 16:03）；SGE Au99.99 755.5 元/克（11-25）</td><td>交易所与计量单位不同；季度均价 4,512 美元/盎司（2026Q2）不用于现价定位</td></tr>
+</table>
+<div class="src">来源：LME 官方价格页（Data valid for 25 Nov 2026）；彭博 LMCADS03；东方财富妙想行情接口。<sup><a href="#s12">[12]</a><a href="#s23">[23]</a></sup></div>
+</div>
+<div class="card">
+<h3>2.3 证据等级：分位数据不表述为关停线</h3>
+<p><span class="grade g1">一级</span>交易所、政府机构、行业协会与公司公告；<span class="grade g2">二级</span>行业数据库、券商与研究机构引用；<span class="grade g3">三级</span>模型外推、比例推算与情景假设。三级数据在图中以灰线呈现，正文标注假设与误差范围。P90/P95 一律表述为“产量加权成本分位”，不表述为“跌破即关停的比例线”。</p>
+</div>
+<div class="card">
+<h3>2.4 术语释义：成本口径、分位数与项目经济性</h3>
+<p class="small">同名指标在不同品种间口径不同：黄金采用 WGC 口径，铜采用 Wood Mackenzie 与 Bernstein 口径，铝采用 CRU 与国内含税口径。</p>
+<table class="term-grid">
+<tr><th>术语</th><th>英文 / 缩写</th><th>释义与用途</th></tr>
+<tr class="group"><td colspan="3">通用成本口径与分位数</td></tr>
+<tr><td>现金成本</td><td>Cash Cost</td><td>不含折旧摊销的当期现金支出，用于判断价格跌破后生产是否无法覆盖当期现金流出；停复产成本、债务与合约约束改变实际停产时点。</td></tr>
+<tr><td>完全成本</td><td>Full Cost / All-in Cost</td><td>现金成本加折旧摊销、勘探、管理与财务费用；衡量长期产能存留条件，跌破不等于立即停产。</td></tr>
+<tr><td>维持性资本</td><td>Sustaining Capital</td><td>维持现有产量所需的资本支出，区别于扩大产能的增长性资本；计入 AISC 与 C1+SC。</td></tr>
+<tr><td>P90 / P95</td><td>90th / 95th Percentile</td><td>产量加权成本分位，表示 90% 或 95% 的产量成本低于该值；不表示跌破即有对应比例的产能退出。</td></tr>
+<tr><td>激励价</td><td>Incentive Price</td><td>使新增项目达到目标回报的金属价格，高于完全成本，包含资本回收与回报要求；绿地激励价与 NPV 平衡价均属此类。</td></tr>
+<tr class="group"><td colspan="3">黄金：WGC / Metals Focus 口径</td></tr>
+<tr><td>现金运营成本</td><td>Cash Operating Cost</td><td>采矿、选矿、现场管理与加工的直接现金支出，不含权利金、生产税、维持性资本与公司管理费。</td></tr>
+<tr><td>总现金成本</td><td>TCC, Total Cash Cost</td><td>现金运营成本加权利金与生产税；WGC 2026Q2 行业平均为 1,406 美元/盎司。</td></tr>
+<tr><td>全维持成本</td><td>AISC, All-In Sustaining Cost</td><td>总现金成本加维持性资本、复垦与公司管理费用；回答维持现有产量所需的金价，2026Q2 行业平均为 1,930 美元/盎司。</td></tr>
+<tr><td>全成本</td><td>AIC, All-In Cost</td><td>AISC 加非维持性许可与社区成本、复垦、非维持性勘探研究、非维持性资本开发与资本开支；回答扩大产能所需的金价。报告引用的 2,619 美元/盎司为市场测算。</td></tr>
+<tr class="group"><td colspan="3">铜：Wood Mackenzie / Bernstein 口径</td></tr>
+<tr><td>C1</td><td>Cash Cost</td><td>采矿至精炼的现金成本，通常扣除金、银、钼等副产品收入；未扣副产品前的成本不随副产品价格波动。</td></tr>
+<tr><td>C1+SC</td><td>C1 + Sustaining Capital</td><td>C1 加维持性资本；Bernstein 引用的 2025 年 P90 为 6,700–7,500 美元/吨。</td></tr>
+<tr><td>C3</td><td>Full Cost</td><td>C1 加折旧摊销、勘探、管理与财务费用；Wood Mackenzie 2023 年 P90 为 8,930 美元/吨。</td></tr>
+<tr><td>副产品抵扣</td><td>By-product Credit</td><td>从主矿现金成本中扣除共生矿产销售收入的核算方式；抵扣比例变化改变净成本曲线的位置。</td></tr>
+<tr><td>加工费 / 精炼费</td><td>TC / RC</td><td>铜精矿加工商向矿商收取的费用；深度为负反映精矿供应紧张。</td></tr>
+<tr class="group"><td colspan="3">铝：CRU 与国内含税口径</td></tr>
+<tr><td>网电老槽型现金成本</td><td>Grid-power Cash Cost</td><td>中国以网电供电的老旧电解槽的边际现金支出；国内 15,000–15,500 元/吨为停产观察线，含税。</td></tr>
+<tr><td>长协电价</td><td>Long-term Power Tariff</td><td>电解铝厂与供电方签订的多年度电价合约；约 40 美元/兆瓦时是欧美闲置产能复产的关键门槛。</td></tr>
+<tr class="group"><td colspan="3">项目经济性与供给行为</td></tr>
+<tr><td>初步经济评估</td><td>PEA, Preliminary Economic Assessment</td><td>可研之前的早期经济性研究，用初步资源量与工程方案估算 IRR、NPV 与资本开支，用于筛选是否推进至预可研与可研；精度低于正式可研。</td></tr>
+<tr><td>NPV 平衡价</td><td>NPV Break-even Price</td><td>使新建项目净现值等于零的金属价格，包含资本回收要求；11,896 与 14,320 美元/吨分别对应平均与 P90 完全成本情形。</td></tr>
+<tr><td>内部收益率</td><td>IRR, Internal Rate of Return</td><td>使项目净现值为零的贴现率；矿商要求其高于资本成本才启动最终投资决策。</td></tr>
+<tr><td>最终投资决策</td><td>FID, Final Investment Decision</td><td>批准项目全额资本开支的决策时点，标志项目从评估进入建设。</td></tr>
+<tr><td>绿地 / 棕地</td><td>Greenfield / Brownfield</td><td>绿地为新建厂址从零建设，周期长、资本强度高；棕地为现有矿区扩建、延寿与改造，周期较短。</td></tr>
+<tr><td>边界品位</td><td>Cut-off Grade</td><td>划分矿石与废石的经济界线，随价格与成本变化；金价上行会下调边界品位并扩大可采储量。</td></tr>
+</table>
+</div>
+
+<h2>三、黄金：地上存量是年产量 61 倍，矿商不是边际定价者</h2>
+<div class="card">
+<h3>3.1 AISC 升至 1,930 美元/盎司，分位数据仍属二级或模型</h3>
+<div class="chart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 482" width="100%" role="img" aria-label="Exhibit 1：黄金成本阶梯——现价为平均 AISC 的 1.86 倍">
+<rect x="0" y="0" width="960" height="482" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" font-weight="700" fill="#0f2f52">Exhibit 1：黄金成本阶梯——现价为平均 AISC 的 1.86 倍</text>
+<text x="936" y="34" font-size="12" font-weight="600" fill="#b8860b" text-anchor="end">美元/盎司</text>
+<text x="24" y="58" font-size="12" fill="#64748b">均价与分项来自 WGC/Metals Focus 2026Q2；分位为 2025Q4 二次汇总；P90 为情景估算</text>
+<line x1="276.0" y1="78" x2="276.0" y2="414" stroke="#dbe3ec" stroke-width="1"/>
+<text x="276.0" y="432" font-size="11" fill="#64748b" text-anchor="middle">0</text>
+<line x1="432.5" y1="78" x2="432.5" y2="414" stroke="#dbe3ec" stroke-width="1"/>
+<text x="432.5" y="432" font-size="11" fill="#64748b" text-anchor="middle">975</text>
+<line x1="589.0" y1="78" x2="589.0" y2="414" stroke="#dbe3ec" stroke-width="1"/>
+<text x="589.0" y="432" font-size="11" fill="#64748b" text-anchor="middle">1,950</text>
+<line x1="745.5" y1="78" x2="745.5" y2="414" stroke="#dbe3ec" stroke-width="1"/>
+<text x="745.5" y="432" font-size="11" fill="#64748b" text-anchor="middle">2,925</text>
+<line x1="902.0" y1="78" x2="902.0" y2="414" stroke="#dbe3ec" stroke-width="1"/>
+<text x="902.0" y="432" font-size="11" fill="#64748b" text-anchor="middle">3,900</text>
+<text x="24" y="108" font-size="12.5" fill="#0f2f52">低成本梯队 AISC（2025 实际）</text>
+<rect x="276" y="96" width="214.9" height="4" rx="2" fill="#b8860b" fill-opacity="0.25"/>
+<circle cx="490.9" cy="98" r="5.5" fill="#b8860b"/>
+<text x="490.9" y="81" font-size="11.5" font-weight="600" fill="#b8860b" text-anchor="end">1,339</text>
+<text x="24" y="164" font-size="12.5" fill="#0f2f52">行业平均 AISC（2026Q2）</text>
+<rect x="276" y="152" width="309.8" height="4" rx="2" fill="#b8860b" fill-opacity="0.25"/>
+<circle cx="585.8" cy="154" r="5.5" fill="#b8860b"/>
+<text x="585.8" y="137" font-size="11.5" font-weight="600" fill="#b8860b" text-anchor="end">1,930</text>
+<text x="24" y="220" font-size="12.5" fill="#0f2f52">Q4 分位线（2025Q4，产量加权）</text>
+<rect x="276" y="208" width="318.1" height="4" rx="2" fill="#b8860b" fill-opacity="0.25"/>
+<circle cx="594.1" cy="210" r="5.5" fill="#b8860b"/>
+<text x="594.1" y="193" font-size="11.5" font-weight="600" fill="#b8860b" text-anchor="end">1,982</text>
+<text x="24" y="276" font-size="12.5" fill="#0f2f52">P90 情景区间（模型估算，±15%）</text>
+<rect x="645.2" y="254" width="32.1" height="24" rx="3" fill="#64748b" fill-opacity="0.18"/>
+<line x1="645.2" y1="266" x2="677.3" y2="266" stroke="#64748b" stroke-width="3"/>
+<text x="645.2" y="249" font-size="11.5" font-weight="600" fill="#64748b">2,300–2,500</text>
+<text x="24" y="332" font-size="12.5" fill="#0f2f52">AIC 全成本（2025 测算）</text>
+<rect x="276" y="320" width="420.4" height="4" rx="2" fill="#64748b" fill-opacity="0.25"/>
+<circle cx="696.4" cy="322" r="5.5" fill="#64748b"/>
+<text x="696.4" y="305" font-size="11.5" font-weight="600" fill="#64748b" text-anchor="end">2,619</text>
+<text x="24" y="388" font-size="12.5" fill="#0f2f52">COMEX 收盘（2026-11-25）</text>
+<rect x="276" y="376" width="575.9" height="4" rx="2" fill="#0f2f52" fill-opacity="0.25"/>
+<circle cx="851.9" cy="378" r="5.5" fill="#0f2f52"/>
+<text x="851.9" y="361" font-size="11.5" font-weight="600" fill="#0f2f52" text-anchor="end">3,588</text>
+<text x="24" y="456" font-size="11.5" fill="#64748b">灰线为二次汇总或模型估算，不作为 WGC 官方分位数据；现价采用交易所收盘锚定。</text>
+</svg></div>
+<div class="src">来源：WGC Goldhub 2026-11-10（Metals Focus Gold Mine Cost Service）；2025Q4 分位与 P90 为二次汇总；AIC 与 2026 P90 为模型估算。<sup><a href="#s1">[1]</a><a href="#s2">[2]</a><a href="#s24">[24]</a></sup></div>
+<p>WGC 于 2026 年 11 月 10 日发布的 Goldhub 文章显示：2026Q2 全球平均 AISC 1,930 美元/盎司，环比 +8%、同比 +22%，为连续第 <strong>29 个同比上升年度</strong>；维持性资本开支 441 美元/盎司，环比 +34%，占 AISC 的 23%。现金运营成本 1,215 美元/盎司，总现金成本 1,406 美元/盎司，权利金与生产税 185 美元/盎司，公司管理费用 82 美元/盎司。样本矿山产量环比 +1.6%、同比 -4.4%；平均品位环比 +1.4%、同比 -3.1%。<sup><a href="#s1">[1]</a></sup></p>
+<p><span class="tag est">三级证据</span>2025Q4 第一/中位/第四分位为 1,413/1,709/1,982 美元/盎司，2025 年 P90 约 2,150 美元/盎司，均来自二次汇总。2026 年 P90 区间 2,300–2,500 美元/盎司以 2025 年 P90 约 2,150 美元/盎司为基准上浮 7%–16% 设定，模型误差 ±15%；WGC 未公开 2026Q2 完整分位数据，该区间仅作情景参照。2025 年 AIC 约 2,619 美元/盎司为市场测算，非 WGC 标准化披露。</p>
+<p>WGC 对 AIC 的官方定义为 AISC 加上非维持性项目：与现有运营无关的许可与社区成本、复垦成本、非维持性勘探与研究、非维持性资本开发与资本开支。<sup><a href="#s37">[37]</a></sup> 因此 AIC 回答的问题与 AISC 不同——AISC 是维持现有产量所需价格，AIC 是维持运营并扩大产能所需价格。锚定价 3,588 美元/盎司高于 AIC 2,619 美元/盎司约 37%，意味着金价覆盖行业平均的扩张性成本，矿企具备扩大再生产的财务条件；但这是行业平均值，个体矿山的 AIC 随品位、剥采比与增长项目规模分布，2,619 美元/盎司不代表所有矿商的成本线。<sup><a href="#s24">[24]</a></sup></p>
+<h3>3.2 边际需求来自存量持有者，矿商只是价格接受者</h3>
+<p>WGC 按 2019 年 12 月口径统计的地上黄金存量为 201,296 吨，过去十年年矿产约 3,300 吨，年度增量相当于存量的 1.8%，存量约为年产量的 61 倍。<sup><a href="#s36">[36]</a></sup> 2026Q3 的数据显示边际交易发生在存量与投资需求之间：央行净购金 321 吨（同比 +42%），ETF 净流入 211 吨，两者合计 532 吨，相当于同期矿产金 1,071 吨的约 50%；同期矿产金同比仅 +3%，回收金同比 -8%。<sup><a href="#s2">[2]</a></sup> 价格由存量持有者的持有意愿与新增投资需求共同决定，矿商控制的年度增量仅占存量 1.8%，无法单方面设定边际价格。</p>
+<p>因果检验支持这一判断。Baur 与 Smales 基于 1981–2013 年矿级数据发现，金价到生产成本的因果强于反方向，即矿商成本随价格调整，而非成本推动价格；边界品位与开采计划随金价变化。<sup><a href="#s3">[3]</a></sup> 矿商的开停决策同样滞后：Moel 与 Tufano 对 1988–1997 年北美 285 座金矿的研究显示隐含开停成本约 12.41 美元/盎司，价格水平与波动率共同决定复产概率。<sup><a href="#s4">[4]</a></sup> 成本上行驱动需分层：入选品位与储量品位不可混用；品位对单位成本的影响取决于回收率、处理能力、矿体几何与副产品；权利金、特许权使用费和资源税的计提基础包括收入、利润与产量三类；高金价还会通过劳动力、柴油、炸药、设备与承包商价格形成成本通胀。<sup><a href="#s24">[24]</a></sup></p>
+<h3>3.3 金价上行先改项目账，再改资本开支，最后才改产量</h3>
+<p>CRU 对澳大利亚绿地露天金矿的历史激励价测算为 1,800–2,200 美元/盎司，地下矿更高；该价格指新矿可获融资、建设并达到可接受回报的门槛。<sup><a href="#s33">[33]</a></sup> 项目级 PEA 提供交叉验证：Spanish Mountain 项目在 2,450 美元/盎司金价下税后 IRR 为 18.2%，3,600 美元/盎司下为 35.2%；São Jorge 项目在 3,500 美元/盎司下 IRR 为 42.4%，4,400 美元/盎司下为 58.6%。<sup><a href="#s30">[30]</a><a href="#s34">[34]</a></sup> 金价上行通过下调边界品位、扩大储量与延长矿山寿命改变项目账，锚定价 3,588 美元/盎司已高于绿地激励区间上沿。</p>
+<p>价格上行不能缩短工期。项目估值与融资条件随金价变化，许可、冶金试验、尾矿设计、电网接入仍按各自周期推进。新增供给先行表现为并购与勘探支出，产量兑现滞后 2–4 年（棕地）至 10–20 年（绿地）。PEA 数据为单个项目的经济性测算，不代表全行业激励价，项目品位、资本开支与所在司法辖区差异会改变门槛。<sup><a href="#s33">[33]</a></sup></p>
+<h3>3.4 ETF 与央行需求主导价格，成本线约束资本开支</h3>
+<p>黄金的边际需求来自存量持有者，而非新增矿产。2026Q3 央行净购金 321 吨与 ETF 净流入 211 吨合计 532 吨，相当于同期矿产金 1,071 吨的约 50%；同一季度矿产金同比仅 +3%，回收金同比 -8%。<sup><a href="#s2">[2]</a></sup> 投资需求以百吨级变动，矿产供给以个位数百分比调整，价格因此更多反映持有意愿与资产配置变化。Baur 与 Smales 的因果检验显示金价到生产成本的方向强于反方向，成本随价格调整。<sup><a href="#s3">[3]</a></sup></p>
+<p>成本线作用于另一个时间尺度。AISC 决定维持现有产量的资金能否覆盖，AIC 决定扩张性资本能否得到补偿；价格高于二者改变的是矿商的勘探预算、边界品位与项目 FID 意愿，产量兑现仍需 2–4 年（棕地）至 10–20 年（绿地）。需求冲击先反映在价格与持仓，供给响应滞后多个季度到数年，成本线因此对短期价格的解释力弱，对中长期资本开支的解释力强。</p>
+<table>
+<tr><th>情景</th><th>供给条件</th><th>需求条件</th><th>成本线含义</th></tr>
+<tr><td>基准</td><td>矿产金增速维持低个位数；AISC 向 2,000 美元/盎司靠近</td><td>ETF 与央行需求延续，Q3 ETF 净流入 211 吨、持仓 4,256 吨</td><td>成本线仅约束资本开支，不构成交易底</td></tr>
+<tr><td>谨慎</td><td>高成本矿山延后维持性资本；品位下滑快于预期</td><td>实际利率与美元上行，ETF 转为流出；金饰与回收需求分化</td><td>价格可长期低于行业平均 AISC，供给收缩滞后多个季度</td></tr>
+<tr><td>乐观</td><td>新增项目投产延后，矿商优先股东回报</td><td>央行购金与投资需求超预期，回收供给不足</td><td>价格与成本脱锚扩大，成本线对价格解释力进一步下降</td></tr>
+</table>
+<div class="src">需求数据来源：WGC Gold Demand Trends Q3 2026；金条金币需求 268 吨（同比 -19%），回收金 314 吨（同比 -8%）。以上为情景条件，不含价格点位预测。<sup><a href="#s2">[2]</a></sup></div>
+</div>
+
+<h2>四、铜：存量成本安全垫仍厚，新增激励门槛上移</h2>
+<div class="card">
+<h3>4.1 铜矿 C1 均值 4,350 美元/吨，90 分位后成本曲线急剧上翘</h3>
+<div class="chart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 482" width="100%" role="img" aria-label="Exhibit 2：铜成本阶梯——现价高于 2023 年 C3 P90 约 32%">
+<rect x="0" y="0" width="960" height="482" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" font-weight="700" fill="#0f2f52">Exhibit 2：铜成本阶梯——现价高于 2023 年 C3 P90 约 32%</text>
+<text x="936" y="34" font-size="12" font-weight="600" fill="#b8860b" text-anchor="end">美元/吨</text>
+<text x="24" y="58" font-size="12" fill="#64748b">2023 年为 Wood Mackenzie 成本曲线；2025 年为 Bernstein/Wood Mackenzie 的 C1+维持资本 P90</text>
+<line x1="276.0" y1="78" x2="276.0" y2="414" stroke="#dbe3ec" stroke-width="1"/>
+<text x="276.0" y="432" font-size="11" fill="#64748b" text-anchor="middle">0</text>
+<line x1="432.5" y1="78" x2="432.5" y2="414" stroke="#dbe3ec" stroke-width="1"/>
+<text x="432.5" y="432" font-size="11" fill="#64748b" text-anchor="middle">3,875</text>
+<line x1="589.0" y1="78" x2="589.0" y2="414" stroke="#dbe3ec" stroke-width="1"/>
+<text x="589.0" y="432" font-size="11" fill="#64748b" text-anchor="middle">7,750</text>
+<line x1="745.5" y1="78" x2="745.5" y2="414" stroke="#dbe3ec" stroke-width="1"/>
+<text x="745.5" y="432" font-size="11" fill="#64748b" text-anchor="middle">11,625</text>
+<line x1="902.0" y1="78" x2="902.0" y2="414" stroke="#dbe3ec" stroke-width="1"/>
+<text x="902.0" y="432" font-size="11" fill="#64748b" text-anchor="middle">15,500</text>
+<text x="24" y="108" font-size="12.5" fill="#0f2f52">C1 均值（2023）</text>
+<rect x="276" y="96" width="175.7" height="4" rx="2" fill="#b8860b" fill-opacity="0.25"/>
+<circle cx="451.7" cy="98" r="5.5" fill="#b8860b"/>
+<text x="451.7" y="81" font-size="11.5" font-weight="600" fill="#b8860b" text-anchor="end">4,350</text>
+<text x="24" y="164" font-size="12.5" fill="#0f2f52">C1 P90（2023）</text>
+<rect x="276" y="152" width="286.9" height="4" rx="2" fill="#b8860b" fill-opacity="0.25"/>
+<circle cx="562.9" cy="154" r="5.5" fill="#b8860b"/>
+<text x="562.9" y="137" font-size="11.5" font-weight="600" fill="#b8860b" text-anchor="end">7,103</text>
+<text x="24" y="220" font-size="12.5" fill="#0f2f52">C1+维持资本 P90（2025）</text>
+<rect x="546.6" y="198" width="32.3" height="24" rx="3" fill="#64748b" fill-opacity="0.18"/>
+<line x1="546.6" y1="210" x2="578.9" y2="210" stroke="#64748b" stroke-width="3"/>
+<text x="546.6" y="193" font-size="11.5" font-weight="600" fill="#64748b">6,700–7,500</text>
+<text x="24" y="276" font-size="12.5" fill="#0f2f52">C3 均值（2023）</text>
+<rect x="276" y="264" width="259.3" height="4" rx="2" fill="#b8860b" fill-opacity="0.25"/>
+<circle cx="535.3" cy="266" r="5.5" fill="#b8860b"/>
+<text x="535.3" y="249" font-size="11.5" font-weight="600" fill="#b8860b" text-anchor="end">6,420</text>
+<text x="24" y="332" font-size="12.5" fill="#0f2f52">C3 P90（2023）</text>
+<rect x="276" y="320" width="360.7" height="4" rx="2" fill="#b8860b" fill-opacity="0.25"/>
+<circle cx="636.7" cy="322" r="5.5" fill="#b8860b"/>
+<text x="636.7" y="305" font-size="11.5" font-weight="600" fill="#b8860b" text-anchor="end">8,930</text>
+<text x="24" y="388" font-size="12.5" fill="#0f2f52">LME 3M 官方结算（2026-11-25）</text>
+<rect x="276" y="376" width="474.9" height="4" rx="2" fill="#0f2f52" fill-opacity="0.25"/>
+<circle cx="750.9" cy="378" r="5.5" fill="#0f2f52"/>
+<text x="750.9" y="361" font-size="11.5" font-weight="600" fill="#0f2f52" text-anchor="end">11,758</text>
+<text x="24" y="456" font-size="11.5" fill="#64748b">不同年份与口径的条形不叠加为同一“当前成本曲线”；价格仅采用锚定的官方结算价。</text>
+</svg></div>
+<div class="src">来源：Wood Mackenzie 2023 年铜矿成本曲线（经光大证券整理）；Bernstein 引用的 C1+SC P90；LME 官方价与盘中价。<sup><a href="#s6">[6]</a><a href="#s7">[7]</a><a href="#s12">[12]</a></sup></div>
+<p>Wood Mackenzie 2023 年口径下，全球约 1,999 万吨铜矿的平均 C1 为 4,350 美元/吨，P90 为 7,103 美元/吨，最高约 14,495 美元/吨；平均 C3 为 6,420 美元/吨，P90 为 8,930 美元/吨。曲线前 60%–70% 平坦，90 分位之后急剧上翘。<sup><a href="#s6">[6]</a></sup></p>
+<p>2025 年 Bernstein 引用的 C1+维持资本 P90 为 6,700–7,500 美元/吨，与 2023 年 C1 P90 的 7,103 美元/吨数值接近但含义不同：前者含维持性资本、年份与样本均不同，后者仅为现金成本分位。两者相减既不能得到成本变化，也不能拼成一条连续性曲线；Exhibit 2 按年份与口径分列，条形不叠加。<sup><a href="#s6">[6]</a><a href="#s7">[7]</a></sup></p>
+<p>副产品抵扣改变净成本口径。Southern Copper 2025 年净 C1 为 0.58 美元/磅，扣除副产品前的经营现金成本为 2.17 美元/磅，差额来自银、锌等抵扣；Antofagasta 净 C1 降至 1.19 美元/磅，扣副产品前成本基本持平。金价与钼价回落会抬升净 C1，净成本曲线不能单独用于推导关停线。<sup><a href="#s8">[8]</a></sup></p>
+<h3>4.2 新建 NPV 平衡价 11,896–14,320 美元/吨，越过上沿才覆盖高成本项目</h3>
+<div class="chart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 370" width="100%" role="img" aria-label="Exhibit 3：铜新增激励——新建 NPV 门槛高于棕地扩建">
+<rect x="0" y="0" width="960" height="370" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" font-weight="700" fill="#0f2f52">Exhibit 3：铜新增激励——新建 NPV 门槛高于棕地扩建</text>
+<text x="936" y="34" font-size="12" font-weight="600" fill="#b8860b" text-anchor="end">美元/吨</text>
+<text x="24" y="58" font-size="12" fill="#64748b">棕地为 Bernstein 回报门槛；新建为光大 NPV 模型假设：10% 折现率、30% 所得税、15 年矿山寿命</text>
+<line x1="276.0" y1="78" x2="276.0" y2="302" stroke="#dbe3ec" stroke-width="1"/>
+<text x="276.0" y="320" font-size="11" fill="#64748b" text-anchor="middle">0</text>
+<line x1="432.5" y1="78" x2="432.5" y2="302" stroke="#dbe3ec" stroke-width="1"/>
+<text x="432.5" y="320" font-size="11" fill="#64748b" text-anchor="middle">3,875</text>
+<line x1="589.0" y1="78" x2="589.0" y2="302" stroke="#dbe3ec" stroke-width="1"/>
+<text x="589.0" y="320" font-size="11" fill="#64748b" text-anchor="middle">7,750</text>
+<line x1="745.5" y1="78" x2="745.5" y2="302" stroke="#dbe3ec" stroke-width="1"/>
+<text x="745.5" y="320" font-size="11" fill="#64748b" text-anchor="middle">11,625</text>
+<line x1="902.0" y1="78" x2="902.0" y2="302" stroke="#dbe3ec" stroke-width="1"/>
+<text x="902.0" y="320" font-size="11" fill="#64748b" text-anchor="middle">15,500</text>
+<text x="24" y="108" font-size="12.5" fill="#0f2f52">棕地扩建激励（Bernstein 口径）</text>
+<rect x="587.0" y="86" width="44.4" height="24" rx="3" fill="#b8860b" fill-opacity="0.18"/>
+<line x1="587.0" y1="98" x2="631.4" y2="98" stroke="#b8860b" stroke-width="3"/>
+<text x="587.0" y="81" font-size="11.5" font-weight="600" fill="#b8860b">7,700–8,800</text>
+<text x="24" y="164" font-size="12.5" fill="#0f2f52">新建 NPV 平衡价（平均成本情形）</text>
+<rect x="276" y="152" width="480.4" height="4" rx="2" fill="#b3453a" fill-opacity="0.25"/>
+<circle cx="756.4" cy="154" r="5.5" fill="#b3453a"/>
+<text x="756.4" y="137" font-size="11.5" font-weight="600" fill="#b3453a" text-anchor="end">11,896</text>
+<text x="24" y="220" font-size="12.5" fill="#0f2f52">新建 NPV 平衡价（P90 成本情形）</text>
+<rect x="276" y="208" width="578.3" height="4" rx="2" fill="#b3453a" fill-opacity="0.25"/>
+<circle cx="854.3" cy="210" r="5.5" fill="#b3453a"/>
+<text x="854.3" y="193" font-size="11.5" font-weight="600" fill="#b3453a" text-anchor="end">14,320</text>
+<text x="24" y="276" font-size="12.5" fill="#0f2f52">LME 3M 官方结算（2026-11-25）</text>
+<rect x="276" y="264" width="474.9" height="4" rx="2" fill="#0f2f52" fill-opacity="0.25"/>
+<circle cx="750.9" cy="266" r="5.5" fill="#0f2f52"/>
+<text x="750.9" y="249" font-size="11.5" font-weight="600" fill="#0f2f52" text-anchor="end">11,758</text>
+<text x="24" y="344" font-size="11.5" fill="#64748b">NPV 平衡价为项目净现值归零的价格，含资本回收要求，高于完全成本；不同项目品位、资本强度与税费会改变门槛。</text>
+</svg></div>
+<div class="src">来源：Bernstein 棕地扩建回报门槛；光大证券税后 NPV 模型——以 Wood Mackenzie 2023 年完全成本（平均 6,420 美元/吨、P90 为 8,930 美元/吨）为成本输入，叠加单吨投资 20,000 美元/吨、15 年寿命（含 3 年基建，投产后三年产能利用率 50%/80%/100%）、10% 折现率与 30% 所得税率，测算项目净现值归零的铜价；未计维持性资本开支。<sup><a href="#s6">[6]</a><a href="#s7">[7]</a></sup></div>
+<p>光大证券用税后净现值模型回答一个问题：铜价要涨到多少，尚未投产的潜在矿山才值得投资。模型把一座假设矿山未来十余年的现金流按 10% 折现，找出净现值恰好为零的铜价；低于该价格项目回报不足，高于才有投资价值。这一价格称为 NPV 平衡价，11,896 与 14,320 美元/吨分别对应行业平均成本与 P90 成本两种情形。<sup><a href="#s6">[6]</a></sup></p>
+<p>模型输入取自行业实际数据。完全成本采用 Wood Mackenzie 2023 年全球铜矿成本曲线：平均 6,420 美元/吨、P90 为 8,930 美元/吨，代表每产一吨铜所需覆盖的全部生产成本。单吨投资强度 20,000 美元/吨，是新建矿山每吨年产能力对应的初始资本开支。项目周期设为 15 年，其中基建 3 年，投产后三年产能利用率依次为 50%、80%、100%，对应新矿从建设到满产的典型节奏；所得税率取 30%，对应法定税负。<sup><a href="#s6">[6]</a></sup></p>
+<p>初始资本需要摊到整个矿山寿命的产量上，并满足 10% 的回报要求，折合每吨铜约 5,400–5,500 美元/吨，对应初始资本的回收要求。把它加到完全成本上：平均情形 6,420 + 5,476 = 11,896 美元/吨，P90 情形 8,930 + 5,390 = 14,320 美元/吨。模型未计入维持性资本开支，光大证券在风险提示中亦将假设偏乐观列为风险，因此这两个价格是潜在矿山投产所需的回报门槛，而非已矿山的停产线。<sup><a href="#s6">[6]</a></sup></p>
+<p>价格高于 14,320 美元/吨的含义是：按该组假设，连完全成本处于 P90 分位的新建项目都能达到 NPV 归零，即全行业新建项目在模型内具备财务可行性。但 NPV 归零只是回本，不产生超额回报；形成实际投资意愿还需价格持续高于该水平，使 NPV 转正、IRR 超过资本成本。价格仅略高于 14,320 美元/吨时，矿商更可能选择扩建现有矿区、延寿老矿，而非启动绿地项目。<sup><a href="#s31">[31]</a><a href="#s32">[32]</a></sup></p>
+<p>外部机构的测算提供了交叉验证。中金以资源禀赋、外部约束与收益预期测算的基准激励价为 12,600 美元/吨，在品位下降与资本超支情景下上移至 13,000–15,000 美元/吨；Friedland 与高盛给出的约 15,000 美元/吨对应大型绿地矿山与需求替代；Crux Investor 引述的新建项目资本强度为 30,000–40,000 美元/吨产能。<sup><a href="#s31">[31]</a><a href="#s32">[32]</a></sup></p>
+<p>价格低于 NPV 平衡价表示按该组假设新建项目回报不足，不等于矿企停止投资。成本曲线左侧项目在相同价格下仍有正净现值；存量矿山停产取决于现金成本而非新建门槛；棕地扩建门槛 7,700–8,800 美元/吨已低于锚定价。矿企还可推迟投资决策等待条件改善，实物期权研究将其解释为对价格水平与波动率的响应。<sup><a href="#s4">[4]</a><a href="#s10">[10]</a></sup></p>
+<p>锚定价 11,758 美元/吨低于平均情形 NPV 平衡价约 1%，处于回报临界区间；资本开支更可能流向棕地扩建与低成本项目。2025 年大型矿商资本开支已恢复至前峰值的 50% 以上，但集中于现有矿区扩建与老矿延寿，绿地项目仍待更高且更持久的价格。<sup><a href="#s31">[31]</a></sup></p>
+<h3>4.3 铜矿从发现到首次投产平均 17.5 年，已在建项目剩余 2–4 年</h3>
+<p>S&P Global 的 17.5 年指“资源发现至首次生产”的平均周期，样本为 1990–2025 年发现的 263 处大型铜矿床，涵盖勘探、可研、许可、融资、建设与爬坡；其中 165 处尚未投产，135 处未完成可研。该均值反映行业时间尺度，不代表单座矿山必然耗时 17.5 年，也不适用于已获批在建项目。<sup><a href="#s27">[27]</a></sup></p>
+<table>
+<tr><th>项目阶段</th><th>典型剩余周期</th><th>对价格的响应</th></tr>
+<tr><td>已投产矿山扩建</td><td>1–3 年</td><td>对价格敏感，但受许可与品位制约</td></tr>
+<tr><td>已完成可研、等待投资决策</td><td>2–4 年</td><td>取决于回报门槛与企业资本纪律</td></tr>
+<tr><td>已获批并在建</td><td>2–4 年</td><td>价格改变的是进度与扩产选项，而非是否投产</td></tr>
+<tr><td>已发现未完成可研 / 早期勘探</td><td>10–20 年</td><td>S&P Global 17.5 年均值对应这一阶段</td></tr>
+</table>
+<div class="src">来源：S&P Global 铜矿发现至首次投产平均 17.5 年（上海金属网转述，原文需核实）；Aguirregabiria & Luengo 对 330 座矿山的动态结构模型显示临时关停可持续数年，单位成本差异主要由品位解释。<sup><a href="#s27">[27]</a><a href="#s10">[10]</a></sup></div>
+<h3>4.4 ICSG 预计 2027 年精炼铜过剩扩大至 36.8 万吨</h3>
+<p>ICSG 2026 年 10 月预测：矿产铜 2026 年 +1.3% 至 2,348.5 万吨、2027 年 +3.1%；精炼铜产量分别 +0.4% 与 +3.4%；精炼铜过剩 10.4 万吨与 36.8 万吨。该平衡表为预测值，中国表观需求未计入未报告库存变化。机构分歧还来自冶炼检修、废铜替代、中国库存、终端需求与突发停产。Banque de France WP #1002 对 318 座矿山的估计显示，需求冲击后五年供给价格弹性约 0.5，生产集中度越高弹性越低。<sup><a href="#s9">[9]</a><a href="#s11">[11]</a></sup></p>
+<table>
+<tr><th>情景</th><th>供给变量</th><th>需求变量</th><th>验证指标</th></tr>
+<tr><td>基准</td><td>矿端 +1.3%，冶炼瓶颈延续</td><td>电网刚需，AI 数据中心增量存在但直接拉动有限</td><td>现货 TC、LME/COMEX 库存流向、洋山溢价</td></tr>
+<tr><td>谨慎</td><td>2027 年矿端 +3.1% 兑现，废铜 +4.7%</td><td>AI 资本开支放缓，地产与家电走弱</td><td>精炼铜过剩扩大、库存累积、长单 TC 谈判</td></tr>
+<tr><td>乐观</td><td>Grasberg、Kamoa-Kakula 复产慢于预期</td><td>电网与新能源用铜超预期，库存区域错配加剧</td><td>库存与期限结构、可交割资源、冶炼减产幅度</td></tr>
+</table>
+</div>
+
+<h2>五、铝：全球 P95 与最右端成本分化，区域供给弹性不同</h2>
+<div class="card">
+<h3>5.1 氧化铝与电力占成本约 80%，海外右端在 3,000 美元/吨以上</h3>
+<p>每吨电解铝消耗氧化铝 1.92–1.94 吨、电力 13,300–14,100 千瓦时、预焙阳极 0.45–0.46 吨；氧化铝占完全成本 36%–44%，电力占 33%–36%，两项合计约 80%。单一全球 P95 不代表不同电力来源的成本结构：水电铝与中东天然气电力处于曲线左侧，欧洲高电价与北美旧合约处于右侧；世纪铝业、美铝、Alro 的 2026Q1 完全成本分别约 3,614、3,204、3,010 美元/吨，高于中国加权成本折算水平。<sup><a href="#s20">[20]</a></sup></p>
+<div class="chart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 426" width="100%" role="img" aria-label="Exhibit 4：铝海外成本——P95 为 2,622，最右端完全成本为 3,183">
+<rect x="0" y="0" width="960" height="426" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" font-weight="700" fill="#0f2f52">Exhibit 4：铝海外成本——P95 为 2,622，最右端完全成本为 3,183</text>
+<text x="936" y="34" font-size="12" font-weight="600" fill="#b8860b" text-anchor="end">美元/吨</text>
+<text x="24" y="58" font-size="12" fill="#64748b">P75/P95 为中信建投引用的完成成本分位；最右端现金/完全成本为 CRU 2026 口径</text>
+<line x1="276.0" y1="78" x2="276.0" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="276.0" y="376" font-size="11" fill="#64748b" text-anchor="middle">0</text>
+<line x1="432.5" y1="78" x2="432.5" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="432.5" y="376" font-size="11" fill="#64748b" text-anchor="middle">875</text>
+<line x1="589.0" y1="78" x2="589.0" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="589.0" y="376" font-size="11" fill="#64748b" text-anchor="middle">1,750</text>
+<line x1="745.5" y1="78" x2="745.5" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="745.5" y="376" font-size="11" fill="#64748b" text-anchor="middle">2,625</text>
+<line x1="902.0" y1="78" x2="902.0" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="902.0" y="376" font-size="11" fill="#64748b" text-anchor="middle">3,500</text>
+<text x="24" y="108" font-size="12.5" fill="#0f2f52">全球完成成本 P75</text>
+<rect x="276" y="96" width="429.3" height="4" rx="2" fill="#b8860b" fill-opacity="0.25"/>
+<circle cx="705.3" cy="98" r="5.5" fill="#b8860b"/>
+<text x="705.3" y="81" font-size="11.5" font-weight="600" fill="#b8860b" text-anchor="end">2,400</text>
+<text x="24" y="164" font-size="12.5" fill="#0f2f52">全球完成成本 P95</text>
+<rect x="276" y="152" width="469.0" height="4" rx="2" fill="#b8860b" fill-opacity="0.25"/>
+<circle cx="745.0" cy="154" r="5.5" fill="#b8860b"/>
+<text x="745.0" y="137" font-size="11.5" font-weight="600" fill="#b8860b" text-anchor="end">2,622</text>
+<text x="24" y="220" font-size="12.5" fill="#0f2f52">最右端现金成本（CRU 2026）</text>
+<rect x="276" y="208" width="541.9" height="4" rx="2" fill="#64748b" fill-opacity="0.25"/>
+<circle cx="817.9" cy="210" r="5.5" fill="#64748b"/>
+<text x="817.9" y="193" font-size="11.5" font-weight="600" fill="#64748b" text-anchor="end">3,030</text>
+<text x="24" y="276" font-size="12.5" fill="#0f2f52">最右端完全成本（CRU 2026）</text>
+<rect x="276" y="264" width="569.3" height="4" rx="2" fill="#64748b" fill-opacity="0.25"/>
+<circle cx="845.3" cy="266" r="5.5" fill="#64748b"/>
+<text x="845.3" y="249" font-size="11.5" font-weight="600" fill="#64748b" text-anchor="end">3,183</text>
+<text x="24" y="332" font-size="12.5" fill="#0f2f52">LME 3M 官方结算（2026-11-25）</text>
+<rect x="276" y="320" width="493.6" height="4" rx="2" fill="#0f2f52" fill-opacity="0.25"/>
+<circle cx="769.6" cy="322" r="5.5" fill="#0f2f52"/>
+<text x="769.6" y="305" font-size="11.5" font-weight="600" fill="#0f2f52" text-anchor="end">2,760</text>
+<text x="24" y="400" font-size="11.5" fill="#64748b">P95 为分位统计，最右端为最后增量产能成本；样本与电价假设不同，两者并列而非替代。价格采用锚定的官方结算价。</text>
+</svg></div>
+<div class="src">来源：CRU 2026 边际成本（华泰证券整理）；中信建投引用的全球完成成本 P75/P95；LME 官方价格。<sup><a href="#s25">[25]</a><a href="#s26">[26]</a><a href="#s12">[12]</a></sup></div>
+<p><span class="tag risk">口径分歧</span>CRU 最右端现金/完全成本 3,030/3,183 美元/吨高于 P95 的 2,622 美元/吨，原因包括分位与最右端的概念差异，以及氧化铝、电价假设时点不同。锚定价 2,760 美元/吨高于 P95 约 5%，低于最右端完全成本约 13%；该位置指向高成本产能承压，不足以推导全球减产规模。</p>
+<div class="chart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 370" width="100%" role="img" aria-label="Exhibit 5：国内铝价高于行业加权完全成本约 35%–39%">
+<rect x="0" y="0" width="960" height="370" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" font-weight="700" fill="#0f2f52">Exhibit 5：国内铝价高于行业加权完全成本约 35%–39%</text>
+<text x="936" y="34" font-size="12" font-weight="600" fill="#b8860b" text-anchor="end">元/吨，含税</text>
+<text x="24" y="58" font-size="12" fill="#64748b">加权完全成本取百川盈孚/Mysteel 2026 年 10–11 月；边际线为网电老槽型产能</text>
+<line x1="276.0" y1="78" x2="276.0" y2="302" stroke="#dbe3ec" stroke-width="1"/>
+<text x="276.0" y="320" font-size="11" fill="#64748b" text-anchor="middle">0</text>
+<line x1="432.5" y1="78" x2="432.5" y2="302" stroke="#dbe3ec" stroke-width="1"/>
+<text x="432.5" y="320" font-size="11" fill="#64748b" text-anchor="middle">6,000</text>
+<line x1="589.0" y1="78" x2="589.0" y2="302" stroke="#dbe3ec" stroke-width="1"/>
+<text x="589.0" y="320" font-size="11" fill="#64748b" text-anchor="middle">12,000</text>
+<line x1="745.5" y1="78" x2="745.5" y2="302" stroke="#dbe3ec" stroke-width="1"/>
+<text x="745.5" y="320" font-size="11" fill="#64748b" text-anchor="middle">18,000</text>
+<line x1="902.0" y1="78" x2="902.0" y2="302" stroke="#dbe3ec" stroke-width="1"/>
+<text x="902.0" y="320" font-size="11" fill="#64748b" text-anchor="middle">24,000</text>
+<text x="24" y="108" font-size="12.5" fill="#0f2f52">边际现金成本（国内网电老槽型）</text>
+<rect x="667.2" y="86" width="13.0" height="24" rx="3" fill="#b8860b" fill-opacity="0.18"/>
+<line x1="667.2" y1="98" x2="680.3" y2="98" stroke="#b8860b" stroke-width="3"/>
+<text x="667.2" y="81" font-size="11.5" font-weight="600" fill="#b8860b">15,000–15,500</text>
+<text x="24" y="164" font-size="12.5" fill="#0f2f52">行业加权完全成本（国内）</text>
+<rect x="694.7" y="142" width="11.8" height="24" rx="3" fill="#b8860b" fill-opacity="0.18"/>
+<line x1="694.7" y1="154" x2="706.5" y2="154" stroke="#b8860b" stroke-width="3"/>
+<text x="694.7" y="137" font-size="11.5" font-weight="600" fill="#b8860b">16,052–16,506</text>
+<text x="24" y="220" font-size="12.5" fill="#0f2f52">边际完全成本（国内高成本产能）</text>
+<rect x="732.5" y="198" width="39.1" height="24" rx="3" fill="#b8860b" fill-opacity="0.18"/>
+<line x1="732.5" y1="210" x2="771.6" y2="210" stroke="#b8860b" stroke-width="3"/>
+<text x="732.5" y="193" font-size="11.5" font-weight="600" fill="#b8860b">17,500–19,000</text>
+<text x="24" y="276" font-size="12.5" fill="#0f2f52">A00 铝现货（2026-11-25）</text>
+<rect x="276" y="264" width="582.2" height="4" rx="2" fill="#0f2f52" fill-opacity="0.25"/>
+<circle cx="858.2" cy="266" r="5.5" fill="#0f2f52"/>
+<text x="858.2" y="249" font-size="11.5" font-weight="600" fill="#0f2f52" text-anchor="end">22,320</text>
+<text x="24" y="344" font-size="11.5" fill="#64748b">国内含税口径；海外成本见 Exhibit 4；完全成本含折旧摊销，不是停产线。</text>
+</svg></div>
+<div class="src">来源：百川盈孚/Mysteel 加权完全成本；SMM A00 现货 2026-11-25。<sup><a href="#s16">[16]</a><a href="#s17">[17]</a></sup></div>
+<p>17,500–19,000 元/吨为国内网电老槽型产能的边际完全成本，含税；海外高成本参照 Exhibit 4 的 CRU 最右端现金/完全成本 3,030/3,183 美元/吨，以及世纪铝业、美铝、Alro 的公司披露（3,010–3,614 美元/吨），均为美元不含税口径。</p>
+<p>完全成本包含折旧与摊销，属于沉没性支出；短期停产决策取决于可避免现金成本，国内对应 15,000–15,500 元/吨的网电老槽型现金成本。电解铝停槽后复产需 6–12 个月，且受长期电力合约、地方政府与就业约束，价格跌破边际完全成本不意味着厂商立即停产；部分产能可在现金亏损状态下维持运行等待价格回升。我们判断成本线对铝的作用是界定中长期产能存留条件，对短期开工率的解释力弱于现金成本与电力合约。</p>
+<h3>5.2 海外产能收缩的第一道观察线是 3,030 美元/吨，退出由电力合约决定</h3>
+<p>CRU 2026 最右端现金成本 3,030 美元/吨与完全成本 3,183 美元/吨构成海外产能的两条盈亏线。价格跌破 3,183 美元/吨意味着最右端产能会计亏损，折旧与摊销属于沉没性支出，不直接决定停产；价格跌破 3,030 美元/吨意味着该部分产能现金亏损，具备减产动机。两者都是成本曲线右端的统计值，不是所有高成本厂商的统一停产价。<sup><a href="#s25">[25]</a></sup></p>
+<p><span class="tag est">三级证据</span>据市场机构转述，2026 年完全成本高于 3,000 美元/吨的海外产量约 32 万吨，计入 2,900 美元/吨以上产能后约 66 万吨，占海外总产能约 2%。最右端产能体量较薄，价格跌破 3,030 美元/吨后的实际减产规模不宜由成本线线性外推。<sup><a href="#s25">[25]</a></sup></p>
+<p>实际减产与退出更多由电力条件决定。行业研究给出的经济性门槛为 10–20 年长期电力合约约 40 美元/兆瓦时；欧洲在 2022 年能源冲击后关停超过 100 万吨/年产能，进入 2026 年仍有约 80 万吨/年处于闲置且无复产计划，原因是燃气电价未回到可承受区间。Slovalco 7.5 万吨/年产能复产以政府间接碳成本补偿和长期购电协议为前提；South32 莫扎尔 56 万吨/年产能取决于 2026 年 3 月后的电力协议；力拓 Tomago 58.6 万吨/年产能面临 2028 年 12 月合约到期。<sup><a href="#s28">[28]</a><a href="#s29">[29]</a></sup></p>
+<p>历史经验显示现金成本可被短期击穿。华泰证券测算显示，2023 年海外电解铝过剩 56.9 万吨，对应现金成本支撑 2,416–2,445 美元/吨，当年欧洲现货最低价 2,311 美元/吨，在美联储大幅加息期间一度跌破现金成本；同期边际完全成本 2,470–2,502 美元/吨，叠加欧洲现货升水 276 美元/吨后的均价 2,565 美元/吨，完全成本支撑有效。<sup><a href="#s25">[25]</a></sup> 我们判断，海外高成本产能收缩需要价格持续低于现金成本、且电力合约无法续约或成本补偿缺位同时出现；单一价格点位只能界定动机，不能推导退出规模。</p>
+<h3>5.3 中国红线约束指标，不约束物理产量</h3>
+<p>2017 年四部委文件提出 4,500 万吨产能天花板；清理整顿后确认的合规产能上限约 4,543 万吨。华泰期货周报援引 SMM 口径：2026 年 11 月 20 日建成产能 4,584.2 万吨、运行产能 4,555.1 万吨、开工率 98.03%；10 月产量 387.9 万吨，年化略高于红线。差异来自置换过渡期新旧产能并存、历史遗留合规确认，以及电流强化带来的 1%–2% 超设计产出。<strong>红线约束的是新增审批与合规指标，不是物理产量上限。</strong>剩余可投放指标有限，2027 年国内净增约 10 万吨，供给弹性接近耗尽但非零。<sup><a href="#s17">[17]</a><a href="#s19">[19]</a><a href="#s20">[20]</a></sup></p>
+<h3>5.4 可交割库存决定升水能否向远期传导</h3>
+<div class="chart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 426" width="100%" role="img" aria-label="Exhibit 6：LME 铝近月升水在新规公布后收窄">
+<rect x="0" y="0" width="960" height="426" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" font-weight="700" fill="#0f2f52">Exhibit 6：LME 铝近月升水在新规公布后收窄</text>
+<text x="936" y="34" font-size="12" font-weight="600" fill="#b8860b" text-anchor="end">美元/吨</text>
+<text x="24" y="58" font-size="12" fill="#64748b">Cash/3M 与现货/12 月为两组不同合约对，分别列示</text>
+<line x1="276.0" y1="78" x2="276.0" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="276.0" y="376" font-size="11" fill="#64748b" text-anchor="middle">0</text>
+<line x1="432.5" y1="78" x2="432.5" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="432.5" y="376" font-size="11" fill="#64748b" text-anchor="middle">112</text>
+<line x1="589.0" y1="78" x2="589.0" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="589.0" y="376" font-size="11" fill="#64748b" text-anchor="middle">225</text>
+<line x1="745.5" y1="78" x2="745.5" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="745.5" y="376" font-size="11" fill="#64748b" text-anchor="middle">338</text>
+<line x1="902.0" y1="78" x2="902.0" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="902.0" y="376" font-size="11" fill="#64748b" text-anchor="middle">450</text>
+<text x="24" y="108" font-size="12.5" fill="#0f2f52">Cash/3M 峰值（11 月 23 日）</text>
+<rect x="276" y="96" width="563.4" height="4" rx="2" fill="#2f6f58" fill-opacity="0.25"/>
+<circle cx="839.4" cy="98" r="5.5" fill="#2f6f58"/>
+<text x="839.4" y="81" font-size="11.5" font-weight="600" fill="#2f6f58" text-anchor="end">405</text>
+<text x="24" y="164" font-size="12.5" fill="#0f2f52">Cash/3M（11 月 24 日）</text>
+<rect x="276" y="152" width="365.9" height="4" rx="2" fill="#2f6f58" fill-opacity="0.25"/>
+<circle cx="641.9" cy="154" r="5.5" fill="#2f6f58"/>
+<text x="641.9" y="137" font-size="11.5" font-weight="600" fill="#2f6f58" text-anchor="end">263</text>
+<text x="24" y="220" font-size="12.5" fill="#0f2f52">Cash/3M（规则公布后）</text>
+<rect x="276" y="208" width="93.9" height="4" rx="2" fill="#2f6f58" fill-opacity="0.25"/>
+<circle cx="369.9" cy="210" r="5.5" fill="#2f6f58"/>
+<text x="369.9" y="193" font-size="11.5" font-weight="600" fill="#2f6f58" text-anchor="end">68</text>
+<text x="24" y="276" font-size="12.5" fill="#0f2f52">现货/12 月合约（回落前）</text>
+<rect x="276" y="264" width="294.9" height="4" rx="2" fill="#64748b" fill-opacity="0.25"/>
+<circle cx="570.9" cy="266" r="5.5" fill="#64748b"/>
+<text x="570.9" y="249" font-size="11.5" font-weight="600" fill="#64748b" text-anchor="end">212</text>
+<text x="24" y="332" font-size="12.5" fill="#0f2f52">现货/12 月合约（回落至）</text>
+<rect x="276" y="320" width="139.1" height="4" rx="2" fill="#64748b" fill-opacity="0.25"/>
+<circle cx="415.1" cy="322" r="5.5" fill="#64748b"/>
+<text x="415.1" y="305" font-size="11.5" font-weight="600" fill="#64748b" text-anchor="end">100</text>
+<text x="24" y="400" font-size="11.5" fill="#64748b">405 为 1988 年以来最高；212 至 100 为另一合约对口径。11 月 25 日新规生效。</text>
+</svg></div>
+<div class="src">来源：LME 官方结算价与现货/3 个月、现货/12 月合约价差，2026-11-23 至 11-25；规则于 11 月 25 日生效。<sup><a href="#s14">[14]</a><a href="#s15">[15]</a><a href="#s35">[35]</a></sup></div>
+<p>评估铝的供给支撑时，交易所总库存、可用库存与可交割来源需分开。部分库存因贸易限制不被特定消费方接受，形成“有库存、缺可交割货源”的结构；仓单集中度与借贷规则放大近月与远月分化。11 月 23 日 Cash/3M 升水触及 405 美元/吨，为 1988 年以来最高；11 月 24 日回落至 263 美元/吨，规则公布后进一步降至 67.53 美元/吨。同期现货与 12 月合约价差由 212 美元/吨降至 100 美元/吨。这些因素决定现货升水能否向远期价格中枢传导，不改变全球产量与成本曲线本身。</p>
+<p>新品牌进入交割体系会扩大可交割资源池，品牌注册周期与新增产能投放共同决定库存结构演变。商业周期判断仍以产能、产量、电力约束与成本曲线为主；交割结构用于解释价格与成本线之间的短期偏离，不构成独立的供给支撑来源。<sup><a href="#s13">[13]</a><a href="#s14">[14]</a><a href="#s15">[15]</a><a href="#s16">[16]</a></sup></p>
+<h3>5.5 印尼规划 1,300 万吨，2025 年产量 73.32 万吨</h3>
+<p>国内运行产能已接近合规上限，新增审批空间有限；欧美闲置产能的复产由电力合约而非铝价单独决定。全球供给增量因而集中到少数同时具备铝土矿、电力配套与建设条件的地区，印尼是其中规模最大的一处。光大证券测算印尼 2027、2028 年新增产量分别为 135 万吨与 140 万吨，同期全球供给增量分别为 414 万吨与 342 万吨，印尼贡献约三至四成。<sup><a href="#s25">[25]</a></sup> 印尼能否把规划转化为通电产量，直接决定远期供需平衡表的宽松程度，也决定本报告的结论在何种条件下失效。</p>
+<div class="chart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 426" width="100%" role="img" aria-label="Exhibit 7：印尼规划 1,300 万吨，2025 年产量 73.32 万吨">
+<rect x="0" y="0" width="960" height="426" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" font-weight="700" fill="#0f2f52">Exhibit 7：印尼规划 1,300 万吨，2025 年产量 73.32 万吨</text>
+<text x="936" y="34" font-size="12" font-weight="600" fill="#b8860b" text-anchor="end">万吨/年</text>
+<text x="24" y="58" font-size="12" fill="#64748b">规划、建成、通电运行、实际产量为四个不同口径；机构分歧主要来自电力与爬坡假设</text>
+<line x1="276.0" y1="78" x2="276.0" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="276.0" y="376" font-size="11" fill="#64748b" text-anchor="middle">0</text>
+<line x1="432.5" y1="78" x2="432.5" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="432.5" y="376" font-size="11" fill="#64748b" text-anchor="middle">350</text>
+<line x1="589.0" y1="78" x2="589.0" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="589.0" y="376" font-size="11" fill="#64748b" text-anchor="middle">700</text>
+<line x1="745.5" y1="78" x2="745.5" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="745.5" y="376" font-size="11" fill="#64748b" text-anchor="middle">1,050</text>
+<line x1="902.0" y1="78" x2="902.0" y2="358" stroke="#dbe3ec" stroke-width="1"/>
+<text x="902.0" y="376" font-size="11" fill="#64748b" text-anchor="middle">1,400</text>
+<text x="24" y="108" font-size="12.5" fill="#0f2f52">远期纸面规划</text>
+<rect x="276" y="96" width="581.3" height="4" rx="2" fill="#64748b" fill-opacity="0.25"/>
+<circle cx="857.3" cy="98" r="5.5" fill="#64748b"/>
+<text x="857.3" y="81" font-size="11.5" font-weight="600" fill="#64748b" text-anchor="end">1,300</text>
+<text x="24" y="164" font-size="12.5" fill="#0f2f52">名义建成产能（2026）</text>
+<rect x="276" y="152" width="111.8" height="4" rx="2" fill="#b8860b" fill-opacity="0.25"/>
+<circle cx="387.8" cy="154" r="5.5" fill="#b8860b"/>
+<text x="387.8" y="137" font-size="11.5" font-weight="600" fill="#b8860b" text-anchor="end">250</text>
+<text x="24" y="220" font-size="12.5" fill="#0f2f52">通电带负荷运行产能</text>
+<rect x="276" y="208" width="54.1" height="4" rx="2" fill="#b8860b" fill-opacity="0.25"/>
+<circle cx="330.1" cy="210" r="5.5" fill="#b8860b"/>
+<text x="330.1" y="193" font-size="11.5" font-weight="600" fill="#b8860b" text-anchor="end">121</text>
+<text x="24" y="276" font-size="12.5" fill="#0f2f52">2025 年实际产量</text>
+<rect x="276" y="264" width="32.8" height="4" rx="2" fill="#b8860b" fill-opacity="0.25"/>
+<circle cx="308.8" cy="266" r="5.5" fill="#b8860b"/>
+<text x="308.8" y="249" font-size="11.5" font-weight="600" fill="#b8860b" text-anchor="end">73</text>
+<text x="24" y="332" font-size="12.5" fill="#0f2f52">2026 年产量预估区间</text>
+<rect x="331.9" y="310" width="17.9" height="24" rx="3" fill="#0f2f52" fill-opacity="0.18"/>
+<line x1="331.9" y1="322" x2="349.8" y2="322" stroke="#0f2f52" stroke-width="3"/>
+<text x="331.9" y="305" font-size="11.5" font-weight="600" fill="#0f2f52">125–165</text>
+<text x="24" y="400" font-size="11.5" fill="#64748b">电力配套 30–36 个月、免税资质与铝土矿配额是主要落地约束。</text>
+</svg></div>
+<div class="src">来源：上海金属网印尼产能拆解、ALD/华泰期货投产节奏、LME 品牌注册报道；机构分歧主要来自电力配套假设。<sup><a href="#s18">[18]</a><a href="#s19">[19]</a><a href="#s15">[15]</a></sup></div>
+<table>
+<tr><th>项目类型</th><th>状态</th><th>关键约束</th></tr>
+<tr><td>INALUM、青山系韦达湾、华青一期</td><td>接近满产，构成存量基本盘</td><td>无显著增量弹性</td></tr>
+<tr><td>力勤 KAI 一期、信发聚万/泰景</td><td>通电爬坡，2026 年产量来源</td><td>电厂并网负荷、免税资质</td></tr>
+<tr><td>南山宾坦、博赛、KAI 二期</td><td>建成待电或土建阶段，2027 年后</td><td>电力缺口、铝土矿配额、港口与环保许可</td></tr>
+</table>
+<p>印尼纸面规划超过 1,300 万吨，名义建成约 250 万吨，通电运行约 121 万吨，2025 年实际产量 73.32 万吨；2026 年产量预测在 125–200 万吨之间，差异来自口径与爬坡假设。区域产业链迁移意味着部分增量并非全球净新增。</p>
+<h3>5.6 铝价上行需与电力合约同时到位才形成复产</h3>
+<p>2026 年铝价一度接近 3,418 美元/吨，高于 CRU 最右端完全成本 3,183 美元/吨，但欧美约 85 万吨闲置产能仍未复产。决定因素是电力：电解铝盈亏平衡电价约 40 美元/兆瓦时，欧洲工业电价 97–108 美元/兆瓦时，AI 数据中心长协出价超过 115 美元/兆瓦时，铝厂在电力竞标中处于劣势。<sup><a href="#s29">[29]</a></sup></p>
+<p>Slovalco 的 7.5 万吨复产同时依赖政府间接碳成本补偿与国有水电企业长期购电协议，剩余 10 万吨取决于 2030 年后的能源框架；世纪铝业 Mount Holly 的 5 万吨复产在锁定 2031 年前电力后才落地。<sup><a href="#s28">[28]</a><a href="#s29">[29]</a></sup> 因此铝价单项不足以触发海外大规模复产，价格与电价需同时满足条件；即便条件具备，单条电解槽系列复产需 6–12 个月。</p>
+<h3>5.7 远期供需由紧平衡转向宽松</h3>
+<p>10 月铝材出口回落使需求预期转弱；海外中东复产推进、印尼新增产能释放，远期供需由紧平衡转向宽松。再生铝替代与光伏、汽车、包装、电力设备用铝增速是中期变量。学术证据显示电价对边际成本传导较强、对均衡价格传导较弱；欧洲日频 ECM 研究亦表明电价与铝价长期正相关，短期日度变化不主导价格。<sup><a href="#s21">[21]</a><a href="#s22">[22]</a></sup></p>
+</div>
+
+<h2>六、横向比较：供给响应时滞决定成本线的解释力</h2>
+<div class="card">
+<table>
+<tr><th>维度</th><th>黄金</th><th>铜</th><th>铝</th></tr>
+<tr><td>锚定价格</td><td>COMEX 收盘 3,588 美元/盎司（11-25）</td><td>LME 3M 官方结算 11,758 美元/吨（11-25）</td><td>LME 3M 官方结算 2,760 美元/吨（11-25）</td></tr>
+<tr><td>成本锚</td><td>AISC 1,930 美元/盎司（一级）；P90 情景 2,300–2,500 美元/盎司（三级）</td><td>C1/C3 P90 为 2023 年二级；C1+SC P90 为 2025 年二级</td><td>P95 2,622 美元/吨（二级）；CRU 最右端 3,030/3,183 美元/吨（二级）</td></tr>
+<tr><td>上行触发价</td><td>绿地激励 1,800–2,200 美元/盎司（CRU）；项目 PEA：2,450 美元/盎司 IRR 18%、3,600 美元/盎司 IRR 35%</td><td>7,700–8,800 美元/吨（棕地）；11,896–14,320 美元/吨（NPV 平衡）；12,600 美元/吨（中金基准）；15,000 美元/吨（机构测算）</td><td>海外 3,183 美元/吨完全成本；复产需叠加约 40 美元/兆瓦时长协电价</td></tr>
+<tr><td>下行触发价</td><td>AIC 2,619 美元/盎司；P90 情景 2,300–2,500 美元/盎司</td><td>C1 均值 4,350 美元/吨；C3 P90 8,930 美元/吨；棕地激励 7,700–8,800 美元/吨</td><td>海外现金成本 3,030 美元/吨；国内边际现金成本 15,000–15,500 元/吨</td></tr>
+<tr><td>供给响应</td><td>开停滞后；新增 10–20 年</td><td>获批项目 2–4 年；资源发现到首次投产 17.5 年（早期项目）</td><td>复产 6–12 个月；印尼 2027 年后集中爬坡</td></tr>
+<tr><td>需求变量</td><td>实际利率、美元、央行、ETF、回收供给</td><td>电网、AI 资本开支、新能源汽车、地产、废铜替代</td><td>建筑、汽车、包装、电力设备、再生铝、出口</td></tr>
+<tr><td>库存结构</td><td>地上存量与投资持仓</td><td>区域库存错配、负 TC</td><td>可交割来源、仓单集中度、交割规则</td></tr>
+<tr><td>判断置信度</td><td>成本对短期价格解释力：低</td><td>长期供给约束：高；新增门槛：中</td><td>国内供给约束：中高；近端升水持续性：低</td></tr>
+</table>
+<div class="chart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 492" width="100%" role="img" aria-label="供给响应时间轴">
+<rect x="0" y="0" width="960" height="492" fill="#ffffff"/>
+<text x="24" y="34" font-size="17" font-weight="700" fill="#0f2f52">Exhibit 8：供给响应时滞——复产以月计，新增以年计</text>
+<text x="936" y="34" font-size="12" font-weight="600" fill="#b8860b" text-anchor="end">年</text>
+<text x="24" y="58" font-size="12" fill="#64748b">区间为公开资料中的典型耗时；已获批在建项目的剩余周期短于“发现到投产”全周期。</text>
+<line x1="276.0" y1="76" x2="276.0" y2="428" stroke="#dbe3ec" stroke-width="1"/>
+<text x="276.0" y="446" font-size="11" fill="#64748b" text-anchor="middle">0</text>
+<line x1="432.5" y1="76" x2="432.5" y2="428" stroke="#dbe3ec" stroke-width="1"/>
+<text x="432.5" y="446" font-size="11" fill="#64748b" text-anchor="middle">6</text>
+<line x1="589.0" y1="76" x2="589.0" y2="428" stroke="#dbe3ec" stroke-width="1"/>
+<text x="589.0" y="446" font-size="11" fill="#64748b" text-anchor="middle">11</text>
+<line x1="745.5" y1="76" x2="745.5" y2="428" stroke="#dbe3ec" stroke-width="1"/>
+<text x="745.5" y="446" font-size="11" fill="#64748b" text-anchor="middle">16</text>
+<line x1="902.0" y1="76" x2="902.0" y2="428" stroke="#dbe3ec" stroke-width="1"/>
+<text x="902.0" y="446" font-size="11" fill="#64748b" text-anchor="middle">22</text>
+<text x="24" y="101" font-size="12.5" fill="#0f2f52">短周期供给响应（概念参照）</text>
+<rect x="283.1" y="86" width="14.2" height="20" rx="3" fill="#64748b" fill-opacity="0.22"/>
+<line x1="283.1" y1="96" x2="297.3" y2="96" stroke="#64748b" stroke-width="3"/>
+<text x="305.3" y="101" font-size="11.5" font-weight="600" fill="#64748b">0.25–0.75</text>
+<text x="24" y="145" font-size="12.5" fill="#0f2f52">电解铝：停槽后复产</text>
+<rect x="290.2" y="130" width="14.2" height="20" rx="3" fill="#b8860b" fill-opacity="0.22"/>
+<line x1="290.2" y1="140" x2="304.5" y2="140" stroke="#b8860b" stroke-width="3"/>
+<text x="312.5" y="145" font-size="11.5" font-weight="600" fill="#b8860b">0.5–1</text>
+<text x="24" y="189" font-size="12.5" fill="#0f2f52">电解铝：中国新建/置换</text>
+<rect x="318.7" y="174" width="14.2" height="20" rx="3" fill="#b8860b" fill-opacity="0.22"/>
+<line x1="318.7" y1="184" x2="332.9" y2="184" stroke="#b8860b" stroke-width="3"/>
+<text x="340.9" y="189" font-size="11.5" font-weight="600" fill="#b8860b">1.5–2</text>
+<text x="24" y="233" font-size="12.5" fill="#0f2f52">黄金：矿山开停与复产</text>
+<rect x="332.9" y="218" width="56.9" height="20" rx="3" fill="#b8860b" fill-opacity="0.22"/>
+<line x1="332.9" y1="228" x2="389.8" y2="228" stroke="#b8860b" stroke-width="3"/>
+<text x="397.8" y="233" font-size="11.5" font-weight="600" fill="#b8860b">2–4</text>
+<text x="24" y="277" font-size="12.5" fill="#0f2f52">铜矿：已获批在建项目剩余周期</text>
+<rect x="332.9" y="262" width="56.9" height="20" rx="3" fill="#b8860b" fill-opacity="0.22"/>
+<line x1="332.9" y1="272" x2="389.8" y2="272" stroke="#b8860b" stroke-width="3"/>
+<text x="397.8" y="277" font-size="11.5" font-weight="600" fill="#b8860b">2–4</text>
+<text x="24" y="321" font-size="12.5" fill="#0f2f52">电解铝：美国新建项目</text>
+<rect x="389.8" y="306" width="28.5" height="20" rx="3" fill="#b8860b" fill-opacity="0.22"/>
+<line x1="389.8" y1="316" x2="418.3" y2="316" stroke="#b8860b" stroke-width="3"/>
+<text x="426.3" y="321" font-size="11.5" font-weight="600" fill="#b8860b">4–5</text>
+<text x="24" y="365" font-size="12.5" fill="#0f2f52">黄金：勘探到新增产量</text>
+<rect x="560.5" y="350" width="284.5" height="20" rx="3" fill="#0f2f52" fill-opacity="0.22"/>
+<line x1="560.5" y1="360" x2="845.1" y2="360" stroke="#0f2f52" stroke-width="3"/>
+<text x="853.1" y="365" font-size="11.5" font-weight="600" fill="#0f2f52">10–20</text>
+<text x="24" y="409" font-size="12.5" fill="#0f2f52">铜矿：发现到首次投产</text>
+<rect x="674.4" y="394" width="170.7" height="20" rx="3" fill="#0f2f52" fill-opacity="0.22"/>
+<line x1="674.4" y1="404" x2="845.1" y2="404" stroke="#0f2f52" stroke-width="3"/>
+<text x="853.1" y="409" font-size="11.5" font-weight="600" fill="#0f2f52">14–20</text>
+<text x="24" y="468" font-size="11.5" fill="#64748b">供给响应越快，成本线越接近硬约束；三种金属的供给响应以年乃至十年计，成本线仅构成慢变量约束。</text>
+</svg></div>
+<div class="src">来源：Moel & Tufano；S&P Global；IAI 与行业复产周期资料。<sup><a href="#s4">[4]</a><a href="#s10">[10]</a><a href="#s20">[20]</a></sup></div>
+</div>
+<div class="card">
+<h3>验证指标与结论失效条件</h3>
+<ul>
+<li><strong>黄金：</strong>WGC 季度 AISC 分项、样本品位、权利金占比与 ETF 流向。若金价进入情景边际成本区间，且矿产金供应同比负增长持续两个季度，成本约束进入实质生效阶段。固定“金价/AISC 倍数”不作为底部判据。</li>
+<li><strong>铜：</strong>现货 TC、冶炼减产、LME/COMEX 库存流向、副产品价格与 2027 年长单 TC。判断新增投资动力是否转弱，需同时观察价格低于 NPV 平衡价与矿企资本开支同比转负，单一价格点位不足以确认；若矿端 +3.1% 按期兑现且精炼铜过剩扩大，成本支撑结论需下调；干旱、矿震或许可中断会使供给约束强化。</li>
+<li><strong>铝：</strong>总库存与可用库存、可交割来源、交割规则、中国运行产能与印尼并网进度。海外减产需同时观察价格是否持续低于 3,030 美元/吨现金线、欧洲与澳洲电力合约续签进度；若新增可交割铝入库且印尼 2027 年产量超过 185 万吨，全球供需再平衡节奏需重估。</li>
+</ul>
+</div>
+
+<h2>七、来源与口径说明</h2>
+<div class="card">
+<ol class="small">
+<li id="s1">World Gold Council / Metals Focus，《Gold Miners Remain Resilient Despite Tighter Margins in Q2'26》，2026-11-10，一级来源：<a href="https://www.gold.org/goldhub/gold-focus/2026/11/gold-miners-remain-resilient-despite-tighter-margins-q226" target="_blank">原文</a>。</li>
+<li id="s2">World Gold Council，Gold Demand Trends Q3 2026 — Supply：<a href="https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-q3-2026/supply" target="_blank">原文</a>。</li>
+<li id="s3">Baur & Smales，Do gold prices cause production costs? Resources Policy：<a href="https://sciencedirect.com/science/article/abs/pii/S1042443115001134" target="_blank">链接</a>。</li>
+<li id="s4">Moel & Tufano，When Are Real Options Exercised? An Empirical Study of Mine Closings：<a href="https://pages.stern.nyu.edu/adamodar/pdfiles/eqnotes/closingMines.pdf" target="_blank">PDF</a>。</li>
+<li id="s5">紫金黄金国际 2026 年 1–9 月未经审核财务资料及营运公告，一级来源：<a href="https://www.zijingoldintl.com/upload/file/2026/10/19/280ff622654c407ea6e424be55e27860.pdf" target="_blank">PDF</a>。</li>
+<li id="s6">光大证券引用 Wood Mackenzie 2023 年铜成本数据与 NPV 假设：<a href="http://www.sina.cn/news/detail/5024644878304795.html" target="_blank">链接</a>。</li>
+<li id="s7">Bernstein 铜价支撑与棕地激励门槛：<a href="https://www.investing.com/news/commodities-news/bernstein-shares-its-nearterm-outlook-for-copper-prices-93CH-3975798" target="_blank">链接</a>。</li>
+<li id="s8">MiningVisuals，The Cost of Mining Copper: A 2024–2025 Update：<a href="https://www.miningvisuals.com/post/the-cost-of-mining-copper-a-2024-2025-update" target="_blank">链接</a>。</li>
+<li id="s9">ICSG 2026 年 10 月供需预测（上海金属网转述，需核实原文）：<a href="https://www.shmet.com/news/newsDetail-2-927134.html" target="_blank">链接</a>。</li>
+<li id="s10">Aguirregabiria & Luengo，A Microeconometric Dynamic Structural Model of Copper Mining Decisions：<a href="http://aguirregabiria.net/wpapers/copper_mining.pdf" target="_blank">PDF</a>。</li>
+<li id="s11">Banque de France WP #1002，Critical Minerals: Estimating Price Elasticity of Supply Using Mine-Level Data：<a href="https://www.banque-france.fr/system/files/2025-08/WP1002.pdf" target="_blank">PDF</a>。</li>
+<li id="s12">London Metal Exchange，Official Prices，Data valid for 25 Nov 2026：<a href="https://www.lme.com/en/market-data/reports-and-data/lme-official-prices" target="_blank">原文</a>。</li>
+<li id="s13">Euromining News，Aluminium stock concentration brings LME lending trigger down to 30%：<a href="https://euromining.news/aluminium-stock-concentration-brings-lme-lending-trigger-down-to-30" target="_blank">链接</a>。</li>
+<li id="s14">LME Insight，LME Tightens Aluminium Position Rules：<a href="https://www.lmeinsight.com/lme-tightens-aluminium-position-rules-as-historic-squeeze-prompts-intervention" target="_blank">链接</a>。</li>
+<li id="s15">上海金属网，铝现货升水大幅收窄与 LME 规则调整：<a href="https://www.shmet.com/news/newsDetail-2-931376.html" target="_blank">链接</a>。</li>
+<li id="s16">华泰期货新能源及有色金属日报，2026-11-26：<a href="https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/11/rptid/849004352095/index.phtml" target="_blank">链接</a>。</li>
+<li id="s17">华泰期货新能源及有色金属周报，2026-11-22：<a href="https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/11/rptid/848699216698/index.phtml" target="_blank">链接</a>。</li>
+<li id="s18">上海金属网，印尼电解铝产能真相：<a href="https://www.shmet.com/news/newsDetail-2-916865.html" target="_blank">链接</a>。</li>
+<li id="s19">ALD / 中信建投国内产能达峰与海外投产节奏：<a href="https://gu.qq.com/resources/shy/news/detail-v2/index.html?t=1#/index?_tentrees_trans=0&id=SN20261105073553a4984169" target="_blank">链接</a>。</li>
+<li id="s20">新华网，电解铝产能上限政策解读：<a href="https://www.xinhuanet.com/finance/20260509/4b081decc2f64978bb5cddcfe0c4641d/c.html" target="_blank">链接</a>。</li>
+<li id="s21">Shi, Wang, Zhao, Feng & Wu (2018), Resources Policy 59: 274–281；Söderholm 等，Resources Policy（原文链接未取得，需核实）。</li>
+<li id="s22">Johannesson & Aspelund (2026), Primary aluminium price determinants in Europe：<a href="https://hdl.handle.net/1946/53620" target="_blank">原文</a>。</li>
+<li id="s23">东方财富 Choice / 妙想金融数据接口：COMEX 黄金、LME 综合铜 03、综合铝 03 行情；SGE Au99.99；USD/CNY。接口对期货合约单位字段标注为“元”，按合约惯例解读为美元，以交易所报价为准。</li>
+<li id="s24">上海金属网 / 紫金天风期货研究所，《黄金的成本在哪里》：<a href="https://www.shmet.com/news/newsDetail-2-915549.html" target="_blank">链接</a>。</li>
+<li id="s25">华泰证券引用 CRU 2026 年电解铝边际成本：<a href="https://finance.sina.cn/2026-06-24/detail-inieniee6295927.d.html" target="_blank">链接</a>。</li>
+<li id="s26">中信建投《铝深度五·海外密集扩张，悄改行业格局》：<a href="https://news.qq.com/rain/a/20261105A036IS00" target="_blank">链接</a>。</li>
+<li id="s27">S&P Global 铜矿发现至首次投产平均周期约 17.5 年、1990–2025 年发现 263 处大型铜矿床（上海金属网转述，原文需核实）：<a href="https://www.shmet.com/news/newsDetail-2-928115.html" target="_blank">链接</a>。</li>
+<li id="s28">Aluminium International Today，Slovalco 复产协议与欧洲电解铝产能关停规模：<a href="https://aluminiumtoday.com/news/slovalco-to-restart-aluminium-smelting" target="_blank">链接</a>。</li>
+<li id="s29">SpecForge，Aluminium 2026: restart economics hinge on long-term power at ~$40/MWh（综合 ING 与 SAFE Center 估算，二手来源）：<a href="https://www.sourcebyspec.com/news/aluminium-2026-restart-economics-hinge-on-long-term-power-at-40-mwh.html" target="_blank">链接</a>。</li>
+<li id="s30">Spanish Mountain Gold，PEA Economics（2026 Base 金价 3,600 美元/盎司、税后 IRR 35.2%；2025 Base 金价 2,450 美元/盎司、IRR 18.2%），一级公司披露：<a href="https://spanishmountaingold.com/project/preliminary-economic-assessment-economics-1" target="_blank">链接</a>。</li>
+<li id="s31">中金公司，铜矿激励价格或 higher for longer（基准激励价 12,600 美元/吨，敏感性 13,000–15,000 美元/吨）：<a href="https://www.fxbaogao.com/detail/5681243" target="_blank">链接</a>。</li>
+<li id="s32">Crux Investor / Robert Friedland，新建铜矿激励价 15,000–20,000 美元/吨、资本强度 30,000–40,000 美元/吨（二手来源）：<a href="https://www.cruxinvestor.com/posts/coppers-incentive-price-gap-the-case-for-near-term-low-capex-supply" target="_blank">链接</a>。</li>
+<li id="s33">Orecast Intelligence 引述 CRU 澳大利亚绿地金矿激励价 1,800–2,200 美元/盎司（露天，地下更高；二手来源）：<a href="https://orecast.news/articles/gold-us4-194-oz-not-ceiling-s-exploration-incentive-price" target="_blank">链接</a>。</li>
+<li id="s34">GoldMining Inc.，São Jorge 项目 NI 43-101 PEA（基准金价 3,500 美元、税后 IRR 42.4%；4,400 美元下 58.6%），一级公司披露：<a href="http://mail.marketwirenews.com/stock/gldg/news/goldmining-files-pea-technical-report-for-its-s-xe3--5467070618937753.html" target="_blank">链接</a>。</li>
+<li id="s36">World Gold Council，Appendix I: Composition and trends of gold demand and supply（截至 2019 年 12 月：地上存量 201,296 吨、过去十年年矿产约 3,300 吨、年增量 1.8%），一级来源：<a href="https://china.gold.org/node/15643" target="_blank">原文</a>。</li>
+<li id="s37">World Gold Council，Non-GAAP Metrics Guide — All-In Sustaining Cost and All-In Cost（AIC 定义：AISC 加非维持性许可/社区成本、复垦、非维持性勘探研究和资本开支），一级来源：<a href="https://china.gold.org/gold-standards/non-gaap-metrics-guide" target="_blank">原文</a>。</li>
+<li id="s35">LME 打出政策组合拳：逼仓降温之后，铝市何去何从？（Cash/3M 升水由 403.47 美元/吨回落至 67.53 美元/吨），券商研究引用：<a href="https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/11/rptid/848940380528/index.phtml" target="_blank">链接</a>。</li>
+</ol>
+<p class="small">证据分级：一级为交易所、政府、行业协会与公司公告；二级为行业数据库、券商与研究机构引用；三级为模型外推与情景假设。所有关键数字已标注统计期、来源等级与口径限制。情景分析用于界定判断的适用条件，不包含价格点位预测或交易指令。</p>
+</div>
+
+<footer>
+<div>出版人：Snail-Bird Investment</div>
+<div>免责声明：Snail-Bird Investment针对网络内容的整合分享。</div>
+<div>以上内容为行业信息整理与研究分析，不构成投资建议。</div>
+</footer>
+</div>
+</body>
+</html>
