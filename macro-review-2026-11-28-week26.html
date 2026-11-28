@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全球宏观周报 | 2026年11月第4周复盘与11月第5周展望 | 蜗牛鸟投资</title>
+<style>
+
+  :root{
+    --bg:#f7f5f1; --card:#ffffff; --ink:#1f2420; --ink-soft:#5b6058;
+    --line:#e4e0d8; --accent:#8a6d3b; --accent-2:#3d5a4c; --red:#b5453c;
+    --green:#3d7a56; --amber:#c08a2e; --navy:#2f4457;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:"Songti SC","STSong","Noto Serif SC",serif, "PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.7; font-size:15px;
+  }
+  .masthead{
+    background:linear-gradient(135deg,#22301f 0%,#2f4437 60%,#3d5a4c 100%);
+    color:#f2efe6; padding:34px 6vw 26px;
+    border-bottom:4px solid var(--accent);
+  }
+  .masthead-top{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px;}
+  .brand{font-size:13px; letter-spacing:3px; opacity:.85; text-transform:uppercase;}
+  .brand b{color:#e7d7b0;}
+  .masthead h1{font-size:clamp(22px,3vw,32px); margin:10px 0 6px; font-weight:700; letter-spacing:1px;}
+  .masthead .sub{font-size:14px; opacity:.88; max-width:760px;}
+  .masthead-meta{text-align:right; font-size:12.5px; opacity:.8; line-height:1.6;}
+  .alert-banner{
+    margin-top:18px; background:rgba(181,69,60,.16); border:1px solid rgba(231,145,130,.5);
+    border-radius:6px; padding:12px 16px; font-size:13.5px; display:flex; gap:10px; align-items:flex-start;
+  }
+  .alert-banner .tag{
+    background:var(--red); color:#fff; font-size:11px; padding:2px 8px; border-radius:3px;
+    font-weight:700; letter-spacing:1px; flex-shrink:0; margin-top:2px;
+  }
+
+  nav.sticky{
+    position:sticky; top:0; z-index:50; background:#fdfcfa; border-bottom:1px solid var(--line);
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+  }
+  nav.sticky .wrap{display:flex; gap:2px; overflow-x:auto; padding:0 6vw;}
+  nav.sticky a{
+    white-space:nowrap; padding:13px 14px; font-size:13px; color:var(--ink-soft); text-decoration:none;
+    border-bottom:3px solid transparent; font-weight:600;
+  }
+  nav.sticky a:hover{color:var(--accent); border-bottom-color:var(--accent);}
+
+  main{max-width:1120px; margin:0 auto; padding:0 6vw 60px;}
+  section{padding-top:34px; scroll-margin-top:52px;}
+  h2.sec-title{
+    font-size:20px; margin:0 0 4px; color:var(--navy); display:flex; align-items:center; gap:10px;
+  }
+  h2.sec-title .num{
+    background:var(--navy); color:#fff; width:26px; height:26px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;
+  }
+  .sec-desc{color:var(--ink-soft); font-size:13.5px; margin:0 0 18px; padding-left:36px;}
+  h3{font-size:16px; color:var(--accent-2); margin:22px 0 10px;}
+
+  .kpi-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:6px;
+  }
+  .kpi{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px 14px 12px;
+    border-top:3px solid var(--accent);
+  }
+  .kpi .label{font-size:11.5px; color:var(--ink-soft); letter-spacing:.5px;}
+  .kpi .value{font-size:20px; font-weight:700; margin:4px 0 2px; color:var(--ink);}
+  .kpi .delta{font-size:12px; font-weight:600;}
+  .up{color:var(--red);} .down{color:var(--green);} .flat{color:var(--ink-soft);}
+
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px; background:var(--card);}
+  caption{text-align:left; font-size:12px; color:var(--ink-soft); margin-bottom:6px;}
+  th{
+    background:#eef0e9; color:var(--navy); text-align:left; padding:9px 10px; font-weight:700;
+    border-bottom:2px solid var(--line); white-space:nowrap;
+  }
+  td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tr:hover td{background:#faf9f5;}
+
+  .callout{
+    background:#fbf8f0; border-left:4px solid var(--amber); padding:12px 16px; border-radius:4px;
+    font-size:13.5px; margin:14px 0;
+  }
+  .callout.risk{border-left-color:var(--red); background:#fbf1ef;}
+  .callout.data{border-left-color:var(--navy); background:#eef2f5;}
+  .callout.corr{border-left-color:var(--accent); background:#faf6ee;}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin:14px 0;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media (max-width:820px){.grid2,.grid3{grid-template-columns:1fr;}}
+
+  .scenario{border-radius:10px; padding:16px 18px; border:1px solid var(--line);}
+  .scenario.bull{border-top:4px solid var(--green);}
+  .scenario.base{border-top:4px solid var(--navy);}
+  .scenario.bear{border-top:4px solid var(--red);}
+  .scenario h4{margin:0 0 6px; display:flex; justify-content:space-between; align-items:center; font-size:15px;}
+  .scenario ul{margin:8px 0 0; padding-left:18px; font-size:13px;}
+  .scenario li{margin-bottom:5px;}
+
+  .driver-header{
+    display:flex; align-items:center; gap:10px; background:#f0eee2; padding:10px 16px; border-radius:8px 8px 0 0;
+    border:1px solid var(--line); border-bottom:none;
+  }
+  .driver-header .icon{font-size:20px;}
+  .driver-body{border:1px solid var(--line); border-radius:0 0 8px 8px; padding:16px; background:var(--card); margin-bottom:18px;}
+
+  .footer-disclaimer{
+    margin-top:50px; padding-top:22px; border-top:1px solid var(--line); font-size:11.5px; color:var(--ink-soft); line-height:1.8;
+  }
+  .footer-disclaimer .fname{font-weight:700; color:var(--accent-2);}
+
+  .src{font-size:11.5px; color:#8b9186;}
+
+  .chartbox{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:16px 0;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chart-title{font-size:13px;color:var(--ink-soft);margin:0 0 8px;}
+  .legend{font-size:11.5px;color:var(--ink-soft);margin-top:6px;display:flex;gap:16px;flex-wrap:wrap;}
+  .legend i{display:inline-block;width:12px;height:3px;margin-right:5px;vertical-align:middle;}
+  .ev{display:inline-block;font-size:10.5px;padding:1px 6px;border-radius:10px;border:1px solid;white-space:nowrap;font-weight:600;}
+  .ev-o{color:#2f4457;border-color:#c9d5df;background:#eef2f5;}
+  .ev-m{color:#8a6d3b;border-color:#dfd2b5;background:#faf6ee;}
+  .ev-f{color:#3d7a56;border-color:#c4d9cb;background:#f0f6f2;}
+  .ev-a{color:#7a5a5a;border-color:#ddc9c9;background:#f8f1f1;}
+  .ev-d{color:#6a6f66;border-color:#d8d8d2;background:#f5f5f1;}
+  td.evcell,th.evcell{white-space:nowrap;}
+  a{color:var(--navy);text-decoration:underline;}
+  a:hover{color:var(--accent);}
+  .overview{display:block;padding:14px 16px 16px;}
+  .ov-head{display:flex;align-items:center;gap:10px;margin-bottom:11px;}
+  .ov-head .tag{margin-top:0;}
+  .ov-sub{font-size:11.5px;opacity:.72;letter-spacing:.5px;}
+  .ov-list{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+  .ov-item{display:grid;grid-template-columns:26px 1fr;gap:10px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.17);border-radius:5px;padding:9px 12px;}
+  .ov-num{font-size:13px;font-weight:800;color:#e7d7b0;line-height:1.55;}
+  .ov-item b{display:block;font-size:13px;color:#f6e9c8;margin-bottom:3px;letter-spacing:.3px;}
+  .ov-item p{margin:0;font-size:12.5px;line-height:1.62;color:#f2efe6;}
+  @media(max-width:700px){.ov-item{grid-template-columns:1fr;gap:2px;}.ov-num{display:none;}}
+
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div>
+      <div class="brand">蜗牛鸟投资 <b>Snail-Bird Investment</b> · 全球宏观研究组</div>
+      <h1>全球宏观周报：加息定价高位固化、AI治理折价修复与全球通胀二次抬升</h1>
+      <div class="sub">2026年11月第4周（11.23–11.27）复盘 ｜ 11月第5周（11.30–12.4）展望 —— 冲击·宏观变量·资产价格三层传导框架</div>
+    </div>
+    <div class="masthead-meta">
+      数据区间：2026年11月23日–11月27日（含11月28日已发布的周度统计）<br>
+      数据截止：2026年11月28日 09:00（GMT+8）<br>
+      数据源：美国经济分析局、美国人口普查局、美国劳工统计局、美联储、美国能源信息署、国家统计局、中国人民银行、中国证监会、欧盟统计局、欧洲央行、英国央行、韩国央行、日本总务省、法国国家统计与经济研究所、CME FedWatch、ICE、NYMEX、LME、中国政府网、新华社、新华财经、每日经济新闻、中国证券网、证券时报、Choice、FactSet。来源索引见文末。
+    </div>
+  </div>
+  <div class="alert-banner overview">
+    <div class="ov-head"><span class="tag">本周概览</span><span class="ov-sub">冲击 · 宏观变量 · 资产价格</span></div>
+    <ol class="ov-list">
+      <li class="ov-item"><span class="ov-num">01</span><div><b>加息定价高位固化</b><p>10月核心PCE同比3.3%、环比0.3%连续第三个月，整体同比3.8%；三季度GDP二次估算上修至4.3%。FedWatch显示12月加息25bp概率97.2%，1月累计加息50bp升至62.5%；2年期美债升6bp至4.69%，10年期升2bp至4.94%，盈亏平衡通胀率降5bp至2.13%。</p></div></li>
+      <li class="ov-item"><span class="ov-num">02</span><div><b>AI治理折价修复</b><p>11月23日黄仁勋重新出任英伟达首席执行官，股价单日上涨31%、全周涨19.88%，费城半导体指数全周涨逾9%。戴尔AI服务器收入同比增291%、积压订单1,323亿美元验证需求；惠普指引审慎、小米经调整净利润下降56.8%，终端盈利分化仍在。</p></div></li>
+      <li class="ov-item"><span class="ov-num">03</span><div><b>全球通胀与政策共振</b><p>欧元区10月HICP升4.0%、11月经济景气指数降至95.8；东京核心CPI升2.9%，韩国央行加息至3.25%，欧洲央行纪要偏鹰，标普将法国评级展望下调至负面。通胀上行与增长分化同时存在。</p></div></li>
+      <li class="ov-item"><span class="ov-num">04</span><div><b>中国盈利改善与稳市制度化</b><p>1–10月工业利润同比增长16.0%、10月单月增20.1%，行业拉动集中于电子与有色；央行全周净投放6,345亿元。11月27日国常会部署完善稳市机制、国家队加力与中央汇金类平准基金功能，当日上证指数升3.73%、创业板指升11.61%，成交2.02万亿元。融资余额截至11月26日仍净偿还871.64亿元，资金验证待下周。</p></div></li>
+      <li class="ov-item"><span class="ov-num">05</span><div><b>贵金属反弹与工业金属分化</b><p>现货黄金升3.27%至3,653.50美元、白银升6.06%，实际利率与美元上行不足以单独解释黄金涨幅，资金流与仓位因素待验证。LME镍升2.37%、锌升1.70%、铜升0.84%，铝降1.33%；洲际交易所布伦特1月合约同合约结算价升3.10%，WTI为连续合约口径、周度基本持平。</p></div></li>
+      <li class="ov-item"><span class="ov-num">06</span><div><b>下周日程</b><p>11月29日OPEC+部长级会议；11月30日中国官方PMI、植田和男讲话与MSCI调整生效；12月1日ISM制造业与职位空缺；12月2日ADP；12月3日ISM服务业；12月4日非农。美联储自11月28日进入噤声期，官员沟通缺位。</p></div></li>
+    </ol>
+  </div>
+</header>
+
+<nav class="sticky">
+  <div class="wrap">
+    <a href="#kpi">KPI速览</a>
+    <a href="#rates">① 利率与定价</a>
+    <a href="#fed">② 美国数据与政策</a>
+    <a href="#ai">③ AI产业链</a>
+    <a href="#global">④ 欧日与全球政策</a>
+    <a href="#china">⑤ 中国盈利与需求</a>
+    <a href="#energy">⑥ 能源与地缘</a>
+    <a href="#metal">⑦ 贵金属与工业金属</a>
+    <a href="#cnasset">⑧ 中国资产与资金</a>
+    <a href="#recap">复盘小结</a>
+    <a href="#scenario">事件树</a>
+    <a href="#levels">资产监测位</a>
+    <a href="#alloc">条件性观点</a>
+    <a href="#risk">风险登记册</a>
+    <a href="#outlook">下周展望</a>
+    <a href="#appendix">口径附录</a>
+    <a href="#sources">来源索引</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="kpi">
+  <h2 class="sec-title"><span class="num">•</span>本周KPI速览（2026.11.23–11.27）</h2>
+  <p class="sec-desc">官方统计、市场收盘、期货隐含与分析判断分列；涨跌方向按中国市场习惯标注</p>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">美2年期国债（11/27）</div><div class="value">4.69%</div><div class="delta up">全周+6bp</div></div>
+    <div class="kpi"><div class="label">美10年期国债（11/27）</div><div class="value">4.94%</div><div class="delta up">全周+2bp</div></div>
+    <div class="kpi"><div class="label">美30年期国债（11/27）</div><div class="value">5.33%</div><div class="delta up">全周+2bp</div></div>
+    <div class="kpi"><div class="label">10Y–2Y利差（11/27）</div><div class="value">25bp</div><div class="delta down">较11/20的29bp趋平4bp</div></div>
+    <div class="kpi"><div class="label">10Y TIPS实际利率</div><div class="value">2.79%</div><div class="delta up">全周+2bp</div></div>
+    <div class="kpi"><div class="label">10Y盈亏平衡通胀率</div><div class="value">2.13%</div><div class="delta down">全周-5bp</div></div>
+    <div class="kpi"><div class="label">FedWatch 12月加息25bp</div><div class="value">97.2%</div><div class="delta up">11/26 PCE后期货隐含概率</div></div>
+    <div class="kpi"><div class="label">FedWatch 1月累计加息50bp</div><div class="value">62.5%</div><div class="delta up">11/26期货隐含概率</div></div>
+    <div class="kpi"><div class="label">美国10月PCE同比</div><div class="value">+3.8%</div><div class="delta up">5月以来最高；前值+3.7%</div></div>
+    <div class="kpi"><div class="label">美国10月核心PCE同比</div><div class="value">+3.3%</div><div class="delta up">2023年11月以来最高</div></div>
+    <div class="kpi"><div class="label">核心PCE环比</div><div class="value">+0.3%</div><div class="delta flat">连续第三个月0.3%</div></div>
+    <div class="kpi"><div class="label">美国Q3实际GDP二次估算</div><div class="value">+4.3%</div><div class="delta up">初值+3.4%，上修0.9个百分点</div></div>
+    <div class="kpi"><div class="label">美国10月实际个人消费环比</div><div class="value">约0.0%</div><div class="delta down">名义+0.3%，储蓄率4.1%</div></div>
+    <div class="kpi"><div class="label">美国10月耐用品订单环比</div><div class="value">+0.2%</div><div class="delta down">预期+0.4%；核心资本品+1.2%</div></div>
+    <div class="kpi"><div class="label">美国初请失业金（截至11/21）</div><div class="value">18.9万</div><div class="delta down">前值20.2万；4周均值19.6万</div></div>
+    <div class="kpi"><div class="label">美国10月新屋销售</div><div class="value">70.1万套</div><div class="delta up">年内最高；中位价同比-3.2%</div></div>
+    <div class="kpi"><div class="label">谘商会11月消费者信心</div><div class="value">103.3</div><div class="delta up">预期92.5；前值91.9</div></div>
+    <div class="kpi"><div class="label">谘商会12个月通胀预期</div><div class="value">5.7%</div><div class="delta down">连续第二个月回落</div></div>
+    <div class="kpi"><div class="label">美国11月标普PMI综合初值</div><div class="value">54.6</div><div class="delta down">四个月最低；前值55.9</div></div>
+    <div class="kpi"><div class="label">美联储11月褐皮书</div><div class="value">8/12</div><div class="delta flat">辖区轻微至适度增长，4个持平</div></div>
+    <div class="kpi"><div class="label">美元指数（11/27尾盘）</div><div class="value">104.033</div><div class="delta up">同源基准103.808，全周+0.22%</div></div>
+    <div class="kpi"><div class="label">美元兑日元（11/27）</div><div class="value">159.56</div><div class="delta up">全周+0.69%</div></div>
+    <div class="kpi"><div class="label">道琼斯指数（11/27）</div><div class="value">50,774.94</div><div class="delta up">全周+5.46%</div></div>
+    <div class="kpi"><div class="label">标普500指数（11/27）</div><div class="value">7,297.49</div><div class="delta up">全周+5.60%</div></div>
+    <div class="kpi"><div class="label">纳斯达克指数（11/27）</div><div class="value">24,129.50</div><div class="delta up">全周+6.68%</div></div>
+    <div class="kpi"><div class="label">费城半导体指数（11/27）</div><div class="value">9,186.71</div><div class="delta up">报道口径全周逾+9%</div></div>
+    <div class="kpi"><div class="label">英伟达（11/27收盘）</div><div class="value">$150.49</div><div class="delta up">全周+19.88%；11/23单日+31%</div></div>
+    <div class="kpi"><div class="label">WTI 1月合约（11/27）</div><div class="value">$83.08</div><div class="delta down">连续合约口径全周-0.06%</div></div>
+    <div class="kpi"><div class="label">布伦特1月合约（11/27）</div><div class="value">$95.44</div><div class="delta up">ICE官方结算全周+3.10%</div></div>
+    <div class="kpi"><div class="label">现货黄金（11/27）</div><div class="value">$3,653.50</div><div class="delta up">跨源口径全周+3.27%</div></div>
+    <div class="kpi"><div class="label">现货白银（11/27）</div><div class="value">$43.717</div><div class="delta up">全周+6.06%</div></div>
+    <div class="kpi"><div class="label">金银比（11/27）</div><div class="value">83.57</div><div class="delta down">较11/20的85.83回落2.63%</div></div>
+    <div class="kpi"><div class="label">LME三个月期铜（11/27）</div><div class="value">$12,262/吨</div><div class="delta up">全周+0.84%</div></div>
+    <div class="kpi"><div class="label">LME铝（11/27）</div><div class="value">$2,787/吨</div><div class="delta down">全周-1.33%</div></div>
+    <div class="kpi"><div class="label">LME镍（11/27）</div><div class="value">$15,800/吨</div><div class="delta up">全周+2.37%</div></div>
+    <div class="kpi"><div class="label">LME锡（11/27）</div><div class="value">$41,170/吨</div><div class="delta up">全周+0.80%；单日+8.65%</div></div>
+    <div class="kpi"><div class="label">中国1–10月工业利润</div><div class="value">+16.0%</div><div class="delta up">10月单月+20.1%</div></div>
+    <div class="kpi"><div class="label">央行公开市场（全周）</div><div class="value">净投放6,345亿</div><div class="delta up">逆回购净投放9,145亿</div></div>
+    <div class="kpi"><div class="label">上证指数（11/27）</div><div class="value">3,606.49</div><div class="delta up">全周+2.06%</div></div>
+    <div class="kpi"><div class="label">创业板指（11/27）</div><div class="value">2,443.96</div><div class="delta up">全周+10.48%</div></div>
+    <div class="kpi"><div class="label">恒生科技指数（11/27）</div><div class="value">3,637.88</div><div class="delta up">全周+3.61%</div></div>
+    <div class="kpi"><div class="label">人民币中间价（11/27）</div><div class="value">6.7075</div><div class="delta up">较11/20升值56基点</div></div>
+    <div class="kpi"><div class="label">东京11月核心CPI同比</div><div class="value">+2.9%</div><div class="delta up">2025年7月以来最快</div></div>
+    <div class="kpi"><div class="label">韩国央行基准利率</div><div class="value">3.25%</div><div class="delta up">11/26加息25个基点</div></div>
+    <div class="kpi"><div class="label">法国Q3 GDP二次估算</div><div class="value">-0.2%</div><div class="delta down">初值-0.1%；Q2为0.0%</div></div>
+  </div>
+  <p class="src">收益率取美国财政部日度票面收益率曲线，美元指数取新华社纽约尾盘，商品取洲际交易所与纽约商业交易所官方结算价或同源现货序列。周涨跌幅按同一序列、同一交割月份回算；期货隐含概率不代表宏观情景发生概率。跨序列差异见口径附录。</p>
+</section>
+
+<section id="rates">
+  <h2 class="sec-title"><span class="num">1</span>利率与政策定价：名义收益率上行，曲线趋平，通胀补偿回落</h2>
+  <p class="sec-desc">收益率、实际利率与期货隐含概率分列；跨源分解差异单独标注</p>
+
+  <div class="chartbox"><p class="chart-title">美债与通胀补偿周变动（基点）：11月20日至11月27日</p><svg viewBox="0 0 680 212" role="img" aria-label="美债与通胀补偿周变动（基点）：11月20日至11月27日"><rect x="0" y="0" width="680" height="212" fill="#ffffff"/><line x1="126.0" y1="22" x2="126.0" y2="190" stroke="#e4e0d8" stroke-width="1"/><text x="126.0" y="205" text-anchor="middle" font-size="10" fill="#5b6058">-6</text><line x1="195.4" y1="22" x2="195.4" y2="190" stroke="#e4e0d8" stroke-width="1"/><text x="195.4" y="205" text-anchor="middle" font-size="10" fill="#5b6058">-4</text><line x1="264.9" y1="22" x2="264.9" y2="190" stroke="#e4e0d8" stroke-width="1"/><text x="264.9" y="205" text-anchor="middle" font-size="10" fill="#5b6058">-2</text><line x1="334.3" y1="22" x2="334.3" y2="190" stroke="#e4e0d8" stroke-width="1"/><text x="334.3" y="205" text-anchor="middle" font-size="10" fill="#5b6058">0</text><line x1="403.7" y1="22" x2="403.7" y2="190" stroke="#e4e0d8" stroke-width="1"/><text x="403.7" y="205" text-anchor="middle" font-size="10" fill="#5b6058">2</text><line x1="473.1" y1="22" x2="473.1" y2="190" stroke="#e4e0d8" stroke-width="1"/><text x="473.1" y="205" text-anchor="middle" font-size="10" fill="#5b6058">4</text><line x1="542.6" y1="22" x2="542.6" y2="190" stroke="#e4e0d8" stroke-width="1"/><text x="542.6" y="205" text-anchor="middle" font-size="10" fill="#5b6058">6</text><line x1="612.0" y1="22" x2="612.0" y2="190" stroke="#e4e0d8" stroke-width="1"/><text x="612.0" y="205" text-anchor="middle" font-size="10" fill="#5b6058">8</text><line x1="334.3" y1="22" x2="334.3" y2="190" stroke="#8d9188" stroke-width="1.2"/><text x="116" y="41" text-anchor="end" font-size="11" fill="#33393a">2年期收益率</text><rect x="334.3" y="29" width="208.3" height="15" fill="#c0392b" opacity="0.88"/><text x="549.6" y="41" text-anchor="start" font-size="10.5" fill="#c0392b">+6bp</text><text x="116" y="68" text-anchor="end" font-size="11" fill="#33393a">10年期收益率</text><rect x="334.3" y="56" width="69.4" height="15" fill="#c0392b" opacity="0.88"/><text x="410.7" y="68" text-anchor="start" font-size="10.5" fill="#c0392b">+2bp</text><text x="116" y="95" text-anchor="end" font-size="11" fill="#33393a">30年期收益率</text><rect x="334.3" y="83" width="69.4" height="15" fill="#c0392b" opacity="0.88"/><text x="410.7" y="95" text-anchor="start" font-size="10.5" fill="#c0392b">+2bp</text><text x="116" y="122" text-anchor="end" font-size="11" fill="#33393a">10年期TIPS实际利率</text><rect x="334.3" y="110" width="69.4" height="15" fill="#c0392b" opacity="0.88"/><text x="410.7" y="122" text-anchor="start" font-size="10.5" fill="#c0392b">+2bp</text><text x="116" y="149" text-anchor="end" font-size="11" fill="#33393a">10年期盈亏平衡通胀率</text><rect x="160.7" y="137" width="173.6" height="15" fill="#2e7d5b" opacity="0.88"/><text x="153.7" y="149" text-anchor="end" font-size="10.5" fill="#2e7d5b">-5bp</text><text x="116" y="176" text-anchor="end" font-size="11" fill="#33393a">10Y–2Y利差</text><rect x="195.4" y="164" width="138.9" height="15" fill="#2e7d5b" opacity="0.88"/><text x="188.4" y="176" text-anchor="end" font-size="10.5" fill="#2e7d5b">-4bp</text></svg></div>
+
+  <table>
+    <caption>利率与通胀补偿周度变化｜<span class="ev ev-m">市场</span> 同源序列，11月20日为基准</caption>
+    <tr><th>指标</th><th>11月20日</th><th>11月27日</th><th>周变动</th><th>观察含义</th><th class="evcell">依据类型</th></tr>
+    <tr><td>2年期国债收益率</td><td>4.63%</td><td><b>4.69%</b></td><td class="up">+6bp</td><td>近端政策预期定价上移</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>10年期国债收益率</td><td>4.92%</td><td><b>4.94%</b></td><td class="up">+2bp</td><td>长端上行幅度小于短端</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>30年期国债收益率</td><td>5.31%</td><td><b>5.33%</b></td><td class="up">+2bp</td><td>长端变动有限；期限溢价需模型序列验证</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>10Y–2Y利差</td><td>29bp</td><td><b>25bp</b></td><td class="down">-4bp</td><td>曲线趋平，仍为正值</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>10年期TIPS实际利率</td><td>2.77%</td><td><b>2.79%</b></td><td class="up">+2bp</td><td>实际资金成本小幅抬升</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>10年期盈亏平衡通胀率</td><td>2.18%</td><td><b>2.13%</b></td><td class="down">-5bp</td><td>与PCE同比回升方向相反</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+  </table>
+
+  <div class="callout data">
+    名义收益率取美国财政部日度票面收益率曲线，实际利率与盈亏平衡通胀率取FRED日度序列，三者为不同方法论口径。周度变动为名义+2个基点、实际+2个基点、通胀补偿-5个基点：实际与通胀补偿合计变动为-3个基点，与名义变动相差5个基点，无法闭合。期末绝对水平上4.94%-2.79%=2.15%，与官方盈亏平衡2.13%相差2个基点；期初差额为3个基点。绝对水平差额与周度变动差额是两个不同概念，前者不能解释后者。曲线趋平与通胀补偿回落可以确认，名义收益率上行不宜解释为通胀预期恶化，期限溢价是否稳定需由纽约联储ACM模型等序列另行验证。
+  </div>
+
+  <table>
+    <caption>政策路径定价与官方表态｜<span class="ev ev-f">期货隐含</span> 期货隐含概率，<span class="ev ev-o">官方</span> 官方表态</caption>
+    <tr><th>时点</th><th>12月加息25bp概率</th><th>1月累计加息50bp概率</th><th>触发背景</th><th class="evcell">依据类型</th></tr>
+    <tr><td>11月20日</td><td>91.4%</td><td>57.7%</td><td>上周科技资产回调后的定价</td><td class="evcell"><span class="ev ev-f">期货隐含</span></td></tr>
+    <tr><td>11月25日PCE前</td><td>99.8%</td><td>59.6%</td><td>威廉姆斯与沃勒偏鹰表态后、数据公布前的近端定价</td><td class="evcell"><span class="ev ev-f">期货隐含</span></td></tr>
+    <tr><td>11月26日PCE后</td><td><b>97.2%</b></td><td><b>62.5%</b></td><td>核心PCE同比升至3.3%，1月路径定价上升</td><td class="evcell"><span class="ev ev-f">期货隐含</span></td></tr>
+  </table>
+
+  <p class="src">口径说明：当前联邦基金目标区间为3.75%–4.00%。"12月加息25bp"指12月8–9日会议后目标区间升至4.00%–4.25%；"1月累计加息50bp"指至1月会议后目标区间较当前水平累计上行50个基点，包含12月已计入的25个基点。以上均为CME FedWatch在特定时点的期货隐含概率，对应联邦基金期货合约价格，不等于美联储决策概率，也不代表宏观情景发生概率。</p>
+
+  <div class="callout">
+    政策定价的结构变化比概率绝对值更重要：12月加息已被充分计入，PCE公布后市场把新增收紧预期推向明年1月，1月累计加息50个基点的隐含概率升至62.5%。短端收益率上行6个基点、长端仅上行2个基点，与这一再定价路径方向一致。沃勒提出若核心通胀月度维持在0.3%或以上应考虑12月一次加息50个基点；威廉姆斯承认通胀顽固偏高但淡化激进加息必要性，官员路径仍存在分歧。<span class="ev ev-o">官方</span><span class="ev ev-f">期货隐含</span><span class="ev ev-a">分析判断</span>
+  </div>
+</section>
+
+<section id="fed">
+  <h2 class="sec-title"><span class="num">2</span>美国数据与政策反应函数：增长上修与通胀回升同步出现</h2>
+  <p class="sec-desc">官方统计、调查数据与定性报告分列；名义与实际口径不作强弱排序</p>
+
+  <table>
+    <caption>本周主要美国读数｜<span class="ev ev-o">官方</span> 官方统计与调查</caption>
+    <tr><th>发布日</th><th>指标</th><th>读数</th><th>预期 / 前值</th><th>口径</th><th>观察含义</th></tr>
+    <tr><td>11月23日</td><td>11月标普全球综合PMI初值</td><td>54.6</td><td>前值55.9；四个月最低</td><td>扩散指数，初值</td><td>增长动能放缓但仍处扩张区间</td></tr>
+    <tr><td>11月23日</td><td>11月制造业 / 服务业PMI初值</td><td>54.5 / 54.7</td><td>制造业前值54.9；服务业前值56.1</td><td>扩散指数，初值</td><td>供应商交货延长为2022年以来最大</td></tr>
+    <tr><td>11月24日</td><td>11月谘商会消费者信心</td><td>103.3</td><td>预期92.5；前值91.9</td><td>调查指数</td><td>2025年1月以来最高</td></tr>
+    <tr><td>11月24日</td><td>谘商会12个月通胀预期</td><td>5.7%</td><td>连续第二个月回落</td><td>调查中值</td><td>与盈亏平衡通胀率回落方向一致</td></tr>
+    <tr><td>11月24日</td><td>9月Case-Shiller 20城房价同比</td><td>+2.56%</td><td>预期+2.71%；前值+2.6%</td><td>价格指数，同比</td><td>房价增速温和放缓</td></tr>
+    <tr><td>11月25日</td><td>10月整体PCE价格指数</td><td>同比+3.8%、环比+0.3%</td><td>同比前值+3.7%；环比前值+0.5%</td><td>环比季调、同比</td><td>同比为2026年5月以来最高</td></tr>
+    <tr><td>11月25日</td><td>10月核心PCE价格指数</td><td>同比+3.3%、环比+0.3%</td><td>同比预期+3.2%、前值+3.1%；环比连续三个月0.3%</td><td>环比季调、同比</td><td>同比为2023年11月以来最高</td></tr>
+    <tr><td>11月25日</td><td>10月个人收入 / 可支配收入</td><td>环比+0.7% / +0.8%</td><td>9月均为+0.3%；实际可支配收入+0.5%</td><td>名义环比</td><td>收入增速明显快于消费</td></tr>
+    <tr><td>11月25日</td><td>10月个人消费支出 / 实际PCE</td><td>名义+0.3% / 实际约0.0%</td><td>9月名义+0.6%；实际预期+0.1%</td><td>名义与实际分列</td><td>储蓄率升至4.1%</td></tr>
+    <tr><td>11月25日</td><td>Q3实际GDP二次估算</td><td>折年率+4.3%</td><td>初值+3.4%；Q2为+2.2%</td><td>季度折年率</td><td>三年来最快增速</td></tr>
+    <tr><td>11月25日</td><td>Q3私人内需最终销售</td><td>+5.8%</td><td>初值+4.9%，上修0.9个百分点</td><td>季度折年率</td><td>内需上修幅度与GDP一致</td></tr>
+    <tr><td>11月25日</td><td>Q3非住宅固定投资 / 住宅投资</td><td>+16.1% / -3.4%</td><td>GDP购买力平价指数+2.7%，下修0.3个百分点</td><td>季度折年率</td><td>企业投资强、住宅仍弱</td></tr>
+    <tr><td>11月25日</td><td>10月耐用品新订单</td><td>环比+0.2%</td><td>预期+0.4%；核心资本品+1.2%</td><td>名义环比</td><td>总体低于预期，核心分项偏强</td></tr>
+    <tr><td>11月25日</td><td>初请失业金（截至11/21）</td><td>18.9万人</td><td>前值20.2万人；4周均值19.6万人</td><td>周度人数</td><td>就业市场仍处低位</td></tr>
+    <tr><td>11月25日</td><td>10月新屋销售</td><td>70.1万套</td><td>前值61.4万套；去年65.2万套</td><td>折年率</td><td>年内最高，中位价同比-3.2%</td></tr>
+    <tr><td>11月25日</td><td>EIA商业原油库存（截至11/20）</td><td>+111万桶至4.189亿桶</td><td>预期+206万桶；库欣-53.4万桶</td><td>周度库存</td><td>库存增幅低于预期</td></tr>
+  </table>
+
+  <table>
+    <caption>美联储褐皮书与官员表态｜<span class="ev ev-o">官方</span> 官方文件与公开发言</caption>
+    <tr><th>时间</th><th>主体</th><th>内容</th><th class="evcell">依据类型</th></tr>
+    <tr><td>11月25日</td><td>11月褐皮书</td><td>12个辖区中8个报告轻微至适度增长、4个持平；物价整体适度上涨，能源、运输、医疗、保险、关税、原材料、金属、货运与专业进口品构成成本压力；投入成本增速普遍快于售价，竞争激烈与客户价格敏感限制转嫁；就业总体略增、工资温和上涨。</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月18日</td><td>沃勒</td><td>若不明确释放1月继续加息信号，应在12月一次加息50个基点；若核心通胀月度不低于0.3%，应考虑50个基点。</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月24日</td><td>威廉姆斯</td><td>承认通胀顽固偏高、仍有更多工作要做；另一来源记为不排除连续会议加息与超过25个基点的可能，两源表述存在差异。</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-d">媒体/未独立确认</span></td></tr>
+    <tr><td>11月</td><td>穆萨莱姆、保尔森、戴利、哈马克</td><td>穆萨莱姆预计2027年春前或累计加息100个基点；保尔森与戴利支持渐进；哈马克倾向小幅稳定加息。</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+  </table>
+
+  <h3>增长来源与通胀结构</h3>
+  <table>
+    <caption>Q3 GDP二次估算分项｜<span class="ev ev-o">官方</span> 美国经济分析局，季度折年率</caption>
+    <tr><th>分项</th><th>二次估算</th><th>初值 / 比较基准</th><th>对增长结构的含义</th></tr>
+    <tr><td>实际GDP</td><td><b>+4.3%</b></td><td>初值+3.4%；Q2为+2.2%</td><td>上修0.9个百分点，三年来最快</td></tr>
+    <tr><td>个人消费支出</td><td>+4.2%</td><td>占GDP最大分项</td><td>消费仍为主要拉动，但10月实际消费环比接近零</td></tr>
+    <tr><td>非住宅固定投资</td><td>+16.1%</td><td>初值口径未单列</td><td>设备、知识产权与数据中心相关投资是上修的重要来源</td></tr>
+    <tr><td>住宅投资</td><td>-3.4%</td><td>Q3初值口径未单列</td><td>利率敏感部门仍处收缩</td></tr>
+    <tr><td>政府支出</td><td>+5.7%</td><td>初值口径未单列</td><td>公共部门对总量形成支撑</td></tr>
+    <tr><td>出口 / 进口</td><td>-5.4% / +19.2%</td><td>净出口形成拖累</td><td>内需强于外需，贸易逆差扩大</td></tr>
+    <tr><td>私人内需最终销售</td><td>+5.8%</td><td>初值+4.9%，上修0.9个百分点</td><td>剔除库存与净出口后内需同样上修</td></tr>
+    <tr><td>企业利润（当前生产口径）</td><td>+2,060亿美元</td><td>Q2为+3,840亿美元</td><td>利润增量放缓</td></tr>
+  </table>
+  <p class="src">上表为各分项折年率增速，不等同于对GDP增长的百分点贡献。分项贡献与按支出法核算的百分点拆分需回到经济分析局互动数据表；实际国内总收入与GDP的差异同样需由官方表格核对，此处不作推算。</p>
+
+  <div class="callout data">
+    10月个人消费支出名义环比+0.3%，实际环比接近零；同期个人收入环比+0.7%、可支配收入+0.8%、实际可支配收入+0.5%，储蓄率维持4.1%。核心个人消费支出价格指数环比连续三个月0.3%、同比升至3.3%。经济分析局新闻稿未给出核心商品、核心服务、住房服务与关税传导的逐项拆分，此处不对通胀来源作进一步归因；褐皮书记录的能源、运输、医疗、保险、关税与原材料成本压力，以及投入成本快于售价的描述，提供了定性的成本侧证据。<span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span>
+  </div>
+
+  <div class="callout">
+    本周数据的方向并不一致：GDP二次估算、企业投资、消费者信心与新屋销售偏强，实际个人消费环比接近零、储蓄率回升、标普全球PMI初值放缓。核心PCE环比连续三个月0.3%与同比3.3%构成政策收紧的直接依据，增长端读数更多影响尾部风险而非基准路径。褐皮书描述的成本压力广泛、转嫁受限，与通胀补偿回落并存，说明市场定价的是政策反应而非长期通胀失控。<span class="ev ev-o">官方</span><span class="ev ev-f">期货隐含</span><span class="ev ev-a">分析判断</span>
+  </div>
+</section>
+
+<section id="ai">
+  <h2 class="sec-title"><span class="num">3</span>AI产业链：治理折价修复、订单读数强劲与终端分化</h2>
+  <p class="sec-desc">公司公告、市场表现与媒体解读分层；价格反弹与基本面验证分别表述</p>
+
+  <table>
+    <caption>本周AI相关事件与价格表现｜<span class="ev ev-o">官方</span> 公司公告，<span class="ev ev-m">市场</span> 市场收盘</caption>
+    <tr><th>日期</th><th>事件</th><th>读数</th><th>价格反应</th><th class="evcell">依据类型</th></tr>
+    <tr><td>11月23日</td><td>英伟达公告黄仁勋重新出任总裁兼首席执行官</td><td>董事会一致投票恢复其总裁、CEO及董事职务；声明称听取美国政府高层意见后认为复职不构成国家安全风险</td><td>英伟达单日+31%，费城半导体指数单日+14.03%，标普与纳指创2025年4月以来最大单日涨幅</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>11月23日</td><td>英伟达治理安排同步披露</td><td>由独立董事组成的委员会对相关报道的调查将继续至结论；新设国家安全与出口管制委员会；启动首席合规官招聘；继续配合政府调查</td><td>治理与监管事项未随CEO复任结束</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月24日</td><td>戴尔科技FY2027第三财季</td><td>营收549.37亿美元、同比+103%；AI服务器收入220.31亿美元、同比+291%；期末AI积压订单1,323亿美元；新增AI订单602亿美元</td><td>当日收跌11.83%至295.28美元，财报后盘后小幅上涨</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>11月24日</td><td>惠普FY2026第四财季</td><td>营收160.0亿美元、同比+9.3%；非GAAP每股收益0.83美元、同比下降10.8%；FY27指引审慎</td><td>内存与存储占物料成本比重由财年初15%–18%升至约40%</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月24日</td><td>亚德诺FY2026第四财季</td><td>营收43.73亿美元、同比+42.17%；调整后每股收益4.06美元；FY26自由现金流55亿美元</td><td>工业与模拟芯片需求读数偏强</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月23日</td><td>Zoom FY2027第三财季</td><td>营收12.906亿美元、同比+4.9%；企业业务+8.6%；首次启动季度股息0.25美元</td><td>企业业务为13个季度最快增速</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月24日</td><td>Workday FY2027第三财季</td><td>总营收27.05亿美元、同比+11.2%；AI产品新增年度合同价值近1.5亿美元、约为上年3倍</td><td>订阅收入指引上调至99.58亿美元</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月24日</td><td>小米集团2026年第三季度</td><td>收入1,072.4亿元、同比-5.2%；经调整净利润48.84亿元、同比-56.8%；汽车分部经营亏损34亿元</td><td>终端价格竞争与补贴退坡影响盈利</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月27日</td><td>美股半日交易</td><td>存储与光通信领涨，闪迪+15.96%、美光+7.60%；英伟达当日仅+0.80%</td><td>费城半导体指数当日+4.69%，收9,186.71点</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+  </table>
+
+  <div class="callout data">
+    上周驱动下跌的治理变量本周出现反向变化，股价反弹幅度大于指数，说明治理折价被部分修复。公司11月23日公告同时明确独立董事调查将继续、新设国家安全与出口管制委员会并启动首席合规官招聘，治理与监管事项并未随CEO复任结束。戴尔AI服务器收入与积压订单提供需求端独立验证，惠普的成本与指引、小米的经调整利润与汽车分部亏损显示上游算力与终端制造的盈利分化。价格反弹不能单独验证订单兑现、产业链利润分配或仓位变化中的任何一项。<span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span>
+  </div>
+
+  <h3>资本开支传导与待验证环节</h3>
+  <table>
+    <caption>AI需求从订单到现金流的传导链｜<span class="ev ev-o">官方</span> 公司公告，<span class="ev ev-a">分析判断</span> 研究判断</caption>
+    <tr><th>环节</th><th>本周可观测读数</th><th>待验证事项</th><th class="evcell">依据类型</th></tr>
+    <tr><td>云厂商资本开支</td><td>英国央行金融稳定报告称2026年超大规模云厂商债券发行预计超过3,050亿美元，约占全球投资级发行8%</td><td>主要云厂商资本开支指引是否继续上修；融资条件与信用利差变化</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>算力硬件订单</td><td>戴尔AI服务器收入同比+291%、新增AI订单602亿美元、期末积压订单1,323亿美元</td><td>积压订单中具备交付条件的比例、取消与延迟条款、客户集中度</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>需求结构</td><td>戴尔ISG营收同比+198%；亚德诺营收同比+42.17%；Workday AI产品新增年度合同价值近1.5亿美元</td><td>GPU与ASIC需求结构变化；网络设备、电力与数据中心配套订单是否同步</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>利润与现金流</td><td>戴尔ISG经营利润率17%；亚德诺FY26自由现金流55亿美元；惠普FY27自由现金流指引29–31亿美元</td><td>AI服务器收入能否维持利润率；终端价格竞争对整体现金流的侵蚀</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td></tr>
+  </table>
+
+  <h3>价格反弹的解释变量</h3>
+  <table>
+    <caption>机制、支持证据与约束证据分列；权重为研究判断</caption>
+    <tr><th>机制</th><th>支持证据</th><th>约束证据</th><th>判断</th><th class="evcell">依据类型</th></tr>
+    <tr><td>治理折价修复</td><td>英伟达公司公告确认创始人回归，单日股价+31%，半导体指数+14.03%</td><td>独立调查、出口管制委员会与合规官招聘仍在推进；单一事件不能覆盖长期治理评价</td><td>中高</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-m">市场</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>订单需求未走弱</td><td>戴尔AI服务器收入同比+291%、积压订单1,323亿美元；Workday与Zoom企业业务加速</td><td>戴尔当日股价下跌11.83%；惠普FY27指引审慎，小米盈利下滑</td><td>中高</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>仓位与风险偏好回补</td><td>英伟达全周+19.88%、纳指+6.68%、创业板+10.48%，多市场高贝塔资产同步反弹</td><td>仓位变化需要ETF资金流、期货未平仓量与融资利率数据交叉验证</td><td>中</td><td class="evcell"><span class="ev ev-m">市场</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>政策利率驱动</td><td>加息定价高位固化，短端收益率反而上行6个基点</td><td>贴现率上行方向不利于高估值资产，无法解释本周涨幅</td><td>低</td><td class="evcell"><span class="ev ev-f">期货隐含</span><span class="ev ev-a">分析判断</span></td></tr>
+  </table>
+</section>
+
+<section id="global">
+  <h2 class="sec-title"><span class="num">4</span>欧洲、日本与韩国：通胀二次抬升，政策收紧与增长分化并行</h2>
+  <p class="sec-desc">价格、景气与政策决议分列；通胀读数中的能源与关税因素单独识别</p>
+
+  <table>
+    <caption>欧元区与欧洲主要经济体｜<span class="ev ev-o">官方</span> 官方统计与央行文件</caption>
+    <tr><th>日期</th><th>指标</th><th>读数</th><th>预期 / 前值</th><th>观察含义</th></tr>
+    <tr><td>11月23日</td><td>欧元区11月综合PMI初值</td><td>51.7</td><td>预期51.9；前值51.7</td><td>连续第五个月扩张，能源与制造业分化</td></tr>
+    <tr><td>11月23日</td><td>欧元区制造业 / 服务业PMI初值</td><td>52.9 / 51.2</td><td>制造业前值52.7；服务业前值51.4</td><td>服务业降至五个月低点</td></tr>
+    <tr><td>11月23日</td><td>德国 / 法国综合PMI初值</td><td>55.0 / 46.2</td><td>德国综合预期53.2；法国前值46.6</td><td>德国为2022年3月以来最高，法国六个月低点</td></tr>
+    <tr><td>11月26日</td><td>欧洲央行10月会议纪要</td><td>维持三大利率不变；相当多委员本可支持当场加息</td><td>存款便利2.50%、主要再融资2.65%、边际贷款2.90%</td><td>等待的期权价值被评估为相当小</td></tr>
+    <tr><td>11月26日</td><td>欧洲央行官员表态</td><td>副行长武伊契奇称12月加息可能性非常高</td><td>路透调查73位经济学家中64位预期12月加息25个基点</td><td>政策路径指向进一步收紧</td></tr>
+    <tr><td>11月27日</td><td>欧元区11月经济景气指数</td><td>95.8</td><td>预期97.2；前值96.5</td><td>连续第三个月下滑，6月以来最低</td></tr>
+    <tr><td>11月27日</td><td>法国Q3 GDP二次估算</td><td>环比-0.2%</td><td>初值-0.1%；Q2为0.0%</td><td>固定资产投资-0.9%，净外贸拖累0.6个百分点</td></tr>
+    <tr><td>11月27日</td><td>法国11月CPI / HICP同比</td><td>+2.9% / +3.2%</td><td>HICP预期+3.6%、前值+3.7%</td><td>能源同比涨幅由24.1%降至19.2%</td></tr>
+    <tr><td>11月27日</td><td>德国11月失业率（季调）</td><td>6.4%</td><td>失业人数增加9,000至302.5万，预期增加4,000</td><td>2011年3月以来失业人数最高</td></tr>
+    <tr><td>11月27日</td><td>标普法国主权评级审查</td><td>展望由稳定下调至负面</td><td>长期评级维持A+、短期A-1</td><td>预计2027年赤字占GDP 5.3%</td></tr>
+  </table>
+
+  <table>
+    <caption>日本、韩国与英国｜<span class="ev ev-o">官方</span> 官方统计与央行文件</caption>
+    <tr><th>日期</th><th>指标</th><th>读数</th><th>预期 / 前值</th><th>观察含义</th></tr>
+    <tr><td>11月24日</td><td>英国11月综合PMI初值</td><td>52.3</td><td>前值52.9；服务业52.0</td><td>服务业五个月低点，出口订单为2021年2月以来最快下滑</td></tr>
+    <tr><td>11月26日</td><td>英国央行金融稳定报告</td><td>资本要求再降30个基点，释放约1,000亿英镑放贷能力</td><td>警告进一步下调将危及长期增长</td><td>大型科技企业AI财务敞口超过4万亿美元</td></tr>
+    <tr><td>11月26日</td><td>韩国央行利率决议</td><td>加息25个基点至3.25%</td><td>投票5比2；2026年GDP预测由3.3%上调至3.9%</td><td>下半年第三次加息</td></tr>
+    <tr><td>11月27日</td><td>东京11月核心CPI同比</td><td>+2.9%</td><td>前值+2.6%；核心核心+2.5%</td><td>2025年7月以来最快，连续三个月高于2%</td></tr>
+    <tr><td>11月27日</td><td>东京CPI分项</td><td>电费+9.5%、燃气约+13.7%、煤油+15.5%、大米约-34%</td><td>服务价格+2.1%</td><td>能源推升与食品回落并存</td></tr>
+    <tr><td>11月26日</td><td>日本央行委员田村直树讲话</td><td>主张尽快将政策利率升至中性水平</td><td>掉期显示12月18日加息概率约80%</td><td>中性利率判断约为2%</td></tr>
+  </table>
+
+  <div class="callout">
+    欧元区通胀读数受能源分项显著影响：10月整体调和消费者物价指数同比4.0%、能源分项同比21.0%，核心为2.5%。政策讨论偏鹰与景气指数连续下滑同时出现，形成"通胀约束政策、增长约束幅度"的组合。日本核心消费者物价指数回升主要来自能源与服务业价格，大米价格同比大幅下降，单一总指标不足以判定工资—物价循环已经确立。<span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span>
+  </div>
+</section>
+
+<section id="china">
+  <h2 class="sec-title"><span class="num">5</span>中国工业利润、流动性与稳市政策：盈利改善集中，国常会部署制度化</h2>
+  <p class="sec-desc">累计与单月口径分列；行业贡献、政策工具与资金价格分别列示</p>
+
+  <table>
+    <caption>1–10月规模以上工业企业利润｜<span class="ev ev-o">官方</span> 国家统计局</caption>
+    <tr><th>指标</th><th>读数</th><th>比较基准</th><th>口径</th><th>结构信息</th></tr>
+    <tr><td>1–10月利润总额</td><td>67,373.6亿元，同比+16.0%</td><td>1–9月+15.5%，加快0.5个百分点</td><td>累计名义同比</td><td>营业收入利润率5.69%，同比升0.45个百分点</td></tr>
+    <tr><td>10月单月利润</td><td>同比+20.1%</td><td>9月+14.4%，加快5.7个百分点</td><td>单月名义同比</td><td>每百元营收成本85.06元，同比降0.42元</td></tr>
+    <tr><td>采矿业 / 制造业</td><td>+38.8% / +17.5%</td><td>电力热力燃气及水生产供应业-14.8%</td><td>累计同比，按门类</td><td>公用事业利润受成本端挤压</td></tr>
+    <tr><td>电子行业</td><td>利润同比+1.0倍</td><td>拉动全部规上工业利润9.7个百分点</td><td>累计同比，行业</td><td>计算机整机+4.1倍、外围设备+2.0倍</td></tr>
+    <tr><td>高技术制造业</td><td>+50.9%</td><td>电子专用材料+2.2倍、电子电路+81.6%</td><td>累计同比，行业</td><td>与出口和设备制造高景气相互印证</td></tr>
+    <tr><td>有色金属</td><td>有色矿+60.2%、有色行业+71.7%</td><td>合计拉动4.6个百分点</td><td>累计同比，行业</td><td>与本周LME镍锌铜上涨方向一致</td></tr>
+    <tr><td>石油加工</td><td>扭亏为盈1,066.7亿元</td><td>油气开采+22.8%、化工+50.3%、化纤+87.0%</td><td>累计口径</td><td>成本与价格价差改善</td></tr>
+  </table>
+
+  <h3>盈利质量：利润增速与资金周转背离</h3>
+  <table>
+    <caption>1–10月规模以上工业企业效益指标｜<span class="ev ev-o">官方</span> 国家统计局</caption>
+    <tr><th>指标</th><th>读数</th><th>同比变化</th><th>观察意义</th></tr>
+    <tr><td>营业收入</td><td>118.41万亿元</td><td>+6.7%</td><td>利润增速高于营收增速9.3个百分点，利润率改善是利润增长的主要来源</td></tr>
+    <tr><td>营业收入利润率</td><td>5.69%</td><td>提高0.45个百分点</td><td>每百元营收成本85.06元、下降0.42元；每百元费用8.34元、下降0.15元</td></tr>
+    <tr><td>应收账款</td><td>30.45万亿元</td><td>+10.5%</td><td>增速高于营收3.8个百分点，回款慢于收入确认</td></tr>
+    <tr><td>应收账款平均回收期</td><td>72.2天</td><td>增加1.4天</td><td>现金回收效率下降</td></tr>
+    <tr><td>产成品存货</td><td>7.54万亿元</td><td>+12.0%</td><td>增速高于营收5.3个百分点，库存积累快于销售</td></tr>
+    <tr><td>产成品存货周转天数</td><td>21.2天</td><td>增加0.6天</td><td>周转速度放缓</td></tr>
+    <tr><td>资产负债率</td><td>58.6%</td><td>上升0.4个百分点</td><td>负债增速7.5%高于资产增速6.8%</td></tr>
+  </table>
+
+  <div class="callout">
+    工业利润改善的主要来源是成本下降与利润率提升，而非营收扩张。应收账款与产成品存货增速均高于营收增速，回收期与周转天数同步延长，资产负债率上升，显示利润增长尚未完全转化为现金回收与资产周转改善。行业层面，电子与有色的利润拉动由算力需求和金属价格支撑，其持续性取决于订单交付与价格水平；回款与库存指标则提示总量层面的经营质量仍待修复。<span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span>
+  </div>
+
+  <table>
+    <caption>流动性、资本市场政策与资金价格｜<span class="ev ev-o">官方</span> 官方发布</caption>
+    <tr><th>日期</th><th>项目</th><th>内容</th><th class="evcell">依据类型</th></tr>
+    <tr><td>11月23–27日</td><td>公开市场逆回购</td><td>投放34,980亿元、到期25,835亿元，净投放9,145亿元</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月25日</td><td>中期借贷便利</td><td>投放8,000亿元、到期10,000亿元，缩量续作净回笼2,000亿元</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月23–27日</td><td>全周合计</td><td>逆回购净投放9,145亿元，扣除MLF净回笼2,000亿元与国库现金定存净回笼800亿元，合计净投放6,345亿元；上周为净回笼2,845亿元</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月27日</td><td>隔夜逆回购</td><td>开展7,940亿元，利率1.25%；到期5,715亿元，单日净投放2,225亿元</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月27日</td><td>资金价格</td><td>隔夜Shibor 1.2800%、1周1.3770%、2周1.3998%，较上周五分别上升1.88、1.50、2.88个基点</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月22日</td><td>融资保证金比例</td><td>下限由100%降至80%，自11月30日起实施；沪深交易所同步降费并延长免收上市费与债券交易经手费至2028年</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月24日</td><td>对美两用物项出口管制</td><td>公告2024年第46号第二款自11月28日至2027年1月27日暂停实施</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+  </table>
+
+  <h3>11月27日国务院常务会议：资本市场部署</h3>
+  <table>
+    <caption>会议新闻稿与新华社解读分列｜<span class="ev ev-o">官方</span> 官方通稿，<span class="ev ev-d">媒体/未独立确认</span> 媒体解读</caption>
+    <tr><th>条目</th><th>会议表述</th><th>观察含义</th><th class="evcell">依据类型</th></tr>
+    <tr><td>会议议题</td><td>李强总理主持，听取推动高质量发展综合督查情况汇报，<b>研究持续深化资本市场投融资综合改革工作</b>，听取国家标准体系建设情况汇报，审议通过《生产安全事故隐患排查治理条例（草案）》</td><td>资本市场改革列入国务院常务会议专题</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>稳市机制</td><td>坚持逆周期调节和改革攻坚两手抓，<b>持续完善资本市场稳市机制，实施好存量政策，谋划出台增量政策</b>，促进资本市场平稳健康发展</td><td>存量政策延续之外留出增量政策空间</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>国家队与流动性</td><td><b>加力发挥"国家队"稳市作用，进一步优化中央汇金公司的类"平准基金"功能，提供充足流动性保障</b></td><td>新华社解读指出"国家队"首次进入国常会新闻稿，"充足流动性保障"指向资金供给安排</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-d">媒体/未独立确认</span></td></tr>
+    <tr><td>中长期资金</td><td>推动上市公司加大分红回购力度；完善保险、企业年金、社保基金等中长期资金入市支持引导政策，不断壮大中长期投资力量</td><td>覆盖资产供给端回报与负债端入市激励</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>风险与监管</td><td>加强输入性风险防范应对；依法强化资本市场全链条监管，坚决查处财务造假、违规减持等行为</td><td>稳市与监管并重，外部冲击纳入政策视野</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+  </table>
+
+  <div class="callout">
+    融资保证金比例下调、交易所降费与国常会稳市部署构成同一政策序列：前者在11月30日生效，后者在11月27日以国务院层级表述落地。新华社解读将其归纳为资本市场定位、增量政策、国家队加力、中长期资金与输入性风险五个信号；媒体统计指出这是一个月内国常会第二次强调完善稳市机制，政策由应急托底转向制度化安排。以上解读属于机构与媒体观点，政策落地节奏与资金效果需由后续成交额、两融余额与中长期资金入市数据验证。<span class="ev ev-o">官方</span><span class="ev ev-d">媒体/未独立确认</span><span class="ev ev-a">分析判断</span>
+  </div>
+
+  <div class="callout">
+    工业利润增速改善的集中度高：电子行业拉动全部规上工业利润9.7个百分点，有色行业合计拉动4.6个百分点，公用事业利润下降14.8%。这与本周科技资产反弹、工业金属价格回升在方向上相互印证，但利润改善能否扩展至需求端仍需11月30日采购经理人指数与居民中长期贷款数据确认。公开市场净投放规模由上周净回笼转为净投放，跨月资金价格小幅上行；国常会把稳市机制由临时措施提升为制度化安排，流动性投放与资本市场政策形成配合。<span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span>
+  </div>
+</section>
+
+<section id="energy">
+  <h2 class="sec-title"><span class="num">6</span>能源与地缘：固定月份结算价确认布伦特上行，事件进入情景层</h2>
+  <p class="sec-desc">官方结算与连续合约分列；经多方通报的事件与单方面声明区别标注</p>
+
+  <table>
+    <caption>原油周度表现｜<span class="ev ev-m">市场</span> 固定月份官方结算优先</caption>
+    <tr><th>品种 / 合约</th><th>11月20日基准</th><th>11月27日结算</th><th>周涨跌</th><th>口径说明</th></tr>
+    <tr><td>WTI 2027年1月（纽约商业交易所）</td><td>83.13（连续合约）</td><td><b>83.08</b></td><td class="down">-0.06%</td><td>12月合约11月20日到期，主力已移仓；11月26日感恩节无官方结算</td></tr>
+    <tr><td>WTI 2026年12月（到期合约）</td><td>83.98</td><td>不可比</td><td>不适用</td><td>合约到期，无11月27日结算价</td></tr>
+    <tr><td>布伦特2027年1月（洲际交易所）</td><td>92.57</td><td><b>95.44</b></td><td class="up">+3.10%</td><td>同合约同源官方结算</td></tr>
+    <tr><td>布伦特主力（FactSet / 陆家嘴口径）</td><td>未获取</td><td>90.79</td><td class="down">-1.92%</td><td>与同日洲际交易所1月合约结算相差约4.65美元；合约代码、取价时点与价格性质（结算/收盘/盘中）未取得一手说明，不作为主口径</td></tr>
+  </table>
+
+  <p class="src">固定月份同合约比较：洲际交易所布伦特2027年1月合约11月20日结算92.57美元、11月27日结算95.44美元，两日均为新华社转引的交易所官方结算价，周涨3.10%可复核。纽约商业交易所WTI 2026年12月合约11月20日到期，11月20日以后主力移仓至2027年1月；表中11月20日83.13美元为雅虎财经CL=F前月连续合约读数，11月27日83.08美元为该序列对应读数，周跌0.06%为连续合约口径，包含换月处理，不等同于固定月份合约的官方结算价比较。11月26日感恩节无官方结算价。WTI 2027年1月合约11月20日的官方结算价未取得，无法给出同合约周涨跌。</p>
+
+  <table>
+    <caption>地缘与供需事件｜<span class="ev ev-d">媒体/未独立确认</span> 媒体报道，<span class="ev ev-o">官方</span> 官方通报或机构预测</caption>
+    <tr><th>日期</th><th>事件</th><th>内容</th><th class="evcell">依据类型</th></tr>
+    <tr><td>11月23–24日</td><td>霍尔木兹商船通报</td><td>英国海上贸易行动办公室通报3艘向东通过的船只在11月23日晚遭不明发射物击中，继续航行、船员无人失踪；另有一艘散货船11月22日在阿联酋迪巴港外锚泊时左舷遭击中起火。</td><td class="evcell"><span class="ev ev-d">媒体/未独立确认</span></td></tr>
+    <tr><td>11月24日</td><td>伊朗方面声明</td><td>伊朗革命卫队海军称4艘油轮触雷爆炸，英国海上贸易行动办公室未证实触雷说法；伊朗方面称七项条件落实前海峡不开放。声明属单方面表述。</td><td class="evcell"><span class="ev ev-d">媒体/未独立确认</span></td></tr>
+    <tr><td>11月23日</td><td>航道风险</td><td>世界粮食计划署警告霍尔木兹、曼德海峡与黑海三大通道持续受阻推高粮食安全风险；国际海事组织称约600艘船舶、1.1万名海员滞留霍尔木兹周边水域。</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月25日</td><td>EIA库存与炼厂开工</td><td>商业原油库存增加111万桶至4.189亿桶，低于206万桶的预期；库欣库存下降53.4万桶；炼厂开工率97.5%，上升1.8个百分点。</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月25日</td><td>全球供需</td><td>国际能源署预计2026年第四季度全球石油供应过剩170万桶/日；利比亚最大油田输油管道恢复，伊拉克基尔库克至杰伊汉管道出口回升。</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+    <tr><td>11月24日</td><td>俄乌能源设施</td><td>俄方称乌方持续袭击燃料与能源基础设施；欧盟宣布第22轮对俄制裁方案，涵盖金融、能源与影子船队措施。行业估算称俄炼厂加工量自10月底以来下降45%。</td><td class="evcell"><span class="ev ev-d">媒体/未独立确认</span></td></tr>
+    <tr><td>11月29日</td><td>OPEC+部长级会议</td><td>确定2027年产量基准与配额框架；结果将在12月1日亚洲开盘时体现。</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+  </table>
+
+  <div class="callout">
+    可复核的固定月份读数为布伦特2027年1月合约周涨3.10%。WTI数据来自连续合约换月序列，与布伦特固定月份结算口径不同，两者周度表现的差异不宜直接解读为对同一地缘事件的不同定价。布伦特另一数据商报价与交易所结算相差4.65美元，合约代码与取价性质尚待一手确认，不纳入结论。供应过剩预期、炼厂高开工与库存增幅低于预期共同限制油价方向。霍尔木兹通行受阻与油轮事件尚无交战方以外的独立确认，仅作为情景变量；出现可验证的通行量下降、保险费率上升或官方航运警报后，才纳入基准传导链。<span class="ev ev-m">市场</span><span class="ev ev-d">媒体/未独立确认</span><span class="ev ev-a">分析判断</span>
+  </div>
+</section>
+
+<section id="metal">
+  <h2 class="sec-title"><span class="num">7</span>贵金属与工业金属：实际利率上行中的贵金属反弹</h2>
+  <p class="sec-desc">同源序列优先，跨源口径分列；品种驱动因素逐项拆解</p>
+
+  <div class="chartbox"><p class="chart-title">权益与外汇周涨跌幅（%）：11月20日至11月27日</p><svg viewBox="0 0 680 320" role="img" aria-label="权益与外汇周涨跌幅（%）：11月20日至11月27日"><rect x="0" y="0" width="680" height="320" fill="#ffffff"/><line x1="126.0" y1="22" x2="126.0" y2="298" stroke="#e4e0d8" stroke-width="1"/><text x="126.0" y="313" text-anchor="middle" font-size="10" fill="#5b6058">-2</text><line x1="195.4" y1="22" x2="195.4" y2="298" stroke="#e4e0d8" stroke-width="1"/><text x="195.4" y="313" text-anchor="middle" font-size="10" fill="#5b6058">0</text><line x1="264.9" y1="22" x2="264.9" y2="298" stroke="#e4e0d8" stroke-width="1"/><text x="264.9" y="313" text-anchor="middle" font-size="10" fill="#5b6058">2</text><line x1="334.3" y1="22" x2="334.3" y2="298" stroke="#e4e0d8" stroke-width="1"/><text x="334.3" y="313" text-anchor="middle" font-size="10" fill="#5b6058">4</text><line x1="403.7" y1="22" x2="403.7" y2="298" stroke="#e4e0d8" stroke-width="1"/><text x="403.7" y="313" text-anchor="middle" font-size="10" fill="#5b6058">6</text><line x1="473.1" y1="22" x2="473.1" y2="298" stroke="#e4e0d8" stroke-width="1"/><text x="473.1" y="313" text-anchor="middle" font-size="10" fill="#5b6058">8</text><line x1="542.6" y1="22" x2="542.6" y2="298" stroke="#e4e0d8" stroke-width="1"/><text x="542.6" y="313" text-anchor="middle" font-size="10" fill="#5b6058">10</text><line x1="612.0" y1="22" x2="612.0" y2="298" stroke="#e4e0d8" stroke-width="1"/><text x="612.0" y="313" text-anchor="middle" font-size="10" fill="#5b6058">12</text><line x1="195.4" y1="22" x2="195.4" y2="298" stroke="#8d9188" stroke-width="1.2"/><text x="116" y="41" text-anchor="end" font-size="11" fill="#33393a">创业板指</text><rect x="195.4" y="29" width="363.8" height="15" fill="#c0392b" opacity="0.88"/><text x="566.2" y="41" text-anchor="start" font-size="10.5" fill="#c0392b">+10.48%</text><text x="116" y="68" text-anchor="end" font-size="11" fill="#33393a">纳斯达克</text><rect x="195.4" y="56" width="231.9" height="15" fill="#c0392b" opacity="0.88"/><text x="434.3" y="68" text-anchor="start" font-size="10.5" fill="#c0392b">+6.68%</text><text x="116" y="95" text-anchor="end" font-size="11" fill="#33393a">标普500</text><rect x="195.4" y="83" width="194.4" height="15" fill="#c0392b" opacity="0.88"/><text x="396.8" y="95" text-anchor="start" font-size="10.5" fill="#c0392b">+5.60%</text><text x="116" y="122" text-anchor="end" font-size="11" fill="#33393a">深证成指</text><rect x="195.4" y="110" width="188.8" height="15" fill="#c0392b" opacity="0.88"/><text x="391.3" y="122" text-anchor="start" font-size="10.5" fill="#c0392b">+5.44%</text><text x="116" y="149" text-anchor="end" font-size="11" fill="#33393a">恒生科技</text><rect x="195.4" y="137" width="125.3" height="15" fill="#c0392b" opacity="0.88"/><text x="327.7" y="149" text-anchor="start" font-size="10.5" fill="#c0392b">+3.61%</text><text x="116" y="176" text-anchor="end" font-size="11" fill="#33393a">上证指数</text><rect x="195.4" y="164" width="71.5" height="15" fill="#c0392b" opacity="0.88"/><text x="273.9" y="176" text-anchor="start" font-size="10.5" fill="#c0392b">+2.06%</text><text x="116" y="203" text-anchor="end" font-size="11" fill="#33393a">上证50</text><rect x="195.4" y="191" width="60.8" height="15" fill="#c0392b" opacity="0.88"/><text x="263.2" y="203" text-anchor="start" font-size="10.5" fill="#c0392b">+1.75%</text><text x="116" y="230" text-anchor="end" font-size="11" fill="#33393a">恒生指数</text><rect x="195.4" y="218" width="44.1" height="15" fill="#c0392b" opacity="0.88"/><text x="246.5" y="230" text-anchor="start" font-size="10.5" fill="#c0392b">+1.27%</text><text x="116" y="257" text-anchor="end" font-size="11" fill="#33393a">美元指数</text><rect x="195.4" y="245" width="7.6" height="15" fill="#c0392b" opacity="0.88"/><text x="210.1" y="257" text-anchor="start" font-size="10.5" fill="#c0392b">+0.22%</text><text x="116" y="284" text-anchor="end" font-size="11" fill="#33393a">欧元兑美元</text><rect x="184.7" y="272" width="10.8" height="15" fill="#2e7d5b" opacity="0.88"/><text x="177.7" y="284" text-anchor="end" font-size="10.5" fill="#2e7d5b">-0.31%</text></svg></div>
+
+  <table>
+    <caption>外汇与贵金属周度表现｜跨源与同源口径分列</caption>
+    <tr><th>资产</th><th>11月20日基准</th><th>11月27日收盘</th><th>全周</th><th>周内信息</th><th class="evcell">依据类型</th></tr>
+    <tr><td>美元指数</td><td>103.808</td><td><b>104.033</b></td><td class="up">+0.22%</td><td>11月23日盘中高104.53、低103.48</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>欧元兑美元</td><td>1.0970</td><td>1.0936</td><td class="down">-0.31%</td><td>欧洲央行加息预期与增长分化并存</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>美元兑日元</td><td>158.46</td><td>159.56</td><td class="up">+0.69%</td><td>东京核心消费者物价指数公布后日元仍弱</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>现货黄金（跨源口径）</td><td>3,537.87</td><td><b>3,653.50</b></td><td class="up">+3.27%</td><td>11月27日单日+2.45%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>现货黄金（同源日表）</td><td>3,569.57</td><td>3,660.29</td><td class="up">+2.54%</td><td>周内高3,678.09（11/24）、低3,512.42（11/25）</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>现货白银</td><td>41.22</td><td><b>43.717</b></td><td class="up">+6.06%</td><td>11月27日单日+5.24%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>金银比</td><td>85.83</td><td><b>83.57</b></td><td class="down">-2.63%</td><td>白银工业属性与弹性放大涨幅</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>COMEX黄金12月</td><td>3,515.52（推算）</td><td>3,681.10</td><td class="up">+4.71%</td><td>11月26日提前休市</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>COMEX白银12月</td><td>41.07（推算）</td><td>43.985</td><td class="up">+7.10%</td><td>期货涨幅大于现货</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+  </table>
+
+  <div class="chartbox"><p class="chart-title">贵金属、原油与工业金属周涨跌幅（%）</p><svg viewBox="0 0 680 347" role="img" aria-label="贵金属、原油与工业金属周涨跌幅（%）"><rect x="0" y="0" width="680" height="347" fill="#ffffff"/><line x1="126.0" y1="22" x2="126.0" y2="325" stroke="#e4e0d8" stroke-width="1"/><text x="126.0" y="340" text-anchor="middle" font-size="10" fill="#5b6058">-2</text><line x1="234.0" y1="22" x2="234.0" y2="325" stroke="#e4e0d8" stroke-width="1"/><text x="234.0" y="340" text-anchor="middle" font-size="10" fill="#5b6058">0</text><line x1="288.0" y1="22" x2="288.0" y2="325" stroke="#e4e0d8" stroke-width="1"/><text x="288.0" y="340" text-anchor="middle" font-size="10" fill="#5b6058">1</text><line x1="342.0" y1="22" x2="342.0" y2="325" stroke="#e4e0d8" stroke-width="1"/><text x="342.0" y="340" text-anchor="middle" font-size="10" fill="#5b6058">2</text><line x1="396.0" y1="22" x2="396.0" y2="325" stroke="#e4e0d8" stroke-width="1"/><text x="396.0" y="340" text-anchor="middle" font-size="10" fill="#5b6058">3</text><line x1="450.0" y1="22" x2="450.0" y2="325" stroke="#e4e0d8" stroke-width="1"/><text x="450.0" y="340" text-anchor="middle" font-size="10" fill="#5b6058">4</text><line x1="504.0" y1="22" x2="504.0" y2="325" stroke="#e4e0d8" stroke-width="1"/><text x="504.0" y="340" text-anchor="middle" font-size="10" fill="#5b6058">5</text><line x1="558.0" y1="22" x2="558.0" y2="325" stroke="#e4e0d8" stroke-width="1"/><text x="558.0" y="340" text-anchor="middle" font-size="10" fill="#5b6058">6</text><line x1="612.0" y1="22" x2="612.0" y2="325" stroke="#e4e0d8" stroke-width="1"/><text x="612.0" y="340" text-anchor="middle" font-size="10" fill="#5b6058">7</text><line x1="234.0" y1="22" x2="234.0" y2="325" stroke="#8d9188" stroke-width="1.2"/><text x="116" y="41" text-anchor="end" font-size="11" fill="#33393a">现货白银</text><rect x="234.0" y="29" width="327.2" height="15" fill="#c0392b" opacity="0.88"/><text x="568.2" y="41" text-anchor="start" font-size="10.5" fill="#c0392b">+6.06%</text><text x="116" y="68" text-anchor="end" font-size="11" fill="#33393a">COMEX黄金</text><rect x="234.0" y="56" width="254.3" height="15" fill="#c0392b" opacity="0.88"/><text x="495.3" y="68" text-anchor="start" font-size="10.5" fill="#c0392b">+4.71%</text><text x="116" y="95" text-anchor="end" font-size="11" fill="#33393a">现货黄金（跨源）</text><rect x="234.0" y="83" width="176.6" height="15" fill="#c0392b" opacity="0.88"/><text x="417.6" y="95" text-anchor="start" font-size="10.5" fill="#c0392b">+3.27%</text><text x="116" y="122" text-anchor="end" font-size="11" fill="#33393a">布伦特1月（ICE）</text><rect x="234.0" y="110" width="167.4" height="15" fill="#c0392b" opacity="0.88"/><text x="408.4" y="122" text-anchor="start" font-size="10.5" fill="#c0392b">+3.10%</text><text x="116" y="149" text-anchor="end" font-size="11" fill="#33393a">LME镍</text><rect x="234.0" y="137" width="128.0" height="15" fill="#c0392b" opacity="0.88"/><text x="369.0" y="149" text-anchor="start" font-size="10.5" fill="#c0392b">+2.37%</text><text x="116" y="176" text-anchor="end" font-size="11" fill="#33393a">LME锌</text><rect x="234.0" y="164" width="91.8" height="15" fill="#c0392b" opacity="0.88"/><text x="332.8" y="176" text-anchor="start" font-size="10.5" fill="#c0392b">+1.70%</text><text x="116" y="203" text-anchor="end" font-size="11" fill="#33393a">LME铜</text><rect x="234.0" y="191" width="45.4" height="15" fill="#c0392b" opacity="0.88"/><text x="286.4" y="203" text-anchor="start" font-size="10.5" fill="#c0392b">+0.84%</text><text x="116" y="230" text-anchor="end" font-size="11" fill="#33393a">LME锡</text><rect x="234.0" y="218" width="43.2" height="15" fill="#c0392b" opacity="0.88"/><text x="284.2" y="230" text-anchor="start" font-size="10.5" fill="#c0392b">+0.80%</text><text x="116" y="257" text-anchor="end" font-size="11" fill="#33393a">LME铅</text><rect x="234.0" y="245" width="30.8" height="15" fill="#c0392b" opacity="0.88"/><text x="271.8" y="257" text-anchor="start" font-size="10.5" fill="#c0392b">+0.57%</text><text x="116" y="284" text-anchor="end" font-size="11" fill="#33393a">WTI 1月（连续）</text><rect x="230.8" y="272" width="3.2" height="15" fill="#2e7d5b" opacity="0.88"/><text x="223.8" y="284" text-anchor="end" font-size="10.5" fill="#2e7d5b">-0.06%</text><text x="116" y="311" text-anchor="end" font-size="11" fill="#33393a">LME铝</text><rect x="162.2" y="299" width="71.8" height="15" fill="#2e7d5b" opacity="0.88"/><text x="155.2" y="311" text-anchor="end" font-size="10.5" fill="#2e7d5b">-1.33%</text></svg></div>
+
+  <table>
+    <caption>LME三个月期价周度表现｜<span class="ev ev-m">市场</span> 每日经济新闻直接引述的收盘价与本周累计涨跌</caption>
+    <tr><th>金属</th><th>11月27日收盘</th><th>本周累计涨跌</th><th>11月27日单日</th><th class="evcell">依据类型</th></tr>
+    <tr><td>铜</td><td><b>12,262.0美元/吨</b></td><td class="up">+0.84%</td><td class="up">+3.29%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>铝</td><td>2,787.0美元/吨</td><td class="down">-1.33%</td><td class="down">-0.77%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>锌</td><td>3,563.5美元/吨</td><td class="up">+1.70%</td><td class="up">+1.68%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>铅</td><td>1,856.0美元/吨</td><td class="up">+0.57%</td><td class="down">-0.80%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>镍</td><td><b>15,800.0美元/吨</b></td><td class="up">+2.37%</td><td class="up">+0.44%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>锡</td><td>41,170.0美元/吨</td><td class="up">+0.80%</td><td class="up">+8.65%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+  </table>
+
+  <p class="src">收盘价与周累计涨跌均直接引自每日经济新闻，未以涨跌幅反推周初价格。LME 11月20日与11月27日同一结算口径的原始序列未取得，本表不提供由反推得到的周初价格，避免循环验证。路透17:00 GMT报价与收盘快照存在取价时点差异，列作旁证；11月27日锡单日涨幅8.65%对应前一交易日收盘价未取得，该单日数据保留为媒体引述值。</p>
+
+  <h3>价格变化的成因分解</h3>
+  <table>
+    <caption>共同宏观驱动与品种特定因素；判断为研究分析</caption>
+    <tr><th>驱动</th><th>传导路径</th><th>支撑证据</th><th class="evcell">依据类型</th></tr>
+    <tr><td>贵金属的实际利率背离</td><td>实际利率与美元上行通常提高持有机会成本，价格反向变动需由资金流或仓位因素解释</td><td>10年期实际利率升2个基点至2.79%、美元指数升0.22%，现货黄金仍升3.27%、白银升6.06%；11月25日现货金曾下探3,512.42美元后收复。全球黄金ETF当周申赎、央行购金、COMEX非商业净多头与未平仓量数据未取得</td><td class="evcell"><span class="ev ev-m">市场</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>通胀补偿与政策信号</td><td>通胀补偿下降压低名义收益率中的通胀项，政策收紧提高短端利率</td><td>10年期盈亏平衡通胀率降5个基点至2.13%；核心个人消费支出价格指数同比升至3.3%；1月累计加息50个基点隐含概率升至62.5%</td><td class="evcell"><span class="ev ev-m">市场</span><span class="ev ev-f">期货隐含</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>AI订单与中国政策</td><td>算力资本开支预期回升 → 电网、设备与电气化金属需求预期改善</td><td>戴尔AI服务器收入同比+291%、积压订单1,323亿美元；中国1–10月电子行业利润增长1.0倍、有色行业拉动4.6个百分点；11月27日A股放量上涨</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-m">市场</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>供给与库存差异</td><td>库存与现货结构决定各品种对同一宏观冲击的弹性</td><td>路透17:00 GMT报价显示锡结算涨7.4%、铝跌0.5%；不同取价时点下铝的周变动在-1.33%与-0.5%之间，品种排序存在口径敏感性</td><td class="evcell"><span class="ev ev-m">市场</span><span class="ev ev-d">媒体/未独立确认</span></td></tr>
+  </table>
+
+  <div class="callout">
+    价格表现显示实际利率与美元的变化不足以单独解释本周黄金涨幅，非利率驱动因素仍待ETF资金流、央行购金、期货净多头与未平仓合约数据验证；通胀补偿回落意味着这轮上涨并非由市场通胀预期抬升驱动。工业金属涨幅普遍有限且品种分化，美元走强与加息定价构成约束，AI订单与中国盈利改善构成支撑。跨源报价分歧在布伦特原油、现货黄金与LME锡上同时出现，关键结论应使用同源序列复核。<span class="ev ev-m">市场</span><span class="ev ev-a">分析判断</span>
+  </div>
+</section>
+
+<section id="cnasset">
+  <h2 class="sec-title"><span class="num">8</span>中国资产与资金面：政策驱动放量，杠杆资金尚未同步</h2>
+  <p class="sec-desc">指数收益、成交、融资与汇率分列；资金金额只用于方向判断</p>
+
+  <div class="chartbox"><p class="chart-title">中国资产周涨跌幅（%）：11月20日至11月27日</p><svg viewBox="0 0 680 239" role="img" aria-label="中国资产周涨跌幅（%）：11月20日至11月27日"><rect x="0" y="0" width="680" height="239" fill="#ffffff"/><line x1="126.0" y1="22" x2="126.0" y2="217" stroke="#e4e0d8" stroke-width="1"/><text x="126.0" y="232" text-anchor="middle" font-size="10" fill="#5b6058">-1</text><line x1="163.4" y1="22" x2="163.4" y2="217" stroke="#e4e0d8" stroke-width="1"/><text x="163.4" y="232" text-anchor="middle" font-size="10" fill="#5b6058">0</text><line x1="238.2" y1="22" x2="238.2" y2="217" stroke="#e4e0d8" stroke-width="1"/><text x="238.2" y="232" text-anchor="middle" font-size="10" fill="#5b6058">2</text><line x1="312.9" y1="22" x2="312.9" y2="217" stroke="#e4e0d8" stroke-width="1"/><text x="312.9" y="232" text-anchor="middle" font-size="10" fill="#5b6058">4</text><line x1="387.7" y1="22" x2="387.7" y2="217" stroke="#e4e0d8" stroke-width="1"/><text x="387.7" y="232" text-anchor="middle" font-size="10" fill="#5b6058">6</text><line x1="462.5" y1="22" x2="462.5" y2="217" stroke="#e4e0d8" stroke-width="1"/><text x="462.5" y="232" text-anchor="middle" font-size="10" fill="#5b6058">8</text><line x1="537.2" y1="22" x2="537.2" y2="217" stroke="#e4e0d8" stroke-width="1"/><text x="537.2" y="232" text-anchor="middle" font-size="10" fill="#5b6058">10</text><line x1="612.0" y1="22" x2="612.0" y2="217" stroke="#e4e0d8" stroke-width="1"/><text x="612.0" y="232" text-anchor="middle" font-size="10" fill="#5b6058">12</text><line x1="163.4" y1="22" x2="163.4" y2="217" stroke="#8d9188" stroke-width="1.2"/><text x="116" y="41" text-anchor="end" font-size="11" fill="#33393a">创业板指</text><rect x="163.4" y="29" width="391.8" height="15" fill="#c0392b" opacity="0.88"/><text x="562.2" y="41" text-anchor="start" font-size="10.5" fill="#c0392b">+10.48%</text><text x="116" y="68" text-anchor="end" font-size="11" fill="#33393a">深证成指</text><rect x="163.4" y="56" width="203.4" height="15" fill="#c0392b" opacity="0.88"/><text x="373.8" y="68" text-anchor="start" font-size="10.5" fill="#c0392b">+5.44%</text><text x="116" y="95" text-anchor="end" font-size="11" fill="#33393a">恒生科技</text><rect x="163.4" y="83" width="135.0" height="15" fill="#c0392b" opacity="0.88"/><text x="305.3" y="95" text-anchor="start" font-size="10.5" fill="#c0392b">+3.61%</text><text x="116" y="122" text-anchor="end" font-size="11" fill="#33393a">上证指数</text><rect x="163.4" y="110" width="77.0" height="15" fill="#c0392b" opacity="0.88"/><text x="247.4" y="122" text-anchor="start" font-size="10.5" fill="#c0392b">+2.06%</text><text x="116" y="149" text-anchor="end" font-size="11" fill="#33393a">上证50</text><rect x="163.4" y="137" width="65.4" height="15" fill="#c0392b" opacity="0.88"/><text x="235.8" y="149" text-anchor="start" font-size="10.5" fill="#c0392b">+1.75%</text><text x="116" y="176" text-anchor="end" font-size="11" fill="#33393a">恒生指数</text><rect x="163.4" y="164" width="47.5" height="15" fill="#c0392b" opacity="0.88"/><text x="217.9" y="176" text-anchor="start" font-size="10.5" fill="#c0392b">+1.27%</text><text x="116" y="203" text-anchor="end" font-size="11" fill="#33393a">人民币中间价（升值）</text><rect x="163.4" y="191" width="3.0" height="15" fill="#c0392b" opacity="0.88"/><text x="173.4" y="203" text-anchor="start" font-size="10.5" fill="#c0392b">+0.08%</text></svg></div>
+
+  <table>
+    <caption>主要指数与汇率｜<span class="ev ev-m">市场</span> 市场收盘，<span class="ev ev-o">官方</span> 官方中间价</caption>
+    <tr><th>资产</th><th>11月20日收盘</th><th>11月27日收盘</th><th>全周</th><th>11月27日单日</th><th class="evcell">依据类型</th></tr>
+    <tr><td>上证指数</td><td>3,533.79</td><td>3,606.49</td><td class="up">+2.06%</td><td class="up">+3.73%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>深证成指</td><td>10,256.39</td><td>10,814.02</td><td class="up">+5.44%</td><td class="up">+7.24%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>创业板指</td><td>2,212.13</td><td>2,443.96</td><td class="up"><b>+10.48%</b></td><td class="up">+11.61%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>上证50</td><td>2,785.92</td><td>2,834.68</td><td class="up">+1.75%</td><td class="up">+2.94%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>恒生指数</td><td>22,410.80</td><td>22,694.77</td><td class="up">+1.27%</td><td class="up">+2.11%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>恒生科技指数</td><td>3,511.14</td><td>3,637.88</td><td class="up">+3.61%</td><td class="up">逾6%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>人民币兑美元中间价</td><td>6.7131</td><td>6.7075</td><td class="up">升值56基点</td><td>较11月26日上调21基点</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+  </table>
+
+  <table>
+    <caption>资金面周度描述｜<span class="ev ev-d">媒体/未独立确认</span> 媒体与数据平台口径，金额仅用于方向判断</caption>
+    <tr><th>指标</th><th>读数</th><th>口径与限制</th></tr>
+    <tr><td>融资余额</td><td>截至11月26日21,055.79亿元，11月20日至26日净偿还871.64亿元、降幅3.98%</td><td>11月27日余额按惯例T+1披露，尚未取得</td></tr>
+    <tr><td>融券余额</td><td>截至11月26日290.63亿元；两融合计21,346.42亿元</td><td>不同平台样本范围存在差异</td></tr>
+    <tr><td>11月27日主力资金</td><td>当日全市场净流入1,163.87亿元；电子+735亿元、计算机+236亿元、通信+202亿元</td><td>单日成交口径，不代表全周累计净流入</td></tr>
+    <tr><td>成交额</td><td>11月27日沪深京三市成交20,173亿元，较前一交易日增加6,913亿元</td><td>政策消息驱动的单日放量</td></tr>
+    <tr><td>板块结构</td><td>11月27日科创50涨15.07%、北证50涨逾11%；银行、农林牧渔、煤炭、美容护理小幅净流出</td><td>成长风格显著强于权重与红利</td></tr>
+  </table>
+
+  <h3>11月27日价格反应与政策触发</h3>
+  <table>
+    <caption>当日行情｜<span class="ev ev-m">市场</span> 收盘与成交数据，<span class="ev ev-o">官方</span> 会议通稿</caption>
+    <tr><th>项目</th><th>读数</th><th>结构信息</th><th class="evcell">依据类型</th></tr>
+    <tr><td>指数</td><td>上证指数+3.73%报3,606.49；深证成指+7.24%报10,814.02；创业板指+11.61%报2,443.96</td><td>科创50涨15.07%，跻身历史单日涨幅榜前三；北证50涨逾11%；恒生科技同步涨逾6%</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>市场广度</td><td>5,382只个股上涨、181只下跌；426只涨停、无跌停</td><td>普涨格局，非个别权重拉动</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>成交与资金</td><td>三市成交20,173亿元，较前一交易日增加6,913亿元；主力资金净流入1,163.87亿元</td><td>电子+735亿元、计算机+236亿元、通信+202亿元</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>风格切换</td><td>非银金融、芯片、华为产业链、算力硬件领涨；中国神华、中国石化、中国移动等高股息标的下跌</td><td>资金由红利防御转向科技成长</td><td class="evcell"><span class="ev ev-m">市场</span></td></tr>
+  </table>
+
+  <table>
+    <caption>当日大涨的成因分解｜政策表述与价格反应时间重合，逐项标注约束证据</caption>
+    <tr><th>驱动</th><th>支持证据</th><th>约束证据</th><th class="evcell">依据类型</th></tr>
+    <tr><td>国常会稳市部署</td><td>同日新闻稿明确"国家队"加力、中央汇金公司类"平准基金"功能优化与充足流动性保障，并提出谋划出台增量政策</td><td>政策为方向性表述，工具规模与实施节奏未公布；时间重合本身不构成单一因果证明</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-m">市场</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>风险偏好修复</td><td>本周前期A股调整较深，高贝塔板块弹性更大，科创50与创业板涨幅显著高于上证50</td><td>超跌反弹只能解释弹性差异，无法解释当日放量的政策时点</td><td class="evcell"><span class="ev ev-m">市场</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>杠杆条件改善</td><td>融资保证金比例下限自11月30日起由100%降至80%；交易所降费安排延续至2028年</td><td>截至11月26日融资余额仍净偿还871.64亿元，新规在行情当日尚未生效</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-m">市场</span></td></tr>
+    <tr><td>外部AI风险偏好</td><td>英伟达全周涨19.88%，全球半导体与算力资产同步反弹，港股科技同步走强</td><td>外部因素贯穿全周，难以单独解释11月27日单日幅度</td><td class="evcell"><span class="ev ev-m">市场</span><span class="ev ev-a">分析判断</span></td></tr>
+  </table>
+
+  <div class="callout">
+    上证指数全周涨2.06%，创业板涨10.48%，上证50仅涨1.75%，风格分化明显。11月27日上证指数升3.73%、创业板升11.61%，成交升至2.02万亿元，国常会新闻稿与行情在同一交易日出现，市场普遍将其视为当日主要触发因素；这一归因属于市场观点，政策工具规模与增量资金尚未披露。融资余额截至11月26日仍在下降，保证金新规11月30日生效后才进入可验证窗口。成交能否连续站稳2万亿元、两融余额能否止跌，是判断行情延续性的两个观测点。<span class="ev ev-o">官方</span><span class="ev ev-m">市场</span><span class="ev ev-d">媒体/未独立确认</span><span class="ev ev-a">分析判断</span>
+  </div>
+</section>
+
+<section id="recap">
+  <h2 class="sec-title"><span class="num">•</span>复盘小结</h2>
+  <div class="card">
+    <p style="font-size:13.5px;margin:0 0 8px;">核心个人消费支出价格指数同比升至3.3%、第三季度国内生产总值上修至4.3%，加息定价由12月向明年1月延伸；短端收益率上行幅度大于长端，通胀补偿回落，市场定价的是政策反应而非长期通胀失控。<span class="ev ev-o">官方</span><span class="ev ev-f">期货隐含</span><span class="ev ev-a">分析判断</span></p>
+    <p style="font-size:13.5px;margin:0 0 8px;">英伟达管理层安排反转修复了上周的治理折价，戴尔的AI服务器收入与积压订单验证需求端，惠普、小米的成本与利润读数显示上游算力与终端制造盈利分化；指数涨幅由治理、订单与仓位回补共同解释。<span class="ev ev-o">官方</span><span class="ev ev-m">市场</span><span class="ev ev-a">分析判断</span></p>
+    <p style="font-size:13.5px;margin:0 0 8px;">欧元区通胀高位与景气下滑并存，日本核心消费者物价指数升至2.9%、韩国央行第三次加息，主要央行收紧方向一致而增长前景分化；法国主权评级展望下调构成欧洲尾部风险。<span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></p>
+    <p style="font-size:13.5px;margin:0 0 8px;">中国工业利润增速升至16.0%，行业贡献集中于电子与有色，公开市场由净回笼转为净投放；11月27日国常会将稳市机制制度化，明确"国家队"加力与中央汇金类"平准基金"功能，A股当日放量长阳、创业板升11.61%，融资余额截至11月26日仍在下降，资金验证落在下一周。<span class="ev ev-o">官方</span><span class="ev ev-m">市场</span><span class="ev ev-a">分析判断</span></p>
+    <p style="font-size:13.5px;margin:0;">贵金属在实际利率上行环境中反弹，资金流与仓位解释待验证；工业金属温和分化，布伦特固定月份结算价确认上行，WTI连续合约口径差异不足以支持两油定价分化的判断；跨源报价分歧要求关键结论回到同源序列复核。<span class="ev ev-m">市场</span><span class="ev ev-d">媒体/未独立确认</span><span class="ev ev-a">分析判断</span></p>
+  </div>
+
+  <h3>宏观状态识别</h3>
+  <table>
+    <caption>本周证据对两类宏观状态的支持程度｜<span class="ev ev-a">分析判断</span> 研究判断</caption>
+    <tr><th>宏观变量</th><th>本周观察</th><th>指向的问题</th><th>证据倾向</th></tr>
+    <tr><td>美国增长</td><td>GDP二次估算4.3%、私人内需最终销售5.8%、非住宅固定投资16.1%；实际消费环比接近零、PMI初值54.6为四个月低点</td><td>投资驱动的结构性增长还是需求全面扩张</td><td>结构性强于全面扩张</td></tr>
+    <tr><td>美国通胀</td><td>核心PCE同比3.3%、环比连续三个月0.3%；盈亏平衡通胀率降5个基点至2.13%；褐皮书记录广泛成本压力但转嫁受限</td><td>需求型通胀还是成本推动</td><td>成本证据强于需求证据，分项数据不足</td></tr>
+    <tr><td>货币政策</td><td>12月加息25个基点隐含概率97.2%；1月累计加息50个基点隐含概率62.5%；短端上行6个基点</td><td>市场是否过度计入未来加息</td><td>12月已充分计入，新增定价集中于1月</td></tr>
+    <tr><td>美元</td><td>美元指数升0.22%至104.033；美元兑日元升0.69%</td><td>利差、避险还是相对增长</td><td>与利差及加息定价方向一致</td></tr>
+    <tr><td>中国经济</td><td>工业利润增16.0%、利润率提高0.45个百分点；应收账款增10.5%、存货增12.0%、回收期延长1.4天</td><td>盈利改善能否扩散到需求与现金流</td><td>利润改善先于现金流改善</td></tr>
+    <tr><td>全球风险</td><td>霍尔木兹事件未获独立确认；欧元区景气指数95.8、法国评级展望负面</td><td>是否形成持续供给冲击</td><td>尚不构成基准情景</td></tr>
+  </table>
+  <div class="callout">
+    本周证据更接近"增长分化、成本推动通胀"的组合，而非各主要经济体同步再通胀：美国投资强于消费、欧元区核心通胀稳定而能源分项高企、日本通胀受能源与大米价格双向影响。这一判断的证据强度为中等，核心PCE分项与黄金资金流数据尚未取得；未来数周需观察就业与工资、服务业价格分项、信用条件与商品供需是否同时改变。若需求端与工资同步加速，判断需转向再通胀；若就业明显走弱而成本压力延续，滞胀风险权重上升。<span class="ev ev-a">分析判断</span>
+  </div>
+</section>
+
+<section id="scenario">
+  <h2 class="sec-title"><span class="num">•</span>下周事件树（11.30–12.4）</h2>
+  <p class="sec-desc">以11月非农新增就业87.5千人、失业率4.1%的一致预期为分界；各分支按触发条件并列，不构成时间顺序上的预测路径，不设概率权重</p>
+  <div class="grid3">
+    <div class="scenario bear">
+      <h4><span>就业与景气偏强</span><span>观察方向</span></h4>
+      <ul>
+        <li><b>触发：</b>非农新增明显高于87.5千人且失业率维持4.1%或更低；时薪环比高于0.3%；ISM制造业高于54.8、服务业高于54.3；中国官方制造业PMI回到50上方。</li>
+        <li><b>价格反应：</b>1月累计加息50个基点隐含概率上行，2年期收益率突破4.75%，美元指数测试104.53；高估值成长资产与贵金属承压。</li>
+        <li><b>技术观察位：</b>2年期4.75%、10年期5.00%、美元指数104.53、现货金3,512美元、创业板2,213点；取自本周高低点与上周收盘，不含方向预测。</li>
+        <li><b>宏观确认条件：</b>非农与ISM同步偏强、时薪环比高于0.3%、ISM服务业物价分项不回落。</li>
+        <li><b>约束：</b>美联储全周处于噤声期，官员沟通缺位；强数据也可能被解读为关税传导与财政脉冲，反应方向受仓位影响。</li>
+      </ul>
+    </div>
+    <div class="scenario base">
+      <h4><span>就业与景气接近预期</span><span>观察方向</span></h4>
+      <ul>
+        <li><b>触发：</b>非农新增约87.5千人、失业率4.1%、时薪环比约0.3%；ISM制造业约54.8、服务业约54.3；中国官方制造业PMI约49.4；OPEC+维持现行产量框架。</li>
+        <li><b>价格反应：</b>12月加息定价维持高位、1月路径小幅调整，收益率在区间内震荡；A股资金面验证取代宏观数据成为主导变量。</li>
+        <li><b>技术观察位：</b>10年期4.88%–5.00%、美元指数103.48–104.53、标普500在7,100–7,400区间内、创业板2,213–2,550点；取自本周高低点与上周收盘。</li>
+        <li><b>宏观确认条件：</b>非农接近87.5千人且失业率4.1%、时薪环比约0.3%、ISM制造业与服务业接近一致预期。</li>
+        <li><b>约束：</b>11月30日MSCI半年度调整生效带来尾盘被动资金扰动，指数点位可能短暂越界。</li>
+      </ul>
+    </div>
+    <div class="scenario bull">
+      <h4><span>就业明显走弱</span><span>观察方向</span></h4>
+      <ul>
+        <li><b>触发：</b>非农新增显著低于87.5千人或失业率升至4.2%；ADP低于77.5千人；ISM服务业物价分项回落；中国PMI继续低于49.4并伴随政策加码信号。</li>
+        <li><b>价格反应：</b>近端加息定价回落，短端收益率下行幅度大于长端、曲线陡峭化；美元走弱，贵金属与高贝塔资产获得支撑。</li>
+        <li><b>技术观察位：</b>2年期跌破4.60%、美元指数失守103.48、现货金重回3,678美元、创业板突破2,550点；取自本周高低点与整数关口。</li>
+        <li><b>宏观确认条件：</b>非农显著低于87.5千人或失业率升至4.2%，且ADP、ISM物价分项与家庭调查同步转弱。</li>
+        <li><b>约束：</b>沃勒主张12月一次加息50个基点，单一弱数据不足以推翻加息基准；需要通胀分项同步回落才能形成完整证据。</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>就业与通胀的二维组合</h3>
+  <table>
+    <caption>单一就业维度不足以确定政策含义｜<span class="ev ev-a">分析判断</span> 研究判断</caption>
+    <tr><th>组合</th><th>通胀表现</th><th>政策含义</th><th>资产观察方向</th></tr>
+    <tr><td>就业强 / 通胀强</td><td>时薪高于0.3%且ISM服务业物价分项不回落</td><td>收紧压力上升，1月加息定价进一步固化</td><td>短端收益率上行、美元偏强、高估值资产承压</td></tr>
+    <tr><td>就业强 / 通胀弱</td><td>时薪约0.3%或更低、物价分项回落</td><td>软着陆概率上升，政策压力未必同步增加</td><td>曲线陡峭化，成长资产相对占优</td></tr>
+    <tr><td>就业弱 / 通胀强</td><td>新增就业显著低于预期但价格分项仍高</td><td>滞胀风险上升，政策取舍最为困难</td><td>美元与贵金属方向可能背离，权益估值承压</td></tr>
+    <tr><td>就业弱 / 通胀弱</td><td>就业与价格分项同步走弱</td><td>收紧必要性下降，1月定价面临重估</td><td>短端收益率下行、美元走弱、贵金属获得支撑</td></tr>
+  </table>
+  <div class="callout">
+    技术观察位取自本周高低点、上周收盘与整数关口，用于界定观察窗口，不是统计预测区间，也不等同于宏观确认条件。宏观确认条件是判断情景成立的必要数据组合；情景失效以确认条件被推翻为准，而非单一价格点位被触及。就业与通胀可以交叉出现，例如就业偏强而服务业物价分项回落。
+  </div>
+</section>
+
+<section id="levels">
+  <h2 class="sec-title"><span class="num">•</span>资产技术监测位</h2>
+  <p class="sec-desc">以11月27日收盘或结算价为基准，列出本周高低点、上周收盘与整数关口；点位用于观察，不含方向预测</p>
+  <table>
+    <caption>跨资产观察位｜数据源：美国财政部、新华社、FactSet、洲际交易所、纽约商业交易所、LME</caption>
+    <tr><th>资产</th><th>11月27日收盘</th><th>上方观察位</th><th>下方观察位</th><th>位置含义</th></tr>
+    <tr><td>美10年期收益率</td><td>4.94%</td><td>5.00% / 5.33%</td><td>4.88% / 4.75%</td><td>整数位与30年期水平；下方为11月13日至19日区间</td></tr>
+    <tr><td>美2年期收益率</td><td>4.69%</td><td>4.75% / 4.88%</td><td>4.60% / 4.63%</td><td>整数位与上周收盘</td></tr>
+    <tr><td>美元指数</td><td>104.033</td><td>104.53（周内高）</td><td>103.48（周内低）/ 103</td><td>周内区间上下沿与整数关口</td></tr>
+    <tr><td>标普500</td><td>7,297.49</td><td>7,400</td><td>7,100 / 6,910.39</td><td>整数位与上周收盘</td></tr>
+    <tr><td>纳斯达克指数</td><td>24,129.50</td><td>24,500</td><td>23,500 / 22,617.73</td><td>整数位与上周收盘</td></tr>
+    <tr><td>费城半导体指数</td><td>9,186.71</td><td>9,213.64（日内高）</td><td>8,789.31（日内低）</td><td>11月27日日内区间</td></tr>
+    <tr><td>英伟达</td><td>150.49</td><td>155 / 160</td><td>145 / 125.53</td><td>整数位与上周收盘</td></tr>
+    <tr><td>现货黄金</td><td>3,653.50</td><td>3,678.09（周内高）</td><td>3,512.42（周内低）/ 3,500</td><td>同源日表周内高低与整数位</td></tr>
+    <tr><td>现货白银</td><td>43.717</td><td>44.230（11/23日内高）</td><td>41.50（11/23日内低）</td><td>部分时点日内区间，非完整周内高低</td></tr>
+    <tr><td>WTI 1月合约</td><td>83.08</td><td>86（11/26盘中）/ 83.98</td><td>80</td><td>周内盘中高位与到期合约上周结算</td></tr>
+    <tr><td>布伦特1月合约</td><td>95.44</td><td>96.73（11/27日内高）</td><td>92.57 / 90.79</td><td>官方结算基准与另一数据商口径</td></tr>
+    <tr><td>上证指数</td><td>3,606.49</td><td>3,610.72（11/27日内高）</td><td>3,533.79 / 3,500</td><td>日内高点与上周收盘</td></tr>
+    <tr><td>创业板指</td><td>2,443.96</td><td>2,444.60（11/27日内高）</td><td>2,212.13 / 2,200</td><td>日内高点与上周收盘</td></tr>
+    <tr><td>恒生科技指数</td><td>3,637.88</td><td>3,700</td><td>3,511.14 / 3,500</td><td>整数位与上周收盘</td></tr>
+    <tr><td>人民币中间价</td><td>6.7075</td><td>6.7131</td><td>6.7000</td><td>上周基准与整数位；数值下降为人民币升值</td></tr>
+  </table>
+  <p class="src">收益率上行对应债券价格下跌。表中点位不构成交易指令。</p>
+</section>
+
+<section id="alloc">
+  <h2 class="sec-title"><span class="num">•</span>条件性资产观点</h2>
+  <p class="sec-desc">每条观点绑定触发条件、失效条件与依据类型；方向判断随监测指标变化</p>
+  <table>
+    <caption>监测条件与资产方向的对应关系｜触发条件均为观察项，不是收益预测</caption>
+    <tr><th>资产类别</th><th class="evcell">依据类型</th><th>触发条件</th><th>观察方向</th><th>失效条件</th><th>主要风险</th></tr>
+    <tr><td>美债久期</td><td class="evcell"><span class="ev ev-f">期货隐含</span><span class="ev ev-a">分析判断</span></td><td>非农明显低于87.5千人且时薪环比不高于0.2%</td><td>近端定价回落，曲线陡峭化</td><td>2年期站上4.75%且1月累计加息50bp概率升破70%</td><td>关税传导使通胀分项再度上行</td></tr>
+    <tr><td>美元</td><td class="evcell"><span class="ev ev-m">市场</span><span class="ev ev-f">期货隐含</span></td><td>非农与ISM同步偏强且美元指数站上104.53</td><td>利差优势延续，非美货币承压</td><td>美元指数跌破103.48且日本央行释放加息信号</td><td>植田讲话改变日元定价</td></tr>
+    <tr><td>黄金与白银</td><td class="evcell"><span class="ev ev-m">市场</span><span class="ev ev-a">分析判断</span></td><td>实际利率回落至2.75%下方且美元指数跌破103.48</td><td>机会成本下降，现货金测试3,678美元</td><td>实际利率升破2.85%且美元创新高</td><td>与实际利率的背离可能由仓位驱动并快速反转</td></tr>
+    <tr><td>美股科技与半导体</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td><td>Marvell与Salesforce指引未下修、非农不显著高于预期</td><td>AI订单叙事延续，指数高位震荡</td><td>指引下修或12月加息50bp概率明显上行</td><td>估值已修复，单一公司指引的边际影响放大</td></tr>
+    <tr><td>原油</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-d">媒体/未独立确认</span></td><td>OPEC+维持2027年配额框架且出现可验证通行量下降</td><td>供应溢价计入，布伦特测试96.73美元</td><td>OPEC+增产且库存继续累积</td><td>两油与数据商报价分歧扩大</td></tr>
+    <tr><td>A股与港股</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-m">市场</span></td><td>国常会增量政策落地、成交站稳2万亿元且融资余额止跌回升</td><td>政策与资金共振，成长风格延续</td><td>成交回落至2万亿元下方或融资余额继续下降</td><td>11月30日指数调整带来被动资金扰动</td></tr>
+    <tr><td>人民币</td><td class="evcell"><span class="ev ev-o">官方</span></td><td>中间价维持在6.7000–6.7150区间</td><td>汇率政策取向稳定，结售汇定价平稳</td><td>中间价单日调整超过百基点或离岸价差明显走阔</td><td>美元指数升破104.53后的被动压力</td></tr>
+  </table>
+  <div class="callout data">
+    本周标普500涨5.60%，费城半导体指数报道口径涨逾9%，英伟达涨19.88%；A股上证涨2.06%，创业板涨10.48%，上证50涨1.75%。风险偏好修复在高贝塔资产上体现得更集中，权重与红利资产涨幅有限。
+  </div>
+</section>
+
+<section id="risk">
+  <h2 class="sec-title"><span class="num">•</span>风险登记册</h2>
+  <p class="sec-desc">按传导链长度与可监测性排序；证据级别区分官方数据、公开表态、期货隐含、媒体报道与分析判断</p>
+  <table>
+    <caption>下周主要风险与监测信号</caption>
+    <tr><th>风险</th><th class="evcell">证据级别</th><th>触发信号</th><th>传导链</th><th>监测指标</th></tr>
+    <tr><td>非农与ISM同步偏强推升1月加息定价</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-f">期货隐含</span></td><td>非农显著高于87.5千人、时薪环比高于0.3%</td><td>近端利率 → 实际利率 → 高估值资产</td><td>FedWatch 1月路径、2年期收益率</td></tr>
+    <tr><td>AI指引下修打断估值修复</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td><td>Marvell、Salesforce或Snowflake指引低于预期</td><td>订单预期 → 半导体与软件 → 港股科技与A股算力链</td><td>营收指引、剩余履约义务、资本开支表述</td></tr>
+    <tr><td>日本央行加息信号推升日元</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td><td>植田和男11月30日讲话出现明确收紧措辞</td><td>日元套息交易 → 全球流动性 → 风险资产</td><td>美元兑日元、隔夜指数互换定价</td></tr>
+    <tr><td>OPEC+配额决定与霍尔木兹通行</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-d">媒体/未独立确认</span></td><td>11月29日会议结果偏离维持配额预期，或出现可验证通行量下降</td><td>供应 → 油价 → 能源分项与通胀预期</td><td>通行量、保险费率、两油价差</td></tr>
+    <tr><td>欧元区政策收紧与增长下滑叠加</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td><td>12月1日HICP初值高于4.0%且服务业PMI终值继续下修</td><td>利差 → 欧元 → 欧洲风险资产与全球利率</td><td>德国与法国利差、经济景气指数</td></tr>
+    <tr><td>法国财政与主权风险</td><td class="evcell"><span class="ev ev-o">官方</span></td><td>评级展望下调后预算草案未修正</td><td>主权利差 → 银行融资成本 → 欧洲风险偏好</td><td>法国与德国国债利差、评级机构公告</td></tr>
+    <tr><td>A股放量后的资金持续性</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-m">市场</span></td><td>成交回落至2万亿元下方、融资余额继续下降或增量政策未落地</td><td>政策预期 → 资金 → 成长风格 → 指数水平</td><td>两融余额、成交额、行业资金流、稳市工具公告</td></tr>
+    <tr><td>噤声期与指数调整放大波动</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td><td>11月28日至12月10日无官员沟通，11月30日MSCI调整生效</td><td>流动性变薄 → 价差扩大 → 被动调仓</td><td>成交量、买卖价差、尾盘异动</td></tr>
+  </table>
+  <p class="src">媒体报道、单方面声明与期货隐含概率不能与官方统计读数等同；表中风险按监测需要列出，不代表发生概率排序。</p>
+</section>
+
+<section id="outlook">
+  <h2 class="sec-title"><span class="num">•</span>下周展望（11.30–12.4）</h2>
+  <p class="sec-desc">三条主线：就业数据三连击、中国景气首读与央行噤声期；日程以官方发布安排为准</p>
+
+  <table>
+    <caption>下周重要数据与事件日历｜官方日程与一致预期分列</caption>
+    <tr><th>日期</th><th>地区</th><th>事件</th><th>一致预期或前值</th><th>观察重点</th><th class="evcell">依据类型</th></tr>
+    <tr><td>11月29日 周日</td><td>全球 / 能源</td><td><b>OPEC+ 21国部长级线上会议</b>，确定2027年产量基准与配额框架</td><td>消息称倾向将现行配额至少延至2027年第一季度，非官方决定</td><td>结果在12月1日亚洲开盘体现；伊朗对产能评估有异议</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-d">媒体/未独立确认</span></td></tr>
+    <tr><td>11月30日 周一</td><td>日本</td><td>央行行长植田和男名古屋演讲</td><td>市场对12月18日加息至1.50%定价约75%–80%</td><td>是否出现下次会议权衡利弊的措辞；中性利率表述</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-f">期货隐含</span></td></tr>
+    <tr><td>11月30日 周一</td><td>中国</td><td><b>11月官方制造业PMI、非制造业商务活动指数</b></td><td>制造业49.4 / 前值49.3；非制造业49.6 / 前值49.7</td><td>连续第二个月收缩与否；购进价格分项对工业品价格的传导</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>11月30日 周一</td><td>中国 / 港股</td><td>MSCI 11月半年度指数调整生效；隔夜逆回购到期7,940亿元；融资保证金比例下限降至80%</td><td>新纳入与剔除共38只标的；保证金比例由100%降至80%</td><td>国常会稳市部署后的首个完整交易日；尾盘被动调仓与杠杆条件变化叠加，成交能否延续2万亿元是关键</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>11月30日 周一</td><td>德国 / 意大利 / 美国</td><td>德国11月消费者物价指数初值、意大利调和指数初值、芝加哥采购经理人指数</td><td>德国消费者物价指数同比2.8%；意大利调和指数5.7%；芝加哥56.4 / 前值55.3</td><td>欧洲央行12月17日决议前的通胀拼图</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>12月1日 周二</td><td>中国 / 欧元区</td><td>11月RatingDog制造业采购经理人指数、欧元区11月调和消费者物价指数初值</td><td>RatingDog 51.5 / 前值52.0（另一口径52.0，存在分歧）；欧元区约3.8%–4.0% / 前值4.0%</td><td>中小企业与出口部门景气；能源分项与服务通胀</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>12月1日 周二</td><td>美国</td><td><b>11月ISM制造业指数、10月JOLTS职位空缺</b>、营建支出</td><td>ISM 54.8 / 前值55.5；JOLTS 7,500千人 / 前值7,523千人</td><td>物价分项前值75.2；离职率与劳动力供需缺口</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>12月1日 周二</td><td>公司</td><td>Marvell、Okta、NetApp、MongoDB、蔚来、携程财报；Copart盘前</td><td>Marvell每股收益1.10美元、营收31.5亿美元</td><td>定制芯片与数据中心网络订单；中概出行与汽车毛利</td><td class="evcell"><span class="ev ev-d">媒体/未独立确认</span></td></tr>
+    <tr><td>12月2日 周三</td><td>美国 / 公司</td><td><b>11月ADP就业报告</b>；Salesforce、Snowflake、Zscaler、梅西百货财报</td><td>ADP 77.5千人 / 前值86.0千人；Salesforce每股收益3.45美元、营收114.6亿美元</td><td>私营部门就业动能；企业软件支出与Agentforce商业化</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-d">媒体/未独立确认</span></td></tr>
+    <tr><td>12月3日 周四</td><td>美国 / 英国</td><td>初请失业金、<b>11月ISM服务业指数</b>、工厂订单；英国服务业采购经理人指数终值</td><td>初请189千人；ISM服务业54.3 / 前值54.5；英国服务业52.0</td><td>服务业物价分项前值73.0；就业与出口订单下滑</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>12月4日 周五</td><td>美国</td><td><b>11月非农就业报告</b>、密歇根大学消费者信心初值</td><td>非农87.5千人 / 前值165.0千人；失业率4.1%；时薪环比+0.3%；密歇根52.5 / 前值51.5</td><td>12月9日议息会议前最后一份就业报告；时薪增速决定加息必要性</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-a">分析判断</span></td></tr>
+    <tr><td>全周</td><td>美联储</td><td>12月8–9日议息会议噤声期，自11月28日起生效</td><td>12月加息25个基点隐含概率97.2%</td><td>官员沟通缺位，数据成为唯一定价输入</td><td class="evcell"><span class="ev ev-o">官方</span><span class="ev ev-f">期货隐含</span></td></tr>
+    <tr><td>窗口外提示</td><td>全球</td><td>12月8–9日FOMC决议、12月17日欧洲央行决议、12月17–18日日本央行决议</td><td>均不在本周</td><td>用于跨周衔接，不在本周事件树内赋权</td><td class="evcell"><span class="ev ev-o">官方</span></td></tr>
+  </table>
+  <p class="src">一致预期取编制时点公开调查口径，发布前可能更新；欧元区调和指数与RatingDog采购经理人指数存在来源分歧，表中并列标注。事件方向判断需结合仓位与交易时段。</p>
+
+  <h3>三条主线的观察次序</h3>
+  <div class="grid3">
+    <div class="card">
+      <h4>就业数据三连击</h4>
+      <p style="font-size:13px;margin:0;">12月1日职位空缺、12月2日ADP与12月4日非农依次落地，处于美联储噤声期。非农新增87.5千人、失业率4.1%与时薪环比0.3%构成基准，时薪是加息必要性的关键输入。</p>
+    </div>
+    <div class="card">
+      <h4>中国景气首读</h4>
+      <p style="font-size:13px;margin:0;">11月30日官方制造业采购经理人指数预期49.4，将检验工业利润改善能否延伸到景气层面。国常会稳市部署后的首个完整交易日叠加融资保证金比例下调与指数调整生效，成交能否延续2万亿元决定11月27日行情的延续性。</p>
+    </div>
+    <div class="card">
+      <h4>能源与日本变量</h4>
+      <p style="font-size:13px;margin:0;">11月29日OPEC+会议结果决定12月1日开盘油价；植田和男讲话决定日元与美元指数的边际方向。两项事件均在数据密集期之前，可能改变亚洲时段的起始定价。</p>
+    </div>
+  </div>
+</section>
+
+<section id="appendix">
+  <h2 class="sec-title"><span class="num">•</span>口径附录：取价时点、合约与证据层级</h2>
+  <p class="sec-desc">同一指标在不同来源存在取价时点、合约月份与统计定义差异，此处集中列明</p>
+  <table>
+    <caption>主要口径裁决</caption>
+    <tr><th>指标</th><th>主口径</th><th>其他读数或限制</th><th>处理方式</th></tr>
+    <tr><td>美债收益率</td><td>美国财政部日度票面收益率曲线：11/20为4.63%/4.92%/5.31%，11/27为4.69%/4.94%/5.33%</td><td>市场报价口径11/27为2Y 4.706%、10Y 4.931%、30Y 5.323%，差约1至3个基点</td><td>主口径内回算周变动，不跨序列混用</td></tr>
+    <tr><td>实际利率与盈亏平衡</td><td>名义收益率取美国财政部日度票面收益率曲线，实际利率与盈亏平衡通胀率取FRED日度序列</td><td>期末绝对水平：名义4.94%、实际2.79%、盈亏平衡2.13%，名义减实际为2.15%，与盈亏平衡相差2个基点；期初相差3个基点</td><td>三组序列方法论不同，绝对水平差额与周度变动差额是两个概念。周度变动为名义+2bp、实际+2bp、通胀补偿-5bp，实际加通胀补偿为-3bp，与名义变动相差5bp，不能闭合；不将名义变动严格拆分为两部分</td></tr>
+    <tr><td>FedWatch概率</td><td>11月26日：12月加息25个基点97.2%，1月累计加息50个基点62.5%</td><td>12月概率在11月25日数据公布前为99.8%、11月24日为98%；11月20日1月累计概率为57.7%</td><td>当前目标区间3.75%–4.00%。"12月加息25bp"指12月会议后升至4.00%–4.25%；"1月累计加息50bp"指至1月会议后较当前累计上行50bp、含已计入的12月25bp。均为特定时点期货隐含概率，不等于美联储决策概率</td></tr>
+    <tr><td>美元指数</td><td>新华社同源纽约尾盘：103.808→104.033，涨0.22%</td><td>每日经济新闻纽约尾盘104.04；雅虎财经收盘104.01</td><td>周涨跌在同源序列内回算</td></tr>
+    <tr><td>WTI合约</td><td>11/27纽约商业交易所2027年1月合约结算83.08美元</td><td>2026年12月合约11/20到期、结算83.98美元；11/20的83.13美元为雅虎财经CL=F前月连续合约读数；11/26感恩节无官方结算</td><td>月度增跌-0.06%为连续合约序列回算，含移仓换月；WTI 2027年1月合约11/20官方结算价未取得，无法给出固定月份同合约周涨跌，已到期合约单列不可比</td></tr>
+    <tr><td>布伦特口径</td><td>2027年1月合约洲际交易所官方结算：11/20为92.57、11/27为95.44，涨3.10%，两日均为新华社转引交易所结算</td><td>陆家嘴与FactSet主力口径为90.79、周跌1.92%，与结算价相差约4.65美元；合约代码、取价时点与价格性质未取得一手说明</td><td>固定月份同合约官方结算为主口径；另一口径单列备查，不用于结论，也不据两者差异推断地缘定价</td></tr>
+    <tr><td>现货黄金</td><td>跨源口径：3,537.87→3,653.50，涨3.27%</td><td>同源日表：3,569.57→3,660.29，涨2.54%；周内高3,678.09、低3,512.42</td><td>两套口径分列；同源日表用于周内高低</td></tr>
+    <tr><td>LME工业金属</td><td>每日经济新闻11月27日收盘价与媒体直接引述的本周累计涨跌；11月20日与11月27日同一结算口径的原始序列未取得</td><td>路透17:00 GMT报价：铜12,260、锡40,700、铝2,796、锌3,550、镍15,825、铅1,856；11月27日锡单日涨8.65%的前一交易日收盘价未取得</td><td>不列示由周涨跌幅反推的周初价格，避免用反推价格验证涨跌幅；取价时点不同的旁证不合并计算</td></tr>
+    <tr><td>费城半导体指数</td><td>11月27日收9,186.71点，单日+4.69%</td><td>11月20日精确基准未取得，报道口径为全周涨逾9%；SOXX交易型基金同口径涨8.65%</td><td>不回算精确周涨幅，以报道值与基金代理分列</td></tr>
+    <tr><td>美国通胀数据</td><td>10月个人消费支出价格指数同比3.8%、核心3.3%，11月25日发布</td><td>谘商会12个月通胀预期5.7%；市场盈亏平衡通胀率2.13%</td><td>官方实现值、调查预期与市场隐含分属不同层级</td></tr>
+    <tr><td>谘商会通胀预期</td><td>一手调查报告11月12个月通胀预期中值5.7%，连续第二个月回落</td><td>另一中文日历记为4.5%、前月4.7%，与一手口径不一致</td><td>采用一手报告数值，分歧口径并列备查，不据此推导趋势</td></tr>
+    <tr><td>标普法国评级行动</td><td>展望由稳定下调至负面，长期评级维持A+</td><td>依据央视新闻与媒体转述，标普原始文件措辞待核对</td><td>按官方行动转述层级处理，具体报告措辞需回到标普原始文件核对</td></tr>
+    <tr><td>中国工业利润</td><td>1–10月累计同比+16.0%，10月单月同比+20.1%</td><td>行业数据为累计同比，与单月数据不混用</td><td>累计与单月分列；行业拉动百分点来自统计局解读</td></tr>
+    <tr><td>A股资金面</td><td>融资余额截至11月26日为21,055.79亿元，11月20日至26日净偿还871.64亿元</td><td>11月27日主力资金净流入1,163.87亿元为单日成交口径；全周累计额未取得</td><td>金额仅用于方向判断，不同口径不合并计算</td></tr>
+    <tr><td>11月27日国常会</td><td>中国政府网新闻稿原文：完善稳市机制、国家队加力、中央汇金类"平准基金"功能与充足流动性保障</td><td>"五大信号"与"一个月内第二次强调稳市"出自新华社解读与媒体统计</td><td>会议表述按官方通稿引用；解读与当日大涨归因按市场观点处理</td></tr>
+    <tr><td>小米集团盈利</td><td>经调整净利润48.84亿元，同比下降56.8%</td><td>另有数据库记录归母净利润约5.75亿美元、同比下降66.47%，疑为公认会计原则口径</td><td>采用经调整口径并标明，不与公认会计原则口径互换</td></tr>
+    <tr><td>地缘事件</td><td>英国海上贸易行动办公室通报与联合国机构表态按官方通报层级处理</td><td>伊朗革命卫队关于油轮触雷与海峡封锁的说法按单方面声明层级处理</td><td>未经交战方以外独立证实的内容不作为已实现供应冲击</td></tr>
+  </table>
+
+  <div class="callout data">
+    <b>证据分层：</b>官方统计与官方文件包括经济分析局、人口普查局、劳工统计局、美联储、国家统计局、中国人民银行、欧洲央行、韩国央行与日本总务省发布的数据和会议纪要。公司公告包括戴尔、惠普、亚德诺、Zoom、Workday与小米的定期业绩文件。期货隐含概率来自CME FedWatch与利率互换定价。机构预期与一致预期为编制时点的调查或媒体汇总。媒体报道、单方面声明与分析判断单独标注，不与官方统计读数等同。11月28日之后的进展属于下一观察窗口。
+  </div>
+</section>
+
+<section id="sources">
+  <h2 class="sec-title"><span class="num">•</span>来源索引</h2>
+  <p class="sec-desc">关键一手文件、官方日程与行情数据源；网页内容以发布机构原始版本为准</p>
+  <table>
+    <caption>主要来源链接</caption>
+    <tr><th>机构</th><th>文件</th><th>时间口径</th><th>链接</th></tr>
+    <tr><td>美国经济分析局</td><td>Personal Income and Outlays, October 2026</td><td>2026年11月25日</td><td><a href="https://www.bea.gov/news/2026/personal-income-and-outlays-october-2026">10月个人收入与支出</a></td></tr>
+    <tr><td>美国经济分析局</td><td>Gross Domestic Product, Third Quarter 2026 (Second Estimate)</td><td>2026年11月25日</td><td><a href="https://www.bea.gov/taxonomy/term/791">第三季度GDP二次估算</a></td></tr>
+    <tr><td>美国人口普查局</td><td>New Residential Sales, October 2026</td><td>2026年11月25日</td><td><a href="https://www.census.gov/construction/nrs/current/index.html">10月新屋销售</a></td></tr>
+    <tr><td>美联储</td><td>Beige Book, November 2026</td><td>2026年11月25日</td><td><a href="https://www.federalreserve.gov/monetarypolicy/beigebook202611-summary.htm">11月褐皮书</a></td></tr>
+    <tr><td>世界大型企业联合会</td><td>Consumer Confidence Index, November 2026</td><td>2026年11月24日</td><td><a href="https://www.conference-board.org/topics/consumer-confidence/index.cfm">11月消费者信心</a></td></tr>
+    <tr><td>国家统计局</td><td>1—10月份全国规模以上工业企业利润情况</td><td>2026年11月27日</td><td><a href="https://www.stats.gov.cn/sj/sjjd/202611/t20261127_1965950.html">工业企业利润数据解读</a></td></tr>
+    <tr><td>中国政府网 / 新华社</td><td>李强主持召开国务院常务会议，研究持续深化资本市场投融资综合改革工作</td><td>2026年11月27日</td><td><a href="https://www.gov.cn/yaowen/liebiao/202611/content_7087445.htm">国常会新闻稿</a></td></tr>
+    <tr><td>中国政府网 / 新华社</td><td>国常会关于资本市场部署释放五大鲜明信号</td><td>2026年11月27日</td><td><a href="https://www.gov.cn/zhengce/202611/content_7087453.htm">新华社解读</a></td></tr>
+    <tr><td>欧盟统计局 / 欧洲央行</td><td>Euro Area Economic Sentiment Indicator 与10月货币政策会议纪要</td><td>2026年11月26–27日</td><td><a href="https://tradingeconomics.com/euro-area/economic-optimism-index/news/605063">经济景气指数</a></td></tr>
+    <tr><td>法国国家统计与经济研究所</td><td>France GDP, Third Quarter 2026 (Second Estimate)</td><td>2026年11月27日</td><td><a href="https://www.insee.fr/en/statistiques/2405582">法国三季度GDP</a></td></tr>
+    <tr><td>英国央行</td><td>Financial Stability Report, November 2026</td><td>2026年11月26日</td><td><a href="https://www.cnfin.com/yw-lb/detail/20261127/4500965_1.html">金融稳定报告摘要</a></td></tr>
+    <tr><td>美国能源信息署 / 洲际交易所</td><td>周度油品库存与布伦特1月合约官方结算</td><td>2026年11月25–27日</td><td><a href="https://www.thestar.com.my/news/world/2026/11/28/crude-futures-settle-lower">原油结算与库存</a></td></tr>
+    <tr><td>戴尔科技 / 惠普 / 亚德诺</td><td>季度业绩公告与投资者关系文件</td><td>2026年11月24日</td><td><a href="https://www.analog.com/en/newsroom/press-releases/2026/11-24-26-adi-reports-record-4th-qtr-and-fiscal-2026-financial-results.html">亚德诺第四财季业绩</a></td></tr>
+    <tr><td>Zoom / Workday / SEC</td><td>季度业绩公告与8-K文件</td><td>2026年11月23–24日</td><td><a href="https://www.sec.gov/Archives/edgar/data/1585521/000158552126000170/zm-20261031ex991.htm">Zoom第三财季业绩</a></td></tr>
+    <tr><td>FactSet / Rubie Wealth</td><td>Weekly Market Summary, November 27 2026</td><td>2026年11月27日</td><td><a href="https://rubiewealth.com/weekly-market-summary-november-27-2026">跨资产周度表现</a></td></tr>
+    <tr><td>每日经济新闻</td><td>伦敦基本金属收盘与周涨跌</td><td>2026年11月28日</td><td><a href="https://news.qq.com/rain/a/20261128A04R6200">LME金属周度表现</a></td></tr>
+    <tr><td>OPEC</td><td>11月29日部长级会议安排</td><td>2026年11月</td><td><a href="https://www.opec.org/pr-detail/620-1-november-2026.html">会议安排</a></td></tr>
+    <tr><td>英伟达投资者关系</td><td>NVIDIA Board Reinstates Jensen Huang as President, CEO and Board Director</td><td>2026年11月23日</td><td><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Board-Reinstates-Jensen-Huang-as-President-CEO-and-Board-Director/default.aspx">董事会公告</a></td></tr>
+    <tr><td>美国证券交易委员会</td><td>NVIDIA 8-K 及 11月23日公告附件</td><td>2026年11月23日</td><td><a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000090/nov23pressrelease.htm">8-K 附件</a></td></tr>
+    <tr><td>新华网</td><td>1—10月份全国规模以上工业企业利润增长16.0%</td><td>2026年11月27日</td><td><a href="https://www.news.cn/fortune/20261127/bbfacfb59c844ad091908f7c8a963619/c.html">工业利润全文</a></td></tr>
+    <tr><td>美国财政部</td><td>Daily Treasury Par Yield Curve Rates</td><td>2026年11月20日、11月27日</td><td><a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve">日度收益率曲线</a></td></tr>
+    <tr><td>圣路易斯联储</td><td>10-Year Treasury Inflation-Indexed Security 与 10-Year Breakeven Inflation Rate</td><td>2026年11月20日、11月27日</td><td><a href="https://fred.stlouisfed.org/series/DFII10">实际利率序列</a></td></tr>
+    <tr><td>芝加哥商品交易所</td><td>CME FedWatch Tool：12月与1月会议隐含概率</td><td>2026年11月24–26日</td><td><a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html">利率概率</a></td></tr>
+    <tr><td>卓创资讯</td><td>11月20日国际原油期货结算价</td><td>2026年11月20日</td><td><a href="https://www.sci99.com/news/56362957.html">原油结算参考</a></td></tr>
+  </table>
+</section>
+
+<div class="footer-disclaimer">
+  <p><span class="fname">Snail-Bird Investment</span> · 全球宏观周报 · 2026年11月第4周复盘与11月第5周展望</p>
+  <p>资料基于公开披露文件与市场行情整理，数据以各发布机构原始公告为准；文中机构预测、情景阈值与条件性观点为研究性判断。编制者非持牌金融顾问。以上内容为宏观信息整理与研究分析，不构成投资建议。</p>
+  <p>Snail-Bird Investment针对网络内容的整合分享</p>
+</div>
+
+</main>
+</body>
+</html>
